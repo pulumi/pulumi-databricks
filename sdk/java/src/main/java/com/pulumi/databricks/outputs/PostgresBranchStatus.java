@@ -14,6 +14,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PostgresBranchStatus {
     /**
+     * @return The ID to use for the Branch. This becomes the final component of the branch&#39;s resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `development` becomes `projects/my-app/branches/development`
+     * 
+     */
+    private @Nullable String branchId;
+    /**
      * @return (string) - The branch&#39;s state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      * 
      */
@@ -66,6 +73,15 @@ public final class PostgresBranchStatus {
     private @Nullable String stateChangeTime;
 
     private PostgresBranchStatus() {}
+    /**
+     * @return The ID to use for the Branch. This becomes the final component of the branch&#39;s resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `development` becomes `projects/my-app/branches/development`
+     * 
+     */
+    public Optional<String> branchId() {
+        return Optional.ofNullable(this.branchId);
+    }
     /**
      * @return (string) - The branch&#39;s state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      * 
@@ -147,6 +163,7 @@ public final class PostgresBranchStatus {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String branchId;
         private @Nullable String currentState;
         private @Nullable Boolean default_;
         private @Nullable String expireTime;
@@ -160,6 +177,7 @@ public final class PostgresBranchStatus {
         public Builder() {}
         public Builder(PostgresBranchStatus defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.branchId = defaults.branchId;
     	      this.currentState = defaults.currentState;
     	      this.default_ = defaults.default_;
     	      this.expireTime = defaults.expireTime;
@@ -172,6 +190,12 @@ public final class PostgresBranchStatus {
     	      this.stateChangeTime = defaults.stateChangeTime;
         }
 
+        @CustomType.Setter
+        public Builder branchId(@Nullable String branchId) {
+
+            this.branchId = branchId;
+            return this;
+        }
         @CustomType.Setter
         public Builder currentState(@Nullable String currentState) {
 
@@ -234,6 +258,7 @@ public final class PostgresBranchStatus {
         }
         public PostgresBranchStatus build() {
             final var _resultValue = new PostgresBranchStatus();
+            _resultValue.branchId = branchId;
             _resultValue.currentState = currentState;
             _resultValue.default_ = default_;
             _resultValue.expireTime = expireTime;

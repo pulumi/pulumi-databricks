@@ -69,9 +69,11 @@ namespace Pulumi.Databricks
     /// 
     /// ### Project with High Availability Endpoint
     /// 
-    /// Create a project whose initial read-write endpoint is configured with multiple compute instances for high availability.
+    /// Create a project whose read-write endpoint is configured with multiple compute instances for high availability.
     /// One compute instance acts as the read-write primary.
     /// The remaining secondary compute instances are ready for automatic failover if the primary becomes unavailable.
+    /// 
+    /// This example manages implicitly created resources for the root branch and read-write endpoint. For more details, see the documentation for `databricks.PostgresBranch` and `databricks.PostgresEndpoint`.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -89,15 +91,38 @@ namespace Pulumi.Databricks
     ///             PgVersion = 17,
     ///             DisplayName = "HA Production Project",
     ///         },
-    ///         InitialEndpointSpec = new Databricks.Inputs.PostgresProjectInitialEndpointSpecArgs
+    ///     });
+    /// 
+    ///     var production = new Databricks.Index.PostgresBranch("production", new()
+    ///     {
+    ///         BranchId = "production",
+    ///         Parent = ha.Name,
+    ///         Spec = new Databricks.Inputs.PostgresBranchSpecArgs
     ///         {
-    ///             Group = new Databricks.Inputs.PostgresProjectInitialEndpointSpecGroupArgs
+    ///             NoExpiry = true,
+    ///             IsProtected = true,
+    ///         },
+    ///         ReplaceExisting = true,
+    ///     });
+    /// 
+    ///     var primary = new Databricks.Index.PostgresEndpoint("primary", new()
+    ///     {
+    ///         EndpointId = "primary",
+    ///         Parent = production.Name,
+    ///         Spec = new Databricks.Inputs.PostgresEndpointSpecArgs
+    ///         {
+    ///             EndpointType = "ENDPOINT_TYPE_READ_WRITE",
+    ///             NoSuspension = true,
+    ///             AutoscalingLimitMinCu = 0.5,
+    ///             AutoscalingLimitMaxCu = 4,
+    ///             Group = new Databricks.Inputs.PostgresEndpointSpecGroupArgs
     ///             {
     ///                 Min = 2,
     ///                 Max = 2,
     ///                 EnableReadableSecondaries = false,
     ///             },
     ///         },
+    ///         ReplaceExisting = true,
     ///     });
     /// 
     /// });
@@ -146,7 +171,14 @@ namespace Pulumi.Databricks
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        /// (string) - A timestamp indicating when the project was soft-deleted.
+        /// Empty if the project is not deleted, otherwise set to a timestamp in the past
+        /// </summary>
+        [Output("deleteTime")]
+        public Output<string> DeleteTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
         /// created project. If omitted, the initial endpoint created will have default settings, without high availability
         /// configured. This field does not apply to any endpoints created after project creation. Use
         /// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -174,6 +206,20 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("providerConfig")]
         public Output<Outputs.PostgresProjectProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, permanently deletes the project (hard delete).
+        /// If false or unset, performs a soft delete
+        /// </summary>
+        [Output("purgeOnDelete")]
+        public Output<bool?> PurgeOnDelete { get; private set; } = null!;
+
+        /// <summary>
+        /// (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+        /// Empty if the project is not deleted, otherwise set to a timestamp in the future
+        /// </summary>
+        [Output("purgeTime")]
+        public Output<string> PurgeTime { get; private set; } = null!;
 
         /// <summary>
         /// The spec contains the project configuration, including display_name, PgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
@@ -246,7 +292,7 @@ namespace Pulumi.Databricks
     public sealed class PostgresProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        /// Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
         /// created project. If omitted, the initial endpoint created will have default settings, without high availability
         /// configured. This field does not apply to any endpoints created after project creation. Use
         /// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -269,6 +315,13 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresProjectProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
+        /// If true, permanently deletes the project (hard delete).
+        /// If false or unset, performs a soft delete
+        /// </summary>
+        [Input("purgeOnDelete")]
+        public Input<bool>? PurgeOnDelete { get; set; }
+
+        /// <summary>
         /// The spec contains the project configuration, including display_name, PgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
         /// </summary>
         [Input("spec")]
@@ -289,7 +342,14 @@ namespace Pulumi.Databricks
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        /// (string) - A timestamp indicating when the project was soft-deleted.
+        /// Empty if the project is not deleted, otherwise set to a timestamp in the past
+        /// </summary>
+        [Input("deleteTime")]
+        public Input<string>? DeleteTime { get; set; }
+
+        /// <summary>
+        /// Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
         /// created project. If omitted, the initial endpoint created will have default settings, without high availability
         /// configured. This field does not apply to any endpoints created after project creation. Use
         /// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -317,6 +377,20 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("providerConfig")]
         public Input<Inputs.PostgresProjectProviderConfigGetArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
+        /// If true, permanently deletes the project (hard delete).
+        /// If false or unset, performs a soft delete
+        /// </summary>
+        [Input("purgeOnDelete")]
+        public Input<bool>? PurgeOnDelete { get; set; }
+
+        /// <summary>
+        /// (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+        /// Empty if the project is not deleted, otherwise set to a timestamp in the future
+        /// </summary>
+        [Input("purgeTime")]
+        public Input<string>? PurgeTime { get; set; }
 
         /// <summary>
         /// The spec contains the project configuration, including display_name, PgVersion (Postgres version), history_retention_duration, and default_endpoint_settings

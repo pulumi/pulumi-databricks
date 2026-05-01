@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.PostgresProjectInitialEndpointSpecArgs;
 import com.pulumi.databricks.inputs.PostgresProjectProviderConfigArgs;
 import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
 import com.pulumi.databricks.inputs.PostgresProjectStatusArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -35,7 +36,24 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * (string) - A timestamp indicating when the project was soft-deleted.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the past
+     * 
+     */
+    @Import(name="deleteTime")
+    private @Nullable Output<String> deleteTime;
+
+    /**
+     * @return (string) - A timestamp indicating when the project was soft-deleted.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the past
+     * 
+     */
+    public Optional<Output<String>> deleteTime() {
+        return Optional.ofNullable(this.deleteTime);
+    }
+
+    /**
+     * Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
      * configured. This field does not apply to any endpoints created after project creation. Use
      * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -45,7 +63,7 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<PostgresProjectInitialEndpointSpecArgs> initialEndpointSpec;
 
     /**
-     * @return Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+     * @return Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
      * configured. This field does not apply to any endpoints created after project creation. Use
      * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -104,6 +122,40 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<PostgresProjectProviderConfigArgs>> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
+     * If true, permanently deletes the project (hard delete).
+     * If false or unset, performs a soft delete
+     * 
+     */
+    @Import(name="purgeOnDelete")
+    private @Nullable Output<Boolean> purgeOnDelete;
+
+    /**
+     * @return If true, permanently deletes the project (hard delete).
+     * If false or unset, performs a soft delete
+     * 
+     */
+    public Optional<Output<Boolean>> purgeOnDelete() {
+        return Optional.ofNullable(this.purgeOnDelete);
+    }
+
+    /**
+     * (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the future
+     * 
+     */
+    @Import(name="purgeTime")
+    private @Nullable Output<String> purgeTime;
+
+    /**
+     * @return (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+     * Empty if the project is not deleted, otherwise set to a timestamp in the future
+     * 
+     */
+    public Optional<Output<String>> purgeTime() {
+        return Optional.ofNullable(this.purgeTime);
     }
 
     /**
@@ -170,10 +222,13 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
 
     private PostgresProjectState(PostgresProjectState $) {
         this.createTime = $.createTime;
+        this.deleteTime = $.deleteTime;
         this.initialEndpointSpec = $.initialEndpointSpec;
         this.name = $.name;
         this.projectId = $.projectId;
         this.providerConfig = $.providerConfig;
+        this.purgeOnDelete = $.purgeOnDelete;
+        this.purgeTime = $.purgeTime;
         this.spec = $.spec;
         this.status = $.status;
         this.uid = $.uid;
@@ -220,7 +275,30 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param initialEndpointSpec Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+         * @param deleteTime (string) - A timestamp indicating when the project was soft-deleted.
+         * Empty if the project is not deleted, otherwise set to a timestamp in the past
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteTime(@Nullable Output<String> deleteTime) {
+            $.deleteTime = deleteTime;
+            return this;
+        }
+
+        /**
+         * @param deleteTime (string) - A timestamp indicating when the project was soft-deleted.
+         * Empty if the project is not deleted, otherwise set to a timestamp in the past
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteTime(String deleteTime) {
+            return deleteTime(Output.of(deleteTime));
+        }
+
+        /**
+         * @param initialEndpointSpec Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
          * created project. If omitted, the initial endpoint created will have default settings, without high availability
          * configured. This field does not apply to any endpoints created after project creation. Use
          * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -234,7 +312,7 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param initialEndpointSpec Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+         * @param initialEndpointSpec Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
          * created project. If omitted, the initial endpoint created will have default settings, without high availability
          * configured. This field does not apply to any endpoints created after project creation. Use
          * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -313,6 +391,52 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
          */
         public Builder providerConfig(PostgresProjectProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
+        }
+
+        /**
+         * @param purgeOnDelete If true, permanently deletes the project (hard delete).
+         * If false or unset, performs a soft delete
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeOnDelete(@Nullable Output<Boolean> purgeOnDelete) {
+            $.purgeOnDelete = purgeOnDelete;
+            return this;
+        }
+
+        /**
+         * @param purgeOnDelete If true, permanently deletes the project (hard delete).
+         * If false or unset, performs a soft delete
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeOnDelete(Boolean purgeOnDelete) {
+            return purgeOnDelete(Output.of(purgeOnDelete));
+        }
+
+        /**
+         * @param purgeTime (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+         * Empty if the project is not deleted, otherwise set to a timestamp in the future
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeTime(@Nullable Output<String> purgeTime) {
+            $.purgeTime = purgeTime;
+            return this;
+        }
+
+        /**
+         * @param purgeTime (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+         * Empty if the project is not deleted, otherwise set to a timestamp in the future
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeTime(String purgeTime) {
+            return purgeTime(Output.of(purgeTime));
         }
 
         /**

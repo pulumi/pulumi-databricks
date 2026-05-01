@@ -29,6 +29,7 @@ export function getPostgresProjects(args?: GetPostgresProjectsArgs, opts?: pulum
     return pulumi.runtime.invoke("databricks:index/getPostgresProjects:getPostgresProjects", {
         "pageSize": args.pageSize,
         "providerConfig": args.providerConfig,
+        "showDeleted": args.showDeleted,
     }, opts);
 }
 
@@ -44,6 +45,12 @@ export interface GetPostgresProjectsArgs {
      * Configure the provider for management through account provider.
      */
     providerConfig?: inputs.GetPostgresProjectsProviderConfig;
+    /**
+     * Whether to include soft-deleted projects in the response.
+     * When true, soft-deleted projects are included alongside active projects.
+     * Hard-deleted and already-purged projects are never returned
+     */
+    showDeleted?: boolean;
 }
 
 /**
@@ -57,6 +64,7 @@ export interface GetPostgresProjectsResult {
     readonly pageSize?: number;
     readonly projects: outputs.GetPostgresProjectsProject[];
     readonly providerConfig?: outputs.GetPostgresProjectsProviderConfig;
+    readonly showDeleted?: boolean;
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -81,6 +89,7 @@ export function getPostgresProjectsOutput(args?: GetPostgresProjectsOutputArgs, 
     return pulumi.runtime.invokeOutput("databricks:index/getPostgresProjects:getPostgresProjects", {
         "pageSize": args.pageSize,
         "providerConfig": args.providerConfig,
+        "showDeleted": args.showDeleted,
     }, opts);
 }
 
@@ -96,4 +105,10 @@ export interface GetPostgresProjectsOutputArgs {
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.GetPostgresProjectsProviderConfigArgs>;
+    /**
+     * Whether to include soft-deleted projects in the response.
+     * When true, soft-deleted projects are included alongside active projects.
+     * Hard-deleted and already-purged projects are never returned
+     */
+    showDeleted?: pulumi.Input<boolean>;
 }

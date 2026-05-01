@@ -13,6 +13,159 @@ import (
 )
 
 // [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// ## Example Usage
+//
+// ### Database Owned by a Specific Role
+//
+// Assign ownership to a role you manage alongside the database. The Postgres database will be created with the specified role as its owner.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			appOwner, err := databricks.NewPostgresRole(ctx, "app_owner", &databricks.PostgresRoleArgs{
+//				RoleId: pulumi.String("app-owner"),
+//				Parent: pulumi.Any(main.Name),
+//				Spec: &databricks.PostgresRoleSpecArgs{
+//					PostgresRole: pulumi.String("app_owner"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPostgresDatabase(ctx, "app", &databricks.PostgresDatabaseArgs{
+//				DatabaseId: pulumi.String("app"),
+//				Parent:     pulumi.Any(main.Name),
+//				Spec: &databricks.PostgresDatabaseSpecArgs{
+//					PostgresDatabase: pulumi.String("app"),
+//					Role:             appOwner.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Renaming a Database
+//
+// Changing `spec.postgres_database` renames the underlying Postgres database without replacing the resource. The resource identifier (`databaseId`) is separate from the Postgres database name, and stays intact in the example below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPostgresDatabase(ctx, "analytics", &databricks.PostgresDatabaseArgs{
+//				DatabaseId: pulumi.String("analytics"),
+//				Parent:     pulumi.Any(main.Name),
+//				Spec: &databricks.PostgresDatabaseSpecArgs{
+//					PostgresDatabase: pulumi.String("analytics_v2"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Multiple databases in a branch
+//
+// By default, Pulumi creates resources in parallel if the dependency graph allows for that. However, Lakebase
+// doesn't allow the parallel management of resource inside a single branch. Only one of these resources can
+// be created at a time:
+//
+// - Role
+// - Database
+// - Endpoint
+//
+// If you try to create resources in parallel, you'll see a conflict error like:
+//
+// > Your project already has conflicting operations in progress. Please wait until they are complete, and then try again.
+//
+// Pulumi serializes automatically when one resource references another, forming an edge in the dependency graph.
+// For example, if a database's `spec.role` points at a role, Pulumi creates the role before the database.
+// For resources that don't reference each other, like two sibling databases in the same branch, add `dependsOn` so
+// Pulumi knows to wait for complete creation of the first resource, before starting the creation of the second one.
+//
+// For example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			schemaOwner, err := databricks.NewPostgresRole(ctx, "schema_owner", &databricks.PostgresRoleArgs{
+//				RoleId: pulumi.String("schemamigrator"),
+//				Parent: pulumi.Any(test.Name),
+//				Spec: &databricks.PostgresRoleSpecArgs{
+//					PostgresRole: pulumi.String("schemamigrator"),
+//					MembershipRoles: pulumi.StringArray{
+//						pulumi.String("DATABRICKS_SUPERUSER"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			application1, err := databricks.NewPostgresDatabase(ctx, "application1", &databricks.PostgresDatabaseArgs{
+//				DatabaseId: pulumi.String("application1"),
+//				Parent:     pulumi.Any(test.Name),
+//				Spec: &databricks.PostgresDatabaseSpecArgs{
+//					PostgresDatabase: pulumi.String("application1"),
+//					Role:             schemaOwner.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPostgresDatabase(ctx, "application2", &databricks.PostgresDatabaseArgs{
+//				DatabaseId: pulumi.String("application2"),
+//				Parent:     pulumi.Any(test.Name),
+//				Spec: &databricks.PostgresDatabaseSpecArgs{
+//					PostgresDatabase: pulumi.String("application2"),
+//					Role:             schemaOwner.Name,
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				application1,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type PostgresDatabase struct {
 	pulumi.CustomResourceState
 

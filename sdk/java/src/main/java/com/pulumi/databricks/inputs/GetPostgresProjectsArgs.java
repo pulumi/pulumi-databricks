@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetPostgresProjectsProviderConfigArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,11 +47,31 @@ public final class GetPostgresProjectsArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.providerConfig);
     }
 
+    /**
+     * Whether to include soft-deleted projects in the response.
+     * When true, soft-deleted projects are included alongside active projects.
+     * Hard-deleted and already-purged projects are never returned
+     * 
+     */
+    @Import(name="showDeleted")
+    private @Nullable Output<Boolean> showDeleted;
+
+    /**
+     * @return Whether to include soft-deleted projects in the response.
+     * When true, soft-deleted projects are included alongside active projects.
+     * Hard-deleted and already-purged projects are never returned
+     * 
+     */
+    public Optional<Output<Boolean>> showDeleted() {
+        return Optional.ofNullable(this.showDeleted);
+    }
+
     private GetPostgresProjectsArgs() {}
 
     private GetPostgresProjectsArgs(GetPostgresProjectsArgs $) {
         this.pageSize = $.pageSize;
         this.providerConfig = $.providerConfig;
+        this.showDeleted = $.showDeleted;
     }
 
     public static Builder builder() {
@@ -111,6 +132,31 @@ public final class GetPostgresProjectsArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder providerConfig(GetPostgresProjectsProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
+        }
+
+        /**
+         * @param showDeleted Whether to include soft-deleted projects in the response.
+         * When true, soft-deleted projects are included alongside active projects.
+         * Hard-deleted and already-purged projects are never returned
+         * 
+         * @return builder
+         * 
+         */
+        public Builder showDeleted(@Nullable Output<Boolean> showDeleted) {
+            $.showDeleted = showDeleted;
+            return this;
+        }
+
+        /**
+         * @param showDeleted Whether to include soft-deleted projects in the response.
+         * When true, soft-deleted projects are included alongside active projects.
+         * Hard-deleted and already-purged projects are never returned
+         * 
+         * @return builder
+         * 
+         */
+        public Builder showDeleted(Boolean showDeleted) {
+            return showDeleted(Output.of(showDeleted));
         }
 
         public GetPostgresProjectsArgs build() {

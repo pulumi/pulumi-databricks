@@ -8,6 +8,24 @@ import * as utilities from "./utilities";
 
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source retrieves a single Postgres role.
+ *
+ * ## Example Usage
+ *
+ * ### Retrieve Role by Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getPostgresRole({
+ *     name: "projects/my-project/branches/main/roles/jane",
+ * });
+ * export const rolePostgresName = _this.then(_this => _this.status?.postgresRole);
+ * export const roleIdentityType = _this.then(_this => _this.status?.identityType);
+ * export const roleAuthMethod = _this.then(_this => _this.status?.authMethod);
+ * ```
  */
 export function getPostgresRole(args: GetPostgresRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresRoleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -70,6 +88,24 @@ export interface GetPostgresRoleResult {
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source retrieves a single Postgres role.
+ *
+ * ## Example Usage
+ *
+ * ### Retrieve Role by Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getPostgresRole({
+ *     name: "projects/my-project/branches/main/roles/jane",
+ * });
+ * export const rolePostgresName = _this.then(_this => _this.status?.postgresRole);
+ * export const roleIdentityType = _this.then(_this => _this.status?.identityType);
+ * export const roleAuthMethod = _this.then(_this => _this.status?.authMethod);
+ * ```
  */
 export function getPostgresRoleOutput(args: GetPostgresRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresRoleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

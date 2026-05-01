@@ -171,7 +171,7 @@ export class ExternalLocation extends pulumi.CustomResource {
      */
     declare public readonly credentialName: pulumi.Output<string>;
     declare public /*out*/ readonly effectiveEnableFileEvents: pulumi.Output<boolean>;
-    declare public readonly effectiveFileEventQueue: pulumi.Output<outputs.ExternalLocationEffectiveFileEventQueue | undefined>;
+    declare public readonly effectiveFileEventQueue: pulumi.Output<outputs.ExternalLocationEffectiveFileEventQueue>;
     /**
      * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
      */

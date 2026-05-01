@@ -66,6 +66,12 @@ public final class GetPostgresProjectsProjectStatus {
      */
     private Integer pgVersion;
     /**
+     * @return (string) - The short identifier of the project, suitable for showing to the users.
+     * For a project with name `projects/my-project`, the projectId is `my-project`.
+     * 
+     */
+    private String projectId;
+    /**
      * @return (integer) - The current space occupied by the project in storage
      * 
      */
@@ -143,6 +149,14 @@ public final class GetPostgresProjectsProjectStatus {
         return this.pgVersion;
     }
     /**
+     * @return (string) - The short identifier of the project, suitable for showing to the users.
+     * For a project with name `projects/my-project`, the projectId is `my-project`.
+     * 
+     */
+    public String projectId() {
+        return this.projectId;
+    }
+    /**
      * @return (integer) - The current space occupied by the project in storage
      * 
      */
@@ -169,6 +183,7 @@ public final class GetPostgresProjectsProjectStatus {
         private String historyRetentionDuration;
         private String owner;
         private Integer pgVersion;
+        private String projectId;
         private Integer syntheticStorageSizeBytes;
         public Builder() {}
         public Builder(GetPostgresProjectsProjectStatus defaults) {
@@ -183,6 +198,7 @@ public final class GetPostgresProjectsProjectStatus {
     	      this.historyRetentionDuration = defaults.historyRetentionDuration;
     	      this.owner = defaults.owner;
     	      this.pgVersion = defaults.pgVersion;
+    	      this.projectId = defaults.projectId;
     	      this.syntheticStorageSizeBytes = defaults.syntheticStorageSizeBytes;
         }
 
@@ -270,6 +286,14 @@ public final class GetPostgresProjectsProjectStatus {
             return this;
         }
         @CustomType.Setter
+        public Builder projectId(String projectId) {
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetPostgresProjectsProjectStatus", "projectId");
+            }
+            this.projectId = projectId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder syntheticStorageSizeBytes(Integer syntheticStorageSizeBytes) {
             if (syntheticStorageSizeBytes == null) {
               throw new MissingRequiredPropertyException("GetPostgresProjectsProjectStatus", "syntheticStorageSizeBytes");
@@ -289,6 +313,7 @@ public final class GetPostgresProjectsProjectStatus {
             _resultValue.historyRetentionDuration = historyRetentionDuration;
             _resultValue.owner = owner;
             _resultValue.pgVersion = pgVersion;
+            _resultValue.projectId = projectId;
             _resultValue.syntheticStorageSizeBytes = syntheticStorageSizeBytes;
             return _resultValue;
         }

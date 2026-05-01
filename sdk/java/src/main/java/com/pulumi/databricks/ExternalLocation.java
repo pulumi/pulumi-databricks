@@ -310,10 +310,10 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
         return this.effectiveEnableFileEvents;
     }
     @Export(name="effectiveFileEventQueue", refs={ExternalLocationEffectiveFileEventQueue.class}, tree="[0]")
-    private Output</* @Nullable */ ExternalLocationEffectiveFileEventQueue> effectiveFileEventQueue;
+    private Output<ExternalLocationEffectiveFileEventQueue> effectiveFileEventQueue;
 
-    public Output<Optional<ExternalLocationEffectiveFileEventQueue>> effectiveFileEventQueue() {
-        return Codegen.optional(this.effectiveFileEventQueue);
+    public Output<ExternalLocationEffectiveFileEventQueue> effectiveFileEventQueue() {
+        return this.effectiveFileEventQueue;
     }
     /**
      * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.

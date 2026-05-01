@@ -11,6 +11,160 @@ namespace Pulumi.Databricks
 {
     /// <summary>
     /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Role Backed by a Databricks User Identity
+    /// 
+    /// Create a role that is authenticated as a specific Databricks workspace user via OAuth. `AuthMethod` is left unset and defaults to `LAKEBASE_OAUTH_V1` for managed identities.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.Index.PostgresProject("this", new()
+    ///     {
+    ///         ProjectId = "my-project",
+    ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
+    ///         {
+    ///             PgVersion = 17,
+    ///             DisplayName = "My Project",
+    ///         },
+    ///     });
+    /// 
+    ///     var main = new Databricks.Index.PostgresBranch("main", new()
+    ///     {
+    ///         BranchId = "main",
+    ///         Parent = @this.Name,
+    ///         Spec = new Databricks.Inputs.PostgresBranchSpecArgs
+    ///         {
+    ///             NoExpiry = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var jane = new Databricks.Index.PostgresRole("jane", new()
+    ///     {
+    ///         RoleId = "jane",
+    ///         Parent = main.Name,
+    ///         Spec = new Databricks.Inputs.PostgresRoleSpecArgs
+    ///         {
+    ///             IdentityType = "USER",
+    ///             PostgresRole = "jane@databricks.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Service Principal with `DATABRICKS_SUPERUSER` Membership
+    /// 
+    /// Create a role that is authenticated as a Databricks service principal via OAuth and grant it the highest customer-exposed privilege set via `DATABRICKS_SUPERUSER` membership.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var adminSp = new Databricks.Index.PostgresRole("admin_sp", new()
+    ///     {
+    ///         RoleId = "admin-sp",
+    ///         Parent = main.Name,
+    ///         Spec = new Databricks.Inputs.PostgresRoleSpecArgs
+    ///         {
+    ///             IdentityType = "SERVICE_PRINCIPAL",
+    ///             PostgresRole = "00000000-0000-0000-0000-000000000000",
+    ///             AuthMethod = "LAKEBASE_OAUTH_V1",
+    ///             MembershipRoles = new[]
+    ///             {
+    ///                 "DATABRICKS_SUPERUSER",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Multiple roles in a branch
+    /// 
+    /// By default, Pulumi creates resources in parallel if the dependency graph allows. However, Lakebase
+    /// doesn't allow executing parallel manipulations inside a single branch. Only one of these resources can
+    /// be created or updated at a time:
+    /// 
+    /// - Role
+    /// - Database
+    /// - Endpoint
+    /// 
+    /// If you try to create resources in parallel, you'll see a conflict error like:
+    /// 
+    /// &gt; Your project already has conflicting operations in progress. Please wait until they are complete, and then try again.
+    /// 
+    /// Pulumi serializes execution automatically when one resource references another.
+    /// For example, when a database names a role as its owner via `spec.role`, Pulumi creates the role before the database.
+    /// For resources that don't reference each other, like two sibling roles in the same branch, add `DependsOn` so
+    /// Pulumi knows to wait for creation of the first one to finish, before scheduling the creation of the second one.
+    /// 
+    /// For example:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var schemaOwner = new Databricks.Index.PostgresRole("schema_owner", new()
+    ///     {
+    ///         RoleId = "schemamigrator",
+    ///         Parent = test.Name,
+    ///         Spec = new Databricks.Inputs.PostgresRoleSpecArgs
+    ///         {
+    ///             PostgresRole = "schemamigrator",
+    ///             MembershipRoles = new[]
+    ///             {
+    ///                 "DATABRICKS_SUPERUSER",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var application = new Databricks.Index.PostgresDatabase("application", new()
+    ///     {
+    ///         DatabaseId = "application",
+    ///         Parent = test.Name,
+    ///         Spec = new Databricks.Inputs.PostgresDatabaseSpecArgs
+    ///         {
+    ///             PostgresDatabase = "application",
+    ///             Role = schemaOwner.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var applicationPostgresRole = new Databricks.Index.PostgresRole("application", new()
+    ///     {
+    ///         RoleId = "application",
+    ///         Parent = test.Name,
+    ///         Spec = new Databricks.Inputs.PostgresRoleSpecArgs
+    ///         {
+    ///             PostgresRole = "application",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             application,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Note: in a real setup, the `Application` role would also need `GRANT` privileges, but that's out of scope for this example.
     /// </summary>
     [DatabricksResourceType("databricks:index/postgresRole:PostgresRole")]
     public partial class PostgresRole : global::Pulumi.CustomResource

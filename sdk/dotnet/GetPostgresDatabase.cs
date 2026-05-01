@@ -13,18 +13,102 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres database.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Database by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.Index.GetPostgresDatabase.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project/branches/main/databases/app",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["postgresDatabaseName"] = @this.Apply(@this =&gt; @this.Apply(getPostgresDatabaseResult =&gt; getPostgresDatabaseResult.Status?.PostgresDatabase)),
+        ///         ["databaseOwnerRole"] = @this.Apply(@this =&gt; @this.Apply(getPostgresDatabaseResult =&gt; getPostgresDatabaseResult.Status?.Role)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetPostgresDatabaseResult> InvokeAsync(GetPostgresDatabaseArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresDatabaseResult>("databricks:index/getPostgresDatabase:getPostgresDatabase", args ?? new GetPostgresDatabaseArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres database.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Database by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.Index.GetPostgresDatabase.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project/branches/main/databases/app",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["postgresDatabaseName"] = @this.Apply(@this =&gt; @this.Apply(getPostgresDatabaseResult =&gt; getPostgresDatabaseResult.Status?.PostgresDatabase)),
+        ///         ["databaseOwnerRole"] = @this.Apply(@this =&gt; @this.Apply(getPostgresDatabaseResult =&gt; getPostgresDatabaseResult.Status?.Role)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresDatabaseResult> Invoke(GetPostgresDatabaseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresDatabaseResult>("databricks:index/getPostgresDatabase:getPostgresDatabase", args ?? new GetPostgresDatabaseInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres database.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Database by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.Index.GetPostgresDatabase.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project/branches/main/databases/app",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["postgresDatabaseName"] = @this.Apply(@this =&gt; @this.Apply(getPostgresDatabaseResult =&gt; getPostgresDatabaseResult.Status?.PostgresDatabase)),
+        ///         ["databaseOwnerRole"] = @this.Apply(@this =&gt; @this.Apply(getPostgresDatabaseResult =&gt; getPostgresDatabaseResult.Status?.Role)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresDatabaseResult> Invoke(GetPostgresDatabaseInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresDatabaseResult>("databricks:index/getPostgresDatabase:getPostgresDatabase", args ?? new GetPostgresDatabaseInvokeArgs(), options.WithDefaults());

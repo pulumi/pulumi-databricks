@@ -12,6 +12,12 @@ import (
 )
 
 // [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// This data source lists all Postgres databases in a branch.
+//
+// ## Example Usage
+//
+// ### List All Databases in a Branch
 func GetPostgresDatabases(ctx *pulumi.Context, args *GetPostgresDatabasesArgs, opts ...pulumi.InvokeOption) (*GetPostgresDatabasesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPostgresDatabasesResult

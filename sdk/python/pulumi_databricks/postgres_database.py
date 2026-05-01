@@ -275,6 +275,96 @@ class PostgresDatabase(pulumi.CustomResource):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+        ## Example Usage
+
+        ### Database Owned by a Specific Role
+
+        Assign ownership to a role you manage alongside the database. The Postgres database will be created with the specified role as its owner.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        app_owner = databricks.PostgresRole("app_owner",
+            role_id="app-owner",
+            parent=main["name"],
+            spec={
+                "postgres_role": "app_owner",
+            })
+        app = databricks.PostgresDatabase("app",
+            database_id="app",
+            parent=main["name"],
+            spec={
+                "postgres_database": "app",
+                "role": app_owner.name,
+            })
+        ```
+
+        ### Renaming a Database
+
+        Changing `spec.postgres_database` renames the underlying Postgres database without replacing the resource. The resource identifier (`database_id`) is separate from the Postgres database name, and stays intact in the example below.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        analytics = databricks.PostgresDatabase("analytics",
+            database_id="analytics",
+            parent=main["name"],
+            spec={
+                "postgres_database": "analytics_v2",
+            })
+        ```
+
+        ### Multiple databases in a branch
+
+        By default, Pulumi creates resources in parallel if the dependency graph allows for that. However, Lakebase
+        doesn't allow the parallel management of resource inside a single branch. Only one of these resources can
+        be created at a time:
+
+        - Role
+        - Database
+        - Endpoint
+
+        If you try to create resources in parallel, you'll see a conflict error like:
+
+        > Your project already has conflicting operations in progress. Please wait until they are complete, and then try again.
+
+        Pulumi serializes automatically when one resource references another, forming an edge in the dependency graph.
+        For example, if a database's `spec.role` points at a role, Pulumi creates the role before the database.
+        For resources that don't reference each other, like two sibling databases in the same branch, add `depends_on` so
+        Pulumi knows to wait for complete creation of the first resource, before starting the creation of the second one.
+
+        For example:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        schema_owner = databricks.PostgresRole("schema_owner",
+            role_id="schemamigrator",
+            parent=test["name"],
+            spec={
+                "postgres_role": "schemamigrator",
+                "membership_roles": ["DATABRICKS_SUPERUSER"],
+            })
+        application1 = databricks.PostgresDatabase("application1",
+            database_id="application1",
+            parent=test["name"],
+            spec={
+                "postgres_database": "application1",
+                "role": schema_owner.name,
+            })
+        application2 = databricks.PostgresDatabase("application2",
+            database_id="application2",
+            parent=test["name"],
+            spec={
+                "postgres_database": "application2",
+                "role": schema_owner.name,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[application1]))
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -299,6 +389,96 @@ class PostgresDatabase(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        ## Example Usage
+
+        ### Database Owned by a Specific Role
+
+        Assign ownership to a role you manage alongside the database. The Postgres database will be created with the specified role as its owner.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        app_owner = databricks.PostgresRole("app_owner",
+            role_id="app-owner",
+            parent=main["name"],
+            spec={
+                "postgres_role": "app_owner",
+            })
+        app = databricks.PostgresDatabase("app",
+            database_id="app",
+            parent=main["name"],
+            spec={
+                "postgres_database": "app",
+                "role": app_owner.name,
+            })
+        ```
+
+        ### Renaming a Database
+
+        Changing `spec.postgres_database` renames the underlying Postgres database without replacing the resource. The resource identifier (`database_id`) is separate from the Postgres database name, and stays intact in the example below.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        analytics = databricks.PostgresDatabase("analytics",
+            database_id="analytics",
+            parent=main["name"],
+            spec={
+                "postgres_database": "analytics_v2",
+            })
+        ```
+
+        ### Multiple databases in a branch
+
+        By default, Pulumi creates resources in parallel if the dependency graph allows for that. However, Lakebase
+        doesn't allow the parallel management of resource inside a single branch. Only one of these resources can
+        be created at a time:
+
+        - Role
+        - Database
+        - Endpoint
+
+        If you try to create resources in parallel, you'll see a conflict error like:
+
+        > Your project already has conflicting operations in progress. Please wait until they are complete, and then try again.
+
+        Pulumi serializes automatically when one resource references another, forming an edge in the dependency graph.
+        For example, if a database's `spec.role` points at a role, Pulumi creates the role before the database.
+        For resources that don't reference each other, like two sibling databases in the same branch, add `depends_on` so
+        Pulumi knows to wait for complete creation of the first resource, before starting the creation of the second one.
+
+        For example:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        schema_owner = databricks.PostgresRole("schema_owner",
+            role_id="schemamigrator",
+            parent=test["name"],
+            spec={
+                "postgres_role": "schemamigrator",
+                "membership_roles": ["DATABRICKS_SUPERUSER"],
+            })
+        application1 = databricks.PostgresDatabase("application1",
+            database_id="application1",
+            parent=test["name"],
+            spec={
+                "postgres_database": "application1",
+                "role": schema_owner.name,
+            })
+        application2 = databricks.PostgresDatabase("application2",
+            database_id="application2",
+            parent=test["name"],
+            spec={
+                "postgres_database": "application2",
+                "role": schema_owner.name,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[application1]))
+        ```
 
 
         :param str resource_name: The name of the resource.

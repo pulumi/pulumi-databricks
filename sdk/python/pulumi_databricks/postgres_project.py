@@ -24,6 +24,7 @@ class PostgresProjectArgs:
                  project_id: pulumi.Input[_builtins.str],
                  initial_endpoint_spec: Optional[pulumi.Input['PostgresProjectInitialEndpointSpecArgs']] = None,
                  provider_config: Optional[pulumi.Input['PostgresProjectProviderConfigArgs']] = None,
+                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  spec: Optional[pulumi.Input['PostgresProjectSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresProject resource.
@@ -31,11 +32,13 @@ class PostgresProjectArgs:
         :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project. This becomes the final component of the project's resource name.
                The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
                For example, `my-app` becomes `projects/my-app`
-        :param pulumi.Input['PostgresProjectInitialEndpointSpecArgs'] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        :param pulumi.Input['PostgresProjectInitialEndpointSpecArgs'] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
                created project. If omitted, the initial endpoint created will have default settings, without high availability
                configured. This field does not apply to any endpoints created after project creation. Use
                spec.default_endpoint_settings to configure default settings for endpoints created after project creation
         :param pulumi.Input['PostgresProjectProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently deletes the project (hard delete).
+               If false or unset, performs a soft delete
         :param pulumi.Input['PostgresProjectSpecArgs'] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         """
         pulumi.set(__self__, "project_id", project_id)
@@ -43,6 +46,8 @@ class PostgresProjectArgs:
             pulumi.set(__self__, "initial_endpoint_spec", initial_endpoint_spec)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if purge_on_delete is not None:
+            pulumi.set(__self__, "purge_on_delete", purge_on_delete)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
 
@@ -64,7 +69,7 @@ class PostgresProjectArgs:
     @pulumi.getter(name="initialEndpointSpec")
     def initial_endpoint_spec(self) -> Optional[pulumi.Input['PostgresProjectInitialEndpointSpecArgs']]:
         """
-        Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
         created project. If omitted, the initial endpoint created will have default settings, without high availability
         configured. This field does not apply to any endpoints created after project creation. Use
         spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -88,6 +93,19 @@ class PostgresProjectArgs:
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="purgeOnDelete")
+    def purge_on_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, permanently deletes the project (hard delete).
+        If false or unset, performs a soft delete
+        """
+        return pulumi.get(self, "purge_on_delete")
+
+    @purge_on_delete.setter
+    def purge_on_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "purge_on_delete", value)
+
+    @_builtins.property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['PostgresProjectSpecArgs']]:
         """
@@ -104,10 +122,13 @@ class PostgresProjectArgs:
 class _PostgresProjectState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_time: Optional[pulumi.Input[_builtins.str]] = None,
                  initial_endpoint_spec: Optional[pulumi.Input['PostgresProjectInitialEndpointSpecArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  provider_config: Optional[pulumi.Input['PostgresProjectProviderConfigArgs']] = None,
+                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
+                 purge_time: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input['PostgresProjectSpecArgs']] = None,
                  status: Optional[pulumi.Input['PostgresProjectStatusArgs']] = None,
                  uid: Optional[pulumi.Input[_builtins.str]] = None,
@@ -116,7 +137,9 @@ class _PostgresProjectState:
         Input properties used for looking up and filtering PostgresProject resources.
 
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the project was created
-        :param pulumi.Input['PostgresProjectInitialEndpointSpecArgs'] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        :param pulumi.Input[_builtins.str] delete_time: (string) - A timestamp indicating when the project was soft-deleted.
+               Empty if the project is not deleted, otherwise set to a timestamp in the past
+        :param pulumi.Input['PostgresProjectInitialEndpointSpecArgs'] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
                created project. If omitted, the initial endpoint created will have default settings, without high availability
                configured. This field does not apply to any endpoints created after project creation. Use
                spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -126,6 +149,10 @@ class _PostgresProjectState:
                The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
                For example, `my-app` becomes `projects/my-app`
         :param pulumi.Input['PostgresProjectProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently deletes the project (hard delete).
+               If false or unset, performs a soft delete
+        :param pulumi.Input[_builtins.str] purge_time: (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+               Empty if the project is not deleted, otherwise set to a timestamp in the future
         :param pulumi.Input['PostgresProjectSpecArgs'] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         :param pulumi.Input['PostgresProjectStatusArgs'] status: (ProjectStatus) - The current status of a Project
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the project
@@ -133,6 +160,8 @@ class _PostgresProjectState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if delete_time is not None:
+            pulumi.set(__self__, "delete_time", delete_time)
         if initial_endpoint_spec is not None:
             pulumi.set(__self__, "initial_endpoint_spec", initial_endpoint_spec)
         if name is not None:
@@ -141,6 +170,10 @@ class _PostgresProjectState:
             pulumi.set(__self__, "project_id", project_id)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if purge_on_delete is not None:
+            pulumi.set(__self__, "purge_on_delete", purge_on_delete)
+        if purge_time is not None:
+            pulumi.set(__self__, "purge_time", purge_time)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
@@ -163,10 +196,23 @@ class _PostgresProjectState:
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - A timestamp indicating when the project was soft-deleted.
+        Empty if the project is not deleted, otherwise set to a timestamp in the past
+        """
+        return pulumi.get(self, "delete_time")
+
+    @delete_time.setter
+    def delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete_time", value)
+
+    @_builtins.property
     @pulumi.getter(name="initialEndpointSpec")
     def initial_endpoint_spec(self) -> Optional[pulumi.Input['PostgresProjectInitialEndpointSpecArgs']]:
         """
-        Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
         created project. If omitted, the initial endpoint created will have default settings, without high availability
         configured. This field does not apply to any endpoints created after project creation. Use
         spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -215,6 +261,32 @@ class _PostgresProjectState:
     @provider_config.setter
     def provider_config(self, value: Optional[pulumi.Input['PostgresProjectProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="purgeOnDelete")
+    def purge_on_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, permanently deletes the project (hard delete).
+        If false or unset, performs a soft delete
+        """
+        return pulumi.get(self, "purge_on_delete")
+
+    @purge_on_delete.setter
+    def purge_on_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "purge_on_delete", value)
+
+    @_builtins.property
+    @pulumi.getter(name="purgeTime")
+    def purge_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+        Empty if the project is not deleted, otherwise set to a timestamp in the future
+        """
+        return pulumi.get(self, "purge_time")
+
+    @purge_time.setter
+    def purge_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "purge_time", value)
 
     @_builtins.property
     @pulumi.getter
@@ -274,6 +346,7 @@ class PostgresProject(pulumi.CustomResource):
                  initial_endpoint_spec: Optional[pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  provider_config: Optional[pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
+                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  spec: Optional[pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
                  __props__=None):
         """
@@ -317,9 +390,11 @@ class PostgresProject(pulumi.CustomResource):
 
         ### Project with High Availability Endpoint
 
-        Create a project whose initial read-write endpoint is configured with multiple compute instances for high availability.
+        Create a project whose read-write endpoint is configured with multiple compute instances for high availability.
         One compute instance acts as the read-write primary.
         The remaining secondary compute instances are ready for automatic failover if the primary becomes unavailable.
+
+        This example manages implicitly created resources for the root branch and read-write endpoint. For more details, see the documentation for `PostgresBranch` and `PostgresEndpoint`.
 
         ```python
         import pulumi
@@ -330,14 +405,30 @@ class PostgresProject(pulumi.CustomResource):
             spec={
                 "pg_version": 17,
                 "display_name": "HA Production Project",
+            })
+        production = databricks.PostgresBranch("production",
+            branch_id="production",
+            parent=ha.name,
+            spec={
+                "no_expiry": True,
+                "is_protected": True,
             },
-            initial_endpoint_spec={
+            replace_existing=True)
+        primary = databricks.PostgresEndpoint("primary",
+            endpoint_id="primary",
+            parent=production.name,
+            spec={
+                "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
+                "no_suspension": True,
+                "autoscaling_limit_min_cu": 0.5,
+                "autoscaling_limit_max_cu": 4,
                 "group": {
                     "min": 2,
                     "max": 2,
                     "enable_readable_secondaries": False,
                 },
-            })
+            },
+            replace_existing=True)
         ```
 
         ### Referencing in Other Resources
@@ -363,7 +454,7 @@ class PostgresProject(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        :param pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
                created project. If omitted, the initial endpoint created will have default settings, without high availability
                configured. This field does not apply to any endpoints created after project creation. Use
                spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -371,6 +462,8 @@ class PostgresProject(pulumi.CustomResource):
                The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
                For example, `my-app` becomes `projects/my-app`
         :param pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently deletes the project (hard delete).
+               If false or unset, performs a soft delete
         :param pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         """
         ...
@@ -420,9 +513,11 @@ class PostgresProject(pulumi.CustomResource):
 
         ### Project with High Availability Endpoint
 
-        Create a project whose initial read-write endpoint is configured with multiple compute instances for high availability.
+        Create a project whose read-write endpoint is configured with multiple compute instances for high availability.
         One compute instance acts as the read-write primary.
         The remaining secondary compute instances are ready for automatic failover if the primary becomes unavailable.
+
+        This example manages implicitly created resources for the root branch and read-write endpoint. For more details, see the documentation for `PostgresBranch` and `PostgresEndpoint`.
 
         ```python
         import pulumi
@@ -433,14 +528,30 @@ class PostgresProject(pulumi.CustomResource):
             spec={
                 "pg_version": 17,
                 "display_name": "HA Production Project",
+            })
+        production = databricks.PostgresBranch("production",
+            branch_id="production",
+            parent=ha.name,
+            spec={
+                "no_expiry": True,
+                "is_protected": True,
             },
-            initial_endpoint_spec={
+            replace_existing=True)
+        primary = databricks.PostgresEndpoint("primary",
+            endpoint_id="primary",
+            parent=production.name,
+            spec={
+                "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
+                "no_suspension": True,
+                "autoscaling_limit_min_cu": 0.5,
+                "autoscaling_limit_max_cu": 4,
                 "group": {
                     "min": 2,
                     "max": 2,
                     "enable_readable_secondaries": False,
                 },
-            })
+            },
+            replace_existing=True)
         ```
 
         ### Referencing in Other Resources
@@ -482,6 +593,7 @@ class PostgresProject(pulumi.CustomResource):
                  initial_endpoint_spec: Optional[pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  provider_config: Optional[pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
+                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
                  spec: Optional[pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -497,9 +609,12 @@ class PostgresProject(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["provider_config"] = provider_config
+            __props__.__dict__["purge_on_delete"] = purge_on_delete
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["delete_time"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["purge_time"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
@@ -514,10 +629,13 @@ class PostgresProject(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[_builtins.str]] = None,
+            delete_time: Optional[pulumi.Input[_builtins.str]] = None,
             initial_endpoint_spec: Optional[pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
             provider_config: Optional[pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
+            purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
+            purge_time: Optional[pulumi.Input[_builtins.str]] = None,
             spec: Optional[pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
             status: Optional[pulumi.Input[Union['PostgresProjectStatusArgs', 'PostgresProjectStatusArgsDict']]] = None,
             uid: Optional[pulumi.Input[_builtins.str]] = None,
@@ -530,7 +648,9 @@ class PostgresProject(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the project was created
-        :param pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        :param pulumi.Input[_builtins.str] delete_time: (string) - A timestamp indicating when the project was soft-deleted.
+               Empty if the project is not deleted, otherwise set to a timestamp in the past
+        :param pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
                created project. If omitted, the initial endpoint created will have default settings, without high availability
                configured. This field does not apply to any endpoints created after project creation. Use
                spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -540,6 +660,10 @@ class PostgresProject(pulumi.CustomResource):
                The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
                For example, `my-app` becomes `projects/my-app`
         :param pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently deletes the project (hard delete).
+               If false or unset, performs a soft delete
+        :param pulumi.Input[_builtins.str] purge_time: (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+               Empty if the project is not deleted, otherwise set to a timestamp in the future
         :param pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         :param pulumi.Input[Union['PostgresProjectStatusArgs', 'PostgresProjectStatusArgsDict']] status: (ProjectStatus) - The current status of a Project
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the project
@@ -550,10 +674,13 @@ class PostgresProject(pulumi.CustomResource):
         __props__ = _PostgresProjectState.__new__(_PostgresProjectState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["initial_endpoint_spec"] = initial_endpoint_spec
         __props__.__dict__["name"] = name
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["provider_config"] = provider_config
+        __props__.__dict__["purge_on_delete"] = purge_on_delete
+        __props__.__dict__["purge_time"] = purge_time
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
         __props__.__dict__["uid"] = uid
@@ -569,10 +696,19 @@ class PostgresProject(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @_builtins.property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - A timestamp indicating when the project was soft-deleted.
+        Empty if the project is not deleted, otherwise set to a timestamp in the past
+        """
+        return pulumi.get(self, "delete_time")
+
+    @_builtins.property
     @pulumi.getter(name="initialEndpointSpec")
     def initial_endpoint_spec(self) -> pulumi.Output['outputs.PostgresProjectInitialEndpointSpec']:
         """
-        Configuration settings for the initial Read/Write endpoint created inside the default branch for a newly
+        Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
         created project. If omitted, the initial endpoint created will have default settings, without high availability
         configured. This field does not apply to any endpoints created after project creation. Use
         spec.default_endpoint_settings to configure default settings for endpoints created after project creation
@@ -605,6 +741,24 @@ class PostgresProject(pulumi.CustomResource):
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
+
+    @_builtins.property
+    @pulumi.getter(name="purgeOnDelete")
+    def purge_on_delete(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true, permanently deletes the project (hard delete).
+        If false or unset, performs a soft delete
+        """
+        return pulumi.get(self, "purge_on_delete")
+
+    @_builtins.property
+    @pulumi.getter(name="purgeTime")
+    def purge_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+        Empty if the project is not deleted, otherwise set to a timestamp in the future
+        """
+        return pulumi.get(self, "purge_time")
 
     @_builtins.property
     @pulumi.getter

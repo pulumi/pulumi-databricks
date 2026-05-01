@@ -98,6 +98,21 @@ def get_postgres_roles(page_size: Optional[_builtins.int] = None,
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    This data source lists all Postgres roles in a branch.
+
+    ## Example Usage
+
+    ### List All Roles in a Branch
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_postgres_roles(parent="projects/my-project/branches/main")
+    pulumi.export("roleNames", [role.name for role in all.roles])
+    pulumi.export("roleIdentityTypes", [role.status.identity_type for role in all.roles])
+    ```
+
 
     :param _builtins.int page_size: Upper bound for items returned. Cannot be negative
     :param _builtins.str parent: The Branch that owns this collection of roles.
@@ -123,6 +138,21 @@ def get_postgres_roles_output(page_size: Optional[pulumi.Input[Optional[_builtin
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresRolesResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source lists all Postgres roles in a branch.
+
+    ## Example Usage
+
+    ### List All Roles in a Branch
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_postgres_roles(parent="projects/my-project/branches/main")
+    pulumi.export("roleNames", [role.name for role in all.roles])
+    pulumi.export("roleIdentityTypes", [role.status.identity_type for role in all.roles])
+    ```
 
 
     :param _builtins.int page_size: Upper bound for items returned. Cannot be negative

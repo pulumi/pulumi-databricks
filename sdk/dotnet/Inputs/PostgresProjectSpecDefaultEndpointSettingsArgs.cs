@@ -26,7 +26,8 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// When set to true, explicitly disables automatic suspension (never suspend).
-        /// Should be set to true when provided
+        /// Should be set to true when provided.
+        /// Mutually exclusive with `SuspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
         /// </summary>
         [Input("noSuspension")]
         public Input<bool>? NoSuspension { get; set; }
@@ -45,7 +46,8 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// Duration of inactivity after which the compute endpoint is automatically suspended.
-        /// If specified should be between 60s and 604800s (1 minute to 1 week)
+        /// If specified should be between 60s and 604800s (1 minute to 1 week).
+        /// Mutually exclusive with `NoSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
         /// </summary>
         [Input("suspendTimeoutDuration")]
         public Input<string>? SuspendTimeoutDuration { get; set; }

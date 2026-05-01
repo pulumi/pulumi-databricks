@@ -18,6 +18,17 @@ namespace Pulumi.Databricks.Outputs
         public readonly string? IdentityType;
         public readonly ImmutableArray<string> MembershipRoles;
         public readonly string? PostgresRole;
+        /// <summary>
+        /// The ID to use for the Role, which will become the final component of
+        /// the role's resource name.
+        /// This ID becomes the role in Postgres.
+        /// 
+        /// This value should be 4-63 characters, and valid characters
+        /// are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
+        /// 
+        /// If RoleId is not specified in the request, it is generated automatically
+        /// </summary>
+        public readonly string? RoleId;
 
         [OutputConstructor]
         private PostgresRoleStatus(
@@ -29,13 +40,16 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<string> membershipRoles,
 
-            string? postgresRole)
+            string? postgresRole,
+
+            string? roleId)
         {
             Attributes = attributes;
             AuthMethod = authMethod;
             IdentityType = identityType;
             MembershipRoles = membershipRoles;
             PostgresRole = postgresRole;
+            RoleId = roleId;
         }
     }
 }

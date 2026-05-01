@@ -16,7 +16,11 @@ import (
 //
 // ## Example Usage
 //
-// ### Basic Branch Creation
+// ### Managing Implicitly Created Root Branch
+//
+// A root branch named `production` is implicitly created for every project. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi take ownership of the implicitly created branch and immediately apply the provided configuration to it. Support for providing a custom `branchId` will be available in later versions.
+//
+// This resource is only required if you want to apply configuration changes to the implicitly created branch.
 //
 // ```go
 // package main
@@ -40,9 +44,40 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewPostgresBranch(ctx, "dev", &databricks.PostgresBranchArgs{
-//				BranchId: pulumi.String("dev-branch"),
+//			_, err = databricks.NewPostgresBranch(ctx, "production", &databricks.PostgresBranchArgs{
+//				BranchId: pulumi.String("production"),
 //				Parent:   this.Name,
+//				Spec: &databricks.PostgresBranchSpecArgs{
+//					NoExpiry: pulumi.Bool(true),
+//				},
+//				ReplaceExisting: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Basic Branch Creation
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPostgresBranch(ctx, "dev", &databricks.PostgresBranchArgs{
+//				BranchId: pulumi.String("dev-branch"),
+//				Parent:   pulumi.Any(this.Name),
 //				Spec: &databricks.PostgresBranchSpecArgs{
 //					NoExpiry: pulumi.Bool(true),
 //				},
@@ -58,6 +93,8 @@ import (
 //
 // ### Protected Branch
 //
+// Only one branch per project can be protected at a time.
+//
 // ```go
 // package main
 //
@@ -70,8 +107,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := databricks.NewPostgresBranch(ctx, "production", &databricks.PostgresBranchArgs{
-//				BranchId: pulumi.String("production"),
+//			_, err := databricks.NewPostgresBranch(ctx, "protected", &databricks.PostgresBranchArgs{
+//				BranchId: pulumi.String("protected-branch"),
 //				Parent:   pulumi.Any(this.Name),
 //				Spec: &databricks.PostgresBranchSpecArgs{
 //					IsProtected: pulumi.Bool(true),
@@ -136,6 +173,8 @@ type PostgresBranch struct {
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresBranchProviderConfigPtrOutput `pulumi:"providerConfig"`
+	// If true, update the branch if it already exists instead of returning an error
+	ReplaceExisting pulumi.BoolPtrOutput `pulumi:"replaceExisting"`
 	// The spec contains the branch configuration
 	Spec PostgresBranchSpecOutput `pulumi:"spec"`
 	// (BranchStatus) - The current status of a Branch
@@ -199,6 +238,8 @@ type postgresBranchState struct {
 	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresBranchProviderConfig `pulumi:"providerConfig"`
+	// If true, update the branch if it already exists instead of returning an error
+	ReplaceExisting *bool `pulumi:"replaceExisting"`
 	// The spec contains the branch configuration
 	Spec *PostgresBranchSpec `pulumi:"spec"`
 	// (BranchStatus) - The current status of a Branch
@@ -227,6 +268,8 @@ type PostgresBranchState struct {
 	Parent pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresBranchProviderConfigPtrInput
+	// If true, update the branch if it already exists instead of returning an error
+	ReplaceExisting pulumi.BoolPtrInput
 	// The spec contains the branch configuration
 	Spec PostgresBranchSpecPtrInput
 	// (BranchStatus) - The current status of a Branch
@@ -254,6 +297,8 @@ type postgresBranchArgs struct {
 	Parent string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresBranchProviderConfig `pulumi:"providerConfig"`
+	// If true, update the branch if it already exists instead of returning an error
+	ReplaceExisting *bool `pulumi:"replaceExisting"`
 	// The spec contains the branch configuration
 	Spec *PostgresBranchSpec `pulumi:"spec"`
 }
@@ -272,6 +317,8 @@ type PostgresBranchArgs struct {
 	Parent pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresBranchProviderConfigPtrInput
+	// If true, update the branch if it already exists instead of returning an error
+	ReplaceExisting pulumi.BoolPtrInput
 	// The spec contains the branch configuration
 	Spec PostgresBranchSpecPtrInput
 }
@@ -393,6 +440,11 @@ func (o PostgresBranchOutput) Parent() pulumi.StringOutput {
 // Configure the provider for management through account provider.
 func (o PostgresBranchOutput) ProviderConfig() PostgresBranchProviderConfigPtrOutput {
 	return o.ApplyT(func(v *PostgresBranch) PostgresBranchProviderConfigPtrOutput { return v.ProviderConfig }).(PostgresBranchProviderConfigPtrOutput)
+}
+
+// If true, update the branch if it already exists instead of returning an error
+func (o PostgresBranchOutput) ReplaceExisting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PostgresBranch) pulumi.BoolPtrOutput { return v.ReplaceExisting }).(pulumi.BoolPtrOutput)
 }
 
 // The spec contains the branch configuration

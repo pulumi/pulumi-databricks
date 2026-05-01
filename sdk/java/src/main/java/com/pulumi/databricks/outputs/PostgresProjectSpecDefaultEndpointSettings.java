@@ -26,7 +26,8 @@ public final class PostgresProjectSpecDefaultEndpointSettings {
     private @Nullable Double autoscalingLimitMinCu;
     /**
      * @return When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      * 
      */
     private @Nullable Boolean noSuspension;
@@ -37,7 +38,8 @@ public final class PostgresProjectSpecDefaultEndpointSettings {
     private @Nullable Map<String,String> pgSettings;
     /**
      * @return Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week)
+     * If specified should be between 60s and 604800s (1 minute to 1 week).
+     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      * 
      */
     private @Nullable String suspendTimeoutDuration;
@@ -59,7 +61,8 @@ public final class PostgresProjectSpecDefaultEndpointSettings {
     }
     /**
      * @return When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      * 
      */
     public Optional<Boolean> noSuspension() {
@@ -74,7 +77,8 @@ public final class PostgresProjectSpecDefaultEndpointSettings {
     }
     /**
      * @return Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week)
+     * If specified should be between 60s and 604800s (1 minute to 1 week).
+     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      * 
      */
     public Optional<String> suspendTimeoutDuration() {

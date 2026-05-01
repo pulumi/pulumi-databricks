@@ -33,6 +33,12 @@ namespace Pulumi.Databricks.Outputs
         /// (string) - The name of the Postgres role
         /// </summary>
         public readonly string? PostgresRole;
+        /// <summary>
+        /// (string) - The short identifier of the role, suitable for showing to the users.
+        /// For a role with name `projects/my-project/branches/my-branch/roles/my-role`,
+        /// the RoleId is `my-role`.
+        /// </summary>
+        public readonly string RoleId;
 
         [OutputConstructor]
         private GetPostgresRolesRoleStatusResult(
@@ -44,13 +50,16 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<string> membershipRoles,
 
-            string? postgresRole)
+            string? postgresRole,
+
+            string roleId)
         {
             Attributes = attributes;
             AuthMethod = authMethod;
             IdentityType = identityType;
             MembershipRoles = membershipRoles;
             PostgresRole = postgresRole;
+            RoleId = roleId;
         }
     }
 }

@@ -23,7 +23,8 @@ namespace Pulumi.Databricks.Outputs
         public readonly bool? IsProtected;
         /// <summary>
         /// (boolean) - Explicitly disable expiration. When set to true, the branch will not expire.
-        /// If set to false, the request is invalid; provide either ttl or ExpireTime instead
+        /// If set to false, the request is invalid; provide either ttl or ExpireTime instead.
+        /// Mutually exclusive with `ExpireTime` and `Ttl`. When updating, use `spec.expiration` in the update_mask
         /// </summary>
         public readonly bool? NoExpiry;
         /// <summary>
@@ -40,7 +41,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? SourceBranchTime;
         /// <summary>
-        /// (string) - Relative time-to-live duration. When set, the branch will expire at CreationTime + ttl
+        /// (string) - Relative time-to-live duration. When set, the branch will expire at CreationTime + ttl.
+        /// Mutually exclusive with `ExpireTime` and `NoExpiry`. When updating, use `spec.expiration` in the update_mask
         /// </summary>
         public readonly string? Ttl;
 

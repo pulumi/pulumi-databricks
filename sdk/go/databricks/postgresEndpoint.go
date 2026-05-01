@@ -16,7 +16,11 @@ import (
 //
 // ## Example Usage
 //
-// ### Basic Read-Write Endpoint
+// ### Managing Implicitly Created Read-Write Endpoint
+//
+// A read-write endpoint named `primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi take ownership of the implicitly created endpoint and immediately apply the provided configuration to it. Support for providing a custom `endpointId` will be available in later versions.
+//
+// This resource is only required if you want to apply configuration changes to the implicitly created endpoint.
 //
 // ```go
 // package main
@@ -54,8 +58,12 @@ import (
 //				EndpointId: pulumi.String("primary"),
 //				Parent:     dev.Name,
 //				Spec: &databricks.PostgresEndpointSpecArgs{
-//					EndpointType: pulumi.String("ENDPOINT_TYPE_READ_WRITE"),
+//					EndpointType:           pulumi.String("ENDPOINT_TYPE_READ_WRITE"),
+//					AutoscalingLimitMinCu:  pulumi.Float64(0.5),
+//					AutoscalingLimitMaxCu:  pulumi.Float64(4),
+//					SuspendTimeoutDuration: pulumi.String("600s"),
 //				},
+//				ReplaceExisting: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -198,6 +206,9 @@ import (
 // Configure a single endpoint with multiple compute instances for high availability.
 // One compute instance acts as the read-write primary, while the remaining secondary compute instances stand ready for automatic failover.
 //
+// High availability requires scale-to-zero to be disabled.
+// Set `noSuspension = true` in `spec` as shown in the example below.
+//
 // ```go
 // package main
 //
@@ -212,14 +223,18 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewPostgresEndpoint(ctx, "ha_primary", &databricks.PostgresEndpointArgs{
 //				EndpointId: pulumi.String("primary"),
-//				Parent:     pulumi.Any(main.Name),
+//				Parent:     pulumi.Any(dev.Name),
 //				Spec: &databricks.PostgresEndpointSpecArgs{
-//					EndpointType: pulumi.String("ENDPOINT_TYPE_READ_WRITE"),
+//					EndpointType:          pulumi.String("ENDPOINT_TYPE_READ_WRITE"),
+//					NoSuspension:          pulumi.Bool(true),
+//					AutoscalingLimitMinCu: pulumi.Float64(0.5),
+//					AutoscalingLimitMaxCu: pulumi.Float64(4),
 //					Group: &databricks.PostgresEndpointSpecGroupArgs{
 //						Min: pulumi.Int(2),
 //						Max: pulumi.Int(2),
 //					},
 //				},
+//				ReplaceExisting: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -237,9 +252,6 @@ import (
 // on read-write endpoints with more than one compute. The secondaries are optionally
 // exposed as read-only host via `enableReadableSecondaries`.
 //
-// High availability requires scale-to-zero to be disabled.
-// Set `noSuspension = true` in `defaultEndpointSettings` as shown in the example below.
-//
 // ```go
 // package main
 //
@@ -254,18 +266,19 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewPostgresEndpoint(ctx, "ha_readable", &databricks.PostgresEndpointArgs{
 //				EndpointId: pulumi.String("primary"),
-//				Parent:     pulumi.Any(main.Name),
+//				Parent:     pulumi.Any(dev.Name),
 //				Spec: &databricks.PostgresEndpointSpecArgs{
-//					EndpointType: pulumi.String("ENDPOINT_TYPE_READ_WRITE"),
+//					EndpointType:          pulumi.String("ENDPOINT_TYPE_READ_WRITE"),
+//					NoSuspension:          pulumi.Bool(true),
+//					AutoscalingLimitMinCu: pulumi.Float64(0.5),
+//					AutoscalingLimitMaxCu: pulumi.Float64(4),
 //					Group: &databricks.PostgresEndpointSpecGroupArgs{
 //						Min:                       pulumi.Int(2),
 //						Max:                       pulumi.Int(2),
 //						EnableReadableSecondaries: pulumi.Bool(true),
 //					},
-//					DefaultEndpointSettings: map[string]interface{}{
-//						"noSuspension": true,
-//					},
 //				},
+//				ReplaceExisting: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -330,6 +343,7 @@ import (
 //						EnableReadableSecondaries: pulumi.Bool(true),
 //					},
 //				},
+//				ReplaceExisting: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -369,6 +383,8 @@ type PostgresEndpoint struct {
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresEndpointProviderConfigPtrOutput `pulumi:"providerConfig"`
+	// If true, update the endpoint if it already exists instead of returning an error
+	ReplaceExisting pulumi.BoolPtrOutput `pulumi:"replaceExisting"`
 	// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
 	Spec PostgresEndpointSpecOutput `pulumi:"spec"`
 	// (EndpointStatus) - Current operational status of the compute endpoint
@@ -429,6 +445,8 @@ type postgresEndpointState struct {
 	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresEndpointProviderConfig `pulumi:"providerConfig"`
+	// If true, update the endpoint if it already exists instead of returning an error
+	ReplaceExisting *bool `pulumi:"replaceExisting"`
 	// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
 	Spec *PostgresEndpointSpec `pulumi:"spec"`
 	// (EndpointStatus) - Current operational status of the compute endpoint
@@ -454,6 +472,8 @@ type PostgresEndpointState struct {
 	Parent pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresEndpointProviderConfigPtrInput
+	// If true, update the endpoint if it already exists instead of returning an error
+	ReplaceExisting pulumi.BoolPtrInput
 	// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
 	Spec PostgresEndpointSpecPtrInput
 	// (EndpointStatus) - Current operational status of the compute endpoint
@@ -478,6 +498,8 @@ type postgresEndpointArgs struct {
 	Parent string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresEndpointProviderConfig `pulumi:"providerConfig"`
+	// If true, update the endpoint if it already exists instead of returning an error
+	ReplaceExisting *bool `pulumi:"replaceExisting"`
 	// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
 	Spec *PostgresEndpointSpec `pulumi:"spec"`
 }
@@ -493,6 +515,8 @@ type PostgresEndpointArgs struct {
 	Parent pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresEndpointProviderConfigPtrInput
+	// If true, update the endpoint if it already exists instead of returning an error
+	ReplaceExisting pulumi.BoolPtrInput
 	// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
 	Spec PostgresEndpointSpecPtrInput
 }
@@ -611,6 +635,11 @@ func (o PostgresEndpointOutput) Parent() pulumi.StringOutput {
 // Configure the provider for management through account provider.
 func (o PostgresEndpointOutput) ProviderConfig() PostgresEndpointProviderConfigPtrOutput {
 	return o.ApplyT(func(v *PostgresEndpoint) PostgresEndpointProviderConfigPtrOutput { return v.ProviderConfig }).(PostgresEndpointProviderConfigPtrOutput)
+}
+
+// If true, update the endpoint if it already exists instead of returning an error
+func (o PostgresEndpointOutput) ReplaceExisting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PostgresEndpoint) pulumi.BoolPtrOutput { return v.ReplaceExisting }).(pulumi.BoolPtrOutput)
 }
 
 // The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state

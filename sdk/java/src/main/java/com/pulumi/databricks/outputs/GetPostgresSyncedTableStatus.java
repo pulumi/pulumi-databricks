@@ -50,6 +50,11 @@ public final class GetPostgresSyncedTableStatus {
      */
     private String pipelineId;
     /**
+     * @return (string) - The full resource name of the project associated with the table.
+     * 
+     */
+    private String project;
+    /**
      * @return (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
      * 
      */
@@ -112,6 +117,13 @@ public final class GetPostgresSyncedTableStatus {
         return this.pipelineId;
     }
     /**
+     * @return (string) - The full resource name of the project associated with the table.
+     * 
+     */
+    public String project() {
+        return this.project;
+    }
+    /**
      * @return (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
      * 
      */
@@ -142,6 +154,7 @@ public final class GetPostgresSyncedTableStatus {
         private String message;
         private GetPostgresSyncedTableStatusOngoingSyncProgress ongoingSyncProgress;
         private String pipelineId;
+        private String project;
         private String provisioningPhase;
         private String unityCatalogProvisioningState;
         public Builder() {}
@@ -154,6 +167,7 @@ public final class GetPostgresSyncedTableStatus {
     	      this.message = defaults.message;
     	      this.ongoingSyncProgress = defaults.ongoingSyncProgress;
     	      this.pipelineId = defaults.pipelineId;
+    	      this.project = defaults.project;
     	      this.provisioningPhase = defaults.provisioningPhase;
     	      this.unityCatalogProvisioningState = defaults.unityCatalogProvisioningState;
         }
@@ -215,6 +229,14 @@ public final class GetPostgresSyncedTableStatus {
             return this;
         }
         @CustomType.Setter
+        public Builder project(String project) {
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetPostgresSyncedTableStatus", "project");
+            }
+            this.project = project;
+            return this;
+        }
+        @CustomType.Setter
         public Builder provisioningPhase(String provisioningPhase) {
             if (provisioningPhase == null) {
               throw new MissingRequiredPropertyException("GetPostgresSyncedTableStatus", "provisioningPhase");
@@ -239,6 +261,7 @@ public final class GetPostgresSyncedTableStatus {
             _resultValue.message = message;
             _resultValue.ongoingSyncProgress = ongoingSyncProgress;
             _resultValue.pipelineId = pipelineId;
+            _resultValue.project = project;
             _resultValue.provisioningPhase = provisioningPhase;
             _resultValue.unityCatalogProvisioningState = unityCatalogProvisioningState;
             return _resultValue;

@@ -11,7 +11,11 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * ### Basic Branch Creation
+ * ### Managing Implicitly Created Root Branch
+ *
+ * A root branch named `production` is implicitly created for every project. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi take ownership of the implicitly created branch and immediately apply the provided configuration to it. Support for providing a custom `branchId` will be available in later versions.
+ *
+ * This resource is only required if you want to apply configuration changes to the implicitly created branch.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +28,22 @@ import * as utilities from "./utilities";
  *         displayName: "My Project",
  *     },
  * });
+ * const production = new databricks.PostgresBranch("production", {
+ *     branchId: "production",
+ *     parent: _this.name,
+ *     spec: {
+ *         noExpiry: true,
+ *     },
+ *     replaceExisting: true,
+ * });
+ * ```
+ *
+ * ### Basic Branch Creation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
  * const dev = new databricks.PostgresBranch("dev", {
  *     branchId: "dev-branch",
  *     parent: _this.name,
@@ -35,12 +55,14 @@ import * as utilities from "./utilities";
  *
  * ### Protected Branch
  *
+ * Only one branch per project can be protected at a time.
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as databricks from "@pulumi/databricks";
  *
- * const production = new databricks.PostgresBranch("production", {
- *     branchId: "production",
+ * const _protected = new databricks.PostgresBranch("protected", {
+ *     branchId: "protected-branch",
  *     parent: _this.name,
  *     spec: {
  *         isProtected: true,
@@ -120,6 +142,10 @@ export class PostgresBranch extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.PostgresBranchProviderConfig | undefined>;
     /**
+     * If true, update the branch if it already exists instead of returning an error
+     */
+    declare public readonly replaceExisting: pulumi.Output<boolean | undefined>;
+    /**
      * The spec contains the branch configuration
      */
     declare public readonly spec: pulumi.Output<outputs.PostgresBranchSpec>;
@@ -154,6 +180,7 @@ export class PostgresBranch extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
             resourceInputs["providerConfig"] = state?.providerConfig;
+            resourceInputs["replaceExisting"] = state?.replaceExisting;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["status"] = state?.status;
             resourceInputs["uid"] = state?.uid;
@@ -169,6 +196,7 @@ export class PostgresBranch extends pulumi.CustomResource {
             resourceInputs["branchId"] = args?.branchId;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["providerConfig"] = args?.providerConfig;
+            resourceInputs["replaceExisting"] = args?.replaceExisting;
             resourceInputs["spec"] = args?.spec;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -213,6 +241,10 @@ export interface PostgresBranchState {
      */
     providerConfig?: pulumi.Input<inputs.PostgresBranchProviderConfig>;
     /**
+     * If true, update the branch if it already exists instead of returning an error
+     */
+    replaceExisting?: pulumi.Input<boolean>;
+    /**
      * The spec contains the branch configuration
      */
     spec?: pulumi.Input<inputs.PostgresBranchSpec>;
@@ -252,6 +284,10 @@ export interface PostgresBranchArgs {
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.PostgresBranchProviderConfig>;
+    /**
+     * If true, update the branch if it already exists instead of returning an error
+     */
+    replaceExisting?: pulumi.Input<boolean>;
     /**
      * The spec contains the branch configuration
      */

@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.PostgresBranchState;
 import com.pulumi.databricks.outputs.PostgresBranchProviderConfig;
 import com.pulumi.databricks.outputs.PostgresBranchSpec;
 import com.pulumi.databricks.outputs.PostgresBranchStatus;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -22,7 +23,11 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Basic Branch Creation
+ * ### Managing Implicitly Created Root Branch
+ * 
+ * A root branch named `production` is implicitly created for every project. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi take ownership of the implicitly created branch and immediately apply the provided configuration to it. Support for providing a custom `branchId` will be available in later versions.
+ * 
+ * This resource is only required if you want to apply configuration changes to the implicitly created branch.
  * 
  * <pre>
  * {@code
@@ -58,12 +63,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var dev = new PostgresBranch("dev", PostgresBranchArgs.builder()
- *             .branchId("dev-branch")
+ *         var production = new PostgresBranch("production", PostgresBranchArgs.builder()
+ *             .branchId("production")
  *             .parent(this_.name())
  *             .spec(PostgresBranchSpecArgs.builder()
  *                 .noExpiry(true)
  *                 .build())
+ *             .replaceExisting(true)
  *             .build());
  * 
  *     }
@@ -71,7 +77,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Protected Branch
+ * ### Basic Branch Creation
  * 
  * <pre>
  * {@code
@@ -96,8 +102,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var production = new PostgresBranch("production", PostgresBranchArgs.builder()
- *             .branchId("production")
+ *         var dev = new PostgresBranch("dev", PostgresBranchArgs.builder()
+ *             .branchId("dev-branch")
+ *             .parent(this_.name())
+ *             .spec(PostgresBranchSpecArgs.builder()
+ *                 .noExpiry(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Protected Branch
+ * 
+ * Only one branch per project can be protected at a time.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresBranch;
+ * import com.pulumi.databricks.PostgresBranchArgs;
+ * import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var protected_ = new PostgresBranch("protected", PostgresBranchArgs.builder()
+ *             .branchId("protected-branch")
  *             .parent(this_.name())
  *             .spec(PostgresBranchSpecArgs.builder()
  *                 .isProtected(true)
@@ -234,6 +280,20 @@ public class PostgresBranch extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<PostgresBranchProviderConfig>> providerConfig() {
         return Codegen.optional(this.providerConfig);
+    }
+    /**
+     * If true, update the branch if it already exists instead of returning an error
+     * 
+     */
+    @Export(name="replaceExisting", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> replaceExisting;
+
+    /**
+     * @return If true, update the branch if it already exists instead of returning an error
+     * 
+     */
+    public Output<Optional<Boolean>> replaceExisting() {
+        return Codegen.optional(this.replaceExisting);
     }
     /**
      * The spec contains the branch configuration

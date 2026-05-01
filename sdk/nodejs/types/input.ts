@@ -19384,7 +19384,8 @@ export interface PostgresBranchSpec {
     isProtected?: pulumi.Input<boolean>;
     /**
      * Explicitly disable expiration. When set to true, the branch will not expire.
-     * If set to false, the request is invalid; provide either ttl or expireTime instead
+     * If set to false, the request is invalid; provide either ttl or expireTime instead.
+     * Mutually exclusive with `expireTime` and `ttl`. When updating, use `spec.expiration` in the update_mask
      */
     noExpiry?: pulumi.Input<boolean>;
     /**
@@ -19401,12 +19402,19 @@ export interface PostgresBranchSpec {
      */
     sourceBranchTime?: pulumi.Input<string>;
     /**
-     * Relative time-to-live duration. When set, the branch will expire at creationTime + ttl
+     * Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
+     * Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
      */
     ttl?: pulumi.Input<string>;
 }
 
 export interface PostgresBranchStatus {
+    /**
+     * The ID to use for the Branch. This becomes the final component of the branch's resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `development` becomes `projects/my-app/branches/development`
+     */
+    branchId?: pulumi.Input<string>;
     /**
      * (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      */
@@ -19482,6 +19490,11 @@ export interface PostgresCatalogStatus {
      */
     branch?: pulumi.Input<string>;
     /**
+     * The ID in the Unity Catalog.
+     * It becomes the full resource name, for example "myCatalog" becomes "catalogs/my_catalog"
+     */
+    catalogId?: pulumi.Input<string>;
+    /**
      * (string) - The name of the Postgres database associated with the catalog
      */
     postgresDatabase?: pulumi.Input<string>;
@@ -19504,6 +19517,17 @@ export interface PostgresDatabaseSpec {
 }
 
 export interface PostgresDatabaseStatus {
+    /**
+     * The ID to use for the Database, which will become the final component of
+     * the database's resource name.
+     * This ID becomes the database name in postgres.
+     *
+     * This value should be 4-63 characters, and only use characters available in DNS names,
+     * as defined by RFC-1123
+     *
+     * If databaseId is not specified in the request, it is generated automatically
+     */
+    databaseId?: pulumi.Input<string>;
     postgresDatabase?: pulumi.Input<string>;
     role?: pulumi.Input<string>;
 }
@@ -19517,7 +19541,8 @@ export interface PostgresEndpointProviderConfig {
 
 export interface PostgresEndpointSpec {
     /**
-     * (number) - The maximum number of Compute Units
+     * (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      */
     autoscalingLimitMaxCu?: pulumi.Input<number>;
     /**
@@ -19541,7 +19566,8 @@ export interface PostgresEndpointSpec {
     group?: pulumi.Input<inputs.PostgresEndpointSpecGroup>;
     /**
      * When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
      */
     noSuspension?: pulumi.Input<boolean>;
     /**
@@ -19573,7 +19599,8 @@ export interface PostgresEndpointSpecSettings {
 
 export interface PostgresEndpointStatus {
     /**
-     * (number) - The maximum number of Compute Units
+     * (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      */
     autoscalingLimitMaxCu?: pulumi.Input<number>;
     /**
@@ -19591,6 +19618,12 @@ export interface PostgresEndpointStatus {
      * console action
      */
     disabled?: pulumi.Input<boolean>;
+    /**
+     * The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+     */
+    endpointId?: pulumi.Input<string>;
     /**
      * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      */
@@ -19738,7 +19771,8 @@ export interface PostgresProjectSpecDefaultEndpointSettings {
     autoscalingLimitMinCu?: pulumi.Input<number>;
     /**
      * When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
     noSuspension?: pulumi.Input<boolean>;
     /**
@@ -19747,7 +19781,8 @@ export interface PostgresProjectSpecDefaultEndpointSettings {
     pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week)
+     * If specified should be between 60s and 604800s (1 minute to 1 week).
+     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
     suspendTimeoutDuration?: pulumi.Input<string>;
 }
@@ -19794,6 +19829,12 @@ export interface PostgresProjectStatus {
      */
     pgVersion?: pulumi.Input<number>;
     /**
+     * The ID to use for the Project. This becomes the final component of the project's resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `my-app` becomes `projects/my-app`
+     */
+    projectId?: pulumi.Input<string>;
+    /**
      * (integer) - The current space occupied by the project in storage
      */
     syntheticStorageSizeBytes?: pulumi.Input<number>;
@@ -19821,7 +19862,8 @@ export interface PostgresProjectStatusDefaultEndpointSettings {
     autoscalingLimitMinCu?: pulumi.Input<number>;
     /**
      * When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
     noSuspension?: pulumi.Input<boolean>;
     /**
@@ -19830,7 +19872,8 @@ export interface PostgresProjectStatusDefaultEndpointSettings {
     pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week)
+     * If specified should be between 60s and 604800s (1 minute to 1 week).
+     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
     suspendTimeoutDuration?: pulumi.Input<string>;
 }
@@ -19862,6 +19905,17 @@ export interface PostgresRoleStatus {
     identityType?: pulumi.Input<string>;
     membershipRoles?: pulumi.Input<pulumi.Input<string>[]>;
     postgresRole?: pulumi.Input<string>;
+    /**
+     * The ID to use for the Role, which will become the final component of
+     * the role's resource name.
+     * This ID becomes the role in Postgres.
+     *
+     * This value should be 4-63 characters, and valid characters
+     * are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
+     *
+     * If roleId is not specified in the request, it is generated automatically
+     */
+    roleId?: pulumi.Input<string>;
 }
 
 export interface PostgresRoleStatusAttributes {
@@ -19985,6 +20039,10 @@ export interface PostgresSyncedTableStatus {
      * (string) - ID of the associated pipeline
      */
     pipelineId?: pulumi.Input<string>;
+    /**
+     * (string) - The full resource name of the project associated with the table.
+     */
+    project?: pulumi.Input<string>;
     /**
      * (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
      */

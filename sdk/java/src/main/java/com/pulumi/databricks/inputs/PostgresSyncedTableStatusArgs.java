@@ -126,6 +126,21 @@ public final class PostgresSyncedTableStatusArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * (string) - The full resource name of the project associated with the table.
+     * 
+     */
+    @Import(name="project")
+    private @Nullable Output<String> project;
+
+    /**
+     * @return (string) - The full resource name of the project associated with the table.
+     * 
+     */
+    public Optional<Output<String>> project() {
+        return Optional.ofNullable(this.project);
+    }
+
+    /**
      * (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
      * 
      */
@@ -165,6 +180,7 @@ public final class PostgresSyncedTableStatusArgs extends com.pulumi.resources.Re
         this.message = $.message;
         this.ongoingSyncProgress = $.ongoingSyncProgress;
         this.pipelineId = $.pipelineId;
+        this.project = $.project;
         this.provisioningPhase = $.provisioningPhase;
         this.unityCatalogProvisioningState = $.unityCatalogProvisioningState;
     }
@@ -334,6 +350,27 @@ public final class PostgresSyncedTableStatusArgs extends com.pulumi.resources.Re
          */
         public Builder pipelineId(String pipelineId) {
             return pipelineId(Output.of(pipelineId));
+        }
+
+        /**
+         * @param project (string) - The full resource name of the project associated with the table.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder project(@Nullable Output<String> project) {
+            $.project = project;
+            return this;
+        }
+
+        /**
+         * @param project (string) - The full resource name of the project associated with the table.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder project(String project) {
+            return project(Output.of(project));
         }
 
         /**

@@ -13,7 +13,8 @@ namespace Pulumi.Databricks.Inputs
     public sealed class PostgresEndpointSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (number) - The maximum number of Compute Units
+        /// (number) - The maximum number of Compute Units. The maximum value is 64.
+        /// The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
         /// </summary>
         [Input("autoscalingLimitMaxCu")]
         public Input<double>? AutoscalingLimitMaxCu { get; set; }
@@ -47,7 +48,8 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// When set to true, explicitly disables automatic suspension (never suspend).
-        /// Should be set to true when provided
+        /// Should be set to true when provided.
+        /// Mutually exclusive with `SuspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
         /// </summary>
         [Input("noSuspension")]
         public Input<bool>? NoSuspension { get; set; }

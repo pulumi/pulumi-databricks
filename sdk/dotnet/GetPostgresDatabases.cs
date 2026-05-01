@@ -13,18 +13,120 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source lists all Postgres databases in a branch.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Databases in a Branch
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.Index.GetPostgresDatabases.Invoke(new()
+        ///     {
+        ///         Parent = "projects/my-project/branches/main",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseNames"] = .Select(db =&gt; 
+        ///         {
+        ///             return db.Name;
+        ///         }).ToList(),
+        ///         ["postgresDatabaseNames"] = .Select(db =&gt; 
+        ///         {
+        ///             return db.Status?.PostgresDatabase;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetPostgresDatabasesResult> InvokeAsync(GetPostgresDatabasesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresDatabasesResult>("databricks:index/getPostgresDatabases:getPostgresDatabases", args ?? new GetPostgresDatabasesArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source lists all Postgres databases in a branch.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Databases in a Branch
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.Index.GetPostgresDatabases.Invoke(new()
+        ///     {
+        ///         Parent = "projects/my-project/branches/main",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseNames"] = .Select(db =&gt; 
+        ///         {
+        ///             return db.Name;
+        ///         }).ToList(),
+        ///         ["postgresDatabaseNames"] = .Select(db =&gt; 
+        ///         {
+        ///             return db.Status?.PostgresDatabase;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresDatabasesResult> Invoke(GetPostgresDatabasesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresDatabasesResult>("databricks:index/getPostgresDatabases:getPostgresDatabases", args ?? new GetPostgresDatabasesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source lists all Postgres databases in a branch.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### List All Databases in a Branch
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.Index.GetPostgresDatabases.Invoke(new()
+        ///     {
+        ///         Parent = "projects/my-project/branches/main",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["databaseNames"] = .Select(db =&gt; 
+        ///         {
+        ///             return db.Name;
+        ///         }).ToList(),
+        ///         ["postgresDatabaseNames"] = .Select(db =&gt; 
+        ///         {
+        ///             return db.Status?.PostgresDatabase;
+        ///         }).ToList(),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresDatabasesResult> Invoke(GetPostgresDatabasesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresDatabasesResult>("databricks:index/getPostgresDatabases:getPostgresDatabases", args ?? new GetPostgresDatabasesInvokeArgs(), options.WithDefaults());

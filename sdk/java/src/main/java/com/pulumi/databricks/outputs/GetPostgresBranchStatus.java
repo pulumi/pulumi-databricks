@@ -13,6 +13,12 @@ import java.util.Objects;
 @CustomType
 public final class GetPostgresBranchStatus {
     /**
+     * @return (string) - The short identifier of the branch, suitable for showing to the users.
+     * For a branch with name `projects/my-project/branches/my-branch`, the branchId is `my-branch`.
+     * 
+     */
+    private String branchId;
+    /**
      * @return (string) - The branch&#39;s state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      * 
      */
@@ -65,6 +71,14 @@ public final class GetPostgresBranchStatus {
     private String stateChangeTime;
 
     private GetPostgresBranchStatus() {}
+    /**
+     * @return (string) - The short identifier of the branch, suitable for showing to the users.
+     * For a branch with name `projects/my-project/branches/my-branch`, the branchId is `my-branch`.
+     * 
+     */
+    public String branchId() {
+        return this.branchId;
+    }
     /**
      * @return (string) - The branch&#39;s state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      * 
@@ -146,6 +160,7 @@ public final class GetPostgresBranchStatus {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String branchId;
         private String currentState;
         private Boolean default_;
         private String expireTime;
@@ -159,6 +174,7 @@ public final class GetPostgresBranchStatus {
         public Builder() {}
         public Builder(GetPostgresBranchStatus defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.branchId = defaults.branchId;
     	      this.currentState = defaults.currentState;
     	      this.default_ = defaults.default_;
     	      this.expireTime = defaults.expireTime;
@@ -171,6 +187,14 @@ public final class GetPostgresBranchStatus {
     	      this.stateChangeTime = defaults.stateChangeTime;
         }
 
+        @CustomType.Setter
+        public Builder branchId(String branchId) {
+            if (branchId == null) {
+              throw new MissingRequiredPropertyException("GetPostgresBranchStatus", "branchId");
+            }
+            this.branchId = branchId;
+            return this;
+        }
         @CustomType.Setter
         public Builder currentState(String currentState) {
             if (currentState == null) {
@@ -253,6 +277,7 @@ public final class GetPostgresBranchStatus {
         }
         public GetPostgresBranchStatus build() {
             final var _resultValue = new GetPostgresBranchStatus();
+            _resultValue.branchId = branchId;
             _resultValue.currentState = currentState;
             _resultValue.default_ = default_;
             _resultValue.expireTime = expireTime;

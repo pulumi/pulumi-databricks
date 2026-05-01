@@ -32,6 +32,19 @@ namespace Pulumi.Databricks.Inputs
         [Input("postgresRole")]
         public Input<string>? PostgresRole { get; set; }
 
+        /// <summary>
+        /// The ID to use for the Role, which will become the final component of
+        /// the role's resource name.
+        /// This ID becomes the role in Postgres.
+        /// 
+        /// This value should be 4-63 characters, and valid characters
+        /// are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
+        /// 
+        /// If RoleId is not specified in the request, it is generated automatically
+        /// </summary>
+        [Input("roleId")]
+        public Input<string>? RoleId { get; set; }
+
         public PostgresRoleStatusGetArgs()
         {
         }

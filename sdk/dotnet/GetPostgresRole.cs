@@ -13,18 +13,105 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres role.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Role by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.Index.GetPostgresRole.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project/branches/main/roles/jane",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["rolePostgresName"] = @this.Apply(@this =&gt; @this.Apply(getPostgresRoleResult =&gt; getPostgresRoleResult.Status?.PostgresRole)),
+        ///         ["roleIdentityType"] = @this.Apply(@this =&gt; @this.Apply(getPostgresRoleResult =&gt; getPostgresRoleResult.Status?.IdentityType)),
+        ///         ["roleAuthMethod"] = @this.Apply(@this =&gt; @this.Apply(getPostgresRoleResult =&gt; getPostgresRoleResult.Status?.AuthMethod)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetPostgresRoleResult> InvokeAsync(GetPostgresRoleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresRoleResult>("databricks:index/getPostgresRole:getPostgresRole", args ?? new GetPostgresRoleArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres role.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Role by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.Index.GetPostgresRole.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project/branches/main/roles/jane",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["rolePostgresName"] = @this.Apply(@this =&gt; @this.Apply(getPostgresRoleResult =&gt; getPostgresRoleResult.Status?.PostgresRole)),
+        ///         ["roleIdentityType"] = @this.Apply(@this =&gt; @this.Apply(getPostgresRoleResult =&gt; getPostgresRoleResult.Status?.IdentityType)),
+        ///         ["roleAuthMethod"] = @this.Apply(@this =&gt; @this.Apply(getPostgresRoleResult =&gt; getPostgresRoleResult.Status?.AuthMethod)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresRoleResult> Invoke(GetPostgresRoleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresRoleResult>("databricks:index/getPostgresRole:getPostgresRole", args ?? new GetPostgresRoleInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres role.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Role by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.Index.GetPostgresRole.Invoke(new()
+        ///     {
+        ///         Name = "projects/my-project/branches/main/roles/jane",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["rolePostgresName"] = @this.Apply(@this =&gt; @this.Apply(getPostgresRoleResult =&gt; getPostgresRoleResult.Status?.PostgresRole)),
+        ///         ["roleIdentityType"] = @this.Apply(@this =&gt; @this.Apply(getPostgresRoleResult =&gt; getPostgresRoleResult.Status?.IdentityType)),
+        ///         ["roleAuthMethod"] = @this.Apply(@this =&gt; @this.Apply(getPostgresRoleResult =&gt; getPostgresRoleResult.Status?.AuthMethod)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresRoleResult> Invoke(GetPostgresRoleInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresRoleResult>("databricks:index/getPostgresRole:getPostgresRole", args ?? new GetPostgresRoleInvokeArgs(), options.WithDefaults());

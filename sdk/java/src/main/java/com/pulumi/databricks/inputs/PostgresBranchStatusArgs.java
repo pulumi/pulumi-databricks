@@ -18,6 +18,25 @@ public final class PostgresBranchStatusArgs extends com.pulumi.resources.Resourc
     public static final PostgresBranchStatusArgs Empty = new PostgresBranchStatusArgs();
 
     /**
+     * The ID to use for the Branch. This becomes the final component of the branch&#39;s resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `development` becomes `projects/my-app/branches/development`
+     * 
+     */
+    @Import(name="branchId")
+    private @Nullable Output<String> branchId;
+
+    /**
+     * @return The ID to use for the Branch. This becomes the final component of the branch&#39;s resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `development` becomes `projects/my-app/branches/development`
+     * 
+     */
+    public Optional<Output<String>> branchId() {
+        return Optional.ofNullable(this.branchId);
+    }
+
+    /**
      * (string) - The branch&#39;s state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      * 
      */
@@ -172,6 +191,7 @@ public final class PostgresBranchStatusArgs extends com.pulumi.resources.Resourc
     private PostgresBranchStatusArgs() {}
 
     private PostgresBranchStatusArgs(PostgresBranchStatusArgs $) {
+        this.branchId = $.branchId;
         this.currentState = $.currentState;
         this.default_ = $.default_;
         this.expireTime = $.expireTime;
@@ -200,6 +220,31 @@ public final class PostgresBranchStatusArgs extends com.pulumi.resources.Resourc
 
         public Builder(PostgresBranchStatusArgs defaults) {
             $ = new PostgresBranchStatusArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param branchId The ID to use for the Branch. This becomes the final component of the branch&#39;s resource name.
+         * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+         * For example, `development` becomes `projects/my-app/branches/development`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder branchId(@Nullable Output<String> branchId) {
+            $.branchId = branchId;
+            return this;
+        }
+
+        /**
+         * @param branchId The ID to use for the Branch. This becomes the final component of the branch&#39;s resource name.
+         * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+         * For example, `development` becomes `projects/my-app/branches/development`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder branchId(String branchId) {
+            return branchId(Output.of(branchId));
         }
 
         /**

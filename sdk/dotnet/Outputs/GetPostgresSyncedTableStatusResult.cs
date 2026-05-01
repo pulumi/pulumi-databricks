@@ -43,6 +43,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string PipelineId;
         /// <summary>
+        /// (string) - The full resource name of the project associated with the table.
+        /// </summary>
+        public readonly string Project;
+        /// <summary>
         /// (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
         /// </summary>
         public readonly string ProvisioningPhase;
@@ -67,6 +71,8 @@ namespace Pulumi.Databricks.Outputs
 
             string pipelineId,
 
+            string project,
+
             string provisioningPhase,
 
             string unityCatalogProvisioningState)
@@ -78,6 +84,7 @@ namespace Pulumi.Databricks.Outputs
             Message = message;
             OngoingSyncProgress = ongoingSyncProgress;
             PipelineId = pipelineId;
+            Project = project;
             ProvisioningPhase = provisioningPhase;
             UnityCatalogProvisioningState = unityCatalogProvisioningState;
         }

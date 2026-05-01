@@ -13,6 +13,7 @@ import com.pulumi.databricks.inputs.PostgresEndpointState;
 import com.pulumi.databricks.outputs.PostgresEndpointProviderConfig;
 import com.pulumi.databricks.outputs.PostgresEndpointSpec;
 import com.pulumi.databricks.outputs.PostgresEndpointStatus;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -22,7 +23,11 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Basic Read-Write Endpoint
+ * ### Managing Implicitly Created Read-Write Endpoint
+ * 
+ * A read-write endpoint named `primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi take ownership of the implicitly created endpoint and immediately apply the provided configuration to it. Support for providing a custom `endpointId` will be available in later versions.
+ * 
+ * This resource is only required if you want to apply configuration changes to the implicitly created endpoint.
  * 
  * <pre>
  * {@code
@@ -74,7 +79,11 @@ import javax.annotation.Nullable;
  *             .parent(dev.name())
  *             .spec(PostgresEndpointSpecArgs.builder()
  *                 .endpointType("ENDPOINT_TYPE_READ_WRITE")
+ *                 .autoscalingLimitMinCu(0.5)
+ *                 .autoscalingLimitMaxCu(4.0)
+ *                 .suspendTimeoutDuration("600s")
  *                 .build())
+ *             .replaceExisting(true)
  *             .build());
  * 
  *     }
@@ -246,6 +255,9 @@ import javax.annotation.Nullable;
  * Configure a single endpoint with multiple compute instances for high availability.
  * One compute instance acts as the read-write primary, while the remaining secondary compute instances stand ready for automatic failover.
  * 
+ * High availability requires scale-to-zero to be disabled.
+ * Set `noSuspension = true` in `spec` as shown in the example below.
+ * 
  * <pre>
  * {@code
  * package generated_program;
@@ -272,14 +284,18 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var haPrimary = new PostgresEndpoint("haPrimary", PostgresEndpointArgs.builder()
  *             .endpointId("primary")
- *             .parent(main.name())
+ *             .parent(dev.name())
  *             .spec(PostgresEndpointSpecArgs.builder()
  *                 .endpointType("ENDPOINT_TYPE_READ_WRITE")
+ *                 .noSuspension(true)
+ *                 .autoscalingLimitMinCu(0.5)
+ *                 .autoscalingLimitMaxCu(4.0)
  *                 .group(PostgresEndpointSpecGroupArgs.builder()
  *                     .min(2)
  *                     .max(2)
  *                     .build())
  *                 .build())
+ *             .replaceExisting(true)
  *             .build());
  * 
  *     }
@@ -293,9 +309,6 @@ import javax.annotation.Nullable;
  * dedicated read-only host, in addition to hot-standby failover. Only supported
  * on read-write endpoints with more than one compute. The secondaries are optionally
  * exposed as read-only host via `enableReadableSecondaries`.
- * 
- * High availability requires scale-to-zero to be disabled.
- * Set `noSuspension = true` in `defaultEndpointSettings` as shown in the example below.
  * 
  * <pre>
  * {@code
@@ -323,16 +336,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var haReadable = new PostgresEndpoint("haReadable", PostgresEndpointArgs.builder()
  *             .endpointId("primary")
- *             .parent(main.name())
+ *             .parent(dev.name())
  *             .spec(PostgresEndpointSpecArgs.builder()
  *                 .endpointType("ENDPOINT_TYPE_READ_WRITE")
+ *                 .noSuspension(true)
+ *                 .autoscalingLimitMinCu(0.5)
+ *                 .autoscalingLimitMaxCu(4.0)
  *                 .group(PostgresEndpointSpecGroupArgs.builder()
  *                     .min(2)
  *                     .max(2)
  *                     .enableReadableSecondaries(true)
  *                     .build())
- *                 .defaultEndpointSettings(Map.of("noSuspension", true))
  *                 .build())
+ *             .replaceExisting(true)
  *             .build());
  * 
  *     }
@@ -409,6 +425,7 @@ import javax.annotation.Nullable;
  *                     .enableReadableSecondaries(true)
  *                     .build())
  *                 .build())
+ *             .replaceExisting(true)
  *             .build());
  * 
  *         var readReplica = new PostgresEndpoint("readReplica", PostgresEndpointArgs.builder()
@@ -507,6 +524,20 @@ public class PostgresEndpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<PostgresEndpointProviderConfig>> providerConfig() {
         return Codegen.optional(this.providerConfig);
+    }
+    /**
+     * If true, update the endpoint if it already exists instead of returning an error
+     * 
+     */
+    @Export(name="replaceExisting", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> replaceExisting;
+
+    /**
+     * @return If true, update the endpoint if it already exists instead of returning an error
+     * 
+     */
+    public Output<Optional<Boolean>> replaceExisting() {
+        return Codegen.optional(this.replaceExisting);
     }
     /**
      * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state

@@ -275,6 +275,106 @@ class PostgresRole(pulumi.CustomResource):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+        ## Example Usage
+
+        ### Role Backed by a Databricks User Identity
+
+        Create a role that is authenticated as a specific Databricks workspace user via OAuth. `auth_method` is left unset and defaults to `LAKEBASE_OAUTH_V1` for managed identities.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="my-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "My Project",
+            })
+        main = databricks.PostgresBranch("main",
+            branch_id="main",
+            parent=this.name,
+            spec={
+                "no_expiry": True,
+            })
+        jane = databricks.PostgresRole("jane",
+            role_id="jane",
+            parent=main.name,
+            spec={
+                "identity_type": "USER",
+                "postgres_role": "jane@databricks.com",
+            })
+        ```
+
+        ### Service Principal with `DATABRICKS_SUPERUSER` Membership
+
+        Create a role that is authenticated as a Databricks service principal via OAuth and grant it the highest customer-exposed privilege set via `DATABRICKS_SUPERUSER` membership.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        admin_sp = databricks.PostgresRole("admin_sp",
+            role_id="admin-sp",
+            parent=main["name"],
+            spec={
+                "identity_type": "SERVICE_PRINCIPAL",
+                "postgres_role": "00000000-0000-0000-0000-000000000000",
+                "auth_method": "LAKEBASE_OAUTH_V1",
+                "membership_roles": ["DATABRICKS_SUPERUSER"],
+            })
+        ```
+
+        ### Multiple roles in a branch
+
+        By default, Pulumi creates resources in parallel if the dependency graph allows. However, Lakebase
+        doesn't allow executing parallel manipulations inside a single branch. Only one of these resources can
+        be created or updated at a time:
+
+        - Role
+        - Database
+        - Endpoint
+
+        If you try to create resources in parallel, you'll see a conflict error like:
+
+        > Your project already has conflicting operations in progress. Please wait until they are complete, and then try again.
+
+        Pulumi serializes execution automatically when one resource references another.
+        For example, when a database names a role as its owner via `spec.role`, Pulumi creates the role before the database.
+        For resources that don't reference each other, like two sibling roles in the same branch, add `depends_on` so
+        Pulumi knows to wait for creation of the first one to finish, before scheduling the creation of the second one.
+
+        For example:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        schema_owner = databricks.PostgresRole("schema_owner",
+            role_id="schemamigrator",
+            parent=test["name"],
+            spec={
+                "postgres_role": "schemamigrator",
+                "membership_roles": ["DATABRICKS_SUPERUSER"],
+            })
+        application = databricks.PostgresDatabase("application",
+            database_id="application",
+            parent=test["name"],
+            spec={
+                "postgres_database": "application",
+                "role": schema_owner.name,
+            })
+        application_postgres_role = databricks.PostgresRole("application",
+            role_id="application",
+            parent=test["name"],
+            spec={
+                "postgres_role": "application",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[application]))
+        ```
+
+        Note: in a real setup, the `application` role would also need `GRANT` privileges, but that's out of scope for this example.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -299,6 +399,106 @@ class PostgresRole(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        ## Example Usage
+
+        ### Role Backed by a Databricks User Identity
+
+        Create a role that is authenticated as a specific Databricks workspace user via OAuth. `auth_method` is left unset and defaults to `LAKEBASE_OAUTH_V1` for managed identities.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="my-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "My Project",
+            })
+        main = databricks.PostgresBranch("main",
+            branch_id="main",
+            parent=this.name,
+            spec={
+                "no_expiry": True,
+            })
+        jane = databricks.PostgresRole("jane",
+            role_id="jane",
+            parent=main.name,
+            spec={
+                "identity_type": "USER",
+                "postgres_role": "jane@databricks.com",
+            })
+        ```
+
+        ### Service Principal with `DATABRICKS_SUPERUSER` Membership
+
+        Create a role that is authenticated as a Databricks service principal via OAuth and grant it the highest customer-exposed privilege set via `DATABRICKS_SUPERUSER` membership.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        admin_sp = databricks.PostgresRole("admin_sp",
+            role_id="admin-sp",
+            parent=main["name"],
+            spec={
+                "identity_type": "SERVICE_PRINCIPAL",
+                "postgres_role": "00000000-0000-0000-0000-000000000000",
+                "auth_method": "LAKEBASE_OAUTH_V1",
+                "membership_roles": ["DATABRICKS_SUPERUSER"],
+            })
+        ```
+
+        ### Multiple roles in a branch
+
+        By default, Pulumi creates resources in parallel if the dependency graph allows. However, Lakebase
+        doesn't allow executing parallel manipulations inside a single branch. Only one of these resources can
+        be created or updated at a time:
+
+        - Role
+        - Database
+        - Endpoint
+
+        If you try to create resources in parallel, you'll see a conflict error like:
+
+        > Your project already has conflicting operations in progress. Please wait until they are complete, and then try again.
+
+        Pulumi serializes execution automatically when one resource references another.
+        For example, when a database names a role as its owner via `spec.role`, Pulumi creates the role before the database.
+        For resources that don't reference each other, like two sibling roles in the same branch, add `depends_on` so
+        Pulumi knows to wait for creation of the first one to finish, before scheduling the creation of the second one.
+
+        For example:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        schema_owner = databricks.PostgresRole("schema_owner",
+            role_id="schemamigrator",
+            parent=test["name"],
+            spec={
+                "postgres_role": "schemamigrator",
+                "membership_roles": ["DATABRICKS_SUPERUSER"],
+            })
+        application = databricks.PostgresDatabase("application",
+            database_id="application",
+            parent=test["name"],
+            spec={
+                "postgres_database": "application",
+                "role": schema_owner.name,
+            })
+        application_postgres_role = databricks.PostgresRole("application",
+            role_id="application",
+            parent=test["name"],
+            spec={
+                "postgres_role": "application",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[application]))
+        ```
+
+        Note: in a real setup, the `application` role would also need `GRANT` privileges, but that's out of scope for this example.
 
 
         :param str resource_name: The name of the resource.

@@ -13,7 +13,8 @@ namespace Pulumi.Databricks.Inputs
     public sealed class PostgresEndpointStatusGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (number) - The maximum number of Compute Units
+        /// (number) - The maximum number of Compute Units. The maximum value is 64.
+        /// The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
         /// </summary>
         [Input("autoscalingLimitMaxCu")]
         public Input<double>? AutoscalingLimitMaxCu { get; set; }
@@ -38,6 +39,14 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
+
+        /// <summary>
+        /// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
+        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+        /// For example, `Primary` becomes `projects/my-app/branches/development/endpoints/primary`
+        /// </summary>
+        [Input("endpointId")]
+        public Input<string>? EndpointId { get; set; }
 
         /// <summary>
         /// (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`

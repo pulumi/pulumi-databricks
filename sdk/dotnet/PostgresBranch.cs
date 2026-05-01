@@ -14,7 +14,11 @@ namespace Pulumi.Databricks
     /// 
     /// ## Example Usage
     /// 
-    /// ### Basic Branch Creation
+    /// ### Managing Implicitly Created Root Branch
+    /// 
+    /// A root branch named `Production` is implicitly created for every project. Since Pulumi is declarative, managing an already-existing resource requires `ReplaceExisting = true`: it lets Pulumi take ownership of the implicitly created branch and immediately apply the provided configuration to it. Support for providing a custom `BranchId` will be available in later versions.
+    /// 
+    /// This resource is only required if you want to apply configuration changes to the implicitly created branch.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -34,6 +38,30 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
+    ///     var production = new Databricks.Index.PostgresBranch("production", new()
+    ///     {
+    ///         BranchId = "production",
+    ///         Parent = @this.Name,
+    ///         Spec = new Databricks.Inputs.PostgresBranchSpecArgs
+    ///         {
+    ///             NoExpiry = true,
+    ///         },
+    ///         ReplaceExisting = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Basic Branch Creation
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
     ///     var dev = new Databricks.Index.PostgresBranch("dev", new()
     ///     {
     ///         BranchId = "dev-branch",
@@ -49,6 +77,8 @@ namespace Pulumi.Databricks
     /// 
     /// ### Protected Branch
     /// 
+    /// Only one branch per project can be protected at a time.
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -57,9 +87,9 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var production = new Databricks.Index.PostgresBranch("production", new()
+    ///     var @protected = new Databricks.Index.PostgresBranch("protected", new()
     ///     {
-    ///         BranchId = "production",
+    ///         BranchId = "protected-branch",
     ///         Parent = @this.Name,
     ///         Spec = new Databricks.Inputs.PostgresBranchSpecArgs
     ///         {
@@ -133,6 +163,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("providerConfig")]
         public Output<Outputs.PostgresBranchProviderConfig?> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, update the branch if it already exists instead of returning an error
+        /// </summary>
+        [Output("replaceExisting")]
+        public Output<bool?> ReplaceExisting { get; private set; } = null!;
 
         /// <summary>
         /// The spec contains the branch configuration
@@ -229,6 +265,12 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresBranchProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
+        /// If true, update the branch if it already exists instead of returning an error
+        /// </summary>
+        [Input("replaceExisting")]
+        public Input<bool>? ReplaceExisting { get; set; }
+
+        /// <summary>
         /// The spec contains the branch configuration
         /// </summary>
         [Input("spec")]
@@ -278,6 +320,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("providerConfig")]
         public Input<Inputs.PostgresBranchProviderConfigGetArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
+        /// If true, update the branch if it already exists instead of returning an error
+        /// </summary>
+        [Input("replaceExisting")]
+        public Input<bool>? ReplaceExisting { get; set; }
 
         /// <summary>
         /// The spec contains the branch configuration

@@ -12,6 +12,39 @@ import (
 )
 
 // [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// This data source retrieves a single Postgres role.
+//
+// ## Example Usage
+//
+// ### Retrieve Role by Name
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.GetPostgresRole(ctx, &databricks.LookupPostgresRoleArgs{
+//				Name: "projects/my-project/branches/main/roles/jane",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("rolePostgresName", this.Status.PostgresRole)
+//			ctx.Export("roleIdentityType", this.Status.IdentityType)
+//			ctx.Export("roleAuthMethod", this.Status.AuthMethod)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupPostgresRole(ctx *pulumi.Context, args *LookupPostgresRoleArgs, opts ...pulumi.InvokeOption) (*LookupPostgresRoleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPostgresRoleResult

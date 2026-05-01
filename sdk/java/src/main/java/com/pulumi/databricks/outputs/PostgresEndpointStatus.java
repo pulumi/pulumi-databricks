@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PostgresEndpointStatus {
     /**
-     * @return (number) - The maximum number of Compute Units
+     * @return (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      * 
      */
     private @Nullable Double autoscalingLimitMaxCu;
@@ -39,6 +40,13 @@ public final class PostgresEndpointStatus {
      * 
      */
     private @Nullable Boolean disabled;
+    /**
+     * @return The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+     * 
+     */
+    private @Nullable String endpointId;
     /**
      * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      * 
@@ -72,7 +80,8 @@ public final class PostgresEndpointStatus {
 
     private PostgresEndpointStatus() {}
     /**
-     * @return (number) - The maximum number of Compute Units
+     * @return (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      * 
      */
     public Optional<Double> autoscalingLimitMaxCu() {
@@ -101,6 +110,15 @@ public final class PostgresEndpointStatus {
      */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
+    }
+    /**
+     * @return The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
+     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
+     * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+     * 
+     */
+    public Optional<String> endpointId() {
+        return Optional.ofNullable(this.endpointId);
     }
     /**
      * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
@@ -158,6 +176,7 @@ public final class PostgresEndpointStatus {
         private @Nullable Double autoscalingLimitMinCu;
         private @Nullable String currentState;
         private @Nullable Boolean disabled;
+        private @Nullable String endpointId;
         private @Nullable String endpointType;
         private @Nullable PostgresEndpointStatusGroup group;
         private @Nullable PostgresEndpointStatusHosts hosts;
@@ -171,6 +190,7 @@ public final class PostgresEndpointStatus {
     	      this.autoscalingLimitMinCu = defaults.autoscalingLimitMinCu;
     	      this.currentState = defaults.currentState;
     	      this.disabled = defaults.disabled;
+    	      this.endpointId = defaults.endpointId;
     	      this.endpointType = defaults.endpointType;
     	      this.group = defaults.group;
     	      this.hosts = defaults.hosts;
@@ -201,6 +221,12 @@ public final class PostgresEndpointStatus {
         public Builder disabled(@Nullable Boolean disabled) {
 
             this.disabled = disabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder endpointId(@Nullable String endpointId) {
+
+            this.endpointId = endpointId;
             return this;
         }
         @CustomType.Setter
@@ -245,6 +271,7 @@ public final class PostgresEndpointStatus {
             _resultValue.autoscalingLimitMinCu = autoscalingLimitMinCu;
             _resultValue.currentState = currentState;
             _resultValue.disabled = disabled;
+            _resultValue.endpointId = endpointId;
             _resultValue.endpointType = endpointType;
             _resultValue.group = group;
             _resultValue.hosts = hosts;

@@ -11,10 +11,36 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PostgresDatabaseStatus {
+    /**
+     * @return The ID to use for the Database, which will become the final component of
+     * the database&#39;s resource name.
+     * This ID becomes the database name in postgres.
+     * 
+     * This value should be 4-63 characters, and only use characters available in DNS names,
+     * as defined by RFC-1123
+     * 
+     * If databaseId is not specified in the request, it is generated automatically
+     * 
+     */
+    private @Nullable String databaseId;
     private @Nullable String postgresDatabase;
     private @Nullable String role;
 
     private PostgresDatabaseStatus() {}
+    /**
+     * @return The ID to use for the Database, which will become the final component of
+     * the database&#39;s resource name.
+     * This ID becomes the database name in postgres.
+     * 
+     * This value should be 4-63 characters, and only use characters available in DNS names,
+     * as defined by RFC-1123
+     * 
+     * If databaseId is not specified in the request, it is generated automatically
+     * 
+     */
+    public Optional<String> databaseId() {
+        return Optional.ofNullable(this.databaseId);
+    }
     public Optional<String> postgresDatabase() {
         return Optional.ofNullable(this.postgresDatabase);
     }
@@ -31,15 +57,23 @@ public final class PostgresDatabaseStatus {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String databaseId;
         private @Nullable String postgresDatabase;
         private @Nullable String role;
         public Builder() {}
         public Builder(PostgresDatabaseStatus defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.databaseId = defaults.databaseId;
     	      this.postgresDatabase = defaults.postgresDatabase;
     	      this.role = defaults.role;
         }
 
+        @CustomType.Setter
+        public Builder databaseId(@Nullable String databaseId) {
+
+            this.databaseId = databaseId;
+            return this;
+        }
         @CustomType.Setter
         public Builder postgresDatabase(@Nullable String postgresDatabase) {
 
@@ -54,6 +88,7 @@ public final class PostgresDatabaseStatus {
         }
         public PostgresDatabaseStatus build() {
             final var _resultValue = new PostgresDatabaseStatus();
+            _resultValue.databaseId = databaseId;
             _resultValue.postgresDatabase = postgresDatabase;
             _resultValue.role = role;
             return _resultValue;

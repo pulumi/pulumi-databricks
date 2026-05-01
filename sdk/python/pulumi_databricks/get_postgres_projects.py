@@ -28,7 +28,7 @@ class GetPostgresProjectsResult:
     """
     A collection of values returned by getPostgresProjects.
     """
-    def __init__(__self__, id=None, page_size=None, projects=None, provider_config=None):
+    def __init__(__self__, id=None, page_size=None, projects=None, provider_config=None, show_deleted=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -41,6 +41,9 @@ class GetPostgresProjectsResult:
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
+        if show_deleted and not isinstance(show_deleted, bool):
+            raise TypeError("Expected argument 'show_deleted' to be a bool")
+        pulumi.set(__self__, "show_deleted", show_deleted)
 
     @_builtins.property
     @pulumi.getter
@@ -65,6 +68,11 @@ class GetPostgresProjectsResult:
     def provider_config(self) -> Optional['outputs.GetPostgresProjectsProviderConfigResult']:
         return pulumi.get(self, "provider_config")
 
+    @_builtins.property
+    @pulumi.getter(name="showDeleted")
+    def show_deleted(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "show_deleted")
+
 
 class AwaitableGetPostgresProjectsResult(GetPostgresProjectsResult):
     # pylint: disable=using-constant-test
@@ -75,11 +83,13 @@ class AwaitableGetPostgresProjectsResult(GetPostgresProjectsResult):
             id=self.id,
             page_size=self.page_size,
             projects=self.projects,
-            provider_config=self.provider_config)
+            provider_config=self.provider_config,
+            show_deleted=self.show_deleted)
 
 
 def get_postgres_projects(page_size: Optional[_builtins.int] = None,
                           provider_config: Optional[Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict']] = None,
+                          show_deleted: Optional[_builtins.bool] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresProjectsResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -101,10 +111,14 @@ def get_postgres_projects(page_size: Optional[_builtins.int] = None,
 
     :param _builtins.int page_size: Upper bound for items returned. Cannot be negative. The maximum value is 100
     :param Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param _builtins.bool show_deleted: Whether to include soft-deleted projects in the response.
+           When true, soft-deleted projects are included alongside active projects.
+           Hard-deleted and already-purged projects are never returned
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
     __args__['providerConfig'] = provider_config
+    __args__['showDeleted'] = show_deleted
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getPostgresProjects:getPostgresProjects', __args__, opts=opts, typ=GetPostgresProjectsResult).value
 
@@ -112,9 +126,11 @@ def get_postgres_projects(page_size: Optional[_builtins.int] = None,
         id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         projects=pulumi.get(__ret__, 'projects'),
-        provider_config=pulumi.get(__ret__, 'provider_config'))
+        provider_config=pulumi.get(__ret__, 'provider_config'),
+        show_deleted=pulumi.get(__ret__, 'show_deleted'))
 def get_postgres_projects_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                  provider_config: Optional[pulumi.Input[Optional[Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict']]]] = None,
+                                 show_deleted: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresProjectsResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -136,14 +152,19 @@ def get_postgres_projects_output(page_size: Optional[pulumi.Input[Optional[_buil
 
     :param _builtins.int page_size: Upper bound for items returned. Cannot be negative. The maximum value is 100
     :param Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param _builtins.bool show_deleted: Whether to include soft-deleted projects in the response.
+           When true, soft-deleted projects are included alongside active projects.
+           Hard-deleted and already-purged projects are never returned
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
     __args__['providerConfig'] = provider_config
+    __args__['showDeleted'] = show_deleted
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPostgresProjects:getPostgresProjects', __args__, opts=opts, typ=GetPostgresProjectsResult)
     return __ret__.apply(lambda __response__: GetPostgresProjectsResult(
         id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         projects=pulumi.get(__response__, 'projects'),
-        provider_config=pulumi.get(__response__, 'provider_config')))
+        provider_config=pulumi.get(__response__, 'provider_config'),
+        show_deleted=pulumi.get(__response__, 'show_deleted')))

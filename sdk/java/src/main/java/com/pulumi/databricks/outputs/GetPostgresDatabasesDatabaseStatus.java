@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,6 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPostgresDatabasesDatabaseStatus {
+    /**
+     * @return (string) - The short identifier of the database, suitable for showing to the users.
+     * For a database with name `projects/my-project/branches/my-branch/databases/my-db`,
+     * the databaseId is `my-db`.
+     * 
+     */
+    private String databaseId;
     /**
      * @return (string) - The name of the Postgres database
      * 
@@ -24,6 +32,15 @@ public final class GetPostgresDatabasesDatabaseStatus {
     private @Nullable String role;
 
     private GetPostgresDatabasesDatabaseStatus() {}
+    /**
+     * @return (string) - The short identifier of the database, suitable for showing to the users.
+     * For a database with name `projects/my-project/branches/my-branch/databases/my-db`,
+     * the databaseId is `my-db`.
+     * 
+     */
+    public String databaseId() {
+        return this.databaseId;
+    }
     /**
      * @return (string) - The name of the Postgres database
      * 
@@ -49,15 +66,25 @@ public final class GetPostgresDatabasesDatabaseStatus {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String databaseId;
         private @Nullable String postgresDatabase;
         private @Nullable String role;
         public Builder() {}
         public Builder(GetPostgresDatabasesDatabaseStatus defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.databaseId = defaults.databaseId;
     	      this.postgresDatabase = defaults.postgresDatabase;
     	      this.role = defaults.role;
         }
 
+        @CustomType.Setter
+        public Builder databaseId(String databaseId) {
+            if (databaseId == null) {
+              throw new MissingRequiredPropertyException("GetPostgresDatabasesDatabaseStatus", "databaseId");
+            }
+            this.databaseId = databaseId;
+            return this;
+        }
         @CustomType.Setter
         public Builder postgresDatabase(@Nullable String postgresDatabase) {
 
@@ -72,6 +99,7 @@ public final class GetPostgresDatabasesDatabaseStatus {
         }
         public GetPostgresDatabasesDatabaseStatus build() {
             final var _resultValue = new GetPostgresDatabasesDatabaseStatus();
+            _resultValue.databaseId = databaseId;
             _resultValue.postgresDatabase = postgresDatabase;
             _resultValue.role = role;
             return _resultValue;

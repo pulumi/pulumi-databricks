@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PostgresEndpointSpec {
     /**
-     * @return (number) - The maximum number of Compute Units
+     * @return (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      * 
      */
     private @Nullable Double autoscalingLimitMaxCu;
@@ -46,7 +47,8 @@ public final class PostgresEndpointSpec {
     private @Nullable PostgresEndpointSpecGroup group;
     /**
      * @return When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
      * 
      */
     private @Nullable Boolean noSuspension;
@@ -63,7 +65,8 @@ public final class PostgresEndpointSpec {
 
     private PostgresEndpointSpec() {}
     /**
-     * @return (number) - The maximum number of Compute Units
+     * @return (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      * 
      */
     public Optional<Double> autoscalingLimitMaxCu() {
@@ -102,7 +105,8 @@ public final class PostgresEndpointSpec {
     }
     /**
      * @return When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
      * 
      */
     public Optional<Boolean> noSuspension() {

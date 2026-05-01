@@ -8,6 +8,23 @@ import * as utilities from "./utilities";
 
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source retrieves a single Postgres database.
+ *
+ * ## Example Usage
+ *
+ * ### Retrieve Database by Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getPostgresDatabase({
+ *     name: "projects/my-project/branches/main/databases/app",
+ * });
+ * export const postgresDatabaseName = _this.then(_this => _this.status?.postgresDatabase);
+ * export const databaseOwnerRole = _this.then(_this => _this.status?.role);
+ * ```
  */
 export function getPostgresDatabase(args: GetPostgresDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresDatabaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -70,6 +87,23 @@ export interface GetPostgresDatabaseResult {
 }
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source retrieves a single Postgres database.
+ *
+ * ## Example Usage
+ *
+ * ### Retrieve Database by Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getPostgresDatabase({
+ *     name: "projects/my-project/branches/main/databases/app",
+ * });
+ * export const postgresDatabaseName = _this.then(_this => _this.status?.postgresDatabase);
+ * export const databaseOwnerRole = _this.then(_this => _this.status?.role);
+ * ```
  */
 export function getPostgresDatabaseOutput(args: GetPostgresDatabaseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresDatabaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

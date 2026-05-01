@@ -8,6 +8,23 @@ import * as utilities from "./utilities";
 
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source lists all Postgres databases in a branch.
+ *
+ * ## Example Usage
+ *
+ * ### List All Databases in a Branch
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getPostgresDatabases({
+ *     parent: "projects/my-project/branches/main",
+ * });
+ * export const databaseNames = all.then(all => .map(db => (db.name)));
+ * export const postgresDatabaseNames = all.then(all => .map(db => (db.status?.postgresDatabase)));
+ * ```
  */
 export function getPostgresDatabases(args: GetPostgresDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresDatabasesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -56,6 +73,23 @@ export interface GetPostgresDatabasesResult {
 }
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source lists all Postgres databases in a branch.
+ *
+ * ## Example Usage
+ *
+ * ### List All Databases in a Branch
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getPostgresDatabases({
+ *     parent: "projects/my-project/branches/main",
+ * });
+ * export const databaseNames = all.then(all => .map(db => (db.name)));
+ * export const postgresDatabaseNames = all.then(all => .map(db => (db.status?.postgresDatabase)));
+ * ```
  */
 export function getPostgresDatabasesOutput(args: GetPostgresDatabasesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresDatabasesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

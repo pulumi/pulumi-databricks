@@ -24,6 +24,7 @@ class PostgresEndpointArgs:
                  endpoint_id: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
                  provider_config: Optional[pulumi.Input['PostgresEndpointProviderConfigArgs']] = None,
+                 replace_existing: Optional[pulumi.Input[_builtins.bool]] = None,
                  spec: Optional[pulumi.Input['PostgresEndpointSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresEndpoint resource.
@@ -34,12 +35,15 @@ class PostgresEndpointArgs:
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input['PostgresEndpointProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the endpoint if it already exists instead of returning an error
         :param pulumi.Input['PostgresEndpointSpecArgs'] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         """
         pulumi.set(__self__, "endpoint_id", endpoint_id)
         pulumi.set(__self__, "parent", parent)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if replace_existing is not None:
+            pulumi.set(__self__, "replace_existing", replace_existing)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
 
@@ -83,6 +87,18 @@ class PostgresEndpointArgs:
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="replaceExisting")
+    def replace_existing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, update the endpoint if it already exists instead of returning an error
+        """
+        return pulumi.get(self, "replace_existing")
+
+    @replace_existing.setter
+    def replace_existing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "replace_existing", value)
+
+    @_builtins.property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['PostgresEndpointSpecArgs']]:
         """
@@ -103,6 +119,7 @@ class _PostgresEndpointState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
                  provider_config: Optional[pulumi.Input['PostgresEndpointProviderConfigArgs']] = None,
+                 replace_existing: Optional[pulumi.Input[_builtins.bool]] = None,
                  spec: Optional[pulumi.Input['PostgresEndpointSpecArgs']] = None,
                  status: Optional[pulumi.Input['PostgresEndpointStatusArgs']] = None,
                  uid: Optional[pulumi.Input[_builtins.str]] = None,
@@ -119,6 +136,7 @@ class _PostgresEndpointState:
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input['PostgresEndpointProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the endpoint if it already exists instead of returning an error
         :param pulumi.Input['PostgresEndpointSpecArgs'] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         :param pulumi.Input['PostgresEndpointStatusArgs'] status: (EndpointStatus) - Current operational status of the compute endpoint
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the endpoint
@@ -134,6 +152,8 @@ class _PostgresEndpointState:
             pulumi.set(__self__, "parent", parent)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if replace_existing is not None:
+            pulumi.set(__self__, "replace_existing", replace_existing)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
@@ -208,6 +228,18 @@ class _PostgresEndpointState:
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="replaceExisting")
+    def replace_existing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, update the endpoint if it already exists instead of returning an error
+        """
+        return pulumi.get(self, "replace_existing")
+
+    @replace_existing.setter
+    def replace_existing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "replace_existing", value)
+
+    @_builtins.property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['PostgresEndpointSpecArgs']]:
         """
@@ -265,6 +297,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                  endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
                  provider_config: Optional[pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']]] = None,
+                 replace_existing: Optional[pulumi.Input[_builtins.bool]] = None,
                  spec: Optional[pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']]] = None,
                  __props__=None):
         """
@@ -272,7 +305,11 @@ class PostgresEndpoint(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic Read-Write Endpoint
+        ### Managing Implicitly Created Read-Write Endpoint
+
+        A read-write endpoint named `primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `replace_existing = true`: it lets Pulumi take ownership of the implicitly created endpoint and immediately apply the provided configuration to it. Support for providing a custom `endpoint_id` will be available in later versions.
+
+        This resource is only required if you want to apply configuration changes to the implicitly created endpoint.
 
         ```python
         import pulumi
@@ -295,7 +332,11 @@ class PostgresEndpoint(pulumi.CustomResource):
             parent=dev.name,
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
-            })
+                "autoscaling_limit_min_cu": 0.5,
+                "autoscaling_limit_max_cu": 4,
+                "suspend_timeout_duration": "600s",
+            },
+            replace_existing=True)
         ```
 
         ### Read-Only Endpoint with Autoscaling
@@ -366,20 +407,27 @@ class PostgresEndpoint(pulumi.CustomResource):
         Configure a single endpoint with multiple compute instances for high availability.
         One compute instance acts as the read-write primary, while the remaining secondary compute instances stand ready for automatic failover.
 
+        High availability requires scale-to-zero to be disabled.
+        Set `no_suspension = true` in `spec` as shown in the example below.
+
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         ha_primary = databricks.PostgresEndpoint("ha_primary",
             endpoint_id="primary",
-            parent=main["name"],
+            parent=dev["name"],
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
+                "no_suspension": True,
+                "autoscaling_limit_min_cu": 0.5,
+                "autoscaling_limit_max_cu": 4,
                 "group": {
                     "min": 2,
                     "max": 2,
                 },
-            })
+            },
+            replace_existing=True)
         ```
 
         ### High Availability Endpoint with Readable Secondaries
@@ -389,27 +437,25 @@ class PostgresEndpoint(pulumi.CustomResource):
         on read-write endpoints with more than one compute. The secondaries are optionally
         exposed as read-only host via `enable_readable_secondaries`.
 
-        High availability requires scale-to-zero to be disabled.
-        Set `no_suspension = true` in `default_endpoint_settings` as shown in the example below.
-
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         ha_readable = databricks.PostgresEndpoint("ha_readable",
             endpoint_id="primary",
-            parent=main["name"],
+            parent=dev["name"],
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
+                "no_suspension": True,
+                "autoscaling_limit_min_cu": 0.5,
+                "autoscaling_limit_max_cu": 4,
                 "group": {
                     "min": 2,
                     "max": 2,
                     "enable_readable_secondaries": True,
                 },
-                "default_endpoint_settings": {
-                    "noSuspension": True,
-                },
-            })
+            },
+            replace_existing=True)
         ```
 
         ### Complete Example
@@ -449,7 +495,8 @@ class PostgresEndpoint(pulumi.CustomResource):
                     "max": 2,
                     "enable_readable_secondaries": True,
                 },
-            })
+            },
+            replace_existing=True)
         read_replica = databricks.PostgresEndpoint("read_replica",
             endpoint_id="read-replica",
             parent=main.name,
@@ -470,6 +517,7 @@ class PostgresEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the endpoint if it already exists instead of returning an error
         :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         """
         ...
@@ -483,7 +531,11 @@ class PostgresEndpoint(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Basic Read-Write Endpoint
+        ### Managing Implicitly Created Read-Write Endpoint
+
+        A read-write endpoint named `primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `replace_existing = true`: it lets Pulumi take ownership of the implicitly created endpoint and immediately apply the provided configuration to it. Support for providing a custom `endpoint_id` will be available in later versions.
+
+        This resource is only required if you want to apply configuration changes to the implicitly created endpoint.
 
         ```python
         import pulumi
@@ -506,7 +558,11 @@ class PostgresEndpoint(pulumi.CustomResource):
             parent=dev.name,
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
-            })
+                "autoscaling_limit_min_cu": 0.5,
+                "autoscaling_limit_max_cu": 4,
+                "suspend_timeout_duration": "600s",
+            },
+            replace_existing=True)
         ```
 
         ### Read-Only Endpoint with Autoscaling
@@ -577,20 +633,27 @@ class PostgresEndpoint(pulumi.CustomResource):
         Configure a single endpoint with multiple compute instances for high availability.
         One compute instance acts as the read-write primary, while the remaining secondary compute instances stand ready for automatic failover.
 
+        High availability requires scale-to-zero to be disabled.
+        Set `no_suspension = true` in `spec` as shown in the example below.
+
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         ha_primary = databricks.PostgresEndpoint("ha_primary",
             endpoint_id="primary",
-            parent=main["name"],
+            parent=dev["name"],
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
+                "no_suspension": True,
+                "autoscaling_limit_min_cu": 0.5,
+                "autoscaling_limit_max_cu": 4,
                 "group": {
                     "min": 2,
                     "max": 2,
                 },
-            })
+            },
+            replace_existing=True)
         ```
 
         ### High Availability Endpoint with Readable Secondaries
@@ -600,27 +663,25 @@ class PostgresEndpoint(pulumi.CustomResource):
         on read-write endpoints with more than one compute. The secondaries are optionally
         exposed as read-only host via `enable_readable_secondaries`.
 
-        High availability requires scale-to-zero to be disabled.
-        Set `no_suspension = true` in `default_endpoint_settings` as shown in the example below.
-
         ```python
         import pulumi
         import pulumi_databricks as databricks
 
         ha_readable = databricks.PostgresEndpoint("ha_readable",
             endpoint_id="primary",
-            parent=main["name"],
+            parent=dev["name"],
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
+                "no_suspension": True,
+                "autoscaling_limit_min_cu": 0.5,
+                "autoscaling_limit_max_cu": 4,
                 "group": {
                     "min": 2,
                     "max": 2,
                     "enable_readable_secondaries": True,
                 },
-                "default_endpoint_settings": {
-                    "noSuspension": True,
-                },
-            })
+            },
+            replace_existing=True)
         ```
 
         ### Complete Example
@@ -660,7 +721,8 @@ class PostgresEndpoint(pulumi.CustomResource):
                     "max": 2,
                     "enable_readable_secondaries": True,
                 },
-            })
+            },
+            replace_existing=True)
         read_replica = databricks.PostgresEndpoint("read_replica",
             endpoint_id="read-replica",
             parent=main.name,
@@ -691,6 +753,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                  endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
                  parent: Optional[pulumi.Input[_builtins.str]] = None,
                  provider_config: Optional[pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']]] = None,
+                 replace_existing: Optional[pulumi.Input[_builtins.bool]] = None,
                  spec: Optional[pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -708,6 +771,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
             __props__.__dict__["provider_config"] = provider_config
+            __props__.__dict__["replace_existing"] = replace_existing
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
@@ -729,6 +793,7 @@ class PostgresEndpoint(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             parent: Optional[pulumi.Input[_builtins.str]] = None,
             provider_config: Optional[pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']]] = None,
+            replace_existing: Optional[pulumi.Input[_builtins.bool]] = None,
             spec: Optional[pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']]] = None,
             status: Optional[pulumi.Input[Union['PostgresEndpointStatusArgs', 'PostgresEndpointStatusArgsDict']]] = None,
             uid: Optional[pulumi.Input[_builtins.str]] = None,
@@ -749,6 +814,7 @@ class PostgresEndpoint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the endpoint if it already exists instead of returning an error
         :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         :param pulumi.Input[Union['PostgresEndpointStatusArgs', 'PostgresEndpointStatusArgsDict']] status: (EndpointStatus) - Current operational status of the compute endpoint
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the endpoint
@@ -763,6 +829,7 @@ class PostgresEndpoint(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
         __props__.__dict__["provider_config"] = provider_config
+        __props__.__dict__["replace_existing"] = replace_existing
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
         __props__.__dict__["uid"] = uid
@@ -812,6 +879,14 @@ class PostgresEndpoint(pulumi.CustomResource):
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
+
+    @_builtins.property
+    @pulumi.getter(name="replaceExisting")
+    def replace_existing(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true, update the endpoint if it already exists instead of returning an error
+        """
+        return pulumi.get(self, "replace_existing")
 
     @_builtins.property
     @pulumi.getter

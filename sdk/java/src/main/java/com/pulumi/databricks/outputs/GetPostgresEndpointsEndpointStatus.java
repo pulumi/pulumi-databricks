@@ -16,7 +16,8 @@ import java.util.Objects;
 @CustomType
 public final class GetPostgresEndpointsEndpointStatus {
     /**
-     * @return (number) - The maximum number of Compute Units
+     * @return (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      * 
      */
     private Double autoscalingLimitMaxCu;
@@ -38,6 +39,13 @@ public final class GetPostgresEndpointsEndpointStatus {
      * 
      */
     private Boolean disabled;
+    /**
+     * @return (string) - The short identifier of the endpoint, suitable for showing to the users.
+     * For an endpoint with name `projects/my-project/branches/my-branch/endpoints/my-endpoint`,
+     * the endpointId is `my-endpoint`.
+     * 
+     */
+    private String endpointId;
     /**
      * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      * 
@@ -71,7 +79,8 @@ public final class GetPostgresEndpointsEndpointStatus {
 
     private GetPostgresEndpointsEndpointStatus() {}
     /**
-     * @return (number) - The maximum number of Compute Units
+     * @return (number) - The maximum number of Compute Units. The maximum value is 64.
+     * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      * 
      */
     public Double autoscalingLimitMaxCu() {
@@ -100,6 +109,15 @@ public final class GetPostgresEndpointsEndpointStatus {
      */
     public Boolean disabled() {
         return this.disabled;
+    }
+    /**
+     * @return (string) - The short identifier of the endpoint, suitable for showing to the users.
+     * For an endpoint with name `projects/my-project/branches/my-branch/endpoints/my-endpoint`,
+     * the endpointId is `my-endpoint`.
+     * 
+     */
+    public String endpointId() {
+        return this.endpointId;
     }
     /**
      * @return (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
@@ -157,6 +175,7 @@ public final class GetPostgresEndpointsEndpointStatus {
         private Double autoscalingLimitMinCu;
         private String currentState;
         private Boolean disabled;
+        private String endpointId;
         private String endpointType;
         private GetPostgresEndpointsEndpointStatusGroup group;
         private GetPostgresEndpointsEndpointStatusHosts hosts;
@@ -170,6 +189,7 @@ public final class GetPostgresEndpointsEndpointStatus {
     	      this.autoscalingLimitMinCu = defaults.autoscalingLimitMinCu;
     	      this.currentState = defaults.currentState;
     	      this.disabled = defaults.disabled;
+    	      this.endpointId = defaults.endpointId;
     	      this.endpointType = defaults.endpointType;
     	      this.group = defaults.group;
     	      this.hosts = defaults.hosts;
@@ -208,6 +228,14 @@ public final class GetPostgresEndpointsEndpointStatus {
               throw new MissingRequiredPropertyException("GetPostgresEndpointsEndpointStatus", "disabled");
             }
             this.disabled = disabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder endpointId(String endpointId) {
+            if (endpointId == null) {
+              throw new MissingRequiredPropertyException("GetPostgresEndpointsEndpointStatus", "endpointId");
+            }
+            this.endpointId = endpointId;
             return this;
         }
         @CustomType.Setter
@@ -264,6 +292,7 @@ public final class GetPostgresEndpointsEndpointStatus {
             _resultValue.autoscalingLimitMinCu = autoscalingLimitMinCu;
             _resultValue.currentState = currentState;
             _resultValue.disabled = disabled;
+            _resultValue.endpointId = endpointId;
             _resultValue.endpointType = endpointType;
             _resultValue.group = group;
             _resultValue.hosts = hosts;
