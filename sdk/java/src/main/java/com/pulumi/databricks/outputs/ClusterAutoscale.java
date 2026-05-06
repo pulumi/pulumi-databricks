@@ -28,8 +28,8 @@ public final class ClusterAutoscale {
      * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -89,8 +89,8 @@ public final class ClusterAutoscale {
      * import com.pulumi.databricks.inputs.GetSparkVersionArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -445,8 +445,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAccountFederationPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -490,8 +490,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAccountFederationPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -535,8 +535,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAccountFederationPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -580,8 +580,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAccountFederationPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -625,8 +625,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAccountFederationPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -670,8 +670,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAccountFederationPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -715,8 +715,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAccountFederationPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -834,8 +834,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -877,8 +877,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -920,8 +920,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -963,8 +963,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1006,8 +1006,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1049,8 +1049,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1092,8 +1092,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1326,8 +1326,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAlertV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1377,8 +1377,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAlertV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1428,8 +1428,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAlertV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1479,8 +1479,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAlertV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1530,8 +1530,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAlertV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1579,8 +1579,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAlertV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1627,8 +1627,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAlertV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1675,8 +1675,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAlertV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1723,8 +1723,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAlertV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1771,8 +1771,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAlertV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1819,8 +1819,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAlertV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1867,8 +1867,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAlertV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1910,8 +1910,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1964,8 +1964,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2018,8 +2018,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2072,8 +2072,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2126,8 +2126,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2264,8 +2264,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2317,8 +2317,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2370,8 +2370,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2423,8 +2423,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2476,8 +2476,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2529,8 +2529,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2582,8 +2582,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2635,8 +2635,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2679,8 +2679,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2723,8 +2723,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2767,8 +2767,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2811,8 +2811,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2856,8 +2856,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2901,8 +2901,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2946,8 +2946,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2991,8 +2991,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3036,8 +3036,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3081,8 +3081,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3126,8 +3126,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3179,8 +3179,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3268,8 +3268,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3357,8 +3357,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3446,8 +3446,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3535,8 +3535,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
      * import com.pulumi.databricks.MwsCredentials;
      * import com.pulumi.databricks.MwsCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3617,8 +3617,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
      * import com.pulumi.aws.S3BucketPolicy;
      * import com.pulumi.aws.S3BucketPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3675,8 +3675,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
      * import com.pulumi.aws.S3BucketPolicy;
      * import com.pulumi.aws.S3BucketPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3733,8 +3733,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
      * import com.pulumi.aws.S3BucketPolicy;
      * import com.pulumi.aws.S3BucketPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3791,8 +3791,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
      * import com.pulumi.aws.S3BucketPolicy;
      * import com.pulumi.aws.S3BucketPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3849,8 +3849,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
      * import com.pulumi.aws.S3BucketPolicy;
      * import com.pulumi.aws.S3BucketPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3905,8 +3905,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3957,8 +3957,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4009,8 +4009,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4061,8 +4061,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4113,8 +4113,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4165,8 +4165,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4217,8 +4217,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetAwsCrossAccountPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4276,8 +4276,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.IamRoleArgs;
      * import com.pulumi.aws.IamRolePolicyAttachment;
      * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4351,8 +4351,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.IamRoleArgs;
      * import com.pulumi.aws.IamRolePolicyAttachment;
      * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4426,8 +4426,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.IamRoleArgs;
      * import com.pulumi.aws.IamRolePolicyAttachment;
      * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4501,8 +4501,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.IamRoleArgs;
      * import com.pulumi.aws.IamRolePolicyAttachment;
      * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4576,8 +4576,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.IamRoleArgs;
      * import com.pulumi.aws.IamRolePolicyAttachment;
      * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4651,8 +4651,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.IamRoleArgs;
      * import com.pulumi.aws.IamRolePolicyAttachment;
      * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4726,8 +4726,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.IamRoleArgs;
      * import com.pulumi.aws.IamRolePolicyAttachment;
      * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4801,8 +4801,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.IamRoleArgs;
      * import com.pulumi.aws.IamRolePolicyAttachment;
      * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4876,8 +4876,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.IamRoleArgs;
      * import com.pulumi.aws.IamRolePolicyAttachment;
      * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4951,8 +4951,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.aws.IamRoleArgs;
      * import com.pulumi.aws.IamRolePolicyAttachment;
      * import com.pulumi.aws.IamRolePolicyAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5021,8 +5021,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetBudgetPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5066,8 +5066,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetBudgetPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5111,8 +5111,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetBudgetPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5156,8 +5156,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetBudgetPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5201,8 +5201,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetBudgetPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5246,8 +5246,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetBudgetPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5291,8 +5291,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetBudgetPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5336,8 +5336,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5382,8 +5382,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5428,8 +5428,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5474,8 +5474,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5520,8 +5520,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetBudgetPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5567,8 +5567,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Grants;
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5629,8 +5629,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Grants;
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5691,8 +5691,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Grants;
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5753,8 +5753,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Grants;
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5815,8 +5815,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Grants;
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5874,8 +5874,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCatalogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5925,8 +5925,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCatalogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5976,8 +5976,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCatalogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6027,8 +6027,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCatalogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6078,8 +6078,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCatalogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6129,8 +6129,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCatalogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6180,8 +6180,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCatalogsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6237,8 +6237,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetClustersArgs;
      * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
      * import com.pulumi.databricks.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6306,8 +6306,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetClustersArgs;
      * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
      * import com.pulumi.databricks.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6375,8 +6375,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetClustersArgs;
      * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
      * import com.pulumi.databricks.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6444,8 +6444,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetClustersArgs;
      * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
      * import com.pulumi.databricks.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6513,8 +6513,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetClustersArgs;
      * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
      * import com.pulumi.databricks.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6582,8 +6582,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetClustersArgs;
      * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
      * import com.pulumi.databricks.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6651,8 +6651,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetClustersArgs;
      * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
      * import com.pulumi.databricks.inputs.GetClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6716,8 +6716,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6766,8 +6766,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6816,8 +6816,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6866,8 +6866,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6916,8 +6916,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6966,8 +6966,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7016,8 +7016,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetClusterPolicyArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7064,8 +7064,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7096,8 +7096,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7132,8 +7132,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
      * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7208,8 +7208,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7240,8 +7240,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7276,8 +7276,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
      * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7352,8 +7352,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7384,8 +7384,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7420,8 +7420,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
      * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7496,8 +7496,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7528,8 +7528,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7564,8 +7564,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
      * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7640,8 +7640,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7672,8 +7672,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7708,8 +7708,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
      * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7784,8 +7784,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7816,8 +7816,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7852,8 +7852,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
      * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7928,8 +7928,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7960,8 +7960,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7996,8 +7996,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetClustersArgs;
      * import com.pulumi.databricks.inputs.GetClustersFilterByArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8296,8 +8296,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8349,8 +8349,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8402,8 +8402,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8455,8 +8455,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8508,8 +8508,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8561,8 +8561,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8614,8 +8614,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCurrentMetastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8732,8 +8732,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8750,7 +8750,7 @@ public final class DatabricksFunctions {
      * 
      *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
      *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
-     *                 .depends(List.of(all))
+     *                 .depends(Arrays.asList(all))
      *                 .dashboardId(range.value())
      *                 .accessControls(PermissionsAccessControlArgs.builder()
      *                     .groupName("Example Group")
@@ -8788,8 +8788,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8806,7 +8806,7 @@ public final class DatabricksFunctions {
      * 
      *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
      *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
-     *                 .depends(List.of(all))
+     *                 .depends(Arrays.asList(all))
      *                 .dashboardId(range.value())
      *                 .accessControls(PermissionsAccessControlArgs.builder()
      *                     .groupName("Example Group")
@@ -8844,8 +8844,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8862,7 +8862,7 @@ public final class DatabricksFunctions {
      * 
      *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
      *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
-     *                 .depends(List.of(all))
+     *                 .depends(Arrays.asList(all))
      *                 .dashboardId(range.value())
      *                 .accessControls(PermissionsAccessControlArgs.builder()
      *                     .groupName("Example Group")
@@ -8900,8 +8900,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8918,7 +8918,7 @@ public final class DatabricksFunctions {
      * 
      *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
      *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
-     *                 .depends(List.of(all))
+     *                 .depends(Arrays.asList(all))
      *                 .dashboardId(range.value())
      *                 .accessControls(PermissionsAccessControlArgs.builder()
      *                     .groupName("Example Group")
@@ -8956,8 +8956,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8974,7 +8974,7 @@ public final class DatabricksFunctions {
      * 
      *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
      *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
-     *                 .depends(List.of(all))
+     *                 .depends(Arrays.asList(all))
      *                 .dashboardId(range.value())
      *                 .accessControls(PermissionsAccessControlArgs.builder()
      *                     .groupName("Example Group")
@@ -9012,8 +9012,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9030,7 +9030,7 @@ public final class DatabricksFunctions {
      * 
      *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
      *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
-     *                 .depends(List.of(all))
+     *                 .depends(Arrays.asList(all))
      *                 .dashboardId(range.value())
      *                 .accessControls(PermissionsAccessControlArgs.builder()
      *                     .groupName("Example Group")
@@ -9068,8 +9068,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9086,7 +9086,7 @@ public final class DatabricksFunctions {
      * 
      *         for (var range : KeyedValue.of(all.dashboards().stream().map(element -> element.dashboardId()).collect(toList()))) {
      *             new Permissions("dashboardsPermissions-" + range.key(), PermissionsArgs.builder()
-     *                 .depends(List.of(all))
+     *                 .depends(Arrays.asList(all))
      *                 .dashboardId(range.value())
      *                 .accessControls(PermissionsAccessControlArgs.builder()
      *                     .groupName("Example Group")
@@ -9127,8 +9127,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCatalogArgs;
      * import com.pulumi.databricks.inputs.GetDataClassificationCatalogConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9181,8 +9181,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCatalogArgs;
      * import com.pulumi.databricks.inputs.GetDataClassificationCatalogConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9235,8 +9235,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCatalogArgs;
      * import com.pulumi.databricks.inputs.GetDataClassificationCatalogConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9289,8 +9289,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCatalogArgs;
      * import com.pulumi.databricks.inputs.GetDataClassificationCatalogConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9343,8 +9343,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetCatalogArgs;
      * import com.pulumi.databricks.inputs.GetDataClassificationCatalogConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9403,8 +9403,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemaArgs;
      * import com.pulumi.databricks.inputs.GetDataQualityMonitorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9463,8 +9463,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemaArgs;
      * import com.pulumi.databricks.inputs.GetDataQualityMonitorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9523,8 +9523,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemaArgs;
      * import com.pulumi.databricks.inputs.GetDataQualityMonitorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9583,8 +9583,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemaArgs;
      * import com.pulumi.databricks.inputs.GetDataQualityMonitorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9643,8 +9643,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemaArgs;
      * import com.pulumi.databricks.inputs.GetDataQualityMonitorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9702,8 +9702,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDataQualityMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9755,8 +9755,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDataQualityMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9808,8 +9808,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDataQualityMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9861,8 +9861,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDataQualityMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9914,8 +9914,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDataQualityMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9967,8 +9967,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDataQualityMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10020,8 +10020,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDataQualityMonitorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10074,8 +10074,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTableArgs;
      * import com.pulumi.databricks.inputs.GetDataQualityRefreshArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10134,8 +10134,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTableArgs;
      * import com.pulumi.databricks.inputs.GetDataQualityRefreshArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10194,8 +10194,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTableArgs;
      * import com.pulumi.databricks.inputs.GetDataQualityRefreshArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10254,8 +10254,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTableArgs;
      * import com.pulumi.databricks.inputs.GetDataQualityRefreshArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10314,8 +10314,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTableArgs;
      * import com.pulumi.databricks.inputs.GetDataQualityRefreshArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10374,8 +10374,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTableArgs;
      * import com.pulumi.databricks.inputs.GetDataQualityRefreshesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10434,8 +10434,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTableArgs;
      * import com.pulumi.databricks.inputs.GetDataQualityRefreshesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10494,8 +10494,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTableArgs;
      * import com.pulumi.databricks.inputs.GetDataQualityRefreshesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10554,8 +10554,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTableArgs;
      * import com.pulumi.databricks.inputs.GetDataQualityRefreshesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10614,8 +10614,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTableArgs;
      * import com.pulumi.databricks.inputs.GetDataQualityRefreshesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10663,8 +10663,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseDatabaseCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10707,8 +10707,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseDatabaseCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10751,8 +10751,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseDatabaseCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10795,8 +10795,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseDatabaseCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10839,8 +10839,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseDatabaseCatalogArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10918,8 +10918,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10962,8 +10962,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11006,8 +11006,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11050,8 +11050,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11094,8 +11094,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseInstanceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11139,8 +11139,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11184,8 +11184,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11229,8 +11229,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11274,8 +11274,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11319,8 +11319,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11364,8 +11364,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11409,8 +11409,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11453,8 +11453,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseSyncedDatabaseTableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11497,8 +11497,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseSyncedDatabaseTableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11541,8 +11541,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseSyncedDatabaseTableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11585,8 +11585,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseSyncedDatabaseTableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11629,8 +11629,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDatabaseSyncedDatabaseTableArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11706,8 +11706,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDbfsFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11758,8 +11758,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDbfsFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11810,8 +11810,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDbfsFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11862,8 +11862,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDbfsFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11914,8 +11914,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDbfsFileArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11966,8 +11966,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDbfsFilePathsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12020,8 +12020,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDbfsFilePathsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12074,8 +12074,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDbfsFilePathsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12128,8 +12128,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDbfsFilePathsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12182,8 +12182,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDbfsFilePathsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12236,8 +12236,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDirectoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12278,8 +12278,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDirectoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12320,8 +12320,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDirectoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12362,8 +12362,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDirectoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12404,8 +12404,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetDirectoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12530,8 +12530,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12576,8 +12576,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12622,8 +12622,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12668,8 +12668,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12714,8 +12714,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12758,8 +12758,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEntityTagAssignmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12828,8 +12828,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEntityTagAssignmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12898,8 +12898,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEntityTagAssignmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12968,8 +12968,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEntityTagAssignmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13038,8 +13038,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEntityTagAssignmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13108,8 +13108,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEntityTagAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13173,8 +13173,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEntityTagAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13238,8 +13238,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEntityTagAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13303,8 +13303,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEntityTagAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13368,8 +13368,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEntityTagAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13431,8 +13431,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13474,8 +13474,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13517,8 +13517,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13560,8 +13560,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13603,8 +13603,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13646,8 +13646,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13688,8 +13688,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13730,8 +13730,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13772,8 +13772,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13814,8 +13814,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13857,8 +13857,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13900,8 +13900,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13943,8 +13943,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13986,8 +13986,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14029,8 +14029,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14072,8 +14072,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14115,8 +14115,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetEnvironmentsWorkspaceBaseEnvironmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14159,8 +14159,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalLocationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14211,8 +14211,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalLocationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14263,8 +14263,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalLocationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14315,8 +14315,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalLocationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14367,8 +14367,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalLocationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14419,8 +14419,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14470,8 +14470,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14521,8 +14521,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14572,8 +14572,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14623,8 +14623,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14674,8 +14674,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14725,8 +14725,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalLocationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14778,8 +14778,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14824,8 +14824,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14870,8 +14870,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14916,8 +14916,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14962,8 +14962,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15008,8 +15008,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalMetadatasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15053,8 +15053,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalMetadatasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15098,8 +15098,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalMetadatasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15143,8 +15143,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalMetadatasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15188,8 +15188,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalMetadatasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15233,8 +15233,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalMetadatasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15278,8 +15278,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetExternalMetadatasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15573,8 +15573,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetFunctionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15625,8 +15625,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetFunctionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15677,8 +15677,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetFunctionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15729,8 +15729,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetFunctionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15781,8 +15781,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetFunctionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15837,8 +15837,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.UserArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15905,8 +15905,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.UserArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15973,8 +15973,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.UserArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16041,8 +16041,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.UserArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16109,8 +16109,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.UserArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16175,8 +16175,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetInstancePoolArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16225,8 +16225,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetInstancePoolArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16275,8 +16275,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetInstancePoolArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16325,8 +16325,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetInstancePoolArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16375,8 +16375,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetInstancePoolArgs;
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16423,8 +16423,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetInstanceProfilesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16467,8 +16467,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetInstanceProfilesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16511,8 +16511,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetInstanceProfilesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16555,8 +16555,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetInstanceProfilesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16599,8 +16599,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetInstanceProfilesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16643,8 +16643,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetInstanceProfilesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16687,8 +16687,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetInstanceProfilesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16731,8 +16731,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetJobArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16783,8 +16783,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetJobArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16835,8 +16835,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetJobArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16887,8 +16887,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetJobArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16939,8 +16939,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetJobArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16991,8 +16991,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetJobArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17043,8 +17043,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetJobArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17101,8 +17101,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17150,8 +17150,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17188,8 +17188,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17261,8 +17261,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17310,8 +17310,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17348,8 +17348,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17421,8 +17421,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17470,8 +17470,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17508,8 +17508,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17581,8 +17581,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17630,8 +17630,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17668,8 +17668,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17741,8 +17741,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17790,8 +17790,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17828,8 +17828,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17901,8 +17901,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17950,8 +17950,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17988,8 +17988,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18061,8 +18061,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18110,8 +18110,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetJobsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18148,8 +18148,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18443,8 +18443,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMetastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18512,8 +18512,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMetastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18581,8 +18581,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMetastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18650,8 +18650,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMetastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18719,8 +18719,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMetastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18788,8 +18788,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMetastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18857,8 +18857,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.MetastoreArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMetastoreArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18924,8 +18924,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMetastoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18978,8 +18978,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMetastoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19032,8 +19032,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMetastoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19086,8 +19086,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMetastoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19140,8 +19140,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMetastoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19194,8 +19194,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMetastoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19248,8 +19248,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMetastoresArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19364,8 +19364,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.MlflowModelTagArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMlflowModelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19413,8 +19413,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.ModelServing;
      * import com.pulumi.databricks.ModelServingArgs;
      * import com.pulumi.databricks.inputs.ModelServingConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19471,8 +19471,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.MlflowModelTagArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMlflowModelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19520,8 +19520,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.ModelServing;
      * import com.pulumi.databricks.ModelServingArgs;
      * import com.pulumi.databricks.inputs.ModelServingConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19578,8 +19578,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.MlflowModelTagArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMlflowModelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19627,8 +19627,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.ModelServing;
      * import com.pulumi.databricks.ModelServingArgs;
      * import com.pulumi.databricks.inputs.ModelServingConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19685,8 +19685,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.MlflowModelTagArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMlflowModelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19734,8 +19734,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.ModelServing;
      * import com.pulumi.databricks.ModelServingArgs;
      * import com.pulumi.databricks.inputs.ModelServingConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19792,8 +19792,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.MlflowModelTagArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMlflowModelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19841,8 +19841,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.ModelServing;
      * import com.pulumi.databricks.ModelServingArgs;
      * import com.pulumi.databricks.inputs.ModelServingConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19896,8 +19896,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMlflowModelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19938,8 +19938,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMlflowModelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19980,8 +19980,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMlflowModelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20022,8 +20022,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMlflowModelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20064,8 +20064,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMlflowModelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20106,8 +20106,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMlflowModelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20148,8 +20148,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMlflowModelsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20192,8 +20192,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20247,8 +20247,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20302,8 +20302,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20357,8 +20357,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20412,8 +20412,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20467,8 +20467,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20522,8 +20522,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20577,8 +20577,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20629,8 +20629,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20681,8 +20681,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20733,8 +20733,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20785,8 +20785,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20837,8 +20837,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20870,8 +20870,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20922,8 +20922,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20955,8 +20955,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21007,8 +21007,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21040,8 +21040,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21092,8 +21092,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21125,8 +21125,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21177,8 +21177,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21210,8 +21210,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21262,8 +21262,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21295,8 +21295,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21347,8 +21347,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21380,8 +21380,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsNetworkConnectivityConfigsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21432,8 +21432,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21483,8 +21483,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21534,8 +21534,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21585,8 +21585,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21636,8 +21636,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21687,8 +21687,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21738,8 +21738,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetMwsWorkspacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21793,8 +21793,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21870,8 +21870,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21947,8 +21947,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22024,8 +22024,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22101,8 +22101,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22178,8 +22178,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22255,8 +22255,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22326,8 +22326,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetNotebookArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22369,8 +22369,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetNotebookArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22412,8 +22412,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetNotebookArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22455,8 +22455,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetNotebookArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22498,8 +22498,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetNotebookArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22541,8 +22541,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetNotebookPathsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22584,8 +22584,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetNotebookPathsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22627,8 +22627,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetNotebookPathsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22670,8 +22670,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetNotebookPathsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22713,8 +22713,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetNotebookPathsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22761,8 +22761,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.NotificationDestinationConfigSlackArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetNotificationDestinationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22832,8 +22832,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.NotificationDestinationConfigSlackArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetNotificationDestinationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22903,8 +22903,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.NotificationDestinationConfigSlackArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetNotificationDestinationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22974,8 +22974,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.NotificationDestinationConfigSlackArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetNotificationDestinationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23045,8 +23045,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.NotificationDestinationConfigSlackArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetNotificationDestinationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23116,8 +23116,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.NotificationDestinationConfigSlackArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetNotificationDestinationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23187,8 +23187,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.NotificationDestinationConfigSlackArgs;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetNotificationDestinationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23339,8 +23339,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23372,8 +23372,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23406,8 +23406,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23461,8 +23461,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23494,8 +23494,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23528,8 +23528,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23583,8 +23583,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23616,8 +23616,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23650,8 +23650,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23705,8 +23705,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23738,8 +23738,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23772,8 +23772,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23827,8 +23827,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23860,8 +23860,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23894,8 +23894,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23949,8 +23949,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23982,8 +23982,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24016,8 +24016,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24071,8 +24071,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24104,8 +24104,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24138,8 +24138,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPipelinesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24195,8 +24195,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPolicyInfoArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24243,8 +24243,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPolicyInfoArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24291,8 +24291,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPolicyInfoArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24339,8 +24339,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPolicyInfoArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24387,8 +24387,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPolicyInfoArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24435,8 +24435,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPolicyInfosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24482,8 +24482,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPolicyInfosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24529,8 +24529,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPolicyInfosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24576,8 +24576,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPolicyInfosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24623,8 +24623,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPolicyInfosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24668,8 +24668,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresBranchArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24713,8 +24713,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresBranchArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24758,8 +24758,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresBranchArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24803,8 +24803,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresBranchArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24848,8 +24848,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresBranchArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24993,8 +24993,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25039,8 +25039,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25085,8 +25085,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25131,8 +25131,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25177,8 +25177,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25288,8 +25288,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresEndpointArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25333,8 +25333,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresEndpointArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25378,8 +25378,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresEndpointArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25423,8 +25423,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresEndpointArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25468,8 +25468,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresEndpointArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25578,8 +25578,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25625,8 +25625,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25672,8 +25672,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25719,8 +25719,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25766,8 +25766,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25904,8 +25904,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25951,8 +25951,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -25998,8 +25998,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26045,8 +26045,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26092,8 +26092,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetPostgresRoleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26246,8 +26246,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemaArgs;
      * import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26302,8 +26302,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemaArgs;
      * import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26358,8 +26358,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemaArgs;
      * import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26414,8 +26414,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemaArgs;
      * import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26470,8 +26470,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemaArgs;
      * import com.pulumi.databricks.inputs.GetQualityMonitorV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26525,8 +26525,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26574,8 +26574,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26623,8 +26623,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26672,8 +26672,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26721,8 +26721,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26770,8 +26770,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26819,8 +26819,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetQualityMonitorsV2Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26860,8 +26860,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetRegisteredModelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26910,8 +26910,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetRegisteredModelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -26960,8 +26960,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetRegisteredModelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27010,8 +27010,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetRegisteredModelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27060,8 +27060,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetRegisteredModelArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27110,8 +27110,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetRegisteredModelVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27161,8 +27161,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetRegisteredModelVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27212,8 +27212,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetRegisteredModelVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27263,8 +27263,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetRegisteredModelVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27314,8 +27314,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetRegisteredModelVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27367,8 +27367,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetRfaAccessRequestDestinationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27412,8 +27412,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetRfaAccessRequestDestinationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27457,8 +27457,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetRfaAccessRequestDestinationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27502,8 +27502,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetRfaAccessRequestDestinationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27547,8 +27547,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetRfaAccessRequestDestinationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27595,8 +27595,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27649,8 +27649,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27703,8 +27703,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27757,8 +27757,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27811,8 +27811,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27862,8 +27862,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27914,8 +27914,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -27966,8 +27966,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28018,8 +28018,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28070,8 +28070,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSchemasArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28125,8 +28125,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28194,8 +28194,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28263,8 +28263,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28332,8 +28332,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28401,8 +28401,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28470,8 +28470,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28539,8 +28539,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28607,8 +28607,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetServicePrincipalFederationPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28653,8 +28653,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetServicePrincipalFederationPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28699,8 +28699,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetServicePrincipalFederationPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28745,8 +28745,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetServicePrincipalFederationPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -28791,8 +28791,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetServicePrincipalFederationPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29094,8 +29094,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29165,8 +29165,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29236,8 +29236,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29307,8 +29307,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29378,8 +29378,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29449,8 +29449,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29520,8 +29520,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.PermissionsArgs;
      * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29589,8 +29589,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetShareArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29642,8 +29642,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetShareArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29695,8 +29695,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetShareArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29748,8 +29748,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetShareArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29801,8 +29801,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetShareArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29854,8 +29854,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetShareArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29907,8 +29907,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetShareArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -29960,8 +29960,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30012,8 +30012,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30064,8 +30064,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30116,8 +30116,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30168,8 +30168,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30220,8 +30220,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30272,8 +30272,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSharesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30328,8 +30328,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30405,8 +30405,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30482,8 +30482,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30559,8 +30559,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30636,8 +30636,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30713,8 +30713,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30790,8 +30790,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Cluster;
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30865,8 +30865,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30921,8 +30921,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -30977,8 +30977,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31033,8 +31033,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31089,8 +31089,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31145,8 +31145,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31201,8 +31201,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehouseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31255,8 +31255,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31287,8 +31287,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31341,8 +31341,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31373,8 +31373,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31427,8 +31427,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31459,8 +31459,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31513,8 +31513,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31545,8 +31545,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31599,8 +31599,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31631,8 +31631,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31685,8 +31685,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31717,8 +31717,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31771,8 +31771,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31803,8 +31803,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetSqlWarehousesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31857,8 +31857,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetStorageCredentialArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31909,8 +31909,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetStorageCredentialArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -31961,8 +31961,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetStorageCredentialArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32013,8 +32013,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetStorageCredentialArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32065,8 +32065,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetStorageCredentialArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32117,8 +32117,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetStorageCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32168,8 +32168,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetStorageCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32219,8 +32219,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetStorageCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32270,8 +32270,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetStorageCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32321,8 +32321,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetStorageCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32372,8 +32372,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetStorageCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32423,8 +32423,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetStorageCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32477,8 +32477,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Grants;
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32541,8 +32541,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Grants;
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32605,8 +32605,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Grants;
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32669,8 +32669,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Grants;
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32733,8 +32733,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.Grants;
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32798,8 +32798,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32873,8 +32873,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -32948,8 +32948,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33023,8 +33023,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33098,8 +33098,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33178,8 +33178,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTagPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33231,8 +33231,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTagPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33284,8 +33284,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTagPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33337,8 +33337,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTagPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33390,8 +33390,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTagPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33443,8 +33443,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTagPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33496,8 +33496,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTagPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33549,8 +33549,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTagPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33602,8 +33602,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTagPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33655,8 +33655,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTagPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33708,8 +33708,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTagPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33761,8 +33761,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetTagPolicyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33808,8 +33808,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetUserArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33878,8 +33878,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetUserArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -33948,8 +33948,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetUserArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34018,8 +34018,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetUserArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34088,8 +34088,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetUserArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34158,8 +34158,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetUserArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34228,8 +34228,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.inputs.GetUserArgs;
      * import com.pulumi.databricks.GroupMember;
      * import com.pulumi.databricks.GroupMemberArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34460,8 +34460,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34535,8 +34535,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34610,8 +34610,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34685,8 +34685,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34760,8 +34760,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.GrantsArgs;
      * import com.pulumi.databricks.inputs.GrantsGrantArgs;
      * import com.pulumi.codegen.internal.KeyedValue;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34834,8 +34834,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetVolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34889,8 +34889,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetVolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34944,8 +34944,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetVolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -34999,8 +34999,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetVolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35054,8 +35054,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetVolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35110,8 +35110,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetVolumesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35168,8 +35168,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetVolumesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35226,8 +35226,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetVolumesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35284,8 +35284,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetVolumesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35342,8 +35342,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetVolumesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35405,8 +35405,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverrideArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35458,8 +35458,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverrideArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35511,8 +35511,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverrideArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35564,8 +35564,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverrideArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35617,8 +35617,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverrideArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35664,8 +35664,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35710,8 +35710,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35756,8 +35756,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35802,8 +35802,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35848,8 +35848,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35894,8 +35894,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35940,8 +35940,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWarehousesDefaultWarehouseOverridesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -35981,8 +35981,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36043,8 +36043,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36105,8 +36105,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36167,8 +36167,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36229,8 +36229,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36291,8 +36291,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36349,8 +36349,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36407,8 +36407,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36465,8 +36465,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36523,8 +36523,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWorkspaceEntityTagAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36585,8 +36585,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36631,8 +36631,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36677,8 +36677,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36723,8 +36723,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36769,8 +36769,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetWorkspaceNetworkOptionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36876,8 +36876,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36917,8 +36917,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36958,8 +36958,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -36999,8 +36999,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37040,8 +37040,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37081,8 +37081,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -37122,8 +37122,8 @@ public final class DatabricksFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.databricks.DatabricksFunctions;
      * import com.pulumi.databricks.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

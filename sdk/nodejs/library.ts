@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *     const cli: databricks.Library[] = [];
  *     for (const range of all.ids.map((v, k) => ({key: k, value: v}))) {
  *         cli.push(new databricks.Library(`cli-${range.key}`, {
- *             clusterId: range.key,
+ *             clusterId: String(range.key),
  *             pypi: {
  *                 "package": "databricks-cli",
  *             },

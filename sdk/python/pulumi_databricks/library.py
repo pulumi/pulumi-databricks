@@ -403,7 +403,7 @@ class Library(pulumi.CustomResource):
         cli = []
         for range in [{"key": k, "value": v} for [k, v] in enumerate(all.ids)]:
             cli.append(databricks.Library(f"cli-{range['key']}",
-                cluster_id=range["key"],
+                cluster_id=str(range["key"]),
                 pypi={
                     "package": "databricks-cli",
                 }))
@@ -531,7 +531,7 @@ class Library(pulumi.CustomResource):
         cli = []
         for range in [{"key": k, "value": v} for [k, v] in enumerate(all.ids)]:
             cli.append(databricks.Library(f"cli-{range['key']}",
-                cluster_id=range["key"],
+                cluster_id=str(range["key"]),
                 pypi={
                     "package": "databricks-cli",
                 }))

@@ -30,8 +30,8 @@ public final class PipelineRunAsArgs extends com.pulumi.resources.ResourceArgs {
      * import com.pulumi.databricks.Pipeline;
      * import com.pulumi.databricks.PipelineArgs;
      * import com.pulumi.databricks.inputs.PipelineRunAsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -73,8 +73,8 @@ public final class PipelineRunAsArgs extends com.pulumi.resources.ResourceArgs {
      * import com.pulumi.databricks.Pipeline;
      * import com.pulumi.databricks.PipelineArgs;
      * import com.pulumi.databricks.inputs.PipelineRunAsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -157,8 +157,8 @@ public final class PipelineRunAsArgs extends com.pulumi.resources.ResourceArgs {
          * import com.pulumi.databricks.Pipeline;
          * import com.pulumi.databricks.PipelineArgs;
          * import com.pulumi.databricks.inputs.PipelineRunAsArgs;
-         * import java.util.List;
          * import java.util.ArrayList;
+         * import java.util.Arrays;
          * import java.util.Map;
          * import java.io.File;
          * import java.nio.file.Files;
@@ -204,8 +204,8 @@ public final class PipelineRunAsArgs extends com.pulumi.resources.ResourceArgs {
          * import com.pulumi.databricks.Pipeline;
          * import com.pulumi.databricks.PipelineArgs;
          * import com.pulumi.databricks.inputs.PipelineRunAsArgs;
-         * import java.util.List;
          * import java.util.ArrayList;
+         * import java.util.Arrays;
          * import java.util.Map;
          * import java.io.File;
          * import java.nio.file.Files;

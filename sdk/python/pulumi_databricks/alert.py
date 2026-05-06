@@ -481,7 +481,7 @@ class Alert(pulumi.CustomResource):
                 },
                 "threshold": {
                     "value": {
-                        "double_value": 42,
+                        "double_value": float(42),
                     },
                 },
             })
@@ -542,7 +542,7 @@ class Alert(pulumi.CustomResource):
                 },
                 "threshold": {
                     "value": {
-                        "double_value": 42,
+                        "double_value": float(42),
                     },
                 },
             })
@@ -639,7 +639,7 @@ class Alert(pulumi.CustomResource):
                 },
                 "threshold": {
                     "value": {
-                        "double_value": 42,
+                        "double_value": float(42),
                     },
                 },
             })
@@ -700,7 +700,7 @@ class Alert(pulumi.CustomResource):
                 },
                 "threshold": {
                     "value": {
-                        "double_value": 42,
+                        "double_value": float(42),
                     },
                 },
             })

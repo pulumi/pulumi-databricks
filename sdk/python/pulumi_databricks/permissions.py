@@ -1067,7 +1067,7 @@ class Permissions(pulumi.CustomResource):
                 },
             ])
         notebook_usage_by_id = databricks.Permissions("notebook_usage_by_id",
-            notebook_id=this.object_id,
+            notebook_id=this.object_id.apply(lambda x: str(x)),
             access_controls=[
                 {
                     "group_name": "users",
@@ -1119,7 +1119,7 @@ class Permissions(pulumi.CustomResource):
                 },
             ])
         workspace_file_usage_by_id = databricks.Permissions("workspace_file_usage_by_id",
-            workspace_file_id=this.object_id,
+            workspace_file_id=this.object_id.apply(lambda x: str(x)),
             access_controls=[
                 {
                     "group_name": "users",
@@ -1173,7 +1173,7 @@ class Permissions(pulumi.CustomResource):
                 },
             ])
         folder_usage_by_id = databricks.Permissions("folder_usage_by_id",
-            directory_id=this.object_id,
+            directory_id=this.object_id.apply(lambda x: str(x)),
             access_controls=[
                 {
                     "group_name": "users",
@@ -1928,7 +1928,7 @@ class Permissions(pulumi.CustomResource):
                 },
             ])
         notebook_usage_by_id = databricks.Permissions("notebook_usage_by_id",
-            notebook_id=this.object_id,
+            notebook_id=this.object_id.apply(lambda x: str(x)),
             access_controls=[
                 {
                     "group_name": "users",
@@ -1980,7 +1980,7 @@ class Permissions(pulumi.CustomResource):
                 },
             ])
         workspace_file_usage_by_id = databricks.Permissions("workspace_file_usage_by_id",
-            workspace_file_id=this.object_id,
+            workspace_file_id=this.object_id.apply(lambda x: str(x)),
             access_controls=[
                 {
                     "group_name": "users",
@@ -2034,7 +2034,7 @@ class Permissions(pulumi.CustomResource):
                 },
             ])
         folder_usage_by_id = databricks.Permissions("folder_usage_by_id",
-            directory_id=this.object_id,
+            directory_id=this.object_id.apply(lambda x: str(x)),
             access_controls=[
                 {
                     "group_name": "users",

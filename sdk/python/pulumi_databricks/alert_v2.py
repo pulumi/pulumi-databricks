@@ -556,7 +556,7 @@ class AlertV2(pulumi.CustomResource):
                 "comparison_operator": "GREATER_THAN",
                 "threshold": {
                     "value": {
-                        "double_value": 100,
+                        "double_value": float(100),
                     },
                 },
                 "empty_result_state": "OK",
@@ -630,7 +630,7 @@ class AlertV2(pulumi.CustomResource):
                 "comparison_operator": "GREATER_THAN",
                 "threshold": {
                     "value": {
-                        "double_value": 100,
+                        "double_value": float(100),
                     },
                 },
                 "empty_result_state": "OK",

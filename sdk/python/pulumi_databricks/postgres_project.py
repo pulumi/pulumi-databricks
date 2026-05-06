@@ -381,8 +381,8 @@ class PostgresProject(pulumi.CustomResource):
                 "display_name": "Analytics Workloads",
                 "history_retention_duration": "1209600s",
                 "default_endpoint_settings": {
-                    "autoscaling_limit_min_cu": 1,
-                    "autoscaling_limit_max_cu": 8,
+                    "autoscaling_limit_min_cu": float(1),
+                    "autoscaling_limit_max_cu": float(8),
                     "suspend_timeout_duration": "300s",
                 },
             })
@@ -421,7 +421,7 @@ class PostgresProject(pulumi.CustomResource):
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "no_suspension": True,
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
                 "group": {
                     "min": 2,
                     "max": 2,
@@ -504,8 +504,8 @@ class PostgresProject(pulumi.CustomResource):
                 "display_name": "Analytics Workloads",
                 "history_retention_duration": "1209600s",
                 "default_endpoint_settings": {
-                    "autoscaling_limit_min_cu": 1,
-                    "autoscaling_limit_max_cu": 8,
+                    "autoscaling_limit_min_cu": float(1),
+                    "autoscaling_limit_max_cu": float(8),
                     "suspend_timeout_duration": "300s",
                 },
             })
@@ -544,7 +544,7 @@ class PostgresProject(pulumi.CustomResource):
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "no_suspension": True,
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
                 "group": {
                     "min": 2,
                     "max": 2,

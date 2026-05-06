@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const all = databricks.getSqlWarehouses({});
- * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getSqlWarehouse({
+ * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: databricks.getSqlWarehouse({
  *     id: __value,
  * }) }), {}));
  * ```
@@ -264,7 +264,7 @@ export interface GetSqlWarehouseResult {
  * import * as databricks from "@pulumi/databricks";
  *
  * const all = databricks.getSqlWarehouses({});
- * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getSqlWarehouse({
+ * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: databricks.getSqlWarehouse({
  *     id: __value,
  * }) }), {}));
  * ```

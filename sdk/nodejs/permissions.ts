@@ -295,7 +295,7 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * const notebookUsageById = new databricks.Permissions("notebook_usage_by_id", {
- *     notebookId: _this.objectId,
+ *     notebookId: _this.objectId.apply(x =>String(x)),
  *     accessControls: [
  *         {
  *             groupName: "users",
@@ -352,7 +352,7 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * const workspaceFileUsageById = new databricks.Permissions("workspace_file_usage_by_id", {
- *     workspaceFileId: _this.objectId,
+ *     workspaceFileId: _this.objectId.apply(x =>String(x)),
  *     accessControls: [
  *         {
  *             groupName: "users",
@@ -408,7 +408,7 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * const folderUsageById = new databricks.Permissions("folder_usage_by_id", {
- *     directoryId: _this.objectId,
+ *     directoryId: _this.objectId.apply(x =>String(x)),
  *     accessControls: [
  *         {
  *             groupName: "users",

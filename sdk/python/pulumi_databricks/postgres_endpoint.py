@@ -333,7 +333,7 @@ class PostgresEndpoint(pulumi.CustomResource):
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
                 "suspend_timeout_duration": "600s",
             },
             replace_existing=True)
@@ -351,7 +351,7 @@ class PostgresEndpoint(pulumi.CustomResource):
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
             })
         ```
 
@@ -366,8 +366,8 @@ class PostgresEndpoint(pulumi.CustomResource):
             parent=dev["name"],
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
-                "autoscaling_limit_min_cu": 1,
-                "autoscaling_limit_max_cu": 8,
+                "autoscaling_limit_min_cu": float(1),
+                "autoscaling_limit_max_cu": float(8),
                 "suspend_timeout_duration": "600s",
             })
         ```
@@ -421,7 +421,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "no_suspension": True,
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
                 "group": {
                     "min": 2,
                     "max": 2,
@@ -448,7 +448,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "no_suspension": True,
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
                 "group": {
                     "min": 2,
                     "max": 2,
@@ -471,8 +471,8 @@ class PostgresEndpoint(pulumi.CustomResource):
                 "display_name": "Production Workloads",
                 "history_retention_duration": "2592000s",
                 "default_endpoint_settings": {
-                    "autoscaling_limit_min_cu": 1,
-                    "autoscaling_limit_max_cu": 8,
+                    "autoscaling_limit_min_cu": float(1),
+                    "autoscaling_limit_max_cu": float(8),
                     "suspend_timeout_duration": "300s",
                 },
             })
@@ -487,8 +487,8 @@ class PostgresEndpoint(pulumi.CustomResource):
             parent=main.name,
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
-                "autoscaling_limit_min_cu": 1,
-                "autoscaling_limit_max_cu": 9,
+                "autoscaling_limit_min_cu": float(1),
+                "autoscaling_limit_max_cu": float(9),
                 "no_suspension": True,
                 "group": {
                     "min": 2,
@@ -503,7 +503,7 @@ class PostgresEndpoint(pulumi.CustomResource):
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 8,
+                "autoscaling_limit_max_cu": float(8),
                 "suspend_timeout_duration": "600s",
             })
         ```
@@ -559,7 +559,7 @@ class PostgresEndpoint(pulumi.CustomResource):
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
                 "suspend_timeout_duration": "600s",
             },
             replace_existing=True)
@@ -577,7 +577,7 @@ class PostgresEndpoint(pulumi.CustomResource):
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
             })
         ```
 
@@ -592,8 +592,8 @@ class PostgresEndpoint(pulumi.CustomResource):
             parent=dev["name"],
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
-                "autoscaling_limit_min_cu": 1,
-                "autoscaling_limit_max_cu": 8,
+                "autoscaling_limit_min_cu": float(1),
+                "autoscaling_limit_max_cu": float(8),
                 "suspend_timeout_duration": "600s",
             })
         ```
@@ -647,7 +647,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "no_suspension": True,
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
                 "group": {
                     "min": 2,
                     "max": 2,
@@ -674,7 +674,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "no_suspension": True,
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
                 "group": {
                     "min": 2,
                     "max": 2,
@@ -697,8 +697,8 @@ class PostgresEndpoint(pulumi.CustomResource):
                 "display_name": "Production Workloads",
                 "history_retention_duration": "2592000s",
                 "default_endpoint_settings": {
-                    "autoscaling_limit_min_cu": 1,
-                    "autoscaling_limit_max_cu": 8,
+                    "autoscaling_limit_min_cu": float(1),
+                    "autoscaling_limit_max_cu": float(8),
                     "suspend_timeout_duration": "300s",
                 },
             })
@@ -713,8 +713,8 @@ class PostgresEndpoint(pulumi.CustomResource):
             parent=main.name,
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
-                "autoscaling_limit_min_cu": 1,
-                "autoscaling_limit_max_cu": 9,
+                "autoscaling_limit_min_cu": float(1),
+                "autoscaling_limit_max_cu": float(9),
                 "no_suspension": True,
                 "group": {
                     "min": 2,
@@ -729,7 +729,7 @@ class PostgresEndpoint(pulumi.CustomResource):
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 8,
+                "autoscaling_limit_max_cu": float(8),
                 "suspend_timeout_duration": "600s",
             })
         ```

@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Index.PostgresProject("this", new()
+    ///     var @this = new Databricks.PostgresProject("this", new()
     ///     {
     ///         ProjectId = "my-project",
     ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
@@ -38,7 +38,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var dev = new Databricks.Index.PostgresBranch("dev", new()
+    ///     var dev = new Databricks.PostgresBranch("dev", new()
     ///     {
     ///         BranchId = "dev-branch",
     ///         Parent = @this.Name,
@@ -48,7 +48,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var primary = new Databricks.Index.PostgresEndpoint("primary", new()
+    ///     var primary = new Databricks.PostgresEndpoint("primary", new()
     ///     {
     ///         EndpointId = "primary",
     ///         Parent = dev.Name,
@@ -75,7 +75,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var readReplica = new Databricks.Index.PostgresEndpoint("read_replica", new()
+    ///     var readReplica = new Databricks.PostgresEndpoint("read_replica", new()
     ///     {
     ///         EndpointId = "read-replica-1",
     ///         Parent = dev.Name,
@@ -100,7 +100,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var analytics = new Databricks.Index.PostgresEndpoint("analytics", new()
+    ///     var analytics = new Databricks.PostgresEndpoint("analytics", new()
     ///     {
     ///         EndpointId = "analytics",
     ///         Parent = dev.Name,
@@ -126,7 +126,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var maintenance = new Databricks.Index.PostgresEndpoint("maintenance", new()
+    ///     var maintenance = new Databricks.PostgresEndpoint("maintenance", new()
     ///     {
     ///         EndpointId = "primary",
     ///         Parent = dev.Name,
@@ -150,7 +150,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var alwaysOn = new Databricks.Index.PostgresEndpoint("always_on", new()
+    ///     var alwaysOn = new Databricks.PostgresEndpoint("always_on", new()
     ///     {
     ///         EndpointId = "always-on",
     ///         Parent = dev.Name,
@@ -180,7 +180,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var haPrimary = new Databricks.Index.PostgresEndpoint("ha_primary", new()
+    ///     var haPrimary = new Databricks.PostgresEndpoint("ha_primary", new()
     ///     {
     ///         EndpointId = "primary",
     ///         Parent = dev.Name,
@@ -217,7 +217,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var haReadable = new Databricks.Index.PostgresEndpoint("ha_readable", new()
+    ///     var haReadable = new Databricks.PostgresEndpoint("ha_readable", new()
     ///     {
     ///         EndpointId = "primary",
     ///         Parent = dev.Name,
@@ -250,7 +250,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var prod = new Databricks.Index.PostgresProject("prod", new()
+    ///     var prod = new Databricks.PostgresProject("prod", new()
     ///     {
     ///         ProjectId = "production",
     ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
@@ -267,7 +267,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var main = new Databricks.Index.PostgresBranch("main", new()
+    ///     var main = new Databricks.PostgresBranch("main", new()
     ///     {
     ///         BranchId = "main",
     ///         Parent = prod.Name,
@@ -277,7 +277,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var primary = new Databricks.Index.PostgresEndpoint("primary", new()
+    ///     var primary = new Databricks.PostgresEndpoint("primary", new()
     ///     {
     ///         EndpointId = "primary",
     ///         Parent = main.Name,
@@ -297,7 +297,7 @@ namespace Pulumi.Databricks
     ///         ReplaceExisting = true,
     ///     });
     /// 
-    ///     var readReplica = new Databricks.Index.PostgresEndpoint("read_replica", new()
+    ///     var readReplica = new Databricks.PostgresEndpoint("read_replica", new()
     ///     {
     ///         EndpointId = "read-replica",
     ///         Parent = main.Name,

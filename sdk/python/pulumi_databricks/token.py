@@ -261,7 +261,7 @@ class Token(pulumi.CustomResource):
         this = time.Rotating("this", rotation_days=30)
         pat = databricks.Token("pat",
             comment=this.rfc3339.apply(lambda rfc3339: f"Pulumi (created: {rfc3339})"),
-            lifetime_seconds=60 * 24 * 60 * 60)
+            lifetime_seconds=int(60 * 24 * float(60) * float(60)))
         ```
 
         ## Import
@@ -309,7 +309,7 @@ class Token(pulumi.CustomResource):
         this = time.Rotating("this", rotation_days=30)
         pat = databricks.Token("pat",
             comment=this.rfc3339.apply(lambda rfc3339: f"Pulumi (created: {rfc3339})"),
-            lifetime_seconds=60 * 24 * 60 * 60)
+            lifetime_seconds=int(60 * 24 * float(60) * float(60)))
         ```
 
         ## Import

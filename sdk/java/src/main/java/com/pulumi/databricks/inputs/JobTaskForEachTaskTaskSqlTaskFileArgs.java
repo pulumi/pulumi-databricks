@@ -35,8 +35,8 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -114,8 +114,8 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -234,8 +234,8 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
          * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
          * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
          * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
-         * import java.util.List;
          * import java.util.ArrayList;
+         * import java.util.Arrays;
          * import java.util.Map;
          * import java.io.File;
          * import java.nio.file.Files;
@@ -317,8 +317,8 @@ public final class JobTaskForEachTaskTaskSqlTaskFileArgs extends com.pulumi.reso
          * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
          * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
          * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
-         * import java.util.List;
          * import java.util.ArrayList;
+         * import java.util.Arrays;
          * import java.util.Map;
          * import java.io.File;
          * import java.nio.file.Files;

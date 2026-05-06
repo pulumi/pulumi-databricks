@@ -42,7 +42,7 @@ namespace Pulumi.Databricks
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
     ///     // Id of a google_kms_crypto_key
     ///     var cmekResourceId = config.RequireObject&lt;dynamic&gt;("cmekResourceId");
-    ///     var managedServices = new Databricks.Index.MwsCustomerManagedKeys("managed_services", new()
+    ///     var managedServices = new Databricks.MwsCustomerManagedKeys("managed_services", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         GcpKeyInfo = new Databricks.Inputs.MwsCustomerManagedKeysGcpKeyInfoArgs
@@ -75,7 +75,7 @@ namespace Pulumi.Databricks
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
     ///     // Id of a google_kms_crypto_key
     ///     var cmekResourceId = config.RequireObject&lt;dynamic&gt;("cmekResourceId");
-    ///     var storage = new Databricks.Index.MwsCustomerManagedKeys("storage", new()
+    ///     var storage = new Databricks.MwsCustomerManagedKeys("storage", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         GcpKeyInfo = new Databricks.Inputs.MwsCustomerManagedKeysGcpKeyInfoArgs

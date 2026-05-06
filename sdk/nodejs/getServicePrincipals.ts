@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *     const spns = await databricks.getServicePrincipals({
  *         displayNameContains: "my-spn",
  *     });
- *     const spn = .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: await databricks.getServicePrincipal({
+ *     const spn = .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: await databricks.getServicePrincipal({
  *         applicationId: __value,
  *     }) }), {});
  *     const myMemberSpn: databricks.GroupMember[] = [];
@@ -128,7 +128,7 @@ export interface GetServicePrincipalsResult {
  *     const spns = await databricks.getServicePrincipals({
  *         displayNameContains: "my-spn",
  *     });
- *     const spn = .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: await databricks.getServicePrincipal({
+ *     const spn = .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: await databricks.getServicePrincipal({
  *         applicationId: __value,
  *     }) }), {});
  *     const myMemberSpn: databricks.GroupMember[] = [];

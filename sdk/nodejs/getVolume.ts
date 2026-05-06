@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *     catalogName: "sandbox",
  *     schemaName: "things",
  * });
- * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getVolume({
+ * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: databricks.getVolume({
  *     name: __value,
  * }) }), {}));
  * ```
@@ -116,7 +116,7 @@ export interface GetVolumeResult {
  *     catalogName: "sandbox",
  *     schemaName: "things",
  * });
- * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getVolume({
+ * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: databricks.getVolume({
  *     name: __value,
  * }) }), {}));
  * ```

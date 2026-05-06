@@ -33,8 +33,8 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterClusterMountInfoArgs;
      * import com.pulumi.databricks.inputs.ClusterClusterMountInfoNetworkFilesystemInfoArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -86,8 +86,8 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterClusterMountInfoArgs;
      * import com.pulumi.databricks.inputs.ClusterClusterMountInfoNetworkFilesystemInfoArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -196,8 +196,8 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
          * import com.pulumi.databricks.ClusterArgs;
          * import com.pulumi.databricks.inputs.ClusterClusterMountInfoArgs;
          * import com.pulumi.databricks.inputs.ClusterClusterMountInfoNetworkFilesystemInfoArgs;
-         * import java.util.List;
          * import java.util.ArrayList;
+         * import java.util.Arrays;
          * import java.util.Map;
          * import java.io.File;
          * import java.nio.file.Files;
@@ -253,8 +253,8 @@ public final class ClusterClusterMountInfoArgs extends com.pulumi.resources.Reso
          * import com.pulumi.databricks.ClusterArgs;
          * import com.pulumi.databricks.inputs.ClusterClusterMountInfoArgs;
          * import com.pulumi.databricks.inputs.ClusterClusterMountInfoNetworkFilesystemInfoArgs;
-         * import java.util.List;
          * import java.util.ArrayList;
+         * import java.util.Arrays;
          * import java.util.Map;
          * import java.io.File;
          * import java.nio.file.Files;

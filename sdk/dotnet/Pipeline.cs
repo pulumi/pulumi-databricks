@@ -24,11 +24,11 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ldpDemo = new Databricks.Index.Notebook("ldp_demo");
+    ///     var ldpDemo = new Databricks.Notebook("ldp_demo");
     /// 
-    ///     var ldpDemoRepo = new Databricks.Index.Repo("ldp_demo");
+    ///     var ldpDemoRepo = new Databricks.Repo("ldp_demo");
     /// 
-    ///     var @this = new Databricks.Index.Pipeline("this", new()
+    ///     var @this = new Databricks.Pipeline("this", new()
     ///     {
     ///         Name = "Pipeline Name",
     ///         Catalog = "main",

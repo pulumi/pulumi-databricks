@@ -24,9 +24,9 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var me = Databricks.Index.GetCurrentUser.Invoke();
+    ///     var me = Databricks.GetCurrentUser.Invoke();
     /// 
-    ///     var @this = new Databricks.Index.SqlEndpoint("this", new()
+    ///     var @this = new Databricks.SqlEndpoint("this", new()
     ///     {
     ///         Name = $"Endpoint of {me.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)}",
     ///         ClusterSize = "Small",

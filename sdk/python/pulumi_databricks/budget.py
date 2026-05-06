@@ -270,7 +270,7 @@ class Budget(pulumi.CustomResource):
             filter={
                 "workspace_id": {
                     "operator": "IN",
-                    "values": [1234567890098765],
+                    "values": [int(1234567890098765)],
                 },
                 "tags": [
                     {
@@ -338,7 +338,7 @@ class Budget(pulumi.CustomResource):
             filter={
                 "workspace_id": {
                     "operator": "IN",
-                    "values": [1234567890098765],
+                    "values": [int(1234567890098765)],
                 },
                 "tags": [
                     {

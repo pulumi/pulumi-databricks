@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * const all = databricks.getSchemas({
  *     catalogName: "sandbox",
  * });
- * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getSchema({
+ * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: databricks.getSchema({
  *     name: __value,
  * }) }), {}));
  * ```
@@ -113,7 +113,7 @@ export interface GetSchemaResult {
  * const all = databricks.getSchemas({
  *     catalogName: "sandbox",
  * });
- * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getSchema({
+ * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: databricks.getSchema({
  *     name: __value,
  * }) }), {}));
  * ```

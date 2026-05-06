@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.Index.GetAwsUnityCatalogPolicy.Invoke(new()
+        ///     var @this = Databricks.GetAwsUnityCatalogPolicy.Invoke(new()
         ///     {
         ///         AwsAccountId = awsAccountId,
         ///         BucketName = "databricks-bucket",
@@ -37,26 +37,26 @@ namespace Pulumi.Databricks
         ///         KmsName = "arn:aws:kms:us-west-2:111122223333:key/databricks-kms",
         ///     });
         /// 
-        ///     var thisGetAwsUnityCatalogAssumeRolePolicy = Databricks.Index.GetAwsUnityCatalogAssumeRolePolicy.Invoke(new()
+        ///     var thisGetAwsUnityCatalogAssumeRolePolicy = Databricks.GetAwsUnityCatalogAssumeRolePolicy.Invoke(new()
         ///     {
         ///         AwsAccountId = awsAccountId,
         ///         RoleName = $"{prefix}-uc-access",
         ///         ExternalId = "12345",
         ///     });
         /// 
-        ///     var unityMetastore = new Aws.Index.IamPolicy("unity_metastore", new()
+        ///     var unityMetastore = new Aws.IamPolicy("unity_metastore", new()
         ///     {
         ///         Name = $"{prefix}-unity-catalog-metastore-access-iam-policy",
         ///         Policy = @this.Apply(getAwsUnityCatalogPolicyResult =&gt; getAwsUnityCatalogPolicyResult.Json),
         ///     });
         /// 
-        ///     var metastoreDataAccess = new Aws.Index.IamRole("metastore_data_access", new()
+        ///     var metastoreDataAccess = new Aws.IamRole("metastore_data_access", new()
         ///     {
         ///         Name = $"{prefix}-uc-access",
         ///         AssumeRolePolicy = thisGetAwsUnityCatalogAssumeRolePolicy.Apply(getAwsUnityCatalogAssumeRolePolicyResult =&gt; getAwsUnityCatalogAssumeRolePolicyResult.Json),
         ///     });
         /// 
-        ///     var metastoreDataAccessIamRolePolicyAttachment = new Aws.Index.IamRolePolicyAttachment("metastore_data_access", new()
+        ///     var metastoreDataAccessIamRolePolicyAttachment = new Aws.IamRolePolicyAttachment("metastore_data_access", new()
         ///     {
         ///         Role = metastoreDataAccess.Name,
         ///         PolicyArn = unityMetastore.Arn,
@@ -86,7 +86,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.Index.GetAwsUnityCatalogPolicy.Invoke(new()
+        ///     var @this = Databricks.GetAwsUnityCatalogPolicy.Invoke(new()
         ///     {
         ///         AwsAccountId = awsAccountId,
         ///         BucketName = "databricks-bucket",
@@ -94,26 +94,26 @@ namespace Pulumi.Databricks
         ///         KmsName = "arn:aws:kms:us-west-2:111122223333:key/databricks-kms",
         ///     });
         /// 
-        ///     var thisGetAwsUnityCatalogAssumeRolePolicy = Databricks.Index.GetAwsUnityCatalogAssumeRolePolicy.Invoke(new()
+        ///     var thisGetAwsUnityCatalogAssumeRolePolicy = Databricks.GetAwsUnityCatalogAssumeRolePolicy.Invoke(new()
         ///     {
         ///         AwsAccountId = awsAccountId,
         ///         RoleName = $"{prefix}-uc-access",
         ///         ExternalId = "12345",
         ///     });
         /// 
-        ///     var unityMetastore = new Aws.Index.IamPolicy("unity_metastore", new()
+        ///     var unityMetastore = new Aws.IamPolicy("unity_metastore", new()
         ///     {
         ///         Name = $"{prefix}-unity-catalog-metastore-access-iam-policy",
         ///         Policy = @this.Apply(getAwsUnityCatalogPolicyResult =&gt; getAwsUnityCatalogPolicyResult.Json),
         ///     });
         /// 
-        ///     var metastoreDataAccess = new Aws.Index.IamRole("metastore_data_access", new()
+        ///     var metastoreDataAccess = new Aws.IamRole("metastore_data_access", new()
         ///     {
         ///         Name = $"{prefix}-uc-access",
         ///         AssumeRolePolicy = thisGetAwsUnityCatalogAssumeRolePolicy.Apply(getAwsUnityCatalogAssumeRolePolicyResult =&gt; getAwsUnityCatalogAssumeRolePolicyResult.Json),
         ///     });
         /// 
-        ///     var metastoreDataAccessIamRolePolicyAttachment = new Aws.Index.IamRolePolicyAttachment("metastore_data_access", new()
+        ///     var metastoreDataAccessIamRolePolicyAttachment = new Aws.IamRolePolicyAttachment("metastore_data_access", new()
         ///     {
         ///         Role = metastoreDataAccess.Name,
         ///         PolicyArn = unityMetastore.Arn,
@@ -143,7 +143,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.Index.GetAwsUnityCatalogPolicy.Invoke(new()
+        ///     var @this = Databricks.GetAwsUnityCatalogPolicy.Invoke(new()
         ///     {
         ///         AwsAccountId = awsAccountId,
         ///         BucketName = "databricks-bucket",
@@ -151,26 +151,26 @@ namespace Pulumi.Databricks
         ///         KmsName = "arn:aws:kms:us-west-2:111122223333:key/databricks-kms",
         ///     });
         /// 
-        ///     var thisGetAwsUnityCatalogAssumeRolePolicy = Databricks.Index.GetAwsUnityCatalogAssumeRolePolicy.Invoke(new()
+        ///     var thisGetAwsUnityCatalogAssumeRolePolicy = Databricks.GetAwsUnityCatalogAssumeRolePolicy.Invoke(new()
         ///     {
         ///         AwsAccountId = awsAccountId,
         ///         RoleName = $"{prefix}-uc-access",
         ///         ExternalId = "12345",
         ///     });
         /// 
-        ///     var unityMetastore = new Aws.Index.IamPolicy("unity_metastore", new()
+        ///     var unityMetastore = new Aws.IamPolicy("unity_metastore", new()
         ///     {
         ///         Name = $"{prefix}-unity-catalog-metastore-access-iam-policy",
         ///         Policy = @this.Apply(getAwsUnityCatalogPolicyResult =&gt; getAwsUnityCatalogPolicyResult.Json),
         ///     });
         /// 
-        ///     var metastoreDataAccess = new Aws.Index.IamRole("metastore_data_access", new()
+        ///     var metastoreDataAccess = new Aws.IamRole("metastore_data_access", new()
         ///     {
         ///         Name = $"{prefix}-uc-access",
         ///         AssumeRolePolicy = thisGetAwsUnityCatalogAssumeRolePolicy.Apply(getAwsUnityCatalogAssumeRolePolicyResult =&gt; getAwsUnityCatalogAssumeRolePolicyResult.Json),
         ///     });
         /// 
-        ///     var metastoreDataAccessIamRolePolicyAttachment = new Aws.Index.IamRolePolicyAttachment("metastore_data_access", new()
+        ///     var metastoreDataAccessIamRolePolicyAttachment = new Aws.IamRolePolicyAttachment("metastore_data_access", new()
         ///     {
         ///         Role = metastoreDataAccess.Name,
         ///         PolicyArn = unityMetastore.Arn,

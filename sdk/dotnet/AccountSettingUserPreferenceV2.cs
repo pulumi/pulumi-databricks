@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var themeSetting = new Databricks.Index.AccountUserSettingV2("theme_setting", new()
+    ///     var themeSetting = new Databricks.AccountUserSettingV2("theme_setting", new()
     ///     {
     ///         UserId = "&lt;user-id&gt;",
     ///         Name = "enableDarkMode",
@@ -51,7 +51,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var enableLineNumbers = new Databricks.Index.AccountUserSettingV2("enable_line_numbers", new()
+    ///     var enableLineNumbers = new Databricks.AccountUserSettingV2("enable_line_numbers", new()
     ///     {
     ///         UserId = "&lt;user-id&gt;",
     ///         Name = "enableLineNumbers",

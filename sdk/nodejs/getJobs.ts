@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * export = async () => {
  *     const _this = await databricks.getJobs({});
  *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
- *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
+ *     for (const range of Object.entries(_this.ids).sort().map(([k, v]) => ({key: k, value: v}))) {
  *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyone_can_view_all_jobs-${range.key}`, {
  *             jobId: range.value,
  *             accessControls: [{
@@ -59,7 +59,7 @@ import * as utilities from "./utilities";
  *         key: "id",
  *     });
  *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
- *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
+ *     for (const range of Object.entries(_this.ids).sort().map(([k, v]) => ({key: k, value: v}))) {
  *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyone_can_view_all_jobs-${range.key}`, {
  *             jobId: range.value,
  *             accessControls: [{
@@ -144,7 +144,7 @@ export interface GetJobsResult {
  * export = async () => {
  *     const _this = await databricks.getJobs({});
  *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
- *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
+ *     for (const range of Object.entries(_this.ids).sort().map(([k, v]) => ({key: k, value: v}))) {
  *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyone_can_view_all_jobs-${range.key}`, {
  *             jobId: range.value,
  *             accessControls: [{
@@ -179,7 +179,7 @@ export interface GetJobsResult {
  *         key: "id",
  *     });
  *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
- *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
+ *     for (const range of Object.entries(_this.ids).sort().map(([k, v]) => ({key: k, value: v}))) {
  *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyone_can_view_all_jobs-${range.key}`, {
  *             jobId: range.value,
  *             accessControls: [{
