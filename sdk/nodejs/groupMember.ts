@@ -132,16 +132,16 @@ export interface GroupMemberState {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * This is the `id` attribute (SCIM ID) of the group resource.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * This is the `id` attribute (SCIM ID) of the group, service principal, or user.
      */
-    memberId?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.GroupMemberProviderConfig>;
+    memberId?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.GroupMemberProviderConfig | undefined>;
 }
 
 /**
@@ -151,7 +151,7 @@ export interface GroupMemberArgs {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * This is the `id` attribute (SCIM ID) of the group resource.
      */
@@ -160,5 +160,5 @@ export interface GroupMemberArgs {
      * This is the `id` attribute (SCIM ID) of the group, service principal, or user.
      */
     memberId: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.GroupMemberProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.GroupMemberProviderConfig | undefined>;
 }

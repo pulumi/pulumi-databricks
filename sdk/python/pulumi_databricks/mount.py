@@ -21,18 +21,18 @@ __all__ = ['MountArgs', 'Mount']
 @pulumi.input_type
 class MountArgs:
     def __init__(__self__, *,
-                 abfs: Optional[pulumi.Input['MountAbfsArgs']] = None,
-                 adl: Optional[pulumi.Input['MountAdlArgs']] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 gs: Optional[pulumi.Input['MountGsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['MountProviderConfigArgs']] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3: Optional[pulumi.Input['MountS3Args']] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 wasb: Optional[pulumi.Input['MountWasbArgs']] = None):
+                 abfs: pulumi.Input[Optional['MountAbfsArgs']] = None,
+                 adl: pulumi.Input[Optional['MountAdlArgs']] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 gs: pulumi.Input[Optional['MountGsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['MountProviderConfigArgs']] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3: pulumi.Input[Optional['MountS3Args']] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 wasb: pulumi.Input[Optional['MountWasbArgs']] = None):
         """
         The set of arguments for constructing a Mount resource.
         """
@@ -63,129 +63,129 @@ class MountArgs:
 
     @_builtins.property
     @pulumi.getter
-    def abfs(self) -> Optional[pulumi.Input['MountAbfsArgs']]:
+    def abfs(self) -> pulumi.Input[Optional['MountAbfsArgs']]:
         return pulumi.get(self, "abfs")
 
     @abfs.setter
-    def abfs(self, value: Optional[pulumi.Input['MountAbfsArgs']]):
+    def abfs(self, value: pulumi.Input[Optional['MountAbfsArgs']]):
         pulumi.set(self, "abfs", value)
 
     @_builtins.property
     @pulumi.getter
-    def adl(self) -> Optional[pulumi.Input['MountAdlArgs']]:
+    def adl(self) -> pulumi.Input[Optional['MountAdlArgs']]:
         return pulumi.get(self, "adl")
 
     @adl.setter
-    def adl(self, value: Optional[pulumi.Input['MountAdlArgs']]):
+    def adl(self, value: pulumi.Input[Optional['MountAdlArgs']]):
         pulumi.set(self, "adl", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionType")
-    def encryption_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "encryption_type")
 
     @encryption_type.setter
-    def encryption_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_type", value)
 
     @_builtins.property
     @pulumi.getter(name="extraConfigs")
-    def extra_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def extra_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "extra_configs")
 
     @extra_configs.setter
-    def extra_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def extra_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "extra_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def gs(self) -> Optional[pulumi.Input['MountGsArgs']]:
+    def gs(self) -> pulumi.Input[Optional['MountGsArgs']]:
         return pulumi.get(self, "gs")
 
     @gs.setter
-    def gs(self, value: Optional[pulumi.Input['MountGsArgs']]):
+    def gs(self, value: pulumi.Input[Optional['MountGsArgs']]):
         pulumi.set(self, "gs", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['MountProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['MountProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['MountProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['MountProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def s3(self) -> Optional[pulumi.Input['MountS3Args']]:
+    def s3(self) -> pulumi.Input[Optional['MountS3Args']]:
         return pulumi.get(self, "s3")
 
     @s3.setter
-    def s3(self, value: Optional[pulumi.Input['MountS3Args']]):
+    def s3(self, value: pulumi.Input[Optional['MountS3Args']]):
         pulumi.set(self, "s3", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def wasb(self) -> Optional[pulumi.Input['MountWasbArgs']]:
+    def wasb(self) -> pulumi.Input[Optional['MountWasbArgs']]:
         return pulumi.get(self, "wasb")
 
     @wasb.setter
-    def wasb(self, value: Optional[pulumi.Input['MountWasbArgs']]):
+    def wasb(self, value: pulumi.Input[Optional['MountWasbArgs']]):
         pulumi.set(self, "wasb", value)
 
 
 @pulumi.input_type
 class _MountState:
     def __init__(__self__, *,
-                 abfs: Optional[pulumi.Input['MountAbfsArgs']] = None,
-                 adl: Optional[pulumi.Input['MountAdlArgs']] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 gs: Optional[pulumi.Input['MountGsArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['MountProviderConfigArgs']] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3: Optional[pulumi.Input['MountS3Args']] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 wasb: Optional[pulumi.Input['MountWasbArgs']] = None):
+                 abfs: pulumi.Input[Optional['MountAbfsArgs']] = None,
+                 adl: pulumi.Input[Optional['MountAdlArgs']] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 gs: pulumi.Input[Optional['MountGsArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['MountProviderConfigArgs']] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3: pulumi.Input[Optional['MountS3Args']] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 wasb: pulumi.Input[Optional['MountWasbArgs']] = None):
         """
         Input properties used for looking up and filtering Mount resources.
 
@@ -220,122 +220,122 @@ class _MountState:
 
     @_builtins.property
     @pulumi.getter
-    def abfs(self) -> Optional[pulumi.Input['MountAbfsArgs']]:
+    def abfs(self) -> pulumi.Input[Optional['MountAbfsArgs']]:
         return pulumi.get(self, "abfs")
 
     @abfs.setter
-    def abfs(self, value: Optional[pulumi.Input['MountAbfsArgs']]):
+    def abfs(self, value: pulumi.Input[Optional['MountAbfsArgs']]):
         pulumi.set(self, "abfs", value)
 
     @_builtins.property
     @pulumi.getter
-    def adl(self) -> Optional[pulumi.Input['MountAdlArgs']]:
+    def adl(self) -> pulumi.Input[Optional['MountAdlArgs']]:
         return pulumi.get(self, "adl")
 
     @adl.setter
-    def adl(self, value: Optional[pulumi.Input['MountAdlArgs']]):
+    def adl(self, value: pulumi.Input[Optional['MountAdlArgs']]):
         pulumi.set(self, "adl", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionType")
-    def encryption_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "encryption_type")
 
     @encryption_type.setter
-    def encryption_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_type", value)
 
     @_builtins.property
     @pulumi.getter(name="extraConfigs")
-    def extra_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def extra_configs(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "extra_configs")
 
     @extra_configs.setter
-    def extra_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def extra_configs(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "extra_configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def gs(self) -> Optional[pulumi.Input['MountGsArgs']]:
+    def gs(self) -> pulumi.Input[Optional['MountGsArgs']]:
         return pulumi.get(self, "gs")
 
     @gs.setter
-    def gs(self, value: Optional[pulumi.Input['MountGsArgs']]):
+    def gs(self, value: pulumi.Input[Optional['MountGsArgs']]):
         pulumi.set(self, "gs", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['MountProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['MountProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['MountProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['MountProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def s3(self) -> Optional[pulumi.Input['MountS3Args']]:
+    def s3(self) -> pulumi.Input[Optional['MountS3Args']]:
         return pulumi.get(self, "s3")
 
     @s3.setter
-    def s3(self, value: Optional[pulumi.Input['MountS3Args']]):
+    def s3(self, value: pulumi.Input[Optional['MountS3Args']]):
         pulumi.set(self, "s3", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) HDFS-compatible url
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def wasb(self) -> Optional[pulumi.Input['MountWasbArgs']]:
+    def wasb(self) -> pulumi.Input[Optional['MountWasbArgs']]:
         return pulumi.get(self, "wasb")
 
     @wasb.setter
-    def wasb(self, value: Optional[pulumi.Input['MountWasbArgs']]):
+    def wasb(self, value: pulumi.Input[Optional['MountWasbArgs']]):
         pulumi.set(self, "wasb", value)
 
 
@@ -345,18 +345,18 @@ class Mount(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 abfs: Optional[pulumi.Input[Union['MountAbfsArgs', 'MountAbfsArgsDict']]] = None,
-                 adl: Optional[pulumi.Input[Union['MountAdlArgs', 'MountAdlArgsDict']]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 gs: Optional[pulumi.Input[Union['MountGsArgs', 'MountGsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['MountProviderConfigArgs', 'MountProviderConfigArgsDict']]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3: Optional[pulumi.Input[Union['MountS3Args', 'MountS3ArgsDict']]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 wasb: Optional[pulumi.Input[Union['MountWasbArgs', 'MountWasbArgsDict']]] = None,
+                 abfs: pulumi.Input[Optional[Union['MountAbfsArgs', 'MountAbfsArgsDict']]] = None,
+                 adl: pulumi.Input[Optional[Union['MountAdlArgs', 'MountAdlArgsDict']]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 gs: pulumi.Input[Optional[Union['MountGsArgs', 'MountGsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MountProviderConfigArgs', 'MountProviderConfigArgsDict']]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3: pulumi.Input[Optional[Union['MountS3Args', 'MountS3ArgsDict']]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 wasb: pulumi.Input[Optional[Union['MountWasbArgs', 'MountWasbArgsDict']]] = None,
                  __props__=None):
         """
         > Please switch to databricks_volume. DBFS mounts are deprecated.
@@ -1016,18 +1016,18 @@ class Mount(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 abfs: Optional[pulumi.Input[Union['MountAbfsArgs', 'MountAbfsArgsDict']]] = None,
-                 adl: Optional[pulumi.Input[Union['MountAdlArgs', 'MountAdlArgsDict']]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 gs: Optional[pulumi.Input[Union['MountGsArgs', 'MountGsArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['MountProviderConfigArgs', 'MountProviderConfigArgsDict']]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 s3: Optional[pulumi.Input[Union['MountS3Args', 'MountS3ArgsDict']]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 wasb: Optional[pulumi.Input[Union['MountWasbArgs', 'MountWasbArgsDict']]] = None,
+                 abfs: pulumi.Input[Optional[Union['MountAbfsArgs', 'MountAbfsArgsDict']]] = None,
+                 adl: pulumi.Input[Optional[Union['MountAdlArgs', 'MountAdlArgsDict']]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 gs: pulumi.Input[Optional[Union['MountGsArgs', 'MountGsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MountProviderConfigArgs', 'MountProviderConfigArgsDict']]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 s3: pulumi.Input[Optional[Union['MountS3Args', 'MountS3ArgsDict']]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 wasb: pulumi.Input[Optional[Union['MountWasbArgs', 'MountWasbArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1060,19 +1060,19 @@ class Mount(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            abfs: Optional[pulumi.Input[Union['MountAbfsArgs', 'MountAbfsArgsDict']]] = None,
-            adl: Optional[pulumi.Input[Union['MountAdlArgs', 'MountAdlArgsDict']]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            encryption_type: Optional[pulumi.Input[_builtins.str]] = None,
-            extra_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            gs: Optional[pulumi.Input[Union['MountGsArgs', 'MountGsArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['MountProviderConfigArgs', 'MountProviderConfigArgsDict']]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            s3: Optional[pulumi.Input[Union['MountS3Args', 'MountS3ArgsDict']]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None,
-            uri: Optional[pulumi.Input[_builtins.str]] = None,
-            wasb: Optional[pulumi.Input[Union['MountWasbArgs', 'MountWasbArgsDict']]] = None) -> 'Mount':
+            abfs: pulumi.Input[Optional[Union['MountAbfsArgs', 'MountAbfsArgsDict']]] = None,
+            adl: pulumi.Input[Optional[Union['MountAdlArgs', 'MountAdlArgsDict']]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+            extra_configs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            gs: pulumi.Input[Optional[Union['MountGsArgs', 'MountGsArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['MountProviderConfigArgs', 'MountProviderConfigArgsDict']]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            s3: pulumi.Input[Optional[Union['MountS3Args', 'MountS3ArgsDict']]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            uri: pulumi.Input[Optional[_builtins.str]] = None,
+            wasb: pulumi.Input[Optional[Union['MountWasbArgs', 'MountWasbArgsDict']]] = None) -> 'Mount':
         """
         Get an existing Mount resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

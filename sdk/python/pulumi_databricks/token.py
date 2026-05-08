@@ -21,12 +21,12 @@ __all__ = ['TokenArgs', 'Token']
 @pulumi.input_type
 class TokenArgs:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 expiry_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 lifetime_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 provider_config: Optional[pulumi.Input['TokenProviderConfigArgs']] = None,
-                 token_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 expiry_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 lifetime_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 provider_config: pulumi.Input[Optional['TokenProviderConfigArgs']] = None,
+                 token_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Token resource.
 
@@ -49,78 +49,78 @@ class TokenArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) Comment that will appear on the user's settings page for this token.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="expiryTime")
-    def expiry_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiry_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "expiry_time")
 
     @expiry_time.setter
-    def expiry_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiry_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiry_time", value)
 
     @_builtins.property
     @pulumi.getter(name="lifetimeSeconds")
-    def lifetime_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lifetime_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
         """
         return pulumi.get(self, "lifetime_seconds")
 
     @lifetime_seconds.setter
-    def lifetime_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lifetime_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lifetime_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['TokenProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['TokenProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['TokenProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['TokenProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenId")
-    def token_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "token_id")
 
     @token_id.setter
-    def token_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_id", value)
 
 
 @pulumi.input_type
 class _TokenState:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 expiry_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 lifetime_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 provider_config: Optional[pulumi.Input['TokenProviderConfigArgs']] = None,
-                 token_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 expiry_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 lifetime_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 provider_config: pulumi.Input[Optional['TokenProviderConfigArgs']] = None,
+                 token_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Token resources.
 
@@ -146,77 +146,77 @@ class _TokenState:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) Comment that will appear on the user's settings page for this token.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="expiryTime")
-    def expiry_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiry_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "expiry_time")
 
     @expiry_time.setter
-    def expiry_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiry_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiry_time", value)
 
     @_builtins.property
     @pulumi.getter(name="lifetimeSeconds")
-    def lifetime_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lifetime_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
         """
         return pulumi.get(self, "lifetime_seconds")
 
     @lifetime_seconds.setter
-    def lifetime_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lifetime_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lifetime_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['TokenProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['TokenProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['TokenProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['TokenProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenId")
-    def token_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "token_id")
 
     @token_id.setter
-    def token_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenValue")
-    def token_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **Sensitive** value of the newly-created token.
         """
         return pulumi.get(self, "token_value")
 
     @token_value.setter
-    def token_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_value", value)
 
 
@@ -226,12 +226,12 @@ class Token(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 expiry_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 lifetime_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 provider_config: Optional[pulumi.Input[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict']]] = None,
-                 token_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 expiry_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 lifetime_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 provider_config: pulumi.Input[Optional[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict']]] = None,
+                 token_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource creates [Personal Access Tokens](https://docs.databricks.com/sql/user/security/personal-access-tokens.html) for the same user that is authenticated with the provider. Most likely you should use OboToken to create [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a ServicePrincipal in Databricks workspaces on AWS. Databricks workspaces on other clouds use their own native OAuth token flows.
@@ -261,7 +261,7 @@ class Token(pulumi.CustomResource):
         this = time.Rotating("this", rotation_days=30)
         pat = databricks.Token("pat",
             comment=this.rfc3339.apply(lambda rfc3339: f"Pulumi (created: {rfc3339})"),
-            lifetime_seconds=60 * 24 * 60 * 60)
+            lifetime_seconds=int(60 * 24 * float(60) * float(60)))
         ```
 
         ## Import
@@ -309,7 +309,7 @@ class Token(pulumi.CustomResource):
         this = time.Rotating("this", rotation_days=30)
         pat = databricks.Token("pat",
             comment=this.rfc3339.apply(lambda rfc3339: f"Pulumi (created: {rfc3339})"),
-            lifetime_seconds=60 * 24 * 60 * 60)
+            lifetime_seconds=int(60 * 24 * float(60) * float(60)))
         ```
 
         ## Import
@@ -332,12 +332,12 @@ class Token(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 expiry_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 lifetime_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 provider_config: Optional[pulumi.Input[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict']]] = None,
-                 token_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 expiry_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 lifetime_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 provider_config: pulumi.Input[Optional[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict']]] = None,
+                 token_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -366,13 +366,13 @@ class Token(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-            expiry_time: Optional[pulumi.Input[_builtins.int]] = None,
-            lifetime_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            provider_config: Optional[pulumi.Input[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict']]] = None,
-            token_id: Optional[pulumi.Input[_builtins.str]] = None,
-            token_value: Optional[pulumi.Input[_builtins.str]] = None) -> 'Token':
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            expiry_time: pulumi.Input[Optional[_builtins.int]] = None,
+            lifetime_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            provider_config: pulumi.Input[Optional[Union['TokenProviderConfigArgs', 'TokenProviderConfigArgsDict']]] = None,
+            token_id: pulumi.Input[Optional[_builtins.str]] = None,
+            token_value: pulumi.Input[Optional[_builtins.str]] = None) -> 'Token':
         """
         Get an existing Token resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

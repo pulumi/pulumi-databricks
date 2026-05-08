@@ -170,8 +170,8 @@ def get_online_store(name: Optional[_builtins.str] = None,
         read_replica_count=pulumi.get(__ret__, 'read_replica_count'),
         state=pulumi.get(__ret__, 'state'),
         usage_policy_id=pulumi.get(__ret__, 'usage_policy_id'))
-def get_online_store_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                            provider_config: Optional[pulumi.Input[Optional[Union['GetOnlineStoreProviderConfigArgs', 'GetOnlineStoreProviderConfigArgsDict']]]] = None,
+def get_online_store_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                            provider_config: pulumi.Input[Optional[Optional[Union['GetOnlineStoreProviderConfigArgs', 'GetOnlineStoreProviderConfigArgsDict']]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOnlineStoreResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)

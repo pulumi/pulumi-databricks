@@ -223,7 +223,7 @@ export interface PostgresDatabaseState {
     /**
      * (string) - A timestamp indicating when the database was created
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the Database, which will become the final component of
      * the database's resource name.
@@ -234,33 +234,33 @@ export interface PostgresDatabaseState {
      *
      * If databaseId is not specified in the request, it is generated automatically
      */
-    databaseId?: pulumi.Input<string>;
+    databaseId?: pulumi.Input<string | undefined>;
     /**
      * (string) - The resource name of the database.
      * Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The branch containing this database.
      * Format: projects/{project_id}/branches/{branch_id}
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.PostgresDatabaseProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PostgresDatabaseProviderConfig | undefined>;
     /**
      * The desired state of the Database
      */
-    spec?: pulumi.Input<inputs.PostgresDatabaseSpec>;
+    spec?: pulumi.Input<inputs.PostgresDatabaseSpec | undefined>;
     /**
      * (DatabaseDatabaseStatus) - The observed state of the Database
      */
-    status?: pulumi.Input<inputs.PostgresDatabaseStatus>;
+    status?: pulumi.Input<inputs.PostgresDatabaseStatus | undefined>;
     /**
      * (string) - A timestamp indicating when the database was last updated
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -277,7 +277,7 @@ export interface PostgresDatabaseArgs {
      *
      * If databaseId is not specified in the request, it is generated automatically
      */
-    databaseId?: pulumi.Input<string>;
+    databaseId?: pulumi.Input<string | undefined>;
     /**
      * The branch containing this database.
      * Format: projects/{project_id}/branches/{branch_id}
@@ -286,9 +286,9 @@ export interface PostgresDatabaseArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.PostgresDatabaseProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PostgresDatabaseProviderConfig | undefined>;
     /**
      * The desired state of the Database
      */
-    spec?: pulumi.Input<inputs.PostgresDatabaseSpec>;
+    spec?: pulumi.Input<inputs.PostgresDatabaseSpec | undefined>;
 }

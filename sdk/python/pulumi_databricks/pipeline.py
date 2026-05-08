@@ -21,47 +21,47 @@ __all__ = ['PipelineArgs', 'Pipeline']
 @pulumi.input_type
 class PipelineArgs:
     def __init__(__self__, *,
-                 allow_duplicate_names: Optional[pulumi.Input[_builtins.bool]] = None,
-                 budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 cause: Optional[pulumi.Input[_builtins.str]] = None,
-                 channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]] = None,
-                 configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 continuous: Optional[pulumi.Input[_builtins.bool]] = None,
-                 creator_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment: Optional[pulumi.Input['PipelineDeploymentArgs']] = None,
-                 development: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input['PipelineEnvironmentArgs']] = None,
-                 event_log: Optional[pulumi.Input['PipelineEventLogArgs']] = None,
-                 expected_last_modified: Optional[pulumi.Input[_builtins.int]] = None,
-                 filters: Optional[pulumi.Input['PipelineFiltersArgs']] = None,
-                 gateway_definition: Optional[pulumi.Input['PipelineGatewayDefinitionArgs']] = None,
-                 health: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingestion_definition: Optional[pulumi.Input['PipelineIngestionDefinitionArgs']] = None,
-                 last_modified: Optional[pulumi.Input[_builtins.int]] = None,
-                 latest_updates: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLatestUpdateArgs']]]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
-                 photon: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipeline_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['PipelineProviderConfigArgs']] = None,
-                 restart_window: Optional[pulumi.Input['PipelineRestartWindowArgs']] = None,
-                 root_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as: Optional[pulumi.Input['PipelineRunAsArgs']] = None,
-                 run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 serverless: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger: Optional[pulumi.Input['PipelineTriggerArgs']] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None,
+                 budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 cause: pulumi.Input[Optional[_builtins.str]] = None,
+                 channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 clusters: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineClusterArgs']]]] = None,
+                 configuration: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 continuous: pulumi.Input[Optional[_builtins.bool]] = None,
+                 creator_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment: pulumi.Input[Optional['PipelineDeploymentArgs']] = None,
+                 development: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional['PipelineEnvironmentArgs']] = None,
+                 event_log: pulumi.Input[Optional['PipelineEventLogArgs']] = None,
+                 expected_last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+                 filters: pulumi.Input[Optional['PipelineFiltersArgs']] = None,
+                 gateway_definition: pulumi.Input[Optional['PipelineGatewayDefinitionArgs']] = None,
+                 health: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingestion_definition: pulumi.Input[Optional['PipelineIngestionDefinitionArgs']] = None,
+                 last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+                 latest_updates: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineLatestUpdateArgs']]]] = None,
+                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineLibraryArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
+                 photon: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['PipelineProviderConfigArgs']] = None,
+                 restart_window: pulumi.Input[Optional['PipelineRestartWindowArgs']] = None,
+                 root_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as: pulumi.Input[Optional['PipelineRunAsArgs']] = None,
+                 run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger: pulumi.Input[Optional['PipelineTriggerArgs']] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Pipeline resource.
 
@@ -176,493 +176,493 @@ class PipelineArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowDuplicateNames")
-    def allow_duplicate_names(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_duplicate_names(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
         """
         return pulumi.get(self, "allow_duplicate_names")
 
     @allow_duplicate_names.setter
-    def allow_duplicate_names(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_duplicate_names(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_duplicate_names", value)
 
     @_builtins.property
     @pulumi.getter(name="budgetPolicyId")
-    def budget_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def budget_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
         """
         return pulumi.get(self, "budget_policy_id")
 
     @budget_policy_id.setter
-    def budget_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def budget_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "budget_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def catalog(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def catalog(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
         """
         return pulumi.get(self, "catalog")
 
     @catalog.setter
-    def catalog(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def catalog(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog", value)
 
     @_builtins.property
     @pulumi.getter
-    def cause(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cause(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cause")
 
     @cause.setter
-    def cause(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cause(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cause", value)
 
     @_builtins.property
     @pulumi.getter
-    def channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         """
         return pulumi.get(self, "channel")
 
     @channel.setter
-    def channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "channel", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]]:
+    def clusters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PipelineClusterArgs']]]]:
         """
         blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         """
         return pulumi.get(self, "clusters")
 
     @clusters.setter
-    def clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]]):
+    def clusters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineClusterArgs']]]]):
         pulumi.set(self, "clusters", value)
 
     @_builtins.property
     @pulumi.getter
-    def configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def configuration(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
-    def configuration(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def configuration(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def continuous(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def continuous(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A flag indicating whether to run the pipeline continuously. The default value is `false`.
         """
         return pulumi.get(self, "continuous")
 
     @continuous.setter
-    def continuous(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def continuous(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "continuous", value)
 
     @_builtins.property
     @pulumi.getter(name="creatorUserName")
-    def creator_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "creator_user_name")
 
     @creator_user_name.setter
-    def creator_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator_user_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def deployment(self) -> Optional[pulumi.Input['PipelineDeploymentArgs']]:
+    def deployment(self) -> pulumi.Input[Optional['PipelineDeploymentArgs']]:
         """
         Deployment type of this pipeline. Supports following attributes:
         """
         return pulumi.get(self, "deployment")
 
     @deployment.setter
-    def deployment(self, value: Optional[pulumi.Input['PipelineDeploymentArgs']]):
+    def deployment(self, value: pulumi.Input[Optional['PipelineDeploymentArgs']]):
         pulumi.set(self, "deployment", value)
 
     @_builtins.property
     @pulumi.getter
-    def development(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def development(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A flag indicating whether to run the pipeline in development mode. The default value is `false`.
         """
         return pulumi.get(self, "development")
 
     @development.setter
-    def development(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def development(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "development", value)
 
     @_builtins.property
     @pulumi.getter
-    def edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
         """
         return pulumi.get(self, "edition")
 
     @edition.setter
-    def edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edition", value)
 
     @_builtins.property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input['PipelineEnvironmentArgs']]:
+    def environment(self) -> pulumi.Input[Optional['PipelineEnvironmentArgs']]:
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input['PipelineEnvironmentArgs']]):
+    def environment(self, value: pulumi.Input[Optional['PipelineEnvironmentArgs']]):
         pulumi.set(self, "environment", value)
 
     @_builtins.property
     @pulumi.getter(name="eventLog")
-    def event_log(self) -> Optional[pulumi.Input['PipelineEventLogArgs']]:
+    def event_log(self) -> pulumi.Input[Optional['PipelineEventLogArgs']]:
         """
         an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
         """
         return pulumi.get(self, "event_log")
 
     @event_log.setter
-    def event_log(self, value: Optional[pulumi.Input['PipelineEventLogArgs']]):
+    def event_log(self, value: pulumi.Input[Optional['PipelineEventLogArgs']]):
         pulumi.set(self, "event_log", value)
 
     @_builtins.property
     @pulumi.getter(name="expectedLastModified")
-    def expected_last_modified(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expected_last_modified(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "expected_last_modified")
 
     @expected_last_modified.setter
-    def expected_last_modified(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expected_last_modified(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expected_last_modified", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input['PipelineFiltersArgs']]:
+    def filters(self) -> pulumi.Input[Optional['PipelineFiltersArgs']]:
         """
         Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input['PipelineFiltersArgs']]):
+    def filters(self, value: pulumi.Input[Optional['PipelineFiltersArgs']]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayDefinition")
-    def gateway_definition(self) -> Optional[pulumi.Input['PipelineGatewayDefinitionArgs']]:
+    def gateway_definition(self) -> pulumi.Input[Optional['PipelineGatewayDefinitionArgs']]:
         """
         The definition of a gateway pipeline to support CDC. Consists of following attributes:
         """
         return pulumi.get(self, "gateway_definition")
 
     @gateway_definition.setter
-    def gateway_definition(self, value: Optional[pulumi.Input['PipelineGatewayDefinitionArgs']]):
+    def gateway_definition(self, value: pulumi.Input[Optional['PipelineGatewayDefinitionArgs']]):
         pulumi.set(self, "gateway_definition", value)
 
     @_builtins.property
     @pulumi.getter
-    def health(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health")
 
     @health.setter
-    def health(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health", value)
 
     @_builtins.property
     @pulumi.getter(name="ingestionDefinition")
-    def ingestion_definition(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionArgs']]:
+    def ingestion_definition(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionArgs']]:
         return pulumi.get(self, "ingestion_definition")
 
     @ingestion_definition.setter
-    def ingestion_definition(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionArgs']]):
+    def ingestion_definition(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionArgs']]):
         pulumi.set(self, "ingestion_definition", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
-    def last_modified(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last_modified(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "last_modified")
 
     @last_modified.setter
-    def last_modified(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last_modified(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last_modified", value)
 
     @_builtins.property
     @pulumi.getter(name="latestUpdates")
-    def latest_updates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLatestUpdateArgs']]]]:
+    def latest_updates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PipelineLatestUpdateArgs']]]]:
         return pulumi.get(self, "latest_updates")
 
     @latest_updates.setter
-    def latest_updates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLatestUpdateArgs']]]]):
+    def latest_updates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineLatestUpdateArgs']]]]):
         pulumi.set(self, "latest_updates", value)
 
     @_builtins.property
     @pulumi.getter
-    def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]]]:
+    def libraries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PipelineLibraryArgs']]]]:
         """
         blocks - Specifies pipeline code.
         """
         return pulumi.get(self, "libraries")
 
     @libraries.setter
-    def libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]]]):
+    def libraries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineLibraryArgs']]]]):
         pulumi.set(self, "libraries", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def notifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]]:
+    def notifications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PipelineNotificationArgs']]]]:
         return pulumi.get(self, "notifications")
 
     @notifications.setter
-    def notifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]]):
+    def notifications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineNotificationArgs']]]]):
         pulumi.set(self, "notifications", value)
 
     @_builtins.property
     @pulumi.getter
-    def photon(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def photon(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A flag indicating whether to use Photon engine. The default value is `false`.
         """
         return pulumi.get(self, "photon")
 
     @photon.setter
-    def photon(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def photon(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "photon", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineId")
-    def pipeline_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pipeline_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier of the Lakeflow Declarative Pipeline.
         """
         return pulumi.get(self, "pipeline_id")
 
     @pipeline_id.setter
-    def pipeline_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pipeline_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pipeline_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PipelineProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PipelineProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PipelineProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PipelineProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="restartWindow")
-    def restart_window(self) -> Optional[pulumi.Input['PipelineRestartWindowArgs']]:
+    def restart_window(self) -> pulumi.Input[Optional['PipelineRestartWindowArgs']]:
         return pulumi.get(self, "restart_window")
 
     @restart_window.setter
-    def restart_window(self, value: Optional[pulumi.Input['PipelineRestartWindowArgs']]):
+    def restart_window(self, value: pulumi.Input[Optional['PipelineRestartWindowArgs']]):
         pulumi.set(self, "restart_window", value)
 
     @_builtins.property
     @pulumi.getter(name="rootPath")
-    def root_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
         """
         return pulumi.get(self, "root_path")
 
     @root_path.setter
-    def root_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_path", value)
 
     @_builtins.property
     @pulumi.getter(name="runAs")
-    def run_as(self) -> Optional[pulumi.Input['PipelineRunAsArgs']]:
+    def run_as(self) -> pulumi.Input[Optional['PipelineRunAsArgs']]:
         """
         The user or the service principal the pipeline runs as. See run_as Configuration Block below.
         """
         return pulumi.get(self, "run_as")
 
     @run_as.setter
-    def run_as(self, value: Optional[pulumi.Input['PipelineRunAsArgs']]):
+    def run_as(self, value: pulumi.Input[Optional['PipelineRunAsArgs']]):
         pulumi.set(self, "run_as", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsUserName")
-    def run_as_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_as_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "run_as_user_name")
 
     @run_as_user_name.setter
-    def run_as_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_as_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_as_user_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
         """
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter
-    def serverless(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def serverless(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         """
         return pulumi.get(self, "serverless")
 
     @serverless.setter
-    def serverless(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def serverless(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "serverless", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         """
         return pulumi.get(self, "storage")
 
     @storage.setter
-    def storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         """
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target", value)
 
     @_builtins.property
     @pulumi.getter
-    def trigger(self) -> Optional[pulumi.Input['PipelineTriggerArgs']]:
+    def trigger(self) -> pulumi.Input[Optional['PipelineTriggerArgs']]:
         return pulumi.get(self, "trigger")
 
     @trigger.setter
-    def trigger(self, value: Optional[pulumi.Input['PipelineTriggerArgs']]):
+    def trigger(self, value: pulumi.Input[Optional['PipelineTriggerArgs']]):
         pulumi.set(self, "trigger", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the Lakeflow Declarative Pipeline on the given workspace.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="usagePolicyId")
-    def usage_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def usage_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "usage_policy_id")
 
     @usage_policy_id.setter
-    def usage_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def usage_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usage_policy_id", value)
 
 
 @pulumi.input_type
 class _PipelineState:
     def __init__(__self__, *,
-                 allow_duplicate_names: Optional[pulumi.Input[_builtins.bool]] = None,
-                 budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 cause: Optional[pulumi.Input[_builtins.str]] = None,
-                 channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]] = None,
-                 configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 continuous: Optional[pulumi.Input[_builtins.bool]] = None,
-                 creator_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment: Optional[pulumi.Input['PipelineDeploymentArgs']] = None,
-                 development: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input['PipelineEnvironmentArgs']] = None,
-                 event_log: Optional[pulumi.Input['PipelineEventLogArgs']] = None,
-                 expected_last_modified: Optional[pulumi.Input[_builtins.int]] = None,
-                 filters: Optional[pulumi.Input['PipelineFiltersArgs']] = None,
-                 gateway_definition: Optional[pulumi.Input['PipelineGatewayDefinitionArgs']] = None,
-                 health: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingestion_definition: Optional[pulumi.Input['PipelineIngestionDefinitionArgs']] = None,
-                 last_modified: Optional[pulumi.Input[_builtins.int]] = None,
-                 latest_updates: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLatestUpdateArgs']]]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
-                 photon: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipeline_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['PipelineProviderConfigArgs']] = None,
-                 restart_window: Optional[pulumi.Input['PipelineRestartWindowArgs']] = None,
-                 root_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as: Optional[pulumi.Input['PipelineRunAsArgs']] = None,
-                 run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 serverless: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger: Optional[pulumi.Input['PipelineTriggerArgs']] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None,
+                 budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 cause: pulumi.Input[Optional[_builtins.str]] = None,
+                 channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 clusters: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineClusterArgs']]]] = None,
+                 configuration: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 continuous: pulumi.Input[Optional[_builtins.bool]] = None,
+                 creator_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment: pulumi.Input[Optional['PipelineDeploymentArgs']] = None,
+                 development: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional['PipelineEnvironmentArgs']] = None,
+                 event_log: pulumi.Input[Optional['PipelineEventLogArgs']] = None,
+                 expected_last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+                 filters: pulumi.Input[Optional['PipelineFiltersArgs']] = None,
+                 gateway_definition: pulumi.Input[Optional['PipelineGatewayDefinitionArgs']] = None,
+                 health: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingestion_definition: pulumi.Input[Optional['PipelineIngestionDefinitionArgs']] = None,
+                 last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+                 latest_updates: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineLatestUpdateArgs']]]] = None,
+                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineLibraryArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineNotificationArgs']]]] = None,
+                 photon: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['PipelineProviderConfigArgs']] = None,
+                 restart_window: pulumi.Input[Optional['PipelineRestartWindowArgs']] = None,
+                 root_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as: pulumi.Input[Optional['PipelineRunAsArgs']] = None,
+                 run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger: pulumi.Input[Optional['PipelineTriggerArgs']] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Pipeline resources.
 
@@ -777,446 +777,446 @@ class _PipelineState:
 
     @_builtins.property
     @pulumi.getter(name="allowDuplicateNames")
-    def allow_duplicate_names(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_duplicate_names(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
         """
         return pulumi.get(self, "allow_duplicate_names")
 
     @allow_duplicate_names.setter
-    def allow_duplicate_names(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_duplicate_names(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_duplicate_names", value)
 
     @_builtins.property
     @pulumi.getter(name="budgetPolicyId")
-    def budget_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def budget_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
         """
         return pulumi.get(self, "budget_policy_id")
 
     @budget_policy_id.setter
-    def budget_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def budget_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "budget_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def catalog(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def catalog(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
         """
         return pulumi.get(self, "catalog")
 
     @catalog.setter
-    def catalog(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def catalog(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog", value)
 
     @_builtins.property
     @pulumi.getter
-    def cause(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cause(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cause")
 
     @cause.setter
-    def cause(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cause(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cause", value)
 
     @_builtins.property
     @pulumi.getter
-    def channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
         """
         return pulumi.get(self, "channel")
 
     @channel.setter
-    def channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "channel", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]]:
+    def clusters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PipelineClusterArgs']]]]:
         """
         blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
         """
         return pulumi.get(self, "clusters")
 
     @clusters.setter
-    def clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineClusterArgs']]]]):
+    def clusters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineClusterArgs']]]]):
         pulumi.set(self, "clusters", value)
 
     @_builtins.property
     @pulumi.getter
-    def configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def configuration(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
         """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
-    def configuration(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def configuration(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "configuration", value)
 
     @_builtins.property
     @pulumi.getter
-    def continuous(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def continuous(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A flag indicating whether to run the pipeline continuously. The default value is `false`.
         """
         return pulumi.get(self, "continuous")
 
     @continuous.setter
-    def continuous(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def continuous(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "continuous", value)
 
     @_builtins.property
     @pulumi.getter(name="creatorUserName")
-    def creator_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "creator_user_name")
 
     @creator_user_name.setter
-    def creator_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator_user_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def deployment(self) -> Optional[pulumi.Input['PipelineDeploymentArgs']]:
+    def deployment(self) -> pulumi.Input[Optional['PipelineDeploymentArgs']]:
         """
         Deployment type of this pipeline. Supports following attributes:
         """
         return pulumi.get(self, "deployment")
 
     @deployment.setter
-    def deployment(self, value: Optional[pulumi.Input['PipelineDeploymentArgs']]):
+    def deployment(self, value: pulumi.Input[Optional['PipelineDeploymentArgs']]):
         pulumi.set(self, "deployment", value)
 
     @_builtins.property
     @pulumi.getter
-    def development(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def development(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A flag indicating whether to run the pipeline in development mode. The default value is `false`.
         """
         return pulumi.get(self, "development")
 
     @development.setter
-    def development(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def development(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "development", value)
 
     @_builtins.property
     @pulumi.getter
-    def edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
         """
         return pulumi.get(self, "edition")
 
     @edition.setter
-    def edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edition", value)
 
     @_builtins.property
     @pulumi.getter
-    def environment(self) -> Optional[pulumi.Input['PipelineEnvironmentArgs']]:
+    def environment(self) -> pulumi.Input[Optional['PipelineEnvironmentArgs']]:
         return pulumi.get(self, "environment")
 
     @environment.setter
-    def environment(self, value: Optional[pulumi.Input['PipelineEnvironmentArgs']]):
+    def environment(self, value: pulumi.Input[Optional['PipelineEnvironmentArgs']]):
         pulumi.set(self, "environment", value)
 
     @_builtins.property
     @pulumi.getter(name="eventLog")
-    def event_log(self) -> Optional[pulumi.Input['PipelineEventLogArgs']]:
+    def event_log(self) -> pulumi.Input[Optional['PipelineEventLogArgs']]:
         """
         an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
         """
         return pulumi.get(self, "event_log")
 
     @event_log.setter
-    def event_log(self, value: Optional[pulumi.Input['PipelineEventLogArgs']]):
+    def event_log(self, value: pulumi.Input[Optional['PipelineEventLogArgs']]):
         pulumi.set(self, "event_log", value)
 
     @_builtins.property
     @pulumi.getter(name="expectedLastModified")
-    def expected_last_modified(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expected_last_modified(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "expected_last_modified")
 
     @expected_last_modified.setter
-    def expected_last_modified(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expected_last_modified(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expected_last_modified", value)
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input['PipelineFiltersArgs']]:
+    def filters(self) -> pulumi.Input[Optional['PipelineFiltersArgs']]:
         """
         Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input['PipelineFiltersArgs']]):
+    def filters(self, value: pulumi.Input[Optional['PipelineFiltersArgs']]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayDefinition")
-    def gateway_definition(self) -> Optional[pulumi.Input['PipelineGatewayDefinitionArgs']]:
+    def gateway_definition(self) -> pulumi.Input[Optional['PipelineGatewayDefinitionArgs']]:
         """
         The definition of a gateway pipeline to support CDC. Consists of following attributes:
         """
         return pulumi.get(self, "gateway_definition")
 
     @gateway_definition.setter
-    def gateway_definition(self, value: Optional[pulumi.Input['PipelineGatewayDefinitionArgs']]):
+    def gateway_definition(self, value: pulumi.Input[Optional['PipelineGatewayDefinitionArgs']]):
         pulumi.set(self, "gateway_definition", value)
 
     @_builtins.property
     @pulumi.getter
-    def health(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health")
 
     @health.setter
-    def health(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health", value)
 
     @_builtins.property
     @pulumi.getter(name="ingestionDefinition")
-    def ingestion_definition(self) -> Optional[pulumi.Input['PipelineIngestionDefinitionArgs']]:
+    def ingestion_definition(self) -> pulumi.Input[Optional['PipelineIngestionDefinitionArgs']]:
         return pulumi.get(self, "ingestion_definition")
 
     @ingestion_definition.setter
-    def ingestion_definition(self, value: Optional[pulumi.Input['PipelineIngestionDefinitionArgs']]):
+    def ingestion_definition(self, value: pulumi.Input[Optional['PipelineIngestionDefinitionArgs']]):
         pulumi.set(self, "ingestion_definition", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
-    def last_modified(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last_modified(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "last_modified")
 
     @last_modified.setter
-    def last_modified(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last_modified(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last_modified", value)
 
     @_builtins.property
     @pulumi.getter(name="latestUpdates")
-    def latest_updates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLatestUpdateArgs']]]]:
+    def latest_updates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PipelineLatestUpdateArgs']]]]:
         return pulumi.get(self, "latest_updates")
 
     @latest_updates.setter
-    def latest_updates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLatestUpdateArgs']]]]):
+    def latest_updates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineLatestUpdateArgs']]]]):
         pulumi.set(self, "latest_updates", value)
 
     @_builtins.property
     @pulumi.getter
-    def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]]]:
+    def libraries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PipelineLibraryArgs']]]]:
         """
         blocks - Specifies pipeline code.
         """
         return pulumi.get(self, "libraries")
 
     @libraries.setter
-    def libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineLibraryArgs']]]]):
+    def libraries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineLibraryArgs']]]]):
         pulumi.set(self, "libraries", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def notifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]]:
+    def notifications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PipelineNotificationArgs']]]]:
         return pulumi.get(self, "notifications")
 
     @notifications.setter
-    def notifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PipelineNotificationArgs']]]]):
+    def notifications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineNotificationArgs']]]]):
         pulumi.set(self, "notifications", value)
 
     @_builtins.property
     @pulumi.getter
-    def photon(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def photon(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A flag indicating whether to use Photon engine. The default value is `false`.
         """
         return pulumi.get(self, "photon")
 
     @photon.setter
-    def photon(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def photon(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "photon", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineId")
-    def pipeline_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pipeline_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier of the Lakeflow Declarative Pipeline.
         """
         return pulumi.get(self, "pipeline_id")
 
     @pipeline_id.setter
-    def pipeline_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pipeline_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pipeline_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PipelineProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PipelineProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PipelineProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PipelineProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="restartWindow")
-    def restart_window(self) -> Optional[pulumi.Input['PipelineRestartWindowArgs']]:
+    def restart_window(self) -> pulumi.Input[Optional['PipelineRestartWindowArgs']]:
         return pulumi.get(self, "restart_window")
 
     @restart_window.setter
-    def restart_window(self, value: Optional[pulumi.Input['PipelineRestartWindowArgs']]):
+    def restart_window(self, value: pulumi.Input[Optional['PipelineRestartWindowArgs']]):
         pulumi.set(self, "restart_window", value)
 
     @_builtins.property
     @pulumi.getter(name="rootPath")
-    def root_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
         """
         return pulumi.get(self, "root_path")
 
     @root_path.setter
-    def root_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_path", value)
 
     @_builtins.property
     @pulumi.getter(name="runAs")
-    def run_as(self) -> Optional[pulumi.Input['PipelineRunAsArgs']]:
+    def run_as(self) -> pulumi.Input[Optional['PipelineRunAsArgs']]:
         """
         The user or the service principal the pipeline runs as. See run_as Configuration Block below.
         """
         return pulumi.get(self, "run_as")
 
     @run_as.setter
-    def run_as(self, value: Optional[pulumi.Input['PipelineRunAsArgs']]):
+    def run_as(self, value: pulumi.Input[Optional['PipelineRunAsArgs']]):
         pulumi.set(self, "run_as", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsUserName")
-    def run_as_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_as_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "run_as_user_name")
 
     @run_as_user_name.setter
-    def run_as_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_as_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_as_user_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
         """
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter
-    def serverless(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def serverless(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         """
         return pulumi.get(self, "serverless")
 
     @serverless.setter
-    def serverless(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def serverless(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "serverless", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
         """
         return pulumi.get(self, "storage")
 
     @storage.setter
-    def storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         """
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target", value)
 
     @_builtins.property
     @pulumi.getter
-    def trigger(self) -> Optional[pulumi.Input['PipelineTriggerArgs']]:
+    def trigger(self) -> pulumi.Input[Optional['PipelineTriggerArgs']]:
         return pulumi.get(self, "trigger")
 
     @trigger.setter
-    def trigger(self, value: Optional[pulumi.Input['PipelineTriggerArgs']]):
+    def trigger(self, value: pulumi.Input[Optional['PipelineTriggerArgs']]):
         pulumi.set(self, "trigger", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the Lakeflow Declarative Pipeline on the given workspace.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="usagePolicyId")
-    def usage_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def usage_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "usage_policy_id")
 
     @usage_policy_id.setter
-    def usage_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def usage_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usage_policy_id", value)
 
 
@@ -1226,47 +1226,47 @@ class Pipeline(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_duplicate_names: Optional[pulumi.Input[_builtins.bool]] = None,
-                 budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 cause: Optional[pulumi.Input[_builtins.str]] = None,
-                 channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]]] = None,
-                 configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 continuous: Optional[pulumi.Input[_builtins.bool]] = None,
-                 creator_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment: Optional[pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
-                 development: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input[Union['PipelineEnvironmentArgs', 'PipelineEnvironmentArgsDict']]] = None,
-                 event_log: Optional[pulumi.Input[Union['PipelineEventLogArgs', 'PipelineEventLogArgsDict']]] = None,
-                 expected_last_modified: Optional[pulumi.Input[_builtins.int]] = None,
-                 filters: Optional[pulumi.Input[Union['PipelineFiltersArgs', 'PipelineFiltersArgsDict']]] = None,
-                 gateway_definition: Optional[pulumi.Input[Union['PipelineGatewayDefinitionArgs', 'PipelineGatewayDefinitionArgsDict']]] = None,
-                 health: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingestion_definition: Optional[pulumi.Input[Union['PipelineIngestionDefinitionArgs', 'PipelineIngestionDefinitionArgsDict']]] = None,
-                 last_modified: Optional[pulumi.Input[_builtins.int]] = None,
-                 latest_updates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineLatestUpdateArgs', 'PipelineLatestUpdateArgsDict']]]]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
-                 photon: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipeline_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PipelineProviderConfigArgs', 'PipelineProviderConfigArgsDict']]] = None,
-                 restart_window: Optional[pulumi.Input[Union['PipelineRestartWindowArgs', 'PipelineRestartWindowArgsDict']]] = None,
-                 root_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as: Optional[pulumi.Input[Union['PipelineRunAsArgs', 'PipelineRunAsArgsDict']]] = None,
-                 run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 serverless: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger: Optional[pulumi.Input[Union['PipelineTriggerArgs', 'PipelineTriggerArgsDict']]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None,
+                 budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 cause: pulumi.Input[Optional[_builtins.str]] = None,
+                 channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]]] = None,
+                 configuration: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 continuous: pulumi.Input[Optional[_builtins.bool]] = None,
+                 creator_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment: pulumi.Input[Optional[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
+                 development: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional[Union['PipelineEnvironmentArgs', 'PipelineEnvironmentArgsDict']]] = None,
+                 event_log: pulumi.Input[Optional[Union['PipelineEventLogArgs', 'PipelineEventLogArgsDict']]] = None,
+                 expected_last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+                 filters: pulumi.Input[Optional[Union['PipelineFiltersArgs', 'PipelineFiltersArgsDict']]] = None,
+                 gateway_definition: pulumi.Input[Optional[Union['PipelineGatewayDefinitionArgs', 'PipelineGatewayDefinitionArgsDict']]] = None,
+                 health: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingestion_definition: pulumi.Input[Optional[Union['PipelineIngestionDefinitionArgs', 'PipelineIngestionDefinitionArgsDict']]] = None,
+                 last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+                 latest_updates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineLatestUpdateArgs', 'PipelineLatestUpdateArgsDict']]]]] = None,
+                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
+                 photon: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PipelineProviderConfigArgs', 'PipelineProviderConfigArgsDict']]] = None,
+                 restart_window: pulumi.Input[Optional[Union['PipelineRestartWindowArgs', 'PipelineRestartWindowArgsDict']]] = None,
+                 root_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as: pulumi.Input[Optional[Union['PipelineRunAsArgs', 'PipelineRunAsArgsDict']]] = None,
+                 run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger: pulumi.Input[Optional[Union['PipelineTriggerArgs', 'PipelineTriggerArgsDict']]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Use `Pipeline` to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
@@ -1477,47 +1477,47 @@ class Pipeline(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_duplicate_names: Optional[pulumi.Input[_builtins.bool]] = None,
-                 budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 cause: Optional[pulumi.Input[_builtins.str]] = None,
-                 channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 clusters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]]] = None,
-                 configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 continuous: Optional[pulumi.Input[_builtins.bool]] = None,
-                 creator_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment: Optional[pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
-                 development: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment: Optional[pulumi.Input[Union['PipelineEnvironmentArgs', 'PipelineEnvironmentArgsDict']]] = None,
-                 event_log: Optional[pulumi.Input[Union['PipelineEventLogArgs', 'PipelineEventLogArgsDict']]] = None,
-                 expected_last_modified: Optional[pulumi.Input[_builtins.int]] = None,
-                 filters: Optional[pulumi.Input[Union['PipelineFiltersArgs', 'PipelineFiltersArgsDict']]] = None,
-                 gateway_definition: Optional[pulumi.Input[Union['PipelineGatewayDefinitionArgs', 'PipelineGatewayDefinitionArgsDict']]] = None,
-                 health: Optional[pulumi.Input[_builtins.str]] = None,
-                 ingestion_definition: Optional[pulumi.Input[Union['PipelineIngestionDefinitionArgs', 'PipelineIngestionDefinitionArgsDict']]] = None,
-                 last_modified: Optional[pulumi.Input[_builtins.int]] = None,
-                 latest_updates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineLatestUpdateArgs', 'PipelineLatestUpdateArgsDict']]]]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
-                 photon: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pipeline_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PipelineProviderConfigArgs', 'PipelineProviderConfigArgsDict']]] = None,
-                 restart_window: Optional[pulumi.Input[Union['PipelineRestartWindowArgs', 'PipelineRestartWindowArgsDict']]] = None,
-                 root_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as: Optional[pulumi.Input[Union['PipelineRunAsArgs', 'PipelineRunAsArgsDict']]] = None,
-                 run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 serverless: Optional[pulumi.Input[_builtins.bool]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger: Optional[pulumi.Input[Union['PipelineTriggerArgs', 'PipelineTriggerArgsDict']]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None,
+                 budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 cause: pulumi.Input[Optional[_builtins.str]] = None,
+                 channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]]] = None,
+                 configuration: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 continuous: pulumi.Input[Optional[_builtins.bool]] = None,
+                 creator_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment: pulumi.Input[Optional[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
+                 development: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment: pulumi.Input[Optional[Union['PipelineEnvironmentArgs', 'PipelineEnvironmentArgsDict']]] = None,
+                 event_log: pulumi.Input[Optional[Union['PipelineEventLogArgs', 'PipelineEventLogArgsDict']]] = None,
+                 expected_last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+                 filters: pulumi.Input[Optional[Union['PipelineFiltersArgs', 'PipelineFiltersArgsDict']]] = None,
+                 gateway_definition: pulumi.Input[Optional[Union['PipelineGatewayDefinitionArgs', 'PipelineGatewayDefinitionArgsDict']]] = None,
+                 health: pulumi.Input[Optional[_builtins.str]] = None,
+                 ingestion_definition: pulumi.Input[Optional[Union['PipelineIngestionDefinitionArgs', 'PipelineIngestionDefinitionArgsDict']]] = None,
+                 last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+                 latest_updates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineLatestUpdateArgs', 'PipelineLatestUpdateArgsDict']]]]] = None,
+                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
+                 photon: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PipelineProviderConfigArgs', 'PipelineProviderConfigArgsDict']]] = None,
+                 restart_window: pulumi.Input[Optional[Union['PipelineRestartWindowArgs', 'PipelineRestartWindowArgsDict']]] = None,
+                 root_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as: pulumi.Input[Optional[Union['PipelineRunAsArgs', 'PipelineRunAsArgsDict']]] = None,
+                 run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless: pulumi.Input[Optional[_builtins.bool]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger: pulumi.Input[Optional[Union['PipelineTriggerArgs', 'PipelineTriggerArgsDict']]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1578,47 +1578,47 @@ class Pipeline(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_duplicate_names: Optional[pulumi.Input[_builtins.bool]] = None,
-            budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            catalog: Optional[pulumi.Input[_builtins.str]] = None,
-            cause: Optional[pulumi.Input[_builtins.str]] = None,
-            channel: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            clusters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]]] = None,
-            configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            continuous: Optional[pulumi.Input[_builtins.bool]] = None,
-            creator_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            deployment: Optional[pulumi.Input[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
-            development: Optional[pulumi.Input[_builtins.bool]] = None,
-            edition: Optional[pulumi.Input[_builtins.str]] = None,
-            environment: Optional[pulumi.Input[Union['PipelineEnvironmentArgs', 'PipelineEnvironmentArgsDict']]] = None,
-            event_log: Optional[pulumi.Input[Union['PipelineEventLogArgs', 'PipelineEventLogArgsDict']]] = None,
-            expected_last_modified: Optional[pulumi.Input[_builtins.int]] = None,
-            filters: Optional[pulumi.Input[Union['PipelineFiltersArgs', 'PipelineFiltersArgsDict']]] = None,
-            gateway_definition: Optional[pulumi.Input[Union['PipelineGatewayDefinitionArgs', 'PipelineGatewayDefinitionArgsDict']]] = None,
-            health: Optional[pulumi.Input[_builtins.str]] = None,
-            ingestion_definition: Optional[pulumi.Input[Union['PipelineIngestionDefinitionArgs', 'PipelineIngestionDefinitionArgsDict']]] = None,
-            last_modified: Optional[pulumi.Input[_builtins.int]] = None,
-            latest_updates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineLatestUpdateArgs', 'PipelineLatestUpdateArgsDict']]]]] = None,
-            libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
-            photon: Optional[pulumi.Input[_builtins.bool]] = None,
-            pipeline_id: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['PipelineProviderConfigArgs', 'PipelineProviderConfigArgsDict']]] = None,
-            restart_window: Optional[pulumi.Input[Union['PipelineRestartWindowArgs', 'PipelineRestartWindowArgsDict']]] = None,
-            root_path: Optional[pulumi.Input[_builtins.str]] = None,
-            run_as: Optional[pulumi.Input[Union['PipelineRunAsArgs', 'PipelineRunAsArgsDict']]] = None,
-            run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            schema: Optional[pulumi.Input[_builtins.str]] = None,
-            serverless: Optional[pulumi.Input[_builtins.bool]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            storage: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            target: Optional[pulumi.Input[_builtins.str]] = None,
-            trigger: Optional[pulumi.Input[Union['PipelineTriggerArgs', 'PipelineTriggerArgsDict']]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Pipeline':
+            allow_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None,
+            budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            catalog: pulumi.Input[Optional[_builtins.str]] = None,
+            cause: pulumi.Input[Optional[_builtins.str]] = None,
+            channel: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineClusterArgs', 'PipelineClusterArgsDict']]]]] = None,
+            configuration: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            continuous: pulumi.Input[Optional[_builtins.bool]] = None,
+            creator_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment: pulumi.Input[Optional[Union['PipelineDeploymentArgs', 'PipelineDeploymentArgsDict']]] = None,
+            development: pulumi.Input[Optional[_builtins.bool]] = None,
+            edition: pulumi.Input[Optional[_builtins.str]] = None,
+            environment: pulumi.Input[Optional[Union['PipelineEnvironmentArgs', 'PipelineEnvironmentArgsDict']]] = None,
+            event_log: pulumi.Input[Optional[Union['PipelineEventLogArgs', 'PipelineEventLogArgsDict']]] = None,
+            expected_last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+            filters: pulumi.Input[Optional[Union['PipelineFiltersArgs', 'PipelineFiltersArgsDict']]] = None,
+            gateway_definition: pulumi.Input[Optional[Union['PipelineGatewayDefinitionArgs', 'PipelineGatewayDefinitionArgsDict']]] = None,
+            health: pulumi.Input[Optional[_builtins.str]] = None,
+            ingestion_definition: pulumi.Input[Optional[Union['PipelineIngestionDefinitionArgs', 'PipelineIngestionDefinitionArgsDict']]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.int]] = None,
+            latest_updates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineLatestUpdateArgs', 'PipelineLatestUpdateArgsDict']]]]] = None,
+            libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineLibraryArgs', 'PipelineLibraryArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineNotificationArgs', 'PipelineNotificationArgsDict']]]]] = None,
+            photon: pulumi.Input[Optional[_builtins.bool]] = None,
+            pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['PipelineProviderConfigArgs', 'PipelineProviderConfigArgsDict']]] = None,
+            restart_window: pulumi.Input[Optional[Union['PipelineRestartWindowArgs', 'PipelineRestartWindowArgsDict']]] = None,
+            root_path: pulumi.Input[Optional[_builtins.str]] = None,
+            run_as: pulumi.Input[Optional[Union['PipelineRunAsArgs', 'PipelineRunAsArgsDict']]] = None,
+            run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            serverless: pulumi.Input[Optional[_builtins.bool]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            storage: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            target: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger: pulumi.Input[Optional[Union['PipelineTriggerArgs', 'PipelineTriggerArgsDict']]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Pipeline':
         """
         Get an existing Pipeline resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

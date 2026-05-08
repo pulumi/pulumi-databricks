@@ -22,15 +22,15 @@ __all__ = ['MwsVpcEndpointArgs', 'MwsVpcEndpoint']
 class MwsVpcEndpointArgs:
     def __init__(__self__, *,
                  vpc_endpoint_name: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_endpoint_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_vpc_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcp_vpc_endpoint_info: Optional[pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs']] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_case: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_endpoint_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_vpc_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcp_vpc_endpoint_info: pulumi.Input[Optional['MwsVpcEndpointGcpVpcEndpointInfoArgs']] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_case: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MwsVpcEndpoint resource.
 
@@ -77,120 +77,120 @@ class MwsVpcEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="awsAccountId")
-    def aws_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "aws_account_id")
 
     @aws_account_id.setter
-    def aws_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="awsEndpointServiceId")
-    def aws_endpoint_service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_endpoint_service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         """
         return pulumi.get(self, "aws_endpoint_service_id")
 
     @aws_endpoint_service_id.setter
-    def aws_endpoint_service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_endpoint_service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_endpoint_service_id", value)
 
     @_builtins.property
     @pulumi.getter(name="awsVpcEndpointId")
-    def aws_vpc_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_vpc_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of configured aws_vpc_endpoint
         """
         return pulumi.get(self, "aws_vpc_endpoint_id")
 
     @aws_vpc_endpoint_id.setter
-    def aws_vpc_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_vpc_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_vpc_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpVpcEndpointInfo")
-    def gcp_vpc_endpoint_info(self) -> Optional[pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs']]:
+    def gcp_vpc_endpoint_info(self) -> pulumi.Input[Optional['MwsVpcEndpointGcpVpcEndpointInfoArgs']]:
         """
         a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
         """
         return pulumi.get(self, "gcp_vpc_endpoint_info")
 
     @gcp_vpc_endpoint_info.setter
-    def gcp_vpc_endpoint_info(self, value: Optional[pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs']]):
+    def gcp_vpc_endpoint_info(self, value: pulumi.Input[Optional['MwsVpcEndpointGcpVpcEndpointInfoArgs']]):
         pulumi.set(self, "gcp_vpc_endpoint_info", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region of AWS VPC
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (AWS Only) State of VPC Endpoint
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="useCase")
-    def use_case(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def use_case(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "use_case")
 
     @use_case.setter
-    def use_case(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def use_case(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "use_case", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcEndpointId")
-    def vpc_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier of VPC Endpoint in Databricks Account
         """
         return pulumi.get(self, "vpc_endpoint_id")
 
     @vpc_endpoint_id.setter
-    def vpc_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_endpoint_id", value)
 
 
 @pulumi.input_type
 class _MwsVpcEndpointState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_endpoint_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_vpc_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcp_vpc_endpoint_info: Optional[pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs']] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_case: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_endpoint_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_endpoint_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_vpc_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcp_vpc_endpoint_info: pulumi.Input[Optional['MwsVpcEndpointGcpVpcEndpointInfoArgs']] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_case: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsVpcEndpoint resources.
 
@@ -226,116 +226,116 @@ class _MwsVpcEndpointState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="awsAccountId")
-    def aws_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "aws_account_id")
 
     @aws_account_id.setter
-    def aws_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="awsEndpointServiceId")
-    def aws_endpoint_service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_endpoint_service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
         """
         return pulumi.get(self, "aws_endpoint_service_id")
 
     @aws_endpoint_service_id.setter
-    def aws_endpoint_service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_endpoint_service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_endpoint_service_id", value)
 
     @_builtins.property
     @pulumi.getter(name="awsVpcEndpointId")
-    def aws_vpc_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_vpc_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of configured aws_vpc_endpoint
         """
         return pulumi.get(self, "aws_vpc_endpoint_id")
 
     @aws_vpc_endpoint_id.setter
-    def aws_vpc_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_vpc_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_vpc_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpVpcEndpointInfo")
-    def gcp_vpc_endpoint_info(self) -> Optional[pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs']]:
+    def gcp_vpc_endpoint_info(self) -> pulumi.Input[Optional['MwsVpcEndpointGcpVpcEndpointInfoArgs']]:
         """
         a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
         """
         return pulumi.get(self, "gcp_vpc_endpoint_info")
 
     @gcp_vpc_endpoint_info.setter
-    def gcp_vpc_endpoint_info(self, value: Optional[pulumi.Input['MwsVpcEndpointGcpVpcEndpointInfoArgs']]):
+    def gcp_vpc_endpoint_info(self, value: pulumi.Input[Optional['MwsVpcEndpointGcpVpcEndpointInfoArgs']]):
         pulumi.set(self, "gcp_vpc_endpoint_info", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region of AWS VPC
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (AWS Only) State of VPC Endpoint
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="useCase")
-    def use_case(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def use_case(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "use_case")
 
     @use_case.setter
-    def use_case(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def use_case(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "use_case", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcEndpointId")
-    def vpc_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier of VPC Endpoint in Databricks Account
         """
         return pulumi.get(self, "vpc_endpoint_id")
 
     @vpc_endpoint_id.setter
-    def vpc_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcEndpointName")
-    def vpc_endpoint_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_endpoint_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of VPC Endpoint in Databricks Account
         """
         return pulumi.get(self, "vpc_endpoint_name")
 
     @vpc_endpoint_name.setter
-    def vpc_endpoint_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_endpoint_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_endpoint_name", value)
 
 
@@ -345,16 +345,16 @@ class MwsVpcEndpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_endpoint_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_vpc_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcp_vpc_endpoint_info: Optional[pulumi.Input[Union['MwsVpcEndpointGcpVpcEndpointInfoArgs', 'MwsVpcEndpointGcpVpcEndpointInfoArgsDict']]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_case: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_endpoint_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_vpc_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcp_vpc_endpoint_info: pulumi.Input[Optional[Union['MwsVpcEndpointGcpVpcEndpointInfoArgs', 'MwsVpcEndpointGcpVpcEndpointInfoArgsDict']]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_case: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Enables you to register aws_vpc_endpoint resources or gcp vpc_endpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
@@ -744,16 +744,16 @@ class MwsVpcEndpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_endpoint_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_vpc_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcp_vpc_endpoint_info: Optional[pulumi.Input[Union['MwsVpcEndpointGcpVpcEndpointInfoArgs', 'MwsVpcEndpointGcpVpcEndpointInfoArgsDict']]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_case: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_endpoint_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_vpc_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcp_vpc_endpoint_info: pulumi.Input[Optional[Union['MwsVpcEndpointGcpVpcEndpointInfoArgs', 'MwsVpcEndpointGcpVpcEndpointInfoArgsDict']]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_case: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -785,16 +785,16 @@ class MwsVpcEndpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            aws_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            aws_endpoint_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            aws_vpc_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            gcp_vpc_endpoint_info: Optional[pulumi.Input[Union['MwsVpcEndpointGcpVpcEndpointInfoArgs', 'MwsVpcEndpointGcpVpcEndpointInfoArgsDict']]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            use_case: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_endpoint_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'MwsVpcEndpoint':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_endpoint_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_vpc_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gcp_vpc_endpoint_info: pulumi.Input[Optional[Union['MwsVpcEndpointGcpVpcEndpointInfoArgs', 'MwsVpcEndpointGcpVpcEndpointInfoArgsDict']]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            use_case: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'MwsVpcEndpoint':
         """
         Get an existing MwsVpcEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

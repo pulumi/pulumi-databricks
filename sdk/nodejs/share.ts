@@ -238,33 +238,33 @@ export interface ShareState {
     /**
      * User-supplied free-form text.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Time when the share was created.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * The principal that created the share.
      */
-    createdBy?: pulumi.Input<string>;
-    effectiveOwner?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
+    effectiveOwner?: pulumi.Input<string | undefined>;
     /**
      * Name of share. Change forces creation of a new resource.
      */
-    name?: pulumi.Input<string>;
-    objects?: pulumi.Input<pulumi.Input<inputs.ShareObject>[]>;
+    name?: pulumi.Input<string | undefined>;
+    objects?: pulumi.Input<pulumi.Input<inputs.ShareObject>[] | undefined>;
     /**
      * User name/group name/sp applicationId of the share owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.ShareProviderConfig>;
-    storageLocation?: pulumi.Input<string>;
-    storageRoot?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<number>;
-    updatedBy?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.ShareProviderConfig | undefined>;
+    storageLocation?: pulumi.Input<string | undefined>;
+    storageRoot?: pulumi.Input<string | undefined>;
+    updatedAt?: pulumi.Input<number | undefined>;
+    updatedBy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -274,19 +274,19 @@ export interface ShareArgs {
     /**
      * User-supplied free-form text.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Name of share. Change forces creation of a new resource.
      */
-    name?: pulumi.Input<string>;
-    objects?: pulumi.Input<pulumi.Input<inputs.ShareObject>[]>;
+    name?: pulumi.Input<string | undefined>;
+    objects?: pulumi.Input<pulumi.Input<inputs.ShareObject>[] | undefined>;
     /**
      * User name/group name/sp applicationId of the share owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.ShareProviderConfig>;
-    storageRoot?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.ShareProviderConfig | undefined>;
+    storageRoot?: pulumi.Input<string | undefined>;
 }

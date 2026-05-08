@@ -22,12 +22,12 @@ __all__ = ['FeatureEngineeringMaterializedFeatureArgs', 'FeatureEngineeringMater
 class FeatureEngineeringMaterializedFeatureArgs:
     def __init__(__self__, *,
                  feature_name: pulumi.Input[_builtins.str],
-                 cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 materialized_feature_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 offline_store_config: Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']] = None,
-                 online_store_config: Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']] = None,
-                 pipeline_schedule_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureProviderConfigArgs']] = None):
+                 cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 materialized_feature_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 offline_store_config: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']] = None,
+                 online_store_config: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']] = None,
+                 pipeline_schedule_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a FeatureEngineeringMaterializedFeature resource.
 
@@ -65,84 +65,84 @@ class FeatureEngineeringMaterializedFeatureArgs:
 
     @_builtins.property
     @pulumi.getter(name="cronSchedule")
-    def cron_schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cron_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
         """
         return pulumi.get(self, "cron_schedule")
 
     @cron_schedule.setter
-    def cron_schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cron_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="materializedFeatureId")
-    def materialized_feature_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def materialized_feature_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier for the materialized feature
         """
         return pulumi.get(self, "materialized_feature_id")
 
     @materialized_feature_id.setter
-    def materialized_feature_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def materialized_feature_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "materialized_feature_id", value)
 
     @_builtins.property
     @pulumi.getter(name="offlineStoreConfig")
-    def offline_store_config(self) -> Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']]:
+    def offline_store_config(self) -> pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']]:
         return pulumi.get(self, "offline_store_config")
 
     @offline_store_config.setter
-    def offline_store_config(self, value: Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']]):
+    def offline_store_config(self, value: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']]):
         pulumi.set(self, "offline_store_config", value)
 
     @_builtins.property
     @pulumi.getter(name="onlineStoreConfig")
-    def online_store_config(self) -> Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']]:
+    def online_store_config(self) -> pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']]:
         return pulumi.get(self, "online_store_config")
 
     @online_store_config.setter
-    def online_store_config(self, value: Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']]):
+    def online_store_config(self, value: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']]):
         pulumi.set(self, "online_store_config", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineScheduleState")
-    def pipeline_schedule_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pipeline_schedule_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         """
         return pulumi.get(self, "pipeline_schedule_state")
 
     @pipeline_schedule_state.setter
-    def pipeline_schedule_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pipeline_schedule_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pipeline_schedule_state", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _FeatureEngineeringMaterializedFeatureState:
     def __init__(__self__, *,
-                 cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_online: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_materialization_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 materialized_feature_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 offline_store_config: Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']] = None,
-                 online_store_config: Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']] = None,
-                 pipeline_schedule_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureProviderConfigArgs']] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_online: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_materialization_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 materialized_feature_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 offline_store_config: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']] = None,
+                 online_store_config: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']] = None,
+                 pipeline_schedule_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureProviderConfigArgs']] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FeatureEngineeringMaterializedFeature resources.
 
@@ -179,43 +179,43 @@ class _FeatureEngineeringMaterializedFeatureState:
 
     @_builtins.property
     @pulumi.getter(name="cronSchedule")
-    def cron_schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cron_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
         """
         return pulumi.get(self, "cron_schedule")
 
     @cron_schedule.setter
-    def cron_schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cron_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="featureName")
-    def feature_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def feature_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the feature in Unity Catalog
         """
         return pulumi.get(self, "feature_name")
 
     @feature_name.setter
-    def feature_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def feature_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "feature_name", value)
 
     @_builtins.property
     @pulumi.getter(name="isOnline")
-    def is_online(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_online(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
         """
         return pulumi.get(self, "is_online")
 
     @is_online.setter
-    def is_online(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_online(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_online", value)
 
     @_builtins.property
     @pulumi.getter(name="lastMaterializationTime")
-    def last_materialization_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_materialization_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
         If the pipeline has not run yet, this field will be null
@@ -223,73 +223,73 @@ class _FeatureEngineeringMaterializedFeatureState:
         return pulumi.get(self, "last_materialization_time")
 
     @last_materialization_time.setter
-    def last_materialization_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_materialization_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_materialization_time", value)
 
     @_builtins.property
     @pulumi.getter(name="materializedFeatureId")
-    def materialized_feature_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def materialized_feature_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier for the materialized feature
         """
         return pulumi.get(self, "materialized_feature_id")
 
     @materialized_feature_id.setter
-    def materialized_feature_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def materialized_feature_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "materialized_feature_id", value)
 
     @_builtins.property
     @pulumi.getter(name="offlineStoreConfig")
-    def offline_store_config(self) -> Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']]:
+    def offline_store_config(self) -> pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']]:
         return pulumi.get(self, "offline_store_config")
 
     @offline_store_config.setter
-    def offline_store_config(self, value: Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']]):
+    def offline_store_config(self, value: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs']]):
         pulumi.set(self, "offline_store_config", value)
 
     @_builtins.property
     @pulumi.getter(name="onlineStoreConfig")
-    def online_store_config(self) -> Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']]:
+    def online_store_config(self) -> pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']]:
         return pulumi.get(self, "online_store_config")
 
     @online_store_config.setter
-    def online_store_config(self, value: Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']]):
+    def online_store_config(self, value: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs']]):
         pulumi.set(self, "online_store_config", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineScheduleState")
-    def pipeline_schedule_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pipeline_schedule_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         """
         return pulumi.get(self, "pipeline_schedule_state")
 
     @pipeline_schedule_state.setter
-    def pipeline_schedule_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pipeline_schedule_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pipeline_schedule_state", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['FeatureEngineeringMaterializedFeatureProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['FeatureEngineeringMaterializedFeatureProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tableName")
-    def table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
         """
         return pulumi.get(self, "table_name")
 
     @table_name.setter
-    def table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_name", value)
 
 
@@ -299,13 +299,13 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 materialized_feature_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 offline_store_config: Optional[pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']]] = None,
-                 online_store_config: Optional[pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict']]] = None,
-                 pipeline_schedule_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']]] = None,
+                 cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 materialized_feature_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 offline_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']]] = None,
+                 online_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict']]] = None,
+                 pipeline_schedule_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -344,13 +344,13 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 materialized_feature_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 offline_store_config: Optional[pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']]] = None,
-                 online_store_config: Optional[pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict']]] = None,
-                 pipeline_schedule_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']]] = None,
+                 cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 materialized_feature_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 offline_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']]] = None,
+                 online_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict']]] = None,
+                 pipeline_schedule_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -382,16 +382,16 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cron_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-            feature_name: Optional[pulumi.Input[_builtins.str]] = None,
-            is_online: Optional[pulumi.Input[_builtins.bool]] = None,
-            last_materialization_time: Optional[pulumi.Input[_builtins.str]] = None,
-            materialized_feature_id: Optional[pulumi.Input[_builtins.str]] = None,
-            offline_store_config: Optional[pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']]] = None,
-            online_store_config: Optional[pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict']]] = None,
-            pipeline_schedule_state: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']]] = None,
-            table_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'FeatureEngineeringMaterializedFeature':
+            cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            feature_name: pulumi.Input[Optional[_builtins.str]] = None,
+            is_online: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_materialization_time: pulumi.Input[Optional[_builtins.str]] = None,
+            materialized_feature_id: pulumi.Input[Optional[_builtins.str]] = None,
+            offline_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']]] = None,
+            online_store_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict']]] = None,
+            pipeline_schedule_state: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']]] = None,
+            table_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'FeatureEngineeringMaterializedFeature':
         """
         Get an existing FeatureEngineeringMaterializedFeature resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

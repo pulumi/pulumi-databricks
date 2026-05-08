@@ -155,39 +155,39 @@ export interface VectorSearchIndexState {
     /**
      * Creator of the endpoint.
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`. This field is a block and is documented below.
      */
-    deltaSyncIndexSpec?: pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpec>;
+    deltaSyncIndexSpec?: pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpec | undefined>;
     /**
      * Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
      */
-    directAccessIndexSpec?: pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpec>;
+    directAccessIndexSpec?: pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpec | undefined>;
     /**
      * The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
      */
-    endpointName?: pulumi.Input<string>;
-    indexSubtype?: pulumi.Input<string>;
+    endpointName?: pulumi.Input<string | undefined>;
+    indexSubtype?: pulumi.Input<string | undefined>;
     /**
      * Mosaic AI Vector Search index type. Currently supported values are:
      * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
      * * `DIRECT_ACCESS`: An index that supports the direct read and write of vectors and metadata through our REST and SDK APIs. With this model, the user manages index updates.
      */
-    indexType?: pulumi.Input<string>;
+    indexType?: pulumi.Input<string | undefined>;
     /**
      * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The column name that will be used as a primary key.
      */
-    primaryKey?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.VectorSearchIndexProviderConfig>;
+    primaryKey?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.VectorSearchIndexProviderConfig | undefined>;
     /**
      * Object describing the current status of the index consisting of the following fields:
      */
-    statuses?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexStatus>[]>;
+    statuses?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexStatus>[] | undefined>;
 }
 
 /**
@@ -197,16 +197,16 @@ export interface VectorSearchIndexArgs {
     /**
      * Specification for Delta Sync Index. Required if `indexType` is `DELTA_SYNC`. This field is a block and is documented below.
      */
-    deltaSyncIndexSpec?: pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpec>;
+    deltaSyncIndexSpec?: pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpec | undefined>;
     /**
      * Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
      */
-    directAccessIndexSpec?: pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpec>;
+    directAccessIndexSpec?: pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpec | undefined>;
     /**
      * The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
      */
     endpointName: pulumi.Input<string>;
-    indexSubtype?: pulumi.Input<string>;
+    indexSubtype?: pulumi.Input<string | undefined>;
     /**
      * Mosaic AI Vector Search index type. Currently supported values are:
      * * `DELTA_SYNC`: An index that automatically syncs with a source Delta Table, automatically and incrementally updating the index as the underlying data in the Delta Table changes.
@@ -216,10 +216,10 @@ export interface VectorSearchIndexArgs {
     /**
      * Three-level name of the Mosaic AI Vector Search Index to create (`catalog.schema.index_name`).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The column name that will be used as a primary key.
      */
     primaryKey: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.VectorSearchIndexProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.VectorSearchIndexProviderConfig | undefined>;
 }

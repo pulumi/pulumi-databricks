@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Index.ClusterPolicy("this", new()
+    ///     var @this = new Databricks.ClusterPolicy("this", new()
     ///     {
     ///         Name = "Policy with predefined instance profile",
     ///         Definition = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
@@ -57,17 +57,17 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Index.InstanceProfile("this", new()
+    ///     var @this = new Databricks.InstanceProfile("this", new()
     ///     {
     ///         InstanceProfileArn = shared.Id,
     ///     });
     /// 
-    ///     var users = Databricks.Index.GetGroup.Invoke(new()
+    ///     var users = Databricks.GetGroup.Invoke(new()
     ///     {
     ///         DisplayName = "users",
     ///     });
     /// 
-    ///     var all = new Databricks.Index.GroupInstanceProfile("all", new()
+    ///     var all = new Databricks.GroupInstanceProfile("all", new()
     ///     {
     ///         GroupId = users.Apply(getGroupResult =&gt; getGroupResult.Id),
     ///         InstanceProfileId = @this.Id,

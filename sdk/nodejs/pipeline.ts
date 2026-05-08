@@ -341,119 +341,119 @@ export interface PipelineState {
     /**
      * Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
      */
-    allowDuplicateNames?: pulumi.Input<boolean>;
+    allowDuplicateNames?: pulumi.Input<boolean | undefined>;
     /**
      * optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
      */
-    budgetPolicyId?: pulumi.Input<string>;
+    budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      */
-    catalog?: pulumi.Input<string>;
-    cause?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
+    cause?: pulumi.Input<string | undefined>;
     /**
      * optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      */
-    channel?: pulumi.Input<string>;
-    clusterId?: pulumi.Input<string>;
+    channel?: pulumi.Input<string | undefined>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
      */
-    clusters?: pulumi.Input<pulumi.Input<inputs.PipelineCluster>[]>;
+    clusters?: pulumi.Input<pulumi.Input<inputs.PipelineCluster>[] | undefined>;
     /**
      * An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
      */
-    configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A flag indicating whether to run the pipeline continuously. The default value is `false`.
      */
-    continuous?: pulumi.Input<boolean>;
-    creatorUserName?: pulumi.Input<string>;
+    continuous?: pulumi.Input<boolean | undefined>;
+    creatorUserName?: pulumi.Input<string | undefined>;
     /**
      * Deployment type of this pipeline. Supports following attributes:
      */
-    deployment?: pulumi.Input<inputs.PipelineDeployment>;
+    deployment?: pulumi.Input<inputs.PipelineDeployment | undefined>;
     /**
      * A flag indicating whether to run the pipeline in development mode. The default value is `false`.
      */
-    development?: pulumi.Input<boolean>;
+    development?: pulumi.Input<boolean | undefined>;
     /**
      * optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
-    edition?: pulumi.Input<string>;
-    environment?: pulumi.Input<inputs.PipelineEnvironment>;
+    edition?: pulumi.Input<string | undefined>;
+    environment?: pulumi.Input<inputs.PipelineEnvironment | undefined>;
     /**
      * an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
      */
-    eventLog?: pulumi.Input<inputs.PipelineEventLog>;
-    expectedLastModified?: pulumi.Input<number>;
+    eventLog?: pulumi.Input<inputs.PipelineEventLog | undefined>;
+    expectedLastModified?: pulumi.Input<number | undefined>;
     /**
      * Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
      */
-    filters?: pulumi.Input<inputs.PipelineFilters>;
+    filters?: pulumi.Input<inputs.PipelineFilters | undefined>;
     /**
      * The definition of a gateway pipeline to support CDC. Consists of following attributes:
      */
-    gatewayDefinition?: pulumi.Input<inputs.PipelineGatewayDefinition>;
-    health?: pulumi.Input<string>;
-    ingestionDefinition?: pulumi.Input<inputs.PipelineIngestionDefinition>;
-    lastModified?: pulumi.Input<number>;
-    latestUpdates?: pulumi.Input<pulumi.Input<inputs.PipelineLatestUpdate>[]>;
+    gatewayDefinition?: pulumi.Input<inputs.PipelineGatewayDefinition | undefined>;
+    health?: pulumi.Input<string | undefined>;
+    ingestionDefinition?: pulumi.Input<inputs.PipelineIngestionDefinition | undefined>;
+    lastModified?: pulumi.Input<number | undefined>;
+    latestUpdates?: pulumi.Input<pulumi.Input<inputs.PipelineLatestUpdate>[] | undefined>;
     /**
      * blocks - Specifies pipeline code.
      */
-    libraries?: pulumi.Input<pulumi.Input<inputs.PipelineLibrary>[]>;
+    libraries?: pulumi.Input<pulumi.Input<inputs.PipelineLibrary>[] | undefined>;
     /**
      * A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
      */
-    name?: pulumi.Input<string>;
-    notifications?: pulumi.Input<pulumi.Input<inputs.PipelineNotification>[]>;
+    name?: pulumi.Input<string | undefined>;
+    notifications?: pulumi.Input<pulumi.Input<inputs.PipelineNotification>[] | undefined>;
     /**
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
-    photon?: pulumi.Input<boolean>;
+    photon?: pulumi.Input<boolean | undefined>;
     /**
      * Canonical unique identifier of the Lakeflow Declarative Pipeline.
      */
-    pipelineId?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.PipelineProviderConfig>;
-    restartWindow?: pulumi.Input<inputs.PipelineRestartWindow>;
+    pipelineId?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.PipelineProviderConfig | undefined>;
+    restartWindow?: pulumi.Input<inputs.PipelineRestartWindow | undefined>;
     /**
      * An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
      */
-    rootPath?: pulumi.Input<string>;
+    rootPath?: pulumi.Input<string | undefined>;
     /**
      * The user or the service principal the pipeline runs as. See runAs Configuration Block below.
      */
-    runAs?: pulumi.Input<inputs.PipelineRunAs>;
-    runAsUserName?: pulumi.Input<string>;
+    runAs?: pulumi.Input<inputs.PipelineRunAs | undefined>;
+    runAsUserName?: pulumi.Input<string | undefined>;
     /**
      * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
      */
-    serverless?: pulumi.Input<boolean>;
-    state?: pulumi.Input<string>;
+    serverless?: pulumi.Input<boolean | undefined>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
      */
-    storage?: pulumi.Input<string>;
+    storage?: pulumi.Input<string | undefined>;
     /**
      * A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      */
-    target?: pulumi.Input<string>;
-    trigger?: pulumi.Input<inputs.PipelineTrigger>;
+    target?: pulumi.Input<string | undefined>;
+    trigger?: pulumi.Input<inputs.PipelineTrigger | undefined>;
     /**
      * URL of the Lakeflow Declarative Pipeline on the given workspace.
      */
-    url?: pulumi.Input<string>;
-    usagePolicyId?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
+    usagePolicyId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -463,117 +463,117 @@ export interface PipelineArgs {
     /**
      * Optional boolean flag. If false, deployment will fail if name conflicts with that of another pipeline. default is `false`.
      */
-    allowDuplicateNames?: pulumi.Input<boolean>;
+    allowDuplicateNames?: pulumi.Input<boolean | undefined>;
     /**
      * optional string specifying ID of the budget policy for this Lakeflow Declarative Pipeline.
      */
-    budgetPolicyId?: pulumi.Input<string>;
+    budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      */
-    catalog?: pulumi.Input<string>;
-    cause?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
+    cause?: pulumi.Input<string | undefined>;
     /**
      * optional name of the release channel for Spark version used by Lakeflow Declarative Pipeline.  Supported values are: `CURRENT` (default) and `PREVIEW`.
      */
-    channel?: pulumi.Input<string>;
-    clusterId?: pulumi.Input<string>;
+    channel?: pulumi.Input<string | undefined>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * blocks - Clusters to run the pipeline. If none is specified, pipelines will automatically select a default cluster configuration for the pipeline. *Please note that Lakeflow Declarative Pipeline clusters are supporting only subset of attributes as described in [documentation](https://docs.databricks.com/api/workspace/pipelines/create#clusters).*  Also, note that `autoscale` block is extended with the `mode` parameter that controls the autoscaling algorithm (possible values are `ENHANCED` for new, enhanced autoscaling algorithm, or `LEGACY` for old algorithm).
      */
-    clusters?: pulumi.Input<pulumi.Input<inputs.PipelineCluster>[]>;
+    clusters?: pulumi.Input<pulumi.Input<inputs.PipelineCluster>[] | undefined>;
     /**
      * An optional list of values to apply to the entire pipeline. Elements must be formatted as key:value pairs.
      */
-    configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A flag indicating whether to run the pipeline continuously. The default value is `false`.
      */
-    continuous?: pulumi.Input<boolean>;
-    creatorUserName?: pulumi.Input<string>;
+    continuous?: pulumi.Input<boolean | undefined>;
+    creatorUserName?: pulumi.Input<string | undefined>;
     /**
      * Deployment type of this pipeline. Supports following attributes:
      */
-    deployment?: pulumi.Input<inputs.PipelineDeployment>;
+    deployment?: pulumi.Input<inputs.PipelineDeployment | undefined>;
     /**
      * A flag indicating whether to run the pipeline in development mode. The default value is `false`.
      */
-    development?: pulumi.Input<boolean>;
+    development?: pulumi.Input<boolean | undefined>;
     /**
      * optional name of the [product edition](https://docs.databricks.com/aws/en/dlt/configure-pipeline#choose-a-product-edition). Supported values are: `CORE`, `PRO`, `ADVANCED` (default).  Not required when `serverless` is set to `true`.
      */
-    edition?: pulumi.Input<string>;
-    environment?: pulumi.Input<inputs.PipelineEnvironment>;
+    edition?: pulumi.Input<string | undefined>;
+    environment?: pulumi.Input<inputs.PipelineEnvironment | undefined>;
     /**
      * an optional block specifying a table where LDP Event Log will be stored.  Consists of the following fields:
      */
-    eventLog?: pulumi.Input<inputs.PipelineEventLog>;
-    expectedLastModified?: pulumi.Input<number>;
+    eventLog?: pulumi.Input<inputs.PipelineEventLog | undefined>;
+    expectedLastModified?: pulumi.Input<number | undefined>;
     /**
      * Filters on which Pipeline packages to include in the deployed graph.  This block consists of following attributes:
      */
-    filters?: pulumi.Input<inputs.PipelineFilters>;
+    filters?: pulumi.Input<inputs.PipelineFilters | undefined>;
     /**
      * The definition of a gateway pipeline to support CDC. Consists of following attributes:
      */
-    gatewayDefinition?: pulumi.Input<inputs.PipelineGatewayDefinition>;
-    health?: pulumi.Input<string>;
-    ingestionDefinition?: pulumi.Input<inputs.PipelineIngestionDefinition>;
-    lastModified?: pulumi.Input<number>;
-    latestUpdates?: pulumi.Input<pulumi.Input<inputs.PipelineLatestUpdate>[]>;
+    gatewayDefinition?: pulumi.Input<inputs.PipelineGatewayDefinition | undefined>;
+    health?: pulumi.Input<string | undefined>;
+    ingestionDefinition?: pulumi.Input<inputs.PipelineIngestionDefinition | undefined>;
+    lastModified?: pulumi.Input<number | undefined>;
+    latestUpdates?: pulumi.Input<pulumi.Input<inputs.PipelineLatestUpdate>[] | undefined>;
     /**
      * blocks - Specifies pipeline code.
      */
-    libraries?: pulumi.Input<pulumi.Input<inputs.PipelineLibrary>[]>;
+    libraries?: pulumi.Input<pulumi.Input<inputs.PipelineLibrary>[] | undefined>;
     /**
      * A user-friendly name for this pipeline. The name can be used to identify pipeline jobs in the UI.
      */
-    name?: pulumi.Input<string>;
-    notifications?: pulumi.Input<pulumi.Input<inputs.PipelineNotification>[]>;
+    name?: pulumi.Input<string | undefined>;
+    notifications?: pulumi.Input<pulumi.Input<inputs.PipelineNotification>[] | undefined>;
     /**
      * A flag indicating whether to use Photon engine. The default value is `false`.
      */
-    photon?: pulumi.Input<boolean>;
+    photon?: pulumi.Input<boolean | undefined>;
     /**
      * Canonical unique identifier of the Lakeflow Declarative Pipeline.
      */
-    pipelineId?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.PipelineProviderConfig>;
-    restartWindow?: pulumi.Input<inputs.PipelineRestartWindow>;
+    pipelineId?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.PipelineProviderConfig | undefined>;
+    restartWindow?: pulumi.Input<inputs.PipelineRestartWindow | undefined>;
     /**
      * An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
      */
-    rootPath?: pulumi.Input<string>;
+    rootPath?: pulumi.Input<string | undefined>;
     /**
      * The user or the service principal the pipeline runs as. See runAs Configuration Block below.
      */
-    runAs?: pulumi.Input<inputs.PipelineRunAs>;
-    runAsUserName?: pulumi.Input<string>;
+    runAs?: pulumi.Input<inputs.PipelineRunAs | undefined>;
+    runAsUserName?: pulumi.Input<string | undefined>;
     /**
      * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
      */
-    serverless?: pulumi.Input<boolean>;
-    state?: pulumi.Input<string>;
+    serverless?: pulumi.Input<boolean | undefined>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
      */
-    storage?: pulumi.Input<string>;
+    storage?: pulumi.Input<string | undefined>;
     /**
      * A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      */
-    target?: pulumi.Input<string>;
-    trigger?: pulumi.Input<inputs.PipelineTrigger>;
+    target?: pulumi.Input<string | undefined>;
+    trigger?: pulumi.Input<inputs.PipelineTrigger | undefined>;
     /**
      * URL of the Lakeflow Declarative Pipeline on the given workspace.
      */
-    url?: pulumi.Input<string>;
-    usagePolicyId?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
+    usagePolicyId?: pulumi.Input<string | undefined>;
 }

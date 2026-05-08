@@ -111,30 +111,30 @@ export class RestrictWorkspaceAdminsSetting extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RestrictWorkspaceAdminsSetting resources.
  */
 export interface RestrictWorkspaceAdminsSettingState {
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.RestrictWorkspaceAdminsSettingProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.RestrictWorkspaceAdminsSettingProviderConfig | undefined>;
     /**
      * The configuration details.
      */
-    restrictWorkspaceAdmins?: pulumi.Input<inputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins>;
-    settingName?: pulumi.Input<string>;
+    restrictWorkspaceAdmins?: pulumi.Input<inputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins | undefined>;
+    settingName?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a RestrictWorkspaceAdminsSetting resource.
  */
 export interface RestrictWorkspaceAdminsSettingArgs {
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.RestrictWorkspaceAdminsSettingProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.RestrictWorkspaceAdminsSettingProviderConfig | undefined>;
     /**
      * The configuration details.
      */
     restrictWorkspaceAdmins: pulumi.Input<inputs.RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins>;
-    settingName?: pulumi.Input<string>;
+    settingName?: pulumi.Input<string | undefined>;
 }

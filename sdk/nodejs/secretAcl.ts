@@ -134,19 +134,19 @@ export interface SecretAclState {
     /**
      * `READ`, `WRITE` or `MANAGE`.
      */
-    permission?: pulumi.Input<string>;
+    permission?: pulumi.Input<string | undefined>;
     /**
      * principal's identifier. It can be:
      */
-    principal?: pulumi.Input<string>;
+    principal?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SecretAclProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.SecretAclProviderConfig | undefined>;
     /**
      * name of the scope
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -164,7 +164,7 @@ export interface SecretAclArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SecretAclProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.SecretAclProviderConfig | undefined>;
     /**
      * name of the scope
      */

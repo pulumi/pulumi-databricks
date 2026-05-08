@@ -215,8 +215,8 @@ def get_feature_engineering_feature(full_name: Optional[_builtins.str] = None,
         source=pulumi.get(__ret__, 'source'),
         time_window=pulumi.get(__ret__, 'time_window'),
         timeseries_column=pulumi.get(__ret__, 'timeseries_column'))
-def get_feature_engineering_feature_output(full_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                           provider_config: Optional[pulumi.Input[Optional[Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict']]]] = None,
+def get_feature_engineering_feature_output(full_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                           provider_config: pulumi.Input[Optional[Optional[Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict']]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureEngineeringFeatureResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)

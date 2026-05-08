@@ -21,9 +21,9 @@ __all__ = ['OnlineTableArgs', 'OnlineTable']
 @pulumi.input_type
 class OnlineTableArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['OnlineTableProviderConfigArgs']] = None,
-                 spec: Optional[pulumi.Input['OnlineTableSpecArgs']] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['OnlineTableProviderConfigArgs']] = None,
+                 spec: pulumi.Input[Optional['OnlineTableSpecArgs']] = None):
         """
         The set of arguments for constructing a OnlineTable resource.
 
@@ -40,50 +40,50 @@ class OnlineTableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         3-level name of the Online Table to create.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['OnlineTableProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['OnlineTableProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['OnlineTableProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['OnlineTableProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['OnlineTableSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['OnlineTableSpecArgs']]:
         """
         object containing specification of the online table:
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['OnlineTableSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['OnlineTableSpecArgs']]):
         pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
 class _OnlineTableState:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['OnlineTableProviderConfigArgs']] = None,
-                 spec: Optional[pulumi.Input['OnlineTableSpecArgs']] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['OnlineTableStatusArgs']]]] = None,
-                 table_serving_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 unity_catalog_provisioning_state: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['OnlineTableProviderConfigArgs']] = None,
+                 spec: pulumi.Input[Optional['OnlineTableSpecArgs']] = None,
+                 statuses: pulumi.Input[Optional[Sequence[pulumi.Input['OnlineTableStatusArgs']]]] = None,
+                 table_serving_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 unity_catalog_provisioning_state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OnlineTable resources.
 
@@ -109,74 +109,74 @@ class _OnlineTableState:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         3-level name of the Online Table to create.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['OnlineTableProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['OnlineTableProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['OnlineTableProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['OnlineTableProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['OnlineTableSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['OnlineTableSpecArgs']]:
         """
         object containing specification of the online table:
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['OnlineTableSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['OnlineTableSpecArgs']]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OnlineTableStatusArgs']]]]:
+    def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OnlineTableStatusArgs']]]]:
         """
         object describing status of the online table:
         """
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OnlineTableStatusArgs']]]]):
+    def statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OnlineTableStatusArgs']]]]):
         pulumi.set(self, "statuses", value)
 
     @_builtins.property
     @pulumi.getter(name="tableServingUrl")
-    def table_serving_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_serving_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data serving REST API URL for this table.
         """
         return pulumi.get(self, "table_serving_url")
 
     @table_serving_url.setter
-    def table_serving_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_serving_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_serving_url", value)
 
     @_builtins.property
     @pulumi.getter(name="unityCatalogProvisioningState")
-    def unity_catalog_provisioning_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unity_catalog_provisioning_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
         """
         return pulumi.get(self, "unity_catalog_provisioning_state")
 
     @unity_catalog_provisioning_state.setter
-    def unity_catalog_provisioning_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unity_catalog_provisioning_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unity_catalog_provisioning_state", value)
 
 
@@ -186,9 +186,9 @@ class OnlineTable(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict']]] = None,
-                 spec: Optional[pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
                  __props__=None):
         """
         This resource allows you to create [Online Table](https://docs.databricks.com/en/machine-learning/feature-store/online-tables.html) in Databricks.  An online table is a read-only copy of a Delta Table that is stored in row-oriented format optimized for online access. Online tables are fully serverless tables that auto-scale throughput capacity with the request load and provide low latency and high throughput access to data of any scale. Online tables are designed to work with Databricks Model Serving, Feature Serving, and retrieval-augmented generation (RAG) applications where they are used for fast data lookups.
@@ -259,9 +259,9 @@ class OnlineTable(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict']]] = None,
-                 spec: Optional[pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -287,12 +287,12 @@ class OnlineTable(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict']]] = None,
-            spec: Optional[pulumi.Input[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
-            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OnlineTableStatusArgs', 'OnlineTableStatusArgsDict']]]]] = None,
-            table_serving_url: Optional[pulumi.Input[_builtins.str]] = None,
-            unity_catalog_provisioning_state: Optional[pulumi.Input[_builtins.str]] = None) -> 'OnlineTable':
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['OnlineTableProviderConfigArgs', 'OnlineTableProviderConfigArgsDict']]] = None,
+            spec: pulumi.Input[Optional[Union['OnlineTableSpecArgs', 'OnlineTableSpecArgsDict']]] = None,
+            statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OnlineTableStatusArgs', 'OnlineTableStatusArgsDict']]]]] = None,
+            table_serving_url: pulumi.Input[Optional[_builtins.str]] = None,
+            unity_catalog_provisioning_state: pulumi.Input[Optional[_builtins.str]] = None) -> 'OnlineTable':
         """
         Get an existing OnlineTable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

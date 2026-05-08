@@ -341,14 +341,14 @@ export interface AccessControlRuleSetState {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
-    etag?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
      *
      * !> Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
      */
-    grantRules?: pulumi.Input<pulumi.Input<inputs.AccessControlRuleSetGrantRule>[]>;
+    grantRules?: pulumi.Input<pulumi.Input<inputs.AccessControlRuleSetGrantRule>[] | undefined>;
     /**
      * Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
      * * `accounts/{account_id}/ruleSets/default` - account-level access control.
@@ -357,8 +357,8 @@ export interface AccessControlRuleSetState {
      * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
      * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
      */
-    name?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.AccessControlRuleSetProviderConfig>;
+    name?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.AccessControlRuleSetProviderConfig | undefined>;
 }
 
 /**
@@ -368,13 +368,13 @@ export interface AccessControlRuleSetArgs {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
      *
      * !> Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
      */
-    grantRules?: pulumi.Input<pulumi.Input<inputs.AccessControlRuleSetGrantRule>[]>;
+    grantRules?: pulumi.Input<pulumi.Input<inputs.AccessControlRuleSetGrantRule>[] | undefined>;
     /**
      * Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
      * * `accounts/{account_id}/ruleSets/default` - account-level access control.
@@ -383,6 +383,6 @@ export interface AccessControlRuleSetArgs {
      * * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
      * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
      */
-    name?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.AccessControlRuleSetProviderConfig>;
+    name?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.AccessControlRuleSetProviderConfig | undefined>;
 }

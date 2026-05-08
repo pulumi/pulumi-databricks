@@ -116,11 +116,12 @@ def get_users(api: Optional[_builtins.str] = None,
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_databricks as databricks
 
     company_users = databricks.get_users(filter="userName co \\"@domain.org\\"")
     data_users_group = databricks.Group("data_users_group", display_name="Data Users")
-    add_users_to_group = []
+    add_users_to_group: list[Any] = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate({user.id: user for user in company_users.users})]:
         add_users_to_group.append(databricks.GroupMember(f"add_users_to_group-{range['key']}",
             group_id=data_users_group.id,
@@ -163,11 +164,11 @@ def get_users(api: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         users=pulumi.get(__ret__, 'users'))
-def get_users_output(api: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     extra_attributes: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     provider_config: Optional[pulumi.Input[Optional[Union['GetUsersProviderConfigArgs', 'GetUsersProviderConfigArgsDict']]]] = None,
-                     users: Optional[pulumi.Input[Optional[Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict']]]]] = None,
+def get_users_output(api: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     extra_attributes: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     provider_config: pulumi.Input[Optional[Optional[Union['GetUsersProviderConfigArgs', 'GetUsersProviderConfigArgsDict']]]] = None,
+                     users: pulumi.Input[Optional[Optional[Sequence[Union['GetUsersUserArgs', 'GetUsersUserArgsDict']]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsersResult]:
     """
     Retrieves information about multiple User resources.
@@ -180,11 +181,12 @@ def get_users_output(api: Optional[pulumi.Input[Optional[_builtins.str]]] = None
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_databricks as databricks
 
     company_users = databricks.get_users(filter="userName co \\"@domain.org\\"")
     data_users_group = databricks.Group("data_users_group", display_name="Data Users")
-    add_users_to_group = []
+    add_users_to_group: list[Any] = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate({user.id: user for user in company_users.users})]:
         add_users_to_group.append(databricks.GroupMember(f"add_users_to_group-{range['key']}",
             group_id=data_users_group.id,

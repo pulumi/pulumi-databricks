@@ -139,23 +139,23 @@ export interface WorkspaceEntityTagAssignmentState {
     /**
      * The identifier of the entity to which the tag is assigned. For apps, the entityId is the app name
      */
-    entityId?: pulumi.Input<string>;
+    entityId?: pulumi.Input<string | undefined>;
     /**
      * The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
      */
-    entityType?: pulumi.Input<string>;
+    entityType?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.WorkspaceEntityTagAssignmentProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.WorkspaceEntityTagAssignmentProviderConfig | undefined>;
     /**
      * The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
      */
-    tagKey?: pulumi.Input<string>;
+    tagKey?: pulumi.Input<string | undefined>;
     /**
      * The value of the tag
      */
-    tagValue?: pulumi.Input<string>;
+    tagValue?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -173,7 +173,7 @@ export interface WorkspaceEntityTagAssignmentArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.WorkspaceEntityTagAssignmentProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.WorkspaceEntityTagAssignmentProviderConfig | undefined>;
     /**
      * The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
      */
@@ -181,5 +181,5 @@ export interface WorkspaceEntityTagAssignmentArgs {
     /**
      * The value of the tag
      */
-    tagValue?: pulumi.Input<string>;
+    tagValue?: pulumi.Input<string | undefined>;
 }

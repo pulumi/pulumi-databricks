@@ -148,29 +148,29 @@ export interface FeatureEngineeringFeatureState {
     /**
      * The description of the feature
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The entity columns for the feature, used as aggregation keys and for query-time lookup
      */
-    entities?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureEntity>[]>;
+    entities?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureEntity>[] | undefined>;
     /**
      * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
      * The filter condition applied to the source data before aggregation
      */
-    filterCondition?: pulumi.Input<string>;
+    filterCondition?: pulumi.Input<string | undefined>;
     /**
      * The full three-part name (catalog, schema, name) of the feature
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * The function by which the feature is computed
      */
-    function?: pulumi.Input<inputs.FeatureEngineeringFeatureFunction>;
+    function?: pulumi.Input<inputs.FeatureEngineeringFeatureFunction | undefined>;
     /**
      * Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
      * The input columns from which the feature is computed
      */
-    inputs?: pulumi.Input<pulumi.Input<string>[]>;
+    inputs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Lineage context information for this feature.
      * WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -178,24 +178,24 @@ export interface FeatureEngineeringFeatureState {
      * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
      * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
      */
-    lineageContext?: pulumi.Input<inputs.FeatureEngineeringFeatureLineageContext>;
+    lineageContext?: pulumi.Input<inputs.FeatureEngineeringFeatureLineageContext | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.FeatureEngineeringFeatureProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.FeatureEngineeringFeatureProviderConfig | undefined>;
     /**
      * The data source of the feature
      */
-    source?: pulumi.Input<inputs.FeatureEngineeringFeatureSource>;
+    source?: pulumi.Input<inputs.FeatureEngineeringFeatureSource | undefined>;
     /**
      * Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
      * The time window in which the feature is computed
      */
-    timeWindow?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindow>;
+    timeWindow?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindow | undefined>;
     /**
      * Column recording time, used for point-in-time joins, backfills, and aggregations
      */
-    timeseriesColumn?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeseriesColumn>;
+    timeseriesColumn?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeseriesColumn | undefined>;
 }
 
 /**
@@ -205,16 +205,16 @@ export interface FeatureEngineeringFeatureArgs {
     /**
      * The description of the feature
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The entity columns for the feature, used as aggregation keys and for query-time lookup
      */
-    entities?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureEntity>[]>;
+    entities?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureEntity>[] | undefined>;
     /**
      * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
      * The filter condition applied to the source data before aggregation
      */
-    filterCondition?: pulumi.Input<string>;
+    filterCondition?: pulumi.Input<string | undefined>;
     /**
      * The full three-part name (catalog, schema, name) of the feature
      */
@@ -227,7 +227,7 @@ export interface FeatureEngineeringFeatureArgs {
      * Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
      * The input columns from which the feature is computed
      */
-    inputs?: pulumi.Input<pulumi.Input<string>[]>;
+    inputs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Lineage context information for this feature.
      * WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -235,11 +235,11 @@ export interface FeatureEngineeringFeatureArgs {
      * Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
      * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
      */
-    lineageContext?: pulumi.Input<inputs.FeatureEngineeringFeatureLineageContext>;
+    lineageContext?: pulumi.Input<inputs.FeatureEngineeringFeatureLineageContext | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.FeatureEngineeringFeatureProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.FeatureEngineeringFeatureProviderConfig | undefined>;
     /**
      * The data source of the feature
      */
@@ -248,9 +248,9 @@ export interface FeatureEngineeringFeatureArgs {
      * Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
      * The time window in which the feature is computed
      */
-    timeWindow?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindow>;
+    timeWindow?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindow | undefined>;
     /**
      * Column recording time, used for point-in-time joins, backfills, and aggregations
      */
-    timeseriesColumn?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeseriesColumn>;
+    timeseriesColumn?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeseriesColumn | undefined>;
 }

@@ -21,21 +21,21 @@ __all__ = ['WorkspaceSettingV2Args', 'WorkspaceSettingV2']
 @pulumi.input_type
 class WorkspaceSettingV2Args:
     def __init__(__self__, *,
-                 aibi_dashboard_embedding_access_policy: Optional[pulumi.Input['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs']] = None,
-                 aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']] = None,
-                 automatic_cluster_update_workspace: Optional[pulumi.Input['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs']] = None,
-                 boolean_val: Optional[pulumi.Input['WorkspaceSettingV2BooleanValArgs']] = None,
-                 effective_aibi_dashboard_embedding_access_policy: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']] = None,
-                 effective_aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs']] = None,
-                 effective_automatic_cluster_update_workspace: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']] = None,
-                 effective_personal_compute: Optional[pulumi.Input['WorkspaceSettingV2EffectivePersonalComputeArgs']] = None,
-                 effective_restrict_workspace_admins: Optional[pulumi.Input['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs']] = None,
-                 integer_val: Optional[pulumi.Input['WorkspaceSettingV2IntegerValArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 personal_compute: Optional[pulumi.Input['WorkspaceSettingV2PersonalComputeArgs']] = None,
-                 provider_config: Optional[pulumi.Input['WorkspaceSettingV2ProviderConfigArgs']] = None,
-                 restrict_workspace_admins: Optional[pulumi.Input['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']] = None,
-                 string_val: Optional[pulumi.Input['WorkspaceSettingV2StringValArgs']] = None):
+                 aibi_dashboard_embedding_access_policy: pulumi.Input[Optional['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs']] = None,
+                 aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']] = None,
+                 automatic_cluster_update_workspace: pulumi.Input[Optional['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs']] = None,
+                 boolean_val: pulumi.Input[Optional['WorkspaceSettingV2BooleanValArgs']] = None,
+                 effective_aibi_dashboard_embedding_access_policy: pulumi.Input[Optional['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']] = None,
+                 effective_aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs']] = None,
+                 effective_automatic_cluster_update_workspace: pulumi.Input[Optional['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']] = None,
+                 effective_personal_compute: pulumi.Input[Optional['WorkspaceSettingV2EffectivePersonalComputeArgs']] = None,
+                 effective_restrict_workspace_admins: pulumi.Input[Optional['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs']] = None,
+                 integer_val: pulumi.Input[Optional['WorkspaceSettingV2IntegerValArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 personal_compute: pulumi.Input[Optional['WorkspaceSettingV2PersonalComputeArgs']] = None,
+                 provider_config: pulumi.Input[Optional['WorkspaceSettingV2ProviderConfigArgs']] = None,
+                 restrict_workspace_admins: pulumi.Input[Optional['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']] = None,
+                 string_val: pulumi.Input[Optional['WorkspaceSettingV2StringValArgs']] = None):
         """
         The set of arguments for constructing a WorkspaceSettingV2 resource.
 
@@ -88,206 +88,206 @@ class WorkspaceSettingV2Args:
 
     @_builtins.property
     @pulumi.getter(name="aibiDashboardEmbeddingAccessPolicy")
-    def aibi_dashboard_embedding_access_policy(self) -> Optional[pulumi.Input['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs']]:
+    def aibi_dashboard_embedding_access_policy(self) -> pulumi.Input[Optional['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs']]:
         """
         Setting value for aibi_dashboard_embedding_access_policy setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_access_policy for final setting value
         """
         return pulumi.get(self, "aibi_dashboard_embedding_access_policy")
 
     @aibi_dashboard_embedding_access_policy.setter
-    def aibi_dashboard_embedding_access_policy(self, value: Optional[pulumi.Input['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs']]):
+    def aibi_dashboard_embedding_access_policy(self, value: pulumi.Input[Optional['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs']]):
         pulumi.set(self, "aibi_dashboard_embedding_access_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="aibiDashboardEmbeddingApprovedDomains")
-    def aibi_dashboard_embedding_approved_domains(self) -> Optional[pulumi.Input['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']]:
+    def aibi_dashboard_embedding_approved_domains(self) -> pulumi.Input[Optional['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']]:
         """
         Setting value for aibi_dashboard_embedding_approved_domains setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_approved_domains for final setting value
         """
         return pulumi.get(self, "aibi_dashboard_embedding_approved_domains")
 
     @aibi_dashboard_embedding_approved_domains.setter
-    def aibi_dashboard_embedding_approved_domains(self, value: Optional[pulumi.Input['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']]):
+    def aibi_dashboard_embedding_approved_domains(self, value: pulumi.Input[Optional['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']]):
         pulumi.set(self, "aibi_dashboard_embedding_approved_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="automaticClusterUpdateWorkspace")
-    def automatic_cluster_update_workspace(self) -> Optional[pulumi.Input['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs']]:
+    def automatic_cluster_update_workspace(self) -> pulumi.Input[Optional['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs']]:
         """
         Setting value for automatic_cluster_update_workspace setting. This is the setting value set by consumers, check effective_automatic_cluster_update_workspace for final setting value
         """
         return pulumi.get(self, "automatic_cluster_update_workspace")
 
     @automatic_cluster_update_workspace.setter
-    def automatic_cluster_update_workspace(self, value: Optional[pulumi.Input['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs']]):
+    def automatic_cluster_update_workspace(self, value: pulumi.Input[Optional['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs']]):
         pulumi.set(self, "automatic_cluster_update_workspace", value)
 
     @_builtins.property
     @pulumi.getter(name="booleanVal")
-    def boolean_val(self) -> Optional[pulumi.Input['WorkspaceSettingV2BooleanValArgs']]:
+    def boolean_val(self) -> pulumi.Input[Optional['WorkspaceSettingV2BooleanValArgs']]:
         """
         Setting value for boolean type setting. This is the setting value set by consumers, check effective_boolean_val for final setting value
         """
         return pulumi.get(self, "boolean_val")
 
     @boolean_val.setter
-    def boolean_val(self, value: Optional[pulumi.Input['WorkspaceSettingV2BooleanValArgs']]):
+    def boolean_val(self, value: pulumi.Input[Optional['WorkspaceSettingV2BooleanValArgs']]):
         pulumi.set(self, "boolean_val", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAibiDashboardEmbeddingAccessPolicy")
-    def effective_aibi_dashboard_embedding_access_policy(self) -> Optional[pulumi.Input['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']]:
+    def effective_aibi_dashboard_embedding_access_policy(self) -> pulumi.Input[Optional['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']]:
         """
         Effective setting value for aibi_dashboard_embedding_access_policy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
         """
         return pulumi.get(self, "effective_aibi_dashboard_embedding_access_policy")
 
     @effective_aibi_dashboard_embedding_access_policy.setter
-    def effective_aibi_dashboard_embedding_access_policy(self, value: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']]):
+    def effective_aibi_dashboard_embedding_access_policy(self, value: pulumi.Input[Optional['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']]):
         pulumi.set(self, "effective_aibi_dashboard_embedding_access_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAibiDashboardEmbeddingApprovedDomains")
-    def effective_aibi_dashboard_embedding_approved_domains(self) -> Optional[pulumi.Input['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs']]:
+    def effective_aibi_dashboard_embedding_approved_domains(self) -> pulumi.Input[Optional['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs']]:
         """
         Effective setting value for aibi_dashboard_embedding_approved_domains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
         """
         return pulumi.get(self, "effective_aibi_dashboard_embedding_approved_domains")
 
     @effective_aibi_dashboard_embedding_approved_domains.setter
-    def effective_aibi_dashboard_embedding_approved_domains(self, value: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs']]):
+    def effective_aibi_dashboard_embedding_approved_domains(self, value: pulumi.Input[Optional['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs']]):
         pulumi.set(self, "effective_aibi_dashboard_embedding_approved_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAutomaticClusterUpdateWorkspace")
-    def effective_automatic_cluster_update_workspace(self) -> Optional[pulumi.Input['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']]:
+    def effective_automatic_cluster_update_workspace(self) -> pulumi.Input[Optional['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']]:
         """
         Effective setting value for automatic_cluster_update_workspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
         """
         return pulumi.get(self, "effective_automatic_cluster_update_workspace")
 
     @effective_automatic_cluster_update_workspace.setter
-    def effective_automatic_cluster_update_workspace(self, value: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']]):
+    def effective_automatic_cluster_update_workspace(self, value: pulumi.Input[Optional['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']]):
         pulumi.set(self, "effective_automatic_cluster_update_workspace", value)
 
     @_builtins.property
     @pulumi.getter(name="effectivePersonalCompute")
-    def effective_personal_compute(self) -> Optional[pulumi.Input['WorkspaceSettingV2EffectivePersonalComputeArgs']]:
+    def effective_personal_compute(self) -> pulumi.Input[Optional['WorkspaceSettingV2EffectivePersonalComputeArgs']]:
         """
         Effective setting value for personal_compute setting. This is the final effective value of setting. To set a value use personal_compute
         """
         return pulumi.get(self, "effective_personal_compute")
 
     @effective_personal_compute.setter
-    def effective_personal_compute(self, value: Optional[pulumi.Input['WorkspaceSettingV2EffectivePersonalComputeArgs']]):
+    def effective_personal_compute(self, value: pulumi.Input[Optional['WorkspaceSettingV2EffectivePersonalComputeArgs']]):
         pulumi.set(self, "effective_personal_compute", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveRestrictWorkspaceAdmins")
-    def effective_restrict_workspace_admins(self) -> Optional[pulumi.Input['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs']]:
+    def effective_restrict_workspace_admins(self) -> pulumi.Input[Optional['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs']]:
         """
         Effective setting value for restrict_workspace_admins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
         """
         return pulumi.get(self, "effective_restrict_workspace_admins")
 
     @effective_restrict_workspace_admins.setter
-    def effective_restrict_workspace_admins(self, value: Optional[pulumi.Input['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs']]):
+    def effective_restrict_workspace_admins(self, value: pulumi.Input[Optional['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs']]):
         pulumi.set(self, "effective_restrict_workspace_admins", value)
 
     @_builtins.property
     @pulumi.getter(name="integerVal")
-    def integer_val(self) -> Optional[pulumi.Input['WorkspaceSettingV2IntegerValArgs']]:
+    def integer_val(self) -> pulumi.Input[Optional['WorkspaceSettingV2IntegerValArgs']]:
         """
         Setting value for integer type setting. This is the setting value set by consumers, check effective_integer_val for final setting value
         """
         return pulumi.get(self, "integer_val")
 
     @integer_val.setter
-    def integer_val(self, value: Optional[pulumi.Input['WorkspaceSettingV2IntegerValArgs']]):
+    def integer_val(self, value: pulumi.Input[Optional['WorkspaceSettingV2IntegerValArgs']]):
         pulumi.set(self, "integer_val", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the setting
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="personalCompute")
-    def personal_compute(self) -> Optional[pulumi.Input['WorkspaceSettingV2PersonalComputeArgs']]:
+    def personal_compute(self) -> pulumi.Input[Optional['WorkspaceSettingV2PersonalComputeArgs']]:
         """
         Setting value for personal_compute setting. This is the setting value set by consumers, check effective_personal_compute for final setting value
         """
         return pulumi.get(self, "personal_compute")
 
     @personal_compute.setter
-    def personal_compute(self, value: Optional[pulumi.Input['WorkspaceSettingV2PersonalComputeArgs']]):
+    def personal_compute(self, value: pulumi.Input[Optional['WorkspaceSettingV2PersonalComputeArgs']]):
         pulumi.set(self, "personal_compute", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['WorkspaceSettingV2ProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['WorkspaceSettingV2ProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['WorkspaceSettingV2ProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['WorkspaceSettingV2ProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="restrictWorkspaceAdmins")
-    def restrict_workspace_admins(self) -> Optional[pulumi.Input['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']]:
+    def restrict_workspace_admins(self) -> pulumi.Input[Optional['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']]:
         """
         Setting value for restrict_workspace_admins setting. This is the setting value set by consumers, check effective_restrict_workspace_admins for final setting value
         """
         return pulumi.get(self, "restrict_workspace_admins")
 
     @restrict_workspace_admins.setter
-    def restrict_workspace_admins(self, value: Optional[pulumi.Input['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']]):
+    def restrict_workspace_admins(self, value: pulumi.Input[Optional['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']]):
         pulumi.set(self, "restrict_workspace_admins", value)
 
     @_builtins.property
     @pulumi.getter(name="stringVal")
-    def string_val(self) -> Optional[pulumi.Input['WorkspaceSettingV2StringValArgs']]:
+    def string_val(self) -> pulumi.Input[Optional['WorkspaceSettingV2StringValArgs']]:
         """
         Setting value for string type setting. This is the setting value set by consumers, check effective_string_val for final setting value
         """
         return pulumi.get(self, "string_val")
 
     @string_val.setter
-    def string_val(self, value: Optional[pulumi.Input['WorkspaceSettingV2StringValArgs']]):
+    def string_val(self, value: pulumi.Input[Optional['WorkspaceSettingV2StringValArgs']]):
         pulumi.set(self, "string_val", value)
 
 
 @pulumi.input_type
 class _WorkspaceSettingV2State:
     def __init__(__self__, *,
-                 aibi_dashboard_embedding_access_policy: Optional[pulumi.Input['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs']] = None,
-                 aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']] = None,
-                 automatic_cluster_update_workspace: Optional[pulumi.Input['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs']] = None,
-                 boolean_val: Optional[pulumi.Input['WorkspaceSettingV2BooleanValArgs']] = None,
-                 effective_aibi_dashboard_embedding_access_policy: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']] = None,
-                 effective_aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs']] = None,
-                 effective_automatic_cluster_update_workspace: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']] = None,
-                 effective_boolean_val: Optional[pulumi.Input['WorkspaceSettingV2EffectiveBooleanValArgs']] = None,
-                 effective_integer_val: Optional[pulumi.Input['WorkspaceSettingV2EffectiveIntegerValArgs']] = None,
-                 effective_personal_compute: Optional[pulumi.Input['WorkspaceSettingV2EffectivePersonalComputeArgs']] = None,
-                 effective_restrict_workspace_admins: Optional[pulumi.Input['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs']] = None,
-                 effective_string_val: Optional[pulumi.Input['WorkspaceSettingV2EffectiveStringValArgs']] = None,
-                 integer_val: Optional[pulumi.Input['WorkspaceSettingV2IntegerValArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 personal_compute: Optional[pulumi.Input['WorkspaceSettingV2PersonalComputeArgs']] = None,
-                 provider_config: Optional[pulumi.Input['WorkspaceSettingV2ProviderConfigArgs']] = None,
-                 restrict_workspace_admins: Optional[pulumi.Input['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']] = None,
-                 string_val: Optional[pulumi.Input['WorkspaceSettingV2StringValArgs']] = None):
+                 aibi_dashboard_embedding_access_policy: pulumi.Input[Optional['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs']] = None,
+                 aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']] = None,
+                 automatic_cluster_update_workspace: pulumi.Input[Optional['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs']] = None,
+                 boolean_val: pulumi.Input[Optional['WorkspaceSettingV2BooleanValArgs']] = None,
+                 effective_aibi_dashboard_embedding_access_policy: pulumi.Input[Optional['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']] = None,
+                 effective_aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs']] = None,
+                 effective_automatic_cluster_update_workspace: pulumi.Input[Optional['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']] = None,
+                 effective_boolean_val: pulumi.Input[Optional['WorkspaceSettingV2EffectiveBooleanValArgs']] = None,
+                 effective_integer_val: pulumi.Input[Optional['WorkspaceSettingV2EffectiveIntegerValArgs']] = None,
+                 effective_personal_compute: pulumi.Input[Optional['WorkspaceSettingV2EffectivePersonalComputeArgs']] = None,
+                 effective_restrict_workspace_admins: pulumi.Input[Optional['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs']] = None,
+                 effective_string_val: pulumi.Input[Optional['WorkspaceSettingV2EffectiveStringValArgs']] = None,
+                 integer_val: pulumi.Input[Optional['WorkspaceSettingV2IntegerValArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 personal_compute: pulumi.Input[Optional['WorkspaceSettingV2PersonalComputeArgs']] = None,
+                 provider_config: pulumi.Input[Optional['WorkspaceSettingV2ProviderConfigArgs']] = None,
+                 restrict_workspace_admins: pulumi.Input[Optional['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']] = None,
+                 string_val: pulumi.Input[Optional['WorkspaceSettingV2StringValArgs']] = None):
         """
         Input properties used for looking up and filtering WorkspaceSettingV2 resources.
 
@@ -349,218 +349,218 @@ class _WorkspaceSettingV2State:
 
     @_builtins.property
     @pulumi.getter(name="aibiDashboardEmbeddingAccessPolicy")
-    def aibi_dashboard_embedding_access_policy(self) -> Optional[pulumi.Input['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs']]:
+    def aibi_dashboard_embedding_access_policy(self) -> pulumi.Input[Optional['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs']]:
         """
         Setting value for aibi_dashboard_embedding_access_policy setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_access_policy for final setting value
         """
         return pulumi.get(self, "aibi_dashboard_embedding_access_policy")
 
     @aibi_dashboard_embedding_access_policy.setter
-    def aibi_dashboard_embedding_access_policy(self, value: Optional[pulumi.Input['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs']]):
+    def aibi_dashboard_embedding_access_policy(self, value: pulumi.Input[Optional['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs']]):
         pulumi.set(self, "aibi_dashboard_embedding_access_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="aibiDashboardEmbeddingApprovedDomains")
-    def aibi_dashboard_embedding_approved_domains(self) -> Optional[pulumi.Input['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']]:
+    def aibi_dashboard_embedding_approved_domains(self) -> pulumi.Input[Optional['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']]:
         """
         Setting value for aibi_dashboard_embedding_approved_domains setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_approved_domains for final setting value
         """
         return pulumi.get(self, "aibi_dashboard_embedding_approved_domains")
 
     @aibi_dashboard_embedding_approved_domains.setter
-    def aibi_dashboard_embedding_approved_domains(self, value: Optional[pulumi.Input['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']]):
+    def aibi_dashboard_embedding_approved_domains(self, value: pulumi.Input[Optional['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']]):
         pulumi.set(self, "aibi_dashboard_embedding_approved_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="automaticClusterUpdateWorkspace")
-    def automatic_cluster_update_workspace(self) -> Optional[pulumi.Input['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs']]:
+    def automatic_cluster_update_workspace(self) -> pulumi.Input[Optional['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs']]:
         """
         Setting value for automatic_cluster_update_workspace setting. This is the setting value set by consumers, check effective_automatic_cluster_update_workspace for final setting value
         """
         return pulumi.get(self, "automatic_cluster_update_workspace")
 
     @automatic_cluster_update_workspace.setter
-    def automatic_cluster_update_workspace(self, value: Optional[pulumi.Input['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs']]):
+    def automatic_cluster_update_workspace(self, value: pulumi.Input[Optional['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs']]):
         pulumi.set(self, "automatic_cluster_update_workspace", value)
 
     @_builtins.property
     @pulumi.getter(name="booleanVal")
-    def boolean_val(self) -> Optional[pulumi.Input['WorkspaceSettingV2BooleanValArgs']]:
+    def boolean_val(self) -> pulumi.Input[Optional['WorkspaceSettingV2BooleanValArgs']]:
         """
         Setting value for boolean type setting. This is the setting value set by consumers, check effective_boolean_val for final setting value
         """
         return pulumi.get(self, "boolean_val")
 
     @boolean_val.setter
-    def boolean_val(self, value: Optional[pulumi.Input['WorkspaceSettingV2BooleanValArgs']]):
+    def boolean_val(self, value: pulumi.Input[Optional['WorkspaceSettingV2BooleanValArgs']]):
         pulumi.set(self, "boolean_val", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAibiDashboardEmbeddingAccessPolicy")
-    def effective_aibi_dashboard_embedding_access_policy(self) -> Optional[pulumi.Input['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']]:
+    def effective_aibi_dashboard_embedding_access_policy(self) -> pulumi.Input[Optional['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']]:
         """
         Effective setting value for aibi_dashboard_embedding_access_policy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
         """
         return pulumi.get(self, "effective_aibi_dashboard_embedding_access_policy")
 
     @effective_aibi_dashboard_embedding_access_policy.setter
-    def effective_aibi_dashboard_embedding_access_policy(self, value: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']]):
+    def effective_aibi_dashboard_embedding_access_policy(self, value: pulumi.Input[Optional['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']]):
         pulumi.set(self, "effective_aibi_dashboard_embedding_access_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAibiDashboardEmbeddingApprovedDomains")
-    def effective_aibi_dashboard_embedding_approved_domains(self) -> Optional[pulumi.Input['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs']]:
+    def effective_aibi_dashboard_embedding_approved_domains(self) -> pulumi.Input[Optional['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs']]:
         """
         Effective setting value for aibi_dashboard_embedding_approved_domains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
         """
         return pulumi.get(self, "effective_aibi_dashboard_embedding_approved_domains")
 
     @effective_aibi_dashboard_embedding_approved_domains.setter
-    def effective_aibi_dashboard_embedding_approved_domains(self, value: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs']]):
+    def effective_aibi_dashboard_embedding_approved_domains(self, value: pulumi.Input[Optional['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs']]):
         pulumi.set(self, "effective_aibi_dashboard_embedding_approved_domains", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAutomaticClusterUpdateWorkspace")
-    def effective_automatic_cluster_update_workspace(self) -> Optional[pulumi.Input['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']]:
+    def effective_automatic_cluster_update_workspace(self) -> pulumi.Input[Optional['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']]:
         """
         Effective setting value for automatic_cluster_update_workspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
         """
         return pulumi.get(self, "effective_automatic_cluster_update_workspace")
 
     @effective_automatic_cluster_update_workspace.setter
-    def effective_automatic_cluster_update_workspace(self, value: Optional[pulumi.Input['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']]):
+    def effective_automatic_cluster_update_workspace(self, value: pulumi.Input[Optional['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']]):
         pulumi.set(self, "effective_automatic_cluster_update_workspace", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveBooleanVal")
-    def effective_boolean_val(self) -> Optional[pulumi.Input['WorkspaceSettingV2EffectiveBooleanValArgs']]:
+    def effective_boolean_val(self) -> pulumi.Input[Optional['WorkspaceSettingV2EffectiveBooleanValArgs']]:
         """
         (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
         """
         return pulumi.get(self, "effective_boolean_val")
 
     @effective_boolean_val.setter
-    def effective_boolean_val(self, value: Optional[pulumi.Input['WorkspaceSettingV2EffectiveBooleanValArgs']]):
+    def effective_boolean_val(self, value: pulumi.Input[Optional['WorkspaceSettingV2EffectiveBooleanValArgs']]):
         pulumi.set(self, "effective_boolean_val", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveIntegerVal")
-    def effective_integer_val(self) -> Optional[pulumi.Input['WorkspaceSettingV2EffectiveIntegerValArgs']]:
+    def effective_integer_val(self) -> pulumi.Input[Optional['WorkspaceSettingV2EffectiveIntegerValArgs']]:
         """
         (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
         """
         return pulumi.get(self, "effective_integer_val")
 
     @effective_integer_val.setter
-    def effective_integer_val(self, value: Optional[pulumi.Input['WorkspaceSettingV2EffectiveIntegerValArgs']]):
+    def effective_integer_val(self, value: pulumi.Input[Optional['WorkspaceSettingV2EffectiveIntegerValArgs']]):
         pulumi.set(self, "effective_integer_val", value)
 
     @_builtins.property
     @pulumi.getter(name="effectivePersonalCompute")
-    def effective_personal_compute(self) -> Optional[pulumi.Input['WorkspaceSettingV2EffectivePersonalComputeArgs']]:
+    def effective_personal_compute(self) -> pulumi.Input[Optional['WorkspaceSettingV2EffectivePersonalComputeArgs']]:
         """
         Effective setting value for personal_compute setting. This is the final effective value of setting. To set a value use personal_compute
         """
         return pulumi.get(self, "effective_personal_compute")
 
     @effective_personal_compute.setter
-    def effective_personal_compute(self, value: Optional[pulumi.Input['WorkspaceSettingV2EffectivePersonalComputeArgs']]):
+    def effective_personal_compute(self, value: pulumi.Input[Optional['WorkspaceSettingV2EffectivePersonalComputeArgs']]):
         pulumi.set(self, "effective_personal_compute", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveRestrictWorkspaceAdmins")
-    def effective_restrict_workspace_admins(self) -> Optional[pulumi.Input['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs']]:
+    def effective_restrict_workspace_admins(self) -> pulumi.Input[Optional['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs']]:
         """
         Effective setting value for restrict_workspace_admins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
         """
         return pulumi.get(self, "effective_restrict_workspace_admins")
 
     @effective_restrict_workspace_admins.setter
-    def effective_restrict_workspace_admins(self, value: Optional[pulumi.Input['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs']]):
+    def effective_restrict_workspace_admins(self, value: pulumi.Input[Optional['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs']]):
         pulumi.set(self, "effective_restrict_workspace_admins", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveStringVal")
-    def effective_string_val(self) -> Optional[pulumi.Input['WorkspaceSettingV2EffectiveStringValArgs']]:
+    def effective_string_val(self) -> pulumi.Input[Optional['WorkspaceSettingV2EffectiveStringValArgs']]:
         """
         (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
         """
         return pulumi.get(self, "effective_string_val")
 
     @effective_string_val.setter
-    def effective_string_val(self, value: Optional[pulumi.Input['WorkspaceSettingV2EffectiveStringValArgs']]):
+    def effective_string_val(self, value: pulumi.Input[Optional['WorkspaceSettingV2EffectiveStringValArgs']]):
         pulumi.set(self, "effective_string_val", value)
 
     @_builtins.property
     @pulumi.getter(name="integerVal")
-    def integer_val(self) -> Optional[pulumi.Input['WorkspaceSettingV2IntegerValArgs']]:
+    def integer_val(self) -> pulumi.Input[Optional['WorkspaceSettingV2IntegerValArgs']]:
         """
         Setting value for integer type setting. This is the setting value set by consumers, check effective_integer_val for final setting value
         """
         return pulumi.get(self, "integer_val")
 
     @integer_val.setter
-    def integer_val(self, value: Optional[pulumi.Input['WorkspaceSettingV2IntegerValArgs']]):
+    def integer_val(self, value: pulumi.Input[Optional['WorkspaceSettingV2IntegerValArgs']]):
         pulumi.set(self, "integer_val", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the setting
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="personalCompute")
-    def personal_compute(self) -> Optional[pulumi.Input['WorkspaceSettingV2PersonalComputeArgs']]:
+    def personal_compute(self) -> pulumi.Input[Optional['WorkspaceSettingV2PersonalComputeArgs']]:
         """
         Setting value for personal_compute setting. This is the setting value set by consumers, check effective_personal_compute for final setting value
         """
         return pulumi.get(self, "personal_compute")
 
     @personal_compute.setter
-    def personal_compute(self, value: Optional[pulumi.Input['WorkspaceSettingV2PersonalComputeArgs']]):
+    def personal_compute(self, value: pulumi.Input[Optional['WorkspaceSettingV2PersonalComputeArgs']]):
         pulumi.set(self, "personal_compute", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['WorkspaceSettingV2ProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['WorkspaceSettingV2ProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['WorkspaceSettingV2ProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['WorkspaceSettingV2ProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="restrictWorkspaceAdmins")
-    def restrict_workspace_admins(self) -> Optional[pulumi.Input['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']]:
+    def restrict_workspace_admins(self) -> pulumi.Input[Optional['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']]:
         """
         Setting value for restrict_workspace_admins setting. This is the setting value set by consumers, check effective_restrict_workspace_admins for final setting value
         """
         return pulumi.get(self, "restrict_workspace_admins")
 
     @restrict_workspace_admins.setter
-    def restrict_workspace_admins(self, value: Optional[pulumi.Input['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']]):
+    def restrict_workspace_admins(self, value: pulumi.Input[Optional['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']]):
         pulumi.set(self, "restrict_workspace_admins", value)
 
     @_builtins.property
     @pulumi.getter(name="stringVal")
-    def string_val(self) -> Optional[pulumi.Input['WorkspaceSettingV2StringValArgs']]:
+    def string_val(self) -> pulumi.Input[Optional['WorkspaceSettingV2StringValArgs']]:
         """
         Setting value for string type setting. This is the setting value set by consumers, check effective_string_val for final setting value
         """
         return pulumi.get(self, "string_val")
 
     @string_val.setter
-    def string_val(self, value: Optional[pulumi.Input['WorkspaceSettingV2StringValArgs']]):
+    def string_val(self, value: pulumi.Input[Optional['WorkspaceSettingV2StringValArgs']]):
         pulumi.set(self, "string_val", value)
 
 
@@ -570,21 +570,21 @@ class WorkspaceSettingV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aibi_dashboard_embedding_access_policy: Optional[pulumi.Input[Union['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs', 'WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
-                 aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input[Union['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
-                 automatic_cluster_update_workspace: Optional[pulumi.Input[Union['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgsDict']]] = None,
-                 boolean_val: Optional[pulumi.Input[Union['WorkspaceSettingV2BooleanValArgs', 'WorkspaceSettingV2BooleanValArgsDict']]] = None,
-                 effective_aibi_dashboard_embedding_access_policy: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
-                 effective_aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
-                 effective_automatic_cluster_update_workspace: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
-                 effective_personal_compute: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectivePersonalComputeArgs', 'WorkspaceSettingV2EffectivePersonalComputeArgsDict']]] = None,
-                 effective_restrict_workspace_admins: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict']]] = None,
-                 integer_val: Optional[pulumi.Input[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 personal_compute: Optional[pulumi.Input[Union['WorkspaceSettingV2PersonalComputeArgs', 'WorkspaceSettingV2PersonalComputeArgsDict']]] = None,
-                 provider_config: Optional[pulumi.Input[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict']]] = None,
-                 restrict_workspace_admins: Optional[pulumi.Input[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict']]] = None,
-                 string_val: Optional[pulumi.Input[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict']]] = None,
+                 aibi_dashboard_embedding_access_policy: pulumi.Input[Optional[Union['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs', 'WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
+                 aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
+                 automatic_cluster_update_workspace: pulumi.Input[Optional[Union['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgsDict']]] = None,
+                 boolean_val: pulumi.Input[Optional[Union['WorkspaceSettingV2BooleanValArgs', 'WorkspaceSettingV2BooleanValArgsDict']]] = None,
+                 effective_aibi_dashboard_embedding_access_policy: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
+                 effective_aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
+                 effective_automatic_cluster_update_workspace: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
+                 effective_personal_compute: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectivePersonalComputeArgs', 'WorkspaceSettingV2EffectivePersonalComputeArgsDict']]] = None,
+                 effective_restrict_workspace_admins: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict']]] = None,
+                 integer_val: pulumi.Input[Optional[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 personal_compute: pulumi.Input[Optional[Union['WorkspaceSettingV2PersonalComputeArgs', 'WorkspaceSettingV2PersonalComputeArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict']]] = None,
+                 restrict_workspace_admins: pulumi.Input[Optional[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict']]] = None,
+                 string_val: pulumi.Input[Optional[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict']]] = None,
                  __props__=None):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -673,21 +673,21 @@ class WorkspaceSettingV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aibi_dashboard_embedding_access_policy: Optional[pulumi.Input[Union['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs', 'WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
-                 aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input[Union['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
-                 automatic_cluster_update_workspace: Optional[pulumi.Input[Union['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgsDict']]] = None,
-                 boolean_val: Optional[pulumi.Input[Union['WorkspaceSettingV2BooleanValArgs', 'WorkspaceSettingV2BooleanValArgsDict']]] = None,
-                 effective_aibi_dashboard_embedding_access_policy: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
-                 effective_aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
-                 effective_automatic_cluster_update_workspace: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
-                 effective_personal_compute: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectivePersonalComputeArgs', 'WorkspaceSettingV2EffectivePersonalComputeArgsDict']]] = None,
-                 effective_restrict_workspace_admins: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict']]] = None,
-                 integer_val: Optional[pulumi.Input[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 personal_compute: Optional[pulumi.Input[Union['WorkspaceSettingV2PersonalComputeArgs', 'WorkspaceSettingV2PersonalComputeArgsDict']]] = None,
-                 provider_config: Optional[pulumi.Input[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict']]] = None,
-                 restrict_workspace_admins: Optional[pulumi.Input[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict']]] = None,
-                 string_val: Optional[pulumi.Input[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict']]] = None,
+                 aibi_dashboard_embedding_access_policy: pulumi.Input[Optional[Union['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs', 'WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
+                 aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
+                 automatic_cluster_update_workspace: pulumi.Input[Optional[Union['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgsDict']]] = None,
+                 boolean_val: pulumi.Input[Optional[Union['WorkspaceSettingV2BooleanValArgs', 'WorkspaceSettingV2BooleanValArgsDict']]] = None,
+                 effective_aibi_dashboard_embedding_access_policy: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
+                 effective_aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
+                 effective_automatic_cluster_update_workspace: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
+                 effective_personal_compute: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectivePersonalComputeArgs', 'WorkspaceSettingV2EffectivePersonalComputeArgsDict']]] = None,
+                 effective_restrict_workspace_admins: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict']]] = None,
+                 integer_val: pulumi.Input[Optional[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 personal_compute: pulumi.Input[Optional[Union['WorkspaceSettingV2PersonalComputeArgs', 'WorkspaceSettingV2PersonalComputeArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict']]] = None,
+                 restrict_workspace_admins: pulumi.Input[Optional[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict']]] = None,
+                 string_val: pulumi.Input[Optional[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -725,24 +725,24 @@ class WorkspaceSettingV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aibi_dashboard_embedding_access_policy: Optional[pulumi.Input[Union['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs', 'WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
-            aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input[Union['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
-            automatic_cluster_update_workspace: Optional[pulumi.Input[Union['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgsDict']]] = None,
-            boolean_val: Optional[pulumi.Input[Union['WorkspaceSettingV2BooleanValArgs', 'WorkspaceSettingV2BooleanValArgsDict']]] = None,
-            effective_aibi_dashboard_embedding_access_policy: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
-            effective_aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
-            effective_automatic_cluster_update_workspace: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
-            effective_boolean_val: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveBooleanValArgs', 'WorkspaceSettingV2EffectiveBooleanValArgsDict']]] = None,
-            effective_integer_val: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveIntegerValArgs', 'WorkspaceSettingV2EffectiveIntegerValArgsDict']]] = None,
-            effective_personal_compute: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectivePersonalComputeArgs', 'WorkspaceSettingV2EffectivePersonalComputeArgsDict']]] = None,
-            effective_restrict_workspace_admins: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict']]] = None,
-            effective_string_val: Optional[pulumi.Input[Union['WorkspaceSettingV2EffectiveStringValArgs', 'WorkspaceSettingV2EffectiveStringValArgsDict']]] = None,
-            integer_val: Optional[pulumi.Input[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            personal_compute: Optional[pulumi.Input[Union['WorkspaceSettingV2PersonalComputeArgs', 'WorkspaceSettingV2PersonalComputeArgsDict']]] = None,
-            provider_config: Optional[pulumi.Input[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict']]] = None,
-            restrict_workspace_admins: Optional[pulumi.Input[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict']]] = None,
-            string_val: Optional[pulumi.Input[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict']]] = None) -> 'WorkspaceSettingV2':
+            aibi_dashboard_embedding_access_policy: pulumi.Input[Optional[Union['WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs', 'WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
+            aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
+            automatic_cluster_update_workspace: pulumi.Input[Optional[Union['WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgsDict']]] = None,
+            boolean_val: pulumi.Input[Optional[Union['WorkspaceSettingV2BooleanValArgs', 'WorkspaceSettingV2BooleanValArgsDict']]] = None,
+            effective_aibi_dashboard_embedding_access_policy: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
+            effective_aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
+            effective_automatic_cluster_update_workspace: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
+            effective_boolean_val: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveBooleanValArgs', 'WorkspaceSettingV2EffectiveBooleanValArgsDict']]] = None,
+            effective_integer_val: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveIntegerValArgs', 'WorkspaceSettingV2EffectiveIntegerValArgsDict']]] = None,
+            effective_personal_compute: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectivePersonalComputeArgs', 'WorkspaceSettingV2EffectivePersonalComputeArgsDict']]] = None,
+            effective_restrict_workspace_admins: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict']]] = None,
+            effective_string_val: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveStringValArgs', 'WorkspaceSettingV2EffectiveStringValArgsDict']]] = None,
+            integer_val: pulumi.Input[Optional[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            personal_compute: pulumi.Input[Optional[Union['WorkspaceSettingV2PersonalComputeArgs', 'WorkspaceSettingV2PersonalComputeArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict']]] = None,
+            restrict_workspace_admins: pulumi.Input[Optional[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict']]] = None,
+            string_val: pulumi.Input[Optional[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict']]] = None) -> 'WorkspaceSettingV2':
         """
         Get an existing WorkspaceSettingV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

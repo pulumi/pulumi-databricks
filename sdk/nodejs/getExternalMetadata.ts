@@ -149,5 +149,5 @@ export interface GetExternalMetadataOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetExternalMetadataProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetExternalMetadataProviderConfigArgs | undefined>;
 }

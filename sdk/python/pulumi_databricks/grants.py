@@ -22,21 +22,21 @@ __all__ = ['GrantsArgs', 'Grants']
 class GrantsArgs:
     def __init__(__self__, *,
                  grants: pulumi.Input[Sequence[pulumi.Input['GrantsGrantArgs']]],
-                 catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 credential: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 foreign_connection: Optional[pulumi.Input[_builtins.str]] = None,
-                 function: Optional[pulumi.Input[_builtins.str]] = None,
-                 metastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 model: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['GrantsProviderConfigArgs']] = None,
-                 recipient: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 share: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_credential: Optional[pulumi.Input[_builtins.str]] = None,
-                 table: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume: Optional[pulumi.Input[_builtins.str]] = None):
+                 catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 credential: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 foreign_connection: pulumi.Input[Optional[_builtins.str]] = None,
+                 function: pulumi.Input[Optional[_builtins.str]] = None,
+                 metastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['GrantsProviderConfigArgs']] = None,
+                 recipient: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 share: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_credential: pulumi.Input[Optional[_builtins.str]] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Grants resource.
         """
@@ -83,159 +83,159 @@ class GrantsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def catalog(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def catalog(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "catalog")
 
     @catalog.setter
-    def catalog(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def catalog(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog", value)
 
     @_builtins.property
     @pulumi.getter
-    def credential(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credential(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "credential")
 
     @credential.setter
-    def credential(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credential(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credential", value)
 
     @_builtins.property
     @pulumi.getter(name="externalLocation")
-    def external_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "external_location")
 
     @external_location.setter
-    def external_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_location", value)
 
     @_builtins.property
     @pulumi.getter(name="foreignConnection")
-    def foreign_connection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def foreign_connection(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "foreign_connection")
 
     @foreign_connection.setter
-    def foreign_connection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def foreign_connection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "foreign_connection", value)
 
     @_builtins.property
     @pulumi.getter
-    def function(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "function")
 
     @function.setter
-    def function(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function", value)
 
     @_builtins.property
     @pulumi.getter
-    def metastore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metastore(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "metastore")
 
     @metastore.setter
-    def metastore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metastore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metastore", value)
 
     @_builtins.property
     @pulumi.getter
-    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "model")
 
     @model.setter
-    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model", value)
 
     @_builtins.property
     @pulumi.getter
-    def pipeline(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pipeline(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "pipeline")
 
     @pipeline.setter
-    def pipeline(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pipeline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pipeline", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['GrantsProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['GrantsProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['GrantsProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['GrantsProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def recipient(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recipient(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "recipient")
 
     @recipient.setter
-    def recipient(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recipient(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recipient", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter
-    def share(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def share(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "share")
 
     @share.setter
-    def share(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def share(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "share", value)
 
     @_builtins.property
     @pulumi.getter(name="storageCredential")
-    def storage_credential(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_credential(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_credential")
 
     @storage_credential.setter
-    def storage_credential(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_credential(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_credential", value)
 
     @_builtins.property
     @pulumi.getter
-    def table(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "table")
 
     @table.setter
-    def table(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table", value)
 
     @_builtins.property
     @pulumi.getter
-    def volume(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "volume")
 
     @volume.setter
-    def volume(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume", value)
 
 
 @pulumi.input_type
 class _GrantsState:
     def __init__(__self__, *,
-                 catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 credential: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 foreign_connection: Optional[pulumi.Input[_builtins.str]] = None,
-                 function: Optional[pulumi.Input[_builtins.str]] = None,
-                 grants: Optional[pulumi.Input[Sequence[pulumi.Input['GrantsGrantArgs']]]] = None,
-                 metastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 model: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['GrantsProviderConfigArgs']] = None,
-                 recipient: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 share: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_credential: Optional[pulumi.Input[_builtins.str]] = None,
-                 table: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume: Optional[pulumi.Input[_builtins.str]] = None):
+                 catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 credential: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 foreign_connection: pulumi.Input[Optional[_builtins.str]] = None,
+                 function: pulumi.Input[Optional[_builtins.str]] = None,
+                 grants: pulumi.Input[Optional[Sequence[pulumi.Input['GrantsGrantArgs']]]] = None,
+                 metastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['GrantsProviderConfigArgs']] = None,
+                 recipient: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 share: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_credential: pulumi.Input[Optional[_builtins.str]] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Grants resources.
         """
@@ -274,146 +274,146 @@ class _GrantsState:
 
     @_builtins.property
     @pulumi.getter
-    def catalog(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def catalog(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "catalog")
 
     @catalog.setter
-    def catalog(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def catalog(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog", value)
 
     @_builtins.property
     @pulumi.getter
-    def credential(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credential(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "credential")
 
     @credential.setter
-    def credential(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credential(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credential", value)
 
     @_builtins.property
     @pulumi.getter(name="externalLocation")
-    def external_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "external_location")
 
     @external_location.setter
-    def external_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_location", value)
 
     @_builtins.property
     @pulumi.getter(name="foreignConnection")
-    def foreign_connection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def foreign_connection(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "foreign_connection")
 
     @foreign_connection.setter
-    def foreign_connection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def foreign_connection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "foreign_connection", value)
 
     @_builtins.property
     @pulumi.getter
-    def function(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "function")
 
     @function.setter
-    def function(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function", value)
 
     @_builtins.property
     @pulumi.getter
-    def grants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GrantsGrantArgs']]]]:
+    def grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GrantsGrantArgs']]]]:
         return pulumi.get(self, "grants")
 
     @grants.setter
-    def grants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GrantsGrantArgs']]]]):
+    def grants(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GrantsGrantArgs']]]]):
         pulumi.set(self, "grants", value)
 
     @_builtins.property
     @pulumi.getter
-    def metastore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metastore(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "metastore")
 
     @metastore.setter
-    def metastore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metastore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metastore", value)
 
     @_builtins.property
     @pulumi.getter
-    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "model")
 
     @model.setter
-    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model", value)
 
     @_builtins.property
     @pulumi.getter
-    def pipeline(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pipeline(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "pipeline")
 
     @pipeline.setter
-    def pipeline(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pipeline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pipeline", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['GrantsProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['GrantsProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['GrantsProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['GrantsProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def recipient(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recipient(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "recipient")
 
     @recipient.setter
-    def recipient(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recipient(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recipient", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter
-    def share(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def share(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "share")
 
     @share.setter
-    def share(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def share(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "share", value)
 
     @_builtins.property
     @pulumi.getter(name="storageCredential")
-    def storage_credential(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_credential(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_credential")
 
     @storage_credential.setter
-    def storage_credential(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_credential(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_credential", value)
 
     @_builtins.property
     @pulumi.getter
-    def table(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "table")
 
     @table.setter
-    def table(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table", value)
 
     @_builtins.property
     @pulumi.getter
-    def volume(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "volume")
 
     @volume.setter
-    def volume(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume", value)
 
 
@@ -423,22 +423,22 @@ class Grants(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 credential: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 foreign_connection: Optional[pulumi.Input[_builtins.str]] = None,
-                 function: Optional[pulumi.Input[_builtins.str]] = None,
-                 grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GrantsGrantArgs', 'GrantsGrantArgsDict']]]]] = None,
-                 metastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 model: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['GrantsProviderConfigArgs', 'GrantsProviderConfigArgsDict']]] = None,
-                 recipient: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 share: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_credential: Optional[pulumi.Input[_builtins.str]] = None,
-                 table: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume: Optional[pulumi.Input[_builtins.str]] = None,
+                 catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 credential: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 foreign_connection: pulumi.Input[Optional[_builtins.str]] = None,
+                 function: pulumi.Input[Optional[_builtins.str]] = None,
+                 grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GrantsGrantArgs', 'GrantsGrantArgsDict']]]]] = None,
+                 metastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['GrantsProviderConfigArgs', 'GrantsProviderConfigArgsDict']]] = None,
+                 recipient: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 share: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_credential: pulumi.Input[Optional[_builtins.str]] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > This article refers to the privileges and inheritance model in Privilege Model version 1.0. If you created your metastore during the public preview (before August 25, 2022), you can upgrade to Privilege Model version 1.0 following [Upgrade to privilege inheritance](https://docs.databricks.com/data-governance/unity-catalog/hive-metastore.html)
@@ -594,11 +594,12 @@ class Grants(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_databricks as databricks
 
         things = databricks.get_tables(catalog_name="sandbox",
             schema_name="things")
-        things_grants = []
+        things_grants: list[Any] = []
         for range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
             things_grants.append(databricks.Grants(f"things-{range['key']}",
                 table=range["value"],
@@ -631,11 +632,12 @@ class Grants(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_databricks as databricks
 
         customers = databricks.get_views(catalog_name="main",
             schema_name="customers")
-        customers_grants = []
+        customers_grants: list[Any] = []
         for range in [{"key": k, "value": v} for [k, v] in enumerate(customers.ids)]:
             customers_grants.append(databricks.Grants(f"customers-{range['key']}",
                 table=range["value"],
@@ -1028,11 +1030,12 @@ class Grants(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_databricks as databricks
 
         things = databricks.get_tables(catalog_name="sandbox",
             schema_name="things")
-        things_grants = []
+        things_grants: list[Any] = []
         for range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
             things_grants.append(databricks.Grants(f"things-{range['key']}",
                 table=range["value"],
@@ -1065,11 +1068,12 @@ class Grants(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_databricks as databricks
 
         customers = databricks.get_views(catalog_name="main",
             schema_name="customers")
-        customers_grants = []
+        customers_grants: list[Any] = []
         for range in [{"key": k, "value": v} for [k, v] in enumerate(customers.ids)]:
             customers_grants.append(databricks.Grants(f"customers-{range['key']}",
                 table=range["value"],
@@ -1314,22 +1318,22 @@ class Grants(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 credential: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 foreign_connection: Optional[pulumi.Input[_builtins.str]] = None,
-                 function: Optional[pulumi.Input[_builtins.str]] = None,
-                 grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GrantsGrantArgs', 'GrantsGrantArgsDict']]]]] = None,
-                 metastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 model: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['GrantsProviderConfigArgs', 'GrantsProviderConfigArgsDict']]] = None,
-                 recipient: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 share: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_credential: Optional[pulumi.Input[_builtins.str]] = None,
-                 table: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume: Optional[pulumi.Input[_builtins.str]] = None,
+                 catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 credential: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 foreign_connection: pulumi.Input[Optional[_builtins.str]] = None,
+                 function: pulumi.Input[Optional[_builtins.str]] = None,
+                 grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GrantsGrantArgs', 'GrantsGrantArgsDict']]]]] = None,
+                 metastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['GrantsProviderConfigArgs', 'GrantsProviderConfigArgsDict']]] = None,
+                 recipient: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 share: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_credential: pulumi.Input[Optional[_builtins.str]] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1367,22 +1371,22 @@ class Grants(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            catalog: Optional[pulumi.Input[_builtins.str]] = None,
-            credential: Optional[pulumi.Input[_builtins.str]] = None,
-            external_location: Optional[pulumi.Input[_builtins.str]] = None,
-            foreign_connection: Optional[pulumi.Input[_builtins.str]] = None,
-            function: Optional[pulumi.Input[_builtins.str]] = None,
-            grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GrantsGrantArgs', 'GrantsGrantArgsDict']]]]] = None,
-            metastore: Optional[pulumi.Input[_builtins.str]] = None,
-            model: Optional[pulumi.Input[_builtins.str]] = None,
-            pipeline: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['GrantsProviderConfigArgs', 'GrantsProviderConfigArgsDict']]] = None,
-            recipient: Optional[pulumi.Input[_builtins.str]] = None,
-            schema: Optional[pulumi.Input[_builtins.str]] = None,
-            share: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_credential: Optional[pulumi.Input[_builtins.str]] = None,
-            table: Optional[pulumi.Input[_builtins.str]] = None,
-            volume: Optional[pulumi.Input[_builtins.str]] = None) -> 'Grants':
+            catalog: pulumi.Input[Optional[_builtins.str]] = None,
+            credential: pulumi.Input[Optional[_builtins.str]] = None,
+            external_location: pulumi.Input[Optional[_builtins.str]] = None,
+            foreign_connection: pulumi.Input[Optional[_builtins.str]] = None,
+            function: pulumi.Input[Optional[_builtins.str]] = None,
+            grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GrantsGrantArgs', 'GrantsGrantArgsDict']]]]] = None,
+            metastore: pulumi.Input[Optional[_builtins.str]] = None,
+            model: pulumi.Input[Optional[_builtins.str]] = None,
+            pipeline: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['GrantsProviderConfigArgs', 'GrantsProviderConfigArgsDict']]] = None,
+            recipient: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            share: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_credential: pulumi.Input[Optional[_builtins.str]] = None,
+            table: pulumi.Input[Optional[_builtins.str]] = None,
+            volume: pulumi.Input[Optional[_builtins.str]] = None) -> 'Grants':
         """
         Get an existing Grants resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

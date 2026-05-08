@@ -150,34 +150,34 @@ export class DatabaseDatabaseCatalog extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatabaseDatabaseCatalog resources.
  */
 export interface DatabaseDatabaseCatalogState {
-    createDatabaseIfNotExists?: pulumi.Input<boolean>;
+    createDatabaseIfNotExists?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the DatabaseInstance housing the database
      */
-    databaseInstanceName?: pulumi.Input<string>;
+    databaseInstanceName?: pulumi.Input<string | undefined>;
     /**
      * The name of the database (in a instance) associated with the catalog
      */
-    databaseName?: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string | undefined>;
     /**
      * The name of the catalog in UC
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.DatabaseDatabaseCatalogProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.DatabaseDatabaseCatalogProviderConfig | undefined>;
     /**
      * (string)
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DatabaseDatabaseCatalog resource.
  */
 export interface DatabaseDatabaseCatalogArgs {
-    createDatabaseIfNotExists?: pulumi.Input<boolean>;
+    createDatabaseIfNotExists?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the DatabaseInstance housing the database
      */
@@ -189,9 +189,9 @@ export interface DatabaseDatabaseCatalogArgs {
     /**
      * The name of the catalog in UC
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.DatabaseDatabaseCatalogProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.DatabaseDatabaseCatalogProviderConfig | undefined>;
 }

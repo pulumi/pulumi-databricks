@@ -128,9 +128,9 @@ def get_postgres_projects(page_size: Optional[_builtins.int] = None,
         projects=pulumi.get(__ret__, 'projects'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         show_deleted=pulumi.get(__ret__, 'show_deleted'))
-def get_postgres_projects_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                 provider_config: Optional[pulumi.Input[Optional[Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict']]]] = None,
-                                 show_deleted: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_postgres_projects_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict']]]] = None,
+                                 show_deleted: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresProjectsResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)

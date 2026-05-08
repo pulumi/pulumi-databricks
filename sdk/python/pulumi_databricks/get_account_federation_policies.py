@@ -97,7 +97,7 @@ def get_account_federation_policies(page_size: Optional[_builtins.int] = None,
         id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         policies=pulumi.get(__ret__, 'policies'))
-def get_account_federation_policies_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_account_federation_policies_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountFederationPoliciesResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)

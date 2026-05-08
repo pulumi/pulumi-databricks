@@ -119,35 +119,35 @@ export interface PostgresCatalogState {
      * The ID in the Unity Catalog.
      * It becomes the full resource name, for example "myCatalog" becomes "catalogs/my_catalog"
      */
-    catalogId?: pulumi.Input<string>;
+    catalogId?: pulumi.Input<string | undefined>;
     /**
      * (string) - A timestamp indicating when the catalog was created
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - Output only. The full resource path of the catalog.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.PostgresCatalogProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PostgresCatalogProviderConfig | undefined>;
     /**
      * The desired state of the Catalog
      */
-    spec?: pulumi.Input<inputs.PostgresCatalogSpec>;
+    spec?: pulumi.Input<inputs.PostgresCatalogSpec | undefined>;
     /**
      * (CatalogCatalogStatus) - The observed state of the Catalog
      */
-    status?: pulumi.Input<inputs.PostgresCatalogStatus>;
+    status?: pulumi.Input<inputs.PostgresCatalogStatus | undefined>;
     /**
      * (string) - System-generated unique identifier for the catalog
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * (string) - A timestamp indicating when the catalog was last updated
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -162,9 +162,9 @@ export interface PostgresCatalogArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.PostgresCatalogProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PostgresCatalogProviderConfig | undefined>;
     /**
      * The desired state of the Catalog
      */
-    spec?: pulumi.Input<inputs.PostgresCatalogSpec>;
+    spec?: pulumi.Input<inputs.PostgresCatalogSpec | undefined>;
 }

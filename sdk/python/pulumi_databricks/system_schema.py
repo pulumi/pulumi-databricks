@@ -22,7 +22,7 @@ __all__ = ['SystemSchemaArgs', 'SystemSchema']
 class SystemSchemaArgs:
     def __init__(__self__, *,
                  schema: pulumi.Input[_builtins.str],
-                 provider_config: Optional[pulumi.Input['SystemSchemaProviderConfigArgs']] = None):
+                 provider_config: pulumi.Input[Optional['SystemSchemaProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a SystemSchema resource.
 
@@ -47,26 +47,26 @@ class SystemSchemaArgs:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['SystemSchemaProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['SystemSchemaProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['SystemSchemaProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['SystemSchemaProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _SystemSchemaState:
     def __init__(__self__, *,
-                 auto_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['SystemSchemaProviderConfigArgs']] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 full_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['SystemSchemaProviderConfigArgs']] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SystemSchema resources.
 
@@ -90,68 +90,68 @@ class _SystemSchemaState:
 
     @_builtins.property
     @pulumi.getter(name="autoEnabled")
-    def auto_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "auto_enabled")
 
     @auto_enabled.setter
-    def auto_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="fullName")
-    def full_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def full_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the full name of the system schema, in form of `system.<schema>`.
         """
         return pulumi.get(self, "full_name")
 
     @full_name.setter
-    def full_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def full_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "full_name", value)
 
     @_builtins.property
     @pulumi.getter(name="metastoreId")
-    def metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
-    def metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metastore_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['SystemSchemaProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['SystemSchemaProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['SystemSchemaProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['SystemSchemaProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         name of the system schema.
         """
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state of enablement for the system schema.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -161,8 +161,8 @@ class SystemSchema(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 provider_config: Optional[pulumi.Input[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict']]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict']]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account's operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
@@ -228,8 +228,8 @@ class SystemSchema(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 provider_config: Optional[pulumi.Input[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict']]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict']]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -257,12 +257,12 @@ class SystemSchema(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            full_name: Optional[pulumi.Input[_builtins.str]] = None,
-            metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict']]] = None,
-            schema: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'SystemSchema':
+            auto_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            full_name: pulumi.Input[Optional[_builtins.str]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['SystemSchemaProviderConfigArgs', 'SystemSchemaProviderConfigArgsDict']]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'SystemSchema':
         """
         Get an existing SystemSchema resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

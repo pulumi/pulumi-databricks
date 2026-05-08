@@ -111,6 +111,6 @@ export interface GetDashboardsOutputArgs {
     /**
      * A **case-insensitive** substring to filter Dashboards by their name.
      */
-    dashboardNameContains?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.GetDashboardsProviderConfigArgs>;
+    dashboardNameContains?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.GetDashboardsProviderConfigArgs | undefined>;
 }

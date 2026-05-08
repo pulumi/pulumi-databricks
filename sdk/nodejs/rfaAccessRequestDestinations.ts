@@ -155,32 +155,32 @@ export interface RfaAccessRequestDestinationsState {
      * (boolean) - Indicates whether any destinations are hidden from the caller due to a lack of permissions.
      * This value is true if the caller does not have permission to see all destinations
      */
-    areAnyDestinationsHidden?: pulumi.Input<boolean>;
+    areAnyDestinationsHidden?: pulumi.Input<boolean | undefined>;
     /**
      * (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
      * is set directly on the securable) or the nearest parent securable with destinations set
      */
-    destinationSourceSecurable?: pulumi.Input<inputs.RfaAccessRequestDestinationsDestinationSourceSecurable>;
+    destinationSourceSecurable?: pulumi.Input<inputs.RfaAccessRequestDestinationsDestinationSourceSecurable | undefined>;
     /**
      * The access request destinations for the securable
      */
-    destinations?: pulumi.Input<pulumi.Input<inputs.RfaAccessRequestDestinationsDestination>[]>;
+    destinations?: pulumi.Input<pulumi.Input<inputs.RfaAccessRequestDestinationsDestination>[] | undefined>;
     /**
      * (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.RfaAccessRequestDestinationsProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.RfaAccessRequestDestinationsProviderConfig | undefined>;
     /**
      * The securable for which the access request destinations are being modified or read
      */
-    securable?: pulumi.Input<inputs.RfaAccessRequestDestinationsSecurable>;
+    securable?: pulumi.Input<inputs.RfaAccessRequestDestinationsSecurable | undefined>;
     /**
      * (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
      */
-    securableType?: pulumi.Input<string>;
+    securableType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -190,11 +190,11 @@ export interface RfaAccessRequestDestinationsArgs {
     /**
      * The access request destinations for the securable
      */
-    destinations?: pulumi.Input<pulumi.Input<inputs.RfaAccessRequestDestinationsDestination>[]>;
+    destinations?: pulumi.Input<pulumi.Input<inputs.RfaAccessRequestDestinationsDestination>[] | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.RfaAccessRequestDestinationsProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.RfaAccessRequestDestinationsProviderConfig | undefined>;
     /**
      * The securable for which the access request destinations are being modified or read
      */

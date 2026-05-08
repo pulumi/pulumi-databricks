@@ -157,82 +157,82 @@ export class RegisteredModel extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RegisteredModel resources.
  */
 export interface RegisteredModelState {
-    aliases?: pulumi.Input<pulumi.Input<inputs.RegisteredModelAlias>[]>;
-    browseOnly?: pulumi.Input<boolean>;
+    aliases?: pulumi.Input<pulumi.Input<inputs.RegisteredModelAlias>[] | undefined>;
+    browseOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
      */
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * The comment attached to the registered model.
      */
-    comment?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<number>;
-    createdBy?: pulumi.Input<string>;
-    fullName?: pulumi.Input<string>;
-    metastoreId?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<number | undefined>;
+    createdBy?: pulumi.Input<string | undefined>;
+    fullName?: pulumi.Input<string | undefined>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the registered model owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.RegisteredModelProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.RegisteredModelProviderConfig | undefined>;
     /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      */
-    schemaName?: pulumi.Input<string>;
+    schemaName?: pulumi.Input<string | undefined>;
     /**
      * The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
      */
-    storageLocation?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<number>;
-    updatedBy?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string | undefined>;
+    updatedAt?: pulumi.Input<number | undefined>;
+    updatedBy?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a RegisteredModel resource.
  */
 export interface RegisteredModelArgs {
-    aliases?: pulumi.Input<pulumi.Input<inputs.RegisteredModelAlias>[]>;
-    browseOnly?: pulumi.Input<boolean>;
+    aliases?: pulumi.Input<pulumi.Input<inputs.RegisteredModelAlias>[] | undefined>;
+    browseOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
      */
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * The comment attached to the registered model.
      */
-    comment?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<number>;
-    createdBy?: pulumi.Input<string>;
-    fullName?: pulumi.Input<string>;
-    metastoreId?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<number | undefined>;
+    createdBy?: pulumi.Input<string | undefined>;
+    fullName?: pulumi.Input<string | undefined>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * The name of the registered model.  *Change of this parameter forces recreation of the resource.*
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the registered model owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.RegisteredModelProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.RegisteredModelProviderConfig | undefined>;
     /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      */
-    schemaName?: pulumi.Input<string>;
+    schemaName?: pulumi.Input<string | undefined>;
     /**
      * The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
      */
-    storageLocation?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<number>;
-    updatedBy?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string | undefined>;
+    updatedAt?: pulumi.Input<number | undefined>;
+    updatedBy?: pulumi.Input<string | undefined>;
 }

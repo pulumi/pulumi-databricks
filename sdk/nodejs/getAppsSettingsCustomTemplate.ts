@@ -123,5 +123,5 @@ export interface GetAppsSettingsCustomTemplateOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetAppsSettingsCustomTemplateProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetAppsSettingsCustomTemplateProviderConfigArgs | undefined>;
 }

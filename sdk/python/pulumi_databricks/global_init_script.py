@@ -21,13 +21,13 @@ __all__ = ['GlobalInitScriptArgs', 'GlobalInitScript']
 @pulumi.input_type
 class GlobalInitScriptArgs:
     def __init__(__self__, *,
-                 content_base64: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 position: Optional[pulumi.Input[_builtins.int]] = None,
-                 provider_config: Optional[pulumi.Input['GlobalInitScriptProviderConfigArgs']] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None):
+                 content_base64: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 position: pulumi.Input[Optional[_builtins.int]] = None,
+                 provider_config: pulumi.Input[Optional['GlobalInitScriptProviderConfigArgs']] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GlobalInitScript resource.
 
@@ -55,96 +55,96 @@ class GlobalInitScriptArgs:
 
     @_builtins.property
     @pulumi.getter(name="contentBase64")
-    def content_base64(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_base64(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
         """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
-    def content_base64(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_base64(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_base64", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         specifies if the script is enabled for execution, or not
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def md5(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def md5(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "md5")
 
     @md5.setter
-    def md5(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def md5(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "md5", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the name of the script.  It should be unique
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
         """
         return pulumi.get(self, "position")
 
     @position.setter
-    def position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "position", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['GlobalInitScriptProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['GlobalInitScriptProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['GlobalInitScriptProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['GlobalInitScriptProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to script's source code on local filesystem. Conflicts with `content_base64`
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
 
 @pulumi.input_type
 class _GlobalInitScriptState:
     def __init__(__self__, *,
-                 content_base64: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 position: Optional[pulumi.Input[_builtins.int]] = None,
-                 provider_config: Optional[pulumi.Input['GlobalInitScriptProviderConfigArgs']] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None):
+                 content_base64: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 position: pulumi.Input[Optional[_builtins.int]] = None,
+                 provider_config: pulumi.Input[Optional['GlobalInitScriptProviderConfigArgs']] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GlobalInitScript resources.
 
@@ -172,83 +172,83 @@ class _GlobalInitScriptState:
 
     @_builtins.property
     @pulumi.getter(name="contentBase64")
-    def content_base64(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_base64(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base64-encoded source code global init script. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
         """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
-    def content_base64(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_base64(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_base64", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         specifies if the script is enabled for execution, or not
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def md5(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def md5(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "md5")
 
     @md5.setter
-    def md5(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def md5(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "md5", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the name of the script.  It should be unique
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def position(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def position(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
         """
         return pulumi.get(self, "position")
 
     @position.setter
-    def position(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def position(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "position", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['GlobalInitScriptProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['GlobalInitScriptProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['GlobalInitScriptProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['GlobalInitScriptProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to script's source code on local filesystem. Conflicts with `content_base64`
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
 
@@ -258,13 +258,13 @@ class GlobalInitScript(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content_base64: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 position: Optional[pulumi.Input[_builtins.int]] = None,
-                 provider_config: Optional[pulumi.Input[Union['GlobalInitScriptProviderConfigArgs', 'GlobalInitScriptProviderConfigArgsDict']]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
+                 content_base64: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 position: pulumi.Input[Optional[_builtins.int]] = None,
+                 provider_config: pulumi.Input[Optional[Union['GlobalInitScriptProviderConfigArgs', 'GlobalInitScriptProviderConfigArgsDict']]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to manage [global init scripts](https://docs.databricks.com/clusters/init-scripts.html#global-init-scripts), which are run on all Cluster and databricks_job.
@@ -308,13 +308,13 @@ class GlobalInitScript(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content_base64: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 position: Optional[pulumi.Input[_builtins.int]] = None,
-                 provider_config: Optional[pulumi.Input[Union['GlobalInitScriptProviderConfigArgs', 'GlobalInitScriptProviderConfigArgsDict']]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
+                 content_base64: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 position: pulumi.Input[Optional[_builtins.int]] = None,
+                 provider_config: pulumi.Input[Optional[Union['GlobalInitScriptProviderConfigArgs', 'GlobalInitScriptProviderConfigArgsDict']]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -341,13 +341,13 @@ class GlobalInitScript(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            content_base64: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            md5: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            position: Optional[pulumi.Input[_builtins.int]] = None,
-            provider_config: Optional[pulumi.Input[Union['GlobalInitScriptProviderConfigArgs', 'GlobalInitScriptProviderConfigArgsDict']]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None) -> 'GlobalInitScript':
+            content_base64: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            md5: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            position: pulumi.Input[Optional[_builtins.int]] = None,
+            provider_config: pulumi.Input[Optional[Union['GlobalInitScriptProviderConfigArgs', 'GlobalInitScriptProviderConfigArgsDict']]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None) -> 'GlobalInitScript':
         """
         Get an existing GlobalInitScript resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

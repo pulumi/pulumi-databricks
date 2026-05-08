@@ -181,7 +181,7 @@ export interface GetEntityTagAssignmentOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetEntityTagAssignmentProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetEntityTagAssignmentProviderConfigArgs | undefined>;
     /**
      * The key of the tag
      */

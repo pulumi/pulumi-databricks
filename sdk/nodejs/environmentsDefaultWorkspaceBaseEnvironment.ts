@@ -139,21 +139,21 @@ export interface EnvironmentsDefaultWorkspaceBaseEnvironmentState {
      * The default workspace base environment for CPU compute.
      * Format: workspace-base-environments/{workspace_base_environment}
      */
-    cpuWorkspaceBaseEnvironment?: pulumi.Input<string>;
+    cpuWorkspaceBaseEnvironment?: pulumi.Input<string | undefined>;
     /**
      * The default workspace base environment for GPU compute.
      * Format: workspace-base-environments/{workspace_base_environment}
      */
-    gpuWorkspaceBaseEnvironment?: pulumi.Input<string>;
+    gpuWorkspaceBaseEnvironment?: pulumi.Input<string | undefined>;
     /**
      * (string) - The resource name of this singleton resource.
      * Format: default-workspace-base-environment
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig | undefined>;
 }
 
 /**
@@ -164,14 +164,14 @@ export interface EnvironmentsDefaultWorkspaceBaseEnvironmentArgs {
      * The default workspace base environment for CPU compute.
      * Format: workspace-base-environments/{workspace_base_environment}
      */
-    cpuWorkspaceBaseEnvironment?: pulumi.Input<string>;
+    cpuWorkspaceBaseEnvironment?: pulumi.Input<string | undefined>;
     /**
      * The default workspace base environment for GPU compute.
      * Format: workspace-base-environments/{workspace_base_environment}
      */
-    gpuWorkspaceBaseEnvironment?: pulumi.Input<string>;
+    gpuWorkspaceBaseEnvironment?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig | undefined>;
 }

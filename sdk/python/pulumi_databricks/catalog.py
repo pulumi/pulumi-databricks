@@ -21,24 +21,24 @@ __all__ = ['CatalogArgs', 'Catalog']
 @pulumi.input_type
 class CatalogArgs:
     def __init__(__self__, *,
-                 browse_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_predictive_optimization_flag: Optional[pulumi.Input['CatalogEffectivePredictiveOptimizationFlagArgs']] = None,
-                 enable_predictive_optimization: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_encryption_settings: Optional[pulumi.Input['CatalogManagedEncryptionSettingsArgs']] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input['CatalogProviderConfigArgs']] = None,
-                 provider_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioning_info: Optional[pulumi.Input['CatalogProvisioningInfoArgs']] = None,
-                 share_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root: Optional[pulumi.Input[_builtins.str]] = None):
+                 browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_predictive_optimization_flag: pulumi.Input[Optional['CatalogEffectivePredictiveOptimizationFlagArgs']] = None,
+                 enable_predictive_optimization: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_encryption_settings: pulumi.Input[Optional['CatalogManagedEncryptionSettingsArgs']] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional['CatalogProviderConfigArgs']] = None,
+                 provider_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioning_info: pulumi.Input[Optional['CatalogProvisioningInfoArgs']] = None,
+                 share_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_root: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Catalog resource.
 
@@ -96,238 +96,238 @@ class CatalogArgs:
 
     @_builtins.property
     @pulumi.getter(name="browseOnly")
-    def browse_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def browse_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "browse_only")
 
     @browse_only.setter
-    def browse_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def browse_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "browse_only", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-supplied free-form text.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionName")
-    def connection_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
         """
         return pulumi.get(self, "connection_name")
 
     @connection_name.setter
-    def connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectivePredictiveOptimizationFlag")
-    def effective_predictive_optimization_flag(self) -> Optional[pulumi.Input['CatalogEffectivePredictiveOptimizationFlagArgs']]:
+    def effective_predictive_optimization_flag(self) -> pulumi.Input[Optional['CatalogEffectivePredictiveOptimizationFlagArgs']]:
         return pulumi.get(self, "effective_predictive_optimization_flag")
 
     @effective_predictive_optimization_flag.setter
-    def effective_predictive_optimization_flag(self, value: Optional[pulumi.Input['CatalogEffectivePredictiveOptimizationFlagArgs']]):
+    def effective_predictive_optimization_flag(self, value: pulumi.Input[Optional['CatalogEffectivePredictiveOptimizationFlagArgs']]):
         pulumi.set(self, "effective_predictive_optimization_flag", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePredictiveOptimization")
-    def enable_predictive_optimization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_predictive_optimization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
         """
         return pulumi.get(self, "enable_predictive_optimization")
 
     @enable_predictive_optimization.setter
-    def enable_predictive_optimization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_predictive_optimization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_predictive_optimization", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Delete catalog regardless of its contents.
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="isolationMode")
-    def isolation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def isolation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         """
         return pulumi.get(self, "isolation_mode")
 
     @isolation_mode.setter
-    def isolation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def isolation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "isolation_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="managedEncryptionSettings")
-    def managed_encryption_settings(self) -> Optional[pulumi.Input['CatalogManagedEncryptionSettingsArgs']]:
+    def managed_encryption_settings(self) -> pulumi.Input[Optional['CatalogManagedEncryptionSettingsArgs']]:
         return pulumi.get(self, "managed_encryption_settings")
 
     @managed_encryption_settings.setter
-    def managed_encryption_settings(self, value: Optional[pulumi.Input['CatalogManagedEncryptionSettingsArgs']]):
+    def managed_encryption_settings(self, value: pulumi.Input[Optional['CatalogManagedEncryptionSettingsArgs']]):
         pulumi.set(self, "managed_encryption_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="metastoreId")
-    def metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the parent metastore.
         """
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
-    def metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metastore_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of Catalog relative to parent metastore.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username/groupname/sp application_id of the catalog owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Extensible Catalog properties.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['CatalogProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['CatalogProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['CatalogProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['CatalogProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="providerName")
-    def provider_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provider_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
         """
         return pulumi.get(self, "provider_name")
 
     @provider_name.setter
-    def provider_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provider_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provider_name", value)
 
     @_builtins.property
     @pulumi.getter(name="provisioningInfo")
-    def provisioning_info(self) -> Optional[pulumi.Input['CatalogProvisioningInfoArgs']]:
+    def provisioning_info(self) -> pulumi.Input[Optional['CatalogProvisioningInfoArgs']]:
         return pulumi.get(self, "provisioning_info")
 
     @provisioning_info.setter
-    def provisioning_info(self, value: Optional[pulumi.Input['CatalogProvisioningInfoArgs']]):
+    def provisioning_info(self, value: pulumi.Input[Optional['CatalogProvisioningInfoArgs']]):
         pulumi.set(self, "provisioning_info", value)
 
     @_builtins.property
     @pulumi.getter(name="shareName")
-    def share_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def share_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
         """
         return pulumi.get(self, "share_name")
 
     @share_name.setter
-    def share_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def share_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "share_name", value)
 
     @_builtins.property
     @pulumi.getter(name="storageRoot")
-    def storage_root(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_root(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_root")
 
     @storage_root.setter
-    def storage_root(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_root(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_root", value)
 
 
 @pulumi.input_type
 class _CatalogState:
     def __init__(__self__, *,
-                 browse_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 catalog_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_predictive_optimization_flag: Optional[pulumi.Input['CatalogEffectivePredictiveOptimizationFlagArgs']] = None,
-                 enable_predictive_optimization: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_encryption_settings: Optional[pulumi.Input['CatalogManagedEncryptionSettingsArgs']] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input['CatalogProviderConfigArgs']] = None,
-                 provider_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioning_info: Optional[pulumi.Input['CatalogProvisioningInfoArgs']] = None,
-                 securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_by: Optional[pulumi.Input[_builtins.str]] = None):
+                 browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 catalog_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_predictive_optimization_flag: pulumi.Input[Optional['CatalogEffectivePredictiveOptimizationFlagArgs']] = None,
+                 enable_predictive_optimization: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 full_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_encryption_settings: pulumi.Input[Optional['CatalogManagedEncryptionSettingsArgs']] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional['CatalogProviderConfigArgs']] = None,
+                 provider_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioning_info: pulumi.Input[Optional['CatalogProvisioningInfoArgs']] = None,
+                 securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_root: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_by: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Catalog resources.
 
@@ -408,299 +408,299 @@ class _CatalogState:
 
     @_builtins.property
     @pulumi.getter(name="browseOnly")
-    def browse_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def browse_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "browse_only")
 
     @browse_only.setter
-    def browse_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def browse_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "browse_only", value)
 
     @_builtins.property
     @pulumi.getter(name="catalogType")
-    def catalog_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def catalog_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the type of the catalog.
         """
         return pulumi.get(self, "catalog_type")
 
     @catalog_type.setter
-    def catalog_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def catalog_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-supplied free-form text.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionName")
-    def connection_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
         """
         return pulumi.get(self, "connection_name")
 
     @connection_name.setter
-    def connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         time at which this catalog was created, in epoch milliseconds.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         username of catalog creator.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="effectivePredictiveOptimizationFlag")
-    def effective_predictive_optimization_flag(self) -> Optional[pulumi.Input['CatalogEffectivePredictiveOptimizationFlagArgs']]:
+    def effective_predictive_optimization_flag(self) -> pulumi.Input[Optional['CatalogEffectivePredictiveOptimizationFlagArgs']]:
         return pulumi.get(self, "effective_predictive_optimization_flag")
 
     @effective_predictive_optimization_flag.setter
-    def effective_predictive_optimization_flag(self, value: Optional[pulumi.Input['CatalogEffectivePredictiveOptimizationFlagArgs']]):
+    def effective_predictive_optimization_flag(self, value: pulumi.Input[Optional['CatalogEffectivePredictiveOptimizationFlagArgs']]):
         pulumi.set(self, "effective_predictive_optimization_flag", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePredictiveOptimization")
-    def enable_predictive_optimization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_predictive_optimization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
         """
         return pulumi.get(self, "enable_predictive_optimization")
 
     @enable_predictive_optimization.setter
-    def enable_predictive_optimization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_predictive_optimization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_predictive_optimization", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Delete catalog regardless of its contents.
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="fullName")
-    def full_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def full_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "full_name")
 
     @full_name.setter
-    def full_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def full_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "full_name", value)
 
     @_builtins.property
     @pulumi.getter(name="isolationMode")
-    def isolation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def isolation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
         """
         return pulumi.get(self, "isolation_mode")
 
     @isolation_mode.setter
-    def isolation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def isolation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "isolation_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="managedEncryptionSettings")
-    def managed_encryption_settings(self) -> Optional[pulumi.Input['CatalogManagedEncryptionSettingsArgs']]:
+    def managed_encryption_settings(self) -> pulumi.Input[Optional['CatalogManagedEncryptionSettingsArgs']]:
         return pulumi.get(self, "managed_encryption_settings")
 
     @managed_encryption_settings.setter
-    def managed_encryption_settings(self, value: Optional[pulumi.Input['CatalogManagedEncryptionSettingsArgs']]):
+    def managed_encryption_settings(self, value: pulumi.Input[Optional['CatalogManagedEncryptionSettingsArgs']]):
         pulumi.set(self, "managed_encryption_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="metastoreId")
-    def metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the parent metastore.
         """
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
-    def metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metastore_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of Catalog relative to parent metastore.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username/groupname/sp application_id of the catalog owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Extensible Catalog properties.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['CatalogProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['CatalogProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['CatalogProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['CatalogProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="providerName")
-    def provider_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provider_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
         """
         return pulumi.get(self, "provider_name")
 
     @provider_name.setter
-    def provider_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provider_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provider_name", value)
 
     @_builtins.property
     @pulumi.getter(name="provisioningInfo")
-    def provisioning_info(self) -> Optional[pulumi.Input['CatalogProvisioningInfoArgs']]:
+    def provisioning_info(self) -> pulumi.Input[Optional['CatalogProvisioningInfoArgs']]:
         return pulumi.get(self, "provisioning_info")
 
     @provisioning_info.setter
-    def provisioning_info(self, value: Optional[pulumi.Input['CatalogProvisioningInfoArgs']]):
+    def provisioning_info(self, value: pulumi.Input[Optional['CatalogProvisioningInfoArgs']]):
         pulumi.set(self, "provisioning_info", value)
 
     @_builtins.property
     @pulumi.getter(name="securableType")
-    def securable_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def securable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the type of Unity Catalog securable.
         """
         return pulumi.get(self, "securable_type")
 
     @securable_type.setter
-    def securable_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def securable_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "securable_type", value)
 
     @_builtins.property
     @pulumi.getter(name="shareName")
-    def share_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def share_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
         """
         return pulumi.get(self, "share_name")
 
     @share_name.setter
-    def share_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def share_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "share_name", value)
 
     @_builtins.property
     @pulumi.getter(name="storageLocation")
-    def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         effective storage Location URL (full path) for managed tables within catalog.
         """
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
-    def storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_location", value)
 
     @_builtins.property
     @pulumi.getter(name="storageRoot")
-    def storage_root(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_root(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_root")
 
     @storage_root.setter
-    def storage_root(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_root(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_root", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         time at which this catalog was last modified, in epoch milliseconds..
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedBy")
-    def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         username of user who last modified catalog.
         """
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
-    def updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_by", value)
 
 
@@ -710,24 +710,24 @@ class Catalog(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 browse_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_predictive_optimization_flag: Optional[pulumi.Input[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict']]] = None,
-                 enable_predictive_optimization: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_encryption_settings: Optional[pulumi.Input[Union['CatalogManagedEncryptionSettingsArgs', 'CatalogManagedEncryptionSettingsArgsDict']]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict']]] = None,
-                 provider_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioning_info: Optional[pulumi.Input[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict']]] = None,
-                 share_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root: Optional[pulumi.Input[_builtins.str]] = None,
+                 browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_predictive_optimization_flag: pulumi.Input[Optional[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict']]] = None,
+                 enable_predictive_optimization: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_encryption_settings: pulumi.Input[Optional[Union['CatalogManagedEncryptionSettingsArgs', 'CatalogManagedEncryptionSettingsArgsDict']]] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict']]] = None,
+                 provider_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioning_info: pulumi.Input[Optional[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict']]] = None,
+                 share_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_root: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
@@ -827,24 +827,24 @@ class Catalog(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 browse_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_predictive_optimization_flag: Optional[pulumi.Input[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict']]] = None,
-                 enable_predictive_optimization: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_encryption_settings: Optional[pulumi.Input[Union['CatalogManagedEncryptionSettingsArgs', 'CatalogManagedEncryptionSettingsArgsDict']]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict']]] = None,
-                 provider_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioning_info: Optional[pulumi.Input[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict']]] = None,
-                 share_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root: Optional[pulumi.Input[_builtins.str]] = None,
+                 browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_predictive_optimization_flag: pulumi.Input[Optional[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict']]] = None,
+                 enable_predictive_optimization: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_encryption_settings: pulumi.Input[Optional[Union['CatalogManagedEncryptionSettingsArgs', 'CatalogManagedEncryptionSettingsArgsDict']]] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict']]] = None,
+                 provider_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioning_info: pulumi.Input[Optional[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict']]] = None,
+                 share_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_root: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -890,32 +890,32 @@ class Catalog(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            browse_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            catalog_type: Optional[pulumi.Input[_builtins.str]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.int]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_predictive_optimization_flag: Optional[pulumi.Input[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict']]] = None,
-            enable_predictive_optimization: Optional[pulumi.Input[_builtins.str]] = None,
-            force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            full_name: Optional[pulumi.Input[_builtins.str]] = None,
-            isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            managed_encryption_settings: Optional[pulumi.Input[Union['CatalogManagedEncryptionSettingsArgs', 'CatalogManagedEncryptionSettingsArgsDict']]] = None,
-            metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None,
-            properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            provider_config: Optional[pulumi.Input[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict']]] = None,
-            provider_name: Optional[pulumi.Input[_builtins.str]] = None,
-            provisioning_info: Optional[pulumi.Input[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict']]] = None,
-            securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-            share_name: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_root: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_by: Optional[pulumi.Input[_builtins.str]] = None) -> 'Catalog':
+            browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            catalog_type: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_predictive_optimization_flag: pulumi.Input[Optional[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict']]] = None,
+            enable_predictive_optimization: pulumi.Input[Optional[_builtins.str]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            full_name: pulumi.Input[Optional[_builtins.str]] = None,
+            isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            managed_encryption_settings: pulumi.Input[Optional[Union['CatalogManagedEncryptionSettingsArgs', 'CatalogManagedEncryptionSettingsArgsDict']]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['CatalogProviderConfigArgs', 'CatalogProviderConfigArgsDict']]] = None,
+            provider_name: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioning_info: pulumi.Input[Optional[Union['CatalogProvisioningInfoArgs', 'CatalogProvisioningInfoArgsDict']]] = None,
+            securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+            share_name: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_root: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> 'Catalog':
         """
         Get an existing Catalog resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

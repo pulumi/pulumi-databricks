@@ -151,8 +151,8 @@ def get_postgres_synced_table(name: Optional[_builtins.str] = None,
         spec=pulumi.get(__ret__, 'spec'),
         status=pulumi.get(__ret__, 'status'),
         uid=pulumi.get(__ret__, 'uid'))
-def get_postgres_synced_table_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                     provider_config: Optional[pulumi.Input[Optional[Union['GetPostgresSyncedTableProviderConfigArgs', 'GetPostgresSyncedTableProviderConfigArgsDict']]]] = None,
+def get_postgres_synced_table_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                     provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresSyncedTableProviderConfigArgs', 'GetPostgresSyncedTableProviderConfigArgsDict']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresSyncedTableResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)

@@ -148,57 +148,57 @@ export interface KnowledgeAssistantState {
     /**
      * (string) - Creation timestamp
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - The creator of the Knowledge Assistant
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * Description of what this agent can do (user-facing).
      * Required when creating a Knowledge Assistant.
      * When updating a Knowledge Assistant, optional unless included in
      * update_mask
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the Knowledge Assistant, unique at workspace level.
      * Required when creating a Knowledge Assistant.
      * When updating a Knowledge Assistant, optional unless included in
      * update_mask
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * (string) - The name of the knowledge assistant agent endpoint
      */
-    endpointName?: pulumi.Input<string>;
+    endpointName?: pulumi.Input<string | undefined>;
     /**
      * (string) - Error details when the Knowledge Assistant is in FAILED state
      */
-    errorInfo?: pulumi.Input<string>;
+    errorInfo?: pulumi.Input<string | undefined>;
     /**
      * (string) - The MLflow experiment ID
      */
-    experimentId?: pulumi.Input<string>;
+    experimentId?: pulumi.Input<string | undefined>;
     /**
      * Additional global instructions on how the agent should generate answers.
      * Optional on create and update.
      * When updating a Knowledge Assistant, include this field in updateMask to
      * modify it
      */
-    instructions?: pulumi.Input<string>;
+    instructions?: pulumi.Input<string | undefined>;
     /**
      * (string) - The resource name of the Knowledge Assistant.
      * Format: knowledge-assistants/{knowledge_assistant_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.KnowledgeAssistantProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.KnowledgeAssistantProviderConfig | undefined>;
     /**
      * (string) - State of the Knowledge Assistant. Not returned in List responses. Possible values are: `ACTIVE`, `CREATING`, `FAILED`
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -225,9 +225,9 @@ export interface KnowledgeAssistantArgs {
      * When updating a Knowledge Assistant, include this field in updateMask to
      * modify it
      */
-    instructions?: pulumi.Input<string>;
+    instructions?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.KnowledgeAssistantProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.KnowledgeAssistantProviderConfig | undefined>;
 }

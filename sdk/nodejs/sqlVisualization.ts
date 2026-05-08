@@ -149,32 +149,32 @@ export class SqlVisualization extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SqlVisualization resources.
  */
 export interface SqlVisualizationState {
-    description?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    options?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    options?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SqlVisualizationProviderConfig>;
-    queryId?: pulumi.Input<string>;
-    queryPlan?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
-    visualizationId?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.SqlVisualizationProviderConfig | undefined>;
+    queryId?: pulumi.Input<string | undefined>;
+    queryPlan?: pulumi.Input<string | undefined>;
+    type?: pulumi.Input<string | undefined>;
+    visualizationId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a SqlVisualization resource.
  */
 export interface SqlVisualizationArgs {
-    description?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     options: pulumi.Input<string>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SqlVisualizationProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.SqlVisualizationProviderConfig | undefined>;
     queryId: pulumi.Input<string>;
-    queryPlan?: pulumi.Input<string>;
+    queryPlan?: pulumi.Input<string | undefined>;
     type: pulumi.Input<string>;
-    visualizationId?: pulumi.Input<string>;
+    visualizationId?: pulumi.Input<string | undefined>;
 }

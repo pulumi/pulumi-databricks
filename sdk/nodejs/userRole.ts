@@ -139,16 +139,16 @@ export interface UserRoleState {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.UserRoleProviderConfig>;
+    api?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.UserRoleProviderConfig | undefined>;
     /**
      * Either a role name or the ARN/ID of the instance profile resource.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * This is the id of the user resource.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -158,8 +158,8 @@ export interface UserRoleArgs {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.UserRoleProviderConfig>;
+    api?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.UserRoleProviderConfig | undefined>;
     /**
      * Either a role name or the ARN/ID of the instance profile resource.
      */

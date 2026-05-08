@@ -456,8 +456,8 @@ def get_database_instance(name: Optional[_builtins.str] = None,
         stopped=pulumi.get(__ret__, 'stopped'),
         uid=pulumi.get(__ret__, 'uid'),
         usage_policy_id=pulumi.get(__ret__, 'usage_policy_id'))
-def get_database_instance_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                 provider_config: Optional[pulumi.Input[Optional[Union['GetDatabaseInstanceProviderConfigArgs', 'GetDatabaseInstanceProviderConfigArgsDict']]]] = None,
+def get_database_instance_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetDatabaseInstanceProviderConfigArgs', 'GetDatabaseInstanceProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstanceResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)

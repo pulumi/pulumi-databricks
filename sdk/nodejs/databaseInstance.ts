@@ -336,141 +336,141 @@ export interface DatabaseInstanceState {
     /**
      * The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
-    capacity?: pulumi.Input<string>;
+    capacity?: pulumi.Input<string | undefined>;
     /**
      * (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
      * parent instance
      */
-    childInstanceRefs?: pulumi.Input<pulumi.Input<inputs.DatabaseInstanceChildInstanceRef>[]>;
+    childInstanceRefs?: pulumi.Input<pulumi.Input<inputs.DatabaseInstanceChildInstanceRef>[] | undefined>;
     /**
      * (string) - The timestamp when the instance was created
      */
-    creationTime?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - The email of the creator of the instance
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * Custom tags associated with the instance. This field is only included on create and update responses
      */
-    customTags?: pulumi.Input<pulumi.Input<inputs.DatabaseInstanceCustomTag>[]>;
+    customTags?: pulumi.Input<pulumi.Input<inputs.DatabaseInstanceCustomTag>[] | undefined>;
     /**
      * (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
-    effectiveCapacity?: pulumi.Input<string>;
+    effectiveCapacity?: pulumi.Input<string | undefined>;
     /**
      * (list of CustomTag) - The recorded custom tags associated with the instance.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
-    effectiveCustomTags?: pulumi.Input<pulumi.Input<inputs.DatabaseInstanceEffectiveCustomTag>[]>;
+    effectiveCustomTags?: pulumi.Input<pulumi.Input<inputs.DatabaseInstanceEffectiveCustomTag>[] | undefined>;
     /**
      * (boolean) - Whether the instance has PG native password login enabled.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
-    effectiveEnablePgNativeLogin?: pulumi.Input<boolean>;
+    effectiveEnablePgNativeLogin?: pulumi.Input<boolean | undefined>;
     /**
      * (boolean) - Whether secondaries serving read-only traffic are enabled. Defaults to false.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
-    effectiveEnableReadableSecondaries?: pulumi.Input<boolean>;
+    effectiveEnableReadableSecondaries?: pulumi.Input<boolean | undefined>;
     /**
      * (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
      * 1 primary and 0 secondaries.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
-    effectiveNodeCount?: pulumi.Input<number>;
+    effectiveNodeCount?: pulumi.Input<number | undefined>;
     /**
      * (integer) - The retention window for the instance. This is the time window in days
      * for which the historical data is retained.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
-    effectiveRetentionWindowInDays?: pulumi.Input<number>;
+    effectiveRetentionWindowInDays?: pulumi.Input<number | undefined>;
     /**
      * (boolean) - Whether the instance is stopped.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
-    effectiveStopped?: pulumi.Input<boolean>;
+    effectiveStopped?: pulumi.Input<boolean | undefined>;
     /**
      * (string) - The policy that is applied to the instance.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
-    effectiveUsagePolicyId?: pulumi.Input<string>;
+    effectiveUsagePolicyId?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable PG native password login on the instance. Defaults to false
      */
-    enablePgNativeLogin?: pulumi.Input<boolean>;
+    enablePgNativeLogin?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable secondaries to serve read-only traffic. Defaults to false
      */
-    enableReadableSecondaries?: pulumi.Input<boolean>;
+    enableReadableSecondaries?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the instance. This is the unique identifier for the instance
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
      * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * The ref of the parent instance. This is only available if the instance is
      * child instance.
      * Input: For specifying the parent instance to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      */
-    parentInstanceRef?: pulumi.Input<inputs.DatabaseInstanceParentInstanceRef>;
+    parentInstanceRef?: pulumi.Input<inputs.DatabaseInstanceParentInstanceRef | undefined>;
     /**
      * (string) - The version of Postgres running on the instance
      */
-    pgVersion?: pulumi.Input<string>;
+    pgVersion?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.DatabaseInstanceProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.DatabaseInstanceProviderConfig | undefined>;
     /**
      * Purge the resource on delete
      */
-    purgeOnDelete?: pulumi.Input<boolean>;
+    purgeOnDelete?: pulumi.Input<boolean | undefined>;
     /**
      * (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
      * enableReadableSecondaries is true
      */
-    readOnlyDns?: pulumi.Input<string>;
+    readOnlyDns?: pulumi.Input<string | undefined>;
     /**
      * (string) - The DNS endpoint to connect to the instance for read+write access
      */
-    readWriteDns?: pulumi.Input<string>;
+    readWriteDns?: pulumi.Input<string | undefined>;
     /**
      * The retention window for the instance. This is the time window in days
      * for which the historical data is retained. The default value is 7 days.
      * Valid values are 2 to 35 days
      */
-    retentionWindowInDays?: pulumi.Input<number>;
+    retentionWindowInDays?: pulumi.Input<number | undefined>;
     /**
      * (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Whether to stop the instance. An input only param, see effectiveStopped for the output
      */
-    stopped?: pulumi.Input<boolean>;
+    stopped?: pulumi.Input<boolean | undefined>;
     /**
      * (string) - Id of the ref database instance
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The desired usage policy to associate with the instance
      */
-    usagePolicyId?: pulumi.Input<string>;
+    usagePolicyId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -480,55 +480,55 @@ export interface DatabaseInstanceArgs {
     /**
      * The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
-    capacity?: pulumi.Input<string>;
+    capacity?: pulumi.Input<string | undefined>;
     /**
      * Custom tags associated with the instance. This field is only included on create and update responses
      */
-    customTags?: pulumi.Input<pulumi.Input<inputs.DatabaseInstanceCustomTag>[]>;
+    customTags?: pulumi.Input<pulumi.Input<inputs.DatabaseInstanceCustomTag>[] | undefined>;
     /**
      * Whether to enable PG native password login on the instance. Defaults to false
      */
-    enablePgNativeLogin?: pulumi.Input<boolean>;
+    enablePgNativeLogin?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable secondaries to serve read-only traffic. Defaults to false
      */
-    enableReadableSecondaries?: pulumi.Input<boolean>;
+    enableReadableSecondaries?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the instance. This is the unique identifier for the instance
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
      * 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * The ref of the parent instance. This is only available if the instance is
      * child instance.
      * Input: For specifying the parent instance to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      */
-    parentInstanceRef?: pulumi.Input<inputs.DatabaseInstanceParentInstanceRef>;
+    parentInstanceRef?: pulumi.Input<inputs.DatabaseInstanceParentInstanceRef | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.DatabaseInstanceProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.DatabaseInstanceProviderConfig | undefined>;
     /**
      * Purge the resource on delete
      */
-    purgeOnDelete?: pulumi.Input<boolean>;
+    purgeOnDelete?: pulumi.Input<boolean | undefined>;
     /**
      * The retention window for the instance. This is the time window in days
      * for which the historical data is retained. The default value is 7 days.
      * Valid values are 2 to 35 days
      */
-    retentionWindowInDays?: pulumi.Input<number>;
+    retentionWindowInDays?: pulumi.Input<number | undefined>;
     /**
      * Whether to stop the instance. An input only param, see effectiveStopped for the output
      */
-    stopped?: pulumi.Input<boolean>;
+    stopped?: pulumi.Input<boolean | undefined>;
     /**
      * The desired usage policy to associate with the instance
      */
-    usagePolicyId?: pulumi.Input<string>;
+    usagePolicyId?: pulumi.Input<string | undefined>;
 }

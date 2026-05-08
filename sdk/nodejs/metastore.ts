@@ -270,91 +270,91 @@ export interface MetastoreState {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
      */
-    cloud?: pulumi.Input<string>;
+    cloud?: pulumi.Input<string | undefined>;
     /**
      * Time at which the metastore was created, in epoch milliseconds.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * Username of metastore creator.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * (Optional) Unique identifier of the metastore's default data access configuration.
      */
-    defaultDataAccessConfigId?: pulumi.Input<string>;
+    defaultDataAccessConfigId?: pulumi.Input<string | undefined>;
     /**
      * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
      */
-    deltaSharingOrganizationName?: pulumi.Input<string>;
+    deltaSharingOrganizationName?: pulumi.Input<string | undefined>;
     /**
      * Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
      */
-    deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number>;
+    deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
      */
-    deltaSharingScope?: pulumi.Input<string>;
+    deltaSharingScope?: pulumi.Input<string | undefined>;
     /**
      * Whether to allow non-DBR clients to directly access entities under the metastore.
      */
-    externalAccessEnabled?: pulumi.Input<boolean>;
+    externalAccessEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Destroy metastore regardless of its contents.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
      */
-    globalMetastoreId?: pulumi.Input<string>;
+    globalMetastoreId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the metastore.
      */
-    metastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * Name of metastore.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Username/groupname/sp applicationId of the metastore owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
      */
-    privilegeModelVersion?: pulumi.Input<string>;
+    privilegeModelVersion?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.MetastoreProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.MetastoreProviderConfig | undefined>;
     /**
      * The region of the metastore
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.  **It's recommended to define `storageRoot` on the catalog level.
      */
-    storageRoot?: pulumi.Input<string>;
+    storageRoot?: pulumi.Input<string | undefined>;
     /**
      * (Optional) UUID of storage credential to access the metastore storage_root.
      */
-    storageRootCredentialId?: pulumi.Input<string>;
+    storageRootCredentialId?: pulumi.Input<string | undefined>;
     /**
      * Name of the storage credential to access the metastore storage_root.
      */
-    storageRootCredentialName?: pulumi.Input<string>;
+    storageRootCredentialName?: pulumi.Input<string | undefined>;
     /**
      * Time at which the metastore was last modified, in epoch milliseconds.
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * Username of user who last modified the metastore.
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -364,61 +364,61 @@ export interface MetastoreArgs {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * (Optional) Unique identifier of the metastore's default data access configuration.
      */
-    defaultDataAccessConfigId?: pulumi.Input<string>;
+    defaultDataAccessConfigId?: pulumi.Input<string | undefined>;
     /**
      * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
      */
-    deltaSharingOrganizationName?: pulumi.Input<string>;
+    deltaSharingOrganizationName?: pulumi.Input<string | undefined>;
     /**
      * Required along with `deltaSharingScope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
      */
-    deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number>;
+    deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Required along with `deltaSharingRecipientTokenLifetimeInSeconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
      */
-    deltaSharingScope?: pulumi.Input<string>;
+    deltaSharingScope?: pulumi.Input<string | undefined>;
     /**
      * Whether to allow non-DBR clients to directly access entities under the metastore.
      */
-    externalAccessEnabled?: pulumi.Input<boolean>;
+    externalAccessEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Destroy metastore regardless of its contents.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Name of metastore.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Username/groupname/sp applicationId of the metastore owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
      */
-    privilegeModelVersion?: pulumi.Input<string>;
+    privilegeModelVersion?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.MetastoreProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.MetastoreProviderConfig | undefined>;
     /**
      * The region of the metastore
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Path on cloud storage account, where managed `databricks.Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.  **It's recommended to define `storageRoot` on the catalog level.
      */
-    storageRoot?: pulumi.Input<string>;
+    storageRoot?: pulumi.Input<string | undefined>;
     /**
      * (Optional) UUID of storage credential to access the metastore storage_root.
      */
-    storageRootCredentialId?: pulumi.Input<string>;
+    storageRootCredentialId?: pulumi.Input<string | undefined>;
     /**
      * Name of the storage credential to access the metastore storage_root.
      */
-    storageRootCredentialName?: pulumi.Input<string>;
+    storageRootCredentialName?: pulumi.Input<string | undefined>;
 }

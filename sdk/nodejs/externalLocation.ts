@@ -304,81 +304,81 @@ export class ExternalLocation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ExternalLocation resources.
  */
 export interface ExternalLocationState {
-    browseOnly?: pulumi.Input<boolean>;
+    browseOnly?: pulumi.Input<boolean | undefined>;
     /**
      * User-supplied free-form text.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Time at which this external location was created, in epoch milliseconds.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * Username of external location creator.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Unique ID of the location's storage credential.
      */
-    credentialId?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string | undefined>;
     /**
      * Name of the databricks.StorageCredential to use with this external location.
      */
-    credentialName?: pulumi.Input<string>;
-    effectiveEnableFileEvents?: pulumi.Input<boolean>;
-    effectiveFileEventQueue?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueue>;
+    credentialName?: pulumi.Input<string | undefined>;
+    effectiveEnableFileEvents?: pulumi.Input<boolean | undefined>;
+    effectiveFileEventQueue?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueue | undefined>;
     /**
      * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
      */
-    enableFileEvents?: pulumi.Input<boolean>;
-    encryptionDetails?: pulumi.Input<inputs.ExternalLocationEncryptionDetails>;
+    enableFileEvents?: pulumi.Input<boolean | undefined>;
+    encryptionDetails?: pulumi.Input<inputs.ExternalLocationEncryptionDetails | undefined>;
     /**
      * Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
      */
-    fallback?: pulumi.Input<boolean>;
-    fileEventQueue?: pulumi.Input<inputs.ExternalLocationFileEventQueue>;
+    fallback?: pulumi.Input<boolean | undefined>;
+    fileEventQueue?: pulumi.Input<inputs.ExternalLocationFileEventQueue | undefined>;
     /**
      * Destroy external location regardless of its dependents.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Update external location regardless of its dependents.
      */
-    forceUpdate?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
      */
-    isolationMode?: pulumi.Input<string>;
-    metastoreId?: pulumi.Input<string>;
+    isolationMode?: pulumi.Input<string | undefined>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Username/groupname/sp applicationId of the external location owner.
      */
-    owner?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.ExternalLocationProviderConfig>;
+    owner?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.ExternalLocationProviderConfig | undefined>;
     /**
      * Indicates whether the external location is read-only.
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Suppress validation errors if any & force save the external location
      */
-    skipValidation?: pulumi.Input<boolean>;
+    skipValidation?: pulumi.Input<boolean | undefined>;
     /**
      * Time at which external location this was last modified, in epoch milliseconds.
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * Username of user who last modified the external location.
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
     /**
      * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -388,52 +388,52 @@ export interface ExternalLocationArgs {
     /**
      * User-supplied free-form text.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Name of the databricks.StorageCredential to use with this external location.
      */
     credentialName: pulumi.Input<string>;
-    effectiveFileEventQueue?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueue>;
+    effectiveFileEventQueue?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueue | undefined>;
     /**
      * indicates if managed file events are enabled for this external location.  Requires `fileEventQueue` block.
      */
-    enableFileEvents?: pulumi.Input<boolean>;
-    encryptionDetails?: pulumi.Input<inputs.ExternalLocationEncryptionDetails>;
+    enableFileEvents?: pulumi.Input<boolean | undefined>;
+    encryptionDetails?: pulumi.Input<inputs.ExternalLocationEncryptionDetails | undefined>;
     /**
      * Indicates whether fallback mode is enabled for this external location. When fallback mode is enabled (disabled by default), the access to the location falls back to cluster credentials if UC credentials are not sufficient.
      */
-    fallback?: pulumi.Input<boolean>;
-    fileEventQueue?: pulumi.Input<inputs.ExternalLocationFileEventQueue>;
+    fallback?: pulumi.Input<boolean | undefined>;
+    fileEventQueue?: pulumi.Input<inputs.ExternalLocationFileEventQueue | undefined>;
     /**
      * Destroy external location regardless of its dependents.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Update external location regardless of its dependents.
      */
-    forceUpdate?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the external location is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the external location to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
      */
-    isolationMode?: pulumi.Input<string>;
-    metastoreId?: pulumi.Input<string>;
+    isolationMode?: pulumi.Input<string | undefined>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Username/groupname/sp applicationId of the external location owner.
      */
-    owner?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.ExternalLocationProviderConfig>;
+    owner?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.ExternalLocationProviderConfig | undefined>;
     /**
      * Indicates whether the external location is read-only.
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Suppress validation errors if any & force save the external location
      */
-    skipValidation?: pulumi.Input<boolean>;
+    skipValidation?: pulumi.Input<boolean | undefined>;
     /**
      * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).   If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).
      */

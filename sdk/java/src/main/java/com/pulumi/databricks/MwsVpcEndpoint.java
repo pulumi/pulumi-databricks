@@ -38,8 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.aws.VpcEndpoint;
  * import com.pulumi.aws.VpcEndpointArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -55,22 +55,22 @@ import javax.annotation.Nullable;
  *             .vpcId(vpc.vpcId())
  *             .serviceName(privateLink.workspaceService())
  *             .vpcEndpointType("Interface")
- *             .securityGroupIds(List.of(vpc.defaultSecurityGroupId()))
- *             .subnetIds(List.of(plSubnet.id()))
+ *             .securityGroupIds(Arrays.asList(vpc.defaultSecurityGroupId()))
+ *             .subnetIds(Arrays.asList(plSubnet.id()))
  *             .privateDnsEnabled(true)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(plSubnet))
+ *                 .dependsOn(Arrays.asList(plSubnet))
  *                 .build());
  * 
  *         var relay = new VpcEndpoint("relay", VpcEndpointArgs.builder()
  *             .vpcId(vpc.vpcId())
  *             .serviceName(privateLink.relayService())
  *             .vpcEndpointType("Interface")
- *             .securityGroupIds(List.of(vpc.defaultSecurityGroupId()))
- *             .subnetIds(List.of(plSubnet.id()))
+ *             .securityGroupIds(Arrays.asList(vpc.defaultSecurityGroupId()))
+ *             .subnetIds(Arrays.asList(plSubnet.id()))
  *             .privateDnsEnabled(true)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(plSubnet))
+ *                 .dependsOn(Arrays.asList(plSubnet))
  *                 .build());
  * 
  *     }
@@ -91,8 +91,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.aws.VpcEndpoint;
  * import com.pulumi.aws.VpcEndpointArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             .routeTableIds(vpc.privateRouteTableIds())
  *             .serviceName(String.format("com.amazonaws.%s.s3", region))
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(vpc))
+ *                 .dependsOn(Arrays.asList(vpc))
  *                 .build());
  * 
  *         var sts = new VpcEndpoint("sts", VpcEndpointArgs.builder()
@@ -117,10 +117,10 @@ import javax.annotation.Nullable;
  *             .serviceName(String.format("com.amazonaws.%s.sts", region))
  *             .vpcEndpointType("Interface")
  *             .subnetIds(vpc.privateSubnets())
- *             .securityGroupIds(List.of(vpc.defaultSecurityGroupId()))
+ *             .securityGroupIds(Arrays.asList(vpc.defaultSecurityGroupId()))
  *             .privateDnsEnabled(true)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(vpc))
+ *                 .dependsOn(Arrays.asList(vpc))
  *                 .build());
  * 
  *         var kinesis_streams = new VpcEndpoint("kinesis-streams", VpcEndpointArgs.builder()
@@ -128,9 +128,9 @@ import javax.annotation.Nullable;
  *             .serviceName(String.format("com.amazonaws.%s.kinesis-streams", region))
  *             .vpcEndpointType("Interface")
  *             .subnetIds(vpc.privateSubnets())
- *             .securityGroupIds(List.of(vpc.defaultSecurityGroupId()))
+ *             .securityGroupIds(Arrays.asList(vpc.defaultSecurityGroupId()))
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(vpc))
+ *                 .dependsOn(Arrays.asList(vpc))
  *                 .build());
  * 
  *     }
@@ -150,8 +150,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.MwsVpcEndpoint;
  * import com.pulumi.databricks.MwsVpcEndpointArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -198,8 +198,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.MwsWorkspaces;
  * import com.pulumi.databricks.MwsWorkspacesArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -245,8 +245,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.MwsVpcEndpoint;
  * import com.pulumi.databricks.MwsVpcEndpointArgs;
  * import com.pulumi.databricks.inputs.MwsVpcEndpointGcpVpcEndpointInfoArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -303,8 +303,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerGcpArgs;
  * import com.pulumi.databricks.inputs.MwsWorkspacesGkeConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;

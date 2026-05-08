@@ -136,6 +136,6 @@ export interface GetServingEndpointsOutputArgs {
     /**
      * List of objects describing the serving endpoints. Each object consists of following attributes:
      */
-    endpoints?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointArgs>[]>;
-    providerConfig?: pulumi.Input<inputs.GetServingEndpointsProviderConfigArgs>;
+    endpoints?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointArgs>[] | undefined>;
+    providerConfig?: pulumi.Input<inputs.GetServingEndpointsProviderConfigArgs | undefined>;
 }

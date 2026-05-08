@@ -93,9 +93,9 @@ export interface GetInstanceProfilesOutputArgs {
     /**
      * Set of objects for a databricks_instance_profile. This contains the following attributes:
      */
-    instanceProfiles?: pulumi.Input<pulumi.Input<inputs.GetInstanceProfilesInstanceProfileArgs>[]>;
+    instanceProfiles?: pulumi.Input<pulumi.Input<inputs.GetInstanceProfilesInstanceProfileArgs>[] | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetInstanceProfilesProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetInstanceProfilesProviderConfigArgs | undefined>;
 }

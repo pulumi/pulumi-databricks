@@ -395,77 +395,77 @@ export interface SqlTableState {
     /**
      * Name of parent catalog. Change forces the creation of a new resource.
      */
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * All table CRUD operations must be executed on a running cluster or SQL warehouse. If a clusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouseId`.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
      */
-    clusterKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    columns?: pulumi.Input<pulumi.Input<inputs.SqlTableColumn>[]>;
+    clusterKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    columns?: pulumi.Input<pulumi.Input<inputs.SqlTableColumn>[] | undefined>;
     /**
      * User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
      */
-    dataSourceFormat?: pulumi.Input<string>;
-    effectiveProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dataSourceFormat?: pulumi.Input<string | undefined>;
+    effectiveProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Map of user defined table options. Change forces creation of a new resource.
      */
-    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * User name/group name/sp applicationId of the table owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`.
      */
-    partitions?: pulumi.Input<pulumi.Input<string>[]>;
+    partitions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A map of table properties.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SqlTableProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.SqlTableProviderConfig | undefined>;
     /**
      * Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
      */
-    schemaName?: pulumi.Input<string>;
+    schemaName?: pulumi.Input<string | undefined>;
     /**
      * For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
      */
-    storageCredentialName?: pulumi.Input<string>;
+    storageCredentialName?: pulumi.Input<string | undefined>;
     /**
      * URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
      */
-    storageLocation?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the table.
      */
-    tableId?: pulumi.Input<string>;
+    tableId?: pulumi.Input<string | undefined>;
     /**
      * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces the creation of a new resource.
      */
-    tableType?: pulumi.Input<string>;
+    tableType?: pulumi.Input<string | undefined>;
     /**
      * SQL text defining the view (for `tableType == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
      */
-    viewDefinition?: pulumi.Input<string>;
+    viewDefinition?: pulumi.Input<string | undefined>;
     /**
      * All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouseId` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `clusterId`.
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -479,44 +479,44 @@ export interface SqlTableArgs {
     /**
      * All table CRUD operations must be executed on a running cluster or SQL warehouse. If a clusterId is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouseId`.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * a subset of columns to liquid cluster the table by. For automatic clustering, set `clusterKeys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
      */
-    clusterKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    columns?: pulumi.Input<pulumi.Input<inputs.SqlTableColumn>[]>;
+    clusterKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    columns?: pulumi.Input<pulumi.Input<inputs.SqlTableColumn>[] | undefined>;
     /**
      * User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
      */
-    dataSourceFormat?: pulumi.Input<string>;
+    dataSourceFormat?: pulumi.Input<string | undefined>;
     /**
      * Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Map of user defined table options. Change forces creation of a new resource.
      */
-    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * User name/group name/sp applicationId of the table owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `clusterKeys`.
      */
-    partitions?: pulumi.Input<pulumi.Input<string>[]>;
+    partitions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A map of table properties.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SqlTableProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.SqlTableProviderConfig | undefined>;
     /**
      * Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
      */
@@ -524,11 +524,11 @@ export interface SqlTableArgs {
     /**
      * For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
      */
-    storageCredentialName?: pulumi.Input<string>;
+    storageCredentialName?: pulumi.Input<string | undefined>;
     /**
      * URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
      */
-    storageLocation?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string | undefined>;
     /**
      * Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces the creation of a new resource.
      */
@@ -536,9 +536,9 @@ export interface SqlTableArgs {
     /**
      * SQL text defining the view (for `tableType == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
      */
-    viewDefinition?: pulumi.Input<string>;
+    viewDefinition?: pulumi.Input<string | undefined>;
     /**
      * All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouseId` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `clusterId`.
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }

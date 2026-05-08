@@ -131,5 +131,5 @@ export interface GetWarehousesDefaultWarehouseOverrideOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetWarehousesDefaultWarehouseOverrideProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetWarehousesDefaultWarehouseOverrideProviderConfigArgs | undefined>;
 }

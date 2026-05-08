@@ -109,13 +109,14 @@ def get_service_principals(application_ids: Optional[Sequence[_builtins.str]] = 
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_databricks as databricks
     import pulumi_std as std
 
     admins = databricks.get_group(display_name="admins")
     spns = databricks.get_service_principals(display_name_contains="my-spn")
-    spn = {__key: databricks.get_service_principal(application_id=__value) for __key, __value in enumerate(std.toset(input=spns.application_ids).result)}
-    my_member_spn = []
+    spn = {str(__key): databricks.get_service_principal(application_id=__value) for __key, __value in enumerate(std.toset(input=spns.application_ids).result)}
+    my_member_spn: list[Any] = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=spns.application_ids).result)]:
         my_member_spn.append(databricks.GroupMember(f"my_member_spn-{range['key']}",
             group_id=admins.id,
@@ -155,10 +156,10 @@ def get_service_principals(application_ids: Optional[Sequence[_builtins.str]] = 
         id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         service_principals=pulumi.get(__ret__, 'service_principals'))
-def get_service_principals_output(application_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                  display_name_contains: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  provider_config: Optional[pulumi.Input[Optional[Union['GetServicePrincipalsProviderConfigArgs', 'GetServicePrincipalsProviderConfigArgsDict']]]] = None,
-                                  service_principals: Optional[pulumi.Input[Optional[Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict']]]]] = None,
+def get_service_principals_output(application_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                  display_name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  provider_config: pulumi.Input[Optional[Optional[Union['GetServicePrincipalsProviderConfigArgs', 'GetServicePrincipalsProviderConfigArgsDict']]]] = None,
+                                  service_principals: pulumi.Input[Optional[Optional[Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict']]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePrincipalsResult]:
     """
     Retrieves `application_ids` of all ServicePrincipal based on their `display_name`
@@ -171,13 +172,14 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_databricks as databricks
     import pulumi_std as std
 
     admins = databricks.get_group(display_name="admins")
     spns = databricks.get_service_principals(display_name_contains="my-spn")
-    spn = {__key: databricks.get_service_principal(application_id=__value) for __key, __value in enumerate(std.toset(input=spns.application_ids).result)}
-    my_member_spn = []
+    spn = {str(__key): databricks.get_service_principal(application_id=__value) for __key, __value in enumerate(std.toset(input=spns.application_ids).result)}
+    my_member_spn: list[Any] = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=spns.application_ids).result)]:
         my_member_spn.append(databricks.GroupMember(f"my_member_spn-{range['key']}",
             group_id=admins.id,

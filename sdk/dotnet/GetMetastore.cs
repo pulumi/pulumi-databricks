@@ -29,13 +29,13 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var metastore = new Aws.Index.S3Bucket("metastore", new()
+        ///     var metastore = new Aws.S3Bucket("metastore", new()
         ///     {
         ///         Bucket = $"{prefix}-metastore",
         ///         ForceDestroy = true,
         ///     });
         /// 
-        ///     var thisMetastore = new Databricks.Index.Metastore("this", new()
+        ///     var thisMetastore = new Databricks.Metastore("this", new()
         ///     {
         ///         Name = "primary",
         ///         StorageRoot = $"s3://{metastore.Id}/metastore",
@@ -43,7 +43,7 @@ namespace Pulumi.Databricks
         ///         ForceDestroy = true,
         ///     });
         /// 
-        ///     var @this = Databricks.Index.GetMetastore.Invoke(new()
+        ///     var @this = Databricks.GetMetastore.Invoke(new()
         ///     {
         ///         MetastoreId = thisMetastore.Id,
         ///     });
@@ -84,13 +84,13 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var metastore = new Aws.Index.S3Bucket("metastore", new()
+        ///     var metastore = new Aws.S3Bucket("metastore", new()
         ///     {
         ///         Bucket = $"{prefix}-metastore",
         ///         ForceDestroy = true,
         ///     });
         /// 
-        ///     var thisMetastore = new Databricks.Index.Metastore("this", new()
+        ///     var thisMetastore = new Databricks.Metastore("this", new()
         ///     {
         ///         Name = "primary",
         ///         StorageRoot = $"s3://{metastore.Id}/metastore",
@@ -98,7 +98,7 @@ namespace Pulumi.Databricks
         ///         ForceDestroy = true,
         ///     });
         /// 
-        ///     var @this = Databricks.Index.GetMetastore.Invoke(new()
+        ///     var @this = Databricks.GetMetastore.Invoke(new()
         ///     {
         ///         MetastoreId = thisMetastore.Id,
         ///     });
@@ -139,13 +139,13 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var metastore = new Aws.Index.S3Bucket("metastore", new()
+        ///     var metastore = new Aws.S3Bucket("metastore", new()
         ///     {
         ///         Bucket = $"{prefix}-metastore",
         ///         ForceDestroy = true,
         ///     });
         /// 
-        ///     var thisMetastore = new Databricks.Index.Metastore("this", new()
+        ///     var thisMetastore = new Databricks.Metastore("this", new()
         ///     {
         ///         Name = "primary",
         ///         StorageRoot = $"s3://{metastore.Id}/metastore",
@@ -153,7 +153,7 @@ namespace Pulumi.Databricks
         ///         ForceDestroy = true,
         ///     });
         /// 
-        ///     var @this = Databricks.Index.GetMetastore.Invoke(new()
+        ///     var @this = Databricks.GetMetastore.Invoke(new()
         ///     {
         ///         MetastoreId = thisMetastore.Id,
         ///     });

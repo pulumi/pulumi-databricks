@@ -149,33 +149,33 @@ export interface RepoState {
     /**
      * name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
      */
-    commitHash?: pulumi.Input<string>;
+    commitHash?: pulumi.Input<string | undefined>;
     /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */
-    gitProvider?: pulumi.Input<string>;
+    gitProvider?: pulumi.Input<string | undefined>;
     /**
      * path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
      */
-    path?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.RepoProviderConfig>;
-    sparseCheckout?: pulumi.Input<inputs.RepoSparseCheckout>;
+    path?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.RepoProviderConfig | undefined>;
+    sparseCheckout?: pulumi.Input<inputs.RepoSparseCheckout | undefined>;
     /**
      * name of the tag for initial checkout.  Conflicts with `branch`.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
     /**
      * The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */
-    workspacePath?: pulumi.Input<string>;
+    workspacePath?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -185,25 +185,25 @@ export interface RepoArgs {
     /**
      * name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
      */
-    commitHash?: pulumi.Input<string>;
+    commitHash?: pulumi.Input<string | undefined>;
     /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
      */
-    gitProvider?: pulumi.Input<string>;
+    gitProvider?: pulumi.Input<string | undefined>;
     /**
      * path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
      */
-    path?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.RepoProviderConfig>;
-    sparseCheckout?: pulumi.Input<inputs.RepoSparseCheckout>;
+    path?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.RepoProviderConfig | undefined>;
+    sparseCheckout?: pulumi.Input<inputs.RepoSparseCheckout | undefined>;
     /**
      * name of the tag for initial checkout.  Conflicts with `branch`.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
     /**
      * The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
      */

@@ -115,5 +115,5 @@ export interface GetAppOutputArgs {
      * The name of the app.
      */
     name: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.GetAppProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetAppProviderConfigArgs | undefined>;
 }

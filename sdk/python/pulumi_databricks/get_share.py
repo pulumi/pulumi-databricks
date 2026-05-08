@@ -236,12 +236,12 @@ def get_share(comment: Optional[_builtins.str] = None,
         storage_root=pulumi.get(__ret__, 'storage_root'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         updated_by=pulumi.get(__ret__, 'updated_by'))
-def get_share_output(comment: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     objects: Optional[pulumi.Input[Optional[Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict']]]]] = None,
-                     owner: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     provider_config: Optional[pulumi.Input[Optional[Union['GetShareProviderConfigArgs', 'GetShareProviderConfigArgsDict']]]] = None,
-                     storage_root: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_share_output(comment: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     objects: pulumi.Input[Optional[Optional[Sequence[Union['GetShareObjectArgs', 'GetShareObjectArgsDict']]]]] = None,
+                     owner: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     provider_config: pulumi.Input[Optional[Optional[Union['GetShareProviderConfigArgs', 'GetShareProviderConfigArgsDict']]]] = None,
+                     storage_root: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetShareResult]:
     """
     Retrieves details about a Share that were created by Pulumi or manually.

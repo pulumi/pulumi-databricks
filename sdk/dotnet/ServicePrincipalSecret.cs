@@ -30,7 +30,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var terraformSp = new Databricks.Index.ServicePrincipalSecret("terraform_sp", new()
+    ///     var terraformSp = new Databricks.ServicePrincipalSecret("terraform_sp", new()
     ///     {
     ///         ServicePrincipalId = @this.Id,
     ///     });
@@ -49,12 +49,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Time.Index.Rotating("this", new()
+    ///     var @this = new Time.Rotating("this", new()
     ///     {
     ///         RotationDays = 30,
     ///     });
     /// 
-    ///     var terraformSp = new Databricks.Index.ServicePrincipalSecret("terraform_sp", new()
+    ///     var terraformSp = new Databricks.ServicePrincipalSecret("terraform_sp", new()
     ///     {
     ///         ServicePrincipalId = thisDatabricksServicePrincipal.Id,
     ///         TimeRotating = @this.Rfc3339.Apply(rfc3339 =&gt; $"Pulumi (created: {rfc3339})"),

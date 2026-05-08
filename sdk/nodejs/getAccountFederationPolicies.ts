@@ -80,5 +80,5 @@ export function getAccountFederationPoliciesOutput(args?: GetAccountFederationPo
  * A collection of arguments for invoking getAccountFederationPolicies.
  */
 export interface GetAccountFederationPoliciesOutputArgs {
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
 }

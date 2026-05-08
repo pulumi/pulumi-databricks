@@ -180,51 +180,51 @@ export interface ServicePrincipalSecretState {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * UTC time when the secret was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * UTC time when the secret will expire. If the field is not present, the secret does not expire.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
      */
-    lifetime?: pulumi.Input<string>;
+    lifetime?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.ServicePrincipalSecretProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.ServicePrincipalSecretProviderConfig | undefined>;
     /**
      * **Sensitive** Generated secret for the service principal.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * Secret Hash.
      */
-    secretHash?: pulumi.Input<string>;
+    secretHash?: pulumi.Input<string | undefined>;
     /**
      * SCIM ID of the databricks.ServicePrincipal (not application ID).
      */
-    servicePrincipalId?: pulumi.Input<string>;
+    servicePrincipalId?: pulumi.Input<string | undefined>;
     /**
      * ID of the secret
      */
-    servicePrincipalSecretId?: pulumi.Input<string>;
+    servicePrincipalSecretId?: pulumi.Input<string | undefined>;
     /**
      * Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Changing this argument forces recreation of the secret.
      */
-    timeRotating?: pulumi.Input<string>;
+    timeRotating?: pulumi.Input<string | undefined>;
     /**
      * UTC time when the secret was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -234,31 +234,31 @@ export interface ServicePrincipalSecretArgs {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * UTC time when the secret was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * UTC time when the secret will expire. If the field is not present, the secret does not expire.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
      */
-    lifetime?: pulumi.Input<string>;
+    lifetime?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.ServicePrincipalSecretProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.ServicePrincipalSecretProviderConfig | undefined>;
     /**
      * **Sensitive** Generated secret for the service principal.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * Secret Hash.
      */
-    secretHash?: pulumi.Input<string>;
+    secretHash?: pulumi.Input<string | undefined>;
     /**
      * SCIM ID of the databricks.ServicePrincipal (not application ID).
      */
@@ -266,17 +266,17 @@ export interface ServicePrincipalSecretArgs {
     /**
      * ID of the secret
      */
-    servicePrincipalSecretId?: pulumi.Input<string>;
+    servicePrincipalSecretId?: pulumi.Input<string | undefined>;
     /**
      * Status of the secret (i.e., `ACTIVE` - see [REST API docs for full list](https://docs.databricks.com/api/account/serviceprincipalsecrets/list#secrets-status)).
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Changing this argument forces recreation of the secret.
      */
-    timeRotating?: pulumi.Input<string>;
+    timeRotating?: pulumi.Input<string | undefined>;
     /**
      * UTC time when the secret was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }

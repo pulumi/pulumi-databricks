@@ -91,5 +91,5 @@ export interface GetOnlineStoreOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetOnlineStoreProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetOnlineStoreProviderConfigArgs | undefined>;
 }

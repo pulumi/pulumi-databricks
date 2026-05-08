@@ -106,9 +106,9 @@ export interface GetInstancePoolOutputArgs {
     /**
      * block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
      */
-    poolInfo?: pulumi.Input<inputs.GetInstancePoolPoolInfoArgs>;
+    poolInfo?: pulumi.Input<inputs.GetInstancePoolPoolInfoArgs | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetInstancePoolProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetInstancePoolProviderConfigArgs | undefined>;
 }

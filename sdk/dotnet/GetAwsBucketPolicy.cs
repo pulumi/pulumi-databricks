@@ -27,18 +27,18 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisS3Bucket = new Aws.Index.S3Bucket("this", new()
+        ///     var thisS3Bucket = new Aws.S3Bucket("this", new()
         ///     {
         ///         Bucket = "&lt;unique_bucket_name&gt;",
         ///         ForceDestroy = true,
         ///     });
         /// 
-        ///     var @this = Databricks.Index.GetAwsBucketPolicy.Invoke(new()
+        ///     var @this = Databricks.GetAwsBucketPolicy.Invoke(new()
         ///     {
         ///         Bucket = thisS3Bucket.Bucket,
         ///     });
         /// 
-        ///     var thisS3BucketPolicy = new Aws.Index.S3BucketPolicy("this", new()
+        ///     var thisS3BucketPolicy = new Aws.S3BucketPolicy("this", new()
         ///     {
         ///         Bucket = thisS3Bucket.Id,
         ///         Policy = @this.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),
@@ -68,18 +68,18 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisS3Bucket = new Aws.Index.S3Bucket("this", new()
+        ///     var thisS3Bucket = new Aws.S3Bucket("this", new()
         ///     {
         ///         Bucket = "&lt;unique_bucket_name&gt;",
         ///         ForceDestroy = true,
         ///     });
         /// 
-        ///     var @this = Databricks.Index.GetAwsBucketPolicy.Invoke(new()
+        ///     var @this = Databricks.GetAwsBucketPolicy.Invoke(new()
         ///     {
         ///         Bucket = thisS3Bucket.Bucket,
         ///     });
         /// 
-        ///     var thisS3BucketPolicy = new Aws.Index.S3BucketPolicy("this", new()
+        ///     var thisS3BucketPolicy = new Aws.S3BucketPolicy("this", new()
         ///     {
         ///         Bucket = thisS3Bucket.Id,
         ///         Policy = @this.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),
@@ -109,18 +109,18 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var thisS3Bucket = new Aws.Index.S3Bucket("this", new()
+        ///     var thisS3Bucket = new Aws.S3Bucket("this", new()
         ///     {
         ///         Bucket = "&lt;unique_bucket_name&gt;",
         ///         ForceDestroy = true,
         ///     });
         /// 
-        ///     var @this = Databricks.Index.GetAwsBucketPolicy.Invoke(new()
+        ///     var @this = Databricks.GetAwsBucketPolicy.Invoke(new()
         ///     {
         ///         Bucket = thisS3Bucket.Bucket,
         ///     });
         /// 
-        ///     var thisS3BucketPolicy = new Aws.Index.S3BucketPolicy("this", new()
+        ///     var thisS3BucketPolicy = new Aws.S3BucketPolicy("this", new()
         ///     {
         ///         Bucket = thisS3Bucket.Id,
         ///         Policy = @this.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),

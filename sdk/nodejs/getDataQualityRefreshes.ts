@@ -157,9 +157,9 @@ export interface GetDataQualityRefreshesOutputArgs {
      * The type of the monitored object. Can be one of the following: `schema` or `table`
      */
     objectType: pulumi.Input<string>;
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetDataQualityRefreshesProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetDataQualityRefreshesProviderConfigArgs | undefined>;
 }

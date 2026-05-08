@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * const all = databricks.getSchemas({
  *     catalogName: "sandbox",
  * });
- * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getSchema({
+ * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: databricks.getSchema({
  *     name: __value,
  * }) }), {}));
  * ```
@@ -113,7 +113,7 @@ export interface GetSchemaResult {
  * const all = databricks.getSchemas({
  *     catalogName: "sandbox",
  * });
- * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getSchema({
+ * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: databricks.getSchema({
  *     name: __value,
  * }) }), {}));
  * ```
@@ -153,7 +153,7 @@ export interface GetSchemaOutputArgs {
     /**
      * ID of this Unity Catalog Schema in form of `<catalog>.<schema>`.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * a fully qualified name of databricks_schema: *`catalog`.`schema`*
      */
@@ -161,9 +161,9 @@ export interface GetSchemaOutputArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetSchemaProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetSchemaProviderConfigArgs | undefined>;
     /**
      * `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
      */
-    schemaInfo?: pulumi.Input<inputs.GetSchemaSchemaInfoArgs>;
+    schemaInfo?: pulumi.Input<inputs.GetSchemaSchemaInfoArgs | undefined>;
 }

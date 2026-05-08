@@ -58,8 +58,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.MwsLogDelivery;
  * import com.pulumi.databricks.MwsLogDeliveryArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  * 
  *         var logdeliveryVersioning = new S3BucketVersioning("logdeliveryVersioning", S3BucketVersioningArgs.builder()
  *             .bucket(logdeliveryS3Bucket.id())
- *             .versioningConfiguration(List.of(Map.of("status", "Disabled")))
+ *             .versioningConfiguration(Arrays.asList(Map.of("status", "Disabled")))
  *             .build());
  * 
  *         var logdeliveryIamRole = new IamRole("logdeliveryIamRole", IamRoleArgs.builder()
@@ -176,8 +176,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.MwsLogDelivery;
  * import com.pulumi.databricks.MwsLogDeliveryArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -217,8 +217,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.MwsLogDelivery;
  * import com.pulumi.databricks.MwsLogDeliveryArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;

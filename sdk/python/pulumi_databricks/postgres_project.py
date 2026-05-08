@@ -22,10 +22,10 @@ __all__ = ['PostgresProjectArgs', 'PostgresProject']
 class PostgresProjectArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
-                 initial_endpoint_spec: Optional[pulumi.Input['PostgresProjectInitialEndpointSpecArgs']] = None,
-                 provider_config: Optional[pulumi.Input['PostgresProjectProviderConfigArgs']] = None,
-                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spec: Optional[pulumi.Input['PostgresProjectSpecArgs']] = None):
+                 initial_endpoint_spec: pulumi.Input[Optional['PostgresProjectInitialEndpointSpecArgs']] = None,
+                 provider_config: pulumi.Input[Optional['PostgresProjectProviderConfigArgs']] = None,
+                 purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spec: pulumi.Input[Optional['PostgresProjectSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresProject resource.
 
@@ -67,7 +67,7 @@ class PostgresProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="initialEndpointSpec")
-    def initial_endpoint_spec(self) -> Optional[pulumi.Input['PostgresProjectInitialEndpointSpecArgs']]:
+    def initial_endpoint_spec(self) -> pulumi.Input[Optional['PostgresProjectInitialEndpointSpecArgs']]:
         """
         Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
         created project. If omitted, the initial endpoint created will have default settings, without high availability
@@ -77,24 +77,24 @@ class PostgresProjectArgs:
         return pulumi.get(self, "initial_endpoint_spec")
 
     @initial_endpoint_spec.setter
-    def initial_endpoint_spec(self, value: Optional[pulumi.Input['PostgresProjectInitialEndpointSpecArgs']]):
+    def initial_endpoint_spec(self, value: pulumi.Input[Optional['PostgresProjectInitialEndpointSpecArgs']]):
         pulumi.set(self, "initial_endpoint_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PostgresProjectProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PostgresProjectProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PostgresProjectProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PostgresProjectProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="purgeOnDelete")
-    def purge_on_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def purge_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, permanently deletes the project (hard delete).
         If false or unset, performs a soft delete
@@ -102,37 +102,37 @@ class PostgresProjectArgs:
         return pulumi.get(self, "purge_on_delete")
 
     @purge_on_delete.setter
-    def purge_on_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def purge_on_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "purge_on_delete", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['PostgresProjectSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['PostgresProjectSpecArgs']]:
         """
         The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['PostgresProjectSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['PostgresProjectSpecArgs']]):
         pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
 class _PostgresProjectState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_endpoint_spec: Optional[pulumi.Input['PostgresProjectInitialEndpointSpecArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['PostgresProjectProviderConfigArgs']] = None,
-                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 purge_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input['PostgresProjectSpecArgs']] = None,
-                 status: Optional[pulumi.Input['PostgresProjectStatusArgs']] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_endpoint_spec: pulumi.Input[Optional['PostgresProjectInitialEndpointSpecArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['PostgresProjectProviderConfigArgs']] = None,
+                 purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 purge_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional['PostgresProjectSpecArgs']] = None,
+                 status: pulumi.Input[Optional['PostgresProjectStatusArgs']] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PostgresProject resources.
 
@@ -185,19 +185,19 @@ class _PostgresProjectState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - A timestamp indicating when the project was created
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteTime")
-    def delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - A timestamp indicating when the project was soft-deleted.
         Empty if the project is not deleted, otherwise set to a timestamp in the past
@@ -205,12 +205,12 @@ class _PostgresProjectState:
         return pulumi.get(self, "delete_time")
 
     @delete_time.setter
-    def delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
 
     @_builtins.property
     @pulumi.getter(name="initialEndpointSpec")
-    def initial_endpoint_spec(self) -> Optional[pulumi.Input['PostgresProjectInitialEndpointSpecArgs']]:
+    def initial_endpoint_spec(self) -> pulumi.Input[Optional['PostgresProjectInitialEndpointSpecArgs']]:
         """
         Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
         created project. If omitted, the initial endpoint created will have default settings, without high availability
@@ -220,12 +220,12 @@ class _PostgresProjectState:
         return pulumi.get(self, "initial_endpoint_spec")
 
     @initial_endpoint_spec.setter
-    def initial_endpoint_spec(self, value: Optional[pulumi.Input['PostgresProjectInitialEndpointSpecArgs']]):
+    def initial_endpoint_spec(self, value: pulumi.Input[Optional['PostgresProjectInitialEndpointSpecArgs']]):
         pulumi.set(self, "initial_endpoint_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Output only. The full resource path of the project.
         Format: projects/{project_id}
@@ -233,12 +233,12 @@ class _PostgresProjectState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the Project. This becomes the final component of the project's resource name.
         The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
@@ -247,24 +247,24 @@ class _PostgresProjectState:
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PostgresProjectProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PostgresProjectProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PostgresProjectProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PostgresProjectProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="purgeOnDelete")
-    def purge_on_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def purge_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, permanently deletes the project (hard delete).
         If false or unset, performs a soft delete
@@ -272,12 +272,12 @@ class _PostgresProjectState:
         return pulumi.get(self, "purge_on_delete")
 
     @purge_on_delete.setter
-    def purge_on_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def purge_on_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "purge_on_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="purgeTime")
-    def purge_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def purge_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - A timestamp indicating when the project is scheduled for permanent deletion.
         Empty if the project is not deleted, otherwise set to a timestamp in the future
@@ -285,55 +285,55 @@ class _PostgresProjectState:
         return pulumi.get(self, "purge_time")
 
     @purge_time.setter
-    def purge_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def purge_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "purge_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['PostgresProjectSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['PostgresProjectSpecArgs']]:
         """
         The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['PostgresProjectSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['PostgresProjectSpecArgs']]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['PostgresProjectStatusArgs']]:
+    def status(self) -> pulumi.Input[Optional['PostgresProjectStatusArgs']]:
         """
         (ProjectStatus) - The current status of a Project
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input['PostgresProjectStatusArgs']]):
+    def status(self, value: pulumi.Input[Optional['PostgresProjectStatusArgs']]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - System-generated unique ID for the project
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - A timestamp indicating when the project was last updated
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -343,11 +343,11 @@ class PostgresProject(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 initial_endpoint_spec: Optional[pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
-                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spec: Optional[pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
+                 initial_endpoint_spec: pulumi.Input[Optional[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
+                 purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -381,8 +381,8 @@ class PostgresProject(pulumi.CustomResource):
                 "display_name": "Analytics Workloads",
                 "history_retention_duration": "1209600s",
                 "default_endpoint_settings": {
-                    "autoscaling_limit_min_cu": 1,
-                    "autoscaling_limit_max_cu": 8,
+                    "autoscaling_limit_min_cu": float(1),
+                    "autoscaling_limit_max_cu": float(8),
                     "suspend_timeout_duration": "300s",
                 },
             })
@@ -421,7 +421,7 @@ class PostgresProject(pulumi.CustomResource):
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "no_suspension": True,
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
                 "group": {
                     "min": 2,
                     "max": 2,
@@ -504,8 +504,8 @@ class PostgresProject(pulumi.CustomResource):
                 "display_name": "Analytics Workloads",
                 "history_retention_duration": "1209600s",
                 "default_endpoint_settings": {
-                    "autoscaling_limit_min_cu": 1,
-                    "autoscaling_limit_max_cu": 8,
+                    "autoscaling_limit_min_cu": float(1),
+                    "autoscaling_limit_max_cu": float(8),
                     "suspend_timeout_duration": "300s",
                 },
             })
@@ -544,7 +544,7 @@ class PostgresProject(pulumi.CustomResource):
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "no_suspension": True,
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
                 "group": {
                     "min": 2,
                     "max": 2,
@@ -590,11 +590,11 @@ class PostgresProject(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 initial_endpoint_spec: Optional[pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
-                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spec: Optional[pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
+                 initial_endpoint_spec: pulumi.Input[Optional[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
+                 purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -628,18 +628,18 @@ class PostgresProject(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-            initial_endpoint_spec: Optional[pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
-            purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            purge_time: Optional[pulumi.Input[_builtins.str]] = None,
-            spec: Optional[pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
-            status: Optional[pulumi.Input[Union['PostgresProjectStatusArgs', 'PostgresProjectStatusArgsDict']]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'PostgresProject':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_endpoint_spec: pulumi.Input[Optional[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
+            purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            purge_time: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict']]] = None,
+            status: pulumi.Input[Optional[Union['PostgresProjectStatusArgs', 'PostgresProjectStatusArgsDict']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresProject':
         """
         Get an existing PostgresProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

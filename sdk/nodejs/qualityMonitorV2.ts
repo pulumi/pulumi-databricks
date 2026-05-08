@@ -126,23 +126,23 @@ export interface QualityMonitorV2State {
     /**
      * (AnomalyDetectionConfig)
      */
-    anomalyDetectionConfig?: pulumi.Input<inputs.QualityMonitorV2AnomalyDetectionConfig>;
+    anomalyDetectionConfig?: pulumi.Input<inputs.QualityMonitorV2AnomalyDetectionConfig | undefined>;
     /**
      * The uuid of the request object. For example, schema id
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * The type of the monitored object. Can be one of the following: schema
      */
-    objectType?: pulumi.Input<string>;
+    objectType?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.QualityMonitorV2ProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.QualityMonitorV2ProviderConfig | undefined>;
     /**
      * Validity check configurations for anomaly detection
      */
-    validityCheckConfigurations?: pulumi.Input<pulumi.Input<inputs.QualityMonitorV2ValidityCheckConfiguration>[]>;
+    validityCheckConfigurations?: pulumi.Input<pulumi.Input<inputs.QualityMonitorV2ValidityCheckConfiguration>[] | undefined>;
 }
 
 /**
@@ -160,9 +160,9 @@ export interface QualityMonitorV2Args {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.QualityMonitorV2ProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.QualityMonitorV2ProviderConfig | undefined>;
     /**
      * Validity check configurations for anomaly detection
      */
-    validityCheckConfigurations?: pulumi.Input<pulumi.Input<inputs.QualityMonitorV2ValidityCheckConfiguration>[]>;
+    validityCheckConfigurations?: pulumi.Input<pulumi.Input<inputs.QualityMonitorV2ValidityCheckConfiguration>[] | undefined>;
 }

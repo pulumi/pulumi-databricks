@@ -23,8 +23,8 @@ class KnowledgeAssistantArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[_builtins.str],
                  display_name: pulumi.Input[_builtins.str],
-                 instructions: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['KnowledgeAssistantProviderConfigArgs']] = None):
+                 instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['KnowledgeAssistantProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a KnowledgeAssistant resource.
 
@@ -81,7 +81,7 @@ class KnowledgeAssistantArgs:
 
     @_builtins.property
     @pulumi.getter
-    def instructions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instructions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional global instructions on how the agent should generate answers.
         Optional on create and update.
@@ -91,36 +91,36 @@ class KnowledgeAssistantArgs:
         return pulumi.get(self, "instructions")
 
     @instructions.setter
-    def instructions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instructions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instructions", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['KnowledgeAssistantProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['KnowledgeAssistantProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['KnowledgeAssistantProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['KnowledgeAssistantProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _KnowledgeAssistantState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 error_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instructions: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['KnowledgeAssistantProviderConfigArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['KnowledgeAssistantProviderConfigArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KnowledgeAssistant resources.
 
@@ -171,31 +171,31 @@ class _KnowledgeAssistantState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Creation timestamp
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The creator of the Knowledge Assistant
         """
         return pulumi.get(self, "creator")
 
     @creator.setter
-    def creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of what this agent can do (user-facing).
         Required when creating a Knowledge Assistant.
@@ -205,12 +205,12 @@ class _KnowledgeAssistantState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the Knowledge Assistant, unique at workspace level.
         Required when creating a Knowledge Assistant.
@@ -220,48 +220,48 @@ class _KnowledgeAssistantState:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointName")
-    def endpoint_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The name of the knowledge assistant agent endpoint
         """
         return pulumi.get(self, "endpoint_name")
 
     @endpoint_name.setter
-    def endpoint_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_name", value)
 
     @_builtins.property
     @pulumi.getter(name="errorInfo")
-    def error_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Error details when the Knowledge Assistant is in FAILED state
         """
         return pulumi.get(self, "error_info")
 
     @error_info.setter
-    def error_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_info", value)
 
     @_builtins.property
     @pulumi.getter(name="experimentId")
-    def experiment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def experiment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The MLflow experiment ID
         """
         return pulumi.get(self, "experiment_id")
 
     @experiment_id.setter
-    def experiment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def experiment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "experiment_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def instructions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instructions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional global instructions on how the agent should generate answers.
         Optional on create and update.
@@ -271,12 +271,12 @@ class _KnowledgeAssistantState:
         return pulumi.get(self, "instructions")
 
     @instructions.setter
-    def instructions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instructions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instructions", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The resource name of the Knowledge Assistant.
         Format: knowledge-assistants/{knowledge_assistant_id}
@@ -284,31 +284,31 @@ class _KnowledgeAssistantState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['KnowledgeAssistantProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['KnowledgeAssistantProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['KnowledgeAssistantProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['KnowledgeAssistantProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - State of the Knowledge Assistant. Not returned in List responses. Possible values are: `ACTIVE`, `CREATING`, `FAILED`
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -318,10 +318,10 @@ class KnowledgeAssistant(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instructions: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['KnowledgeAssistantProviderConfigArgs', 'KnowledgeAssistantProviderConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantProviderConfigArgs', 'KnowledgeAssistantProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -368,10 +368,10 @@ class KnowledgeAssistant(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instructions: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['KnowledgeAssistantProviderConfigArgs', 'KnowledgeAssistantProviderConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instructions: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantProviderConfigArgs', 'KnowledgeAssistantProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -406,17 +406,17 @@ class KnowledgeAssistant(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            creator: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-            error_info: Optional[pulumi.Input[_builtins.str]] = None,
-            experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instructions: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['KnowledgeAssistantProviderConfigArgs', 'KnowledgeAssistantProviderConfigArgsDict']]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'KnowledgeAssistant':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+            error_info: pulumi.Input[Optional[_builtins.str]] = None,
+            experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instructions: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantProviderConfigArgs', 'KnowledgeAssistantProviderConfigArgsDict']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'KnowledgeAssistant':
         """
         Get an existing KnowledgeAssistant resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

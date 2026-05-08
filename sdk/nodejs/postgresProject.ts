@@ -256,60 +256,60 @@ export interface PostgresProjectState {
     /**
      * (string) - A timestamp indicating when the project was created
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - A timestamp indicating when the project was soft-deleted.
      * Empty if the project is not deleted, otherwise set to a timestamp in the past
      */
-    deleteTime?: pulumi.Input<string>;
+    deleteTime?: pulumi.Input<string | undefined>;
     /**
      * Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
      * configured. This field does not apply to any endpoints created after project creation. Use
      * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
      */
-    initialEndpointSpec?: pulumi.Input<inputs.PostgresProjectInitialEndpointSpec>;
+    initialEndpointSpec?: pulumi.Input<inputs.PostgresProjectInitialEndpointSpec | undefined>;
     /**
      * (string) - Output only. The full resource path of the project.
      * Format: projects/{project_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the Project. This becomes the final component of the project's resource name.
      * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
      * For example, `my-app` becomes `projects/my-app`
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.PostgresProjectProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PostgresProjectProviderConfig | undefined>;
     /**
      * If true, permanently deletes the project (hard delete).
      * If false or unset, performs a soft delete
      */
-    purgeOnDelete?: pulumi.Input<boolean>;
+    purgeOnDelete?: pulumi.Input<boolean | undefined>;
     /**
      * (string) - A timestamp indicating when the project is scheduled for permanent deletion.
      * Empty if the project is not deleted, otherwise set to a timestamp in the future
      */
-    purgeTime?: pulumi.Input<string>;
+    purgeTime?: pulumi.Input<string | undefined>;
     /**
      * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      */
-    spec?: pulumi.Input<inputs.PostgresProjectSpec>;
+    spec?: pulumi.Input<inputs.PostgresProjectSpec | undefined>;
     /**
      * (ProjectStatus) - The current status of a Project
      */
-    status?: pulumi.Input<inputs.PostgresProjectStatus>;
+    status?: pulumi.Input<inputs.PostgresProjectStatus | undefined>;
     /**
      * (string) - System-generated unique ID for the project
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * (string) - A timestamp indicating when the project was last updated
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -322,7 +322,7 @@ export interface PostgresProjectArgs {
      * configured. This field does not apply to any endpoints created after project creation. Use
      * spec.default_endpoint_settings to configure default settings for endpoints created after project creation
      */
-    initialEndpointSpec?: pulumi.Input<inputs.PostgresProjectInitialEndpointSpec>;
+    initialEndpointSpec?: pulumi.Input<inputs.PostgresProjectInitialEndpointSpec | undefined>;
     /**
      * The ID to use for the Project. This becomes the final component of the project's resource name.
      * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
@@ -332,14 +332,14 @@ export interface PostgresProjectArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.PostgresProjectProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PostgresProjectProviderConfig | undefined>;
     /**
      * If true, permanently deletes the project (hard delete).
      * If false or unset, performs a soft delete
      */
-    purgeOnDelete?: pulumi.Input<boolean>;
+    purgeOnDelete?: pulumi.Input<boolean | undefined>;
     /**
      * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
      */
-    spec?: pulumi.Input<inputs.PostgresProjectSpec>;
+    spec?: pulumi.Input<inputs.PostgresProjectSpec | undefined>;
 }

@@ -211,18 +211,18 @@ export interface GetClustersOutputArgs {
     /**
      * Only return databricks.Cluster ids that match the given name string.
      */
-    clusterNameContains?: pulumi.Input<string>;
+    clusterNameContains?: pulumi.Input<string | undefined>;
     /**
      * Filters to apply to the listed clusters. See filterBy Configuration Block below for details.
      */
-    filterBy?: pulumi.Input<inputs.GetClustersFilterByArgs>;
-    id?: pulumi.Input<string>;
+    filterBy?: pulumi.Input<inputs.GetClustersFilterByArgs | undefined>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * list of databricks.Cluster ids
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetClustersProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetClustersProviderConfigArgs | undefined>;
 }

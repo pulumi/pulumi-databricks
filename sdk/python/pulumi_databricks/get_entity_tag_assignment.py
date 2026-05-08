@@ -203,10 +203,10 @@ def get_entity_tag_assignment(entity_name: Optional[_builtins.str] = None,
         tag_value=pulumi.get(__ret__, 'tag_value'),
         update_time=pulumi.get(__ret__, 'update_time'),
         updated_by=pulumi.get(__ret__, 'updated_by'))
-def get_entity_tag_assignment_output(entity_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                     entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                                     provider_config: Optional[pulumi.Input[Optional[Union['GetEntityTagAssignmentProviderConfigArgs', 'GetEntityTagAssignmentProviderConfigArgsDict']]]] = None,
-                                     tag_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_entity_tag_assignment_output(entity_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                     entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                                     provider_config: pulumi.Input[Optional[Optional[Union['GetEntityTagAssignmentProviderConfigArgs', 'GetEntityTagAssignmentProviderConfigArgsDict']]]] = None,
+                                     tag_key: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEntityTagAssignmentResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)

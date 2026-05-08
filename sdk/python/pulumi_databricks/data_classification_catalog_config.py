@@ -22,9 +22,9 @@ __all__ = ['DataClassificationCatalogConfigArgs', 'DataClassificationCatalogConf
 class DataClassificationCatalogConfigArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[_builtins.str],
-                 auto_tag_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]] = None,
-                 included_schemas: Optional[pulumi.Input['DataClassificationCatalogConfigIncludedSchemasArgs']] = None,
-                 provider_config: Optional[pulumi.Input['DataClassificationCatalogConfigProviderConfigArgs']] = None):
+                 auto_tag_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]] = None,
+                 included_schemas: pulumi.Input[Optional['DataClassificationCatalogConfigIncludedSchemasArgs']] = None,
+                 provider_config: pulumi.Input[Optional['DataClassificationCatalogConfigProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a DataClassificationCatalogConfig resource.
 
@@ -57,7 +57,7 @@ class DataClassificationCatalogConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoTagConfigs")
-    def auto_tag_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]]:
+    def auto_tag_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]]:
         """
         List of auto-tagging configurations for this catalog.
         Empty list means no auto-tagging is enabled
@@ -65,12 +65,12 @@ class DataClassificationCatalogConfigArgs:
         return pulumi.get(self, "auto_tag_configs")
 
     @auto_tag_configs.setter
-    def auto_tag_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]]):
+    def auto_tag_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]]):
         pulumi.set(self, "auto_tag_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="includedSchemas")
-    def included_schemas(self) -> Optional[pulumi.Input['DataClassificationCatalogConfigIncludedSchemasArgs']]:
+    def included_schemas(self) -> pulumi.Input[Optional['DataClassificationCatalogConfigIncludedSchemasArgs']]:
         """
         Schemas to include in the scan. Empty list is not supported as it results in a no-op
         scan. If `included_schemas` is not set, all schemas are scanned
@@ -78,30 +78,30 @@ class DataClassificationCatalogConfigArgs:
         return pulumi.get(self, "included_schemas")
 
     @included_schemas.setter
-    def included_schemas(self, value: Optional[pulumi.Input['DataClassificationCatalogConfigIncludedSchemasArgs']]):
+    def included_schemas(self, value: pulumi.Input[Optional['DataClassificationCatalogConfigIncludedSchemasArgs']]):
         pulumi.set(self, "included_schemas", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DataClassificationCatalogConfigProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DataClassificationCatalogConfigProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DataClassificationCatalogConfigProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DataClassificationCatalogConfigProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _DataClassificationCatalogConfigState:
     def __init__(__self__, *,
-                 auto_tag_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]] = None,
-                 included_schemas: Optional[pulumi.Input['DataClassificationCatalogConfigIncludedSchemasArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['DataClassificationCatalogConfigProviderConfigArgs']] = None):
+                 auto_tag_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]] = None,
+                 included_schemas: pulumi.Input[Optional['DataClassificationCatalogConfigIncludedSchemasArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['DataClassificationCatalogConfigProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering DataClassificationCatalogConfig resources.
 
@@ -126,7 +126,7 @@ class _DataClassificationCatalogConfigState:
 
     @_builtins.property
     @pulumi.getter(name="autoTagConfigs")
-    def auto_tag_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]]:
+    def auto_tag_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]]:
         """
         List of auto-tagging configurations for this catalog.
         Empty list means no auto-tagging is enabled
@@ -134,12 +134,12 @@ class _DataClassificationCatalogConfigState:
         return pulumi.get(self, "auto_tag_configs")
 
     @auto_tag_configs.setter
-    def auto_tag_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]]):
+    def auto_tag_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]]):
         pulumi.set(self, "auto_tag_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="includedSchemas")
-    def included_schemas(self) -> Optional[pulumi.Input['DataClassificationCatalogConfigIncludedSchemasArgs']]:
+    def included_schemas(self) -> pulumi.Input[Optional['DataClassificationCatalogConfigIncludedSchemasArgs']]:
         """
         Schemas to include in the scan. Empty list is not supported as it results in a no-op
         scan. If `included_schemas` is not set, all schemas are scanned
@@ -147,43 +147,43 @@ class _DataClassificationCatalogConfigState:
         return pulumi.get(self, "included_schemas")
 
     @included_schemas.setter
-    def included_schemas(self, value: Optional[pulumi.Input['DataClassificationCatalogConfigIncludedSchemasArgs']]):
+    def included_schemas(self, value: pulumi.Input[Optional['DataClassificationCatalogConfigIncludedSchemasArgs']]):
         pulumi.set(self, "included_schemas", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Resource name in the format: catalogs/{catalog_name}/config
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Parent resource in the format: catalogs/{catalog_name}
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DataClassificationCatalogConfigProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DataClassificationCatalogConfigProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DataClassificationCatalogConfigProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DataClassificationCatalogConfigProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
@@ -193,10 +193,10 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_tag_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataClassificationCatalogConfigAutoTagConfigArgs', 'DataClassificationCatalogConfigAutoTagConfigArgsDict']]]]] = None,
-                 included_schemas: Optional[pulumi.Input[Union['DataClassificationCatalogConfigIncludedSchemasArgs', 'DataClassificationCatalogConfigIncludedSchemasArgsDict']]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DataClassificationCatalogConfigProviderConfigArgs', 'DataClassificationCatalogConfigProviderConfigArgsDict']]] = None,
+                 auto_tag_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataClassificationCatalogConfigAutoTagConfigArgs', 'DataClassificationCatalogConfigAutoTagConfigArgsDict']]]]] = None,
+                 included_schemas: pulumi.Input[Optional[Union['DataClassificationCatalogConfigIncludedSchemasArgs', 'DataClassificationCatalogConfigIncludedSchemasArgsDict']]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DataClassificationCatalogConfigProviderConfigArgs', 'DataClassificationCatalogConfigProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -316,10 +316,10 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_tag_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataClassificationCatalogConfigAutoTagConfigArgs', 'DataClassificationCatalogConfigAutoTagConfigArgsDict']]]]] = None,
-                 included_schemas: Optional[pulumi.Input[Union['DataClassificationCatalogConfigIncludedSchemasArgs', 'DataClassificationCatalogConfigIncludedSchemasArgsDict']]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DataClassificationCatalogConfigProviderConfigArgs', 'DataClassificationCatalogConfigProviderConfigArgsDict']]] = None,
+                 auto_tag_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataClassificationCatalogConfigAutoTagConfigArgs', 'DataClassificationCatalogConfigAutoTagConfigArgsDict']]]]] = None,
+                 included_schemas: pulumi.Input[Optional[Union['DataClassificationCatalogConfigIncludedSchemasArgs', 'DataClassificationCatalogConfigIncludedSchemasArgsDict']]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DataClassificationCatalogConfigProviderConfigArgs', 'DataClassificationCatalogConfigProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -346,11 +346,11 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_tag_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DataClassificationCatalogConfigAutoTagConfigArgs', 'DataClassificationCatalogConfigAutoTagConfigArgsDict']]]]] = None,
-            included_schemas: Optional[pulumi.Input[Union['DataClassificationCatalogConfigIncludedSchemasArgs', 'DataClassificationCatalogConfigIncludedSchemasArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['DataClassificationCatalogConfigProviderConfigArgs', 'DataClassificationCatalogConfigProviderConfigArgsDict']]] = None) -> 'DataClassificationCatalogConfig':
+            auto_tag_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataClassificationCatalogConfigAutoTagConfigArgs', 'DataClassificationCatalogConfigAutoTagConfigArgsDict']]]]] = None,
+            included_schemas: pulumi.Input[Optional[Union['DataClassificationCatalogConfigIncludedSchemasArgs', 'DataClassificationCatalogConfigIncludedSchemasArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DataClassificationCatalogConfigProviderConfigArgs', 'DataClassificationCatalogConfigProviderConfigArgsDict']]] = None) -> 'DataClassificationCatalogConfig':
         """
         Get an existing DataClassificationCatalogConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

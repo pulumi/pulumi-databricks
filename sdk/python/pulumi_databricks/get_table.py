@@ -136,10 +136,10 @@ def get_table(id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         table_info=pulumi.get(__ret__, 'table_info'))
-def get_table_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     name: Optional[pulumi.Input[_builtins.str]] = None,
-                     provider_config: Optional[pulumi.Input[Optional[Union['GetTableProviderConfigArgs', 'GetTableProviderConfigArgsDict']]]] = None,
-                     table_info: Optional[pulumi.Input[Optional[Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict']]]] = None,
+def get_table_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     name: pulumi.Input[Optional[_builtins.str]] = None,
+                     provider_config: pulumi.Input[Optional[Optional[Union['GetTableProviderConfigArgs', 'GetTableProviderConfigArgsDict']]]] = None,
+                     table_info: pulumi.Input[Optional[Optional[Union['GetTableTableInfoArgs', 'GetTableTableInfoArgsDict']]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTableResult]:
     """
     Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use get_tables to retrieve multiple tables in Unity Catalog

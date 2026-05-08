@@ -130,29 +130,29 @@ export interface TagPolicyState {
     /**
      * (string) - Timestamp when the tag policy was created
      */
-    createTime?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.TagPolicyProviderConfig>;
-    tagKey?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.TagPolicyProviderConfig | undefined>;
+    tagKey?: pulumi.Input<string | undefined>;
     /**
      * (string) - Timestamp when the tag policy was last updated
      */
-    updateTime?: pulumi.Input<string>;
-    values?: pulumi.Input<pulumi.Input<inputs.TagPolicyValue>[]>;
+    updateTime?: pulumi.Input<string | undefined>;
+    values?: pulumi.Input<pulumi.Input<inputs.TagPolicyValue>[] | undefined>;
 }
 
 /**
  * The set of arguments for constructing a TagPolicy resource.
  */
 export interface TagPolicyArgs {
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.TagPolicyProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.TagPolicyProviderConfig | undefined>;
     tagKey: pulumi.Input<string>;
-    values?: pulumi.Input<pulumi.Input<inputs.TagPolicyValue>[]>;
+    values?: pulumi.Input<pulumi.Input<inputs.TagPolicyValue>[] | undefined>;
 }

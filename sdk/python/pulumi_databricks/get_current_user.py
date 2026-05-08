@@ -148,7 +148,7 @@ def get_current_user(provider_config: Optional[Union['GetCurrentUserProviderConf
         repos=pulumi.get(__ret__, 'repos'),
         user_name=pulumi.get(__ret__, 'user_name'),
         workspace_url=pulumi.get(__ret__, 'workspace_url'))
-def get_current_user_output(provider_config: Optional[pulumi.Input[Optional[Union['GetCurrentUserProviderConfigArgs', 'GetCurrentUserProviderConfigArgsDict']]]] = None,
+def get_current_user_output(provider_config: pulumi.Input[Optional[Optional[Union['GetCurrentUserProviderConfigArgs', 'GetCurrentUserProviderConfigArgsDict']]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentUserResult]:
     """
     Retrieves information about User or databricks_service_principal, that is calling Databricks REST API. Might be useful in applying the same Pulumi by different users in the shared workspace for testing purposes.

@@ -165,8 +165,8 @@ def get_tag_policy(provider_config: Optional[Union['GetTagPolicyProviderConfigAr
         tag_key=pulumi.get(__ret__, 'tag_key'),
         update_time=pulumi.get(__ret__, 'update_time'),
         values=pulumi.get(__ret__, 'values'))
-def get_tag_policy_output(provider_config: Optional[pulumi.Input[Optional[Union['GetTagPolicyProviderConfigArgs', 'GetTagPolicyProviderConfigArgsDict']]]] = None,
-                          tag_key: Optional[pulumi.Input[_builtins.str]] = None,
+def get_tag_policy_output(provider_config: pulumi.Input[Optional[Optional[Union['GetTagPolicyProviderConfigArgs', 'GetTagPolicyProviderConfigArgsDict']]]] = None,
+                          tag_key: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagPolicyResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)

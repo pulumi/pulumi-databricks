@@ -75,10 +75,10 @@ export class ComplianceSecurityProfileWorkspaceSetting extends pulumi.CustomReso
  * Input properties used for looking up and filtering ComplianceSecurityProfileWorkspaceSetting resources.
  */
 export interface ComplianceSecurityProfileWorkspaceSettingState {
-    complianceSecurityProfileWorkspace?: pulumi.Input<inputs.ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace>;
-    etag?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig>;
-    settingName?: pulumi.Input<string>;
+    complianceSecurityProfileWorkspace?: pulumi.Input<inputs.ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig | undefined>;
+    settingName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -86,7 +86,7 @@ export interface ComplianceSecurityProfileWorkspaceSettingState {
  */
 export interface ComplianceSecurityProfileWorkspaceSettingArgs {
     complianceSecurityProfileWorkspace: pulumi.Input<inputs.ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace>;
-    etag?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig>;
-    settingName?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig | undefined>;
+    settingName?: pulumi.Input<string | undefined>;
 }

@@ -211,11 +211,11 @@ export interface GetMlflowModelOutputArgs {
     /**
      * User-specified description for the object.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Array of model versions, each the latest version for its stage.
      */
-    latestVersions?: pulumi.Input<pulumi.Input<inputs.GetMlflowModelLatestVersionArgs>[]>;
+    latestVersions?: pulumi.Input<pulumi.Input<inputs.GetMlflowModelLatestVersionArgs>[] | undefined>;
     /**
      * Name of the registered model.
      */
@@ -223,17 +223,17 @@ export interface GetMlflowModelOutputArgs {
     /**
      * Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
      */
-    permissionLevel?: pulumi.Input<string>;
+    permissionLevel?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetMlflowModelProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetMlflowModelProviderConfigArgs | undefined>;
     /**
      * Array of tags associated with the model.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.GetMlflowModelTagArgs>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.GetMlflowModelTagArgs>[] | undefined>;
     /**
      * The username of the user that created the object.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }

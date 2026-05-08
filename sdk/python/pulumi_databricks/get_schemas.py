@@ -126,9 +126,9 @@ def get_schemas(catalog_name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_schemas_output(catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                       ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                       provider_config: Optional[pulumi.Input[Optional[Union['GetSchemasProviderConfigArgs', 'GetSchemasProviderConfigArgsDict']]]] = None,
+def get_schemas_output(catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                       ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                       provider_config: pulumi.Input[Optional[Optional[Union['GetSchemasProviderConfigArgs', 'GetSchemasProviderConfigArgsDict']]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSchemasResult]:
     """
     Retrieves a list of Schema ids, that were created by Pulumi or manually, so that special handling could be applied.

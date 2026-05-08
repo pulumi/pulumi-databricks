@@ -141,8 +141,8 @@ export interface GetNotificationDestinationsOutputArgs {
     /**
      * A **case-insensitive** substring to filter Notification Destinations by their display name.
      */
-    displayNameContains?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.GetNotificationDestinationsProviderConfigArgs>;
+    displayNameContains?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.GetNotificationDestinationsProviderConfigArgs | undefined>;
     /**
      * The type of the Notification Destination to filter by. Valid values are: 
      * * `EMAIL` - Filters Notification Destinations of type Email.
@@ -151,5 +151,5 @@ export interface GetNotificationDestinationsOutputArgs {
      * * `SLACK` - Filters Notification Destinations of type Slack.
      * * `WEBHOOK` - Filters Notification Destinations of type Webhook.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

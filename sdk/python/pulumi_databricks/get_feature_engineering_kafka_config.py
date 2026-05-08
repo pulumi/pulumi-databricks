@@ -187,8 +187,8 @@ def get_feature_engineering_kafka_config(name: Optional[_builtins.str] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'),
         subscription_mode=pulumi.get(__ret__, 'subscription_mode'),
         value_schema=pulumi.get(__ret__, 'value_schema'))
-def get_feature_engineering_kafka_config_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                                provider_config: Optional[pulumi.Input[Optional[Union['GetFeatureEngineeringKafkaConfigProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigProviderConfigArgsDict']]]] = None,
+def get_feature_engineering_kafka_config_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                                provider_config: pulumi.Input[Optional[Optional[Union['GetFeatureEngineeringKafkaConfigProviderConfigArgs', 'GetFeatureEngineeringKafkaConfigProviderConfigArgsDict']]]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureEngineeringKafkaConfigResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)

@@ -21,15 +21,15 @@ __all__ = ['SqlPermissionsArgs', 'SqlPermissions']
 @pulumi.input_type
 class SqlPermissionsArgs:
     def __init__(__self__, *,
-                 anonymous_function: Optional[pulumi.Input[_builtins.bool]] = None,
-                 any_file: Optional[pulumi.Input[_builtins.bool]] = None,
-                 catalog: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]] = None,
-                 provider_config: Optional[pulumi.Input['SqlPermissionsProviderConfigArgs']] = None,
-                 table: Optional[pulumi.Input[_builtins.str]] = None,
-                 view: Optional[pulumi.Input[_builtins.str]] = None):
+                 anonymous_function: pulumi.Input[Optional[_builtins.bool]] = None,
+                 any_file: pulumi.Input[Optional[_builtins.bool]] = None,
+                 catalog: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 privilege_assignments: pulumi.Input[Optional[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]] = None,
+                 provider_config: pulumi.Input[Optional['SqlPermissionsProviderConfigArgs']] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None,
+                 view: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SqlPermissions resource.
 
@@ -71,43 +71,43 @@ class SqlPermissionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="anonymousFunction")
-    def anonymous_function(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def anonymous_function(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this access control for using an anonymous function. Defaults to `false`.
         """
         return pulumi.get(self, "anonymous_function")
 
     @anonymous_function.setter
-    def anonymous_function(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def anonymous_function(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "anonymous_function", value)
 
     @_builtins.property
     @pulumi.getter(name="anyFile")
-    def any_file(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def any_file(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this access control for reading/writing any file. Defaults to `false`.
         """
         return pulumi.get(self, "any_file")
 
     @any_file.setter
-    def any_file(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def any_file(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "any_file", value)
 
     @_builtins.property
     @pulumi.getter
-    def catalog(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def catalog(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this access control for the entire catalog. Defaults to `false`.
         """
         return pulumi.get(self, "catalog")
 
     @catalog.setter
-    def catalog(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def catalog(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "catalog", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of an existing databricks_cluster, where the appropriate `GRANT`/`REVOKE` commands are executed. This cluster must have the appropriate data security mode (`USER_ISOLATION` or `LEGACY_TABLE_ACL` specified). If no `cluster_id` is specified, a TACL-enabled cluster with the name `terraform-table-acl` is automatically created.
 
@@ -123,76 +123,76 @@ class SqlPermissionsArgs:
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the database. Has a default value of `default`.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter(name="privilegeAssignments")
-    def privilege_assignments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]]:
+    def privilege_assignments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]]:
         return pulumi.get(self, "privilege_assignments")
 
     @privilege_assignments.setter
-    def privilege_assignments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]]):
+    def privilege_assignments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]]):
         pulumi.set(self, "privilege_assignments", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['SqlPermissionsProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['SqlPermissionsProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['SqlPermissionsProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['SqlPermissionsProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def table(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the table. Can be combined with the `database`.
         """
         return pulumi.get(self, "table")
 
     @table.setter
-    def table(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table", value)
 
     @_builtins.property
     @pulumi.getter
-    def view(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def view(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the view. Can be combined with the `database`.
         """
         return pulumi.get(self, "view")
 
     @view.setter
-    def view(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def view(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "view", value)
 
 
 @pulumi.input_type
 class _SqlPermissionsState:
     def __init__(__self__, *,
-                 anonymous_function: Optional[pulumi.Input[_builtins.bool]] = None,
-                 any_file: Optional[pulumi.Input[_builtins.bool]] = None,
-                 catalog: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]] = None,
-                 provider_config: Optional[pulumi.Input['SqlPermissionsProviderConfigArgs']] = None,
-                 table: Optional[pulumi.Input[_builtins.str]] = None,
-                 view: Optional[pulumi.Input[_builtins.str]] = None):
+                 anonymous_function: pulumi.Input[Optional[_builtins.bool]] = None,
+                 any_file: pulumi.Input[Optional[_builtins.bool]] = None,
+                 catalog: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 privilege_assignments: pulumi.Input[Optional[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]] = None,
+                 provider_config: pulumi.Input[Optional['SqlPermissionsProviderConfigArgs']] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None,
+                 view: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SqlPermissions resources.
 
@@ -234,43 +234,43 @@ class _SqlPermissionsState:
 
     @_builtins.property
     @pulumi.getter(name="anonymousFunction")
-    def anonymous_function(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def anonymous_function(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this access control for using an anonymous function. Defaults to `false`.
         """
         return pulumi.get(self, "anonymous_function")
 
     @anonymous_function.setter
-    def anonymous_function(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def anonymous_function(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "anonymous_function", value)
 
     @_builtins.property
     @pulumi.getter(name="anyFile")
-    def any_file(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def any_file(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this access control for reading/writing any file. Defaults to `false`.
         """
         return pulumi.get(self, "any_file")
 
     @any_file.setter
-    def any_file(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def any_file(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "any_file", value)
 
     @_builtins.property
     @pulumi.getter
-    def catalog(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def catalog(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this access control for the entire catalog. Defaults to `false`.
         """
         return pulumi.get(self, "catalog")
 
     @catalog.setter
-    def catalog(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def catalog(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "catalog", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Id of an existing databricks_cluster, where the appropriate `GRANT`/`REVOKE` commands are executed. This cluster must have the appropriate data security mode (`USER_ISOLATION` or `LEGACY_TABLE_ACL` specified). If no `cluster_id` is specified, a TACL-enabled cluster with the name `terraform-table-acl` is automatically created.
 
@@ -286,61 +286,61 @@ class _SqlPermissionsState:
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the database. Has a default value of `default`.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter(name="privilegeAssignments")
-    def privilege_assignments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]]:
+    def privilege_assignments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]]:
         return pulumi.get(self, "privilege_assignments")
 
     @privilege_assignments.setter
-    def privilege_assignments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]]):
+    def privilege_assignments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SqlPermissionsPrivilegeAssignmentArgs']]]]):
         pulumi.set(self, "privilege_assignments", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['SqlPermissionsProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['SqlPermissionsProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['SqlPermissionsProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['SqlPermissionsProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def table(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the table. Can be combined with the `database`.
         """
         return pulumi.get(self, "table")
 
     @table.setter
-    def table(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table", value)
 
     @_builtins.property
     @pulumi.getter
-    def view(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def view(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the view. Can be combined with the `database`.
         """
         return pulumi.get(self, "view")
 
     @view.setter
-    def view(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def view(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "view", value)
 
 
@@ -350,15 +350,15 @@ class SqlPermissions(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 anonymous_function: Optional[pulumi.Input[_builtins.bool]] = None,
-                 any_file: Optional[pulumi.Input[_builtins.bool]] = None,
-                 catalog: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict']]]]] = None,
-                 provider_config: Optional[pulumi.Input[Union['SqlPermissionsProviderConfigArgs', 'SqlPermissionsProviderConfigArgsDict']]] = None,
-                 table: Optional[pulumi.Input[_builtins.str]] = None,
-                 view: Optional[pulumi.Input[_builtins.str]] = None,
+                 anonymous_function: pulumi.Input[Optional[_builtins.bool]] = None,
+                 any_file: pulumi.Input[Optional[_builtins.bool]] = None,
+                 catalog: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 privilege_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict']]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlPermissionsProviderConfigArgs', 'SqlPermissionsProviderConfigArgsDict']]] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None,
+                 view: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > Please switch to Grants with Unity Catalog to manage data access, which provides a better and faster way for managing data security. `Grants` resource *doesn't require a technical cluster to perform operations*. On workspaces with Unity Catalog enabled, you may run into errors such as `Error: cannot create sql permissions: cannot read current grants: For unity catalog, please specify the catalog name explicitly. E.g. SHOW GRANT ``your.address@email.com`` ON CATALOG main`. This happens if your `default_catalog_name` was set to a UC catalog instead of `hive_metastore`. The workaround is to re-assign the metastore again with the default catalog set to `hive_metastore`. See databricks_metastore_assignment.
@@ -520,15 +520,15 @@ class SqlPermissions(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 anonymous_function: Optional[pulumi.Input[_builtins.bool]] = None,
-                 any_file: Optional[pulumi.Input[_builtins.bool]] = None,
-                 catalog: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict']]]]] = None,
-                 provider_config: Optional[pulumi.Input[Union['SqlPermissionsProviderConfigArgs', 'SqlPermissionsProviderConfigArgsDict']]] = None,
-                 table: Optional[pulumi.Input[_builtins.str]] = None,
-                 view: Optional[pulumi.Input[_builtins.str]] = None,
+                 anonymous_function: pulumi.Input[Optional[_builtins.bool]] = None,
+                 any_file: pulumi.Input[Optional[_builtins.bool]] = None,
+                 catalog: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 privilege_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict']]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlPermissionsProviderConfigArgs', 'SqlPermissionsProviderConfigArgsDict']]] = None,
+                 table: pulumi.Input[Optional[_builtins.str]] = None,
+                 view: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -557,15 +557,15 @@ class SqlPermissions(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            anonymous_function: Optional[pulumi.Input[_builtins.bool]] = None,
-            any_file: Optional[pulumi.Input[_builtins.bool]] = None,
-            catalog: Optional[pulumi.Input[_builtins.bool]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            database: Optional[pulumi.Input[_builtins.str]] = None,
-            privilege_assignments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict']]]]] = None,
-            provider_config: Optional[pulumi.Input[Union['SqlPermissionsProviderConfigArgs', 'SqlPermissionsProviderConfigArgsDict']]] = None,
-            table: Optional[pulumi.Input[_builtins.str]] = None,
-            view: Optional[pulumi.Input[_builtins.str]] = None) -> 'SqlPermissions':
+            anonymous_function: pulumi.Input[Optional[_builtins.bool]] = None,
+            any_file: pulumi.Input[Optional[_builtins.bool]] = None,
+            catalog: pulumi.Input[Optional[_builtins.bool]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            privilege_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlPermissionsPrivilegeAssignmentArgs', 'SqlPermissionsPrivilegeAssignmentArgsDict']]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlPermissionsProviderConfigArgs', 'SqlPermissionsProviderConfigArgsDict']]] = None,
+            table: pulumi.Input[Optional[_builtins.str]] = None,
+            view: pulumi.Input[Optional[_builtins.str]] = None) -> 'SqlPermissions':
         """
         Get an existing SqlPermissions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

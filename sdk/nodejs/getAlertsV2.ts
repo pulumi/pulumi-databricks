@@ -93,9 +93,9 @@ export function getAlertsV2Output(args?: GetAlertsV2OutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getAlertsV2.
  */
 export interface GetAlertsV2OutputArgs {
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetAlertsV2ProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetAlertsV2ProviderConfigArgs | undefined>;
 }

@@ -157,11 +157,11 @@ def get_functions(catalog_name: Optional[_builtins.str] = None,
         include_browse=pulumi.get(__ret__, 'include_browse'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         schema_name=pulumi.get(__ret__, 'schema_name'))
-def get_functions_output(catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                         functions: Optional[pulumi.Input[Optional[Sequence[Union['GetFunctionsFunctionArgs', 'GetFunctionsFunctionArgsDict']]]]] = None,
-                         include_browse: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                         provider_config: Optional[pulumi.Input[Optional[Union['GetFunctionsProviderConfigArgs', 'GetFunctionsProviderConfigArgsDict']]]] = None,
-                         schema_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_functions_output(catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                         functions: pulumi.Input[Optional[Optional[Sequence[Union['GetFunctionsFunctionArgs', 'GetFunctionsFunctionArgsDict']]]]] = None,
+                         include_browse: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                         provider_config: pulumi.Input[Optional[Optional[Union['GetFunctionsProviderConfigArgs', 'GetFunctionsProviderConfigArgsDict']]]] = None,
+                         schema_name: pulumi.Input[Optional[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFunctionsResult]:
     """
     Retrieves a list of [User-Defined Functions (UDFs) registered in the Unity Catalog](https://docs.databricks.com/en/udf/unity-catalog.html).

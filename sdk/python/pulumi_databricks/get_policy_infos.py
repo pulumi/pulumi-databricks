@@ -166,11 +166,11 @@ def get_policy_infos(include_inherited: Optional[_builtins.bool] = None,
         on_securable_type=pulumi.get(__ret__, 'on_securable_type'),
         policies=pulumi.get(__ret__, 'policies'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_policy_infos_output(include_inherited: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                            max_results: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                            on_securable_fullname: Optional[pulumi.Input[_builtins.str]] = None,
-                            on_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-                            provider_config: Optional[pulumi.Input[Optional[Union['GetPolicyInfosProviderConfigArgs', 'GetPolicyInfosProviderConfigArgsDict']]]] = None,
+def get_policy_infos_output(include_inherited: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                            max_results: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                            on_securable_fullname: pulumi.Input[Optional[_builtins.str]] = None,
+                            on_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                            provider_config: pulumi.Input[Optional[Optional[Union['GetPolicyInfosProviderConfigArgs', 'GetPolicyInfosProviderConfigArgsDict']]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyInfosResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)

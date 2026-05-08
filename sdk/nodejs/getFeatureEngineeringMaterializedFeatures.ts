@@ -73,13 +73,13 @@ export interface GetFeatureEngineeringMaterializedFeaturesOutputArgs {
     /**
      * Filter by feature name. If specified, only materialized features materialized from this feature will be returned
      */
-    featureName?: pulumi.Input<string>;
+    featureName?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of results to return. Defaults to 100 if not specified. Cannot be greater than 1000
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs | undefined>;
 }

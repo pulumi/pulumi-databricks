@@ -140,7 +140,7 @@ def get_account_network_policy(network_policy_id: Optional[_builtins.str] = None
         ingress=pulumi.get(__ret__, 'ingress'),
         ingress_dry_run=pulumi.get(__ret__, 'ingress_dry_run'),
         network_policy_id=pulumi.get(__ret__, 'network_policy_id'))
-def get_account_network_policy_output(network_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_network_policy_output(network_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountNetworkPolicyResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)

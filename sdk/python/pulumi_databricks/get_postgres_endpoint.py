@@ -187,8 +187,8 @@ def get_postgres_endpoint(name: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_postgres_endpoint_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                 provider_config: Optional[pulumi.Input[Optional[Union['GetPostgresEndpointProviderConfigArgs', 'GetPostgresEndpointProviderConfigArgsDict']]]] = None,
+def get_postgres_endpoint_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresEndpointProviderConfigArgs', 'GetPostgresEndpointProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresEndpointResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)

@@ -195,75 +195,75 @@ export interface WorkspaceSettingV2State {
     /**
      * Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
      */
-    aibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy>;
+    aibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy | undefined>;
     /**
      * Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
      */
-    aibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains>;
+    aibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains | undefined>;
     /**
      * Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
      */
-    automaticClusterUpdateWorkspace?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspace>;
+    automaticClusterUpdateWorkspace?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspace | undefined>;
     /**
      * Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
      */
-    booleanVal?: pulumi.Input<inputs.WorkspaceSettingV2BooleanVal>;
+    booleanVal?: pulumi.Input<inputs.WorkspaceSettingV2BooleanVal | undefined>;
     /**
      * Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
      */
-    effectiveAibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy>;
+    effectiveAibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy | undefined>;
     /**
      * Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
      */
-    effectiveAibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains>;
+    effectiveAibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains | undefined>;
     /**
      * Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
      */
-    effectiveAutomaticClusterUpdateWorkspace?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace>;
+    effectiveAutomaticClusterUpdateWorkspace?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace | undefined>;
     /**
      * (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
      */
-    effectiveBooleanVal?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveBooleanVal>;
+    effectiveBooleanVal?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveBooleanVal | undefined>;
     /**
      * (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
      */
-    effectiveIntegerVal?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveIntegerVal>;
+    effectiveIntegerVal?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveIntegerVal | undefined>;
     /**
      * Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
      */
-    effectivePersonalCompute?: pulumi.Input<inputs.WorkspaceSettingV2EffectivePersonalCompute>;
+    effectivePersonalCompute?: pulumi.Input<inputs.WorkspaceSettingV2EffectivePersonalCompute | undefined>;
     /**
      * Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
      */
-    effectiveRestrictWorkspaceAdmins?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins>;
+    effectiveRestrictWorkspaceAdmins?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins | undefined>;
     /**
      * (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
      */
-    effectiveStringVal?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveStringVal>;
+    effectiveStringVal?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveStringVal | undefined>;
     /**
      * Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
      */
-    integerVal?: pulumi.Input<inputs.WorkspaceSettingV2IntegerVal>;
+    integerVal?: pulumi.Input<inputs.WorkspaceSettingV2IntegerVal | undefined>;
     /**
      * Name of the setting
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
      */
-    personalCompute?: pulumi.Input<inputs.WorkspaceSettingV2PersonalCompute>;
+    personalCompute?: pulumi.Input<inputs.WorkspaceSettingV2PersonalCompute | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.WorkspaceSettingV2ProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.WorkspaceSettingV2ProviderConfig | undefined>;
     /**
      * Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
      */
-    restrictWorkspaceAdmins?: pulumi.Input<inputs.WorkspaceSettingV2RestrictWorkspaceAdmins>;
+    restrictWorkspaceAdmins?: pulumi.Input<inputs.WorkspaceSettingV2RestrictWorkspaceAdmins | undefined>;
     /**
      * Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
      */
-    stringVal?: pulumi.Input<inputs.WorkspaceSettingV2StringVal>;
+    stringVal?: pulumi.Input<inputs.WorkspaceSettingV2StringVal | undefined>;
 }
 
 /**
@@ -273,61 +273,61 @@ export interface WorkspaceSettingV2Args {
     /**
      * Setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingAccessPolicy for final setting value
      */
-    aibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy>;
+    aibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy | undefined>;
     /**
      * Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
      */
-    aibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains>;
+    aibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains | undefined>;
     /**
      * Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
      */
-    automaticClusterUpdateWorkspace?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspace>;
+    automaticClusterUpdateWorkspace?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspace | undefined>;
     /**
      * Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
      */
-    booleanVal?: pulumi.Input<inputs.WorkspaceSettingV2BooleanVal>;
+    booleanVal?: pulumi.Input<inputs.WorkspaceSettingV2BooleanVal | undefined>;
     /**
      * Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
      */
-    effectiveAibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy>;
+    effectiveAibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy | undefined>;
     /**
      * Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
      */
-    effectiveAibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains>;
+    effectiveAibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains | undefined>;
     /**
      * Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
      */
-    effectiveAutomaticClusterUpdateWorkspace?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace>;
+    effectiveAutomaticClusterUpdateWorkspace?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace | undefined>;
     /**
      * Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
      */
-    effectivePersonalCompute?: pulumi.Input<inputs.WorkspaceSettingV2EffectivePersonalCompute>;
+    effectivePersonalCompute?: pulumi.Input<inputs.WorkspaceSettingV2EffectivePersonalCompute | undefined>;
     /**
      * Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
      */
-    effectiveRestrictWorkspaceAdmins?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins>;
+    effectiveRestrictWorkspaceAdmins?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins | undefined>;
     /**
      * Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
      */
-    integerVal?: pulumi.Input<inputs.WorkspaceSettingV2IntegerVal>;
+    integerVal?: pulumi.Input<inputs.WorkspaceSettingV2IntegerVal | undefined>;
     /**
      * Name of the setting
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
      */
-    personalCompute?: pulumi.Input<inputs.WorkspaceSettingV2PersonalCompute>;
+    personalCompute?: pulumi.Input<inputs.WorkspaceSettingV2PersonalCompute | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.WorkspaceSettingV2ProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.WorkspaceSettingV2ProviderConfig | undefined>;
     /**
      * Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
      */
-    restrictWorkspaceAdmins?: pulumi.Input<inputs.WorkspaceSettingV2RestrictWorkspaceAdmins>;
+    restrictWorkspaceAdmins?: pulumi.Input<inputs.WorkspaceSettingV2RestrictWorkspaceAdmins | undefined>;
     /**
      * Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
      */
-    stringVal?: pulumi.Input<inputs.WorkspaceSettingV2StringVal>;
+    stringVal?: pulumi.Input<inputs.WorkspaceSettingV2StringVal | undefined>;
 }

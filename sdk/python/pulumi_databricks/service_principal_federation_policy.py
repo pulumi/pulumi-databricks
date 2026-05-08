@@ -21,10 +21,10 @@ __all__ = ['ServicePrincipalFederationPolicyArgs', 'ServicePrincipalFederationPo
 @pulumi.input_type
 class ServicePrincipalFederationPolicyArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_policy: Optional[pulumi.Input['ServicePrincipalFederationPolicyOidcPolicyArgs']] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_policy: pulumi.Input[Optional['ServicePrincipalFederationPolicyOidcPolicyArgs']] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ServicePrincipalFederationPolicy resource.
 
@@ -43,61 +43,61 @@ class ServicePrincipalFederationPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the federation policy
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcPolicy")
-    def oidc_policy(self) -> Optional[pulumi.Input['ServicePrincipalFederationPolicyOidcPolicyArgs']]:
+    def oidc_policy(self) -> pulumi.Input[Optional['ServicePrincipalFederationPolicyOidcPolicyArgs']]:
         return pulumi.get(self, "oidc_policy")
 
     @oidc_policy.setter
-    def oidc_policy(self, value: Optional[pulumi.Input['ServicePrincipalFederationPolicyOidcPolicyArgs']]):
+    def oidc_policy(self, value: pulumi.Input[Optional['ServicePrincipalFederationPolicyOidcPolicyArgs']]):
         pulumi.set(self, "oidc_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The ID of the federation policy. Output only
         """
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
-    def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalId")
-    def service_principal_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def service_principal_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         """
         return pulumi.get(self, "service_principal_id")
 
     @service_principal_id.setter
-    def service_principal_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def service_principal_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "service_principal_id", value)
 
 
 @pulumi.input_type
 class _ServicePrincipalFederationPolicyState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_policy: Optional[pulumi.Input['ServicePrincipalFederationPolicyOidcPolicyArgs']] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_policy: pulumi.Input[Optional['ServicePrincipalFederationPolicyOidcPolicyArgs']] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalFederationPolicy resources.
 
@@ -133,31 +133,31 @@ class _ServicePrincipalFederationPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Creation time of the federation policy
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the federation policy
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Resource name for the federation policy. Example values include
         `accounts/<account-id>/federationPolicies/my-federation-policy` for Account Federation Policies, and
@@ -169,64 +169,64 @@ class _ServicePrincipalFederationPolicyState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcPolicy")
-    def oidc_policy(self) -> Optional[pulumi.Input['ServicePrincipalFederationPolicyOidcPolicyArgs']]:
+    def oidc_policy(self) -> pulumi.Input[Optional['ServicePrincipalFederationPolicyOidcPolicyArgs']]:
         return pulumi.get(self, "oidc_policy")
 
     @oidc_policy.setter
-    def oidc_policy(self, value: Optional[pulumi.Input['ServicePrincipalFederationPolicyOidcPolicyArgs']]):
+    def oidc_policy(self, value: pulumi.Input[Optional['ServicePrincipalFederationPolicyOidcPolicyArgs']]):
         pulumi.set(self, "oidc_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The ID of the federation policy. Output only
         """
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
-    def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalId")
-    def service_principal_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def service_principal_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
         """
         return pulumi.get(self, "service_principal_id")
 
     @service_principal_id.setter
-    def service_principal_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def service_principal_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "service_principal_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Unique, immutable id of the federation policy
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Last update time of the federation policy
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -236,10 +236,10 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_policy: Optional[pulumi.Input[Union['ServicePrincipalFederationPolicyOidcPolicyArgs', 'ServicePrincipalFederationPolicyOidcPolicyArgsDict']]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_policy: pulumi.Input[Optional[Union['ServicePrincipalFederationPolicyOidcPolicyArgs', 'ServicePrincipalFederationPolicyOidcPolicyArgsDict']]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -320,10 +320,10 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_policy: Optional[pulumi.Input[Union['ServicePrincipalFederationPolicyOidcPolicyArgs', 'ServicePrincipalFederationPolicyOidcPolicyArgsDict']]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_policy: pulumi.Input[Optional[Union['ServicePrincipalFederationPolicyOidcPolicyArgs', 'ServicePrincipalFederationPolicyOidcPolicyArgsDict']]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -351,14 +351,14 @@ class ServicePrincipalFederationPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            oidc_policy: Optional[pulumi.Input[Union['ServicePrincipalFederationPolicyOidcPolicyArgs', 'ServicePrincipalFederationPolicyOidcPolicyArgsDict']]] = None,
-            policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_principal_id: Optional[pulumi.Input[_builtins.int]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServicePrincipalFederationPolicy':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            oidc_policy: pulumi.Input[Optional[Union['ServicePrincipalFederationPolicyOidcPolicyArgs', 'ServicePrincipalFederationPolicyOidcPolicyArgsDict']]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServicePrincipalFederationPolicy':
         """
         Get an existing ServicePrincipalFederationPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -107,9 +107,9 @@ export interface GetExternalLocationsOutputArgs {
     /**
      * List of names of databricks.ExternalLocation in the metastore
      */
-    names?: pulumi.Input<pulumi.Input<string>[]>;
+    names?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetExternalLocationsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetExternalLocationsProviderConfigArgs | undefined>;
 }

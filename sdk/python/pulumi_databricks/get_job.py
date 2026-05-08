@@ -156,12 +156,12 @@ def get_job(id: Optional[_builtins.str] = None,
         job_settings=pulumi.get(__ret__, 'job_settings'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_job_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                   job_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                   job_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                   job_settings: Optional[pulumi.Input[Optional[Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict']]]] = None,
-                   name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                   provider_config: Optional[pulumi.Input[Optional[Union['GetJobProviderConfigArgs', 'GetJobProviderConfigArgsDict']]]] = None,
+def get_job_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                   job_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                   job_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                   job_settings: pulumi.Input[Optional[Optional[Union['GetJobJobSettingsArgs', 'GetJobJobSettingsArgsDict']]]] = None,
+                   name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                   provider_config: pulumi.Input[Optional[Optional[Union['GetJobProviderConfigArgs', 'GetJobProviderConfigArgsDict']]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetJobResult]:
     """
     Retrieves the settings of Job by name or by id. Complements the feature of the get_jobs data source.

@@ -21,23 +21,23 @@ __all__ = ['StorageCredentialArgs', 'StorageCredential']
 @pulumi.input_type
 class StorageCredentialArgs:
     def __init__(__self__, *,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_iam_role: Optional[pulumi.Input['StorageCredentialAwsIamRoleArgs']] = None,
-                 azure_managed_identity: Optional[pulumi.Input['StorageCredentialAzureManagedIdentityArgs']] = None,
-                 azure_service_principal: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']] = None,
-                 cloudflare_api_token: Optional[pulumi.Input['StorageCredentialCloudflareApiTokenArgs']] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_gcp_service_account: Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcp_service_account_key: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']] = None,
-                 isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['StorageCredentialProviderConfigArgs']] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_validation: Optional[pulumi.Input[_builtins.bool]] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_iam_role: pulumi.Input[Optional['StorageCredentialAwsIamRoleArgs']] = None,
+                 azure_managed_identity: pulumi.Input[Optional['StorageCredentialAzureManagedIdentityArgs']] = None,
+                 azure_service_principal: pulumi.Input[Optional['StorageCredentialAzureServicePrincipalArgs']] = None,
+                 cloudflare_api_token: pulumi.Input[Optional['StorageCredentialCloudflareApiTokenArgs']] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_gcp_service_account: pulumi.Input[Optional['StorageCredentialDatabricksGcpServiceAccountArgs']] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcp_service_account_key: pulumi.Input[Optional['StorageCredentialGcpServiceAccountKeyArgs']] = None,
+                 isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['StorageCredentialProviderConfigArgs']] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_validation: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a StorageCredential resource.
 
@@ -92,7 +92,7 @@ class StorageCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
 
@@ -101,205 +101,205 @@ class StorageCredentialArgs:
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="awsIamRole")
-    def aws_iam_role(self) -> Optional[pulumi.Input['StorageCredentialAwsIamRoleArgs']]:
+    def aws_iam_role(self) -> pulumi.Input[Optional['StorageCredentialAwsIamRoleArgs']]:
         """
         exposes two additional attributes:
         """
         return pulumi.get(self, "aws_iam_role")
 
     @aws_iam_role.setter
-    def aws_iam_role(self, value: Optional[pulumi.Input['StorageCredentialAwsIamRoleArgs']]):
+    def aws_iam_role(self, value: pulumi.Input[Optional['StorageCredentialAwsIamRoleArgs']]):
         pulumi.set(self, "aws_iam_role", value)
 
     @_builtins.property
     @pulumi.getter(name="azureManagedIdentity")
-    def azure_managed_identity(self) -> Optional[pulumi.Input['StorageCredentialAzureManagedIdentityArgs']]:
+    def azure_managed_identity(self) -> pulumi.Input[Optional['StorageCredentialAzureManagedIdentityArgs']]:
         return pulumi.get(self, "azure_managed_identity")
 
     @azure_managed_identity.setter
-    def azure_managed_identity(self, value: Optional[pulumi.Input['StorageCredentialAzureManagedIdentityArgs']]):
+    def azure_managed_identity(self, value: pulumi.Input[Optional['StorageCredentialAzureManagedIdentityArgs']]):
         pulumi.set(self, "azure_managed_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="azureServicePrincipal")
-    def azure_service_principal(self) -> Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']]:
+    def azure_service_principal(self) -> pulumi.Input[Optional['StorageCredentialAzureServicePrincipalArgs']]:
         return pulumi.get(self, "azure_service_principal")
 
     @azure_service_principal.setter
-    def azure_service_principal(self, value: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']]):
+    def azure_service_principal(self, value: pulumi.Input[Optional['StorageCredentialAzureServicePrincipalArgs']]):
         pulumi.set(self, "azure_service_principal", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudflareApiToken")
-    def cloudflare_api_token(self) -> Optional[pulumi.Input['StorageCredentialCloudflareApiTokenArgs']]:
+    def cloudflare_api_token(self) -> pulumi.Input[Optional['StorageCredentialCloudflareApiTokenArgs']]:
         return pulumi.get(self, "cloudflare_api_token")
 
     @cloudflare_api_token.setter
-    def cloudflare_api_token(self, value: Optional[pulumi.Input['StorageCredentialCloudflareApiTokenArgs']]):
+    def cloudflare_api_token(self, value: pulumi.Input[Optional['StorageCredentialCloudflareApiTokenArgs']]):
         pulumi.set(self, "cloudflare_api_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="databricksGcpServiceAccount")
-    def databricks_gcp_service_account(self) -> Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']]:
+    def databricks_gcp_service_account(self) -> pulumi.Input[Optional['StorageCredentialDatabricksGcpServiceAccountArgs']]:
         return pulumi.get(self, "databricks_gcp_service_account")
 
     @databricks_gcp_service_account.setter
-    def databricks_gcp_service_account(self, value: Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']]):
+    def databricks_gcp_service_account(self, value: pulumi.Input[Optional['StorageCredentialDatabricksGcpServiceAccountArgs']]):
         pulumi.set(self, "databricks_gcp_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Delete storage credential regardless of its dependencies.
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="forceUpdate")
-    def force_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Update storage credential regardless of its dependents.
         """
         return pulumi.get(self, "force_update")
 
     @force_update.setter
-    def force_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_update", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpServiceAccountKey")
-    def gcp_service_account_key(self) -> Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']]:
+    def gcp_service_account_key(self) -> pulumi.Input[Optional['StorageCredentialGcpServiceAccountKeyArgs']]:
         return pulumi.get(self, "gcp_service_account_key")
 
     @gcp_service_account_key.setter
-    def gcp_service_account_key(self, value: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']]):
+    def gcp_service_account_key(self, value: pulumi.Input[Optional['StorageCredentialGcpServiceAccountKeyArgs']]):
         pulumi.set(self, "gcp_service_account_key", value)
 
     @_builtins.property
     @pulumi.getter(name="isolationMode")
-    def isolation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def isolation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         """
         return pulumi.get(self, "isolation_mode")
 
     @isolation_mode.setter
-    def isolation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def isolation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "isolation_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="metastoreId")
-    def metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         """
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
-    def metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metastore_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username/groupname/sp application_id of the storage credential owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['StorageCredentialProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['StorageCredentialProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['StorageCredentialProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['StorageCredentialProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the storage credential is only usable for read operations.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="skipValidation")
-    def skip_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Suppress validation errors if any & force save the storage credential.
         """
         return pulumi.get(self, "skip_validation")
 
     @skip_validation.setter
-    def skip_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_validation", value)
 
 
 @pulumi.input_type
 class _StorageCredentialState:
     def __init__(__self__, *,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_iam_role: Optional[pulumi.Input['StorageCredentialAwsIamRoleArgs']] = None,
-                 azure_managed_identity: Optional[pulumi.Input['StorageCredentialAzureManagedIdentityArgs']] = None,
-                 azure_service_principal: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']] = None,
-                 cloudflare_api_token: Optional[pulumi.Input['StorageCredentialCloudflareApiTokenArgs']] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_gcp_service_account: Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcp_service_account_key: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']] = None,
-                 isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['StorageCredentialProviderConfigArgs']] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 storage_credential_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_iam_role: pulumi.Input[Optional['StorageCredentialAwsIamRoleArgs']] = None,
+                 azure_managed_identity: pulumi.Input[Optional['StorageCredentialAzureManagedIdentityArgs']] = None,
+                 azure_service_principal: pulumi.Input[Optional['StorageCredentialAzureServicePrincipalArgs']] = None,
+                 cloudflare_api_token: pulumi.Input[Optional['StorageCredentialCloudflareApiTokenArgs']] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_gcp_service_account: pulumi.Input[Optional['StorageCredentialDatabricksGcpServiceAccountArgs']] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcp_service_account_key: pulumi.Input[Optional['StorageCredentialGcpServiceAccountKeyArgs']] = None,
+                 isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['StorageCredentialProviderConfigArgs']] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 storage_credential_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StorageCredential resources.
 
@@ -357,7 +357,7 @@ class _StorageCredentialState:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
 
@@ -366,193 +366,193 @@ class _StorageCredentialState:
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="awsIamRole")
-    def aws_iam_role(self) -> Optional[pulumi.Input['StorageCredentialAwsIamRoleArgs']]:
+    def aws_iam_role(self) -> pulumi.Input[Optional['StorageCredentialAwsIamRoleArgs']]:
         """
         exposes two additional attributes:
         """
         return pulumi.get(self, "aws_iam_role")
 
     @aws_iam_role.setter
-    def aws_iam_role(self, value: Optional[pulumi.Input['StorageCredentialAwsIamRoleArgs']]):
+    def aws_iam_role(self, value: pulumi.Input[Optional['StorageCredentialAwsIamRoleArgs']]):
         pulumi.set(self, "aws_iam_role", value)
 
     @_builtins.property
     @pulumi.getter(name="azureManagedIdentity")
-    def azure_managed_identity(self) -> Optional[pulumi.Input['StorageCredentialAzureManagedIdentityArgs']]:
+    def azure_managed_identity(self) -> pulumi.Input[Optional['StorageCredentialAzureManagedIdentityArgs']]:
         return pulumi.get(self, "azure_managed_identity")
 
     @azure_managed_identity.setter
-    def azure_managed_identity(self, value: Optional[pulumi.Input['StorageCredentialAzureManagedIdentityArgs']]):
+    def azure_managed_identity(self, value: pulumi.Input[Optional['StorageCredentialAzureManagedIdentityArgs']]):
         pulumi.set(self, "azure_managed_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="azureServicePrincipal")
-    def azure_service_principal(self) -> Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']]:
+    def azure_service_principal(self) -> pulumi.Input[Optional['StorageCredentialAzureServicePrincipalArgs']]:
         return pulumi.get(self, "azure_service_principal")
 
     @azure_service_principal.setter
-    def azure_service_principal(self, value: Optional[pulumi.Input['StorageCredentialAzureServicePrincipalArgs']]):
+    def azure_service_principal(self, value: pulumi.Input[Optional['StorageCredentialAzureServicePrincipalArgs']]):
         pulumi.set(self, "azure_service_principal", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudflareApiToken")
-    def cloudflare_api_token(self) -> Optional[pulumi.Input['StorageCredentialCloudflareApiTokenArgs']]:
+    def cloudflare_api_token(self) -> pulumi.Input[Optional['StorageCredentialCloudflareApiTokenArgs']]:
         return pulumi.get(self, "cloudflare_api_token")
 
     @cloudflare_api_token.setter
-    def cloudflare_api_token(self, value: Optional[pulumi.Input['StorageCredentialCloudflareApiTokenArgs']]):
+    def cloudflare_api_token(self, value: pulumi.Input[Optional['StorageCredentialCloudflareApiTokenArgs']]):
         pulumi.set(self, "cloudflare_api_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="databricksGcpServiceAccount")
-    def databricks_gcp_service_account(self) -> Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']]:
+    def databricks_gcp_service_account(self) -> pulumi.Input[Optional['StorageCredentialDatabricksGcpServiceAccountArgs']]:
         return pulumi.get(self, "databricks_gcp_service_account")
 
     @databricks_gcp_service_account.setter
-    def databricks_gcp_service_account(self, value: Optional[pulumi.Input['StorageCredentialDatabricksGcpServiceAccountArgs']]):
+    def databricks_gcp_service_account(self, value: pulumi.Input[Optional['StorageCredentialDatabricksGcpServiceAccountArgs']]):
         pulumi.set(self, "databricks_gcp_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Delete storage credential regardless of its dependencies.
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="forceUpdate")
-    def force_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Update storage credential regardless of its dependents.
         """
         return pulumi.get(self, "force_update")
 
     @force_update.setter
-    def force_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_update", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpServiceAccountKey")
-    def gcp_service_account_key(self) -> Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']]:
+    def gcp_service_account_key(self) -> pulumi.Input[Optional['StorageCredentialGcpServiceAccountKeyArgs']]:
         return pulumi.get(self, "gcp_service_account_key")
 
     @gcp_service_account_key.setter
-    def gcp_service_account_key(self, value: Optional[pulumi.Input['StorageCredentialGcpServiceAccountKeyArgs']]):
+    def gcp_service_account_key(self, value: pulumi.Input[Optional['StorageCredentialGcpServiceAccountKeyArgs']]):
         pulumi.set(self, "gcp_service_account_key", value)
 
     @_builtins.property
     @pulumi.getter(name="isolationMode")
-    def isolation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def isolation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the storage credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically allow access from the current workspace.
         """
         return pulumi.get(self, "isolation_mode")
 
     @isolation_mode.setter
-    def isolation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def isolation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "isolation_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="metastoreId")
-    def metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the parent Metastore. If set for workspace-level, it must match the ID of the metastore assigned to the worspace. When changing the metastore assigned to a workspace, this field becomes required.
         """
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
-    def metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metastore_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of Storage Credentials, which must be unique within the databricks_metastore. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username/groupname/sp application_id of the storage credential owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['StorageCredentialProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['StorageCredentialProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['StorageCredentialProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['StorageCredentialProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the storage credential is only usable for read operations.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="skipValidation")
-    def skip_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Suppress validation errors if any & force save the storage credential.
         """
         return pulumi.get(self, "skip_validation")
 
     @skip_validation.setter
-    def skip_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="storageCredentialId")
-    def storage_credential_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_credential_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique ID of storage credential.
         """
         return pulumi.get(self, "storage_credential_id")
 
     @storage_credential_id.setter
-    def storage_credential_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_credential_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_credential_id", value)
 
 
@@ -562,23 +562,23 @@ class StorageCredential(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_iam_role: Optional[pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
-                 azure_managed_identity: Optional[pulumi.Input[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
-                 azure_service_principal: Optional[pulumi.Input[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
-                 cloudflare_api_token: Optional[pulumi.Input[Union['StorageCredentialCloudflareApiTokenArgs', 'StorageCredentialCloudflareApiTokenArgsDict']]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_gcp_service_account: Optional[pulumi.Input[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict']]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcp_service_account_key: Optional[pulumi.Input[Union['StorageCredentialGcpServiceAccountKeyArgs', 'StorageCredentialGcpServiceAccountKeyArgsDict']]] = None,
-                 isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict']]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_iam_role: pulumi.Input[Optional[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
+                 azure_managed_identity: pulumi.Input[Optional[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
+                 azure_service_principal: pulumi.Input[Optional[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
+                 cloudflare_api_token: pulumi.Input[Optional[Union['StorageCredentialCloudflareApiTokenArgs', 'StorageCredentialCloudflareApiTokenArgsDict']]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_gcp_service_account: pulumi.Input[Optional[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict']]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcp_service_account_key: pulumi.Input[Optional[Union['StorageCredentialGcpServiceAccountKeyArgs', 'StorageCredentialGcpServiceAccountKeyArgsDict']]] = None,
+                 isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict']]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
@@ -757,23 +757,23 @@ class StorageCredential(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_iam_role: Optional[pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
-                 azure_managed_identity: Optional[pulumi.Input[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
-                 azure_service_principal: Optional[pulumi.Input[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
-                 cloudflare_api_token: Optional[pulumi.Input[Union['StorageCredentialCloudflareApiTokenArgs', 'StorageCredentialCloudflareApiTokenArgsDict']]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_gcp_service_account: Optional[pulumi.Input[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict']]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcp_service_account_key: Optional[pulumi.Input[Union['StorageCredentialGcpServiceAccountKeyArgs', 'StorageCredentialGcpServiceAccountKeyArgsDict']]] = None,
-                 isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict']]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_iam_role: pulumi.Input[Optional[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
+                 azure_managed_identity: pulumi.Input[Optional[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
+                 azure_service_principal: pulumi.Input[Optional[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
+                 cloudflare_api_token: pulumi.Input[Optional[Union['StorageCredentialCloudflareApiTokenArgs', 'StorageCredentialCloudflareApiTokenArgsDict']]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_gcp_service_account: pulumi.Input[Optional[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict']]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcp_service_account_key: pulumi.Input[Optional[Union['StorageCredentialGcpServiceAccountKeyArgs', 'StorageCredentialGcpServiceAccountKeyArgsDict']]] = None,
+                 isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict']]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -811,24 +811,24 @@ class StorageCredential(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api: Optional[pulumi.Input[_builtins.str]] = None,
-            aws_iam_role: Optional[pulumi.Input[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
-            azure_managed_identity: Optional[pulumi.Input[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
-            azure_service_principal: Optional[pulumi.Input[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
-            cloudflare_api_token: Optional[pulumi.Input[Union['StorageCredentialCloudflareApiTokenArgs', 'StorageCredentialCloudflareApiTokenArgsDict']]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            databricks_gcp_service_account: Optional[pulumi.Input[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict']]] = None,
-            force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-            gcp_service_account_key: Optional[pulumi.Input[Union['StorageCredentialGcpServiceAccountKeyArgs', 'StorageCredentialGcpServiceAccountKeyArgsDict']]] = None,
-            isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict']]] = None,
-            read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-            storage_credential_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'StorageCredential':
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_iam_role: pulumi.Input[Optional[Union['StorageCredentialAwsIamRoleArgs', 'StorageCredentialAwsIamRoleArgsDict']]] = None,
+            azure_managed_identity: pulumi.Input[Optional[Union['StorageCredentialAzureManagedIdentityArgs', 'StorageCredentialAzureManagedIdentityArgsDict']]] = None,
+            azure_service_principal: pulumi.Input[Optional[Union['StorageCredentialAzureServicePrincipalArgs', 'StorageCredentialAzureServicePrincipalArgsDict']]] = None,
+            cloudflare_api_token: pulumi.Input[Optional[Union['StorageCredentialCloudflareApiTokenArgs', 'StorageCredentialCloudflareApiTokenArgsDict']]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            databricks_gcp_service_account: pulumi.Input[Optional[Union['StorageCredentialDatabricksGcpServiceAccountArgs', 'StorageCredentialDatabricksGcpServiceAccountArgsDict']]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            gcp_service_account_key: pulumi.Input[Optional[Union['StorageCredentialGcpServiceAccountKeyArgs', 'StorageCredentialGcpServiceAccountKeyArgsDict']]] = None,
+            isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['StorageCredentialProviderConfigArgs', 'StorageCredentialProviderConfigArgsDict']]] = None,
+            read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            storage_credential_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'StorageCredential':
         """
         Get an existing StorageCredential resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

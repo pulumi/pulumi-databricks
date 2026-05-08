@@ -105,7 +105,7 @@ export interface GetPostgresBranchesOutputArgs {
     /**
      * Upper bound for items returned. Cannot be negative
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The Project that owns this collection of branches.
      * Format: projects/{project_id}
@@ -114,5 +114,5 @@ export interface GetPostgresBranchesOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetPostgresBranchesProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetPostgresBranchesProviderConfigArgs | undefined>;
 }

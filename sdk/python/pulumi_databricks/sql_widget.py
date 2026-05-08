@@ -22,14 +22,14 @@ __all__ = ['SqlWidgetArgs', 'SqlWidget']
 class SqlWidgetArgs:
     def __init__(__self__, *,
                  dashboard_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SqlWidgetParameterArgs']]]] = None,
-                 position: Optional[pulumi.Input['SqlWidgetPositionArgs']] = None,
-                 provider_config: Optional[pulumi.Input['SqlWidgetProviderConfigArgs']] = None,
-                 text: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 visualization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 widget_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['SqlWidgetParameterArgs']]]] = None,
+                 position: pulumi.Input[Optional['SqlWidgetPositionArgs']] = None,
+                 provider_config: pulumi.Input[Optional['SqlWidgetProviderConfigArgs']] = None,
+                 text: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 visualization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 widget_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SqlWidget resource.
 
@@ -64,92 +64,92 @@ class SqlWidgetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SqlWidgetParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SqlWidgetParameterArgs']]]]:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SqlWidgetParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SqlWidgetParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def position(self) -> Optional[pulumi.Input['SqlWidgetPositionArgs']]:
+    def position(self) -> pulumi.Input[Optional['SqlWidgetPositionArgs']]:
         return pulumi.get(self, "position")
 
     @position.setter
-    def position(self, value: Optional[pulumi.Input['SqlWidgetPositionArgs']]):
+    def position(self, value: pulumi.Input[Optional['SqlWidgetPositionArgs']]):
         pulumi.set(self, "position", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['SqlWidgetProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['SqlWidgetProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['SqlWidgetProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['SqlWidgetProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def text(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "text")
 
     @text.setter
-    def text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "text", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
     @_builtins.property
     @pulumi.getter(name="visualizationId")
-    def visualization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def visualization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "visualization_id")
 
     @visualization_id.setter
-    def visualization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def visualization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "visualization_id", value)
 
     @_builtins.property
     @pulumi.getter(name="widgetId")
-    def widget_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def widget_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "widget_id")
 
     @widget_id.setter
-    def widget_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def widget_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "widget_id", value)
 
 
 @pulumi.input_type
 class _SqlWidgetState:
     def __init__(__self__, *,
-                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SqlWidgetParameterArgs']]]] = None,
-                 position: Optional[pulumi.Input['SqlWidgetPositionArgs']] = None,
-                 provider_config: Optional[pulumi.Input['SqlWidgetProviderConfigArgs']] = None,
-                 text: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 visualization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 widget_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['SqlWidgetParameterArgs']]]] = None,
+                 position: pulumi.Input[Optional['SqlWidgetPositionArgs']] = None,
+                 provider_config: pulumi.Input[Optional['SqlWidgetProviderConfigArgs']] = None,
+                 text: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 visualization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 widget_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SqlWidget resources.
 
@@ -176,86 +176,86 @@ class _SqlWidgetState:
 
     @_builtins.property
     @pulumi.getter(name="dashboardId")
-    def dashboard_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dashboard_id")
 
     @dashboard_id.setter
-    def dashboard_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SqlWidgetParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SqlWidgetParameterArgs']]]]:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SqlWidgetParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SqlWidgetParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def position(self) -> Optional[pulumi.Input['SqlWidgetPositionArgs']]:
+    def position(self) -> pulumi.Input[Optional['SqlWidgetPositionArgs']]:
         return pulumi.get(self, "position")
 
     @position.setter
-    def position(self, value: Optional[pulumi.Input['SqlWidgetPositionArgs']]):
+    def position(self, value: pulumi.Input[Optional['SqlWidgetPositionArgs']]):
         pulumi.set(self, "position", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['SqlWidgetProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['SqlWidgetProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['SqlWidgetProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['SqlWidgetProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def text(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "text")
 
     @text.setter
-    def text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "text", value)
 
     @_builtins.property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "title")
 
     @title.setter
-    def title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "title", value)
 
     @_builtins.property
     @pulumi.getter(name="visualizationId")
-    def visualization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def visualization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "visualization_id")
 
     @visualization_id.setter
-    def visualization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def visualization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "visualization_id", value)
 
     @_builtins.property
     @pulumi.getter(name="widgetId")
-    def widget_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def widget_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "widget_id")
 
     @widget_id.setter
-    def widget_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def widget_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "widget_id", value)
 
 
@@ -265,15 +265,15 @@ class SqlWidget(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlWidgetParameterArgs', 'SqlWidgetParameterArgsDict']]]]] = None,
-                 position: Optional[pulumi.Input[Union['SqlWidgetPositionArgs', 'SqlWidgetPositionArgsDict']]] = None,
-                 provider_config: Optional[pulumi.Input[Union['SqlWidgetProviderConfigArgs', 'SqlWidgetProviderConfigArgsDict']]] = None,
-                 text: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 visualization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 widget_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlWidgetParameterArgs', 'SqlWidgetParameterArgsDict']]]]] = None,
+                 position: pulumi.Input[Optional[Union['SqlWidgetPositionArgs', 'SqlWidgetPositionArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlWidgetProviderConfigArgs', 'SqlWidgetProviderConfigArgsDict']]] = None,
+                 text: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 visualization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 widget_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         !> This resource is deprecated and will be removed in future.
@@ -396,15 +396,15 @@ class SqlWidget(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlWidgetParameterArgs', 'SqlWidgetParameterArgsDict']]]]] = None,
-                 position: Optional[pulumi.Input[Union['SqlWidgetPositionArgs', 'SqlWidgetPositionArgsDict']]] = None,
-                 provider_config: Optional[pulumi.Input[Union['SqlWidgetProviderConfigArgs', 'SqlWidgetProviderConfigArgsDict']]] = None,
-                 text: Optional[pulumi.Input[_builtins.str]] = None,
-                 title: Optional[pulumi.Input[_builtins.str]] = None,
-                 visualization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 widget_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlWidgetParameterArgs', 'SqlWidgetParameterArgsDict']]]]] = None,
+                 position: pulumi.Input[Optional[Union['SqlWidgetPositionArgs', 'SqlWidgetPositionArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlWidgetProviderConfigArgs', 'SqlWidgetProviderConfigArgsDict']]] = None,
+                 text: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 visualization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 widget_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -435,15 +435,15 @@ class SqlWidget(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlWidgetParameterArgs', 'SqlWidgetParameterArgsDict']]]]] = None,
-            position: Optional[pulumi.Input[Union['SqlWidgetPositionArgs', 'SqlWidgetPositionArgsDict']]] = None,
-            provider_config: Optional[pulumi.Input[Union['SqlWidgetProviderConfigArgs', 'SqlWidgetProviderConfigArgsDict']]] = None,
-            text: Optional[pulumi.Input[_builtins.str]] = None,
-            title: Optional[pulumi.Input[_builtins.str]] = None,
-            visualization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            widget_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'SqlWidget':
+            dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlWidgetParameterArgs', 'SqlWidgetParameterArgsDict']]]]] = None,
+            position: pulumi.Input[Optional[Union['SqlWidgetPositionArgs', 'SqlWidgetPositionArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlWidgetProviderConfigArgs', 'SqlWidgetProviderConfigArgsDict']]] = None,
+            text: pulumi.Input[Optional[_builtins.str]] = None,
+            title: pulumi.Input[Optional[_builtins.str]] = None,
+            visualization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            widget_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'SqlWidget':
         """
         Get an existing SqlWidget resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

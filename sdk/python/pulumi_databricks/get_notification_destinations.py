@@ -148,9 +148,9 @@ def get_notification_destinations(display_name_contains: Optional[_builtins.str]
         notification_destinations=pulumi.get(__ret__, 'notification_destinations'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         type=pulumi.get(__ret__, 'type'))
-def get_notification_destinations_output(display_name_contains: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         provider_config: Optional[pulumi.Input[Optional[Union['GetNotificationDestinationsProviderConfigArgs', 'GetNotificationDestinationsProviderConfigArgsDict']]]] = None,
-                                         type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_notification_destinations_output(display_name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         provider_config: pulumi.Input[Optional[Optional[Union['GetNotificationDestinationsProviderConfigArgs', 'GetNotificationDestinationsProviderConfigArgsDict']]]] = None,
+                                         type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotificationDestinationsResult]:
     """
     This data source allows you to retrieve information about [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification Destinations are used to send notifications for query alerts and jobs to external systems such as email, Slack, Microsoft Teams, PagerDuty, or generic webhooks.

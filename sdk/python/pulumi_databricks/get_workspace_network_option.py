@@ -108,7 +108,7 @@ def get_workspace_network_option(workspace_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         network_policy_id=pulumi.get(__ret__, 'network_policy_id'),
         workspace_id=pulumi.get(__ret__, 'workspace_id'))
-def get_workspace_network_option_output(workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_workspace_network_option_output(workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceNetworkOptionResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)

@@ -114,19 +114,19 @@ export class Table extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Table resources.
  */
 export interface TableState {
-    catalogName?: pulumi.Input<string>;
-    columns?: pulumi.Input<pulumi.Input<inputs.TableColumn>[]>;
-    comment?: pulumi.Input<string>;
-    dataSourceFormat?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    owner?: pulumi.Input<string>;
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    providerConfig?: pulumi.Input<inputs.TableProviderConfig>;
-    schemaName?: pulumi.Input<string>;
-    storageCredentialName?: pulumi.Input<string>;
-    storageLocation?: pulumi.Input<string>;
-    tableType?: pulumi.Input<string>;
-    viewDefinition?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
+    columns?: pulumi.Input<pulumi.Input<inputs.TableColumn>[] | undefined>;
+    comment?: pulumi.Input<string | undefined>;
+    dataSourceFormat?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    owner?: pulumi.Input<string | undefined>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    providerConfig?: pulumi.Input<inputs.TableProviderConfig | undefined>;
+    schemaName?: pulumi.Input<string | undefined>;
+    storageCredentialName?: pulumi.Input<string | undefined>;
+    storageLocation?: pulumi.Input<string | undefined>;
+    tableType?: pulumi.Input<string | undefined>;
+    viewDefinition?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -135,15 +135,15 @@ export interface TableState {
 export interface TableArgs {
     catalogName: pulumi.Input<string>;
     columns: pulumi.Input<pulumi.Input<inputs.TableColumn>[]>;
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     dataSourceFormat: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    owner?: pulumi.Input<string>;
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    providerConfig?: pulumi.Input<inputs.TableProviderConfig>;
+    name?: pulumi.Input<string | undefined>;
+    owner?: pulumi.Input<string | undefined>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    providerConfig?: pulumi.Input<inputs.TableProviderConfig | undefined>;
     schemaName: pulumi.Input<string>;
-    storageCredentialName?: pulumi.Input<string>;
-    storageLocation?: pulumi.Input<string>;
+    storageCredentialName?: pulumi.Input<string | undefined>;
+    storageLocation?: pulumi.Input<string | undefined>;
     tableType: pulumi.Input<string>;
-    viewDefinition?: pulumi.Input<string>;
+    viewDefinition?: pulumi.Input<string | undefined>;
 }

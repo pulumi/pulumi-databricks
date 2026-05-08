@@ -128,7 +128,7 @@ export interface GetRfaAccessRequestDestinationsOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetRfaAccessRequestDestinationsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetRfaAccessRequestDestinationsProviderConfigArgs | undefined>;
     /**
      * The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
      */

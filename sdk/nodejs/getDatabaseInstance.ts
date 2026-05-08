@@ -223,5 +223,5 @@ export interface GetDatabaseInstanceOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetDatabaseInstanceProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetDatabaseInstanceProviderConfigArgs | undefined>;
 }

@@ -115,9 +115,9 @@ export interface GetMwsCredentialsOutputArgs {
     /**
      * name-to-id map for all of the credentials in the account
      */
-    ids?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    ids?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetMwsCredentialsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetMwsCredentialsProviderConfigArgs | undefined>;
 }

@@ -191,11 +191,11 @@ export interface DataQualityRefreshState {
     /**
      * (integer) - Time when the refresh ended (milliseconds since 1/1/1970 UTC)
      */
-    endTimeMs?: pulumi.Input<number>;
+    endTimeMs?: pulumi.Input<number | undefined>;
     /**
      * (string) - An optional message to give insight into the current state of the refresh (e.g. FAILURE messages)
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
      *
@@ -207,31 +207,31 @@ export interface DataQualityRefreshState {
      * 1. The [tableId](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
      * 2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * The type of the monitored object. Can be one of the following: `schema`or `table`
      */
-    objectType?: pulumi.Input<string>;
+    objectType?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.DataQualityRefreshProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.DataQualityRefreshProviderConfig | undefined>;
     /**
      * (integer) - Unique id of the refresh operation
      */
-    refreshId?: pulumi.Input<number>;
+    refreshId?: pulumi.Input<number | undefined>;
     /**
      * (integer) - Time when the refresh started (milliseconds since 1/1/1970 UTC)
      */
-    startTimeMs?: pulumi.Input<number>;
+    startTimeMs?: pulumi.Input<number | undefined>;
     /**
      * (string) - The current state of the refresh. Possible values are: `MONITOR_REFRESH_STATE_CANCELED`, `MONITOR_REFRESH_STATE_FAILED`, `MONITOR_REFRESH_STATE_PENDING`, `MONITOR_REFRESH_STATE_RUNNING`, `MONITOR_REFRESH_STATE_SUCCESS`, `MONITOR_REFRESH_STATE_UNKNOWN`
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * (string) - What triggered the refresh. Possible values are: `MONITOR_REFRESH_TRIGGER_DATA_CHANGE`, `MONITOR_REFRESH_TRIGGER_MANUAL`, `MONITOR_REFRESH_TRIGGER_SCHEDULE`, `MONITOR_REFRESH_TRIGGER_UNKNOWN`
      */
-    trigger?: pulumi.Input<string>;
+    trigger?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -257,5 +257,5 @@ export interface DataQualityRefreshArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.DataQualityRefreshProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.DataQualityRefreshProviderConfig | undefined>;
 }

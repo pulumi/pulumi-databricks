@@ -206,8 +206,8 @@ def get_database_synced_database_table(name: Optional[_builtins.str] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'),
         spec=pulumi.get(__ret__, 'spec'),
         unity_catalog_provisioning_state=pulumi.get(__ret__, 'unity_catalog_provisioning_state'))
-def get_database_synced_database_table_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                              provider_config: Optional[pulumi.Input[Optional[Union['GetDatabaseSyncedDatabaseTableProviderConfigArgs', 'GetDatabaseSyncedDatabaseTableProviderConfigArgsDict']]]] = None,
+def get_database_synced_database_table_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                              provider_config: pulumi.Input[Optional[Optional[Union['GetDatabaseSyncedDatabaseTableProviderConfigArgs', 'GetDatabaseSyncedDatabaseTableProviderConfigArgsDict']]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseSyncedDatabaseTableResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)

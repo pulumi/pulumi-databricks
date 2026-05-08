@@ -22,17 +22,17 @@ __all__ = ['RecipientArgs', 'Recipient']
 class RecipientArgs:
     def __init__(__self__, *,
                  authentication_type: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_recipient_global_metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_access_list: Optional[pulumi.Input['RecipientIpAccessListArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties_kvpairs: Optional[pulumi.Input['RecipientPropertiesKvpairsArgs']] = None,
-                 provider_config: Optional[pulumi.Input['RecipientProviderConfigArgs']] = None,
-                 recipient_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sharing_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 tokens: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_recipient_global_metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_access_list: pulumi.Input[Optional['RecipientIpAccessListArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties_kvpairs: pulumi.Input[Optional['RecipientPropertiesKvpairsArgs']] = None,
+                 provider_config: pulumi.Input[Optional['RecipientProviderConfigArgs']] = None,
+                 recipient_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sharing_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 tokens: pulumi.Input[Optional[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None):
         """
         The set of arguments for constructing a Recipient resource.
 
@@ -87,161 +87,161 @@ class RecipientArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description about the recipient.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="dataRecipientGlobalMetastoreId")
-    def data_recipient_global_metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_recipient_global_metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required when `authentication_type` is `DATABRICKS`.
         """
         return pulumi.get(self, "data_recipient_global_metastore_id")
 
     @data_recipient_global_metastore_id.setter
-    def data_recipient_global_metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_recipient_global_metastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_recipient_global_metastore_id", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationTime")
-    def expiration_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiration_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Expiration timestamp of the token in epoch milliseconds.
         """
         return pulumi.get(self, "expiration_time")
 
     @expiration_time.setter
-    def expiration_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiration_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiration_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAccessList")
-    def ip_access_list(self) -> Optional[pulumi.Input['RecipientIpAccessListArgs']]:
+    def ip_access_list(self) -> pulumi.Input[Optional['RecipientIpAccessListArgs']]:
         """
         Recipient IP access list.
         """
         return pulumi.get(self, "ip_access_list")
 
     @ip_access_list.setter
-    def ip_access_list(self, value: Optional[pulumi.Input['RecipientIpAccessListArgs']]):
+    def ip_access_list(self, value: pulumi.Input[Optional['RecipientIpAccessListArgs']]):
         pulumi.set(self, "ip_access_list", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of recipient. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username/groupname/sp application_id of the recipient owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="propertiesKvpairs")
-    def properties_kvpairs(self) -> Optional[pulumi.Input['RecipientPropertiesKvpairsArgs']]:
+    def properties_kvpairs(self) -> pulumi.Input[Optional['RecipientPropertiesKvpairsArgs']]:
         """
         Recipient properties - object consisting of following fields:
         """
         return pulumi.get(self, "properties_kvpairs")
 
     @properties_kvpairs.setter
-    def properties_kvpairs(self, value: Optional[pulumi.Input['RecipientPropertiesKvpairsArgs']]):
+    def properties_kvpairs(self, value: pulumi.Input[Optional['RecipientPropertiesKvpairsArgs']]):
         pulumi.set(self, "properties_kvpairs", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['RecipientProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['RecipientProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['RecipientProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['RecipientProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="recipientId")
-    def recipient_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recipient_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique ID of the recipient token.
         """
         return pulumi.get(self, "recipient_id")
 
     @recipient_id.setter
-    def recipient_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recipient_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recipient_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sharingCode")
-    def sharing_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sharing_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The one-time sharing code provided by the data recipient.
         """
         return pulumi.get(self, "sharing_code")
 
     @sharing_code.setter
-    def sharing_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sharing_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sharing_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]]:
+    def tokens(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RecipientTokenArgs']]]]:
         """
         List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
         return pulumi.get(self, "tokens")
 
     @tokens.setter
-    def tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]]):
+    def tokens(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RecipientTokenArgs']]]]):
         pulumi.set(self, "tokens", value)
 
 
 @pulumi.input_type
 class _RecipientState:
     def __init__(__self__, *,
-                 activated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 activation_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_recipient_global_metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_access_list: Optional[pulumi.Input['RecipientIpAccessListArgs']] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties_kvpairs: Optional[pulumi.Input['RecipientPropertiesKvpairsArgs']] = None,
-                 provider_config: Optional[pulumi.Input['RecipientProviderConfigArgs']] = None,
-                 recipient_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sharing_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 tokens: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_by: Optional[pulumi.Input[_builtins.str]] = None):
+                 activated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 activation_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_recipient_global_metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_access_list: pulumi.Input[Optional['RecipientIpAccessListArgs']] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties_kvpairs: pulumi.Input[Optional['RecipientPropertiesKvpairsArgs']] = None,
+                 provider_config: pulumi.Input[Optional['RecipientProviderConfigArgs']] = None,
+                 recipient_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sharing_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 tokens: pulumi.Input[Optional[Sequence[pulumi.Input['RecipientTokenArgs']]]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_by: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Recipient resources.
 
@@ -311,251 +311,251 @@ class _RecipientState:
 
     @_builtins.property
     @pulumi.getter
-    def activated(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def activated(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "activated")
 
     @activated.setter
-    def activated(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def activated(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "activated", value)
 
     @_builtins.property
     @pulumi.getter(name="activationUrl")
-    def activation_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def activation_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
         """
         return pulumi.get(self, "activation_url")
 
     @activation_url.setter
-    def activation_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def activation_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "activation_url", value)
 
     @_builtins.property
     @pulumi.getter(name="authenticationType")
-    def authentication_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authentication_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
         """
         return pulumi.get(self, "authentication_type")
 
     @authentication_type.setter
-    def authentication_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authentication_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authentication_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def cloud(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud vendor of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
         """
         return pulumi.get(self, "cloud")
 
     @cloud.setter
-    def cloud(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description about the recipient.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time at which this recipient was created, in epoch milliseconds.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username of recipient creator.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="dataRecipientGlobalMetastoreId")
-    def data_recipient_global_metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_recipient_global_metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required when `authentication_type` is `DATABRICKS`.
         """
         return pulumi.get(self, "data_recipient_global_metastore_id")
 
     @data_recipient_global_metastore_id.setter
-    def data_recipient_global_metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_recipient_global_metastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_recipient_global_metastore_id", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationTime")
-    def expiration_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiration_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Expiration timestamp of the token in epoch milliseconds.
         """
         return pulumi.get(self, "expiration_time")
 
     @expiration_time.setter
-    def expiration_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiration_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiration_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAccessList")
-    def ip_access_list(self) -> Optional[pulumi.Input['RecipientIpAccessListArgs']]:
+    def ip_access_list(self) -> pulumi.Input[Optional['RecipientIpAccessListArgs']]:
         """
         Recipient IP access list.
         """
         return pulumi.get(self, "ip_access_list")
 
     @ip_access_list.setter
-    def ip_access_list(self, value: Optional[pulumi.Input['RecipientIpAccessListArgs']]):
+    def ip_access_list(self, value: pulumi.Input[Optional['RecipientIpAccessListArgs']]):
         pulumi.set(self, "ip_access_list", value)
 
     @_builtins.property
     @pulumi.getter(name="metastoreId")
-    def metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of recipient's Unity Catalog metastore. This field is only present when the authentication_type is `DATABRICKS`.
         """
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
-    def metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metastore_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of recipient. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username/groupname/sp application_id of the recipient owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="propertiesKvpairs")
-    def properties_kvpairs(self) -> Optional[pulumi.Input['RecipientPropertiesKvpairsArgs']]:
+    def properties_kvpairs(self) -> pulumi.Input[Optional['RecipientPropertiesKvpairsArgs']]:
         """
         Recipient properties - object consisting of following fields:
         """
         return pulumi.get(self, "properties_kvpairs")
 
     @properties_kvpairs.setter
-    def properties_kvpairs(self, value: Optional[pulumi.Input['RecipientPropertiesKvpairsArgs']]):
+    def properties_kvpairs(self, value: pulumi.Input[Optional['RecipientPropertiesKvpairsArgs']]):
         pulumi.set(self, "properties_kvpairs", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['RecipientProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['RecipientProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['RecipientProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['RecipientProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="recipientId")
-    def recipient_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recipient_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique ID of the recipient token.
         """
         return pulumi.get(self, "recipient_id")
 
     @recipient_id.setter
-    def recipient_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recipient_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recipient_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authentication_type is `DATABRICKS`.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="sharingCode")
-    def sharing_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sharing_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The one-time sharing code provided by the data recipient.
         """
         return pulumi.get(self, "sharing_code")
 
     @sharing_code.setter
-    def sharing_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sharing_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sharing_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]]:
+    def tokens(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RecipientTokenArgs']]]]:
         """
         List of Recipient Tokens. This field is only present when the authentication_type is TOKEN. Each list element is an object with following attributes:
         """
         return pulumi.get(self, "tokens")
 
     @tokens.setter
-    def tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RecipientTokenArgs']]]]):
+    def tokens(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RecipientTokenArgs']]]]):
         pulumi.set(self, "tokens", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time at which this recipient was updated, in epoch milliseconds.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedBy")
-    def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username of recipient Token updater.
         """
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
-    def updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_by", value)
 
 
@@ -565,18 +565,18 @@ class Recipient(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_recipient_global_metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_access_list: Optional[pulumi.Input[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties_kvpairs: Optional[pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']]] = None,
-                 provider_config: Optional[pulumi.Input[Union['RecipientProviderConfigArgs', 'RecipientProviderConfigArgsDict']]] = None,
-                 recipient_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sharing_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]]] = None,
+                 authentication_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_recipient_global_metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_access_list: pulumi.Input[Optional[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties_kvpairs: pulumi.Input[Optional[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['RecipientProviderConfigArgs', 'RecipientProviderConfigArgsDict']]] = None,
+                 recipient_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sharing_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 tokens: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]]] = None,
                  __props__=None):
         """
         > This resource can only be used with a workspace-level provider!
@@ -760,18 +760,18 @@ class Recipient(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_recipient_global_metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_access_list: Optional[pulumi.Input[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties_kvpairs: Optional[pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']]] = None,
-                 provider_config: Optional[pulumi.Input[Union['RecipientProviderConfigArgs', 'RecipientProviderConfigArgsDict']]] = None,
-                 recipient_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sharing_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]]] = None,
+                 authentication_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_recipient_global_metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_access_list: pulumi.Input[Optional[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties_kvpairs: pulumi.Input[Optional[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['RecipientProviderConfigArgs', 'RecipientProviderConfigArgsDict']]] = None,
+                 recipient_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sharing_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 tokens: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -816,27 +816,27 @@ class Recipient(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            activated: Optional[pulumi.Input[_builtins.bool]] = None,
-            activation_url: Optional[pulumi.Input[_builtins.str]] = None,
-            authentication_type: Optional[pulumi.Input[_builtins.str]] = None,
-            cloud: Optional[pulumi.Input[_builtins.str]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.int]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            data_recipient_global_metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-            expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-            ip_access_list: Optional[pulumi.Input[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']]] = None,
-            metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None,
-            properties_kvpairs: Optional[pulumi.Input[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']]] = None,
-            provider_config: Optional[pulumi.Input[Union['RecipientProviderConfigArgs', 'RecipientProviderConfigArgsDict']]] = None,
-            recipient_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            sharing_code: Optional[pulumi.Input[_builtins.str]] = None,
-            tokens: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_by: Optional[pulumi.Input[_builtins.str]] = None) -> 'Recipient':
+            activated: pulumi.Input[Optional[_builtins.bool]] = None,
+            activation_url: pulumi.Input[Optional[_builtins.str]] = None,
+            authentication_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            data_recipient_global_metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_access_list: pulumi.Input[Optional[Union['RecipientIpAccessListArgs', 'RecipientIpAccessListArgsDict']]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            properties_kvpairs: pulumi.Input[Optional[Union['RecipientPropertiesKvpairsArgs', 'RecipientPropertiesKvpairsArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['RecipientProviderConfigArgs', 'RecipientProviderConfigArgsDict']]] = None,
+            recipient_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            sharing_code: pulumi.Input[Optional[_builtins.str]] = None,
+            tokens: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RecipientTokenArgs', 'RecipientTokenArgsDict']]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> 'Recipient':
         """
         Get an existing Recipient resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

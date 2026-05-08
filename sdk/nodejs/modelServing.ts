@@ -282,53 +282,53 @@ export interface ModelServingState {
     /**
      * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
      */
-    aiGateway?: pulumi.Input<inputs.ModelServingAiGateway>;
+    aiGateway?: pulumi.Input<inputs.ModelServingAiGateway | undefined>;
     /**
      * The Budget Policy ID set for this serving endpoint.
      */
-    budgetPolicyId?: pulumi.Input<string>;
+    budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
      */
-    config?: pulumi.Input<inputs.ModelServingConfig>;
+    config?: pulumi.Input<inputs.ModelServingConfig | undefined>;
     /**
      * The description of the model serving endpoint.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A block with Email notification setting.
      */
-    emailNotifications?: pulumi.Input<inputs.ModelServingEmailNotifications>;
+    emailNotifications?: pulumi.Input<inputs.ModelServingEmailNotifications | undefined>;
     /**
      * Invocation url of the endpoint.
      */
-    endpointUrl?: pulumi.Input<string>;
+    endpointUrl?: pulumi.Input<string | undefined>;
     /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.ModelServingProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.ModelServingProviderConfig | undefined>;
     /**
      * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
      *
      * @deprecated Please use AI Gateway to manage rate limits.
      */
-    rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingRateLimit>[]>;
+    rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingRateLimit>[] | undefined>;
     /**
      * A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
      */
-    routeOptimized?: pulumi.Input<boolean>;
+    routeOptimized?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
      */
-    servingEndpointId?: pulumi.Input<string>;
+    servingEndpointId?: pulumi.Input<string | undefined>;
     /**
      * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.ModelServingTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.ModelServingTag>[] | undefined>;
 }
 
 /**
@@ -338,43 +338,43 @@ export interface ModelServingArgs {
     /**
      * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
      */
-    aiGateway?: pulumi.Input<inputs.ModelServingAiGateway>;
+    aiGateway?: pulumi.Input<inputs.ModelServingAiGateway | undefined>;
     /**
      * The Budget Policy ID set for this serving endpoint.
      */
-    budgetPolicyId?: pulumi.Input<string>;
+    budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The model serving endpoint configuration. This is optional and can be added and modified after creation. If `config` was provided in a previous apply but is not provided in the current apply, no change to the model serving endpoint will occur. To recreate the model serving endpoint without the `config` block, the model serving endpoint must be destroyed and recreated.
      */
-    config?: pulumi.Input<inputs.ModelServingConfig>;
+    config?: pulumi.Input<inputs.ModelServingConfig | undefined>;
     /**
      * The description of the model serving endpoint.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A block with Email notification setting.
      */
-    emailNotifications?: pulumi.Input<inputs.ModelServingEmailNotifications>;
+    emailNotifications?: pulumi.Input<inputs.ModelServingEmailNotifications | undefined>;
     /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.ModelServingProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.ModelServingProviderConfig | undefined>;
     /**
      * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*
      *
      * @deprecated Please use AI Gateway to manage rate limits.
      */
-    rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingRateLimit>[]>;
+    rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingRateLimit>[] | undefined>;
     /**
      * A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
      */
-    routeOptimized?: pulumi.Input<boolean>;
+    routeOptimized?: pulumi.Input<boolean | undefined>;
     /**
      * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.ModelServingTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.ModelServingTag>[] | undefined>;
 }

@@ -120,27 +120,27 @@ export interface OnlineTableState {
     /**
      * 3-level name of the Online Table to create.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.OnlineTableProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.OnlineTableProviderConfig | undefined>;
     /**
      * object containing specification of the online table:
      */
-    spec?: pulumi.Input<inputs.OnlineTableSpec>;
+    spec?: pulumi.Input<inputs.OnlineTableSpec | undefined>;
     /**
      * object describing status of the online table:
      */
-    statuses?: pulumi.Input<pulumi.Input<inputs.OnlineTableStatus>[]>;
+    statuses?: pulumi.Input<pulumi.Input<inputs.OnlineTableStatus>[] | undefined>;
     /**
      * Data serving REST API URL for this table.
      */
-    tableServingUrl?: pulumi.Input<string>;
+    tableServingUrl?: pulumi.Input<string | undefined>;
     /**
      * The provisioning state of the online table entity in Unity Catalog. This is distinct from the state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline may be in "PROVISIONING" as it runs asynchronously).
      */
-    unityCatalogProvisioningState?: pulumi.Input<string>;
+    unityCatalogProvisioningState?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -150,13 +150,13 @@ export interface OnlineTableArgs {
     /**
      * 3-level name of the Online Table to create.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.OnlineTableProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.OnlineTableProviderConfig | undefined>;
     /**
      * object containing specification of the online table:
      */
-    spec?: pulumi.Input<inputs.OnlineTableSpec>;
+    spec?: pulumi.Input<inputs.OnlineTableSpec | undefined>;
 }

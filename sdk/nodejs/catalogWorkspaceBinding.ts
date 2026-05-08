@@ -126,24 +126,24 @@ export interface CatalogWorkspaceBindingState {
     /**
      * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
      */
-    bindingType?: pulumi.Input<string>;
+    bindingType?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Please use 'securable_name' and 'securable_type instead.
      */
-    catalogName?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.CatalogWorkspaceBindingProviderConfig>;
+    catalogName?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.CatalogWorkspaceBindingProviderConfig | undefined>;
     /**
      * Name of securable. Change forces creation of a new resource.
      */
-    securableName?: pulumi.Input<string>;
+    securableName?: pulumi.Input<string | undefined>;
     /**
      * Type of securable. Default to `catalog`. Change forces creation of a new resource.
      */
-    securableType?: pulumi.Input<string>;
+    securableType?: pulumi.Input<string | undefined>;
     /**
      * ID of the workspace. Change forces creation of a new resource.
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -153,20 +153,20 @@ export interface CatalogWorkspaceBindingArgs {
     /**
      * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
      */
-    bindingType?: pulumi.Input<string>;
+    bindingType?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Please use 'securable_name' and 'securable_type instead.
      */
-    catalogName?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.CatalogWorkspaceBindingProviderConfig>;
+    catalogName?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.CatalogWorkspaceBindingProviderConfig | undefined>;
     /**
      * Name of securable. Change forces creation of a new resource.
      */
-    securableName?: pulumi.Input<string>;
+    securableName?: pulumi.Input<string | undefined>;
     /**
      * Type of securable. Default to `catalog`. Change forces creation of a new resource.
      */
-    securableType?: pulumi.Input<string>;
+    securableType?: pulumi.Input<string | undefined>;
     /**
      * ID of the workspace. Change forces creation of a new resource.
      */

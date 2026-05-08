@@ -103,7 +103,7 @@ export interface GetNotebookPathsOutputArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetNotebookPathsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetNotebookPathsProviderConfigArgs | undefined>;
     /**
      * Either or recursively walk given path
      */

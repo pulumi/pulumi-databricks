@@ -180,15 +180,15 @@ export interface SqlPermissionsState {
     /**
      * If this access control for using an anonymous function. Defaults to `false`.
      */
-    anonymousFunction?: pulumi.Input<boolean>;
+    anonymousFunction?: pulumi.Input<boolean | undefined>;
     /**
      * If this access control for reading/writing any file. Defaults to `false`.
      */
-    anyFile?: pulumi.Input<boolean>;
+    anyFile?: pulumi.Input<boolean | undefined>;
     /**
      * If this access control for the entire catalog. Defaults to `false`.
      */
-    catalog?: pulumi.Input<boolean>;
+    catalog?: pulumi.Input<boolean | undefined>;
     /**
      * Id of an existing databricks_cluster, where the appropriate `GRANT`/`REVOKE` commands are executed. This cluster must have the appropriate data security mode (`USER_ISOLATION` or `LEGACY_TABLE_ACL` specified). If no `clusterId` is specified, a TACL-enabled cluster with the name `terraform-table-acl` is automatically created.
      *
@@ -201,21 +201,21 @@ export interface SqlPermissionsState {
      *
      * The following arguments are available to specify the data object you need to enforce access controls on. You must specify only one of those arguments (except for `table` and `view`), otherwise resource creation will fail.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Name of the database. Has a default value of `default`.
      */
-    database?: pulumi.Input<string>;
-    privilegeAssignments?: pulumi.Input<pulumi.Input<inputs.SqlPermissionsPrivilegeAssignment>[]>;
-    providerConfig?: pulumi.Input<inputs.SqlPermissionsProviderConfig>;
+    database?: pulumi.Input<string | undefined>;
+    privilegeAssignments?: pulumi.Input<pulumi.Input<inputs.SqlPermissionsPrivilegeAssignment>[] | undefined>;
+    providerConfig?: pulumi.Input<inputs.SqlPermissionsProviderConfig | undefined>;
     /**
      * Name of the table. Can be combined with the `database`.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
     /**
      * Name of the view. Can be combined with the `database`.
      */
-    view?: pulumi.Input<string>;
+    view?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -225,15 +225,15 @@ export interface SqlPermissionsArgs {
     /**
      * If this access control for using an anonymous function. Defaults to `false`.
      */
-    anonymousFunction?: pulumi.Input<boolean>;
+    anonymousFunction?: pulumi.Input<boolean | undefined>;
     /**
      * If this access control for reading/writing any file. Defaults to `false`.
      */
-    anyFile?: pulumi.Input<boolean>;
+    anyFile?: pulumi.Input<boolean | undefined>;
     /**
      * If this access control for the entire catalog. Defaults to `false`.
      */
-    catalog?: pulumi.Input<boolean>;
+    catalog?: pulumi.Input<boolean | undefined>;
     /**
      * Id of an existing databricks_cluster, where the appropriate `GRANT`/`REVOKE` commands are executed. This cluster must have the appropriate data security mode (`USER_ISOLATION` or `LEGACY_TABLE_ACL` specified). If no `clusterId` is specified, a TACL-enabled cluster with the name `terraform-table-acl` is automatically created.
      *
@@ -246,19 +246,19 @@ export interface SqlPermissionsArgs {
      *
      * The following arguments are available to specify the data object you need to enforce access controls on. You must specify only one of those arguments (except for `table` and `view`), otherwise resource creation will fail.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Name of the database. Has a default value of `default`.
      */
-    database?: pulumi.Input<string>;
-    privilegeAssignments?: pulumi.Input<pulumi.Input<inputs.SqlPermissionsPrivilegeAssignment>[]>;
-    providerConfig?: pulumi.Input<inputs.SqlPermissionsProviderConfig>;
+    database?: pulumi.Input<string | undefined>;
+    privilegeAssignments?: pulumi.Input<pulumi.Input<inputs.SqlPermissionsPrivilegeAssignment>[] | undefined>;
+    providerConfig?: pulumi.Input<inputs.SqlPermissionsProviderConfig | undefined>;
     /**
      * Name of the table. Can be combined with the `database`.
      */
-    table?: pulumi.Input<string>;
+    table?: pulumi.Input<string | undefined>;
     /**
      * Name of the view. Can be combined with the `database`.
      */
-    view?: pulumi.Input<string>;
+    view?: pulumi.Input<string | undefined>;
 }

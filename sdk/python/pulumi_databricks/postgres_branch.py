@@ -23,9 +23,9 @@ class PostgresBranchArgs:
     def __init__(__self__, *,
                  branch_id: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
-                 provider_config: Optional[pulumi.Input['PostgresBranchProviderConfigArgs']] = None,
-                 replace_existing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spec: Optional[pulumi.Input['PostgresBranchSpecArgs']] = None):
+                 provider_config: pulumi.Input[Optional['PostgresBranchProviderConfigArgs']] = None,
+                 replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spec: pulumi.Input[Optional['PostgresBranchSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresBranch resource.
 
@@ -82,54 +82,54 @@ class PostgresBranchArgs:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PostgresBranchProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PostgresBranchProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PostgresBranchProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PostgresBranchProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="replaceExisting")
-    def replace_existing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def replace_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, update the branch if it already exists instead of returning an error
         """
         return pulumi.get(self, "replace_existing")
 
     @replace_existing.setter
-    def replace_existing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def replace_existing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "replace_existing", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['PostgresBranchSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['PostgresBranchSpecArgs']]:
         """
         The spec contains the branch configuration
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['PostgresBranchSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['PostgresBranchSpecArgs']]):
         pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
 class _PostgresBranchState:
     def __init__(__self__, *,
-                 branch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['PostgresBranchProviderConfigArgs']] = None,
-                 replace_existing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spec: Optional[pulumi.Input['PostgresBranchSpecArgs']] = None,
-                 status: Optional[pulumi.Input['PostgresBranchStatusArgs']] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 branch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['PostgresBranchProviderConfigArgs']] = None,
+                 replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spec: pulumi.Input[Optional['PostgresBranchSpecArgs']] = None,
+                 status: pulumi.Input[Optional['PostgresBranchStatusArgs']] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PostgresBranch resources.
 
@@ -174,7 +174,7 @@ class _PostgresBranchState:
 
     @_builtins.property
     @pulumi.getter(name="branchId")
-    def branch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the Branch. This becomes the final component of the branch's resource name.
         The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
@@ -183,24 +183,24 @@ class _PostgresBranchState:
         return pulumi.get(self, "branch_id")
 
     @branch_id.setter
-    def branch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - A timestamp indicating when the branch was created
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Output only. The full resource path of the branch.
         Format: projects/{project_id}/branches/{branch_id}
@@ -208,12 +208,12 @@ class _PostgresBranchState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project containing this branch (API resource hierarchy).
         Format: projects/{project_id}
@@ -224,79 +224,79 @@ class _PostgresBranchState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PostgresBranchProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PostgresBranchProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PostgresBranchProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PostgresBranchProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="replaceExisting")
-    def replace_existing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def replace_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, update the branch if it already exists instead of returning an error
         """
         return pulumi.get(self, "replace_existing")
 
     @replace_existing.setter
-    def replace_existing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def replace_existing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "replace_existing", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['PostgresBranchSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['PostgresBranchSpecArgs']]:
         """
         The spec contains the branch configuration
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['PostgresBranchSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['PostgresBranchSpecArgs']]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['PostgresBranchStatusArgs']]:
+    def status(self) -> pulumi.Input[Optional['PostgresBranchStatusArgs']]:
         """
         (BranchStatus) - The current status of a Branch
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input['PostgresBranchStatusArgs']]):
+    def status(self, value: pulumi.Input[Optional['PostgresBranchStatusArgs']]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - System-generated unique ID for the branch
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - A timestamp indicating when the branch was last updated
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -306,11 +306,11 @@ class PostgresBranch(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']]] = None,
-                 replace_existing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spec: Optional[pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']]] = None,
+                 branch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']]] = None,
+                 replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -499,11 +499,11 @@ class PostgresBranch(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']]] = None,
-                 replace_existing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spec: Optional[pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']]] = None,
+                 branch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']]] = None,
+                 replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -537,16 +537,16 @@ class PostgresBranch(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            branch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']]] = None,
-            replace_existing: Optional[pulumi.Input[_builtins.bool]] = None,
-            spec: Optional[pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']]] = None,
-            status: Optional[pulumi.Input[Union['PostgresBranchStatusArgs', 'PostgresBranchStatusArgsDict']]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'PostgresBranch':
+            branch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']]] = None,
+            replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
+            spec: pulumi.Input[Optional[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']]] = None,
+            status: pulumi.Input[Optional[Union['PostgresBranchStatusArgs', 'PostgresBranchStatusArgsDict']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresBranch':
         """
         Get an existing PostgresBranch resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -22,9 +22,9 @@ __all__ = ['AutomaticClusterUpdateWorkspaceSettingArgs', 'AutomaticClusterUpdate
 class AutomaticClusterUpdateWorkspaceSettingArgs:
     def __init__(__self__, *,
                  automatic_cluster_update_workspace: pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs'],
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs']] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs']] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AutomaticClusterUpdateWorkspaceSetting resource.
         """
@@ -47,39 +47,39 @@ class AutomaticClusterUpdateWorkspaceSettingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="settingName")
-    def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def setting_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "setting_name")
 
     @setting_name.setter
-    def setting_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def setting_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "setting_name", value)
 
 
 @pulumi.input_type
 class _AutomaticClusterUpdateWorkspaceSettingState:
     def __init__(__self__, *,
-                 automatic_cluster_update_workspace: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs']] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 automatic_cluster_update_workspace: pulumi.Input[Optional['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs']] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AutomaticClusterUpdateWorkspaceSetting resources.
         """
@@ -94,38 +94,38 @@ class _AutomaticClusterUpdateWorkspaceSettingState:
 
     @_builtins.property
     @pulumi.getter(name="automaticClusterUpdateWorkspace")
-    def automatic_cluster_update_workspace(self) -> Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs']]:
+    def automatic_cluster_update_workspace(self) -> pulumi.Input[Optional['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs']]:
         return pulumi.get(self, "automatic_cluster_update_workspace")
 
     @automatic_cluster_update_workspace.setter
-    def automatic_cluster_update_workspace(self, value: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs']]):
+    def automatic_cluster_update_workspace(self, value: pulumi.Input[Optional['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs']]):
         pulumi.set(self, "automatic_cluster_update_workspace", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="settingName")
-    def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def setting_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "setting_name")
 
     @setting_name.setter
-    def setting_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def setting_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "setting_name", value)
 
 
@@ -135,10 +135,10 @@ class AutomaticClusterUpdateWorkspaceSetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automatic_cluster_update_workspace: Optional[pulumi.Input[Union['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs', 'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs', 'AutomaticClusterUpdateWorkspaceSettingProviderConfigArgsDict']]] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 automatic_cluster_update_workspace: pulumi.Input[Optional[Union['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs', 'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs', 'AutomaticClusterUpdateWorkspaceSettingProviderConfigArgsDict']]] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create a AutomaticClusterUpdateWorkspaceSetting resource with the given unique name, props, and options.
@@ -170,10 +170,10 @@ class AutomaticClusterUpdateWorkspaceSetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 automatic_cluster_update_workspace: Optional[pulumi.Input[Union['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs', 'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs', 'AutomaticClusterUpdateWorkspaceSettingProviderConfigArgsDict']]] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 automatic_cluster_update_workspace: pulumi.Input[Optional[Union['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs', 'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs', 'AutomaticClusterUpdateWorkspaceSettingProviderConfigArgsDict']]] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -199,10 +199,10 @@ class AutomaticClusterUpdateWorkspaceSetting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            automatic_cluster_update_workspace: Optional[pulumi.Input[Union['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs', 'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs', 'AutomaticClusterUpdateWorkspaceSettingProviderConfigArgsDict']]] = None,
-            setting_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'AutomaticClusterUpdateWorkspaceSetting':
+            automatic_cluster_update_workspace: pulumi.Input[Optional[Union['AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgs', 'AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['AutomaticClusterUpdateWorkspaceSettingProviderConfigArgs', 'AutomaticClusterUpdateWorkspaceSettingProviderConfigArgsDict']]] = None,
+            setting_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'AutomaticClusterUpdateWorkspaceSetting':
         """
         Get an existing AutomaticClusterUpdateWorkspaceSetting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

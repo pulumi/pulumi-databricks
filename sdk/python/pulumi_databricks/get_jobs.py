@@ -108,10 +108,11 @@ def get_jobs(ids: Optional[Mapping[str, _builtins.str]] = None,
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_databricks as databricks
 
     this = databricks.get_jobs()
-    everyone_can_view_all_jobs = []
+    everyone_can_view_all_jobs: list[Any] = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
         everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
             job_id=range["value"],
@@ -135,10 +136,11 @@ def get_jobs(ids: Optional[Mapping[str, _builtins.str]] = None,
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_databricks as databricks
 
     this = databricks.get_jobs(key="id")
-    everyone_can_view_all_jobs = []
+    everyone_can_view_all_jobs: list[Any] = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
         everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
             job_id=range["value"],
@@ -174,10 +176,10 @@ def get_jobs(ids: Optional[Mapping[str, _builtins.str]] = None,
         job_name_contains=pulumi.get(__ret__, 'job_name_contains'),
         key=pulumi.get(__ret__, 'key'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                    job_name_contains: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    key: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    provider_config: Optional[pulumi.Input[Optional[Union['GetJobsProviderConfigArgs', 'GetJobsProviderConfigArgsDict']]]] = None,
+def get_jobs_output(ids: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                    job_name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    key: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    provider_config: pulumi.Input[Optional[Optional[Union['GetJobsProviderConfigArgs', 'GetJobsProviderConfigArgsDict']]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetJobsResult]:
     """
     Retrieves a list of Job ids, that were created by Pulumi or manually, so that special handling could be applied.
@@ -192,10 +194,11 @@ def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, _builtins.s
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_databricks as databricks
 
     this = databricks.get_jobs()
-    everyone_can_view_all_jobs = []
+    everyone_can_view_all_jobs: list[Any] = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
         everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
             job_id=range["value"],
@@ -219,10 +222,11 @@ def get_jobs_output(ids: Optional[pulumi.Input[Optional[Mapping[str, _builtins.s
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_databricks as databricks
 
     this = databricks.get_jobs(key="id")
-    everyone_can_view_all_jobs = []
+    everyone_can_view_all_jobs: list[Any] = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate(this.ids)]:
         everyone_can_view_all_jobs.append(databricks.Permissions(f"everyone_can_view_all_jobs-{range['key']}",
             job_id=range["value"],

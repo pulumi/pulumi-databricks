@@ -317,37 +317,37 @@ export interface MwsVpcEndpointState {
     /**
      * Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
      */
-    accountId?: pulumi.Input<string>;
-    awsAccountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    awsAccountId?: pulumi.Input<string | undefined>;
     /**
      * (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      */
-    awsEndpointServiceId?: pulumi.Input<string>;
+    awsEndpointServiceId?: pulumi.Input<string | undefined>;
     /**
      * ID of configured aws_vpc_endpoint
      */
-    awsVpcEndpointId?: pulumi.Input<string>;
+    awsVpcEndpointId?: pulumi.Input<string | undefined>;
     /**
      * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
      */
-    gcpVpcEndpointInfo?: pulumi.Input<inputs.MwsVpcEndpointGcpVpcEndpointInfo>;
+    gcpVpcEndpointInfo?: pulumi.Input<inputs.MwsVpcEndpointGcpVpcEndpointInfo | undefined>;
     /**
      * Region of AWS VPC
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * (AWS Only) State of VPC Endpoint
      */
-    state?: pulumi.Input<string>;
-    useCase?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
+    useCase?: pulumi.Input<string | undefined>;
     /**
      * Canonical unique identifier of VPC Endpoint in Databricks Account
      */
-    vpcEndpointId?: pulumi.Input<string>;
+    vpcEndpointId?: pulumi.Input<string | undefined>;
     /**
      * Name of VPC Endpoint in Databricks Account
      */
-    vpcEndpointName?: pulumi.Input<string>;
+    vpcEndpointName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -357,33 +357,33 @@ export interface MwsVpcEndpointArgs {
     /**
      * Account Id that could be found in the Accounts Console for [AWS](https://accounts.cloud.databricks.com/) or [GCP](https://accounts.gcp.databricks.com/)
      */
-    accountId?: pulumi.Input<string>;
-    awsAccountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    awsAccountId?: pulumi.Input<string | undefined>;
     /**
      * (AWS Only) The ID of the Databricks endpoint service that this VPC endpoint is connected to. Please find the list of endpoint service IDs for each supported region in the [Databricks PrivateLink documentation](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html)
      */
-    awsEndpointServiceId?: pulumi.Input<string>;
+    awsEndpointServiceId?: pulumi.Input<string | undefined>;
     /**
      * ID of configured aws_vpc_endpoint
      */
-    awsVpcEndpointId?: pulumi.Input<string>;
+    awsVpcEndpointId?: pulumi.Input<string | undefined>;
     /**
      * a block consists of Google Cloud specific information for this PSC endpoint. It has the following fields:
      */
-    gcpVpcEndpointInfo?: pulumi.Input<inputs.MwsVpcEndpointGcpVpcEndpointInfo>;
+    gcpVpcEndpointInfo?: pulumi.Input<inputs.MwsVpcEndpointGcpVpcEndpointInfo | undefined>;
     /**
      * Region of AWS VPC
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * (AWS Only) State of VPC Endpoint
      */
-    state?: pulumi.Input<string>;
-    useCase?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
+    useCase?: pulumi.Input<string | undefined>;
     /**
      * Canonical unique identifier of VPC Endpoint in Databricks Account
      */
-    vpcEndpointId?: pulumi.Input<string>;
+    vpcEndpointId?: pulumi.Input<string | undefined>;
     /**
      * Name of VPC Endpoint in Databricks Account
      */

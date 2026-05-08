@@ -142,16 +142,16 @@ export interface GroupRoleState {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * This is the id of the group resource.
      */
-    groupId?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.GroupRoleProviderConfig>;
+    groupId?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.GroupRoleProviderConfig | undefined>;
     /**
      * Either a role name or the ARN/ID of the instance profile resource.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -161,12 +161,12 @@ export interface GroupRoleArgs {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * This is the id of the group resource.
      */
     groupId: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.GroupRoleProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.GroupRoleProviderConfig | undefined>;
     /**
      * Either a role name or the ARN/ID of the instance profile resource.
      */

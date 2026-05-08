@@ -157,11 +157,11 @@ export interface GetViewsOutputArgs {
     /**
      * set of databricksView full names: *`catalog`.`schema`.`view`*
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetViewsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetViewsProviderConfigArgs | undefined>;
     /**
      * Name of databricks_schema
      */

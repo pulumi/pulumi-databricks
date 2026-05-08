@@ -24,12 +24,12 @@ class MwsLogDeliveryArgs:
                  log_type: pulumi.Input[_builtins.str],
                  output_format: pulumi.Input[_builtins.str],
                  storage_configuration_id: pulumi.Input[_builtins.str],
-                 config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_ids_filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
+                 config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_ids_filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         The set of arguments for constructing a MwsLogDelivery resource.
 
@@ -125,91 +125,91 @@ class MwsLogDeliveryArgs:
 
     @_builtins.property
     @pulumi.getter(name="configId")
-    def config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Databricks log delivery configuration ID.
         """
         return pulumi.get(self, "config_id")
 
     @config_id.setter
-    def config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="configName")
-    def config_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The optional human-readable name of the log delivery configuration. Defaults to empty.
         """
         return pulumi.get(self, "config_name")
 
     @config_name.setter
-    def config_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_name", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryPathPrefix")
-    def delivery_path_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_path_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defaults to empty, which means that logs are delivered to the root of the bucket. The value must be a valid S3 object key. It must not start or end with a slash character.
         """
         return pulumi.get(self, "delivery_path_prefix")
 
     @delivery_path_prefix.setter
-    def delivery_path_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_path_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_path_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryStartTime")
-    def delivery_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The optional start month and year for delivery, specified in YYYY-MM format. Defaults to current year and month. Usage is not available before 2019-03.
         """
         return pulumi.get(self, "delivery_start_time")
 
     @delivery_start_time.setter
-    def delivery_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of log delivery configuration. Set to ENABLED or DISABLED. Defaults to ENABLED. This is the only field you can update.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceIdsFilters")
-    def workspace_ids_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def workspace_ids_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the multitenant version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
         """
         return pulumi.get(self, "workspace_ids_filters")
 
     @workspace_ids_filters.setter
-    def workspace_ids_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def workspace_ids_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "workspace_ids_filters", value)
 
 
 @pulumi.input_type
 class _MwsLogDeliveryState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_ids_filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_ids_filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         Input properties used for looking up and filtering MwsLogDelivery resources.
 
@@ -250,134 +250,134 @@ class _MwsLogDeliveryState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="configId")
-    def config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Databricks log delivery configuration ID.
         """
         return pulumi.get(self, "config_id")
 
     @config_id.setter
-    def config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="configName")
-    def config_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The optional human-readable name of the log delivery configuration. Defaults to empty.
         """
         return pulumi.get(self, "config_name")
 
     @config_name.setter
-    def config_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_name", value)
 
     @_builtins.property
     @pulumi.getter(name="credentialsId")
-    def credentials_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credentials_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID for a Databricks credential configuration that represents the AWS IAM role with policy and trust relationship as described in the main billable usage documentation page.
         """
         return pulumi.get(self, "credentials_id")
 
     @credentials_id.setter
-    def credentials_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credentials_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credentials_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryPathPrefix")
-    def delivery_path_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_path_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defaults to empty, which means that logs are delivered to the root of the bucket. The value must be a valid S3 object key. It must not start or end with a slash character.
         """
         return pulumi.get(self, "delivery_path_prefix")
 
     @delivery_path_prefix.setter
-    def delivery_path_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_path_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_path_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryStartTime")
-    def delivery_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The optional start month and year for delivery, specified in YYYY-MM format. Defaults to current year and month. Usage is not available before 2019-03.
         """
         return pulumi.get(self, "delivery_start_time")
 
     @delivery_start_time.setter
-    def delivery_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="logType")
-    def log_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of log delivery. `BILLABLE_USAGE` and `AUDIT_LOGS` are supported.
         """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
-    def log_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_type", value)
 
     @_builtins.property
     @pulumi.getter(name="outputFormat")
-    def output_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file type of log delivery. Currently `CSV` (for `BILLABLE_USAGE`) and `JSON` (for `AUDIT_LOGS`) are supported.
         """
         return pulumi.get(self, "output_format")
 
     @output_format.setter
-    def output_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_format", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of log delivery configuration. Set to ENABLED or DISABLED. Defaults to ENABLED. This is the only field you can update.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storageConfigurationId")
-    def storage_configuration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_configuration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID for a Databricks storage configuration that represents the S3 bucket with bucket policy as described in the main billable usage documentation page.
         """
         return pulumi.get(self, "storage_configuration_id")
 
     @storage_configuration_id.setter
-    def storage_configuration_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_configuration_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_configuration_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceIdsFilters")
-    def workspace_ids_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def workspace_ids_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the multitenant version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
         """
         return pulumi.get(self, "workspace_ids_filters")
 
     @workspace_ids_filters.setter
-    def workspace_ids_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def workspace_ids_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "workspace_ids_filters", value)
 
 
@@ -387,17 +387,17 @@ class MwsLogDelivery(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_ids_filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_ids_filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  __props__=None):
         """
         This resource configures the delivery of the two supported log types from Databricks workspaces: [billable usage logs](https://docs.databricks.com/administration-guide/account-settings/billable-usage-delivery.html) and [audit logs](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html).
@@ -702,17 +702,17 @@ class MwsLogDelivery(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_ids_filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_ids_filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -753,17 +753,17 @@ class MwsLogDelivery(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            config_id: Optional[pulumi.Input[_builtins.str]] = None,
-            config_name: Optional[pulumi.Input[_builtins.str]] = None,
-            credentials_id: Optional[pulumi.Input[_builtins.str]] = None,
-            delivery_path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            delivery_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            log_type: Optional[pulumi.Input[_builtins.str]] = None,
-            output_format: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_ids_filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None) -> 'MwsLogDelivery':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_name: pulumi.Input[Optional[_builtins.str]] = None,
+            credentials_id: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            log_type: pulumi.Input[Optional[_builtins.str]] = None,
+            output_format: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_ids_filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None) -> 'MwsLogDelivery':
         """
         Get an existing MwsLogDelivery resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

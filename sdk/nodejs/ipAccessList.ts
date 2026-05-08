@@ -142,23 +142,23 @@ export interface IpAccessListState {
     /**
      * Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * A string list of IP addresses and CIDR ranges.
      */
-    ipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    ipAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * This is the display name for the given IP ACL List.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * Can only be "ALLOW" or "BLOCK".
      */
-    listType?: pulumi.Input<string>;
+    listType?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.IpAccessListProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.IpAccessListProviderConfig | undefined>;
 }
 
 /**
@@ -168,7 +168,7 @@ export interface IpAccessListArgs {
     /**
      * Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * A string list of IP addresses and CIDR ranges.
      */
@@ -184,5 +184,5 @@ export interface IpAccessListArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.IpAccessListProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.IpAccessListProviderConfig | undefined>;
 }

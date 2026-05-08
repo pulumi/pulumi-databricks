@@ -25,10 +25,10 @@ class KnowledgeAssistantKnowledgeSourceArgs:
                  display_name: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
                  source_type: pulumi.Input[_builtins.str],
-                 file_table: Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceFileTableArgs']] = None,
-                 files: Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceFilesArgs']] = None,
-                 index: Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceIndexArgs']] = None,
-                 provider_config: Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceProviderConfigArgs']] = None):
+                 file_table: pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceFileTableArgs']] = None,
+                 files: pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceFilesArgs']] = None,
+                 index: pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceIndexArgs']] = None,
+                 provider_config: pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a KnowledgeAssistantKnowledgeSource resource.
 
@@ -115,59 +115,59 @@ class KnowledgeAssistantKnowledgeSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="fileTable")
-    def file_table(self) -> Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceFileTableArgs']]:
+    def file_table(self) -> pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceFileTableArgs']]:
         return pulumi.get(self, "file_table")
 
     @file_table.setter
-    def file_table(self, value: Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceFileTableArgs']]):
+    def file_table(self, value: pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceFileTableArgs']]):
         pulumi.set(self, "file_table", value)
 
     @_builtins.property
     @pulumi.getter
-    def files(self) -> Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceFilesArgs']]:
+    def files(self) -> pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceFilesArgs']]:
         return pulumi.get(self, "files")
 
     @files.setter
-    def files(self, value: Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceFilesArgs']]):
+    def files(self, value: pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceFilesArgs']]):
         pulumi.set(self, "files", value)
 
     @_builtins.property
     @pulumi.getter
-    def index(self) -> Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceIndexArgs']]:
+    def index(self) -> pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceIndexArgs']]:
         return pulumi.get(self, "index")
 
     @index.setter
-    def index(self, value: Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceIndexArgs']]):
+    def index(self, value: pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceIndexArgs']]):
         pulumi.set(self, "index", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _KnowledgeAssistantKnowledgeSourceState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_table: Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceFileTableArgs']] = None,
-                 files: Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceFilesArgs']] = None,
-                 index: Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceIndexArgs']] = None,
-                 knowledge_cutoff_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceProviderConfigArgs']] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_table: pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceFileTableArgs']] = None,
+                 files: pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceFilesArgs']] = None,
+                 index: pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceIndexArgs']] = None,
+                 knowledge_cutoff_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceProviderConfigArgs']] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KnowledgeAssistantKnowledgeSource resources.
 
@@ -216,19 +216,19 @@ class _KnowledgeAssistantKnowledgeSourceState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Timestamp when this knowledge source was created
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the knowledge source.
         Required when creating a Knowledge Source.
@@ -237,12 +237,12 @@ class _KnowledgeAssistantKnowledgeSourceState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable display name of the knowledge source.
         Required when creating a Knowledge Source.
@@ -251,51 +251,51 @@ class _KnowledgeAssistantKnowledgeSourceState:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="fileTable")
-    def file_table(self) -> Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceFileTableArgs']]:
+    def file_table(self) -> pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceFileTableArgs']]:
         return pulumi.get(self, "file_table")
 
     @file_table.setter
-    def file_table(self, value: Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceFileTableArgs']]):
+    def file_table(self, value: pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceFileTableArgs']]):
         pulumi.set(self, "file_table", value)
 
     @_builtins.property
     @pulumi.getter
-    def files(self) -> Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceFilesArgs']]:
+    def files(self) -> pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceFilesArgs']]:
         return pulumi.get(self, "files")
 
     @files.setter
-    def files(self, value: Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceFilesArgs']]):
+    def files(self, value: pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceFilesArgs']]):
         pulumi.set(self, "files", value)
 
     @_builtins.property
     @pulumi.getter
-    def index(self) -> Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceIndexArgs']]:
+    def index(self) -> pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceIndexArgs']]:
         return pulumi.get(self, "index")
 
     @index.setter
-    def index(self, value: Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceIndexArgs']]):
+    def index(self, value: pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceIndexArgs']]):
         pulumi.set(self, "index", value)
 
     @_builtins.property
     @pulumi.getter(name="knowledgeCutoffTime")
-    def knowledge_cutoff_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def knowledge_cutoff_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Timestamp representing the cutoff before which content in this knowledge source is being ingested
         """
         return pulumi.get(self, "knowledge_cutoff_time")
 
     @knowledge_cutoff_time.setter
-    def knowledge_cutoff_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def knowledge_cutoff_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "knowledge_cutoff_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Full resource name:
         knowledge-assistants/{knowledge_assistant_id}/knowledge-sources/{knowledge_source_id}
@@ -303,12 +303,12 @@ class _KnowledgeAssistantKnowledgeSourceState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Parent resource where this source will be created.
         Format: knowledge-assistants/{knowledge_assistant_id}
@@ -316,24 +316,24 @@ class _KnowledgeAssistantKnowledgeSourceState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['KnowledgeAssistantKnowledgeSourceProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['KnowledgeAssistantKnowledgeSourceProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the source: "index", "files", or "file_table".
         Required when creating a Knowledge Source.
@@ -342,19 +342,19 @@ class _KnowledgeAssistantKnowledgeSourceState:
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Possible values are: `FAILED_UPDATE`, `UPDATED`, `UPDATING`
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -364,14 +364,14 @@ class KnowledgeAssistantKnowledgeSource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_table: Optional[pulumi.Input[Union['KnowledgeAssistantKnowledgeSourceFileTableArgs', 'KnowledgeAssistantKnowledgeSourceFileTableArgsDict']]] = None,
-                 files: Optional[pulumi.Input[Union['KnowledgeAssistantKnowledgeSourceFilesArgs', 'KnowledgeAssistantKnowledgeSourceFilesArgsDict']]] = None,
-                 index: Optional[pulumi.Input[Union['KnowledgeAssistantKnowledgeSourceIndexArgs', 'KnowledgeAssistantKnowledgeSourceIndexArgsDict']]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['KnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'KnowledgeAssistantKnowledgeSourceProviderConfigArgsDict']]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_table: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFileTableArgs', 'KnowledgeAssistantKnowledgeSourceFileTableArgsDict']]] = None,
+                 files: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFilesArgs', 'KnowledgeAssistantKnowledgeSourceFilesArgsDict']]] = None,
+                 index: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceIndexArgs', 'KnowledgeAssistantKnowledgeSourceIndexArgsDict']]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'KnowledgeAssistantKnowledgeSourceProviderConfigArgsDict']]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -417,14 +417,14 @@ class KnowledgeAssistantKnowledgeSource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_table: Optional[pulumi.Input[Union['KnowledgeAssistantKnowledgeSourceFileTableArgs', 'KnowledgeAssistantKnowledgeSourceFileTableArgsDict']]] = None,
-                 files: Optional[pulumi.Input[Union['KnowledgeAssistantKnowledgeSourceFilesArgs', 'KnowledgeAssistantKnowledgeSourceFilesArgsDict']]] = None,
-                 index: Optional[pulumi.Input[Union['KnowledgeAssistantKnowledgeSourceIndexArgs', 'KnowledgeAssistantKnowledgeSourceIndexArgsDict']]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['KnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'KnowledgeAssistantKnowledgeSourceProviderConfigArgsDict']]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_table: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFileTableArgs', 'KnowledgeAssistantKnowledgeSourceFileTableArgsDict']]] = None,
+                 files: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFilesArgs', 'KnowledgeAssistantKnowledgeSourceFilesArgsDict']]] = None,
+                 index: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceIndexArgs', 'KnowledgeAssistantKnowledgeSourceIndexArgsDict']]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'KnowledgeAssistantKnowledgeSourceProviderConfigArgsDict']]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -464,18 +464,18 @@ class KnowledgeAssistantKnowledgeSource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            file_table: Optional[pulumi.Input[Union['KnowledgeAssistantKnowledgeSourceFileTableArgs', 'KnowledgeAssistantKnowledgeSourceFileTableArgsDict']]] = None,
-            files: Optional[pulumi.Input[Union['KnowledgeAssistantKnowledgeSourceFilesArgs', 'KnowledgeAssistantKnowledgeSourceFilesArgsDict']]] = None,
-            index: Optional[pulumi.Input[Union['KnowledgeAssistantKnowledgeSourceIndexArgs', 'KnowledgeAssistantKnowledgeSourceIndexArgsDict']]] = None,
-            knowledge_cutoff_time: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['KnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'KnowledgeAssistantKnowledgeSourceProviderConfigArgsDict']]] = None,
-            source_type: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'KnowledgeAssistantKnowledgeSource':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            file_table: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFileTableArgs', 'KnowledgeAssistantKnowledgeSourceFileTableArgsDict']]] = None,
+            files: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceFilesArgs', 'KnowledgeAssistantKnowledgeSourceFilesArgsDict']]] = None,
+            index: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceIndexArgs', 'KnowledgeAssistantKnowledgeSourceIndexArgsDict']]] = None,
+            knowledge_cutoff_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['KnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'KnowledgeAssistantKnowledgeSourceProviderConfigArgsDict']]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'KnowledgeAssistantKnowledgeSource':
         """
         Get an existing KnowledgeAssistantKnowledgeSource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -101,7 +101,7 @@ def get_metastores(ids: Optional[Mapping[str, _builtins.str]] = None,
     return AwaitableGetMetastoresResult(
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'))
-def get_metastores_output(ids: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_metastores_output(ids: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetastoresResult]:
     """
     Retrieves a mapping of name to id of Metastore objects, that were created by Pulumi or manually, so that special handling could be applied.

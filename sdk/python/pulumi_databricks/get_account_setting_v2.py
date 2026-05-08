@@ -292,7 +292,7 @@ def get_account_setting_v2(name: Optional[_builtins.str] = None,
         personal_compute=pulumi.get(__ret__, 'personal_compute'),
         restrict_workspace_admins=pulumi.get(__ret__, 'restrict_workspace_admins'),
         string_val=pulumi.get(__ret__, 'string_val'))
-def get_account_setting_v2_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_setting_v2_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountSettingV2Result]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)

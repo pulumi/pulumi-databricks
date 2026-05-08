@@ -231,50 +231,50 @@ export interface AlertV2State {
     /**
      * (string) - The timestamp indicating when the alert was created
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Custom description for the alert. support mustache template
      */
-    customDescription?: pulumi.Input<string>;
+    customDescription?: pulumi.Input<string | undefined>;
     /**
      * Custom summary for the alert. support mustache template
      */
-    customSummary?: pulumi.Input<string>;
+    customSummary?: pulumi.Input<string | undefined>;
     /**
      * The display name of the alert
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * (AlertV2RunAs) - The actual identity that will be used to execute the alert.
      * This is an output-only field that shows the resolved run-as identity after applying
      * permissions and defaults
      */
-    effectiveRunAs?: pulumi.Input<inputs.AlertV2EffectiveRunAs>;
-    evaluation?: pulumi.Input<inputs.AlertV2Evaluation>;
+    effectiveRunAs?: pulumi.Input<inputs.AlertV2EffectiveRunAs | undefined>;
+    evaluation?: pulumi.Input<inputs.AlertV2Evaluation | undefined>;
     /**
      * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
      */
-    lifecycleState?: pulumi.Input<string>;
+    lifecycleState?: pulumi.Input<string | undefined>;
     /**
      * (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
      */
-    ownerUserName?: pulumi.Input<string>;
+    ownerUserName?: pulumi.Input<string | undefined>;
     /**
      * The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      */
-    parentPath?: pulumi.Input<string>;
+    parentPath?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.AlertV2ProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.AlertV2ProviderConfig | undefined>;
     /**
      * Purge the resource on delete
      */
-    purgeOnDelete?: pulumi.Input<boolean>;
+    purgeOnDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Text of the query to be run
      */
-    queryText?: pulumi.Input<string>;
+    queryText?: pulumi.Input<string | undefined>;
     /**
      * Specifies the identity that will be used to run the alert.
      * This field allows you to configure alerts to run as a specific user or service principal.
@@ -282,22 +282,22 @@ export interface AlertV2State {
      * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
      * If not specified, the alert will run as the request user
      */
-    runAs?: pulumi.Input<inputs.AlertV2RunAs>;
+    runAs?: pulumi.Input<inputs.AlertV2RunAs | undefined>;
     /**
      * The run as username or application ID of service principal.
      * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
      * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      */
-    runAsUserName?: pulumi.Input<string>;
-    schedule?: pulumi.Input<inputs.AlertV2Schedule>;
+    runAsUserName?: pulumi.Input<string | undefined>;
+    schedule?: pulumi.Input<inputs.AlertV2Schedule | undefined>;
     /**
      * (string) - The timestamp indicating when the alert was updated
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * ID of the SQL warehouse attached to the alert
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -307,11 +307,11 @@ export interface AlertV2Args {
     /**
      * Custom description for the alert. support mustache template
      */
-    customDescription?: pulumi.Input<string>;
+    customDescription?: pulumi.Input<string | undefined>;
     /**
      * Custom summary for the alert. support mustache template
      */
-    customSummary?: pulumi.Input<string>;
+    customSummary?: pulumi.Input<string | undefined>;
     /**
      * The display name of the alert
      */
@@ -320,15 +320,15 @@ export interface AlertV2Args {
     /**
      * The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
      */
-    parentPath?: pulumi.Input<string>;
+    parentPath?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.AlertV2ProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.AlertV2ProviderConfig | undefined>;
     /**
      * Purge the resource on delete
      */
-    purgeOnDelete?: pulumi.Input<boolean>;
+    purgeOnDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Text of the query to be run
      */
@@ -340,13 +340,13 @@ export interface AlertV2Args {
      * - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
      * If not specified, the alert will run as the request user
      */
-    runAs?: pulumi.Input<inputs.AlertV2RunAs>;
+    runAs?: pulumi.Input<inputs.AlertV2RunAs | undefined>;
     /**
      * The run as username or application ID of service principal.
      * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
      * Deprecated: Use `runAs` field instead. This field will be removed in a future release
      */
-    runAsUserName?: pulumi.Input<string>;
+    runAsUserName?: pulumi.Input<string | undefined>;
     schedule: pulumi.Input<inputs.AlertV2Schedule>;
     /**
      * ID of the SQL warehouse attached to the alert

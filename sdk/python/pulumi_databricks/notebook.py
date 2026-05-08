@@ -22,14 +22,14 @@ __all__ = ['NotebookArgs', 'Notebook']
 class NotebookArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
-                 content_base64: Optional[pulumi.Input[_builtins.str]] = None,
-                 format: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['NotebookProviderConfigArgs']] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None):
+                 content_base64: pulumi.Input[Optional[_builtins.str]] = None,
+                 format: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['NotebookProviderConfigArgs']] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Notebook resource.
 
@@ -75,107 +75,107 @@ class NotebookArgs:
 
     @_builtins.property
     @pulumi.getter(name="contentBase64")
-    def content_base64(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_base64(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
         """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
-    def content_base64(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_base64(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_base64", value)
 
     @_builtins.property
     @pulumi.getter
-    def format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def format(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "format")
 
     @format.setter
-    def format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "format", value)
 
     @_builtins.property
     @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         One of `SCALA`, `PYTHON`, `SQL`, `R`.
         """
         return pulumi.get(self, "language")
 
     @language.setter
-    def language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language", value)
 
     @_builtins.property
     @pulumi.getter
-    def md5(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def md5(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "md5")
 
     @md5.setter
-    def md5(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def md5(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "md5", value)
 
     @_builtins.property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def object_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Unique identifier for a NOTEBOOK
         """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def object_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="objectType")
     @_utilities.deprecated("""Always is a notebook""")
-    def object_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "object_type")
 
     @object_type.setter
-    def object_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_type", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['NotebookProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['NotebookProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['NotebookProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['NotebookProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
 
 @pulumi.input_type
 class _NotebookState:
     def __init__(__self__, *,
-                 content_base64: Optional[pulumi.Input[_builtins.str]] = None,
-                 format: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['NotebookProviderConfigArgs']] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 content_base64: pulumi.Input[Optional[_builtins.str]] = None,
+                 format: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['NotebookProviderConfigArgs']] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Notebook resources.
 
@@ -216,126 +216,126 @@ class _NotebookState:
 
     @_builtins.property
     @pulumi.getter(name="contentBase64")
-    def content_base64(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_base64(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base64-encoded notebook source code. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
         """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
-    def content_base64(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_base64(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_base64", value)
 
     @_builtins.property
     @pulumi.getter
-    def format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def format(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "format")
 
     @format.setter
-    def format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "format", value)
 
     @_builtins.property
     @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         One of `SCALA`, `PYTHON`, `SQL`, `R`.
         """
         return pulumi.get(self, "language")
 
     @language.setter
-    def language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language", value)
 
     @_builtins.property
     @pulumi.getter
-    def md5(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def md5(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "md5")
 
     @md5.setter
-    def md5(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def md5(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "md5", value)
 
     @_builtins.property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def object_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Unique identifier for a NOTEBOOK
         """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def object_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="objectType")
     @_utilities.deprecated("""Always is a notebook""")
-    def object_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "object_type")
 
     @object_type.setter
-    def object_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['NotebookProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['NotebookProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['NotebookProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['NotebookProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to notebook in source code format on local filesystem. Conflicts with `content_base64`.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Routable URL of the notebook
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="workspacePath")
-    def workspace_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         return pulumi.get(self, "workspace_path")
 
     @workspace_path.setter
-    def workspace_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_path", value)
 
 
@@ -345,15 +345,15 @@ class Notebook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content_base64: Optional[pulumi.Input[_builtins.str]] = None,
-                 format: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict']]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
+                 content_base64: pulumi.Input[Optional[_builtins.str]] = None,
+                 format: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict']]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with Notebook and get_notebook_paths data sources.
@@ -397,15 +397,15 @@ class Notebook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content_base64: Optional[pulumi.Input[_builtins.str]] = None,
-                 format: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict']]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
+                 content_base64: pulumi.Input[Optional[_builtins.str]] = None,
+                 format: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict']]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -438,17 +438,17 @@ class Notebook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            content_base64: Optional[pulumi.Input[_builtins.str]] = None,
-            format: Optional[pulumi.Input[_builtins.str]] = None,
-            language: Optional[pulumi.Input[_builtins.str]] = None,
-            md5: Optional[pulumi.Input[_builtins.str]] = None,
-            object_id: Optional[pulumi.Input[_builtins.int]] = None,
-            object_type: Optional[pulumi.Input[_builtins.str]] = None,
-            path: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict']]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_path: Optional[pulumi.Input[_builtins.str]] = None) -> 'Notebook':
+            content_base64: pulumi.Input[Optional[_builtins.str]] = None,
+            format: pulumi.Input[Optional[_builtins.str]] = None,
+            language: pulumi.Input[Optional[_builtins.str]] = None,
+            md5: pulumi.Input[Optional[_builtins.str]] = None,
+            object_id: pulumi.Input[Optional[_builtins.int]] = None,
+            object_type: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['NotebookProviderConfigArgs', 'NotebookProviderConfigArgsDict']]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_path: pulumi.Input[Optional[_builtins.str]] = None) -> 'Notebook':
         """
         Get an existing Notebook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

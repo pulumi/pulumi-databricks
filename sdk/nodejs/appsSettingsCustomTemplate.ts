@@ -213,36 +213,36 @@ export interface AppsSettingsCustomTemplateState {
     /**
      * (string)
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * The description of the template
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Git provider of the template
      */
-    gitProvider?: pulumi.Input<string>;
+    gitProvider?: pulumi.Input<string | undefined>;
     /**
      * The Git repository URL that the template resides in
      */
-    gitRepo?: pulumi.Input<string>;
+    gitRepo?: pulumi.Input<string | undefined>;
     /**
      * The manifest of the template. It defines fields and default values when installing the template
      */
-    manifest?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifest>;
+    manifest?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifest | undefined>;
     /**
      * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
      * It must be unique within the workspace
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The path to the template within the Git repository
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.AppsSettingsCustomTemplateProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.AppsSettingsCustomTemplateProviderConfig | undefined>;
 }
 
 /**
@@ -252,7 +252,7 @@ export interface AppsSettingsCustomTemplateArgs {
     /**
      * The description of the template
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Git provider of the template
      */
@@ -269,7 +269,7 @@ export interface AppsSettingsCustomTemplateArgs {
      * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
      * It must be unique within the workspace
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The path to the template within the Git repository
      */
@@ -277,5 +277,5 @@ export interface AppsSettingsCustomTemplateArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.AppsSettingsCustomTemplateProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.AppsSettingsCustomTemplateProviderConfig | undefined>;
 }

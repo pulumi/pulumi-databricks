@@ -171,23 +171,23 @@ export interface OboTokenState {
     /**
      * Application ID of databricks.ServicePrincipal to create a PAT token for.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Comment that describes the purpose of the token.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      */
-    lifetimeSeconds?: pulumi.Input<number>;
+    lifetimeSeconds?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.OboTokenProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.OboTokenProviderConfig | undefined>;
     /**
      * **Sensitive** value of the newly-created token.
      */
-    tokenValue?: pulumi.Input<string>;
+    tokenValue?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -201,13 +201,13 @@ export interface OboTokenArgs {
     /**
      * Comment that describes the purpose of the token.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
      */
-    lifetimeSeconds?: pulumi.Input<number>;
+    lifetimeSeconds?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.OboTokenProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.OboTokenProviderConfig | undefined>;
 }

@@ -58,8 +58,8 @@ class MwsNccBindingArgs:
 @pulumi.input_type
 class _MwsNccBindingState:
     def __init__(__self__, *,
-                 network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsNccBinding resources.
 
@@ -73,26 +73,26 @@ class _MwsNccBindingState:
 
     @_builtins.property
     @pulumi.getter(name="networkConnectivityConfigId")
-    def network_connectivity_config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_connectivity_config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier of Network Connectivity Config in Databricks Account.
         """
         return pulumi.get(self, "network_connectivity_config_id")
 
     @network_connectivity_config_id.setter
-    def network_connectivity_config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_connectivity_config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_connectivity_config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_id", value)
 
 
@@ -102,8 +102,8 @@ class MwsNccBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Allows you to attach a Network Connectivity Config object to a MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/serverless-firewall).
@@ -203,8 +203,8 @@ class MwsNccBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -230,8 +230,8 @@ class MwsNccBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'MwsNccBinding':
+            network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'MwsNccBinding':
         """
         Get an existing MwsNccBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var zones = Databricks.Index.GetZones.Invoke();
+        ///     var zones = Databricks.GetZones.Invoke();
         /// 
         /// });
         /// ```
@@ -49,7 +49,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var zones = Databricks.Index.GetZones.Invoke();
+        ///     var zones = Databricks.GetZones.Invoke();
         /// 
         /// });
         /// ```
@@ -72,7 +72,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var zones = Databricks.Index.GetZones.Invoke();
+        ///     var zones = Databricks.GetZones.Invoke();
         /// 
         /// });
         /// ```

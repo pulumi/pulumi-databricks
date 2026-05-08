@@ -175,8 +175,8 @@ def get_postgres_database(name: Optional[_builtins.str] = None,
         spec=pulumi.get(__ret__, 'spec'),
         status=pulumi.get(__ret__, 'status'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_postgres_database_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                 provider_config: Optional[pulumi.Input[Optional[Union['GetPostgresDatabaseProviderConfigArgs', 'GetPostgresDatabaseProviderConfigArgsDict']]]] = None,
+def get_postgres_database_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresDatabaseProviderConfigArgs', 'GetPostgresDatabaseProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresDatabaseResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)

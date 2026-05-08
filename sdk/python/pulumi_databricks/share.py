@@ -21,12 +21,12 @@ __all__ = ['ShareArgs', 'Share']
 @pulumi.input_type
 class ShareArgs:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 objects: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['ShareProviderConfigArgs']] = None,
-                 storage_root: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 objects: pulumi.Input[Optional[Sequence[pulumi.Input['ShareObjectArgs']]]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['ShareProviderConfigArgs']] = None,
+                 storage_root: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Share resource.
 
@@ -50,86 +50,86 @@ class ShareArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-supplied free-form text.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of share. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]]:
+    def objects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ShareObjectArgs']]]]:
         return pulumi.get(self, "objects")
 
     @objects.setter
-    def objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]]):
+    def objects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ShareObjectArgs']]]]):
         pulumi.set(self, "objects", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User name/group name/sp application_id of the share owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['ShareProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['ShareProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['ShareProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['ShareProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="storageRoot")
-    def storage_root(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_root(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_root")
 
     @storage_root.setter
-    def storage_root(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_root(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_root", value)
 
 
 @pulumi.input_type
 class _ShareState:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 objects: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['ShareProviderConfigArgs']] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_by: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 objects: pulumi.Input[Optional[Sequence[pulumi.Input['ShareObjectArgs']]]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['ShareProviderConfigArgs']] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_root: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_by: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Share resources.
 
@@ -167,128 +167,128 @@ class _ShareState:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-supplied free-form text.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time when the share was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The principal that created the share.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveOwner")
-    def effective_owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "effective_owner")
 
     @effective_owner.setter
-    def effective_owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_owner", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of share. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]]:
+    def objects(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ShareObjectArgs']]]]:
         return pulumi.get(self, "objects")
 
     @objects.setter
-    def objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ShareObjectArgs']]]]):
+    def objects(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ShareObjectArgs']]]]):
         pulumi.set(self, "objects", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User name/group name/sp application_id of the share owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['ShareProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['ShareProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['ShareProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['ShareProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="storageLocation")
-    def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
-    def storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_location", value)
 
     @_builtins.property
     @pulumi.getter(name="storageRoot")
-    def storage_root(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_root(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_root")
 
     @storage_root.setter
-    def storage_root(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_root(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_root", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedBy")
-    def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
-    def updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_by", value)
 
 
@@ -298,12 +298,12 @@ class Share(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 objects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict']]]]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['ShareProviderConfigArgs', 'ShareProviderConfigArgsDict']]] = None,
-                 storage_root: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 objects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict']]]]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ShareProviderConfigArgs', 'ShareProviderConfigArgsDict']]] = None,
+                 storage_root: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         In Delta Sharing, a share is a read-only collection of tables and table partitions that a provider wants to share with one or more recipients. If your recipient uses a Unity Catalog-enabled Databricks workspace, you can also include notebook files, views (including dynamic views that restrict access at the row and column level), Unity Catalog volumes, and Unity Catalog models in a share.
@@ -325,7 +325,7 @@ class Share(pulumi.CustomResource):
         things = databricks.get_tables(catalog_name="sandbox",
             schema_name="things")
         some = databricks.Share("some",
-            objects=[{"key": k, "value": v} for k, v in things.ids.items()].apply(lambda entries: [databricks.ShareObjectArgs(
+            objects=[{"key": k, "value": v} for k, v in sorted(things.ids.items())].apply(lambda entries: [databricks.ShareObjectArgs(
                 name=entry["value"],
                 data_object_type="TABLE",
             ) for entry in entries]),
@@ -454,7 +454,7 @@ class Share(pulumi.CustomResource):
         things = databricks.get_tables(catalog_name="sandbox",
             schema_name="things")
         some = databricks.Share("some",
-            objects=[{"key": k, "value": v} for k, v in things.ids.items()].apply(lambda entries: [databricks.ShareObjectArgs(
+            objects=[{"key": k, "value": v} for k, v in sorted(things.ids.items())].apply(lambda entries: [databricks.ShareObjectArgs(
                 name=entry["value"],
                 data_object_type="TABLE",
             ) for entry in entries]),
@@ -565,12 +565,12 @@ class Share(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 objects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict']]]]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['ShareProviderConfigArgs', 'ShareProviderConfigArgsDict']]] = None,
-                 storage_root: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 objects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict']]]]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ShareProviderConfigArgs', 'ShareProviderConfigArgsDict']]] = None,
+                 storage_root: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -602,18 +602,18 @@ class Share(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.int]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_owner: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            objects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict']]]]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['ShareProviderConfigArgs', 'ShareProviderConfigArgsDict']]] = None,
-            storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_root: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_by: Optional[pulumi.Input[_builtins.str]] = None) -> 'Share':
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_owner: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            objects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareObjectArgs', 'ShareObjectArgsDict']]]]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['ShareProviderConfigArgs', 'ShareProviderConfigArgsDict']]] = None,
+            storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_root: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> 'Share':
         """
         Get an existing Share resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

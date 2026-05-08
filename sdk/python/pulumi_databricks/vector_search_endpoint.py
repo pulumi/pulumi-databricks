@@ -22,10 +22,10 @@ __all__ = ['VectorSearchEndpointArgs', 'VectorSearchEndpoint']
 class VectorSearchEndpointArgs:
     def __init__(__self__, *,
                  endpoint_type: pulumi.Input[_builtins.str],
-                 budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']] = None,
-                 scaling_info: Optional[pulumi.Input['VectorSearchEndpointScalingInfoArgs']] = None):
+                 budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['VectorSearchEndpointProviderConfigArgs']] = None,
+                 scaling_info: pulumi.Input[Optional['VectorSearchEndpointScalingInfoArgs']] = None):
         """
         The set of arguments for constructing a VectorSearchEndpoint resource.
 
@@ -58,66 +58,66 @@ class VectorSearchEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="budgetPolicyId")
-    def budget_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def budget_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Budget Policy ID set for this resource.
         """
         return pulumi.get(self, "budget_policy_id")
 
     @budget_policy_id.setter
-    def budget_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def budget_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "budget_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['VectorSearchEndpointProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['VectorSearchEndpointProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingInfo")
-    def scaling_info(self) -> Optional[pulumi.Input['VectorSearchEndpointScalingInfoArgs']]:
+    def scaling_info(self) -> pulumi.Input[Optional['VectorSearchEndpointScalingInfoArgs']]:
         return pulumi.get(self, "scaling_info")
 
     @scaling_info.setter
-    def scaling_info(self, value: Optional[pulumi.Input['VectorSearchEndpointScalingInfoArgs']]):
+    def scaling_info(self, value: pulumi.Input[Optional['VectorSearchEndpointScalingInfoArgs']]):
         pulumi.set(self, "scaling_info", value)
 
 
 @pulumi.input_type
 class _VectorSearchEndpointState:
     def __init__(__self__, *,
-                 budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_timestamp: Optional[pulumi.Input[_builtins.int]] = None,
-                 creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchEndpointEndpointStatusArgs']]]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_updated_timestamp: Optional[pulumi.Input[_builtins.int]] = None,
-                 last_updated_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 num_indexes: Optional[pulumi.Input[_builtins.int]] = None,
-                 provider_config: Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']] = None,
-                 scaling_info: Optional[pulumi.Input['VectorSearchEndpointScalingInfoArgs']] = None):
+                 budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
+                 creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['VectorSearchEndpointEndpointStatusArgs']]]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_updated_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
+                 last_updated_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_indexes: pulumi.Input[Optional[_builtins.int]] = None,
+                 provider_config: pulumi.Input[Optional['VectorSearchEndpointProviderConfigArgs']] = None,
+                 scaling_info: pulumi.Input[Optional['VectorSearchEndpointScalingInfoArgs']] = None):
         """
         Input properties used for looking up and filtering VectorSearchEndpoint resources.
 
@@ -163,155 +163,155 @@ class _VectorSearchEndpointState:
 
     @_builtins.property
     @pulumi.getter(name="budgetPolicyId")
-    def budget_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def budget_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Budget Policy ID set for this resource.
         """
         return pulumi.get(self, "budget_policy_id")
 
     @budget_policy_id.setter
-    def budget_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def budget_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "budget_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
-    def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_timestamp(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp of endpoint creation (milliseconds).
         """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
-    def creation_timestamp(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creator of the endpoint.
         """
         return pulumi.get(self, "creator")
 
     @creator.setter
-    def creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveBudgetPolicyId")
-    def effective_budget_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_budget_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effective budget policy ID.
         """
         return pulumi.get(self, "effective_budget_policy_id")
 
     @effective_budget_policy_id.setter
-    def effective_budget_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_budget_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_budget_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointId")
-    def endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique internal identifier of the endpoint (UUID).
         """
         return pulumi.get(self, "endpoint_id")
 
     @endpoint_id.setter
-    def endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointStatuses")
-    def endpoint_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchEndpointEndpointStatusArgs']]]]:
+    def endpoint_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VectorSearchEndpointEndpointStatusArgs']]]]:
         """
         Object describing the current status of the endpoint consisting of the following fields:
         """
         return pulumi.get(self, "endpoint_statuses")
 
     @endpoint_statuses.setter
-    def endpoint_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VectorSearchEndpointEndpointStatusArgs']]]]):
+    def endpoint_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VectorSearchEndpointEndpointStatusArgs']]]]):
         pulumi.set(self, "endpoint_statuses", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
         """
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUpdatedTimestamp")
-    def last_updated_timestamp(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last_updated_timestamp(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp of the last update to the endpoint (milliseconds).
         """
         return pulumi.get(self, "last_updated_timestamp")
 
     @last_updated_timestamp.setter
-    def last_updated_timestamp(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last_updated_timestamp(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last_updated_timestamp", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUpdatedUser")
-    def last_updated_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_updated_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User who last updated the endpoint.
         """
         return pulumi.get(self, "last_updated_user")
 
     @last_updated_user.setter
-    def last_updated_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_updated_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_updated_user", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="numIndexes")
-    def num_indexes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_indexes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of indexes on the endpoint.
         """
         return pulumi.get(self, "num_indexes")
 
     @num_indexes.setter
-    def num_indexes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_indexes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_indexes", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['VectorSearchEndpointProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['VectorSearchEndpointProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['VectorSearchEndpointProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingInfo")
-    def scaling_info(self) -> Optional[pulumi.Input['VectorSearchEndpointScalingInfoArgs']]:
+    def scaling_info(self) -> pulumi.Input[Optional['VectorSearchEndpointScalingInfoArgs']]:
         return pulumi.get(self, "scaling_info")
 
     @scaling_info.setter
-    def scaling_info(self, value: Optional[pulumi.Input['VectorSearchEndpointScalingInfoArgs']]):
+    def scaling_info(self, value: pulumi.Input[Optional['VectorSearchEndpointScalingInfoArgs']]):
         pulumi.set(self, "scaling_info", value)
 
 
@@ -321,11 +321,11 @@ class VectorSearchEndpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']]] = None,
-                 scaling_info: Optional[pulumi.Input[Union['VectorSearchEndpointScalingInfoArgs', 'VectorSearchEndpointScalingInfoArgsDict']]] = None,
+                 budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']]] = None,
+                 scaling_info: pulumi.Input[Optional[Union['VectorSearchEndpointScalingInfoArgs', 'VectorSearchEndpointScalingInfoArgsDict']]] = None,
                  __props__=None):
         """
         This resource allows you to create [Mosaic AI Vector Search Endpoint](https://docs.databricks.com/en/generative-ai/vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Endpoint is used to create and access vector search indexes.
@@ -389,11 +389,11 @@ class VectorSearchEndpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']]] = None,
-                 scaling_info: Optional[pulumi.Input[Union['VectorSearchEndpointScalingInfoArgs', 'VectorSearchEndpointScalingInfoArgsDict']]] = None,
+                 budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']]] = None,
+                 scaling_info: pulumi.Input[Optional[Union['VectorSearchEndpointScalingInfoArgs', 'VectorSearchEndpointScalingInfoArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -428,19 +428,19 @@ class VectorSearchEndpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_timestamp: Optional[pulumi.Input[_builtins.int]] = None,
-            creator: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VectorSearchEndpointEndpointStatusArgs', 'VectorSearchEndpointEndpointStatusArgsDict']]]]] = None,
-            endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-            last_updated_timestamp: Optional[pulumi.Input[_builtins.int]] = None,
-            last_updated_user: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            num_indexes: Optional[pulumi.Input[_builtins.int]] = None,
-            provider_config: Optional[pulumi.Input[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']]] = None,
-            scaling_info: Optional[pulumi.Input[Union['VectorSearchEndpointScalingInfoArgs', 'VectorSearchEndpointScalingInfoArgsDict']]] = None) -> 'VectorSearchEndpoint':
+            budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VectorSearchEndpointEndpointStatusArgs', 'VectorSearchEndpointEndpointStatusArgsDict']]]]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            last_updated_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
+            last_updated_user: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            num_indexes: pulumi.Input[Optional[_builtins.int]] = None,
+            provider_config: pulumi.Input[Optional[Union['VectorSearchEndpointProviderConfigArgs', 'VectorSearchEndpointProviderConfigArgsDict']]] = None,
+            scaling_info: pulumi.Input[Optional[Union['VectorSearchEndpointScalingInfoArgs', 'VectorSearchEndpointScalingInfoArgsDict']]] = None) -> 'VectorSearchEndpoint':
         """
         Get an existing VectorSearchEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

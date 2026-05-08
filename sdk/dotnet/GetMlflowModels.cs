@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.Index.GetMlflowModels.Invoke();
+        ///     var @this = Databricks.GetMlflowModels.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -53,7 +53,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.Index.GetMlflowModels.Invoke();
+        ///     var @this = Databricks.GetMlflowModels.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -80,7 +80,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.Index.GetMlflowModels.Invoke();
+        ///     var @this = Databricks.GetMlflowModels.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

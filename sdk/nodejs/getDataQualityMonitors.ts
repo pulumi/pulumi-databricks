@@ -103,9 +103,9 @@ export function getDataQualityMonitorsOutput(args?: GetDataQualityMonitorsOutput
  * A collection of arguments for invoking getDataQualityMonitors.
  */
 export interface GetDataQualityMonitorsOutputArgs {
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetDataQualityMonitorsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetDataQualityMonitorsProviderConfigArgs | undefined>;
 }

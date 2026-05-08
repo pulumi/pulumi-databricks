@@ -215,13 +215,13 @@ def get_mlflow_model(description: Optional[_builtins.str] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'),
         tags=pulumi.get(__ret__, 'tags'),
         user_id=pulumi.get(__ret__, 'user_id'))
-def get_mlflow_model_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            latest_versions: Optional[pulumi.Input[Optional[Sequence[Union['GetMlflowModelLatestVersionArgs', 'GetMlflowModelLatestVersionArgsDict']]]]] = None,
-                            name: Optional[pulumi.Input[_builtins.str]] = None,
-                            permission_level: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            provider_config: Optional[pulumi.Input[Optional[Union['GetMlflowModelProviderConfigArgs', 'GetMlflowModelProviderConfigArgsDict']]]] = None,
-                            tags: Optional[pulumi.Input[Optional[Sequence[Union['GetMlflowModelTagArgs', 'GetMlflowModelTagArgsDict']]]]] = None,
-                            user_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_mlflow_model_output(description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            latest_versions: pulumi.Input[Optional[Optional[Sequence[Union['GetMlflowModelLatestVersionArgs', 'GetMlflowModelLatestVersionArgsDict']]]]] = None,
+                            name: pulumi.Input[Optional[_builtins.str]] = None,
+                            permission_level: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            provider_config: pulumi.Input[Optional[Optional[Union['GetMlflowModelProviderConfigArgs', 'GetMlflowModelProviderConfigArgsDict']]]] = None,
+                            tags: pulumi.Input[Optional[Optional[Sequence[Union['GetMlflowModelTagArgs', 'GetMlflowModelTagArgsDict']]]]] = None,
+                            user_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMlflowModelResult]:
     """
     Retrieves the settings of MlflowModel by name.

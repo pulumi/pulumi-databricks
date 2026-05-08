@@ -106,11 +106,11 @@ export interface WorkspaceNetworkOptionState {
      * linked to one policy at a time. If no policy is explicitly assigned,
      * the workspace will use 'default-policy'
      */
-    networkPolicyId?: pulumi.Input<string>;
+    networkPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The workspace ID
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -123,9 +123,9 @@ export interface WorkspaceNetworkOptionArgs {
      * linked to one policy at a time. If no policy is explicitly assigned,
      * the workspace will use 'default-policy'
      */
-    networkPolicyId?: pulumi.Input<string>;
+    networkPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The workspace ID
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }

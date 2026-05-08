@@ -34,12 +34,12 @@ namespace Pulumi.Databricks
     ///     var config = new Config();
     ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
-    ///     var logdeliveryS3Bucket = new Aws.Index.S3Bucket("logdelivery", new()
+    ///     var logdeliveryS3Bucket = new Aws.S3Bucket("logdelivery", new()
     ///     {
     ///         Bucket = $"{prefix}-logdelivery",
     ///         Acl = "private",
     ///         ForceDestroy = true,
-    ///         Tags = Std.Index.Merge.Invoke(new()
+    ///         Tags = Std.Merge.Invoke(new()
     ///         {
     ///             Input = new[]
     ///             {
@@ -52,19 +52,19 @@ namespace Pulumi.Databricks
     ///         }).Result,
     ///     });
     /// 
-    ///     var logdeliveryS3BucketPublicAccessBlock = new Aws.Index.S3BucketPublicAccessBlock("logdelivery", new()
+    ///     var logdeliveryS3BucketPublicAccessBlock = new Aws.S3BucketPublicAccessBlock("logdelivery", new()
     ///     {
     ///         Bucket = logdeliveryS3Bucket.Id,
     ///         IgnorePublicAcls = true,
     ///     });
     /// 
-    ///     var logdelivery = Databricks.Index.GetAwsAssumeRolePolicy.Invoke(new()
+    ///     var logdelivery = Databricks.GetAwsAssumeRolePolicy.Invoke(new()
     ///     {
     ///         ExternalId = databricksAccountId,
     ///         ForLogDelivery = true,
     ///     });
     /// 
-    ///     var logdeliveryVersioning = new Aws.Index.S3BucketVersioning("logdelivery_versioning", new()
+    ///     var logdeliveryVersioning = new Aws.S3BucketVersioning("logdelivery_versioning", new()
     ///     {
     ///         Bucket = logdeliveryS3Bucket.Id,
     ///         VersioningConfiguration = new[]
@@ -76,7 +76,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var logdeliveryIamRole = new Aws.Index.IamRole("logdelivery", new()
+    ///     var logdeliveryIamRole = new Aws.IamRole("logdelivery", new()
     ///     {
     ///         Name = $"{prefix}-logdelivery",
     ///         Description = $"({prefix}) UsageDelivery role",
@@ -84,19 +84,19 @@ namespace Pulumi.Databricks
     ///         Tags = tags,
     ///     });
     /// 
-    ///     var logdeliveryGetAwsBucketPolicy = Databricks.Index.GetAwsBucketPolicy.Invoke(new()
+    ///     var logdeliveryGetAwsBucketPolicy = Databricks.GetAwsBucketPolicy.Invoke(new()
     ///     {
     ///         FullAccessRole = logdeliveryIamRole.Arn,
     ///         Bucket = logdeliveryS3Bucket.Bucket,
     ///     });
     /// 
-    ///     var logdeliveryS3BucketPolicy = new Aws.Index.S3BucketPolicy("logdelivery", new()
+    ///     var logdeliveryS3BucketPolicy = new Aws.S3BucketPolicy("logdelivery", new()
     ///     {
     ///         Bucket = logdeliveryS3Bucket.Id,
     ///         Policy = logdeliveryGetAwsBucketPolicy.Apply(getAwsBucketPolicyResult =&gt; getAwsBucketPolicyResult.Json),
     ///     });
     /// 
-    ///     var wait = new Time.Index.Sleep("wait", new()
+    ///     var wait = new Time.Sleep("wait", new()
     ///     {
     ///         CreateDuration = "10s",
     ///     }, new CustomResourceOptions
@@ -107,7 +107,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var logWriter = new Databricks.Index.MwsCredentials("log_writer", new()
+    ///     var logWriter = new Databricks.MwsCredentials("log_writer", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         CredentialsName = "Usage Delivery",
@@ -120,14 +120,14 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var logBucket = new Databricks.Index.MwsStorageConfigurations("log_bucket", new()
+    ///     var logBucket = new Databricks.MwsStorageConfigurations("log_bucket", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         StorageConfigurationName = "Usage Logs",
     ///         BucketName = logdeliveryS3Bucket.Bucket,
     ///     });
     /// 
-    ///     var usageLogs = new Databricks.Index.MwsLogDelivery("usage_logs", new()
+    ///     var usageLogs = new Databricks.MwsLogDelivery("usage_logs", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         CredentialsId = logWriter.CredentialsId,
@@ -138,7 +138,7 @@ namespace Pulumi.Databricks
     ///         OutputFormat = "CSV",
     ///     });
     /// 
-    ///     var auditLogs = new Databricks.Index.MwsLogDelivery("audit_logs", new()
+    ///     var auditLogs = new Databricks.MwsLogDelivery("audit_logs", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         CredentialsId = logWriter.CredentialsId,
@@ -166,7 +166,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var usageLogs = new Databricks.Index.MwsLogDelivery("usage_logs", new()
+    ///     var usageLogs = new Databricks.MwsLogDelivery("usage_logs", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         CredentialsId = logWriter.CredentialsId,
@@ -192,7 +192,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var auditLogs = new Databricks.Index.MwsLogDelivery("audit_logs", new()
+    ///     var auditLogs = new Databricks.MwsLogDelivery("audit_logs", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         CredentialsId = logWriter.CredentialsId,

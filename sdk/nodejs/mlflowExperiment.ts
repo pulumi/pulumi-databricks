@@ -149,27 +149,27 @@ export interface MlflowExperimentState {
     /**
      * Path to artifact location of the MLflow experiment.
      */
-    artifactLocation?: pulumi.Input<string>;
-    creationTime?: pulumi.Input<number>;
+    artifactLocation?: pulumi.Input<string | undefined>;
+    creationTime?: pulumi.Input<number | undefined>;
     /**
      * @deprecated Remove the description attribute as it no longer is used and will be removed in a future version.
      */
-    description?: pulumi.Input<string>;
-    experimentId?: pulumi.Input<string>;
-    lastUpdateTime?: pulumi.Input<number>;
-    lifecycleStage?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    experimentId?: pulumi.Input<string | undefined>;
+    lastUpdateTime?: pulumi.Input<number | undefined>;
+    lifecycleStage?: pulumi.Input<string | undefined>;
     /**
      * Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.MlflowExperimentProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.MlflowExperimentProviderConfig | undefined>;
     /**
      * Tags for the MLflow experiment.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.MlflowExperimentTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.MlflowExperimentTag>[] | undefined>;
 }
 
 /**
@@ -179,25 +179,25 @@ export interface MlflowExperimentArgs {
     /**
      * Path to artifact location of the MLflow experiment.
      */
-    artifactLocation?: pulumi.Input<string>;
-    creationTime?: pulumi.Input<number>;
+    artifactLocation?: pulumi.Input<string | undefined>;
+    creationTime?: pulumi.Input<number | undefined>;
     /**
      * @deprecated Remove the description attribute as it no longer is used and will be removed in a future version.
      */
-    description?: pulumi.Input<string>;
-    experimentId?: pulumi.Input<string>;
-    lastUpdateTime?: pulumi.Input<number>;
-    lifecycleStage?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    experimentId?: pulumi.Input<string | undefined>;
+    lastUpdateTime?: pulumi.Input<number | undefined>;
+    lifecycleStage?: pulumi.Input<string | undefined>;
     /**
      * Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.MlflowExperimentProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.MlflowExperimentProviderConfig | undefined>;
     /**
      * Tags for the MLflow experiment.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.MlflowExperimentTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.MlflowExperimentTag>[] | undefined>;
 }

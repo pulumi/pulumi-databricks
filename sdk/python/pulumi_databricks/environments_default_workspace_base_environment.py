@@ -21,9 +21,9 @@ __all__ = ['EnvironmentsDefaultWorkspaceBaseEnvironmentArgs', 'EnvironmentsDefau
 @pulumi.input_type
 class EnvironmentsDefaultWorkspaceBaseEnvironmentArgs:
     def __init__(__self__, *,
-                 cpu_workspace_base_environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_workspace_base_environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs']] = None):
+                 cpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a EnvironmentsDefaultWorkspaceBaseEnvironment resource.
 
@@ -42,7 +42,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="cpuWorkspaceBaseEnvironment")
-    def cpu_workspace_base_environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu_workspace_base_environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default workspace base environment for CPU compute.
         Format: workspace-base-environments/{workspace_base_environment}
@@ -50,12 +50,12 @@ class EnvironmentsDefaultWorkspaceBaseEnvironmentArgs:
         return pulumi.get(self, "cpu_workspace_base_environment")
 
     @cpu_workspace_base_environment.setter
-    def cpu_workspace_base_environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu_workspace_base_environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu_workspace_base_environment", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuWorkspaceBaseEnvironment")
-    def gpu_workspace_base_environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gpu_workspace_base_environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default workspace base environment for GPU compute.
         Format: workspace-base-environments/{workspace_base_environment}
@@ -63,29 +63,29 @@ class EnvironmentsDefaultWorkspaceBaseEnvironmentArgs:
         return pulumi.get(self, "gpu_workspace_base_environment")
 
     @gpu_workspace_base_environment.setter
-    def gpu_workspace_base_environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gpu_workspace_base_environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gpu_workspace_base_environment", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _EnvironmentsDefaultWorkspaceBaseEnvironmentState:
     def __init__(__self__, *,
-                 cpu_workspace_base_environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_workspace_base_environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs']] = None):
+                 cpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering EnvironmentsDefaultWorkspaceBaseEnvironment resources.
 
@@ -108,7 +108,7 @@ class _EnvironmentsDefaultWorkspaceBaseEnvironmentState:
 
     @_builtins.property
     @pulumi.getter(name="cpuWorkspaceBaseEnvironment")
-    def cpu_workspace_base_environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cpu_workspace_base_environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default workspace base environment for CPU compute.
         Format: workspace-base-environments/{workspace_base_environment}
@@ -116,12 +116,12 @@ class _EnvironmentsDefaultWorkspaceBaseEnvironmentState:
         return pulumi.get(self, "cpu_workspace_base_environment")
 
     @cpu_workspace_base_environment.setter
-    def cpu_workspace_base_environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cpu_workspace_base_environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cpu_workspace_base_environment", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuWorkspaceBaseEnvironment")
-    def gpu_workspace_base_environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gpu_workspace_base_environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default workspace base environment for GPU compute.
         Format: workspace-base-environments/{workspace_base_environment}
@@ -129,12 +129,12 @@ class _EnvironmentsDefaultWorkspaceBaseEnvironmentState:
         return pulumi.get(self, "gpu_workspace_base_environment")
 
     @gpu_workspace_base_environment.setter
-    def gpu_workspace_base_environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gpu_workspace_base_environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gpu_workspace_base_environment", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The resource name of this singleton resource.
         Format: default-workspace-base-environment
@@ -142,19 +142,19 @@ class _EnvironmentsDefaultWorkspaceBaseEnvironmentState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
@@ -164,9 +164,9 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cpu_workspace_base_environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_workspace_base_environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None,
+                 cpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -289,9 +289,9 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cpu_workspace_base_environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_workspace_base_environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None,
+                 cpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -315,10 +315,10 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cpu_workspace_base_environment: Optional[pulumi.Input[_builtins.str]] = None,
-            gpu_workspace_base_environment: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None) -> 'EnvironmentsDefaultWorkspaceBaseEnvironment':
+            cpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu_workspace_base_environment: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None) -> 'EnvironmentsDefaultWorkspaceBaseEnvironment':
         """
         Get an existing EnvironmentsDefaultWorkspaceBaseEnvironment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

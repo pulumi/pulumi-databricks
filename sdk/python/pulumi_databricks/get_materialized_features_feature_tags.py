@@ -123,10 +123,10 @@ def get_materialized_features_feature_tags(feature_name: Optional[_builtins.str]
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         table_name=pulumi.get(__ret__, 'table_name'))
-def get_materialized_features_feature_tags_output(feature_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                                  page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                  provider_config: Optional[pulumi.Input[Optional[Union['GetMaterializedFeaturesFeatureTagsProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagsProviderConfigArgsDict']]]] = None,
-                                                  table_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_materialized_features_feature_tags_output(feature_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                                  page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                  provider_config: pulumi.Input[Optional[Optional[Union['GetMaterializedFeaturesFeatureTagsProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagsProviderConfigArgsDict']]]] = None,
+                                                  table_name: pulumi.Input[Optional[_builtins.str]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMaterializedFeaturesFeatureTagsResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)

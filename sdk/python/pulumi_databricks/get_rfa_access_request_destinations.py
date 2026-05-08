@@ -177,9 +177,9 @@ def get_rfa_access_request_destinations(full_name: Optional[_builtins.str] = Non
         provider_config=pulumi.get(__ret__, 'provider_config'),
         securable=pulumi.get(__ret__, 'securable'),
         securable_type=pulumi.get(__ret__, 'securable_type'))
-def get_rfa_access_request_destinations_output(full_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                               provider_config: Optional[pulumi.Input[Optional[Union['GetRfaAccessRequestDestinationsProviderConfigArgs', 'GetRfaAccessRequestDestinationsProviderConfigArgsDict']]]] = None,
-                                               securable_type: Optional[pulumi.Input[_builtins.str]] = None,
+def get_rfa_access_request_destinations_output(full_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                               provider_config: pulumi.Input[Optional[Optional[Union['GetRfaAccessRequestDestinationsProviderConfigArgs', 'GetRfaAccessRequestDestinationsProviderConfigArgsDict']]]] = None,
+                                               securable_type: pulumi.Input[Optional[_builtins.str]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRfaAccessRequestDestinationsResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)

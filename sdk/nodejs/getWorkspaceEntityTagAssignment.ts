@@ -155,7 +155,7 @@ export interface GetWorkspaceEntityTagAssignmentOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetWorkspaceEntityTagAssignmentProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetWorkspaceEntityTagAssignmentProviderConfigArgs | undefined>;
     /**
      * The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
      */

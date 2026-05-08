@@ -196,13 +196,13 @@ def get_mws_network_connectivity_config(account_id: Optional[_builtins.str] = No
         network_connectivity_config_id=pulumi.get(__ret__, 'network_connectivity_config_id'),
         region=pulumi.get(__ret__, 'region'),
         updated_time=pulumi.get(__ret__, 'updated_time'))
-def get_mws_network_connectivity_config_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                               creation_time: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                               egress_config: Optional[pulumi.Input[Optional[Union['GetMwsNetworkConnectivityConfigEgressConfigArgs', 'GetMwsNetworkConnectivityConfigEgressConfigArgsDict']]]] = None,
-                                               name: Optional[pulumi.Input[_builtins.str]] = None,
-                                               network_connectivity_config_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                               region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                               updated_time: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_mws_network_connectivity_config_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                               creation_time: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                               egress_config: pulumi.Input[Optional[Optional[Union['GetMwsNetworkConnectivityConfigEgressConfigArgs', 'GetMwsNetworkConnectivityConfigEgressConfigArgsDict']]]] = None,
+                                               name: pulumi.Input[Optional[_builtins.str]] = None,
+                                               network_connectivity_config_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                               region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                               updated_time: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsNetworkConnectivityConfigResult]:
     """
     Retrieves information about MwsNetworkConnectivityConfig in Databricks Account.

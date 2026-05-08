@@ -122,11 +122,11 @@ export interface GetExternalLocationOutputArgs {
     /**
      * array of objects with information about external location:
      */
-    externalLocationInfo?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoArgs>;
+    externalLocationInfo?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoArgs | undefined>;
     /**
      * external location ID - same as name.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the external location
      */
@@ -134,5 +134,5 @@ export interface GetExternalLocationOutputArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetExternalLocationProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetExternalLocationProviderConfigArgs | undefined>;
 }

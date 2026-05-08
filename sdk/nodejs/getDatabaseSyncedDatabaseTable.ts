@@ -135,5 +135,5 @@ export interface GetDatabaseSyncedDatabaseTableOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetDatabaseSyncedDatabaseTableProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetDatabaseSyncedDatabaseTableProviderConfigArgs | undefined>;
 }

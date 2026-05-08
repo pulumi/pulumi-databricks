@@ -173,11 +173,11 @@ export interface GetAwsAssumeRolePolicyOutputArgs {
     /**
      * AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
      */
-    awsPartition?: pulumi.Input<string>;
+    awsPartition?: pulumi.Input<string | undefined>;
     /**
      * @deprecated databricks_account_id will be will be removed in the next major release.
      */
-    databricksAccountId?: pulumi.Input<string>;
+    databricksAccountId?: pulumi.Input<string | undefined>;
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      */
@@ -185,5 +185,5 @@ export interface GetAwsAssumeRolePolicyOutputArgs {
     /**
      * Either or not this assume role policy should be created for usage log delivery. Defaults to false.
      */
-    forLogDelivery?: pulumi.Input<boolean>;
+    forLogDelivery?: pulumi.Input<boolean | undefined>;
 }

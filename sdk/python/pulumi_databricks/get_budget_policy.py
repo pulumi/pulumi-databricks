@@ -136,7 +136,7 @@ def get_budget_policy(policy_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         policy_id=pulumi.get(__ret__, 'policy_id'),
         policy_name=pulumi.get(__ret__, 'policy_name'))
-def get_budget_policy_output(policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_budget_policy_output(policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBudgetPolicyResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)

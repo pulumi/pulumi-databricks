@@ -227,46 +227,46 @@ export class SqlQuery extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SqlQuery resources.
  */
 export interface SqlQueryState {
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Data source ID of a SQL warehouse
      */
-    dataSourceId?: pulumi.Input<string>;
+    dataSourceId?: pulumi.Input<string | undefined>;
     /**
      * General description that conveys additional information about this query such as usage notes.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The title of this query that appears in list views, widget headings, and on the query page.
      */
-    name?: pulumi.Input<string>;
-    parameters?: pulumi.Input<pulumi.Input<inputs.SqlQueryParameter>[]>;
+    name?: pulumi.Input<string | undefined>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.SqlQueryParameter>[] | undefined>;
     /**
      * The identifier of the workspace folder containing the object.
      */
-    parent?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.SqlQueryProviderConfig>;
+    parent?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.SqlQueryProviderConfig | undefined>;
     /**
      * The text of the query to be run.
      */
-    query?: pulumi.Input<string>;
+    query?: pulumi.Input<string | undefined>;
     /**
      * Run as role. Possible values are `viewer`, `owner`.
      */
-    runAsRole?: pulumi.Input<string>;
+    runAsRole?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`.
      */
-    schedule?: pulumi.Input<inputs.SqlQuerySchedule>;
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    updatedAt?: pulumi.Input<string>;
+    schedule?: pulumi.Input<inputs.SqlQuerySchedule | undefined>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a SqlQuery resource.
  */
 export interface SqlQueryArgs {
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Data source ID of a SQL warehouse
      */
@@ -274,17 +274,17 @@ export interface SqlQueryArgs {
     /**
      * General description that conveys additional information about this query such as usage notes.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The title of this query that appears in list views, widget headings, and on the query page.
      */
-    name?: pulumi.Input<string>;
-    parameters?: pulumi.Input<pulumi.Input<inputs.SqlQueryParameter>[]>;
+    name?: pulumi.Input<string | undefined>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.SqlQueryParameter>[] | undefined>;
     /**
      * The identifier of the workspace folder containing the object.
      */
-    parent?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.SqlQueryProviderConfig>;
+    parent?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.SqlQueryProviderConfig | undefined>;
     /**
      * The text of the query to be run.
      */
@@ -292,11 +292,11 @@ export interface SqlQueryArgs {
     /**
      * Run as role. Possible values are `viewer`, `owner`.
      */
-    runAsRole?: pulumi.Input<string>;
+    runAsRole?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Operations on `databricks.SqlQuery` schedules are deprecated. Please use `databricks.Job` resource to schedule a `sqlTask`.
      */
-    schedule?: pulumi.Input<inputs.SqlQuerySchedule>;
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    updatedAt?: pulumi.Input<string>;
+    schedule?: pulumi.Input<inputs.SqlQuerySchedule | undefined>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }

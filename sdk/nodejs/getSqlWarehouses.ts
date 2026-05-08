@@ -140,13 +140,13 @@ export interface GetSqlWarehousesOutputArgs {
     /**
      * list of databricks.SqlEndpoint ids
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetSqlWarehousesProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetSqlWarehousesProviderConfigArgs | undefined>;
     /**
      * Only return databricks.SqlEndpoint ids that match the given name string.
      */
-    warehouseNameContains?: pulumi.Input<string>;
+    warehouseNameContains?: pulumi.Input<string | undefined>;
 }

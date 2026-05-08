@@ -22,10 +22,10 @@ __all__ = ['DbfsFileArgs', 'DbfsFile']
 class DbfsFileArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
-                 content_base64: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['DbfsFileProviderConfigArgs']] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None):
+                 content_base64: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['DbfsFileProviderConfigArgs']] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DbfsFile resource.
 
@@ -58,60 +58,60 @@ class DbfsFileArgs:
 
     @_builtins.property
     @pulumi.getter(name="contentBase64")
-    def content_base64(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_base64(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
         """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
-    def content_base64(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_base64(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_base64", value)
 
     @_builtins.property
     @pulumi.getter
-    def md5(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def md5(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "md5")
 
     @md5.setter
-    def md5(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def md5(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "md5", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DbfsFileProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DbfsFileProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DbfsFileProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DbfsFileProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full absolute path to the file. Conflicts with `content_base64`.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
 
 @pulumi.input_type
 class _DbfsFileState:
     def __init__(__self__, *,
-                 content_base64: Optional[pulumi.Input[_builtins.str]] = None,
-                 dbfs_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['DbfsFileProviderConfigArgs']] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None):
+                 content_base64: pulumi.Input[Optional[_builtins.str]] = None,
+                 dbfs_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['DbfsFileProviderConfigArgs']] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbfsFile resources.
 
@@ -139,83 +139,83 @@ class _DbfsFileState:
 
     @_builtins.property
     @pulumi.getter(name="contentBase64")
-    def content_base64(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_base64(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Encoded file contents. Conflicts with `source`. Use of `content_base64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
         """
         return pulumi.get(self, "content_base64")
 
     @content_base64.setter
-    def content_base64(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_base64(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_base64", value)
 
     @_builtins.property
     @pulumi.getter(name="dbfsPath")
-    def dbfs_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dbfs_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path, but with `dbfs:` prefix.
         """
         return pulumi.get(self, "dbfs_path")
 
     @dbfs_path.setter
-    def dbfs_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dbfs_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dbfs_path", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSize")
-    def file_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def file_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The file size of the file that is being tracked by this resource in bytes.
         """
         return pulumi.get(self, "file_size")
 
     @file_size.setter
-    def file_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def file_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "file_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def md5(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def md5(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "md5")
 
     @md5.setter
-    def md5(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def md5(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "md5", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of the file in which you wish to save.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DbfsFileProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DbfsFileProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DbfsFileProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DbfsFileProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full absolute path to the file. Conflicts with `content_base64`.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
 
@@ -225,11 +225,11 @@ class DbfsFile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content_base64: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DbfsFileProviderConfigArgs', 'DbfsFileProviderConfigArgsDict']]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
+                 content_base64: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DbfsFileProviderConfigArgs', 'DbfsFileProviderConfigArgsDict']]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > Please switch to File or WorkspaceFile to manage files. Databricks recommends against storing any production data or sensitive information in the DBFS root.
@@ -275,11 +275,11 @@ class DbfsFile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content_base64: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DbfsFileProviderConfigArgs', 'DbfsFileProviderConfigArgsDict']]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
+                 content_base64: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DbfsFileProviderConfigArgs', 'DbfsFileProviderConfigArgsDict']]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -308,13 +308,13 @@ class DbfsFile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            content_base64: Optional[pulumi.Input[_builtins.str]] = None,
-            dbfs_path: Optional[pulumi.Input[_builtins.str]] = None,
-            file_size: Optional[pulumi.Input[_builtins.int]] = None,
-            md5: Optional[pulumi.Input[_builtins.str]] = None,
-            path: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['DbfsFileProviderConfigArgs', 'DbfsFileProviderConfigArgsDict']]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None) -> 'DbfsFile':
+            content_base64: pulumi.Input[Optional[_builtins.str]] = None,
+            dbfs_path: pulumi.Input[Optional[_builtins.str]] = None,
+            file_size: pulumi.Input[Optional[_builtins.int]] = None,
+            md5: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DbfsFileProviderConfigArgs', 'DbfsFileProviderConfigArgsDict']]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None) -> 'DbfsFile':
         """
         Get an existing DbfsFile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

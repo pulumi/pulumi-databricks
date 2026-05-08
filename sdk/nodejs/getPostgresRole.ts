@@ -127,5 +127,5 @@ export interface GetPostgresRoleOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetPostgresRoleProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetPostgresRoleProviderConfigArgs | undefined>;
 }

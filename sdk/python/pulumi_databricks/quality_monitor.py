@@ -24,20 +24,20 @@ class QualityMonitorArgs:
                  assets_dir: pulumi.Input[_builtins.str],
                  output_schema_name: pulumi.Input[_builtins.str],
                  table_name: pulumi.Input[_builtins.str],
-                 baseline_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['QualityMonitorCustomMetricArgs']]]] = None,
-                 data_classification_config: Optional[pulumi.Input['QualityMonitorDataClassificationConfigArgs']] = None,
-                 inference_log: Optional[pulumi.Input['QualityMonitorInferenceLogArgs']] = None,
-                 latest_monitor_failure_msg: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications: Optional[pulumi.Input['QualityMonitorNotificationsArgs']] = None,
-                 provider_config: Optional[pulumi.Input['QualityMonitorProviderConfigArgs']] = None,
-                 schedule: Optional[pulumi.Input['QualityMonitorScheduleArgs']] = None,
-                 skip_builtin_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 snapshot: Optional[pulumi.Input['QualityMonitorSnapshotArgs']] = None,
-                 time_series: Optional[pulumi.Input['QualityMonitorTimeSeriesArgs']] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 baseline_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input['QualityMonitorCustomMetricArgs']]]] = None,
+                 data_classification_config: pulumi.Input[Optional['QualityMonitorDataClassificationConfigArgs']] = None,
+                 inference_log: pulumi.Input[Optional['QualityMonitorInferenceLogArgs']] = None,
+                 latest_monitor_failure_msg: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications: pulumi.Input[Optional['QualityMonitorNotificationsArgs']] = None,
+                 provider_config: pulumi.Input[Optional['QualityMonitorProviderConfigArgs']] = None,
+                 schedule: pulumi.Input[Optional['QualityMonitorScheduleArgs']] = None,
+                 skip_builtin_dashboard: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slicing_exprs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 snapshot: pulumi.Input[Optional['QualityMonitorSnapshotArgs']] = None,
+                 time_series: pulumi.Input[Optional['QualityMonitorTimeSeriesArgs']] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a QualityMonitor resource.
 
@@ -129,7 +129,7 @@ class QualityMonitorArgs:
 
     @_builtins.property
     @pulumi.getter(name="baselineTableName")
-    def baseline_table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def baseline_table_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
         table.
@@ -137,188 +137,188 @@ class QualityMonitorArgs:
         return pulumi.get(self, "baseline_table_name")
 
     @baseline_table_name.setter
-    def baseline_table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def baseline_table_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "baseline_table_name", value)
 
     @_builtins.property
     @pulumi.getter(name="customMetrics")
-    def custom_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QualityMonitorCustomMetricArgs']]]]:
+    def custom_metrics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['QualityMonitorCustomMetricArgs']]]]:
         """
         Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
         """
         return pulumi.get(self, "custom_metrics")
 
     @custom_metrics.setter
-    def custom_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QualityMonitorCustomMetricArgs']]]]):
+    def custom_metrics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['QualityMonitorCustomMetricArgs']]]]):
         pulumi.set(self, "custom_metrics", value)
 
     @_builtins.property
     @pulumi.getter(name="dataClassificationConfig")
-    def data_classification_config(self) -> Optional[pulumi.Input['QualityMonitorDataClassificationConfigArgs']]:
+    def data_classification_config(self) -> pulumi.Input[Optional['QualityMonitorDataClassificationConfigArgs']]:
         """
         The data classification config for the monitor
         """
         return pulumi.get(self, "data_classification_config")
 
     @data_classification_config.setter
-    def data_classification_config(self, value: Optional[pulumi.Input['QualityMonitorDataClassificationConfigArgs']]):
+    def data_classification_config(self, value: pulumi.Input[Optional['QualityMonitorDataClassificationConfigArgs']]):
         pulumi.set(self, "data_classification_config", value)
 
     @_builtins.property
     @pulumi.getter(name="inferenceLog")
-    def inference_log(self) -> Optional[pulumi.Input['QualityMonitorInferenceLogArgs']]:
+    def inference_log(self) -> pulumi.Input[Optional['QualityMonitorInferenceLogArgs']]:
         """
         Configuration for the inference log monitor
         """
         return pulumi.get(self, "inference_log")
 
     @inference_log.setter
-    def inference_log(self, value: Optional[pulumi.Input['QualityMonitorInferenceLogArgs']]):
+    def inference_log(self, value: pulumi.Input[Optional['QualityMonitorInferenceLogArgs']]):
         pulumi.set(self, "inference_log", value)
 
     @_builtins.property
     @pulumi.getter(name="latestMonitorFailureMsg")
-    def latest_monitor_failure_msg(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def latest_monitor_failure_msg(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "latest_monitor_failure_msg")
 
     @latest_monitor_failure_msg.setter
-    def latest_monitor_failure_msg(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def latest_monitor_failure_msg(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "latest_monitor_failure_msg", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorId")
-    def monitor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
         """
         return pulumi.get(self, "monitor_id")
 
     @monitor_id.setter
-    def monitor_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def notifications(self) -> Optional[pulumi.Input['QualityMonitorNotificationsArgs']]:
+    def notifications(self) -> pulumi.Input[Optional['QualityMonitorNotificationsArgs']]:
         """
         The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         """
         return pulumi.get(self, "notifications")
 
     @notifications.setter
-    def notifications(self, value: Optional[pulumi.Input['QualityMonitorNotificationsArgs']]):
+    def notifications(self, value: pulumi.Input[Optional['QualityMonitorNotificationsArgs']]):
         pulumi.set(self, "notifications", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['QualityMonitorProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['QualityMonitorProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['QualityMonitorProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['QualityMonitorProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['QualityMonitorScheduleArgs']]:
+    def schedule(self) -> pulumi.Input[Optional['QualityMonitorScheduleArgs']]:
         """
         The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['QualityMonitorScheduleArgs']]):
+    def schedule(self, value: pulumi.Input[Optional['QualityMonitorScheduleArgs']]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="skipBuiltinDashboard")
-    def skip_builtin_dashboard(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_builtin_dashboard(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         """
         return pulumi.get(self, "skip_builtin_dashboard")
 
     @skip_builtin_dashboard.setter
-    def skip_builtin_dashboard(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_builtin_dashboard(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_builtin_dashboard", value)
 
     @_builtins.property
     @pulumi.getter(name="slicingExprs")
-    def slicing_exprs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def slicing_exprs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
         """
         return pulumi.get(self, "slicing_exprs")
 
     @slicing_exprs.setter
-    def slicing_exprs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def slicing_exprs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "slicing_exprs", value)
 
     @_builtins.property
     @pulumi.getter
-    def snapshot(self) -> Optional[pulumi.Input['QualityMonitorSnapshotArgs']]:
+    def snapshot(self) -> pulumi.Input[Optional['QualityMonitorSnapshotArgs']]:
         """
         Configuration for monitoring snapshot tables.
         """
         return pulumi.get(self, "snapshot")
 
     @snapshot.setter
-    def snapshot(self, value: Optional[pulumi.Input['QualityMonitorSnapshotArgs']]):
+    def snapshot(self, value: pulumi.Input[Optional['QualityMonitorSnapshotArgs']]):
         pulumi.set(self, "snapshot", value)
 
     @_builtins.property
     @pulumi.getter(name="timeSeries")
-    def time_series(self) -> Optional[pulumi.Input['QualityMonitorTimeSeriesArgs']]:
+    def time_series(self) -> pulumi.Input[Optional['QualityMonitorTimeSeriesArgs']]:
         """
         Configuration for monitoring timeseries tables.
         """
         return pulumi.get(self, "time_series")
 
     @time_series.setter
-    def time_series(self, value: Optional[pulumi.Input['QualityMonitorTimeSeriesArgs']]):
+    def time_series(self, value: pulumi.Input[Optional['QualityMonitorTimeSeriesArgs']]):
         pulumi.set(self, "time_series", value)
 
     @_builtins.property
     @pulumi.getter(name="warehouseId")
-    def warehouse_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warehouse_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
         """
         return pulumi.get(self, "warehouse_id")
 
     @warehouse_id.setter
-    def warehouse_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warehouse_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warehouse_id", value)
 
 
 @pulumi.input_type
 class _QualityMonitorState:
     def __init__(__self__, *,
-                 assets_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 baseline_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['QualityMonitorCustomMetricArgs']]]] = None,
-                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_classification_config: Optional[pulumi.Input['QualityMonitorDataClassificationConfigArgs']] = None,
-                 drift_metrics_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 inference_log: Optional[pulumi.Input['QualityMonitorInferenceLogArgs']] = None,
-                 latest_monitor_failure_msg: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 notifications: Optional[pulumi.Input['QualityMonitorNotificationsArgs']] = None,
-                 output_schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile_metrics_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['QualityMonitorProviderConfigArgs']] = None,
-                 schedule: Optional[pulumi.Input['QualityMonitorScheduleArgs']] = None,
-                 skip_builtin_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 snapshot: Optional[pulumi.Input['QualityMonitorSnapshotArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_series: Optional[pulumi.Input['QualityMonitorTimeSeriesArgs']] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 assets_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 baseline_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input['QualityMonitorCustomMetricArgs']]]] = None,
+                 dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_classification_config: pulumi.Input[Optional['QualityMonitorDataClassificationConfigArgs']] = None,
+                 drift_metrics_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 inference_log: pulumi.Input[Optional['QualityMonitorInferenceLogArgs']] = None,
+                 latest_monitor_failure_msg: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 notifications: pulumi.Input[Optional['QualityMonitorNotificationsArgs']] = None,
+                 output_schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile_metrics_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['QualityMonitorProviderConfigArgs']] = None,
+                 schedule: pulumi.Input[Optional['QualityMonitorScheduleArgs']] = None,
+                 skip_builtin_dashboard: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slicing_exprs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 snapshot: pulumi.Input[Optional['QualityMonitorSnapshotArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_series: pulumi.Input[Optional['QualityMonitorTimeSeriesArgs']] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QualityMonitor resources.
 
@@ -392,19 +392,19 @@ class _QualityMonitorState:
 
     @_builtins.property
     @pulumi.getter(name="assetsDir")
-    def assets_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assets_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
         """
         return pulumi.get(self, "assets_dir")
 
     @assets_dir.setter
-    def assets_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assets_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assets_dir", value)
 
     @_builtins.property
     @pulumi.getter(name="baselineTableName")
-    def baseline_table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def baseline_table_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
         table.
@@ -412,244 +412,244 @@ class _QualityMonitorState:
         return pulumi.get(self, "baseline_table_name")
 
     @baseline_table_name.setter
-    def baseline_table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def baseline_table_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "baseline_table_name", value)
 
     @_builtins.property
     @pulumi.getter(name="customMetrics")
-    def custom_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QualityMonitorCustomMetricArgs']]]]:
+    def custom_metrics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['QualityMonitorCustomMetricArgs']]]]:
         """
         Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
         """
         return pulumi.get(self, "custom_metrics")
 
     @custom_metrics.setter
-    def custom_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QualityMonitorCustomMetricArgs']]]]):
+    def custom_metrics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['QualityMonitorCustomMetricArgs']]]]):
         pulumi.set(self, "custom_metrics", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardId")
-    def dashboard_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the generated dashboard.
         """
         return pulumi.get(self, "dashboard_id")
 
     @dashboard_id.setter
-    def dashboard_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dataClassificationConfig")
-    def data_classification_config(self) -> Optional[pulumi.Input['QualityMonitorDataClassificationConfigArgs']]:
+    def data_classification_config(self) -> pulumi.Input[Optional['QualityMonitorDataClassificationConfigArgs']]:
         """
         The data classification config for the monitor
         """
         return pulumi.get(self, "data_classification_config")
 
     @data_classification_config.setter
-    def data_classification_config(self, value: Optional[pulumi.Input['QualityMonitorDataClassificationConfigArgs']]):
+    def data_classification_config(self, value: pulumi.Input[Optional['QualityMonitorDataClassificationConfigArgs']]):
         pulumi.set(self, "data_classification_config", value)
 
     @_builtins.property
     @pulumi.getter(name="driftMetricsTableName")
-    def drift_metrics_table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def drift_metrics_table_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
         """
         return pulumi.get(self, "drift_metrics_table_name")
 
     @drift_metrics_table_name.setter
-    def drift_metrics_table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def drift_metrics_table_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "drift_metrics_table_name", value)
 
     @_builtins.property
     @pulumi.getter(name="inferenceLog")
-    def inference_log(self) -> Optional[pulumi.Input['QualityMonitorInferenceLogArgs']]:
+    def inference_log(self) -> pulumi.Input[Optional['QualityMonitorInferenceLogArgs']]:
         """
         Configuration for the inference log monitor
         """
         return pulumi.get(self, "inference_log")
 
     @inference_log.setter
-    def inference_log(self, value: Optional[pulumi.Input['QualityMonitorInferenceLogArgs']]):
+    def inference_log(self, value: pulumi.Input[Optional['QualityMonitorInferenceLogArgs']]):
         pulumi.set(self, "inference_log", value)
 
     @_builtins.property
     @pulumi.getter(name="latestMonitorFailureMsg")
-    def latest_monitor_failure_msg(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def latest_monitor_failure_msg(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "latest_monitor_failure_msg")
 
     @latest_monitor_failure_msg.setter
-    def latest_monitor_failure_msg(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def latest_monitor_failure_msg(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "latest_monitor_failure_msg", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorId")
-    def monitor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of this monitor is the same as the full table name of the format `{catalog}.{schema_name}.{table_name}`
         """
         return pulumi.get(self, "monitor_id")
 
     @monitor_id.setter
-    def monitor_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor_id", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorVersion")
-    def monitor_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def monitor_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
         """
         return pulumi.get(self, "monitor_version")
 
     @monitor_version.setter
-    def monitor_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def monitor_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "monitor_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def notifications(self) -> Optional[pulumi.Input['QualityMonitorNotificationsArgs']]:
+    def notifications(self) -> pulumi.Input[Optional['QualityMonitorNotificationsArgs']]:
         """
         The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `email_addresses` containing a list of emails to notify:
         """
         return pulumi.get(self, "notifications")
 
     @notifications.setter
-    def notifications(self, value: Optional[pulumi.Input['QualityMonitorNotificationsArgs']]):
+    def notifications(self, value: pulumi.Input[Optional['QualityMonitorNotificationsArgs']]):
         pulumi.set(self, "notifications", value)
 
     @_builtins.property
     @pulumi.getter(name="outputSchemaName")
-    def output_schema_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_schema_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Schema where output metric tables are created
         """
         return pulumi.get(self, "output_schema_name")
 
     @output_schema_name.setter
-    def output_schema_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_schema_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_schema_name", value)
 
     @_builtins.property
     @pulumi.getter(name="profileMetricsTableName")
-    def profile_metrics_table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def profile_metrics_table_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
         """
         return pulumi.get(self, "profile_metrics_table_name")
 
     @profile_metrics_table_name.setter
-    def profile_metrics_table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def profile_metrics_table_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "profile_metrics_table_name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['QualityMonitorProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['QualityMonitorProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['QualityMonitorProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['QualityMonitorProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['QualityMonitorScheduleArgs']]:
+    def schedule(self) -> pulumi.Input[Optional['QualityMonitorScheduleArgs']]:
         """
         The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['QualityMonitorScheduleArgs']]):
+    def schedule(self, value: pulumi.Input[Optional['QualityMonitorScheduleArgs']]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="skipBuiltinDashboard")
-    def skip_builtin_dashboard(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_builtin_dashboard(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to skip creating a default dashboard summarizing data quality metrics.  (Can't be updated after creation).
         """
         return pulumi.get(self, "skip_builtin_dashboard")
 
     @skip_builtin_dashboard.setter
-    def skip_builtin_dashboard(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_builtin_dashboard(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_builtin_dashboard", value)
 
     @_builtins.property
     @pulumi.getter(name="slicingExprs")
-    def slicing_exprs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def slicing_exprs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
         """
         return pulumi.get(self, "slicing_exprs")
 
     @slicing_exprs.setter
-    def slicing_exprs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def slicing_exprs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "slicing_exprs", value)
 
     @_builtins.property
     @pulumi.getter
-    def snapshot(self) -> Optional[pulumi.Input['QualityMonitorSnapshotArgs']]:
+    def snapshot(self) -> pulumi.Input[Optional['QualityMonitorSnapshotArgs']]:
         """
         Configuration for monitoring snapshot tables.
         """
         return pulumi.get(self, "snapshot")
 
     @snapshot.setter
-    def snapshot(self, value: Optional[pulumi.Input['QualityMonitorSnapshotArgs']]):
+    def snapshot(self, value: pulumi.Input[Optional['QualityMonitorSnapshotArgs']]):
         pulumi.set(self, "snapshot", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of the Monitor
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="tableName")
-    def table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
         """
         return pulumi.get(self, "table_name")
 
     @table_name.setter
-    def table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_name", value)
 
     @_builtins.property
     @pulumi.getter(name="timeSeries")
-    def time_series(self) -> Optional[pulumi.Input['QualityMonitorTimeSeriesArgs']]:
+    def time_series(self) -> pulumi.Input[Optional['QualityMonitorTimeSeriesArgs']]:
         """
         Configuration for monitoring timeseries tables.
         """
         return pulumi.get(self, "time_series")
 
     @time_series.setter
-    def time_series(self, value: Optional[pulumi.Input['QualityMonitorTimeSeriesArgs']]):
+    def time_series(self, value: pulumi.Input[Optional['QualityMonitorTimeSeriesArgs']]):
         pulumi.set(self, "time_series", value)
 
     @_builtins.property
     @pulumi.getter(name="warehouseId")
-    def warehouse_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warehouse_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.  (Can't be updated after creation)
         """
         return pulumi.get(self, "warehouse_id")
 
     @warehouse_id.setter
-    def warehouse_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warehouse_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warehouse_id", value)
 
 
@@ -659,23 +659,23 @@ class QualityMonitor(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assets_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 baseline_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict']]]]] = None,
-                 data_classification_config: Optional[pulumi.Input[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict']]] = None,
-                 inference_log: Optional[pulumi.Input[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']]] = None,
-                 latest_monitor_failure_msg: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications: Optional[pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']]] = None,
-                 output_schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict']]] = None,
-                 schedule: Optional[pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']]] = None,
-                 skip_builtin_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 snapshot: Optional[pulumi.Input[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict']]] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_series: Optional[pulumi.Input[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict']]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 assets_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 baseline_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict']]]]] = None,
+                 data_classification_config: pulumi.Input[Optional[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict']]] = None,
+                 inference_log: pulumi.Input[Optional[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']]] = None,
+                 latest_monitor_failure_msg: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications: pulumi.Input[Optional[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']]] = None,
+                 output_schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']]] = None,
+                 skip_builtin_dashboard: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slicing_exprs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 snapshot: pulumi.Input[Optional[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict']]] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_series: pulumi.Input[Optional[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict']]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to manage [Lakehouse Monitors](https://docs.databricks.com/en/lakehouse-monitoring/index.html) in Databricks.
@@ -914,23 +914,23 @@ class QualityMonitor(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assets_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 baseline_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict']]]]] = None,
-                 data_classification_config: Optional[pulumi.Input[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict']]] = None,
-                 inference_log: Optional[pulumi.Input[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']]] = None,
-                 latest_monitor_failure_msg: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 notifications: Optional[pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']]] = None,
-                 output_schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict']]] = None,
-                 schedule: Optional[pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']]] = None,
-                 skip_builtin_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
-                 slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 snapshot: Optional[pulumi.Input[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict']]] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_series: Optional[pulumi.Input[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict']]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 assets_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 baseline_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict']]]]] = None,
+                 data_classification_config: pulumi.Input[Optional[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict']]] = None,
+                 inference_log: pulumi.Input[Optional[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']]] = None,
+                 latest_monitor_failure_msg: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 notifications: pulumi.Input[Optional[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']]] = None,
+                 output_schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']]] = None,
+                 skip_builtin_dashboard: pulumi.Input[Optional[_builtins.bool]] = None,
+                 slicing_exprs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 snapshot: pulumi.Input[Optional[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict']]] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_series: pulumi.Input[Optional[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict']]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -978,28 +978,28 @@ class QualityMonitor(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            assets_dir: Optional[pulumi.Input[_builtins.str]] = None,
-            baseline_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict']]]]] = None,
-            dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-            data_classification_config: Optional[pulumi.Input[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict']]] = None,
-            drift_metrics_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-            inference_log: Optional[pulumi.Input[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']]] = None,
-            latest_monitor_failure_msg: Optional[pulumi.Input[_builtins.str]] = None,
-            monitor_id: Optional[pulumi.Input[_builtins.str]] = None,
-            monitor_version: Optional[pulumi.Input[_builtins.int]] = None,
-            notifications: Optional[pulumi.Input[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']]] = None,
-            output_schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-            profile_metrics_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict']]] = None,
-            schedule: Optional[pulumi.Input[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']]] = None,
-            skip_builtin_dashboard: Optional[pulumi.Input[_builtins.bool]] = None,
-            slicing_exprs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            snapshot: Optional[pulumi.Input[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            table_name: Optional[pulumi.Input[_builtins.str]] = None,
-            time_series: Optional[pulumi.Input[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict']]] = None,
-            warehouse_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'QualityMonitor':
+            assets_dir: pulumi.Input[Optional[_builtins.str]] = None,
+            baseline_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QualityMonitorCustomMetricArgs', 'QualityMonitorCustomMetricArgsDict']]]]] = None,
+            dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_classification_config: pulumi.Input[Optional[Union['QualityMonitorDataClassificationConfigArgs', 'QualityMonitorDataClassificationConfigArgsDict']]] = None,
+            drift_metrics_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            inference_log: pulumi.Input[Optional[Union['QualityMonitorInferenceLogArgs', 'QualityMonitorInferenceLogArgsDict']]] = None,
+            latest_monitor_failure_msg: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_id: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_version: pulumi.Input[Optional[_builtins.int]] = None,
+            notifications: pulumi.Input[Optional[Union['QualityMonitorNotificationsArgs', 'QualityMonitorNotificationsArgsDict']]] = None,
+            output_schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+            profile_metrics_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['QualityMonitorProviderConfigArgs', 'QualityMonitorProviderConfigArgsDict']]] = None,
+            schedule: pulumi.Input[Optional[Union['QualityMonitorScheduleArgs', 'QualityMonitorScheduleArgsDict']]] = None,
+            skip_builtin_dashboard: pulumi.Input[Optional[_builtins.bool]] = None,
+            slicing_exprs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            snapshot: pulumi.Input[Optional[Union['QualityMonitorSnapshotArgs', 'QualityMonitorSnapshotArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            time_series: pulumi.Input[Optional[Union['QualityMonitorTimeSeriesArgs', 'QualityMonitorTimeSeriesArgsDict']]] = None,
+            warehouse_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'QualityMonitor':
         """
         Get an existing QualityMonitor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

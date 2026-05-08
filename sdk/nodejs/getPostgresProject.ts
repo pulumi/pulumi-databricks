@@ -143,5 +143,5 @@ export interface GetPostgresProjectOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetPostgresProjectProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetPostgresProjectProviderConfigArgs | undefined>;
 }

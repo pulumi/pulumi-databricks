@@ -22,27 +22,27 @@ __all__ = ['CredentialArgs', 'Credential']
 class CredentialArgs:
     def __init__(__self__, *,
                  purpose: pulumi.Input[_builtins.str],
-                 aws_iam_role: Optional[pulumi.Input['CredentialAwsIamRoleArgs']] = None,
-                 azure_managed_identity: Optional[pulumi.Input['CredentialAzureManagedIdentityArgs']] = None,
-                 azure_service_principal: Optional[pulumi.Input['CredentialAzureServicePrincipalArgs']] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_gcp_service_account: Optional[pulumi.Input['CredentialDatabricksGcpServiceAccountArgs']] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['CredentialProviderConfigArgs']] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 used_for_managed_storage: Optional[pulumi.Input[_builtins.bool]] = None):
+                 aws_iam_role: pulumi.Input[Optional['CredentialAwsIamRoleArgs']] = None,
+                 azure_managed_identity: pulumi.Input[Optional['CredentialAzureManagedIdentityArgs']] = None,
+                 azure_service_principal: pulumi.Input[Optional['CredentialAzureServicePrincipalArgs']] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_gcp_service_account: pulumi.Input[Optional['CredentialDatabricksGcpServiceAccountArgs']] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 full_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['CredentialProviderConfigArgs']] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 used_for_managed_storage: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Credential resource.
 
@@ -117,115 +117,115 @@ class CredentialArgs:
 
     @_builtins.property
     @pulumi.getter(name="awsIamRole")
-    def aws_iam_role(self) -> Optional[pulumi.Input['CredentialAwsIamRoleArgs']]:
+    def aws_iam_role(self) -> pulumi.Input[Optional['CredentialAwsIamRoleArgs']]:
         return pulumi.get(self, "aws_iam_role")
 
     @aws_iam_role.setter
-    def aws_iam_role(self, value: Optional[pulumi.Input['CredentialAwsIamRoleArgs']]):
+    def aws_iam_role(self, value: pulumi.Input[Optional['CredentialAwsIamRoleArgs']]):
         pulumi.set(self, "aws_iam_role", value)
 
     @_builtins.property
     @pulumi.getter(name="azureManagedIdentity")
-    def azure_managed_identity(self) -> Optional[pulumi.Input['CredentialAzureManagedIdentityArgs']]:
+    def azure_managed_identity(self) -> pulumi.Input[Optional['CredentialAzureManagedIdentityArgs']]:
         return pulumi.get(self, "azure_managed_identity")
 
     @azure_managed_identity.setter
-    def azure_managed_identity(self, value: Optional[pulumi.Input['CredentialAzureManagedIdentityArgs']]):
+    def azure_managed_identity(self, value: pulumi.Input[Optional['CredentialAzureManagedIdentityArgs']]):
         pulumi.set(self, "azure_managed_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="azureServicePrincipal")
-    def azure_service_principal(self) -> Optional[pulumi.Input['CredentialAzureServicePrincipalArgs']]:
+    def azure_service_principal(self) -> pulumi.Input[Optional['CredentialAzureServicePrincipalArgs']]:
         return pulumi.get(self, "azure_service_principal")
 
     @azure_service_principal.setter
-    def azure_service_principal(self, value: Optional[pulumi.Input['CredentialAzureServicePrincipalArgs']]):
+    def azure_service_principal(self, value: pulumi.Input[Optional['CredentialAzureServicePrincipalArgs']]):
         pulumi.set(self, "azure_service_principal", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="databricksCredentialId")
-    def databricks_credential_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def databricks_credential_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of this credential - same as the `name`.
         """
         return pulumi.get(self, "databricks_credential_id")
 
     @databricks_credential_id.setter
-    def databricks_credential_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def databricks_credential_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "databricks_credential_id", value)
 
     @_builtins.property
     @pulumi.getter(name="databricksGcpServiceAccount")
-    def databricks_gcp_service_account(self) -> Optional[pulumi.Input['CredentialDatabricksGcpServiceAccountArgs']]:
+    def databricks_gcp_service_account(self) -> pulumi.Input[Optional['CredentialDatabricksGcpServiceAccountArgs']]:
         return pulumi.get(self, "databricks_gcp_service_account")
 
     @databricks_gcp_service_account.setter
-    def databricks_gcp_service_account(self, value: Optional[pulumi.Input['CredentialDatabricksGcpServiceAccountArgs']]):
+    def databricks_gcp_service_account(self, value: pulumi.Input[Optional['CredentialDatabricksGcpServiceAccountArgs']]):
         pulumi.set(self, "databricks_gcp_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Delete credential regardless of its dependencies.
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="forceUpdate")
-    def force_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Update credential regardless of its dependents.
         """
         return pulumi.get(self, "force_update")
 
     @force_update.setter
-    def force_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_update", value)
 
     @_builtins.property
     @pulumi.getter(name="fullName")
-    def full_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def full_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "full_name")
 
     @full_name.setter
-    def full_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def full_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "full_name", value)
 
     @_builtins.property
     @pulumi.getter(name="isolationMode")
-    def isolation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def isolation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
 
@@ -234,132 +234,132 @@ class CredentialArgs:
         return pulumi.get(self, "isolation_mode")
 
     @isolation_mode.setter
-    def isolation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def isolation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "isolation_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="metastoreId")
-    def metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
-    def metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metastore_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username/groupname/sp application_id of the credential owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['CredentialProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['CredentialProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['CredentialProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['CredentialProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="skipValidation")
-    def skip_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Suppress validation errors if any & force save the credential.
         """
         return pulumi.get(self, "skip_validation")
 
     @skip_validation.setter
-    def skip_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedBy")
-    def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
-    def updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_by", value)
 
     @_builtins.property
     @pulumi.getter(name="usedForManagedStorage")
-    def used_for_managed_storage(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def used_for_managed_storage(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "used_for_managed_storage")
 
     @used_for_managed_storage.setter
-    def used_for_managed_storage(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def used_for_managed_storage(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "used_for_managed_storage", value)
 
 
 @pulumi.input_type
 class _CredentialState:
     def __init__(__self__, *,
-                 aws_iam_role: Optional[pulumi.Input['CredentialAwsIamRoleArgs']] = None,
-                 azure_managed_identity: Optional[pulumi.Input['CredentialAzureManagedIdentityArgs']] = None,
-                 azure_service_principal: Optional[pulumi.Input['CredentialAzureServicePrincipalArgs']] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_gcp_service_account: Optional[pulumi.Input['CredentialDatabricksGcpServiceAccountArgs']] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['CredentialProviderConfigArgs']] = None,
-                 purpose: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 used_for_managed_storage: Optional[pulumi.Input[_builtins.bool]] = None):
+                 aws_iam_role: pulumi.Input[Optional['CredentialAwsIamRoleArgs']] = None,
+                 azure_managed_identity: pulumi.Input[Optional['CredentialAzureManagedIdentityArgs']] = None,
+                 azure_service_principal: pulumi.Input[Optional['CredentialAzureServicePrincipalArgs']] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_gcp_service_account: pulumi.Input[Optional['CredentialDatabricksGcpServiceAccountArgs']] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 full_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['CredentialProviderConfigArgs']] = None,
+                 purpose: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 used_for_managed_storage: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Credential resources.
 
@@ -426,127 +426,127 @@ class _CredentialState:
 
     @_builtins.property
     @pulumi.getter(name="awsIamRole")
-    def aws_iam_role(self) -> Optional[pulumi.Input['CredentialAwsIamRoleArgs']]:
+    def aws_iam_role(self) -> pulumi.Input[Optional['CredentialAwsIamRoleArgs']]:
         return pulumi.get(self, "aws_iam_role")
 
     @aws_iam_role.setter
-    def aws_iam_role(self, value: Optional[pulumi.Input['CredentialAwsIamRoleArgs']]):
+    def aws_iam_role(self, value: pulumi.Input[Optional['CredentialAwsIamRoleArgs']]):
         pulumi.set(self, "aws_iam_role", value)
 
     @_builtins.property
     @pulumi.getter(name="azureManagedIdentity")
-    def azure_managed_identity(self) -> Optional[pulumi.Input['CredentialAzureManagedIdentityArgs']]:
+    def azure_managed_identity(self) -> pulumi.Input[Optional['CredentialAzureManagedIdentityArgs']]:
         return pulumi.get(self, "azure_managed_identity")
 
     @azure_managed_identity.setter
-    def azure_managed_identity(self, value: Optional[pulumi.Input['CredentialAzureManagedIdentityArgs']]):
+    def azure_managed_identity(self, value: pulumi.Input[Optional['CredentialAzureManagedIdentityArgs']]):
         pulumi.set(self, "azure_managed_identity", value)
 
     @_builtins.property
     @pulumi.getter(name="azureServicePrincipal")
-    def azure_service_principal(self) -> Optional[pulumi.Input['CredentialAzureServicePrincipalArgs']]:
+    def azure_service_principal(self) -> pulumi.Input[Optional['CredentialAzureServicePrincipalArgs']]:
         return pulumi.get(self, "azure_service_principal")
 
     @azure_service_principal.setter
-    def azure_service_principal(self, value: Optional[pulumi.Input['CredentialAzureServicePrincipalArgs']]):
+    def azure_service_principal(self, value: pulumi.Input[Optional['CredentialAzureServicePrincipalArgs']]):
         pulumi.set(self, "azure_service_principal", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="credentialId")
-    def credential_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credential_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique ID of the credential.
         """
         return pulumi.get(self, "credential_id")
 
     @credential_id.setter
-    def credential_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credential_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credential_id", value)
 
     @_builtins.property
     @pulumi.getter(name="databricksCredentialId")
-    def databricks_credential_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def databricks_credential_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of this credential - same as the `name`.
         """
         return pulumi.get(self, "databricks_credential_id")
 
     @databricks_credential_id.setter
-    def databricks_credential_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def databricks_credential_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "databricks_credential_id", value)
 
     @_builtins.property
     @pulumi.getter(name="databricksGcpServiceAccount")
-    def databricks_gcp_service_account(self) -> Optional[pulumi.Input['CredentialDatabricksGcpServiceAccountArgs']]:
+    def databricks_gcp_service_account(self) -> pulumi.Input[Optional['CredentialDatabricksGcpServiceAccountArgs']]:
         return pulumi.get(self, "databricks_gcp_service_account")
 
     @databricks_gcp_service_account.setter
-    def databricks_gcp_service_account(self, value: Optional[pulumi.Input['CredentialDatabricksGcpServiceAccountArgs']]):
+    def databricks_gcp_service_account(self, value: pulumi.Input[Optional['CredentialDatabricksGcpServiceAccountArgs']]):
         pulumi.set(self, "databricks_gcp_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Delete credential regardless of its dependencies.
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="forceUpdate")
-    def force_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Update credential regardless of its dependents.
         """
         return pulumi.get(self, "force_update")
 
     @force_update.setter
-    def force_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_update", value)
 
     @_builtins.property
     @pulumi.getter(name="fullName")
-    def full_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def full_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "full_name")
 
     @full_name.setter
-    def full_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def full_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "full_name", value)
 
     @_builtins.property
     @pulumi.getter(name="isolationMode")
-    def isolation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def isolation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the credential is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATION_MODE_ISOLATED` or `ISOLATION_MODE_OPEN`. Setting the credential to `ISOLATION_MODE_ISOLATED` will automatically restrict access to only from the current workspace.
 
@@ -555,115 +555,115 @@ class _CredentialState:
         return pulumi.get(self, "isolation_mode")
 
     @isolation_mode.setter
-    def isolation_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def isolation_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "isolation_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="metastoreId")
-    def metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
-    def metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metastore_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of Credentials, which must be unique within the databricks_metastore. Change of the `name` forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username/groupname/sp application_id of the credential owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['CredentialProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['CredentialProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['CredentialProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['CredentialProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def purpose(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def purpose(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
         """
         return pulumi.get(self, "purpose")
 
     @purpose.setter
-    def purpose(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def purpose(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "purpose", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="skipValidation")
-    def skip_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Suppress validation errors if any & force save the credential.
         """
         return pulumi.get(self, "skip_validation")
 
     @skip_validation.setter
-    def skip_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedBy")
-    def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
-    def updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_by", value)
 
     @_builtins.property
     @pulumi.getter(name="usedForManagedStorage")
-    def used_for_managed_storage(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def used_for_managed_storage(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "used_for_managed_storage")
 
     @used_for_managed_storage.setter
-    def used_for_managed_storage(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def used_for_managed_storage(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "used_for_managed_storage", value)
 
 
@@ -673,28 +673,28 @@ class Credential(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_iam_role: Optional[pulumi.Input[Union['CredentialAwsIamRoleArgs', 'CredentialAwsIamRoleArgsDict']]] = None,
-                 azure_managed_identity: Optional[pulumi.Input[Union['CredentialAzureManagedIdentityArgs', 'CredentialAzureManagedIdentityArgsDict']]] = None,
-                 azure_service_principal: Optional[pulumi.Input[Union['CredentialAzureServicePrincipalArgs', 'CredentialAzureServicePrincipalArgsDict']]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_gcp_service_account: Optional[pulumi.Input[Union['CredentialDatabricksGcpServiceAccountArgs', 'CredentialDatabricksGcpServiceAccountArgsDict']]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['CredentialProviderConfigArgs', 'CredentialProviderConfigArgsDict']]] = None,
-                 purpose: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 used_for_managed_storage: Optional[pulumi.Input[_builtins.bool]] = None,
+                 aws_iam_role: pulumi.Input[Optional[Union['CredentialAwsIamRoleArgs', 'CredentialAwsIamRoleArgsDict']]] = None,
+                 azure_managed_identity: pulumi.Input[Optional[Union['CredentialAzureManagedIdentityArgs', 'CredentialAzureManagedIdentityArgsDict']]] = None,
+                 azure_service_principal: pulumi.Input[Optional[Union['CredentialAzureServicePrincipalArgs', 'CredentialAzureServicePrincipalArgsDict']]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_gcp_service_account: pulumi.Input[Optional[Union['CredentialDatabricksGcpServiceAccountArgs', 'CredentialDatabricksGcpServiceAccountArgsDict']]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 full_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['CredentialProviderConfigArgs', 'CredentialProviderConfigArgsDict']]] = None,
+                 purpose: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 used_for_managed_storage: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         A credential represents an authentication and authorization mechanism for accessing services on your cloud tenant. Each credential is subject to Unity Catalog access-control policies that control which users and groups can access the credential.
@@ -880,28 +880,28 @@ class Credential(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_iam_role: Optional[pulumi.Input[Union['CredentialAwsIamRoleArgs', 'CredentialAwsIamRoleArgsDict']]] = None,
-                 azure_managed_identity: Optional[pulumi.Input[Union['CredentialAzureManagedIdentityArgs', 'CredentialAzureManagedIdentityArgsDict']]] = None,
-                 azure_service_principal: Optional[pulumi.Input[Union['CredentialAzureServicePrincipalArgs', 'CredentialAzureServicePrincipalArgsDict']]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_gcp_service_account: Optional[pulumi.Input[Union['CredentialDatabricksGcpServiceAccountArgs', 'CredentialDatabricksGcpServiceAccountArgsDict']]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['CredentialProviderConfigArgs', 'CredentialProviderConfigArgsDict']]] = None,
-                 purpose: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 used_for_managed_storage: Optional[pulumi.Input[_builtins.bool]] = None,
+                 aws_iam_role: pulumi.Input[Optional[Union['CredentialAwsIamRoleArgs', 'CredentialAwsIamRoleArgsDict']]] = None,
+                 azure_managed_identity: pulumi.Input[Optional[Union['CredentialAzureManagedIdentityArgs', 'CredentialAzureManagedIdentityArgsDict']]] = None,
+                 azure_service_principal: pulumi.Input[Optional[Union['CredentialAzureServicePrincipalArgs', 'CredentialAzureServicePrincipalArgsDict']]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_gcp_service_account: pulumi.Input[Optional[Union['CredentialDatabricksGcpServiceAccountArgs', 'CredentialDatabricksGcpServiceAccountArgsDict']]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 full_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['CredentialProviderConfigArgs', 'CredentialProviderConfigArgsDict']]] = None,
+                 purpose: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 used_for_managed_storage: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -946,29 +946,29 @@ class Credential(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aws_iam_role: Optional[pulumi.Input[Union['CredentialAwsIamRoleArgs', 'CredentialAwsIamRoleArgsDict']]] = None,
-            azure_managed_identity: Optional[pulumi.Input[Union['CredentialAzureManagedIdentityArgs', 'CredentialAzureManagedIdentityArgsDict']]] = None,
-            azure_service_principal: Optional[pulumi.Input[Union['CredentialAzureServicePrincipalArgs', 'CredentialAzureServicePrincipalArgsDict']]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.int]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-            databricks_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-            databricks_gcp_service_account: Optional[pulumi.Input[Union['CredentialDatabricksGcpServiceAccountArgs', 'CredentialDatabricksGcpServiceAccountArgsDict']]] = None,
-            force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            force_update: Optional[pulumi.Input[_builtins.bool]] = None,
-            full_name: Optional[pulumi.Input[_builtins.str]] = None,
-            isolation_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['CredentialProviderConfigArgs', 'CredentialProviderConfigArgsDict']]] = None,
-            purpose: Optional[pulumi.Input[_builtins.str]] = None,
-            read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            skip_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-            used_for_managed_storage: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Credential':
+            aws_iam_role: pulumi.Input[Optional[Union['CredentialAwsIamRoleArgs', 'CredentialAwsIamRoleArgsDict']]] = None,
+            azure_managed_identity: pulumi.Input[Optional[Union['CredentialAzureManagedIdentityArgs', 'CredentialAzureManagedIdentityArgsDict']]] = None,
+            azure_service_principal: pulumi.Input[Optional[Union['CredentialAzureServicePrincipalArgs', 'CredentialAzureServicePrincipalArgsDict']]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+            databricks_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+            databricks_gcp_service_account: pulumi.Input[Optional[Union['CredentialDatabricksGcpServiceAccountArgs', 'CredentialDatabricksGcpServiceAccountArgsDict']]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            full_name: pulumi.Input[Optional[_builtins.str]] = None,
+            isolation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['CredentialProviderConfigArgs', 'CredentialProviderConfigArgsDict']]] = None,
+            purpose: pulumi.Input[Optional[_builtins.str]] = None,
+            read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            used_for_managed_storage: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Credential':
         """
         Get an existing Credential resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

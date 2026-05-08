@@ -119,9 +119,9 @@ def get_instance_pool(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         pool_info=pulumi.get(__ret__, 'pool_info'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_instance_pool_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                             pool_info: Optional[pulumi.Input[Optional[Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict']]]] = None,
-                             provider_config: Optional[pulumi.Input[Optional[Union['GetInstancePoolProviderConfigArgs', 'GetInstancePoolProviderConfigArgsDict']]]] = None,
+def get_instance_pool_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                             pool_info: pulumi.Input[Optional[Optional[Union['GetInstancePoolPoolInfoArgs', 'GetInstancePoolPoolInfoArgsDict']]]] = None,
+                             provider_config: pulumi.Input[Optional[Optional[Union['GetInstancePoolProviderConfigArgs', 'GetInstancePoolProviderConfigArgsDict']]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancePoolResult]:
     """
     Retrieves information about databricks_instance_pool.

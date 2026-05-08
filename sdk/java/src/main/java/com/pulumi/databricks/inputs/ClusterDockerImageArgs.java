@@ -35,8 +35,8 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterDockerImageArgs;
      * import com.pulumi.databricks.inputs.ClusterDockerImageBasicAuthArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -91,8 +91,8 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
      * import com.pulumi.databricks.ClusterArgs;
      * import com.pulumi.databricks.inputs.ClusterDockerImageArgs;
      * import com.pulumi.databricks.inputs.ClusterDockerImageBasicAuthArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -188,8 +188,8 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
          * import com.pulumi.databricks.ClusterArgs;
          * import com.pulumi.databricks.inputs.ClusterDockerImageArgs;
          * import com.pulumi.databricks.inputs.ClusterDockerImageBasicAuthArgs;
-         * import java.util.List;
          * import java.util.ArrayList;
+         * import java.util.Arrays;
          * import java.util.Map;
          * import java.io.File;
          * import java.nio.file.Files;
@@ -248,8 +248,8 @@ public final class ClusterDockerImageArgs extends com.pulumi.resources.ResourceA
          * import com.pulumi.databricks.ClusterArgs;
          * import com.pulumi.databricks.inputs.ClusterDockerImageArgs;
          * import com.pulumi.databricks.inputs.ClusterDockerImageBasicAuthArgs;
-         * import java.util.List;
          * import java.util.ArrayList;
+         * import java.util.Arrays;
          * import java.util.Map;
          * import java.io.File;
          * import java.nio.file.Files;

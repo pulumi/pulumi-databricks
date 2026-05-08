@@ -129,10 +129,10 @@ def get_storage_credential(id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         storage_credential_info=pulumi.get(__ret__, 'storage_credential_info'))
-def get_storage_credential_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                                  provider_config: Optional[pulumi.Input[Optional[Union['GetStorageCredentialProviderConfigArgs', 'GetStorageCredentialProviderConfigArgsDict']]]] = None,
-                                  storage_credential_info: Optional[pulumi.Input[Optional[Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict']]]] = None,
+def get_storage_credential_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                                  provider_config: pulumi.Input[Optional[Optional[Union['GetStorageCredentialProviderConfigArgs', 'GetStorageCredentialProviderConfigArgsDict']]]] = None,
+                                  storage_credential_info: pulumi.Input[Optional[Optional[Union['GetStorageCredentialStorageCredentialInfoArgs', 'GetStorageCredentialStorageCredentialInfoArgsDict']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStorageCredentialResult]:
     """
     Retrieves details about a StorageCredential that were created by Pulumi or manually.

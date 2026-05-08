@@ -22,8 +22,8 @@ __all__ = ['PostgresSyncedTableArgs', 'PostgresSyncedTable']
 class PostgresSyncedTableArgs:
     def __init__(__self__, *,
                  synced_table_id: pulumi.Input[_builtins.str],
-                 provider_config: Optional[pulumi.Input['PostgresSyncedTableProviderConfigArgs']] = None,
-                 spec: Optional[pulumi.Input['PostgresSyncedTableSpecArgs']] = None):
+                 provider_config: pulumi.Input[Optional['PostgresSyncedTableProviderConfigArgs']] = None,
+                 spec: pulumi.Input[Optional['PostgresSyncedTableSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresSyncedTable resource.
 
@@ -70,19 +70,19 @@ class PostgresSyncedTableArgs:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PostgresSyncedTableProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PostgresSyncedTableProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PostgresSyncedTableProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PostgresSyncedTableProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['PostgresSyncedTableSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['PostgresSyncedTableSpecArgs']]:
         """
         Configuration details of the synced table, such as the source table, scheduling policy, etc.
         This attribute is specified at creation time and most fields are returned as is on subsequent queries
@@ -90,20 +90,20 @@ class PostgresSyncedTableArgs:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['PostgresSyncedTableSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['PostgresSyncedTableSpecArgs']]):
         pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
 class _PostgresSyncedTableState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['PostgresSyncedTableProviderConfigArgs']] = None,
-                 spec: Optional[pulumi.Input['PostgresSyncedTableSpecArgs']] = None,
-                 status: Optional[pulumi.Input['PostgresSyncedTableStatusArgs']] = None,
-                 synced_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['PostgresSyncedTableProviderConfigArgs']] = None,
+                 spec: pulumi.Input[Optional['PostgresSyncedTableSpecArgs']] = None,
+                 status: pulumi.Input[Optional['PostgresSyncedTableStatusArgs']] = None,
+                 synced_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PostgresSyncedTable resources.
 
@@ -143,19 +143,19 @@ class _PostgresSyncedTableState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string)
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Output only. The Full resource name of the synced table in Postgres
         where (catalog, schema, table) are the UC entity names.
@@ -163,24 +163,24 @@ class _PostgresSyncedTableState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PostgresSyncedTableProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PostgresSyncedTableProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PostgresSyncedTableProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PostgresSyncedTableProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['PostgresSyncedTableSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['PostgresSyncedTableSpecArgs']]:
         """
         Configuration details of the synced table, such as the source table, scheduling policy, etc.
         This attribute is specified at creation time and most fields are returned as is on subsequent queries
@@ -188,24 +188,24 @@ class _PostgresSyncedTableState:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['PostgresSyncedTableSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['PostgresSyncedTableSpecArgs']]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['PostgresSyncedTableStatusArgs']]:
+    def status(self) -> pulumi.Input[Optional['PostgresSyncedTableStatusArgs']]:
         """
         (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input['PostgresSyncedTableStatusArgs']]):
+    def status(self, value: pulumi.Input[Optional['PostgresSyncedTableStatusArgs']]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="syncedTableId")
-    def synced_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def synced_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
         ID is required and is the synced table name, containing (catalog, schema, table) tuple.
@@ -221,19 +221,19 @@ class _PostgresSyncedTableState:
         return pulumi.get(self, "synced_table_id")
 
     @synced_table_id.setter
-    def synced_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def synced_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "synced_table_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The Unity Catalog table ID for this synced table
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
@@ -243,9 +243,9 @@ class PostgresSyncedTable(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 provider_config: Optional[pulumi.Input[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict']]] = None,
-                 spec: Optional[pulumi.Input[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict']]] = None,
-                 synced_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict']]] = None,
+                 synced_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -292,9 +292,9 @@ class PostgresSyncedTable(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 provider_config: Optional[pulumi.Input[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict']]] = None,
-                 spec: Optional[pulumi.Input[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict']]] = None,
-                 synced_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict']]] = None,
+                 synced_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -323,13 +323,13 @@ class PostgresSyncedTable(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict']]] = None,
-            spec: Optional[pulumi.Input[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict']]] = None,
-            status: Optional[pulumi.Input[Union['PostgresSyncedTableStatusArgs', 'PostgresSyncedTableStatusArgsDict']]] = None,
-            synced_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None) -> 'PostgresSyncedTable':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict']]] = None,
+            spec: pulumi.Input[Optional[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict']]] = None,
+            status: pulumi.Input[Optional[Union['PostgresSyncedTableStatusArgs', 'PostgresSyncedTableStatusArgsDict']]] = None,
+            synced_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresSyncedTable':
         """
         Get an existing PostgresSyncedTable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

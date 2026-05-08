@@ -23,8 +23,8 @@ class UserInstanceProfileArgs:
     def __init__(__self__, *,
                  instance_profile_id: pulumi.Input[_builtins.str],
                  user_id: pulumi.Input[_builtins.str],
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['UserInstanceProfileProviderConfigArgs']] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['UserInstanceProfileProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a UserInstanceProfile resource.
 
@@ -65,33 +65,33 @@ class UserInstanceProfileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['UserInstanceProfileProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['UserInstanceProfileProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['UserInstanceProfileProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['UserInstanceProfileProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _UserInstanceProfileState:
     def __init__(__self__, *,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['UserInstanceProfileProviderConfigArgs']] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['UserInstanceProfileProviderConfigArgs']] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserInstanceProfile resources.
 
@@ -110,47 +110,47 @@ class _UserInstanceProfileState:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceProfileId")
-    def instance_profile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_profile_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the id of the instance profile resource.
         """
         return pulumi.get(self, "instance_profile_id")
 
     @instance_profile_id.setter
-    def instance_profile_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_profile_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_profile_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['UserInstanceProfileProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['UserInstanceProfileProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['UserInstanceProfileProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['UserInstanceProfileProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the id of the user resource.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -160,10 +160,10 @@ class UserInstanceProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['UserInstanceProfileProviderConfigArgs', 'UserInstanceProfileProviderConfigArgsDict']]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['UserInstanceProfileProviderConfigArgs', 'UserInstanceProfileProviderConfigArgsDict']]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Deprecated** Please rewrite with databricks_user_role. This resource will be removed in v0.5.x
@@ -260,10 +260,10 @@ class UserInstanceProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['UserInstanceProfileProviderConfigArgs', 'UserInstanceProfileProviderConfigArgsDict']]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['UserInstanceProfileProviderConfigArgs', 'UserInstanceProfileProviderConfigArgsDict']]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -291,10 +291,10 @@ class UserInstanceProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['UserInstanceProfileProviderConfigArgs', 'UserInstanceProfileProviderConfigArgsDict']]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'UserInstanceProfile':
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['UserInstanceProfileProviderConfigArgs', 'UserInstanceProfileProviderConfigArgsDict']]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserInstanceProfile':
         """
         Get an existing UserInstanceProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -186,30 +186,30 @@ export interface MetastoreDataAccessState {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
-    awsIamRole?: pulumi.Input<inputs.MetastoreDataAccessAwsIamRole>;
-    azureManagedIdentity?: pulumi.Input<inputs.MetastoreDataAccessAzureManagedIdentity>;
-    azureServicePrincipal?: pulumi.Input<inputs.MetastoreDataAccessAzureServicePrincipal>;
-    cloudflareApiToken?: pulumi.Input<inputs.MetastoreDataAccessCloudflareApiToken>;
-    comment?: pulumi.Input<string>;
-    databricksGcpServiceAccount?: pulumi.Input<inputs.MetastoreDataAccessDatabricksGcpServiceAccount>;
-    forceDestroy?: pulumi.Input<boolean>;
-    forceUpdate?: pulumi.Input<boolean>;
-    gcpServiceAccountKey?: pulumi.Input<inputs.MetastoreDataAccessGcpServiceAccountKey>;
+    api?: pulumi.Input<string | undefined>;
+    awsIamRole?: pulumi.Input<inputs.MetastoreDataAccessAwsIamRole | undefined>;
+    azureManagedIdentity?: pulumi.Input<inputs.MetastoreDataAccessAzureManagedIdentity | undefined>;
+    azureServicePrincipal?: pulumi.Input<inputs.MetastoreDataAccessAzureServicePrincipal | undefined>;
+    cloudflareApiToken?: pulumi.Input<inputs.MetastoreDataAccessCloudflareApiToken | undefined>;
+    comment?: pulumi.Input<string | undefined>;
+    databricksGcpServiceAccount?: pulumi.Input<inputs.MetastoreDataAccessDatabricksGcpServiceAccount | undefined>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
+    forceUpdate?: pulumi.Input<boolean | undefined>;
+    gcpServiceAccountKey?: pulumi.Input<inputs.MetastoreDataAccessGcpServiceAccountKey | undefined>;
     /**
      * whether to set this credential as the default for the metastore. In practice, this should always be true.
      */
-    isDefault?: pulumi.Input<boolean>;
-    isolationMode?: pulumi.Input<string>;
-    metastoreId?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    owner?: pulumi.Input<string>;
+    isDefault?: pulumi.Input<boolean | undefined>;
+    isolationMode?: pulumi.Input<string | undefined>;
+    metastoreId?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.MetastoreDataAccessProviderConfig>;
-    readOnly?: pulumi.Input<boolean>;
-    skipValidation?: pulumi.Input<boolean>;
+    providerConfig?: pulumi.Input<inputs.MetastoreDataAccessProviderConfig | undefined>;
+    readOnly?: pulumi.Input<boolean | undefined>;
+    skipValidation?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -219,28 +219,28 @@ export interface MetastoreDataAccessArgs {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
-    awsIamRole?: pulumi.Input<inputs.MetastoreDataAccessAwsIamRole>;
-    azureManagedIdentity?: pulumi.Input<inputs.MetastoreDataAccessAzureManagedIdentity>;
-    azureServicePrincipal?: pulumi.Input<inputs.MetastoreDataAccessAzureServicePrincipal>;
-    cloudflareApiToken?: pulumi.Input<inputs.MetastoreDataAccessCloudflareApiToken>;
-    comment?: pulumi.Input<string>;
-    databricksGcpServiceAccount?: pulumi.Input<inputs.MetastoreDataAccessDatabricksGcpServiceAccount>;
-    forceDestroy?: pulumi.Input<boolean>;
-    forceUpdate?: pulumi.Input<boolean>;
-    gcpServiceAccountKey?: pulumi.Input<inputs.MetastoreDataAccessGcpServiceAccountKey>;
+    api?: pulumi.Input<string | undefined>;
+    awsIamRole?: pulumi.Input<inputs.MetastoreDataAccessAwsIamRole | undefined>;
+    azureManagedIdentity?: pulumi.Input<inputs.MetastoreDataAccessAzureManagedIdentity | undefined>;
+    azureServicePrincipal?: pulumi.Input<inputs.MetastoreDataAccessAzureServicePrincipal | undefined>;
+    cloudflareApiToken?: pulumi.Input<inputs.MetastoreDataAccessCloudflareApiToken | undefined>;
+    comment?: pulumi.Input<string | undefined>;
+    databricksGcpServiceAccount?: pulumi.Input<inputs.MetastoreDataAccessDatabricksGcpServiceAccount | undefined>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
+    forceUpdate?: pulumi.Input<boolean | undefined>;
+    gcpServiceAccountKey?: pulumi.Input<inputs.MetastoreDataAccessGcpServiceAccountKey | undefined>;
     /**
      * whether to set this credential as the default for the metastore. In practice, this should always be true.
      */
-    isDefault?: pulumi.Input<boolean>;
-    isolationMode?: pulumi.Input<string>;
-    metastoreId?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    owner?: pulumi.Input<string>;
+    isDefault?: pulumi.Input<boolean | undefined>;
+    isolationMode?: pulumi.Input<string | undefined>;
+    metastoreId?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.MetastoreDataAccessProviderConfig>;
-    readOnly?: pulumi.Input<boolean>;
-    skipValidation?: pulumi.Input<boolean>;
+    providerConfig?: pulumi.Input<inputs.MetastoreDataAccessProviderConfig | undefined>;
+    readOnly?: pulumi.Input<boolean | undefined>;
+    skipValidation?: pulumi.Input<boolean | undefined>;
 }

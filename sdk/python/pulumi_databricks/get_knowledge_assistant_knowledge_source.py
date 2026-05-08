@@ -217,8 +217,8 @@ def get_knowledge_assistant_knowledge_source(name: Optional[_builtins.str] = Non
         provider_config=pulumi.get(__ret__, 'provider_config'),
         source_type=pulumi.get(__ret__, 'source_type'),
         state=pulumi.get(__ret__, 'state'))
-def get_knowledge_assistant_knowledge_source_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                                    provider_config: Optional[pulumi.Input[Optional[Union['GetKnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'GetKnowledgeAssistantKnowledgeSourceProviderConfigArgsDict']]]] = None,
+def get_knowledge_assistant_knowledge_source_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                                    provider_config: pulumi.Input[Optional[Optional[Union['GetKnowledgeAssistantKnowledgeSourceProviderConfigArgs', 'GetKnowledgeAssistantKnowledgeSourceProviderConfigArgsDict']]]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKnowledgeAssistantKnowledgeSourceResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)

@@ -127,16 +127,16 @@ export interface GroupInstanceProfileState {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * This is the id of the group resource.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * This is the id of the instance profile resource.
      */
-    instanceProfileId?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.GroupInstanceProfileProviderConfig>;
+    instanceProfileId?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.GroupInstanceProfileProviderConfig | undefined>;
 }
 
 /**
@@ -146,7 +146,7 @@ export interface GroupInstanceProfileArgs {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * This is the id of the group resource.
      */
@@ -155,5 +155,5 @@ export interface GroupInstanceProfileArgs {
      * This is the id of the instance profile resource.
      */
     instanceProfileId: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.GroupInstanceProfileProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.GroupInstanceProfileProviderConfig | undefined>;
 }

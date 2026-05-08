@@ -149,9 +149,9 @@ def get_pipelines(ids: Optional[Sequence[_builtins.str]] = None,
         ids=pulumi.get(__ret__, 'ids'),
         pipeline_name=pulumi.get(__ret__, 'pipeline_name'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_pipelines_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         pipeline_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         provider_config: Optional[pulumi.Input[Optional[Union['GetPipelinesProviderConfigArgs', 'GetPipelinesProviderConfigArgsDict']]]] = None,
+def get_pipelines_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         pipeline_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         provider_config: pulumi.Input[Optional[Optional[Union['GetPipelinesProviderConfigArgs', 'GetPipelinesProviderConfigArgsDict']]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPipelinesResult]:
     """
     Retrieves a list of all Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.

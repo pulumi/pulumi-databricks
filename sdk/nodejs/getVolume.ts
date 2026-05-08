@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *     catalogName: "sandbox",
  *     schemaName: "things",
  * });
- * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getVolume({
+ * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: databricks.getVolume({
  *     name: __value,
  * }) }), {}));
  * ```
@@ -116,7 +116,7 @@ export interface GetVolumeResult {
  *     catalogName: "sandbox",
  *     schemaName: "things",
  * });
- * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getVolume({
+ * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: databricks.getVolume({
  *     name: __value,
  * }) }), {}));
  * ```
@@ -157,7 +157,7 @@ export interface GetVolumeOutputArgs {
     /**
      * ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
      */
@@ -165,9 +165,9 @@ export interface GetVolumeOutputArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetVolumeProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetVolumeProviderConfigArgs | undefined>;
     /**
      * `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
      */
-    volumeInfo?: pulumi.Input<inputs.GetVolumeVolumeInfoArgs>;
+    volumeInfo?: pulumi.Input<inputs.GetVolumeVolumeInfoArgs | undefined>;
 }

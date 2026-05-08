@@ -127,9 +127,9 @@ def get_registered_model_versions(full_name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         model_versions=pulumi.get(__ret__, 'model_versions'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_registered_model_versions_output(full_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                         model_versions: Optional[pulumi.Input[Optional[Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict']]]]] = None,
-                                         provider_config: Optional[pulumi.Input[Optional[Union['GetRegisteredModelVersionsProviderConfigArgs', 'GetRegisteredModelVersionsProviderConfigArgsDict']]]] = None,
+def get_registered_model_versions_output(full_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                         model_versions: pulumi.Input[Optional[Optional[Sequence[Union['GetRegisteredModelVersionsModelVersionArgs', 'GetRegisteredModelVersionsModelVersionArgsDict']]]]] = None,
+                                         provider_config: pulumi.Input[Optional[Optional[Union['GetRegisteredModelVersionsProviderConfigArgs', 'GetRegisteredModelVersionsProviderConfigArgsDict']]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegisteredModelVersionsResult]:
     """
     This resource allows you to get information about versions of [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html).

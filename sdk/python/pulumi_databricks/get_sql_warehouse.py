@@ -334,7 +334,7 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
     import pulumi_databricks as databricks
 
     all = databricks.get_sql_warehouses()
-    this = {__key: databricks.get_sql_warehouse(id=__value) for __key, __value in enumerate(all.ids)}
+    this = {str(__key): databricks.get_sql_warehouse(id=__value) for __key, __value in enumerate(all.ids)}
     ```
 
     * Search for a specific SQL Warehouse by name:
@@ -427,28 +427,28 @@ def get_sql_warehouse(auto_stop_mins: Optional[_builtins.int] = None,
         state=pulumi.get(__ret__, 'state'),
         tags=pulumi.get(__ret__, 'tags'),
         warehouse_type=pulumi.get(__ret__, 'warehouse_type'))
-def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                             channel: Optional[pulumi.Input[Optional[Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict']]]] = None,
-                             cluster_size: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             creator_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             data_source_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             enable_photon: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                             enable_serverless_compute: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                             health: Optional[pulumi.Input[Optional[Union['GetSqlWarehouseHealthArgs', 'GetSqlWarehouseHealthArgsDict']]]] = None,
-                             id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             instance_profile_arn: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             jdbc_url: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             max_num_clusters: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                             min_num_clusters: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                             name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             num_active_sessions: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                             num_clusters: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                             odbc_params: Optional[pulumi.Input[Optional[Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict']]]] = None,
-                             provider_config: Optional[pulumi.Input[Optional[Union['GetSqlWarehouseProviderConfigArgs', 'GetSqlWarehouseProviderConfigArgsDict']]]] = None,
-                             spot_instance_policy: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             state: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             tags: Optional[pulumi.Input[Optional[Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict']]]] = None,
-                             warehouse_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_sql_warehouse_output(auto_stop_mins: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                             channel: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseChannelArgs', 'GetSqlWarehouseChannelArgsDict']]]] = None,
+                             cluster_size: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             creator_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             data_source_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             enable_photon: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                             enable_serverless_compute: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                             health: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseHealthArgs', 'GetSqlWarehouseHealthArgsDict']]]] = None,
+                             id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             instance_profile_arn: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             jdbc_url: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             max_num_clusters: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                             min_num_clusters: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                             name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             num_active_sessions: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                             num_clusters: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                             odbc_params: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseOdbcParamsArgs', 'GetSqlWarehouseOdbcParamsArgsDict']]]] = None,
+                             provider_config: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseProviderConfigArgs', 'GetSqlWarehouseProviderConfigArgsDict']]]] = None,
+                             spot_instance_policy: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             state: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             tags: pulumi.Input[Optional[Optional[Union['GetSqlWarehouseTagsArgs', 'GetSqlWarehouseTagsArgsDict']]]] = None,
+                             warehouse_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSqlWarehouseResult]:
     """
     Retrieves information about a get_sql_warehouse using its id. This could be retrieved programmatically using get_sql_warehouses data source.
@@ -464,7 +464,7 @@ def get_sql_warehouse_output(auto_stop_mins: Optional[pulumi.Input[Optional[_bui
     import pulumi_databricks as databricks
 
     all = databricks.get_sql_warehouses()
-    this = {__key: databricks.get_sql_warehouse(id=__value) for __key, __value in enumerate(all.ids)}
+    this = {str(__key): databricks.get_sql_warehouse(id=__value) for __key, __value in enumerate(all.ids)}
     ```
 
     * Search for a specific SQL Warehouse by name:

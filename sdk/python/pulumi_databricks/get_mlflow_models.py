@@ -104,8 +104,8 @@ def get_mlflow_models(names: Optional[Sequence[_builtins.str]] = None,
         id=pulumi.get(__ret__, 'id'),
         names=pulumi.get(__ret__, 'names'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_mlflow_models_output(names: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                             provider_config: Optional[pulumi.Input[Optional[Union['GetMlflowModelsProviderConfigArgs', 'GetMlflowModelsProviderConfigArgsDict']]]] = None,
+def get_mlflow_models_output(names: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                             provider_config: pulumi.Input[Optional[Optional[Union['GetMlflowModelsProviderConfigArgs', 'GetMlflowModelsProviderConfigArgsDict']]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMlflowModelsResult]:
     """
     Retrieves a list of MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.

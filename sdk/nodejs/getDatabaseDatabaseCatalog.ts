@@ -113,5 +113,5 @@ export interface GetDatabaseDatabaseCatalogOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetDatabaseDatabaseCatalogProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetDatabaseDatabaseCatalogProviderConfigArgs | undefined>;
 }

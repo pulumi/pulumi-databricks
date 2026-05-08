@@ -156,8 +156,8 @@ def get_warehouses_default_warehouse_override(name: Optional[_builtins.str] = No
         provider_config=pulumi.get(__ret__, 'provider_config'),
         type=pulumi.get(__ret__, 'type'),
         warehouse_id=pulumi.get(__ret__, 'warehouse_id'))
-def get_warehouses_default_warehouse_override_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                                     provider_config: Optional[pulumi.Input[Optional[Union['GetWarehousesDefaultWarehouseOverrideProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverrideProviderConfigArgsDict']]]] = None,
+def get_warehouses_default_warehouse_override_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                                     provider_config: pulumi.Input[Optional[Optional[Union['GetWarehousesDefaultWarehouseOverrideProviderConfigArgs', 'GetWarehousesDefaultWarehouseOverrideProviderConfigArgsDict']]]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWarehousesDefaultWarehouseOverrideResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)

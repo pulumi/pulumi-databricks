@@ -439,38 +439,38 @@ export class Mount extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Mount resources.
  */
 export interface MountState {
-    abfs?: pulumi.Input<inputs.MountAbfs>;
-    adl?: pulumi.Input<inputs.MountAdl>;
-    clusterId?: pulumi.Input<string>;
-    encryptionType?: pulumi.Input<string>;
-    extraConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    gs?: pulumi.Input<inputs.MountGs>;
-    name?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.MountProviderConfig>;
-    resourceId?: pulumi.Input<string>;
-    s3?: pulumi.Input<inputs.MountS3>;
+    abfs?: pulumi.Input<inputs.MountAbfs | undefined>;
+    adl?: pulumi.Input<inputs.MountAdl | undefined>;
+    clusterId?: pulumi.Input<string | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    extraConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    gs?: pulumi.Input<inputs.MountGs | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.MountProviderConfig | undefined>;
+    resourceId?: pulumi.Input<string | undefined>;
+    s3?: pulumi.Input<inputs.MountS3 | undefined>;
     /**
      * (String) HDFS-compatible url
      */
-    source?: pulumi.Input<string>;
-    uri?: pulumi.Input<string>;
-    wasb?: pulumi.Input<inputs.MountWasb>;
+    source?: pulumi.Input<string | undefined>;
+    uri?: pulumi.Input<string | undefined>;
+    wasb?: pulumi.Input<inputs.MountWasb | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Mount resource.
  */
 export interface MountArgs {
-    abfs?: pulumi.Input<inputs.MountAbfs>;
-    adl?: pulumi.Input<inputs.MountAdl>;
-    clusterId?: pulumi.Input<string>;
-    encryptionType?: pulumi.Input<string>;
-    extraConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    gs?: pulumi.Input<inputs.MountGs>;
-    name?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.MountProviderConfig>;
-    resourceId?: pulumi.Input<string>;
-    s3?: pulumi.Input<inputs.MountS3>;
-    uri?: pulumi.Input<string>;
-    wasb?: pulumi.Input<inputs.MountWasb>;
+    abfs?: pulumi.Input<inputs.MountAbfs | undefined>;
+    adl?: pulumi.Input<inputs.MountAdl | undefined>;
+    clusterId?: pulumi.Input<string | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    extraConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    gs?: pulumi.Input<inputs.MountGs | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.MountProviderConfig | undefined>;
+    resourceId?: pulumi.Input<string | undefined>;
+    s3?: pulumi.Input<inputs.MountS3 | undefined>;
+    uri?: pulumi.Input<string | undefined>;
+    wasb?: pulumi.Input<inputs.MountWasb | undefined>;
 }

@@ -21,18 +21,18 @@ __all__ = ['AppArgs', 'App']
 @pulumi.input_type
 class AppArgs:
     def __init__(__self__, *,
-                 budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_repository: Optional[pulumi.Input['AppGitRepositoryArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-                 provider_config: Optional[pulumi.Input['AppProviderConfigArgs']] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]] = None,
-                 space: Optional[pulumi.Input[_builtins.str]] = None,
-                 telemetry_export_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]] = None,
-                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_repository: pulumi.Input[Optional['AppGitRepositoryArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+                 provider_config: pulumi.Input[Optional['AppProviderConfigArgs']] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input['AppResourceArgs']]]] = None,
+                 space: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]] = None,
+                 usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a App resource.
 
@@ -70,164 +70,164 @@ class AppArgs:
 
     @_builtins.property
     @pulumi.getter(name="budgetPolicyId")
-    def budget_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def budget_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Budget Policy ID set for this resource.
         """
         return pulumi.get(self, "budget_policy_id")
 
     @budget_policy_id.setter
-    def budget_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def budget_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "budget_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="computeSize")
-    def compute_size(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         """
         return pulumi.get(self, "compute_size")
 
     @compute_size.setter
-    def compute_size(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_size(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the app.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="gitRepository")
-    def git_repository(self) -> Optional[pulumi.Input['AppGitRepositoryArgs']]:
+    def git_repository(self) -> pulumi.Input[Optional['AppGitRepositoryArgs']]:
         return pulumi.get(self, "git_repository")
 
     @git_repository.setter
-    def git_repository(self, value: Optional[pulumi.Input['AppGitRepositoryArgs']]):
+    def git_repository(self, value: pulumi.Input[Optional['AppGitRepositoryArgs']]):
         pulumi.set(self, "git_repository", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="noCompute")
-    def no_compute(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_compute(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "no_compute")
 
     @no_compute.setter
-    def no_compute(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_compute(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_compute", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['AppProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['AppProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['AppProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['AppProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppResourceArgs']]]]:
         """
         A list of resources that the app have access to.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppResourceArgs']]]]):
         pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def space(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def space(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "space")
 
     @space.setter
-    def space(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def space(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "space", value)
 
     @_builtins.property
     @pulumi.getter(name="telemetryExportDestinations")
-    def telemetry_export_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]]:
+    def telemetry_export_destinations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]]:
         return pulumi.get(self, "telemetry_export_destinations")
 
     @telemetry_export_destinations.setter
-    def telemetry_export_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]]):
+    def telemetry_export_destinations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]]):
         pulumi.set(self, "telemetry_export_destinations", value)
 
     @_builtins.property
     @pulumi.getter(name="usagePolicyId")
-    def usage_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def usage_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "usage_policy_id")
 
     @usage_policy_id.setter
-    def usage_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def usage_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usage_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userApiScopes")
-    def user_api_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def user_api_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of api scopes granted to the user access token.
         """
         return pulumi.get(self, "user_api_scopes")
 
     @user_api_scopes.setter
-    def user_api_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def user_api_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_api_scopes", value)
 
 
 @pulumi.input_type
 class _AppState:
     def __init__(__self__, *,
-                 active_deployment: Optional[pulumi.Input['AppActiveDeploymentArgs']] = None,
-                 app_status: Optional[pulumi.Input['AppAppStatusArgs']] = None,
-                 budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_status: Optional[pulumi.Input['AppComputeStatusArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_source_code_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 git_repository: Optional[pulumi.Input['AppGitRepositoryArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oauth2_app_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth2_app_integration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pending_deployment: Optional[pulumi.Input['AppPendingDeploymentArgs']] = None,
-                 provider_config: Optional[pulumi.Input['AppProviderConfigArgs']] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]] = None,
-                 service_principal_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_principal_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 space: Optional[pulumi.Input[_builtins.str]] = None,
-                 telemetry_export_destinations: Optional[pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 updater: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 active_deployment: pulumi.Input[Optional['AppActiveDeploymentArgs']] = None,
+                 app_status: pulumi.Input[Optional['AppAppStatusArgs']] = None,
+                 budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_status: pulumi.Input[Optional['AppComputeStatusArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 git_repository: pulumi.Input[Optional['AppGitRepositoryArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oauth2_app_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth2_app_integration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pending_deployment: pulumi.Input[Optional['AppPendingDeploymentArgs']] = None,
+                 provider_config: pulumi.Input[Optional['AppProviderConfigArgs']] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input['AppResourceArgs']]]] = None,
+                 service_principal_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 space: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 updater: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering App resources.
 
@@ -314,329 +314,329 @@ class _AppState:
 
     @_builtins.property
     @pulumi.getter(name="activeDeployment")
-    def active_deployment(self) -> Optional[pulumi.Input['AppActiveDeploymentArgs']]:
+    def active_deployment(self) -> pulumi.Input[Optional['AppActiveDeploymentArgs']]:
         return pulumi.get(self, "active_deployment")
 
     @active_deployment.setter
-    def active_deployment(self, value: Optional[pulumi.Input['AppActiveDeploymentArgs']]):
+    def active_deployment(self, value: pulumi.Input[Optional['AppActiveDeploymentArgs']]):
         pulumi.set(self, "active_deployment", value)
 
     @_builtins.property
     @pulumi.getter(name="appStatus")
-    def app_status(self) -> Optional[pulumi.Input['AppAppStatusArgs']]:
+    def app_status(self) -> pulumi.Input[Optional['AppAppStatusArgs']]:
         """
         attribute
         """
         return pulumi.get(self, "app_status")
 
     @app_status.setter
-    def app_status(self, value: Optional[pulumi.Input['AppAppStatusArgs']]):
+    def app_status(self, value: pulumi.Input[Optional['AppAppStatusArgs']]):
         pulumi.set(self, "app_status", value)
 
     @_builtins.property
     @pulumi.getter(name="budgetPolicyId")
-    def budget_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def budget_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Budget Policy ID set for this resource.
         """
         return pulumi.get(self, "budget_policy_id")
 
     @budget_policy_id.setter
-    def budget_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def budget_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "budget_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="computeSize")
-    def compute_size(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         """
         return pulumi.get(self, "compute_size")
 
     @compute_size.setter
-    def compute_size(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_size(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_size", value)
 
     @_builtins.property
     @pulumi.getter(name="computeStatus")
-    def compute_status(self) -> Optional[pulumi.Input['AppComputeStatusArgs']]:
+    def compute_status(self) -> pulumi.Input[Optional['AppComputeStatusArgs']]:
         """
         attribute
         """
         return pulumi.get(self, "compute_status")
 
     @compute_status.setter
-    def compute_status(self, value: Optional[pulumi.Input['AppComputeStatusArgs']]):
+    def compute_status(self, value: pulumi.Input[Optional['AppComputeStatusArgs']]):
         pulumi.set(self, "compute_status", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the app.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the user that created the app.
         """
         return pulumi.get(self, "creator")
 
     @creator.setter
-    def creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultSourceCodePath")
-    def default_source_code_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_source_code_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
         """
         return pulumi.get(self, "default_source_code_path")
 
     @default_source_code_path.setter
-    def default_source_code_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_source_code_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_source_code_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the app.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveBudgetPolicyId")
-    def effective_budget_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_budget_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effective budget policy ID.
         """
         return pulumi.get(self, "effective_budget_policy_id")
 
     @effective_budget_policy_id.setter
-    def effective_budget_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_budget_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_budget_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveUsagePolicyId")
-    def effective_usage_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_usage_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "effective_usage_policy_id")
 
     @effective_usage_policy_id.setter
-    def effective_usage_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_usage_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_usage_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveUserApiScopes")
-    def effective_user_api_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def effective_user_api_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of effective api scopes granted to the user access token.
         """
         return pulumi.get(self, "effective_user_api_scopes")
 
     @effective_user_api_scopes.setter
-    def effective_user_api_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def effective_user_api_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_user_api_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="gitRepository")
-    def git_repository(self) -> Optional[pulumi.Input['AppGitRepositoryArgs']]:
+    def git_repository(self) -> pulumi.Input[Optional['AppGitRepositoryArgs']]:
         return pulumi.get(self, "git_repository")
 
     @git_repository.setter
-    def git_repository(self, value: Optional[pulumi.Input['AppGitRepositoryArgs']]):
+    def git_repository(self, value: pulumi.Input[Optional['AppGitRepositoryArgs']]):
         pulumi.set(self, "git_repository", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="noCompute")
-    def no_compute(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_compute(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "no_compute")
 
     @no_compute.setter
-    def no_compute(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_compute(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_compute", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2AppClientId")
-    def oauth2_app_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth2_app_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "oauth2_app_client_id")
 
     @oauth2_app_client_id.setter
-    def oauth2_app_client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth2_app_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth2_app_client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oauth2AppIntegrationId")
-    def oauth2_app_integration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oauth2_app_integration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "oauth2_app_integration_id")
 
     @oauth2_app_integration_id.setter
-    def oauth2_app_integration_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oauth2_app_integration_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oauth2_app_integration_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pendingDeployment")
-    def pending_deployment(self) -> Optional[pulumi.Input['AppPendingDeploymentArgs']]:
+    def pending_deployment(self) -> pulumi.Input[Optional['AppPendingDeploymentArgs']]:
         return pulumi.get(self, "pending_deployment")
 
     @pending_deployment.setter
-    def pending_deployment(self, value: Optional[pulumi.Input['AppPendingDeploymentArgs']]):
+    def pending_deployment(self, value: pulumi.Input[Optional['AppPendingDeploymentArgs']]):
         pulumi.set(self, "pending_deployment", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['AppProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['AppProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['AppProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['AppProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppResourceArgs']]]]:
         """
         A list of resources that the app have access to.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppResourceArgs']]]]):
         pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalClientId")
-    def service_principal_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_principal_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         client_id (application_id) of the app service principal
         """
         return pulumi.get(self, "service_principal_client_id")
 
     @service_principal_client_id.setter
-    def service_principal_client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_principal_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_principal_client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalId")
-    def service_principal_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def service_principal_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         id of the app service principal
         """
         return pulumi.get(self, "service_principal_id")
 
     @service_principal_id.setter
-    def service_principal_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def service_principal_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "service_principal_id", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalName")
-    def service_principal_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_principal_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         name of the app service principal
         """
         return pulumi.get(self, "service_principal_name")
 
     @service_principal_name.setter
-    def service_principal_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_principal_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_principal_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def space(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def space(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "space")
 
     @space.setter
-    def space(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def space(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "space", value)
 
     @_builtins.property
     @pulumi.getter(name="telemetryExportDestinations")
-    def telemetry_export_destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]]:
+    def telemetry_export_destinations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]]:
         return pulumi.get(self, "telemetry_export_destinations")
 
     @telemetry_export_destinations.setter
-    def telemetry_export_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]]):
+    def telemetry_export_destinations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]]):
         pulumi.set(self, "telemetry_export_destinations", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The update time of the app.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def updater(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updater(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email of the user that last updated the app.
         """
         return pulumi.get(self, "updater")
 
     @updater.setter
-    def updater(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updater(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updater", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the app once it is deployed.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="usagePolicyId")
-    def usage_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def usage_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "usage_policy_id")
 
     @usage_policy_id.setter
-    def usage_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def usage_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usage_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userApiScopes")
-    def user_api_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def user_api_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of api scopes granted to the user access token.
         """
         return pulumi.get(self, "user_api_scopes")
 
     @user_api_scopes.setter
-    def user_api_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def user_api_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_api_scopes", value)
 
 
@@ -646,18 +646,18 @@ class App(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_repository: Optional[pulumi.Input[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-                 provider_config: Optional[pulumi.Input[Union['AppProviderConfigArgs', 'AppProviderConfigArgsDict']]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
-                 space: Optional[pulumi.Input[_builtins.str]] = None,
-                 telemetry_export_destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]]] = None,
-                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_repository: pulumi.Input[Optional[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AppProviderConfigArgs', 'AppProviderConfigArgsDict']]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
+                 space: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]]] = None,
+                 usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer's Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
@@ -787,18 +787,18 @@ class App(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_repository: Optional[pulumi.Input[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-                 provider_config: Optional[pulumi.Input[Union['AppProviderConfigArgs', 'AppProviderConfigArgsDict']]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
-                 space: Optional[pulumi.Input[_builtins.str]] = None,
-                 telemetry_export_destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]]] = None,
-                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_repository: pulumi.Input[Optional[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AppProviderConfigArgs', 'AppProviderConfigArgsDict']]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
+                 space: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]]] = None,
+                 usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -848,36 +848,36 @@ class App(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active_deployment: Optional[pulumi.Input[Union['AppActiveDeploymentArgs', 'AppActiveDeploymentArgsDict']]] = None,
-            app_status: Optional[pulumi.Input[Union['AppAppStatusArgs', 'AppAppStatusArgsDict']]] = None,
-            budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            compute_size: Optional[pulumi.Input[_builtins.str]] = None,
-            compute_status: Optional[pulumi.Input[Union['AppComputeStatusArgs', 'AppComputeStatusArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            creator: Optional[pulumi.Input[_builtins.str]] = None,
-            default_source_code_path: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_budget_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            git_repository: Optional[pulumi.Input[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            no_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-            oauth2_app_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-            oauth2_app_integration_id: Optional[pulumi.Input[_builtins.str]] = None,
-            pending_deployment: Optional[pulumi.Input[Union['AppPendingDeploymentArgs', 'AppPendingDeploymentArgsDict']]] = None,
-            provider_config: Optional[pulumi.Input[Union['AppProviderConfigArgs', 'AppProviderConfigArgsDict']]] = None,
-            resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
-            service_principal_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_principal_id: Optional[pulumi.Input[_builtins.int]] = None,
-            service_principal_name: Optional[pulumi.Input[_builtins.str]] = None,
-            space: Optional[pulumi.Input[_builtins.str]] = None,
-            telemetry_export_destinations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            updater: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'App':
+            active_deployment: pulumi.Input[Optional[Union['AppActiveDeploymentArgs', 'AppActiveDeploymentArgsDict']]] = None,
+            app_status: pulumi.Input[Optional[Union['AppAppStatusArgs', 'AppAppStatusArgsDict']]] = None,
+            budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_size: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_status: pulumi.Input[Optional[Union['AppComputeStatusArgs', 'AppComputeStatusArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            default_source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            git_repository: pulumi.Input[Optional[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            no_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+            oauth2_app_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth2_app_integration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pending_deployment: pulumi.Input[Optional[Union['AppPendingDeploymentArgs', 'AppPendingDeploymentArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['AppProviderConfigArgs', 'AppProviderConfigArgsDict']]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]]] = None,
+            service_principal_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
+            service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+            space: pulumi.Input[Optional[_builtins.str]] = None,
+            telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            updater: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'App':
         """
         Get an existing App resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

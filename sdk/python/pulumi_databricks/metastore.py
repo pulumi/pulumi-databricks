@@ -21,21 +21,21 @@ __all__ = ['MetastoreArgs', 'Metastore']
 @pulumi.input_type
 class MetastoreArgs:
     def __init__(__self__, *,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_data_access_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delta_sharing_organization_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delta_sharing_recipient_token_lifetime_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 delta_sharing_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 privilege_model_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['MetastoreProviderConfigArgs']] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root_credential_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_data_access_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delta_sharing_organization_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delta_sharing_recipient_token_lifetime_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 delta_sharing_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 privilege_model_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['MetastoreProviderConfigArgs']] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_root: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_root_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_root_credential_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Metastore resource.
 
@@ -88,210 +88,210 @@ class MetastoreArgs:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultDataAccessConfigId")
-    def default_data_access_config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_data_access_config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional) Unique identifier of the metastore's default data access configuration.
         """
         return pulumi.get(self, "default_data_access_config_id")
 
     @default_data_access_config_id.setter
-    def default_data_access_config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_data_access_config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_data_access_config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deltaSharingOrganizationName")
-    def delta_sharing_organization_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delta_sharing_organization_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
         """
         return pulumi.get(self, "delta_sharing_organization_name")
 
     @delta_sharing_organization_name.setter
-    def delta_sharing_organization_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delta_sharing_organization_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delta_sharing_organization_name", value)
 
     @_builtins.property
     @pulumi.getter(name="deltaSharingRecipientTokenLifetimeInSeconds")
-    def delta_sharing_recipient_token_lifetime_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def delta_sharing_recipient_token_lifetime_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
         """
         return pulumi.get(self, "delta_sharing_recipient_token_lifetime_in_seconds")
 
     @delta_sharing_recipient_token_lifetime_in_seconds.setter
-    def delta_sharing_recipient_token_lifetime_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def delta_sharing_recipient_token_lifetime_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "delta_sharing_recipient_token_lifetime_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="deltaSharingScope")
-    def delta_sharing_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delta_sharing_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
         """
         return pulumi.get(self, "delta_sharing_scope")
 
     @delta_sharing_scope.setter
-    def delta_sharing_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delta_sharing_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delta_sharing_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAccessEnabled")
-    def external_access_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def external_access_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow non-DBR clients to directly access entities under the metastore.
         """
         return pulumi.get(self, "external_access_enabled")
 
     @external_access_enabled.setter
-    def external_access_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def external_access_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "external_access_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Destroy metastore regardless of its contents.
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of metastore.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username/groupname/sp application_id of the metastore owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="privilegeModelVersion")
-    def privilege_model_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def privilege_model_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
         """
         return pulumi.get(self, "privilege_model_version")
 
     @privilege_model_version.setter
-    def privilege_model_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def privilege_model_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "privilege_model_version", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['MetastoreProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['MetastoreProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['MetastoreProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['MetastoreProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the metastore
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="storageRoot")
-    def storage_root(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_root(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.  **It's recommended to define `storage_root` on the catalog level.
         """
         return pulumi.get(self, "storage_root")
 
     @storage_root.setter
-    def storage_root(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_root(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_root", value)
 
     @_builtins.property
     @pulumi.getter(name="storageRootCredentialId")
-    def storage_root_credential_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_root_credential_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional) UUID of storage credential to access the metastore storage_root.
         """
         return pulumi.get(self, "storage_root_credential_id")
 
     @storage_root_credential_id.setter
-    def storage_root_credential_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_root_credential_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_root_credential_id", value)
 
     @_builtins.property
     @pulumi.getter(name="storageRootCredentialName")
-    def storage_root_credential_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_root_credential_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the storage credential to access the metastore storage_root.
         """
         return pulumi.get(self, "storage_root_credential_name")
 
     @storage_root_credential_name.setter
-    def storage_root_credential_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_root_credential_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_root_credential_name", value)
 
 
 @pulumi.input_type
 class _MetastoreState:
     def __init__(__self__, *,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_data_access_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delta_sharing_organization_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delta_sharing_recipient_token_lifetime_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 delta_sharing_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 global_metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 privilege_model_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['MetastoreProviderConfigArgs']] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_by: Optional[pulumi.Input[_builtins.str]] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_data_access_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delta_sharing_organization_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delta_sharing_recipient_token_lifetime_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 delta_sharing_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 global_metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 privilege_model_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['MetastoreProviderConfigArgs']] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_root: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_root_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_root_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_by: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Metastore resources.
 
@@ -365,266 +365,266 @@ class _MetastoreState:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter
-    def cloud(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
         """
         return pulumi.get(self, "cloud")
 
     @cloud.setter
-    def cloud(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time at which the metastore was created, in epoch milliseconds.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username of metastore creator.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultDataAccessConfigId")
-    def default_data_access_config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_data_access_config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional) Unique identifier of the metastore's default data access configuration.
         """
         return pulumi.get(self, "default_data_access_config_id")
 
     @default_data_access_config_id.setter
-    def default_data_access_config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_data_access_config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_data_access_config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deltaSharingOrganizationName")
-    def delta_sharing_organization_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delta_sharing_organization_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing. Once this is set it cannot be removed and can only be modified to another valid value. To delete this value please taint and recreate the resource.
         """
         return pulumi.get(self, "delta_sharing_organization_name")
 
     @delta_sharing_organization_name.setter
-    def delta_sharing_organization_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delta_sharing_organization_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delta_sharing_organization_name", value)
 
     @_builtins.property
     @pulumi.getter(name="deltaSharingRecipientTokenLifetimeInSeconds")
-    def delta_sharing_recipient_token_lifetime_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def delta_sharing_recipient_token_lifetime_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Required along with `delta_sharing_scope`. Used to set expiration duration in seconds on recipient data access tokens. Defaults to 31536000 (1 year).
         """
         return pulumi.get(self, "delta_sharing_recipient_token_lifetime_in_seconds")
 
     @delta_sharing_recipient_token_lifetime_in_seconds.setter
-    def delta_sharing_recipient_token_lifetime_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def delta_sharing_recipient_token_lifetime_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "delta_sharing_recipient_token_lifetime_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="deltaSharingScope")
-    def delta_sharing_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delta_sharing_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Required along with `delta_sharing_recipient_token_lifetime_in_seconds`. Used to enable delta sharing on the metastore. Valid values: `INTERNAL`, `INTERNAL_AND_EXTERNAL`.  `INTERNAL` only allows sharing within the same account, and `INTERNAL_AND_EXTERNAL` allows cross account sharing and token based sharing.
         """
         return pulumi.get(self, "delta_sharing_scope")
 
     @delta_sharing_scope.setter
-    def delta_sharing_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delta_sharing_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delta_sharing_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAccessEnabled")
-    def external_access_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def external_access_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow non-DBR clients to directly access entities under the metastore.
         """
         return pulumi.get(self, "external_access_enabled")
 
     @external_access_enabled.setter
-    def external_access_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def external_access_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "external_access_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Destroy metastore regardless of its contents.
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="globalMetastoreId")
-    def global_metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def global_metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
         """
         return pulumi.get(self, "global_metastore_id")
 
     @global_metastore_id.setter
-    def global_metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def global_metastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "global_metastore_id", value)
 
     @_builtins.property
     @pulumi.getter(name="metastoreId")
-    def metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the metastore.
         """
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
-    def metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metastore_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of metastore.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username/groupname/sp application_id of the metastore owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="privilegeModelVersion")
-    def privilege_model_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def privilege_model_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
         """
         return pulumi.get(self, "privilege_model_version")
 
     @privilege_model_version.setter
-    def privilege_model_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def privilege_model_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "privilege_model_version", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['MetastoreProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['MetastoreProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['MetastoreProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['MetastoreProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the metastore
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="storageRoot")
-    def storage_root(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_root(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storage_root` is defined for the metastore, each catalog must have a `storage_root` defined.  **It's recommended to define `storage_root` on the catalog level.
         """
         return pulumi.get(self, "storage_root")
 
     @storage_root.setter
-    def storage_root(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_root(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_root", value)
 
     @_builtins.property
     @pulumi.getter(name="storageRootCredentialId")
-    def storage_root_credential_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_root_credential_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Optional) UUID of storage credential to access the metastore storage_root.
         """
         return pulumi.get(self, "storage_root_credential_id")
 
     @storage_root_credential_id.setter
-    def storage_root_credential_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_root_credential_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_root_credential_id", value)
 
     @_builtins.property
     @pulumi.getter(name="storageRootCredentialName")
-    def storage_root_credential_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_root_credential_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the storage credential to access the metastore storage_root.
         """
         return pulumi.get(self, "storage_root_credential_name")
 
     @storage_root_credential_name.setter
-    def storage_root_credential_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_root_credential_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_root_credential_name", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time at which the metastore was last modified, in epoch milliseconds.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedBy")
-    def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username of user who last modified the metastore.
         """
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
-    def updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_by", value)
 
 
@@ -634,21 +634,21 @@ class Metastore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_data_access_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delta_sharing_organization_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delta_sharing_recipient_token_lifetime_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 delta_sharing_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 privilege_model_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict']]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_data_access_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delta_sharing_organization_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delta_sharing_recipient_token_lifetime_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 delta_sharing_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 privilege_model_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict']]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_root: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_root_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_root_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > This resource can be used with an account or workspace-level provider.
@@ -825,21 +825,21 @@ class Metastore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_data_access_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delta_sharing_organization_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delta_sharing_recipient_token_lifetime_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 delta_sharing_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 privilege_model_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict']]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_root_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_data_access_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delta_sharing_organization_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delta_sharing_recipient_token_lifetime_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 delta_sharing_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 privilege_model_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict']]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_root: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_root_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_root_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -881,28 +881,28 @@ class Metastore(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api: Optional[pulumi.Input[_builtins.str]] = None,
-            cloud: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.int]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            default_data_access_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-            delta_sharing_organization_name: Optional[pulumi.Input[_builtins.str]] = None,
-            delta_sharing_recipient_token_lifetime_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            delta_sharing_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            external_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            global_metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-            metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None,
-            privilege_model_version: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict']]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_root: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_root_credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_root_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_by: Optional[pulumi.Input[_builtins.str]] = None) -> 'Metastore':
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            default_data_access_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            delta_sharing_organization_name: pulumi.Input[Optional[_builtins.str]] = None,
+            delta_sharing_recipient_token_lifetime_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            delta_sharing_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            external_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            global_metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            privilege_model_version: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['MetastoreProviderConfigArgs', 'MetastoreProviderConfigArgsDict']]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_root: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_root_credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_root_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> 'Metastore':
         """
         Get an existing Metastore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

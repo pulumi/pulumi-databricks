@@ -118,9 +118,9 @@ def get_current_metastore(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         metastore_info=pulumi.get(__ret__, 'metastore_info'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_current_metastore_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 metastore_info: Optional[pulumi.Input[Optional[Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict']]]] = None,
-                                 provider_config: Optional[pulumi.Input[Optional[Union['GetCurrentMetastoreProviderConfigArgs', 'GetCurrentMetastoreProviderConfigArgsDict']]]] = None,
+def get_current_metastore_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 metastore_info: pulumi.Input[Optional[Optional[Union['GetCurrentMetastoreMetastoreInfoArgs', 'GetCurrentMetastoreMetastoreInfoArgsDict']]]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetCurrentMetastoreProviderConfigArgs', 'GetCurrentMetastoreProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentMetastoreResult]:
     """
     Retrieves information about metastore attached to a given workspace.

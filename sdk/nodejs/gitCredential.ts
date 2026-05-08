@@ -158,36 +158,36 @@ export interface GitCredentialState {
     /**
      * specify if settings need to be enforced (i.e., to overwrite previously set credential for service principals).
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author & committer identity for commits.
      */
-    gitEmail?: pulumi.Input<string>;
+    gitEmail?: pulumi.Input<string | undefined>;
     /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
      */
-    gitProvider?: pulumi.Input<string>;
+    gitProvider?: pulumi.Input<string | undefined>;
     /**
      * user name at Git provider.  For most Git providers it is only used to set the Git committer & author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
      */
-    gitUsername?: pulumi.Input<string>;
+    gitUsername?: pulumi.Input<string | undefined>;
     /**
      * boolean flag specifying if the credential is the default for the given provider type.
      */
-    isDefaultForProvider?: pulumi.Input<boolean>;
+    isDefaultForProvider?: pulumi.Input<boolean | undefined>;
     /**
      * the name of the git credential, used for identification and ease of lookup.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      */
-    personalAccessToken?: pulumi.Input<string>;
-    principalId?: pulumi.Input<string>;
+    personalAccessToken?: pulumi.Input<string | undefined>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GitCredentialProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.GitCredentialProviderConfig | undefined>;
 }
 
 /**
@@ -197,11 +197,11 @@ export interface GitCredentialArgs {
     /**
      * specify if settings need to be enforced (i.e., to overwrite previously set credential for service principals).
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The email associated with your Git provider user account. Used for authentication with the remote repository and also sets the author & committer identity for commits.
      */
-    gitEmail?: pulumi.Input<string>;
+    gitEmail?: pulumi.Input<string | undefined>;
     /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Git Credentials API documentation](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`, `azureDevOpsServicesAad`.
      */
@@ -209,22 +209,22 @@ export interface GitCredentialArgs {
     /**
      * user name at Git provider.  For most Git providers it is only used to set the Git committer & author names for commits, however it may be required for authentication depending on your Git provider / token requirements.
      */
-    gitUsername?: pulumi.Input<string>;
+    gitUsername?: pulumi.Input<string | undefined>;
     /**
      * boolean flag specifying if the credential is the default for the given provider type.
      */
-    isDefaultForProvider?: pulumi.Input<boolean>;
+    isDefaultForProvider?: pulumi.Input<boolean | undefined>;
     /**
      * the name of the git credential, used for identification and ease of lookup.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      */
-    personalAccessToken?: pulumi.Input<string>;
-    principalId?: pulumi.Input<string>;
+    personalAccessToken?: pulumi.Input<string | undefined>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GitCredentialProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.GitCredentialProviderConfig | undefined>;
 }

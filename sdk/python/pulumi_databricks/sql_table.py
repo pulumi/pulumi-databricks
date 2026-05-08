@@ -24,21 +24,21 @@ class SqlTableArgs:
                  catalog_name: pulumi.Input[_builtins.str],
                  schema_name: pulumi.Input[_builtins.str],
                  table_type: pulumi.Input[_builtins.str],
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['SqlTableColumnArgs']]]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 partitions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input['SqlTableProviderConfigArgs']] = None,
-                 storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_definition: Optional[pulumi.Input[_builtins.str]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input['SqlTableColumnArgs']]]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 partitions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional['SqlTableProviderConfigArgs']] = None,
+                 storage_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_definition: pulumi.Input[Optional[_builtins.str]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SqlTable resource.
 
@@ -132,205 +132,205 @@ class SqlTableArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All table CRUD operations must be executed on a running cluster or SQL warehouse. If a cluster_id is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouse_id`.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterKeys")
-    def cluster_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cluster_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
         """
         return pulumi.get(self, "cluster_keys")
 
     @cluster_keys.setter
-    def cluster_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cluster_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cluster_keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SqlTableColumnArgs']]]]:
+    def columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SqlTableColumnArgs']]]]:
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SqlTableColumnArgs']]]]):
+    def columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SqlTableColumnArgs']]]]):
         pulumi.set(self, "columns", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceFormat")
-    def data_source_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         """
         return pulumi.get(self, "data_source_format")
 
     @data_source_format.setter
-    def data_source_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_format", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of user defined table options. Change forces creation of a new resource.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User name/group name/sp application_id of the table owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter
-    def partitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def partitions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
         """
         return pulumi.get(self, "partitions")
 
     @partitions.setter
-    def partitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def partitions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "partitions", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of table properties.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['SqlTableProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['SqlTableProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['SqlTableProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['SqlTableProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="storageCredentialName")
-    def storage_credential_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_credential_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "storage_credential_name")
 
     @storage_credential_name.setter
-    def storage_credential_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_credential_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_credential_name", value)
 
     @_builtins.property
     @pulumi.getter(name="storageLocation")
-    def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
         """
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
-    def storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_location", value)
 
     @_builtins.property
     @pulumi.getter(name="viewDefinition")
-    def view_definition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def view_definition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
         """
         return pulumi.get(self, "view_definition")
 
     @view_definition.setter
-    def view_definition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def view_definition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "view_definition", value)
 
     @_builtins.property
     @pulumi.getter(name="warehouseId")
-    def warehouse_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warehouse_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
         """
         return pulumi.get(self, "warehouse_id")
 
     @warehouse_id.setter
-    def warehouse_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warehouse_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warehouse_id", value)
 
 
 @pulumi.input_type
 class _SqlTableState:
     def __init__(__self__, *,
-                 catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['SqlTableColumnArgs']]]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 partitions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input['SqlTableProviderConfigArgs']] = None,
-                 schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_definition: Optional[pulumi.Input[_builtins.str]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input['SqlTableColumnArgs']]]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 partitions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional['SqlTableProviderConfigArgs']] = None,
+                 schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_definition: pulumi.Input[Optional[_builtins.str]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SqlTable resources.
 
@@ -396,236 +396,236 @@ class _SqlTableState:
 
     @_builtins.property
     @pulumi.getter(name="catalogName")
-    def catalog_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def catalog_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of parent catalog. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
-    def catalog_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def catalog_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog_name", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All table CRUD operations must be executed on a running cluster or SQL warehouse. If a cluster_id is specified, it will be used to execute SQL commands to manage this table. If empty, a cluster will be created automatically with the name `terraform-sql-table`. Conflicts with `warehouse_id`.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterKeys")
-    def cluster_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cluster_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         a subset of columns to liquid cluster the table by. For automatic clustering, set `cluster_keys` to `["AUTO"]`. To turn off clustering, set it to `["NONE"]`. Conflicts with `partitions`.
         """
         return pulumi.get(self, "cluster_keys")
 
     @cluster_keys.setter
-    def cluster_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cluster_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cluster_keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SqlTableColumnArgs']]]]:
+    def columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SqlTableColumnArgs']]]]:
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SqlTableColumnArgs']]]]):
+    def columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SqlTableColumnArgs']]]]):
         pulumi.set(self, "columns", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-supplied free-form text. Changing the comment is not currently supported on the `VIEW` table type.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceFormat")
-    def data_source_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         External tables are supported in multiple data source formats. The string constants identifying these formats are `DELTA`, `CSV`, `JSON`, `AVRO`, `PARQUET`, `ORC`, and `TEXT`. Change forces the creation of a new resource. Not supported for `MANAGED` tables or `VIEW`.
         """
         return pulumi.get(self, "data_source_format")
 
     @data_source_format.setter
-    def data_source_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_format", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveProperties")
-    def effective_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def effective_properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "effective_properties")
 
     @effective_properties.setter
-    def effective_properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def effective_properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_properties", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of table relative to parent catalog and schema. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map of user defined table options. Change forces creation of a new resource.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User name/group name/sp application_id of the table owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter
-    def partitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def partitions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         a subset of columns to partition the table by. Change forces the creation of a new resource. Conflicts with `cluster_keys`.
         """
         return pulumi.get(self, "partitions")
 
     @partitions.setter
-    def partitions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def partitions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "partitions", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of table properties.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['SqlTableProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['SqlTableProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['SqlTableProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['SqlTableProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaName")
-    def schema_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "schema_name")
 
     @schema_name.setter
-    def schema_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_name", value)
 
     @_builtins.property
     @pulumi.getter(name="storageCredentialName")
-    def storage_credential_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_credential_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For EXTERNAL Tables only: the name of storage credential to use. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "storage_credential_name")
 
     @storage_credential_name.setter
-    def storage_credential_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_credential_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_credential_name", value)
 
     @_builtins.property
     @pulumi.getter(name="storageLocation")
-    def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of storage location for Table data (required for EXTERNAL Tables).  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.).  Not supported for `VIEW` or `MANAGED` table_type.
         """
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
-    def storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_location", value)
 
     @_builtins.property
     @pulumi.getter(name="tableId")
-    def table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the table.
         """
         return pulumi.get(self, "table_id")
 
     @table_id.setter
-    def table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tableType")
-    def table_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Distinguishes a view vs. managed/external Table. `MANAGED`, `EXTERNAL` or `VIEW`. Change forces the creation of a new resource.
         """
         return pulumi.get(self, "table_type")
 
     @table_type.setter
-    def table_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_type", value)
 
     @_builtins.property
     @pulumi.getter(name="viewDefinition")
-    def view_definition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def view_definition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SQL text defining the view (for `table_type == "VIEW"`). Not supported for `MANAGED` or `EXTERNAL` table_type.
         """
         return pulumi.get(self, "view_definition")
 
     @view_definition.setter
-    def view_definition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def view_definition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "view_definition", value)
 
     @_builtins.property
     @pulumi.getter(name="warehouseId")
-    def warehouse_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warehouse_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         All table CRUD operations must be executed on a running cluster or SQL warehouse. If a `warehouse_id` is specified, that SQL warehouse will be used to execute SQL commands to manage this table. Conflicts with `cluster_id`.
         """
         return pulumi.get(self, "warehouse_id")
 
     @warehouse_id.setter
-    def warehouse_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warehouse_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warehouse_id", value)
 
 
@@ -635,24 +635,24 @@ class SqlTable(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlTableColumnArgs', 'SqlTableColumnArgsDict']]]]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 partitions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict']]] = None,
-                 schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_definition: Optional[pulumi.Input[_builtins.str]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlTableColumnArgs', 'SqlTableColumnArgsDict']]]]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 partitions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict']]] = None,
+                 schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_definition: pulumi.Input[Optional[_builtins.str]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, databases (also called schemas), and tables/views.
@@ -1083,24 +1083,24 @@ class SqlTable(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlTableColumnArgs', 'SqlTableColumnArgsDict']]]]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 partitions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict']]] = None,
-                 schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_definition: Optional[pulumi.Input[_builtins.str]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlTableColumnArgs', 'SqlTableColumnArgsDict']]]]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 partitions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict']]] = None,
+                 schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_definition: pulumi.Input[Optional[_builtins.str]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1146,26 +1146,26 @@ class SqlTable(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlTableColumnArgs', 'SqlTableColumnArgsDict']]]]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source_format: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None,
-            partitions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            provider_config: Optional[pulumi.Input[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict']]] = None,
-            schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-            table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            table_type: Optional[pulumi.Input[_builtins.str]] = None,
-            view_definition: Optional[pulumi.Input[_builtins.str]] = None,
-            warehouse_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'SqlTable':
+            catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlTableColumnArgs', 'SqlTableColumnArgsDict']]]]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_format: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            partitions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlTableProviderConfigArgs', 'SqlTableProviderConfigArgsDict']]] = None,
+            schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+            table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            table_type: pulumi.Input[Optional[_builtins.str]] = None,
+            view_definition: pulumi.Input[Optional[_builtins.str]] = None,
+            warehouse_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'SqlTable':
         """
         Get an existing SqlTable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

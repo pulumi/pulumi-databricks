@@ -137,10 +137,10 @@ def get_catalog(catalog_info: Optional[Union['GetCatalogCatalogInfoArgs', 'GetCa
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_catalog_output(catalog_info: Optional[pulumi.Input[Optional[Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict']]]] = None,
-                       id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       name: Optional[pulumi.Input[_builtins.str]] = None,
-                       provider_config: Optional[pulumi.Input[Optional[Union['GetCatalogProviderConfigArgs', 'GetCatalogProviderConfigArgsDict']]]] = None,
+def get_catalog_output(catalog_info: pulumi.Input[Optional[Optional[Union['GetCatalogCatalogInfoArgs', 'GetCatalogCatalogInfoArgsDict']]]] = None,
+                       id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       name: pulumi.Input[Optional[_builtins.str]] = None,
+                       provider_config: pulumi.Input[Optional[Optional[Union['GetCatalogProviderConfigArgs', 'GetCatalogProviderConfigArgsDict']]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCatalogResult]:
     """
     Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use get_catalogs to retrieve IDs of multiple catalogs from Unity Catalog

@@ -116,11 +116,11 @@ export interface MwsNccBindingState {
     /**
      * Canonical unique identifier of Network Connectivity Config in Databricks Account.
      */
-    networkConnectivityConfigId?: pulumi.Input<string>;
+    networkConnectivityConfigId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the workspace to attach the NCC to. Change forces creation of a new resource.
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 /**

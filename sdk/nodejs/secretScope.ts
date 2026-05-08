@@ -114,20 +114,20 @@ export interface SecretScopeState {
     /**
      * Either `DATABRICKS` or `AZURE_KEYVAULT`
      */
-    backendType?: pulumi.Input<string>;
+    backendType?: pulumi.Input<string | undefined>;
     /**
      * The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the databricks.SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
      */
-    initialManagePrincipal?: pulumi.Input<string>;
-    keyvaultMetadata?: pulumi.Input<inputs.SecretScopeKeyvaultMetadata>;
+    initialManagePrincipal?: pulumi.Input<string | undefined>;
+    keyvaultMetadata?: pulumi.Input<inputs.SecretScopeKeyvaultMetadata | undefined>;
     /**
      * Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SecretScopeProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.SecretScopeProviderConfig | undefined>;
 }
 
 /**
@@ -137,18 +137,18 @@ export interface SecretScopeArgs {
     /**
      * Either `DATABRICKS` or `AZURE_KEYVAULT`
      */
-    backendType?: pulumi.Input<string>;
+    backendType?: pulumi.Input<string | undefined>;
     /**
      * The principal with the only possible value `users` that is initially granted `MANAGE` permission to the created scope.  If it's omitted, then the databricks.SecretAcl with `MANAGE` permission applied to the scope is assigned to the API request issuer's user identity (see [documentation](https://docs.databricks.com/dev-tools/api/latest/secrets.html#create-secret-scope)). This part of the state cannot be imported.
      */
-    initialManagePrincipal?: pulumi.Input<string>;
-    keyvaultMetadata?: pulumi.Input<inputs.SecretScopeKeyvaultMetadata>;
+    initialManagePrincipal?: pulumi.Input<string | undefined>;
+    keyvaultMetadata?: pulumi.Input<inputs.SecretScopeKeyvaultMetadata | undefined>;
     /**
      * Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SecretScopeProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.SecretScopeProviderConfig | undefined>;
 }

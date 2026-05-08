@@ -90,7 +90,7 @@ export function getEndpointsOutput(args: GetEndpointsOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getEndpoints.
  */
 export interface GetEndpointsOutputArgs {
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The parent resource name of the account to list endpoints for.
      * Format: `accounts/{account_id}`

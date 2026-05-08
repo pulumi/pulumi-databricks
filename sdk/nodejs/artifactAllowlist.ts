@@ -125,24 +125,24 @@ export class ArtifactAllowlist extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ArtifactAllowlist resources.
  */
 export interface ArtifactAllowlistState {
-    artifactMatchers?: pulumi.Input<pulumi.Input<inputs.ArtifactAllowlistArtifactMatcher>[]>;
+    artifactMatchers?: pulumi.Input<pulumi.Input<inputs.ArtifactAllowlistArtifactMatcher>[] | undefined>;
     /**
      * The artifact type of the allowlist. Can be `INIT_SCRIPT`, `LIBRARY_JAR` or `LIBRARY_MAVEN`. Change forces creation of a new resource.
      */
-    artifactType?: pulumi.Input<string>;
+    artifactType?: pulumi.Input<string | undefined>;
     /**
      * Time at which this artifact allowlist was set.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * Identity that set the artifact allowlist.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * ID of the parent metastore.
      */
-    metastoreId?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.ArtifactAllowlistProviderConfig>;
+    metastoreId?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.ArtifactAllowlistProviderConfig | undefined>;
 }
 
 /**
@@ -157,14 +157,14 @@ export interface ArtifactAllowlistArgs {
     /**
      * Time at which this artifact allowlist was set.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * Identity that set the artifact allowlist.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * ID of the parent metastore.
      */
-    metastoreId?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.ArtifactAllowlistProviderConfig>;
+    metastoreId?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.ArtifactAllowlistProviderConfig | undefined>;
 }

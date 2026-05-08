@@ -112,9 +112,9 @@ def get_database_database_catalogs(instance_name: Optional[_builtins.str] = None
         instance_name=pulumi.get(__ret__, 'instance_name'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_database_database_catalogs_output(instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                          page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                          provider_config: Optional[pulumi.Input[Optional[Union['GetDatabaseDatabaseCatalogsProviderConfigArgs', 'GetDatabaseDatabaseCatalogsProviderConfigArgsDict']]]] = None,
+def get_database_database_catalogs_output(instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                          page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                          provider_config: pulumi.Input[Optional[Optional[Union['GetDatabaseDatabaseCatalogsProviderConfigArgs', 'GetDatabaseDatabaseCatalogsProviderConfigArgsDict']]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseDatabaseCatalogsResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)

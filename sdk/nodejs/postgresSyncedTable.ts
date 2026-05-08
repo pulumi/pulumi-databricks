@@ -122,25 +122,25 @@ export interface PostgresSyncedTableState {
     /**
      * (string)
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - Output only. The Full resource name of the synced table in Postgres
      * where (catalog, schema, table) are the UC entity names.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.PostgresSyncedTableProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PostgresSyncedTableProviderConfig | undefined>;
     /**
      * Configuration details of the synced table, such as the source table, scheduling policy, etc.
      * This attribute is specified at creation time and most fields are returned as is on subsequent queries
      */
-    spec?: pulumi.Input<inputs.PostgresSyncedTableSpec>;
+    spec?: pulumi.Input<inputs.PostgresSyncedTableSpec | undefined>;
     /**
      * (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
      */
-    status?: pulumi.Input<inputs.PostgresSyncedTableStatus>;
+    status?: pulumi.Input<inputs.PostgresSyncedTableStatus | undefined>;
     /**
      * The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
      * ID is required and is the synced table name, containing (catalog, schema, table) tuple.
@@ -153,11 +153,11 @@ export interface PostgresSyncedTableState {
      * 1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
      * 2. Postgres table named "{table}" in schema "{schema}" in the connected Postgres database
      */
-    syncedTableId?: pulumi.Input<string>;
+    syncedTableId?: pulumi.Input<string | undefined>;
     /**
      * (string) - The Unity Catalog table ID for this synced table
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -167,12 +167,12 @@ export interface PostgresSyncedTableArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.PostgresSyncedTableProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PostgresSyncedTableProviderConfig | undefined>;
     /**
      * Configuration details of the synced table, such as the source table, scheduling policy, etc.
      * This attribute is specified at creation time and most fields are returned as is on subsequent queries
      */
-    spec?: pulumi.Input<inputs.PostgresSyncedTableSpec>;
+    spec?: pulumi.Input<inputs.PostgresSyncedTableSpec | undefined>;
     /**
      * The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
      * ID is required and is the synced table name, containing (catalog, schema, table) tuple.

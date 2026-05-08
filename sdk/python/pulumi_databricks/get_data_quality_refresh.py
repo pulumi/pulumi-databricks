@@ -222,10 +222,10 @@ def get_data_quality_refresh(object_id: Optional[_builtins.str] = None,
         start_time_ms=pulumi.get(__ret__, 'start_time_ms'),
         state=pulumi.get(__ret__, 'state'),
         trigger=pulumi.get(__ret__, 'trigger'))
-def get_data_quality_refresh_output(object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                    object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                                    provider_config: Optional[pulumi.Input[Optional[Union['GetDataQualityRefreshProviderConfigArgs', 'GetDataQualityRefreshProviderConfigArgsDict']]]] = None,
-                                    refresh_id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_data_quality_refresh_output(object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                    object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                                    provider_config: pulumi.Input[Optional[Optional[Union['GetDataQualityRefreshProviderConfigArgs', 'GetDataQualityRefreshProviderConfigArgsDict']]]] = None,
+                                    refresh_id: pulumi.Input[Optional[_builtins.int]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataQualityRefreshResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)

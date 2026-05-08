@@ -22,15 +22,15 @@ __all__ = ['LibraryArgs', 'Library']
 class LibraryArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 cran: Optional[pulumi.Input['LibraryCranArgs']] = None,
-                 egg: Optional[pulumi.Input[_builtins.str]] = None,
-                 jar: Optional[pulumi.Input[_builtins.str]] = None,
-                 library_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maven: Optional[pulumi.Input['LibraryMavenArgs']] = None,
-                 provider_config: Optional[pulumi.Input['LibraryProviderConfigArgs']] = None,
-                 pypi: Optional[pulumi.Input['LibraryPypiArgs']] = None,
-                 requirements: Optional[pulumi.Input[_builtins.str]] = None,
-                 whl: Optional[pulumi.Input[_builtins.str]] = None):
+                 cran: pulumi.Input[Optional['LibraryCranArgs']] = None,
+                 egg: pulumi.Input[Optional[_builtins.str]] = None,
+                 jar: pulumi.Input[Optional[_builtins.str]] = None,
+                 library_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maven: pulumi.Input[Optional['LibraryMavenArgs']] = None,
+                 provider_config: pulumi.Input[Optional['LibraryProviderConfigArgs']] = None,
+                 pypi: pulumi.Input[Optional['LibraryPypiArgs']] = None,
+                 requirements: pulumi.Input[Optional[_builtins.str]] = None,
+                 whl: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Library resource.
 
@@ -85,124 +85,124 @@ class LibraryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cran(self) -> Optional[pulumi.Input['LibraryCranArgs']]:
+    def cran(self) -> pulumi.Input[Optional['LibraryCranArgs']]:
         """
         Configuration block for a CRAN library. The block consists of the following fields:
         """
         return pulumi.get(self, "cran")
 
     @cran.setter
-    def cran(self, value: Optional[pulumi.Input['LibraryCranArgs']]):
+    def cran(self, value: pulumi.Input[Optional['LibraryCranArgs']]):
         pulumi.set(self, "cran", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
-    def egg(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def egg(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
         """
         return pulumi.get(self, "egg")
 
     @egg.setter
-    def egg(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def egg(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "egg", value)
 
     @_builtins.property
     @pulumi.getter
-    def jar(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jar(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
         """
         return pulumi.get(self, "jar")
 
     @jar.setter
-    def jar(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jar(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jar", value)
 
     @_builtins.property
     @pulumi.getter(name="libraryId")
-    def library_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def library_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "library_id")
 
     @library_id.setter
-    def library_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def library_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "library_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def maven(self) -> Optional[pulumi.Input['LibraryMavenArgs']]:
+    def maven(self) -> pulumi.Input[Optional['LibraryMavenArgs']]:
         """
         Configuration block for a Maven library. The block consists of the following fields:
         """
         return pulumi.get(self, "maven")
 
     @maven.setter
-    def maven(self, value: Optional[pulumi.Input['LibraryMavenArgs']]):
+    def maven(self, value: pulumi.Input[Optional['LibraryMavenArgs']]):
         pulumi.set(self, "maven", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['LibraryProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['LibraryProviderConfigArgs']]:
         """
         Configuration block for management through the account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['LibraryProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['LibraryProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def pypi(self) -> Optional[pulumi.Input['LibraryPypiArgs']]:
+    def pypi(self) -> pulumi.Input[Optional['LibraryPypiArgs']]:
         """
         Configuration block for a PyPI library. The block consists of the following fields:
         """
         return pulumi.get(self, "pypi")
 
     @pypi.setter
-    def pypi(self, value: Optional[pulumi.Input['LibraryPypiArgs']]):
+    def pypi(self, value: pulumi.Input[Optional['LibraryPypiArgs']]):
         pulumi.set(self, "pypi", value)
 
     @_builtins.property
     @pulumi.getter
-    def requirements(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def requirements(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
         """
         return pulumi.get(self, "requirements")
 
     @requirements.setter
-    def requirements(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def requirements(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "requirements", value)
 
     @_builtins.property
     @pulumi.getter
-    def whl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def whl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
         """
         return pulumi.get(self, "whl")
 
     @whl.setter
-    def whl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def whl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "whl", value)
 
 
 @pulumi.input_type
 class _LibraryState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cran: Optional[pulumi.Input['LibraryCranArgs']] = None,
-                 egg: Optional[pulumi.Input[_builtins.str]] = None,
-                 jar: Optional[pulumi.Input[_builtins.str]] = None,
-                 library_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maven: Optional[pulumi.Input['LibraryMavenArgs']] = None,
-                 provider_config: Optional[pulumi.Input['LibraryProviderConfigArgs']] = None,
-                 pypi: Optional[pulumi.Input['LibraryPypiArgs']] = None,
-                 requirements: Optional[pulumi.Input[_builtins.str]] = None,
-                 whl: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cran: pulumi.Input[Optional['LibraryCranArgs']] = None,
+                 egg: pulumi.Input[Optional[_builtins.str]] = None,
+                 jar: pulumi.Input[Optional[_builtins.str]] = None,
+                 library_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maven: pulumi.Input[Optional['LibraryMavenArgs']] = None,
+                 provider_config: pulumi.Input[Optional['LibraryProviderConfigArgs']] = None,
+                 pypi: pulumi.Input[Optional['LibraryPypiArgs']] = None,
+                 requirements: pulumi.Input[Optional[_builtins.str]] = None,
+                 whl: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Library resources.
 
@@ -244,7 +244,7 @@ class _LibraryState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the Cluster to install the library on.
 
@@ -253,113 +253,113 @@ class _LibraryState:
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def cran(self) -> Optional[pulumi.Input['LibraryCranArgs']]:
+    def cran(self) -> pulumi.Input[Optional['LibraryCranArgs']]:
         """
         Configuration block for a CRAN library. The block consists of the following fields:
         """
         return pulumi.get(self, "cran")
 
     @cran.setter
-    def cran(self, value: Optional[pulumi.Input['LibraryCranArgs']]):
+    def cran(self, value: pulumi.Input[Optional['LibraryCranArgs']]):
         pulumi.set(self, "cran", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The `egg` library type is deprecated. Please use `whl` or `pypi` instead.""")
-    def egg(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def egg(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
         """
         return pulumi.get(self, "egg")
 
     @egg.setter
-    def egg(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def egg(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "egg", value)
 
     @_builtins.property
     @pulumi.getter
-    def jar(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jar(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
         """
         return pulumi.get(self, "jar")
 
     @jar.setter
-    def jar(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jar(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jar", value)
 
     @_builtins.property
     @pulumi.getter(name="libraryId")
-    def library_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def library_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "library_id")
 
     @library_id.setter
-    def library_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def library_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "library_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def maven(self) -> Optional[pulumi.Input['LibraryMavenArgs']]:
+    def maven(self) -> pulumi.Input[Optional['LibraryMavenArgs']]:
         """
         Configuration block for a Maven library. The block consists of the following fields:
         """
         return pulumi.get(self, "maven")
 
     @maven.setter
-    def maven(self, value: Optional[pulumi.Input['LibraryMavenArgs']]):
+    def maven(self, value: pulumi.Input[Optional['LibraryMavenArgs']]):
         pulumi.set(self, "maven", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['LibraryProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['LibraryProviderConfigArgs']]:
         """
         Configuration block for management through the account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['LibraryProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['LibraryProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def pypi(self) -> Optional[pulumi.Input['LibraryPypiArgs']]:
+    def pypi(self) -> pulumi.Input[Optional['LibraryPypiArgs']]:
         """
         Configuration block for a PyPI library. The block consists of the following fields:
         """
         return pulumi.get(self, "pypi")
 
     @pypi.setter
-    def pypi(self, value: Optional[pulumi.Input['LibraryPypiArgs']]):
+    def pypi(self, value: pulumi.Input[Optional['LibraryPypiArgs']]):
         pulumi.set(self, "pypi", value)
 
     @_builtins.property
     @pulumi.getter
-    def requirements(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def requirements(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
         """
         return pulumi.get(self, "requirements")
 
     @requirements.setter
-    def requirements(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def requirements(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "requirements", value)
 
     @_builtins.property
     @pulumi.getter
-    def whl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def whl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
         """
         return pulumi.get(self, "whl")
 
     @whl.setter
-    def whl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def whl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "whl", value)
 
 
@@ -369,16 +369,16 @@ class Library(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cran: Optional[pulumi.Input[Union['LibraryCranArgs', 'LibraryCranArgsDict']]] = None,
-                 egg: Optional[pulumi.Input[_builtins.str]] = None,
-                 jar: Optional[pulumi.Input[_builtins.str]] = None,
-                 library_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maven: Optional[pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
-                 provider_config: Optional[pulumi.Input[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict']]] = None,
-                 pypi: Optional[pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
-                 requirements: Optional[pulumi.Input[_builtins.str]] = None,
-                 whl: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cran: pulumi.Input[Optional[Union['LibraryCranArgs', 'LibraryCranArgsDict']]] = None,
+                 egg: pulumi.Input[Optional[_builtins.str]] = None,
+                 jar: pulumi.Input[Optional[_builtins.str]] = None,
+                 library_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maven: pulumi.Input[Optional[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict']]] = None,
+                 pypi: pulumi.Input[Optional[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
+                 requirements: pulumi.Input[Optional[_builtins.str]] = None,
+                 whl: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Installs a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster. Each different type of library has a slightly different syntax. It's possible to set only one type of library within one resource. Otherwise, the plan will fail with an error.
@@ -397,13 +397,14 @@ class Library(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_databricks as databricks
 
         all = databricks.get_clusters()
-        cli = []
+        cli: list[Any] = []
         for range in [{"key": k, "value": v} for [k, v] in enumerate(all.ids)]:
             cli.append(databricks.Library(f"cli-{range['key']}",
-                cluster_id=range["key"],
+                cluster_id=str(range["key"]),
                 pypi={
                     "package": "databricks-cli",
                 }))
@@ -525,13 +526,14 @@ class Library(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_databricks as databricks
 
         all = databricks.get_clusters()
-        cli = []
+        cli: list[Any] = []
         for range in [{"key": k, "value": v} for [k, v] in enumerate(all.ids)]:
             cli.append(databricks.Library(f"cli-{range['key']}",
-                cluster_id=range["key"],
+                cluster_id=str(range["key"]),
                 pypi={
                     "package": "databricks-cli",
                 }))
@@ -631,16 +633,16 @@ class Library(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cran: Optional[pulumi.Input[Union['LibraryCranArgs', 'LibraryCranArgsDict']]] = None,
-                 egg: Optional[pulumi.Input[_builtins.str]] = None,
-                 jar: Optional[pulumi.Input[_builtins.str]] = None,
-                 library_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 maven: Optional[pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
-                 provider_config: Optional[pulumi.Input[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict']]] = None,
-                 pypi: Optional[pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
-                 requirements: Optional[pulumi.Input[_builtins.str]] = None,
-                 whl: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cran: pulumi.Input[Optional[Union['LibraryCranArgs', 'LibraryCranArgsDict']]] = None,
+                 egg: pulumi.Input[Optional[_builtins.str]] = None,
+                 jar: pulumi.Input[Optional[_builtins.str]] = None,
+                 library_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 maven: pulumi.Input[Optional[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict']]] = None,
+                 pypi: pulumi.Input[Optional[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
+                 requirements: pulumi.Input[Optional[_builtins.str]] = None,
+                 whl: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -672,16 +674,16 @@ class Library(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cran: Optional[pulumi.Input[Union['LibraryCranArgs', 'LibraryCranArgsDict']]] = None,
-            egg: Optional[pulumi.Input[_builtins.str]] = None,
-            jar: Optional[pulumi.Input[_builtins.str]] = None,
-            library_id: Optional[pulumi.Input[_builtins.str]] = None,
-            maven: Optional[pulumi.Input[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
-            provider_config: Optional[pulumi.Input[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict']]] = None,
-            pypi: Optional[pulumi.Input[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
-            requirements: Optional[pulumi.Input[_builtins.str]] = None,
-            whl: Optional[pulumi.Input[_builtins.str]] = None) -> 'Library':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cran: pulumi.Input[Optional[Union['LibraryCranArgs', 'LibraryCranArgsDict']]] = None,
+            egg: pulumi.Input[Optional[_builtins.str]] = None,
+            jar: pulumi.Input[Optional[_builtins.str]] = None,
+            library_id: pulumi.Input[Optional[_builtins.str]] = None,
+            maven: pulumi.Input[Optional[Union['LibraryMavenArgs', 'LibraryMavenArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['LibraryProviderConfigArgs', 'LibraryProviderConfigArgsDict']]] = None,
+            pypi: pulumi.Input[Optional[Union['LibraryPypiArgs', 'LibraryPypiArgsDict']]] = None,
+            requirements: pulumi.Input[Optional[_builtins.str]] = None,
+            whl: pulumi.Input[Optional[_builtins.str]] = None) -> 'Library':
         """
         Get an existing Library resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

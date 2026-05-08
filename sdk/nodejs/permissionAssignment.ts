@@ -219,33 +219,33 @@ export interface PermissionAssignmentState {
     /**
      * the display name of the assigned principal.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * the group name to assign to a workspace.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * The list of workspace permissions to assign to the principal:
      * * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
      * * `"ADMIN"` - Adds principal to the workspace `admins` group. This gives workspace admin privileges to manage users and groups, workspace configurations, and more.
      */
-    permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    permissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.PermissionAssignmentProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PermissionAssignmentProviderConfig | undefined>;
     /**
      * the application ID of service principal to assign to a workspace.
      */
-    servicePrincipalName?: pulumi.Input<string>;
+    servicePrincipalName?: pulumi.Input<string | undefined>;
     /**
      * the user name (email) to assign to a workspace.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -255,7 +255,7 @@ export interface PermissionAssignmentArgs {
     /**
      * the group name to assign to a workspace.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * The list of workspace permissions to assign to the principal:
      * * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
@@ -265,17 +265,17 @@ export interface PermissionAssignmentArgs {
     /**
      * Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, databricks.ServicePrincipal or databricks.Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principalId` as outputs from another Pulumi stack.
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.PermissionAssignmentProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PermissionAssignmentProviderConfig | undefined>;
     /**
      * the application ID of service principal to assign to a workspace.
      */
-    servicePrincipalName?: pulumi.Input<string>;
+    servicePrincipalName?: pulumi.Input<string | undefined>;
     /**
      * the user name (email) to assign to a workspace.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }

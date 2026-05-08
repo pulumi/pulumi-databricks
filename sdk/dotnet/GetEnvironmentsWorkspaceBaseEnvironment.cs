@@ -27,7 +27,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myEnv = Databricks.Index.GetEnvironmentsWorkspaceBaseEnvironment.Invoke(new()
+        ///     var myEnv = Databricks.GetEnvironmentsWorkspaceBaseEnvironment.Invoke(new()
         ///     {
         ///         Name = "workspace-base-environments/my-environment",
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myEnv = Databricks.Index.GetEnvironmentsWorkspaceBaseEnvironment.Invoke(new()
+        ///     var myEnv = Databricks.GetEnvironmentsWorkspaceBaseEnvironment.Invoke(new()
         ///     {
         ///         Name = "workspace-base-environments/my-environment",
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myEnv = Databricks.Index.GetEnvironmentsWorkspaceBaseEnvironment.Invoke(new()
+        ///     var myEnv = Databricks.GetEnvironmentsWorkspaceBaseEnvironment.Invoke(new()
         ///     {
         ///         Name = "workspace-base-environments/my-environment",
         ///     });

@@ -96,5 +96,5 @@ export function getAppsOutput(args?: GetAppsOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getApps.
  */
 export interface GetAppsOutputArgs {
-    providerConfig?: pulumi.Input<inputs.GetAppsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetAppsProviderConfigArgs | undefined>;
 }

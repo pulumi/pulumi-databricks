@@ -23,9 +23,9 @@ class MetastoreProviderArgs:
     def __init__(__self__, *,
                  authentication_type: pulumi.Input[_builtins.str],
                  recipient_profile_str: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['MetastoreProviderProviderConfigArgs']] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['MetastoreProviderProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a MetastoreProvider resource.
 
@@ -70,49 +70,49 @@ class MetastoreProviderArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description about the provider.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of provider. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['MetastoreProviderProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['MetastoreProviderProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['MetastoreProviderProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['MetastoreProviderProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _MetastoreProviderState:
     def __init__(__self__, *,
-                 authentication_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['MetastoreProviderProviderConfigArgs']] = None,
-                 recipient_profile_str: Optional[pulumi.Input[_builtins.str]] = None):
+                 authentication_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['MetastoreProviderProviderConfigArgs']] = None,
+                 recipient_profile_str: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MetastoreProvider resources.
 
@@ -135,62 +135,62 @@ class _MetastoreProviderState:
 
     @_builtins.property
     @pulumi.getter(name="authenticationType")
-    def authentication_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authentication_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The delta sharing authentication type. Valid values are `TOKEN`.
         """
         return pulumi.get(self, "authentication_type")
 
     @authentication_type.setter
-    def authentication_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authentication_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authentication_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description about the provider.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of provider. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['MetastoreProviderProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['MetastoreProviderProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['MetastoreProviderProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['MetastoreProviderProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="recipientProfileStr")
-    def recipient_profile_str(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recipient_profile_str(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the json file that is created from a recipient url.
         """
         return pulumi.get(self, "recipient_profile_str")
 
     @recipient_profile_str.setter
-    def recipient_profile_str(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recipient_profile_str(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recipient_profile_str", value)
 
 
@@ -200,11 +200,11 @@ class MetastoreProvider(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['MetastoreProviderProviderConfigArgs', 'MetastoreProviderProviderConfigArgsDict']]] = None,
-                 recipient_profile_str: Optional[pulumi.Input[_builtins.str]] = None,
+                 authentication_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MetastoreProviderProviderConfigArgs', 'MetastoreProviderProviderConfigArgsDict']]] = None,
+                 recipient_profile_str: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         In Delta Sharing, a provider is an entity that shares data with a recipient. Within a metastore, Unity Catalog provides the ability to create a provider which contains a list of shares that have been shared with you.
@@ -309,11 +309,11 @@ class MetastoreProvider(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['MetastoreProviderProviderConfigArgs', 'MetastoreProviderProviderConfigArgsDict']]] = None,
-                 recipient_profile_str: Optional[pulumi.Input[_builtins.str]] = None,
+                 authentication_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MetastoreProviderProviderConfigArgs', 'MetastoreProviderProviderConfigArgsDict']]] = None,
+                 recipient_profile_str: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -344,11 +344,11 @@ class MetastoreProvider(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authentication_type: Optional[pulumi.Input[_builtins.str]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['MetastoreProviderProviderConfigArgs', 'MetastoreProviderProviderConfigArgsDict']]] = None,
-            recipient_profile_str: Optional[pulumi.Input[_builtins.str]] = None) -> 'MetastoreProvider':
+            authentication_type: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['MetastoreProviderProviderConfigArgs', 'MetastoreProviderProviderConfigArgsDict']]] = None,
+            recipient_profile_str: pulumi.Input[Optional[_builtins.str]] = None) -> 'MetastoreProvider':
         """
         Get an existing MetastoreProvider resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

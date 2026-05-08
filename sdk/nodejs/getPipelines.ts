@@ -168,13 +168,13 @@ export interface GetPipelinesOutputArgs {
     /**
      * List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Filter Lakeflow Declarative Pipelines by name for a given search term. `%` is the supported wildcard operator.
      */
-    pipelineName?: pulumi.Input<string>;
+    pipelineName?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetPipelinesProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetPipelinesProviderConfigArgs | undefined>;
 }

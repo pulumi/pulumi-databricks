@@ -22,12 +22,12 @@ __all__ = ['MwsNetworkConnectivityConfigArgs', 'MwsNetworkConnectivityConfig']
 class MwsNetworkConnectivityConfigArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 egress_config: Optional[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 egress_config: pulumi.Input[Optional['MwsNetworkConnectivityConfigEgressConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a MwsNetworkConnectivityConfig resource.
 
@@ -66,84 +66,84 @@ class MwsNetworkConnectivityConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         time in epoch milliseconds when this object was created.
         """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="egressConfig")
-    def egress_config(self) -> Optional[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigArgs']]:
+    def egress_config(self) -> pulumi.Input[Optional['MwsNetworkConnectivityConfigEgressConfigArgs']]:
         """
         block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
         """
         return pulumi.get(self, "egress_config")
 
     @egress_config.setter
-    def egress_config(self, value: Optional[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigArgs']]):
+    def egress_config(self, value: pulumi.Input[Optional['MwsNetworkConnectivityConfigEgressConfigArgs']]):
         pulumi.set(self, "egress_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConnectivityConfigId")
-    def network_connectivity_config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_connectivity_config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier of Network Connectivity Config in Databricks Account
         """
         return pulumi.get(self, "network_connectivity_config_id")
 
     @network_connectivity_config_id.setter
-    def network_connectivity_config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_connectivity_config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_connectivity_config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedTime")
-    def updated_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         time in epoch milliseconds when this object was updated.
         """
         return pulumi.get(self, "updated_time")
 
     @updated_time.setter
-    def updated_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated_time", value)
 
 
 @pulumi.input_type
 class _MwsNetworkConnectivityConfigState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 egress_config: Optional[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 egress_config: pulumi.Input[Optional['MwsNetworkConnectivityConfigEgressConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering MwsNetworkConnectivityConfig resources.
 
@@ -171,83 +171,83 @@ class _MwsNetworkConnectivityConfigState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         time in epoch milliseconds when this object was created.
         """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="egressConfig")
-    def egress_config(self) -> Optional[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigArgs']]:
+    def egress_config(self) -> pulumi.Input[Optional['MwsNetworkConnectivityConfigEgressConfigArgs']]:
         """
         block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
         """
         return pulumi.get(self, "egress_config")
 
     @egress_config.setter
-    def egress_config(self, value: Optional[pulumi.Input['MwsNetworkConnectivityConfigEgressConfigArgs']]):
+    def egress_config(self, value: pulumi.Input[Optional['MwsNetworkConnectivityConfigEgressConfigArgs']]):
         pulumi.set(self, "egress_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConnectivityConfigId")
-    def network_connectivity_config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_connectivity_config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier of Network Connectivity Config in Databricks Account
         """
         return pulumi.get(self, "network_connectivity_config_id")
 
     @network_connectivity_config_id.setter
-    def network_connectivity_config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_connectivity_config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_connectivity_config_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedTime")
-    def updated_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         time in epoch milliseconds when this object was updated.
         """
         return pulumi.get(self, "updated_time")
 
     @updated_time.setter
-    def updated_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated_time", value)
 
 
@@ -257,13 +257,13 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 egress_config: Optional[pulumi.Input[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 egress_config: pulumi.Input[Optional[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_time: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Allows you to create a Network Connectivity Config that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
@@ -357,13 +357,13 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 egress_config: Optional[pulumi.Input[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 egress_config: pulumi.Input[Optional[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_time: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -392,13 +392,13 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-            egress_config: Optional[pulumi.Input[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_time: Optional[pulumi.Input[_builtins.int]] = None) -> 'MwsNetworkConnectivityConfig':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            egress_config: pulumi.Input[Optional[Union['MwsNetworkConnectivityConfigEgressConfigArgs', 'MwsNetworkConnectivityConfigEgressConfigArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_time: pulumi.Input[Optional[_builtins.int]] = None) -> 'MwsNetworkConnectivityConfig':
         """
         Get an existing MwsNetworkConnectivityConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

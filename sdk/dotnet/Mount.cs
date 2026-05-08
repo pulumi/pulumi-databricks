@@ -66,7 +66,7 @@ namespace Pulumi.Databricks
     /// 
     ///     var storageAcc = "lrs";
     /// 
-    ///     var @this = new Databricks.Index.Mount("this", new()
+    ///     var @this = new Databricks.Mount("this", new()
     ///     {
     ///         Name = "tf-abfss",
     ///         Uri = $"abfss://{container}@{storageAcc}.dfs.core.windows.net",
@@ -106,20 +106,20 @@ namespace Pulumi.Databricks
     ///     var resourceGroup = config.Require("resourceGroup");
     ///     // Name of the Databricks Workspace
     ///     var workspaceName = config.Require("workspaceName");
-    ///     var @this = Azurerm.Index.DatabricksWorkspace.Invoke(new()
+    ///     var @this = Azurerm.DatabricksWorkspace.Invoke(new()
     ///     {
     ///         Name = workspaceName,
     ///         ResourceGroupName = resourceGroup,
     ///     });
     /// 
-    ///     var smallest = Databricks.Index.GetNodeType.Invoke(new()
+    ///     var smallest = Databricks.GetNodeType.Invoke(new()
     ///     {
     ///         LocalDisk = true,
     ///     });
     /// 
-    ///     var latest = Databricks.Index.GetSparkVersion.Invoke();
+    ///     var latest = Databricks.GetSparkVersion.Invoke();
     /// 
-    ///     var sharedPassthrough = new Databricks.Index.Cluster("shared_passthrough", new()
+    ///     var sharedPassthrough = new Databricks.Cluster("shared_passthrough", new()
     ///     {
     ///         ClusterName = "Shared Passthrough for mount",
     ///         SparkVersion = latest.Apply(getSparkVersionResult =&gt; getSparkVersionResult.Id),
@@ -143,7 +143,7 @@ namespace Pulumi.Databricks
     ///     var storageAcc = config.Require("storageAcc");
     ///     // Name of container inside storage account
     ///     var container = config.Require("container");
-    ///     var passthrough = new Databricks.Index.Mount("passthrough", new()
+    ///     var passthrough = new Databricks.Mount("passthrough", new()
     ///     {
     ///         Name = "passthrough-test",
     ///         ClusterId = sharedPassthrough.Id,
@@ -176,7 +176,7 @@ namespace Pulumi.Databricks
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // now you can do `%fs ls /mnt/experiments` in notebooks
-    ///     var @this = new Databricks.Index.Mount("this", new()
+    ///     var @this = new Databricks.Mount("this", new()
     ///     {
     ///         Name = "experiments",
     ///         S3 = new Databricks.Inputs.MountS3Args
@@ -215,20 +215,20 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var terraform = new Databricks.Index.SecretScope("terraform", new()
+    ///     var terraform = new Databricks.SecretScope("terraform", new()
     ///     {
     ///         Name = "application",
     ///         InitialManagePrincipal = "users",
     ///     });
     /// 
-    ///     var servicePrincipalKey = new Databricks.Index.Secret("service_principal_key", new()
+    ///     var servicePrincipalKey = new Databricks.Secret("service_principal_key", new()
     ///     {
     ///         Key = "service_principal_key",
     ///         StringValue = ARM_CLIENT_SECRET,
     ///         Scope = terraform.Name,
     ///     });
     /// 
-    ///     var @this = new Azurerm.Index.StorageAccount("this", new()
+    ///     var @this = new Azurerm.StorageAccount("this", new()
     ///     {
     ///         Name = $"{prefix}datalake",
     ///         ResourceGroupName = resourceGroupName,
@@ -239,21 +239,21 @@ namespace Pulumi.Databricks
     ///         IsHnsEnabled = true,
     ///     });
     /// 
-    ///     var thisRoleAssignment = new Azurerm.Index.RoleAssignment("this", new()
+    ///     var thisRoleAssignment = new Azurerm.RoleAssignment("this", new()
     ///     {
     ///         Scope = @this.Id,
     ///         RoleDefinitionName = "Storage Blob Data Contributor",
     ///         PrincipalId = current.ObjectId,
     ///     });
     /// 
-    ///     var thisStorageContainer = new Azurerm.Index.StorageContainer("this", new()
+    ///     var thisStorageContainer = new Azurerm.StorageContainer("this", new()
     ///     {
     ///         Name = "marketing",
     ///         StorageAccountName = @this.Name,
     ///         ContainerAccessType = "private",
     ///     });
     /// 
-    ///     var marketing = new Databricks.Index.Mount("marketing", new()
+    ///     var marketing = new Databricks.Mount("marketing", new()
     ///     {
     ///         Name = "marketing",
     ///         ResourceId = thisStorageContainer.ResourceManagerId,
@@ -286,7 +286,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thisGs = new Databricks.Index.Mount("this_gs", new()
+    ///     var thisGs = new Databricks.Mount("this_gs", new()
     ///     {
     ///         Name = "gs-mount",
     ///         Gs = new Databricks.Inputs.MountGsArgs
@@ -322,7 +322,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mount = new Databricks.Index.Mount("mount", new()
+    ///     var mount = new Databricks.Mount("mount", new()
     ///     {
     ///         Name = "{var.RANDOM}",
     ///         Adl = new Databricks.Inputs.MountAdlArgs
@@ -361,7 +361,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var blobaccount = new Azurerm.Index.StorageAccount("blobaccount", new()
+    ///     var blobaccount = new Azurerm.StorageAccount("blobaccount", new()
     ///     {
     ///         Name = $"{prefix}blob",
     ///         ResourceGroupName = resourceGroupName,
@@ -371,27 +371,27 @@ namespace Pulumi.Databricks
     ///         AccountKind = "StorageV2",
     ///     });
     /// 
-    ///     var marketing = new Azurerm.Index.StorageContainer("marketing", new()
+    ///     var marketing = new Azurerm.StorageContainer("marketing", new()
     ///     {
     ///         Name = "marketing",
     ///         StorageAccountName = blobaccount.Name,
     ///         ContainerAccessType = "private",
     ///     });
     /// 
-    ///     var terraform = new Databricks.Index.SecretScope("terraform", new()
+    ///     var terraform = new Databricks.SecretScope("terraform", new()
     ///     {
     ///         Name = "application",
     ///         InitialManagePrincipal = "users",
     ///     });
     /// 
-    ///     var storageKey = new Databricks.Index.Secret("storage_key", new()
+    ///     var storageKey = new Databricks.Secret("storage_key", new()
     ///     {
     ///         Key = "blob_storage_key",
     ///         StringValue = blobaccount.PrimaryAccessKey,
     ///         Scope = terraform.Name,
     ///     });
     /// 
-    ///     var marketingMount = new Databricks.Index.Mount("marketing", new()
+    ///     var marketingMount = new Databricks.Mount("marketing", new()
     ///     {
     ///         Name = "marketing",
     ///         Wasb = new Databricks.Inputs.MountWasbArgs

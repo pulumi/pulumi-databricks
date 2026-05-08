@@ -19,48 +19,48 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 actions_id_token_request_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 actions_id_token_request_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_login_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_use_msi: Optional[pulumi.Input[_builtins.bool]] = None,
-                 azure_workspace_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_cli_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_id_token_filepath: Optional[pulumi.Input[_builtins.str]] = None,
-                 debug_headers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 debug_truncate_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 disable_oauth_refresh_token: Optional[pulumi.Input[_builtins.bool]] = None,
-                 discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 experimental_is_unified_host: Optional[pulumi.Input[_builtins.bool]] = None,
-                 google_credentials: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 metadata_service_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_callback_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 oidc_token_env: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 serverless_compute_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_verify: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 actions_id_token_request_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 actions_id_token_request_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_login_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_use_msi: pulumi.Input[Optional[_builtins.bool]] = None,
+                 azure_workspace_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_cli_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_id_token_filepath: pulumi.Input[Optional[_builtins.str]] = None,
+                 debug_headers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 debug_truncate_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 disable_oauth_refresh_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 experimental_is_unified_host: pulumi.Input[Optional[_builtins.bool]] = None,
+                 google_credentials: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 metadata_service_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_callback_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 oidc_token_env: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 serverless_compute_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_verify: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         """
@@ -151,380 +151,380 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="actionsIdTokenRequestToken")
-    def actions_id_token_request_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def actions_id_token_request_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "actions_id_token_request_token")
 
     @actions_id_token_request_token.setter
-    def actions_id_token_request_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def actions_id_token_request_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "actions_id_token_request_token", value)
 
     @_builtins.property
     @pulumi.getter(name="actionsIdTokenRequestUrl")
-    def actions_id_token_request_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def actions_id_token_request_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "actions_id_token_request_url")
 
     @actions_id_token_request_url.setter
-    def actions_id_token_request_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def actions_id_token_request_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "actions_id_token_request_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def audience(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audience(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "audience")
 
     @audience.setter
-    def audience(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audience(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audience", value)
 
     @_builtins.property
     @pulumi.getter(name="authType")
-    def auth_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "auth_type")
 
     @auth_type.setter
-    def auth_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_type", value)
 
     @_builtins.property
     @pulumi.getter(name="azureClientId")
-    def azure_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def azure_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "azure_client_id")
 
     @azure_client_id.setter
-    def azure_client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def azure_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "azure_client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="azureClientSecret")
-    def azure_client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def azure_client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "azure_client_secret")
 
     @azure_client_secret.setter
-    def azure_client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def azure_client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "azure_client_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="azureEnvironment")
-    def azure_environment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def azure_environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "azure_environment")
 
     @azure_environment.setter
-    def azure_environment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def azure_environment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "azure_environment", value)
 
     @_builtins.property
     @pulumi.getter(name="azureLoginAppId")
-    def azure_login_app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def azure_login_app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "azure_login_app_id")
 
     @azure_login_app_id.setter
-    def azure_login_app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def azure_login_app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "azure_login_app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="azureTenantId")
-    def azure_tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def azure_tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "azure_tenant_id")
 
     @azure_tenant_id.setter
-    def azure_tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def azure_tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "azure_tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="azureUseMsi")
-    def azure_use_msi(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def azure_use_msi(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "azure_use_msi")
 
     @azure_use_msi.setter
-    def azure_use_msi(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def azure_use_msi(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "azure_use_msi", value)
 
     @_builtins.property
     @pulumi.getter(name="azureWorkspaceResourceId")
-    def azure_workspace_resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def azure_workspace_resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "azure_workspace_resource_id")
 
     @azure_workspace_resource_id.setter
-    def azure_workspace_resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def azure_workspace_resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "azure_workspace_resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
-    def client_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def cloud(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud")
 
     @cloud.setter
-    def cloud(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="configFile")
-    def config_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "config_file")
 
     @config_file.setter
-    def config_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_file", value)
 
     @_builtins.property
     @pulumi.getter(name="databricksCliPath")
-    def databricks_cli_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def databricks_cli_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "databricks_cli_path")
 
     @databricks_cli_path.setter
-    def databricks_cli_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def databricks_cli_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "databricks_cli_path", value)
 
     @_builtins.property
     @pulumi.getter(name="databricksIdTokenFilepath")
-    def databricks_id_token_filepath(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def databricks_id_token_filepath(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "databricks_id_token_filepath")
 
     @databricks_id_token_filepath.setter
-    def databricks_id_token_filepath(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def databricks_id_token_filepath(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "databricks_id_token_filepath", value)
 
     @_builtins.property
     @pulumi.getter(name="debugHeaders")
-    def debug_headers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def debug_headers(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "debug_headers")
 
     @debug_headers.setter
-    def debug_headers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def debug_headers(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "debug_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="debugTruncateBytes")
-    def debug_truncate_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def debug_truncate_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "debug_truncate_bytes")
 
     @debug_truncate_bytes.setter
-    def debug_truncate_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def debug_truncate_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "debug_truncate_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="disableOauthRefreshToken")
-    def disable_oauth_refresh_token(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_oauth_refresh_token(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "disable_oauth_refresh_token")
 
     @disable_oauth_refresh_token.setter
-    def disable_oauth_refresh_token(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_oauth_refresh_token(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_oauth_refresh_token", value)
 
     @_builtins.property
     @pulumi.getter(name="discoveryUrl")
-    def discovery_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discovery_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "discovery_url")
 
     @discovery_url.setter
-    def discovery_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discovery_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discovery_url", value)
 
     @_builtins.property
     @pulumi.getter(name="experimentalIsUnifiedHost")
-    def experimental_is_unified_host(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def experimental_is_unified_host(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "experimental_is_unified_host")
 
     @experimental_is_unified_host.setter
-    def experimental_is_unified_host(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def experimental_is_unified_host(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "experimental_is_unified_host", value)
 
     @_builtins.property
     @pulumi.getter(name="googleCredentials")
-    def google_credentials(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def google_credentials(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "google_credentials")
 
     @google_credentials.setter
-    def google_credentials(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def google_credentials(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "google_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="googleServiceAccount")
-    def google_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def google_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "google_service_account")
 
     @google_service_account.setter
-    def google_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def google_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "google_service_account", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="httpTimeoutSeconds")
-    def http_timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def http_timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "http_timeout_seconds")
 
     @http_timeout_seconds.setter
-    def http_timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def http_timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_timeout_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="metadataServiceUrl")
-    def metadata_service_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metadata_service_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "metadata_service_url")
 
     @metadata_service_url.setter
-    def metadata_service_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metadata_service_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metadata_service_url", value)
 
     @_builtins.property
     @pulumi.getter(name="oauthCallbackPort")
-    def oauth_callback_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def oauth_callback_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "oauth_callback_port")
 
     @oauth_callback_port.setter
-    def oauth_callback_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def oauth_callback_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "oauth_callback_port", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcTokenEnv")
-    def oidc_token_env(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oidc_token_env(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "oidc_token_env")
 
     @oidc_token_env.setter
-    def oidc_token_env(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oidc_token_env(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oidc_token_env", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "profile")
 
     @profile.setter
-    def profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "profile", value)
 
     @_builtins.property
     @pulumi.getter(name="rateLimit")
-    def rate_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rate_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "rate_limit")
 
     @rate_limit.setter
-    def rate_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rate_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rate_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="retryTimeoutSeconds")
-    def retry_timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retry_timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "retry_timeout_seconds")
 
     @retry_timeout_seconds.setter
-    def retry_timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retry_timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retry_timeout_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "scopes")
 
     @scopes.setter
-    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="serverlessComputeId")
-    def serverless_compute_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serverless_compute_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "serverless_compute_id")
 
     @serverless_compute_id.setter
-    def serverless_compute_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serverless_compute_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serverless_compute_id", value)
 
     @_builtins.property
     @pulumi.getter(name="skipVerify")
-    def skip_verify(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_verify(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "skip_verify")
 
     @skip_verify.setter
-    def skip_verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_verify(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_verify", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter(name="warehouseId")
-    def warehouse_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warehouse_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "warehouse_id")
 
     @warehouse_id.setter
-    def warehouse_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warehouse_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warehouse_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_id", value)
 
 
@@ -534,48 +534,48 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 actions_id_token_request_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 actions_id_token_request_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_login_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_use_msi: Optional[pulumi.Input[_builtins.bool]] = None,
-                 azure_workspace_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_cli_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_id_token_filepath: Optional[pulumi.Input[_builtins.str]] = None,
-                 debug_headers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 debug_truncate_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 disable_oauth_refresh_token: Optional[pulumi.Input[_builtins.bool]] = None,
-                 discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 experimental_is_unified_host: Optional[pulumi.Input[_builtins.bool]] = None,
-                 google_credentials: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 metadata_service_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_callback_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 oidc_token_env: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 serverless_compute_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_verify: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 actions_id_token_request_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 actions_id_token_request_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_login_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_use_msi: pulumi.Input[Optional[_builtins.bool]] = None,
+                 azure_workspace_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_cli_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_id_token_filepath: pulumi.Input[Optional[_builtins.str]] = None,
+                 debug_headers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 debug_truncate_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 disable_oauth_refresh_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 experimental_is_unified_host: pulumi.Input[Optional[_builtins.bool]] = None,
+                 google_credentials: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 metadata_service_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_callback_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 oidc_token_env: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 serverless_compute_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_verify: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the databricks package. By default, resources use package-wide configuration
@@ -615,48 +615,48 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 actions_id_token_request_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 actions_id_token_request_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 audience: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_environment: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_login_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_use_msi: Optional[pulumi.Input[_builtins.bool]] = None,
-                 azure_workspace_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_cli_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_id_token_filepath: Optional[pulumi.Input[_builtins.str]] = None,
-                 debug_headers: Optional[pulumi.Input[_builtins.bool]] = None,
-                 debug_truncate_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 disable_oauth_refresh_token: Optional[pulumi.Input[_builtins.bool]] = None,
-                 discovery_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 experimental_is_unified_host: Optional[pulumi.Input[_builtins.bool]] = None,
-                 google_credentials: Optional[pulumi.Input[_builtins.str]] = None,
-                 google_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 metadata_service_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 oauth_callback_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 oidc_token_env: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 rate_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 serverless_compute_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_verify: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 actions_id_token_request_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 actions_id_token_request_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 audience: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_environment: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_login_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_use_msi: pulumi.Input[Optional[_builtins.bool]] = None,
+                 azure_workspace_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_cli_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_id_token_filepath: pulumi.Input[Optional[_builtins.str]] = None,
+                 debug_headers: pulumi.Input[Optional[_builtins.bool]] = None,
+                 debug_truncate_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 disable_oauth_refresh_token: pulumi.Input[Optional[_builtins.bool]] = None,
+                 discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 experimental_is_unified_host: pulumi.Input[Optional[_builtins.bool]] = None,
+                 google_credentials: pulumi.Input[Optional[_builtins.str]] = None,
+                 google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 metadata_service_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 oauth_callback_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 oidc_token_env: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 rate_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 serverless_compute_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_verify: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

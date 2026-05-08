@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * export = async () => {
  *     const _this = await databricks.getJobs({});
  *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
- *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
+ *     for (const range of Object.entries(_this.ids).sort().map(([k, v]) => ({key: k, value: v}))) {
  *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyone_can_view_all_jobs-${range.key}`, {
  *             jobId: range.value,
  *             accessControls: [{
@@ -59,7 +59,7 @@ import * as utilities from "./utilities";
  *         key: "id",
  *     });
  *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
- *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
+ *     for (const range of Object.entries(_this.ids).sort().map(([k, v]) => ({key: k, value: v}))) {
  *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyone_can_view_all_jobs-${range.key}`, {
  *             jobId: range.value,
  *             accessControls: [{
@@ -144,7 +144,7 @@ export interface GetJobsResult {
  * export = async () => {
  *     const _this = await databricks.getJobs({});
  *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
- *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
+ *     for (const range of Object.entries(_this.ids).sort().map(([k, v]) => ({key: k, value: v}))) {
  *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyone_can_view_all_jobs-${range.key}`, {
  *             jobId: range.value,
  *             accessControls: [{
@@ -179,7 +179,7 @@ export interface GetJobsResult {
  *         key: "id",
  *     });
  *     const everyoneCanViewAllJobs: databricks.Permissions[] = [];
- *     for (const range of Object.entries(_this.ids).map(([k, v]) => ({key: k, value: v}))) {
+ *     for (const range of Object.entries(_this.ids).sort().map(([k, v]) => ({key: k, value: v}))) {
  *         everyoneCanViewAllJobs.push(new databricks.Permissions(`everyone_can_view_all_jobs-${range.key}`, {
  *             jobId: range.value,
  *             accessControls: [{
@@ -215,17 +215,17 @@ export interface GetJobsOutputArgs {
     /**
      * map of databricks.Job names to ids
      */
-    ids?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    ids?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Only return databricks.Job ids that match the given name string (case-insensitive).
      */
-    jobNameContains?: pulumi.Input<string>;
+    jobNameContains?: pulumi.Input<string | undefined>;
     /**
      * Attribute to use for keys in the returned map of databricks.Job ids by. Possible values are `name` (default) or `id`. Setting to `id` uses the job ID as the map key, allowing duplicate job names.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetJobsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetJobsProviderConfigArgs | undefined>;
 }

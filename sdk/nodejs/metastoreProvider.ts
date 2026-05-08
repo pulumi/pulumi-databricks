@@ -137,23 +137,23 @@ export interface MetastoreProviderState {
     /**
      * The delta sharing authentication type. Valid values are `TOKEN`.
      */
-    authenticationType?: pulumi.Input<string>;
+    authenticationType?: pulumi.Input<string | undefined>;
     /**
      * Description about the provider.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Name of provider. Change forces creation of a new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.MetastoreProviderProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.MetastoreProviderProviderConfig | undefined>;
     /**
      * This is the json file that is created from a recipient url.
      */
-    recipientProfileStr?: pulumi.Input<string>;
+    recipientProfileStr?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -167,15 +167,15 @@ export interface MetastoreProviderArgs {
     /**
      * Description about the provider.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Name of provider. Change forces creation of a new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.MetastoreProviderProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.MetastoreProviderProviderConfig | undefined>;
     /**
      * This is the json file that is created from a recipient url.
      */

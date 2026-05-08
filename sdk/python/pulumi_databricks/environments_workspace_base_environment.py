@@ -22,10 +22,10 @@ __all__ = ['EnvironmentsWorkspaceBaseEnvironmentArgs', 'EnvironmentsWorkspaceBas
 class EnvironmentsWorkspaceBaseEnvironmentArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
-                 base_environment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 filepath: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs']] = None,
-                 workspace_base_environment_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 base_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 filepath: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs']] = None,
+                 workspace_base_environment_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnvironmentsWorkspaceBaseEnvironment resource.
 
@@ -61,43 +61,43 @@ class EnvironmentsWorkspaceBaseEnvironmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="baseEnvironmentType")
-    def base_environment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_environment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
         """
         return pulumi.get(self, "base_environment_type")
 
     @base_environment_type.setter
-    def base_environment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_environment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_environment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def filepath(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filepath(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The WSFS or UC Volumes path to the environment YAML file
         """
         return pulumi.get(self, "filepath")
 
     @filepath.setter
-    def filepath(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filepath(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filepath", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceBaseEnvironmentId")
-    def workspace_base_environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_base_environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the workspace base environment, which will become the final component of
         the resource name.
@@ -106,27 +106,27 @@ class EnvironmentsWorkspaceBaseEnvironmentArgs:
         return pulumi.get(self, "workspace_base_environment_id")
 
     @workspace_base_environment_id.setter
-    def workspace_base_environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_base_environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_base_environment_id", value)
 
 
 @pulumi.input_type
 class _EnvironmentsWorkspaceBaseEnvironmentState:
     def __init__(__self__, *,
-                 base_environment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 creator_user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_base_environment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 filepath: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_updated_user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_base_environment_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 base_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 creator_user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_base_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 filepath: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_updated_user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_base_environment_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvironmentsWorkspaceBaseEnvironment resources.
 
@@ -178,112 +178,112 @@ class _EnvironmentsWorkspaceBaseEnvironmentState:
 
     @_builtins.property
     @pulumi.getter(name="baseEnvironmentType")
-    def base_environment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_environment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
         """
         return pulumi.get(self, "base_environment_type")
 
     @base_environment_type.setter
-    def base_environment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_environment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_environment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Timestamp when the environment was created
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="creatorUserId")
-    def creator_user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator_user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - User ID of the creator
         """
         return pulumi.get(self, "creator_user_id")
 
     @creator_user_id.setter
-    def creator_user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator_user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator_user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human-readable display name for the workspace base environment
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveBaseEnvironmentType")
-    def effective_base_environment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_base_environment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "effective_base_environment_type")
 
     @effective_base_environment_type.setter
-    def effective_base_environment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_base_environment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_base_environment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def filepath(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filepath(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The WSFS or UC Volumes path to the environment YAML file
         """
         return pulumi.get(self, "filepath")
 
     @filepath.setter
-    def filepath(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filepath(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filepath", value)
 
     @_builtins.property
     @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (boolean) - Whether this is the default environment for the workspace
         """
         return pulumi.get(self, "is_default")
 
     @is_default.setter
-    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUpdatedUserId")
-    def last_updated_user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_updated_user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - User ID of the last user who updated the environment
         """
         return pulumi.get(self, "last_updated_user_id")
 
     @last_updated_user_id.setter
-    def last_updated_user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_updated_user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_updated_user_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Status message providing additional details about the environment status
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The resource name of the workspace base environment.
         Format: workspace-base-environments/{workspace-base-environment}
@@ -291,48 +291,48 @@ class _EnvironmentsWorkspaceBaseEnvironmentState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Timestamp when the environment was last updated
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceBaseEnvironmentId")
-    def workspace_base_environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_base_environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the workspace base environment, which will become the final component of
         the resource name.
@@ -341,7 +341,7 @@ class _EnvironmentsWorkspaceBaseEnvironmentState:
         return pulumi.get(self, "workspace_base_environment_id")
 
     @workspace_base_environment_id.setter
-    def workspace_base_environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_base_environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_base_environment_id", value)
 
 
@@ -351,11 +351,11 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 base_environment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 filepath: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None,
-                 workspace_base_environment_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 base_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 filepath: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None,
+                 workspace_base_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -466,11 +466,11 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 base_environment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 filepath: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None,
-                 workspace_base_environment_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 base_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 filepath: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None,
+                 workspace_base_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -506,20 +506,20 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            base_environment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            creator_user_id: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_base_environment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            filepath: Optional[pulumi.Input[_builtins.str]] = None,
-            is_default: Optional[pulumi.Input[_builtins.bool]] = None,
-            last_updated_user_id: Optional[pulumi.Input[_builtins.str]] = None,
-            message: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_base_environment_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'EnvironmentsWorkspaceBaseEnvironment':
+            base_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator_user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_base_environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            filepath: pulumi.Input[Optional[_builtins.str]] = None,
+            is_default: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_updated_user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            message: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_base_environment_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnvironmentsWorkspaceBaseEnvironment':
         """
         Get an existing EnvironmentsWorkspaceBaseEnvironment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

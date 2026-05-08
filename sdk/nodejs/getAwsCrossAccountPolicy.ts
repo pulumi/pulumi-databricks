@@ -144,30 +144,30 @@ export interface GetAwsCrossAccountPolicyOutputArgs {
     /**
      * — Your AWS account ID, which is a number.
      */
-    awsAccountId?: pulumi.Input<string>;
+    awsAccountId?: pulumi.Input<string | undefined>;
     /**
      * AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
      */
-    awsPartition?: pulumi.Input<string>;
+    awsPartition?: pulumi.Input<string | undefined>;
     /**
      * List of Data IAM role ARNs that are explicitly granted `iam:PassRole` action.
      * The below arguments are only valid for `restricted` policy type
      */
-    passRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    passRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of cross account policy to generated: `managed` for Databricks-managed VPC and `customer` for customer-managed VPC, `restricted` for customer-managed VPC with policy restrictions
      */
-    policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string | undefined>;
     /**
      * — AWS Region name for your VPC deployment, for example `us-west-2`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * — ID of your AWS security group. When you add a security group restriction, you cannot reuse the cross-account IAM role or reference a credentials ID (`credentialsId`) for any other workspaces. For those other workspaces, you must create separate roles, policies, and credentials objects.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * — ID of the AWS VPC where you want to launch workspaces.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

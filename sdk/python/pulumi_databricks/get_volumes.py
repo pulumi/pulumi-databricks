@@ -145,10 +145,10 @@ def get_volumes(catalog_name: Optional[_builtins.str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         schema_name=pulumi.get(__ret__, 'schema_name'))
-def get_volumes_output(catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                       ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                       provider_config: Optional[pulumi.Input[Optional[Union['GetVolumesProviderConfigArgs', 'GetVolumesProviderConfigArgsDict']]]] = None,
-                       schema_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_volumes_output(catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                       ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                       provider_config: pulumi.Input[Optional[Optional[Union['GetVolumesProviderConfigArgs', 'GetVolumesProviderConfigArgsDict']]]] = None,
+                       schema_name: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumesResult]:
     """
     Retrieves a list of Volume ids (full names), that were created by Pulumi or manually.

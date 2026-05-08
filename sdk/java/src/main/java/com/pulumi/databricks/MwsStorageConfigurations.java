@@ -40,8 +40,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.aws.S3BucketVersioningArgs;
  * import com.pulumi.databricks.MwsStorageConfigurations;
  * import com.pulumi.databricks.MwsStorageConfigurationsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  *         var rootVersioning = new S3BucketVersioning("rootVersioning", S3BucketVersioningArgs.builder()
  *             .bucket(rootStorageBucket.id())
- *             .versioningConfiguration(List.of(Map.of("status", "Disabled")))
+ *             .versioningConfiguration(Arrays.asList(Map.of("status", "Disabled")))
  *             .build());
  * 
  *         var this_ = new MwsStorageConfigurations("this", MwsStorageConfigurationsArgs.builder()
@@ -89,8 +89,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.MwsStorageConfigurations;
  * import com.pulumi.databricks.MwsStorageConfigurationsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;

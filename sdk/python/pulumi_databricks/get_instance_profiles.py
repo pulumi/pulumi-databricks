@@ -106,8 +106,8 @@ def get_instance_profiles(instance_profiles: Optional[Sequence[Union['GetInstanc
         id=pulumi.get(__ret__, 'id'),
         instance_profiles=pulumi.get(__ret__, 'instance_profiles'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_instance_profiles_output(instance_profiles: Optional[pulumi.Input[Optional[Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']]]]] = None,
-                                 provider_config: Optional[pulumi.Input[Optional[Union['GetInstanceProfilesProviderConfigArgs', 'GetInstanceProfilesProviderConfigArgsDict']]]] = None,
+def get_instance_profiles_output(instance_profiles: pulumi.Input[Optional[Optional[Sequence[Union['GetInstanceProfilesInstanceProfileArgs', 'GetInstanceProfilesInstanceProfileArgsDict']]]]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetInstanceProfilesProviderConfigArgs', 'GetInstanceProfilesProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceProfilesResult]:
     """
     Lists all available databricks_instance_profiles.

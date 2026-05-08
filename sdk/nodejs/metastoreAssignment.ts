@@ -125,25 +125,25 @@ export interface MetastoreAssignmentState {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
      *
      * @deprecated Use databricks.DefaultNamespaceSetting resource instead
      */
-    defaultCatalogName?: pulumi.Input<string>;
+    defaultCatalogName?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the parent Metastore
      */
-    metastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.MetastoreAssignmentProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.MetastoreAssignmentProviderConfig | undefined>;
     /**
      * id of the workspace for the assignment
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -153,13 +153,13 @@ export interface MetastoreAssignmentArgs {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * Default catalog used for this assignment. Please use databricks.DefaultNamespaceSetting instead.
      *
      * @deprecated Use databricks.DefaultNamespaceSetting resource instead
      */
-    defaultCatalogName?: pulumi.Input<string>;
+    defaultCatalogName?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the parent Metastore
      */
@@ -167,7 +167,7 @@ export interface MetastoreAssignmentArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.MetastoreAssignmentProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.MetastoreAssignmentProviderConfig | undefined>;
     /**
      * id of the workspace for the assignment
      */

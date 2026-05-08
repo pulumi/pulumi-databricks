@@ -26,14 +26,14 @@ class TableArgs:
                  data_source_format: pulumi.Input[_builtins.str],
                  schema_name: pulumi.Input[_builtins.str],
                  table_type: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input['TableProviderConfigArgs']] = None,
-                 storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_definition: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional['TableProviderConfigArgs']] = None,
+                 storage_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_definition: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Table resource.
         """
@@ -106,93 +106,93 @@ class TableArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['TableProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['TableProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['TableProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['TableProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="storageCredentialName")
-    def storage_credential_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_credential_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_credential_name")
 
     @storage_credential_name.setter
-    def storage_credential_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_credential_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_credential_name", value)
 
     @_builtins.property
     @pulumi.getter(name="storageLocation")
-    def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
-    def storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_location", value)
 
     @_builtins.property
     @pulumi.getter(name="viewDefinition")
-    def view_definition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def view_definition(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "view_definition")
 
     @view_definition.setter
-    def view_definition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def view_definition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "view_definition", value)
 
 
 @pulumi.input_type
 class _TableState:
     def __init__(__self__, *,
-                 catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnArgs']]]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input['TableProviderConfigArgs']] = None,
-                 schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_definition: Optional[pulumi.Input[_builtins.str]] = None):
+                 catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input['TableColumnArgs']]]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional['TableProviderConfigArgs']] = None,
+                 schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_definition: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Table resources.
         """
@@ -225,119 +225,119 @@ class _TableState:
 
     @_builtins.property
     @pulumi.getter(name="catalogName")
-    def catalog_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def catalog_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
-    def catalog_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def catalog_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnArgs']]]]:
+    def columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TableColumnArgs']]]]:
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnArgs']]]]):
+    def columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TableColumnArgs']]]]):
         pulumi.set(self, "columns", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceFormat")
-    def data_source_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "data_source_format")
 
     @data_source_format.setter
-    def data_source_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_format", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['TableProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['TableProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['TableProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['TableProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaName")
-    def schema_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "schema_name")
 
     @schema_name.setter
-    def schema_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_name", value)
 
     @_builtins.property
     @pulumi.getter(name="storageCredentialName")
-    def storage_credential_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_credential_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_credential_name")
 
     @storage_credential_name.setter
-    def storage_credential_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_credential_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_credential_name", value)
 
     @_builtins.property
     @pulumi.getter(name="storageLocation")
-    def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
-    def storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_location", value)
 
     @_builtins.property
     @pulumi.getter(name="tableType")
-    def table_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "table_type")
 
     @table_type.setter
-    def table_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_type", value)
 
     @_builtins.property
     @pulumi.getter(name="viewDefinition")
-    def view_definition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def view_definition(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "view_definition")
 
     @view_definition.setter
-    def view_definition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def view_definition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "view_definition", value)
 
 
@@ -347,19 +347,19 @@ class Table(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TableColumnArgs', 'TableColumnArgsDict']]]]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input[Union['TableProviderConfigArgs', 'TableProviderConfigArgsDict']]] = None,
-                 schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_definition: Optional[pulumi.Input[_builtins.str]] = None,
+                 catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableColumnArgs', 'TableColumnArgsDict']]]]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['TableProviderConfigArgs', 'TableProviderConfigArgsDict']]] = None,
+                 schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_definition: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create a Table resource with the given unique name, props, and options.
@@ -391,19 +391,19 @@ class Table(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TableColumnArgs', 'TableColumnArgsDict']]]]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input[Union['TableProviderConfigArgs', 'TableProviderConfigArgsDict']]] = None,
-                 schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 view_definition: Optional[pulumi.Input[_builtins.str]] = None,
+                 catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableColumnArgs', 'TableColumnArgsDict']]]]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['TableProviderConfigArgs', 'TableProviderConfigArgsDict']]] = None,
+                 schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 view_definition: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -446,19 +446,19 @@ class Table(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-            columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TableColumnArgs', 'TableColumnArgsDict']]]]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source_format: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None,
-            properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            provider_config: Optional[pulumi.Input[Union['TableProviderConfigArgs', 'TableProviderConfigArgsDict']]] = None,
-            schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_credential_name: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-            table_type: Optional[pulumi.Input[_builtins.str]] = None,
-            view_definition: Optional[pulumi.Input[_builtins.str]] = None) -> 'Table':
+            catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+            columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableColumnArgs', 'TableColumnArgsDict']]]]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_format: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['TableProviderConfigArgs', 'TableProviderConfigArgsDict']]] = None,
+            schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_credential_name: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+            table_type: pulumi.Input[Optional[_builtins.str]] = None,
+            view_definition: pulumi.Input[Optional[_builtins.str]] = None) -> 'Table':
         """
         Get an existing Table resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

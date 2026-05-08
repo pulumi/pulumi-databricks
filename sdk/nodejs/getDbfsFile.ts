@@ -129,5 +129,5 @@ export interface GetDbfsFileOutputArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetDbfsFileProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetDbfsFileProviderConfigArgs | undefined>;
 }

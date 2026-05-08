@@ -107,7 +107,7 @@ export interface GetPostgresDatabasesOutputArgs {
     /**
      * Upper bound for items returned
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The Branch that owns this collection of databases.
      * Format: projects/{project_id}/branches/{branch_id}
@@ -116,5 +116,5 @@ export interface GetPostgresDatabasesOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetPostgresDatabasesProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetPostgresDatabasesProviderConfigArgs | undefined>;
 }

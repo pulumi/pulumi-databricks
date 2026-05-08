@@ -21,8 +21,8 @@ __all__ = ['WorkspaceConfArgs', 'WorkspaceConf']
 @pulumi.input_type
 class WorkspaceConfArgs:
     def __init__(__self__, *,
-                 custom_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input['WorkspaceConfProviderConfigArgs']] = None):
+                 custom_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional['WorkspaceConfProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a WorkspaceConf resource.
 
@@ -36,34 +36,34 @@ class WorkspaceConfArgs:
 
     @_builtins.property
     @pulumi.getter(name="customConfig")
-    def custom_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         """
         return pulumi.get(self, "custom_config")
 
     @custom_config.setter
-    def custom_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_config", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['WorkspaceConfProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['WorkspaceConfProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['WorkspaceConfProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['WorkspaceConfProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _WorkspaceConfState:
     def __init__(__self__, *,
-                 custom_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input['WorkspaceConfProviderConfigArgs']] = None):
+                 custom_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional['WorkspaceConfProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering WorkspaceConf resources.
 
@@ -77,26 +77,26 @@ class _WorkspaceConfState:
 
     @_builtins.property
     @pulumi.getter(name="customConfig")
-    def custom_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
         """
         return pulumi.get(self, "custom_config")
 
     @custom_config.setter
-    def custom_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_config", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['WorkspaceConfProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['WorkspaceConfProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['WorkspaceConfProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['WorkspaceConfProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
@@ -106,8 +106,8 @@ class WorkspaceConf(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict']]] = None,
+                 custom_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         Manages workspace configuration for expert usage. Currently, more than one instance of resource can exist in Pulumi state, though there's no deterministic behavior, when they manage the same property. We strongly recommend to use a single `WorkspaceConf` per workspace.
@@ -201,8 +201,8 @@ class WorkspaceConf(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict']]] = None,
+                 custom_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -224,8 +224,8 @@ class WorkspaceConf(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            custom_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            provider_config: Optional[pulumi.Input[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict']]] = None) -> 'WorkspaceConf':
+            custom_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict']]] = None) -> 'WorkspaceConf':
         """
         Get an existing WorkspaceConf resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

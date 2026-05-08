@@ -63,9 +63,9 @@ export interface GetOnlineStoresOutputArgs {
     /**
      * The maximum number of results to return. Defaults to 100 if not specified
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetOnlineStoresProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetOnlineStoresProviderConfigArgs | undefined>;
 }

@@ -137,9 +137,9 @@ def get_sql_warehouses(ids: Optional[Sequence[_builtins.str]] = None,
         ids=pulumi.get(__ret__, 'ids'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         warehouse_name_contains=pulumi.get(__ret__, 'warehouse_name_contains'))
-def get_sql_warehouses_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                              provider_config: Optional[pulumi.Input[Optional[Union['GetSqlWarehousesProviderConfigArgs', 'GetSqlWarehousesProviderConfigArgsDict']]]] = None,
-                              warehouse_name_contains: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_sql_warehouses_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                              provider_config: pulumi.Input[Optional[Optional[Union['GetSqlWarehousesProviderConfigArgs', 'GetSqlWarehousesProviderConfigArgsDict']]]] = None,
+                              warehouse_name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSqlWarehousesResult]:
     """
     Retrieves a list of SqlEndpoint ids, that were created by Pulumi or manually.

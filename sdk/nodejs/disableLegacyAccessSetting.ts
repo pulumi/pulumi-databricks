@@ -116,13 +116,13 @@ export interface DisableLegacyAccessSettingState {
     /**
      * The configuration details.
      */
-    disableLegacyAccess?: pulumi.Input<inputs.DisableLegacyAccessSettingDisableLegacyAccess>;
-    etag?: pulumi.Input<string>;
+    disableLegacyAccess?: pulumi.Input<inputs.DisableLegacyAccessSettingDisableLegacyAccess | undefined>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.DisableLegacyAccessSettingProviderConfig>;
-    settingName?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.DisableLegacyAccessSettingProviderConfig | undefined>;
+    settingName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -133,10 +133,10 @@ export interface DisableLegacyAccessSettingArgs {
      * The configuration details.
      */
     disableLegacyAccess: pulumi.Input<inputs.DisableLegacyAccessSettingDisableLegacyAccess>;
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.DisableLegacyAccessSettingProviderConfig>;
-    settingName?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.DisableLegacyAccessSettingProviderConfig | undefined>;
+    settingName?: pulumi.Input<string | undefined>;
 }

@@ -159,7 +159,7 @@ export interface GetAwsUnityCatalogPolicyOutputArgs {
     /**
      * AWS partition. The options are `aws`, `aws-us-gov`, or `aws-us-gov-dod`. Defaults to `aws`
      */
-    awsPartition?: pulumi.Input<string>;
+    awsPartition?: pulumi.Input<string | undefined>;
     /**
      * The name of the S3 bucket used as root storage location for [managed tables](https://docs.databricks.com/data-governance/unity-catalog/index.html#managed-table) in Unity Catalog.  The name must follow the [S3 bucket naming rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
      */
@@ -167,7 +167,7 @@ export interface GetAwsUnityCatalogPolicyOutputArgs {
     /**
      * If encryption is enabled, provide the ARN of the KMS key that encrypts the S3 bucket contents. If encryption is disabled, do not provide this argument.
      */
-    kmsName?: pulumi.Input<string>;
+    kmsName?: pulumi.Input<string | undefined>;
     /**
      * The name of the AWS IAM role that you created in the previous step in the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/get-started.html#configure-a-storage-bucket-and-iam-role-in-aws).
      */

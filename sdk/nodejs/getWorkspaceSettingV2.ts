@@ -143,5 +143,5 @@ export interface GetWorkspaceSettingV2OutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetWorkspaceSettingV2ProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetWorkspaceSettingV2ProviderConfigArgs | undefined>;
 }

@@ -294,47 +294,47 @@ export interface MwsLogDeliveryState {
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Databricks log delivery configuration ID.
      */
-    configId?: pulumi.Input<string>;
+    configId?: pulumi.Input<string | undefined>;
     /**
      * The optional human-readable name of the log delivery configuration. Defaults to empty.
      */
-    configName?: pulumi.Input<string>;
+    configName?: pulumi.Input<string | undefined>;
     /**
      * The ID for a Databricks credential configuration that represents the AWS IAM role with policy and trust relationship as described in the main billable usage documentation page.
      */
-    credentialsId?: pulumi.Input<string>;
+    credentialsId?: pulumi.Input<string | undefined>;
     /**
      * Defaults to empty, which means that logs are delivered to the root of the bucket. The value must be a valid S3 object key. It must not start or end with a slash character.
      */
-    deliveryPathPrefix?: pulumi.Input<string>;
+    deliveryPathPrefix?: pulumi.Input<string | undefined>;
     /**
      * The optional start month and year for delivery, specified in YYYY-MM format. Defaults to current year and month. Usage is not available before 2019-03.
      */
-    deliveryStartTime?: pulumi.Input<string>;
+    deliveryStartTime?: pulumi.Input<string | undefined>;
     /**
      * The type of log delivery. `BILLABLE_USAGE` and `AUDIT_LOGS` are supported.
      */
-    logType?: pulumi.Input<string>;
+    logType?: pulumi.Input<string | undefined>;
     /**
      * The file type of log delivery. Currently `CSV` (for `BILLABLE_USAGE`) and `JSON` (for `AUDIT_LOGS`) are supported.
      */
-    outputFormat?: pulumi.Input<string>;
+    outputFormat?: pulumi.Input<string | undefined>;
     /**
      * Status of log delivery configuration. Set to ENABLED or DISABLED. Defaults to ENABLED. This is the only field you can update.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID for a Databricks storage configuration that represents the S3 bucket with bucket policy as described in the main billable usage documentation page.
      */
-    storageConfigurationId?: pulumi.Input<string>;
+    storageConfigurationId?: pulumi.Input<string | undefined>;
     /**
      * By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the multitenant version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
      */
-    workspaceIdsFilters?: pulumi.Input<pulumi.Input<number>[]>;
+    workspaceIdsFilters?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 /**
@@ -348,11 +348,11 @@ export interface MwsLogDeliveryArgs {
     /**
      * Databricks log delivery configuration ID.
      */
-    configId?: pulumi.Input<string>;
+    configId?: pulumi.Input<string | undefined>;
     /**
      * The optional human-readable name of the log delivery configuration. Defaults to empty.
      */
-    configName?: pulumi.Input<string>;
+    configName?: pulumi.Input<string | undefined>;
     /**
      * The ID for a Databricks credential configuration that represents the AWS IAM role with policy and trust relationship as described in the main billable usage documentation page.
      */
@@ -360,11 +360,11 @@ export interface MwsLogDeliveryArgs {
     /**
      * Defaults to empty, which means that logs are delivered to the root of the bucket. The value must be a valid S3 object key. It must not start or end with a slash character.
      */
-    deliveryPathPrefix?: pulumi.Input<string>;
+    deliveryPathPrefix?: pulumi.Input<string | undefined>;
     /**
      * The optional start month and year for delivery, specified in YYYY-MM format. Defaults to current year and month. Usage is not available before 2019-03.
      */
-    deliveryStartTime?: pulumi.Input<string>;
+    deliveryStartTime?: pulumi.Input<string | undefined>;
     /**
      * The type of log delivery. `BILLABLE_USAGE` and `AUDIT_LOGS` are supported.
      */
@@ -376,7 +376,7 @@ export interface MwsLogDeliveryArgs {
     /**
      * Status of log delivery configuration. Set to ENABLED or DISABLED. Defaults to ENABLED. This is the only field you can update.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID for a Databricks storage configuration that represents the S3 bucket with bucket policy as described in the main billable usage documentation page.
      */
@@ -384,5 +384,5 @@ export interface MwsLogDeliveryArgs {
     /**
      * By default, this log configuration applies to all workspaces associated with your account ID. If your account is on the multitenant version of the platform or on a select custom plan that allows multiple workspaces per account, you may have multiple workspaces associated with your account ID. You can optionally set the field as mentioned earlier to an array of workspace IDs. If you plan to use different log delivery configurations for several workspaces, set this explicitly rather than leaving it blank. If you leave this blank and your account ID gets additional workspaces in the future, this configuration will also apply to the new workspaces.
      */
-    workspaceIdsFilters?: pulumi.Input<pulumi.Input<number>[]>;
+    workspaceIdsFilters?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }

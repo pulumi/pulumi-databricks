@@ -137,11 +137,11 @@ export interface GetCatalogOutputArgs {
     /**
      * the [CatalogInfo](https://pkg.go.dev/github.com/databricks/databricks-sdk-go/service/catalog#CatalogInfo) object for a Unity Catalog catalog. This contains the following attributes (see ):
      */
-    catalogInfo?: pulumi.Input<inputs.GetCatalogCatalogInfoArgs>;
+    catalogInfo?: pulumi.Input<inputs.GetCatalogCatalogInfoArgs | undefined>;
     /**
      * same as the `name`
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * name of the catalog
      */
@@ -149,5 +149,5 @@ export interface GetCatalogOutputArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetCatalogProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetCatalogProviderConfigArgs | undefined>;
 }

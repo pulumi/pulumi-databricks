@@ -92,7 +92,7 @@ export function getServicePrincipalFederationPoliciesOutput(args: GetServicePrin
  * A collection of arguments for invoking getServicePrincipalFederationPolicies.
  */
 export interface GetServicePrincipalFederationPoliciesOutputArgs {
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The service principal id for the federation policy
      */

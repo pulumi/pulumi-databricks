@@ -173,11 +173,11 @@ def get_clusters(cluster_name_contains: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_clusters_output(cluster_name_contains: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        filter_by: Optional[pulumi.Input[Optional[Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict']]]] = None,
-                        id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                        provider_config: Optional[pulumi.Input[Optional[Union['GetClustersProviderConfigArgs', 'GetClustersProviderConfigArgsDict']]]] = None,
+def get_clusters_output(cluster_name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        filter_by: pulumi.Input[Optional[Optional[Union['GetClustersFilterByArgs', 'GetClustersFilterByArgsDict']]]] = None,
+                        id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                        provider_config: pulumi.Input[Optional[Optional[Union['GetClustersProviderConfigArgs', 'GetClustersProviderConfigArgsDict']]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClustersResult]:
     """
     Retrieves a list of Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.

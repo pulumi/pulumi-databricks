@@ -120,9 +120,9 @@ export interface GetSchemasOutputArgs {
     /**
      * set of databricks.Schema full names: *`catalog`.`schema`*
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetSchemasProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetSchemasProviderConfigArgs | undefined>;
 }

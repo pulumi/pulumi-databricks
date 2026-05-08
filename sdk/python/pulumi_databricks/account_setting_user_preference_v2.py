@@ -21,10 +21,10 @@ __all__ = ['AccountSettingUserPreferenceV2Args', 'AccountSettingUserPreferenceV2
 @pulumi.input_type
 class AccountSettingUserPreferenceV2Args:
     def __init__(__self__, *,
-                 boolean_val: Optional[pulumi.Input['AccountSettingUserPreferenceV2BooleanValArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 string_val: Optional[pulumi.Input['AccountSettingUserPreferenceV2StringValArgs']] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 boolean_val: pulumi.Input[Optional['AccountSettingUserPreferenceV2BooleanValArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 string_val: pulumi.Input[Optional['AccountSettingUserPreferenceV2StringValArgs']] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountSettingUserPreferenceV2 resource.
 
@@ -42,56 +42,56 @@ class AccountSettingUserPreferenceV2Args:
 
     @_builtins.property
     @pulumi.getter(name="booleanVal")
-    def boolean_val(self) -> Optional[pulumi.Input['AccountSettingUserPreferenceV2BooleanValArgs']]:
+    def boolean_val(self) -> pulumi.Input[Optional['AccountSettingUserPreferenceV2BooleanValArgs']]:
         return pulumi.get(self, "boolean_val")
 
     @boolean_val.setter
-    def boolean_val(self, value: Optional[pulumi.Input['AccountSettingUserPreferenceV2BooleanValArgs']]):
+    def boolean_val(self, value: pulumi.Input[Optional['AccountSettingUserPreferenceV2BooleanValArgs']]):
         pulumi.set(self, "boolean_val", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the setting
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="stringVal")
-    def string_val(self) -> Optional[pulumi.Input['AccountSettingUserPreferenceV2StringValArgs']]:
+    def string_val(self) -> pulumi.Input[Optional['AccountSettingUserPreferenceV2StringValArgs']]:
         return pulumi.get(self, "string_val")
 
     @string_val.setter
-    def string_val(self, value: Optional[pulumi.Input['AccountSettingUserPreferenceV2StringValArgs']]):
+    def string_val(self, value: pulumi.Input[Optional['AccountSettingUserPreferenceV2StringValArgs']]):
         pulumi.set(self, "string_val", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User ID of the user
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
 @pulumi.input_type
 class _AccountSettingUserPreferenceV2State:
     def __init__(__self__, *,
-                 boolean_val: Optional[pulumi.Input['AccountSettingUserPreferenceV2BooleanValArgs']] = None,
-                 effective_boolean_val: Optional[pulumi.Input['AccountSettingUserPreferenceV2EffectiveBooleanValArgs']] = None,
-                 effective_string_val: Optional[pulumi.Input['AccountSettingUserPreferenceV2EffectiveStringValArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 string_val: Optional[pulumi.Input['AccountSettingUserPreferenceV2StringValArgs']] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 boolean_val: pulumi.Input[Optional['AccountSettingUserPreferenceV2BooleanValArgs']] = None,
+                 effective_boolean_val: pulumi.Input[Optional['AccountSettingUserPreferenceV2EffectiveBooleanValArgs']] = None,
+                 effective_string_val: pulumi.Input[Optional['AccountSettingUserPreferenceV2EffectiveStringValArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 string_val: pulumi.Input[Optional['AccountSettingUserPreferenceV2StringValArgs']] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountSettingUserPreferenceV2 resources.
 
@@ -115,68 +115,68 @@ class _AccountSettingUserPreferenceV2State:
 
     @_builtins.property
     @pulumi.getter(name="booleanVal")
-    def boolean_val(self) -> Optional[pulumi.Input['AccountSettingUserPreferenceV2BooleanValArgs']]:
+    def boolean_val(self) -> pulumi.Input[Optional['AccountSettingUserPreferenceV2BooleanValArgs']]:
         return pulumi.get(self, "boolean_val")
 
     @boolean_val.setter
-    def boolean_val(self, value: Optional[pulumi.Input['AccountSettingUserPreferenceV2BooleanValArgs']]):
+    def boolean_val(self, value: pulumi.Input[Optional['AccountSettingUserPreferenceV2BooleanValArgs']]):
         pulumi.set(self, "boolean_val", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveBooleanVal")
-    def effective_boolean_val(self) -> Optional[pulumi.Input['AccountSettingUserPreferenceV2EffectiveBooleanValArgs']]:
+    def effective_boolean_val(self) -> pulumi.Input[Optional['AccountSettingUserPreferenceV2EffectiveBooleanValArgs']]:
         """
         (BooleanMessage)
         """
         return pulumi.get(self, "effective_boolean_val")
 
     @effective_boolean_val.setter
-    def effective_boolean_val(self, value: Optional[pulumi.Input['AccountSettingUserPreferenceV2EffectiveBooleanValArgs']]):
+    def effective_boolean_val(self, value: pulumi.Input[Optional['AccountSettingUserPreferenceV2EffectiveBooleanValArgs']]):
         pulumi.set(self, "effective_boolean_val", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveStringVal")
-    def effective_string_val(self) -> Optional[pulumi.Input['AccountSettingUserPreferenceV2EffectiveStringValArgs']]:
+    def effective_string_val(self) -> pulumi.Input[Optional['AccountSettingUserPreferenceV2EffectiveStringValArgs']]:
         """
         (StringMessage)
         """
         return pulumi.get(self, "effective_string_val")
 
     @effective_string_val.setter
-    def effective_string_val(self, value: Optional[pulumi.Input['AccountSettingUserPreferenceV2EffectiveStringValArgs']]):
+    def effective_string_val(self, value: pulumi.Input[Optional['AccountSettingUserPreferenceV2EffectiveStringValArgs']]):
         pulumi.set(self, "effective_string_val", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the setting
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="stringVal")
-    def string_val(self) -> Optional[pulumi.Input['AccountSettingUserPreferenceV2StringValArgs']]:
+    def string_val(self) -> pulumi.Input[Optional['AccountSettingUserPreferenceV2StringValArgs']]:
         return pulumi.get(self, "string_val")
 
     @string_val.setter
-    def string_val(self, value: Optional[pulumi.Input['AccountSettingUserPreferenceV2StringValArgs']]):
+    def string_val(self, value: pulumi.Input[Optional['AccountSettingUserPreferenceV2StringValArgs']]):
         pulumi.set(self, "string_val", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User ID of the user
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -186,10 +186,10 @@ class AccountSettingUserPreferenceV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 boolean_val: Optional[pulumi.Input[Union['AccountSettingUserPreferenceV2BooleanValArgs', 'AccountSettingUserPreferenceV2BooleanValArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 string_val: Optional[pulumi.Input[Union['AccountSettingUserPreferenceV2StringValArgs', 'AccountSettingUserPreferenceV2StringValArgsDict']]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 boolean_val: pulumi.Input[Optional[Union['AccountSettingUserPreferenceV2BooleanValArgs', 'AccountSettingUserPreferenceV2BooleanValArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 string_val: pulumi.Input[Optional[Union['AccountSettingUserPreferenceV2StringValArgs', 'AccountSettingUserPreferenceV2StringValArgsDict']]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -293,10 +293,10 @@ class AccountSettingUserPreferenceV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 boolean_val: Optional[pulumi.Input[Union['AccountSettingUserPreferenceV2BooleanValArgs', 'AccountSettingUserPreferenceV2BooleanValArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 string_val: Optional[pulumi.Input[Union['AccountSettingUserPreferenceV2StringValArgs', 'AccountSettingUserPreferenceV2StringValArgsDict']]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 boolean_val: pulumi.Input[Optional[Union['AccountSettingUserPreferenceV2BooleanValArgs', 'AccountSettingUserPreferenceV2BooleanValArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 string_val: pulumi.Input[Optional[Union['AccountSettingUserPreferenceV2StringValArgs', 'AccountSettingUserPreferenceV2StringValArgsDict']]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -322,12 +322,12 @@ class AccountSettingUserPreferenceV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            boolean_val: Optional[pulumi.Input[Union['AccountSettingUserPreferenceV2BooleanValArgs', 'AccountSettingUserPreferenceV2BooleanValArgsDict']]] = None,
-            effective_boolean_val: Optional[pulumi.Input[Union['AccountSettingUserPreferenceV2EffectiveBooleanValArgs', 'AccountSettingUserPreferenceV2EffectiveBooleanValArgsDict']]] = None,
-            effective_string_val: Optional[pulumi.Input[Union['AccountSettingUserPreferenceV2EffectiveStringValArgs', 'AccountSettingUserPreferenceV2EffectiveStringValArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            string_val: Optional[pulumi.Input[Union['AccountSettingUserPreferenceV2StringValArgs', 'AccountSettingUserPreferenceV2StringValArgsDict']]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccountSettingUserPreferenceV2':
+            boolean_val: pulumi.Input[Optional[Union['AccountSettingUserPreferenceV2BooleanValArgs', 'AccountSettingUserPreferenceV2BooleanValArgsDict']]] = None,
+            effective_boolean_val: pulumi.Input[Optional[Union['AccountSettingUserPreferenceV2EffectiveBooleanValArgs', 'AccountSettingUserPreferenceV2EffectiveBooleanValArgsDict']]] = None,
+            effective_string_val: pulumi.Input[Optional[Union['AccountSettingUserPreferenceV2EffectiveStringValArgs', 'AccountSettingUserPreferenceV2EffectiveStringValArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            string_val: pulumi.Input[Optional[Union['AccountSettingUserPreferenceV2StringValArgs', 'AccountSettingUserPreferenceV2StringValArgsDict']]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountSettingUserPreferenceV2':
         """
         Get an existing AccountSettingUserPreferenceV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

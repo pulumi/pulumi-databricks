@@ -21,18 +21,18 @@ __all__ = ['GroupArgs', 'Group']
 @pulumi.input_type
 class GroupArgs:
     def __init__(__self__, *,
-                 acl_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 provider_config: Optional[pulumi.Input['GroupProviderConfigArgs']] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None):
+                 acl_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_cluster_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_instance_pool_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_sql_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 provider_config: pulumi.Input[Optional['GroupProviderConfigArgs']] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 workspace_consume: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Group resource.
 
@@ -74,158 +74,158 @@ class GroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="aclPrincipalId")
-    def acl_principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
         """
         return pulumi.get(self, "acl_principal_id")
 
     @acl_principal_id.setter
-    def acl_principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_principal_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowClusterCreate")
-    def allow_cluster_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_cluster_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         """
         return pulumi.get(self, "allow_cluster_create")
 
     @allow_cluster_create.setter
-    def allow_cluster_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_cluster_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_cluster_create", value)
 
     @_builtins.property
     @pulumi.getter(name="allowInstancePoolCreate")
-    def allow_instance_pool_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_instance_pool_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         """
         return pulumi.get(self, "allow_instance_pool_create")
 
     @allow_instance_pool_create.setter
-    def allow_instance_pool_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_instance_pool_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_instance_pool_create", value)
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="databricksSqlAccess")
-    def databricks_sql_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def databricks_sql_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         """
         return pulumi.get(self, "databricks_sql_access")
 
     @databricks_sql_access.setter
-    def databricks_sql_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def databricks_sql_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "databricks_sql_access", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the display name for the given group.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the group in an external identity provider.
         """
         return pulumi.get(self, "external_id")
 
     @external_id.setter
-    def external_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['GroupProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['GroupProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['GroupProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['GroupProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceAccess")
-    def workspace_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def workspace_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
         """
         return pulumi.get(self, "workspace_access")
 
     @workspace_access.setter
-    def workspace_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def workspace_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "workspace_access", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceConsume")
-    def workspace_consume(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def workspace_consume(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 
     @workspace_consume.setter
-    def workspace_consume(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def workspace_consume(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "workspace_consume", value)
 
 
 @pulumi.input_type
 class _GroupState:
     def __init__(__self__, *,
-                 acl_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 provider_config: Optional[pulumi.Input['GroupProviderConfigArgs']] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None):
+                 acl_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_cluster_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_instance_pool_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_sql_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 provider_config: pulumi.Input[Optional['GroupProviderConfigArgs']] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 workspace_consume: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Group resources.
 
@@ -267,140 +267,140 @@ class _GroupState:
 
     @_builtins.property
     @pulumi.getter(name="aclPrincipalId")
-    def acl_principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
         """
         return pulumi.get(self, "acl_principal_id")
 
     @acl_principal_id.setter
-    def acl_principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_principal_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowClusterCreate")
-    def allow_cluster_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_cluster_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with Permissions and cluster_id argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         """
         return pulumi.get(self, "allow_cluster_create")
 
     @allow_cluster_create.setter
-    def allow_cluster_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_cluster_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_cluster_create", value)
 
     @_builtins.property
     @pulumi.getter(name="allowInstancePoolCreate")
-    def allow_instance_pool_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_instance_pool_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         """
         return pulumi.get(self, "allow_instance_pool_create")
 
     @allow_instance_pool_create.setter
-    def allow_instance_pool_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_instance_pool_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_instance_pool_create", value)
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="databricksSqlAccess")
-    def databricks_sql_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def databricks_sql_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         """
         return pulumi.get(self, "databricks_sql_access")
 
     @databricks_sql_access.setter
-    def databricks_sql_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def databricks_sql_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "databricks_sql_access", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the display name for the given group.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the group in an external identity provider.
         """
         return pulumi.get(self, "external_id")
 
     @external_id.setter
-    def external_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['GroupProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['GroupProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['GroupProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['GroupProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceAccess")
-    def workspace_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def workspace_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
         """
         return pulumi.get(self, "workspace_access")
 
     @workspace_access.setter
-    def workspace_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def workspace_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "workspace_access", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceConsume")
-    def workspace_consume(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def workspace_consume(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 
     @workspace_consume.setter
-    def workspace_consume(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def workspace_consume(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "workspace_consume", value)
 
 
@@ -410,18 +410,18 @@ class Group(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 provider_config: Optional[pulumi.Input[Union['GroupProviderConfigArgs', 'GroupProviderConfigArgsDict']]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None,
+                 acl_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_cluster_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_instance_pool_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_sql_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 provider_config: pulumi.Input[Optional[Union['GroupProviderConfigArgs', 'GroupProviderConfigArgsDict']]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 workspace_consume: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         This resource allows you to manage both [account groups and workspace-local groups](https://docs.databricks.com/administration-guide/users-groups/groups.html). You can use the GroupMember resource to assign Databricks users, service principals as well as other groups as members of the group. This is useful if you are using an application to sync users & groups with SCIM API.
@@ -589,18 +589,18 @@ class Group(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 provider_config: Optional[pulumi.Input[Union['GroupProviderConfigArgs', 'GroupProviderConfigArgsDict']]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None,
+                 acl_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allow_cluster_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_instance_pool_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 databricks_sql_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 provider_config: pulumi.Input[Optional[Union['GroupProviderConfigArgs', 'GroupProviderConfigArgsDict']]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 workspace_consume: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -632,18 +632,18 @@ class Group(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-            allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
-            api: Optional[pulumi.Input[_builtins.str]] = None,
-            databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            external_id: Optional[pulumi.Input[_builtins.str]] = None,
-            force: Optional[pulumi.Input[_builtins.bool]] = None,
-            provider_config: Optional[pulumi.Input[Union['GroupProviderConfigArgs', 'GroupProviderConfigArgsDict']]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Group':
+            acl_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allow_cluster_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_instance_pool_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            databricks_sql_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            provider_config: pulumi.Input[Optional[Union['GroupProviderConfigArgs', 'GroupProviderConfigArgsDict']]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            workspace_consume: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
