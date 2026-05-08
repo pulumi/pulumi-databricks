@@ -21,13 +21,13 @@ __all__ = ['SqlGlobalConfigArgs', 'SqlGlobalConfig']
 @pulumi.input_type
 class SqlGlobalConfigArgs:
     def __init__(__self__, *,
-                 data_access_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 enable_serverless_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-                 google_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_profile_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['SqlGlobalConfigProviderConfigArgs']] = None,
-                 security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_config_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 data_access_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+                 google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['SqlGlobalConfigProviderConfigArgs']] = None,
+                 security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_config_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SqlGlobalConfig resource.
 
@@ -58,97 +58,97 @@ class SqlGlobalConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataAccessConfig")
-    def data_access_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def data_access_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
         """
         return pulumi.get(self, "data_access_config")
 
     @data_access_config.setter
-    def data_access_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def data_access_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_access_config", value)
 
     @_builtins.property
     @pulumi.getter(name="enableServerlessCompute")
     @_utilities.deprecated("""This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future""")
-    def enable_serverless_compute(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_serverless_compute(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enable_serverless_compute")
 
     @enable_serverless_compute.setter
-    def enable_serverless_compute(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_serverless_compute(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_serverless_compute", value)
 
     @_builtins.property
     @pulumi.getter(name="googleServiceAccount")
-    def google_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def google_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
         """
         return pulumi.get(self, "google_service_account")
 
     @google_service_account.setter
-    def google_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def google_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "google_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceProfileArn")
-    def instance_profile_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_profile_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
         """
         return pulumi.get(self, "instance_profile_arn")
 
     @instance_profile_arn.setter
-    def instance_profile_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_profile_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_profile_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['SqlGlobalConfigProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['SqlGlobalConfigProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['SqlGlobalConfigProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['SqlGlobalConfigProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicy")
-    def security_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         """
         return pulumi.get(self, "security_policy")
 
     @security_policy.setter
-    def security_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlConfigParams")
-    def sql_config_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def sql_config_params(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
         """
         return pulumi.get(self, "sql_config_params")
 
     @sql_config_params.setter
-    def sql_config_params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def sql_config_params(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sql_config_params", value)
 
 
 @pulumi.input_type
 class _SqlGlobalConfigState:
     def __init__(__self__, *,
-                 data_access_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 enable_serverless_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-                 google_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_profile_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['SqlGlobalConfigProviderConfigArgs']] = None,
-                 security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_config_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 data_access_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+                 google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['SqlGlobalConfigProviderConfigArgs']] = None,
+                 security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_config_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering SqlGlobalConfig resources.
 
@@ -179,84 +179,84 @@ class _SqlGlobalConfigState:
 
     @_builtins.property
     @pulumi.getter(name="dataAccessConfig")
-    def data_access_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def data_access_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
         """
         return pulumi.get(self, "data_access_config")
 
     @data_access_config.setter
-    def data_access_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def data_access_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_access_config", value)
 
     @_builtins.property
     @pulumi.getter(name="enableServerlessCompute")
     @_utilities.deprecated("""This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future""")
-    def enable_serverless_compute(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_serverless_compute(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enable_serverless_compute")
 
     @enable_serverless_compute.setter
-    def enable_serverless_compute(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_serverless_compute(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_serverless_compute", value)
 
     @_builtins.property
     @pulumi.getter(name="googleServiceAccount")
-    def google_service_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def google_service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
         """
         return pulumi.get(self, "google_service_account")
 
     @google_service_account.setter
-    def google_service_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def google_service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "google_service_account", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceProfileArn")
-    def instance_profile_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_profile_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
         """
         return pulumi.get(self, "instance_profile_arn")
 
     @instance_profile_arn.setter
-    def instance_profile_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_profile_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_profile_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['SqlGlobalConfigProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['SqlGlobalConfigProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['SqlGlobalConfigProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['SqlGlobalConfigProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicy")
-    def security_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
         """
         return pulumi.get(self, "security_policy")
 
     @security_policy.setter
-    def security_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlConfigParams")
-    def sql_config_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def sql_config_params(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
         """
         return pulumi.get(self, "sql_config_params")
 
     @sql_config_params.setter
-    def sql_config_params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def sql_config_params(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sql_config_params", value)
 
 
@@ -266,13 +266,13 @@ class SqlGlobalConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_access_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 enable_serverless_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-                 google_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_profile_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['SqlGlobalConfigProviderConfigArgs', 'SqlGlobalConfigProviderConfigArgsDict']]] = None,
-                 security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_config_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 data_access_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+                 google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlGlobalConfigProviderConfigArgs', 'SqlGlobalConfigProviderConfigArgsDict']]] = None,
+                 security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_config_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         This resource configures the security policy, databricks_instance_profile, and [data access properties](https://docs.databricks.com/sql/admin/data-access-configuration.html) for all SqlEndpoint of workspace. *Please note that changing parameters of this resource will restart all running databricks_sql_endpoint.*  To use this resource you need to be an administrator.
@@ -412,13 +412,13 @@ class SqlGlobalConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_access_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 enable_serverless_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-                 google_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_profile_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['SqlGlobalConfigProviderConfigArgs', 'SqlGlobalConfigProviderConfigArgsDict']]] = None,
-                 security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_config_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 data_access_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+                 google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlGlobalConfigProviderConfigArgs', 'SqlGlobalConfigProviderConfigArgsDict']]] = None,
+                 security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_config_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -445,13 +445,13 @@ class SqlGlobalConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            data_access_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            enable_serverless_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-            google_service_account: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_profile_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['SqlGlobalConfigProviderConfigArgs', 'SqlGlobalConfigProviderConfigArgsDict']]] = None,
-            security_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            sql_config_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'SqlGlobalConfig':
+            data_access_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+            google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlGlobalConfigProviderConfigArgs', 'SqlGlobalConfigProviderConfigArgsDict']]] = None,
+            security_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            sql_config_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'SqlGlobalConfig':
         """
         Get an existing SqlGlobalConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

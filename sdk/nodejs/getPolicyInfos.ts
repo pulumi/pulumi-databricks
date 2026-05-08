@@ -131,13 +131,13 @@ export interface GetPolicyInfosOutputArgs {
      * Optional. Whether to include policies defined on parent securables.
      * By default, the inherited policies are not included
      */
-    includeInherited?: pulumi.Input<boolean>;
+    includeInherited?: pulumi.Input<boolean | undefined>;
     /**
      * Optional.  Maximum number of policies to return on a single page (page length).
      * - When not set or set to 0, the page length is set to a server configured value (recommended);
      * - When set to a value greater than 0, the page length is the minimum of this value and a server configured value;
      */
-    maxResults?: pulumi.Input<number>;
+    maxResults?: pulumi.Input<number | undefined>;
     /**
      * Required. The fully qualified name of securable to list policies for
      */
@@ -149,5 +149,5 @@ export interface GetPolicyInfosOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetPolicyInfosProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetPolicyInfosProviderConfigArgs | undefined>;
 }

@@ -183,18 +183,18 @@ export function getCurrentConfigOutput(args?: GetCurrentConfigOutputArgs, opts?:
  * A collection of arguments for invoking getCurrentConfig.
  */
 export interface GetCurrentConfigOutputArgs {
-    accountId?: pulumi.Input<string>;
-    api?: pulumi.Input<string>;
-    authType?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    api?: pulumi.Input<string | undefined>;
+    authType?: pulumi.Input<string | undefined>;
     /**
      * Explicitly set the cloud type. Must be one of `aws`, `azure`, or `gcp`. If not set, the cloud type is determined automatically from the provider configuration. It is recommended to set this explicitly to avoid relying on host-based detection.
      */
-    cloud?: pulumi.Input<string>;
-    cloudType?: pulumi.Input<string>;
-    host?: pulumi.Input<string>;
-    isAccount?: pulumi.Input<boolean>;
+    cloud?: pulumi.Input<string | undefined>;
+    cloudType?: pulumi.Input<string | undefined>;
+    host?: pulumi.Input<string | undefined>;
+    isAccount?: pulumi.Input<boolean | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetCurrentConfigProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetCurrentConfigProviderConfigArgs | undefined>;
 }

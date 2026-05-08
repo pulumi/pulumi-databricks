@@ -23,16 +23,16 @@ class MwsNetworksArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  network_name: pulumi.Input[_builtins.str],
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 error_messages: Optional[pulumi.Input[Sequence[pulumi.Input['MwsNetworksErrorMessageArgs']]]] = None,
-                 gcp_network_info: Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_endpoints: Optional[pulumi.Input['MwsNetworksVpcEndpointsArgs']] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 error_messages: pulumi.Input[Optional[Sequence[pulumi.Input['MwsNetworksErrorMessageArgs']]]] = None,
+                 gcp_network_info: pulumi.Input[Optional['MwsNetworksGcpNetworkInfoArgs']] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_endpoints: pulumi.Input[Optional['MwsNetworksVpcEndpointsArgs']] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MwsNetworks resource.
 
@@ -96,134 +96,134 @@ class MwsNetworksArgs:
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="errorMessages")
-    def error_messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MwsNetworksErrorMessageArgs']]]]:
+    def error_messages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MwsNetworksErrorMessageArgs']]]]:
         return pulumi.get(self, "error_messages")
 
     @error_messages.setter
-    def error_messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MwsNetworksErrorMessageArgs']]]]):
+    def error_messages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MwsNetworksErrorMessageArgs']]]]):
         pulumi.set(self, "error_messages", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpNetworkInfo")
-    def gcp_network_info(self) -> Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']]:
+    def gcp_network_info(self) -> pulumi.Input[Optional['MwsNetworksGcpNetworkInfoArgs']]:
         """
         a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         """
         return pulumi.get(self, "gcp_network_info")
 
     @gcp_network_info.setter
-    def gcp_network_info(self, value: Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']]):
+    def gcp_network_info(self, value: pulumi.Input[Optional['MwsNetworksGcpNetworkInfoArgs']]):
         pulumi.set(self, "gcp_network_info", value)
 
     @_builtins.property
     @pulumi.getter(name="networkId")
-    def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) id of network to be used for MwsWorkspaces resource.
         """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
-    def network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         ids of aws_security_group
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetIds")
-    def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def subnet_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         ids of aws_subnet
         """
         return pulumi.get(self, "subnet_ids")
 
     @subnet_ids.setter
-    def subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def subnet_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subnet_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcEndpoints")
-    def vpc_endpoints(self) -> Optional[pulumi.Input['MwsNetworksVpcEndpointsArgs']]:
+    def vpc_endpoints(self) -> pulumi.Input[Optional['MwsNetworksVpcEndpointsArgs']]:
         """
         mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         """
         return pulumi.get(self, "vpc_endpoints")
 
     @vpc_endpoints.setter
-    def vpc_endpoints(self, value: Optional[pulumi.Input['MwsNetworksVpcEndpointsArgs']]):
+    def vpc_endpoints(self, value: pulumi.Input[Optional['MwsNetworksVpcEndpointsArgs']]):
         pulumi.set(self, "vpc_endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         aws_vpc id
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcStatus")
-    def vpc_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) VPC attachment status
         """
         return pulumi.get(self, "vpc_status")
 
     @vpc_status.setter
-    def vpc_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_status", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Integer) id of associated workspace
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_id", value)
 
 
 @pulumi.input_type
 class _MwsNetworksState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 error_messages: Optional[pulumi.Input[Sequence[pulumi.Input['MwsNetworksErrorMessageArgs']]]] = None,
-                 gcp_network_info: Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_endpoints: Optional[pulumi.Input['MwsNetworksVpcEndpointsArgs']] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 error_messages: pulumi.Input[Optional[Sequence[pulumi.Input['MwsNetworksErrorMessageArgs']]]] = None,
+                 gcp_network_info: pulumi.Input[Optional['MwsNetworksGcpNetworkInfoArgs']] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_endpoints: pulumi.Input[Optional['MwsNetworksVpcEndpointsArgs']] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsNetworks resources.
 
@@ -265,140 +265,140 @@ class _MwsNetworksState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="errorMessages")
-    def error_messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MwsNetworksErrorMessageArgs']]]]:
+    def error_messages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MwsNetworksErrorMessageArgs']]]]:
         return pulumi.get(self, "error_messages")
 
     @error_messages.setter
-    def error_messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MwsNetworksErrorMessageArgs']]]]):
+    def error_messages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MwsNetworksErrorMessageArgs']]]]):
         pulumi.set(self, "error_messages", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpNetworkInfo")
-    def gcp_network_info(self) -> Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']]:
+    def gcp_network_info(self) -> pulumi.Input[Optional['MwsNetworksGcpNetworkInfoArgs']]:
         """
         a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
         """
         return pulumi.get(self, "gcp_network_info")
 
     @gcp_network_info.setter
-    def gcp_network_info(self, value: Optional[pulumi.Input['MwsNetworksGcpNetworkInfoArgs']]):
+    def gcp_network_info(self, value: pulumi.Input[Optional['MwsNetworksGcpNetworkInfoArgs']]):
         pulumi.set(self, "gcp_network_info", value)
 
     @_builtins.property
     @pulumi.getter(name="networkId")
-    def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) id of network to be used for MwsWorkspaces resource.
         """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
-    def network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkName")
-    def network_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         name under which this network is registered
         """
         return pulumi.get(self, "network_name")
 
     @network_name.setter
-    def network_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_name", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         ids of aws_security_group
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetIds")
-    def subnet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def subnet_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         ids of aws_subnet
         """
         return pulumi.get(self, "subnet_ids")
 
     @subnet_ids.setter
-    def subnet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def subnet_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subnet_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcEndpoints")
-    def vpc_endpoints(self) -> Optional[pulumi.Input['MwsNetworksVpcEndpointsArgs']]:
+    def vpc_endpoints(self) -> pulumi.Input[Optional['MwsNetworksVpcEndpointsArgs']]:
         """
         mapping of MwsVpcEndpoint for PrivateLink or Private Service Connect connections
         """
         return pulumi.get(self, "vpc_endpoints")
 
     @vpc_endpoints.setter
-    def vpc_endpoints(self, value: Optional[pulumi.Input['MwsNetworksVpcEndpointsArgs']]):
+    def vpc_endpoints(self, value: pulumi.Input[Optional['MwsNetworksVpcEndpointsArgs']]):
         pulumi.set(self, "vpc_endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         aws_vpc id
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcStatus")
-    def vpc_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) VPC attachment status
         """
         return pulumi.get(self, "vpc_status")
 
     @vpc_status.setter
-    def vpc_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_status", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Integer) id of associated workspace
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_id", value)
 
 
@@ -408,18 +408,18 @@ class MwsNetworks(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 error_messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MwsNetworksErrorMessageArgs', 'MwsNetworksErrorMessageArgsDict']]]]] = None,
-                 gcp_network_info: Optional[pulumi.Input[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict']]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_endpoints: Optional[pulumi.Input[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict']]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 error_messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MwsNetworksErrorMessageArgs', 'MwsNetworksErrorMessageArgsDict']]]]] = None,
+                 gcp_network_info: pulumi.Input[Optional[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict']]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_endpoints: pulumi.Input[Optional[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict']]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ## Databricks on AWS usage
@@ -691,18 +691,18 @@ class MwsNetworks(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 error_messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MwsNetworksErrorMessageArgs', 'MwsNetworksErrorMessageArgsDict']]]]] = None,
-                 gcp_network_info: Optional[pulumi.Input[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict']]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_endpoints: Optional[pulumi.Input[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict']]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 error_messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MwsNetworksErrorMessageArgs', 'MwsNetworksErrorMessageArgsDict']]]]] = None,
+                 gcp_network_info: pulumi.Input[Optional[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict']]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_endpoints: pulumi.Input[Optional[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict']]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -740,18 +740,18 @@ class MwsNetworks(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-            error_messages: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MwsNetworksErrorMessageArgs', 'MwsNetworksErrorMessageArgsDict']]]]] = None,
-            gcp_network_info: Optional[pulumi.Input[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict']]] = None,
-            network_id: Optional[pulumi.Input[_builtins.str]] = None,
-            network_name: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            subnet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vpc_endpoints: Optional[pulumi.Input[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict']]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_status: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'MwsNetworks':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            error_messages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MwsNetworksErrorMessageArgs', 'MwsNetworksErrorMessageArgsDict']]]]] = None,
+            gcp_network_info: pulumi.Input[Optional[Union['MwsNetworksGcpNetworkInfoArgs', 'MwsNetworksGcpNetworkInfoArgsDict']]] = None,
+            network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_name: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vpc_endpoints: pulumi.Input[Optional[Union['MwsNetworksVpcEndpointsArgs', 'MwsNetworksVpcEndpointsArgsDict']]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_status: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'MwsNetworks':
         """
         Get an existing MwsNetworks resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

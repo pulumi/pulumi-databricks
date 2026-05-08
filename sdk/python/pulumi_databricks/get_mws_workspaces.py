@@ -110,7 +110,7 @@ def get_mws_workspaces(provider_config: Optional[Union['GetMwsWorkspacesProvider
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_mws_workspaces_output(provider_config: Optional[pulumi.Input[Optional[Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict']]]] = None,
+def get_mws_workspaces_output(provider_config: pulumi.Input[Optional[Optional[Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict']]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsWorkspacesResult]:
     """
     Lists all MwsWorkspaces in Databricks Account.

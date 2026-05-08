@@ -22,11 +22,11 @@ __all__ = ['PermissionAssignmentArgs', 'PermissionAssignment']
 class PermissionAssignmentArgs:
     def __init__(__self__, *,
                  permissions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['PermissionAssignmentProviderConfigArgs']] = None,
-                 service_principal_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['PermissionAssignmentProviderConfigArgs']] = None,
+                 service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PermissionAssignment resource.
 
@@ -67,75 +67,75 @@ class PermissionAssignmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the group name to assign to a workspace.
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="principalId")
-    def principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principal_id` as outputs from another Pulumi stack.
         """
         return pulumi.get(self, "principal_id")
 
     @principal_id.setter
-    def principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PermissionAssignmentProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PermissionAssignmentProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PermissionAssignmentProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PermissionAssignmentProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalName")
-    def service_principal_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_principal_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the application ID of service principal to assign to a workspace.
         """
         return pulumi.get(self, "service_principal_name")
 
     @service_principal_name.setter
-    def service_principal_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_principal_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_principal_name", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the user name (email) to assign to a workspace.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
 @pulumi.input_type
 class _PermissionAssignmentState:
     def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['PermissionAssignmentProviderConfigArgs']] = None,
-                 service_principal_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['PermissionAssignmentProviderConfigArgs']] = None,
+                 service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PermissionAssignment resources.
 
@@ -166,31 +166,31 @@ class _PermissionAssignmentState:
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the display name of the assigned principal.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the group name to assign to a workspace.
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of workspace permissions to assign to the principal:
         * `"USER"` - Adds principal to the workspace `users` group. This gives basic workspace access.
@@ -199,55 +199,55 @@ class _PermissionAssignmentState:
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "permissions", value)
 
     @_builtins.property
     @pulumi.getter(name="principalId")
-    def principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Databricks ID of the user, service principal, or group. The principal ID can be retrieved using the account-level SCIM API, or using databricks_user, ServicePrincipal or Group data sources with account API (and has to be an account admin). A more sensible approach is to retrieve the list of `principal_id` as outputs from another Pulumi stack.
         """
         return pulumi.get(self, "principal_id")
 
     @principal_id.setter
-    def principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "principal_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PermissionAssignmentProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PermissionAssignmentProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PermissionAssignmentProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PermissionAssignmentProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalName")
-    def service_principal_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_principal_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the application ID of service principal to assign to a workspace.
         """
         return pulumi.get(self, "service_principal_name")
 
     @service_principal_name.setter
-    def service_principal_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_principal_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_principal_name", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the user name (email) to assign to a workspace.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
@@ -257,12 +257,12 @@ class PermissionAssignment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PermissionAssignmentProviderConfigArgs', 'PermissionAssignmentProviderConfigArgsDict']]] = None,
-                 service_principal_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PermissionAssignmentProviderConfigArgs', 'PermissionAssignmentProviderConfigArgsDict']]] = None,
+                 service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource is used to assign account-level users, service principals and groups to a Databricks workspace. To configure additional entitlements such as cluster creation, please use Entitlements
@@ -488,12 +488,12 @@ class PermissionAssignment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PermissionAssignmentProviderConfigArgs', 'PermissionAssignmentProviderConfigArgsDict']]] = None,
-                 service_principal_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PermissionAssignmentProviderConfigArgs', 'PermissionAssignmentProviderConfigArgsDict']]] = None,
+                 service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -522,13 +522,13 @@ class PermissionAssignment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['PermissionAssignmentProviderConfigArgs', 'PermissionAssignmentProviderConfigArgsDict']]] = None,
-            service_principal_name: Optional[pulumi.Input[_builtins.str]] = None,
-            user_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'PermissionAssignment':
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['PermissionAssignmentProviderConfigArgs', 'PermissionAssignmentProviderConfigArgsDict']]] = None,
+            service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'PermissionAssignment':
         """
         Get an existing PermissionAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

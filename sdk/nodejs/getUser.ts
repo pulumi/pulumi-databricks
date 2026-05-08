@@ -174,17 +174,17 @@ export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserOutputArgs {
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetUserProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetUserProviderConfigArgs | undefined>;
     /**
      * ID of the user.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * User name of the user. The user must exist before this resource can be planned.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }

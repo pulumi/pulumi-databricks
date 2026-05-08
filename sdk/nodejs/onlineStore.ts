@@ -117,35 +117,35 @@ export interface OnlineStoreState {
     /**
      * The capacity of the online store. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
      */
-    capacity?: pulumi.Input<string>;
+    capacity?: pulumi.Input<string | undefined>;
     /**
      * (string) - The timestamp when the online store was created
      */
-    creationTime?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - The email of the creator of the online store
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * The name of the online store. This is the unique identifier for the online store
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.OnlineStoreProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.OnlineStoreProviderConfig | undefined>;
     /**
      * The number of read replicas for the online store. Defaults to 0
      */
-    readReplicaCount?: pulumi.Input<number>;
+    readReplicaCount?: pulumi.Input<number | undefined>;
     /**
      * (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The usage policy applied to the online store to track billing
      */
-    usagePolicyId?: pulumi.Input<string>;
+    usagePolicyId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -159,17 +159,17 @@ export interface OnlineStoreArgs {
     /**
      * The name of the online store. This is the unique identifier for the online store
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.OnlineStoreProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.OnlineStoreProviderConfig | undefined>;
     /**
      * The number of read replicas for the online store. Defaults to 0
      */
-    readReplicaCount?: pulumi.Input<number>;
+    readReplicaCount?: pulumi.Input<number | undefined>;
     /**
      * The usage policy applied to the online store to track billing
      */
-    usagePolicyId?: pulumi.Input<string>;
+    usagePolicyId?: pulumi.Input<string | undefined>;
 }

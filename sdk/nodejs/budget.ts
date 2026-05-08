@@ -149,19 +149,19 @@ export interface BudgetState {
     /**
      * The ID of the Databricks Account.
      */
-    accountId?: pulumi.Input<string>;
-    alertConfigurations?: pulumi.Input<pulumi.Input<inputs.BudgetAlertConfiguration>[]>;
+    accountId?: pulumi.Input<string | undefined>;
+    alertConfigurations?: pulumi.Input<pulumi.Input<inputs.BudgetAlertConfiguration>[] | undefined>;
     /**
      * The ID of the budget configuration.
      */
-    budgetConfigurationId?: pulumi.Input<string>;
-    createTime?: pulumi.Input<number>;
+    budgetConfigurationId?: pulumi.Input<string | undefined>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * Name of the budget in Databricks Account.
      */
-    displayName?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.BudgetFilter>;
-    updateTime?: pulumi.Input<number>;
+    displayName?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.BudgetFilter | undefined>;
+    updateTime?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -171,17 +171,17 @@ export interface BudgetArgs {
     /**
      * The ID of the Databricks Account.
      */
-    accountId?: pulumi.Input<string>;
-    alertConfigurations?: pulumi.Input<pulumi.Input<inputs.BudgetAlertConfiguration>[]>;
+    accountId?: pulumi.Input<string | undefined>;
+    alertConfigurations?: pulumi.Input<pulumi.Input<inputs.BudgetAlertConfiguration>[] | undefined>;
     /**
      * The ID of the budget configuration.
      */
-    budgetConfigurationId?: pulumi.Input<string>;
-    createTime?: pulumi.Input<number>;
+    budgetConfigurationId?: pulumi.Input<string | undefined>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * Name of the budget in Databricks Account.
      */
-    displayName?: pulumi.Input<string>;
-    filter?: pulumi.Input<inputs.BudgetFilter>;
-    updateTime?: pulumi.Input<number>;
+    displayName?: pulumi.Input<string | undefined>;
+    filter?: pulumi.Input<inputs.BudgetFilter | undefined>;
+    updateTime?: pulumi.Input<number | undefined>;
 }

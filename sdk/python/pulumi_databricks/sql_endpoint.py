@@ -22,21 +22,21 @@ __all__ = ['SqlEndpointArgs', 'SqlEndpoint']
 class SqlEndpointArgs:
     def __init__(__self__, *,
                  cluster_size: pulumi.Input[_builtins.str],
-                 auto_stop_mins: Optional[pulumi.Input[_builtins.int]] = None,
-                 channel: Optional[pulumi.Input['SqlEndpointChannelArgs']] = None,
-                 data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_photon: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_serverless_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_profile_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
-                 provider_config: Optional[pulumi.Input['SqlEndpointProviderConfigArgs']] = None,
-                 spot_instance_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input['SqlEndpointTagsArgs']] = None,
-                 warehouse_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_stop_mins: pulumi.Input[Optional[_builtins.int]] = None,
+                 channel: pulumi.Input[Optional['SqlEndpointChannelArgs']] = None,
+                 data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_photon: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+                 provider_config: pulumi.Input[Optional['SqlEndpointProviderConfigArgs']] = None,
+                 spot_instance_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional['SqlEndpointTagsArgs']] = None,
+                 warehouse_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SqlEndpoint resource.
 
@@ -104,55 +104,55 @@ class SqlEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoStopMins")
-    def auto_stop_mins(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_stop_mins(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
         """
         return pulumi.get(self, "auto_stop_mins")
 
     @auto_stop_mins.setter
-    def auto_stop_mins(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_stop_mins(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_stop_mins", value)
 
     @_builtins.property
     @pulumi.getter
-    def channel(self) -> Optional[pulumi.Input['SqlEndpointChannelArgs']]:
+    def channel(self) -> pulumi.Input[Optional['SqlEndpointChannelArgs']]:
         """
         block, consisting of following fields:
         """
         return pulumi.get(self, "channel")
 
     @channel.setter
-    def channel(self, value: Optional[pulumi.Input['SqlEndpointChannelArgs']]):
+    def channel(self, value: pulumi.Input[Optional['SqlEndpointChannelArgs']]):
         pulumi.set(self, "channel", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceId")
-    def data_source_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         """
         return pulumi.get(self, "data_source_id")
 
     @data_source_id.setter
-    def data_source_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePhoton")
-    def enable_photon(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_photon(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
         """
         return pulumi.get(self, "enable_photon")
 
     @enable_photon.setter
-    def enable_photon(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_photon(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_photon", value)
 
     @_builtins.property
     @pulumi.getter(name="enableServerlessCompute")
-    def enable_serverless_compute(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_serverless_compute(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
 
@@ -161,153 +161,153 @@ class SqlEndpointArgs:
         return pulumi.get(self, "enable_serverless_compute")
 
     @enable_serverless_compute.setter
-    def enable_serverless_compute(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_serverless_compute(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_serverless_compute", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceProfileArn")
-    def instance_profile_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_profile_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "instance_profile_arn")
 
     @instance_profile_arn.setter
-    def instance_profile_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_profile_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_profile_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="maxNumClusters")
-    def max_num_clusters(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_num_clusters(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
         """
         return pulumi.get(self, "max_num_clusters")
 
     @max_num_clusters.setter
-    def max_num_clusters(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_num_clusters(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_num_clusters", value)
 
     @_builtins.property
     @pulumi.getter(name="minNumClusters")
-    def min_num_clusters(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_num_clusters(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         """
         return pulumi.get(self, "min_num_clusters")
 
     @min_num_clusters.setter
-    def min_num_clusters(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_num_clusters(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_num_clusters", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the SQL warehouse. Must be unique.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="noWait")
-    def no_wait(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_wait(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
         """
         return pulumi.get(self, "no_wait")
 
     @no_wait.setter
-    def no_wait(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_wait(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_wait", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['SqlEndpointProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['SqlEndpointProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['SqlEndpointProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['SqlEndpointProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="spotInstancePolicy")
-    def spot_instance_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_instance_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         """
         return pulumi.get(self, "spot_instance_policy")
 
     @spot_instance_policy.setter
-    def spot_instance_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_instance_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_instance_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlEndpointId")
-    def sql_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the unique ID of the SQL warehouse.
         """
         return pulumi.get(self, "sql_endpoint_id")
 
     @sql_endpoint_id.setter
-    def sql_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input['SqlEndpointTagsArgs']]:
+    def tags(self) -> pulumi.Input[Optional['SqlEndpointTagsArgs']]:
         """
         Databricks tags all endpoint resources with these tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input['SqlEndpointTagsArgs']]):
+    def tags(self, value: pulumi.Input[Optional['SqlEndpointTagsArgs']]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="warehouseType")
-    def warehouse_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warehouse_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
         """
         return pulumi.get(self, "warehouse_type")
 
     @warehouse_type.setter
-    def warehouse_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warehouse_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warehouse_type", value)
 
 
 @pulumi.input_type
 class _SqlEndpointState:
     def __init__(__self__, *,
-                 auto_stop_mins: Optional[pulumi.Input[_builtins.int]] = None,
-                 channel: Optional[pulumi.Input['SqlEndpointChannelArgs']] = None,
-                 cluster_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 creator_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_photon: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_serverless_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-                 healths: Optional[pulumi.Input[Sequence[pulumi.Input['SqlEndpointHealthArgs']]]] = None,
-                 instance_profile_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 jdbc_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
-                 num_active_sessions: Optional[pulumi.Input[_builtins.int]] = None,
-                 num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
-                 odbc_params: Optional[pulumi.Input['SqlEndpointOdbcParamsArgs']] = None,
-                 provider_config: Optional[pulumi.Input['SqlEndpointProviderConfigArgs']] = None,
-                 spot_instance_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input['SqlEndpointTagsArgs']] = None,
-                 warehouse_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_stop_mins: pulumi.Input[Optional[_builtins.int]] = None,
+                 channel: pulumi.Input[Optional['SqlEndpointChannelArgs']] = None,
+                 cluster_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 creator_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_photon: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+                 healths: pulumi.Input[Optional[Sequence[pulumi.Input['SqlEndpointHealthArgs']]]] = None,
+                 instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 jdbc_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+                 num_active_sessions: pulumi.Input[Optional[_builtins.int]] = None,
+                 num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
+                 odbc_params: pulumi.Input[Optional['SqlEndpointOdbcParamsArgs']] = None,
+                 provider_config: pulumi.Input[Optional['SqlEndpointProviderConfigArgs']] = None,
+                 spot_instance_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional['SqlEndpointTagsArgs']] = None,
+                 warehouse_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SqlEndpoint resources.
 
@@ -385,79 +385,79 @@ class _SqlEndpointState:
 
     @_builtins.property
     @pulumi.getter(name="autoStopMins")
-    def auto_stop_mins(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_stop_mins(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time in minutes until an idle SQL warehouse terminates all clusters and stops. This field is optional. The default is 120, set to 0 to disable the auto stop.
         """
         return pulumi.get(self, "auto_stop_mins")
 
     @auto_stop_mins.setter
-    def auto_stop_mins(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_stop_mins(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_stop_mins", value)
 
     @_builtins.property
     @pulumi.getter
-    def channel(self) -> Optional[pulumi.Input['SqlEndpointChannelArgs']]:
+    def channel(self) -> pulumi.Input[Optional['SqlEndpointChannelArgs']]:
         """
         block, consisting of following fields:
         """
         return pulumi.get(self, "channel")
 
     @channel.setter
-    def channel(self, value: Optional[pulumi.Input['SqlEndpointChannelArgs']]):
+    def channel(self, value: pulumi.Input[Optional['SqlEndpointChannelArgs']]):
         pulumi.set(self, "channel", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterSize")
-    def cluster_size(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The size of the clusters allocated to the endpoint: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
         """
         return pulumi.get(self, "cluster_size")
 
     @cluster_size.setter
-    def cluster_size(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_size(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_size", value)
 
     @_builtins.property
     @pulumi.getter(name="creatorName")
-    def creator_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of the user who created the endpoint.
         """
         return pulumi.get(self, "creator_name")
 
     @creator_name.setter
-    def creator_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceId")
-    def data_source_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Deprecated, will be removed) ID of the data source for this endpoint. This is used to bind an Databricks SQL query to an endpoint.
         """
         return pulumi.get(self, "data_source_id")
 
     @data_source_id.setter
-    def data_source_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePhoton")
-    def enable_photon(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_photon(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable [Photon](https://databricks.com/product/delta-engine). This field is optional and is enabled by default.
         """
         return pulumi.get(self, "enable_photon")
 
     @enable_photon.setter
-    def enable_photon(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_photon(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_photon", value)
 
     @_builtins.property
     @pulumi.getter(name="enableServerlessCompute")
-    def enable_serverless_compute(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_serverless_compute(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this SQL warehouse is a serverless endpoint. See below for details about the default values. To avoid ambiguity, especially for organizations with many workspaces, Databricks recommends that you always set this field explicitly.
 
@@ -466,196 +466,196 @@ class _SqlEndpointState:
         return pulumi.get(self, "enable_serverless_compute")
 
     @enable_serverless_compute.setter
-    def enable_serverless_compute(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_serverless_compute(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_serverless_compute", value)
 
     @_builtins.property
     @pulumi.getter
-    def healths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SqlEndpointHealthArgs']]]]:
+    def healths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SqlEndpointHealthArgs']]]]:
         """
         Health status of the endpoint.
         """
         return pulumi.get(self, "healths")
 
     @healths.setter
-    def healths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SqlEndpointHealthArgs']]]]):
+    def healths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SqlEndpointHealthArgs']]]]):
         pulumi.set(self, "healths", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceProfileArn")
-    def instance_profile_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_profile_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "instance_profile_arn")
 
     @instance_profile_arn.setter
-    def instance_profile_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_profile_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_profile_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="jdbcUrl")
-    def jdbc_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jdbc_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         JDBC connection string.
         """
         return pulumi.get(self, "jdbc_url")
 
     @jdbc_url.setter
-    def jdbc_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jdbc_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jdbc_url", value)
 
     @_builtins.property
     @pulumi.getter(name="maxNumClusters")
-    def max_num_clusters(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_num_clusters(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of clusters available when a SQL warehouse is running. This field is required. If multi-cluster load balancing is not enabled, this is default to `1`.
         """
         return pulumi.get(self, "max_num_clusters")
 
     @max_num_clusters.setter
-    def max_num_clusters(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_num_clusters(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_num_clusters", value)
 
     @_builtins.property
     @pulumi.getter(name="minNumClusters")
-    def min_num_clusters(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_num_clusters(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of clusters available when a SQL warehouse is running. The default is `1`.
         """
         return pulumi.get(self, "min_num_clusters")
 
     @min_num_clusters.setter
-    def min_num_clusters(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_num_clusters(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_num_clusters", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the SQL warehouse. Must be unique.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="noWait")
-    def no_wait(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_wait(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to skip waiting for the SQL warehouse to start after creation. Default is `false`. When set to `true`, Pulumi will create the warehouse but won't wait for it to be in a running state before completing.
         """
         return pulumi.get(self, "no_wait")
 
     @no_wait.setter
-    def no_wait(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_wait(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_wait", value)
 
     @_builtins.property
     @pulumi.getter(name="numActiveSessions")
-    def num_active_sessions(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_active_sessions(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The current number of clusters used by the endpoint.
         """
         return pulumi.get(self, "num_active_sessions")
 
     @num_active_sessions.setter
-    def num_active_sessions(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_active_sessions(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_active_sessions", value)
 
     @_builtins.property
     @pulumi.getter(name="numClusters")
-    def num_clusters(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_clusters(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The current number of clusters used by the endpoint.
         """
         return pulumi.get(self, "num_clusters")
 
     @num_clusters.setter
-    def num_clusters(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_clusters(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_clusters", value)
 
     @_builtins.property
     @pulumi.getter(name="odbcParams")
-    def odbc_params(self) -> Optional[pulumi.Input['SqlEndpointOdbcParamsArgs']]:
+    def odbc_params(self) -> pulumi.Input[Optional['SqlEndpointOdbcParamsArgs']]:
         """
         ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
         """
         return pulumi.get(self, "odbc_params")
 
     @odbc_params.setter
-    def odbc_params(self, value: Optional[pulumi.Input['SqlEndpointOdbcParamsArgs']]):
+    def odbc_params(self, value: pulumi.Input[Optional['SqlEndpointOdbcParamsArgs']]):
         pulumi.set(self, "odbc_params", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['SqlEndpointProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['SqlEndpointProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['SqlEndpointProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['SqlEndpointProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="spotInstancePolicy")
-    def spot_instance_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_instance_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
         """
         return pulumi.get(self, "spot_instance_policy")
 
     @spot_instance_policy.setter
-    def spot_instance_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_instance_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_instance_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlEndpointId")
-    def sql_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the unique ID of the SQL warehouse.
         """
         return pulumi.get(self, "sql_endpoint_id")
 
     @sql_endpoint_id.setter
-    def sql_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current state of the endpoint.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input['SqlEndpointTagsArgs']]:
+    def tags(self) -> pulumi.Input[Optional['SqlEndpointTagsArgs']]:
         """
         Databricks tags all endpoint resources with these tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input['SqlEndpointTagsArgs']]):
+    def tags(self, value: pulumi.Input[Optional['SqlEndpointTagsArgs']]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="warehouseType")
-    def warehouse_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warehouse_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SQL warehouse type. See for [AWS](https://docs.databricks.com/sql/admin/sql-endpoints.html#switch-the-sql-warehouse-type-pro-classic-or-serverless) or [Azure](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/create-sql-warehouse#--upgrade-a-pro-or-classic-sql-warehouse-to-a-serverless-sql-warehouse). Set to `PRO` or `CLASSIC`. If the field `enable_serverless_compute` has the value `true` either explicitly or through the default logic (see that field above for details), the default is `PRO`, which is required for serverless SQL warehouses. Otherwise, the default is `CLASSIC`.
         """
         return pulumi.get(self, "warehouse_type")
 
     @warehouse_type.setter
-    def warehouse_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warehouse_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warehouse_type", value)
 
 
@@ -665,22 +665,22 @@ class SqlEndpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_stop_mins: Optional[pulumi.Input[_builtins.int]] = None,
-                 channel: Optional[pulumi.Input[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict']]] = None,
-                 cluster_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_photon: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_serverless_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_profile_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
-                 provider_config: Optional[pulumi.Input[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict']]] = None,
-                 spot_instance_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']]] = None,
-                 warehouse_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_stop_mins: pulumi.Input[Optional[_builtins.int]] = None,
+                 channel: pulumi.Input[Optional[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict']]] = None,
+                 cluster_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_photon: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict']]] = None,
+                 spot_instance_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']]] = None,
+                 warehouse_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource is used to manage [Databricks SQL warehouses](https://docs.databricks.com/sql/admin/sql-endpoints.html). To create [SQL warehouses](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
@@ -803,22 +803,22 @@ class SqlEndpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_stop_mins: Optional[pulumi.Input[_builtins.int]] = None,
-                 channel: Optional[pulumi.Input[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict']]] = None,
-                 cluster_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_photon: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_serverless_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_profile_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
-                 provider_config: Optional[pulumi.Input[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict']]] = None,
-                 spot_instance_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']]] = None,
-                 warehouse_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_stop_mins: pulumi.Input[Optional[_builtins.int]] = None,
+                 channel: pulumi.Input[Optional[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict']]] = None,
+                 cluster_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_photon: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict']]] = None,
+                 spot_instance_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']]] = None,
+                 warehouse_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -863,29 +863,29 @@ class SqlEndpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_stop_mins: Optional[pulumi.Input[_builtins.int]] = None,
-            channel: Optional[pulumi.Input[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict']]] = None,
-            cluster_size: Optional[pulumi.Input[_builtins.str]] = None,
-            creator_name: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_photon: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_serverless_compute: Optional[pulumi.Input[_builtins.bool]] = None,
-            healths: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlEndpointHealthArgs', 'SqlEndpointHealthArgsDict']]]]] = None,
-            instance_profile_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            jdbc_url: Optional[pulumi.Input[_builtins.str]] = None,
-            max_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
-            min_num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
-            num_active_sessions: Optional[pulumi.Input[_builtins.int]] = None,
-            num_clusters: Optional[pulumi.Input[_builtins.int]] = None,
-            odbc_params: Optional[pulumi.Input[Union['SqlEndpointOdbcParamsArgs', 'SqlEndpointOdbcParamsArgsDict']]] = None,
-            provider_config: Optional[pulumi.Input[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict']]] = None,
-            spot_instance_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            sql_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']]] = None,
-            warehouse_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'SqlEndpoint':
+            auto_stop_mins: pulumi.Input[Optional[_builtins.int]] = None,
+            channel: pulumi.Input[Optional[Union['SqlEndpointChannelArgs', 'SqlEndpointChannelArgsDict']]] = None,
+            cluster_size: pulumi.Input[Optional[_builtins.str]] = None,
+            creator_name: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_photon: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_serverless_compute: pulumi.Input[Optional[_builtins.bool]] = None,
+            healths: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlEndpointHealthArgs', 'SqlEndpointHealthArgsDict']]]]] = None,
+            instance_profile_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            jdbc_url: pulumi.Input[Optional[_builtins.str]] = None,
+            max_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
+            min_num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            no_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+            num_active_sessions: pulumi.Input[Optional[_builtins.int]] = None,
+            num_clusters: pulumi.Input[Optional[_builtins.int]] = None,
+            odbc_params: pulumi.Input[Optional[Union['SqlEndpointOdbcParamsArgs', 'SqlEndpointOdbcParamsArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlEndpointProviderConfigArgs', 'SqlEndpointProviderConfigArgsDict']]] = None,
+            spot_instance_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Union['SqlEndpointTagsArgs', 'SqlEndpointTagsArgsDict']]] = None,
+            warehouse_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'SqlEndpoint':
         """
         Get an existing SqlEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

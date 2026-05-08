@@ -248,24 +248,24 @@ export interface GetGroupOutputArgs {
     /**
      * identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
      */
-    aclPrincipalId?: pulumi.Input<string>;
+    aclPrincipalId?: pulumi.Input<string | undefined>;
     /**
      * True if group members can create clusters
      */
-    allowClusterCreate?: pulumi.Input<boolean>;
+    allowClusterCreate?: pulumi.Input<boolean | undefined>;
     /**
      * True if group members can create instance pools
      */
-    allowInstancePoolCreate?: pulumi.Input<boolean>;
+    allowInstancePoolCreate?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * Set of databricks.Group identifiers, that can be modified with databricks.GroupMember resource.
      */
-    childGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    databricksSqlAccess?: pulumi.Input<boolean>;
+    childGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    databricksSqlAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Display name of the group. The group must exist before this resource can be planned.
      */
@@ -273,35 +273,35 @@ export interface GetGroupOutputArgs {
     /**
      * ID of the group in an external identity provider.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Set of group identifiers, that can be modified with databricks.GroupMember resource.
      */
-    groups?: pulumi.Input<pulumi.Input<string>[]>;
+    groups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of instance profile ARNs, that can be modified by databricks.GroupInstanceProfile resource.
      */
-    instanceProfiles?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceProfiles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * @deprecated Please use `users`, `servicePrincipals`, and `childGroups` instead
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetGroupProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetGroupProviderConfigArgs | undefined>;
     /**
      * Collect information for all nested groups. *Defaults to true.*
      */
-    recursive?: pulumi.Input<boolean>;
+    recursive?: pulumi.Input<boolean | undefined>;
     /**
      * Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
      */
-    servicePrincipals?: pulumi.Input<pulumi.Input<string>[]>;
+    servicePrincipals?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of databricks.User identifiers, that can be modified with databricks.GroupMember resource.
      */
-    users?: pulumi.Input<pulumi.Input<string>[]>;
-    workspaceAccess?: pulumi.Input<boolean>;
-    workspaceConsume?: pulumi.Input<boolean>;
+    users?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    workspaceAccess?: pulumi.Input<boolean | undefined>;
+    workspaceConsume?: pulumi.Input<boolean | undefined>;
 }

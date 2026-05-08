@@ -143,27 +143,27 @@ export interface SecretState {
     /**
      * (String) value to use as a secret reference in [Spark configuration and environment variables](https://docs.databricks.com/security/secrets/secrets.html#use-a-secret-in-a-spark-configuration-property-or-environment-variable): `{{secrets/scope/key}}`.
      */
-    configReference?: pulumi.Input<string>;
+    configReference?: pulumi.Input<string | undefined>;
     /**
      * (String) key within secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * (Integer) time secret was updated
      */
-    lastUpdatedTimestamp?: pulumi.Input<number>;
+    lastUpdatedTimestamp?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SecretProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.SecretProviderConfig | undefined>;
     /**
      * (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * (String) super secret sensitive value.
      */
-    stringValue?: pulumi.Input<string>;
+    stringValue?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -177,7 +177,7 @@ export interface SecretArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SecretProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.SecretProviderConfig | undefined>;
     /**
      * (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */

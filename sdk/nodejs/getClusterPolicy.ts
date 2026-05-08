@@ -160,37 +160,37 @@ export interface GetClusterPolicyOutputArgs {
     /**
      * Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition).
      */
-    definition?: pulumi.Input<string>;
+    definition?: pulumi.Input<string | undefined>;
     /**
      * Additional human-readable description of the cluster policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The id of the cluster policy.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * If true, policy is a default policy created and managed by Databricks.
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * Max number of clusters per user that can be active using this policy.
      */
-    maxClustersPerUser?: pulumi.Input<number>;
+    maxClustersPerUser?: pulumi.Input<number | undefined>;
     /**
      * Name of the cluster policy. The cluster policy must exist before this resource can be planned.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
      */
-    policyFamilyDefinitionOverrides?: pulumi.Input<string>;
+    policyFamilyDefinitionOverrides?: pulumi.Input<string | undefined>;
     /**
      * ID of the policy family.
      */
-    policyFamilyId?: pulumi.Input<string>;
+    policyFamilyId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetClusterPolicyProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetClusterPolicyProviderConfigArgs | undefined>;
 }

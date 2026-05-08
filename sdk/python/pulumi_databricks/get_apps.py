@@ -106,7 +106,7 @@ def get_apps(provider_config: Optional[Union['GetAppsProviderConfigArgs', 'GetAp
         apps=pulumi.get(__ret__, 'apps'),
         id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_apps_output(provider_config: Optional[pulumi.Input[Optional[Union['GetAppsProviderConfigArgs', 'GetAppsProviderConfigArgsDict']]]] = None,
+def get_apps_output(provider_config: pulumi.Input[Optional[Optional[Union['GetAppsProviderConfigArgs', 'GetAppsProviderConfigArgsDict']]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppsResult]:
     """
     > This data source can only be used with a workspace-level provider!

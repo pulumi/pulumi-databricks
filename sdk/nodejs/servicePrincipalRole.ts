@@ -141,16 +141,16 @@ export interface ServicePrincipalRoleState {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.ServicePrincipalRoleProviderConfig>;
+    api?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.ServicePrincipalRoleProviderConfig | undefined>;
     /**
      * This is the role name, role id, or instance profile resource.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * This is the id of the service principal resource.
      */
-    servicePrincipalId?: pulumi.Input<string>;
+    servicePrincipalId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -160,8 +160,8 @@ export interface ServicePrincipalRoleArgs {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.ServicePrincipalRoleProviderConfig>;
+    api?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.ServicePrincipalRoleProviderConfig | undefined>;
     /**
      * This is the role name, role id, or instance profile resource.
      */

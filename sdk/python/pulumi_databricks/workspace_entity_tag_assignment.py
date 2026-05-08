@@ -24,8 +24,8 @@ class WorkspaceEntityTagAssignmentArgs:
                  entity_id: pulumi.Input[_builtins.str],
                  entity_type: pulumi.Input[_builtins.str],
                  tag_key: pulumi.Input[_builtins.str],
-                 provider_config: Optional[pulumi.Input['WorkspaceEntityTagAssignmentProviderConfigArgs']] = None,
-                 tag_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 provider_config: pulumi.Input[Optional['WorkspaceEntityTagAssignmentProviderConfigArgs']] = None,
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceEntityTagAssignment resource.
 
@@ -81,37 +81,37 @@ class WorkspaceEntityTagAssignmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['WorkspaceEntityTagAssignmentProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['WorkspaceEntityTagAssignmentProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['WorkspaceEntityTagAssignmentProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['WorkspaceEntityTagAssignmentProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tagValue")
-    def tag_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the tag
         """
         return pulumi.get(self, "tag_value")
 
     @tag_value.setter
-    def tag_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_value", value)
 
 
 @pulumi.input_type
 class _WorkspaceEntityTagAssignmentState:
     def __init__(__self__, *,
-                 entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['WorkspaceEntityTagAssignmentProviderConfigArgs']] = None,
-                 tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['WorkspaceEntityTagAssignmentProviderConfigArgs']] = None,
+                 tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceEntityTagAssignment resources.
 
@@ -134,62 +134,62 @@ class _WorkspaceEntityTagAssignmentState:
 
     @_builtins.property
     @pulumi.getter(name="entityId")
-    def entity_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entity_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the entity to which the tag is assigned. For apps, the entity_id is the app name
         """
         return pulumi.get(self, "entity_id")
 
     @entity_id.setter
-    def entity_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entity_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entity_id", value)
 
     @_builtins.property
     @pulumi.getter(name="entityType")
-    def entity_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
-    def entity_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entity_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entity_type", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['WorkspaceEntityTagAssignmentProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['WorkspaceEntityTagAssignmentProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['WorkspaceEntityTagAssignmentProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['WorkspaceEntityTagAssignmentProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tagKey")
-    def tag_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
         """
         return pulumi.get(self, "tag_key")
 
     @tag_key.setter
-    def tag_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_key", value)
 
     @_builtins.property
     @pulumi.getter(name="tagValue")
-    def tag_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the tag
         """
         return pulumi.get(self, "tag_value")
 
     @tag_value.setter
-    def tag_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_value", value)
 
 
@@ -199,11 +199,11 @@ class WorkspaceEntityTagAssignment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict']]] = None,
-                 tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict']]] = None,
+                 tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -302,11 +302,11 @@ class WorkspaceEntityTagAssignment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict']]] = None,
-                 tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict']]] = None,
+                 tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -337,11 +337,11 @@ class WorkspaceEntityTagAssignment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-            entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict']]] = None,
-            tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_value: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkspaceEntityTagAssignment':
+            entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+            entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict']]] = None,
+            tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_value: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceEntityTagAssignment':
         """
         Get an existing WorkspaceEntityTagAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -182,7 +182,7 @@ def get_account_federation_policy(policy_id: Optional[_builtins.str] = None,
         service_principal_id=pulumi.get(__ret__, 'service_principal_id'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_account_federation_policy_output(policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_federation_policy_output(policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountFederationPolicyResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)

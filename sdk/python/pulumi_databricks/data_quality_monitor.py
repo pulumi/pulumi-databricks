@@ -23,9 +23,9 @@ class DataQualityMonitorArgs:
     def __init__(__self__, *,
                  object_id: pulumi.Input[_builtins.str],
                  object_type: pulumi.Input[_builtins.str],
-                 anomaly_detection_config: Optional[pulumi.Input['DataQualityMonitorAnomalyDetectionConfigArgs']] = None,
-                 data_profiling_config: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigArgs']] = None,
-                 provider_config: Optional[pulumi.Input['DataQualityMonitorProviderConfigArgs']] = None):
+                 anomaly_detection_config: pulumi.Input[Optional['DataQualityMonitorAnomalyDetectionConfigArgs']] = None,
+                 data_profiling_config: pulumi.Input[Optional['DataQualityMonitorDataProfilingConfigArgs']] = None,
+                 provider_config: pulumi.Input[Optional['DataQualityMonitorProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a DataQualityMonitor resource.
 
@@ -87,19 +87,19 @@ class DataQualityMonitorArgs:
 
     @_builtins.property
     @pulumi.getter(name="anomalyDetectionConfig")
-    def anomaly_detection_config(self) -> Optional[pulumi.Input['DataQualityMonitorAnomalyDetectionConfigArgs']]:
+    def anomaly_detection_config(self) -> pulumi.Input[Optional['DataQualityMonitorAnomalyDetectionConfigArgs']]:
         """
         Anomaly Detection Configuration, applicable to `schema` object types
         """
         return pulumi.get(self, "anomaly_detection_config")
 
     @anomaly_detection_config.setter
-    def anomaly_detection_config(self, value: Optional[pulumi.Input['DataQualityMonitorAnomalyDetectionConfigArgs']]):
+    def anomaly_detection_config(self, value: pulumi.Input[Optional['DataQualityMonitorAnomalyDetectionConfigArgs']]):
         pulumi.set(self, "anomaly_detection_config", value)
 
     @_builtins.property
     @pulumi.getter(name="dataProfilingConfig")
-    def data_profiling_config(self) -> Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigArgs']]:
+    def data_profiling_config(self) -> pulumi.Input[Optional['DataQualityMonitorDataProfilingConfigArgs']]:
         """
         Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
         must be present
@@ -107,30 +107,30 @@ class DataQualityMonitorArgs:
         return pulumi.get(self, "data_profiling_config")
 
     @data_profiling_config.setter
-    def data_profiling_config(self, value: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigArgs']]):
+    def data_profiling_config(self, value: pulumi.Input[Optional['DataQualityMonitorDataProfilingConfigArgs']]):
         pulumi.set(self, "data_profiling_config", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DataQualityMonitorProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DataQualityMonitorProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DataQualityMonitorProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DataQualityMonitorProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _DataQualityMonitorState:
     def __init__(__self__, *,
-                 anomaly_detection_config: Optional[pulumi.Input['DataQualityMonitorAnomalyDetectionConfigArgs']] = None,
-                 data_profiling_config: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigArgs']] = None,
-                 object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['DataQualityMonitorProviderConfigArgs']] = None):
+                 anomaly_detection_config: pulumi.Input[Optional['DataQualityMonitorAnomalyDetectionConfigArgs']] = None,
+                 data_profiling_config: pulumi.Input[Optional['DataQualityMonitorDataProfilingConfigArgs']] = None,
+                 object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['DataQualityMonitorProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering DataQualityMonitor resources.
 
@@ -162,19 +162,19 @@ class _DataQualityMonitorState:
 
     @_builtins.property
     @pulumi.getter(name="anomalyDetectionConfig")
-    def anomaly_detection_config(self) -> Optional[pulumi.Input['DataQualityMonitorAnomalyDetectionConfigArgs']]:
+    def anomaly_detection_config(self) -> pulumi.Input[Optional['DataQualityMonitorAnomalyDetectionConfigArgs']]:
         """
         Anomaly Detection Configuration, applicable to `schema` object types
         """
         return pulumi.get(self, "anomaly_detection_config")
 
     @anomaly_detection_config.setter
-    def anomaly_detection_config(self, value: Optional[pulumi.Input['DataQualityMonitorAnomalyDetectionConfigArgs']]):
+    def anomaly_detection_config(self, value: pulumi.Input[Optional['DataQualityMonitorAnomalyDetectionConfigArgs']]):
         pulumi.set(self, "anomaly_detection_config", value)
 
     @_builtins.property
     @pulumi.getter(name="dataProfilingConfig")
-    def data_profiling_config(self) -> Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigArgs']]:
+    def data_profiling_config(self) -> pulumi.Input[Optional['DataQualityMonitorDataProfilingConfigArgs']]:
         """
         Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
         must be present
@@ -182,12 +182,12 @@ class _DataQualityMonitorState:
         return pulumi.get(self, "data_profiling_config")
 
     @data_profiling_config.setter
-    def data_profiling_config(self, value: Optional[pulumi.Input['DataQualityMonitorDataProfilingConfigArgs']]):
+    def data_profiling_config(self, value: pulumi.Input[Optional['DataQualityMonitorDataProfilingConfigArgs']]):
         pulumi.set(self, "data_profiling_config", value)
 
     @_builtins.property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the request object. It is `schema_id` for `schema`, and `table_id` for `table`.
 
@@ -202,31 +202,31 @@ class _DataQualityMonitorState:
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="objectType")
-    def object_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the monitored object. Can be one of the following: `schema` or `table`
         """
         return pulumi.get(self, "object_type")
 
     @object_type.setter
-    def object_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_type", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DataQualityMonitorProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DataQualityMonitorProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DataQualityMonitorProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DataQualityMonitorProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
@@ -236,11 +236,11 @@ class DataQualityMonitor(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 anomaly_detection_config: Optional[pulumi.Input[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict']]] = None,
-                 data_profiling_config: Optional[pulumi.Input[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict']]] = None,
-                 object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict']]] = None,
+                 anomaly_detection_config: pulumi.Input[Optional[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict']]] = None,
+                 data_profiling_config: pulumi.Input[Optional[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict']]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -342,11 +342,11 @@ class DataQualityMonitor(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 anomaly_detection_config: Optional[pulumi.Input[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict']]] = None,
-                 data_profiling_config: Optional[pulumi.Input[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict']]] = None,
-                 object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict']]] = None,
+                 anomaly_detection_config: pulumi.Input[Optional[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict']]] = None,
+                 data_profiling_config: pulumi.Input[Optional[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict']]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -375,11 +375,11 @@ class DataQualityMonitor(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            anomaly_detection_config: Optional[pulumi.Input[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict']]] = None,
-            data_profiling_config: Optional[pulumi.Input[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict']]] = None,
-            object_id: Optional[pulumi.Input[_builtins.str]] = None,
-            object_type: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict']]] = None) -> 'DataQualityMonitor':
+            anomaly_detection_config: pulumi.Input[Optional[Union['DataQualityMonitorAnomalyDetectionConfigArgs', 'DataQualityMonitorAnomalyDetectionConfigArgsDict']]] = None,
+            data_profiling_config: pulumi.Input[Optional[Union['DataQualityMonitorDataProfilingConfigArgs', 'DataQualityMonitorDataProfilingConfigArgsDict']]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            object_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DataQualityMonitorProviderConfigArgs', 'DataQualityMonitorProviderConfigArgsDict']]] = None) -> 'DataQualityMonitor':
         """
         Get an existing DataQualityMonitor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

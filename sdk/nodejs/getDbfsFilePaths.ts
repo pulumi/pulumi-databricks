@@ -125,7 +125,7 @@ export interface GetDbfsFilePathsOutputArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetDbfsFilePathsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetDbfsFilePathsProviderConfigArgs | undefined>;
     /**
      * Either or not recursively list all files
      */

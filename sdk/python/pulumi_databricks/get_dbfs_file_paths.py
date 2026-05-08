@@ -138,9 +138,9 @@ def get_dbfs_file_paths(path: Optional[_builtins.str] = None,
         path_lists=pulumi.get(__ret__, 'path_lists'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         recursive=pulumi.get(__ret__, 'recursive'))
-def get_dbfs_file_paths_output(path: Optional[pulumi.Input[_builtins.str]] = None,
-                               provider_config: Optional[pulumi.Input[Optional[Union['GetDbfsFilePathsProviderConfigArgs', 'GetDbfsFilePathsProviderConfigArgsDict']]]] = None,
-                               recursive: Optional[pulumi.Input[_builtins.bool]] = None,
+def get_dbfs_file_paths_output(path: pulumi.Input[Optional[_builtins.str]] = None,
+                               provider_config: pulumi.Input[Optional[Optional[Union['GetDbfsFilePathsProviderConfigArgs', 'GetDbfsFilePathsProviderConfigArgsDict']]]] = None,
+                               recursive: pulumi.Input[Optional[_builtins.bool]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbfsFilePathsResult]:
     """
     This data source allows to get list of file names from get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).

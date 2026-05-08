@@ -75,10 +75,10 @@ export class EnhancedSecurityMonitoringWorkspaceSetting extends pulumi.CustomRes
  * Input properties used for looking up and filtering EnhancedSecurityMonitoringWorkspaceSetting resources.
  */
 export interface EnhancedSecurityMonitoringWorkspaceSettingState {
-    enhancedSecurityMonitoringWorkspace?: pulumi.Input<inputs.EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace>;
-    etag?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.EnhancedSecurityMonitoringWorkspaceSettingProviderConfig>;
-    settingName?: pulumi.Input<string>;
+    enhancedSecurityMonitoringWorkspace?: pulumi.Input<inputs.EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.EnhancedSecurityMonitoringWorkspaceSettingProviderConfig | undefined>;
+    settingName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -86,7 +86,7 @@ export interface EnhancedSecurityMonitoringWorkspaceSettingState {
  */
 export interface EnhancedSecurityMonitoringWorkspaceSettingArgs {
     enhancedSecurityMonitoringWorkspace: pulumi.Input<inputs.EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace>;
-    etag?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.EnhancedSecurityMonitoringWorkspaceSettingProviderConfig>;
-    settingName?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.EnhancedSecurityMonitoringWorkspaceSettingProviderConfig | undefined>;
+    settingName?: pulumi.Input<string | undefined>;
 }

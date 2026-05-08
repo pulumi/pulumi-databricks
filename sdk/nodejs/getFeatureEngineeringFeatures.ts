@@ -63,9 +63,9 @@ export interface GetFeatureEngineeringFeaturesOutputArgs {
     /**
      * The maximum number of results to return
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetFeatureEngineeringFeaturesProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetFeatureEngineeringFeaturesProviderConfigArgs | undefined>;
 }

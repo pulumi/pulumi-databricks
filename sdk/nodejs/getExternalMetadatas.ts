@@ -95,9 +95,9 @@ export interface GetExternalMetadatasOutputArgs {
      * Specifies the maximum number of external metadata objects to return in a single response.
      * The value must be less than or equal to 1000
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetExternalMetadatasProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetExternalMetadatasProviderConfigArgs | undefined>;
 }

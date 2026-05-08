@@ -89,9 +89,9 @@ export interface GetMlflowModelsOutputArgs {
     /**
      * List of names of databricks_mlflow_model
      */
-    names?: pulumi.Input<pulumi.Input<string>[]>;
+    names?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetMlflowModelsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetMlflowModelsProviderConfigArgs | undefined>;
 }

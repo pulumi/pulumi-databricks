@@ -137,5 +137,5 @@ export interface GetEnvironmentsWorkspaceBaseEnvironmentOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs | undefined>;
 }

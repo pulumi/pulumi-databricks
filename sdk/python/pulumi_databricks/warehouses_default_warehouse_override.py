@@ -23,8 +23,8 @@ class WarehousesDefaultWarehouseOverrideArgs:
     def __init__(__self__, *,
                  default_warehouse_override_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 provider_config: Optional[pulumi.Input['WarehousesDefaultWarehouseOverrideProviderConfigArgs']] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 provider_config: pulumi.Input[Optional['WarehousesDefaultWarehouseOverrideProviderConfigArgs']] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WarehousesDefaultWarehouseOverride resource.
 
@@ -67,19 +67,19 @@ class WarehousesDefaultWarehouseOverrideArgs:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['WarehousesDefaultWarehouseOverrideProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['WarehousesDefaultWarehouseOverrideProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['WarehousesDefaultWarehouseOverrideProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['WarehousesDefaultWarehouseOverrideProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="warehouseId")
-    def warehouse_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warehouse_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specific warehouse ID when type is CUSTOM.
         Not set for LAST_SELECTED type
@@ -87,18 +87,18 @@ class WarehousesDefaultWarehouseOverrideArgs:
         return pulumi.get(self, "warehouse_id")
 
     @warehouse_id.setter
-    def warehouse_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warehouse_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warehouse_id", value)
 
 
 @pulumi.input_type
 class _WarehousesDefaultWarehouseOverrideState:
     def __init__(__self__, *,
-                 default_warehouse_override_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['WarehousesDefaultWarehouseOverrideProviderConfigArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_warehouse_override_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['WarehousesDefaultWarehouseOverrideProviderConfigArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WarehousesDefaultWarehouseOverride resources.
 
@@ -123,19 +123,19 @@ class _WarehousesDefaultWarehouseOverrideState:
 
     @_builtins.property
     @pulumi.getter(name="defaultWarehouseOverrideId")
-    def default_warehouse_override_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_warehouse_override_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID component of the resource name (user ID)
         """
         return pulumi.get(self, "default_warehouse_override_id")
 
     @default_warehouse_override_id.setter
-    def default_warehouse_override_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_warehouse_override_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_warehouse_override_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The resource name of the default warehouse override.
         Format: default-warehouse-overrides/{default_warehouse_override_id}
@@ -143,36 +143,36 @@ class _WarehousesDefaultWarehouseOverrideState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['WarehousesDefaultWarehouseOverrideProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['WarehousesDefaultWarehouseOverrideProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['WarehousesDefaultWarehouseOverrideProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['WarehousesDefaultWarehouseOverrideProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="warehouseId")
-    def warehouse_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warehouse_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specific warehouse ID when type is CUSTOM.
         Not set for LAST_SELECTED type
@@ -180,7 +180,7 @@ class _WarehousesDefaultWarehouseOverrideState:
         return pulumi.get(self, "warehouse_id")
 
     @warehouse_id.setter
-    def warehouse_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warehouse_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warehouse_id", value)
 
 
@@ -190,10 +190,10 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_warehouse_override_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_warehouse_override_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -304,10 +304,10 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_warehouse_override_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_warehouse_override_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -336,11 +336,11 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_warehouse_override_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict']]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            warehouse_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WarehousesDefaultWarehouseOverride':
+            default_warehouse_override_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['WarehousesDefaultWarehouseOverrideProviderConfigArgs', 'WarehousesDefaultWarehouseOverrideProviderConfigArgsDict']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            warehouse_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WarehousesDefaultWarehouseOverride':
         """
         Get an existing WarehousesDefaultWarehouseOverride resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

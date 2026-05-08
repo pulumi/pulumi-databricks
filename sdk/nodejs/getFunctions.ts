@@ -137,12 +137,12 @@ export interface GetFunctionsOutputArgs {
     /**
      * list of objects describing individual UDF. Each object consists of the following attributes (refer to [REST API documentation](https://docs.databricks.com/api/workspace/functions/list#functions) for up-to-date list of attributes. Default type is String):
      */
-    functions?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionArgs>[]>;
+    functions?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionArgs>[] | undefined>;
     /**
      * flag to specify if include UDFs in the response for which the principal can only access selective metadata for.
      */
-    includeBrowse?: pulumi.Input<boolean>;
-    providerConfig?: pulumi.Input<inputs.GetFunctionsProviderConfigArgs>;
+    includeBrowse?: pulumi.Input<boolean | undefined>;
+    providerConfig?: pulumi.Input<inputs.GetFunctionsProviderConfigArgs | undefined>;
     /**
      * Name of databricks_schema.
      */

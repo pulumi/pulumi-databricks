@@ -22,8 +22,8 @@ __all__ = ['MaterializedFeaturesFeatureTagArgs', 'MaterializedFeaturesFeatureTag
 class MaterializedFeaturesFeatureTagArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 provider_config: Optional[pulumi.Input['MaterializedFeaturesFeatureTagProviderConfigArgs']] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 provider_config: pulumi.Input[Optional['MaterializedFeaturesFeatureTagProviderConfigArgs']] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MaterializedFeaturesFeatureTag resource.
 
@@ -46,32 +46,32 @@ class MaterializedFeaturesFeatureTagArgs:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['MaterializedFeaturesFeatureTagProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['MaterializedFeaturesFeatureTagProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['MaterializedFeaturesFeatureTagProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['MaterializedFeaturesFeatureTagProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
 class _MaterializedFeaturesFeatureTagState:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['MaterializedFeaturesFeatureTagProviderConfigArgs']] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['MaterializedFeaturesFeatureTagProviderConfigArgs']] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MaterializedFeaturesFeatureTag resources.
 
@@ -86,32 +86,32 @@ class _MaterializedFeaturesFeatureTagState:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['MaterializedFeaturesFeatureTagProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['MaterializedFeaturesFeatureTagProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['MaterializedFeaturesFeatureTagProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['MaterializedFeaturesFeatureTagProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -121,9 +121,9 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['MaterializedFeaturesFeatureTagProviderConfigArgs', 'MaterializedFeaturesFeatureTagProviderConfigArgsDict']]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MaterializedFeaturesFeatureTagProviderConfigArgs', 'MaterializedFeaturesFeatureTagProviderConfigArgsDict']]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -158,9 +158,9 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['MaterializedFeaturesFeatureTagProviderConfigArgs', 'MaterializedFeaturesFeatureTagProviderConfigArgsDict']]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MaterializedFeaturesFeatureTagProviderConfigArgs', 'MaterializedFeaturesFeatureTagProviderConfigArgsDict']]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -185,9 +185,9 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['MaterializedFeaturesFeatureTagProviderConfigArgs', 'MaterializedFeaturesFeatureTagProviderConfigArgsDict']]] = None,
-            value: Optional[pulumi.Input[_builtins.str]] = None) -> 'MaterializedFeaturesFeatureTag':
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['MaterializedFeaturesFeatureTagProviderConfigArgs', 'MaterializedFeaturesFeatureTagProviderConfigArgsDict']]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> 'MaterializedFeaturesFeatureTag':
         """
         Get an existing MaterializedFeaturesFeatureTag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

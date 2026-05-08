@@ -23,33 +23,33 @@ class MwsWorkspacesArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  workspace_name: pulumi.Input[_builtins.str],
-                 aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_resource_container: Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']] = None,
-                 compute_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 credentials_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 expected_workspace_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_customer_info: Optional[pulumi.Input['MwsWorkspacesExternalCustomerInfoArgs']] = None,
-                 gcp_managed_network_config: Optional[pulumi.Input['MwsWorkspacesGcpManagedNetworkConfigArgs']] = None,
-                 gke_config: Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']] = None,
-                 is_no_public_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_services_customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_access_settings_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input['MwsWorkspacesTokenArgs']] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_status_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_resource_container: pulumi.Input[Optional['MwsWorkspacesCloudResourceContainerArgs']] = None,
+                 compute_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 credentials_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 expected_workspace_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_customer_info: pulumi.Input[Optional['MwsWorkspacesExternalCustomerInfoArgs']] = None,
+                 gcp_managed_network_config: pulumi.Input[Optional['MwsWorkspacesGcpManagedNetworkConfigArgs']] = None,
+                 gke_config: pulumi.Input[Optional['MwsWorkspacesGkeConfigArgs']] = None,
+                 is_no_public_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_services_customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_access_settings_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional['MwsWorkspacesTokenArgs']] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_status_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MwsWorkspaces resource.
 
@@ -166,110 +166,110 @@ class MwsWorkspacesArgs:
 
     @_builtins.property
     @pulumi.getter(name="awsRegion")
-    def aws_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         region of VPC.
         """
         return pulumi.get(self, "aws_region")
 
     @aws_region.setter
-    def aws_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_region", value)
 
     @_builtins.property
     @pulumi.getter
-    def cloud(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud")
 
     @cloud.setter
-    def cloud(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudResourceContainer")
-    def cloud_resource_container(self) -> Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']]:
+    def cloud_resource_container(self) -> pulumi.Input[Optional['MwsWorkspacesCloudResourceContainerArgs']]:
         """
         A block that specifies GCP workspace configurations, consisting of following blocks:
         """
         return pulumi.get(self, "cloud_resource_container")
 
     @cloud_resource_container.setter
-    def cloud_resource_container(self, value: Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']]):
+    def cloud_resource_container(self, value: pulumi.Input[Optional['MwsWorkspacesCloudResourceContainerArgs']]):
         pulumi.set(self, "cloud_resource_container", value)
 
     @_builtins.property
     @pulumi.getter(name="computeMode")
-    def compute_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
         """
         return pulumi.get(self, "compute_mode")
 
     @compute_mode.setter
-    def compute_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Integer) time when workspace was created
         """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="credentialsId")
-    def credentials_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credentials_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         """
         return pulumi.get(self, "credentials_id")
 
     @credentials_id.setter
-    def credentials_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credentials_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credentials_id", value)
 
     @_builtins.property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         """
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="customerManagedKeyId")
     @_utilities.deprecated("""Use managed_services_customer_managed_key_id instead""")
-    def customer_managed_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer_managed_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "customer_managed_key_id")
 
     @customer_managed_key_id.setter
-    def customer_managed_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer_managed_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_managed_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentName")
-    def deployment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
         """
         return pulumi.get(self, "deployment_name")
 
     @deployment_name.setter
-    def deployment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="expectedWorkspaceStatus")
-    def expected_workspace_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expected_workspace_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The expected status of the workspace. When unset, it defaults to `RUNNING`. When set to `PROVISIONING`, workspace provisioning will pause and not enter `RUNNING` status. The only allowed values for this is `RUNNING` and `PROVISIONING`.
 
@@ -278,231 +278,231 @@ class MwsWorkspacesArgs:
         return pulumi.get(self, "expected_workspace_status")
 
     @expected_workspace_status.setter
-    def expected_workspace_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expected_workspace_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expected_workspace_status", value)
 
     @_builtins.property
     @pulumi.getter(name="externalCustomerInfo")
-    def external_customer_info(self) -> Optional[pulumi.Input['MwsWorkspacesExternalCustomerInfoArgs']]:
+    def external_customer_info(self) -> pulumi.Input[Optional['MwsWorkspacesExternalCustomerInfoArgs']]:
         return pulumi.get(self, "external_customer_info")
 
     @external_customer_info.setter
-    def external_customer_info(self, value: Optional[pulumi.Input['MwsWorkspacesExternalCustomerInfoArgs']]):
+    def external_customer_info(self, value: pulumi.Input[Optional['MwsWorkspacesExternalCustomerInfoArgs']]):
         pulumi.set(self, "external_customer_info", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpManagedNetworkConfig")
-    def gcp_managed_network_config(self) -> Optional[pulumi.Input['MwsWorkspacesGcpManagedNetworkConfigArgs']]:
+    def gcp_managed_network_config(self) -> pulumi.Input[Optional['MwsWorkspacesGcpManagedNetworkConfigArgs']]:
         return pulumi.get(self, "gcp_managed_network_config")
 
     @gcp_managed_network_config.setter
-    def gcp_managed_network_config(self, value: Optional[pulumi.Input['MwsWorkspacesGcpManagedNetworkConfigArgs']]):
+    def gcp_managed_network_config(self, value: pulumi.Input[Optional['MwsWorkspacesGcpManagedNetworkConfigArgs']]):
         pulumi.set(self, "gcp_managed_network_config", value)
 
     @_builtins.property
     @pulumi.getter(name="gkeConfig")
     @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
-    def gke_config(self) -> Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']]:
+    def gke_config(self) -> pulumi.Input[Optional['MwsWorkspacesGkeConfigArgs']]:
         return pulumi.get(self, "gke_config")
 
     @gke_config.setter
-    def gke_config(self, value: Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']]):
+    def gke_config(self, value: pulumi.Input[Optional['MwsWorkspacesGkeConfigArgs']]):
         pulumi.set(self, "gke_config", value)
 
     @_builtins.property
     @pulumi.getter(name="isNoPublicIpEnabled")
-    def is_no_public_ip_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_no_public_ip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "is_no_public_ip_enabled")
 
     @is_no_public_ip_enabled.setter
-    def is_no_public_ip_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_no_public_ip_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_no_public_ip_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         region of the subnet.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="managedServicesCustomerManagedKeyId")
-    def managed_services_customer_managed_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def managed_services_customer_managed_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
         """
         return pulumi.get(self, "managed_services_customer_managed_key_id")
 
     @managed_services_customer_managed_key_id.setter
-    def managed_services_customer_managed_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def managed_services_customer_managed_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "managed_services_customer_managed_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConnectivityConfigId")
-    def network_connectivity_config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_connectivity_config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "network_connectivity_config_id")
 
     @network_connectivity_config_id.setter
-    def network_connectivity_config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_connectivity_config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_connectivity_config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkId")
-    def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `network_id` from networks.
         """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
-    def network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingTier")
-    def pricing_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The pricing tier of the workspace.
         """
         return pulumi.get(self, "pricing_tier")
 
     @pricing_tier.setter
-    def pricing_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_tier", value)
 
     @_builtins.property
     @pulumi.getter(name="privateAccessSettingsId")
-    def private_access_settings_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_access_settings_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
         """
         return pulumi.get(self, "private_access_settings_id")
 
     @private_access_settings_id.setter
-    def private_access_settings_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_access_settings_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_access_settings_id", value)
 
     @_builtins.property
     @pulumi.getter(name="storageConfigurationId")
-    def storage_configuration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_configuration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         """
         return pulumi.get(self, "storage_configuration_id")
 
     @storage_configuration_id.setter
-    def storage_configuration_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_configuration_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_configuration_id", value)
 
     @_builtins.property
     @pulumi.getter(name="storageCustomerManagedKeyId")
-    def storage_customer_managed_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_customer_managed_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
         """
         return pulumi.get(self, "storage_customer_managed_key_id")
 
     @storage_customer_managed_key_id.setter
-    def storage_customer_managed_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_customer_managed_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_customer_managed_key_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input['MwsWorkspacesTokenArgs']]:
+    def token(self) -> pulumi.Input[Optional['MwsWorkspacesTokenArgs']]:
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input['MwsWorkspacesTokenArgs']]):
+    def token(self, value: pulumi.Input[Optional['MwsWorkspacesTokenArgs']]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) workspace id
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceStatus")
-    def workspace_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) workspace status
         """
         return pulumi.get(self, "workspace_status")
 
     @workspace_status.setter
-    def workspace_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_status", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceStatusMessage")
-    def workspace_status_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_status_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) updates on workspace status
         """
         return pulumi.get(self, "workspace_status_message")
 
     @workspace_status_message.setter
-    def workspace_status_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_status_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_status_message", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceUrl")
-    def workspace_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) URL of the workspace
         """
         return pulumi.get(self, "workspace_url")
 
     @workspace_url.setter
-    def workspace_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_url", value)
 
 
 @pulumi.input_type
 class _MwsWorkspacesState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_resource_container: Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']] = None,
-                 compute_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 credentials_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_compute_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 expected_workspace_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_customer_info: Optional[pulumi.Input['MwsWorkspacesExternalCustomerInfoArgs']] = None,
-                 gcp_managed_network_config: Optional[pulumi.Input['MwsWorkspacesGcpManagedNetworkConfigArgs']] = None,
-                 gcp_workspace_sa: Optional[pulumi.Input[_builtins.str]] = None,
-                 gke_config: Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']] = None,
-                 is_no_public_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_services_customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_access_settings_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input['MwsWorkspacesTokenArgs']] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_status_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_resource_container: pulumi.Input[Optional['MwsWorkspacesCloudResourceContainerArgs']] = None,
+                 compute_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 credentials_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_compute_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 expected_workspace_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_customer_info: pulumi.Input[Optional['MwsWorkspacesExternalCustomerInfoArgs']] = None,
+                 gcp_managed_network_config: pulumi.Input[Optional['MwsWorkspacesGcpManagedNetworkConfigArgs']] = None,
+                 gcp_workspace_sa: pulumi.Input[Optional[_builtins.str]] = None,
+                 gke_config: pulumi.Input[Optional['MwsWorkspacesGkeConfigArgs']] = None,
+                 is_no_public_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_services_customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_access_settings_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional['MwsWorkspacesTokenArgs']] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_status_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsWorkspaces resources.
 
@@ -603,134 +603,134 @@ class _MwsWorkspacesState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="awsRegion")
-    def aws_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         region of VPC.
         """
         return pulumi.get(self, "aws_region")
 
     @aws_region.setter
-    def aws_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_region", value)
 
     @_builtins.property
     @pulumi.getter
-    def cloud(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud")
 
     @cloud.setter
-    def cloud(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudResourceContainer")
-    def cloud_resource_container(self) -> Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']]:
+    def cloud_resource_container(self) -> pulumi.Input[Optional['MwsWorkspacesCloudResourceContainerArgs']]:
         """
         A block that specifies GCP workspace configurations, consisting of following blocks:
         """
         return pulumi.get(self, "cloud_resource_container")
 
     @cloud_resource_container.setter
-    def cloud_resource_container(self, value: Optional[pulumi.Input['MwsWorkspacesCloudResourceContainerArgs']]):
+    def cloud_resource_container(self, value: pulumi.Input[Optional['MwsWorkspacesCloudResourceContainerArgs']]):
         pulumi.set(self, "cloud_resource_container", value)
 
     @_builtins.property
     @pulumi.getter(name="computeMode")
-    def compute_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The compute mode for the workspace. When unset, a classic workspace is created, and both `credentials_id` and `storage_configuration_id` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentials_id` and `storage_configuration_id` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
         """
         return pulumi.get(self, "compute_mode")
 
     @compute_mode.setter
-    def compute_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Integer) time when workspace was created
         """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="credentialsId")
-    def credentials_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credentials_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `credentials_id` from credentials. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         """
         return pulumi.get(self, "credentials_id")
 
     @credentials_id.setter
-    def credentials_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credentials_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credentials_id", value)
 
     @_builtins.property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `default_tags` or `custom_tags` on a cluster level. Please note it can take up to an hour for custom_tags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
         """
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="customerManagedKeyId")
     @_utilities.deprecated("""Use managed_services_customer_managed_key_id instead""")
-    def customer_managed_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer_managed_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "customer_managed_key_id")
 
     @customer_managed_key_id.setter
-    def customer_managed_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer_managed_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_managed_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentName")
-    def deployment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
         """
         return pulumi.get(self, "deployment_name")
 
     @deployment_name.setter
-    def deployment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveComputeMode")
-    def effective_compute_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_compute_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
         """
         return pulumi.get(self, "effective_compute_mode")
 
     @effective_compute_mode.setter
-    def effective_compute_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_compute_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_compute_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="expectedWorkspaceStatus")
-    def expected_workspace_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expected_workspace_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The expected status of the workspace. When unset, it defaults to `RUNNING`. When set to `PROVISIONING`, workspace provisioning will pause and not enter `RUNNING` status. The only allowed values for this is `RUNNING` and `PROVISIONING`.
 
@@ -739,218 +739,218 @@ class _MwsWorkspacesState:
         return pulumi.get(self, "expected_workspace_status")
 
     @expected_workspace_status.setter
-    def expected_workspace_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expected_workspace_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expected_workspace_status", value)
 
     @_builtins.property
     @pulumi.getter(name="externalCustomerInfo")
-    def external_customer_info(self) -> Optional[pulumi.Input['MwsWorkspacesExternalCustomerInfoArgs']]:
+    def external_customer_info(self) -> pulumi.Input[Optional['MwsWorkspacesExternalCustomerInfoArgs']]:
         return pulumi.get(self, "external_customer_info")
 
     @external_customer_info.setter
-    def external_customer_info(self, value: Optional[pulumi.Input['MwsWorkspacesExternalCustomerInfoArgs']]):
+    def external_customer_info(self, value: pulumi.Input[Optional['MwsWorkspacesExternalCustomerInfoArgs']]):
         pulumi.set(self, "external_customer_info", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpManagedNetworkConfig")
-    def gcp_managed_network_config(self) -> Optional[pulumi.Input['MwsWorkspacesGcpManagedNetworkConfigArgs']]:
+    def gcp_managed_network_config(self) -> pulumi.Input[Optional['MwsWorkspacesGcpManagedNetworkConfigArgs']]:
         return pulumi.get(self, "gcp_managed_network_config")
 
     @gcp_managed_network_config.setter
-    def gcp_managed_network_config(self, value: Optional[pulumi.Input['MwsWorkspacesGcpManagedNetworkConfigArgs']]):
+    def gcp_managed_network_config(self, value: pulumi.Input[Optional['MwsWorkspacesGcpManagedNetworkConfigArgs']]):
         pulumi.set(self, "gcp_managed_network_config", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpWorkspaceSa")
-    def gcp_workspace_sa(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gcp_workspace_sa(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
         """
         return pulumi.get(self, "gcp_workspace_sa")
 
     @gcp_workspace_sa.setter
-    def gcp_workspace_sa(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gcp_workspace_sa(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcp_workspace_sa", value)
 
     @_builtins.property
     @pulumi.getter(name="gkeConfig")
     @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
-    def gke_config(self) -> Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']]:
+    def gke_config(self) -> pulumi.Input[Optional['MwsWorkspacesGkeConfigArgs']]:
         return pulumi.get(self, "gke_config")
 
     @gke_config.setter
-    def gke_config(self, value: Optional[pulumi.Input['MwsWorkspacesGkeConfigArgs']]):
+    def gke_config(self, value: pulumi.Input[Optional['MwsWorkspacesGkeConfigArgs']]):
         pulumi.set(self, "gke_config", value)
 
     @_builtins.property
     @pulumi.getter(name="isNoPublicIpEnabled")
-    def is_no_public_ip_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_no_public_ip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "is_no_public_ip_enabled")
 
     @is_no_public_ip_enabled.setter
-    def is_no_public_ip_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_no_public_ip_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_no_public_ip_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         region of the subnet.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="managedServicesCustomerManagedKeyId")
-    def managed_services_customer_managed_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def managed_services_customer_managed_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `customer_managed_key_id` from customer managed keys with `use_cases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
         """
         return pulumi.get(self, "managed_services_customer_managed_key_id")
 
     @managed_services_customer_managed_key_id.setter
-    def managed_services_customer_managed_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def managed_services_customer_managed_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "managed_services_customer_managed_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkConnectivityConfigId")
-    def network_connectivity_config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_connectivity_config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "network_connectivity_config_id")
 
     @network_connectivity_config_id.setter
-    def network_connectivity_config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_connectivity_config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_connectivity_config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkId")
-    def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `network_id` from networks.
         """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
-    def network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingTier")
-    def pricing_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_tier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The pricing tier of the workspace.
         """
         return pulumi.get(self, "pricing_tier")
 
     @pricing_tier.setter
-    def pricing_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_tier", value)
 
     @_builtins.property
     @pulumi.getter(name="privateAccessSettingsId")
-    def private_access_settings_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_access_settings_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier of MwsPrivateAccessSettings in Databricks Account.
         """
         return pulumi.get(self, "private_access_settings_id")
 
     @private_access_settings_id.setter
-    def private_access_settings_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_access_settings_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_access_settings_id", value)
 
     @_builtins.property
     @pulumi.getter(name="storageConfigurationId")
-    def storage_configuration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_configuration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `storage_configuration_id` from storage configuration. This must not be specified when `compute_mode` is set to `SERVERLESS`.
         """
         return pulumi.get(self, "storage_configuration_id")
 
     @storage_configuration_id.setter
-    def storage_configuration_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_configuration_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_configuration_id", value)
 
     @_builtins.property
     @pulumi.getter(name="storageCustomerManagedKeyId")
-    def storage_customer_managed_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_customer_managed_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `customer_managed_key_id` from customer managed keys with `use_cases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
         """
         return pulumi.get(self, "storage_customer_managed_key_id")
 
     @storage_customer_managed_key_id.setter
-    def storage_customer_managed_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_customer_managed_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_customer_managed_key_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input['MwsWorkspacesTokenArgs']]:
+    def token(self) -> pulumi.Input[Optional['MwsWorkspacesTokenArgs']]:
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input['MwsWorkspacesTokenArgs']]):
+    def token(self, value: pulumi.Input[Optional['MwsWorkspacesTokenArgs']]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) workspace id
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceName")
-    def workspace_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         name of the workspace, will appear on UI.
         """
         return pulumi.get(self, "workspace_name")
 
     @workspace_name.setter
-    def workspace_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_name", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceStatus")
-    def workspace_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) workspace status
         """
         return pulumi.get(self, "workspace_status")
 
     @workspace_status.setter
-    def workspace_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_status", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceStatusMessage")
-    def workspace_status_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_status_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) updates on workspace status
         """
         return pulumi.get(self, "workspace_status_message")
 
     @workspace_status_message.setter
-    def workspace_status_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_status_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_status_message", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceUrl")
-    def workspace_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) URL of the workspace
         """
         return pulumi.get(self, "workspace_url")
 
     @workspace_url.setter
-    def workspace_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_url", value)
 
 
@@ -960,35 +960,35 @@ class MwsWorkspaces(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_resource_container: Optional[pulumi.Input[Union['MwsWorkspacesCloudResourceContainerArgs', 'MwsWorkspacesCloudResourceContainerArgsDict']]] = None,
-                 compute_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 credentials_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 expected_workspace_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_customer_info: Optional[pulumi.Input[Union['MwsWorkspacesExternalCustomerInfoArgs', 'MwsWorkspacesExternalCustomerInfoArgsDict']]] = None,
-                 gcp_managed_network_config: Optional[pulumi.Input[Union['MwsWorkspacesGcpManagedNetworkConfigArgs', 'MwsWorkspacesGcpManagedNetworkConfigArgsDict']]] = None,
-                 gke_config: Optional[pulumi.Input[Union['MwsWorkspacesGkeConfigArgs', 'MwsWorkspacesGkeConfigArgsDict']]] = None,
-                 is_no_public_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_services_customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_access_settings_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[Union['MwsWorkspacesTokenArgs', 'MwsWorkspacesTokenArgsDict']]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_status_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_resource_container: pulumi.Input[Optional[Union['MwsWorkspacesCloudResourceContainerArgs', 'MwsWorkspacesCloudResourceContainerArgsDict']]] = None,
+                 compute_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 credentials_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 expected_workspace_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_customer_info: pulumi.Input[Optional[Union['MwsWorkspacesExternalCustomerInfoArgs', 'MwsWorkspacesExternalCustomerInfoArgsDict']]] = None,
+                 gcp_managed_network_config: pulumi.Input[Optional[Union['MwsWorkspacesGcpManagedNetworkConfigArgs', 'MwsWorkspacesGcpManagedNetworkConfigArgsDict']]] = None,
+                 gke_config: pulumi.Input[Optional[Union['MwsWorkspacesGkeConfigArgs', 'MwsWorkspacesGkeConfigArgsDict']]] = None,
+                 is_no_public_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_services_customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_access_settings_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[Union['MwsWorkspacesTokenArgs', 'MwsWorkspacesTokenArgsDict']]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_status_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to set up [workspaces on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1) or [workspaces on GCP](https://docs.gcp.databricks.com/administration-guide/account-settings-gcp/workspaces.html). Please follow this complete runnable example on AWS or GCP with new VPC and new workspace setup.
@@ -1541,35 +1541,35 @@ class MwsWorkspaces(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_resource_container: Optional[pulumi.Input[Union['MwsWorkspacesCloudResourceContainerArgs', 'MwsWorkspacesCloudResourceContainerArgsDict']]] = None,
-                 compute_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 credentials_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 expected_workspace_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_customer_info: Optional[pulumi.Input[Union['MwsWorkspacesExternalCustomerInfoArgs', 'MwsWorkspacesExternalCustomerInfoArgsDict']]] = None,
-                 gcp_managed_network_config: Optional[pulumi.Input[Union['MwsWorkspacesGcpManagedNetworkConfigArgs', 'MwsWorkspacesGcpManagedNetworkConfigArgsDict']]] = None,
-                 gke_config: Optional[pulumi.Input[Union['MwsWorkspacesGkeConfigArgs', 'MwsWorkspacesGkeConfigArgsDict']]] = None,
-                 is_no_public_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_services_customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_tier: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_access_settings_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 token: Optional[pulumi.Input[Union['MwsWorkspacesTokenArgs', 'MwsWorkspacesTokenArgsDict']]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_status_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_resource_container: pulumi.Input[Optional[Union['MwsWorkspacesCloudResourceContainerArgs', 'MwsWorkspacesCloudResourceContainerArgsDict']]] = None,
+                 compute_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 credentials_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 expected_workspace_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_customer_info: pulumi.Input[Optional[Union['MwsWorkspacesExternalCustomerInfoArgs', 'MwsWorkspacesExternalCustomerInfoArgsDict']]] = None,
+                 gcp_managed_network_config: pulumi.Input[Optional[Union['MwsWorkspacesGcpManagedNetworkConfigArgs', 'MwsWorkspacesGcpManagedNetworkConfigArgsDict']]] = None,
+                 gke_config: pulumi.Input[Optional[Union['MwsWorkspacesGkeConfigArgs', 'MwsWorkspacesGkeConfigArgsDict']]] = None,
+                 is_no_public_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_services_customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_access_settings_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 token: pulumi.Input[Optional[Union['MwsWorkspacesTokenArgs', 'MwsWorkspacesTokenArgsDict']]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_status_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1626,37 +1626,37 @@ class MwsWorkspaces(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            aws_region: Optional[pulumi.Input[_builtins.str]] = None,
-            cloud: Optional[pulumi.Input[_builtins.str]] = None,
-            cloud_resource_container: Optional[pulumi.Input[Union['MwsWorkspacesCloudResourceContainerArgs', 'MwsWorkspacesCloudResourceContainerArgsDict']]] = None,
-            compute_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-            credentials_id: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            deployment_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_compute_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            expected_workspace_status: Optional[pulumi.Input[_builtins.str]] = None,
-            external_customer_info: Optional[pulumi.Input[Union['MwsWorkspacesExternalCustomerInfoArgs', 'MwsWorkspacesExternalCustomerInfoArgsDict']]] = None,
-            gcp_managed_network_config: Optional[pulumi.Input[Union['MwsWorkspacesGcpManagedNetworkConfigArgs', 'MwsWorkspacesGcpManagedNetworkConfigArgsDict']]] = None,
-            gcp_workspace_sa: Optional[pulumi.Input[_builtins.str]] = None,
-            gke_config: Optional[pulumi.Input[Union['MwsWorkspacesGkeConfigArgs', 'MwsWorkspacesGkeConfigArgsDict']]] = None,
-            is_no_public_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            managed_services_customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            network_connectivity_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-            network_id: Optional[pulumi.Input[_builtins.str]] = None,
-            pricing_tier: Optional[pulumi.Input[_builtins.str]] = None,
-            private_access_settings_id: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            token: Optional[pulumi.Input[Union['MwsWorkspacesTokenArgs', 'MwsWorkspacesTokenArgsDict']]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_name: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_status: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_status_message: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_url: Optional[pulumi.Input[_builtins.str]] = None) -> 'MwsWorkspaces':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_region: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud_resource_container: pulumi.Input[Optional[Union['MwsWorkspacesCloudResourceContainerArgs', 'MwsWorkspacesCloudResourceContainerArgsDict']]] = None,
+            compute_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            credentials_id: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_compute_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            expected_workspace_status: pulumi.Input[Optional[_builtins.str]] = None,
+            external_customer_info: pulumi.Input[Optional[Union['MwsWorkspacesExternalCustomerInfoArgs', 'MwsWorkspacesExternalCustomerInfoArgsDict']]] = None,
+            gcp_managed_network_config: pulumi.Input[Optional[Union['MwsWorkspacesGcpManagedNetworkConfigArgs', 'MwsWorkspacesGcpManagedNetworkConfigArgsDict']]] = None,
+            gcp_workspace_sa: pulumi.Input[Optional[_builtins.str]] = None,
+            gke_config: pulumi.Input[Optional[Union['MwsWorkspacesGkeConfigArgs', 'MwsWorkspacesGkeConfigArgsDict']]] = None,
+            is_no_public_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            managed_services_customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_connectivity_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_tier: pulumi.Input[Optional[_builtins.str]] = None,
+            private_access_settings_id: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            token: pulumi.Input[Optional[Union['MwsWorkspacesTokenArgs', 'MwsWorkspacesTokenArgsDict']]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_status: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_status_message: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_url: pulumi.Input[Optional[_builtins.str]] = None) -> 'MwsWorkspaces':
         """
         Get an existing MwsWorkspaces resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

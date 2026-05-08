@@ -100,5 +100,5 @@ export interface GetFeatureEngineeringKafkaConfigOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetFeatureEngineeringKafkaConfigProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetFeatureEngineeringKafkaConfigProviderConfigArgs | undefined>;
 }

@@ -129,10 +129,10 @@ def get_external_location(external_location_info: Optional[Union['GetExternalLoc
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_external_location_output(external_location_info: Optional[pulumi.Input[Optional[Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict']]]] = None,
-                                 id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                                 provider_config: Optional[pulumi.Input[Optional[Union['GetExternalLocationProviderConfigArgs', 'GetExternalLocationProviderConfigArgsDict']]]] = None,
+def get_external_location_output(external_location_info: pulumi.Input[Optional[Optional[Union['GetExternalLocationExternalLocationInfoArgs', 'GetExternalLocationExternalLocationInfoArgsDict']]]] = None,
+                                 id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetExternalLocationProviderConfigArgs', 'GetExternalLocationProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalLocationResult]:
     """
     Retrieves details about a ExternalLocation that were created by Pulumi or manually.

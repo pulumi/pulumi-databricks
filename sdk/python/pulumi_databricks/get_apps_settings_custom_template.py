@@ -184,8 +184,8 @@ def get_apps_settings_custom_template(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         path=pulumi.get(__ret__, 'path'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_apps_settings_custom_template_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                             provider_config: Optional[pulumi.Input[Optional[Union['GetAppsSettingsCustomTemplateProviderConfigArgs', 'GetAppsSettingsCustomTemplateProviderConfigArgsDict']]]] = None,
+def get_apps_settings_custom_template_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                             provider_config: pulumi.Input[Optional[Optional[Union['GetAppsSettingsCustomTemplateProviderConfigArgs', 'GetAppsSettingsCustomTemplateProviderConfigArgsDict']]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppsSettingsCustomTemplateResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)

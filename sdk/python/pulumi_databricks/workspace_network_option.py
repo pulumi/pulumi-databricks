@@ -19,8 +19,8 @@ __all__ = ['WorkspaceNetworkOptionArgs', 'WorkspaceNetworkOption']
 @pulumi.input_type
 class WorkspaceNetworkOptionArgs:
     def __init__(__self__, *,
-                 network_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 network_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceNetworkOption resource.
 
@@ -37,7 +37,7 @@ class WorkspaceNetworkOptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="networkPolicyId")
-    def network_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network policy ID to apply to the workspace. This controls the network access rules
         for all serverless compute resources in the workspace. Each workspace can only be
@@ -47,27 +47,27 @@ class WorkspaceNetworkOptionArgs:
         return pulumi.get(self, "network_policy_id")
 
     @network_policy_id.setter
-    def network_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The workspace ID
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_id", value)
 
 
 @pulumi.input_type
 class _WorkspaceNetworkOptionState:
     def __init__(__self__, *,
-                 network_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 network_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceNetworkOption resources.
 
@@ -84,7 +84,7 @@ class _WorkspaceNetworkOptionState:
 
     @_builtins.property
     @pulumi.getter(name="networkPolicyId")
-    def network_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network policy ID to apply to the workspace. This controls the network access rules
         for all serverless compute resources in the workspace. Each workspace can only be
@@ -94,19 +94,19 @@ class _WorkspaceNetworkOptionState:
         return pulumi.get(self, "network_policy_id")
 
     @network_policy_id.setter
-    def network_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The workspace ID
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_id", value)
 
 
@@ -116,8 +116,8 @@ class WorkspaceNetworkOption(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -202,8 +202,8 @@ class WorkspaceNetworkOption(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -225,8 +225,8 @@ class WorkspaceNetworkOption(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            network_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkspaceNetworkOption':
+            network_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceNetworkOption':
         """
         Get an existing WorkspaceNetworkOption resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

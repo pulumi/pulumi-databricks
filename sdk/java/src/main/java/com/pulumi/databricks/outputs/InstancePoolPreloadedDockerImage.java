@@ -31,8 +31,8 @@ public final class InstancePoolPreloadedDockerImage {
      * import com.pulumi.databricks.InstancePoolArgs;
      * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
      * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageBasicAuthArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -92,8 +92,8 @@ public final class InstancePoolPreloadedDockerImage {
      * import com.pulumi.databricks.InstancePoolArgs;
      * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageArgs;
      * import com.pulumi.databricks.inputs.InstancePoolPreloadedDockerImageBasicAuthArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

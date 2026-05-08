@@ -107,9 +107,9 @@ export interface GetCatalogsOutputArgs {
     /**
      * set of databricks.Catalog names
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetCatalogsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetCatalogsProviderConfigArgs | undefined>;
 }

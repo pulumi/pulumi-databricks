@@ -168,9 +168,9 @@ def get_data_quality_monitor(object_id: Optional[_builtins.str] = None,
         object_id=pulumi.get(__ret__, 'object_id'),
         object_type=pulumi.get(__ret__, 'object_type'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_data_quality_monitor_output(object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                    object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                                    provider_config: Optional[pulumi.Input[Optional[Union['GetDataQualityMonitorProviderConfigArgs', 'GetDataQualityMonitorProviderConfigArgsDict']]]] = None,
+def get_data_quality_monitor_output(object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                    object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                                    provider_config: pulumi.Input[Optional[Optional[Union['GetDataQualityMonitorProviderConfigArgs', 'GetDataQualityMonitorProviderConfigArgsDict']]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataQualityMonitorResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)

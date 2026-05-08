@@ -188,41 +188,41 @@ export interface EntitlementsState {
     /**
      * Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      */
-    allowClusterCreate?: pulumi.Input<boolean>;
+    allowClusterCreate?: pulumi.Input<boolean | undefined>;
     /**
      * Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      */
-    allowInstancePoolCreate?: pulumi.Input<boolean>;
+    allowInstancePoolCreate?: pulumi.Input<boolean | undefined>;
     /**
      * This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      */
-    databricksSqlAccess?: pulumi.Input<boolean>;
+    databricksSqlAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Canonical unique identifier for the group.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.EntitlementsProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.EntitlementsProviderConfig | undefined>;
     /**
      * Canonical unique identifier for the service principal.
      *
      * The following entitlements are available.
      */
-    servicePrincipalId?: pulumi.Input<string>;
+    servicePrincipalId?: pulumi.Input<string | undefined>;
     /**
      * Canonical unique identifier for the user.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
      */
-    workspaceAccess?: pulumi.Input<boolean>;
+    workspaceAccess?: pulumi.Input<boolean | undefined>;
     /**
      * This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
-    workspaceConsume?: pulumi.Input<boolean>;
+    workspaceConsume?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -232,39 +232,39 @@ export interface EntitlementsArgs {
     /**
      * Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      */
-    allowClusterCreate?: pulumi.Input<boolean>;
+    allowClusterCreate?: pulumi.Input<boolean | undefined>;
     /**
      * Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      */
-    allowInstancePoolCreate?: pulumi.Input<boolean>;
+    allowInstancePoolCreate?: pulumi.Input<boolean | undefined>;
     /**
      * This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      */
-    databricksSqlAccess?: pulumi.Input<boolean>;
+    databricksSqlAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Canonical unique identifier for the group.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.EntitlementsProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.EntitlementsProviderConfig | undefined>;
     /**
      * Canonical unique identifier for the service principal.
      *
      * The following entitlements are available.
      */
-    servicePrincipalId?: pulumi.Input<string>;
+    servicePrincipalId?: pulumi.Input<string | undefined>;
     /**
      * Canonical unique identifier for the user.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
      */
-    workspaceAccess?: pulumi.Input<boolean>;
+    workspaceAccess?: pulumi.Input<boolean | undefined>;
     /**
      * This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
-    workspaceConsume?: pulumi.Input<boolean>;
+    workspaceConsume?: pulumi.Input<boolean | undefined>;
 }

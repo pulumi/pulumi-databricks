@@ -149,10 +149,10 @@ def get_workspace_entity_tag_assignments(entity_id: Optional[_builtins.str] = No
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         tag_assignments=pulumi.get(__ret__, 'tag_assignments'))
-def get_workspace_entity_tag_assignments_output(entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                                                page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                provider_config: Optional[pulumi.Input[Optional[Union['GetWorkspaceEntityTagAssignmentsProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentsProviderConfigArgsDict']]]] = None,
+def get_workspace_entity_tag_assignments_output(entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                                                page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceEntityTagAssignmentsProviderConfigArgs', 'GetWorkspaceEntityTagAssignmentsProviderConfigArgsDict']]]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceEntityTagAssignmentsResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)

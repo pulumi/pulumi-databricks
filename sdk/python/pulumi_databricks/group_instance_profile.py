@@ -23,8 +23,8 @@ class GroupInstanceProfileArgs:
     def __init__(__self__, *,
                  group_id: pulumi.Input[_builtins.str],
                  instance_profile_id: pulumi.Input[_builtins.str],
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['GroupInstanceProfileProviderConfigArgs']] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['GroupInstanceProfileProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a GroupInstanceProfile resource.
 
@@ -65,33 +65,33 @@ class GroupInstanceProfileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['GroupInstanceProfileProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['GroupInstanceProfileProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['GroupInstanceProfileProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['GroupInstanceProfileProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _GroupInstanceProfileState:
     def __init__(__self__, *,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['GroupInstanceProfileProviderConfigArgs']] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['GroupInstanceProfileProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering GroupInstanceProfile resources.
 
@@ -110,47 +110,47 @@ class _GroupInstanceProfileState:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the id of the group resource.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceProfileId")
-    def instance_profile_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_profile_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the id of the instance profile resource.
         """
         return pulumi.get(self, "instance_profile_id")
 
     @instance_profile_id.setter
-    def instance_profile_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_profile_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_profile_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['GroupInstanceProfileProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['GroupInstanceProfileProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['GroupInstanceProfileProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['GroupInstanceProfileProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
@@ -160,10 +160,10 @@ class GroupInstanceProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['GroupInstanceProfileProviderConfigArgs', 'GroupInstanceProfileProviderConfigArgsDict']]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['GroupInstanceProfileProviderConfigArgs', 'GroupInstanceProfileProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         > **Deprecated** Please migrate to databricks_group_role.
@@ -266,10 +266,10 @@ class GroupInstanceProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['GroupInstanceProfileProviderConfigArgs', 'GroupInstanceProfileProviderConfigArgsDict']]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['GroupInstanceProfileProviderConfigArgs', 'GroupInstanceProfileProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -297,10 +297,10 @@ class GroupInstanceProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api: Optional[pulumi.Input[_builtins.str]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_profile_id: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['GroupInstanceProfileProviderConfigArgs', 'GroupInstanceProfileProviderConfigArgsDict']]] = None) -> 'GroupInstanceProfile':
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['GroupInstanceProfileProviderConfigArgs', 'GroupInstanceProfileProviderConfigArgsDict']]] = None) -> 'GroupInstanceProfile':
         """
         Get an existing GroupInstanceProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

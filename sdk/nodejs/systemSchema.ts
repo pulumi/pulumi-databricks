@@ -111,24 +111,24 @@ export class SystemSchema extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SystemSchema resources.
  */
 export interface SystemSchemaState {
-    autoEnabled?: pulumi.Input<boolean>;
+    autoEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * the full name of the system schema, in form of `system.<schema>`.
      */
-    fullName?: pulumi.Input<string>;
-    metastoreId?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SystemSchemaProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.SystemSchemaProviderConfig | undefined>;
     /**
      * name of the system schema.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * The current state of enablement for the system schema.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -138,7 +138,7 @@ export interface SystemSchemaArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SystemSchemaProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.SystemSchemaProviderConfig | undefined>;
     /**
      * name of the system schema.
      */

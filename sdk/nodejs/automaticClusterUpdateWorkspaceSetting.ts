@@ -75,10 +75,10 @@ export class AutomaticClusterUpdateWorkspaceSetting extends pulumi.CustomResourc
  * Input properties used for looking up and filtering AutomaticClusterUpdateWorkspaceSetting resources.
  */
 export interface AutomaticClusterUpdateWorkspaceSettingState {
-    automaticClusterUpdateWorkspace?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace>;
-    etag?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingProviderConfig>;
-    settingName?: pulumi.Input<string>;
+    automaticClusterUpdateWorkspace?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingProviderConfig | undefined>;
+    settingName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -86,7 +86,7 @@ export interface AutomaticClusterUpdateWorkspaceSettingState {
  */
 export interface AutomaticClusterUpdateWorkspaceSettingArgs {
     automaticClusterUpdateWorkspace: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace>;
-    etag?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingProviderConfig>;
-    settingName?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingProviderConfig | undefined>;
+    settingName?: pulumi.Input<string | undefined>;
 }

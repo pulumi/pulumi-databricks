@@ -105,7 +105,7 @@ def get_volume(id: Optional[_builtins.str] = None,
 
     all = databricks.get_volumes(catalog_name="sandbox",
         schema_name="things")
-    this = {__key: databricks.get_volume(name=__value) for __key, __value in enumerate(all.ids)}
+    this = {str(__key): databricks.get_volume(name=__value) for __key, __value in enumerate(all.ids)}
     ```
 
     * Search for a specific volume by its fully qualified name
@@ -144,10 +144,10 @@ def get_volume(id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         volume_info=pulumi.get(__ret__, 'volume_info'))
-def get_volume_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      name: Optional[pulumi.Input[_builtins.str]] = None,
-                      provider_config: Optional[pulumi.Input[Optional[Union['GetVolumeProviderConfigArgs', 'GetVolumeProviderConfigArgsDict']]]] = None,
-                      volume_info: Optional[pulumi.Input[Optional[Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict']]]] = None,
+def get_volume_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      name: pulumi.Input[Optional[_builtins.str]] = None,
+                      provider_config: pulumi.Input[Optional[Optional[Union['GetVolumeProviderConfigArgs', 'GetVolumeProviderConfigArgsDict']]]] = None,
+                      volume_info: pulumi.Input[Optional[Optional[Union['GetVolumeVolumeInfoArgs', 'GetVolumeVolumeInfoArgsDict']]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumeResult]:
     """
     Retrieves details about Volume that was created by Pulumi or manually.
@@ -165,7 +165,7 @@ def get_volume_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None
 
     all = databricks.get_volumes(catalog_name="sandbox",
         schema_name="things")
-    this = {__key: databricks.get_volume(name=__value) for __key, __value in enumerate(all.ids)}
+    this = {str(__key): databricks.get_volume(name=__value) for __key, __value in enumerate(all.ids)}
     ```
 
     * Search for a specific volume by its fully qualified name

@@ -118,6 +118,6 @@ export interface GetRegisteredModelVersionsOutputArgs {
     /**
      * list of objects describing the model versions. Each object consists of following attributes:
      */
-    modelVersions?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionArgs>[]>;
-    providerConfig?: pulumi.Input<inputs.GetRegisteredModelVersionsProviderConfigArgs>;
+    modelVersions?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionArgs>[] | undefined>;
+    providerConfig?: pulumi.Input<inputs.GetRegisteredModelVersionsProviderConfigArgs | undefined>;
 }

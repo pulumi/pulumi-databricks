@@ -104,7 +104,7 @@ def get_schema(id: Optional[_builtins.str] = None,
     import pulumi_databricks as databricks
 
     all = databricks.get_schemas(catalog_name="sandbox")
-    this = {__key: databricks.get_schema(name=__value) for __key, __value in enumerate(all.ids)}
+    this = {str(__key): databricks.get_schema(name=__value) for __key, __value in enumerate(all.ids)}
     ```
 
     * Search for a specific schema by its fully qualified name:
@@ -142,10 +142,10 @@ def get_schema(id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         schema_info=pulumi.get(__ret__, 'schema_info'))
-def get_schema_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      name: Optional[pulumi.Input[_builtins.str]] = None,
-                      provider_config: Optional[pulumi.Input[Optional[Union['GetSchemaProviderConfigArgs', 'GetSchemaProviderConfigArgsDict']]]] = None,
-                      schema_info: Optional[pulumi.Input[Optional[Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict']]]] = None,
+def get_schema_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      name: pulumi.Input[Optional[_builtins.str]] = None,
+                      provider_config: pulumi.Input[Optional[Optional[Union['GetSchemaProviderConfigArgs', 'GetSchemaProviderConfigArgsDict']]]] = None,
+                      schema_info: pulumi.Input[Optional[Optional[Union['GetSchemaSchemaInfoArgs', 'GetSchemaSchemaInfoArgsDict']]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSchemaResult]:
     """
     Retrieves details about Schema that was created by Pulumi or manually.
@@ -162,7 +162,7 @@ def get_schema_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None
     import pulumi_databricks as databricks
 
     all = databricks.get_schemas(catalog_name="sandbox")
-    this = {__key: databricks.get_schema(name=__value) for __key, __value in enumerate(all.ids)}
+    this = {str(__key): databricks.get_schema(name=__value) for __key, __value in enumerate(all.ids)}
     ```
 
     * Search for a specific schema by its fully qualified name:

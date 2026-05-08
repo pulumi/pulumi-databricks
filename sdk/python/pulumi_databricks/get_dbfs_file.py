@@ -149,9 +149,9 @@ def get_dbfs_file(limit_file_size: Optional[_builtins.bool] = None,
         limit_file_size=pulumi.get(__ret__, 'limit_file_size'),
         path=pulumi.get(__ret__, 'path'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_dbfs_file_output(limit_file_size: Optional[pulumi.Input[_builtins.bool]] = None,
-                         path: Optional[pulumi.Input[_builtins.str]] = None,
-                         provider_config: Optional[pulumi.Input[Optional[Union['GetDbfsFileProviderConfigArgs', 'GetDbfsFileProviderConfigArgsDict']]]] = None,
+def get_dbfs_file_output(limit_file_size: pulumi.Input[Optional[_builtins.bool]] = None,
+                         path: pulumi.Input[Optional[_builtins.str]] = None,
+                         provider_config: pulumi.Input[Optional[Optional[Union['GetDbfsFileProviderConfigArgs', 'GetDbfsFileProviderConfigArgsDict']]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbfsFileResult]:
     """
     This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).

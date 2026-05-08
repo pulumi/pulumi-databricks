@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Index.PostgresProject("this", new()
+    ///     var @this = new Databricks.PostgresProject("this", new()
     ///     {
     ///         ProjectId = "my-project",
     ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
@@ -36,7 +36,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var main = new Databricks.Index.PostgresBranch("main", new()
+    ///     var main = new Databricks.PostgresBranch("main", new()
     ///     {
     ///         BranchId = "main",
     ///         Parent = @this.Name,
@@ -46,7 +46,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var jane = new Databricks.Index.PostgresRole("jane", new()
+    ///     var jane = new Databricks.PostgresRole("jane", new()
     ///     {
     ///         RoleId = "jane",
     ///         Parent = main.Name,
@@ -72,7 +72,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var adminSp = new Databricks.Index.PostgresRole("admin_sp", new()
+    ///     var adminSp = new Databricks.PostgresRole("admin_sp", new()
     ///     {
     ///         RoleId = "admin-sp",
     ///         Parent = main.Name,
@@ -120,7 +120,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var schemaOwner = new Databricks.Index.PostgresRole("schema_owner", new()
+    ///     var schemaOwner = new Databricks.PostgresRole("schema_owner", new()
     ///     {
     ///         RoleId = "schemamigrator",
     ///         Parent = test.Name,
@@ -134,7 +134,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var application = new Databricks.Index.PostgresDatabase("application", new()
+    ///     var application = new Databricks.PostgresDatabase("application", new()
     ///     {
     ///         DatabaseId = "application",
     ///         Parent = test.Name,
@@ -145,7 +145,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var applicationPostgresRole = new Databricks.Index.PostgresRole("application", new()
+    ///     var applicationPostgresRole = new Databricks.PostgresRole("application", new()
     ///     {
     ///         RoleId = "application",
     ///         Parent = test.Name,

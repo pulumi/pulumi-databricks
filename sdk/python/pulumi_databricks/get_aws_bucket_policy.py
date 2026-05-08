@@ -159,11 +159,11 @@ def get_aws_bucket_policy(aws_partition: Optional[_builtins.str] = None,
         full_access_role=pulumi.get(__ret__, 'full_access_role'),
         id=pulumi.get(__ret__, 'id'),
         json=pulumi.get(__ret__, 'json'))
-def get_aws_bucket_policy_output(aws_partition: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                                 databricks_account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 databricks_e2_account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 full_access_role: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_aws_bucket_policy_output(aws_partition: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                                 databricks_account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 databricks_e2_account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 full_access_role: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsBucketPolicyResult]:
     """
     This datasource configures a simple access policy for AWS S3 buckets, so that Databricks can access data in it.

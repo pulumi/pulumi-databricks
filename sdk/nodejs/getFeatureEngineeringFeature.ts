@@ -109,5 +109,5 @@ export interface GetFeatureEngineeringFeatureOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetFeatureEngineeringFeatureProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetFeatureEngineeringFeatureProviderConfigArgs | undefined>;
 }

@@ -175,5 +175,5 @@ export interface GetAlertV2OutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetAlertV2ProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetAlertV2ProviderConfigArgs | undefined>;
 }

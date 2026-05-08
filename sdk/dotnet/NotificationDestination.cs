@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ndresource = new Databricks.Index.NotificationDestination("ndresource", new()
+    ///     var ndresource = new Databricks.NotificationDestination("ndresource", new()
     ///     {
     ///         DisplayName = "Notification Destination",
     ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
@@ -53,7 +53,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ndresource = new Databricks.Index.NotificationDestination("ndresource", new()
+    ///     var ndresource = new Databricks.NotificationDestination("ndresource", new()
     ///     {
     ///         DisplayName = "Notification Destination",
     ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
@@ -77,7 +77,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ndresource = new Databricks.Index.NotificationDestination("ndresource", new()
+    ///     var ndresource = new Databricks.NotificationDestination("ndresource", new()
     ///     {
     ///         DisplayName = "Notification Destination",
     ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
@@ -101,7 +101,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ndresource = new Databricks.Index.NotificationDestination("ndresource", new()
+    ///     var ndresource = new Databricks.NotificationDestination("ndresource", new()
     ///     {
     ///         DisplayName = "Notification Destination",
     ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs
@@ -125,7 +125,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ndresource = new Databricks.Index.NotificationDestination("ndresource", new()
+    ///     var ndresource = new Databricks.NotificationDestination("ndresource", new()
     ///     {
     ///         DisplayName = "Notification Destination",
     ///         Config = new Databricks.Inputs.NotificationDestinationConfigArgs

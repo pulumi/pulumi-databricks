@@ -21,14 +21,14 @@ __all__ = ['ClusterPolicyArgs', 'ClusterPolicy']
 @pulumi.input_type
 class ClusterPolicyArgs:
     def __init__(__self__, *,
-                 definition: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPolicyLibraryArgs']]]] = None,
-                 max_clusters_per_user: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_family_definition_overrides: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_family_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['ClusterPolicyProviderConfigArgs']] = None):
+                 definition: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPolicyLibraryArgs']]]] = None,
+                 max_clusters_per_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_family_definition_overrides: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_family_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['ClusterPolicyProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a ClusterPolicy resource.
 
@@ -58,107 +58,107 @@ class ClusterPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def definition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def definition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
         """
         return pulumi.get(self, "definition")
 
     @definition.setter
-    def definition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def definition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "definition", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional human-readable description of the cluster policy.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPolicyLibraryArgs']]]]:
+    def libraries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPolicyLibraryArgs']]]]:
         return pulumi.get(self, "libraries")
 
     @libraries.setter
-    def libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPolicyLibraryArgs']]]]):
+    def libraries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPolicyLibraryArgs']]]]):
         pulumi.set(self, "libraries", value)
 
     @_builtins.property
     @pulumi.getter(name="maxClustersPerUser")
-    def max_clusters_per_user(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_clusters_per_user(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         """
         return pulumi.get(self, "max_clusters_per_user")
 
     @max_clusters_per_user.setter
-    def max_clusters_per_user(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_clusters_per_user(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_clusters_per_user", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyFamilyDefinitionOverrides")
-    def policy_family_definition_overrides(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_family_definition_overrides(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
         """
         return pulumi.get(self, "policy_family_definition_overrides")
 
     @policy_family_definition_overrides.setter
-    def policy_family_definition_overrides(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_family_definition_overrides(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_family_definition_overrides", value)
 
     @_builtins.property
     @pulumi.getter(name="policyFamilyId")
-    def policy_family_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_family_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
         """
         return pulumi.get(self, "policy_family_id")
 
     @policy_family_id.setter
-    def policy_family_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_family_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_family_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['ClusterPolicyProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['ClusterPolicyProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['ClusterPolicyProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['ClusterPolicyProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _ClusterPolicyState:
     def __init__(__self__, *,
-                 definition: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPolicyLibraryArgs']]]] = None,
-                 max_clusters_per_user: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_family_definition_overrides: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_family_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['ClusterPolicyProviderConfigArgs']] = None):
+                 definition: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPolicyLibraryArgs']]]] = None,
+                 max_clusters_per_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_family_definition_overrides: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_family_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['ClusterPolicyProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering ClusterPolicy resources.
 
@@ -191,104 +191,104 @@ class _ClusterPolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def definition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def definition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy definition: JSON document expressed in [Databricks Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definition). Cannot be used with `policy_family_id`
         """
         return pulumi.get(self, "definition")
 
     @definition.setter
-    def definition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def definition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "definition", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional human-readable description of the cluster policy.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPolicyLibraryArgs']]]]:
+    def libraries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPolicyLibraryArgs']]]]:
         return pulumi.get(self, "libraries")
 
     @libraries.setter
-    def libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPolicyLibraryArgs']]]]):
+    def libraries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPolicyLibraryArgs']]]]):
         pulumi.set(self, "libraries", value)
 
     @_builtins.property
     @pulumi.getter(name="maxClustersPerUser")
-    def max_clusters_per_user(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_clusters_per_user(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of clusters allowed per user. When omitted, there is no limit. If specified, value must be greater than zero.
         """
         return pulumi.get(self, "max_clusters_per_user")
 
     @max_clusters_per_user.setter
-    def max_clusters_per_user(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_clusters_per_user(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_clusters_per_user", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster policy name. This must be unique. Length must be between 1 and 100 characters.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyFamilyDefinitionOverrides")
-    def policy_family_definition_overrides(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_family_definition_overrides(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy definition JSON document expressed in Databricks Policy Definition Language. The JSON document must be passed as a string and cannot be embedded in the requests. You can use this to customize the policy definition inherited from the policy family. Policy rules specified here are merged into the inherited policy definition.
         """
         return pulumi.get(self, "policy_family_definition_overrides")
 
     @policy_family_definition_overrides.setter
-    def policy_family_definition_overrides(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_family_definition_overrides(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_family_definition_overrides", value)
 
     @_builtins.property
     @pulumi.getter(name="policyFamilyId")
-    def policy_family_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_family_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the policy family. The cluster policy's policy definition inherits the policy family's policy definition. Cannot be used with `definition`. Use `policy_family_definition_overrides` instead to customize the policy definition.
         """
         return pulumi.get(self, "policy_family_id")
 
     @policy_family_id.setter
-    def policy_family_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_family_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_family_id", value)
 
     @_builtins.property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier for the cluster policy.
         """
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
-    def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['ClusterPolicyProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['ClusterPolicyProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['ClusterPolicyProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['ClusterPolicyProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
@@ -298,14 +298,14 @@ class ClusterPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 definition: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPolicyLibraryArgs', 'ClusterPolicyLibraryArgsDict']]]]] = None,
-                 max_clusters_per_user: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_family_definition_overrides: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_family_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['ClusterPolicyProviderConfigArgs', 'ClusterPolicyProviderConfigArgsDict']]] = None,
+                 definition: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPolicyLibraryArgs', 'ClusterPolicyLibraryArgsDict']]]]] = None,
+                 max_clusters_per_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_family_definition_overrides: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_family_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ClusterPolicyProviderConfigArgs', 'ClusterPolicyProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         This resource creates a cluster policy, which limits the ability to create clusters based on a set of rules. The policy rules limit the attributes or attribute values available for cluster creation. cluster policies have ACLs that limit their use to specific users and groups. Only admin users can create, edit, and delete policies. Admin users also have access to all policies.
@@ -599,14 +599,14 @@ class ClusterPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 definition: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPolicyLibraryArgs', 'ClusterPolicyLibraryArgsDict']]]]] = None,
-                 max_clusters_per_user: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_family_definition_overrides: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_family_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['ClusterPolicyProviderConfigArgs', 'ClusterPolicyProviderConfigArgsDict']]] = None,
+                 definition: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPolicyLibraryArgs', 'ClusterPolicyLibraryArgsDict']]]]] = None,
+                 max_clusters_per_user: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_family_definition_overrides: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_family_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ClusterPolicyProviderConfigArgs', 'ClusterPolicyProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -635,15 +635,15 @@ class ClusterPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            definition: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPolicyLibraryArgs', 'ClusterPolicyLibraryArgsDict']]]]] = None,
-            max_clusters_per_user: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_family_definition_overrides: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_family_id: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['ClusterPolicyProviderConfigArgs', 'ClusterPolicyProviderConfigArgsDict']]] = None) -> 'ClusterPolicy':
+            definition: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPolicyLibraryArgs', 'ClusterPolicyLibraryArgsDict']]]]] = None,
+            max_clusters_per_user: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_family_definition_overrides: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_family_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['ClusterPolicyProviderConfigArgs', 'ClusterPolicyProviderConfigArgsDict']]] = None) -> 'ClusterPolicy':
         """
         Get an existing ClusterPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

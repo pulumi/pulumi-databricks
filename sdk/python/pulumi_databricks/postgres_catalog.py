@@ -22,8 +22,8 @@ __all__ = ['PostgresCatalogArgs', 'PostgresCatalog']
 class PostgresCatalogArgs:
     def __init__(__self__, *,
                  catalog_id: pulumi.Input[_builtins.str],
-                 provider_config: Optional[pulumi.Input['PostgresCatalogProviderConfigArgs']] = None,
-                 spec: Optional[pulumi.Input['PostgresCatalogSpecArgs']] = None):
+                 provider_config: pulumi.Input[Optional['PostgresCatalogProviderConfigArgs']] = None,
+                 spec: pulumi.Input[Optional['PostgresCatalogSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresCatalog resource.
 
@@ -53,40 +53,40 @@ class PostgresCatalogArgs:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PostgresCatalogProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PostgresCatalogProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PostgresCatalogProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PostgresCatalogProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['PostgresCatalogSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['PostgresCatalogSpecArgs']]:
         """
         The desired state of the Catalog
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['PostgresCatalogSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['PostgresCatalogSpecArgs']]):
         pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
 class _PostgresCatalogState:
     def __init__(__self__, *,
-                 catalog_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['PostgresCatalogProviderConfigArgs']] = None,
-                 spec: Optional[pulumi.Input['PostgresCatalogSpecArgs']] = None,
-                 status: Optional[pulumi.Input['PostgresCatalogStatusArgs']] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 catalog_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['PostgresCatalogProviderConfigArgs']] = None,
+                 spec: pulumi.Input[Optional['PostgresCatalogSpecArgs']] = None,
+                 status: pulumi.Input[Optional['PostgresCatalogStatusArgs']] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PostgresCatalog resources.
 
@@ -119,7 +119,7 @@ class _PostgresCatalogState:
 
     @_builtins.property
     @pulumi.getter(name="catalogId")
-    def catalog_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def catalog_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID in the Unity Catalog.
         It becomes the full resource name, for example "my_catalog" becomes "catalogs/my_catalog"
@@ -127,91 +127,91 @@ class _PostgresCatalogState:
         return pulumi.get(self, "catalog_id")
 
     @catalog_id.setter
-    def catalog_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def catalog_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - A timestamp indicating when the catalog was created
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Output only. The full resource path of the catalog.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PostgresCatalogProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PostgresCatalogProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PostgresCatalogProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PostgresCatalogProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['PostgresCatalogSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['PostgresCatalogSpecArgs']]:
         """
         The desired state of the Catalog
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['PostgresCatalogSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['PostgresCatalogSpecArgs']]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['PostgresCatalogStatusArgs']]:
+    def status(self) -> pulumi.Input[Optional['PostgresCatalogStatusArgs']]:
         """
         (CatalogCatalogStatus) - The observed state of the Catalog
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input['PostgresCatalogStatusArgs']]):
+    def status(self, value: pulumi.Input[Optional['PostgresCatalogStatusArgs']]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - System-generated unique identifier for the catalog
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - A timestamp indicating when the catalog was last updated
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -221,9 +221,9 @@ class PostgresCatalog(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict']]] = None,
-                 spec: Optional[pulumi.Input[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict']]] = None,
+                 catalog_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -261,9 +261,9 @@ class PostgresCatalog(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict']]] = None,
-                 spec: Optional[pulumi.Input[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict']]] = None,
+                 catalog_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -293,14 +293,14 @@ class PostgresCatalog(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            catalog_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict']]] = None,
-            spec: Optional[pulumi.Input[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict']]] = None,
-            status: Optional[pulumi.Input[Union['PostgresCatalogStatusArgs', 'PostgresCatalogStatusArgsDict']]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'PostgresCatalog':
+            catalog_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict']]] = None,
+            spec: pulumi.Input[Optional[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict']]] = None,
+            status: pulumi.Input[Optional[Union['PostgresCatalogStatusArgs', 'PostgresCatalogStatusArgsDict']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresCatalog':
         """
         Get an existing PostgresCatalog resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

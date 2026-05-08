@@ -100,15 +100,15 @@ export interface GetPostgresProjectsOutputArgs {
     /**
      * Upper bound for items returned. Cannot be negative. The maximum value is 100
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetPostgresProjectsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetPostgresProjectsProviderConfigArgs | undefined>;
     /**
      * Whether to include soft-deleted projects in the response.
      * When true, soft-deleted projects are included alongside active projects.
      * Hard-deleted and already-purged projects are never returned
      */
-    showDeleted?: pulumi.Input<boolean>;
+    showDeleted?: pulumi.Input<boolean | undefined>;
 }

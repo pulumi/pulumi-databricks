@@ -91,5 +91,5 @@ export interface GetPostgresCatalogOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetPostgresCatalogProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetPostgresCatalogProviderConfigArgs | undefined>;
 }

@@ -12,7 +12,7 @@ export interface AccessControlRuleSetGrantRule {
      * * `groups/{groupname}` (also exposed as `aclPrincipalId` attribute of `databricks.Group` resource).
      * * `servicePrincipals/{applicationId}` (also exposed as `aclPrincipalId` attribute of `databricks.ServicePrincipal` resource).
      */
-    principals?: pulumi.Input<pulumi.Input<string>[]>;
+    principals?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Role to be granted. The supported roles are listed below. For more information about these roles, refer to [service principal roles](https://docs.databricks.com/security/auth-authz/access-control/service-principal-acl.html#service-principal-roles), [group roles](https://docs.databricks.com/en/administration-guide/users-groups/groups.html#manage-roles-on-an-account-group-using-the-workspace-admin-settings-page), [marketplace roles](https://docs.databricks.com/en/marketplace/get-started-provider.html#assign-the-marketplace-admin-role) or [budget policy permissions](https://docs.databricks.com/aws/en/admin/usage/budget-policies#manage-budget-policy-permissions), depending on the `name` defined:
      * * `accounts/{account_id}/ruleSets/default`
@@ -48,11 +48,11 @@ export interface AccountFederationPolicyOidcPolicy {
      * at least one audience in the policy, the token is considered a match. If audiences
      * is unspecified, defaults to your Databricks account id
      */
-    audiences?: pulumi.Input<pulumi.Input<string>[]>;
+    audiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The required token issuer, as specified in the 'iss' claim of federated tokens
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * The public keys used to validate the signature of federated tokens, in JWKS format.
      * Most use cases should not need to specify this field. If jwksUri and jwksJson
@@ -60,7 +60,7 @@ export interface AccountFederationPolicyOidcPolicy {
      * keys from your issuer’s well known endpoint. Databricks strongly recommends
      * relying on your issuer’s well known endpoint for discovering public keys
      */
-    jwksJson?: pulumi.Input<string>;
+    jwksJson?: pulumi.Input<string | undefined>;
     /**
      * URL of the public keys used to validate the signature of federated tokens, in
      * JWKS format. Most use cases should not need to specify this field. If jwksUri
@@ -69,66 +69,66 @@ export interface AccountFederationPolicyOidcPolicy {
      * strongly recommends relying on your issuer’s well known endpoint for discovering
      * public keys
      */
-    jwksUri?: pulumi.Input<string>;
+    jwksUri?: pulumi.Input<string | undefined>;
     /**
      * The required token subject, as specified in the subject claim of federated tokens.
      * Must be specified for service principal federation policies. Must not be specified
      * for account federation policies
      */
-    subject?: pulumi.Input<string>;
+    subject?: pulumi.Input<string | undefined>;
     /**
      * The claim that contains the subject of the token. If unspecified, the default value
      * is 'sub'
      */
-    subjectClaim?: pulumi.Input<string>;
+    subjectClaim?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountNetworkPolicyEgress {
     /**
      * The access policy enforced for egress traffic to the internet
      */
-    networkAccess?: pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccess>;
+    networkAccess?: pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccess | undefined>;
 }
 
 export interface AccountNetworkPolicyEgressNetworkAccess {
     /**
      * List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
      */
-    allowedInternetDestinations?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination>[]>;
+    allowedInternetDestinations?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination>[] | undefined>;
     /**
      * List of storage destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
      */
-    allowedStorageDestinations?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination>[]>;
+    allowedStorageDestinations?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination>[] | undefined>;
     /**
      * Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
      */
-    policyEnforcement?: pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement>;
+    policyEnforcement?: pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement | undefined>;
     restrictionMode: pulumi.Input<string>;
 }
 
 export interface AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination {
-    destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string | undefined>;
     /**
      * The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
      */
-    internetDestinationType?: pulumi.Input<string>;
+    internetDestinationType?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination {
     /**
      * The Azure storage account name
      */
-    azureStorageAccount?: pulumi.Input<string>;
+    azureStorageAccount?: pulumi.Input<string | undefined>;
     /**
      * The Azure storage service type (blob, dfs, etc.)
      */
-    azureStorageService?: pulumi.Input<string>;
-    bucketName?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    azureStorageService?: pulumi.Input<string | undefined>;
+    bucketName?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The type of storage destination. Possible values are: `AWS_S3`, `AZURE_STORAGE`, `GOOGLE_CLOUD_STORAGE`
      */
-    storageDestinationType?: pulumi.Input<string>;
+    storageDestinationType?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
@@ -136,353 +136,353 @@ export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
      * When empty, it means dry run for all products.
      * When non-empty, it means dry run for specific products and for the other products, they will run in enforced mode
      */
-    dryRunModeProductFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    dryRunModeProductFilters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The mode of policy enforcement. ENFORCED blocks traffic that violates policy,
      * while DRY_RUN only logs violations without blocking. When not specified,
      * defaults to ENFORCED. Possible values are: `DRY_RUN`, `ENFORCED`
      */
-    enforcementMode?: pulumi.Input<string>;
+    enforcementMode?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountNetworkPolicyIngress {
-    publicAccess?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccess>;
+    publicAccess?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccess | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRun {
-    publicAccess?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccess>;
+    publicAccess?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccess | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccess {
-    allowRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRule>[]>;
-    denyRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRule>[]>;
+    allowRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRule>[] | undefined>;
+    denyRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRule>[] | undefined>;
     restrictionMode: pulumi.Input<string>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRule {
-    authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthentication>;
-    destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination>;
+    authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthentication | undefined>;
+    destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination | undefined>;
     /**
      * User-provided name for this ingress rule. Helps identify which rule
      * caused a request to be denied or dry-run denied
      */
-    label?: pulumi.Input<string>;
-    origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOrigin>;
+    label?: pulumi.Input<string | undefined>;
+    origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOrigin | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthentication {
     /**
      * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
      */
-    identities?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthenticationIdentity>[]>;
+    identities?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthenticationIdentity>[] | undefined>;
     /**
      * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
      */
-    identityType?: pulumi.Input<string>;
+    identityType?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthenticationIdentity {
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
      */
-    principalType?: pulumi.Input<string>;
+    principalType?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination {
-    allDestinations?: pulumi.Input<boolean>;
-    workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi>;
+    allDestinations?: pulumi.Input<boolean | undefined>;
+    workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi | undefined>;
     /**
      * Workspace destinations
      */
-    workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUi>;
+    workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUi | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi {
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUi {
-    allDestinations?: pulumi.Input<boolean>;
+    allDestinations?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOrigin {
     /**
      * Matches all IPv4 and IPv6 ranges (both public and private)
      */
-    allIpRanges?: pulumi.Input<boolean>;
+    allIpRanges?: pulumi.Input<boolean | undefined>;
     /**
      * Excluded means: all public IP ranges except this one
      */
-    excludedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginExcludedIpRanges>;
+    excludedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginExcludedIpRanges | undefined>;
     /**
      * Will not allow IP ranges with private IPs
      */
-    includedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginIncludedIpRanges>;
+    includedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginIncludedIpRanges | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginExcludedIpRanges {
     /**
      * We only support IPv4 and IPv4 CIDR notation for now
      */
-    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    ipRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginIncludedIpRanges {
     /**
      * We only support IPv4 and IPv4 CIDR notation for now
      */
-    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    ipRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRule {
-    authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthentication>;
-    destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination>;
+    authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthentication | undefined>;
+    destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination | undefined>;
     /**
      * User-provided name for this ingress rule. Helps identify which rule
      * caused a request to be denied or dry-run denied
      */
-    label?: pulumi.Input<string>;
-    origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOrigin>;
+    label?: pulumi.Input<string | undefined>;
+    origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOrigin | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthentication {
     /**
      * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
      */
-    identities?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthenticationIdentity>[]>;
+    identities?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthenticationIdentity>[] | undefined>;
     /**
      * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
      */
-    identityType?: pulumi.Input<string>;
+    identityType?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthenticationIdentity {
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
      */
-    principalType?: pulumi.Input<string>;
+    principalType?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination {
-    allDestinations?: pulumi.Input<boolean>;
-    workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi>;
+    allDestinations?: pulumi.Input<boolean | undefined>;
+    workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi | undefined>;
     /**
      * Workspace destinations
      */
-    workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceUi>;
+    workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceUi | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi {
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceUi {
-    allDestinations?: pulumi.Input<boolean>;
+    allDestinations?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOrigin {
     /**
      * Matches all IPv4 and IPv6 ranges (both public and private)
      */
-    allIpRanges?: pulumi.Input<boolean>;
+    allIpRanges?: pulumi.Input<boolean | undefined>;
     /**
      * Excluded means: all public IP ranges except this one
      */
-    excludedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginExcludedIpRanges>;
+    excludedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginExcludedIpRanges | undefined>;
     /**
      * Will not allow IP ranges with private IPs
      */
-    includedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginIncludedIpRanges>;
+    includedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginIncludedIpRanges | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginExcludedIpRanges {
     /**
      * We only support IPv4 and IPv4 CIDR notation for now
      */
-    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    ipRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginIncludedIpRanges {
     /**
      * We only support IPv4 and IPv4 CIDR notation for now
      */
-    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    ipRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccess {
-    allowRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRule>[]>;
-    denyRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRule>[]>;
+    allowRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRule>[] | undefined>;
+    denyRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRule>[] | undefined>;
     restrictionMode: pulumi.Input<string>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessAllowRule {
-    authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleAuthentication>;
-    destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestination>;
+    authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleAuthentication | undefined>;
+    destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestination | undefined>;
     /**
      * User-provided name for this ingress rule. Helps identify which rule
      * caused a request to be denied or dry-run denied
      */
-    label?: pulumi.Input<string>;
-    origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleOrigin>;
+    label?: pulumi.Input<string | undefined>;
+    origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleOrigin | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessAllowRuleAuthentication {
     /**
      * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
      */
-    identities?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleAuthenticationIdentity>[]>;
+    identities?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleAuthenticationIdentity>[] | undefined>;
     /**
      * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
      */
-    identityType?: pulumi.Input<string>;
+    identityType?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessAllowRuleAuthenticationIdentity {
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
      */
-    principalType?: pulumi.Input<string>;
+    principalType?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestination {
-    allDestinations?: pulumi.Input<boolean>;
-    workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi>;
+    allDestinations?: pulumi.Input<boolean | undefined>;
+    workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi | undefined>;
     /**
      * Workspace destinations
      */
-    workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceUi>;
+    workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceUi | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi {
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceUi {
-    allDestinations?: pulumi.Input<boolean>;
+    allDestinations?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessAllowRuleOrigin {
     /**
      * Matches all IPv4 and IPv6 ranges (both public and private)
      */
-    allIpRanges?: pulumi.Input<boolean>;
+    allIpRanges?: pulumi.Input<boolean | undefined>;
     /**
      * Excluded means: all public IP ranges except this one
      */
-    excludedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleOriginExcludedIpRanges>;
+    excludedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleOriginExcludedIpRanges | undefined>;
     /**
      * Will not allow IP ranges with private IPs
      */
-    includedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleOriginIncludedIpRanges>;
+    includedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleOriginIncludedIpRanges | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessAllowRuleOriginExcludedIpRanges {
     /**
      * We only support IPv4 and IPv4 CIDR notation for now
      */
-    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    ipRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessAllowRuleOriginIncludedIpRanges {
     /**
      * We only support IPv4 and IPv4 CIDR notation for now
      */
-    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    ipRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessDenyRule {
-    authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleAuthentication>;
-    destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestination>;
+    authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleAuthentication | undefined>;
+    destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestination | undefined>;
     /**
      * User-provided name for this ingress rule. Helps identify which rule
      * caused a request to be denied or dry-run denied
      */
-    label?: pulumi.Input<string>;
-    origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleOrigin>;
+    label?: pulumi.Input<string | undefined>;
+    origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleOrigin | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessDenyRuleAuthentication {
     /**
      * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
      */
-    identities?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleAuthenticationIdentity>[]>;
+    identities?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleAuthenticationIdentity>[] | undefined>;
     /**
      * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
      */
-    identityType?: pulumi.Input<string>;
+    identityType?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessDenyRuleAuthenticationIdentity {
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
      */
-    principalType?: pulumi.Input<string>;
+    principalType?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestination {
-    allDestinations?: pulumi.Input<boolean>;
-    workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi>;
+    allDestinations?: pulumi.Input<boolean | undefined>;
+    workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi | undefined>;
     /**
      * Workspace destinations
      */
-    workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceUi>;
+    workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceUi | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi {
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceUi {
-    allDestinations?: pulumi.Input<boolean>;
+    allDestinations?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessDenyRuleOrigin {
     /**
      * Matches all IPv4 and IPv6 ranges (both public and private)
      */
-    allIpRanges?: pulumi.Input<boolean>;
+    allIpRanges?: pulumi.Input<boolean | undefined>;
     /**
      * Excluded means: all public IP ranges except this one
      */
-    excludedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleOriginExcludedIpRanges>;
+    excludedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleOriginExcludedIpRanges | undefined>;
     /**
      * Will not allow IP ranges with private IPs
      */
-    includedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleOriginIncludedIpRanges>;
+    includedIpRanges?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleOriginIncludedIpRanges | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessDenyRuleOriginExcludedIpRanges {
     /**
      * We only support IPv4 and IPv4 CIDR notation for now
      */
-    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    ipRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessDenyRuleOriginIncludedIpRanges {
     /**
      * We only support IPv4 and IPv4 CIDR notation for now
      */
-    ipRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    ipRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountSettingUserPreferenceV2BooleanVal {
-    value?: pulumi.Input<boolean>;
+    value?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AccountSettingUserPreferenceV2EffectiveBooleanVal {
-    value?: pulumi.Input<boolean>;
+    value?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AccountSettingUserPreferenceV2EffectiveStringVal {
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountSettingUserPreferenceV2StringVal {
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountSettingV2AibiDashboardEmbeddingAccessPolicy {
@@ -493,55 +493,55 @@ export interface AccountSettingV2AibiDashboardEmbeddingAccessPolicy {
 }
 
 export interface AccountSettingV2AibiDashboardEmbeddingApprovedDomains {
-    approvedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    approvedDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountSettingV2AutomaticClusterUpdateWorkspace {
-    canToggle?: pulumi.Input<boolean>;
-    enabled?: pulumi.Input<boolean>;
-    enablementDetails?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails>;
-    maintenanceWindow?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow>;
-    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
+    canToggle?: pulumi.Input<boolean | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    enablementDetails?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails | undefined>;
+    maintenanceWindow?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow | undefined>;
+    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails {
     /**
      * The feature is force enabled if compliance mode is active
      */
-    forcedForComplianceMode?: pulumi.Input<boolean>;
+    forcedForComplianceMode?: pulumi.Input<boolean | undefined>;
     /**
      * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
      */
-    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
+    unavailableForDisabledEntitlement?: pulumi.Input<boolean | undefined>;
     /**
      * The feature is unavailable if the customer doesn't have enterprise tier
      */
-    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
+    unavailableForNonEnterpriseTier?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
-    weekDayBasedSchedule?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule>;
+    weekDayBasedSchedule?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule | undefined>;
 }
 
 export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
      * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
-    dayOfWeek?: pulumi.Input<string>;
+    dayOfWeek?: pulumi.Input<string | undefined>;
     /**
      * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
-    frequency?: pulumi.Input<string>;
-    windowStartTime?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime>;
+    frequency?: pulumi.Input<string | undefined>;
+    windowStartTime?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime | undefined>;
 }
 
 export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
-    hours?: pulumi.Input<number>;
-    minutes?: pulumi.Input<number>;
+    hours?: pulumi.Input<number | undefined>;
+    minutes?: pulumi.Input<number | undefined>;
 }
 
 export interface AccountSettingV2BooleanVal {
-    value?: pulumi.Input<boolean>;
+    value?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
@@ -552,63 +552,63 @@ export interface AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
 }
 
 export interface AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
-    approvedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    approvedDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspace {
-    canToggle?: pulumi.Input<boolean>;
-    enabled?: pulumi.Input<boolean>;
-    enablementDetails?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails>;
-    maintenanceWindow?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow>;
-    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
+    canToggle?: pulumi.Input<boolean | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    enablementDetails?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails | undefined>;
+    maintenanceWindow?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow | undefined>;
+    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails {
     /**
      * The feature is force enabled if compliance mode is active
      */
-    forcedForComplianceMode?: pulumi.Input<boolean>;
+    forcedForComplianceMode?: pulumi.Input<boolean | undefined>;
     /**
      * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
      */
-    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
+    unavailableForDisabledEntitlement?: pulumi.Input<boolean | undefined>;
     /**
      * The feature is unavailable if the customer doesn't have enterprise tier
      */
-    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
+    unavailableForNonEnterpriseTier?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
-    weekDayBasedSchedule?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule>;
+    weekDayBasedSchedule?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule | undefined>;
 }
 
 export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
      * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
-    dayOfWeek?: pulumi.Input<string>;
+    dayOfWeek?: pulumi.Input<string | undefined>;
     /**
      * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
-    frequency?: pulumi.Input<string>;
-    windowStartTime?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime>;
+    frequency?: pulumi.Input<string | undefined>;
+    windowStartTime?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime | undefined>;
 }
 
 export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
-    hours?: pulumi.Input<number>;
-    minutes?: pulumi.Input<number>;
+    hours?: pulumi.Input<number | undefined>;
+    minutes?: pulumi.Input<number | undefined>;
 }
 
 export interface AccountSettingV2EffectiveBooleanVal {
-    value?: pulumi.Input<boolean>;
+    value?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AccountSettingV2EffectiveIntegerVal {
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
 }
 
 export interface AccountSettingV2EffectivePersonalCompute {
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountSettingV2EffectiveRestrictWorkspaceAdmins {
@@ -616,7 +616,7 @@ export interface AccountSettingV2EffectiveRestrictWorkspaceAdmins {
      * When true, workspace admins cannot create governance tags.
      * ALLOW_ALL status does not override this; they are independent
      */
-    disableGovTagCreation?: pulumi.Input<boolean>;
+    disableGovTagCreation?: pulumi.Input<boolean | undefined>;
     /**
      * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
@@ -624,15 +624,15 @@ export interface AccountSettingV2EffectiveRestrictWorkspaceAdmins {
 }
 
 export interface AccountSettingV2EffectiveStringVal {
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountSettingV2IntegerVal {
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
 }
 
 export interface AccountSettingV2PersonalCompute {
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountSettingV2RestrictWorkspaceAdmins {
@@ -640,7 +640,7 @@ export interface AccountSettingV2RestrictWorkspaceAdmins {
      * When true, workspace admins cannot create governance tags.
      * ALLOW_ALL status does not override this; they are independent
      */
-    disableGovTagCreation?: pulumi.Input<boolean>;
+    disableGovTagCreation?: pulumi.Input<boolean | undefined>;
     /**
      * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
@@ -648,7 +648,7 @@ export interface AccountSettingV2RestrictWorkspaceAdmins {
 }
 
 export interface AccountSettingV2StringVal {
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy {
@@ -683,7 +683,7 @@ export interface AlertCondition {
     /**
      * Alert state if the result is empty (`UNKNOWN`, `OK`, `TRIGGERED`)
      */
-    emptyResultState?: pulumi.Input<string>;
+    emptyResultState?: pulumi.Input<string | undefined>;
     /**
      * Operator used for comparison in alert evaluation. (Enum: `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `EQUAL`, `NOT_EQUAL`, `IS_NULL`)
      */
@@ -695,7 +695,7 @@ export interface AlertCondition {
     /**
      * Threshold value used for comparison in alert evaluation:
      */
-    threshold?: pulumi.Input<inputs.AlertConditionThreshold>;
+    threshold?: pulumi.Input<inputs.AlertConditionThreshold | undefined>;
 }
 
 export interface AlertConditionOperand {
@@ -723,15 +723,15 @@ export interface AlertConditionThresholdValue {
     /**
      * boolean value (`true` or `false`) to compare against boolean results.
      */
-    boolValue?: pulumi.Input<boolean>;
+    boolValue?: pulumi.Input<boolean | undefined>;
     /**
      * double value to compare against integer and double results.
      */
-    doubleValue?: pulumi.Input<number>;
+    doubleValue?: pulumi.Input<number | undefined>;
     /**
      * string value to compare against string results.
      */
-    stringValue?: pulumi.Input<string>;
+    stringValue?: pulumi.Input<string | undefined>;
 }
 
 export interface AlertProviderConfig {
@@ -745,11 +745,11 @@ export interface AlertV2EffectiveRunAs {
     /**
      * Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
      */
-    servicePrincipalName?: pulumi.Input<string>;
+    servicePrincipalName?: pulumi.Input<string | undefined>;
     /**
      * The email of an active workspace user. Can only set this field to their own email
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface AlertV2Evaluation {
@@ -760,15 +760,15 @@ export interface AlertV2Evaluation {
     /**
      * Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
-    emptyResultState?: pulumi.Input<string>;
+    emptyResultState?: pulumi.Input<string | undefined>;
     /**
      * (string) - Timestamp of the last evaluation
      */
-    lastEvaluatedAt?: pulumi.Input<string>;
+    lastEvaluatedAt?: pulumi.Input<string | undefined>;
     /**
      * User or Notification Destination to notify when alert is triggered
      */
-    notification?: pulumi.Input<inputs.AlertV2EvaluationNotification>;
+    notification?: pulumi.Input<inputs.AlertV2EvaluationNotification | undefined>;
     /**
      * Source column from result to use to evaluate alert
      */
@@ -776,61 +776,61 @@ export interface AlertV2Evaluation {
     /**
      * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Threshold to user for alert evaluation, can be a column or a value
      */
-    threshold?: pulumi.Input<inputs.AlertV2EvaluationThreshold>;
+    threshold?: pulumi.Input<inputs.AlertV2EvaluationThreshold | undefined>;
 }
 
 export interface AlertV2EvaluationNotification {
-    effectiveNotifyOnOk?: pulumi.Input<boolean>;
-    effectiveRetriggerSeconds?: pulumi.Input<number>;
+    effectiveNotifyOnOk?: pulumi.Input<boolean | undefined>;
+    effectiveRetriggerSeconds?: pulumi.Input<number | undefined>;
     /**
      * Whether to notify alert subscribers when alert returns back to normal
      */
-    notifyOnOk?: pulumi.Input<boolean>;
+    notifyOnOk?: pulumi.Input<boolean | undefined>;
     /**
      * Number of seconds an alert waits after being triggered before it is allowed to send another notification.
      * If set to 0 or omitted, the alert will not send any further notifications after the first trigger
      * Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
      */
-    retriggerSeconds?: pulumi.Input<number>;
-    subscriptions?: pulumi.Input<pulumi.Input<inputs.AlertV2EvaluationNotificationSubscription>[]>;
+    retriggerSeconds?: pulumi.Input<number | undefined>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.AlertV2EvaluationNotificationSubscription>[] | undefined>;
 }
 
 export interface AlertV2EvaluationNotificationSubscription {
-    destinationId?: pulumi.Input<string>;
-    userEmail?: pulumi.Input<string>;
+    destinationId?: pulumi.Input<string | undefined>;
+    userEmail?: pulumi.Input<string | undefined>;
 }
 
 export interface AlertV2EvaluationSource {
     /**
      * If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
-    aggregation?: pulumi.Input<string>;
-    display?: pulumi.Input<string>;
+    aggregation?: pulumi.Input<string | undefined>;
+    display?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
 }
 
 export interface AlertV2EvaluationThreshold {
-    column?: pulumi.Input<inputs.AlertV2EvaluationThresholdColumn>;
-    value?: pulumi.Input<inputs.AlertV2EvaluationThresholdValue>;
+    column?: pulumi.Input<inputs.AlertV2EvaluationThresholdColumn | undefined>;
+    value?: pulumi.Input<inputs.AlertV2EvaluationThresholdValue | undefined>;
 }
 
 export interface AlertV2EvaluationThresholdColumn {
     /**
      * If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
-    aggregation?: pulumi.Input<string>;
-    display?: pulumi.Input<string>;
+    aggregation?: pulumi.Input<string | undefined>;
+    display?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
 }
 
 export interface AlertV2EvaluationThresholdValue {
-    boolValue?: pulumi.Input<boolean>;
-    doubleValue?: pulumi.Input<number>;
-    stringValue?: pulumi.Input<string>;
+    boolValue?: pulumi.Input<boolean | undefined>;
+    doubleValue?: pulumi.Input<number | undefined>;
+    stringValue?: pulumi.Input<string | undefined>;
 }
 
 export interface AlertV2ProviderConfig {
@@ -844,18 +844,18 @@ export interface AlertV2RunAs {
     /**
      * Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
      */
-    servicePrincipalName?: pulumi.Input<string>;
+    servicePrincipalName?: pulumi.Input<string | undefined>;
     /**
      * The email of an active workspace user. Can only set this field to their own email
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface AlertV2Schedule {
     /**
      * Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
      */
-    pauseStatus?: pulumi.Input<string>;
+    pauseStatus?: pulumi.Input<string | undefined>;
     /**
      * A cron expression using quartz syntax that specifies the schedule for this pipeline.
      * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
@@ -870,48 +870,48 @@ export interface AlertV2Schedule {
 }
 
 export interface AppActiveDeployment {
-    commands?: pulumi.Input<pulumi.Input<string>[]>;
+    commands?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The creation time of the app.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The email of the user that created the app.
      */
-    creator?: pulumi.Input<string>;
-    deploymentArtifacts?: pulumi.Input<inputs.AppActiveDeploymentDeploymentArtifacts>;
-    deploymentId?: pulumi.Input<string>;
-    envVars?: pulumi.Input<pulumi.Input<inputs.AppActiveDeploymentEnvVar>[]>;
-    gitSource?: pulumi.Input<inputs.AppActiveDeploymentGitSource>;
-    mode?: pulumi.Input<string>;
-    sourceCodePath?: pulumi.Input<string>;
-    status?: pulumi.Input<inputs.AppActiveDeploymentStatus>;
+    creator?: pulumi.Input<string | undefined>;
+    deploymentArtifacts?: pulumi.Input<inputs.AppActiveDeploymentDeploymentArtifacts | undefined>;
+    deploymentId?: pulumi.Input<string | undefined>;
+    envVars?: pulumi.Input<pulumi.Input<inputs.AppActiveDeploymentEnvVar>[] | undefined>;
+    gitSource?: pulumi.Input<inputs.AppActiveDeploymentGitSource | undefined>;
+    mode?: pulumi.Input<string | undefined>;
+    sourceCodePath?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<inputs.AppActiveDeploymentStatus | undefined>;
     /**
      * The update time of the app.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 export interface AppActiveDeploymentDeploymentArtifacts {
-    sourceCodePath?: pulumi.Input<string>;
+    sourceCodePath?: pulumi.Input<string | undefined>;
 }
 
 export interface AppActiveDeploymentEnvVar {
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
-    name?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
-    valueFrom?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
+    valueFrom?: pulumi.Input<string | undefined>;
 }
 
 export interface AppActiveDeploymentGitSource {
-    branch?: pulumi.Input<string>;
-    commit?: pulumi.Input<string>;
-    gitRepository?: pulumi.Input<inputs.AppActiveDeploymentGitSourceGitRepository>;
-    resolvedCommit?: pulumi.Input<string>;
-    sourceCodePath?: pulumi.Input<string>;
-    tag?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
+    commit?: pulumi.Input<string | undefined>;
+    gitRepository?: pulumi.Input<inputs.AppActiveDeploymentGitSourceGitRepository | undefined>;
+    resolvedCommit?: pulumi.Input<string | undefined>;
+    sourceCodePath?: pulumi.Input<string | undefined>;
+    tag?: pulumi.Input<string | undefined>;
 }
 
 export interface AppActiveDeploymentGitSourceGitRepository {
@@ -926,34 +926,34 @@ export interface AppActiveDeploymentStatus {
     /**
      * Application status message
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * State of the application.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface AppAppStatus {
     /**
      * Application status message
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * State of the application.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface AppComputeStatus {
-    activeInstances?: pulumi.Input<number>;
+    activeInstances?: pulumi.Input<number | undefined>;
     /**
      * Application status message
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * State of the application.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface AppGitRepository {
@@ -965,48 +965,48 @@ export interface AppGitRepository {
 }
 
 export interface AppPendingDeployment {
-    commands?: pulumi.Input<pulumi.Input<string>[]>;
+    commands?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The creation time of the app.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The email of the user that created the app.
      */
-    creator?: pulumi.Input<string>;
-    deploymentArtifacts?: pulumi.Input<inputs.AppPendingDeploymentDeploymentArtifacts>;
-    deploymentId?: pulumi.Input<string>;
-    envVars?: pulumi.Input<pulumi.Input<inputs.AppPendingDeploymentEnvVar>[]>;
-    gitSource?: pulumi.Input<inputs.AppPendingDeploymentGitSource>;
-    mode?: pulumi.Input<string>;
-    sourceCodePath?: pulumi.Input<string>;
-    status?: pulumi.Input<inputs.AppPendingDeploymentStatus>;
+    creator?: pulumi.Input<string | undefined>;
+    deploymentArtifacts?: pulumi.Input<inputs.AppPendingDeploymentDeploymentArtifacts | undefined>;
+    deploymentId?: pulumi.Input<string | undefined>;
+    envVars?: pulumi.Input<pulumi.Input<inputs.AppPendingDeploymentEnvVar>[] | undefined>;
+    gitSource?: pulumi.Input<inputs.AppPendingDeploymentGitSource | undefined>;
+    mode?: pulumi.Input<string | undefined>;
+    sourceCodePath?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<inputs.AppPendingDeploymentStatus | undefined>;
     /**
      * The update time of the app.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 export interface AppPendingDeploymentDeploymentArtifacts {
-    sourceCodePath?: pulumi.Input<string>;
+    sourceCodePath?: pulumi.Input<string | undefined>;
 }
 
 export interface AppPendingDeploymentEnvVar {
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
-    name?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
-    valueFrom?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
+    valueFrom?: pulumi.Input<string | undefined>;
 }
 
 export interface AppPendingDeploymentGitSource {
-    branch?: pulumi.Input<string>;
-    commit?: pulumi.Input<string>;
-    gitRepository?: pulumi.Input<inputs.AppPendingDeploymentGitSourceGitRepository>;
-    resolvedCommit?: pulumi.Input<string>;
-    sourceCodePath?: pulumi.Input<string>;
-    tag?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
+    commit?: pulumi.Input<string | undefined>;
+    gitRepository?: pulumi.Input<inputs.AppPendingDeploymentGitSourceGitRepository | undefined>;
+    resolvedCommit?: pulumi.Input<string | undefined>;
+    sourceCodePath?: pulumi.Input<string | undefined>;
+    tag?: pulumi.Input<string | undefined>;
 }
 
 export interface AppPendingDeploymentGitSourceGitRepository {
@@ -1021,67 +1021,67 @@ export interface AppPendingDeploymentStatus {
     /**
      * Application status message
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * State of the application.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface AppProviderConfig {
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface AppResource {
-    app?: pulumi.Input<inputs.AppResourceApp>;
+    app?: pulumi.Input<inputs.AppResourceApp | undefined>;
     /**
      * attribute
      */
-    database?: pulumi.Input<inputs.AppResourceDatabase>;
+    database?: pulumi.Input<inputs.AppResourceDatabase | undefined>;
     /**
      * The description of the resource.
      *
      * Exactly one of the following attributes must be provided:
      */
-    description?: pulumi.Input<string>;
-    experiment?: pulumi.Input<inputs.AppResourceExperiment>;
+    description?: pulumi.Input<string | undefined>;
+    experiment?: pulumi.Input<inputs.AppResourceExperiment | undefined>;
     /**
      * attribute
      */
-    genieSpace?: pulumi.Input<inputs.AppResourceGenieSpace>;
+    genieSpace?: pulumi.Input<inputs.AppResourceGenieSpace | undefined>;
     /**
      * attribute
      */
-    job?: pulumi.Input<inputs.AppResourceJob>;
+    job?: pulumi.Input<inputs.AppResourceJob | undefined>;
     /**
      * The name of the resource.
      */
     name: pulumi.Input<string>;
-    postgres?: pulumi.Input<inputs.AppResourcePostgres>;
+    postgres?: pulumi.Input<inputs.AppResourcePostgres | undefined>;
     /**
      * attribute
      */
-    secret?: pulumi.Input<inputs.AppResourceSecret>;
+    secret?: pulumi.Input<inputs.AppResourceSecret | undefined>;
     /**
      * attribute
      */
-    servingEndpoint?: pulumi.Input<inputs.AppResourceServingEndpoint>;
+    servingEndpoint?: pulumi.Input<inputs.AppResourceServingEndpoint | undefined>;
     /**
      * attribute
      */
-    sqlWarehouse?: pulumi.Input<inputs.AppResourceSqlWarehouse>;
+    sqlWarehouse?: pulumi.Input<inputs.AppResourceSqlWarehouse | undefined>;
     /**
      * attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
      */
-    ucSecurable?: pulumi.Input<inputs.AppResourceUcSecurable>;
+    ucSecurable?: pulumi.Input<inputs.AppResourceUcSecurable | undefined>;
 }
 
 export interface AppResourceApp {
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
-    name?: pulumi.Input<string>;
-    permission?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    permission?: pulumi.Input<string | undefined>;
 }
 
 export interface AppResourceDatabase {
@@ -1128,12 +1128,12 @@ export interface AppResourceJob {
 }
 
 export interface AppResourcePostgres {
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * attribute
      */
-    database?: pulumi.Input<string>;
-    permission?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
+    permission?: pulumi.Input<string | undefined>;
 }
 
 export interface AppResourceSecret {
@@ -1182,7 +1182,7 @@ export interface AppResourceUcSecurable {
      * the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
      */
     securableFullName: pulumi.Input<string>;
-    securableKind?: pulumi.Input<string>;
+    securableKind?: pulumi.Input<string | undefined>;
     /**
      * the type of UC securable, i.e. `VOLUME`.
      */
@@ -1197,25 +1197,25 @@ export interface AppSpaceProviderConfig {
 }
 
 export interface AppSpaceResource {
-    app?: pulumi.Input<inputs.AppSpaceResourceApp>;
-    database?: pulumi.Input<inputs.AppSpaceResourceDatabase>;
+    app?: pulumi.Input<inputs.AppSpaceResourceApp | undefined>;
+    database?: pulumi.Input<inputs.AppSpaceResourceDatabase | undefined>;
     /**
      * The description of the app space
      */
-    description?: pulumi.Input<string>;
-    experiment?: pulumi.Input<inputs.AppSpaceResourceExperiment>;
-    genieSpace?: pulumi.Input<inputs.AppSpaceResourceGenieSpace>;
-    job?: pulumi.Input<inputs.AppSpaceResourceJob>;
+    description?: pulumi.Input<string | undefined>;
+    experiment?: pulumi.Input<inputs.AppSpaceResourceExperiment | undefined>;
+    genieSpace?: pulumi.Input<inputs.AppSpaceResourceGenieSpace | undefined>;
+    job?: pulumi.Input<inputs.AppSpaceResourceJob | undefined>;
     /**
      * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
      * It must be unique within the workspace
      */
     name: pulumi.Input<string>;
-    postgres?: pulumi.Input<inputs.AppSpaceResourcePostgres>;
-    secret?: pulumi.Input<inputs.AppSpaceResourceSecret>;
-    servingEndpoint?: pulumi.Input<inputs.AppSpaceResourceServingEndpoint>;
-    sqlWarehouse?: pulumi.Input<inputs.AppSpaceResourceSqlWarehouse>;
-    ucSecurable?: pulumi.Input<inputs.AppSpaceResourceUcSecurable>;
+    postgres?: pulumi.Input<inputs.AppSpaceResourcePostgres | undefined>;
+    secret?: pulumi.Input<inputs.AppSpaceResourceSecret | undefined>;
+    servingEndpoint?: pulumi.Input<inputs.AppSpaceResourceServingEndpoint | undefined>;
+    sqlWarehouse?: pulumi.Input<inputs.AppSpaceResourceSqlWarehouse | undefined>;
+    ucSecurable?: pulumi.Input<inputs.AppSpaceResourceUcSecurable | undefined>;
 }
 
 export interface AppSpaceResourceApp {
@@ -1223,8 +1223,8 @@ export interface AppSpaceResourceApp {
      * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
      * It must be unique within the workspace
      */
-    name?: pulumi.Input<string>;
-    permission?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    permission?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpaceResourceDatabase {
@@ -1257,9 +1257,9 @@ export interface AppSpaceResourceJob {
 }
 
 export interface AppSpaceResourcePostgres {
-    branch?: pulumi.Input<string>;
-    database?: pulumi.Input<string>;
-    permission?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
+    database?: pulumi.Input<string | undefined>;
+    permission?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpaceResourceSecret {
@@ -1298,7 +1298,7 @@ export interface AppSpaceResourceUcSecurable {
      * (string) - The securable kind from Unity Catalog.
      * See https://docs.databricks.com/api/workspace/tables/get#securable_kind_manifest-securable_kind
      */
-    securableKind?: pulumi.Input<string>;
+    securableKind?: pulumi.Input<string | undefined>;
     /**
      * Possible values are: `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`
      */
@@ -1309,15 +1309,15 @@ export interface AppSpaceStatus {
     /**
      * (string) - Message providing context about the current state
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * (string) - The state of the app space. Possible values are: `SPACE_ACTIVE`, `SPACE_CREATING`, `SPACE_DELETED`, `SPACE_DELETING`, `SPACE_ERROR`, `SPACE_UPDATING`
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface AppTelemetryExportDestination {
-    unityCatalog?: pulumi.Input<inputs.AppTelemetryExportDestinationUnityCatalog>;
+    unityCatalog?: pulumi.Input<inputs.AppTelemetryExportDestinationUnityCatalog | undefined>;
 }
 
 export interface AppTelemetryExportDestinationUnityCatalog {
@@ -1330,13 +1330,13 @@ export interface AppsSettingsCustomTemplateManifest {
     /**
      * The description of the template
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
      * It must be unique within the workspace
      */
     name: pulumi.Input<string>;
-    resourceSpecs?: pulumi.Input<pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpec>[]>;
+    resourceSpecs?: pulumi.Input<pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpec>[] | undefined>;
     /**
      * The manifest schema version, for now only 1 is allowed
      */
@@ -1347,18 +1347,18 @@ export interface AppsSettingsCustomTemplateManifestResourceSpec {
     /**
      * The description of the template
      */
-    description?: pulumi.Input<string>;
-    experimentSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecExperimentSpec>;
-    jobSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecJobSpec>;
+    description?: pulumi.Input<string | undefined>;
+    experimentSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecExperimentSpec | undefined>;
+    jobSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecJobSpec | undefined>;
     /**
      * The name of the template. It must contain only alphanumeric characters, hyphens, underscores, and whitespaces.
      * It must be unique within the workspace
      */
     name: pulumi.Input<string>;
-    secretSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecSecretSpec>;
-    servingEndpointSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpec>;
-    sqlWarehouseSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec>;
-    ucSecurableSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec>;
+    secretSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecSecretSpec | undefined>;
+    servingEndpointSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecServingEndpointSpec | undefined>;
+    sqlWarehouseSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecSqlWarehouseSpec | undefined>;
+    ucSecurableSpec?: pulumi.Input<inputs.AppsSettingsCustomTemplateManifestResourceSpecUcSecurableSpec | undefined>;
 }
 
 export interface AppsSettingsCustomTemplateManifestResourceSpecExperimentSpec {
@@ -1415,27 +1415,27 @@ export interface ArtifactAllowlistProviderConfig {
 }
 
 export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace {
-    canToggle?: pulumi.Input<boolean>;
+    canToggle?: pulumi.Input<boolean | undefined>;
     enabled: pulumi.Input<boolean>;
-    enablementDetails?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetails>;
-    maintenanceWindow?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindow>;
-    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
+    enablementDetails?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetails | undefined>;
+    maintenanceWindow?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindow | undefined>;
+    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceEnablementDetails {
-    forcedForComplianceMode?: pulumi.Input<boolean>;
-    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
-    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
+    forcedForComplianceMode?: pulumi.Input<boolean | undefined>;
+    unavailableForDisabledEntitlement?: pulumi.Input<boolean | undefined>;
+    unavailableForNonEnterpriseTier?: pulumi.Input<boolean | undefined>;
 }
 
 export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindow {
-    weekDayBasedSchedule?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule>;
+    weekDayBasedSchedule?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule | undefined>;
 }
 
 export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     dayOfWeek: pulumi.Input<string>;
     frequency: pulumi.Input<string>;
-    windowStartTime?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime>;
+    windowStartTime?: pulumi.Input<inputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime | undefined>;
 }
 
 export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
@@ -1451,80 +1451,80 @@ export interface BudgetAlertConfiguration {
     /**
      * List of action configurations to take when the budget alert is triggered. Consists of the following fields:
      */
-    actionConfigurations?: pulumi.Input<pulumi.Input<inputs.BudgetAlertConfigurationActionConfiguration>[]>;
-    alertConfigurationId?: pulumi.Input<string>;
+    actionConfigurations?: pulumi.Input<pulumi.Input<inputs.BudgetAlertConfigurationActionConfiguration>[] | undefined>;
+    alertConfigurationId?: pulumi.Input<string | undefined>;
     /**
      * The threshold for the budget alert to determine if it is in a triggered state. The number is evaluated based on `quantityType`.
      */
-    quantityThreshold?: pulumi.Input<string>;
+    quantityThreshold?: pulumi.Input<string | undefined>;
     /**
      * The way to calculate cost for this budget alert. This is what quantityThreshold is measured in. (Enum: `LIST_PRICE_DOLLARS_USD`)
      */
-    quantityType?: pulumi.Input<string>;
+    quantityType?: pulumi.Input<string | undefined>;
     /**
      * The time window of usage data for the budget. (Enum: `MONTH`)
      */
-    timePeriod?: pulumi.Input<string>;
+    timePeriod?: pulumi.Input<string | undefined>;
     /**
      * The evaluation method to determine when this budget alert is in a triggered state. (Enum: `CUMULATIVE_SPENDING_EXCEEDED`)
      */
-    triggerType?: pulumi.Input<string>;
+    triggerType?: pulumi.Input<string | undefined>;
 }
 
 export interface BudgetAlertConfigurationActionConfiguration {
-    actionConfigurationId?: pulumi.Input<string>;
+    actionConfigurationId?: pulumi.Input<string | undefined>;
     /**
      * The type of action to take when the budget alert is triggered. (Enum: `EMAIL_NOTIFICATION`)
      */
-    actionType?: pulumi.Input<string>;
+    actionType?: pulumi.Input<string | undefined>;
     /**
      * The target of the action. For `EMAIL_NOTIFICATION`, this is the email address to send the notification to.
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
 }
 
 export interface BudgetFilter {
     /**
      * List of tags to filter by. Consists of the following fields:
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.BudgetFilterTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.BudgetFilterTag>[] | undefined>;
     /**
      * Filter by workspace ID (if empty, include usage all usage for this account). Consists of the following fields:
      */
-    workspaceId?: pulumi.Input<inputs.BudgetFilterWorkspaceId>;
+    workspaceId?: pulumi.Input<inputs.BudgetFilterWorkspaceId | undefined>;
 }
 
 export interface BudgetFilterTag {
     /**
      * The key of the tag.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Consists of the following fields:
      */
-    value?: pulumi.Input<inputs.BudgetFilterTagValue>;
+    value?: pulumi.Input<inputs.BudgetFilterTagValue | undefined>;
 }
 
 export interface BudgetFilterTagValue {
     /**
      * The operator to use for the filter. (Enum: `IN`)
      */
-    operator?: pulumi.Input<string>;
+    operator?: pulumi.Input<string | undefined>;
     /**
      * The values to filter by.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface BudgetFilterWorkspaceId {
     /**
      * The operator to use for the filter. (Enum: `IN`)
      */
-    operator?: pulumi.Input<string>;
+    operator?: pulumi.Input<string | undefined>;
     /**
      * The values to filter by.
      */
-    values?: pulumi.Input<pulumi.Input<number>[]>;
+    values?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 export interface BudgetPolicyCustomTag {
@@ -1538,24 +1538,24 @@ export interface BudgetPolicyCustomTag {
     /**
      * The value of the tag
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface CatalogEffectivePredictiveOptimizationFlag {
-    inheritedFromName?: pulumi.Input<string>;
-    inheritedFromType?: pulumi.Input<string>;
+    inheritedFromName?: pulumi.Input<string | undefined>;
+    inheritedFromType?: pulumi.Input<string | undefined>;
     value: pulumi.Input<string>;
 }
 
 export interface CatalogManagedEncryptionSettings {
-    azureEncryptionSettings?: pulumi.Input<inputs.CatalogManagedEncryptionSettingsAzureEncryptionSettings>;
-    azureKeyVaultKeyId?: pulumi.Input<string>;
-    customerManagedKeyId?: pulumi.Input<string>;
+    azureEncryptionSettings?: pulumi.Input<inputs.CatalogManagedEncryptionSettingsAzureEncryptionSettings | undefined>;
+    azureKeyVaultKeyId?: pulumi.Input<string | undefined>;
+    customerManagedKeyId?: pulumi.Input<string | undefined>;
 }
 
 export interface CatalogManagedEncryptionSettingsAzureEncryptionSettings {
-    azureCmkAccessConnectorId?: pulumi.Input<string>;
-    azureCmkManagedIdentityId?: pulumi.Input<string>;
+    azureCmkAccessConnectorId?: pulumi.Input<string | undefined>;
+    azureCmkManagedIdentityId?: pulumi.Input<string | undefined>;
     azureTenantId: pulumi.Input<string>;
 }
 
@@ -1567,7 +1567,7 @@ export interface CatalogProviderConfig {
 }
 
 export interface CatalogProvisioningInfo {
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface CatalogWorkspaceBindingProviderConfig {
@@ -1603,81 +1603,81 @@ export interface ClusterAutoscale {
      * });
      * ```
      */
-    maxWorkers?: pulumi.Input<number>;
+    maxWorkers?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of workers to which the cluster can scale down when underutilized. It is also the initial number of workers the cluster will have after creation.
      */
-    minWorkers?: pulumi.Input<number>;
+    minWorkers?: pulumi.Input<number | undefined>;
 }
 
 export interface ClusterAwsAttributes {
     /**
      * Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT`, `SPOT_WITH_FALLBACK` and `ON_DEMAND`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster. Backend default value is `SPOT_WITH_FALLBACK` and could change in the future
      */
-    availability?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
     /**
      * The number of volumes launched for each instance. You can choose up to 10 volumes. This feature is only enabled for supported node types. Legacy node types cannot specify custom EBS volumes. For node types with no instance store, at least one EBS volume needs to be specified; otherwise, cluster creation will fail. These EBS volumes will be mounted at /ebs0, /ebs1, and etc. Instance store volumes will be mounted at /local_disk0, /local_disk1, and etc. If EBS volumes are attached, Databricks will configure Spark to use only the EBS volumes for scratch storage because heterogeneously sized scratch devices can lead to inefficient disk utilization. If no EBS volumes are attached, Databricks will configure Spark to use instance store volumes. If EBS volumes are specified, then the Spark configuration spark.local.dir will be overridden.
      */
-    ebsVolumeCount?: pulumi.Input<number>;
+    ebsVolumeCount?: pulumi.Input<number | undefined>;
     /**
      * If using gp3 volumes, what IOPS to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
      */
-    ebsVolumeIops?: pulumi.Input<number>;
+    ebsVolumeIops?: pulumi.Input<number | undefined>;
     /**
      * The size of each EBS volume (in GiB) launched for each instance. For general purpose SSD, this value must be within the range 100 - 4096. For throughput optimized HDD, this value must be within the range 500 - 4096. Custom EBS volumes cannot be specified for the legacy node types (memory-optimized and compute-optimized).
      */
-    ebsVolumeSize?: pulumi.Input<number>;
+    ebsVolumeSize?: pulumi.Input<number | undefined>;
     /**
      * If using gp3 volumes, what throughput to use for the disk. If this is not set, the maximum performance of a gp2 volume with the same volume size will be used.
      */
-    ebsVolumeThroughput?: pulumi.Input<number>;
+    ebsVolumeThroughput?: pulumi.Input<number | undefined>;
     /**
      * The type of EBS volumes that will be launched with this cluster. Valid values are `GENERAL_PURPOSE_SSD` or `THROUGHPUT_OPTIMIZED_HDD`. Use this option only if you're not picking *Delta Optimized `i3.*`* node types.
      */
-    ebsVolumeType?: pulumi.Input<string>;
+    ebsVolumeType?: pulumi.Input<string | undefined>;
     /**
      * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster. If unspecified, the default value is 0.
      */
-    firstOnDemand?: pulumi.Input<number>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
     /**
      * Nodes for this cluster will only be placed on AWS instances with this instance profile. Please see databricks.InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
      */
-    instanceProfileArn?: pulumi.Input<string>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
     /**
      * The max price for AWS spot instances, as a percentage of the corresponding instance type’s on-demand price. For example, if this field is set to 50, and the cluster needs a new `i3.xlarge` spot instance, then the max price is half of the price of on-demand `i3.xlarge` instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand `i3.xlarge` instances. If not specified, the default value is `100`. When spot instances are requested for this cluster, only spot instances whose max price percentage matches this field will be considered. For safety, we enforce this field to be no more than `10000`.
      */
-    spotBidPricePercent?: pulumi.Input<number>;
+    spotBidPricePercent?: pulumi.Input<number | undefined>;
     /**
      * Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-west-2a`. The provided availability zone must be in the same region as the Databricks deployment. For example, `us-west-2a` is not a valid zone ID if the Databricks deployment resides in the `us-east-1` region. Enable automatic availability zone selection ("Auto-AZ"), by setting the value `auto`. Databricks selects the AZ based on available IPs in the workspace subnets and retries in other availability zones if AWS returns insufficient capacity errors.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterAzureAttributes {
     /**
      * Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster.
      */
-    availability?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
     /**
      * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
      */
-    firstOnDemand?: pulumi.Input<number>;
-    logAnalyticsInfo?: pulumi.Input<inputs.ClusterAzureAttributesLogAnalyticsInfo>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    logAnalyticsInfo?: pulumi.Input<inputs.ClusterAzureAttributesLogAnalyticsInfo | undefined>;
     /**
      * The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
      */
-    spotBidMaxPrice?: pulumi.Input<number>;
+    spotBidMaxPrice?: pulumi.Input<number | undefined>;
 }
 
 export interface ClusterAzureAttributesLogAnalyticsInfo {
-    logAnalyticsPrimaryKey?: pulumi.Input<string>;
-    logAnalyticsWorkspaceId?: pulumi.Input<string>;
+    logAnalyticsPrimaryKey?: pulumi.Input<string | undefined>;
+    logAnalyticsWorkspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterClusterLogConf {
-    dbfs?: pulumi.Input<inputs.ClusterClusterLogConfDbfs>;
-    s3?: pulumi.Input<inputs.ClusterClusterLogConfS3>;
-    volumes?: pulumi.Input<inputs.ClusterClusterLogConfVolumes>;
+    dbfs?: pulumi.Input<inputs.ClusterClusterLogConfDbfs | undefined>;
+    s3?: pulumi.Input<inputs.ClusterClusterLogConfS3 | undefined>;
+    volumes?: pulumi.Input<inputs.ClusterClusterLogConfVolumes | undefined>;
 }
 
 export interface ClusterClusterLogConfDbfs {
@@ -1691,7 +1691,7 @@ export interface ClusterClusterLogConfS3 {
     /**
      * Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
      */
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     /**
      * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
      */
@@ -1699,23 +1699,23 @@ export interface ClusterClusterLogConfS3 {
     /**
      * Enable server-side encryption, false by default.
      */
-    enableEncryption?: pulumi.Input<boolean>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
      */
-    encryptionType?: pulumi.Input<string>;
+    encryptionType?: pulumi.Input<string | undefined>;
     /**
      * S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterClusterLogConfVolumes {
@@ -1755,14 +1755,14 @@ export interface ClusterClusterMountInfo {
     /**
      * string specifying path to mount on the remote service.
      */
-    remoteMountDirPath?: pulumi.Input<string>;
+    remoteMountDirPath?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterClusterMountInfoNetworkFilesystemInfo {
     /**
      * string that will be passed as options passed to the `mount` command.
      */
-    mountOptions?: pulumi.Input<string>;
+    mountOptions?: pulumi.Input<string | undefined>;
     /**
      * host name.
      */
@@ -1793,7 +1793,7 @@ export interface ClusterDockerImage {
      * }});
      * ```
      */
-    basicAuth?: pulumi.Input<inputs.ClusterDockerImageBasicAuth>;
+    basicAuth?: pulumi.Input<inputs.ClusterDockerImageBasicAuth | undefined>;
     /**
      * URL for the Docker image
      */
@@ -1809,54 +1809,54 @@ export interface ClusterDriverNodeTypeFlexibility {
     /**
      * list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
      */
-    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ClusterGcpAttributes {
     /**
      * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
      */
-    availability?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
     /**
      * Boot disk size in GB
      */
-    bootDiskSize?: pulumi.Input<number>;
+    bootDiskSize?: pulumi.Input<number | undefined>;
     /**
      * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
      */
-    firstOnDemand?: pulumi.Input<number>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
     /**
      * Google Service Account email address that the cluster uses to authenticate with Google Identity. This field is used for authentication with the GCS and BigQuery data sources.
      */
-    googleServiceAccount?: pulumi.Input<string>;
+    googleServiceAccount?: pulumi.Input<string | undefined>;
     /**
      * Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
      */
-    localSsdCount?: pulumi.Input<number>;
+    localSsdCount?: pulumi.Input<number | undefined>;
     /**
      * if we should use preemptible executors ([GCP documentation](https://cloud.google.com/compute/docs/instances/preemptible)). *Warning: this field is deprecated in favor of `availability`, and will be removed soon.*
      */
-    usePreemptibleExecutors?: pulumi.Input<boolean>;
+    usePreemptibleExecutors?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier for the availability zone in which the cluster resides. This can be one of the following:
      * * `HA` (default): High availability, spread nodes across availability zones for a Databricks deployment region.
      * * `AUTO`: Databricks picks an availability zone to schedule the cluster on.
      * * name of a GCP availability zone: pick one of the available zones from the [list of available availability zones](https://cloud.google.com/compute/docs/regions-zones#available).
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterInitScript {
-    abfss?: pulumi.Input<inputs.ClusterInitScriptAbfss>;
+    abfss?: pulumi.Input<inputs.ClusterInitScriptAbfss | undefined>;
     /**
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
-    dbfs?: pulumi.Input<inputs.ClusterInitScriptDbfs>;
-    file?: pulumi.Input<inputs.ClusterInitScriptFile>;
-    gcs?: pulumi.Input<inputs.ClusterInitScriptGcs>;
-    s3?: pulumi.Input<inputs.ClusterInitScriptS3>;
-    volumes?: pulumi.Input<inputs.ClusterInitScriptVolumes>;
-    workspace?: pulumi.Input<inputs.ClusterInitScriptWorkspace>;
+    dbfs?: pulumi.Input<inputs.ClusterInitScriptDbfs | undefined>;
+    file?: pulumi.Input<inputs.ClusterInitScriptFile | undefined>;
+    gcs?: pulumi.Input<inputs.ClusterInitScriptGcs | undefined>;
+    s3?: pulumi.Input<inputs.ClusterInitScriptS3 | undefined>;
+    volumes?: pulumi.Input<inputs.ClusterInitScriptVolumes | undefined>;
+    workspace?: pulumi.Input<inputs.ClusterInitScriptWorkspace | undefined>;
 }
 
 export interface ClusterInitScriptAbfss {
@@ -1891,7 +1891,7 @@ export interface ClusterInitScriptS3 {
     /**
      * Set canned access control list, e.g. `bucket-owner-full-control`. If `cannedCal` is set, the cluster instance profile must have `s3:PutObjectAcl` permission on the destination bucket and prefix. The full list of possible canned ACLs can be found [here](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl). By default, only the object owner gets full control. If you are using a cross-account role for writing data, you may want to set `bucket-owner-full-control` to make bucket owners able to read the logs.
      */
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     /**
      * S3 destination, e.g., `s3://my-bucket/some-prefix` You must configure the cluster with an instance profile, and the instance profile must have write access to the destination. You cannot use AWS keys.
      */
@@ -1899,23 +1899,23 @@ export interface ClusterInitScriptS3 {
     /**
      * Enable server-side encryption, false by default.
      */
-    enableEncryption?: pulumi.Input<boolean>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * The encryption type, it could be `sse-s3` or `sse-kms`. It is used only when encryption is enabled, and the default type is `sse-s3`.
      */
-    encryptionType?: pulumi.Input<string>;
+    encryptionType?: pulumi.Input<string | undefined>;
     /**
      * S3 endpoint, e.g. <https://s3-us-west-2.amazonaws.com>. Either `region` or `endpoint` needs to be set. If both are set, the endpoint is used.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * KMS key used if encryption is enabled and encryption type is set to `sse-kms`.
      */
-    kmsKey?: pulumi.Input<string>;
+    kmsKey?: pulumi.Input<string | undefined>;
     /**
      * S3 region, e.g. `us-west-2`. Either `region` or `endpoint` must be set. If both are set, the endpoint is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterInitScriptVolumes {
@@ -1933,60 +1933,60 @@ export interface ClusterInitScriptWorkspace {
 }
 
 export interface ClusterLibrary {
-    cran?: pulumi.Input<inputs.ClusterLibraryCran>;
+    cran?: pulumi.Input<inputs.ClusterLibraryCran | undefined>;
     /**
      * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      */
-    egg?: pulumi.Input<string>;
-    jar?: pulumi.Input<string>;
-    maven?: pulumi.Input<inputs.ClusterLibraryMaven>;
-    pypi?: pulumi.Input<inputs.ClusterLibraryPypi>;
-    requirements?: pulumi.Input<string>;
-    whl?: pulumi.Input<string>;
+    egg?: pulumi.Input<string | undefined>;
+    jar?: pulumi.Input<string | undefined>;
+    maven?: pulumi.Input<inputs.ClusterLibraryMaven | undefined>;
+    pypi?: pulumi.Input<inputs.ClusterLibraryPypi | undefined>;
+    requirements?: pulumi.Input<string | undefined>;
+    whl?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterLibraryCran {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterLibraryMaven {
     coordinates: pulumi.Input<string>;
-    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
-    repo?: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterLibraryPypi {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterPolicyLibrary {
-    cran?: pulumi.Input<inputs.ClusterPolicyLibraryCran>;
+    cran?: pulumi.Input<inputs.ClusterPolicyLibraryCran | undefined>;
     /**
      * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      */
-    egg?: pulumi.Input<string>;
-    jar?: pulumi.Input<string>;
-    maven?: pulumi.Input<inputs.ClusterPolicyLibraryMaven>;
+    egg?: pulumi.Input<string | undefined>;
+    jar?: pulumi.Input<string | undefined>;
+    maven?: pulumi.Input<inputs.ClusterPolicyLibraryMaven | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.ClusterPolicyLibraryProviderConfig>;
-    pypi?: pulumi.Input<inputs.ClusterPolicyLibraryPypi>;
-    requirements?: pulumi.Input<string>;
-    whl?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.ClusterPolicyLibraryProviderConfig | undefined>;
+    pypi?: pulumi.Input<inputs.ClusterPolicyLibraryPypi | undefined>;
+    requirements?: pulumi.Input<string | undefined>;
+    whl?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterPolicyLibraryCran {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterPolicyLibraryMaven {
     coordinates: pulumi.Input<string>;
-    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
-    repo?: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterPolicyLibraryProviderConfig {
@@ -1998,7 +1998,7 @@ export interface ClusterPolicyLibraryProviderConfig {
 
 export interface ClusterPolicyLibraryPypi {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterPolicyProviderConfig {
@@ -2048,7 +2048,7 @@ export interface ClusterWorkerNodeTypeFlexibility {
     /**
      * list of alternative node types that will be used if main node type isn't available.  Follow the [documentation](https://learn.microsoft.com/en-us/azure/databricks/compute/flexible-node-types#fallback-instance-type-requirements) for requirements on selection of alternative node types.
      */
-    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ClusterWorkloadType {
@@ -2071,11 +2071,11 @@ export interface ClusterWorkloadTypeClients {
      * }});
      * ```
      */
-    jobs?: pulumi.Input<boolean>;
+    jobs?: pulumi.Input<boolean | undefined>;
     /**
      * boolean flag defining if it's possible to run notebooks on this cluster. Default: `true`.
      */
-    notebooks?: pulumi.Input<boolean>;
+    notebooks?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace {
@@ -2095,18 +2095,18 @@ export interface ConnectionProviderConfig {
 }
 
 export interface ConnectionProvisioningInfo {
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface CredentialAwsIamRole {
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * The Amazon Resource Name (ARN) of the AWS IAM role you want to use to setup the trust policy, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
      *
      * `azureManagedIdentity` optional configuration block for using managed identity as credential details for Azure (recommended over `azureServicePrincipal`):
      */
-    roleArn?: pulumi.Input<string>;
-    unityCatalogIamArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
+    unityCatalogIamArn?: pulumi.Input<string | undefined>;
 }
 
 export interface CredentialAzureManagedIdentity {
@@ -2117,13 +2117,13 @@ export interface CredentialAzureManagedIdentity {
     /**
      * Unique ID of the credential.
      */
-    credentialId?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string | undefined>;
     /**
      * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
      *
      * `azureServicePrincipal` optional configuration block to use service principal as credential details for Azure. Only applicable when purpose is `STORAGE` (Legacy):
      */
-    managedIdentityId?: pulumi.Input<string>;
+    managedIdentityId?: pulumi.Input<string | undefined>;
 }
 
 export interface CredentialAzureServicePrincipal {
@@ -2147,12 +2147,12 @@ export interface CredentialDatabricksGcpServiceAccount {
     /**
      * Unique ID of the credential.
      */
-    credentialId?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string | undefined>;
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
      */
-    email?: pulumi.Input<string>;
-    privateKeyId?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
+    privateKeyId?: pulumi.Input<string | undefined>;
 }
 
 export interface CredentialProviderConfig {
@@ -2163,16 +2163,16 @@ export interface CredentialProviderConfig {
 }
 
 export interface CustomAppIntegrationTokenAccessPolicy {
-    absoluteSessionLifetimeInMinutes?: pulumi.Input<number>;
+    absoluteSessionLifetimeInMinutes?: pulumi.Input<number | undefined>;
     /**
      * access token time to live (TTL) in minutes.
      */
-    accessTokenTtlInMinutes?: pulumi.Input<number>;
-    enableSingleUseRefreshTokens?: pulumi.Input<boolean>;
+    accessTokenTtlInMinutes?: pulumi.Input<number | undefined>;
+    enableSingleUseRefreshTokens?: pulumi.Input<boolean | undefined>;
     /**
      * refresh token TTL in minutes. The TTL of refresh token cannot be lower than TTL of access token.
      */
-    refreshTokenTtlInMinutes?: pulumi.Input<number>;
+    refreshTokenTtlInMinutes?: pulumi.Input<number | undefined>;
 }
 
 export interface DashboardProviderConfig {
@@ -2208,7 +2208,7 @@ export interface DataQualityMonitorAnomalyDetectionConfig {
     /**
      * List of fully qualified table names to exclude from anomaly detection
      */
-    excludedTableFullNames?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedTableFullNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface DataQualityMonitorDataProfilingConfig {
@@ -2216,44 +2216,44 @@ export interface DataQualityMonitorDataProfilingConfig {
      * Field for specifying the absolute path to a custom directory to store data-monitoring
      * assets. Normally prepopulated to a default user location via UI and Python APIs
      */
-    assetsDir?: pulumi.Input<string>;
+    assetsDir?: pulumi.Input<string | undefined>;
     /**
      * Baseline table name.
      * Baseline data is used to compute drift from the data in the monitored `tableName`.
      * The baseline table and the monitored table shall have the same schema
      */
-    baselineTableName?: pulumi.Input<string>;
+    baselineTableName?: pulumi.Input<string | undefined>;
     /**
      * Custom metrics
      */
-    customMetrics?: pulumi.Input<pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigCustomMetric>[]>;
-    dashboardId?: pulumi.Input<string>;
-    driftMetricsTableName?: pulumi.Input<string>;
-    effectiveWarehouseId?: pulumi.Input<string>;
+    customMetrics?: pulumi.Input<pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigCustomMetric>[] | undefined>;
+    dashboardId?: pulumi.Input<string | undefined>;
+    driftMetricsTableName?: pulumi.Input<string | undefined>;
+    effectiveWarehouseId?: pulumi.Input<string | undefined>;
     /**
      * `Analysis Configuration` for monitoring inference log tables
      */
-    inferenceLog?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigInferenceLog>;
-    latestMonitorFailureMessage?: pulumi.Input<string>;
-    monitorVersion?: pulumi.Input<number>;
-    monitoredTableName?: pulumi.Input<string>;
+    inferenceLog?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigInferenceLog | undefined>;
+    latestMonitorFailureMessage?: pulumi.Input<string | undefined>;
+    monitorVersion?: pulumi.Input<number | undefined>;
+    monitoredTableName?: pulumi.Input<string | undefined>;
     /**
      * Field for specifying notification settings
      */
-    notificationSettings?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigNotificationSettings>;
+    notificationSettings?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigNotificationSettings | undefined>;
     /**
      * ID of the schema where output tables are created
      */
     outputSchemaId: pulumi.Input<string>;
-    profileMetricsTableName?: pulumi.Input<string>;
+    profileMetricsTableName?: pulumi.Input<string | undefined>;
     /**
      * The cron schedule
      */
-    schedule?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigSchedule>;
+    schedule?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigSchedule | undefined>;
     /**
      * Whether to skip creating a default dashboard summarizing data quality metrics
      */
-    skipBuiltinDashboard?: pulumi.Input<boolean>;
+    skipBuiltinDashboard?: pulumi.Input<boolean | undefined>;
     /**
      * List of column expressions to slice data with for targeted analysis. The data is grouped by
      * each expression independently, resulting in a separate slice for each predicate and its
@@ -2262,21 +2262,21 @@ export interface DataQualityMonitorDataProfilingConfig {
      * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
      * generate slices
      */
-    slicingExprs?: pulumi.Input<pulumi.Input<string>[]>;
+    slicingExprs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * `Analysis Configuration` for monitoring snapshot tables
      */
-    snapshot?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigSnapshot>;
-    status?: pulumi.Input<string>;
+    snapshot?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigSnapshot | undefined>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * `Analysis Configuration` for monitoring time series tables
      */
-    timeSeries?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigTimeSeries>;
+    timeSeries?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigTimeSeries | undefined>;
     /**
      * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
      * warehouse will be used
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface DataQualityMonitorDataProfilingConfigCustomMetric {
@@ -2308,7 +2308,7 @@ export interface DataQualityMonitorDataProfilingConfigInferenceLog {
     /**
      * Column for the label
      */
-    labelColumn?: pulumi.Input<string>;
+    labelColumn?: pulumi.Input<string | undefined>;
     /**
      * Column for the model identifier
      */
@@ -2328,18 +2328,18 @@ export interface DataQualityMonitorDataProfilingConfigNotificationSettings {
     /**
      * Destinations to send notifications on failure/timeout
      */
-    onFailure?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure>;
+    onFailure?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure | undefined>;
 }
 
 export interface DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure {
     /**
      * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
      */
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface DataQualityMonitorDataProfilingConfigSchedule {
-    pauseStatus?: pulumi.Input<string>;
+    pauseStatus?: pulumi.Input<string | undefined>;
     /**
      * The expression that determines when to run the monitor. See [examples](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html)
      */
@@ -2391,7 +2391,7 @@ export interface DatabaseInstanceChildInstanceRef {
      * Input: For specifying the point in time to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      */
-    branchTime?: pulumi.Input<string>;
+    branchTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
@@ -2400,44 +2400,44 @@ export interface DatabaseInstanceChildInstanceRef {
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
-    effectiveLsn?: pulumi.Input<string>;
+    effectiveLsn?: pulumi.Input<string | undefined>;
     /**
      * User-specified WAL LSN of the ref database instance.
      *
      * Input: For specifying the WAL LSN to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      */
-    lsn?: pulumi.Input<string>;
+    lsn?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance. This is the unique identifier for the instance
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (string) - Id of the ref database instance
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
 }
 
 export interface DatabaseInstanceCustomTag {
     /**
      * The key of the custom tag
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The value of the custom tag
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface DatabaseInstanceEffectiveCustomTag {
     /**
      * The key of the custom tag
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The value of the custom tag
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface DatabaseInstanceParentInstanceRef {
@@ -2450,7 +2450,7 @@ export interface DatabaseInstanceParentInstanceRef {
      * Input: For specifying the point in time to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      */
-    branchTime?: pulumi.Input<string>;
+    branchTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - For a parent ref instance, this is the LSN on the parent instance from which the
      * instance was created.
@@ -2459,22 +2459,22 @@ export interface DatabaseInstanceParentInstanceRef {
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
-    effectiveLsn?: pulumi.Input<string>;
+    effectiveLsn?: pulumi.Input<string | undefined>;
     /**
      * User-specified WAL LSN of the ref database instance.
      *
      * Input: For specifying the WAL LSN to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      */
-    lsn?: pulumi.Input<string>;
+    lsn?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance. This is the unique identifier for the instance
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (string) - Id of the ref database instance
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
 }
 
 export interface DatabaseInstanceProviderConfig {
@@ -2485,27 +2485,27 @@ export interface DatabaseInstanceProviderConfig {
 }
 
 export interface DatabaseSyncedDatabaseTableDataSynchronizationStatus {
-    continuousUpdateStatus?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatus>;
+    continuousUpdateStatus?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatus | undefined>;
     /**
      * (string) - The state of the synced table. Possible values are: `SYNCED_TABLED_OFFLINE`, `SYNCED_TABLE_OFFLINE_FAILED`, `SYNCED_TABLE_ONLINE`, `SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE`, `SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE`, `SYNCED_TABLE_ONLINE_PIPELINE_FAILED`, `SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE`, `SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES`, `SYNCED_TABLE_PROVISIONING`, `SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT`, `SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES`
      */
-    detailedState?: pulumi.Input<string>;
-    failedStatus?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatus>;
+    detailedState?: pulumi.Input<string | undefined>;
+    failedStatus?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatus | undefined>;
     /**
      * (SyncedTablePosition) - Summary of the last successful synchronization from source to destination.
      */
-    lastSync?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSync>;
+    lastSync?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSync | undefined>;
     /**
      * (string) - A text description of the current state of the synced table
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * (string) - ID of the associated pipeline. The pipeline ID may have been provided by the client
      * (in the case of bin packing), or generated by the server (when creating a new pipeline)
      */
-    pipelineId?: pulumi.Input<string>;
-    provisioningStatus?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatus>;
-    triggeredUpdateStatus?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatus>;
+    pipelineId?: pulumi.Input<string | undefined>;
+    provisioningStatus?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatus | undefined>;
+    triggeredUpdateStatus?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatus | undefined>;
 }
 
 export interface DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatus {
@@ -2513,75 +2513,75 @@ export interface DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousU
      * (SyncedTablePipelineProgress) - Details about initial data synchronization. Only populated when in the
      * PROVISIONING_INITIAL_SNAPSHOT state
      */
-    initialPipelineSyncProgress?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgress>;
+    initialPipelineSyncProgress?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgress | undefined>;
     /**
      * (integer) - The last source table Delta version that was successfully synced to the synced table
      */
-    lastProcessedCommitVersion?: pulumi.Input<number>;
+    lastProcessedCommitVersion?: pulumi.Input<number | undefined>;
     /**
      * (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
      * table. This is when the data is available in the synced table
      */
-    timestamp?: pulumi.Input<string>;
+    timestamp?: pulumi.Input<string | undefined>;
 }
 
 export interface DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusInitialPipelineSyncProgress {
     /**
      * (number) - The estimated time remaining to complete this update in seconds
      */
-    estimatedCompletionTimeSeconds?: pulumi.Input<number>;
+    estimatedCompletionTimeSeconds?: pulumi.Input<number | undefined>;
     /**
      * (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
      * have completely processed this version yet
      */
-    latestVersionCurrentlyProcessing?: pulumi.Input<number>;
+    latestVersionCurrentlyProcessing?: pulumi.Input<number | undefined>;
     /**
      * (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
      */
-    provisioningPhase?: pulumi.Input<string>;
+    provisioningPhase?: pulumi.Input<string | undefined>;
     /**
      * (number) - The completion ratio of this update. This is a number between 0 and 1
      */
-    syncProgressCompletion?: pulumi.Input<number>;
+    syncProgressCompletion?: pulumi.Input<number | undefined>;
     /**
      * (integer) - The number of rows that have been synced in this update
      */
-    syncedRowCount?: pulumi.Input<number>;
+    syncedRowCount?: pulumi.Input<number | undefined>;
     /**
      * (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
      */
-    totalRowCount?: pulumi.Input<number>;
+    totalRowCount?: pulumi.Input<number | undefined>;
 }
 
 export interface DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatus {
     /**
      * (integer) - The last source table Delta version that was successfully synced to the synced table
      */
-    lastProcessedCommitVersion?: pulumi.Input<number>;
+    lastProcessedCommitVersion?: pulumi.Input<number | undefined>;
     /**
      * (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
      * table. This is when the data is available in the synced table
      */
-    timestamp?: pulumi.Input<string>;
+    timestamp?: pulumi.Input<string | undefined>;
 }
 
 export interface DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSync {
     /**
      * (DeltaTableSyncInfo)
      */
-    deltaTableSyncInfo?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo>;
+    deltaTableSyncInfo?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo | undefined>;
     /**
      * (string) - The end timestamp of the most recent successful synchronization.
      * This is the time when the data is available in the synced table
      */
-    syncEndTimestamp?: pulumi.Input<string>;
+    syncEndTimestamp?: pulumi.Input<string | undefined>;
     /**
      * (string) - The starting timestamp of the most recent successful synchronization from the source table
      * to the destination (synced) table.
      * Note this is the starting timestamp of the sync operation, not the end time.
      * E.g., for a batch, this is the time when the sync operation started
      */
-    syncStartTimestamp?: pulumi.Input<string>;
+    syncStartTimestamp?: pulumi.Input<string | undefined>;
 }
 
 export interface DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo {
@@ -2589,11 +2589,11 @@ export interface DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDel
      * (string) - The timestamp when the above Delta version was committed in the source Delta table.
      * Note: This is the Delta commit time, not the time the data was written to the synced table
      */
-    deltaCommitTimestamp?: pulumi.Input<string>;
+    deltaCommitTimestamp?: pulumi.Input<string | undefined>;
     /**
      * (integer) - The Delta Lake commit version that was last successfully synced
      */
-    deltaCommitVersion?: pulumi.Input<number>;
+    deltaCommitVersion?: pulumi.Input<number | undefined>;
 }
 
 export interface DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatus {
@@ -2601,79 +2601,79 @@ export interface DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisionin
      * (SyncedTablePipelineProgress) - Details about initial data synchronization. Only populated when in the
      * PROVISIONING_INITIAL_SNAPSHOT state
      */
-    initialPipelineSyncProgress?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgress>;
+    initialPipelineSyncProgress?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgress | undefined>;
 }
 
 export interface DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusInitialPipelineSyncProgress {
     /**
      * (number) - The estimated time remaining to complete this update in seconds
      */
-    estimatedCompletionTimeSeconds?: pulumi.Input<number>;
+    estimatedCompletionTimeSeconds?: pulumi.Input<number | undefined>;
     /**
      * (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
      * have completely processed this version yet
      */
-    latestVersionCurrentlyProcessing?: pulumi.Input<number>;
+    latestVersionCurrentlyProcessing?: pulumi.Input<number | undefined>;
     /**
      * (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
      */
-    provisioningPhase?: pulumi.Input<string>;
+    provisioningPhase?: pulumi.Input<string | undefined>;
     /**
      * (number) - The completion ratio of this update. This is a number between 0 and 1
      */
-    syncProgressCompletion?: pulumi.Input<number>;
+    syncProgressCompletion?: pulumi.Input<number | undefined>;
     /**
      * (integer) - The number of rows that have been synced in this update
      */
-    syncedRowCount?: pulumi.Input<number>;
+    syncedRowCount?: pulumi.Input<number | undefined>;
     /**
      * (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
      */
-    totalRowCount?: pulumi.Input<number>;
+    totalRowCount?: pulumi.Input<number | undefined>;
 }
 
 export interface DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatus {
     /**
      * (integer) - The last source table Delta version that was successfully synced to the synced table
      */
-    lastProcessedCommitVersion?: pulumi.Input<number>;
+    lastProcessedCommitVersion?: pulumi.Input<number | undefined>;
     /**
      * (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
      * table. This is when the data is available in the synced table
      */
-    timestamp?: pulumi.Input<string>;
+    timestamp?: pulumi.Input<string | undefined>;
     /**
      * (SyncedTablePipelineProgress) - Progress of the active data synchronization pipeline
      */
-    triggeredUpdateProgress?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgress>;
+    triggeredUpdateProgress?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgress | undefined>;
 }
 
 export interface DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusTriggeredUpdateProgress {
     /**
      * (number) - The estimated time remaining to complete this update in seconds
      */
-    estimatedCompletionTimeSeconds?: pulumi.Input<number>;
+    estimatedCompletionTimeSeconds?: pulumi.Input<number | undefined>;
     /**
      * (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
      * have completely processed this version yet
      */
-    latestVersionCurrentlyProcessing?: pulumi.Input<number>;
+    latestVersionCurrentlyProcessing?: pulumi.Input<number | undefined>;
     /**
      * (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
      */
-    provisioningPhase?: pulumi.Input<string>;
+    provisioningPhase?: pulumi.Input<string | undefined>;
     /**
      * (number) - The completion ratio of this update. This is a number between 0 and 1
      */
-    syncProgressCompletion?: pulumi.Input<number>;
+    syncProgressCompletion?: pulumi.Input<number | undefined>;
     /**
      * (integer) - The number of rows that have been synced in this update
      */
-    syncedRowCount?: pulumi.Input<number>;
+    syncedRowCount?: pulumi.Input<number | undefined>;
     /**
      * (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
      */
-    totalRowCount?: pulumi.Input<number>;
+    totalRowCount?: pulumi.Input<number | undefined>;
 }
 
 export interface DatabaseSyncedDatabaseTableProviderConfig {
@@ -2688,7 +2688,7 @@ export interface DatabaseSyncedDatabaseTableSpec {
      * If true, the synced table's logical database and schema resources in PG
      * will be created if they do not already exist
      */
-    createDatabaseObjectsIfMissing?: pulumi.Input<boolean>;
+    createDatabaseObjectsIfMissing?: pulumi.Input<boolean | undefined>;
     /**
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      *
@@ -2696,7 +2696,7 @@ export interface DatabaseSyncedDatabaseTableSpec {
      * referenced. This avoids creating a new pipeline and allows sharing existing compute.
      * In this case, the schedulingPolicy of this synced table must match the scheduling policy of the existing pipeline
      */
-    existingPipelineId?: pulumi.Input<string>;
+    existingPipelineId?: pulumi.Input<string | undefined>;
     /**
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      *
@@ -2705,44 +2705,44 @@ export interface DatabaseSyncedDatabaseTableSpec {
      * tables in the specified catalog and schema. Again, note this requires write permissions, whereas the source table
      * only requires read permissions
      */
-    newPipelineSpec?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableSpecNewPipelineSpec>;
+    newPipelineSpec?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableSpecNewPipelineSpec | undefined>;
     /**
      * Primary Key columns to be used for data insert/update in the destination
      */
-    primaryKeyColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    primaryKeyColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
      */
-    schedulingPolicy?: pulumi.Input<string>;
+    schedulingPolicy?: pulumi.Input<string | undefined>;
     /**
      * Three-part (catalog, schema, table) name of the source Delta table
      */
-    sourceTableFullName?: pulumi.Input<string>;
+    sourceTableFullName?: pulumi.Input<string | undefined>;
     /**
      * Time series key to deduplicate (tie-break) rows with the same primary key
      */
-    timeseriesKey?: pulumi.Input<string>;
+    timeseriesKey?: pulumi.Input<string | undefined>;
 }
 
 export interface DatabaseSyncedDatabaseTableSpecNewPipelineSpec {
     /**
      * Budget policy to set on the newly created pipeline
      */
-    budgetPolicyId?: pulumi.Input<string>;
+    budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
      * This field needs to be specified if the destination catalog is a managed postgres catalog.
      *
      * UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
      * This needs to be a standard catalog where the user has permissions to create Delta tables
      */
-    storageCatalog?: pulumi.Input<string>;
+    storageCatalog?: pulumi.Input<string | undefined>;
     /**
      * This field needs to be specified if the destination catalog is a managed postgres catalog.
      *
      * UC schema for the pipeline to store intermediate files (checkpoints, event logs etc).
      * This needs to be in the standard catalog where the user has permissions to create Delta tables
      */
-    storageSchema?: pulumi.Input<string>;
+    storageSchema?: pulumi.Input<string | undefined>;
 }
 
 export interface DbfsFileProviderConfig {
@@ -2756,7 +2756,7 @@ export interface DefaultNamespaceSettingNamespace {
     /**
      * The value for the setting.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface DefaultNamespaceSettingProviderConfig {
@@ -2825,11 +2825,11 @@ export interface EndpointAzurePrivateEndpointInfo {
     /**
      * (string) - The full resource ID of the Private Endpoint
      */
-    privateEndpointResourceId?: pulumi.Input<string>;
+    privateEndpointResourceId?: pulumi.Input<string | undefined>;
     /**
      * (string) - The resource ID of the Databricks Private Link Service that this Private Endpoint connects to
      */
-    privateLinkServiceId?: pulumi.Input<string>;
+    privateLinkServiceId?: pulumi.Input<string | undefined>;
 }
 
 export interface EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace {
@@ -2872,132 +2872,132 @@ export interface ExternalLocationEffectiveFileEventQueue {
     /**
      * Configuration for managed Azure Queue Storage queue.
      */
-    managedAqs?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueManagedAqs>;
+    managedAqs?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueManagedAqs | undefined>;
     /**
      * Configuration for managed Google Cloud Pub/Sub queue.
      */
-    managedPubsub?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueManagedPubsub>;
+    managedPubsub?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueManagedPubsub | undefined>;
     /**
      * Configuration for managed Amazon SQS queue.
      */
-    managedSqs?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueManagedSqs>;
+    managedSqs?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueManagedSqs | undefined>;
     /**
      * Configuration for provided Azure Storage Queue.
      */
-    providedAqs?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueProvidedAqs>;
+    providedAqs?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueProvidedAqs | undefined>;
     /**
      * Configuration for provided Google Cloud Pub/Sub queue.
      */
-    providedPubsub?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueProvidedPubsub>;
+    providedPubsub?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueProvidedPubsub | undefined>;
     /**
      * Configuration for provided Amazon SQS queue.
      */
-    providedSqs?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueProvidedSqs>;
+    providedSqs?: pulumi.Input<inputs.ExternalLocationEffectiveFileEventQueueProvidedSqs | undefined>;
 }
 
 export interface ExternalLocationEffectiveFileEventQueueManagedAqs {
-    managedResourceId?: pulumi.Input<string>;
-    queueUrl?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    queueUrl?: pulumi.Input<string | undefined>;
     /**
      * The name of the Azure resource group.
      */
-    resourceGroup?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string | undefined>;
     /**
      * The Azure subscription ID.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }
 
 export interface ExternalLocationEffectiveFileEventQueueManagedPubsub {
-    managedResourceId?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the subscription.
      */
-    subscriptionName?: pulumi.Input<string>;
+    subscriptionName?: pulumi.Input<string | undefined>;
 }
 
 export interface ExternalLocationEffectiveFileEventQueueManagedSqs {
-    managedResourceId?: pulumi.Input<string>;
-    queueUrl?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    queueUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface ExternalLocationEffectiveFileEventQueueProvidedAqs {
-    managedResourceId?: pulumi.Input<string>;
-    queueUrl?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    queueUrl?: pulumi.Input<string | undefined>;
     /**
      * The name of the Azure resource group.
      */
-    resourceGroup?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string | undefined>;
     /**
      * The Azure subscription ID.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }
 
 export interface ExternalLocationEffectiveFileEventQueueProvidedPubsub {
-    managedResourceId?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the subscription.
      */
-    subscriptionName?: pulumi.Input<string>;
+    subscriptionName?: pulumi.Input<string | undefined>;
 }
 
 export interface ExternalLocationEffectiveFileEventQueueProvidedSqs {
-    managedResourceId?: pulumi.Input<string>;
-    queueUrl?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    queueUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface ExternalLocationEncryptionDetails {
     /**
      * a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
      */
-    sseEncryptionDetails?: pulumi.Input<inputs.ExternalLocationEncryptionDetailsSseEncryptionDetails>;
+    sseEncryptionDetails?: pulumi.Input<inputs.ExternalLocationEncryptionDetailsSseEncryptionDetails | undefined>;
 }
 
 export interface ExternalLocationEncryptionDetailsSseEncryptionDetails {
     /**
      * Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     /**
      * Optional ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`. Sets the value of the `x-amz-server-side-encryption-aws-kms-key-id` header.
      */
-    awsKmsKeyArn?: pulumi.Input<string>;
+    awsKmsKeyArn?: pulumi.Input<string | undefined>;
 }
 
 export interface ExternalLocationFileEventQueue {
     /**
      * Configuration for managed Azure Queue Storage queue.
      */
-    managedAqs?: pulumi.Input<inputs.ExternalLocationFileEventQueueManagedAqs>;
+    managedAqs?: pulumi.Input<inputs.ExternalLocationFileEventQueueManagedAqs | undefined>;
     /**
      * Configuration for managed Google Cloud Pub/Sub queue.
      */
-    managedPubsub?: pulumi.Input<inputs.ExternalLocationFileEventQueueManagedPubsub>;
+    managedPubsub?: pulumi.Input<inputs.ExternalLocationFileEventQueueManagedPubsub | undefined>;
     /**
      * Configuration for managed Amazon SQS queue.
      */
-    managedSqs?: pulumi.Input<inputs.ExternalLocationFileEventQueueManagedSqs>;
+    managedSqs?: pulumi.Input<inputs.ExternalLocationFileEventQueueManagedSqs | undefined>;
     /**
      * Configuration for provided Azure Storage Queue.
      */
-    providedAqs?: pulumi.Input<inputs.ExternalLocationFileEventQueueProvidedAqs>;
+    providedAqs?: pulumi.Input<inputs.ExternalLocationFileEventQueueProvidedAqs | undefined>;
     /**
      * Configuration for provided Google Cloud Pub/Sub queue.
      */
-    providedPubsub?: pulumi.Input<inputs.ExternalLocationFileEventQueueProvidedPubsub>;
+    providedPubsub?: pulumi.Input<inputs.ExternalLocationFileEventQueueProvidedPubsub | undefined>;
     /**
      * Configuration for provided Amazon SQS queue.
      */
-    providedSqs?: pulumi.Input<inputs.ExternalLocationFileEventQueueProvidedSqs>;
+    providedSqs?: pulumi.Input<inputs.ExternalLocationFileEventQueueProvidedSqs | undefined>;
 }
 
 export interface ExternalLocationFileEventQueueManagedAqs {
     /**
      * The ID of the managed resource.
      */
-    managedResourceId?: pulumi.Input<string>;
-    queueUrl?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    queueUrl?: pulumi.Input<string | undefined>;
     /**
      * The name of the Azure resource group.
      */
@@ -3012,23 +3012,23 @@ export interface ExternalLocationFileEventQueueManagedPubsub {
     /**
      * The ID of the managed resource.
      */
-    managedResourceId?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the subscription.
      */
-    subscriptionName?: pulumi.Input<string>;
+    subscriptionName?: pulumi.Input<string | undefined>;
 }
 
 export interface ExternalLocationFileEventQueueManagedSqs {
     /**
      * The ID of the managed resource.
      */
-    managedResourceId?: pulumi.Input<string>;
-    queueUrl?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    queueUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface ExternalLocationFileEventQueueProvidedAqs {
-    managedResourceId?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
     /**
      * The URL of the queue.
      */
@@ -3036,15 +3036,15 @@ export interface ExternalLocationFileEventQueueProvidedAqs {
     /**
      * The name of the Azure resource group.
      */
-    resourceGroup?: pulumi.Input<string>;
+    resourceGroup?: pulumi.Input<string | undefined>;
     /**
      * The Azure subscription ID.
      */
-    subscriptionId?: pulumi.Input<string>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }
 
 export interface ExternalLocationFileEventQueueProvidedPubsub {
-    managedResourceId?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the subscription.
      */
@@ -3052,7 +3052,7 @@ export interface ExternalLocationFileEventQueueProvidedPubsub {
 }
 
 export interface ExternalLocationFileEventQueueProvidedSqs {
-    managedResourceId?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
     /**
      * The URL of the SQS queue.
      */
@@ -3081,42 +3081,42 @@ export interface FeatureEngineeringFeatureFunction {
     /**
      * An aggregation function applied over a time window
      */
-    aggregationFunction?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunction>;
+    aggregationFunction?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunction | undefined>;
     /**
      * Selects the latest value of a single column in a data source
      */
-    columnSelection?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionColumnSelection>;
+    columnSelection?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionColumnSelection | undefined>;
     /**
      * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * Extra parameters for parameterized functions
      */
-    extraParameters?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureFunctionExtraParameter>[]>;
+    extraParameters?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureFunctionExtraParameter>[] | undefined>;
     /**
      * Deprecated: Use the function oneof with AggregationFunction instead. Kept for backwards compatibility.
      * The type of the function. Possible values are: `APPROX_COUNT_DISTINCT`, `APPROX_PERCENTILE`, `AVG`, `COUNT`, `FIRST`, `LAST`, `MAX`, `MIN`, `STDDEV_POP`, `STDDEV_SAMP`, `SUM`, `VAR_POP`, `VAR_SAMP`
      */
-    functionType?: pulumi.Input<string>;
+    functionType?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunction {
-    approxCountDistinct?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct>;
-    approxPercentile?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile>;
-    avg?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionAvg>;
-    countFunction?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionCountFunction>;
-    first?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirst>;
-    last?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionLast>;
-    max?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionMax>;
-    min?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionMin>;
-    stddevPop?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionStddevPop>;
-    stddevSamp?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionStddevSamp>;
-    sum?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionSum>;
+    approxCountDistinct?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct | undefined>;
+    approxPercentile?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile | undefined>;
+    avg?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionAvg | undefined>;
+    countFunction?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionCountFunction | undefined>;
+    first?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionFirst | undefined>;
+    last?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionLast | undefined>;
+    max?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionMax | undefined>;
+    min?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionMin | undefined>;
+    stddevPop?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionStddevPop | undefined>;
+    stddevSamp?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionStddevSamp | undefined>;
+    sum?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionSum | undefined>;
     /**
      * Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
      * The time window in which the feature is computed
      */
-    timeWindow?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow>;
-    varPop?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionVarPop>;
-    varSamp?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionVarSamp>;
+    timeWindow?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow | undefined>;
+    varPop?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionVarPop | undefined>;
+    varSamp?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionVarSamp | undefined>;
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionApproxCountDistinct {
@@ -3124,14 +3124,14 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionApproxCount
     /**
      * The maximum relative standard deviation allowed (default defined by Spark)
      */
-    relativeSd?: pulumi.Input<number>;
+    relativeSd?: pulumi.Input<number | undefined>;
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionApproxPercentile {
     /**
      * The accuracy parameter (higher is more accurate but slower)
      */
-    accuracy?: pulumi.Input<number>;
+    accuracy?: pulumi.Input<number | undefined>;
     input: pulumi.Input<string>;
     /**
      * The percentile value to compute (between 0 and 1)
@@ -3176,16 +3176,16 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionSum {
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
-    continuous?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous>;
-    sliding?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding>;
-    tumbling?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling>;
+    continuous?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous | undefined>;
+    sliding?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding | undefined>;
+    tumbling?: pulumi.Input<inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling | undefined>;
 }
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous {
     /**
      * The offset of the continuous window (must be non-positive)
      */
-    offset?: pulumi.Input<string>;
+    offset?: pulumi.Input<string | undefined>;
     windowDuration: pulumi.Input<string>;
 }
 
@@ -3231,22 +3231,22 @@ export interface FeatureEngineeringFeatureLineageContext {
     /**
      * Job context information including job ID and run ID
      */
-    jobContext?: pulumi.Input<inputs.FeatureEngineeringFeatureLineageContextJobContext>;
+    jobContext?: pulumi.Input<inputs.FeatureEngineeringFeatureLineageContextJobContext | undefined>;
     /**
      * The notebook ID where this API was invoked
      */
-    notebookId?: pulumi.Input<number>;
+    notebookId?: pulumi.Input<number | undefined>;
 }
 
 export interface FeatureEngineeringFeatureLineageContextJobContext {
     /**
      * The job ID where this API invoked
      */
-    jobId?: pulumi.Input<number>;
+    jobId?: pulumi.Input<number | undefined>;
     /**
      * The job run ID where this API was invoked
      */
-    jobRunId?: pulumi.Input<number>;
+    jobRunId?: pulumi.Input<number | undefined>;
 }
 
 export interface FeatureEngineeringFeatureProviderConfig {
@@ -3260,15 +3260,15 @@ export interface FeatureEngineeringFeatureSource {
     /**
      * A Delta table data source
      */
-    deltaTableSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceDeltaTableSource>;
+    deltaTableSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceDeltaTableSource | undefined>;
     /**
      * A Kafka stream data source
      */
-    kafkaSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceKafkaSource>;
+    kafkaSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceKafkaSource | undefined>;
     /**
      * A request-time data source
      */
-    requestSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceRequestSource>;
+    requestSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceRequestSource | undefined>;
 }
 
 export interface FeatureEngineeringFeatureSourceDeltaTableSource {
@@ -3277,17 +3277,17 @@ export interface FeatureEngineeringFeatureSourceDeltaTableSource {
      * Required if transformationSql is specified.
      * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
      */
-    dataframeSchema?: pulumi.Input<string>;
+    dataframeSchema?: pulumi.Input<string | undefined>;
     /**
      * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity columns of the Delta table
      */
-    entityColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    entityColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
      * The filter condition applied to the source data before aggregation
      */
-    filterCondition?: pulumi.Input<string>;
+    filterCondition?: pulumi.Input<string | undefined>;
     /**
      * The full three-part name (catalog, schema, name) of the feature
      */
@@ -3295,13 +3295,13 @@ export interface FeatureEngineeringFeatureSourceDeltaTableSource {
     /**
      * Column recording time, used for point-in-time joins, backfills, and aggregations
      */
-    timeseriesColumn?: pulumi.Input<string>;
+    timeseriesColumn?: pulumi.Input<string | undefined>;
     /**
      * A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
      * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
      */
-    transformationSql?: pulumi.Input<string>;
+    transformationSql?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringFeatureSourceKafkaSource {
@@ -3309,18 +3309,18 @@ export interface FeatureEngineeringFeatureSourceKafkaSource {
      * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity column identifiers of the Kafka source
      */
-    entityColumnIdentifiers?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier>[]>;
+    entityColumnIdentifiers?: pulumi.Input<pulumi.Input<inputs.FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier>[] | undefined>;
     /**
      * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
      * The filter condition applied to the source data before aggregation
      */
-    filterCondition?: pulumi.Input<string>;
+    filterCondition?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
     /**
      * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column identifier of the Kafka source
      */
-    timeseriesColumnIdentifier?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier>;
+    timeseriesColumnIdentifier?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceKafkaSourceTimeseriesColumnIdentifier | undefined>;
 }
 
 export interface FeatureEngineeringFeatureSourceKafkaSourceEntityColumnIdentifier {
@@ -3343,7 +3343,7 @@ export interface FeatureEngineeringFeatureSourceRequestSource {
     /**
      * A flat schema with scalar-typed fields only
      */
-    flatSchema?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceRequestSourceFlatSchema>;
+    flatSchema?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceRequestSourceFlatSchema | undefined>;
 }
 
 export interface FeatureEngineeringFeatureSourceRequestSourceFlatSchema {
@@ -3362,16 +3362,16 @@ export interface FeatureEngineeringFeatureSourceRequestSourceFlatSchemaField {
 }
 
 export interface FeatureEngineeringFeatureTimeWindow {
-    continuous?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowContinuous>;
-    sliding?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowSliding>;
-    tumbling?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowTumbling>;
+    continuous?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowContinuous | undefined>;
+    sliding?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowSliding | undefined>;
+    tumbling?: pulumi.Input<inputs.FeatureEngineeringFeatureTimeWindowTumbling | undefined>;
 }
 
 export interface FeatureEngineeringFeatureTimeWindowContinuous {
     /**
      * The offset of the continuous window (must be non-positive)
      */
-    offset?: pulumi.Input<string>;
+    offset?: pulumi.Input<string | undefined>;
     windowDuration: pulumi.Input<string>;
 }
 
@@ -3395,7 +3395,7 @@ export interface FeatureEngineeringKafkaConfigAuthConfig {
     /**
      * Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
      */
-    ucServiceCredentialName?: pulumi.Input<string>;
+    ucServiceCredentialName?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringKafkaConfigBackfillSource {
@@ -3403,7 +3403,7 @@ export interface FeatureEngineeringKafkaConfigBackfillSource {
      * The Delta table source containing the historic data to backfill.
      * Only the delta table name is used for backfill, the entity columns and timeseries column are ignored as they are defined by the associated KafkaSource
      */
-    deltaTableSource?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource>;
+    deltaTableSource?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource | undefined>;
 }
 
 export interface FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource {
@@ -3412,16 +3412,16 @@ export interface FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource {
      * Required if transformationSql is specified.
      * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
      */
-    dataframeSchema?: pulumi.Input<string>;
+    dataframeSchema?: pulumi.Input<string | undefined>;
     /**
      * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
      * The entity columns of the Delta table
      */
-    entityColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    entityColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
      */
-    filterCondition?: pulumi.Input<string>;
+    filterCondition?: pulumi.Input<string | undefined>;
     /**
      * The full three-part (catalog, schema, table) name of the Delta table
      */
@@ -3430,20 +3430,20 @@ export interface FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource {
      * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
      * The timeseries column of the Delta table
      */
-    timeseriesColumn?: pulumi.Input<string>;
+    timeseriesColumn?: pulumi.Input<string | undefined>;
     /**
      * A single SQL SELECT expression applied after filter_condition.
      * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
      * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
      */
-    transformationSql?: pulumi.Input<string>;
+    transformationSql?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringKafkaConfigKeySchema {
     /**
      * Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
      */
-    jsonSchema?: pulumi.Input<string>;
+    jsonSchema?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringKafkaConfigProviderConfig {
@@ -3458,22 +3458,22 @@ export interface FeatureEngineeringKafkaConfigSubscriptionMode {
      * A JSON string that contains the specific topic-partitions to consume from.
      * For example, for '{"topicA":[0,1],"topicB":[2,4]}', topicA's 0'th and 1st partitions will be consumed from
      */
-    assign?: pulumi.Input<string>;
+    assign?: pulumi.Input<string | undefined>;
     /**
      * A comma-separated list of Kafka topics to read from. For example, 'topicA,topicB,topicC'
      */
-    subscribe?: pulumi.Input<string>;
+    subscribe?: pulumi.Input<string | undefined>;
     /**
      * A regular expression matching topics to subscribe to. For example, 'topic.*' will subscribe to all topics starting with 'topic'
      */
-    subscribePattern?: pulumi.Input<string>;
+    subscribePattern?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringKafkaConfigValueSchema {
     /**
      * Schema of the JSON object in standard IETF JSON schema format (https://json-schema.org/)
      */
-    jsonSchema?: pulumi.Input<string>;
+    jsonSchema?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringMaterializedFeatureOfflineStoreConfig {
@@ -3631,19 +3631,19 @@ export interface GetBudgetPoliciesFilterByArgs {
      * The policy creator user id to be filtered on.
      * If unspecified, all policies will be returned
      */
-    creatorUserId?: pulumi.Input<number>;
+    creatorUserId?: pulumi.Input<number | undefined>;
     /**
      * The policy creator user name to be filtered on.
      * If unspecified, all policies will be returned
      */
-    creatorUserName?: pulumi.Input<string>;
+    creatorUserName?: pulumi.Input<string | undefined>;
     /**
      * (string) - The name of the policy.
      * - Must be unique among active policies.
      * - Can contain only characters from the ISO 8859-1 (latin1) set.
      * - Can't start with reserved keywords such as `databricks:default-policy`
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetBudgetPoliciesSortSpec {
@@ -3661,11 +3661,11 @@ export interface GetBudgetPoliciesSortSpecArgs {
     /**
      * Whether to sort in descending order
      */
-    descending?: pulumi.Input<boolean>;
+    descending?: pulumi.Input<boolean | undefined>;
     /**
      * The filed to sort by. Possible values are: `POLICY_NAME`
      */
-    field?: pulumi.Input<string>;
+    field?: pulumi.Input<string | undefined>;
 }
 
 export interface GetCatalogCatalogInfo {
@@ -3759,93 +3759,93 @@ export interface GetCatalogCatalogInfo {
 }
 
 export interface GetCatalogCatalogInfoArgs {
-    browseOnly?: pulumi.Input<boolean>;
+    browseOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Type of the catalog, e.g. `MANAGED_CATALOG`, `DELTASHARING_CATALOG`, `SYSTEM_CATALOG`,
      */
-    catalogType?: pulumi.Input<string>;
+    catalogType?: pulumi.Input<string | undefined>;
     /**
      * Free-form text description
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The name of the connection to an external data source.
      */
-    connectionName?: pulumi.Input<string>;
+    connectionName?: pulumi.Input<string | undefined>;
     /**
      * Time at which this catalog was created, in epoch milliseconds.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * Username of catalog creator.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * object describing applied predictive optimization flag.
      */
-    effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs>;
+    effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs | undefined>;
     /**
      * Whether predictive optimization should be enabled for this object and objects under it.
      */
-    enablePredictiveOptimization?: pulumi.Input<string>;
+    enablePredictiveOptimization?: pulumi.Input<string | undefined>;
     /**
      * The full name of the catalog. Corresponds with the name field.
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * Whether the current securable is accessible from all workspaces or a  specific set of workspaces.
      */
-    isolationMode?: pulumi.Input<string>;
-    managedEncryptionSettings?: pulumi.Input<inputs.GetCatalogCatalogInfoManagedEncryptionSettingsArgs>;
+    isolationMode?: pulumi.Input<string | undefined>;
+    managedEncryptionSettings?: pulumi.Input<inputs.GetCatalogCatalogInfoManagedEncryptionSettingsArgs | undefined>;
     /**
      * Unique identifier of parent metastore.
      */
-    metastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * name of the catalog
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A map of key-value properties attached to the securable.
      */
-    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Current owner of the catalog
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * A map of key-value properties attached to the securable.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of delta sharing provider.
      */
-    providerName?: pulumi.Input<string>;
-    provisioningInfo?: pulumi.Input<inputs.GetCatalogCatalogInfoProvisioningInfoArgs>;
+    providerName?: pulumi.Input<string | undefined>;
+    provisioningInfo?: pulumi.Input<inputs.GetCatalogCatalogInfoProvisioningInfoArgs | undefined>;
     /**
      * Securable type.
      */
-    securableType?: pulumi.Input<string>;
+    securableType?: pulumi.Input<string | undefined>;
     /**
      * The name of the share under the share provider.
      */
-    shareName?: pulumi.Input<string>;
+    shareName?: pulumi.Input<string | undefined>;
     /**
      * Storage Location URL (full path) for managed tables within catalog.
      */
-    storageLocation?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string | undefined>;
     /**
      * Storage root URL for managed tables within catalog.
      */
-    storageRoot?: pulumi.Input<string>;
+    storageRoot?: pulumi.Input<string | undefined>;
     /**
      * Time at which this catalog was last modified, in epoch milliseconds.
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * Username of user who last modified catalog.
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
 }
 
 export interface GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag {
@@ -3855,8 +3855,8 @@ export interface GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag {
 }
 
 export interface GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagArgs {
-    inheritedFromName?: pulumi.Input<string>;
-    inheritedFromType?: pulumi.Input<string>;
+    inheritedFromName?: pulumi.Input<string | undefined>;
+    inheritedFromType?: pulumi.Input<string | undefined>;
     value: pulumi.Input<string>;
 }
 
@@ -3867,9 +3867,9 @@ export interface GetCatalogCatalogInfoManagedEncryptionSettings {
 }
 
 export interface GetCatalogCatalogInfoManagedEncryptionSettingsArgs {
-    azureEncryptionSettings?: pulumi.Input<inputs.GetCatalogCatalogInfoManagedEncryptionSettingsAzureEncryptionSettingsArgs>;
-    azureKeyVaultKeyId?: pulumi.Input<string>;
-    customerManagedKeyId?: pulumi.Input<string>;
+    azureEncryptionSettings?: pulumi.Input<inputs.GetCatalogCatalogInfoManagedEncryptionSettingsAzureEncryptionSettingsArgs | undefined>;
+    azureKeyVaultKeyId?: pulumi.Input<string | undefined>;
+    customerManagedKeyId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetCatalogCatalogInfoManagedEncryptionSettingsAzureEncryptionSettings {
@@ -3879,8 +3879,8 @@ export interface GetCatalogCatalogInfoManagedEncryptionSettingsAzureEncryptionSe
 }
 
 export interface GetCatalogCatalogInfoManagedEncryptionSettingsAzureEncryptionSettingsArgs {
-    azureCmkAccessConnectorId?: pulumi.Input<string>;
-    azureCmkManagedIdentityId?: pulumi.Input<string>;
+    azureCmkAccessConnectorId?: pulumi.Input<string | undefined>;
+    azureCmkManagedIdentityId?: pulumi.Input<string | undefined>;
     azureTenantId: pulumi.Input<string>;
 }
 
@@ -3889,7 +3889,7 @@ export interface GetCatalogCatalogInfoProvisioningInfo {
 }
 
 export interface GetCatalogCatalogInfoProvisioningInfoArgs {
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface GetCatalogProviderConfig {
@@ -4030,112 +4030,112 @@ export interface GetClusterClusterInfo {
 }
 
 export interface GetClusterClusterInfoArgs {
-    autoscale?: pulumi.Input<inputs.GetClusterClusterInfoAutoscaleArgs>;
+    autoscale?: pulumi.Input<inputs.GetClusterClusterInfoAutoscaleArgs | undefined>;
     /**
      * Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination.
      */
-    autoterminationMinutes?: pulumi.Input<number>;
-    awsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoAwsAttributesArgs>;
-    azureAttributes?: pulumi.Input<inputs.GetClusterClusterInfoAzureAttributesArgs>;
-    clusterCores?: pulumi.Input<number>;
+    autoterminationMinutes?: pulumi.Input<number | undefined>;
+    awsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoAwsAttributesArgs | undefined>;
+    azureAttributes?: pulumi.Input<inputs.GetClusterClusterInfoAzureAttributesArgs | undefined>;
+    clusterCores?: pulumi.Input<number | undefined>;
     /**
      * The id of the cluster.
      */
-    clusterId?: pulumi.Input<string>;
-    clusterLogConf?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfArgs>;
-    clusterLogStatus?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogStatusArgs>;
-    clusterMemoryMb?: pulumi.Input<number>;
+    clusterId?: pulumi.Input<string | undefined>;
+    clusterLogConf?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfArgs | undefined>;
+    clusterLogStatus?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogStatusArgs | undefined>;
+    clusterMemoryMb?: pulumi.Input<number | undefined>;
     /**
      * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      */
-    clusterName?: pulumi.Input<string>;
-    clusterSource?: pulumi.Input<string>;
-    creatorUserName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
+    clusterSource?: pulumi.Input<string | undefined>;
+    creatorUserName?: pulumi.Input<string | undefined>;
     /**
      * Additional tags for cluster resources.
      */
-    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
      */
-    dataSecurityMode?: pulumi.Input<string>;
-    defaultTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    dockerImage?: pulumi.Input<inputs.GetClusterClusterInfoDockerImageArgs>;
-    driver?: pulumi.Input<inputs.GetClusterClusterInfoDriverArgs>;
+    dataSecurityMode?: pulumi.Input<string | undefined>;
+    defaultTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    dockerImage?: pulumi.Input<inputs.GetClusterClusterInfoDockerImageArgs | undefined>;
+    driver?: pulumi.Input<inputs.GetClusterClusterInfoDriverArgs | undefined>;
     /**
      * similar to `instancePoolId`, but for driver node.
      */
-    driverInstancePoolId?: pulumi.Input<string>;
-    driverNodeTypeFlexibility?: pulumi.Input<inputs.GetClusterClusterInfoDriverNodeTypeFlexibilityArgs>;
+    driverInstancePoolId?: pulumi.Input<string | undefined>;
+    driverNodeTypeFlexibility?: pulumi.Input<inputs.GetClusterClusterInfoDriverNodeTypeFlexibilityArgs | undefined>;
     /**
      * The node type of the Spark driver.
      */
-    driverNodeTypeId?: pulumi.Input<string>;
+    driverNodeTypeId?: pulumi.Input<string | undefined>;
     /**
      * Use autoscaling local storage.
      */
-    enableElasticDisk?: pulumi.Input<boolean>;
+    enableElasticDisk?: pulumi.Input<boolean | undefined>;
     /**
      * Enable local disk encryption.
      */
-    enableLocalDiskEncryption?: pulumi.Input<boolean>;
-    executors?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoExecutorArgs>[]>;
-    gcpAttributes?: pulumi.Input<inputs.GetClusterClusterInfoGcpAttributesArgs>;
-    initScripts?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoInitScriptArgs>[]>;
+    enableLocalDiskEncryption?: pulumi.Input<boolean | undefined>;
+    executors?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoExecutorArgs>[] | undefined>;
+    gcpAttributes?: pulumi.Input<inputs.GetClusterClusterInfoGcpAttributesArgs | undefined>;
+    initScripts?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoInitScriptArgs>[] | undefined>;
     /**
      * The pool of idle instances the cluster is attached to.
      */
-    instancePoolId?: pulumi.Input<string>;
-    isSingleNode?: pulumi.Input<boolean>;
-    jdbcPort?: pulumi.Input<number>;
-    kind?: pulumi.Input<string>;
-    lastRestartedTime?: pulumi.Input<number>;
-    lastStateLossTime?: pulumi.Input<number>;
+    instancePoolId?: pulumi.Input<string | undefined>;
+    isSingleNode?: pulumi.Input<boolean | undefined>;
+    jdbcPort?: pulumi.Input<number | undefined>;
+    kind?: pulumi.Input<string | undefined>;
+    lastRestartedTime?: pulumi.Input<number | undefined>;
+    lastStateLossTime?: pulumi.Input<number | undefined>;
     /**
      * Any supported databricks.getNodeType id.
      */
-    nodeTypeId?: pulumi.Input<string>;
-    numWorkers?: pulumi.Input<number>;
+    nodeTypeId?: pulumi.Input<string | undefined>;
+    numWorkers?: pulumi.Input<number | undefined>;
     /**
      * Identifier of Cluster Policy to validate cluster and preset certain defaults.
      */
-    policyId?: pulumi.Input<string>;
-    remoteDiskThroughput?: pulumi.Input<number>;
+    policyId?: pulumi.Input<string | undefined>;
+    remoteDiskThroughput?: pulumi.Input<number | undefined>;
     /**
      * The type of runtime of the cluster
      */
-    runtimeEngine?: pulumi.Input<string>;
+    runtimeEngine?: pulumi.Input<string | undefined>;
     /**
      * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      */
-    singleUserName?: pulumi.Input<string>;
+    singleUserName?: pulumi.Input<string | undefined>;
     /**
      * Map with key-value pairs to fine-tune Spark clusters.
      */
-    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkContextId?: pulumi.Input<number>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkContextId?: pulumi.Input<number | undefined>;
     /**
      * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
      */
-    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      */
-    sparkVersion?: pulumi.Input<string>;
-    spec?: pulumi.Input<inputs.GetClusterClusterInfoSpecArgs>;
+    sparkVersion?: pulumi.Input<string | undefined>;
+    spec?: pulumi.Input<inputs.GetClusterClusterInfoSpecArgs | undefined>;
     /**
      * SSH public key contents that will be added to each Spark node in this cluster.
      */
-    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    startTime?: pulumi.Input<number>;
-    state?: pulumi.Input<string>;
-    stateMessage?: pulumi.Input<string>;
-    terminatedTime?: pulumi.Input<number>;
-    terminationReason?: pulumi.Input<inputs.GetClusterClusterInfoTerminationReasonArgs>;
-    totalInitialRemoteDiskSize?: pulumi.Input<number>;
-    useMlRuntime?: pulumi.Input<boolean>;
-    workerNodeTypeFlexibility?: pulumi.Input<inputs.GetClusterClusterInfoWorkerNodeTypeFlexibilityArgs>;
-    workloadType?: pulumi.Input<inputs.GetClusterClusterInfoWorkloadTypeArgs>;
+    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    startTime?: pulumi.Input<number | undefined>;
+    state?: pulumi.Input<string | undefined>;
+    stateMessage?: pulumi.Input<string | undefined>;
+    terminatedTime?: pulumi.Input<number | undefined>;
+    terminationReason?: pulumi.Input<inputs.GetClusterClusterInfoTerminationReasonArgs | undefined>;
+    totalInitialRemoteDiskSize?: pulumi.Input<number | undefined>;
+    useMlRuntime?: pulumi.Input<boolean | undefined>;
+    workerNodeTypeFlexibility?: pulumi.Input<inputs.GetClusterClusterInfoWorkerNodeTypeFlexibilityArgs | undefined>;
+    workloadType?: pulumi.Input<inputs.GetClusterClusterInfoWorkloadTypeArgs | undefined>;
 }
 
 export interface GetClusterClusterInfoAutoscale {
@@ -4144,8 +4144,8 @@ export interface GetClusterClusterInfoAutoscale {
 }
 
 export interface GetClusterClusterInfoAutoscaleArgs {
-    maxWorkers?: pulumi.Input<number>;
-    minWorkers?: pulumi.Input<number>;
+    maxWorkers?: pulumi.Input<number | undefined>;
+    minWorkers?: pulumi.Input<number | undefined>;
 }
 
 export interface GetClusterClusterInfoAwsAttributes {
@@ -4162,16 +4162,16 @@ export interface GetClusterClusterInfoAwsAttributes {
 }
 
 export interface GetClusterClusterInfoAwsAttributesArgs {
-    availability?: pulumi.Input<string>;
-    ebsVolumeCount?: pulumi.Input<number>;
-    ebsVolumeIops?: pulumi.Input<number>;
-    ebsVolumeSize?: pulumi.Input<number>;
-    ebsVolumeThroughput?: pulumi.Input<number>;
-    ebsVolumeType?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    instanceProfileArn?: pulumi.Input<string>;
-    spotBidPricePercent?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    ebsVolumeCount?: pulumi.Input<number | undefined>;
+    ebsVolumeIops?: pulumi.Input<number | undefined>;
+    ebsVolumeSize?: pulumi.Input<number | undefined>;
+    ebsVolumeThroughput?: pulumi.Input<number | undefined>;
+    ebsVolumeType?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
+    spotBidPricePercent?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoAzureAttributes {
@@ -4182,10 +4182,10 @@ export interface GetClusterClusterInfoAzureAttributes {
 }
 
 export interface GetClusterClusterInfoAzureAttributesArgs {
-    availability?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    logAnalyticsInfo?: pulumi.Input<inputs.GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgs>;
-    spotBidMaxPrice?: pulumi.Input<number>;
+    availability?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    logAnalyticsInfo?: pulumi.Input<inputs.GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgs | undefined>;
+    spotBidMaxPrice?: pulumi.Input<number | undefined>;
 }
 
 export interface GetClusterClusterInfoAzureAttributesLogAnalyticsInfo {
@@ -4194,8 +4194,8 @@ export interface GetClusterClusterInfoAzureAttributesLogAnalyticsInfo {
 }
 
 export interface GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgs {
-    logAnalyticsPrimaryKey?: pulumi.Input<string>;
-    logAnalyticsWorkspaceId?: pulumi.Input<string>;
+    logAnalyticsPrimaryKey?: pulumi.Input<string | undefined>;
+    logAnalyticsWorkspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoClusterLogConf {
@@ -4205,9 +4205,9 @@ export interface GetClusterClusterInfoClusterLogConf {
 }
 
 export interface GetClusterClusterInfoClusterLogConfArgs {
-    dbfs?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfDbfsArgs>;
-    s3?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfS3Args>;
-    volumes?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfVolumesArgs>;
+    dbfs?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfDbfsArgs | undefined>;
+    s3?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfS3Args | undefined>;
+    volumes?: pulumi.Input<inputs.GetClusterClusterInfoClusterLogConfVolumesArgs | undefined>;
 }
 
 export interface GetClusterClusterInfoClusterLogConfDbfs {
@@ -4229,13 +4229,13 @@ export interface GetClusterClusterInfoClusterLogConfS3 {
 }
 
 export interface GetClusterClusterInfoClusterLogConfS3Args {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoClusterLogConfVolumes {
@@ -4252,8 +4252,8 @@ export interface GetClusterClusterInfoClusterLogStatus {
 }
 
 export interface GetClusterClusterInfoClusterLogStatusArgs {
-    lastAttempted?: pulumi.Input<number>;
-    lastException?: pulumi.Input<string>;
+    lastAttempted?: pulumi.Input<number | undefined>;
+    lastException?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoDockerImage {
@@ -4262,8 +4262,8 @@ export interface GetClusterClusterInfoDockerImage {
 }
 
 export interface GetClusterClusterInfoDockerImageArgs {
-    basicAuth?: pulumi.Input<inputs.GetClusterClusterInfoDockerImageBasicAuthArgs>;
-    url?: pulumi.Input<string>;
+    basicAuth?: pulumi.Input<inputs.GetClusterClusterInfoDockerImageBasicAuthArgs | undefined>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoDockerImageBasicAuth {
@@ -4272,8 +4272,8 @@ export interface GetClusterClusterInfoDockerImageBasicAuth {
 }
 
 export interface GetClusterClusterInfoDockerImageBasicAuthArgs {
-    password?: pulumi.Input<string>;
-    username?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoDriver {
@@ -4287,13 +4287,13 @@ export interface GetClusterClusterInfoDriver {
 }
 
 export interface GetClusterClusterInfoDriverArgs {
-    hostPrivateIp?: pulumi.Input<string>;
-    instanceId?: pulumi.Input<string>;
-    nodeAwsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoDriverNodeAwsAttributesArgs>;
-    nodeId?: pulumi.Input<string>;
-    privateIp?: pulumi.Input<string>;
-    publicDns?: pulumi.Input<string>;
-    startTimestamp?: pulumi.Input<number>;
+    hostPrivateIp?: pulumi.Input<string | undefined>;
+    instanceId?: pulumi.Input<string | undefined>;
+    nodeAwsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoDriverNodeAwsAttributesArgs | undefined>;
+    nodeId?: pulumi.Input<string | undefined>;
+    privateIp?: pulumi.Input<string | undefined>;
+    publicDns?: pulumi.Input<string | undefined>;
+    startTimestamp?: pulumi.Input<number | undefined>;
 }
 
 export interface GetClusterClusterInfoDriverNodeAwsAttributes {
@@ -4301,7 +4301,7 @@ export interface GetClusterClusterInfoDriverNodeAwsAttributes {
 }
 
 export interface GetClusterClusterInfoDriverNodeAwsAttributesArgs {
-    isSpot?: pulumi.Input<boolean>;
+    isSpot?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetClusterClusterInfoDriverNodeTypeFlexibility {
@@ -4309,7 +4309,7 @@ export interface GetClusterClusterInfoDriverNodeTypeFlexibility {
 }
 
 export interface GetClusterClusterInfoDriverNodeTypeFlexibilityArgs {
-    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetClusterClusterInfoExecutor {
@@ -4323,13 +4323,13 @@ export interface GetClusterClusterInfoExecutor {
 }
 
 export interface GetClusterClusterInfoExecutorArgs {
-    hostPrivateIp?: pulumi.Input<string>;
-    instanceId?: pulumi.Input<string>;
-    nodeAwsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoExecutorNodeAwsAttributesArgs>;
-    nodeId?: pulumi.Input<string>;
-    privateIp?: pulumi.Input<string>;
-    publicDns?: pulumi.Input<string>;
-    startTimestamp?: pulumi.Input<number>;
+    hostPrivateIp?: pulumi.Input<string | undefined>;
+    instanceId?: pulumi.Input<string | undefined>;
+    nodeAwsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoExecutorNodeAwsAttributesArgs | undefined>;
+    nodeId?: pulumi.Input<string | undefined>;
+    privateIp?: pulumi.Input<string | undefined>;
+    publicDns?: pulumi.Input<string | undefined>;
+    startTimestamp?: pulumi.Input<number | undefined>;
 }
 
 export interface GetClusterClusterInfoExecutorNodeAwsAttributes {
@@ -4337,7 +4337,7 @@ export interface GetClusterClusterInfoExecutorNodeAwsAttributes {
 }
 
 export interface GetClusterClusterInfoExecutorNodeAwsAttributesArgs {
-    isSpot?: pulumi.Input<boolean>;
+    isSpot?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetClusterClusterInfoGcpAttributes {
@@ -4351,13 +4351,13 @@ export interface GetClusterClusterInfoGcpAttributes {
 }
 
 export interface GetClusterClusterInfoGcpAttributesArgs {
-    availability?: pulumi.Input<string>;
-    bootDiskSize?: pulumi.Input<number>;
-    firstOnDemand?: pulumi.Input<number>;
-    googleServiceAccount?: pulumi.Input<string>;
-    localSsdCount?: pulumi.Input<number>;
-    usePreemptibleExecutors?: pulumi.Input<boolean>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    bootDiskSize?: pulumi.Input<number | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    googleServiceAccount?: pulumi.Input<string | undefined>;
+    localSsdCount?: pulumi.Input<number | undefined>;
+    usePreemptibleExecutors?: pulumi.Input<boolean | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoInitScript {
@@ -4371,13 +4371,13 @@ export interface GetClusterClusterInfoInitScript {
 }
 
 export interface GetClusterClusterInfoInitScriptArgs {
-    abfss?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptAbfssArgs>;
-    dbfs?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptDbfsArgs>;
-    file?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptFileArgs>;
-    gcs?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptGcsArgs>;
-    s3?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptS3Args>;
-    volumes?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptVolumesArgs>;
-    workspace?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptWorkspaceArgs>;
+    abfss?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptAbfssArgs | undefined>;
+    dbfs?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptDbfsArgs | undefined>;
+    file?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptFileArgs | undefined>;
+    gcs?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptGcsArgs | undefined>;
+    s3?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptS3Args | undefined>;
+    volumes?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptVolumesArgs | undefined>;
+    workspace?: pulumi.Input<inputs.GetClusterClusterInfoInitScriptWorkspaceArgs | undefined>;
 }
 
 export interface GetClusterClusterInfoInitScriptAbfss {
@@ -4423,13 +4423,13 @@ export interface GetClusterClusterInfoInitScriptS3 {
 }
 
 export interface GetClusterClusterInfoInitScriptS3Args {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoInitScriptVolumes {
@@ -4547,101 +4547,101 @@ export interface GetClusterClusterInfoSpec {
 }
 
 export interface GetClusterClusterInfoSpecArgs {
-    applyPolicyDefaultValues?: pulumi.Input<boolean>;
-    autoscale?: pulumi.Input<inputs.GetClusterClusterInfoSpecAutoscaleArgs>;
-    awsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoSpecAwsAttributesArgs>;
-    azureAttributes?: pulumi.Input<inputs.GetClusterClusterInfoSpecAzureAttributesArgs>;
+    applyPolicyDefaultValues?: pulumi.Input<boolean | undefined>;
+    autoscale?: pulumi.Input<inputs.GetClusterClusterInfoSpecAutoscaleArgs | undefined>;
+    awsAttributes?: pulumi.Input<inputs.GetClusterClusterInfoSpecAwsAttributesArgs | undefined>;
+    azureAttributes?: pulumi.Input<inputs.GetClusterClusterInfoSpecAzureAttributesArgs | undefined>;
     /**
      * The id of the cluster.
      */
-    clusterId?: pulumi.Input<string>;
-    clusterLogConf?: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterLogConfArgs>;
-    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoSpecClusterMountInfoArgs>[]>;
+    clusterId?: pulumi.Input<string | undefined>;
+    clusterLogConf?: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterLogConfArgs | undefined>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoSpecClusterMountInfoArgs>[] | undefined>;
     /**
      * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * Additional tags for cluster resources.
      */
-    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Security features of the cluster. Unity Catalog requires `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. Default to `NONE`, i.e. no security feature enabled.
      */
-    dataSecurityMode?: pulumi.Input<string>;
-    dockerImage?: pulumi.Input<inputs.GetClusterClusterInfoSpecDockerImageArgs>;
+    dataSecurityMode?: pulumi.Input<string | undefined>;
+    dockerImage?: pulumi.Input<inputs.GetClusterClusterInfoSpecDockerImageArgs | undefined>;
     /**
      * similar to `instancePoolId`, but for driver node.
      */
-    driverInstancePoolId?: pulumi.Input<string>;
-    driverNodeTypeFlexibility?: pulumi.Input<inputs.GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgs>;
+    driverInstancePoolId?: pulumi.Input<string | undefined>;
+    driverNodeTypeFlexibility?: pulumi.Input<inputs.GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgs | undefined>;
     /**
      * The node type of the Spark driver.
      */
-    driverNodeTypeId?: pulumi.Input<string>;
+    driverNodeTypeId?: pulumi.Input<string | undefined>;
     /**
      * Use autoscaling local storage.
      */
-    enableElasticDisk?: pulumi.Input<boolean>;
+    enableElasticDisk?: pulumi.Input<boolean | undefined>;
     /**
      * Enable local disk encryption.
      */
-    enableLocalDiskEncryption?: pulumi.Input<boolean>;
-    gcpAttributes?: pulumi.Input<inputs.GetClusterClusterInfoSpecGcpAttributesArgs>;
+    enableLocalDiskEncryption?: pulumi.Input<boolean | undefined>;
+    gcpAttributes?: pulumi.Input<inputs.GetClusterClusterInfoSpecGcpAttributesArgs | undefined>;
     /**
      * An optional token to guarantee the idempotency of cluster creation requests.
      */
-    idempotencyToken?: pulumi.Input<string>;
-    initScripts?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptArgs>[]>;
+    idempotencyToken?: pulumi.Input<string | undefined>;
+    initScripts?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptArgs>[] | undefined>;
     /**
      * The pool of idle instances the cluster is attached to.
      */
-    instancePoolId?: pulumi.Input<string>;
-    isSingleNode?: pulumi.Input<boolean>;
-    kind?: pulumi.Input<string>;
-    libraries?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryArgs>[]>;
+    instancePoolId?: pulumi.Input<string | undefined>;
+    isSingleNode?: pulumi.Input<boolean | undefined>;
+    kind?: pulumi.Input<string | undefined>;
+    libraries?: pulumi.Input<pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryArgs>[] | undefined>;
     /**
      * Any supported databricks.getNodeType id.
      */
-    nodeTypeId?: pulumi.Input<string>;
-    numWorkers?: pulumi.Input<number>;
+    nodeTypeId?: pulumi.Input<string | undefined>;
+    numWorkers?: pulumi.Input<number | undefined>;
     /**
      * Identifier of Cluster Policy to validate cluster and preset certain defaults.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetClusterClusterInfoSpecProviderConfigArgs>;
-    remoteDiskThroughput?: pulumi.Input<number>;
+    providerConfig?: pulumi.Input<inputs.GetClusterClusterInfoSpecProviderConfigArgs | undefined>;
+    remoteDiskThroughput?: pulumi.Input<number | undefined>;
     /**
      * The type of runtime of the cluster
      */
-    runtimeEngine?: pulumi.Input<string>;
+    runtimeEngine?: pulumi.Input<string | undefined>;
     /**
      * The optional user name of the user to assign to an interactive cluster. This field is required when using standard AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
      */
-    singleUserName?: pulumi.Input<string>;
+    singleUserName?: pulumi.Input<string | undefined>;
     /**
      * Map with key-value pairs to fine-tune Spark clusters.
      */
-    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
      */
-    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster.
      */
-    sparkVersion?: pulumi.Input<string>;
+    sparkVersion?: pulumi.Input<string | undefined>;
     /**
      * SSH public key contents that will be added to each Spark node in this cluster.
      */
-    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    totalInitialRemoteDiskSize?: pulumi.Input<number>;
-    useMlRuntime?: pulumi.Input<boolean>;
-    workerNodeTypeFlexibility?: pulumi.Input<inputs.GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityArgs>;
-    workloadType?: pulumi.Input<inputs.GetClusterClusterInfoSpecWorkloadTypeArgs>;
+    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    totalInitialRemoteDiskSize?: pulumi.Input<number | undefined>;
+    useMlRuntime?: pulumi.Input<boolean | undefined>;
+    workerNodeTypeFlexibility?: pulumi.Input<inputs.GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityArgs | undefined>;
+    workloadType?: pulumi.Input<inputs.GetClusterClusterInfoSpecWorkloadTypeArgs | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecAutoscale {
@@ -4650,8 +4650,8 @@ export interface GetClusterClusterInfoSpecAutoscale {
 }
 
 export interface GetClusterClusterInfoSpecAutoscaleArgs {
-    maxWorkers?: pulumi.Input<number>;
-    minWorkers?: pulumi.Input<number>;
+    maxWorkers?: pulumi.Input<number | undefined>;
+    minWorkers?: pulumi.Input<number | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecAwsAttributes {
@@ -4668,16 +4668,16 @@ export interface GetClusterClusterInfoSpecAwsAttributes {
 }
 
 export interface GetClusterClusterInfoSpecAwsAttributesArgs {
-    availability?: pulumi.Input<string>;
-    ebsVolumeCount?: pulumi.Input<number>;
-    ebsVolumeIops?: pulumi.Input<number>;
-    ebsVolumeSize?: pulumi.Input<number>;
-    ebsVolumeThroughput?: pulumi.Input<number>;
-    ebsVolumeType?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    instanceProfileArn?: pulumi.Input<string>;
-    spotBidPricePercent?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    ebsVolumeCount?: pulumi.Input<number | undefined>;
+    ebsVolumeIops?: pulumi.Input<number | undefined>;
+    ebsVolumeSize?: pulumi.Input<number | undefined>;
+    ebsVolumeThroughput?: pulumi.Input<number | undefined>;
+    ebsVolumeType?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
+    spotBidPricePercent?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecAzureAttributes {
@@ -4688,10 +4688,10 @@ export interface GetClusterClusterInfoSpecAzureAttributes {
 }
 
 export interface GetClusterClusterInfoSpecAzureAttributesArgs {
-    availability?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    logAnalyticsInfo?: pulumi.Input<inputs.GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs>;
-    spotBidMaxPrice?: pulumi.Input<number>;
+    availability?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    logAnalyticsInfo?: pulumi.Input<inputs.GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs | undefined>;
+    spotBidMaxPrice?: pulumi.Input<number | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo {
@@ -4700,8 +4700,8 @@ export interface GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo {
 }
 
 export interface GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs {
-    logAnalyticsPrimaryKey?: pulumi.Input<string>;
-    logAnalyticsWorkspaceId?: pulumi.Input<string>;
+    logAnalyticsPrimaryKey?: pulumi.Input<string | undefined>;
+    logAnalyticsWorkspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecClusterLogConf {
@@ -4711,9 +4711,9 @@ export interface GetClusterClusterInfoSpecClusterLogConf {
 }
 
 export interface GetClusterClusterInfoSpecClusterLogConfArgs {
-    dbfs?: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterLogConfDbfsArgs>;
-    s3?: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterLogConfS3Args>;
-    volumes?: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterLogConfVolumesArgs>;
+    dbfs?: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterLogConfDbfsArgs | undefined>;
+    s3?: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterLogConfS3Args | undefined>;
+    volumes?: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterLogConfVolumesArgs | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecClusterLogConfDbfs {
@@ -4735,13 +4735,13 @@ export interface GetClusterClusterInfoSpecClusterLogConfS3 {
 }
 
 export interface GetClusterClusterInfoSpecClusterLogConfS3Args {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecClusterLogConfVolumes {
@@ -4761,7 +4761,7 @@ export interface GetClusterClusterInfoSpecClusterMountInfo {
 export interface GetClusterClusterInfoSpecClusterMountInfoArgs {
     localMountDirPath: pulumi.Input<string>;
     networkFilesystemInfo: pulumi.Input<inputs.GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs>;
-    remoteMountDirPath?: pulumi.Input<string>;
+    remoteMountDirPath?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo {
@@ -4770,7 +4770,7 @@ export interface GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfo 
 }
 
 export interface GetClusterClusterInfoSpecClusterMountInfoNetworkFilesystemInfoArgs {
-    mountOptions?: pulumi.Input<string>;
+    mountOptions?: pulumi.Input<string | undefined>;
     serverAddress: pulumi.Input<string>;
 }
 
@@ -4780,7 +4780,7 @@ export interface GetClusterClusterInfoSpecDockerImage {
 }
 
 export interface GetClusterClusterInfoSpecDockerImageArgs {
-    basicAuth?: pulumi.Input<inputs.GetClusterClusterInfoSpecDockerImageBasicAuthArgs>;
+    basicAuth?: pulumi.Input<inputs.GetClusterClusterInfoSpecDockerImageBasicAuthArgs | undefined>;
     url: pulumi.Input<string>;
 }
 
@@ -4799,7 +4799,7 @@ export interface GetClusterClusterInfoSpecDriverNodeTypeFlexibility {
 }
 
 export interface GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgs {
-    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecGcpAttributes {
@@ -4813,13 +4813,13 @@ export interface GetClusterClusterInfoSpecGcpAttributes {
 }
 
 export interface GetClusterClusterInfoSpecGcpAttributesArgs {
-    availability?: pulumi.Input<string>;
-    bootDiskSize?: pulumi.Input<number>;
-    firstOnDemand?: pulumi.Input<number>;
-    googleServiceAccount?: pulumi.Input<string>;
-    localSsdCount?: pulumi.Input<number>;
-    usePreemptibleExecutors?: pulumi.Input<boolean>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    bootDiskSize?: pulumi.Input<number | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    googleServiceAccount?: pulumi.Input<string | undefined>;
+    localSsdCount?: pulumi.Input<number | undefined>;
+    usePreemptibleExecutors?: pulumi.Input<boolean | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecInitScript {
@@ -4836,16 +4836,16 @@ export interface GetClusterClusterInfoSpecInitScript {
 }
 
 export interface GetClusterClusterInfoSpecInitScriptArgs {
-    abfss?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptAbfssArgs>;
+    abfss?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptAbfssArgs | undefined>;
     /**
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
-    dbfs?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptDbfsArgs>;
-    file?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptFileArgs>;
-    gcs?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptGcsArgs>;
-    s3?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptS3Args>;
-    volumes?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptVolumesArgs>;
-    workspace?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptWorkspaceArgs>;
+    dbfs?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptDbfsArgs | undefined>;
+    file?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptFileArgs | undefined>;
+    gcs?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptGcsArgs | undefined>;
+    s3?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptS3Args | undefined>;
+    volumes?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptVolumesArgs | undefined>;
+    workspace?: pulumi.Input<inputs.GetClusterClusterInfoSpecInitScriptWorkspaceArgs | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecInitScriptAbfss {
@@ -4891,13 +4891,13 @@ export interface GetClusterClusterInfoSpecInitScriptS3 {
 }
 
 export interface GetClusterClusterInfoSpecInitScriptS3Args {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecInitScriptVolumes {
@@ -4934,20 +4934,20 @@ export interface GetClusterClusterInfoSpecLibrary {
 }
 
 export interface GetClusterClusterInfoSpecLibraryArgs {
-    cran?: pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryCranArgs>;
+    cran?: pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryCranArgs | undefined>;
     /**
      * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      */
-    egg?: pulumi.Input<string>;
-    jar?: pulumi.Input<string>;
-    maven?: pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryMavenArgs>;
+    egg?: pulumi.Input<string | undefined>;
+    jar?: pulumi.Input<string | undefined>;
+    maven?: pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryMavenArgs | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryProviderConfigArgs>;
-    pypi?: pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryPypiArgs>;
-    requirements?: pulumi.Input<string>;
-    whl?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryProviderConfigArgs | undefined>;
+    pypi?: pulumi.Input<inputs.GetClusterClusterInfoSpecLibraryPypiArgs | undefined>;
+    requirements?: pulumi.Input<string | undefined>;
+    whl?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecLibraryCran {
@@ -4957,7 +4957,7 @@ export interface GetClusterClusterInfoSpecLibraryCran {
 
 export interface GetClusterClusterInfoSpecLibraryCranArgs {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecLibraryMaven {
@@ -4968,8 +4968,8 @@ export interface GetClusterClusterInfoSpecLibraryMaven {
 
 export interface GetClusterClusterInfoSpecLibraryMavenArgs {
     coordinates: pulumi.Input<string>;
-    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
-    repo?: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecLibraryProviderConfig {
@@ -4993,7 +4993,7 @@ export interface GetClusterClusterInfoSpecLibraryPypi {
 
 export interface GetClusterClusterInfoSpecLibraryPypiArgs {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecProviderConfig {
@@ -5015,7 +5015,7 @@ export interface GetClusterClusterInfoSpecWorkerNodeTypeFlexibility {
 }
 
 export interface GetClusterClusterInfoSpecWorkerNodeTypeFlexibilityArgs {
-    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecWorkloadType {
@@ -5032,8 +5032,8 @@ export interface GetClusterClusterInfoSpecWorkloadTypeClients {
 }
 
 export interface GetClusterClusterInfoSpecWorkloadTypeClientsArgs {
-    jobs?: pulumi.Input<boolean>;
-    notebooks?: pulumi.Input<boolean>;
+    jobs?: pulumi.Input<boolean | undefined>;
+    notebooks?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetClusterClusterInfoTerminationReason {
@@ -5043,9 +5043,9 @@ export interface GetClusterClusterInfoTerminationReason {
 }
 
 export interface GetClusterClusterInfoTerminationReasonArgs {
-    code?: pulumi.Input<string>;
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    type?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoWorkerNodeTypeFlexibility {
@@ -5053,7 +5053,7 @@ export interface GetClusterClusterInfoWorkerNodeTypeFlexibility {
 }
 
 export interface GetClusterClusterInfoWorkerNodeTypeFlexibilityArgs {
-    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetClusterClusterInfoWorkloadType {
@@ -5070,8 +5070,8 @@ export interface GetClusterClusterInfoWorkloadTypeClients {
 }
 
 export interface GetClusterClusterInfoWorkloadTypeClientsArgs {
-    jobs?: pulumi.Input<boolean>;
-    notebooks?: pulumi.Input<boolean>;
+    jobs?: pulumi.Input<boolean | undefined>;
+    notebooks?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetClusterPolicyProviderConfig {
@@ -5125,19 +5125,19 @@ export interface GetClustersFilterByArgs {
     /**
      * List of cluster sources to filter by. Possible values are `API`, `JOB`, `MODELS`, `PIPELINE`, `PIPELINE_MAINTENANCE`, `SQL`, and `UI`.
      */
-    clusterSources?: pulumi.Input<pulumi.Input<string>[]>;
+    clusterSources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of cluster states to filter by. Possible values are `RUNNING`, `PENDING`, `RESIZING`, `RESTARTING`, `TERMINATING`, `TERMINATED`, `ERROR`, and `UNKNOWN`.
      */
-    clusterStates?: pulumi.Input<pulumi.Input<string>[]>;
+    clusterStates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to filter by pinned clusters.
      */
-    isPinned?: pulumi.Input<boolean>;
+    isPinned?: pulumi.Input<boolean | undefined>;
     /**
      * Filter by databricks.ClusterPolicy id.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClustersProviderConfig {
@@ -5242,76 +5242,76 @@ export interface GetCurrentMetastoreMetastoreInfo {
 }
 
 export interface GetCurrentMetastoreMetastoreInfoArgs {
-    cloud?: pulumi.Input<string>;
+    cloud?: pulumi.Input<string | undefined>;
     /**
      * Timestamp (in milliseconds) when the current metastore was created.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * the ID of the identity that created the current metastore.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * the ID of the default data access configuration.
      */
-    defaultDataAccessConfigId?: pulumi.Input<string>;
+    defaultDataAccessConfigId?: pulumi.Input<string | undefined>;
     /**
      * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
      */
-    deltaSharingOrganizationName?: pulumi.Input<string>;
+    deltaSharingOrganizationName?: pulumi.Input<string | undefined>;
     /**
      * the expiration duration in seconds on recipient data access tokens.
      */
-    deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number>;
+    deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      */
-    deltaSharingScope?: pulumi.Input<string>;
-    externalAccessEnabled?: pulumi.Input<boolean>;
+    deltaSharingScope?: pulumi.Input<string | undefined>;
+    externalAccessEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Identifier in form of `<cloud>:<region>:<metastore_id>` for use in Databricks to Databricks Delta Sharing.
      */
-    globalMetastoreId?: pulumi.Input<string>;
+    globalMetastoreId?: pulumi.Input<string | undefined>;
     /**
      * Metastore ID.
      */
-    metastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * Name of metastore.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Username/group name/sp applicationId of the metastore owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * the version of the privilege model used by the metastore.
      */
-    privilegeModelVersion?: pulumi.Input<string>;
+    privilegeModelVersion?: pulumi.Input<string | undefined>;
     /**
      * (Mandatory for account-level) The region of the metastore.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Path on cloud storage account, where managed `databricks.Table` are stored.
      */
-    storageRoot?: pulumi.Input<string>;
+    storageRoot?: pulumi.Input<string | undefined>;
     /**
      * ID of a storage credential used for the `storageRoot`.
      */
-    storageRootCredentialId?: pulumi.Input<string>;
+    storageRootCredentialId?: pulumi.Input<string | undefined>;
     /**
      * Name of a storage credential used for the `storageRoot`.
      */
-    storageRootCredentialName?: pulumi.Input<string>;
+    storageRootCredentialName?: pulumi.Input<string | undefined>;
     /**
      * Timestamp (in milliseconds) when the current metastore was updated.
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * the ID of the identity that updated the current metastore.
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
 }
 
 export interface GetCurrentMetastoreProviderConfig {
@@ -5679,65 +5679,65 @@ export interface GetExternalLocationExternalLocationInfo {
 }
 
 export interface GetExternalLocationExternalLocationInfoArgs {
-    browseOnly?: pulumi.Input<boolean>;
+    browseOnly?: pulumi.Input<boolean | undefined>;
     /**
      * User-supplied comment.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Time at which this catalog was created, in epoch milliseconds.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * Username of catalog creator.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Unique ID of storage credential.
      */
-    credentialId?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string | undefined>;
     /**
      * Name of the databricks.StorageCredential to use with this external location.
      */
-    credentialName?: pulumi.Input<string>;
-    effectiveEnableFileEvents?: pulumi.Input<boolean>;
-    effectiveFileEventQueue?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueArgs>;
-    enableFileEvents?: pulumi.Input<boolean>;
+    credentialName?: pulumi.Input<string | undefined>;
+    effectiveEnableFileEvents?: pulumi.Input<boolean | undefined>;
+    effectiveFileEventQueue?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueArgs | undefined>;
+    enableFileEvents?: pulumi.Input<boolean | undefined>;
     /**
      * A block describing encryption options that apply to clients connecting to cloud storage. Consisting of the following attributes:
      */
-    encryptionDetails?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsArgs>;
-    fallback?: pulumi.Input<boolean>;
-    fileEventQueue?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueArgs>;
-    isolationMode?: pulumi.Input<string>;
+    encryptionDetails?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsArgs | undefined>;
+    fallback?: pulumi.Input<boolean | undefined>;
+    fileEventQueue?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueArgs | undefined>;
+    isolationMode?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the parent Metastore.
      */
-    metastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * The name of the external location
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Username/groupname/sp applicationId of the external location owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the external location is read-only.
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Time at which this catalog was last modified, in epoch milliseconds.
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * Username of user who last modified catalog.
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
     /**
      * Path URL in cloud storage, of the form: `s3://[bucket-host]/[bucket-dir]` (AWS), `abfss://[user]@[host]/[path]` (Azure), `gs://[bucket-host]/[bucket-dir]` (GCP).
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueue {
@@ -5750,12 +5750,12 @@ export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueue 
 }
 
 export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueArgs {
-    managedAqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedAqsArgs>;
-    managedPubsub?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedPubsubArgs>;
-    managedSqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedSqsArgs>;
-    providedAqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedAqsArgs>;
-    providedPubsub?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedPubsubArgs>;
-    providedSqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedSqsArgs>;
+    managedAqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedAqsArgs | undefined>;
+    managedPubsub?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedPubsubArgs | undefined>;
+    managedSqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedSqsArgs | undefined>;
+    providedAqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedAqsArgs | undefined>;
+    providedPubsub?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedPubsubArgs | undefined>;
+    providedSqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedSqsArgs | undefined>;
 }
 
 export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedAqs {
@@ -5766,10 +5766,10 @@ export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueM
 }
 
 export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedAqsArgs {
-    managedResourceId?: pulumi.Input<string>;
-    queueUrl?: pulumi.Input<string>;
-    resourceGroup?: pulumi.Input<string>;
-    subscriptionId?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    queueUrl?: pulumi.Input<string | undefined>;
+    resourceGroup?: pulumi.Input<string | undefined>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedPubsub {
@@ -5778,8 +5778,8 @@ export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueM
 }
 
 export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedPubsubArgs {
-    managedResourceId?: pulumi.Input<string>;
-    subscriptionName?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    subscriptionName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedSqs {
@@ -5788,8 +5788,8 @@ export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueM
 }
 
 export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueManagedSqsArgs {
-    managedResourceId?: pulumi.Input<string>;
-    queueUrl?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    queueUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedAqs {
@@ -5800,10 +5800,10 @@ export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueP
 }
 
 export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedAqsArgs {
-    managedResourceId?: pulumi.Input<string>;
-    queueUrl?: pulumi.Input<string>;
-    resourceGroup?: pulumi.Input<string>;
-    subscriptionId?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    queueUrl?: pulumi.Input<string | undefined>;
+    resourceGroup?: pulumi.Input<string | undefined>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedPubsub {
@@ -5812,8 +5812,8 @@ export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueP
 }
 
 export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedPubsubArgs {
-    managedResourceId?: pulumi.Input<string>;
-    subscriptionName?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    subscriptionName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedSqs {
@@ -5822,8 +5822,8 @@ export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueP
 }
 
 export interface GetExternalLocationExternalLocationInfoEffectiveFileEventQueueProvidedSqsArgs {
-    managedResourceId?: pulumi.Input<string>;
-    queueUrl?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    queueUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLocationExternalLocationInfoEncryptionDetails {
@@ -5837,7 +5837,7 @@ export interface GetExternalLocationExternalLocationInfoEncryptionDetailsArgs {
     /**
      * a block describing server-Side Encryption properties for clients communicating with AWS S3. Consists of the following attributes:
      */
-    sseEncryptionDetails?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs>;
+    sseEncryptionDetails?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetailsArgs | undefined>;
 }
 
 export interface GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncryptionDetails {
@@ -5855,11 +5855,11 @@ export interface GetExternalLocationExternalLocationInfoEncryptionDetailsSseEncr
     /**
      * Encryption algorithm value. Sets the value of the `x-amz-server-side-encryption` header in S3 request.
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     /**
      * ARN of the SSE-KMS key used with the S3 location, when `algorithm = "SSE-KMS"`.
      */
-    awsKmsKeyArn?: pulumi.Input<string>;
+    awsKmsKeyArn?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLocationExternalLocationInfoFileEventQueue {
@@ -5872,12 +5872,12 @@ export interface GetExternalLocationExternalLocationInfoFileEventQueue {
 }
 
 export interface GetExternalLocationExternalLocationInfoFileEventQueueArgs {
-    managedAqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueManagedAqsArgs>;
-    managedPubsub?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsubArgs>;
-    managedSqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueManagedSqsArgs>;
-    providedAqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqsArgs>;
-    providedPubsub?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsubArgs>;
-    providedSqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgs>;
+    managedAqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueManagedAqsArgs | undefined>;
+    managedPubsub?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsubArgs | undefined>;
+    managedSqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueManagedSqsArgs | undefined>;
+    providedAqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqsArgs | undefined>;
+    providedPubsub?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsubArgs | undefined>;
+    providedSqs?: pulumi.Input<inputs.GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgs | undefined>;
 }
 
 export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedAqs {
@@ -5888,10 +5888,10 @@ export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedAqs
 }
 
 export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedAqsArgs {
-    managedResourceId?: pulumi.Input<string>;
-    queueUrl?: pulumi.Input<string>;
-    resourceGroup?: pulumi.Input<string>;
-    subscriptionId?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    queueUrl?: pulumi.Input<string | undefined>;
+    resourceGroup?: pulumi.Input<string | undefined>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsub {
@@ -5900,8 +5900,8 @@ export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedPub
 }
 
 export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedPubsubArgs {
-    managedResourceId?: pulumi.Input<string>;
-    subscriptionName?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    subscriptionName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedSqs {
@@ -5910,8 +5910,8 @@ export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedSqs
 }
 
 export interface GetExternalLocationExternalLocationInfoFileEventQueueManagedSqsArgs {
-    managedResourceId?: pulumi.Input<string>;
-    queueUrl?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    queueUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqs {
@@ -5922,10 +5922,10 @@ export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedAq
 }
 
 export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedAqsArgs {
-    managedResourceId?: pulumi.Input<string>;
-    queueUrl?: pulumi.Input<string>;
-    resourceGroup?: pulumi.Input<string>;
-    subscriptionId?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    queueUrl?: pulumi.Input<string | undefined>;
+    resourceGroup?: pulumi.Input<string | undefined>;
+    subscriptionId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsub {
@@ -5934,8 +5934,8 @@ export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedPu
 }
 
 export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedPubsubArgs {
-    managedResourceId?: pulumi.Input<string>;
-    subscriptionName?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    subscriptionName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqs {
@@ -5944,8 +5944,8 @@ export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedSq
 }
 
 export interface GetExternalLocationExternalLocationInfoFileEventQueueProvidedSqsArgs {
-    managedResourceId?: pulumi.Input<string>;
-    queueUrl?: pulumi.Input<string>;
+    managedResourceId?: pulumi.Input<string | undefined>;
+    queueUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLocationProviderConfig {
@@ -6215,123 +6215,123 @@ export interface GetFunctionsFunctionArgs {
     /**
      * Indicates whether the principal is limited to retrieving metadata for the associated object through the `BROWSE` privilege when `includeBrowse` is enabled in the request.
      */
-    browseOnly?: pulumi.Input<boolean>;
+    browseOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Name of databricks_catalog.
      */
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * User-provided free-form text description.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Time at which this function was created, in epoch milliseconds.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * Username of function creator.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Scalar function return data type.
      */
-    dataType?: pulumi.Input<string>;
+    dataType?: pulumi.Input<string | undefined>;
     /**
      * External function language.
      */
-    externalLanguage?: pulumi.Input<string>;
+    externalLanguage?: pulumi.Input<string | undefined>;
     /**
      * External function name.
      */
-    externalName?: pulumi.Input<string>;
+    externalName?: pulumi.Input<string | undefined>;
     /**
      * Pretty printed function data type.
      */
-    fullDataType?: pulumi.Input<string>;
+    fullDataType?: pulumi.Input<string | undefined>;
     /**
      * Full name of function, in form of catalog_name.schema_name.function__name
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * Id of Function, relative to parent schema.
      */
-    functionId?: pulumi.Input<string>;
+    functionId?: pulumi.Input<string | undefined>;
     /**
      * object describing input parameters. Consists of the single attribute:
      */
-    inputParams?: pulumi.Input<inputs.GetFunctionsFunctionInputParamsArgs>;
+    inputParams?: pulumi.Input<inputs.GetFunctionsFunctionInputParamsArgs | undefined>;
     /**
      * Boolean flag specifying whether the function is deterministic.
      */
-    isDeterministic?: pulumi.Input<boolean>;
+    isDeterministic?: pulumi.Input<boolean | undefined>;
     /**
      * Boolean flag whether function null call.
      */
-    isNullCall?: pulumi.Input<boolean>;
+    isNullCall?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier of parent metastore.
      */
-    metastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * Name of parameter.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Username of current owner of function.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Function parameter style. `S` is the value for SQL.
      */
-    parameterStyle?: pulumi.Input<string>;
+    parameterStyle?: pulumi.Input<string | undefined>;
     /**
      * JSON-serialized key-value pair map, encoded (escaped) as a string.
      */
-    properties?: pulumi.Input<string>;
+    properties?: pulumi.Input<string | undefined>;
     /**
      * Table function return parameters.  See `inputParams` for description.
      */
-    returnParams?: pulumi.Input<inputs.GetFunctionsFunctionReturnParamsArgs>;
+    returnParams?: pulumi.Input<inputs.GetFunctionsFunctionReturnParamsArgs | undefined>;
     /**
      * Function language (`SQL` or `EXTERNAL`). When `EXTERNAL` is used, the language of the routine function should be specified in the `externalLanguage` field, and the `returnParams` of the function cannot be used (as `TABLE` return type is not supported), and the `sqlDataAccess` field must be `NO_SQL`.
      */
-    routineBody?: pulumi.Input<string>;
+    routineBody?: pulumi.Input<string | undefined>;
     /**
      * Function body.
      */
-    routineDefinition?: pulumi.Input<string>;
+    routineDefinition?: pulumi.Input<string | undefined>;
     /**
      * Function dependencies.
      */
-    routineDependencies?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesArgs>;
+    routineDependencies?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesArgs | undefined>;
     /**
      * Name of databricks_schema.
      */
-    schemaName?: pulumi.Input<string>;
+    schemaName?: pulumi.Input<string | undefined>;
     /**
      * Function security type. (Enum: `DEFINER`).
      */
-    securityType?: pulumi.Input<string>;
+    securityType?: pulumi.Input<string | undefined>;
     /**
      * Specific name of the function; Reserved for future use.
      */
-    specificName?: pulumi.Input<string>;
+    specificName?: pulumi.Input<string | undefined>;
     /**
      * Function SQL data access (`CONTAINS_SQL`, `READS_SQL_DATA`, `NO_SQL`).
      */
-    sqlDataAccess?: pulumi.Input<string>;
+    sqlDataAccess?: pulumi.Input<string | undefined>;
     /**
      * List of schemes whose objects can be referenced without qualification.
      */
-    sqlPath?: pulumi.Input<string>;
+    sqlPath?: pulumi.Input<string | undefined>;
     /**
      * Time at which this function was created, in epoch milliseconds.
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * Username of user who last modified function.
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
 }
 
 export interface GetFunctionsFunctionInputParams {
@@ -6345,7 +6345,7 @@ export interface GetFunctionsFunctionInputParamsArgs {
     /**
      * The array of definitions of the function's parameters:
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionInputParamsParameterArgs>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionInputParamsParameterArgs>[] | undefined>;
 }
 
 export interface GetFunctionsFunctionInputParamsParameter {
@@ -6403,7 +6403,7 @@ export interface GetFunctionsFunctionInputParamsParameterArgs {
     /**
      * User-provided free-form text description.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Name of parameter.
      */
@@ -6411,15 +6411,15 @@ export interface GetFunctionsFunctionInputParamsParameterArgs {
     /**
      * Default value of the parameter.
      */
-    parameterDefault?: pulumi.Input<string>;
+    parameterDefault?: pulumi.Input<string | undefined>;
     /**
      * The mode of the function parameter.
      */
-    parameterMode?: pulumi.Input<string>;
+    parameterMode?: pulumi.Input<string | undefined>;
     /**
      * The type of function parameter (`PARAM` or `COLUMN`).
      */
-    parameterType?: pulumi.Input<string>;
+    parameterType?: pulumi.Input<string | undefined>;
     /**
      * Ordinal position of column (starting at position 0).
      */
@@ -6427,11 +6427,11 @@ export interface GetFunctionsFunctionInputParamsParameterArgs {
     /**
      * Format of IntervalType.
      */
-    typeIntervalType?: pulumi.Input<string>;
+    typeIntervalType?: pulumi.Input<string | undefined>;
     /**
      * Full data type spec, JSON-serialized.
      */
-    typeJson?: pulumi.Input<string>;
+    typeJson?: pulumi.Input<string | undefined>;
     /**
      * Name of type (INT, STRUCT, MAP, etc.).
      */
@@ -6439,11 +6439,11 @@ export interface GetFunctionsFunctionInputParamsParameterArgs {
     /**
      * Digits of precision; required on Create for DecimalTypes.
      */
-    typePrecision?: pulumi.Input<number>;
+    typePrecision?: pulumi.Input<number | undefined>;
     /**
      * Digits to right of decimal; Required on Create for DecimalTypes.
      */
-    typeScale?: pulumi.Input<number>;
+    typeScale?: pulumi.Input<number | undefined>;
     /**
      * Full data type spec, SQL/catalogString text.
      */
@@ -6461,7 +6461,7 @@ export interface GetFunctionsFunctionReturnParamsArgs {
     /**
      * The array of definitions of the function's parameters:
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionReturnParamsParameterArgs>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionReturnParamsParameterArgs>[] | undefined>;
 }
 
 export interface GetFunctionsFunctionReturnParamsParameter {
@@ -6519,7 +6519,7 @@ export interface GetFunctionsFunctionReturnParamsParameterArgs {
     /**
      * User-provided free-form text description.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Name of parameter.
      */
@@ -6527,15 +6527,15 @@ export interface GetFunctionsFunctionReturnParamsParameterArgs {
     /**
      * Default value of the parameter.
      */
-    parameterDefault?: pulumi.Input<string>;
+    parameterDefault?: pulumi.Input<string | undefined>;
     /**
      * The mode of the function parameter.
      */
-    parameterMode?: pulumi.Input<string>;
+    parameterMode?: pulumi.Input<string | undefined>;
     /**
      * The type of function parameter (`PARAM` or `COLUMN`).
      */
-    parameterType?: pulumi.Input<string>;
+    parameterType?: pulumi.Input<string | undefined>;
     /**
      * Ordinal position of column (starting at position 0).
      */
@@ -6543,11 +6543,11 @@ export interface GetFunctionsFunctionReturnParamsParameterArgs {
     /**
      * Format of IntervalType.
      */
-    typeIntervalType?: pulumi.Input<string>;
+    typeIntervalType?: pulumi.Input<string | undefined>;
     /**
      * Full data type spec, JSON-serialized.
      */
-    typeJson?: pulumi.Input<string>;
+    typeJson?: pulumi.Input<string | undefined>;
     /**
      * Name of type (INT, STRUCT, MAP, etc.).
      */
@@ -6555,11 +6555,11 @@ export interface GetFunctionsFunctionReturnParamsParameterArgs {
     /**
      * Digits of precision; required on Create for DecimalTypes.
      */
-    typePrecision?: pulumi.Input<number>;
+    typePrecision?: pulumi.Input<number | undefined>;
     /**
      * Digits to right of decimal; Required on Create for DecimalTypes.
      */
-    typeScale?: pulumi.Input<number>;
+    typeScale?: pulumi.Input<number | undefined>;
     /**
      * Full data type spec, SQL/catalogString text.
      */
@@ -6571,7 +6571,7 @@ export interface GetFunctionsFunctionRoutineDependencies {
 }
 
 export interface GetFunctionsFunctionRoutineDependenciesArgs {
-    dependencies?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyArgs>[]>;
+    dependencies?: pulumi.Input<pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyArgs>[] | undefined>;
 }
 
 export interface GetFunctionsFunctionRoutineDependenciesDependency {
@@ -6582,10 +6582,10 @@ export interface GetFunctionsFunctionRoutineDependenciesDependency {
 }
 
 export interface GetFunctionsFunctionRoutineDependenciesDependencyArgs {
-    connection?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyConnectionArgs>;
-    credential?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyCredentialArgs>;
-    function?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs>;
-    table?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyTableArgs>;
+    connection?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyConnectionArgs | undefined>;
+    credential?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyCredentialArgs | undefined>;
+    function?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyFunctionArgs | undefined>;
+    table?: pulumi.Input<inputs.GetFunctionsFunctionRoutineDependenciesDependencyTableArgs | undefined>;
 }
 
 export interface GetFunctionsFunctionRoutineDependenciesDependencyConnection {
@@ -6593,7 +6593,7 @@ export interface GetFunctionsFunctionRoutineDependenciesDependencyConnection {
 }
 
 export interface GetFunctionsFunctionRoutineDependenciesDependencyConnectionArgs {
-    connectionName?: pulumi.Input<string>;
+    connectionName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetFunctionsFunctionRoutineDependenciesDependencyCredential {
@@ -6601,7 +6601,7 @@ export interface GetFunctionsFunctionRoutineDependenciesDependencyCredential {
 }
 
 export interface GetFunctionsFunctionRoutineDependenciesDependencyCredentialArgs {
-    credentialName?: pulumi.Input<string>;
+    credentialName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetFunctionsFunctionRoutineDependenciesDependencyFunction {
@@ -6665,25 +6665,25 @@ export interface GetInstancePoolPoolInfo {
 }
 
 export interface GetInstancePoolPoolInfoArgs {
-    awsAttributes?: pulumi.Input<inputs.GetInstancePoolPoolInfoAwsAttributesArgs>;
-    azureAttributes?: pulumi.Input<inputs.GetInstancePoolPoolInfoAzureAttributesArgs>;
-    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    defaultTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    diskSpec?: pulumi.Input<inputs.GetInstancePoolPoolInfoDiskSpecArgs>;
-    enableElasticDisk?: pulumi.Input<boolean>;
-    gcpAttributes?: pulumi.Input<inputs.GetInstancePoolPoolInfoGcpAttributesArgs>;
+    awsAttributes?: pulumi.Input<inputs.GetInstancePoolPoolInfoAwsAttributesArgs | undefined>;
+    azureAttributes?: pulumi.Input<inputs.GetInstancePoolPoolInfoAzureAttributesArgs | undefined>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    defaultTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    diskSpec?: pulumi.Input<inputs.GetInstancePoolPoolInfoDiskSpecArgs | undefined>;
+    enableElasticDisk?: pulumi.Input<boolean | undefined>;
+    gcpAttributes?: pulumi.Input<inputs.GetInstancePoolPoolInfoGcpAttributesArgs | undefined>;
     idleInstanceAutoterminationMinutes: pulumi.Input<number>;
-    instancePoolFleetAttributes?: pulumi.Input<pulumi.Input<inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs>[]>;
-    instancePoolId?: pulumi.Input<string>;
+    instancePoolFleetAttributes?: pulumi.Input<pulumi.Input<inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs>[] | undefined>;
+    instancePoolId?: pulumi.Input<string | undefined>;
     instancePoolName: pulumi.Input<string>;
-    maxCapacity?: pulumi.Input<number>;
-    minIdleInstances?: pulumi.Input<number>;
-    nodeTypeFlexibility?: pulumi.Input<inputs.GetInstancePoolPoolInfoNodeTypeFlexibilityArgs>;
-    nodeTypeId?: pulumi.Input<string>;
-    preloadedDockerImages?: pulumi.Input<pulumi.Input<inputs.GetInstancePoolPoolInfoPreloadedDockerImageArgs>[]>;
-    preloadedSparkVersions?: pulumi.Input<pulumi.Input<string>[]>;
-    state?: pulumi.Input<string>;
-    stats?: pulumi.Input<inputs.GetInstancePoolPoolInfoStatsArgs>;
+    maxCapacity?: pulumi.Input<number | undefined>;
+    minIdleInstances?: pulumi.Input<number | undefined>;
+    nodeTypeFlexibility?: pulumi.Input<inputs.GetInstancePoolPoolInfoNodeTypeFlexibilityArgs | undefined>;
+    nodeTypeId?: pulumi.Input<string | undefined>;
+    preloadedDockerImages?: pulumi.Input<pulumi.Input<inputs.GetInstancePoolPoolInfoPreloadedDockerImageArgs>[] | undefined>;
+    preloadedSparkVersions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    state?: pulumi.Input<string | undefined>;
+    stats?: pulumi.Input<inputs.GetInstancePoolPoolInfoStatsArgs | undefined>;
 }
 
 export interface GetInstancePoolPoolInfoAwsAttributes {
@@ -6694,10 +6694,10 @@ export interface GetInstancePoolPoolInfoAwsAttributes {
 }
 
 export interface GetInstancePoolPoolInfoAwsAttributesArgs {
-    availability?: pulumi.Input<string>;
-    instanceProfileArn?: pulumi.Input<string>;
-    spotBidPricePercent?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
+    spotBidPricePercent?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetInstancePoolPoolInfoAzureAttributes {
@@ -6706,8 +6706,8 @@ export interface GetInstancePoolPoolInfoAzureAttributes {
 }
 
 export interface GetInstancePoolPoolInfoAzureAttributesArgs {
-    availability?: pulumi.Input<string>;
-    spotBidMaxPrice?: pulumi.Input<number>;
+    availability?: pulumi.Input<string | undefined>;
+    spotBidMaxPrice?: pulumi.Input<number | undefined>;
 }
 
 export interface GetInstancePoolPoolInfoDiskSpec {
@@ -6717,9 +6717,9 @@ export interface GetInstancePoolPoolInfoDiskSpec {
 }
 
 export interface GetInstancePoolPoolInfoDiskSpecArgs {
-    diskCount?: pulumi.Input<number>;
-    diskSize?: pulumi.Input<number>;
-    diskType?: pulumi.Input<inputs.GetInstancePoolPoolInfoDiskSpecDiskTypeArgs>;
+    diskCount?: pulumi.Input<number | undefined>;
+    diskSize?: pulumi.Input<number | undefined>;
+    diskType?: pulumi.Input<inputs.GetInstancePoolPoolInfoDiskSpecDiskTypeArgs | undefined>;
 }
 
 export interface GetInstancePoolPoolInfoDiskSpecDiskType {
@@ -6728,8 +6728,8 @@ export interface GetInstancePoolPoolInfoDiskSpecDiskType {
 }
 
 export interface GetInstancePoolPoolInfoDiskSpecDiskTypeArgs {
-    azureDiskVolumeType?: pulumi.Input<string>;
-    ebsVolumeType?: pulumi.Input<string>;
+    azureDiskVolumeType?: pulumi.Input<string | undefined>;
+    ebsVolumeType?: pulumi.Input<string | undefined>;
 }
 
 export interface GetInstancePoolPoolInfoGcpAttributes {
@@ -6739,9 +6739,9 @@ export interface GetInstancePoolPoolInfoGcpAttributes {
 }
 
 export interface GetInstancePoolPoolInfoGcpAttributesArgs {
-    gcpAvailability?: pulumi.Input<string>;
-    localSsdCount?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    gcpAvailability?: pulumi.Input<string | undefined>;
+    localSsdCount?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetInstancePoolPoolInfoInstancePoolFleetAttribute {
@@ -6751,8 +6751,8 @@ export interface GetInstancePoolPoolInfoInstancePoolFleetAttribute {
 }
 
 export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeArgs {
-    fleetOnDemandOption?: pulumi.Input<inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs>;
-    fleetSpotOption?: pulumi.Input<inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs>;
+    fleetOnDemandOption?: pulumi.Input<inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs | undefined>;
+    fleetSpotOption?: pulumi.Input<inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs | undefined>;
     launchTemplateOverrides: pulumi.Input<pulumi.Input<inputs.GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverrideArgs>[]>;
 }
 
@@ -6763,7 +6763,7 @@ export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandO
 
 export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetOnDemandOptionArgs {
     allocationStrategy: pulumi.Input<string>;
-    instancePoolsToUseCount?: pulumi.Input<number>;
+    instancePoolsToUseCount?: pulumi.Input<number | undefined>;
 }
 
 export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOption {
@@ -6773,7 +6773,7 @@ export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptio
 
 export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeFleetSpotOptionArgs {
     allocationStrategy: pulumi.Input<string>;
-    instancePoolsToUseCount?: pulumi.Input<number>;
+    instancePoolsToUseCount?: pulumi.Input<number | undefined>;
 }
 
 export interface GetInstancePoolPoolInfoInstancePoolFleetAttributeLaunchTemplateOverride {
@@ -6800,7 +6800,7 @@ export interface GetInstancePoolPoolInfoPreloadedDockerImage {
 }
 
 export interface GetInstancePoolPoolInfoPreloadedDockerImageArgs {
-    basicAuth?: pulumi.Input<inputs.GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs>;
+    basicAuth?: pulumi.Input<inputs.GetInstancePoolPoolInfoPreloadedDockerImageBasicAuthArgs | undefined>;
     url: pulumi.Input<string>;
 }
 
@@ -6822,10 +6822,10 @@ export interface GetInstancePoolPoolInfoStats {
 }
 
 export interface GetInstancePoolPoolInfoStatsArgs {
-    idleCount?: pulumi.Input<number>;
-    pendingIdleCount?: pulumi.Input<number>;
-    pendingUsedCount?: pulumi.Input<number>;
-    usedCount?: pulumi.Input<number>;
+    idleCount?: pulumi.Input<number | undefined>;
+    pendingIdleCount?: pulumi.Input<number | undefined>;
+    pendingUsedCount?: pulumi.Input<number | undefined>;
+    usedCount?: pulumi.Input<number | undefined>;
 }
 
 export interface GetInstancePoolProviderConfig {
@@ -6865,19 +6865,19 @@ export interface GetInstanceProfilesInstanceProfileArgs {
     /**
      * ARN of the instance profile.
      */
-    arn?: pulumi.Input<string>;
+    arn?: pulumi.Input<string | undefined>;
     /**
      * Whether the instance profile is a meta instance profile or not.
      */
-    isMeta?: pulumi.Input<boolean>;
+    isMeta?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the instance profile.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * ARN of the role attached to the instance profile.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
 }
 
 export interface GetInstanceProfilesProviderConfig {
@@ -6903,11 +6903,11 @@ export interface GetJobJobSettings {
 }
 
 export interface GetJobJobSettingsArgs {
-    createdTime?: pulumi.Input<number>;
-    creatorUserName?: pulumi.Input<string>;
-    jobId?: pulumi.Input<number>;
-    runAsUserName?: pulumi.Input<string>;
-    settings?: pulumi.Input<inputs.GetJobJobSettingsSettingsArgs>;
+    createdTime?: pulumi.Input<number | undefined>;
+    creatorUserName?: pulumi.Input<string | undefined>;
+    jobId?: pulumi.Input<number | undefined>;
+    runAsUserName?: pulumi.Input<string | undefined>;
+    settings?: pulumi.Input<inputs.GetJobJobSettingsSettingsArgs | undefined>;
 }
 
 export interface GetJobJobSettingsSettings {
@@ -6953,45 +6953,45 @@ export interface GetJobJobSettingsSettings {
 }
 
 export interface GetJobJobSettingsSettingsArgs {
-    continuous?: pulumi.Input<inputs.GetJobJobSettingsSettingsContinuousArgs>;
-    dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsDbtTaskArgs>;
-    deployment?: pulumi.Input<inputs.GetJobJobSettingsSettingsDeploymentArgs>;
-    description?: pulumi.Input<string>;
-    editMode?: pulumi.Input<string>;
-    emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsEmailNotificationsArgs>;
-    environments?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsEnvironmentArgs>[]>;
-    existingClusterId?: pulumi.Input<string>;
-    format?: pulumi.Input<string>;
-    gitSource?: pulumi.Input<inputs.GetJobJobSettingsSettingsGitSourceArgs>;
-    health?: pulumi.Input<inputs.GetJobJobSettingsSettingsHealthArgs>;
-    jobClusters?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterArgs>[]>;
-    libraries?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryArgs>[]>;
-    maxConcurrentRuns?: pulumi.Input<number>;
-    maxRetries?: pulumi.Input<number>;
-    minRetryIntervalMillis?: pulumi.Input<number>;
+    continuous?: pulumi.Input<inputs.GetJobJobSettingsSettingsContinuousArgs | undefined>;
+    dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsDbtTaskArgs | undefined>;
+    deployment?: pulumi.Input<inputs.GetJobJobSettingsSettingsDeploymentArgs | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    editMode?: pulumi.Input<string | undefined>;
+    emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsEmailNotificationsArgs | undefined>;
+    environments?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsEnvironmentArgs>[] | undefined>;
+    existingClusterId?: pulumi.Input<string | undefined>;
+    format?: pulumi.Input<string | undefined>;
+    gitSource?: pulumi.Input<inputs.GetJobJobSettingsSettingsGitSourceArgs | undefined>;
+    health?: pulumi.Input<inputs.GetJobJobSettingsSettingsHealthArgs | undefined>;
+    jobClusters?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterArgs>[] | undefined>;
+    libraries?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryArgs>[] | undefined>;
+    maxConcurrentRuns?: pulumi.Input<number | undefined>;
+    maxRetries?: pulumi.Input<number | undefined>;
+    minRetryIntervalMillis?: pulumi.Input<number | undefined>;
     /**
      * the job name of databricks.Job if the resource was matched by id.
      */
-    name?: pulumi.Input<string>;
-    newCluster?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterArgs>;
-    notebookTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsNotebookTaskArgs>;
-    notificationSettings?: pulumi.Input<inputs.GetJobJobSettingsSettingsNotificationSettingsArgs>;
-    parameters?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsParameterArgs>[]>;
-    pipelineTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsPipelineTaskArgs>;
-    pythonWheelTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsPythonWheelTaskArgs>;
-    queue?: pulumi.Input<inputs.GetJobJobSettingsSettingsQueueArgs>;
-    retryOnTimeout?: pulumi.Input<boolean>;
-    runAs?: pulumi.Input<inputs.GetJobJobSettingsSettingsRunAsArgs>;
-    runJobTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsRunJobTaskArgs>;
-    schedule?: pulumi.Input<inputs.GetJobJobSettingsSettingsScheduleArgs>;
-    sparkJarTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsSparkJarTaskArgs>;
-    sparkPythonTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsSparkPythonTaskArgs>;
-    sparkSubmitTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsSparkSubmitTaskArgs>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    tasks?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskArgs>[]>;
-    timeoutSeconds?: pulumi.Input<number>;
-    trigger?: pulumi.Input<inputs.GetJobJobSettingsSettingsTriggerArgs>;
-    webhookNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsArgs>;
+    name?: pulumi.Input<string | undefined>;
+    newCluster?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterArgs | undefined>;
+    notebookTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsNotebookTaskArgs | undefined>;
+    notificationSettings?: pulumi.Input<inputs.GetJobJobSettingsSettingsNotificationSettingsArgs | undefined>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsParameterArgs>[] | undefined>;
+    pipelineTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsPipelineTaskArgs | undefined>;
+    pythonWheelTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsPythonWheelTaskArgs | undefined>;
+    queue?: pulumi.Input<inputs.GetJobJobSettingsSettingsQueueArgs | undefined>;
+    retryOnTimeout?: pulumi.Input<boolean | undefined>;
+    runAs?: pulumi.Input<inputs.GetJobJobSettingsSettingsRunAsArgs | undefined>;
+    runJobTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsRunJobTaskArgs | undefined>;
+    schedule?: pulumi.Input<inputs.GetJobJobSettingsSettingsScheduleArgs | undefined>;
+    sparkJarTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsSparkJarTaskArgs | undefined>;
+    sparkPythonTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsSparkPythonTaskArgs | undefined>;
+    sparkSubmitTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsSparkSubmitTaskArgs | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    tasks?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskArgs>[] | undefined>;
+    timeoutSeconds?: pulumi.Input<number | undefined>;
+    trigger?: pulumi.Input<inputs.GetJobJobSettingsSettingsTriggerArgs | undefined>;
+    webhookNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsArgs | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsContinuous {
@@ -6999,7 +6999,7 @@ export interface GetJobJobSettingsSettingsContinuous {
 }
 
 export interface GetJobJobSettingsSettingsContinuousArgs {
-    pauseStatus?: pulumi.Input<string>;
+    pauseStatus?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsDbtTask {
@@ -7013,13 +7013,13 @@ export interface GetJobJobSettingsSettingsDbtTask {
 }
 
 export interface GetJobJobSettingsSettingsDbtTaskArgs {
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     commands: pulumi.Input<pulumi.Input<string>[]>;
-    profilesDirectory?: pulumi.Input<string>;
-    projectDirectory?: pulumi.Input<string>;
-    schema?: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
-    warehouseId?: pulumi.Input<string>;
+    profilesDirectory?: pulumi.Input<string | undefined>;
+    projectDirectory?: pulumi.Input<string | undefined>;
+    schema?: pulumi.Input<string | undefined>;
+    source?: pulumi.Input<string | undefined>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsDeployment {
@@ -7029,7 +7029,7 @@ export interface GetJobJobSettingsSettingsDeployment {
 
 export interface GetJobJobSettingsSettingsDeploymentArgs {
     kind: pulumi.Input<string>;
-    metadataFilePath?: pulumi.Input<string>;
+    metadataFilePath?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsEmailNotifications {
@@ -7042,12 +7042,12 @@ export interface GetJobJobSettingsSettingsEmailNotifications {
 }
 
 export interface GetJobJobSettingsSettingsEmailNotificationsArgs {
-    noAlertForSkippedRuns?: pulumi.Input<boolean>;
-    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
-    onFailures?: pulumi.Input<pulumi.Input<string>[]>;
-    onStarts?: pulumi.Input<pulumi.Input<string>[]>;
-    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
-    onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
+    noAlertForSkippedRuns?: pulumi.Input<boolean | undefined>;
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onFailures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onStarts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onSuccesses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsEnvironment {
@@ -7057,7 +7057,7 @@ export interface GetJobJobSettingsSettingsEnvironment {
 
 export interface GetJobJobSettingsSettingsEnvironmentArgs {
     environmentKey: pulumi.Input<string>;
-    spec?: pulumi.Input<inputs.GetJobJobSettingsSettingsEnvironmentSpecArgs>;
+    spec?: pulumi.Input<inputs.GetJobJobSettingsSettingsEnvironmentSpecArgs | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsEnvironmentSpec {
@@ -7069,11 +7069,11 @@ export interface GetJobJobSettingsSettingsEnvironmentSpec {
 }
 
 export interface GetJobJobSettingsSettingsEnvironmentSpecArgs {
-    baseEnvironment?: pulumi.Input<string>;
-    client?: pulumi.Input<string>;
-    dependencies?: pulumi.Input<pulumi.Input<string>[]>;
-    environmentVersion?: pulumi.Input<string>;
-    javaDependencies?: pulumi.Input<pulumi.Input<string>[]>;
+    baseEnvironment?: pulumi.Input<string | undefined>;
+    client?: pulumi.Input<string | undefined>;
+    dependencies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    environmentVersion?: pulumi.Input<string | undefined>;
+    javaDependencies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsGitSource {
@@ -7086,11 +7086,11 @@ export interface GetJobJobSettingsSettingsGitSource {
 }
 
 export interface GetJobJobSettingsSettingsGitSourceArgs {
-    branch?: pulumi.Input<string>;
-    commit?: pulumi.Input<string>;
-    jobSource?: pulumi.Input<inputs.GetJobJobSettingsSettingsGitSourceJobSourceArgs>;
-    provider?: pulumi.Input<string>;
-    tag?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
+    commit?: pulumi.Input<string | undefined>;
+    jobSource?: pulumi.Input<inputs.GetJobJobSettingsSettingsGitSourceJobSourceArgs | undefined>;
+    provider?: pulumi.Input<string | undefined>;
+    tag?: pulumi.Input<string | undefined>;
     url: pulumi.Input<string>;
 }
 
@@ -7101,7 +7101,7 @@ export interface GetJobJobSettingsSettingsGitSourceJobSource {
 }
 
 export interface GetJobJobSettingsSettingsGitSourceJobSourceArgs {
-    dirtyState?: pulumi.Input<string>;
+    dirtyState?: pulumi.Input<string | undefined>;
     importFromGitBranch: pulumi.Input<string>;
     jobConfigPath: pulumi.Input<string>;
 }
@@ -7170,36 +7170,36 @@ export interface GetJobJobSettingsSettingsJobClusterNewCluster {
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterArgs {
-    applyPolicyDefaultValues?: pulumi.Input<boolean>;
-    autoscale?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterAutoscaleArgs>;
-    autoterminationMinutes?: pulumi.Input<number>;
-    awsAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributesArgs>;
-    azureAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributesArgs>;
-    clusterId?: pulumi.Input<string>;
-    clusterLogConf?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfArgs>;
-    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoArgs>[]>;
-    clusterName?: pulumi.Input<string>;
-    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    dataSecurityMode?: pulumi.Input<string>;
-    dockerImage?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterDockerImageArgs>;
-    driverInstancePoolId?: pulumi.Input<string>;
-    driverNodeTypeId?: pulumi.Input<string>;
-    enableElasticDisk?: pulumi.Input<boolean>;
-    enableLocalDiskEncryption?: pulumi.Input<boolean>;
-    gcpAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesArgs>;
-    idempotencyToken?: pulumi.Input<string>;
-    initScripts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs>[]>;
-    instancePoolId?: pulumi.Input<string>;
-    nodeTypeId?: pulumi.Input<string>;
+    applyPolicyDefaultValues?: pulumi.Input<boolean | undefined>;
+    autoscale?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterAutoscaleArgs | undefined>;
+    autoterminationMinutes?: pulumi.Input<number | undefined>;
+    awsAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributesArgs | undefined>;
+    azureAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributesArgs | undefined>;
+    clusterId?: pulumi.Input<string | undefined>;
+    clusterLogConf?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfArgs | undefined>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoArgs>[] | undefined>;
+    clusterName?: pulumi.Input<string | undefined>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    dataSecurityMode?: pulumi.Input<string | undefined>;
+    dockerImage?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterDockerImageArgs | undefined>;
+    driverInstancePoolId?: pulumi.Input<string | undefined>;
+    driverNodeTypeId?: pulumi.Input<string | undefined>;
+    enableElasticDisk?: pulumi.Input<boolean | undefined>;
+    enableLocalDiskEncryption?: pulumi.Input<boolean | undefined>;
+    gcpAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesArgs | undefined>;
+    idempotencyToken?: pulumi.Input<string | undefined>;
+    initScripts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs>[] | undefined>;
+    instancePoolId?: pulumi.Input<string | undefined>;
+    nodeTypeId?: pulumi.Input<string | undefined>;
     numWorkers: pulumi.Input<number>;
-    policyId?: pulumi.Input<string>;
-    runtimeEngine?: pulumi.Input<string>;
-    singleUserName?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkVersion?: pulumi.Input<string>;
-    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    workloadType?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs>;
+    policyId?: pulumi.Input<string | undefined>;
+    runtimeEngine?: pulumi.Input<string | undefined>;
+    singleUserName?: pulumi.Input<string | undefined>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkVersion?: pulumi.Input<string | undefined>;
+    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    workloadType?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeArgs | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterAutoscale {
@@ -7208,8 +7208,8 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterAutoscale {
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterAutoscaleArgs {
-    maxWorkers?: pulumi.Input<number>;
-    minWorkers?: pulumi.Input<number>;
+    maxWorkers?: pulumi.Input<number | undefined>;
+    minWorkers?: pulumi.Input<number | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributes {
@@ -7224,14 +7224,14 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributes {
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterAwsAttributesArgs {
-    availability?: pulumi.Input<string>;
-    ebsVolumeCount?: pulumi.Input<number>;
-    ebsVolumeSize?: pulumi.Input<number>;
-    ebsVolumeType?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    instanceProfileArn?: pulumi.Input<string>;
-    spotBidPricePercent?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    ebsVolumeCount?: pulumi.Input<number | undefined>;
+    ebsVolumeSize?: pulumi.Input<number | undefined>;
+    ebsVolumeType?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
+    spotBidPricePercent?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributes {
@@ -7241,9 +7241,9 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributes {
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterAzureAttributesArgs {
-    availability?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    spotBidMaxPrice?: pulumi.Input<number>;
+    availability?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    spotBidMaxPrice?: pulumi.Input<number | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf {
@@ -7252,8 +7252,8 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConf {
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfArgs {
-    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfsArgs>;
-    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3Args>;
+    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfsArgs | undefined>;
+    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3Args | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfDbfs {
@@ -7275,13 +7275,13 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3 {
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterLogConfS3Args {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfo {
@@ -7293,7 +7293,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfo {
 export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoArgs {
     localMountDirPath: pulumi.Input<string>;
     networkFilesystemInfo: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgs>;
-    remoteMountDirPath?: pulumi.Input<string>;
+    remoteMountDirPath?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo {
@@ -7302,7 +7302,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNe
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterClusterMountInfoNetworkFilesystemInfoArgs {
-    mountOptions?: pulumi.Input<string>;
+    mountOptions?: pulumi.Input<string | undefined>;
     serverAddress: pulumi.Input<string>;
 }
 
@@ -7312,7 +7312,7 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterDockerImage {
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterDockerImageArgs {
-    basicAuth?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuthArgs>;
+    basicAuth?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterDockerImageBasicAuthArgs | undefined>;
     url: pulumi.Input<string>;
 }
 
@@ -7336,12 +7336,12 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributes {
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterGcpAttributesArgs {
-    availability?: pulumi.Input<string>;
-    bootDiskSize?: pulumi.Input<number>;
-    googleServiceAccount?: pulumi.Input<string>;
-    localSsdCount?: pulumi.Input<number>;
-    usePreemptibleExecutors?: pulumi.Input<boolean>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    bootDiskSize?: pulumi.Input<number | undefined>;
+    googleServiceAccount?: pulumi.Input<string | undefined>;
+    localSsdCount?: pulumi.Input<number | undefined>;
+    usePreemptibleExecutors?: pulumi.Input<boolean | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
@@ -7355,13 +7355,13 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScript {
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptArgs {
-    abfss?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssArgs>;
-    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsArgs>;
-    file?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs>;
-    gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs>;
-    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args>;
-    volumes?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs>;
-    workspace?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs>;
+    abfss?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfssArgs | undefined>;
+    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptDbfsArgs | undefined>;
+    file?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptFileArgs | undefined>;
+    gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptGcsArgs | undefined>;
+    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args | undefined>;
+    volumes?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumesArgs | undefined>;
+    workspace?: pulumi.Input<inputs.GetJobJobSettingsSettingsJobClusterNewClusterInitScriptWorkspaceArgs | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptAbfss {
@@ -7407,13 +7407,13 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3 {
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptS3Args {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterInitScriptVolumes {
@@ -7446,8 +7446,8 @@ export interface GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClient
 }
 
 export interface GetJobJobSettingsSettingsJobClusterNewClusterWorkloadTypeClientsArgs {
-    jobs?: pulumi.Input<boolean>;
-    notebooks?: pulumi.Input<boolean>;
+    jobs?: pulumi.Input<boolean | undefined>;
+    notebooks?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsLibrary {
@@ -7468,20 +7468,20 @@ export interface GetJobJobSettingsSettingsLibrary {
 }
 
 export interface GetJobJobSettingsSettingsLibraryArgs {
-    cran?: pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryCranArgs>;
+    cran?: pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryCranArgs | undefined>;
     /**
      * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      */
-    egg?: pulumi.Input<string>;
-    jar?: pulumi.Input<string>;
-    maven?: pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryMavenArgs>;
+    egg?: pulumi.Input<string | undefined>;
+    jar?: pulumi.Input<string | undefined>;
+    maven?: pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryMavenArgs | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryProviderConfigArgs>;
-    pypi?: pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryPypiArgs>;
-    requirements?: pulumi.Input<string>;
-    whl?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryProviderConfigArgs | undefined>;
+    pypi?: pulumi.Input<inputs.GetJobJobSettingsSettingsLibraryPypiArgs | undefined>;
+    requirements?: pulumi.Input<string | undefined>;
+    whl?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsLibraryCran {
@@ -7491,7 +7491,7 @@ export interface GetJobJobSettingsSettingsLibraryCran {
 
 export interface GetJobJobSettingsSettingsLibraryCranArgs {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsLibraryMaven {
@@ -7502,8 +7502,8 @@ export interface GetJobJobSettingsSettingsLibraryMaven {
 
 export interface GetJobJobSettingsSettingsLibraryMavenArgs {
     coordinates: pulumi.Input<string>;
-    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
-    repo?: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsLibraryProviderConfig {
@@ -7527,7 +7527,7 @@ export interface GetJobJobSettingsSettingsLibraryPypi {
 
 export interface GetJobJobSettingsSettingsLibraryPypiArgs {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsNewCluster {
@@ -7564,36 +7564,36 @@ export interface GetJobJobSettingsSettingsNewCluster {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterArgs {
-    applyPolicyDefaultValues?: pulumi.Input<boolean>;
-    autoscale?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterAutoscaleArgs>;
-    autoterminationMinutes?: pulumi.Input<number>;
-    awsAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterAwsAttributesArgs>;
-    azureAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterAzureAttributesArgs>;
-    clusterId?: pulumi.Input<string>;
-    clusterLogConf?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterClusterLogConfArgs>;
-    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs>[]>;
-    clusterName?: pulumi.Input<string>;
-    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    dataSecurityMode?: pulumi.Input<string>;
-    dockerImage?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterDockerImageArgs>;
-    driverInstancePoolId?: pulumi.Input<string>;
-    driverNodeTypeId?: pulumi.Input<string>;
-    enableElasticDisk?: pulumi.Input<boolean>;
-    enableLocalDiskEncryption?: pulumi.Input<boolean>;
-    gcpAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterGcpAttributesArgs>;
-    idempotencyToken?: pulumi.Input<string>;
-    initScripts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptArgs>[]>;
-    instancePoolId?: pulumi.Input<string>;
-    nodeTypeId?: pulumi.Input<string>;
+    applyPolicyDefaultValues?: pulumi.Input<boolean | undefined>;
+    autoscale?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterAutoscaleArgs | undefined>;
+    autoterminationMinutes?: pulumi.Input<number | undefined>;
+    awsAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterAwsAttributesArgs | undefined>;
+    azureAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterAzureAttributesArgs | undefined>;
+    clusterId?: pulumi.Input<string | undefined>;
+    clusterLogConf?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterClusterLogConfArgs | undefined>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs>[] | undefined>;
+    clusterName?: pulumi.Input<string | undefined>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    dataSecurityMode?: pulumi.Input<string | undefined>;
+    dockerImage?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterDockerImageArgs | undefined>;
+    driverInstancePoolId?: pulumi.Input<string | undefined>;
+    driverNodeTypeId?: pulumi.Input<string | undefined>;
+    enableElasticDisk?: pulumi.Input<boolean | undefined>;
+    enableLocalDiskEncryption?: pulumi.Input<boolean | undefined>;
+    gcpAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterGcpAttributesArgs | undefined>;
+    idempotencyToken?: pulumi.Input<string | undefined>;
+    initScripts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptArgs>[] | undefined>;
+    instancePoolId?: pulumi.Input<string | undefined>;
+    nodeTypeId?: pulumi.Input<string | undefined>;
     numWorkers: pulumi.Input<number>;
-    policyId?: pulumi.Input<string>;
-    runtimeEngine?: pulumi.Input<string>;
-    singleUserName?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkVersion?: pulumi.Input<string>;
-    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    workloadType?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs>;
+    policyId?: pulumi.Input<string | undefined>;
+    runtimeEngine?: pulumi.Input<string | undefined>;
+    singleUserName?: pulumi.Input<string | undefined>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkVersion?: pulumi.Input<string | undefined>;
+    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    workloadType?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterWorkloadTypeArgs | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterAutoscale {
@@ -7602,8 +7602,8 @@ export interface GetJobJobSettingsSettingsNewClusterAutoscale {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterAutoscaleArgs {
-    maxWorkers?: pulumi.Input<number>;
-    minWorkers?: pulumi.Input<number>;
+    maxWorkers?: pulumi.Input<number | undefined>;
+    minWorkers?: pulumi.Input<number | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterAwsAttributes {
@@ -7618,14 +7618,14 @@ export interface GetJobJobSettingsSettingsNewClusterAwsAttributes {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterAwsAttributesArgs {
-    availability?: pulumi.Input<string>;
-    ebsVolumeCount?: pulumi.Input<number>;
-    ebsVolumeSize?: pulumi.Input<number>;
-    ebsVolumeType?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    instanceProfileArn?: pulumi.Input<string>;
-    spotBidPricePercent?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    ebsVolumeCount?: pulumi.Input<number | undefined>;
+    ebsVolumeSize?: pulumi.Input<number | undefined>;
+    ebsVolumeType?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
+    spotBidPricePercent?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterAzureAttributes {
@@ -7635,9 +7635,9 @@ export interface GetJobJobSettingsSettingsNewClusterAzureAttributes {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterAzureAttributesArgs {
-    availability?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    spotBidMaxPrice?: pulumi.Input<number>;
+    availability?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    spotBidMaxPrice?: pulumi.Input<number | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterClusterLogConf {
@@ -7646,8 +7646,8 @@ export interface GetJobJobSettingsSettingsNewClusterClusterLogConf {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterClusterLogConfArgs {
-    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs>;
-    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args>;
+    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterClusterLogConfDbfsArgs | undefined>;
+    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterClusterLogConfDbfs {
@@ -7669,13 +7669,13 @@ export interface GetJobJobSettingsSettingsNewClusterClusterLogConfS3 {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterClusterLogConfS3Args {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterClusterMountInfo {
@@ -7687,7 +7687,7 @@ export interface GetJobJobSettingsSettingsNewClusterClusterMountInfo {
 export interface GetJobJobSettingsSettingsNewClusterClusterMountInfoArgs {
     localMountDirPath: pulumi.Input<string>;
     networkFilesystemInfo: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoArgs>;
-    remoteMountDirPath?: pulumi.Input<string>;
+    remoteMountDirPath?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfo {
@@ -7696,7 +7696,7 @@ export interface GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFiles
 }
 
 export interface GetJobJobSettingsSettingsNewClusterClusterMountInfoNetworkFilesystemInfoArgs {
-    mountOptions?: pulumi.Input<string>;
+    mountOptions?: pulumi.Input<string | undefined>;
     serverAddress: pulumi.Input<string>;
 }
 
@@ -7706,7 +7706,7 @@ export interface GetJobJobSettingsSettingsNewClusterDockerImage {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterDockerImageArgs {
-    basicAuth?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs>;
+    basicAuth?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterDockerImageBasicAuthArgs | undefined>;
     url: pulumi.Input<string>;
 }
 
@@ -7730,12 +7730,12 @@ export interface GetJobJobSettingsSettingsNewClusterGcpAttributes {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterGcpAttributesArgs {
-    availability?: pulumi.Input<string>;
-    bootDiskSize?: pulumi.Input<number>;
-    googleServiceAccount?: pulumi.Input<string>;
-    localSsdCount?: pulumi.Input<number>;
-    usePreemptibleExecutors?: pulumi.Input<boolean>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    bootDiskSize?: pulumi.Input<number | undefined>;
+    googleServiceAccount?: pulumi.Input<string | undefined>;
+    localSsdCount?: pulumi.Input<number | undefined>;
+    usePreemptibleExecutors?: pulumi.Input<boolean | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScript {
@@ -7749,13 +7749,13 @@ export interface GetJobJobSettingsSettingsNewClusterInitScript {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptArgs {
-    abfss?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs>;
-    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs>;
-    file?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptFileArgs>;
-    gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs>;
-    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptS3Args>;
-    volumes?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs>;
-    workspace?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs>;
+    abfss?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptAbfssArgs | undefined>;
+    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptDbfsArgs | undefined>;
+    file?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptFileArgs | undefined>;
+    gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptGcsArgs | undefined>;
+    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptS3Args | undefined>;
+    volumes?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptVolumesArgs | undefined>;
+    workspace?: pulumi.Input<inputs.GetJobJobSettingsSettingsNewClusterInitScriptWorkspaceArgs | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptAbfss {
@@ -7801,13 +7801,13 @@ export interface GetJobJobSettingsSettingsNewClusterInitScriptS3 {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptS3Args {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsNewClusterInitScriptVolumes {
@@ -7840,8 +7840,8 @@ export interface GetJobJobSettingsSettingsNewClusterWorkloadTypeClients {
 }
 
 export interface GetJobJobSettingsSettingsNewClusterWorkloadTypeClientsArgs {
-    jobs?: pulumi.Input<boolean>;
-    notebooks?: pulumi.Input<boolean>;
+    jobs?: pulumi.Input<boolean | undefined>;
+    notebooks?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsNotebookTask {
@@ -7852,10 +7852,10 @@ export interface GetJobJobSettingsSettingsNotebookTask {
 }
 
 export interface GetJobJobSettingsSettingsNotebookTaskArgs {
-    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     notebookPath: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
-    warehouseId?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsNotificationSettings {
@@ -7864,8 +7864,8 @@ export interface GetJobJobSettingsSettingsNotificationSettings {
 }
 
 export interface GetJobJobSettingsSettingsNotificationSettingsArgs {
-    noAlertForCanceledRuns?: pulumi.Input<boolean>;
-    noAlertForSkippedRuns?: pulumi.Input<boolean>;
+    noAlertForCanceledRuns?: pulumi.Input<boolean | undefined>;
+    noAlertForSkippedRuns?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsParameter {
@@ -7890,7 +7890,7 @@ export interface GetJobJobSettingsSettingsPipelineTask {
 }
 
 export interface GetJobJobSettingsSettingsPipelineTaskArgs {
-    fullRefresh?: pulumi.Input<boolean>;
+    fullRefresh?: pulumi.Input<boolean | undefined>;
     pipelineId: pulumi.Input<string>;
 }
 
@@ -7902,10 +7902,10 @@ export interface GetJobJobSettingsSettingsPythonWheelTask {
 }
 
 export interface GetJobJobSettingsSettingsPythonWheelTaskArgs {
-    entryPoint?: pulumi.Input<string>;
-    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    packageName?: pulumi.Input<string>;
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    entryPoint?: pulumi.Input<string | undefined>;
+    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    packageName?: pulumi.Input<string | undefined>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsQueue {
@@ -7922,8 +7922,8 @@ export interface GetJobJobSettingsSettingsRunAs {
 }
 
 export interface GetJobJobSettingsSettingsRunAsArgs {
-    servicePrincipalName?: pulumi.Input<string>;
-    userName?: pulumi.Input<string>;
+    servicePrincipalName?: pulumi.Input<string | undefined>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsRunJobTask {
@@ -7933,7 +7933,7 @@ export interface GetJobJobSettingsSettingsRunJobTask {
 
 export interface GetJobJobSettingsSettingsRunJobTaskArgs {
     jobId: pulumi.Input<number>;
-    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsSchedule {
@@ -7943,7 +7943,7 @@ export interface GetJobJobSettingsSettingsSchedule {
 }
 
 export interface GetJobJobSettingsSettingsScheduleArgs {
-    pauseStatus?: pulumi.Input<string>;
+    pauseStatus?: pulumi.Input<string | undefined>;
     quartzCronExpression: pulumi.Input<string>;
     timezoneId: pulumi.Input<string>;
 }
@@ -7955,9 +7955,9 @@ export interface GetJobJobSettingsSettingsSparkJarTask {
 }
 
 export interface GetJobJobSettingsSettingsSparkJarTaskArgs {
-    jarUri?: pulumi.Input<string>;
-    mainClassName?: pulumi.Input<string>;
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    jarUri?: pulumi.Input<string | undefined>;
+    mainClassName?: pulumi.Input<string | undefined>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsSparkPythonTask {
@@ -7967,9 +7967,9 @@ export interface GetJobJobSettingsSettingsSparkPythonTask {
 }
 
 export interface GetJobJobSettingsSettingsSparkPythonTaskArgs {
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     pythonFile: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsSparkSubmitTask {
@@ -7977,7 +7977,7 @@ export interface GetJobJobSettingsSettingsSparkSubmitTask {
 }
 
 export interface GetJobJobSettingsSettingsSparkSubmitTaskArgs {
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTask {
@@ -8014,36 +8014,36 @@ export interface GetJobJobSettingsSettingsTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskArgs {
-    conditionTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskConditionTaskArgs>;
-    dashboardTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDashboardTaskArgs>;
-    dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDbtTaskArgs>;
-    dependsOns?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDependsOnArgs>[]>;
-    description?: pulumi.Input<string>;
-    emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskEmailNotificationsArgs>;
-    environmentKey?: pulumi.Input<string>;
-    existingClusterId?: pulumi.Input<string>;
-    forEachTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskArgs>;
-    health?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskHealthArgs>;
-    jobClusterKey?: pulumi.Input<string>;
-    libraries?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryArgs>[]>;
-    maxRetries?: pulumi.Input<number>;
-    minRetryIntervalMillis?: pulumi.Input<number>;
-    newCluster?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterArgs>;
-    notebookTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNotebookTaskArgs>;
-    notificationSettings?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNotificationSettingsArgs>;
-    pipelineTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPipelineTaskArgs>;
-    powerBiTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPowerBiTaskArgs>;
-    pythonWheelTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPythonWheelTaskArgs>;
-    retryOnTimeout?: pulumi.Input<boolean>;
-    runIf?: pulumi.Input<string>;
-    runJobTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskRunJobTaskArgs>;
-    sparkJarTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSparkJarTaskArgs>;
-    sparkPythonTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSparkPythonTaskArgs>;
-    sparkSubmitTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs>;
-    sqlTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskArgs>;
+    conditionTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskConditionTaskArgs | undefined>;
+    dashboardTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDashboardTaskArgs | undefined>;
+    dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDbtTaskArgs | undefined>;
+    dependsOns?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDependsOnArgs>[] | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskEmailNotificationsArgs | undefined>;
+    environmentKey?: pulumi.Input<string | undefined>;
+    existingClusterId?: pulumi.Input<string | undefined>;
+    forEachTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskArgs | undefined>;
+    health?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskHealthArgs | undefined>;
+    jobClusterKey?: pulumi.Input<string | undefined>;
+    libraries?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryArgs>[] | undefined>;
+    maxRetries?: pulumi.Input<number | undefined>;
+    minRetryIntervalMillis?: pulumi.Input<number | undefined>;
+    newCluster?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterArgs | undefined>;
+    notebookTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNotebookTaskArgs | undefined>;
+    notificationSettings?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNotificationSettingsArgs | undefined>;
+    pipelineTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPipelineTaskArgs | undefined>;
+    powerBiTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPowerBiTaskArgs | undefined>;
+    pythonWheelTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPythonWheelTaskArgs | undefined>;
+    retryOnTimeout?: pulumi.Input<boolean | undefined>;
+    runIf?: pulumi.Input<string | undefined>;
+    runJobTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskRunJobTaskArgs | undefined>;
+    sparkJarTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSparkJarTaskArgs | undefined>;
+    sparkPythonTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSparkPythonTaskArgs | undefined>;
+    sparkSubmitTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs | undefined>;
+    sqlTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskArgs | undefined>;
     taskKey: pulumi.Input<string>;
-    timeoutSeconds?: pulumi.Input<number>;
-    webhookNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsArgs>;
+    timeoutSeconds?: pulumi.Input<number | undefined>;
+    webhookNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsArgs | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskConditionTask {
@@ -8066,10 +8066,10 @@ export interface GetJobJobSettingsSettingsTaskDashboardTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskDashboardTaskArgs {
-    dashboardId?: pulumi.Input<string>;
-    filters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    subscription?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionArgs>;
-    warehouseId?: pulumi.Input<string>;
+    dashboardId?: pulumi.Input<string | undefined>;
+    filters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    subscription?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionArgs | undefined>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscription {
@@ -8079,9 +8079,9 @@ export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscription {
 }
 
 export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionArgs {
-    customSubject?: pulumi.Input<string>;
-    paused?: pulumi.Input<boolean>;
-    subscribers?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgs>[]>;
+    customSubject?: pulumi.Input<string | undefined>;
+    paused?: pulumi.Input<boolean | undefined>;
+    subscribers?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgs>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriber {
@@ -8090,8 +8090,8 @@ export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscribe
 }
 
 export interface GetJobJobSettingsSettingsTaskDashboardTaskSubscriptionSubscriberArgs {
-    destinationId?: pulumi.Input<string>;
-    userName?: pulumi.Input<string>;
+    destinationId?: pulumi.Input<string | undefined>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskDbtTask {
@@ -8105,13 +8105,13 @@ export interface GetJobJobSettingsSettingsTaskDbtTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskDbtTaskArgs {
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     commands: pulumi.Input<pulumi.Input<string>[]>;
-    profilesDirectory?: pulumi.Input<string>;
-    projectDirectory?: pulumi.Input<string>;
-    schema?: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
-    warehouseId?: pulumi.Input<string>;
+    profilesDirectory?: pulumi.Input<string | undefined>;
+    projectDirectory?: pulumi.Input<string | undefined>;
+    schema?: pulumi.Input<string | undefined>;
+    source?: pulumi.Input<string | undefined>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskDependsOn {
@@ -8120,7 +8120,7 @@ export interface GetJobJobSettingsSettingsTaskDependsOn {
 }
 
 export interface GetJobJobSettingsSettingsTaskDependsOnArgs {
-    outcome?: pulumi.Input<string>;
+    outcome?: pulumi.Input<string | undefined>;
     taskKey: pulumi.Input<string>;
 }
 
@@ -8134,12 +8134,12 @@ export interface GetJobJobSettingsSettingsTaskEmailNotifications {
 }
 
 export interface GetJobJobSettingsSettingsTaskEmailNotificationsArgs {
-    noAlertForSkippedRuns?: pulumi.Input<boolean>;
-    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
-    onFailures?: pulumi.Input<pulumi.Input<string>[]>;
-    onStarts?: pulumi.Input<pulumi.Input<string>[]>;
-    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
-    onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
+    noAlertForSkippedRuns?: pulumi.Input<boolean | undefined>;
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onFailures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onStarts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onSuccesses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTask {
@@ -8149,7 +8149,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskArgs {
-    concurrency?: pulumi.Input<number>;
+    concurrency?: pulumi.Input<number | undefined>;
     inputs: pulumi.Input<string>;
     task: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskArgs>;
 }
@@ -8187,35 +8187,35 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskArgs {
-    conditionTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgs>;
-    dashboardTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskArgs>;
-    dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs>;
-    dependsOns?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs>[]>;
-    description?: pulumi.Input<string>;
-    emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs>;
-    environmentKey?: pulumi.Input<string>;
-    existingClusterId?: pulumi.Input<string>;
-    health?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs>;
-    jobClusterKey?: pulumi.Input<string>;
-    libraries?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs>[]>;
-    maxRetries?: pulumi.Input<number>;
-    minRetryIntervalMillis?: pulumi.Input<number>;
-    newCluster?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs>;
-    notebookTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs>;
-    notificationSettings?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettingsArgs>;
-    pipelineTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskArgs>;
-    powerBiTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskArgs>;
-    pythonWheelTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgs>;
-    retryOnTimeout?: pulumi.Input<boolean>;
-    runIf?: pulumi.Input<string>;
-    runJobTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgs>;
-    sparkJarTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTaskArgs>;
-    sparkPythonTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTaskArgs>;
-    sparkSubmitTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTaskArgs>;
-    sqlTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs>;
+    conditionTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTaskArgs | undefined>;
+    dashboardTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskArgs | undefined>;
+    dbtTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs | undefined>;
+    dependsOns?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs>[] | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    emailNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs | undefined>;
+    environmentKey?: pulumi.Input<string | undefined>;
+    existingClusterId?: pulumi.Input<string | undefined>;
+    health?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskHealthArgs | undefined>;
+    jobClusterKey?: pulumi.Input<string | undefined>;
+    libraries?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs>[] | undefined>;
+    maxRetries?: pulumi.Input<number | undefined>;
+    minRetryIntervalMillis?: pulumi.Input<number | undefined>;
+    newCluster?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs | undefined>;
+    notebookTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs | undefined>;
+    notificationSettings?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettingsArgs | undefined>;
+    pipelineTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskArgs | undefined>;
+    powerBiTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskArgs | undefined>;
+    pythonWheelTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgs | undefined>;
+    retryOnTimeout?: pulumi.Input<boolean | undefined>;
+    runIf?: pulumi.Input<string | undefined>;
+    runJobTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgs | undefined>;
+    sparkJarTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTaskArgs | undefined>;
+    sparkPythonTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTaskArgs | undefined>;
+    sparkSubmitTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTaskArgs | undefined>;
+    sqlTask?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs | undefined>;
     taskKey: pulumi.Input<string>;
-    timeoutSeconds?: pulumi.Input<number>;
-    webhookNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgs>;
+    timeoutSeconds?: pulumi.Input<number | undefined>;
+    webhookNotifications?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgs | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskConditionTask {
@@ -8238,10 +8238,10 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskArgs {
-    dashboardId?: pulumi.Input<string>;
-    filters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    subscription?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionArgs>;
-    warehouseId?: pulumi.Input<string>;
+    dashboardId?: pulumi.Input<string | undefined>;
+    filters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    subscription?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionArgs | undefined>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscription {
@@ -8251,9 +8251,9 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscr
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionArgs {
-    customSubject?: pulumi.Input<string>;
-    paused?: pulumi.Input<boolean>;
-    subscribers?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs>[]>;
+    customSubject?: pulumi.Input<string | undefined>;
+    paused?: pulumi.Input<boolean | undefined>;
+    subscribers?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
@@ -8262,8 +8262,8 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscr
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDashboardTaskSubscriptionSubscriberArgs {
-    destinationId?: pulumi.Input<string>;
-    userName?: pulumi.Input<string>;
+    destinationId?: pulumi.Input<string | undefined>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask {
@@ -8277,13 +8277,13 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDbtTaskArgs {
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     commands: pulumi.Input<pulumi.Input<string>[]>;
-    profilesDirectory?: pulumi.Input<string>;
-    projectDirectory?: pulumi.Input<string>;
-    schema?: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
-    warehouseId?: pulumi.Input<string>;
+    profilesDirectory?: pulumi.Input<string | undefined>;
+    projectDirectory?: pulumi.Input<string | undefined>;
+    schema?: pulumi.Input<string | undefined>;
+    source?: pulumi.Input<string | undefined>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn {
@@ -8292,7 +8292,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOn {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskDependsOnArgs {
-    outcome?: pulumi.Input<string>;
+    outcome?: pulumi.Input<string | undefined>;
     taskKey: pulumi.Input<string>;
 }
 
@@ -8306,12 +8306,12 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotifications 
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskEmailNotificationsArgs {
-    noAlertForSkippedRuns?: pulumi.Input<boolean>;
-    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
-    onFailures?: pulumi.Input<pulumi.Input<string>[]>;
-    onStarts?: pulumi.Input<pulumi.Input<string>[]>;
-    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
-    onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
+    noAlertForSkippedRuns?: pulumi.Input<boolean | undefined>;
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onFailures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onStarts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    onSuccesses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskHealth {
@@ -8352,20 +8352,20 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs {
-    cran?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs>;
+    cran?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs | undefined>;
     /**
      * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      */
-    egg?: pulumi.Input<string>;
-    jar?: pulumi.Input<string>;
-    maven?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs>;
+    egg?: pulumi.Input<string | undefined>;
+    jar?: pulumi.Input<string | undefined>;
+    maven?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs>;
-    pypi?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs>;
-    requirements?: pulumi.Input<string>;
-    whl?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs | undefined>;
+    pypi?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs | undefined>;
+    requirements?: pulumi.Input<string | undefined>;
+    whl?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran {
@@ -8375,7 +8375,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCran {
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryCranArgs {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven {
@@ -8386,8 +8386,8 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven {
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs {
     coordinates: pulumi.Input<string>;
-    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
-    repo?: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig {
@@ -8411,7 +8411,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi {
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster {
@@ -8448,36 +8448,36 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewCluster {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterArgs {
-    applyPolicyDefaultValues?: pulumi.Input<boolean>;
-    autoscale?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscaleArgs>;
-    autoterminationMinutes?: pulumi.Input<number>;
-    awsAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributesArgs>;
-    azureAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributesArgs>;
-    clusterId?: pulumi.Input<string>;
-    clusterLogConf?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfArgs>;
-    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoArgs>[]>;
-    clusterName?: pulumi.Input<string>;
-    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    dataSecurityMode?: pulumi.Input<string>;
-    dockerImage?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageArgs>;
-    driverInstancePoolId?: pulumi.Input<string>;
-    driverNodeTypeId?: pulumi.Input<string>;
-    enableElasticDisk?: pulumi.Input<boolean>;
-    enableLocalDiskEncryption?: pulumi.Input<boolean>;
-    gcpAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributesArgs>;
-    idempotencyToken?: pulumi.Input<string>;
-    initScripts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptArgs>[]>;
-    instancePoolId?: pulumi.Input<string>;
-    nodeTypeId?: pulumi.Input<string>;
+    applyPolicyDefaultValues?: pulumi.Input<boolean | undefined>;
+    autoscale?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscaleArgs | undefined>;
+    autoterminationMinutes?: pulumi.Input<number | undefined>;
+    awsAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributesArgs | undefined>;
+    azureAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributesArgs | undefined>;
+    clusterId?: pulumi.Input<string | undefined>;
+    clusterLogConf?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfArgs | undefined>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoArgs>[] | undefined>;
+    clusterName?: pulumi.Input<string | undefined>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    dataSecurityMode?: pulumi.Input<string | undefined>;
+    dockerImage?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageArgs | undefined>;
+    driverInstancePoolId?: pulumi.Input<string | undefined>;
+    driverNodeTypeId?: pulumi.Input<string | undefined>;
+    enableElasticDisk?: pulumi.Input<boolean | undefined>;
+    enableLocalDiskEncryption?: pulumi.Input<boolean | undefined>;
+    gcpAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributesArgs | undefined>;
+    idempotencyToken?: pulumi.Input<string | undefined>;
+    initScripts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptArgs>[] | undefined>;
+    instancePoolId?: pulumi.Input<string | undefined>;
+    nodeTypeId?: pulumi.Input<string | undefined>;
     numWorkers: pulumi.Input<number>;
-    policyId?: pulumi.Input<string>;
-    runtimeEngine?: pulumi.Input<string>;
-    singleUserName?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkVersion?: pulumi.Input<string>;
-    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    workloadType?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeArgs>;
+    policyId?: pulumi.Input<string | undefined>;
+    runtimeEngine?: pulumi.Input<string | undefined>;
+    singleUserName?: pulumi.Input<string | undefined>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkVersion?: pulumi.Input<string | undefined>;
+    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    workloadType?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeArgs | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscale {
@@ -8486,8 +8486,8 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscale
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAutoscaleArgs {
-    maxWorkers?: pulumi.Input<number>;
-    minWorkers?: pulumi.Input<number>;
+    maxWorkers?: pulumi.Input<number | undefined>;
+    minWorkers?: pulumi.Input<number | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributes {
@@ -8502,14 +8502,14 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttrib
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAwsAttributesArgs {
-    availability?: pulumi.Input<string>;
-    ebsVolumeCount?: pulumi.Input<number>;
-    ebsVolumeSize?: pulumi.Input<number>;
-    ebsVolumeType?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    instanceProfileArn?: pulumi.Input<string>;
-    spotBidPricePercent?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    ebsVolumeCount?: pulumi.Input<number | undefined>;
+    ebsVolumeSize?: pulumi.Input<number | undefined>;
+    ebsVolumeType?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
+    spotBidPricePercent?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributes {
@@ -8519,9 +8519,9 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttr
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterAzureAttributesArgs {
-    availability?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    spotBidMaxPrice?: pulumi.Input<number>;
+    availability?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    spotBidMaxPrice?: pulumi.Input<number | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConf {
@@ -8530,8 +8530,8 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLo
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfArgs {
-    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgs>;
-    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3Args>;
+    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfDbfsArgs | undefined>;
+    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3Args | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfDbfs {
@@ -8553,13 +8553,13 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLo
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterLogConfS3Args {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfo {
@@ -8571,7 +8571,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMo
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoArgs {
     localMountDirPath: pulumi.Input<string>;
     networkFilesystemInfo: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs>;
-    remoteMountDirPath?: pulumi.Input<string>;
+    remoteMountDirPath?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfo {
@@ -8580,7 +8580,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMo
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs {
-    mountOptions?: pulumi.Input<string>;
+    mountOptions?: pulumi.Input<string | undefined>;
     serverAddress: pulumi.Input<string>;
 }
 
@@ -8590,7 +8590,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerIma
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageArgs {
-    basicAuth?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgs>;
+    basicAuth?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterDockerImageBasicAuthArgs | undefined>;
     url: pulumi.Input<string>;
 }
 
@@ -8614,12 +8614,12 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttrib
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterGcpAttributesArgs {
-    availability?: pulumi.Input<string>;
-    bootDiskSize?: pulumi.Input<number>;
-    googleServiceAccount?: pulumi.Input<string>;
-    localSsdCount?: pulumi.Input<number>;
-    usePreemptibleExecutors?: pulumi.Input<boolean>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    bootDiskSize?: pulumi.Input<number | undefined>;
+    googleServiceAccount?: pulumi.Input<string | undefined>;
+    localSsdCount?: pulumi.Input<number | undefined>;
+    usePreemptibleExecutors?: pulumi.Input<boolean | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScript {
@@ -8633,13 +8633,13 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScrip
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptArgs {
-    abfss?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptAbfssArgs>;
-    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptDbfsArgs>;
-    file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptFileArgs>;
-    gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptGcsArgs>;
-    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3Args>;
-    volumes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptVolumesArgs>;
-    workspace?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgs>;
+    abfss?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptAbfssArgs | undefined>;
+    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptDbfsArgs | undefined>;
+    file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptFileArgs | undefined>;
+    gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptGcsArgs | undefined>;
+    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3Args | undefined>;
+    volumes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptVolumesArgs | undefined>;
+    workspace?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptWorkspaceArgs | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptAbfss {
@@ -8685,13 +8685,13 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScrip
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptS3Args {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterInitScriptVolumes {
@@ -8724,8 +8724,8 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadT
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNewClusterWorkloadTypeClientsArgs {
-    jobs?: pulumi.Input<boolean>;
-    notebooks?: pulumi.Input<boolean>;
+    jobs?: pulumi.Input<boolean | undefined>;
+    notebooks?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask {
@@ -8736,10 +8736,10 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotebookTaskArgs {
-    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     notebookPath: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
-    warehouseId?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettings {
@@ -8749,9 +8749,9 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSetting
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskNotificationSettingsArgs {
-    alertOnLastAttempt?: pulumi.Input<boolean>;
-    noAlertForCanceledRuns?: pulumi.Input<boolean>;
-    noAlertForSkippedRuns?: pulumi.Input<boolean>;
+    alertOnLastAttempt?: pulumi.Input<boolean | undefined>;
+    noAlertForCanceledRuns?: pulumi.Input<boolean | undefined>;
+    noAlertForSkippedRuns?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTask {
@@ -8760,7 +8760,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPipelineTaskArgs {
-    fullRefresh?: pulumi.Input<boolean>;
+    fullRefresh?: pulumi.Input<boolean | undefined>;
     pipelineId: pulumi.Input<string>;
 }
 
@@ -8773,11 +8773,11 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskArgs {
-    connectionResourceName?: pulumi.Input<string>;
-    powerBiModel?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs>;
-    refreshAfterUpdate?: pulumi.Input<boolean>;
-    tables?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskTableArgs>[]>;
-    warehouseId?: pulumi.Input<string>;
+    connectionResourceName?: pulumi.Input<string | undefined>;
+    powerBiModel?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs | undefined>;
+    refreshAfterUpdate?: pulumi.Input<boolean | undefined>;
+    tables?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskTableArgs>[] | undefined>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskPowerBiModel {
@@ -8789,11 +8789,11 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskPowerBiM
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskPowerBiModelArgs {
-    authenticationMethod?: pulumi.Input<string>;
-    modelName?: pulumi.Input<string>;
-    overwriteExisting?: pulumi.Input<boolean>;
-    storageMode?: pulumi.Input<string>;
-    workspaceName?: pulumi.Input<string>;
+    authenticationMethod?: pulumi.Input<string | undefined>;
+    modelName?: pulumi.Input<string | undefined>;
+    overwriteExisting?: pulumi.Input<boolean | undefined>;
+    storageMode?: pulumi.Input<string | undefined>;
+    workspaceName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskTable {
@@ -8807,13 +8807,13 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskTable {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPowerBiTaskTableArgs {
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     /**
      * the job name of databricks.Job if the resource was matched by id.
      */
-    name?: pulumi.Input<string>;
-    schema?: pulumi.Input<string>;
-    storageMode?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    schema?: pulumi.Input<string | undefined>;
+    storageMode?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask {
@@ -8824,10 +8824,10 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskPythonWheelTaskArgs {
-    entryPoint?: pulumi.Input<string>;
-    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    packageName?: pulumi.Input<string>;
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    entryPoint?: pulumi.Input<string | undefined>;
+    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    packageName?: pulumi.Input<string | undefined>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTask {
@@ -8837,7 +8837,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTask {
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskRunJobTaskArgs {
     jobId: pulumi.Input<number>;
-    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTask {
@@ -8847,9 +8847,9 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkJarTaskArgs {
-    jarUri?: pulumi.Input<string>;
-    mainClassName?: pulumi.Input<string>;
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    jarUri?: pulumi.Input<string | undefined>;
+    mainClassName?: pulumi.Input<string | undefined>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTask {
@@ -8859,9 +8859,9 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkPythonTaskArgs {
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     pythonFile: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTask {
@@ -8869,7 +8869,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSparkSubmitTaskArgs {
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask {
@@ -8882,11 +8882,11 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskArgs {
-    alert?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs>;
-    dashboard?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardArgs>;
-    file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgs>;
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    query?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgs>;
+    alert?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs | undefined>;
+    dashboard?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardArgs | undefined>;
+    file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgs | undefined>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    query?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQueryArgs | undefined>;
     warehouseId: pulumi.Input<string>;
 }
 
@@ -8898,8 +8898,8 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlert {
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertArgs {
     alertId: pulumi.Input<string>;
-    pauseSubscriptions?: pulumi.Input<boolean>;
-    subscriptions?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>[]>;
+    pauseSubscriptions?: pulumi.Input<boolean | undefined>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscription {
@@ -8908,8 +8908,8 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscri
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskAlertSubscriptionArgs {
-    destinationId?: pulumi.Input<string>;
-    userName?: pulumi.Input<string>;
+    destinationId?: pulumi.Input<string | undefined>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboard {
@@ -8920,10 +8920,10 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboard {
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardArgs {
-    customSubject?: pulumi.Input<string>;
+    customSubject?: pulumi.Input<string | undefined>;
     dashboardId: pulumi.Input<string>;
-    pauseSubscriptions?: pulumi.Input<boolean>;
-    subscriptions?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs>[]>;
+    pauseSubscriptions?: pulumi.Input<boolean | undefined>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscription {
@@ -8932,8 +8932,8 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSub
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskDashboardSubscriptionArgs {
-    destinationId?: pulumi.Input<string>;
-    userName?: pulumi.Input<string>;
+    destinationId?: pulumi.Input<string | undefined>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFile {
@@ -8943,7 +8943,7 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFile {
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskFileArgs {
     path: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskSqlTaskQuery {
@@ -8963,11 +8963,11 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotification
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsArgs {
-    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs>[]>;
-    onFailures?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs>[]>;
-    onStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs>[]>;
-    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs>[]>;
-    onSuccesses?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs>[]>;
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs>[] | undefined>;
+    onFailures?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnFailureArgs>[] | undefined>;
+    onStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStartArgs>[] | undefined>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceededArgs>[] | undefined>;
+    onSuccesses?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnSuccessArgs>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
@@ -9078,20 +9078,20 @@ export interface GetJobJobSettingsSettingsTaskLibrary {
 }
 
 export interface GetJobJobSettingsSettingsTaskLibraryArgs {
-    cran?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryCranArgs>;
+    cran?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryCranArgs | undefined>;
     /**
      * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      */
-    egg?: pulumi.Input<string>;
-    jar?: pulumi.Input<string>;
-    maven?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryMavenArgs>;
+    egg?: pulumi.Input<string | undefined>;
+    jar?: pulumi.Input<string | undefined>;
+    maven?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryMavenArgs | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs>;
-    pypi?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryPypiArgs>;
-    requirements?: pulumi.Input<string>;
-    whl?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs | undefined>;
+    pypi?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskLibraryPypiArgs | undefined>;
+    requirements?: pulumi.Input<string | undefined>;
+    whl?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskLibraryCran {
@@ -9101,7 +9101,7 @@ export interface GetJobJobSettingsSettingsTaskLibraryCran {
 
 export interface GetJobJobSettingsSettingsTaskLibraryCranArgs {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskLibraryMaven {
@@ -9112,8 +9112,8 @@ export interface GetJobJobSettingsSettingsTaskLibraryMaven {
 
 export interface GetJobJobSettingsSettingsTaskLibraryMavenArgs {
     coordinates: pulumi.Input<string>;
-    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
-    repo?: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskLibraryProviderConfig {
@@ -9137,7 +9137,7 @@ export interface GetJobJobSettingsSettingsTaskLibraryPypi {
 
 export interface GetJobJobSettingsSettingsTaskLibraryPypiArgs {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewCluster {
@@ -9174,36 +9174,36 @@ export interface GetJobJobSettingsSettingsTaskNewCluster {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterArgs {
-    applyPolicyDefaultValues?: pulumi.Input<boolean>;
-    autoscale?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterAutoscaleArgs>;
-    autoterminationMinutes?: pulumi.Input<number>;
-    awsAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterAwsAttributesArgs>;
-    azureAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterAzureAttributesArgs>;
-    clusterId?: pulumi.Input<string>;
-    clusterLogConf?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConfArgs>;
-    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgs>[]>;
-    clusterName?: pulumi.Input<string>;
-    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    dataSecurityMode?: pulumi.Input<string>;
-    dockerImage?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterDockerImageArgs>;
-    driverInstancePoolId?: pulumi.Input<string>;
-    driverNodeTypeId?: pulumi.Input<string>;
-    enableElasticDisk?: pulumi.Input<boolean>;
-    enableLocalDiskEncryption?: pulumi.Input<boolean>;
-    gcpAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterGcpAttributesArgs>;
-    idempotencyToken?: pulumi.Input<string>;
-    initScripts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs>[]>;
-    instancePoolId?: pulumi.Input<string>;
-    nodeTypeId?: pulumi.Input<string>;
+    applyPolicyDefaultValues?: pulumi.Input<boolean | undefined>;
+    autoscale?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterAutoscaleArgs | undefined>;
+    autoterminationMinutes?: pulumi.Input<number | undefined>;
+    awsAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterAwsAttributesArgs | undefined>;
+    azureAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterAzureAttributesArgs | undefined>;
+    clusterId?: pulumi.Input<string | undefined>;
+    clusterLogConf?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConfArgs | undefined>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgs>[] | undefined>;
+    clusterName?: pulumi.Input<string | undefined>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    dataSecurityMode?: pulumi.Input<string | undefined>;
+    dockerImage?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterDockerImageArgs | undefined>;
+    driverInstancePoolId?: pulumi.Input<string | undefined>;
+    driverNodeTypeId?: pulumi.Input<string | undefined>;
+    enableElasticDisk?: pulumi.Input<boolean | undefined>;
+    enableLocalDiskEncryption?: pulumi.Input<boolean | undefined>;
+    gcpAttributes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterGcpAttributesArgs | undefined>;
+    idempotencyToken?: pulumi.Input<string | undefined>;
+    initScripts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs>[] | undefined>;
+    instancePoolId?: pulumi.Input<string | undefined>;
+    nodeTypeId?: pulumi.Input<string | undefined>;
     numWorkers: pulumi.Input<number>;
-    policyId?: pulumi.Input<string>;
-    runtimeEngine?: pulumi.Input<string>;
-    singleUserName?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkVersion?: pulumi.Input<string>;
-    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    workloadType?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeArgs>;
+    policyId?: pulumi.Input<string | undefined>;
+    runtimeEngine?: pulumi.Input<string | undefined>;
+    singleUserName?: pulumi.Input<string | undefined>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkVersion?: pulumi.Input<string | undefined>;
+    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    workloadType?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeArgs | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterAutoscale {
@@ -9212,8 +9212,8 @@ export interface GetJobJobSettingsSettingsTaskNewClusterAutoscale {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterAutoscaleArgs {
-    maxWorkers?: pulumi.Input<number>;
-    minWorkers?: pulumi.Input<number>;
+    maxWorkers?: pulumi.Input<number | undefined>;
+    minWorkers?: pulumi.Input<number | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterAwsAttributes {
@@ -9228,14 +9228,14 @@ export interface GetJobJobSettingsSettingsTaskNewClusterAwsAttributes {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterAwsAttributesArgs {
-    availability?: pulumi.Input<string>;
-    ebsVolumeCount?: pulumi.Input<number>;
-    ebsVolumeSize?: pulumi.Input<number>;
-    ebsVolumeType?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    instanceProfileArn?: pulumi.Input<string>;
-    spotBidPricePercent?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    ebsVolumeCount?: pulumi.Input<number | undefined>;
+    ebsVolumeSize?: pulumi.Input<number | undefined>;
+    ebsVolumeType?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
+    spotBidPricePercent?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterAzureAttributes {
@@ -9245,9 +9245,9 @@ export interface GetJobJobSettingsSettingsTaskNewClusterAzureAttributes {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterAzureAttributesArgs {
-    availability?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    spotBidMaxPrice?: pulumi.Input<number>;
+    availability?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    spotBidMaxPrice?: pulumi.Input<number | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterClusterLogConf {
@@ -9256,8 +9256,8 @@ export interface GetJobJobSettingsSettingsTaskNewClusterClusterLogConf {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterClusterLogConfArgs {
-    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfsArgs>;
-    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3Args>;
+    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfsArgs | undefined>;
+    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3Args | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterClusterLogConfDbfs {
@@ -9279,13 +9279,13 @@ export interface GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3 {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterClusterLogConfS3Args {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo {
@@ -9297,7 +9297,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterClusterMountInfo {
 export interface GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoArgs {
     localMountDirPath: pulumi.Input<string>;
     networkFilesystemInfo: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs>;
-    remoteMountDirPath?: pulumi.Input<string>;
+    remoteMountDirPath?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfo {
@@ -9306,7 +9306,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkF
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterClusterMountInfoNetworkFilesystemInfoArgs {
-    mountOptions?: pulumi.Input<string>;
+    mountOptions?: pulumi.Input<string | undefined>;
     serverAddress: pulumi.Input<string>;
 }
 
@@ -9316,7 +9316,7 @@ export interface GetJobJobSettingsSettingsTaskNewClusterDockerImage {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterDockerImageArgs {
-    basicAuth?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuthArgs>;
+    basicAuth?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterDockerImageBasicAuthArgs | undefined>;
     url: pulumi.Input<string>;
 }
 
@@ -9340,12 +9340,12 @@ export interface GetJobJobSettingsSettingsTaskNewClusterGcpAttributes {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterGcpAttributesArgs {
-    availability?: pulumi.Input<string>;
-    bootDiskSize?: pulumi.Input<number>;
-    googleServiceAccount?: pulumi.Input<string>;
-    localSsdCount?: pulumi.Input<number>;
-    usePreemptibleExecutors?: pulumi.Input<boolean>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    bootDiskSize?: pulumi.Input<number | undefined>;
+    googleServiceAccount?: pulumi.Input<string | undefined>;
+    localSsdCount?: pulumi.Input<number | undefined>;
+    usePreemptibleExecutors?: pulumi.Input<boolean | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScript {
@@ -9359,13 +9359,13 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScript {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptArgs {
-    abfss?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssArgs>;
-    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsArgs>;
-    file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs>;
-    gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs>;
-    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args>;
-    volumes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs>;
-    workspace?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs>;
+    abfss?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfssArgs | undefined>;
+    dbfs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptDbfsArgs | undefined>;
+    file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptFileArgs | undefined>;
+    gcs?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptGcsArgs | undefined>;
+    s3?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args | undefined>;
+    volumes?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumesArgs | undefined>;
+    workspace?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskNewClusterInitScriptWorkspaceArgs | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptAbfss {
@@ -9411,13 +9411,13 @@ export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptS3 {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptS3Args {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterInitScriptVolumes {
@@ -9450,8 +9450,8 @@ export interface GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClients {
 }
 
 export interface GetJobJobSettingsSettingsTaskNewClusterWorkloadTypeClientsArgs {
-    jobs?: pulumi.Input<boolean>;
-    notebooks?: pulumi.Input<boolean>;
+    jobs?: pulumi.Input<boolean | undefined>;
+    notebooks?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNotebookTask {
@@ -9462,10 +9462,10 @@ export interface GetJobJobSettingsSettingsTaskNotebookTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskNotebookTaskArgs {
-    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     notebookPath: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
-    warehouseId?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskNotificationSettings {
@@ -9475,9 +9475,9 @@ export interface GetJobJobSettingsSettingsTaskNotificationSettings {
 }
 
 export interface GetJobJobSettingsSettingsTaskNotificationSettingsArgs {
-    alertOnLastAttempt?: pulumi.Input<boolean>;
-    noAlertForCanceledRuns?: pulumi.Input<boolean>;
-    noAlertForSkippedRuns?: pulumi.Input<boolean>;
+    alertOnLastAttempt?: pulumi.Input<boolean | undefined>;
+    noAlertForCanceledRuns?: pulumi.Input<boolean | undefined>;
+    noAlertForSkippedRuns?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskPipelineTask {
@@ -9486,7 +9486,7 @@ export interface GetJobJobSettingsSettingsTaskPipelineTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskPipelineTaskArgs {
-    fullRefresh?: pulumi.Input<boolean>;
+    fullRefresh?: pulumi.Input<boolean | undefined>;
     pipelineId: pulumi.Input<string>;
 }
 
@@ -9499,11 +9499,11 @@ export interface GetJobJobSettingsSettingsTaskPowerBiTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskPowerBiTaskArgs {
-    connectionResourceName?: pulumi.Input<string>;
-    powerBiModel?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs>;
-    refreshAfterUpdate?: pulumi.Input<boolean>;
-    tables?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPowerBiTaskTableArgs>[]>;
-    warehouseId?: pulumi.Input<string>;
+    connectionResourceName?: pulumi.Input<string | undefined>;
+    powerBiModel?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs | undefined>;
+    refreshAfterUpdate?: pulumi.Input<boolean | undefined>;
+    tables?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskPowerBiTaskTableArgs>[] | undefined>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel {
@@ -9515,11 +9515,11 @@ export interface GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModel {
 }
 
 export interface GetJobJobSettingsSettingsTaskPowerBiTaskPowerBiModelArgs {
-    authenticationMethod?: pulumi.Input<string>;
-    modelName?: pulumi.Input<string>;
-    overwriteExisting?: pulumi.Input<boolean>;
-    storageMode?: pulumi.Input<string>;
-    workspaceName?: pulumi.Input<string>;
+    authenticationMethod?: pulumi.Input<string | undefined>;
+    modelName?: pulumi.Input<string | undefined>;
+    overwriteExisting?: pulumi.Input<boolean | undefined>;
+    storageMode?: pulumi.Input<string | undefined>;
+    workspaceName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskPowerBiTaskTable {
@@ -9533,13 +9533,13 @@ export interface GetJobJobSettingsSettingsTaskPowerBiTaskTable {
 }
 
 export interface GetJobJobSettingsSettingsTaskPowerBiTaskTableArgs {
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     /**
      * the job name of databricks.Job if the resource was matched by id.
      */
-    name?: pulumi.Input<string>;
-    schema?: pulumi.Input<string>;
-    storageMode?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    schema?: pulumi.Input<string | undefined>;
+    storageMode?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskPythonWheelTask {
@@ -9550,10 +9550,10 @@ export interface GetJobJobSettingsSettingsTaskPythonWheelTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskPythonWheelTaskArgs {
-    entryPoint?: pulumi.Input<string>;
-    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    packageName?: pulumi.Input<string>;
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    entryPoint?: pulumi.Input<string | undefined>;
+    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    packageName?: pulumi.Input<string | undefined>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskRunJobTask {
@@ -9563,7 +9563,7 @@ export interface GetJobJobSettingsSettingsTaskRunJobTask {
 
 export interface GetJobJobSettingsSettingsTaskRunJobTaskArgs {
     jobId: pulumi.Input<number>;
-    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskSparkJarTask {
@@ -9573,9 +9573,9 @@ export interface GetJobJobSettingsSettingsTaskSparkJarTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskSparkJarTaskArgs {
-    jarUri?: pulumi.Input<string>;
-    mainClassName?: pulumi.Input<string>;
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    jarUri?: pulumi.Input<string | undefined>;
+    mainClassName?: pulumi.Input<string | undefined>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskSparkPythonTask {
@@ -9585,9 +9585,9 @@ export interface GetJobJobSettingsSettingsTaskSparkPythonTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskSparkPythonTaskArgs {
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     pythonFile: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskSparkSubmitTask {
@@ -9595,7 +9595,7 @@ export interface GetJobJobSettingsSettingsTaskSparkSubmitTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskSparkSubmitTaskArgs {
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTask {
@@ -9608,11 +9608,11 @@ export interface GetJobJobSettingsSettingsTaskSqlTask {
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskArgs {
-    alert?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertArgs>;
-    dashboard?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs>;
-    file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskFileArgs>;
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    query?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskQueryArgs>;
+    alert?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertArgs | undefined>;
+    dashboard?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs | undefined>;
+    file?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskFileArgs | undefined>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    query?: pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskQueryArgs | undefined>;
     warehouseId: pulumi.Input<string>;
 }
 
@@ -9624,8 +9624,8 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskAlert {
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskAlertArgs {
     alertId: pulumi.Input<string>;
-    pauseSubscriptions?: pulumi.Input<boolean>;
-    subscriptions?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs>[]>;
+    pauseSubscriptions?: pulumi.Input<boolean | undefined>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription {
@@ -9634,8 +9634,8 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskAlertSubscription {
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskAlertSubscriptionArgs {
-    destinationId?: pulumi.Input<string>;
-    userName?: pulumi.Input<string>;
+    destinationId?: pulumi.Input<string | undefined>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskDashboard {
@@ -9646,10 +9646,10 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskDashboard {
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskDashboardArgs {
-    customSubject?: pulumi.Input<string>;
+    customSubject?: pulumi.Input<string | undefined>;
     dashboardId: pulumi.Input<string>;
-    pauseSubscriptions?: pulumi.Input<boolean>;
-    subscriptions?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs>[]>;
+    pauseSubscriptions?: pulumi.Input<boolean | undefined>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription {
@@ -9658,8 +9658,8 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscription {
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskDashboardSubscriptionArgs {
-    destinationId?: pulumi.Input<string>;
-    userName?: pulumi.Input<string>;
+    destinationId?: pulumi.Input<string | undefined>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskFile {
@@ -9669,7 +9669,7 @@ export interface GetJobJobSettingsSettingsTaskSqlTaskFile {
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskFileArgs {
     path: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskSqlTaskQuery {
@@ -9689,11 +9689,11 @@ export interface GetJobJobSettingsSettingsTaskWebhookNotifications {
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsArgs {
-    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs>[]>;
-    onFailures?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs>[]>;
-    onStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs>[]>;
-    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs>[]>;
-    onSuccesses?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs>[]>;
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceededArgs>[] | undefined>;
+    onFailures?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnFailureArgs>[] | undefined>;
+    onStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStartArgs>[] | undefined>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnStreamingBacklogExceededArgs>[] | undefined>;
+    onSuccesses?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsTaskWebhookNotificationsOnSuccessArgs>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
@@ -9774,10 +9774,10 @@ export interface GetJobJobSettingsSettingsTrigger {
 }
 
 export interface GetJobJobSettingsSettingsTriggerArgs {
-    fileArrival?: pulumi.Input<inputs.GetJobJobSettingsSettingsTriggerFileArrivalArgs>;
-    pauseStatus?: pulumi.Input<string>;
-    periodic?: pulumi.Input<inputs.GetJobJobSettingsSettingsTriggerPeriodicArgs>;
-    tableUpdate?: pulumi.Input<inputs.GetJobJobSettingsSettingsTriggerTableUpdateArgs>;
+    fileArrival?: pulumi.Input<inputs.GetJobJobSettingsSettingsTriggerFileArrivalArgs | undefined>;
+    pauseStatus?: pulumi.Input<string | undefined>;
+    periodic?: pulumi.Input<inputs.GetJobJobSettingsSettingsTriggerPeriodicArgs | undefined>;
+    tableUpdate?: pulumi.Input<inputs.GetJobJobSettingsSettingsTriggerTableUpdateArgs | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTriggerFileArrival {
@@ -9787,9 +9787,9 @@ export interface GetJobJobSettingsSettingsTriggerFileArrival {
 }
 
 export interface GetJobJobSettingsSettingsTriggerFileArrivalArgs {
-    minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
+    minTimeBetweenTriggersSeconds?: pulumi.Input<number | undefined>;
     url: pulumi.Input<string>;
-    waitAfterLastChangeSeconds?: pulumi.Input<number>;
+    waitAfterLastChangeSeconds?: pulumi.Input<number | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTriggerPeriodic {
@@ -9810,10 +9810,10 @@ export interface GetJobJobSettingsSettingsTriggerTableUpdate {
 }
 
 export interface GetJobJobSettingsSettingsTriggerTableUpdateArgs {
-    condition?: pulumi.Input<string>;
-    minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
+    condition?: pulumi.Input<string | undefined>;
+    minTimeBetweenTriggersSeconds?: pulumi.Input<number | undefined>;
     tableNames: pulumi.Input<pulumi.Input<string>[]>;
-    waitAfterLastChangeSeconds?: pulumi.Input<number>;
+    waitAfterLastChangeSeconds?: pulumi.Input<number | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotifications {
@@ -9825,11 +9825,11 @@ export interface GetJobJobSettingsSettingsWebhookNotifications {
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsArgs {
-    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs>[]>;
-    onFailures?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs>[]>;
-    onStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs>[]>;
-    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs>[]>;
-    onSuccesses?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs>[]>;
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceededArgs>[] | undefined>;
+    onFailures?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnFailureArgs>[] | undefined>;
+    onStarts?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnStartArgs>[] | undefined>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnStreamingBacklogExceededArgs>[] | undefined>;
+    onSuccesses?: pulumi.Input<pulumi.Input<inputs.GetJobJobSettingsSettingsWebhookNotificationsOnSuccessArgs>[] | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsWebhookNotificationsOnDurationWarningThresholdExceeded {
@@ -10097,79 +10097,79 @@ export interface GetMetastoreMetastoreInfoArgs {
     /**
      * Cloud vendor of the metastore home shard (e.g., `aws`, `azure`, `gcp`).
      */
-    cloud?: pulumi.Input<string>;
+    cloud?: pulumi.Input<string | undefined>;
     /**
      * Time at which the metastore was created, in epoch milliseconds.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * Username of metastore creator.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the metastore's default data access configuration.
      */
-    defaultDataAccessConfigId?: pulumi.Input<string>;
+    defaultDataAccessConfigId?: pulumi.Input<string | undefined>;
     /**
      * The organization name of a Delta Sharing entity. This field is used for Databricks to Databricks sharing.
      */
-    deltaSharingOrganizationName?: pulumi.Input<string>;
+    deltaSharingOrganizationName?: pulumi.Input<string | undefined>;
     /**
      * Used to set expiration duration in seconds on recipient data access tokens.
      */
-    deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number>;
+    deltaSharingRecipientTokenLifetimeInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Used to enable delta sharing on the metastore. Valid values: INTERNAL, INTERNAL_AND_EXTERNAL. INTERNAL only allows sharing within the same account, and INTERNAL_AND_EXTERNAL allows cross account sharing and token based sharing.
      */
-    deltaSharingScope?: pulumi.Input<string>;
+    deltaSharingScope?: pulumi.Input<string | undefined>;
     /**
      * Whether to allow non-DBR clients to directly access entities under the metastore.
      */
-    externalAccessEnabled?: pulumi.Input<boolean>;
+    externalAccessEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Globally unique metastore ID across clouds and regions, of the form `cloud:region:metastore_id`.
      */
-    globalMetastoreId?: pulumi.Input<string>;
+    globalMetastoreId?: pulumi.Input<string | undefined>;
     /**
      * ID of the metastore
      */
-    metastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * Name of the metastore
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Username/groupname/sp applicationId of the metastore owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
      */
-    privilegeModelVersion?: pulumi.Input<string>;
+    privilegeModelVersion?: pulumi.Input<string | undefined>;
     /**
      * Region of the metastore
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Path on cloud storage account, where managed `databricks.Table` are stored.
      */
-    storageRoot?: pulumi.Input<string>;
+    storageRoot?: pulumi.Input<string | undefined>;
     /**
      * UUID of storage credential to access the metastore storage_root.
      */
-    storageRootCredentialId?: pulumi.Input<string>;
+    storageRootCredentialId?: pulumi.Input<string | undefined>;
     /**
      * Name of the storage credential to access the metastore storage_root.
      */
-    storageRootCredentialName?: pulumi.Input<string>;
+    storageRootCredentialName?: pulumi.Input<string | undefined>;
     /**
      * Time at which the metastore was last modified, in epoch milliseconds.
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * Username of user who last modified the metastore.
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
 }
 
 export interface GetMlflowExperimentProviderConfig {
@@ -10192,8 +10192,8 @@ export interface GetMlflowExperimentTag {
 }
 
 export interface GetMlflowExperimentTagArgs {
-    key?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface GetMlflowModelLatestVersion {
@@ -10225,31 +10225,31 @@ export interface GetMlflowModelLatestVersion {
 }
 
 export interface GetMlflowModelLatestVersionArgs {
-    creationTimestamp?: pulumi.Input<number>;
-    currentStage?: pulumi.Input<string>;
+    creationTimestamp?: pulumi.Input<number | undefined>;
+    currentStage?: pulumi.Input<string | undefined>;
     /**
      * User-specified description for the object.
      */
-    description?: pulumi.Input<string>;
-    lastUpdatedTimestamp?: pulumi.Input<number>;
+    description?: pulumi.Input<string | undefined>;
+    lastUpdatedTimestamp?: pulumi.Input<number | undefined>;
     /**
      * Name of the registered model.
      */
-    name?: pulumi.Input<string>;
-    runId?: pulumi.Input<string>;
-    runLink?: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
-    statusMessage?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    runId?: pulumi.Input<string | undefined>;
+    runLink?: pulumi.Input<string | undefined>;
+    source?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
+    statusMessage?: pulumi.Input<string | undefined>;
     /**
      * Array of tags associated with the model.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.GetMlflowModelLatestVersionTagArgs>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.GetMlflowModelLatestVersionTagArgs>[] | undefined>;
     /**
      * The username of the user that created the object.
      */
-    userId?: pulumi.Input<string>;
-    version?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 export interface GetMlflowModelLatestVersionTag {
@@ -10258,8 +10258,8 @@ export interface GetMlflowModelLatestVersionTag {
 }
 
 export interface GetMlflowModelLatestVersionTagArgs {
-    key?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface GetMlflowModelProviderConfig {
@@ -10282,8 +10282,8 @@ export interface GetMlflowModelTag {
 }
 
 export interface GetMlflowModelTagArgs {
-    key?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface GetMlflowModelsProviderConfig {
@@ -10329,11 +10329,11 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigArgs {
     /**
      * Array of default rules.
      */
-    defaultRules?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs>;
+    defaultRules?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs | undefined>;
     /**
      * Array of target rules.
      */
-    targetRules?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs>;
+    targetRules?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs | undefined>;
 }
 
 export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRules {
@@ -10351,11 +10351,11 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesArgs {
     /**
      * The stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.
      */
-    awsStableIpRule?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs>;
+    awsStableIpRule?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRuleArgs | undefined>;
     /**
      * Array of Azure service endpoint rules.
      */
-    azureServiceEndpointRule?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs>;
+    azureServiceEndpointRule?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRuleArgs | undefined>;
 }
 
 export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
@@ -10369,7 +10369,7 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStabl
     /**
      * The list of stable IP CIDR blocks from which Databricks network traffic originates when accessing your resources.
      */
-    cidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    cidrBlocks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
@@ -10391,15 +10391,15 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureSer
     /**
      * Array of strings representing the subnet IDs.
      */
-    subnets?: pulumi.Input<pulumi.Input<string>[]>;
+    subnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The target region for the service endpoint.
      */
-    targetRegion?: pulumi.Input<string>;
+    targetRegion?: pulumi.Input<string | undefined>;
     /**
      * Array of target services.
      */
-    targetServices?: pulumi.Input<pulumi.Input<string>[]>;
+    targetServices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRules {
@@ -10411,11 +10411,11 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRules {
 }
 
 export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesArgs {
-    awsPrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs>[]>;
+    awsPrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRuleArgs>[] | undefined>;
     /**
      * Array of private endpoint rule objects.
      */
-    azurePrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs>[]>;
+    azurePrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRuleArgs>[] | undefined>;
 }
 
 export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
@@ -10463,41 +10463,41 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivat
     /**
      * The Databricks account ID associated with this network configuration.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The current status of this private endpoint.
      */
-    connectionState?: pulumi.Input<string>;
+    connectionState?: pulumi.Input<string | undefined>;
     /**
      * Time in epoch milliseconds when this object was created.
      */
-    creationTime?: pulumi.Input<number>;
+    creationTime?: pulumi.Input<number | undefined>;
     /**
      * Whether this private endpoint is deactivated.
      */
-    deactivated?: pulumi.Input<boolean>;
+    deactivated?: pulumi.Input<boolean | undefined>;
     /**
      * Time in epoch milliseconds when this object was deactivated.
      */
-    deactivatedAt?: pulumi.Input<number>;
-    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
-    enabled?: pulumi.Input<boolean>;
-    endpointService?: pulumi.Input<string>;
-    errorMessage?: pulumi.Input<string>;
+    deactivatedAt?: pulumi.Input<number | undefined>;
+    domainNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    endpointService?: pulumi.Input<string | undefined>;
+    errorMessage?: pulumi.Input<string | undefined>;
     /**
      * The Databricks network connectivity configuration ID.
      */
-    networkConnectivityConfigId?: pulumi.Input<string>;
-    resourceNames?: pulumi.Input<pulumi.Input<string>[]>;
+    networkConnectivityConfigId?: pulumi.Input<string | undefined>;
+    resourceNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of a private endpoint rule.
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
     /**
      * Time in epoch milliseconds when the network was updated.
      */
-    updatedTime?: pulumi.Input<number>;
-    vpcEndpointId?: pulumi.Input<string>;
+    updatedTime?: pulumi.Input<number | undefined>;
+    vpcEndpointId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
@@ -10549,45 +10549,45 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriv
     /**
      * The current status of this private endpoint.
      */
-    connectionState?: pulumi.Input<string>;
+    connectionState?: pulumi.Input<string | undefined>;
     /**
      * Time in epoch milliseconds when this object was created.
      */
-    creationTime?: pulumi.Input<number>;
+    creationTime?: pulumi.Input<number | undefined>;
     /**
      * Whether this private endpoint is deactivated.
      */
-    deactivated?: pulumi.Input<boolean>;
+    deactivated?: pulumi.Input<boolean | undefined>;
     /**
      * Time in epoch milliseconds when this object was deactivated.
      */
-    deactivatedAt?: pulumi.Input<number>;
-    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
+    deactivatedAt?: pulumi.Input<number | undefined>;
+    domainNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the Azure private endpoint resource.
      */
-    endpointName?: pulumi.Input<string>;
-    errorMessage?: pulumi.Input<string>;
+    endpointName?: pulumi.Input<string | undefined>;
+    errorMessage?: pulumi.Input<string | undefined>;
     /**
      * The sub-resource type (group ID) of the target resource.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The Databricks network connectivity configuration ID.
      */
-    networkConnectivityConfigId?: pulumi.Input<string>;
+    networkConnectivityConfigId?: pulumi.Input<string | undefined>;
     /**
      * The Azure resource ID of the target resource.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of a private endpoint rule.
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
     /**
      * Time in epoch milliseconds when the network was updated.
      */
-    updatedTime?: pulumi.Input<number>;
+    updatedTime?: pulumi.Input<number | undefined>;
 }
 
 export interface GetMwsWorkspacesProviderConfig {
@@ -10980,56 +10980,56 @@ export interface GetRegisteredModelModelInfoArgs {
     /**
      * the list of aliases associated with this model. Each item is object consisting of following attributes:
      */
-    aliases?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelModelInfoAliasArgs>[]>;
-    browseOnly?: pulumi.Input<boolean>;
+    aliases?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelModelInfoAliasArgs>[] | undefined>;
+    browseOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the catalog where the schema and the registered model reside.
      */
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * The comment attached to the registered model.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * the Unix timestamp at the model's creation
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * the identifier of the user who created the model
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * the unique identifier of the metastore
      */
-    metastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * The name of the registered model.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the registered model owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * The name of the schema where the registered model resides.
      */
-    schemaName?: pulumi.Input<string>;
+    schemaName?: pulumi.Input<string | undefined>;
     /**
      * The storage location under which model version data files are stored.
      */
-    storageLocation?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string | undefined>;
     /**
      * the timestamp of the last time changes were made to the model
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * the identifier of the user who updated the model last time
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
 }
 
 export interface GetRegisteredModelModelInfoAlias {
@@ -11057,21 +11057,21 @@ export interface GetRegisteredModelModelInfoAliasArgs {
     /**
      * string with the name of alias
      */
-    aliasName?: pulumi.Input<string>;
+    aliasName?: pulumi.Input<string | undefined>;
     /**
      * The name of the catalog where the schema and the registered model reside.
      */
-    catalogName?: pulumi.Input<string>;
-    id?: pulumi.Input<string>;
-    modelName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string | undefined>;
+    modelName?: pulumi.Input<string | undefined>;
     /**
      * The name of the schema where the registered model resides.
      */
-    schemaName?: pulumi.Input<string>;
+    schemaName?: pulumi.Input<string | undefined>;
     /**
      * associated model version
      */
-    versionNum?: pulumi.Input<number>;
+    versionNum?: pulumi.Input<number | undefined>;
 }
 
 export interface GetRegisteredModelProviderConfig {
@@ -11158,72 +11158,72 @@ export interface GetRegisteredModelVersionsModelVersionArgs {
     /**
      * the list of aliases associated with this model. Each item is object consisting of following attributes:
      */
-    aliases?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionAliasArgs>[]>;
+    aliases?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionAliasArgs>[] | undefined>;
     /**
      * The name of the catalog where the schema and the registered model reside.
      */
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * The comment attached to the registered model.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * the Unix timestamp at the model's creation
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * the identifier of the user who created the model
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the model version
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * the unique identifier of the metastore
      */
-    metastoreId?: pulumi.Input<string>;
-    modelName?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
+    modelName?: pulumi.Input<string | undefined>;
     /**
      * block describing model version dependencies, for feature-store packaged models. Consists of following attributes:
      */
-    modelVersionDependencies?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs>[]>;
+    modelVersionDependencies?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs>[] | undefined>;
     /**
      * MLflow run ID used when creating the model version, if `source` was generated by an experiment run stored in an MLflow tracking server
      */
-    runId?: pulumi.Input<string>;
+    runId?: pulumi.Input<string | undefined>;
     /**
      * ID of the Databricks workspace containing the MLflow run that generated this model version, if applicable
      */
-    runWorkspaceId?: pulumi.Input<number>;
+    runWorkspaceId?: pulumi.Input<number | undefined>;
     /**
      * The name of the schema where the registered model resides.
      */
-    schemaName?: pulumi.Input<string>;
+    schemaName?: pulumi.Input<string | undefined>;
     /**
      * URI indicating the location of the source artifacts (files) for the model version.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Current status of the model version.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The storage location under which model version data files are stored.
      */
-    storageLocation?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string | undefined>;
     /**
      * the timestamp of the last time changes were made to the model
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * the identifier of the user who updated the model last time
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
     /**
      * Integer model version number, used to reference the model version in API requests.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 
 export interface GetRegisteredModelVersionsModelVersionAlias {
@@ -11254,24 +11254,24 @@ export interface GetRegisteredModelVersionsModelVersionAliasArgs {
     /**
      * string with the name of alias
      */
-    aliasName?: pulumi.Input<string>;
+    aliasName?: pulumi.Input<string | undefined>;
     /**
      * The name of the catalog where the schema and the registered model reside.
      */
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the model version
      */
-    id?: pulumi.Input<string>;
-    modelName?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    modelName?: pulumi.Input<string | undefined>;
     /**
      * The name of the schema where the registered model resides.
      */
-    schemaName?: pulumi.Input<string>;
+    schemaName?: pulumi.Input<string | undefined>;
     /**
      * associated model version
      */
-    versionNum?: pulumi.Input<number>;
+    versionNum?: pulumi.Input<number | undefined>;
 }
 
 export interface GetRegisteredModelVersionsModelVersionModelVersionDependency {
@@ -11285,7 +11285,7 @@ export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyArg
     /**
      * list of dependencies consisting of following attributes:
      */
-    dependencies?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs>[]>;
+    dependencies?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs>[] | undefined>;
 }
 
 export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency {
@@ -11302,16 +11302,16 @@ export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDep
 }
 
 export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs {
-    connections?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs>[]>;
-    credentials?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs>[]>;
+    connections?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs>[] | undefined>;
+    credentials?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs>[] | undefined>;
     /**
      * A function that is dependent on a SQL object:
      */
-    functions?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs>[]>;
+    functions?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs>[] | undefined>;
     /**
      * A table that is dependent on a SQL object
      */
-    tables?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs>[]>;
+    tables?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs>[] | undefined>;
 }
 
 export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection {
@@ -11319,7 +11319,7 @@ export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDep
 }
 
 export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs {
-    connectionName?: pulumi.Input<string>;
+    connectionName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential {
@@ -11327,7 +11327,7 @@ export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDep
 }
 
 export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs {
-    credentialName?: pulumi.Input<string>;
+    credentialName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction {
@@ -11473,75 +11473,75 @@ export interface GetSchemaSchemaInfoArgs {
     /**
      * indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
      */
-    browseOnly?: pulumi.Input<boolean>;
+    browseOnly?: pulumi.Input<boolean | undefined>;
     /**
      * the name of the catalog where the schema is.
      */
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * the type of the parent catalog.
      */
-    catalogType?: pulumi.Input<string>;
+    catalogType?: pulumi.Input<string | undefined>;
     /**
      * the comment attached to the volume
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * time at which this schema was created, in epoch milliseconds.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * username of schema creator.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * information about actual state of predictive optimization.
      */
-    effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs>;
+    effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs | undefined>;
     /**
      * whether predictive optimization should be enabled for this object and objects under it.
      */
-    enablePredictiveOptimization?: pulumi.Input<string>;
+    enablePredictiveOptimization?: pulumi.Input<string | undefined>;
     /**
      * the two-level (fully qualified) name of the schema
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * the unique identifier of the metastore
      */
-    metastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * a fully qualified name of databricks_schema: *`catalog`.`schema`*
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * the identifier of the user who owns the schema
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * map of properties set on the schema
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * the unique identifier of the schema
      */
-    schemaId?: pulumi.Input<string>;
+    schemaId?: pulumi.Input<string | undefined>;
     /**
      * the storage location on the cloud.
      */
-    storageLocation?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string | undefined>;
     /**
      * storage root URL for managed tables within schema.
      */
-    storageRoot?: pulumi.Input<string>;
+    storageRoot?: pulumi.Input<string | undefined>;
     /**
      * the timestamp of the last time changes were made to the schema
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * the identifier of the user who updated the schema last time
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
 }
 
 export interface GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag {
@@ -11551,8 +11551,8 @@ export interface GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag {
 }
 
 export interface GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs {
-    inheritedFromName?: pulumi.Input<string>;
-    inheritedFromType?: pulumi.Input<string>;
+    inheritedFromName?: pulumi.Input<string | undefined>;
+    inheritedFromType?: pulumi.Input<string | undefined>;
     value: pulumi.Input<string>;
 }
 
@@ -11642,40 +11642,40 @@ export interface GetServicePrincipalsServicePrincipalArgs {
     /**
      * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
      */
-    aclPrincipalId?: pulumi.Input<string>;
+    aclPrincipalId?: pulumi.Input<string | undefined>;
     /**
      * Whether service principal is active or not.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Application ID of the service principal.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Display name of the service principal, e.g. `Foo SPN`.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * ID of the service principal in an external identity provider.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
      */
-    home?: pulumi.Input<string>;
+    home?: pulumi.Input<string | undefined>;
     /**
      * The id of the service principal (SCIM ID).
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      */
-    repos?: pulumi.Input<string>;
+    repos?: pulumi.Input<string | undefined>;
     /**
      * same as `id`.
      */
-    scimId?: pulumi.Input<string>;
-    spId?: pulumi.Input<string>;
+    scimId?: pulumi.Input<string | undefined>;
+    spId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpoint {
@@ -11710,28 +11710,28 @@ export interface GetServingEndpointsEndpointArgs {
     /**
      * A block with AI Gateway configuration for the serving endpoint.
      */
-    aiGateways?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayArgs>[]>;
-    budgetPolicyId?: pulumi.Input<string>;
+    aiGateways?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayArgs>[] | undefined>;
+    budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The model serving endpoint configuration.
      */
-    configs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigArgs>[]>;
-    creationTimestamp?: pulumi.Input<number>;
-    creator?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
-    id?: pulumi.Input<string>;
-    lastUpdatedTimestamp?: pulumi.Input<number>;
+    configs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigArgs>[] | undefined>;
+    creationTimestamp?: pulumi.Input<number | undefined>;
+    creator?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string | undefined>;
+    lastUpdatedTimestamp?: pulumi.Input<number | undefined>;
     /**
      * The name of the model serving endpoint.
      */
-    name?: pulumi.Input<string>;
-    states?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointStateArgs>[]>;
+    name?: pulumi.Input<string | undefined>;
+    states?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointStateArgs>[] | undefined>;
     /**
      * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointTagArgs>[]>;
-    task?: pulumi.Input<string>;
-    usagePolicyId?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointTagArgs>[] | undefined>;
+    task?: pulumi.Input<string | undefined>;
+    usagePolicyId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointAiGateway {
@@ -11746,14 +11746,14 @@ export interface GetServingEndpointsEndpointAiGateway {
 }
 
 export interface GetServingEndpointsEndpointAiGatewayArgs {
-    fallbackConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayFallbackConfigArgs>[]>;
-    guardrails?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailArgs>[]>;
-    inferenceTableConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayInferenceTableConfigArgs>[]>;
+    fallbackConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayFallbackConfigArgs>[] | undefined>;
+    guardrails?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailArgs>[] | undefined>;
+    inferenceTableConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayInferenceTableConfigArgs>[] | undefined>;
     /**
      * A list of rate limit blocks to be applied to the serving endpoint.
      */
-    rateLimits?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayRateLimitArgs>[]>;
-    usageTrackingConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayUsageTrackingConfigArgs>[]>;
+    rateLimits?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayRateLimitArgs>[] | undefined>;
+    usageTrackingConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayUsageTrackingConfigArgs>[] | undefined>;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayFallbackConfig {
@@ -11770,8 +11770,8 @@ export interface GetServingEndpointsEndpointAiGatewayGuardrail {
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailArgs {
-    inputProperties?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs>[]>;
-    outputs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputArgs>[]>;
+    inputProperties?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs>[] | undefined>;
+    outputs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputArgs>[] | undefined>;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailInputProperty {
@@ -11782,10 +11782,10 @@ export interface GetServingEndpointsEndpointAiGatewayGuardrailInputProperty {
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs {
-    invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
-    piis?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs>[]>;
-    safety?: pulumi.Input<boolean>;
-    validTopics?: pulumi.Input<pulumi.Input<string>[]>;
+    invalidKeywords?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    piis?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs>[] | undefined>;
+    safety?: pulumi.Input<boolean | undefined>;
+    validTopics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii {
@@ -11793,7 +11793,7 @@ export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii {
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs {
-    behavior?: pulumi.Input<string>;
+    behavior?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailOutput {
@@ -11804,10 +11804,10 @@ export interface GetServingEndpointsEndpointAiGatewayGuardrailOutput {
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailOutputArgs {
-    invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
-    piis?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs>[]>;
-    safety?: pulumi.Input<boolean>;
-    validTopics?: pulumi.Input<pulumi.Input<string>[]>;
+    invalidKeywords?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    piis?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs>[] | undefined>;
+    safety?: pulumi.Input<boolean | undefined>;
+    validTopics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailOutputPii {
@@ -11815,7 +11815,7 @@ export interface GetServingEndpointsEndpointAiGatewayGuardrailOutputPii {
 }
 
 export interface GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs {
-    behavior?: pulumi.Input<string>;
+    behavior?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayInferenceTableConfig {
@@ -11826,10 +11826,10 @@ export interface GetServingEndpointsEndpointAiGatewayInferenceTableConfig {
 }
 
 export interface GetServingEndpointsEndpointAiGatewayInferenceTableConfigArgs {
-    catalogName?: pulumi.Input<string>;
-    enabled?: pulumi.Input<boolean>;
-    schemaName?: pulumi.Input<string>;
-    tableNamePrefix?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    schemaName?: pulumi.Input<string | undefined>;
+    tableNamePrefix?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayRateLimit {
@@ -11841,11 +11841,11 @@ export interface GetServingEndpointsEndpointAiGatewayRateLimit {
 }
 
 export interface GetServingEndpointsEndpointAiGatewayRateLimitArgs {
-    calls?: pulumi.Input<number>;
-    key?: pulumi.Input<string>;
-    principal?: pulumi.Input<string>;
+    calls?: pulumi.Input<number | undefined>;
+    key?: pulumi.Input<string | undefined>;
+    principal?: pulumi.Input<string | undefined>;
     renewalPeriod: pulumi.Input<string>;
-    tokens?: pulumi.Input<number>;
+    tokens?: pulumi.Input<number | undefined>;
 }
 
 export interface GetServingEndpointsEndpointAiGatewayUsageTrackingConfig {
@@ -11853,7 +11853,7 @@ export interface GetServingEndpointsEndpointAiGatewayUsageTrackingConfig {
 }
 
 export interface GetServingEndpointsEndpointAiGatewayUsageTrackingConfigArgs {
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetServingEndpointsEndpointConfig {
@@ -11862,8 +11862,8 @@ export interface GetServingEndpointsEndpointConfig {
 }
 
 export interface GetServingEndpointsEndpointConfigArgs {
-    servedEntities?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityArgs>[]>;
-    servedModels?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedModelArgs>[]>;
+    servedEntities?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityArgs>[] | undefined>;
+    servedModels?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedModelArgs>[] | undefined>;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntity {
@@ -11878,14 +11878,14 @@ export interface GetServingEndpointsEndpointConfigServedEntity {
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityArgs {
-    entityName?: pulumi.Input<string>;
-    entityVersion?: pulumi.Input<string>;
-    externalModels?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelArgs>[]>;
-    foundationModels?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityFoundationModelArgs>[]>;
+    entityName?: pulumi.Input<string | undefined>;
+    entityVersion?: pulumi.Input<string | undefined>;
+    externalModels?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelArgs>[] | undefined>;
+    foundationModels?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityFoundationModelArgs>[] | undefined>;
     /**
      * The name of the model serving endpoint.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModel {
@@ -11907,19 +11907,19 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModel {
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelArgs {
-    ai21labsConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfigArgs>[]>;
-    amazonBedrockConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs>[]>;
-    anthropicConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigArgs>[]>;
-    cohereConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigArgs>[]>;
-    customProviderConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigArgs>[]>;
-    databricksModelServingConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArgs>[]>;
-    googleCloudVertexAiConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs>[]>;
+    ai21labsConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfigArgs>[] | undefined>;
+    amazonBedrockConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs>[] | undefined>;
+    anthropicConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigArgs>[] | undefined>;
+    cohereConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigArgs>[] | undefined>;
+    customProviderConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigArgs>[] | undefined>;
+    databricksModelServingConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArgs>[] | undefined>;
+    googleCloudVertexAiConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs>[] | undefined>;
     /**
      * The name of the model serving endpoint.
      */
     name: pulumi.Input<string>;
-    openaiConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigArgs>[]>;
-    palmConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigArgs>[]>;
+    openaiConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigArgs>[] | undefined>;
+    palmConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigArgs>[] | undefined>;
     provider: pulumi.Input<string>;
     task: pulumi.Input<string>;
 }
@@ -11930,8 +11930,8 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAi21l
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAi21labsConfigArgs {
-    ai21labsApiKey?: pulumi.Input<string>;
-    ai21labsApiKeyPlaintext?: pulumi.Input<string>;
+    ai21labsApiKey?: pulumi.Input<string | undefined>;
+    ai21labsApiKeyPlaintext?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfig {
@@ -11945,13 +11945,13 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAmazo
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAmazonBedrockConfigArgs {
-    awsAccessKeyId?: pulumi.Input<string>;
-    awsAccessKeyIdPlaintext?: pulumi.Input<string>;
+    awsAccessKeyId?: pulumi.Input<string | undefined>;
+    awsAccessKeyIdPlaintext?: pulumi.Input<string | undefined>;
     awsRegion: pulumi.Input<string>;
-    awsSecretAccessKey?: pulumi.Input<string>;
-    awsSecretAccessKeyPlaintext?: pulumi.Input<string>;
+    awsSecretAccessKey?: pulumi.Input<string | undefined>;
+    awsSecretAccessKeyPlaintext?: pulumi.Input<string | undefined>;
     bedrockProvider: pulumi.Input<string>;
-    instanceProfileArn?: pulumi.Input<string>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfig {
@@ -11960,8 +11960,8 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAnthr
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelAnthropicConfigArgs {
-    anthropicApiKey?: pulumi.Input<string>;
-    anthropicApiKeyPlaintext?: pulumi.Input<string>;
+    anthropicApiKey?: pulumi.Input<string | undefined>;
+    anthropicApiKeyPlaintext?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfig {
@@ -11971,9 +11971,9 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCoher
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCohereConfigArgs {
-    cohereApiBase?: pulumi.Input<string>;
-    cohereApiKey?: pulumi.Input<string>;
-    cohereApiKeyPlaintext?: pulumi.Input<string>;
+    cohereApiBase?: pulumi.Input<string | undefined>;
+    cohereApiKey?: pulumi.Input<string | undefined>;
+    cohereApiKeyPlaintext?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfig {
@@ -11983,8 +11983,8 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCusto
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigArgs {
-    apiKeyAuths?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs>[]>;
-    bearerTokenAuths?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs>[]>;
+    apiKeyAuths?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs>[] | undefined>;
+    bearerTokenAuths?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs>[] | undefined>;
     customProviderUrl: pulumi.Input<string>;
 }
 
@@ -11996,8 +11996,8 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCusto
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigApiKeyAuthArgs {
     key: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
-    valuePlaintext?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
+    valuePlaintext?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
@@ -12006,8 +12006,8 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCusto
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuthArgs {
-    token?: pulumi.Input<string>;
-    tokenPlaintext?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
+    tokenPlaintext?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfig {
@@ -12017,8 +12017,8 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelDatab
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelDatabricksModelServingConfigArgs {
-    databricksApiToken?: pulumi.Input<string>;
-    databricksApiTokenPlaintext?: pulumi.Input<string>;
+    databricksApiToken?: pulumi.Input<string | undefined>;
+    databricksApiTokenPlaintext?: pulumi.Input<string | undefined>;
     databricksWorkspaceUrl: pulumi.Input<string>;
 }
 
@@ -12030,8 +12030,8 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelGoogl
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelGoogleCloudVertexAiConfigArgs {
-    privateKey?: pulumi.Input<string>;
-    privateKeyPlaintext?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
+    privateKeyPlaintext?: pulumi.Input<string | undefined>;
     projectId: pulumi.Input<string>;
     region: pulumi.Input<string>;
 }
@@ -12051,17 +12051,17 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelOpena
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelOpenaiConfigArgs {
-    microsoftEntraClientId?: pulumi.Input<string>;
-    microsoftEntraClientSecret?: pulumi.Input<string>;
-    microsoftEntraClientSecretPlaintext?: pulumi.Input<string>;
-    microsoftEntraTenantId?: pulumi.Input<string>;
-    openaiApiBase?: pulumi.Input<string>;
-    openaiApiKey?: pulumi.Input<string>;
-    openaiApiKeyPlaintext?: pulumi.Input<string>;
-    openaiApiType?: pulumi.Input<string>;
-    openaiApiVersion?: pulumi.Input<string>;
-    openaiDeploymentName?: pulumi.Input<string>;
-    openaiOrganization?: pulumi.Input<string>;
+    microsoftEntraClientId?: pulumi.Input<string | undefined>;
+    microsoftEntraClientSecret?: pulumi.Input<string | undefined>;
+    microsoftEntraClientSecretPlaintext?: pulumi.Input<string | undefined>;
+    microsoftEntraTenantId?: pulumi.Input<string | undefined>;
+    openaiApiBase?: pulumi.Input<string | undefined>;
+    openaiApiKey?: pulumi.Input<string | undefined>;
+    openaiApiKeyPlaintext?: pulumi.Input<string | undefined>;
+    openaiApiType?: pulumi.Input<string | undefined>;
+    openaiApiVersion?: pulumi.Input<string | undefined>;
+    openaiDeploymentName?: pulumi.Input<string | undefined>;
+    openaiOrganization?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfig {
@@ -12070,8 +12070,8 @@ export interface GetServingEndpointsEndpointConfigServedEntityExternalModelPalmC
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityExternalModelPalmConfigArgs {
-    palmApiKey?: pulumi.Input<string>;
-    palmApiKeyPlaintext?: pulumi.Input<string>;
+    palmApiKey?: pulumi.Input<string | undefined>;
+    palmApiKeyPlaintext?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityFoundationModel {
@@ -12085,13 +12085,13 @@ export interface GetServingEndpointsEndpointConfigServedEntityFoundationModel {
 }
 
 export interface GetServingEndpointsEndpointConfigServedEntityFoundationModelArgs {
-    description?: pulumi.Input<string>;
-    displayName?: pulumi.Input<string>;
-    docs?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    displayName?: pulumi.Input<string | undefined>;
+    docs?: pulumi.Input<string | undefined>;
     /**
      * The name of the model serving endpoint.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointConfigServedModel {
@@ -12104,12 +12104,12 @@ export interface GetServingEndpointsEndpointConfigServedModel {
 }
 
 export interface GetServingEndpointsEndpointConfigServedModelArgs {
-    modelName?: pulumi.Input<string>;
-    modelVersion?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string | undefined>;
+    modelVersion?: pulumi.Input<string | undefined>;
     /**
      * The name of the model serving endpoint.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointState {
@@ -12118,8 +12118,8 @@ export interface GetServingEndpointsEndpointState {
 }
 
 export interface GetServingEndpointsEndpointStateArgs {
-    configUpdate?: pulumi.Input<string>;
-    ready?: pulumi.Input<string>;
+    configUpdate?: pulumi.Input<string | undefined>;
+    ready?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsEndpointTag {
@@ -12129,7 +12129,7 @@ export interface GetServingEndpointsEndpointTag {
 
 export interface GetServingEndpointsEndpointTagArgs {
     key: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServingEndpointsProviderConfig {
@@ -12171,33 +12171,33 @@ export interface GetShareObject {
 }
 
 export interface GetShareObjectArgs {
-    addedAt?: pulumi.Input<number>;
-    addedBy?: pulumi.Input<string>;
-    cdfEnabled?: pulumi.Input<boolean>;
+    addedAt?: pulumi.Input<number | undefined>;
+    addedBy?: pulumi.Input<string | undefined>;
+    cdfEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Description about the object.
      */
-    comment?: pulumi.Input<string>;
-    content?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Type of the object.
      */
-    dataObjectType?: pulumi.Input<string>;
-    effectiveCdfEnabled?: pulumi.Input<boolean>;
-    effectiveHistoryDataSharingStatus?: pulumi.Input<string>;
-    effectiveSharedAs?: pulumi.Input<string>;
-    effectiveStartVersion?: pulumi.Input<number>;
-    effectiveStringSharedAs?: pulumi.Input<string>;
-    historyDataSharingStatus?: pulumi.Input<string>;
+    dataObjectType?: pulumi.Input<string | undefined>;
+    effectiveCdfEnabled?: pulumi.Input<boolean | undefined>;
+    effectiveHistoryDataSharingStatus?: pulumi.Input<string | undefined>;
+    effectiveSharedAs?: pulumi.Input<string | undefined>;
+    effectiveStartVersion?: pulumi.Input<number | undefined>;
+    effectiveStringSharedAs?: pulumi.Input<string | undefined>;
+    historyDataSharingStatus?: pulumi.Input<string | undefined>;
     /**
      * The name of the share
      */
     name: pulumi.Input<string>;
-    partitions?: pulumi.Input<pulumi.Input<inputs.GetShareObjectPartitionArgs>[]>;
-    sharedAs?: pulumi.Input<string>;
-    startVersion?: pulumi.Input<number>;
-    status?: pulumi.Input<string>;
-    stringSharedAs?: pulumi.Input<string>;
+    partitions?: pulumi.Input<pulumi.Input<inputs.GetShareObjectPartitionArgs>[] | undefined>;
+    sharedAs?: pulumi.Input<string | undefined>;
+    startVersion?: pulumi.Input<number | undefined>;
+    status?: pulumi.Input<string | undefined>;
+    stringSharedAs?: pulumi.Input<string | undefined>;
 }
 
 export interface GetShareObjectPartition {
@@ -12205,7 +12205,7 @@ export interface GetShareObjectPartition {
 }
 
 export interface GetShareObjectPartitionArgs {
-    values?: pulumi.Input<pulumi.Input<inputs.GetShareObjectPartitionValueArgs>[]>;
+    values?: pulumi.Input<pulumi.Input<inputs.GetShareObjectPartitionValueArgs>[] | undefined>;
 }
 
 export interface GetShareObjectPartitionValue {
@@ -12222,10 +12222,10 @@ export interface GetShareObjectPartitionValueArgs {
     /**
      * The name of the share
      */
-    name?: pulumi.Input<string>;
-    op?: pulumi.Input<string>;
-    recipientPropertyKey?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    op?: pulumi.Input<string | undefined>;
+    recipientPropertyKey?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface GetShareProviderConfig {
@@ -12279,11 +12279,11 @@ export interface GetSqlWarehouseChannel {
 }
 
 export interface GetSqlWarehouseChannelArgs {
-    dbsqlVersion?: pulumi.Input<string>;
+    dbsqlVersion?: pulumi.Input<string | undefined>;
     /**
      * Name of the SQL warehouse to search (case-sensitive).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface GetSqlWarehouseHealth {
@@ -12295,11 +12295,11 @@ export interface GetSqlWarehouseHealth {
 }
 
 export interface GetSqlWarehouseHealthArgs {
-    details?: pulumi.Input<string>;
-    failureReason?: pulumi.Input<inputs.GetSqlWarehouseHealthFailureReasonArgs>;
-    message?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
-    summary?: pulumi.Input<string>;
+    details?: pulumi.Input<string | undefined>;
+    failureReason?: pulumi.Input<inputs.GetSqlWarehouseHealthFailureReasonArgs | undefined>;
+    message?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
+    summary?: pulumi.Input<string | undefined>;
 }
 
 export interface GetSqlWarehouseHealthFailureReason {
@@ -12309,9 +12309,9 @@ export interface GetSqlWarehouseHealthFailureReason {
 }
 
 export interface GetSqlWarehouseHealthFailureReasonArgs {
-    code?: pulumi.Input<string>;
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    type?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface GetSqlWarehouseOdbcParams {
@@ -12322,10 +12322,10 @@ export interface GetSqlWarehouseOdbcParams {
 }
 
 export interface GetSqlWarehouseOdbcParamsArgs {
-    hostname?: pulumi.Input<string>;
-    path?: pulumi.Input<string>;
-    port?: pulumi.Input<number>;
-    protocol?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
+    path?: pulumi.Input<string | undefined>;
+    port?: pulumi.Input<number | undefined>;
+    protocol?: pulumi.Input<string | undefined>;
 }
 
 export interface GetSqlWarehouseProviderConfig {
@@ -12341,7 +12341,7 @@ export interface GetSqlWarehouseTags {
 }
 
 export interface GetSqlWarehouseTagsArgs {
-    customTags?: pulumi.Input<pulumi.Input<inputs.GetSqlWarehouseTagsCustomTagArgs>[]>;
+    customTags?: pulumi.Input<pulumi.Input<inputs.GetSqlWarehouseTagsCustomTagArgs>[] | undefined>;
 }
 
 export interface GetSqlWarehouseTagsCustomTag {
@@ -12350,8 +12350,8 @@ export interface GetSqlWarehouseTagsCustomTag {
 }
 
 export interface GetSqlWarehouseTagsCustomTagArgs {
-    key?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface GetSqlWarehousesProviderConfig {
@@ -12446,60 +12446,60 @@ export interface GetStorageCredentialStorageCredentialInfoArgs {
     /**
      * credential details for AWS:
      */
-    awsIamRole?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs>;
+    awsIamRole?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs | undefined>;
     /**
      * managed identity credential details for Azure
      */
-    azureManagedIdentity?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs>;
+    azureManagedIdentity?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoAzureManagedIdentityArgs | undefined>;
     /**
      * service principal credential details for Azure:
      */
-    azureServicePrincipal?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs>;
-    cloudflareApiToken?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgs>;
-    comment?: pulumi.Input<string>;
+    azureServicePrincipal?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoAzureServicePrincipalArgs | undefined>;
+    cloudflareApiToken?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoCloudflareApiTokenArgs | undefined>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Time at which this catalog was created, in epoch milliseconds.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * Username of catalog creator.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * credential details for GCP:
      */
-    databricksGcpServiceAccount?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs>;
-    fullName?: pulumi.Input<string>;
+    databricksGcpServiceAccount?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs | undefined>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * Unique ID of storage credential.
      */
-    id?: pulumi.Input<string>;
-    isolationMode?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    isolationMode?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier of the parent Metastore.
      */
-    metastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * The name of the storage credential
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Username/groupname/sp applicationId of the storage credential owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the storage credential is only usable for read operations.
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Time at which this catalog was last modified, in epoch milliseconds.
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * Username of user who last modified catalog.
      */
-    updatedBy?: pulumi.Input<string>;
-    usedForManagedStorage?: pulumi.Input<boolean>;
+    updatedBy?: pulumi.Input<string | undefined>;
+    usedForManagedStorage?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetStorageCredentialStorageCredentialInfoAwsIamRole {
@@ -12521,7 +12521,7 @@ export interface GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs {
     /**
      * (output only) - The external ID used in role assumption to prevent confused deputy problem.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`
      */
@@ -12529,7 +12529,7 @@ export interface GetStorageCredentialStorageCredentialInfoAwsIamRoleArgs {
     /**
      * (output only) - The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
      */
-    unityCatalogIamArn?: pulumi.Input<string>;
+    unityCatalogIamArn?: pulumi.Input<string | undefined>;
 }
 
 export interface GetStorageCredentialStorageCredentialInfoAzureManagedIdentity {
@@ -12549,11 +12549,11 @@ export interface GetStorageCredentialStorageCredentialInfoAzureManagedIdentityAr
      * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
      */
     accessConnectorId: pulumi.Input<string>;
-    credentialId?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string | undefined>;
     /**
      * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
      */
-    managedIdentityId?: pulumi.Input<string>;
+    managedIdentityId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetStorageCredentialStorageCredentialInfoAzureServicePrincipal {
@@ -12601,11 +12601,11 @@ export interface GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAc
 }
 
 export interface GetStorageCredentialStorageCredentialInfoDatabricksGcpServiceAccountArgs {
-    credentialId?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string | undefined>;
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
 }
 
 export interface GetStorageCredentialsProviderConfig {
@@ -12706,72 +12706,72 @@ export interface GetTableTableInfo {
 }
 
 export interface GetTableTableInfoArgs {
-    accessPoint?: pulumi.Input<string>;
-    browseOnly?: pulumi.Input<boolean>;
+    accessPoint?: pulumi.Input<string | undefined>;
+    browseOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Name of parent catalog.
      */
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * Array of ColumnInfo objects of the table's columns
      */
-    columns?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoColumnArgs>[]>;
+    columns?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoColumnArgs>[] | undefined>;
     /**
      * Free-form text description
      */
-    comment?: pulumi.Input<string>;
-    createdAt?: pulumi.Input<number>;
-    createdBy?: pulumi.Input<string>;
-    dataAccessConfigurationId?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
+    createdAt?: pulumi.Input<number | undefined>;
+    createdBy?: pulumi.Input<string | undefined>;
+    dataAccessConfigurationId?: pulumi.Input<string | undefined>;
     /**
      * Table format, e.g. DELTA, CSV, JSON
      */
-    dataSourceFormat?: pulumi.Input<string>;
-    deletedAt?: pulumi.Input<number>;
-    deltaRuntimePropertiesKvpairs?: pulumi.Input<inputs.GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs>;
-    effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.GetTableTableInfoEffectivePredictiveOptimizationFlagArgs>;
-    enablePredictiveOptimization?: pulumi.Input<string>;
-    encryptionDetails?: pulumi.Input<inputs.GetTableTableInfoEncryptionDetailsArgs>;
-    fullName?: pulumi.Input<string>;
-    metastoreId?: pulumi.Input<string>;
+    dataSourceFormat?: pulumi.Input<string | undefined>;
+    deletedAt?: pulumi.Input<number | undefined>;
+    deltaRuntimePropertiesKvpairs?: pulumi.Input<inputs.GetTableTableInfoDeltaRuntimePropertiesKvpairsArgs | undefined>;
+    effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.GetTableTableInfoEffectivePredictiveOptimizationFlagArgs | undefined>;
+    enablePredictiveOptimization?: pulumi.Input<string | undefined>;
+    encryptionDetails?: pulumi.Input<inputs.GetTableTableInfoEncryptionDetailsArgs | undefined>;
+    fullName?: pulumi.Input<string | undefined>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * Full name of the databricks_table: _`catalog`.`schema`.`table`_
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Current owner of the table
      */
-    owner?: pulumi.Input<string>;
-    pipelineId?: pulumi.Input<string>;
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    rowFilter?: pulumi.Input<inputs.GetTableTableInfoRowFilterArgs>;
+    owner?: pulumi.Input<string | undefined>;
+    pipelineId?: pulumi.Input<string | undefined>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    rowFilter?: pulumi.Input<inputs.GetTableTableInfoRowFilterArgs | undefined>;
     /**
      * Name of parent schema relative to its parent catalog.
      */
-    schemaName?: pulumi.Input<string>;
-    securableKindManifest?: pulumi.Input<inputs.GetTableTableInfoSecurableKindManifestArgs>;
-    sqlPath?: pulumi.Input<string>;
-    storageCredentialName?: pulumi.Input<string>;
-    storageLocation?: pulumi.Input<string>;
-    tableConstraints?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoTableConstraintArgs>[]>;
+    schemaName?: pulumi.Input<string | undefined>;
+    securableKindManifest?: pulumi.Input<inputs.GetTableTableInfoSecurableKindManifestArgs | undefined>;
+    sqlPath?: pulumi.Input<string | undefined>;
+    storageCredentialName?: pulumi.Input<string | undefined>;
+    storageLocation?: pulumi.Input<string | undefined>;
+    tableConstraints?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoTableConstraintArgs>[] | undefined>;
     /**
      * The unique identifier of the table.
      */
-    tableId?: pulumi.Input<string>;
+    tableId?: pulumi.Input<string | undefined>;
     /**
      * Table type, e.g. MANAGED, EXTERNAL, VIEW
      */
-    tableType?: pulumi.Input<string>;
-    updatedAt?: pulumi.Input<number>;
-    updatedBy?: pulumi.Input<string>;
+    tableType?: pulumi.Input<string | undefined>;
+    updatedAt?: pulumi.Input<number | undefined>;
+    updatedBy?: pulumi.Input<string | undefined>;
     /**
      * View definition SQL (when `tableType` is VIEW, MATERIALIZED_VIEW, or STREAMING_TABLE)
      */
-    viewDefinition?: pulumi.Input<string>;
+    viewDefinition?: pulumi.Input<string | undefined>;
     /**
      * View dependencies (when `tableType` is VIEW or MATERIALIZED_VIEW, STREAMING_TABLE)
      */
-    viewDependencies?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesArgs>;
+    viewDependencies?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesArgs | undefined>;
 }
 
 export interface GetTableTableInfoColumn {
@@ -12799,21 +12799,21 @@ export interface GetTableTableInfoColumnArgs {
     /**
      * Free-form text description
      */
-    comment?: pulumi.Input<string>;
-    mask?: pulumi.Input<inputs.GetTableTableInfoColumnMaskArgs>;
+    comment?: pulumi.Input<string | undefined>;
+    mask?: pulumi.Input<inputs.GetTableTableInfoColumnMaskArgs | undefined>;
     /**
      * Full name of the databricks_table: _`catalog`.`schema`.`table`_
      */
-    name?: pulumi.Input<string>;
-    nullable?: pulumi.Input<boolean>;
-    partitionIndex?: pulumi.Input<number>;
-    position?: pulumi.Input<number>;
-    typeIntervalType?: pulumi.Input<string>;
-    typeJson?: pulumi.Input<string>;
-    typeName?: pulumi.Input<string>;
-    typePrecision?: pulumi.Input<number>;
-    typeScale?: pulumi.Input<number>;
-    typeText?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    nullable?: pulumi.Input<boolean | undefined>;
+    partitionIndex?: pulumi.Input<number | undefined>;
+    position?: pulumi.Input<number | undefined>;
+    typeIntervalType?: pulumi.Input<string | undefined>;
+    typeJson?: pulumi.Input<string | undefined>;
+    typeName?: pulumi.Input<string | undefined>;
+    typePrecision?: pulumi.Input<number | undefined>;
+    typeScale?: pulumi.Input<number | undefined>;
+    typeText?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTableTableInfoColumnMask {
@@ -12823,9 +12823,9 @@ export interface GetTableTableInfoColumnMask {
 }
 
 export interface GetTableTableInfoColumnMaskArgs {
-    functionName?: pulumi.Input<string>;
-    usingArguments?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoColumnMaskUsingArgumentArgs>[]>;
-    usingColumnNames?: pulumi.Input<pulumi.Input<string>[]>;
+    functionName?: pulumi.Input<string | undefined>;
+    usingArguments?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoColumnMaskUsingArgumentArgs>[] | undefined>;
+    usingColumnNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetTableTableInfoColumnMaskUsingArgument {
@@ -12834,8 +12834,8 @@ export interface GetTableTableInfoColumnMaskUsingArgument {
 }
 
 export interface GetTableTableInfoColumnMaskUsingArgumentArgs {
-    column?: pulumi.Input<string>;
-    constant?: pulumi.Input<string>;
+    column?: pulumi.Input<string | undefined>;
+    constant?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTableTableInfoDeltaRuntimePropertiesKvpairs {
@@ -12853,8 +12853,8 @@ export interface GetTableTableInfoEffectivePredictiveOptimizationFlag {
 }
 
 export interface GetTableTableInfoEffectivePredictiveOptimizationFlagArgs {
-    inheritedFromName?: pulumi.Input<string>;
-    inheritedFromType?: pulumi.Input<string>;
+    inheritedFromName?: pulumi.Input<string | undefined>;
+    inheritedFromType?: pulumi.Input<string | undefined>;
     value: pulumi.Input<string>;
 }
 
@@ -12863,7 +12863,7 @@ export interface GetTableTableInfoEncryptionDetails {
 }
 
 export interface GetTableTableInfoEncryptionDetailsArgs {
-    sseEncryptionDetails?: pulumi.Input<inputs.GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgs>;
+    sseEncryptionDetails?: pulumi.Input<inputs.GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgs | undefined>;
 }
 
 export interface GetTableTableInfoEncryptionDetailsSseEncryptionDetails {
@@ -12872,8 +12872,8 @@ export interface GetTableTableInfoEncryptionDetailsSseEncryptionDetails {
 }
 
 export interface GetTableTableInfoEncryptionDetailsSseEncryptionDetailsArgs {
-    algorithm?: pulumi.Input<string>;
-    awsKmsKeyArn?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
+    awsKmsKeyArn?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTableTableInfoRowFilter {
@@ -12884,7 +12884,7 @@ export interface GetTableTableInfoRowFilter {
 
 export interface GetTableTableInfoRowFilterArgs {
     functionName: pulumi.Input<string>;
-    inputArguments?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoRowFilterInputArgumentArgs>[]>;
+    inputArguments?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoRowFilterInputArgumentArgs>[] | undefined>;
     inputColumnNames: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -12894,8 +12894,8 @@ export interface GetTableTableInfoRowFilterInputArgument {
 }
 
 export interface GetTableTableInfoRowFilterInputArgumentArgs {
-    column?: pulumi.Input<string>;
-    constant?: pulumi.Input<string>;
+    column?: pulumi.Input<string | undefined>;
+    constant?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTableTableInfoSecurableKindManifest {
@@ -12907,11 +12907,11 @@ export interface GetTableTableInfoSecurableKindManifest {
 }
 
 export interface GetTableTableInfoSecurableKindManifestArgs {
-    assignablePrivileges?: pulumi.Input<pulumi.Input<string>[]>;
-    capabilities?: pulumi.Input<pulumi.Input<string>[]>;
-    options?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoSecurableKindManifestOptionArgs>[]>;
-    securableKind?: pulumi.Input<string>;
-    securableType?: pulumi.Input<string>;
+    assignablePrivileges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    capabilities?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    options?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoSecurableKindManifestOptionArgs>[] | undefined>;
+    securableKind?: pulumi.Input<string | undefined>;
+    securableType?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTableTableInfoSecurableKindManifestOption {
@@ -12935,23 +12935,23 @@ export interface GetTableTableInfoSecurableKindManifestOption {
 }
 
 export interface GetTableTableInfoSecurableKindManifestOptionArgs {
-    allowedValues?: pulumi.Input<pulumi.Input<string>[]>;
-    defaultValue?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
-    hint?: pulumi.Input<string>;
-    isCopiable?: pulumi.Input<boolean>;
-    isCreatable?: pulumi.Input<boolean>;
-    isHidden?: pulumi.Input<boolean>;
-    isLoggable?: pulumi.Input<boolean>;
-    isRequired?: pulumi.Input<boolean>;
-    isSecret?: pulumi.Input<boolean>;
-    isUpdatable?: pulumi.Input<boolean>;
+    allowedValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    defaultValue?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    hint?: pulumi.Input<string | undefined>;
+    isCopiable?: pulumi.Input<boolean | undefined>;
+    isCreatable?: pulumi.Input<boolean | undefined>;
+    isHidden?: pulumi.Input<boolean | undefined>;
+    isLoggable?: pulumi.Input<boolean | undefined>;
+    isRequired?: pulumi.Input<boolean | undefined>;
+    isSecret?: pulumi.Input<boolean | undefined>;
+    isUpdatable?: pulumi.Input<boolean | undefined>;
     /**
      * Full name of the databricks_table: _`catalog`.`schema`.`table`_
      */
-    name?: pulumi.Input<string>;
-    oauthStage?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    oauthStage?: pulumi.Input<string | undefined>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTableTableInfoTableConstraint {
@@ -12961,9 +12961,9 @@ export interface GetTableTableInfoTableConstraint {
 }
 
 export interface GetTableTableInfoTableConstraintArgs {
-    foreignKeyConstraint?: pulumi.Input<inputs.GetTableTableInfoTableConstraintForeignKeyConstraintArgs>;
-    namedTableConstraint?: pulumi.Input<inputs.GetTableTableInfoTableConstraintNamedTableConstraintArgs>;
-    primaryKeyConstraint?: pulumi.Input<inputs.GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs>;
+    foreignKeyConstraint?: pulumi.Input<inputs.GetTableTableInfoTableConstraintForeignKeyConstraintArgs | undefined>;
+    namedTableConstraint?: pulumi.Input<inputs.GetTableTableInfoTableConstraintNamedTableConstraintArgs | undefined>;
+    primaryKeyConstraint?: pulumi.Input<inputs.GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs | undefined>;
 }
 
 export interface GetTableTableInfoTableConstraintForeignKeyConstraint {
@@ -12985,7 +12985,7 @@ export interface GetTableTableInfoTableConstraintForeignKeyConstraintArgs {
     name: pulumi.Input<string>;
     parentColumns: pulumi.Input<pulumi.Input<string>[]>;
     parentTable: pulumi.Input<string>;
-    rely?: pulumi.Input<boolean>;
+    rely?: pulumi.Input<boolean | undefined>;
 }
 
 export interface GetTableTableInfoTableConstraintNamedTableConstraint {
@@ -13018,8 +13018,8 @@ export interface GetTableTableInfoTableConstraintPrimaryKeyConstraintArgs {
      * Full name of the databricks_table: _`catalog`.`schema`.`table`_
      */
     name: pulumi.Input<string>;
-    rely?: pulumi.Input<boolean>;
-    timeseriesColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    rely?: pulumi.Input<boolean | undefined>;
+    timeseriesColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface GetTableTableInfoViewDependencies {
@@ -13027,7 +13027,7 @@ export interface GetTableTableInfoViewDependencies {
 }
 
 export interface GetTableTableInfoViewDependenciesArgs {
-    dependencies?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoViewDependenciesDependencyArgs>[]>;
+    dependencies?: pulumi.Input<pulumi.Input<inputs.GetTableTableInfoViewDependenciesDependencyArgs>[] | undefined>;
 }
 
 export interface GetTableTableInfoViewDependenciesDependency {
@@ -13038,10 +13038,10 @@ export interface GetTableTableInfoViewDependenciesDependency {
 }
 
 export interface GetTableTableInfoViewDependenciesDependencyArgs {
-    connection?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesDependencyConnectionArgs>;
-    credential?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesDependencyCredentialArgs>;
-    function?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesDependencyFunctionArgs>;
-    table?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesDependencyTableArgs>;
+    connection?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesDependencyConnectionArgs | undefined>;
+    credential?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesDependencyCredentialArgs | undefined>;
+    function?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesDependencyFunctionArgs | undefined>;
+    table?: pulumi.Input<inputs.GetTableTableInfoViewDependenciesDependencyTableArgs | undefined>;
 }
 
 export interface GetTableTableInfoViewDependenciesDependencyConnection {
@@ -13049,7 +13049,7 @@ export interface GetTableTableInfoViewDependenciesDependencyConnection {
 }
 
 export interface GetTableTableInfoViewDependenciesDependencyConnectionArgs {
-    connectionName?: pulumi.Input<string>;
+    connectionName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTableTableInfoViewDependenciesDependencyCredential {
@@ -13057,7 +13057,7 @@ export interface GetTableTableInfoViewDependenciesDependencyCredential {
 }
 
 export interface GetTableTableInfoViewDependenciesDependencyCredentialArgs {
-    credentialName?: pulumi.Input<string>;
+    credentialName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTableTableInfoViewDependenciesDependencyFunction {
@@ -13192,42 +13192,42 @@ export interface GetUsersUserArgs {
     /**
      * Boolean that represents if this user is active.
      */
-    active?: pulumi.Input<boolean>;
-    displayName?: pulumi.Input<string>;
+    active?: pulumi.Input<boolean | undefined>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * All the emails associated with the Databricks user.
      */
-    emails?: pulumi.Input<pulumi.Input<inputs.GetUsersUserEmailArgs>[]>;
+    emails?: pulumi.Input<pulumi.Input<inputs.GetUsersUserEmailArgs>[] | undefined>;
     /**
      * Entitlements assigned to the user.
      */
-    entitlements?: pulumi.Input<pulumi.Input<inputs.GetUsersUserEntitlementArgs>[]>;
-    externalId?: pulumi.Input<string>;
+    entitlements?: pulumi.Input<pulumi.Input<inputs.GetUsersUserEntitlementArgs>[] | undefined>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the user is part of any groups.
      */
-    groups?: pulumi.Input<pulumi.Input<inputs.GetUsersUserGroupArgs>[]>;
+    groups?: pulumi.Input<pulumi.Input<inputs.GetUsersUserGroupArgs>[] | undefined>;
     /**
      * The ID of the user.
      * - `userName` - The username of the user.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * - `givenName` - Given name of the Databricks user.
      * - `familyName` - Family name of the Databricks user.
      * - `displayName` - The display name of the user.
      */
-    name?: pulumi.Input<inputs.GetUsersUserNameArgs>;
+    name?: pulumi.Input<inputs.GetUsersUserNameArgs | undefined>;
     /**
      * Indicates if the user has any associated roles.
      */
-    roles?: pulumi.Input<pulumi.Input<inputs.GetUsersUserRoleArgs>[]>;
+    roles?: pulumi.Input<pulumi.Input<inputs.GetUsersUserRoleArgs>[] | undefined>;
     /**
      * The schema of the user.
      * - `externalId` - Reserved for future use.
      */
-    schemas?: pulumi.Input<pulumi.Input<string>[]>;
-    userName?: pulumi.Input<string>;
+    schemas?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetUsersUserEmail {
@@ -13239,11 +13239,11 @@ export interface GetUsersUserEmail {
 }
 
 export interface GetUsersUserEmailArgs {
-    display?: pulumi.Input<string>;
-    primary?: pulumi.Input<boolean>;
-    ref?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    display?: pulumi.Input<string | undefined>;
+    primary?: pulumi.Input<boolean | undefined>;
+    ref?: pulumi.Input<string | undefined>;
+    type?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface GetUsersUserEntitlement {
@@ -13255,11 +13255,11 @@ export interface GetUsersUserEntitlement {
 }
 
 export interface GetUsersUserEntitlementArgs {
-    display?: pulumi.Input<string>;
-    primary?: pulumi.Input<boolean>;
-    ref?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    display?: pulumi.Input<string | undefined>;
+    primary?: pulumi.Input<boolean | undefined>;
+    ref?: pulumi.Input<string | undefined>;
+    type?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface GetUsersUserGroup {
@@ -13271,11 +13271,11 @@ export interface GetUsersUserGroup {
 }
 
 export interface GetUsersUserGroupArgs {
-    display?: pulumi.Input<string>;
-    primary?: pulumi.Input<boolean>;
-    ref?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    display?: pulumi.Input<string | undefined>;
+    primary?: pulumi.Input<boolean | undefined>;
+    ref?: pulumi.Input<string | undefined>;
+    type?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface GetUsersUserName {
@@ -13284,8 +13284,8 @@ export interface GetUsersUserName {
 }
 
 export interface GetUsersUserNameArgs {
-    familyName?: pulumi.Input<string>;
-    givenName?: pulumi.Input<string>;
+    familyName?: pulumi.Input<string | undefined>;
+    givenName?: pulumi.Input<string | undefined>;
 }
 
 export interface GetUsersUserRole {
@@ -13297,11 +13297,11 @@ export interface GetUsersUserRole {
 }
 
 export interface GetUsersUserRoleArgs {
-    display?: pulumi.Input<string>;
-    primary?: pulumi.Input<boolean>;
-    ref?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    display?: pulumi.Input<string | undefined>;
+    primary?: pulumi.Input<boolean | undefined>;
+    ref?: pulumi.Input<string | undefined>;
+    type?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface GetViewsProviderConfig {
@@ -13407,71 +13407,71 @@ export interface GetVolumeVolumeInfoArgs {
     /**
      * the AWS access point to use when accessing s3 bucket for this volume's external location
      */
-    accessPoint?: pulumi.Input<string>;
+    accessPoint?: pulumi.Input<string | undefined>;
     /**
      * indicates whether the principal is limited to retrieving metadata for the volume through the BROWSE privilege when includeBrowse is enabled in the request.
      */
-    browseOnly?: pulumi.Input<boolean>;
+    browseOnly?: pulumi.Input<boolean | undefined>;
     /**
      * the name of the catalog where the schema and the volume are
      */
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * the comment attached to the volume
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * the Unix timestamp at the volume's creation
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * the identifier of the user who created the volume
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * encryption options that apply to clients connecting to cloud storage
      */
-    encryptionDetails?: pulumi.Input<inputs.GetVolumeVolumeInfoEncryptionDetailsArgs>;
+    encryptionDetails?: pulumi.Input<inputs.GetVolumeVolumeInfoEncryptionDetailsArgs | undefined>;
     /**
      * the three-level (fully qualified) name of the volume
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * the unique identifier of the metastore
      */
-    metastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * a fully qualified name of databricks_volume: *`catalog`.`schema`.`volume`*
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * the identifier of the user who owns the volume
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * the name of the schema where the volume is
      */
-    schemaName?: pulumi.Input<string>;
+    schemaName?: pulumi.Input<string | undefined>;
     /**
      * the storage location on the cloud
      */
-    storageLocation?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string | undefined>;
     /**
      * the timestamp of the last time changes were made to the volume
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * the identifier of the user who updated the volume last time
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
     /**
      * the unique identifier of the volume
      */
-    volumeId?: pulumi.Input<string>;
+    volumeId?: pulumi.Input<string | undefined>;
     /**
      * whether the volume is `MANAGED` or `EXTERNAL`
      */
-    volumeType?: pulumi.Input<string>;
+    volumeType?: pulumi.Input<string | undefined>;
 }
 
 export interface GetVolumeVolumeInfoEncryptionDetails {
@@ -13479,7 +13479,7 @@ export interface GetVolumeVolumeInfoEncryptionDetails {
 }
 
 export interface GetVolumeVolumeInfoEncryptionDetailsArgs {
-    sseEncryptionDetails?: pulumi.Input<inputs.GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs>;
+    sseEncryptionDetails?: pulumi.Input<inputs.GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs | undefined>;
 }
 
 export interface GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails {
@@ -13488,8 +13488,8 @@ export interface GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetails {
 }
 
 export interface GetVolumeVolumeInfoEncryptionDetailsSseEncryptionDetailsArgs {
-    algorithm?: pulumi.Input<string>;
-    awsKmsKeyArn?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
+    awsKmsKeyArn?: pulumi.Input<string | undefined>;
 }
 
 export interface GetVolumesProviderConfig {
@@ -13637,78 +13637,78 @@ export interface InstancePoolAwsAttributes {
     /**
      * (String) Availability type used for all instances in the pool. Only `ON_DEMAND` and `SPOT` are supported.
      */
-    availability?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
     /**
      * Nodes belonging to the pool will only be placed on AWS instances with this instance profile. Please see databricks.InstanceProfile resource documentation for extended examples on adding a valid instance profile using Pulumi.
      */
-    instanceProfileArn?: pulumi.Input<string>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
     /**
      * (Integer) The max price for AWS spot instances, as a percentage of the corresponding instance type's on-demand price. For example, if this field is set to 50, and the instance pool needs a new i3.xlarge spot instance, then the max price is half of the price of on-demand i3.xlarge instances. Similarly, if this field is set to 200, the max price is twice the price of on-demand i3.xlarge instances. If not specified, the *default value is 100*. When spot instances are requested for this instance pool, only spot instances whose max price percentage matches this field are considered. *For safety, this field cannot be greater than 10000.*
      */
-    spotBidPricePercent?: pulumi.Input<number>;
+    spotBidPricePercent?: pulumi.Input<number | undefined>;
     /**
      * (String) Identifier for the availability zone/datacenter in which the instance pool resides. This string is of the form like `"us-west-2a"`. The provided availability zone must be in the same region as the Databricks deployment. For example, `"us-west-2a"` is not a valid zone ID if the Databricks deployment resides in the `"us-east-1"` region. If not specified, a default zone is used. You can find the list of available zones as well as the default value by using the [List Zones API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistavailablezones).
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface InstancePoolAzureAttributes {
     /**
      * Availability type used for all nodes. Valid values are `SPOT_AZURE` and `ON_DEMAND_AZURE`.
      */
-    availability?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
     /**
      * The max bid price used for Azure spot instances. You can set this to greater than or equal to the current spot price. You can also set this to `-1`, which specifies that the instance cannot be evicted on the basis of price. The price for the instance will be the current price for spot instances or the price for a standard instance.
      */
-    spotBidMaxPrice?: pulumi.Input<number>;
+    spotBidMaxPrice?: pulumi.Input<number | undefined>;
 }
 
 export interface InstancePoolDiskSpec {
     /**
      * (Integer) The number of disks to attach to each instance. This feature is only enabled for supported node types. Users can choose up to the limit of the disks supported by the node type. For node types with no local disk, at least one disk needs to be specified.
      */
-    diskCount?: pulumi.Input<number>;
+    diskCount?: pulumi.Input<number | undefined>;
     /**
      * (Integer) The size of each disk (in GiB) to attach.
      */
-    diskSize?: pulumi.Input<number>;
-    diskType?: pulumi.Input<inputs.InstancePoolDiskSpecDiskType>;
+    diskSize?: pulumi.Input<number | undefined>;
+    diskType?: pulumi.Input<inputs.InstancePoolDiskSpecDiskType | undefined>;
 }
 
 export interface InstancePoolDiskSpecDiskType {
-    azureDiskVolumeType?: pulumi.Input<string>;
-    ebsVolumeType?: pulumi.Input<string>;
+    azureDiskVolumeType?: pulumi.Input<string | undefined>;
+    ebsVolumeType?: pulumi.Input<string | undefined>;
 }
 
 export interface InstancePoolGcpAttributes {
     /**
      * Availability type used for all nodes. Valid values are `PREEMPTIBLE_GCP`, `PREEMPTIBLE_WITH_FALLBACK_GCP` and `ON_DEMAND_GCP`, default: `ON_DEMAND_GCP`.
      */
-    gcpAvailability?: pulumi.Input<string>;
+    gcpAvailability?: pulumi.Input<string | undefined>;
     /**
      * Number of local SSD disks (each is 375GB in size) that will be attached to each node of the cluster.
      */
-    localSsdCount?: pulumi.Input<number>;
+    localSsdCount?: pulumi.Input<number | undefined>;
     /**
      * Identifier for the availability zone/datacenter in which the cluster resides. This string will be of a form like `us-central1-a`. The provided availability zone must be in the same region as the Databricks workspace.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface InstancePoolInstancePoolFleetAttributes {
-    fleetOnDemandOption?: pulumi.Input<inputs.InstancePoolInstancePoolFleetAttributesFleetOnDemandOption>;
-    fleetSpotOption?: pulumi.Input<inputs.InstancePoolInstancePoolFleetAttributesFleetSpotOption>;
+    fleetOnDemandOption?: pulumi.Input<inputs.InstancePoolInstancePoolFleetAttributesFleetOnDemandOption | undefined>;
+    fleetSpotOption?: pulumi.Input<inputs.InstancePoolInstancePoolFleetAttributesFleetSpotOption | undefined>;
     launchTemplateOverrides: pulumi.Input<pulumi.Input<inputs.InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride>[]>;
 }
 
 export interface InstancePoolInstancePoolFleetAttributesFleetOnDemandOption {
     allocationStrategy: pulumi.Input<string>;
-    instancePoolsToUseCount?: pulumi.Input<number>;
+    instancePoolsToUseCount?: pulumi.Input<number | undefined>;
 }
 
 export interface InstancePoolInstancePoolFleetAttributesFleetSpotOption {
     allocationStrategy: pulumi.Input<string>;
-    instancePoolsToUseCount?: pulumi.Input<number>;
+    instancePoolsToUseCount?: pulumi.Input<number | undefined>;
 }
 
 export interface InstancePoolInstancePoolFleetAttributesLaunchTemplateOverride {
@@ -13747,7 +13747,7 @@ export interface InstancePoolPreloadedDockerImage {
      * }]});
      * ```
      */
-    basicAuth?: pulumi.Input<inputs.InstancePoolPreloadedDockerImageBasicAuth>;
+    basicAuth?: pulumi.Input<inputs.InstancePoolPreloadedDockerImageBasicAuth | undefined>;
     /**
      * URL for the Docker image
      */
@@ -13784,20 +13784,20 @@ export interface JobContinuous {
     /**
      * Indicate whether this continuous job is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
-    pauseStatus?: pulumi.Input<string>;
+    pauseStatus?: pulumi.Input<string | undefined>;
     /**
      * Controls task level retry behaviour. Allowed values are:
      * * `NEVER` (default): The failed task will not be retried.
      * * `ON_FAILURE`: Retry a failed task if at least one other task in the job is still running its first attempt. When this condition is no longer met or the retry limit is reached, the job run is cancelled and a new run is started.
      */
-    taskRetryMode?: pulumi.Input<string>;
+    taskRetryMode?: pulumi.Input<string | undefined>;
 }
 
 export interface JobDbtTask {
     /**
      * The name of the catalog to use inside Unity Catalog.
      */
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     /**
      * (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
      */
@@ -13805,61 +13805,61 @@ export interface JobDbtTask {
     /**
      * The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
      */
-    profilesDirectory?: pulumi.Input<string>;
+    profilesDirectory?: pulumi.Input<string | undefined>;
     /**
      * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
      * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository's root directory when not specified.
      * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
      */
-    projectDirectory?: pulumi.Input<string>;
+    projectDirectory?: pulumi.Input<string | undefined>;
     /**
      * The name of the schema dbt should run in. Defaults to `default`.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * The ID of the SQL warehouse that dbt should execute against.
      *
      * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobDeployment {
     kind: pulumi.Input<string>;
-    metadataFilePath?: pulumi.Input<string>;
+    metadataFilePath?: pulumi.Input<string | undefined>;
 }
 
 export interface JobEmailNotifications {
     /**
      * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
      */
-    noAlertForSkippedRuns?: pulumi.Input<boolean>;
+    noAlertForSkippedRuns?: pulumi.Input<boolean | undefined>;
     /**
      * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      */
-    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (List) list of emails to notify when the run fails.
      */
-    onFailures?: pulumi.Input<pulumi.Input<string>[]>;
+    onFailures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (List) list of emails to notify when the run starts.
      */
-    onStarts?: pulumi.Input<pulumi.Input<string>[]>;
+    onStarts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
      *
      * The following parameter is only available for the job level configuration.
      */
-    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (List) list of emails to notify when the run completes successfully.
      */
-    onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
+    onSuccesses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobEnvironment {
@@ -13870,43 +13870,43 @@ export interface JobEnvironment {
     /**
      * block describing the Environment. Consists of following attributes:
      */
-    spec?: pulumi.Input<inputs.JobEnvironmentSpec>;
+    spec?: pulumi.Input<inputs.JobEnvironmentSpec | undefined>;
 }
 
 export interface JobEnvironmentSpec {
-    baseEnvironment?: pulumi.Input<string>;
-    client?: pulumi.Input<string>;
+    baseEnvironment?: pulumi.Input<string | undefined>;
+    client?: pulumi.Input<string | undefined>;
     /**
      * List of pip dependencies, as supported by the version of pip in this environment. Each dependency is a pip requirement file line.  See [API docs](https://docs.databricks.com/api/workspace/jobs/create#environments-spec-dependencies) for more information.
      */
-    dependencies?: pulumi.Input<pulumi.Input<string>[]>;
+    dependencies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
      */
-    environmentVersion?: pulumi.Input<string>;
-    javaDependencies?: pulumi.Input<pulumi.Input<string>[]>;
+    environmentVersion?: pulumi.Input<string | undefined>;
+    javaDependencies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobGitSource {
     /**
      * name of the Git branch to use. Conflicts with `tag` and `commit`.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * hash of Git commit to use. Conflicts with `branch` and `tag`.
      */
-    commit?: pulumi.Input<string>;
-    gitSnapshot?: pulumi.Input<inputs.JobGitSourceGitSnapshot>;
-    jobSource?: pulumi.Input<inputs.JobGitSourceJobSource>;
+    commit?: pulumi.Input<string | undefined>;
+    gitSnapshot?: pulumi.Input<inputs.JobGitSourceGitSnapshot | undefined>;
+    jobSource?: pulumi.Input<inputs.JobGitSourceJobSource | undefined>;
     /**
      * case insensitive name of the Git provider.  Following values are supported right now (could be a subject for change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`.
      */
-    provider?: pulumi.Input<string>;
-    sparseCheckout?: pulumi.Input<inputs.JobGitSourceSparseCheckout>;
+    provider?: pulumi.Input<string | undefined>;
+    sparseCheckout?: pulumi.Input<inputs.JobGitSourceSparseCheckout | undefined>;
     /**
      * name of the Git branch to use. Conflicts with `branch` and `commit`.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
     /**
      * URL of the Git repository to use.
      */
@@ -13914,17 +13914,17 @@ export interface JobGitSource {
 }
 
 export interface JobGitSourceGitSnapshot {
-    usedCommit?: pulumi.Input<string>;
+    usedCommit?: pulumi.Input<string | undefined>;
 }
 
 export interface JobGitSourceJobSource {
-    dirtyState?: pulumi.Input<string>;
+    dirtyState?: pulumi.Input<string | undefined>;
     importFromGitBranch: pulumi.Input<string>;
     jobConfigPath: pulumi.Input<string>;
 }
 
 export interface JobGitSourceSparseCheckout {
-    patterns?: pulumi.Input<pulumi.Input<string>[]>;
+    patterns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobHealth {
@@ -13961,90 +13961,90 @@ export interface JobJobCluster {
 }
 
 export interface JobJobClusterNewCluster {
-    __applyPolicyDefaultValuesAllowLists?: pulumi.Input<pulumi.Input<string>[]>;
-    applyPolicyDefaultValues?: pulumi.Input<boolean>;
-    autoscale?: pulumi.Input<inputs.JobJobClusterNewClusterAutoscale>;
-    awsAttributes?: pulumi.Input<inputs.JobJobClusterNewClusterAwsAttributes>;
-    azureAttributes?: pulumi.Input<inputs.JobJobClusterNewClusterAzureAttributes>;
-    clusterId?: pulumi.Input<string>;
-    clusterLogConf?: pulumi.Input<inputs.JobJobClusterNewClusterClusterLogConf>;
-    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterClusterMountInfo>[]>;
-    clusterName?: pulumi.Input<string>;
-    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    dataSecurityMode?: pulumi.Input<string>;
-    dockerImage?: pulumi.Input<inputs.JobJobClusterNewClusterDockerImage>;
-    driverInstancePoolId?: pulumi.Input<string>;
-    driverNodeTypeFlexibility?: pulumi.Input<inputs.JobJobClusterNewClusterDriverNodeTypeFlexibility>;
-    driverNodeTypeId?: pulumi.Input<string>;
-    enableElasticDisk?: pulumi.Input<boolean>;
-    enableLocalDiskEncryption?: pulumi.Input<boolean>;
-    gcpAttributes?: pulumi.Input<inputs.JobJobClusterNewClusterGcpAttributes>;
-    idempotencyToken?: pulumi.Input<string>;
-    initScripts?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterInitScript>[]>;
-    instancePoolId?: pulumi.Input<string>;
-    isSingleNode?: pulumi.Input<boolean>;
-    kind?: pulumi.Input<string>;
+    __applyPolicyDefaultValuesAllowLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    applyPolicyDefaultValues?: pulumi.Input<boolean | undefined>;
+    autoscale?: pulumi.Input<inputs.JobJobClusterNewClusterAutoscale | undefined>;
+    awsAttributes?: pulumi.Input<inputs.JobJobClusterNewClusterAwsAttributes | undefined>;
+    azureAttributes?: pulumi.Input<inputs.JobJobClusterNewClusterAzureAttributes | undefined>;
+    clusterId?: pulumi.Input<string | undefined>;
+    clusterLogConf?: pulumi.Input<inputs.JobJobClusterNewClusterClusterLogConf | undefined>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterClusterMountInfo>[] | undefined>;
+    clusterName?: pulumi.Input<string | undefined>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    dataSecurityMode?: pulumi.Input<string | undefined>;
+    dockerImage?: pulumi.Input<inputs.JobJobClusterNewClusterDockerImage | undefined>;
+    driverInstancePoolId?: pulumi.Input<string | undefined>;
+    driverNodeTypeFlexibility?: pulumi.Input<inputs.JobJobClusterNewClusterDriverNodeTypeFlexibility | undefined>;
+    driverNodeTypeId?: pulumi.Input<string | undefined>;
+    enableElasticDisk?: pulumi.Input<boolean | undefined>;
+    enableLocalDiskEncryption?: pulumi.Input<boolean | undefined>;
+    gcpAttributes?: pulumi.Input<inputs.JobJobClusterNewClusterGcpAttributes | undefined>;
+    idempotencyToken?: pulumi.Input<string | undefined>;
+    initScripts?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterInitScript>[] | undefined>;
+    instancePoolId?: pulumi.Input<string | undefined>;
+    isSingleNode?: pulumi.Input<boolean | undefined>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
-    libraries?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterLibrary>[]>;
-    nodeTypeId?: pulumi.Input<string>;
-    numWorkers?: pulumi.Input<number>;
-    policyId?: pulumi.Input<string>;
+    libraries?: pulumi.Input<pulumi.Input<inputs.JobJobClusterNewClusterLibrary>[] | undefined>;
+    nodeTypeId?: pulumi.Input<string | undefined>;
+    numWorkers?: pulumi.Input<number | undefined>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.JobJobClusterNewClusterProviderConfig>;
-    remoteDiskThroughput?: pulumi.Input<number>;
-    runtimeEngine?: pulumi.Input<string>;
-    singleUserName?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkVersion?: pulumi.Input<string>;
-    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    totalInitialRemoteDiskSize?: pulumi.Input<number>;
-    useMlRuntime?: pulumi.Input<boolean>;
-    workerNodeTypeFlexibility?: pulumi.Input<inputs.JobJobClusterNewClusterWorkerNodeTypeFlexibility>;
+    providerConfig?: pulumi.Input<inputs.JobJobClusterNewClusterProviderConfig | undefined>;
+    remoteDiskThroughput?: pulumi.Input<number | undefined>;
+    runtimeEngine?: pulumi.Input<string | undefined>;
+    singleUserName?: pulumi.Input<string | undefined>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkVersion?: pulumi.Input<string | undefined>;
+    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    totalInitialRemoteDiskSize?: pulumi.Input<number | undefined>;
+    useMlRuntime?: pulumi.Input<boolean | undefined>;
+    workerNodeTypeFlexibility?: pulumi.Input<inputs.JobJobClusterNewClusterWorkerNodeTypeFlexibility | undefined>;
     /**
      * isn't supported
      */
-    workloadType?: pulumi.Input<inputs.JobJobClusterNewClusterWorkloadType>;
+    workloadType?: pulumi.Input<inputs.JobJobClusterNewClusterWorkloadType | undefined>;
 }
 
 export interface JobJobClusterNewClusterAutoscale {
-    maxWorkers?: pulumi.Input<number>;
-    minWorkers?: pulumi.Input<number>;
+    maxWorkers?: pulumi.Input<number | undefined>;
+    minWorkers?: pulumi.Input<number | undefined>;
 }
 
 export interface JobJobClusterNewClusterAwsAttributes {
-    availability?: pulumi.Input<string>;
-    ebsVolumeCount?: pulumi.Input<number>;
-    ebsVolumeIops?: pulumi.Input<number>;
-    ebsVolumeSize?: pulumi.Input<number>;
-    ebsVolumeThroughput?: pulumi.Input<number>;
-    ebsVolumeType?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    instanceProfileArn?: pulumi.Input<string>;
-    spotBidPricePercent?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    ebsVolumeCount?: pulumi.Input<number | undefined>;
+    ebsVolumeIops?: pulumi.Input<number | undefined>;
+    ebsVolumeSize?: pulumi.Input<number | undefined>;
+    ebsVolumeThroughput?: pulumi.Input<number | undefined>;
+    ebsVolumeType?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
+    spotBidPricePercent?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobJobClusterNewClusterAzureAttributes {
-    availability?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    logAnalyticsInfo?: pulumi.Input<inputs.JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo>;
-    spotBidMaxPrice?: pulumi.Input<number>;
+    availability?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    logAnalyticsInfo?: pulumi.Input<inputs.JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo | undefined>;
+    spotBidMaxPrice?: pulumi.Input<number | undefined>;
 }
 
 export interface JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo {
-    logAnalyticsPrimaryKey?: pulumi.Input<string>;
-    logAnalyticsWorkspaceId?: pulumi.Input<string>;
+    logAnalyticsPrimaryKey?: pulumi.Input<string | undefined>;
+    logAnalyticsWorkspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobJobClusterNewClusterClusterLogConf {
-    dbfs?: pulumi.Input<inputs.JobJobClusterNewClusterClusterLogConfDbfs>;
-    s3?: pulumi.Input<inputs.JobJobClusterNewClusterClusterLogConfS3>;
-    volumes?: pulumi.Input<inputs.JobJobClusterNewClusterClusterLogConfVolumes>;
+    dbfs?: pulumi.Input<inputs.JobJobClusterNewClusterClusterLogConfDbfs | undefined>;
+    s3?: pulumi.Input<inputs.JobJobClusterNewClusterClusterLogConfS3 | undefined>;
+    volumes?: pulumi.Input<inputs.JobJobClusterNewClusterClusterLogConfVolumes | undefined>;
 }
 
 export interface JobJobClusterNewClusterClusterLogConfDbfs {
@@ -14052,13 +14052,13 @@ export interface JobJobClusterNewClusterClusterLogConfDbfs {
 }
 
 export interface JobJobClusterNewClusterClusterLogConfS3 {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface JobJobClusterNewClusterClusterLogConfVolumes {
@@ -14068,16 +14068,16 @@ export interface JobJobClusterNewClusterClusterLogConfVolumes {
 export interface JobJobClusterNewClusterClusterMountInfo {
     localMountDirPath: pulumi.Input<string>;
     networkFilesystemInfo: pulumi.Input<inputs.JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo>;
-    remoteMountDirPath?: pulumi.Input<string>;
+    remoteMountDirPath?: pulumi.Input<string | undefined>;
 }
 
 export interface JobJobClusterNewClusterClusterMountInfoNetworkFilesystemInfo {
-    mountOptions?: pulumi.Input<string>;
+    mountOptions?: pulumi.Input<string | undefined>;
     serverAddress: pulumi.Input<string>;
 }
 
 export interface JobJobClusterNewClusterDockerImage {
-    basicAuth?: pulumi.Input<inputs.JobJobClusterNewClusterDockerImageBasicAuth>;
+    basicAuth?: pulumi.Input<inputs.JobJobClusterNewClusterDockerImageBasicAuth | undefined>;
     /**
      * URL of the job on the given workspace
      */
@@ -14090,33 +14090,33 @@ export interface JobJobClusterNewClusterDockerImageBasicAuth {
 }
 
 export interface JobJobClusterNewClusterDriverNodeTypeFlexibility {
-    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobJobClusterNewClusterGcpAttributes {
-    availability?: pulumi.Input<string>;
-    bootDiskSize?: pulumi.Input<number>;
-    firstOnDemand?: pulumi.Input<number>;
-    googleServiceAccount?: pulumi.Input<string>;
-    localSsdCount?: pulumi.Input<number>;
-    usePreemptibleExecutors?: pulumi.Input<boolean>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    bootDiskSize?: pulumi.Input<number | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    googleServiceAccount?: pulumi.Input<string | undefined>;
+    localSsdCount?: pulumi.Input<number | undefined>;
+    usePreemptibleExecutors?: pulumi.Input<boolean | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobJobClusterNewClusterInitScript {
-    abfss?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptAbfss>;
+    abfss?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptAbfss | undefined>;
     /**
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
-    dbfs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptDbfs>;
+    dbfs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptDbfs | undefined>;
     /**
      * block consisting of single string fields:
      */
-    file?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptFile>;
-    gcs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptGcs>;
-    s3?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptS3>;
-    volumes?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptVolumes>;
-    workspace?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptWorkspace>;
+    file?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptFile | undefined>;
+    gcs?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptGcs | undefined>;
+    s3?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptS3 | undefined>;
+    volumes?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptVolumes | undefined>;
+    workspace?: pulumi.Input<inputs.JobJobClusterNewClusterInitScriptWorkspace | undefined>;
 }
 
 export interface JobJobClusterNewClusterInitScriptAbfss {
@@ -14136,13 +14136,13 @@ export interface JobJobClusterNewClusterInitScriptGcs {
 }
 
 export interface JobJobClusterNewClusterInitScriptS3 {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface JobJobClusterNewClusterInitScriptVolumes {
@@ -14154,31 +14154,31 @@ export interface JobJobClusterNewClusterInitScriptWorkspace {
 }
 
 export interface JobJobClusterNewClusterLibrary {
-    cran?: pulumi.Input<inputs.JobJobClusterNewClusterLibraryCran>;
+    cran?: pulumi.Input<inputs.JobJobClusterNewClusterLibraryCran | undefined>;
     /**
      * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      */
-    egg?: pulumi.Input<string>;
-    jar?: pulumi.Input<string>;
-    maven?: pulumi.Input<inputs.JobJobClusterNewClusterLibraryMaven>;
+    egg?: pulumi.Input<string | undefined>;
+    jar?: pulumi.Input<string | undefined>;
+    maven?: pulumi.Input<inputs.JobJobClusterNewClusterLibraryMaven | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.JobJobClusterNewClusterLibraryProviderConfig>;
-    pypi?: pulumi.Input<inputs.JobJobClusterNewClusterLibraryPypi>;
-    requirements?: pulumi.Input<string>;
-    whl?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.JobJobClusterNewClusterLibraryProviderConfig | undefined>;
+    pypi?: pulumi.Input<inputs.JobJobClusterNewClusterLibraryPypi | undefined>;
+    requirements?: pulumi.Input<string | undefined>;
+    whl?: pulumi.Input<string | undefined>;
 }
 
 export interface JobJobClusterNewClusterLibraryCran {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobJobClusterNewClusterLibraryMaven {
     coordinates: pulumi.Input<string>;
-    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
-    repo?: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobJobClusterNewClusterLibraryProviderConfig {
@@ -14190,7 +14190,7 @@ export interface JobJobClusterNewClusterLibraryProviderConfig {
 
 export interface JobJobClusterNewClusterLibraryPypi {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobJobClusterNewClusterProviderConfig {
@@ -14201,7 +14201,7 @@ export interface JobJobClusterNewClusterProviderConfig {
 }
 
 export interface JobJobClusterNewClusterWorkerNodeTypeFlexibility {
-    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobJobClusterNewClusterWorkloadType {
@@ -14209,36 +14209,36 @@ export interface JobJobClusterNewClusterWorkloadType {
 }
 
 export interface JobJobClusterNewClusterWorkloadTypeClients {
-    jobs?: pulumi.Input<boolean>;
-    notebooks?: pulumi.Input<boolean>;
+    jobs?: pulumi.Input<boolean | undefined>;
+    notebooks?: pulumi.Input<boolean | undefined>;
 }
 
 export interface JobLibrary {
-    cran?: pulumi.Input<inputs.JobLibraryCran>;
+    cran?: pulumi.Input<inputs.JobLibraryCran | undefined>;
     /**
      * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      */
-    egg?: pulumi.Input<string>;
-    jar?: pulumi.Input<string>;
-    maven?: pulumi.Input<inputs.JobLibraryMaven>;
+    egg?: pulumi.Input<string | undefined>;
+    jar?: pulumi.Input<string | undefined>;
+    maven?: pulumi.Input<inputs.JobLibraryMaven | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.JobLibraryProviderConfig>;
-    pypi?: pulumi.Input<inputs.JobLibraryPypi>;
-    requirements?: pulumi.Input<string>;
-    whl?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.JobLibraryProviderConfig | undefined>;
+    pypi?: pulumi.Input<inputs.JobLibraryPypi | undefined>;
+    requirements?: pulumi.Input<string | undefined>;
+    whl?: pulumi.Input<string | undefined>;
 }
 
 export interface JobLibraryCran {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobLibraryMaven {
     coordinates: pulumi.Input<string>;
-    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
-    repo?: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobLibraryProviderConfig {
@@ -14250,93 +14250,93 @@ export interface JobLibraryProviderConfig {
 
 export interface JobLibraryPypi {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobNewCluster {
-    applyPolicyDefaultValues?: pulumi.Input<boolean>;
-    autoscale?: pulumi.Input<inputs.JobNewClusterAutoscale>;
-    awsAttributes?: pulumi.Input<inputs.JobNewClusterAwsAttributes>;
-    azureAttributes?: pulumi.Input<inputs.JobNewClusterAzureAttributes>;
-    clusterId?: pulumi.Input<string>;
-    clusterLogConf?: pulumi.Input<inputs.JobNewClusterClusterLogConf>;
-    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobNewClusterClusterMountInfo>[]>;
-    clusterName?: pulumi.Input<string>;
-    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    dataSecurityMode?: pulumi.Input<string>;
-    dockerImage?: pulumi.Input<inputs.JobNewClusterDockerImage>;
-    driverInstancePoolId?: pulumi.Input<string>;
-    driverNodeTypeFlexibility?: pulumi.Input<inputs.JobNewClusterDriverNodeTypeFlexibility>;
-    driverNodeTypeId?: pulumi.Input<string>;
-    enableElasticDisk?: pulumi.Input<boolean>;
-    enableLocalDiskEncryption?: pulumi.Input<boolean>;
-    gcpAttributes?: pulumi.Input<inputs.JobNewClusterGcpAttributes>;
-    idempotencyToken?: pulumi.Input<string>;
-    initScripts?: pulumi.Input<pulumi.Input<inputs.JobNewClusterInitScript>[]>;
-    instancePoolId?: pulumi.Input<string>;
-    isSingleNode?: pulumi.Input<boolean>;
-    kind?: pulumi.Input<string>;
+    applyPolicyDefaultValues?: pulumi.Input<boolean | undefined>;
+    autoscale?: pulumi.Input<inputs.JobNewClusterAutoscale | undefined>;
+    awsAttributes?: pulumi.Input<inputs.JobNewClusterAwsAttributes | undefined>;
+    azureAttributes?: pulumi.Input<inputs.JobNewClusterAzureAttributes | undefined>;
+    clusterId?: pulumi.Input<string | undefined>;
+    clusterLogConf?: pulumi.Input<inputs.JobNewClusterClusterLogConf | undefined>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobNewClusterClusterMountInfo>[] | undefined>;
+    clusterName?: pulumi.Input<string | undefined>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    dataSecurityMode?: pulumi.Input<string | undefined>;
+    dockerImage?: pulumi.Input<inputs.JobNewClusterDockerImage | undefined>;
+    driverInstancePoolId?: pulumi.Input<string | undefined>;
+    driverNodeTypeFlexibility?: pulumi.Input<inputs.JobNewClusterDriverNodeTypeFlexibility | undefined>;
+    driverNodeTypeId?: pulumi.Input<string | undefined>;
+    enableElasticDisk?: pulumi.Input<boolean | undefined>;
+    enableLocalDiskEncryption?: pulumi.Input<boolean | undefined>;
+    gcpAttributes?: pulumi.Input<inputs.JobNewClusterGcpAttributes | undefined>;
+    idempotencyToken?: pulumi.Input<string | undefined>;
+    initScripts?: pulumi.Input<pulumi.Input<inputs.JobNewClusterInitScript>[] | undefined>;
+    instancePoolId?: pulumi.Input<string | undefined>;
+    isSingleNode?: pulumi.Input<boolean | undefined>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
-    libraries?: pulumi.Input<pulumi.Input<inputs.JobNewClusterLibrary>[]>;
-    nodeTypeId?: pulumi.Input<string>;
-    numWorkers?: pulumi.Input<number>;
-    policyId?: pulumi.Input<string>;
+    libraries?: pulumi.Input<pulumi.Input<inputs.JobNewClusterLibrary>[] | undefined>;
+    nodeTypeId?: pulumi.Input<string | undefined>;
+    numWorkers?: pulumi.Input<number | undefined>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.JobNewClusterProviderConfig>;
-    remoteDiskThroughput?: pulumi.Input<number>;
-    runtimeEngine?: pulumi.Input<string>;
-    singleUserName?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkVersion?: pulumi.Input<string>;
-    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    totalInitialRemoteDiskSize?: pulumi.Input<number>;
-    useMlRuntime?: pulumi.Input<boolean>;
-    workerNodeTypeFlexibility?: pulumi.Input<inputs.JobNewClusterWorkerNodeTypeFlexibility>;
+    providerConfig?: pulumi.Input<inputs.JobNewClusterProviderConfig | undefined>;
+    remoteDiskThroughput?: pulumi.Input<number | undefined>;
+    runtimeEngine?: pulumi.Input<string | undefined>;
+    singleUserName?: pulumi.Input<string | undefined>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkVersion?: pulumi.Input<string | undefined>;
+    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    totalInitialRemoteDiskSize?: pulumi.Input<number | undefined>;
+    useMlRuntime?: pulumi.Input<boolean | undefined>;
+    workerNodeTypeFlexibility?: pulumi.Input<inputs.JobNewClusterWorkerNodeTypeFlexibility | undefined>;
     /**
      * isn't supported
      */
-    workloadType?: pulumi.Input<inputs.JobNewClusterWorkloadType>;
+    workloadType?: pulumi.Input<inputs.JobNewClusterWorkloadType | undefined>;
 }
 
 export interface JobNewClusterAutoscale {
-    maxWorkers?: pulumi.Input<number>;
-    minWorkers?: pulumi.Input<number>;
+    maxWorkers?: pulumi.Input<number | undefined>;
+    minWorkers?: pulumi.Input<number | undefined>;
 }
 
 export interface JobNewClusterAwsAttributes {
-    availability?: pulumi.Input<string>;
-    ebsVolumeCount?: pulumi.Input<number>;
-    ebsVolumeIops?: pulumi.Input<number>;
-    ebsVolumeSize?: pulumi.Input<number>;
-    ebsVolumeThroughput?: pulumi.Input<number>;
-    ebsVolumeType?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    instanceProfileArn?: pulumi.Input<string>;
-    spotBidPricePercent?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    ebsVolumeCount?: pulumi.Input<number | undefined>;
+    ebsVolumeIops?: pulumi.Input<number | undefined>;
+    ebsVolumeSize?: pulumi.Input<number | undefined>;
+    ebsVolumeThroughput?: pulumi.Input<number | undefined>;
+    ebsVolumeType?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
+    spotBidPricePercent?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobNewClusterAzureAttributes {
-    availability?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    logAnalyticsInfo?: pulumi.Input<inputs.JobNewClusterAzureAttributesLogAnalyticsInfo>;
-    spotBidMaxPrice?: pulumi.Input<number>;
+    availability?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    logAnalyticsInfo?: pulumi.Input<inputs.JobNewClusterAzureAttributesLogAnalyticsInfo | undefined>;
+    spotBidMaxPrice?: pulumi.Input<number | undefined>;
 }
 
 export interface JobNewClusterAzureAttributesLogAnalyticsInfo {
-    logAnalyticsPrimaryKey?: pulumi.Input<string>;
-    logAnalyticsWorkspaceId?: pulumi.Input<string>;
+    logAnalyticsPrimaryKey?: pulumi.Input<string | undefined>;
+    logAnalyticsWorkspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobNewClusterClusterLogConf {
-    dbfs?: pulumi.Input<inputs.JobNewClusterClusterLogConfDbfs>;
-    s3?: pulumi.Input<inputs.JobNewClusterClusterLogConfS3>;
-    volumes?: pulumi.Input<inputs.JobNewClusterClusterLogConfVolumes>;
+    dbfs?: pulumi.Input<inputs.JobNewClusterClusterLogConfDbfs | undefined>;
+    s3?: pulumi.Input<inputs.JobNewClusterClusterLogConfS3 | undefined>;
+    volumes?: pulumi.Input<inputs.JobNewClusterClusterLogConfVolumes | undefined>;
 }
 
 export interface JobNewClusterClusterLogConfDbfs {
@@ -14344,13 +14344,13 @@ export interface JobNewClusterClusterLogConfDbfs {
 }
 
 export interface JobNewClusterClusterLogConfS3 {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface JobNewClusterClusterLogConfVolumes {
@@ -14360,16 +14360,16 @@ export interface JobNewClusterClusterLogConfVolumes {
 export interface JobNewClusterClusterMountInfo {
     localMountDirPath: pulumi.Input<string>;
     networkFilesystemInfo: pulumi.Input<inputs.JobNewClusterClusterMountInfoNetworkFilesystemInfo>;
-    remoteMountDirPath?: pulumi.Input<string>;
+    remoteMountDirPath?: pulumi.Input<string | undefined>;
 }
 
 export interface JobNewClusterClusterMountInfoNetworkFilesystemInfo {
-    mountOptions?: pulumi.Input<string>;
+    mountOptions?: pulumi.Input<string | undefined>;
     serverAddress: pulumi.Input<string>;
 }
 
 export interface JobNewClusterDockerImage {
-    basicAuth?: pulumi.Input<inputs.JobNewClusterDockerImageBasicAuth>;
+    basicAuth?: pulumi.Input<inputs.JobNewClusterDockerImageBasicAuth | undefined>;
     /**
      * URL of the job on the given workspace
      */
@@ -14382,33 +14382,33 @@ export interface JobNewClusterDockerImageBasicAuth {
 }
 
 export interface JobNewClusterDriverNodeTypeFlexibility {
-    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobNewClusterGcpAttributes {
-    availability?: pulumi.Input<string>;
-    bootDiskSize?: pulumi.Input<number>;
-    firstOnDemand?: pulumi.Input<number>;
-    googleServiceAccount?: pulumi.Input<string>;
-    localSsdCount?: pulumi.Input<number>;
-    usePreemptibleExecutors?: pulumi.Input<boolean>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    bootDiskSize?: pulumi.Input<number | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    googleServiceAccount?: pulumi.Input<string | undefined>;
+    localSsdCount?: pulumi.Input<number | undefined>;
+    usePreemptibleExecutors?: pulumi.Input<boolean | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobNewClusterInitScript {
-    abfss?: pulumi.Input<inputs.JobNewClusterInitScriptAbfss>;
+    abfss?: pulumi.Input<inputs.JobNewClusterInitScriptAbfss | undefined>;
     /**
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
-    dbfs?: pulumi.Input<inputs.JobNewClusterInitScriptDbfs>;
+    dbfs?: pulumi.Input<inputs.JobNewClusterInitScriptDbfs | undefined>;
     /**
      * block consisting of single string fields:
      */
-    file?: pulumi.Input<inputs.JobNewClusterInitScriptFile>;
-    gcs?: pulumi.Input<inputs.JobNewClusterInitScriptGcs>;
-    s3?: pulumi.Input<inputs.JobNewClusterInitScriptS3>;
-    volumes?: pulumi.Input<inputs.JobNewClusterInitScriptVolumes>;
-    workspace?: pulumi.Input<inputs.JobNewClusterInitScriptWorkspace>;
+    file?: pulumi.Input<inputs.JobNewClusterInitScriptFile | undefined>;
+    gcs?: pulumi.Input<inputs.JobNewClusterInitScriptGcs | undefined>;
+    s3?: pulumi.Input<inputs.JobNewClusterInitScriptS3 | undefined>;
+    volumes?: pulumi.Input<inputs.JobNewClusterInitScriptVolumes | undefined>;
+    workspace?: pulumi.Input<inputs.JobNewClusterInitScriptWorkspace | undefined>;
 }
 
 export interface JobNewClusterInitScriptAbfss {
@@ -14428,13 +14428,13 @@ export interface JobNewClusterInitScriptGcs {
 }
 
 export interface JobNewClusterInitScriptS3 {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface JobNewClusterInitScriptVolumes {
@@ -14446,31 +14446,31 @@ export interface JobNewClusterInitScriptWorkspace {
 }
 
 export interface JobNewClusterLibrary {
-    cran?: pulumi.Input<inputs.JobNewClusterLibraryCran>;
+    cran?: pulumi.Input<inputs.JobNewClusterLibraryCran | undefined>;
     /**
      * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      */
-    egg?: pulumi.Input<string>;
-    jar?: pulumi.Input<string>;
-    maven?: pulumi.Input<inputs.JobNewClusterLibraryMaven>;
+    egg?: pulumi.Input<string | undefined>;
+    jar?: pulumi.Input<string | undefined>;
+    maven?: pulumi.Input<inputs.JobNewClusterLibraryMaven | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.JobNewClusterLibraryProviderConfig>;
-    pypi?: pulumi.Input<inputs.JobNewClusterLibraryPypi>;
-    requirements?: pulumi.Input<string>;
-    whl?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.JobNewClusterLibraryProviderConfig | undefined>;
+    pypi?: pulumi.Input<inputs.JobNewClusterLibraryPypi | undefined>;
+    requirements?: pulumi.Input<string | undefined>;
+    whl?: pulumi.Input<string | undefined>;
 }
 
 export interface JobNewClusterLibraryCran {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobNewClusterLibraryMaven {
     coordinates: pulumi.Input<string>;
-    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
-    repo?: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobNewClusterLibraryProviderConfig {
@@ -14482,7 +14482,7 @@ export interface JobNewClusterLibraryProviderConfig {
 
 export interface JobNewClusterLibraryPypi {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobNewClusterProviderConfig {
@@ -14493,7 +14493,7 @@ export interface JobNewClusterProviderConfig {
 }
 
 export interface JobNewClusterWorkerNodeTypeFlexibility {
-    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobNewClusterWorkloadType {
@@ -14501,15 +14501,15 @@ export interface JobNewClusterWorkloadType {
 }
 
 export interface JobNewClusterWorkloadTypeClients {
-    jobs?: pulumi.Input<boolean>;
-    notebooks?: pulumi.Input<boolean>;
+    jobs?: pulumi.Input<boolean | undefined>;
+    notebooks?: pulumi.Input<boolean | undefined>;
 }
 
 export interface JobNotebookTask {
     /**
      * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
      */
-    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
      */
@@ -14517,11 +14517,11 @@ export interface JobNotebookTask {
     /**
      * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobNotificationSettings {
@@ -14530,11 +14530,11 @@ export interface JobNotificationSettings {
      *
      * The following parameter is only available on task level.
      */
-    noAlertForCanceledRuns?: pulumi.Input<boolean>;
+    noAlertForCanceledRuns?: pulumi.Input<boolean | undefined>;
     /**
      * (Bool) don't send alert for skipped runs.
      */
-    noAlertForSkippedRuns?: pulumi.Input<boolean>;
+    noAlertForSkippedRuns?: pulumi.Input<boolean | undefined>;
 }
 
 export interface JobParameter {
@@ -14556,7 +14556,7 @@ export interface JobPipelineTask {
      *
      * > The following configuration blocks are only supported inside a `task` block
      */
-    fullRefresh?: pulumi.Input<boolean>;
+    fullRefresh?: pulumi.Input<boolean | undefined>;
     /**
      * The pipeline's unique ID.
      */
@@ -14574,19 +14574,19 @@ export interface JobPythonWheelTask {
     /**
      * Python function as entry point for the task
      */
-    entryPoint?: pulumi.Input<string>;
+    entryPoint?: pulumi.Input<string | undefined>;
     /**
      * Named parameters for the task
      */
-    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of Python package
      */
-    packageName?: pulumi.Input<string>;
+    packageName?: pulumi.Input<string | undefined>;
     /**
      * Parameters for the task
      */
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobQueue {
@@ -14597,7 +14597,7 @@ export interface JobQueue {
 }
 
 export interface JobRunAs {
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * The application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role.
      *
@@ -14612,11 +14612,11 @@ export interface JobRunAs {
      * }});
      * ```
      */
-    servicePrincipalName?: pulumi.Input<string>;
+    servicePrincipalName?: pulumi.Input<string | undefined>;
     /**
      * The email of an active workspace user. Non-admin users can only set this field to their own email.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface JobRunJobTask {
@@ -14627,14 +14627,14 @@ export interface JobRunJobTask {
     /**
      * (Map) Job parameters for the task
      */
-    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface JobSchedule {
     /**
      * Indicate whether this schedule is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted and a schedule is provided, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
-    pauseStatus?: pulumi.Input<string>;
+    pauseStatus?: pulumi.Input<string | undefined>;
     /**
      * A [Cron expression using Quartz syntax](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) that describes the schedule for a job. This field is required.
      */
@@ -14646,22 +14646,22 @@ export interface JobSchedule {
 }
 
 export interface JobSparkJarTask {
-    jarUri?: pulumi.Input<string>;
+    jarUri?: pulumi.Input<string | undefined>;
     /**
      * The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
      */
-    mainClassName?: pulumi.Input<string>;
+    mainClassName?: pulumi.Input<string | undefined>;
     /**
      * (List) Parameters passed to the main method.
      */
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobSparkPythonTask {
     /**
      * (List) Command line parameters passed to the Python file.
      */
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The URI of the Python file to be executed. Cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
      */
@@ -14671,102 +14671,102 @@ export interface JobSparkPythonTask {
      * * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
      * * `GIT`: The Python file is located in a remote Git repository.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 export interface JobSparkSubmitTask {
     /**
      * (List) Command-line parameters passed to spark submit.
      */
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobTask {
-    alertTask?: pulumi.Input<inputs.JobTaskAlertTask>;
-    cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskCleanRoomsNotebookTask>;
+    alertTask?: pulumi.Input<inputs.JobTaskAlertTask | undefined>;
+    cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskCleanRoomsNotebookTask | undefined>;
     /**
      * Task level compute configuration. This block is documented below.
      *
      * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
-    compute?: pulumi.Input<inputs.JobTaskCompute>;
-    conditionTask?: pulumi.Input<inputs.JobTaskConditionTask>;
-    dashboardTask?: pulumi.Input<inputs.JobTaskDashboardTask>;
-    dbtCloudTask?: pulumi.Input<inputs.JobTaskDbtCloudTask>;
-    dbtPlatformTask?: pulumi.Input<inputs.JobTaskDbtPlatformTask>;
-    dbtTask?: pulumi.Input<inputs.JobTaskDbtTask>;
+    compute?: pulumi.Input<inputs.JobTaskCompute | undefined>;
+    conditionTask?: pulumi.Input<inputs.JobTaskConditionTask | undefined>;
+    dashboardTask?: pulumi.Input<inputs.JobTaskDashboardTask | undefined>;
+    dbtCloudTask?: pulumi.Input<inputs.JobTaskDbtCloudTask | undefined>;
+    dbtPlatformTask?: pulumi.Input<inputs.JobTaskDbtPlatformTask | undefined>;
+    dbtTask?: pulumi.Input<inputs.JobTaskDbtTask | undefined>;
     /**
      * block specifying dependency(-ies) for a given task.
      */
-    dependsOns?: pulumi.Input<pulumi.Input<inputs.JobTaskDependsOn>[]>;
+    dependsOns?: pulumi.Input<pulumi.Input<inputs.JobTaskDependsOn>[] | undefined>;
     /**
      * description for this task.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A flag to disable auto optimization in serverless tasks.
      */
-    disableAutoOptimization?: pulumi.Input<boolean>;
-    disabled?: pulumi.Input<boolean>;
+    disableAutoOptimization?: pulumi.Input<boolean | undefined>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
      */
-    emailNotifications?: pulumi.Input<inputs.JobTaskEmailNotifications>;
+    emailNotifications?: pulumi.Input<inputs.JobTaskEmailNotifications | undefined>;
     /**
      * identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
      */
-    environmentKey?: pulumi.Input<string>;
+    environmentKey?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
      */
-    existingClusterId?: pulumi.Input<string>;
-    forEachTask?: pulumi.Input<inputs.JobTaskForEachTask>;
-    genAiComputeTask?: pulumi.Input<inputs.JobTaskGenAiComputeTask>;
+    existingClusterId?: pulumi.Input<string | undefined>;
+    forEachTask?: pulumi.Input<inputs.JobTaskForEachTask | undefined>;
+    genAiComputeTask?: pulumi.Input<inputs.JobTaskGenAiComputeTask | undefined>;
     /**
      * block described below that specifies health conditions for a given task.
      */
-    health?: pulumi.Input<inputs.JobTaskHealth>;
+    health?: pulumi.Input<inputs.JobTaskHealth | undefined>;
     /**
      * Identifier of the Job cluster specified in the `jobCluster` block.
      */
-    jobClusterKey?: pulumi.Input<string>;
+    jobClusterKey?: pulumi.Input<string | undefined>;
     /**
      * (Set) An optional list of libraries to be installed on the cluster that will execute the job.
      */
-    libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskLibrary>[]>;
+    libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskLibrary>[] | undefined>;
     /**
      * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
      */
-    maxRetries?: pulumi.Input<number>;
+    maxRetries?: pulumi.Input<number | undefined>;
     /**
      * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
      */
-    minRetryIntervalMillis?: pulumi.Input<number>;
+    minRetryIntervalMillis?: pulumi.Input<number | undefined>;
     /**
      * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren't supported!*
      */
-    newCluster?: pulumi.Input<inputs.JobTaskNewCluster>;
-    notebookTask?: pulumi.Input<inputs.JobTaskNotebookTask>;
+    newCluster?: pulumi.Input<inputs.JobTaskNewCluster | undefined>;
+    notebookTask?: pulumi.Input<inputs.JobTaskNotebookTask | undefined>;
     /**
      * An optional block controlling the notification settings on the job level documented below.
      */
-    notificationSettings?: pulumi.Input<inputs.JobTaskNotificationSettings>;
-    pipelineTask?: pulumi.Input<inputs.JobTaskPipelineTask>;
-    powerBiTask?: pulumi.Input<inputs.JobTaskPowerBiTask>;
-    pythonWheelTask?: pulumi.Input<inputs.JobTaskPythonWheelTask>;
+    notificationSettings?: pulumi.Input<inputs.JobTaskNotificationSettings | undefined>;
+    pipelineTask?: pulumi.Input<inputs.JobTaskPipelineTask | undefined>;
+    powerBiTask?: pulumi.Input<inputs.JobTaskPowerBiTask | undefined>;
+    pythonWheelTask?: pulumi.Input<inputs.JobTaskPythonWheelTask | undefined>;
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      */
-    retryOnTimeout?: pulumi.Input<boolean>;
+    retryOnTimeout?: pulumi.Input<boolean | undefined>;
     /**
      * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
      */
-    runIf?: pulumi.Input<string>;
-    runJobTask?: pulumi.Input<inputs.JobTaskRunJobTask>;
-    sparkJarTask?: pulumi.Input<inputs.JobTaskSparkJarTask>;
-    sparkPythonTask?: pulumi.Input<inputs.JobTaskSparkPythonTask>;
-    sparkSubmitTask?: pulumi.Input<inputs.JobTaskSparkSubmitTask>;
-    sqlTask?: pulumi.Input<inputs.JobTaskSqlTask>;
+    runIf?: pulumi.Input<string | undefined>;
+    runJobTask?: pulumi.Input<inputs.JobTaskRunJobTask | undefined>;
+    sparkJarTask?: pulumi.Input<inputs.JobTaskSparkJarTask | undefined>;
+    sparkPythonTask?: pulumi.Input<inputs.JobTaskSparkPythonTask | undefined>;
+    sparkSubmitTask?: pulumi.Input<inputs.JobTaskSparkSubmitTask | undefined>;
+    sqlTask?: pulumi.Input<inputs.JobTaskSqlTask | undefined>;
     /**
      * string specifying an unique key for a given task.
      * * `*_task` - (Required) one of the specific task blocks described below:
@@ -14775,32 +14775,32 @@ export interface JobTask {
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
-    timeoutSeconds?: pulumi.Input<number>;
+    timeoutSeconds?: pulumi.Input<number | undefined>;
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
-    webhookNotifications?: pulumi.Input<inputs.JobTaskWebhookNotifications>;
+    webhookNotifications?: pulumi.Input<inputs.JobTaskWebhookNotifications | undefined>;
 }
 
 export interface JobTaskAlertTask {
     /**
      * (String) identifier of the Databricks Alert (databricks_alert).
      */
-    alertId?: pulumi.Input<string>;
+    alertId?: pulumi.Input<string | undefined>;
     /**
      * The list of subscribers to send the snapshot of the dashboard to.
      */
-    subscribers?: pulumi.Input<pulumi.Input<inputs.JobTaskAlertTaskSubscriber>[]>;
-    warehouseId?: pulumi.Input<string>;
-    workspacePath?: pulumi.Input<string>;
+    subscribers?: pulumi.Input<pulumi.Input<inputs.JobTaskAlertTaskSubscriber>[] | undefined>;
+    warehouseId?: pulumi.Input<string | undefined>;
+    workspacePath?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskAlertTaskSubscriber {
     /**
      * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      */
-    destinationId?: pulumi.Input<string>;
-    userName?: pulumi.Input<string>;
+    destinationId?: pulumi.Input<string | undefined>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskCleanRoomsNotebookTask {
@@ -14811,11 +14811,11 @@ export interface JobTaskCleanRoomsNotebookTask {
     /**
      * Checksum to validate the freshness of the notebook resource.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Base parameters to be used for the clean room notebook job.
      */
-    notebookBaseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    notebookBaseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the notebook being run.
      */
@@ -14828,7 +14828,7 @@ export interface JobTaskCompute {
      * * `GPU_1xA10`: GPU_1xA10: Single A10 GPU configuration.
      * * `GPU_8xH100`: GPU_8xH100: 8x H100 GPU configuration.
      */
-    hardwareAccelerator?: pulumi.Input<string>;
+    hardwareAccelerator?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskConditionTask {
@@ -14852,65 +14852,65 @@ export interface JobTaskDashboardTask {
     /**
      * The identifier of the dashboard to refresh
      */
-    dashboardId?: pulumi.Input<string>;
-    filters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dashboardId?: pulumi.Input<string | undefined>;
+    filters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Represents a subscription configuration for scheduled dashboard snapshots.
      */
-    subscription?: pulumi.Input<inputs.JobTaskDashboardTaskSubscription>;
+    subscription?: pulumi.Input<inputs.JobTaskDashboardTaskSubscription | undefined>;
     /**
      * The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskDashboardTaskSubscription {
     /**
      * Allows users to specify a custom subject line on the email sent to subscribers.
      */
-    customSubject?: pulumi.Input<string>;
+    customSubject?: pulumi.Input<string | undefined>;
     /**
      * When true, the subscription will not send emails.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * The list of subscribers to send the snapshot of the dashboard to.
      */
-    subscribers?: pulumi.Input<pulumi.Input<inputs.JobTaskDashboardTaskSubscriptionSubscriber>[]>;
+    subscribers?: pulumi.Input<pulumi.Input<inputs.JobTaskDashboardTaskSubscriptionSubscriber>[] | undefined>;
 }
 
 export interface JobTaskDashboardTaskSubscriptionSubscriber {
     /**
      * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      */
-    destinationId?: pulumi.Input<string>;
+    destinationId?: pulumi.Input<string | undefined>;
     /**
      * A snapshot of the dashboard will be sent to the user's email when the `userName` field is present.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskDbtCloudTask {
     /**
      * The resource name of the UC connection to authenticate from Databricks to Power BI
      */
-    connectionResourceName?: pulumi.Input<string>;
-    dbtCloudJobId?: pulumi.Input<number>;
+    connectionResourceName?: pulumi.Input<string | undefined>;
+    dbtCloudJobId?: pulumi.Input<number | undefined>;
 }
 
 export interface JobTaskDbtPlatformTask {
     /**
      * The resource name of the UC connection to authenticate from Databricks to Power BI
      */
-    connectionResourceName?: pulumi.Input<string>;
-    dbtPlatformJobId?: pulumi.Input<string>;
+    connectionResourceName?: pulumi.Input<string | undefined>;
+    dbtPlatformJobId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskDbtTask {
     /**
      * The name of the catalog to use inside Unity Catalog.
      */
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     /**
      * (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
      */
@@ -14918,27 +14918,27 @@ export interface JobTaskDbtTask {
     /**
      * The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
      */
-    profilesDirectory?: pulumi.Input<string>;
+    profilesDirectory?: pulumi.Input<string | undefined>;
     /**
      * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
      * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository's root directory when not specified.
      * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
      */
-    projectDirectory?: pulumi.Input<string>;
+    projectDirectory?: pulumi.Input<string | undefined>;
     /**
      * The name of the schema dbt should run in. Defaults to `default`.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * The ID of the SQL warehouse that dbt should execute against.
      *
      * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskDependsOn {
@@ -14947,7 +14947,7 @@ export interface JobTaskDependsOn {
      *
      * > Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to taskKey in order to get consistent Pulumi diffs.
      */
-    outcome?: pulumi.Input<string>;
+    outcome?: pulumi.Input<string | undefined>;
     /**
      * The name of the task this task depends on.
      */
@@ -14958,36 +14958,36 @@ export interface JobTaskEmailNotifications {
     /**
      * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
      */
-    noAlertForSkippedRuns?: pulumi.Input<boolean>;
+    noAlertForSkippedRuns?: pulumi.Input<boolean | undefined>;
     /**
      * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      */
-    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (List) list of emails to notify when the run fails.
      */
-    onFailures?: pulumi.Input<pulumi.Input<string>[]>;
+    onFailures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (List) list of emails to notify when the run starts.
      */
-    onStarts?: pulumi.Input<pulumi.Input<string>[]>;
+    onStarts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
      *
      * The following parameter is only available for the job level configuration.
      */
-    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (List) list of emails to notify when the run completes successfully.
      */
-    onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
+    onSuccesses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobTaskForEachTask {
     /**
      * Controls the number of active iteration task runs. Default is 20, maximum allowed is 100.
      */
-    concurrency?: pulumi.Input<number>;
+    concurrency?: pulumi.Input<number | undefined>;
     /**
      * (String) Array for task to iterate on. This can be a JSON string or a reference to an array parameter.
      */
@@ -14999,90 +14999,90 @@ export interface JobTaskForEachTask {
 }
 
 export interface JobTaskForEachTaskTask {
-    alertTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskAlertTask>;
-    cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask>;
+    alertTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskAlertTask | undefined>;
+    cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask | undefined>;
     /**
      * Task level compute configuration. This block is documented below.
      *
      * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
-    compute?: pulumi.Input<inputs.JobTaskForEachTaskTaskCompute>;
-    conditionTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskConditionTask>;
-    dashboardTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTask>;
-    dbtCloudTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDbtCloudTask>;
-    dbtPlatformTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDbtPlatformTask>;
-    dbtTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDbtTask>;
+    compute?: pulumi.Input<inputs.JobTaskForEachTaskTaskCompute | undefined>;
+    conditionTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskConditionTask | undefined>;
+    dashboardTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTask | undefined>;
+    dbtCloudTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDbtCloudTask | undefined>;
+    dbtPlatformTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDbtPlatformTask | undefined>;
+    dbtTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskDbtTask | undefined>;
     /**
      * block specifying dependency(-ies) for a given task.
      */
-    dependsOns?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskDependsOn>[]>;
+    dependsOns?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskDependsOn>[] | undefined>;
     /**
      * description for this task.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A flag to disable auto optimization in serverless tasks.
      */
-    disableAutoOptimization?: pulumi.Input<boolean>;
-    disabled?: pulumi.Input<boolean>;
+    disableAutoOptimization?: pulumi.Input<boolean | undefined>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
      */
-    emailNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskEmailNotifications>;
+    emailNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskEmailNotifications | undefined>;
     /**
      * identifier of an `environment` block that is used to specify libraries.  Required for some tasks (`sparkPythonTask`, `pythonWheelTask`, ...) running on serverless compute.
      */
-    environmentKey?: pulumi.Input<string>;
+    environmentKey?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the interactive cluster to run job on.  *Note: running tasks on interactive clusters may lead to increased costs!*
      */
-    existingClusterId?: pulumi.Input<string>;
-    genAiComputeTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskGenAiComputeTask>;
+    existingClusterId?: pulumi.Input<string | undefined>;
+    genAiComputeTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskGenAiComputeTask | undefined>;
     /**
      * block described below that specifies health conditions for a given task.
      */
-    health?: pulumi.Input<inputs.JobTaskForEachTaskTaskHealth>;
+    health?: pulumi.Input<inputs.JobTaskForEachTaskTaskHealth | undefined>;
     /**
      * Identifier of the Job cluster specified in the `jobCluster` block.
      */
-    jobClusterKey?: pulumi.Input<string>;
+    jobClusterKey?: pulumi.Input<string | undefined>;
     /**
      * (Set) An optional list of libraries to be installed on the cluster that will execute the job.
      */
-    libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskLibrary>[]>;
+    libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskLibrary>[] | undefined>;
     /**
      * (Integer) An optional maximum number of times to retry an unsuccessful run. A run is considered to be unsuccessful if it completes with a `FAILED` or `INTERNAL_ERROR` lifecycle state. The value -1 means to retry indefinitely and the value 0 means to never retry. The default behavior is to never retry. A run can have the following lifecycle state: `PENDING`, `RUNNING`, `TERMINATING`, `TERMINATED`, `SKIPPED` or `INTERNAL_ERROR`.
      */
-    maxRetries?: pulumi.Input<number>;
+    maxRetries?: pulumi.Input<number | undefined>;
     /**
      * (Integer) An optional minimal interval in milliseconds between the start of the failed run and the subsequent retry run. The default behavior is that unsuccessful runs are immediately retried.
      */
-    minRetryIntervalMillis?: pulumi.Input<number>;
+    minRetryIntervalMillis?: pulumi.Input<number | undefined>;
     /**
      * Task will run on a dedicated cluster.  See databricks.Cluster documentation for specification. *Some parameters, such as `autoterminationMinutes`, `isPinned`, `workloadType` aren't supported!*
      */
-    newCluster?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewCluster>;
-    notebookTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskNotebookTask>;
+    newCluster?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewCluster | undefined>;
+    notebookTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskNotebookTask | undefined>;
     /**
      * An optional block controlling the notification settings on the job level documented below.
      */
-    notificationSettings?: pulumi.Input<inputs.JobTaskForEachTaskTaskNotificationSettings>;
-    pipelineTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskPipelineTask>;
-    powerBiTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskPowerBiTask>;
-    pythonWheelTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskPythonWheelTask>;
+    notificationSettings?: pulumi.Input<inputs.JobTaskForEachTaskTaskNotificationSettings | undefined>;
+    pipelineTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskPipelineTask | undefined>;
+    powerBiTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskPowerBiTask | undefined>;
+    pythonWheelTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskPythonWheelTask | undefined>;
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
      */
-    retryOnTimeout?: pulumi.Input<boolean>;
+    retryOnTimeout?: pulumi.Input<boolean | undefined>;
     /**
      * An optional value indicating the condition that determines whether the task should be run once its dependencies have been completed. One of `ALL_SUCCESS`, `AT_LEAST_ONE_SUCCESS`, `NONE_FAILED`, `ALL_DONE`, `AT_LEAST_ONE_FAILED` or `ALL_FAILED`. When omitted, defaults to `ALL_SUCCESS`.
      */
-    runIf?: pulumi.Input<string>;
-    runJobTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskRunJobTask>;
-    sparkJarTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskSparkJarTask>;
-    sparkPythonTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskSparkPythonTask>;
-    sparkSubmitTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskSparkSubmitTask>;
-    sqlTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTask>;
+    runIf?: pulumi.Input<string | undefined>;
+    runJobTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskRunJobTask | undefined>;
+    sparkJarTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskSparkJarTask | undefined>;
+    sparkPythonTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskSparkPythonTask | undefined>;
+    sparkSubmitTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskSparkSubmitTask | undefined>;
+    sqlTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTask | undefined>;
     /**
      * string specifying an unique key for a given task.
      * * `*_task` - (Required) one of the specific task blocks described below:
@@ -15091,32 +15091,32 @@ export interface JobTaskForEachTaskTask {
     /**
      * (Integer) An optional timeout applied to each run of this job. The default behavior is to have no timeout.
      */
-    timeoutSeconds?: pulumi.Input<number>;
+    timeoutSeconds?: pulumi.Input<number | undefined>;
     /**
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
-    webhookNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotifications>;
+    webhookNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotifications | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskAlertTask {
     /**
      * (String) identifier of the Databricks Alert (databricks_alert).
      */
-    alertId?: pulumi.Input<string>;
+    alertId?: pulumi.Input<string | undefined>;
     /**
      * The list of subscribers to send the snapshot of the dashboard to.
      */
-    subscribers?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskAlertTaskSubscriber>[]>;
-    warehouseId?: pulumi.Input<string>;
-    workspacePath?: pulumi.Input<string>;
+    subscribers?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskAlertTaskSubscriber>[] | undefined>;
+    warehouseId?: pulumi.Input<string | undefined>;
+    workspacePath?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskAlertTaskSubscriber {
     /**
      * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      */
-    destinationId?: pulumi.Input<string>;
-    userName?: pulumi.Input<string>;
+    destinationId?: pulumi.Input<string | undefined>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskCleanRoomsNotebookTask {
@@ -15127,11 +15127,11 @@ export interface JobTaskForEachTaskTaskCleanRoomsNotebookTask {
     /**
      * Checksum to validate the freshness of the notebook resource.
      */
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Base parameters to be used for the clean room notebook job.
      */
-    notebookBaseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    notebookBaseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the notebook being run.
      */
@@ -15144,7 +15144,7 @@ export interface JobTaskForEachTaskTaskCompute {
      * * `GPU_1xA10`: GPU_1xA10: Single A10 GPU configuration.
      * * `GPU_8xH100`: GPU_8xH100: 8x H100 GPU configuration.
      */
-    hardwareAccelerator?: pulumi.Input<string>;
+    hardwareAccelerator?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskConditionTask {
@@ -15168,65 +15168,65 @@ export interface JobTaskForEachTaskTaskDashboardTask {
     /**
      * The identifier of the dashboard to refresh
      */
-    dashboardId?: pulumi.Input<string>;
-    filters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dashboardId?: pulumi.Input<string | undefined>;
+    filters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Represents a subscription configuration for scheduled dashboard snapshots.
      */
-    subscription?: pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTaskSubscription>;
+    subscription?: pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTaskSubscription | undefined>;
     /**
      * The warehouse id to execute the dashboard with for the schedule. If not specified, will use the default warehouse of dashboard
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskDashboardTaskSubscription {
     /**
      * Allows users to specify a custom subject line on the email sent to subscribers.
      */
-    customSubject?: pulumi.Input<string>;
+    customSubject?: pulumi.Input<string | undefined>;
     /**
      * When true, the subscription will not send emails.
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * The list of subscribers to send the snapshot of the dashboard to.
      */
-    subscribers?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber>[]>;
+    subscribers?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber>[] | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskDashboardTaskSubscriptionSubscriber {
     /**
      * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      */
-    destinationId?: pulumi.Input<string>;
+    destinationId?: pulumi.Input<string | undefined>;
     /**
      * A snapshot of the dashboard will be sent to the user's email when the `userName` field is present.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskDbtCloudTask {
     /**
      * The resource name of the UC connection to authenticate from Databricks to Power BI
      */
-    connectionResourceName?: pulumi.Input<string>;
-    dbtCloudJobId?: pulumi.Input<number>;
+    connectionResourceName?: pulumi.Input<string | undefined>;
+    dbtCloudJobId?: pulumi.Input<number | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskDbtPlatformTask {
     /**
      * The resource name of the UC connection to authenticate from Databricks to Power BI
      */
-    connectionResourceName?: pulumi.Input<string>;
-    dbtPlatformJobId?: pulumi.Input<string>;
+    connectionResourceName?: pulumi.Input<string | undefined>;
+    dbtPlatformJobId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskDbtTask {
     /**
      * The name of the catalog to use inside Unity Catalog.
      */
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     /**
      * (Array) Series of dbt commands to execute in sequence. Every command must start with "dbt".
      */
@@ -15234,27 +15234,27 @@ export interface JobTaskForEachTaskTaskDbtTask {
     /**
      * The relative path to the directory in the repository specified by `gitSource` where dbt should look in for the `profiles.yml` file. If not specified, defaults to the repository's root directory. Equivalent to passing `--profile-dir` to a dbt command.
      */
-    profilesDirectory?: pulumi.Input<string>;
+    profilesDirectory?: pulumi.Input<string | undefined>;
     /**
      * The path where dbt should look for `dbt_project.yml`. Equivalent to passing `--project-dir` to the dbt CLI.
      * * If `source` is `GIT`: Relative path to the directory in the repository specified in the `gitSource` block. Defaults to the repository's root directory when not specified.
      * * If `source` is `WORKSPACE`: Absolute path to the folder in the workspace.
      */
-    projectDirectory?: pulumi.Input<string>;
+    projectDirectory?: pulumi.Input<string | undefined>;
     /**
      * The name of the schema dbt should run in. Defaults to `default`.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * The source of the project. Possible values are `WORKSPACE` and `GIT`.  Defaults to `GIT` if a `gitSource` block is present in the job definition.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * The ID of the SQL warehouse that dbt should execute against.
      *
      * You also need to include a `gitSource` block to configure the repository that contains the dbt project.
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskDependsOn {
@@ -15263,7 +15263,7 @@ export interface JobTaskForEachTaskTaskDependsOn {
      *
      * > Similar to the tasks themselves, each dependency inside the task need to be declared in alphabetical order with respect to taskKey in order to get consistent Pulumi diffs.
      */
-    outcome?: pulumi.Input<string>;
+    outcome?: pulumi.Input<string | undefined>;
     /**
      * The name of the task this task depends on.
      */
@@ -15274,50 +15274,50 @@ export interface JobTaskForEachTaskTaskEmailNotifications {
     /**
      * (Bool) don't send alert for skipped runs. (It's recommended to use the corresponding setting in the `notificationSettings` configuration block).
      */
-    noAlertForSkippedRuns?: pulumi.Input<boolean>;
+    noAlertForSkippedRuns?: pulumi.Input<boolean | undefined>;
     /**
      * (List) list of emails to notify when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      */
-    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[]>;
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (List) list of emails to notify when the run fails.
      */
-    onFailures?: pulumi.Input<pulumi.Input<string>[]>;
+    onFailures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (List) list of emails to notify when the run starts.
      */
-    onStarts?: pulumi.Input<pulumi.Input<string>[]>;
+    onStarts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (List) list of emails to notify when any streaming backlog thresholds are exceeded for any stream.
      *
      * The following parameter is only available for the job level configuration.
      */
-    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (List) list of emails to notify when the run completes successfully.
      */
-    onSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
+    onSuccesses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskGenAiComputeTask {
-    command?: pulumi.Input<string>;
+    command?: pulumi.Input<string | undefined>;
     /**
      * Task level compute configuration. This block is documented below.
      *
      * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
-    compute?: pulumi.Input<inputs.JobTaskForEachTaskTaskGenAiComputeTaskCompute>;
+    compute?: pulumi.Input<inputs.JobTaskForEachTaskTaskGenAiComputeTaskCompute | undefined>;
     dlRuntimeImage: pulumi.Input<string>;
-    mlflowExperimentName?: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
-    trainingScriptPath?: pulumi.Input<string>;
-    yamlParameters?: pulumi.Input<string>;
-    yamlParametersFilePath?: pulumi.Input<string>;
+    mlflowExperimentName?: pulumi.Input<string | undefined>;
+    source?: pulumi.Input<string | undefined>;
+    trainingScriptPath?: pulumi.Input<string | undefined>;
+    yamlParameters?: pulumi.Input<string | undefined>;
+    yamlParametersFilePath?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskGenAiComputeTaskCompute {
-    gpuNodePoolId?: pulumi.Input<string>;
-    gpuType?: pulumi.Input<string>;
+    gpuNodePoolId?: pulumi.Input<string | undefined>;
+    gpuType?: pulumi.Input<string | undefined>;
     numGpus: pulumi.Input<number>;
 }
 
@@ -15344,31 +15344,31 @@ export interface JobTaskForEachTaskTaskHealthRule {
 }
 
 export interface JobTaskForEachTaskTaskLibrary {
-    cran?: pulumi.Input<inputs.JobTaskForEachTaskTaskLibraryCran>;
+    cran?: pulumi.Input<inputs.JobTaskForEachTaskTaskLibraryCran | undefined>;
     /**
      * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      */
-    egg?: pulumi.Input<string>;
-    jar?: pulumi.Input<string>;
-    maven?: pulumi.Input<inputs.JobTaskForEachTaskTaskLibraryMaven>;
+    egg?: pulumi.Input<string | undefined>;
+    jar?: pulumi.Input<string | undefined>;
+    maven?: pulumi.Input<inputs.JobTaskForEachTaskTaskLibraryMaven | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.JobTaskForEachTaskTaskLibraryProviderConfig>;
-    pypi?: pulumi.Input<inputs.JobTaskForEachTaskTaskLibraryPypi>;
-    requirements?: pulumi.Input<string>;
-    whl?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.JobTaskForEachTaskTaskLibraryProviderConfig | undefined>;
+    pypi?: pulumi.Input<inputs.JobTaskForEachTaskTaskLibraryPypi | undefined>;
+    requirements?: pulumi.Input<string | undefined>;
+    whl?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskLibraryCran {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskLibraryMaven {
     coordinates: pulumi.Input<string>;
-    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
-    repo?: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskLibraryProviderConfig {
@@ -15380,93 +15380,93 @@ export interface JobTaskForEachTaskTaskLibraryProviderConfig {
 
 export interface JobTaskForEachTaskTaskLibraryPypi {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewCluster {
-    applyPolicyDefaultValues?: pulumi.Input<boolean>;
-    autoscale?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAutoscale>;
-    awsAttributes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAwsAttributes>;
-    azureAttributes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAzureAttributes>;
-    clusterId?: pulumi.Input<string>;
-    clusterLogConf?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterLogConf>;
-    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterMountInfo>[]>;
-    clusterName?: pulumi.Input<string>;
-    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    dataSecurityMode?: pulumi.Input<string>;
-    dockerImage?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterDockerImage>;
-    driverInstancePoolId?: pulumi.Input<string>;
-    driverNodeTypeFlexibility?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility>;
-    driverNodeTypeId?: pulumi.Input<string>;
-    enableElasticDisk?: pulumi.Input<boolean>;
-    enableLocalDiskEncryption?: pulumi.Input<boolean>;
-    gcpAttributes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterGcpAttributes>;
-    idempotencyToken?: pulumi.Input<string>;
-    initScripts?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScript>[]>;
-    instancePoolId?: pulumi.Input<string>;
-    isSingleNode?: pulumi.Input<boolean>;
-    kind?: pulumi.Input<string>;
+    applyPolicyDefaultValues?: pulumi.Input<boolean | undefined>;
+    autoscale?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAutoscale | undefined>;
+    awsAttributes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAwsAttributes | undefined>;
+    azureAttributes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAzureAttributes | undefined>;
+    clusterId?: pulumi.Input<string | undefined>;
+    clusterLogConf?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterLogConf | undefined>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterMountInfo>[] | undefined>;
+    clusterName?: pulumi.Input<string | undefined>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    dataSecurityMode?: pulumi.Input<string | undefined>;
+    dockerImage?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterDockerImage | undefined>;
+    driverInstancePoolId?: pulumi.Input<string | undefined>;
+    driverNodeTypeFlexibility?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility | undefined>;
+    driverNodeTypeId?: pulumi.Input<string | undefined>;
+    enableElasticDisk?: pulumi.Input<boolean | undefined>;
+    enableLocalDiskEncryption?: pulumi.Input<boolean | undefined>;
+    gcpAttributes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterGcpAttributes | undefined>;
+    idempotencyToken?: pulumi.Input<string | undefined>;
+    initScripts?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScript>[] | undefined>;
+    instancePoolId?: pulumi.Input<string | undefined>;
+    isSingleNode?: pulumi.Input<boolean | undefined>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
-    libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibrary>[]>;
-    nodeTypeId?: pulumi.Input<string>;
-    numWorkers?: pulumi.Input<number>;
-    policyId?: pulumi.Input<string>;
+    libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibrary>[] | undefined>;
+    nodeTypeId?: pulumi.Input<string | undefined>;
+    numWorkers?: pulumi.Input<number | undefined>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterProviderConfig>;
-    remoteDiskThroughput?: pulumi.Input<number>;
-    runtimeEngine?: pulumi.Input<string>;
-    singleUserName?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkVersion?: pulumi.Input<string>;
-    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    totalInitialRemoteDiskSize?: pulumi.Input<number>;
-    useMlRuntime?: pulumi.Input<boolean>;
-    workerNodeTypeFlexibility?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility>;
+    providerConfig?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterProviderConfig | undefined>;
+    remoteDiskThroughput?: pulumi.Input<number | undefined>;
+    runtimeEngine?: pulumi.Input<string | undefined>;
+    singleUserName?: pulumi.Input<string | undefined>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkVersion?: pulumi.Input<string | undefined>;
+    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    totalInitialRemoteDiskSize?: pulumi.Input<number | undefined>;
+    useMlRuntime?: pulumi.Input<boolean | undefined>;
+    workerNodeTypeFlexibility?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility | undefined>;
     /**
      * isn't supported
      */
-    workloadType?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterWorkloadType>;
+    workloadType?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterWorkloadType | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterAutoscale {
-    maxWorkers?: pulumi.Input<number>;
-    minWorkers?: pulumi.Input<number>;
+    maxWorkers?: pulumi.Input<number | undefined>;
+    minWorkers?: pulumi.Input<number | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterAwsAttributes {
-    availability?: pulumi.Input<string>;
-    ebsVolumeCount?: pulumi.Input<number>;
-    ebsVolumeIops?: pulumi.Input<number>;
-    ebsVolumeSize?: pulumi.Input<number>;
-    ebsVolumeThroughput?: pulumi.Input<number>;
-    ebsVolumeType?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    instanceProfileArn?: pulumi.Input<string>;
-    spotBidPricePercent?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    ebsVolumeCount?: pulumi.Input<number | undefined>;
+    ebsVolumeIops?: pulumi.Input<number | undefined>;
+    ebsVolumeSize?: pulumi.Input<number | undefined>;
+    ebsVolumeThroughput?: pulumi.Input<number | undefined>;
+    ebsVolumeType?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
+    spotBidPricePercent?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterAzureAttributes {
-    availability?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    logAnalyticsInfo?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo>;
-    spotBidMaxPrice?: pulumi.Input<number>;
+    availability?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    logAnalyticsInfo?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo | undefined>;
+    spotBidMaxPrice?: pulumi.Input<number | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo {
-    logAnalyticsPrimaryKey?: pulumi.Input<string>;
-    logAnalyticsWorkspaceId?: pulumi.Input<string>;
+    logAnalyticsPrimaryKey?: pulumi.Input<string | undefined>;
+    logAnalyticsWorkspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterClusterLogConf {
-    dbfs?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs>;
-    s3?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterLogConfS3>;
-    volumes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterLogConfVolumes>;
+    dbfs?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs | undefined>;
+    s3?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterLogConfS3 | undefined>;
+    volumes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterLogConfVolumes | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs {
@@ -15474,13 +15474,13 @@ export interface JobTaskForEachTaskTaskNewClusterClusterLogConfDbfs {
 }
 
 export interface JobTaskForEachTaskTaskNewClusterClusterLogConfS3 {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterClusterLogConfVolumes {
@@ -15490,16 +15490,16 @@ export interface JobTaskForEachTaskTaskNewClusterClusterLogConfVolumes {
 export interface JobTaskForEachTaskTaskNewClusterClusterMountInfo {
     localMountDirPath: pulumi.Input<string>;
     networkFilesystemInfo: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfo>;
-    remoteMountDirPath?: pulumi.Input<string>;
+    remoteMountDirPath?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterClusterMountInfoNetworkFilesystemInfo {
-    mountOptions?: pulumi.Input<string>;
+    mountOptions?: pulumi.Input<string | undefined>;
     serverAddress: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterDockerImage {
-    basicAuth?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterDockerImageBasicAuth>;
+    basicAuth?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterDockerImageBasicAuth | undefined>;
     /**
      * URL of the job on the given workspace
      */
@@ -15512,33 +15512,33 @@ export interface JobTaskForEachTaskTaskNewClusterDockerImageBasicAuth {
 }
 
 export interface JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility {
-    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterGcpAttributes {
-    availability?: pulumi.Input<string>;
-    bootDiskSize?: pulumi.Input<number>;
-    firstOnDemand?: pulumi.Input<number>;
-    googleServiceAccount?: pulumi.Input<string>;
-    localSsdCount?: pulumi.Input<number>;
-    usePreemptibleExecutors?: pulumi.Input<boolean>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    bootDiskSize?: pulumi.Input<number | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    googleServiceAccount?: pulumi.Input<string | undefined>;
+    localSsdCount?: pulumi.Input<number | undefined>;
+    usePreemptibleExecutors?: pulumi.Input<boolean | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterInitScript {
-    abfss?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptAbfss>;
+    abfss?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptAbfss | undefined>;
     /**
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
-    dbfs?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptDbfs>;
+    dbfs?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptDbfs | undefined>;
     /**
      * block consisting of single string fields:
      */
-    file?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptFile>;
-    gcs?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptGcs>;
-    s3?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptS3>;
-    volumes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptVolumes>;
-    workspace?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptWorkspace>;
+    file?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptFile | undefined>;
+    gcs?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptGcs | undefined>;
+    s3?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptS3 | undefined>;
+    volumes?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptVolumes | undefined>;
+    workspace?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterInitScriptWorkspace | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterInitScriptAbfss {
@@ -15558,13 +15558,13 @@ export interface JobTaskForEachTaskTaskNewClusterInitScriptGcs {
 }
 
 export interface JobTaskForEachTaskTaskNewClusterInitScriptS3 {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterInitScriptVolumes {
@@ -15576,31 +15576,31 @@ export interface JobTaskForEachTaskTaskNewClusterInitScriptWorkspace {
 }
 
 export interface JobTaskForEachTaskTaskNewClusterLibrary {
-    cran?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibraryCran>;
+    cran?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibraryCran | undefined>;
     /**
      * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      */
-    egg?: pulumi.Input<string>;
-    jar?: pulumi.Input<string>;
-    maven?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibraryMaven>;
+    egg?: pulumi.Input<string | undefined>;
+    jar?: pulumi.Input<string | undefined>;
+    maven?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibraryMaven | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibraryProviderConfig>;
-    pypi?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibraryPypi>;
-    requirements?: pulumi.Input<string>;
-    whl?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibraryProviderConfig | undefined>;
+    pypi?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterLibraryPypi | undefined>;
+    requirements?: pulumi.Input<string | undefined>;
+    whl?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterLibraryCran {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterLibraryMaven {
     coordinates: pulumi.Input<string>;
-    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
-    repo?: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterLibraryProviderConfig {
@@ -15612,7 +15612,7 @@ export interface JobTaskForEachTaskTaskNewClusterLibraryProviderConfig {
 
 export interface JobTaskForEachTaskTaskNewClusterLibraryPypi {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterProviderConfig {
@@ -15623,7 +15623,7 @@ export interface JobTaskForEachTaskTaskNewClusterProviderConfig {
 }
 
 export interface JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility {
-    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterWorkloadType {
@@ -15631,15 +15631,15 @@ export interface JobTaskForEachTaskTaskNewClusterWorkloadType {
 }
 
 export interface JobTaskForEachTaskTaskNewClusterWorkloadTypeClients {
-    jobs?: pulumi.Input<boolean>;
-    notebooks?: pulumi.Input<boolean>;
+    jobs?: pulumi.Input<boolean | undefined>;
+    notebooks?: pulumi.Input<boolean | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNotebookTask {
     /**
      * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
      */
-    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
      */
@@ -15647,28 +15647,28 @@ export interface JobTaskForEachTaskTaskNotebookTask {
     /**
      * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNotificationSettings {
     /**
      * (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
      */
-    alertOnLastAttempt?: pulumi.Input<boolean>;
+    alertOnLastAttempt?: pulumi.Input<boolean | undefined>;
     /**
      * (Bool) don't send alert for cancelled runs.
      *
      * The following parameter is only available on task level.
      */
-    noAlertForCanceledRuns?: pulumi.Input<boolean>;
+    noAlertForCanceledRuns?: pulumi.Input<boolean | undefined>;
     /**
      * (Bool) don't send alert for skipped runs.
      */
-    noAlertForSkippedRuns?: pulumi.Input<boolean>;
+    noAlertForSkippedRuns?: pulumi.Input<boolean | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskPipelineTask {
@@ -15677,7 +15677,7 @@ export interface JobTaskForEachTaskTaskPipelineTask {
      *
      * > The following configuration blocks are only supported inside a `task` block
      */
-    fullRefresh?: pulumi.Input<boolean>;
+    fullRefresh?: pulumi.Input<boolean | undefined>;
     /**
      * The pipeline's unique ID.
      */
@@ -15688,89 +15688,89 @@ export interface JobTaskForEachTaskTaskPowerBiTask {
     /**
      * The resource name of the UC connection to authenticate from Databricks to Power BI
      */
-    connectionResourceName?: pulumi.Input<string>;
+    connectionResourceName?: pulumi.Input<string | undefined>;
     /**
      * The semantic model to update. Block consists of following fields:
      */
-    powerBiModel?: pulumi.Input<inputs.JobTaskForEachTaskTaskPowerBiTaskPowerBiModel>;
+    powerBiModel?: pulumi.Input<inputs.JobTaskForEachTaskTaskPowerBiTaskPowerBiModel | undefined>;
     /**
      * Whether the model should be refreshed after the update. Default is false
      */
-    refreshAfterUpdate?: pulumi.Input<boolean>;
+    refreshAfterUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * The tables to be exported to Power BI. Block consists of following fields:
      */
-    tables?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskPowerBiTaskTable>[]>;
+    tables?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskPowerBiTaskTable>[] | undefined>;
     /**
      * The SQL warehouse ID to use as the Power BI data source
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskPowerBiTaskPowerBiModel {
     /**
      * How the published Power BI model authenticates to Databricks
      */
-    authenticationMethod?: pulumi.Input<string>;
+    authenticationMethod?: pulumi.Input<string | undefined>;
     /**
      * The name of the Power BI model
      */
-    modelName?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string | undefined>;
     /**
      * Whether to overwrite existing Power BI models. Default is false
      */
-    overwriteExisting?: pulumi.Input<boolean>;
+    overwriteExisting?: pulumi.Input<boolean | undefined>;
     /**
      * The default storage mode of the Power BI model
      */
-    storageMode?: pulumi.Input<string>;
+    storageMode?: pulumi.Input<string | undefined>;
     /**
      * The name of the Power BI workspace of the model
      */
-    workspaceName?: pulumi.Input<string>;
+    workspaceName?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskPowerBiTaskTable {
     /**
      * The catalog name in Databricks
      */
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     /**
      * The table name in Databricks. If empty, all tables under the schema are selected.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The schema name in Databricks
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * The Power BI storage mode of the table
      */
-    storageMode?: pulumi.Input<string>;
+    storageMode?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskPythonWheelTask {
     /**
      * Python function as entry point for the task
      */
-    entryPoint?: pulumi.Input<string>;
+    entryPoint?: pulumi.Input<string | undefined>;
     /**
      * Named parameters for the task
      */
-    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of Python package
      */
-    packageName?: pulumi.Input<string>;
+    packageName?: pulumi.Input<string | undefined>;
     /**
      * Parameters for the task
      */
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskRunJobTask {
-    dbtCommands?: pulumi.Input<pulumi.Input<string>[]>;
-    jarParams?: pulumi.Input<pulumi.Input<string>[]>;
+    dbtCommands?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    jarParams?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (String) ID of the job
      */
@@ -15778,13 +15778,13 @@ export interface JobTaskForEachTaskTaskRunJobTask {
     /**
      * (Map) Job parameters for the task
      */
-    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    notebookParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    pipelineParams?: pulumi.Input<inputs.JobTaskForEachTaskTaskRunJobTaskPipelineParams>;
-    pythonNamedParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    pythonParams?: pulumi.Input<pulumi.Input<string>[]>;
-    sparkSubmitParams?: pulumi.Input<pulumi.Input<string>[]>;
-    sqlParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    notebookParams?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    pipelineParams?: pulumi.Input<inputs.JobTaskForEachTaskTaskRunJobTaskPipelineParams | undefined>;
+    pythonNamedParams?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    pythonParams?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    sparkSubmitParams?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    sqlParams?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskRunJobTaskPipelineParams {
@@ -15793,27 +15793,27 @@ export interface JobTaskForEachTaskTaskRunJobTaskPipelineParams {
      *
      * > The following configuration blocks are only supported inside a `task` block
      */
-    fullRefresh?: pulumi.Input<boolean>;
+    fullRefresh?: pulumi.Input<boolean | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskSparkJarTask {
-    jarUri?: pulumi.Input<string>;
+    jarUri?: pulumi.Input<string | undefined>;
     /**
      * The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
      */
-    mainClassName?: pulumi.Input<string>;
+    mainClassName?: pulumi.Input<string | undefined>;
     /**
      * (List) Parameters passed to the main method.
      */
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
-    runAsRepl?: pulumi.Input<boolean>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    runAsRepl?: pulumi.Input<boolean | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskSparkPythonTask {
     /**
      * (List) Command line parameters passed to the Python file.
      */
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The URI of the Python file to be executed. Cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
      */
@@ -15823,37 +15823,37 @@ export interface JobTaskForEachTaskTaskSparkPythonTask {
      * * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
      * * `GIT`: The Python file is located in a remote Git repository.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskSparkSubmitTask {
     /**
      * (List) Command-line parameters passed to spark submit.
      */
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskSqlTask {
     /**
      * block consisting of following fields:
      */
-    alert?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskAlert>;
+    alert?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskAlert | undefined>;
     /**
      * block consisting of following fields:
      */
-    dashboard?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskDashboard>;
+    dashboard?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskDashboard | undefined>;
     /**
      * block consisting of single string fields:
      */
-    file?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskFile>;
+    file?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskFile | undefined>;
     /**
      * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * block consisting of single string field: `queryId` - identifier of the Databricks Query (databricks_query).
      */
-    query?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskQuery>;
+    query?: pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskQuery | undefined>;
     /**
      * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
      */
@@ -15868,26 +15868,26 @@ export interface JobTaskForEachTaskTaskSqlTaskAlert {
     /**
      * flag that specifies if subscriptions are paused or not.
      */
-    pauseSubscriptions?: pulumi.Input<boolean>;
+    pauseSubscriptions?: pulumi.Input<boolean | undefined>;
     /**
      * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
      */
-    subscriptions?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskAlertSubscription>[]>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskAlertSubscription>[] | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskSqlTaskAlertSubscription {
     /**
      * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      */
-    destinationId?: pulumi.Input<string>;
-    userName?: pulumi.Input<string>;
+    destinationId?: pulumi.Input<string | undefined>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskSqlTaskDashboard {
     /**
      * string specifying a custom subject of email sent.
      */
-    customSubject?: pulumi.Input<string>;
+    customSubject?: pulumi.Input<string | undefined>;
     /**
      * (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
      */
@@ -15895,19 +15895,19 @@ export interface JobTaskForEachTaskTaskSqlTaskDashboard {
     /**
      * flag that specifies if subscriptions are paused or not.
      */
-    pauseSubscriptions?: pulumi.Input<boolean>;
+    pauseSubscriptions?: pulumi.Input<boolean | undefined>;
     /**
      * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
      */
-    subscriptions?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskDashboardSubscription>[]>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskSqlTaskDashboardSubscription>[] | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskSqlTaskDashboardSubscription {
     /**
      * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      */
-    destinationId?: pulumi.Input<string>;
-    userName?: pulumi.Input<string>;
+    destinationId?: pulumi.Input<string | undefined>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskSqlTaskFile {
@@ -15964,7 +15964,7 @@ export interface JobTaskForEachTaskTaskSqlTaskFile {
     /**
      * The source of the project. Possible values are `WORKSPACE` and `GIT`.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskSqlTaskQuery {
@@ -15975,15 +15975,15 @@ export interface JobTaskForEachTaskTaskWebhookNotifications {
     /**
      * (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      */
-    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded>[]>;
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded>[] | undefined>;
     /**
      * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      */
-    onFailures?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnFailure>[]>;
+    onFailures?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnFailure>[] | undefined>;
     /**
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
-    onStarts?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStart>[]>;
+    onStarts?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStart>[] | undefined>;
     /**
      * (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
      *
@@ -15991,11 +15991,11 @@ export interface JobTaskForEachTaskTaskWebhookNotifications {
      *
      * Example
      */
-    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnStreamingBacklogExceeded>[] | undefined>;
     /**
      * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      */
-    onSuccesses?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnSuccess>[]>;
+    onSuccesses?: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotificationsOnSuccess>[] | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
@@ -16034,24 +16034,24 @@ export interface JobTaskForEachTaskTaskWebhookNotificationsOnSuccess {
 }
 
 export interface JobTaskGenAiComputeTask {
-    command?: pulumi.Input<string>;
+    command?: pulumi.Input<string | undefined>;
     /**
      * Task level compute configuration. This block is documented below.
      *
      * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
      */
-    compute?: pulumi.Input<inputs.JobTaskGenAiComputeTaskCompute>;
+    compute?: pulumi.Input<inputs.JobTaskGenAiComputeTaskCompute | undefined>;
     dlRuntimeImage: pulumi.Input<string>;
-    mlflowExperimentName?: pulumi.Input<string>;
-    source?: pulumi.Input<string>;
-    trainingScriptPath?: pulumi.Input<string>;
-    yamlParameters?: pulumi.Input<string>;
-    yamlParametersFilePath?: pulumi.Input<string>;
+    mlflowExperimentName?: pulumi.Input<string | undefined>;
+    source?: pulumi.Input<string | undefined>;
+    trainingScriptPath?: pulumi.Input<string | undefined>;
+    yamlParameters?: pulumi.Input<string | undefined>;
+    yamlParametersFilePath?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskGenAiComputeTaskCompute {
-    gpuNodePoolId?: pulumi.Input<string>;
-    gpuType?: pulumi.Input<string>;
+    gpuNodePoolId?: pulumi.Input<string | undefined>;
+    gpuType?: pulumi.Input<string | undefined>;
     numGpus: pulumi.Input<number>;
 }
 
@@ -16078,31 +16078,31 @@ export interface JobTaskHealthRule {
 }
 
 export interface JobTaskLibrary {
-    cran?: pulumi.Input<inputs.JobTaskLibraryCran>;
+    cran?: pulumi.Input<inputs.JobTaskLibraryCran | undefined>;
     /**
      * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      */
-    egg?: pulumi.Input<string>;
-    jar?: pulumi.Input<string>;
-    maven?: pulumi.Input<inputs.JobTaskLibraryMaven>;
+    egg?: pulumi.Input<string | undefined>;
+    jar?: pulumi.Input<string | undefined>;
+    maven?: pulumi.Input<inputs.JobTaskLibraryMaven | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.JobTaskLibraryProviderConfig>;
-    pypi?: pulumi.Input<inputs.JobTaskLibraryPypi>;
-    requirements?: pulumi.Input<string>;
-    whl?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.JobTaskLibraryProviderConfig | undefined>;
+    pypi?: pulumi.Input<inputs.JobTaskLibraryPypi | undefined>;
+    requirements?: pulumi.Input<string | undefined>;
+    whl?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskLibraryCran {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskLibraryMaven {
     coordinates: pulumi.Input<string>;
-    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
-    repo?: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskLibraryProviderConfig {
@@ -16114,94 +16114,94 @@ export interface JobTaskLibraryProviderConfig {
 
 export interface JobTaskLibraryPypi {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskNewCluster {
-    __applyPolicyDefaultValuesAllowLists?: pulumi.Input<pulumi.Input<string>[]>;
-    applyPolicyDefaultValues?: pulumi.Input<boolean>;
-    autoscale?: pulumi.Input<inputs.JobTaskNewClusterAutoscale>;
-    awsAttributes?: pulumi.Input<inputs.JobTaskNewClusterAwsAttributes>;
-    azureAttributes?: pulumi.Input<inputs.JobTaskNewClusterAzureAttributes>;
-    clusterId?: pulumi.Input<string>;
-    clusterLogConf?: pulumi.Input<inputs.JobTaskNewClusterClusterLogConf>;
-    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobTaskNewClusterClusterMountInfo>[]>;
-    clusterName?: pulumi.Input<string>;
-    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    dataSecurityMode?: pulumi.Input<string>;
-    dockerImage?: pulumi.Input<inputs.JobTaskNewClusterDockerImage>;
-    driverInstancePoolId?: pulumi.Input<string>;
-    driverNodeTypeFlexibility?: pulumi.Input<inputs.JobTaskNewClusterDriverNodeTypeFlexibility>;
-    driverNodeTypeId?: pulumi.Input<string>;
-    enableElasticDisk?: pulumi.Input<boolean>;
-    enableLocalDiskEncryption?: pulumi.Input<boolean>;
-    gcpAttributes?: pulumi.Input<inputs.JobTaskNewClusterGcpAttributes>;
-    idempotencyToken?: pulumi.Input<string>;
-    initScripts?: pulumi.Input<pulumi.Input<inputs.JobTaskNewClusterInitScript>[]>;
-    instancePoolId?: pulumi.Input<string>;
-    isSingleNode?: pulumi.Input<boolean>;
-    kind?: pulumi.Input<string>;
+    __applyPolicyDefaultValuesAllowLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    applyPolicyDefaultValues?: pulumi.Input<boolean | undefined>;
+    autoscale?: pulumi.Input<inputs.JobTaskNewClusterAutoscale | undefined>;
+    awsAttributes?: pulumi.Input<inputs.JobTaskNewClusterAwsAttributes | undefined>;
+    azureAttributes?: pulumi.Input<inputs.JobTaskNewClusterAzureAttributes | undefined>;
+    clusterId?: pulumi.Input<string | undefined>;
+    clusterLogConf?: pulumi.Input<inputs.JobTaskNewClusterClusterLogConf | undefined>;
+    clusterMountInfos?: pulumi.Input<pulumi.Input<inputs.JobTaskNewClusterClusterMountInfo>[] | undefined>;
+    clusterName?: pulumi.Input<string | undefined>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    dataSecurityMode?: pulumi.Input<string | undefined>;
+    dockerImage?: pulumi.Input<inputs.JobTaskNewClusterDockerImage | undefined>;
+    driverInstancePoolId?: pulumi.Input<string | undefined>;
+    driverNodeTypeFlexibility?: pulumi.Input<inputs.JobTaskNewClusterDriverNodeTypeFlexibility | undefined>;
+    driverNodeTypeId?: pulumi.Input<string | undefined>;
+    enableElasticDisk?: pulumi.Input<boolean | undefined>;
+    enableLocalDiskEncryption?: pulumi.Input<boolean | undefined>;
+    gcpAttributes?: pulumi.Input<inputs.JobTaskNewClusterGcpAttributes | undefined>;
+    idempotencyToken?: pulumi.Input<string | undefined>;
+    initScripts?: pulumi.Input<pulumi.Input<inputs.JobTaskNewClusterInitScript>[] | undefined>;
+    instancePoolId?: pulumi.Input<string | undefined>;
+    isSingleNode?: pulumi.Input<boolean | undefined>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * (List) An optional list of libraries to be installed on the cluster that will execute the job. See library Configuration Block below.
      */
-    libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskNewClusterLibrary>[]>;
-    nodeTypeId?: pulumi.Input<string>;
-    numWorkers?: pulumi.Input<number>;
-    policyId?: pulumi.Input<string>;
+    libraries?: pulumi.Input<pulumi.Input<inputs.JobTaskNewClusterLibrary>[] | undefined>;
+    nodeTypeId?: pulumi.Input<string | undefined>;
+    numWorkers?: pulumi.Input<number | undefined>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.JobTaskNewClusterProviderConfig>;
-    remoteDiskThroughput?: pulumi.Input<number>;
-    runtimeEngine?: pulumi.Input<string>;
-    singleUserName?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkVersion?: pulumi.Input<string>;
-    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    totalInitialRemoteDiskSize?: pulumi.Input<number>;
-    useMlRuntime?: pulumi.Input<boolean>;
-    workerNodeTypeFlexibility?: pulumi.Input<inputs.JobTaskNewClusterWorkerNodeTypeFlexibility>;
+    providerConfig?: pulumi.Input<inputs.JobTaskNewClusterProviderConfig | undefined>;
+    remoteDiskThroughput?: pulumi.Input<number | undefined>;
+    runtimeEngine?: pulumi.Input<string | undefined>;
+    singleUserName?: pulumi.Input<string | undefined>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkVersion?: pulumi.Input<string | undefined>;
+    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    totalInitialRemoteDiskSize?: pulumi.Input<number | undefined>;
+    useMlRuntime?: pulumi.Input<boolean | undefined>;
+    workerNodeTypeFlexibility?: pulumi.Input<inputs.JobTaskNewClusterWorkerNodeTypeFlexibility | undefined>;
     /**
      * isn't supported
      */
-    workloadType?: pulumi.Input<inputs.JobTaskNewClusterWorkloadType>;
+    workloadType?: pulumi.Input<inputs.JobTaskNewClusterWorkloadType | undefined>;
 }
 
 export interface JobTaskNewClusterAutoscale {
-    maxWorkers?: pulumi.Input<number>;
-    minWorkers?: pulumi.Input<number>;
+    maxWorkers?: pulumi.Input<number | undefined>;
+    minWorkers?: pulumi.Input<number | undefined>;
 }
 
 export interface JobTaskNewClusterAwsAttributes {
-    availability?: pulumi.Input<string>;
-    ebsVolumeCount?: pulumi.Input<number>;
-    ebsVolumeIops?: pulumi.Input<number>;
-    ebsVolumeSize?: pulumi.Input<number>;
-    ebsVolumeThroughput?: pulumi.Input<number>;
-    ebsVolumeType?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    instanceProfileArn?: pulumi.Input<string>;
-    spotBidPricePercent?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    ebsVolumeCount?: pulumi.Input<number | undefined>;
+    ebsVolumeIops?: pulumi.Input<number | undefined>;
+    ebsVolumeSize?: pulumi.Input<number | undefined>;
+    ebsVolumeThroughput?: pulumi.Input<number | undefined>;
+    ebsVolumeType?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
+    spotBidPricePercent?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskNewClusterAzureAttributes {
-    availability?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    logAnalyticsInfo?: pulumi.Input<inputs.JobTaskNewClusterAzureAttributesLogAnalyticsInfo>;
-    spotBidMaxPrice?: pulumi.Input<number>;
+    availability?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    logAnalyticsInfo?: pulumi.Input<inputs.JobTaskNewClusterAzureAttributesLogAnalyticsInfo | undefined>;
+    spotBidMaxPrice?: pulumi.Input<number | undefined>;
 }
 
 export interface JobTaskNewClusterAzureAttributesLogAnalyticsInfo {
-    logAnalyticsPrimaryKey?: pulumi.Input<string>;
-    logAnalyticsWorkspaceId?: pulumi.Input<string>;
+    logAnalyticsPrimaryKey?: pulumi.Input<string | undefined>;
+    logAnalyticsWorkspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskNewClusterClusterLogConf {
-    dbfs?: pulumi.Input<inputs.JobTaskNewClusterClusterLogConfDbfs>;
-    s3?: pulumi.Input<inputs.JobTaskNewClusterClusterLogConfS3>;
-    volumes?: pulumi.Input<inputs.JobTaskNewClusterClusterLogConfVolumes>;
+    dbfs?: pulumi.Input<inputs.JobTaskNewClusterClusterLogConfDbfs | undefined>;
+    s3?: pulumi.Input<inputs.JobTaskNewClusterClusterLogConfS3 | undefined>;
+    volumes?: pulumi.Input<inputs.JobTaskNewClusterClusterLogConfVolumes | undefined>;
 }
 
 export interface JobTaskNewClusterClusterLogConfDbfs {
@@ -16209,13 +16209,13 @@ export interface JobTaskNewClusterClusterLogConfDbfs {
 }
 
 export interface JobTaskNewClusterClusterLogConfS3 {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskNewClusterClusterLogConfVolumes {
@@ -16225,16 +16225,16 @@ export interface JobTaskNewClusterClusterLogConfVolumes {
 export interface JobTaskNewClusterClusterMountInfo {
     localMountDirPath: pulumi.Input<string>;
     networkFilesystemInfo: pulumi.Input<inputs.JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo>;
-    remoteMountDirPath?: pulumi.Input<string>;
+    remoteMountDirPath?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskNewClusterClusterMountInfoNetworkFilesystemInfo {
-    mountOptions?: pulumi.Input<string>;
+    mountOptions?: pulumi.Input<string | undefined>;
     serverAddress: pulumi.Input<string>;
 }
 
 export interface JobTaskNewClusterDockerImage {
-    basicAuth?: pulumi.Input<inputs.JobTaskNewClusterDockerImageBasicAuth>;
+    basicAuth?: pulumi.Input<inputs.JobTaskNewClusterDockerImageBasicAuth | undefined>;
     /**
      * URL of the job on the given workspace
      */
@@ -16247,33 +16247,33 @@ export interface JobTaskNewClusterDockerImageBasicAuth {
 }
 
 export interface JobTaskNewClusterDriverNodeTypeFlexibility {
-    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobTaskNewClusterGcpAttributes {
-    availability?: pulumi.Input<string>;
-    bootDiskSize?: pulumi.Input<number>;
-    firstOnDemand?: pulumi.Input<number>;
-    googleServiceAccount?: pulumi.Input<string>;
-    localSsdCount?: pulumi.Input<number>;
-    usePreemptibleExecutors?: pulumi.Input<boolean>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    bootDiskSize?: pulumi.Input<number | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    googleServiceAccount?: pulumi.Input<string | undefined>;
+    localSsdCount?: pulumi.Input<number | undefined>;
+    usePreemptibleExecutors?: pulumi.Input<boolean | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskNewClusterInitScript {
-    abfss?: pulumi.Input<inputs.JobTaskNewClusterInitScriptAbfss>;
+    abfss?: pulumi.Input<inputs.JobTaskNewClusterInitScriptAbfss | undefined>;
     /**
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
-    dbfs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptDbfs>;
+    dbfs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptDbfs | undefined>;
     /**
      * block consisting of single string fields:
      */
-    file?: pulumi.Input<inputs.JobTaskNewClusterInitScriptFile>;
-    gcs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptGcs>;
-    s3?: pulumi.Input<inputs.JobTaskNewClusterInitScriptS3>;
-    volumes?: pulumi.Input<inputs.JobTaskNewClusterInitScriptVolumes>;
-    workspace?: pulumi.Input<inputs.JobTaskNewClusterInitScriptWorkspace>;
+    file?: pulumi.Input<inputs.JobTaskNewClusterInitScriptFile | undefined>;
+    gcs?: pulumi.Input<inputs.JobTaskNewClusterInitScriptGcs | undefined>;
+    s3?: pulumi.Input<inputs.JobTaskNewClusterInitScriptS3 | undefined>;
+    volumes?: pulumi.Input<inputs.JobTaskNewClusterInitScriptVolumes | undefined>;
+    workspace?: pulumi.Input<inputs.JobTaskNewClusterInitScriptWorkspace | undefined>;
 }
 
 export interface JobTaskNewClusterInitScriptAbfss {
@@ -16293,13 +16293,13 @@ export interface JobTaskNewClusterInitScriptGcs {
 }
 
 export interface JobTaskNewClusterInitScriptS3 {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskNewClusterInitScriptVolumes {
@@ -16311,31 +16311,31 @@ export interface JobTaskNewClusterInitScriptWorkspace {
 }
 
 export interface JobTaskNewClusterLibrary {
-    cran?: pulumi.Input<inputs.JobTaskNewClusterLibraryCran>;
+    cran?: pulumi.Input<inputs.JobTaskNewClusterLibraryCran | undefined>;
     /**
      * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      */
-    egg?: pulumi.Input<string>;
-    jar?: pulumi.Input<string>;
-    maven?: pulumi.Input<inputs.JobTaskNewClusterLibraryMaven>;
+    egg?: pulumi.Input<string | undefined>;
+    jar?: pulumi.Input<string | undefined>;
+    maven?: pulumi.Input<inputs.JobTaskNewClusterLibraryMaven | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.JobTaskNewClusterLibraryProviderConfig>;
-    pypi?: pulumi.Input<inputs.JobTaskNewClusterLibraryPypi>;
-    requirements?: pulumi.Input<string>;
-    whl?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.JobTaskNewClusterLibraryProviderConfig | undefined>;
+    pypi?: pulumi.Input<inputs.JobTaskNewClusterLibraryPypi | undefined>;
+    requirements?: pulumi.Input<string | undefined>;
+    whl?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskNewClusterLibraryCran {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskNewClusterLibraryMaven {
     coordinates: pulumi.Input<string>;
-    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
-    repo?: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskNewClusterLibraryProviderConfig {
@@ -16347,7 +16347,7 @@ export interface JobTaskNewClusterLibraryProviderConfig {
 
 export interface JobTaskNewClusterLibraryPypi {
     package: pulumi.Input<string>;
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskNewClusterProviderConfig {
@@ -16358,7 +16358,7 @@ export interface JobTaskNewClusterProviderConfig {
 }
 
 export interface JobTaskNewClusterWorkerNodeTypeFlexibility {
-    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    alternateNodeTypeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobTaskNewClusterWorkloadType {
@@ -16366,15 +16366,15 @@ export interface JobTaskNewClusterWorkloadType {
 }
 
 export interface JobTaskNewClusterWorkloadTypeClients {
-    jobs?: pulumi.Input<boolean>;
-    notebooks?: pulumi.Input<boolean>;
+    jobs?: pulumi.Input<boolean | undefined>;
+    notebooks?: pulumi.Input<boolean | undefined>;
 }
 
 export interface JobTaskNotebookTask {
     /**
      * (Map) Base parameters to be used for each run of this job. If the run is initiated by a call to run-now with parameters specified, the two parameters maps will be merged. If the same key is specified in baseParameters and in run-now, the value from run-now will be used. If the notebook takes a parameter that is not specified in the job's baseParameters or the run-now override parameters, the default value from the notebook will be used. Retrieve these parameters in a notebook using `dbutils.widgets.get`.
      */
-    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    baseParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The path of the databricks.Notebook to be run in the Databricks workspace or remote repository. For notebooks stored in the Databricks workspace, the path must be absolute and begin with a slash. For notebooks stored in a remote repository, the path must be relative. This field is required.
      */
@@ -16382,28 +16382,28 @@ export interface JobTaskNotebookTask {
     /**
      * Location type of the notebook, can only be `WORKSPACE` or `GIT`. When set to `WORKSPACE`, the notebook will be retrieved from the local Databricks workspace. When set to `GIT`, the notebook will be retrieved from a Git repository defined in `gitSource`. If the value is empty, the task will use `GIT` if `gitSource` is defined and `WORKSPACE` otherwise.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * ID of the (the databricks_sql_endpoint) that will be used to execute the task with SQL notebook.
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskNotificationSettings {
     /**
      * (Bool) do not send notifications to recipients specified in `onStart` for the retried runs and do not send notifications to recipients specified in `onFailure` until the last retry of the run.
      */
-    alertOnLastAttempt?: pulumi.Input<boolean>;
+    alertOnLastAttempt?: pulumi.Input<boolean | undefined>;
     /**
      * (Bool) don't send alert for cancelled runs.
      *
      * The following parameter is only available on task level.
      */
-    noAlertForCanceledRuns?: pulumi.Input<boolean>;
+    noAlertForCanceledRuns?: pulumi.Input<boolean | undefined>;
     /**
      * (Bool) don't send alert for skipped runs.
      */
-    noAlertForSkippedRuns?: pulumi.Input<boolean>;
+    noAlertForSkippedRuns?: pulumi.Input<boolean | undefined>;
 }
 
 export interface JobTaskPipelineTask {
@@ -16412,7 +16412,7 @@ export interface JobTaskPipelineTask {
      *
      * > The following configuration blocks are only supported inside a `task` block
      */
-    fullRefresh?: pulumi.Input<boolean>;
+    fullRefresh?: pulumi.Input<boolean | undefined>;
     /**
      * The pipeline's unique ID.
      */
@@ -16423,89 +16423,89 @@ export interface JobTaskPowerBiTask {
     /**
      * The resource name of the UC connection to authenticate from Databricks to Power BI
      */
-    connectionResourceName?: pulumi.Input<string>;
+    connectionResourceName?: pulumi.Input<string | undefined>;
     /**
      * The semantic model to update. Block consists of following fields:
      */
-    powerBiModel?: pulumi.Input<inputs.JobTaskPowerBiTaskPowerBiModel>;
+    powerBiModel?: pulumi.Input<inputs.JobTaskPowerBiTaskPowerBiModel | undefined>;
     /**
      * Whether the model should be refreshed after the update. Default is false
      */
-    refreshAfterUpdate?: pulumi.Input<boolean>;
+    refreshAfterUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * The tables to be exported to Power BI. Block consists of following fields:
      */
-    tables?: pulumi.Input<pulumi.Input<inputs.JobTaskPowerBiTaskTable>[]>;
+    tables?: pulumi.Input<pulumi.Input<inputs.JobTaskPowerBiTaskTable>[] | undefined>;
     /**
      * The SQL warehouse ID to use as the Power BI data source
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskPowerBiTaskPowerBiModel {
     /**
      * How the published Power BI model authenticates to Databricks
      */
-    authenticationMethod?: pulumi.Input<string>;
+    authenticationMethod?: pulumi.Input<string | undefined>;
     /**
      * The name of the Power BI model
      */
-    modelName?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string | undefined>;
     /**
      * Whether to overwrite existing Power BI models. Default is false
      */
-    overwriteExisting?: pulumi.Input<boolean>;
+    overwriteExisting?: pulumi.Input<boolean | undefined>;
     /**
      * The default storage mode of the Power BI model
      */
-    storageMode?: pulumi.Input<string>;
+    storageMode?: pulumi.Input<string | undefined>;
     /**
      * The name of the Power BI workspace of the model
      */
-    workspaceName?: pulumi.Input<string>;
+    workspaceName?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskPowerBiTaskTable {
     /**
      * The catalog name in Databricks
      */
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     /**
      * The table name in Databricks. If empty, all tables under the schema are selected.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The schema name in Databricks
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * The Power BI storage mode of the table
      */
-    storageMode?: pulumi.Input<string>;
+    storageMode?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskPythonWheelTask {
     /**
      * Python function as entry point for the task
      */
-    entryPoint?: pulumi.Input<string>;
+    entryPoint?: pulumi.Input<string | undefined>;
     /**
      * Named parameters for the task
      */
-    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    namedParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of Python package
      */
-    packageName?: pulumi.Input<string>;
+    packageName?: pulumi.Input<string | undefined>;
     /**
      * Parameters for the task
      */
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobTaskRunJobTask {
-    dbtCommands?: pulumi.Input<pulumi.Input<string>[]>;
-    jarParams?: pulumi.Input<pulumi.Input<string>[]>;
+    dbtCommands?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    jarParams?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (String) ID of the job
      */
@@ -16513,13 +16513,13 @@ export interface JobTaskRunJobTask {
     /**
      * (Map) Job parameters for the task
      */
-    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    notebookParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    pipelineParams?: pulumi.Input<inputs.JobTaskRunJobTaskPipelineParams>;
-    pythonNamedParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    pythonParams?: pulumi.Input<pulumi.Input<string>[]>;
-    sparkSubmitParams?: pulumi.Input<pulumi.Input<string>[]>;
-    sqlParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    jobParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    notebookParams?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    pipelineParams?: pulumi.Input<inputs.JobTaskRunJobTaskPipelineParams | undefined>;
+    pythonNamedParams?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    pythonParams?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    sparkSubmitParams?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    sqlParams?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface JobTaskRunJobTaskPipelineParams {
@@ -16528,27 +16528,27 @@ export interface JobTaskRunJobTaskPipelineParams {
      *
      * > The following configuration blocks are only supported inside a `task` block
      */
-    fullRefresh?: pulumi.Input<boolean>;
+    fullRefresh?: pulumi.Input<boolean | undefined>;
 }
 
 export interface JobTaskSparkJarTask {
-    jarUri?: pulumi.Input<string>;
+    jarUri?: pulumi.Input<string | undefined>;
     /**
      * The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. The code should use `SparkContext.getOrCreate` to obtain a Spark context; otherwise, runs of the job will fail.
      */
-    mainClassName?: pulumi.Input<string>;
+    mainClassName?: pulumi.Input<string | undefined>;
     /**
      * (List) Parameters passed to the main method.
      */
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
-    runAsRepl?: pulumi.Input<boolean>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    runAsRepl?: pulumi.Input<boolean | undefined>;
 }
 
 export interface JobTaskSparkPythonTask {
     /**
      * (List) Command line parameters passed to the Python file.
      */
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The URI of the Python file to be executed. Cloud file URIs (e.g. `s3:/`, `abfss:/`, `gs:/`), workspace paths and remote repository are supported. For Python files stored in the Databricks workspace, the path must be absolute and begin with `/`. For files stored in a remote repository, the path must be relative. This field is required.
      */
@@ -16558,37 +16558,37 @@ export interface JobTaskSparkPythonTask {
      * * `WORKSPACE`: The Python file is located in a Databricks workspace or at a cloud filesystem URI.
      * * `GIT`: The Python file is located in a remote Git repository.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskSparkSubmitTask {
     /**
      * (List) Command-line parameters passed to spark submit.
      */
-    parameters?: pulumi.Input<pulumi.Input<string>[]>;
+    parameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface JobTaskSqlTask {
     /**
      * block consisting of following fields:
      */
-    alert?: pulumi.Input<inputs.JobTaskSqlTaskAlert>;
+    alert?: pulumi.Input<inputs.JobTaskSqlTaskAlert | undefined>;
     /**
      * block consisting of following fields:
      */
-    dashboard?: pulumi.Input<inputs.JobTaskSqlTaskDashboard>;
+    dashboard?: pulumi.Input<inputs.JobTaskSqlTaskDashboard | undefined>;
     /**
      * block consisting of single string fields:
      */
-    file?: pulumi.Input<inputs.JobTaskSqlTaskFile>;
+    file?: pulumi.Input<inputs.JobTaskSqlTaskFile | undefined>;
     /**
      * (Map) parameters to be used for each run of this task. The SQL alert task does not support custom parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * block consisting of single string field: `queryId` - identifier of the Databricks Query (databricks_query).
      */
-    query?: pulumi.Input<inputs.JobTaskSqlTaskQuery>;
+    query?: pulumi.Input<inputs.JobTaskSqlTaskQuery | undefined>;
     /**
      * ID of the (the databricks_sql_endpoint) that will be used to execute the task.  Only Serverless & Pro warehouses are supported right now.
      */
@@ -16603,26 +16603,26 @@ export interface JobTaskSqlTaskAlert {
     /**
      * flag that specifies if subscriptions are paused or not.
      */
-    pauseSubscriptions?: pulumi.Input<boolean>;
+    pauseSubscriptions?: pulumi.Input<boolean | undefined>;
     /**
      * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
      */
-    subscriptions?: pulumi.Input<pulumi.Input<inputs.JobTaskSqlTaskAlertSubscription>[]>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.JobTaskSqlTaskAlertSubscription>[] | undefined>;
 }
 
 export interface JobTaskSqlTaskAlertSubscription {
     /**
      * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      */
-    destinationId?: pulumi.Input<string>;
-    userName?: pulumi.Input<string>;
+    destinationId?: pulumi.Input<string | undefined>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskSqlTaskDashboard {
     /**
      * string specifying a custom subject of email sent.
      */
-    customSubject?: pulumi.Input<string>;
+    customSubject?: pulumi.Input<string | undefined>;
     /**
      * (String) identifier of the Databricks SQL Dashboard databricks_sql_dashboard.
      */
@@ -16630,19 +16630,19 @@ export interface JobTaskSqlTaskDashboard {
     /**
      * flag that specifies if subscriptions are paused or not.
      */
-    pauseSubscriptions?: pulumi.Input<boolean>;
+    pauseSubscriptions?: pulumi.Input<boolean | undefined>;
     /**
      * a list of subscription blocks consisting out of one of the required fields: `userName` for user emails or `destinationId` - for Alert destination's identifier.
      */
-    subscriptions?: pulumi.Input<pulumi.Input<inputs.JobTaskSqlTaskDashboardSubscription>[]>;
+    subscriptions?: pulumi.Input<pulumi.Input<inputs.JobTaskSqlTaskDashboardSubscription>[] | undefined>;
 }
 
 export interface JobTaskSqlTaskDashboardSubscription {
     /**
      * A snapshot of the dashboard will be sent to the destination when the `destinationId` field is present.
      */
-    destinationId?: pulumi.Input<string>;
-    userName?: pulumi.Input<string>;
+    destinationId?: pulumi.Input<string | undefined>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskSqlTaskFile {
@@ -16699,7 +16699,7 @@ export interface JobTaskSqlTaskFile {
     /**
      * The source of the project. Possible values are `WORKSPACE` and `GIT`.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskSqlTaskQuery {
@@ -16710,15 +16710,15 @@ export interface JobTaskWebhookNotifications {
     /**
      * (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      */
-    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded>[]>;
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded>[] | undefined>;
     /**
      * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      */
-    onFailures?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnFailure>[]>;
+    onFailures?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnFailure>[] | undefined>;
     /**
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
-    onStarts?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnStart>[]>;
+    onStarts?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnStart>[] | undefined>;
     /**
      * (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
      *
@@ -16726,11 +16726,11 @@ export interface JobTaskWebhookNotifications {
      *
      * Example
      */
-    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnStreamingBacklogExceeded>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnStreamingBacklogExceeded>[] | undefined>;
     /**
      * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      */
-    onSuccesses?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnSuccess>[]>;
+    onSuccesses?: pulumi.Input<pulumi.Input<inputs.JobTaskWebhookNotificationsOnSuccess>[] | undefined>;
 }
 
 export interface JobTaskWebhookNotificationsOnDurationWarningThresholdExceeded {
@@ -16772,27 +16772,27 @@ export interface JobTrigger {
     /**
      * configuration block to define a trigger for [File Arrival events](https://learn.microsoft.com/en-us/azure/databricks/workflows/jobs/file-arrival-triggers) consisting of following attributes:
      */
-    fileArrival?: pulumi.Input<inputs.JobTriggerFileArrival>;
-    model?: pulumi.Input<inputs.JobTriggerModel>;
+    fileArrival?: pulumi.Input<inputs.JobTriggerFileArrival | undefined>;
+    model?: pulumi.Input<inputs.JobTriggerModel | undefined>;
     /**
      * Indicate whether this trigger is paused or not. Either `PAUSED` or `UNPAUSED`. When the `pauseStatus` field is omitted in the block, the server will default to using `UNPAUSED` as a value for `pauseStatus`.
      */
-    pauseStatus?: pulumi.Input<string>;
+    pauseStatus?: pulumi.Input<string | undefined>;
     /**
      * configuration block to define a trigger for Periodic Triggers consisting of the following attributes:
      */
-    periodic?: pulumi.Input<inputs.JobTriggerPeriodic>;
+    periodic?: pulumi.Input<inputs.JobTriggerPeriodic | undefined>;
     /**
      * configuration block to define a trigger for [Table Updates](https://docs.databricks.com/aws/en/jobs/trigger-table-update) consisting of following attributes:
      */
-    tableUpdate?: pulumi.Input<inputs.JobTriggerTableUpdate>;
+    tableUpdate?: pulumi.Input<inputs.JobTriggerTableUpdate | undefined>;
 }
 
 export interface JobTriggerFileArrival {
     /**
      * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
      */
-    minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
+    minTimeBetweenTriggersSeconds?: pulumi.Input<number | undefined>;
     /**
      * URL to be monitored for file arrivals. The path must point to the root or a subpath of the external location. Please note that the URL must have a trailing slash character (`/`).
      */
@@ -16800,18 +16800,18 @@ export interface JobTriggerFileArrival {
     /**
      * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
      */
-    waitAfterLastChangeSeconds?: pulumi.Input<number>;
+    waitAfterLastChangeSeconds?: pulumi.Input<number | undefined>;
 }
 
 export interface JobTriggerModel {
-    aliases?: pulumi.Input<pulumi.Input<string>[]>;
+    aliases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
      */
     condition: pulumi.Input<string>;
-    minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
-    securableName?: pulumi.Input<string>;
-    waitAfterLastChangeSeconds?: pulumi.Input<number>;
+    minTimeBetweenTriggersSeconds?: pulumi.Input<number | undefined>;
+    securableName?: pulumi.Input<string | undefined>;
+    waitAfterLastChangeSeconds?: pulumi.Input<number | undefined>;
 }
 
 export interface JobTriggerPeriodic {
@@ -16829,11 +16829,11 @@ export interface JobTriggerTableUpdate {
     /**
      * The table(s) condition based on which to trigger a job run.  Possible values are `ANY_UPDATED`, `ALL_UPDATED`.
      */
-    condition?: pulumi.Input<string>;
+    condition?: pulumi.Input<string | undefined>;
     /**
      * If set, the trigger starts a run only after the specified amount of time passed since the last time the trigger fired. The minimum allowed value is 60 seconds.
      */
-    minTimeBetweenTriggersSeconds?: pulumi.Input<number>;
+    minTimeBetweenTriggersSeconds?: pulumi.Input<number | undefined>;
     /**
      * A non-empty list of tables to monitor for changes. The table name must be in the format `catalog_name.schema_name.table_name`.
      */
@@ -16841,22 +16841,22 @@ export interface JobTriggerTableUpdate {
     /**
      * If set, the trigger starts a run only after no file activity has occurred for the specified amount of time. This makes it possible to wait for a batch of incoming files to arrive before triggering a run. The minimum allowed value is 60 seconds.
      */
-    waitAfterLastChangeSeconds?: pulumi.Input<number>;
+    waitAfterLastChangeSeconds?: pulumi.Input<number | undefined>;
 }
 
 export interface JobWebhookNotifications {
     /**
      * (List) list of notification IDs to call when the duration of a run exceeds the threshold specified by the `RUN_DURATION_SECONDS` metric in the `health` block.
      */
-    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnDurationWarningThresholdExceeded>[]>;
+    onDurationWarningThresholdExceededs?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnDurationWarningThresholdExceeded>[] | undefined>;
     /**
      * (List) list of notification IDs to call when the run fails. A maximum of 3 destinations can be specified.
      */
-    onFailures?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnFailure>[]>;
+    onFailures?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnFailure>[] | undefined>;
     /**
      * (List) list of notification IDs to call when the run starts. A maximum of 3 destinations can be specified.
      */
-    onStarts?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnStart>[]>;
+    onStarts?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnStart>[] | undefined>;
     /**
      * (List) list of notification IDs to call when any streaming backlog thresholds are exceeded for any stream.
      *
@@ -16864,11 +16864,11 @@ export interface JobWebhookNotifications {
      *
      * Example
      */
-    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnStreamingBacklogExceeded>[]>;
+    onStreamingBacklogExceededs?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnStreamingBacklogExceeded>[] | undefined>;
     /**
      * (List) list of notification IDs to call when the run completes successfully. A maximum of 3 destinations can be specified.
      */
-    onSuccesses?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnSuccess>[]>;
+    onSuccesses?: pulumi.Input<pulumi.Input<inputs.JobWebhookNotificationsOnSuccess>[] | undefined>;
 }
 
 export interface JobWebhookNotificationsOnDurationWarningThresholdExceeded {
@@ -16977,7 +16977,7 @@ export interface LakehouseMonitorCustomMetric {
 }
 
 export interface LakehouseMonitorDataClassificationConfig {
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface LakehouseMonitorInferenceLog {
@@ -16988,7 +16988,7 @@ export interface LakehouseMonitorInferenceLog {
     /**
      * Column of the model label
      */
-    labelCol?: pulumi.Input<string>;
+    labelCol?: pulumi.Input<string | undefined>;
     /**
      * Column of the model id or version
      */
@@ -17000,7 +17000,7 @@ export interface LakehouseMonitorInferenceLog {
     /**
      * Column of the model prediction probabilities
      */
-    predictionProbaCol?: pulumi.Input<string>;
+    predictionProbaCol?: pulumi.Input<string | undefined>;
     /**
      * Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
      */
@@ -17015,19 +17015,19 @@ export interface LakehouseMonitorNotifications {
     /**
      * who to send notifications to on monitor failure.
      */
-    onFailure?: pulumi.Input<inputs.LakehouseMonitorNotificationsOnFailure>;
+    onFailure?: pulumi.Input<inputs.LakehouseMonitorNotificationsOnFailure | undefined>;
     /**
      * Who to send notifications to when new data classification tags are detected.
      */
-    onNewClassificationTagDetected?: pulumi.Input<inputs.LakehouseMonitorNotificationsOnNewClassificationTagDetected>;
+    onNewClassificationTagDetected?: pulumi.Input<inputs.LakehouseMonitorNotificationsOnNewClassificationTagDetected | undefined>;
 }
 
 export interface LakehouseMonitorNotificationsOnFailure {
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface LakehouseMonitorNotificationsOnNewClassificationTagDetected {
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface LakehouseMonitorProviderConfig {
@@ -17038,7 +17038,7 @@ export interface LakehouseMonitorSchedule {
     /**
      * optional string field that indicates whether a schedule is paused (`PAUSED`) or not (`UNPAUSED`).
      */
-    pauseStatus?: pulumi.Input<string>;
+    pauseStatus?: pulumi.Input<string | undefined>;
     /**
      * string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
      */
@@ -17071,7 +17071,7 @@ export interface LibraryCran {
     /**
      * The repository where the package can be found. If not specified, the default CRAN repo is used.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface LibraryMaven {
@@ -17082,11 +17082,11 @@ export interface LibraryMaven {
     /**
      * List of dependencies to exclude. For example: `["slf4j:slf4j", "*:hadoop-client"]`. See [Maven dependency exclusions](https://maven.apache.org/guides/introduction/introduction-to-optional-and-excludes-dependencies.html) for more information.
      */
-    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Maven repository to install the Maven package from. If omitted, both Maven Central Repository and Spark Packages are searched.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface LibraryProviderConfig {
@@ -17104,7 +17104,7 @@ export interface LibraryPypi {
     /**
      * The repository where the package can be found. If not specified, the default pip index is used.
      */
-    repo?: pulumi.Input<string>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface MaterializedFeaturesFeatureTagProviderConfig {
@@ -17122,15 +17122,15 @@ export interface MetastoreAssignmentProviderConfig {
 }
 
 export interface MetastoreDataAccessAwsIamRole {
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     roleArn: pulumi.Input<string>;
-    unityCatalogIamArn?: pulumi.Input<string>;
+    unityCatalogIamArn?: pulumi.Input<string | undefined>;
 }
 
 export interface MetastoreDataAccessAzureManagedIdentity {
     accessConnectorId: pulumi.Input<string>;
-    credentialId?: pulumi.Input<string>;
-    managedIdentityId?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string | undefined>;
+    managedIdentityId?: pulumi.Input<string | undefined>;
 }
 
 export interface MetastoreDataAccessAzureServicePrincipal {
@@ -17146,8 +17146,8 @@ export interface MetastoreDataAccessCloudflareApiToken {
 }
 
 export interface MetastoreDataAccessDatabricksGcpServiceAccount {
-    credentialId?: pulumi.Input<string>;
-    email?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string | undefined>;
+    email?: pulumi.Input<string | undefined>;
 }
 
 export interface MetastoreDataAccessGcpServiceAccountKey {
@@ -17185,8 +17185,8 @@ export interface MlflowExperimentProviderConfig {
 }
 
 export interface MlflowExperimentTag {
-    key?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface MlflowModelProviderConfig {
@@ -17197,23 +17197,23 @@ export interface MlflowModelProviderConfig {
 }
 
 export interface MlflowModelTag {
-    key?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface MlflowWebhookHttpUrlSpec {
     /**
      * Value of the authorization header that should be sent in the request sent by the wehbook.  It should be of the form `<auth type> <credentials>`, e.g. `Bearer <access_token>`. If set to an empty string, no authorization header will be included in the request.
      */
-    authorization?: pulumi.Input<string>;
+    authorization?: pulumi.Input<string | undefined>;
     /**
      * Enable/disable SSL certificate validation. Default is `true`. For self-signed certificates, this field must be `false` AND the destination server must disable certificate validation as well. For security purposes, it is encouraged to perform secret validation with the HMAC-encoded portion of the payload and acknowledge the risk associated with disabling hostname validation whereby it becomes more likely that requests can be maliciously routed to an unintended host.
      */
-    enableSslVerification?: pulumi.Input<boolean>;
+    enableSslVerification?: pulumi.Input<boolean | undefined>;
     /**
      * Shared secret required for HMAC encoding payload. The HMAC-encoded payload will be sent in the header as `X-Databricks-Signature: encodedPayload`.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * External HTTPS URL called on event trigger (by using a POST request). Structure of payload depends on the event type, refer to [documentation](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) for more details.
      */
@@ -17232,7 +17232,7 @@ export interface MlflowWebhookJobSpec {
     /**
      * URL of the workspace containing the job that this webhook runs. If not specified, the job’s workspace URL is assumed to be the same as the workspace where the webhook is created.
      */
-    workspaceUrl?: pulumi.Input<string>;
+    workspaceUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface MlflowWebhookProviderConfig {
@@ -17246,23 +17246,23 @@ export interface ModelServingAiGateway {
     /**
      * block with configuration for traffic fallback which auto fallbacks to other served entities if the request to a served entity fails with certain error codes, to increase availability.
      */
-    fallbackConfig?: pulumi.Input<inputs.ModelServingAiGatewayFallbackConfig>;
+    fallbackConfig?: pulumi.Input<inputs.ModelServingAiGatewayFallbackConfig | undefined>;
     /**
      * Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
      */
-    guardrails?: pulumi.Input<inputs.ModelServingAiGatewayGuardrails>;
+    guardrails?: pulumi.Input<inputs.ModelServingAiGatewayGuardrails | undefined>;
     /**
      * Block describing the configuration of usage tracking. Consists of the following attributes:
      */
-    inferenceTableConfig?: pulumi.Input<inputs.ModelServingAiGatewayInferenceTableConfig>;
+    inferenceTableConfig?: pulumi.Input<inputs.ModelServingAiGatewayInferenceTableConfig | undefined>;
     /**
      * Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
      */
-    rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingAiGatewayRateLimit>[]>;
+    rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingAiGatewayRateLimit>[] | undefined>;
     /**
      * Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
      */
-    usageTrackingConfig?: pulumi.Input<inputs.ModelServingAiGatewayUsageTrackingConfig>;
+    usageTrackingConfig?: pulumi.Input<inputs.ModelServingAiGatewayUsageTrackingConfig | undefined>;
 }
 
 export interface ModelServingAiGatewayFallbackConfig {
@@ -17276,11 +17276,11 @@ export interface ModelServingAiGatewayGuardrails {
     /**
      * A block with configuration for input guardrail filters:
      */
-    input?: pulumi.Input<inputs.ModelServingAiGatewayGuardrailsInput>;
+    input?: pulumi.Input<inputs.ModelServingAiGatewayGuardrailsInput | undefined>;
     /**
      * A block with configuration for output guardrail filters.  Has the same structure as `input` block.
      */
-    output?: pulumi.Input<inputs.ModelServingAiGatewayGuardrailsOutput>;
+    output?: pulumi.Input<inputs.ModelServingAiGatewayGuardrailsOutput | undefined>;
 }
 
 export interface ModelServingAiGatewayGuardrailsInput {
@@ -17289,28 +17289,28 @@ export interface ModelServingAiGatewayGuardrailsInput {
      *
      * @deprecated Please use 'pii' and 'safety' instead.
      */
-    invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
+    invalidKeywords?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Block with configuration for guardrail PII filter:
      */
-    pii?: pulumi.Input<inputs.ModelServingAiGatewayGuardrailsInputPii>;
+    pii?: pulumi.Input<inputs.ModelServingAiGatewayGuardrailsInputPii | undefined>;
     /**
      * the boolean flag that indicates whether the safety filter is enabled.
      */
-    safety?: pulumi.Input<boolean>;
+    safety?: pulumi.Input<boolean | undefined>;
     /**
      * The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
      *
      * @deprecated Please use 'pii' and 'safety' instead.
      */
-    validTopics?: pulumi.Input<pulumi.Input<string>[]>;
+    validTopics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ModelServingAiGatewayGuardrailsInputPii {
     /**
      * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
      */
-    behavior?: pulumi.Input<string>;
+    behavior?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingAiGatewayGuardrailsOutput {
@@ -17319,62 +17319,62 @@ export interface ModelServingAiGatewayGuardrailsOutput {
      *
      * @deprecated Please use 'pii' and 'safety' instead.
      */
-    invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
+    invalidKeywords?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Block with configuration for guardrail PII filter:
      */
-    pii?: pulumi.Input<inputs.ModelServingAiGatewayGuardrailsOutputPii>;
+    pii?: pulumi.Input<inputs.ModelServingAiGatewayGuardrailsOutputPii | undefined>;
     /**
      * the boolean flag that indicates whether the safety filter is enabled.
      */
-    safety?: pulumi.Input<boolean>;
+    safety?: pulumi.Input<boolean | undefined>;
     /**
      * The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
      *
      * @deprecated Please use 'pii' and 'safety' instead.
      */
-    validTopics?: pulumi.Input<pulumi.Input<string>[]>;
+    validTopics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ModelServingAiGatewayGuardrailsOutputPii {
     /**
      * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
      */
-    behavior?: pulumi.Input<string>;
+    behavior?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingAiGatewayInferenceTableConfig {
     /**
      * The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
      */
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * boolean flag specifying if usage tracking is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
      */
-    schemaName?: pulumi.Input<string>;
+    schemaName?: pulumi.Input<string | undefined>;
     /**
      * The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
      */
-    tableNamePrefix?: pulumi.Input<string>;
+    tableNamePrefix?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingAiGatewayRateLimit {
     /**
      * Used to specify how many calls are allowed for a key within the renewal_period.
      */
-    calls?: pulumi.Input<number>;
+    calls?: pulumi.Input<number | undefined>;
     /**
      * Key field for a serving endpoint rate limit. Currently, `user`, `userGroup`, `servicePrincipal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Principal field for a user, user group, or service principal to apply rate limiting to. Accepts a user email, group name, or service principal application ID.
      */
-    principal?: pulumi.Input<string>;
+    principal?: pulumi.Input<string | undefined>;
     /**
      * Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
      */
@@ -17382,139 +17382,139 @@ export interface ModelServingAiGatewayRateLimit {
     /**
      * Specifies how many tokens are allowed for a key within the renewal_period.
      */
-    tokens?: pulumi.Input<number>;
+    tokens?: pulumi.Input<number | undefined>;
 }
 
 export interface ModelServingAiGatewayUsageTrackingConfig {
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ModelServingConfig {
     /**
      * Configuration for Inference Tables which automatically logs requests and responses to Unity Catalog.
      */
-    autoCaptureConfig?: pulumi.Input<inputs.ModelServingConfigAutoCaptureConfig>;
+    autoCaptureConfig?: pulumi.Input<inputs.ModelServingConfigAutoCaptureConfig | undefined>;
     /**
      * A list of served entities for the endpoint to serve. A serving endpoint can have up to 10 served entities.
      */
-    servedEntities?: pulumi.Input<pulumi.Input<inputs.ModelServingConfigServedEntity>[]>;
+    servedEntities?: pulumi.Input<pulumi.Input<inputs.ModelServingConfigServedEntity>[] | undefined>;
     /**
      * Each block represents a served model for the endpoint to serve. A model serving endpoint can have up to 10 served models.
      *
      * @deprecated Please use 'config.served_entities' instead of 'config.served_models'.
      */
-    servedModels?: pulumi.Input<pulumi.Input<inputs.ModelServingConfigServedModel>[]>;
+    servedModels?: pulumi.Input<pulumi.Input<inputs.ModelServingConfigServedModel>[] | undefined>;
     /**
      * A single block represents the traffic split configuration amongst the served models.
      */
-    trafficConfig?: pulumi.Input<inputs.ModelServingConfigTrafficConfig>;
+    trafficConfig?: pulumi.Input<inputs.ModelServingConfigTrafficConfig | undefined>;
 }
 
 export interface ModelServingConfigAutoCaptureConfig {
     /**
      * The name of the catalog in Unity Catalog. NOTE: On update, you cannot change the catalog name if it was already set.
      */
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * If inference tables are enabled or not. NOTE: If you have already disabled payload logging once, you cannot enable it again.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the schema in Unity Catalog. NOTE: On update, you cannot change the schema name if it was already set.
      */
-    schemaName?: pulumi.Input<string>;
+    schemaName?: pulumi.Input<string | undefined>;
     /**
      * The prefix of the table in Unity Catalog. NOTE: On update, you cannot change the prefix name if it was already set.
      */
-    tableNamePrefix?: pulumi.Input<string>;
+    tableNamePrefix?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingConfigServedEntity {
-    burstScalingEnabled?: pulumi.Input<boolean>;
+    burstScalingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the entity to be served. The entity may be a model in the Databricks Model Registry, a model in the Unity Catalog (UC), or a function of type `FEATURE_SPEC` in the UC. If it is a UC object, the full name of the object should be given in the form of `catalog_name.schema_name.model_name`.
      */
-    entityName?: pulumi.Input<string>;
+    entityName?: pulumi.Input<string | undefined>;
     /**
      * The version of the model in Databricks Model Registry to be served or empty if the entity is a `FEATURE_SPEC`.
      */
-    entityVersion?: pulumi.Input<string>;
+    entityVersion?: pulumi.Input<string | undefined>;
     /**
      * An object containing a set of optional, user-specified environment variable key-value pairs used for serving this entity. Note: this is an experimental feature and is subject to change. Example entity environment variables that refer to Databricks secrets: ```{"OPENAI_API_KEY": "{{secrets/my_scope/my_key}}", "DATABRICKS_TOKEN": "{{secrets/my_scope2/my_key2}}"}```
      */
-    environmentVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The external model to be served. NOTE: Only one of `externalModel` and (`entityName`, `entityVersion`, `workloadSize`, `workloadType`, and `scaleToZeroEnabled`) can be specified with the latter set being used for custom model serving for a Databricks registered model. When an `externalModel` is present, the served entities list can only have one `servedEntity` object. An existing endpoint with `externalModel` can not be updated to an endpoint without `externalModel`. If the endpoint is created without `externalModel`, users cannot update it to add `externalModel` later.
      */
-    externalModel?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModel>;
+    externalModel?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModel | undefined>;
     /**
      * ARN of the instance profile that the served entity uses to access AWS resources.
      */
-    instanceProfileArn?: pulumi.Input<string>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
     /**
      * The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
      */
-    maxProvisionedConcurrency?: pulumi.Input<number>;
+    maxProvisionedConcurrency?: pulumi.Input<number | undefined>;
     /**
      * The maximum tokens per second that the endpoint can scale up to.
      */
-    maxProvisionedThroughput?: pulumi.Input<number>;
+    maxProvisionedThroughput?: pulumi.Input<number | undefined>;
     /**
      * The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
      */
-    minProvisionedConcurrency?: pulumi.Input<number>;
+    minProvisionedConcurrency?: pulumi.Input<number | undefined>;
     /**
      * The minimum tokens per second that the endpoint can scale down to.
      */
-    minProvisionedThroughput?: pulumi.Input<number>;
+    minProvisionedThroughput?: pulumi.Input<number | undefined>;
     /**
      * The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field defaults to `external_model.name`, with '.' and ':' replaced with '-', and if not specified for other entities, it defaults to -.
      */
-    name?: pulumi.Input<string>;
-    provisionedModelUnits?: pulumi.Input<number>;
+    name?: pulumi.Input<string | undefined>;
+    provisionedModelUnits?: pulumi.Input<number | undefined>;
     /**
      * Whether the compute resources for the served entity should scale down to zero.
      */
-    scaleToZeroEnabled?: pulumi.Input<boolean>;
+    scaleToZeroEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The workload size of the served entity. The workload size corresponds to a range of provisioned concurrency that the compute autoscales between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency). If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size is 0. Conflicts with `minProvisionedConcurrency` and `maxProvisionedConcurrency`.
      */
-    workloadSize?: pulumi.Input<string>;
+    workloadSize?: pulumi.Input<string | undefined>;
     /**
      * The workload type of the served entity. The workload type selects which type of compute to use in the endpoint. The default value for this parameter is `CPU`. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the available [GPU types](https://docs.databricks.com/machine-learning/model-serving/create-manage-serving-endpoints.html#gpu-workload-types).
      */
-    workloadType?: pulumi.Input<string>;
+    workloadType?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingConfigServedEntityExternalModel {
     /**
      * AI21Labs Config
      */
-    ai21labsConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAi21labsConfig>;
+    ai21labsConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAi21labsConfig | undefined>;
     /**
      * Amazon Bedrock Config
      */
-    amazonBedrockConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAmazonBedrockConfig>;
+    amazonBedrockConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAmazonBedrockConfig | undefined>;
     /**
      * Anthropic Config
      */
-    anthropicConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAnthropicConfig>;
+    anthropicConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelAnthropicConfig | undefined>;
     /**
      * Cohere Config
      */
-    cohereConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCohereConfig>;
+    cohereConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCohereConfig | undefined>;
     /**
      * Custom Provider Config. Only required if the provider is 'custom'.
      */
-    customProviderConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCustomProviderConfig>;
+    customProviderConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCustomProviderConfig | undefined>;
     /**
      * Databricks Model Serving Config
      */
-    databricksModelServingConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig>;
+    databricksModelServingConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig | undefined>;
     /**
      * Google Cloud Vertex AI Config.
      */
-    googleCloudVertexAiConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig>;
+    googleCloudVertexAiConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiConfig | undefined>;
     /**
      * The name of the external model.
      */
@@ -17522,11 +17522,11 @@ export interface ModelServingConfigServedEntityExternalModel {
     /**
      * OpenAI Config
      */
-    openaiConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelOpenaiConfig>;
+    openaiConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelOpenaiConfig | undefined>;
     /**
      * PaLM Config
      */
-    palmConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelPalmConfig>;
+    palmConfig?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelPalmConfig | undefined>;
     /**
      * The name of the provider for the external model. Currently, the supported providers are `ai21labs`, `anthropic`, `amazon-bedrock`, `cohere`, `databricks-model-serving`, `google-cloud-vertex-ai`, `openai`, and `palm`.
      */
@@ -17541,22 +17541,22 @@ export interface ModelServingConfigServedEntityExternalModelAi21labsConfig {
     /**
      * The Databricks secret key reference for an AI21Labs API key.
      */
-    ai21labsApiKey?: pulumi.Input<string>;
+    ai21labsApiKey?: pulumi.Input<string | undefined>;
     /**
      * An AI21 Labs API key provided as a plaintext string.
      */
-    ai21labsApiKeyPlaintext?: pulumi.Input<string>;
+    ai21labsApiKeyPlaintext?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig {
     /**
      * The Databricks secret key reference for an AWS Access Key ID with permissions to interact with Bedrock services.
      */
-    awsAccessKeyId?: pulumi.Input<string>;
+    awsAccessKeyId?: pulumi.Input<string | undefined>;
     /**
      * An AWS access key ID with permissions to interact with Bedrock services provided as a plaintext string.
      */
-    awsAccessKeyIdPlaintext?: pulumi.Input<string>;
+    awsAccessKeyIdPlaintext?: pulumi.Input<string | undefined>;
     /**
      * The AWS region to use. Bedrock has to be enabled there.
      */
@@ -17564,50 +17564,50 @@ export interface ModelServingConfigServedEntityExternalModelAmazonBedrockConfig 
     /**
      * The Databricks secret key reference for an AWS Secret Access Key paired with the access key ID, with permissions to interact with Bedrock services.
      */
-    awsSecretAccessKey?: pulumi.Input<string>;
+    awsSecretAccessKey?: pulumi.Input<string | undefined>;
     /**
      * An AWS secret access key paired with the access key ID, with permissions to interact with Bedrock services provided as a plaintext string.
      */
-    awsSecretAccessKeyPlaintext?: pulumi.Input<string>;
+    awsSecretAccessKeyPlaintext?: pulumi.Input<string | undefined>;
     /**
      * The underlying provider in Amazon Bedrock. Supported values (case insensitive) include: `Anthropic`, `Cohere`, `AI21Labs`, `Amazon`.
      */
     bedrockProvider: pulumi.Input<string>;
-    instanceProfileArn?: pulumi.Input<string>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelAnthropicConfig {
     /**
      * The Databricks secret key reference for an Anthropic API key.
      */
-    anthropicApiKey?: pulumi.Input<string>;
+    anthropicApiKey?: pulumi.Input<string | undefined>;
     /**
      * The Anthropic API key provided as a plaintext string.
      */
-    anthropicApiKeyPlaintext?: pulumi.Input<string>;
+    anthropicApiKeyPlaintext?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelCohereConfig {
-    cohereApiBase?: pulumi.Input<string>;
+    cohereApiBase?: pulumi.Input<string | undefined>;
     /**
      * The Databricks secret key reference for a Cohere API key.
      */
-    cohereApiKey?: pulumi.Input<string>;
+    cohereApiKey?: pulumi.Input<string | undefined>;
     /**
      * The Cohere API key provided as a plaintext string.
      */
-    cohereApiKeyPlaintext?: pulumi.Input<string>;
+    cohereApiKeyPlaintext?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelCustomProviderConfig {
     /**
      * API key authentication for the custom provider API. Conflicts with `bearerTokenAuth`.
      */
-    apiKeyAuth?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth>;
+    apiKeyAuth?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth | undefined>;
     /**
      * bearer token authentication for the custom provider API.  Conflicts with `apiKeyAuth`.
      */
-    bearerTokenAuth?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth>;
+    bearerTokenAuth?: pulumi.Input<inputs.ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth | undefined>;
     /**
      * URL of the custom provider API.
      */
@@ -17616,33 +17616,33 @@ export interface ModelServingConfigServedEntityExternalModelCustomProviderConfig
 
 export interface ModelServingConfigServedEntityExternalModelCustomProviderConfigApiKeyAuth {
     key: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
     /**
      * The API Key provided as a plaintext string.
      */
-    valuePlaintext?: pulumi.Input<string>;
+    valuePlaintext?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelCustomProviderConfigBearerTokenAuth {
     /**
      * The Databricks secret key reference for a token.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The token provided as a plaintext string.
      */
-    tokenPlaintext?: pulumi.Input<string>;
+    tokenPlaintext?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelDatabricksModelServingConfig {
     /**
      * The Databricks secret key reference for a Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model.
      */
-    databricksApiToken?: pulumi.Input<string>;
+    databricksApiToken?: pulumi.Input<string | undefined>;
     /**
      * The Databricks API token that corresponds to a user or service principal with Can Query access to the model serving endpoint pointed to by this external model provided as a plaintext string.
      */
-    databricksApiTokenPlaintext?: pulumi.Input<string>;
+    databricksApiTokenPlaintext?: pulumi.Input<string | undefined>;
     /**
      * The URL of the Databricks workspace containing the model serving endpoint pointed to by this external model.
      */
@@ -17653,11 +17653,11 @@ export interface ModelServingConfigServedEntityExternalModelGoogleCloudVertexAiC
     /**
      * The Databricks secret key reference for a private key for the service account that has access to the Google Cloud Vertex AI Service.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The private key for the service account that has access to the Google Cloud Vertex AI Service is provided as a plaintext secret.
      */
-    privateKeyPlaintext?: pulumi.Input<string>;
+    privateKeyPlaintext?: pulumi.Input<string | undefined>;
     /**
      * This is the Google Cloud project id that the service account is associated with.
      */
@@ -17672,86 +17672,86 @@ export interface ModelServingConfigServedEntityExternalModelOpenaiConfig {
     /**
      * This field is only required for Azure AD OpenAI and is the Microsoft Entra Client ID.
      */
-    microsoftEntraClientId?: pulumi.Input<string>;
+    microsoftEntraClientId?: pulumi.Input<string | undefined>;
     /**
      * The Databricks secret key reference for a client secret used for Microsoft Entra ID authentication.
      */
-    microsoftEntraClientSecret?: pulumi.Input<string>;
+    microsoftEntraClientSecret?: pulumi.Input<string | undefined>;
     /**
      * The client secret used for Microsoft Entra ID authentication provided as a plaintext string.
      */
-    microsoftEntraClientSecretPlaintext?: pulumi.Input<string>;
+    microsoftEntraClientSecretPlaintext?: pulumi.Input<string | undefined>;
     /**
      * This field is only required for Azure AD OpenAI and is the Microsoft Entra Tenant ID.
      */
-    microsoftEntraTenantId?: pulumi.Input<string>;
+    microsoftEntraTenantId?: pulumi.Input<string | undefined>;
     /**
      * This is the base URL for the OpenAI API (default: "<https://api.openai.com/v1>"). For Azure OpenAI, this field is required and is the base URL for the Azure OpenAI API service provided by Azure.
      */
-    openaiApiBase?: pulumi.Input<string>;
+    openaiApiBase?: pulumi.Input<string | undefined>;
     /**
      * The Databricks secret key reference for an OpenAI or Azure OpenAI API key.
      */
-    openaiApiKey?: pulumi.Input<string>;
+    openaiApiKey?: pulumi.Input<string | undefined>;
     /**
      * The OpenAI API key using the OpenAI or Azure service provided as a plaintext string.
      */
-    openaiApiKeyPlaintext?: pulumi.Input<string>;
+    openaiApiKeyPlaintext?: pulumi.Input<string | undefined>;
     /**
      * This is an optional field to specify the type of OpenAI API to use. For Azure OpenAI, this field is required, and this parameter represents the preferred security access validation protocol. For access token validation, use `azure`. For authentication using Azure Active Directory (Azure AD) use, `azuread`.
      */
-    openaiApiType?: pulumi.Input<string>;
+    openaiApiType?: pulumi.Input<string | undefined>;
     /**
      * This is an optional field to specify the OpenAI API version. For Azure OpenAI, this field is required and is the version of the Azure OpenAI service to utilize, specified by a date.
      */
-    openaiApiVersion?: pulumi.Input<string>;
+    openaiApiVersion?: pulumi.Input<string | undefined>;
     /**
      * This field is only required for Azure OpenAI and is the name of the deployment resource for the Azure OpenAI service.
      */
-    openaiDeploymentName?: pulumi.Input<string>;
+    openaiDeploymentName?: pulumi.Input<string | undefined>;
     /**
      * This is an optional field to specify the organization in OpenAI or Azure OpenAI.
      */
-    openaiOrganization?: pulumi.Input<string>;
+    openaiOrganization?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingConfigServedEntityExternalModelPalmConfig {
     /**
      * The Databricks secret key reference for a PaLM API key.
      */
-    palmApiKey?: pulumi.Input<string>;
+    palmApiKey?: pulumi.Input<string | undefined>;
     /**
      * The PaLM API key provided as a plaintext string.
      */
-    palmApiKeyPlaintext?: pulumi.Input<string>;
+    palmApiKeyPlaintext?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingConfigServedModel {
-    burstScalingEnabled?: pulumi.Input<boolean>;
+    burstScalingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * a map of environment variable names/values that will be used for serving this model.  Environment variables may refer to Databricks secrets using the standard syntax: `{{secrets/secret_scope/secret_key}}`.
      */
-    environmentVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ARN of the instance profile that the served model will use to access AWS resources.
      */
-    instanceProfileArn?: pulumi.Input<string>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
     /**
      * The maximum provisioned concurrency that the endpoint can scale up to. Conflicts with `workloadSize`.
      */
-    maxProvisionedConcurrency?: pulumi.Input<number>;
+    maxProvisionedConcurrency?: pulumi.Input<number | undefined>;
     /**
      * The maximum tokens per second that the endpoint can scale up to.
      */
-    maxProvisionedThroughput?: pulumi.Input<number>;
+    maxProvisionedThroughput?: pulumi.Input<number | undefined>;
     /**
      * The minimum provisioned concurrency that the endpoint can scale down to. Conflicts with `workloadSize`.
      */
-    minProvisionedConcurrency?: pulumi.Input<number>;
+    minProvisionedConcurrency?: pulumi.Input<number | undefined>;
     /**
      * The minimum tokens per second that the endpoint can scale down to.
      */
-    minProvisionedThroughput?: pulumi.Input<number>;
+    minProvisionedThroughput?: pulumi.Input<number | undefined>;
     /**
      * The name of the model in Databricks Model Registry to be served.
      */
@@ -17763,35 +17763,35 @@ export interface ModelServingConfigServedModel {
     /**
      * The name of a served model. It must be unique across an endpoint. If not specified, this field will default to `modelname-modelversion`. A served model name can consist of alphanumeric characters, dashes, and underscores.
      */
-    name?: pulumi.Input<string>;
-    provisionedModelUnits?: pulumi.Input<number>;
+    name?: pulumi.Input<string | undefined>;
+    provisionedModelUnits?: pulumi.Input<number | undefined>;
     /**
      * Whether the compute resources for the served model should scale down to zero. If `scale-to-zero` is enabled, the lower bound of the provisioned concurrency for each workload size will be 0. The default value is `true`.
      */
-    scaleToZeroEnabled?: pulumi.Input<boolean>;
+    scaleToZeroEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The workload size of the served model. The workload size corresponds to a range of provisioned concurrency that the compute will autoscale between. A single unit of provisioned concurrency can process one request at a time. Valid workload sizes are `Small` (4 - 4 provisioned concurrency), `Medium` (8 - 16 provisioned concurrency), and `Large` (16 - 64 provisioned concurrency).
      */
-    workloadSize?: pulumi.Input<string>;
+    workloadSize?: pulumi.Input<string | undefined>;
     /**
      * The workload type of the served model. The workload type selects which type of compute to use in the endpoint. For deep learning workloads, GPU acceleration is available by selecting workload types like `GPU_SMALL` and others. See the documentation for all options. The default value is `CPU`.
      */
-    workloadType?: pulumi.Input<string>;
+    workloadType?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingConfigTrafficConfig {
     /**
      * Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
      */
-    routes?: pulumi.Input<pulumi.Input<inputs.ModelServingConfigTrafficConfigRoute>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.ModelServingConfigTrafficConfigRoute>[] | undefined>;
 }
 
 export interface ModelServingConfigTrafficConfigRoute {
     /**
      * The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
      */
-    servedEntityName?: pulumi.Input<string>;
-    servedModelName?: pulumi.Input<string>;
+    servedEntityName?: pulumi.Input<string | undefined>;
+    servedModelName?: pulumi.Input<string | undefined>;
     /**
      * The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
      */
@@ -17802,11 +17802,11 @@ export interface ModelServingEmailNotifications {
     /**
      * a list of email addresses to be notified when an endpoint fails to update its configuration or state.
      */
-    onUpdateFailures?: pulumi.Input<pulumi.Input<string>[]>;
+    onUpdateFailures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * a list of email addresses to be notified when an endpoint successfully updates its configuration or state.
      */
-    onUpdateSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
+    onUpdateSuccesses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ModelServingProviderConfig {
@@ -17817,23 +17817,23 @@ export interface ModelServingProviderConfig {
 }
 
 export interface ModelServingProvisionedThroughputAiGateway {
-    fallbackConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayFallbackConfig>;
+    fallbackConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayFallbackConfig | undefined>;
     /**
      * Block with configuration for AI Guardrails to prevent unwanted data and unsafe data in requests and responses. Consists of the following attributes:
      */
-    guardrails?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayGuardrails>;
+    guardrails?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayGuardrails | undefined>;
     /**
      * Block describing the configuration of usage tracking. Consists of the following attributes:
      */
-    inferenceTableConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayInferenceTableConfig>;
+    inferenceTableConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayInferenceTableConfig | undefined>;
     /**
      * Block describing rate limits for AI gateway. For details see the description of `rateLimits` block above.
      */
-    rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayRateLimit>[]>;
+    rateLimits?: pulumi.Input<pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayRateLimit>[] | undefined>;
     /**
      * Block with configuration for payload logging using inference tables. For details see the description of `autoCaptureConfig` block above.
      */
-    usageTrackingConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig>;
+    usageTrackingConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig | undefined>;
 }
 
 export interface ModelServingProvisionedThroughputAiGatewayFallbackConfig {
@@ -17847,106 +17847,106 @@ export interface ModelServingProvisionedThroughputAiGatewayGuardrails {
     /**
      * A block with configuration for input guardrail filters:
      */
-    input?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayGuardrailsInput>;
+    input?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayGuardrailsInput | undefined>;
     /**
      * A block with configuration for output guardrail filters.  Has the same structure as `input` block.
      */
-    output?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayGuardrailsOutput>;
+    output?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayGuardrailsOutput | undefined>;
 }
 
 export interface ModelServingProvisionedThroughputAiGatewayGuardrailsInput {
     /**
      * List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
      */
-    invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
+    invalidKeywords?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Block with configuration for guardrail PII filter:
      */
-    pii?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii>;
+    pii?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii | undefined>;
     /**
      * the boolean flag that indicates whether the safety filter is enabled.
      */
-    safety?: pulumi.Input<boolean>;
+    safety?: pulumi.Input<boolean | undefined>;
     /**
      * The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
      */
-    validTopics?: pulumi.Input<pulumi.Input<string>[]>;
+    validTopics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ModelServingProvisionedThroughputAiGatewayGuardrailsInputPii {
     /**
      * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
      */
-    behavior?: pulumi.Input<string>;
+    behavior?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingProvisionedThroughputAiGatewayGuardrailsOutput {
     /**
      * List of invalid keywords. AI guardrail uses keyword or string matching to decide if the keyword exists in the request or response content.
      */
-    invalidKeywords?: pulumi.Input<pulumi.Input<string>[]>;
+    invalidKeywords?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Block with configuration for guardrail PII filter:
      */
-    pii?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii>;
+    pii?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii | undefined>;
     /**
      * the boolean flag that indicates whether the safety filter is enabled.
      */
-    safety?: pulumi.Input<boolean>;
+    safety?: pulumi.Input<boolean | undefined>;
     /**
      * The list of allowed topics. Given a chat request, this guardrail flags the request if its topic is not in the allowed topics.
      */
-    validTopics?: pulumi.Input<pulumi.Input<string>[]>;
+    validTopics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ModelServingProvisionedThroughputAiGatewayGuardrailsOutputPii {
     /**
      * a string that describes the behavior for PII filter. Currently only `BLOCK` value is supported.
      */
-    behavior?: pulumi.Input<string>;
+    behavior?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingProvisionedThroughputAiGatewayInferenceTableConfig {
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * boolean flag specifying if usage tracking is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
-    schemaName?: pulumi.Input<string>;
-    tableNamePrefix?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    schemaName?: pulumi.Input<string | undefined>;
+    tableNamePrefix?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingProvisionedThroughputAiGatewayRateLimit {
-    calls?: pulumi.Input<number>;
+    calls?: pulumi.Input<number | undefined>;
     /**
      * The key field for a tag.
      */
-    key?: pulumi.Input<string>;
-    principal?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
+    principal?: pulumi.Input<string | undefined>;
     renewalPeriod: pulumi.Input<string>;
-    tokens?: pulumi.Input<number>;
+    tokens?: pulumi.Input<number | undefined>;
 }
 
 export interface ModelServingProvisionedThroughputAiGatewayUsageTrackingConfig {
     /**
      * boolean flag specifying if usage tracking is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ModelServingProvisionedThroughputConfig {
     /**
      * A list of served entities for the endpoint to serve.
      */
-    servedEntities?: pulumi.Input<pulumi.Input<inputs.ModelServingProvisionedThroughputConfigServedEntity>[]>;
+    servedEntities?: pulumi.Input<pulumi.Input<inputs.ModelServingProvisionedThroughputConfigServedEntity>[] | undefined>;
     /**
      * A single block represents the traffic split configuration amongst the served models.
      */
-    trafficConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputConfigTrafficConfig>;
+    trafficConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputConfigTrafficConfig | undefined>;
 }
 
 export interface ModelServingProvisionedThroughputConfigServedEntity {
-    burstScalingEnabled?: pulumi.Input<boolean>;
+    burstScalingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The full path of the UC model to be served, given in the form of `catalog_name.schema_name.model_name`.
      */
@@ -17958,7 +17958,7 @@ export interface ModelServingProvisionedThroughputConfigServedEntity {
     /**
      * The name of a served entity. It must be unique across an endpoint. A served entity name can consist of alphanumeric characters, dashes, and underscores. If not specified for an external model, this field will be created from the `entityName` and `entityVersion`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The number of model units to be provisioned.
      */
@@ -17969,15 +17969,15 @@ export interface ModelServingProvisionedThroughputConfigTrafficConfig {
     /**
      * Each block represents a route that defines traffic to each served entity. Each `servedEntity` block needs to have a corresponding `routes` block.
      */
-    routes?: pulumi.Input<pulumi.Input<inputs.ModelServingProvisionedThroughputConfigTrafficConfigRoute>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.ModelServingProvisionedThroughputConfigTrafficConfigRoute>[] | undefined>;
 }
 
 export interface ModelServingProvisionedThroughputConfigTrafficConfigRoute {
     /**
      * The name of the served entity this route configures traffic for. This needs to match the name of a `servedEntity` block.
      */
-    servedEntityName?: pulumi.Input<string>;
-    servedModelName?: pulumi.Input<string>;
+    servedEntityName?: pulumi.Input<string | undefined>;
+    servedModelName?: pulumi.Input<string | undefined>;
     /**
      * The percentage of endpoint traffic to send to this route. It must be an integer between 0 and 100 inclusive.
      */
@@ -17988,11 +17988,11 @@ export interface ModelServingProvisionedThroughputEmailNotifications {
     /**
      * a list of email addresses to be notified when an endpoint fails to update its configuration or state.
      */
-    onUpdateFailures?: pulumi.Input<pulumi.Input<string>[]>;
+    onUpdateFailures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * a list of email addresses to be notified when an endpoint successfully updates its configuration or state.
      */
-    onUpdateSuccesses?: pulumi.Input<pulumi.Input<string>[]>;
+    onUpdateSuccesses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ModelServingProvisionedThroughputProviderConfig {
@@ -18010,7 +18010,7 @@ export interface ModelServingProvisionedThroughputTag {
     /**
      * The value field for a tag.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingRateLimit {
@@ -18021,7 +18021,7 @@ export interface ModelServingRateLimit {
     /**
      * Key field for a serving endpoint rate limit. Currently, `user`, `userGroup`, `servicePrincipal`, and `endpoint` are supported, with `endpoint` being the default if not specified.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Renewal period field for a serving endpoint rate limit. Currently, only `minute` is supported.
      */
@@ -18036,33 +18036,33 @@ export interface ModelServingTag {
     /**
      * The value field for a tag.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface MountAbfs {
     clientId: pulumi.Input<string>;
     clientSecretKey: pulumi.Input<string>;
     clientSecretScope: pulumi.Input<string>;
-    containerName?: pulumi.Input<string>;
-    directory?: pulumi.Input<string>;
+    containerName?: pulumi.Input<string | undefined>;
+    directory?: pulumi.Input<string | undefined>;
     initializeFileSystem: pulumi.Input<boolean>;
-    storageAccountName?: pulumi.Input<string>;
-    tenantId?: pulumi.Input<string>;
+    storageAccountName?: pulumi.Input<string | undefined>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 export interface MountAdl {
     clientId: pulumi.Input<string>;
     clientSecretKey: pulumi.Input<string>;
     clientSecretScope: pulumi.Input<string>;
-    directory?: pulumi.Input<string>;
-    sparkConfPrefix?: pulumi.Input<string>;
-    storageResourceName?: pulumi.Input<string>;
-    tenantId?: pulumi.Input<string>;
+    directory?: pulumi.Input<string | undefined>;
+    sparkConfPrefix?: pulumi.Input<string | undefined>;
+    storageResourceName?: pulumi.Input<string | undefined>;
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 export interface MountGs {
     bucketName: pulumi.Input<string>;
-    serviceAccount?: pulumi.Input<string>;
+    serviceAccount?: pulumi.Input<string | undefined>;
 }
 
 export interface MountProviderConfig {
@@ -18071,14 +18071,14 @@ export interface MountProviderConfig {
 
 export interface MountS3 {
     bucketName: pulumi.Input<string>;
-    instanceProfile?: pulumi.Input<string>;
+    instanceProfile?: pulumi.Input<string | undefined>;
 }
 
 export interface MountWasb {
     authType: pulumi.Input<string>;
-    containerName?: pulumi.Input<string>;
-    directory?: pulumi.Input<string>;
-    storageAccountName?: pulumi.Input<string>;
+    containerName?: pulumi.Input<string | undefined>;
+    directory?: pulumi.Input<string | undefined>;
+    storageAccountName?: pulumi.Input<string | undefined>;
     tokenSecretKey: pulumi.Input<string>;
     tokenSecretScope: pulumi.Input<string>;
 }
@@ -18087,7 +18087,7 @@ export interface MwsCustomerManagedKeysAwsKeyInfo {
     /**
      * The AWS KMS key alias.
      */
-    keyAlias?: pulumi.Input<string>;
+    keyAlias?: pulumi.Input<string | undefined>;
     /**
      * The AWS KMS key's Amazon Resource Name (ARN).
      */
@@ -18095,7 +18095,7 @@ export interface MwsCustomerManagedKeysAwsKeyInfo {
     /**
      * (Computed) The AWS region in which KMS key is deployed to. This is not required.
      */
-    keyRegion?: pulumi.Input<string>;
+    keyRegion?: pulumi.Input<string | undefined>;
 }
 
 export interface MwsCustomerManagedKeysGcpKeyInfo {
@@ -18106,118 +18106,118 @@ export interface MwsCustomerManagedKeysGcpKeyInfo {
 }
 
 export interface MwsNccPrivateEndpointRuleGcpEndpoint {
-    pscEndpointUri?: pulumi.Input<string>;
-    serviceAttachment?: pulumi.Input<string>;
+    pscEndpointUri?: pulumi.Input<string | undefined>;
+    serviceAttachment?: pulumi.Input<string | undefined>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfig {
     /**
      * block describing network connectivity rules that are applied by default without resource specific configurations.  Consists of the following fields:
      */
-    defaultRules?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigDefaultRules>;
+    defaultRules?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigDefaultRules | undefined>;
     /**
      * block describing network connectivity rules that configured for each destinations. These rules override default rules.  Consists of the following fields:
      */
-    targetRules?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigTargetRules>;
+    targetRules?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigTargetRules | undefined>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigDefaultRules {
     /**
      * (AWS only) - block with information about stable AWS IP CIDR blocks. You can use these to configure the firewall of your resources to allow traffic from your Databricks workspace.  Consists of the following fields:
      */
-    awsStableIpRule?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule>;
+    awsStableIpRule?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule | undefined>;
     /**
      * (Azure only) - block with information about stable Azure service endpoints. You can configure the firewall of your Azure resources to allow traffic from your Databricks serverless compute resources.  Consists of the following fields:
      */
-    azureServiceEndpointRule?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule>;
+    azureServiceEndpointRule?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule | undefined>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigDefaultRulesAwsStableIpRule {
     /**
      * list of IP CIDR blocks.
      */
-    cidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    cidrBlocks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigDefaultRulesAzureServiceEndpointRule {
     /**
      * list of subnets from which Databricks network traffic originates when accessing your Azure resources.
      */
-    subnets?: pulumi.Input<pulumi.Input<string>[]>;
+    subnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * the Azure region in which this service endpoint rule applies.
      */
-    targetRegion?: pulumi.Input<string>;
+    targetRegion?: pulumi.Input<string | undefined>;
     /**
      * the Azure services to which this service endpoint rule applies to.
      */
-    targetServices?: pulumi.Input<pulumi.Input<string>[]>;
+    targetServices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigTargetRules {
     /**
      * (AWS only) - list containing information about configure AWS Private Endpoints.
      */
-    awsPrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule>[]>;
+    awsPrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule>[] | undefined>;
     /**
      * (Azure only) - list containing information about configure Azure Private Endpoints.
      */
-    azurePrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule>[]>;
+    azurePrivateEndpointRules?: pulumi.Input<pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule>[] | undefined>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAwsPrivateEndpointRule {
-    accountId?: pulumi.Input<string>;
-    connectionState?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
+    connectionState?: pulumi.Input<string | undefined>;
     /**
      * time in epoch milliseconds when this object was created.
      */
-    creationTime?: pulumi.Input<number>;
-    deactivated?: pulumi.Input<boolean>;
-    deactivatedAt?: pulumi.Input<number>;
-    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
-    enabled?: pulumi.Input<boolean>;
-    endpointService?: pulumi.Input<string>;
-    errorMessage?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<number | undefined>;
+    deactivated?: pulumi.Input<boolean | undefined>;
+    deactivatedAt?: pulumi.Input<number | undefined>;
+    domainNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    endpointService?: pulumi.Input<string | undefined>;
+    errorMessage?: pulumi.Input<string | undefined>;
     /**
      * Canonical unique identifier of Network Connectivity Config in Databricks Account
      */
-    networkConnectivityConfigId?: pulumi.Input<string>;
-    resourceNames?: pulumi.Input<pulumi.Input<string>[]>;
-    ruleId?: pulumi.Input<string>;
+    networkConnectivityConfigId?: pulumi.Input<string | undefined>;
+    resourceNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    ruleId?: pulumi.Input<string | undefined>;
     /**
      * time in epoch milliseconds when this object was updated.
      */
-    updatedTime?: pulumi.Input<number>;
-    vpcEndpointId?: pulumi.Input<string>;
+    updatedTime?: pulumi.Input<number | undefined>;
+    vpcEndpointId?: pulumi.Input<string | undefined>;
 }
 
 export interface MwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePrivateEndpointRule {
-    connectionState?: pulumi.Input<string>;
+    connectionState?: pulumi.Input<string | undefined>;
     /**
      * time in epoch milliseconds when this object was created.
      */
-    creationTime?: pulumi.Input<number>;
-    deactivated?: pulumi.Input<boolean>;
-    deactivatedAt?: pulumi.Input<number>;
-    domainNames?: pulumi.Input<pulumi.Input<string>[]>;
-    endpointName?: pulumi.Input<string>;
-    errorMessage?: pulumi.Input<string>;
-    groupId?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<number | undefined>;
+    deactivated?: pulumi.Input<boolean | undefined>;
+    deactivatedAt?: pulumi.Input<number | undefined>;
+    domainNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    endpointName?: pulumi.Input<string | undefined>;
+    errorMessage?: pulumi.Input<string | undefined>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Canonical unique identifier of Network Connectivity Config in Databricks Account
      */
-    networkConnectivityConfigId?: pulumi.Input<string>;
-    resourceId?: pulumi.Input<string>;
-    ruleId?: pulumi.Input<string>;
+    networkConnectivityConfigId?: pulumi.Input<string | undefined>;
+    resourceId?: pulumi.Input<string | undefined>;
+    ruleId?: pulumi.Input<string | undefined>;
     /**
      * time in epoch milliseconds when this object was updated.
      */
-    updatedTime?: pulumi.Input<number>;
+    updatedTime?: pulumi.Input<number | undefined>;
 }
 
 export interface MwsNetworksErrorMessage {
-    errorMessage?: pulumi.Input<string>;
-    errorType?: pulumi.Input<string>;
+    errorMessage?: pulumi.Input<string | undefined>;
+    errorType?: pulumi.Input<string | undefined>;
 }
 
 export interface MwsNetworksGcpNetworkInfo {
@@ -18228,11 +18228,11 @@ export interface MwsNetworksGcpNetworkInfo {
     /**
      * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-vpc
      */
-    podIpRangeName?: pulumi.Input<string>;
+    podIpRangeName?: pulumi.Input<string | undefined>;
     /**
      * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-vpc
      */
-    serviceIpRangeName?: pulumi.Input<string>;
+    serviceIpRangeName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the subnet associated with this network.
      */
@@ -18264,7 +18264,7 @@ export interface MwsVpcEndpointGcpVpcEndpointInfo {
     /**
      * The unique ID of this PSC connection.
      */
-    pscConnectionId?: pulumi.Input<string>;
+    pscConnectionId?: pulumi.Input<string | undefined>;
     /**
      * The name of the PSC endpoint in the Google Cloud project.
      */
@@ -18272,7 +18272,7 @@ export interface MwsVpcEndpointGcpVpcEndpointInfo {
     /**
      * The service attachment this PSC connection connects to.
      */
-    serviceAttachmentId?: pulumi.Input<string>;
+    serviceAttachmentId?: pulumi.Input<string | undefined>;
 }
 
 export interface MwsWorkspacesCloudResourceContainer {
@@ -18299,30 +18299,30 @@ export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
      * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
-    gkeClusterPodIpRange?: pulumi.Input<string>;
+    gkeClusterPodIpRange?: pulumi.Input<string | undefined>;
     /**
      * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
-    gkeClusterServiceIpRange?: pulumi.Input<string>;
+    gkeClusterServiceIpRange?: pulumi.Input<string | undefined>;
     subnetCidr: pulumi.Input<string>;
 }
 
 export interface MwsWorkspacesGkeConfig {
-    connectivityType?: pulumi.Input<string>;
-    masterIpRange?: pulumi.Input<string>;
+    connectivityType?: pulumi.Input<string | undefined>;
+    masterIpRange?: pulumi.Input<string | undefined>;
 }
 
 export interface MwsWorkspacesToken {
     /**
      * Comment, that will appear in "User Settings / Access Tokens" page on Workspace UI. By default it's "Pulumi PAT".
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Token expiry lifetime. By default its 2592000 (30 days).
      */
-    lifetimeSeconds?: pulumi.Input<number>;
-    tokenId?: pulumi.Input<string>;
-    tokenValue?: pulumi.Input<string>;
+    lifetimeSeconds?: pulumi.Input<number | undefined>;
+    tokenId?: pulumi.Input<string | undefined>;
+    tokenValue?: pulumi.Input<string | undefined>;
 }
 
 export interface NotebookProviderConfig {
@@ -18336,102 +18336,102 @@ export interface NotificationDestinationConfig {
     /**
      * The email configuration of the Notification Destination. It must contain the following:
      */
-    email?: pulumi.Input<inputs.NotificationDestinationConfigEmail>;
+    email?: pulumi.Input<inputs.NotificationDestinationConfigEmail | undefined>;
     /**
      * The Generic Webhook configuration of the Notification Destination. It must contain the following:
      */
-    genericWebhook?: pulumi.Input<inputs.NotificationDestinationConfigGenericWebhook>;
+    genericWebhook?: pulumi.Input<inputs.NotificationDestinationConfigGenericWebhook | undefined>;
     /**
      * The Microsoft Teams configuration of the Notification Destination. It must contain the following:
      */
-    microsoftTeams?: pulumi.Input<inputs.NotificationDestinationConfigMicrosoftTeams>;
+    microsoftTeams?: pulumi.Input<inputs.NotificationDestinationConfigMicrosoftTeams | undefined>;
     /**
      * The PagerDuty configuration of the Notification Destination. It must contain the following:
      */
-    pagerduty?: pulumi.Input<inputs.NotificationDestinationConfigPagerduty>;
+    pagerduty?: pulumi.Input<inputs.NotificationDestinationConfigPagerduty | undefined>;
     /**
      * The Slack configuration of the Notification Destination. It must contain the following:
      */
-    slack?: pulumi.Input<inputs.NotificationDestinationConfigSlack>;
+    slack?: pulumi.Input<inputs.NotificationDestinationConfigSlack | undefined>;
 }
 
 export interface NotificationDestinationConfigEmail {
     /**
      * The list of email addresses to send notifications to.
      */
-    addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface NotificationDestinationConfigGenericWebhook {
     /**
      * The password for basic authentication.
      */
-    password?: pulumi.Input<string>;
-    passwordSet?: pulumi.Input<boolean>;
+    password?: pulumi.Input<string | undefined>;
+    passwordSet?: pulumi.Input<boolean | undefined>;
     /**
      * The Generic Webhook URL.
      */
-    url?: pulumi.Input<string>;
-    urlSet?: pulumi.Input<boolean>;
+    url?: pulumi.Input<string | undefined>;
+    urlSet?: pulumi.Input<boolean | undefined>;
     /**
      * The username for basic authentication.
      */
-    username?: pulumi.Input<string>;
-    usernameSet?: pulumi.Input<boolean>;
+    username?: pulumi.Input<string | undefined>;
+    usernameSet?: pulumi.Input<boolean | undefined>;
 }
 
 export interface NotificationDestinationConfigMicrosoftTeams {
     /**
      * App ID for Microsoft Teams App.
      */
-    appId?: pulumi.Input<string>;
-    appIdSet?: pulumi.Input<boolean>;
+    appId?: pulumi.Input<string | undefined>;
+    appIdSet?: pulumi.Input<boolean | undefined>;
     /**
      * Secret for Microsoft Teams App authentication.
      */
-    authSecret?: pulumi.Input<string>;
-    authSecretSet?: pulumi.Input<boolean>;
+    authSecret?: pulumi.Input<string | undefined>;
+    authSecretSet?: pulumi.Input<boolean | undefined>;
     /**
      * Channel URL for Microsoft Teams App.
      */
-    channelUrl?: pulumi.Input<string>;
-    channelUrlSet?: pulumi.Input<boolean>;
+    channelUrl?: pulumi.Input<string | undefined>;
+    channelUrlSet?: pulumi.Input<boolean | undefined>;
     /**
      * Tenant ID for Microsoft Teams App.
      */
-    tenantId?: pulumi.Input<string>;
-    tenantIdSet?: pulumi.Input<boolean>;
+    tenantId?: pulumi.Input<string | undefined>;
+    tenantIdSet?: pulumi.Input<boolean | undefined>;
     /**
      * The Microsoft Teams webhook URL.
      */
-    url?: pulumi.Input<string>;
-    urlSet?: pulumi.Input<boolean>;
+    url?: pulumi.Input<string | undefined>;
+    urlSet?: pulumi.Input<boolean | undefined>;
 }
 
 export interface NotificationDestinationConfigPagerduty {
     /**
      * The PagerDuty integration key.
      */
-    integrationKey?: pulumi.Input<string>;
-    integrationKeySet?: pulumi.Input<boolean>;
+    integrationKey?: pulumi.Input<string | undefined>;
+    integrationKeySet?: pulumi.Input<boolean | undefined>;
 }
 
 export interface NotificationDestinationConfigSlack {
     /**
      * Slack channel ID for notifications.
      */
-    channelId?: pulumi.Input<string>;
-    channelIdSet?: pulumi.Input<boolean>;
+    channelId?: pulumi.Input<string | undefined>;
+    channelIdSet?: pulumi.Input<boolean | undefined>;
     /**
      * OAuth token for Slack authentication.
      */
-    oauthToken?: pulumi.Input<string>;
-    oauthTokenSet?: pulumi.Input<boolean>;
+    oauthToken?: pulumi.Input<string | undefined>;
+    oauthTokenSet?: pulumi.Input<boolean | undefined>;
     /**
      * The Slack webhook URL.
      */
-    url?: pulumi.Input<string>;
-    urlSet?: pulumi.Input<boolean>;
+    url?: pulumi.Input<string | undefined>;
+    urlSet?: pulumi.Input<boolean | undefined>;
 }
 
 export interface NotificationDestinationProviderConfig {
@@ -18468,31 +18468,31 @@ export interface OnlineTableSpec {
     /**
      * Whether to create a full-copy pipeline -- a pipeline that stops after creates a full copy of the source table upon initialization and does not process any change data feeds (CDFs) afterwards. The pipeline can still be manually triggered afterwards, but it always perform a full copy of the source table and there are no incremental updates. This mode is useful for syncing views or tables without CDFs to online tables. Note that the full-copy pipeline only supports "triggered" scheduling policy.
      */
-    performFullCopy?: pulumi.Input<boolean>;
+    performFullCopy?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the associated Delta Live Table pipeline.
      */
-    pipelineId?: pulumi.Input<string>;
+    pipelineId?: pulumi.Input<string | undefined>;
     /**
      * list of the columns comprising the primary key.
      */
-    primaryKeyColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    primaryKeyColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * empty block that specifies that pipeline runs continuously after generating the initial data.  Conflicts with `runTriggered`.
      */
-    runContinuously?: pulumi.Input<inputs.OnlineTableSpecRunContinuously>;
+    runContinuously?: pulumi.Input<inputs.OnlineTableSpecRunContinuously | undefined>;
     /**
      * empty block that specifies that pipeline stops after generating the initial data and can be triggered later (manually, through a cron job or through data triggers).
      */
-    runTriggered?: pulumi.Input<inputs.OnlineTableSpecRunTriggered>;
+    runTriggered?: pulumi.Input<inputs.OnlineTableSpecRunTriggered | undefined>;
     /**
      * full name of the source table.
      */
-    sourceTableFullName?: pulumi.Input<string>;
+    sourceTableFullName?: pulumi.Input<string | undefined>;
     /**
      * Time series key to deduplicate (tie-break) rows with the same primary key.
      */
-    timeseriesKey?: pulumi.Input<string>;
+    timeseriesKey?: pulumi.Input<string | undefined>;
 }
 
 export interface OnlineTableSpecRunContinuously {
@@ -18502,63 +18502,63 @@ export interface OnlineTableSpecRunTriggered {
 }
 
 export interface OnlineTableStatus {
-    continuousUpdateStatus?: pulumi.Input<inputs.OnlineTableStatusContinuousUpdateStatus>;
+    continuousUpdateStatus?: pulumi.Input<inputs.OnlineTableStatusContinuousUpdateStatus | undefined>;
     /**
      * The state of the online table.
      */
-    detailedState?: pulumi.Input<string>;
-    failedStatus?: pulumi.Input<inputs.OnlineTableStatusFailedStatus>;
+    detailedState?: pulumi.Input<string | undefined>;
+    failedStatus?: pulumi.Input<inputs.OnlineTableStatusFailedStatus | undefined>;
     /**
      * A text description of the current state of the online table.
      */
-    message?: pulumi.Input<string>;
-    provisioningStatus?: pulumi.Input<inputs.OnlineTableStatusProvisioningStatus>;
-    triggeredUpdateStatus?: pulumi.Input<inputs.OnlineTableStatusTriggeredUpdateStatus>;
+    message?: pulumi.Input<string | undefined>;
+    provisioningStatus?: pulumi.Input<inputs.OnlineTableStatusProvisioningStatus | undefined>;
+    triggeredUpdateStatus?: pulumi.Input<inputs.OnlineTableStatusTriggeredUpdateStatus | undefined>;
 }
 
 export interface OnlineTableStatusContinuousUpdateStatus {
-    initialPipelineSyncProgress?: pulumi.Input<inputs.OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgress>;
-    lastProcessedCommitVersion?: pulumi.Input<number>;
-    timestamp?: pulumi.Input<string>;
+    initialPipelineSyncProgress?: pulumi.Input<inputs.OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgress | undefined>;
+    lastProcessedCommitVersion?: pulumi.Input<number | undefined>;
+    timestamp?: pulumi.Input<string | undefined>;
 }
 
 export interface OnlineTableStatusContinuousUpdateStatusInitialPipelineSyncProgress {
-    estimatedCompletionTimeSeconds?: pulumi.Input<number>;
-    latestVersionCurrentlyProcessing?: pulumi.Input<number>;
-    syncProgressCompletion?: pulumi.Input<number>;
-    syncedRowCount?: pulumi.Input<number>;
-    totalRowCount?: pulumi.Input<number>;
+    estimatedCompletionTimeSeconds?: pulumi.Input<number | undefined>;
+    latestVersionCurrentlyProcessing?: pulumi.Input<number | undefined>;
+    syncProgressCompletion?: pulumi.Input<number | undefined>;
+    syncedRowCount?: pulumi.Input<number | undefined>;
+    totalRowCount?: pulumi.Input<number | undefined>;
 }
 
 export interface OnlineTableStatusFailedStatus {
-    lastProcessedCommitVersion?: pulumi.Input<number>;
-    timestamp?: pulumi.Input<string>;
+    lastProcessedCommitVersion?: pulumi.Input<number | undefined>;
+    timestamp?: pulumi.Input<string | undefined>;
 }
 
 export interface OnlineTableStatusProvisioningStatus {
-    initialPipelineSyncProgress?: pulumi.Input<inputs.OnlineTableStatusProvisioningStatusInitialPipelineSyncProgress>;
+    initialPipelineSyncProgress?: pulumi.Input<inputs.OnlineTableStatusProvisioningStatusInitialPipelineSyncProgress | undefined>;
 }
 
 export interface OnlineTableStatusProvisioningStatusInitialPipelineSyncProgress {
-    estimatedCompletionTimeSeconds?: pulumi.Input<number>;
-    latestVersionCurrentlyProcessing?: pulumi.Input<number>;
-    syncProgressCompletion?: pulumi.Input<number>;
-    syncedRowCount?: pulumi.Input<number>;
-    totalRowCount?: pulumi.Input<number>;
+    estimatedCompletionTimeSeconds?: pulumi.Input<number | undefined>;
+    latestVersionCurrentlyProcessing?: pulumi.Input<number | undefined>;
+    syncProgressCompletion?: pulumi.Input<number | undefined>;
+    syncedRowCount?: pulumi.Input<number | undefined>;
+    totalRowCount?: pulumi.Input<number | undefined>;
 }
 
 export interface OnlineTableStatusTriggeredUpdateStatus {
-    lastProcessedCommitVersion?: pulumi.Input<number>;
-    timestamp?: pulumi.Input<string>;
-    triggeredUpdateProgress?: pulumi.Input<inputs.OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgress>;
+    lastProcessedCommitVersion?: pulumi.Input<number | undefined>;
+    timestamp?: pulumi.Input<string | undefined>;
+    triggeredUpdateProgress?: pulumi.Input<inputs.OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgress | undefined>;
 }
 
 export interface OnlineTableStatusTriggeredUpdateStatusTriggeredUpdateProgress {
-    estimatedCompletionTimeSeconds?: pulumi.Input<number>;
-    latestVersionCurrentlyProcessing?: pulumi.Input<number>;
-    syncProgressCompletion?: pulumi.Input<number>;
-    syncedRowCount?: pulumi.Input<number>;
-    totalRowCount?: pulumi.Input<number>;
+    estimatedCompletionTimeSeconds?: pulumi.Input<number | undefined>;
+    latestVersionCurrentlyProcessing?: pulumi.Input<number | undefined>;
+    syncProgressCompletion?: pulumi.Input<number | undefined>;
+    syncedRowCount?: pulumi.Input<number | undefined>;
+    totalRowCount?: pulumi.Input<number | undefined>;
 }
 
 export interface PermissionAssignmentProviderConfig {
@@ -18572,21 +18572,21 @@ export interface PermissionsAccessControl {
     /**
      * name of the group. We recommend setting permissions on groups.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * permission level according to specific resource. See examples above for the reference.
      *
      * Exactly one of the below arguments is required:
      */
-    permissionLevel?: pulumi.Input<string>;
+    permissionLevel?: pulumi.Input<string | undefined>;
     /**
      * Application ID (**not service principal name!**) of the service_principal.
      */
-    servicePrincipalName?: pulumi.Input<string>;
+    servicePrincipalName?: pulumi.Input<string | undefined>;
     /**
      * name of the user.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface PermissionsProviderConfig {
@@ -18597,62 +18597,62 @@ export interface PermissionsProviderConfig {
 }
 
 export interface PipelineCluster {
-    applyPolicyDefaultValues?: pulumi.Input<boolean>;
-    autoscale?: pulumi.Input<inputs.PipelineClusterAutoscale>;
-    awsAttributes?: pulumi.Input<inputs.PipelineClusterAwsAttributes>;
-    azureAttributes?: pulumi.Input<inputs.PipelineClusterAzureAttributes>;
-    clusterLogConf?: pulumi.Input<inputs.PipelineClusterClusterLogConf>;
-    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    driverInstancePoolId?: pulumi.Input<string>;
-    driverNodeTypeId?: pulumi.Input<string>;
-    enableLocalDiskEncryption?: pulumi.Input<boolean>;
-    gcpAttributes?: pulumi.Input<inputs.PipelineClusterGcpAttributes>;
-    initScripts?: pulumi.Input<pulumi.Input<inputs.PipelineClusterInitScript>[]>;
-    instancePoolId?: pulumi.Input<string>;
-    label?: pulumi.Input<string>;
-    nodeTypeId?: pulumi.Input<string>;
-    numWorkers?: pulumi.Input<number>;
-    policyId?: pulumi.Input<string>;
-    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    applyPolicyDefaultValues?: pulumi.Input<boolean | undefined>;
+    autoscale?: pulumi.Input<inputs.PipelineClusterAutoscale | undefined>;
+    awsAttributes?: pulumi.Input<inputs.PipelineClusterAwsAttributes | undefined>;
+    azureAttributes?: pulumi.Input<inputs.PipelineClusterAzureAttributes | undefined>;
+    clusterLogConf?: pulumi.Input<inputs.PipelineClusterClusterLogConf | undefined>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    driverInstancePoolId?: pulumi.Input<string | undefined>;
+    driverNodeTypeId?: pulumi.Input<string | undefined>;
+    enableLocalDiskEncryption?: pulumi.Input<boolean | undefined>;
+    gcpAttributes?: pulumi.Input<inputs.PipelineClusterGcpAttributes | undefined>;
+    initScripts?: pulumi.Input<pulumi.Input<inputs.PipelineClusterInitScript>[] | undefined>;
+    instancePoolId?: pulumi.Input<string | undefined>;
+    label?: pulumi.Input<string | undefined>;
+    nodeTypeId?: pulumi.Input<string | undefined>;
+    numWorkers?: pulumi.Input<number | undefined>;
+    policyId?: pulumi.Input<string | undefined>;
+    sparkConf?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sparkEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    sshPublicKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface PipelineClusterAutoscale {
     maxWorkers: pulumi.Input<number>;
     minWorkers: pulumi.Input<number>;
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineClusterAwsAttributes {
-    availability?: pulumi.Input<string>;
-    ebsVolumeCount?: pulumi.Input<number>;
-    ebsVolumeIops?: pulumi.Input<number>;
-    ebsVolumeSize?: pulumi.Input<number>;
-    ebsVolumeThroughput?: pulumi.Input<number>;
-    ebsVolumeType?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    instanceProfileArn?: pulumi.Input<string>;
-    spotBidPricePercent?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    ebsVolumeCount?: pulumi.Input<number | undefined>;
+    ebsVolumeIops?: pulumi.Input<number | undefined>;
+    ebsVolumeSize?: pulumi.Input<number | undefined>;
+    ebsVolumeThroughput?: pulumi.Input<number | undefined>;
+    ebsVolumeType?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
+    spotBidPricePercent?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineClusterAzureAttributes {
-    availability?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    logAnalyticsInfo?: pulumi.Input<inputs.PipelineClusterAzureAttributesLogAnalyticsInfo>;
-    spotBidMaxPrice?: pulumi.Input<number>;
+    availability?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    logAnalyticsInfo?: pulumi.Input<inputs.PipelineClusterAzureAttributesLogAnalyticsInfo | undefined>;
+    spotBidMaxPrice?: pulumi.Input<number | undefined>;
 }
 
 export interface PipelineClusterAzureAttributesLogAnalyticsInfo {
-    logAnalyticsPrimaryKey?: pulumi.Input<string>;
-    logAnalyticsWorkspaceId?: pulumi.Input<string>;
+    logAnalyticsPrimaryKey?: pulumi.Input<string | undefined>;
+    logAnalyticsWorkspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineClusterClusterLogConf {
-    dbfs?: pulumi.Input<inputs.PipelineClusterClusterLogConfDbfs>;
-    s3?: pulumi.Input<inputs.PipelineClusterClusterLogConfS3>;
-    volumes?: pulumi.Input<inputs.PipelineClusterClusterLogConfVolumes>;
+    dbfs?: pulumi.Input<inputs.PipelineClusterClusterLogConfDbfs | undefined>;
+    s3?: pulumi.Input<inputs.PipelineClusterClusterLogConfS3 | undefined>;
+    volumes?: pulumi.Input<inputs.PipelineClusterClusterLogConfVolumes | undefined>;
 }
 
 export interface PipelineClusterClusterLogConfDbfs {
@@ -18660,13 +18660,13 @@ export interface PipelineClusterClusterLogConfDbfs {
 }
 
 export interface PipelineClusterClusterLogConfS3 {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineClusterClusterLogConfVolumes {
@@ -18674,27 +18674,27 @@ export interface PipelineClusterClusterLogConfVolumes {
 }
 
 export interface PipelineClusterGcpAttributes {
-    availability?: pulumi.Input<string>;
-    firstOnDemand?: pulumi.Input<number>;
-    googleServiceAccount?: pulumi.Input<string>;
-    localSsdCount?: pulumi.Input<number>;
-    zoneId?: pulumi.Input<string>;
+    availability?: pulumi.Input<string | undefined>;
+    firstOnDemand?: pulumi.Input<number | undefined>;
+    googleServiceAccount?: pulumi.Input<string | undefined>;
+    localSsdCount?: pulumi.Input<number | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineClusterInitScript {
-    abfss?: pulumi.Input<inputs.PipelineClusterInitScriptAbfss>;
+    abfss?: pulumi.Input<inputs.PipelineClusterInitScriptAbfss | undefined>;
     /**
      * @deprecated For init scripts use 'volumes', 'workspace' or cloud storage location instead of 'dbfs'.
      */
-    dbfs?: pulumi.Input<inputs.PipelineClusterInitScriptDbfs>;
+    dbfs?: pulumi.Input<inputs.PipelineClusterInitScriptDbfs | undefined>;
     /**
      * specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
      */
-    file?: pulumi.Input<inputs.PipelineClusterInitScriptFile>;
-    gcs?: pulumi.Input<inputs.PipelineClusterInitScriptGcs>;
-    s3?: pulumi.Input<inputs.PipelineClusterInitScriptS3>;
-    volumes?: pulumi.Input<inputs.PipelineClusterInitScriptVolumes>;
-    workspace?: pulumi.Input<inputs.PipelineClusterInitScriptWorkspace>;
+    file?: pulumi.Input<inputs.PipelineClusterInitScriptFile | undefined>;
+    gcs?: pulumi.Input<inputs.PipelineClusterInitScriptGcs | undefined>;
+    s3?: pulumi.Input<inputs.PipelineClusterInitScriptS3 | undefined>;
+    volumes?: pulumi.Input<inputs.PipelineClusterInitScriptVolumes | undefined>;
+    workspace?: pulumi.Input<inputs.PipelineClusterInitScriptWorkspace | undefined>;
 }
 
 export interface PipelineClusterInitScriptAbfss {
@@ -18714,13 +18714,13 @@ export interface PipelineClusterInitScriptGcs {
 }
 
 export interface PipelineClusterInitScriptS3 {
-    cannedAcl?: pulumi.Input<string>;
+    cannedAcl?: pulumi.Input<string | undefined>;
     destination: pulumi.Input<string>;
-    enableEncryption?: pulumi.Input<boolean>;
-    encryptionType?: pulumi.Input<string>;
-    endpoint?: pulumi.Input<string>;
-    kmsKey?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    enableEncryption?: pulumi.Input<boolean | undefined>;
+    encryptionType?: pulumi.Input<string | undefined>;
+    endpoint?: pulumi.Input<string | undefined>;
+    kmsKey?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineClusterInitScriptVolumes {
@@ -18739,7 +18739,7 @@ export interface PipelineDeployment {
     /**
      * The path to the file containing metadata about the deployment.
      */
-    metadataFilePath?: pulumi.Input<string>;
+    metadataFilePath?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineEnvironment {
@@ -18767,15 +18767,15 @@ export interface PipelineEnvironment {
      * });
      * ```
      */
-    dependencies?: pulumi.Input<pulumi.Input<string>[]>;
-    environmentVersion?: pulumi.Input<string>;
+    dependencies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    environmentVersion?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineEventLog {
     /**
      * The UC catalog the event log is published under.
      */
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     /**
      * The table name the event log is published to in UC.
      */
@@ -18783,30 +18783,30 @@ export interface PipelineEventLog {
     /**
      * The UC schema the event log is published under.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineFilters {
     /**
      * Paths to exclude.
      */
-    excludes?: pulumi.Input<pulumi.Input<string>[]>;
+    excludes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Paths to include.
      */
-    includes?: pulumi.Input<pulumi.Input<string>[]>;
+    includes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface PipelineGatewayDefinition {
     /**
      * Deprecated, Immutable. The Unity Catalog connection this gateway pipeline uses to communicate with the source. *Use `connectionName` instead!*
      */
-    connectionId?: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string | undefined>;
     /**
      * Immutable. The Unity Catalog connection that this gateway pipeline uses to communicate with the source.
      */
     connectionName: pulumi.Input<string>;
-    connectionParameters?: pulumi.Input<inputs.PipelineGatewayDefinitionConnectionParameters>;
+    connectionParameters?: pulumi.Input<inputs.PipelineGatewayDefinitionConnectionParameters | undefined>;
     /**
      * Required, Immutable. The name of the catalog for the gateway pipeline's storage location.
      */
@@ -18814,7 +18814,7 @@ export interface PipelineGatewayDefinition {
     /**
      * Required. The Unity Catalog-compatible naming for the gateway storage location. This is the destination to use for the data that is extracted by the gateway. Lakeflow Declarative Pipelines system will automatically create the storage location under the catalog and schema.
      */
-    gatewayStorageName?: pulumi.Input<string>;
+    gatewayStorageName?: pulumi.Input<string | undefined>;
     /**
      * Required, Immutable. The name of the schema for the gateway pipelines's storage location.
      */
@@ -18822,420 +18822,420 @@ export interface PipelineGatewayDefinition {
 }
 
 export interface PipelineGatewayDefinitionConnectionParameters {
-    sourceCatalog?: pulumi.Input<string>;
+    sourceCatalog?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinition {
-    connectionName?: pulumi.Input<string>;
-    connectorType?: pulumi.Input<string>;
-    dataStagingOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionDataStagingOptions>;
-    fullRefreshWindow?: pulumi.Input<inputs.PipelineIngestionDefinitionFullRefreshWindow>;
-    ingestFromUcForeignCatalog?: pulumi.Input<boolean>;
-    ingestionGatewayId?: pulumi.Input<string>;
-    netsuiteJarPath?: pulumi.Input<string>;
-    objects?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObject>[]>;
-    sourceConfigurations?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfiguration>[]>;
-    sourceType?: pulumi.Input<string>;
-    tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfiguration>;
+    connectionName?: pulumi.Input<string | undefined>;
+    connectorType?: pulumi.Input<string | undefined>;
+    dataStagingOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionDataStagingOptions | undefined>;
+    fullRefreshWindow?: pulumi.Input<inputs.PipelineIngestionDefinitionFullRefreshWindow | undefined>;
+    ingestFromUcForeignCatalog?: pulumi.Input<boolean | undefined>;
+    ingestionGatewayId?: pulumi.Input<string | undefined>;
+    netsuiteJarPath?: pulumi.Input<string | undefined>;
+    objects?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObject>[] | undefined>;
+    sourceConfigurations?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfiguration>[] | undefined>;
+    sourceType?: pulumi.Input<string | undefined>;
+    tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfiguration | undefined>;
 }
 
 export interface PipelineIngestionDefinitionDataStagingOptions {
     catalogName: pulumi.Input<string>;
     schemaName: pulumi.Input<string>;
-    volumeName?: pulumi.Input<string>;
+    volumeName?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionFullRefreshWindow {
-    daysOfWeeks?: pulumi.Input<pulumi.Input<string>[]>;
+    daysOfWeeks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     startHour: pulumi.Input<number>;
-    timeZoneId?: pulumi.Input<string>;
+    timeZoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObject {
-    report?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReport>;
+    report?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReport | undefined>;
     /**
      * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
      */
-    schema?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchema>;
-    table?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTable>;
+    schema?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchema | undefined>;
+    table?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTable | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectReport {
     destinationCatalog: pulumi.Input<string>;
     destinationSchema: pulumi.Input<string>;
-    destinationTable?: pulumi.Input<string>;
+    destinationTable?: pulumi.Input<string | undefined>;
     sourceUrl: pulumi.Input<string>;
-    tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfiguration>;
+    tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfiguration | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
-    autoFullRefreshPolicy?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy>;
-    excludeColumns?: pulumi.Input<pulumi.Input<string>[]>;
-    includeColumns?: pulumi.Input<pulumi.Input<string>[]>;
-    primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    queryBasedConnectorConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig>;
-    rowFilter?: pulumi.Input<string>;
-    salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
-    scdType?: pulumi.Input<string>;
-    sequenceBies?: pulumi.Input<pulumi.Input<string>[]>;
-    workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters>;
+    autoFullRefreshPolicy?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy | undefined>;
+    excludeColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    includeColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    primaryKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    queryBasedConnectorConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig | undefined>;
+    rowFilter?: pulumi.Input<string | undefined>;
+    salesforceIncludeFormulaFields?: pulumi.Input<boolean | undefined>;
+    scdType?: pulumi.Input<string | undefined>;
+    sequenceBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy {
     enabled: pulumi.Input<boolean>;
-    minIntervalHours?: pulumi.Input<number>;
+    minIntervalHours?: pulumi.Input<number | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectReportTableConfigurationQueryBasedConnectorConfig {
-    cursorColumns?: pulumi.Input<pulumi.Input<string>[]>;
-    deletionCondition?: pulumi.Input<string>;
-    hardDeletionSyncMinIntervalInSeconds?: pulumi.Input<number>;
+    cursorColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    deletionCondition?: pulumi.Input<string | undefined>;
+    hardDeletionSyncMinIntervalInSeconds?: pulumi.Input<number | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters {
-    incremental?: pulumi.Input<boolean>;
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    reportParameters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersReportParameter>[]>;
+    incremental?: pulumi.Input<boolean | undefined>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    reportParameters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersReportParameter>[] | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParametersReportParameter {
-    key?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchema {
-    connectorOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptions>;
+    connectorOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptions | undefined>;
     destinationCatalog: pulumi.Input<string>;
     destinationSchema: pulumi.Input<string>;
-    sourceCatalog?: pulumi.Input<string>;
+    sourceCatalog?: pulumi.Input<string | undefined>;
     sourceSchema: pulumi.Input<string>;
-    tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfiguration>;
+    tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfiguration | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptions {
-    gdriveOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptions>;
-    googleAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions>;
-    sharepointOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions>;
-    tiktokAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptions>;
+    gdriveOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptions | undefined>;
+    googleAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions | undefined>;
+    sharepointOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions | undefined>;
+    tiktokAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptions | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptions {
-    entityType?: pulumi.Input<string>;
-    fileIngestionOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsFileIngestionOptions>;
+    entityType?: pulumi.Input<string | undefined>;
+    fileIngestionOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsFileIngestionOptions | undefined>;
     /**
      * URL of the Lakeflow Declarative Pipeline on the given workspace.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsFileIngestionOptions {
-    corruptRecordColumn?: pulumi.Input<string>;
-    fileFilters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsFileIngestionOptionsFileFilter>[]>;
-    format?: pulumi.Input<string>;
-    formatOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    ignoreCorruptFiles?: pulumi.Input<boolean>;
-    inferColumnTypes?: pulumi.Input<boolean>;
-    readerCaseSensitive?: pulumi.Input<boolean>;
-    rescuedDataColumn?: pulumi.Input<string>;
-    schemaEvolutionMode?: pulumi.Input<string>;
-    schemaHints?: pulumi.Input<string>;
-    singleVariantColumn?: pulumi.Input<string>;
+    corruptRecordColumn?: pulumi.Input<string | undefined>;
+    fileFilters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsFileIngestionOptionsFileFilter>[] | undefined>;
+    format?: pulumi.Input<string | undefined>;
+    formatOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    ignoreCorruptFiles?: pulumi.Input<boolean | undefined>;
+    inferColumnTypes?: pulumi.Input<boolean | undefined>;
+    readerCaseSensitive?: pulumi.Input<boolean | undefined>;
+    rescuedDataColumn?: pulumi.Input<string | undefined>;
+    schemaEvolutionMode?: pulumi.Input<string | undefined>;
+    schemaHints?: pulumi.Input<string | undefined>;
+    singleVariantColumn?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsFileIngestionOptionsFileFilter {
-    modifiedAfter?: pulumi.Input<string>;
-    modifiedBefore?: pulumi.Input<string>;
-    pathFilter?: pulumi.Input<string>;
+    modifiedAfter?: pulumi.Input<string | undefined>;
+    modifiedBefore?: pulumi.Input<string | undefined>;
+    pathFilter?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions {
-    lookbackWindowDays?: pulumi.Input<number>;
+    lookbackWindowDays?: pulumi.Input<number | undefined>;
     managerAccountId: pulumi.Input<string>;
-    syncStartDate?: pulumi.Input<string>;
+    syncStartDate?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions {
-    entityType?: pulumi.Input<string>;
-    fileIngestionOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsFileIngestionOptions>;
+    entityType?: pulumi.Input<string | undefined>;
+    fileIngestionOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsFileIngestionOptions | undefined>;
     /**
      * URL of the Lakeflow Declarative Pipeline on the given workspace.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsFileIngestionOptions {
-    corruptRecordColumn?: pulumi.Input<string>;
-    fileFilters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsFileIngestionOptionsFileFilter>[]>;
-    format?: pulumi.Input<string>;
-    formatOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    ignoreCorruptFiles?: pulumi.Input<boolean>;
-    inferColumnTypes?: pulumi.Input<boolean>;
-    readerCaseSensitive?: pulumi.Input<boolean>;
-    rescuedDataColumn?: pulumi.Input<string>;
-    schemaEvolutionMode?: pulumi.Input<string>;
-    schemaHints?: pulumi.Input<string>;
-    singleVariantColumn?: pulumi.Input<string>;
+    corruptRecordColumn?: pulumi.Input<string | undefined>;
+    fileFilters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsFileIngestionOptionsFileFilter>[] | undefined>;
+    format?: pulumi.Input<string | undefined>;
+    formatOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    ignoreCorruptFiles?: pulumi.Input<boolean | undefined>;
+    inferColumnTypes?: pulumi.Input<boolean | undefined>;
+    readerCaseSensitive?: pulumi.Input<boolean | undefined>;
+    rescuedDataColumn?: pulumi.Input<string | undefined>;
+    schemaEvolutionMode?: pulumi.Input<string | undefined>;
+    schemaHints?: pulumi.Input<string | undefined>;
+    singleVariantColumn?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsFileIngestionOptionsFileFilter {
-    modifiedAfter?: pulumi.Input<string>;
-    modifiedBefore?: pulumi.Input<string>;
-    pathFilter?: pulumi.Input<string>;
+    modifiedAfter?: pulumi.Input<string | undefined>;
+    modifiedBefore?: pulumi.Input<string | undefined>;
+    pathFilter?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptions {
-    dataLevel?: pulumi.Input<string>;
-    dimensions?: pulumi.Input<pulumi.Input<string>[]>;
-    lookbackWindowDays?: pulumi.Input<number>;
-    metrics?: pulumi.Input<pulumi.Input<string>[]>;
-    queryLifetime?: pulumi.Input<boolean>;
-    reportType?: pulumi.Input<string>;
-    syncStartDate?: pulumi.Input<string>;
+    dataLevel?: pulumi.Input<string | undefined>;
+    dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    lookbackWindowDays?: pulumi.Input<number | undefined>;
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    queryLifetime?: pulumi.Input<boolean | undefined>;
+    reportType?: pulumi.Input<string | undefined>;
+    syncStartDate?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
-    autoFullRefreshPolicy?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy>;
-    excludeColumns?: pulumi.Input<pulumi.Input<string>[]>;
-    includeColumns?: pulumi.Input<pulumi.Input<string>[]>;
-    primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    queryBasedConnectorConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfig>;
-    rowFilter?: pulumi.Input<string>;
-    salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
-    scdType?: pulumi.Input<string>;
-    sequenceBies?: pulumi.Input<pulumi.Input<string>[]>;
-    workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters>;
+    autoFullRefreshPolicy?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy | undefined>;
+    excludeColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    includeColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    primaryKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    queryBasedConnectorConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfig | undefined>;
+    rowFilter?: pulumi.Input<string | undefined>;
+    salesforceIncludeFormulaFields?: pulumi.Input<boolean | undefined>;
+    scdType?: pulumi.Input<string | undefined>;
+    sequenceBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy {
     enabled: pulumi.Input<boolean>;
-    minIntervalHours?: pulumi.Input<number>;
+    minIntervalHours?: pulumi.Input<number | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfigurationQueryBasedConnectorConfig {
-    cursorColumns?: pulumi.Input<pulumi.Input<string>[]>;
-    deletionCondition?: pulumi.Input<string>;
-    hardDeletionSyncMinIntervalInSeconds?: pulumi.Input<number>;
+    cursorColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    deletionCondition?: pulumi.Input<string | undefined>;
+    hardDeletionSyncMinIntervalInSeconds?: pulumi.Input<number | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters {
-    incremental?: pulumi.Input<boolean>;
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    reportParameters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersReportParameter>[]>;
+    incremental?: pulumi.Input<boolean | undefined>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    reportParameters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersReportParameter>[] | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersReportParameter {
-    key?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTable {
-    connectorOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptions>;
+    connectorOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptions | undefined>;
     destinationCatalog: pulumi.Input<string>;
     destinationSchema: pulumi.Input<string>;
-    destinationTable?: pulumi.Input<string>;
-    sourceCatalog?: pulumi.Input<string>;
-    sourceSchema?: pulumi.Input<string>;
+    destinationTable?: pulumi.Input<string | undefined>;
+    sourceCatalog?: pulumi.Input<string | undefined>;
+    sourceSchema?: pulumi.Input<string | undefined>;
     sourceTable: pulumi.Input<string>;
-    tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfiguration>;
+    tableConfiguration?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfiguration | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptions {
-    gdriveOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions>;
-    googleAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions>;
-    sharepointOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions>;
-    tiktokAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions>;
+    gdriveOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions | undefined>;
+    googleAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions | undefined>;
+    sharepointOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions | undefined>;
+    tiktokAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions {
-    entityType?: pulumi.Input<string>;
-    fileIngestionOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptionsFileIngestionOptions>;
+    entityType?: pulumi.Input<string | undefined>;
+    fileIngestionOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptionsFileIngestionOptions | undefined>;
     /**
      * URL of the Lakeflow Declarative Pipeline on the given workspace.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptionsFileIngestionOptions {
-    corruptRecordColumn?: pulumi.Input<string>;
-    fileFilters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptionsFileIngestionOptionsFileFilter>[]>;
-    format?: pulumi.Input<string>;
-    formatOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    ignoreCorruptFiles?: pulumi.Input<boolean>;
-    inferColumnTypes?: pulumi.Input<boolean>;
-    readerCaseSensitive?: pulumi.Input<boolean>;
-    rescuedDataColumn?: pulumi.Input<string>;
-    schemaEvolutionMode?: pulumi.Input<string>;
-    schemaHints?: pulumi.Input<string>;
-    singleVariantColumn?: pulumi.Input<string>;
+    corruptRecordColumn?: pulumi.Input<string | undefined>;
+    fileFilters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptionsFileIngestionOptionsFileFilter>[] | undefined>;
+    format?: pulumi.Input<string | undefined>;
+    formatOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    ignoreCorruptFiles?: pulumi.Input<boolean | undefined>;
+    inferColumnTypes?: pulumi.Input<boolean | undefined>;
+    readerCaseSensitive?: pulumi.Input<boolean | undefined>;
+    rescuedDataColumn?: pulumi.Input<string | undefined>;
+    schemaEvolutionMode?: pulumi.Input<string | undefined>;
+    schemaHints?: pulumi.Input<string | undefined>;
+    singleVariantColumn?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptionsFileIngestionOptionsFileFilter {
-    modifiedAfter?: pulumi.Input<string>;
-    modifiedBefore?: pulumi.Input<string>;
-    pathFilter?: pulumi.Input<string>;
+    modifiedAfter?: pulumi.Input<string | undefined>;
+    modifiedBefore?: pulumi.Input<string | undefined>;
+    pathFilter?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions {
-    lookbackWindowDays?: pulumi.Input<number>;
+    lookbackWindowDays?: pulumi.Input<number | undefined>;
     managerAccountId: pulumi.Input<string>;
-    syncStartDate?: pulumi.Input<string>;
+    syncStartDate?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions {
-    entityType?: pulumi.Input<string>;
-    fileIngestionOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsFileIngestionOptions>;
+    entityType?: pulumi.Input<string | undefined>;
+    fileIngestionOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsFileIngestionOptions | undefined>;
     /**
      * URL of the Lakeflow Declarative Pipeline on the given workspace.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsFileIngestionOptions {
-    corruptRecordColumn?: pulumi.Input<string>;
-    fileFilters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsFileIngestionOptionsFileFilter>[]>;
-    format?: pulumi.Input<string>;
-    formatOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    ignoreCorruptFiles?: pulumi.Input<boolean>;
-    inferColumnTypes?: pulumi.Input<boolean>;
-    readerCaseSensitive?: pulumi.Input<boolean>;
-    rescuedDataColumn?: pulumi.Input<string>;
-    schemaEvolutionMode?: pulumi.Input<string>;
-    schemaHints?: pulumi.Input<string>;
-    singleVariantColumn?: pulumi.Input<string>;
+    corruptRecordColumn?: pulumi.Input<string | undefined>;
+    fileFilters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsFileIngestionOptionsFileFilter>[] | undefined>;
+    format?: pulumi.Input<string | undefined>;
+    formatOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    ignoreCorruptFiles?: pulumi.Input<boolean | undefined>;
+    inferColumnTypes?: pulumi.Input<boolean | undefined>;
+    readerCaseSensitive?: pulumi.Input<boolean | undefined>;
+    rescuedDataColumn?: pulumi.Input<string | undefined>;
+    schemaEvolutionMode?: pulumi.Input<string | undefined>;
+    schemaHints?: pulumi.Input<string | undefined>;
+    singleVariantColumn?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsFileIngestionOptionsFileFilter {
-    modifiedAfter?: pulumi.Input<string>;
-    modifiedBefore?: pulumi.Input<string>;
-    pathFilter?: pulumi.Input<string>;
+    modifiedAfter?: pulumi.Input<string | undefined>;
+    modifiedBefore?: pulumi.Input<string | undefined>;
+    pathFilter?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions {
-    dataLevel?: pulumi.Input<string>;
-    dimensions?: pulumi.Input<pulumi.Input<string>[]>;
-    lookbackWindowDays?: pulumi.Input<number>;
-    metrics?: pulumi.Input<pulumi.Input<string>[]>;
-    queryLifetime?: pulumi.Input<boolean>;
-    reportType?: pulumi.Input<string>;
-    syncStartDate?: pulumi.Input<string>;
+    dataLevel?: pulumi.Input<string | undefined>;
+    dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    lookbackWindowDays?: pulumi.Input<number | undefined>;
+    metrics?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    queryLifetime?: pulumi.Input<boolean | undefined>;
+    reportType?: pulumi.Input<string | undefined>;
+    syncStartDate?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
-    autoFullRefreshPolicy?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicy>;
-    excludeColumns?: pulumi.Input<pulumi.Input<string>[]>;
-    includeColumns?: pulumi.Input<pulumi.Input<string>[]>;
-    primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    queryBasedConnectorConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig>;
-    rowFilter?: pulumi.Input<string>;
-    salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
-    scdType?: pulumi.Input<string>;
-    sequenceBies?: pulumi.Input<pulumi.Input<string>[]>;
-    workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters>;
+    autoFullRefreshPolicy?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicy | undefined>;
+    excludeColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    includeColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    primaryKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    queryBasedConnectorConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig | undefined>;
+    rowFilter?: pulumi.Input<string | undefined>;
+    salesforceIncludeFormulaFields?: pulumi.Input<boolean | undefined>;
+    scdType?: pulumi.Input<string | undefined>;
+    sequenceBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicy {
     enabled: pulumi.Input<boolean>;
-    minIntervalHours?: pulumi.Input<number>;
+    minIntervalHours?: pulumi.Input<number | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableTableConfigurationQueryBasedConnectorConfig {
-    cursorColumns?: pulumi.Input<pulumi.Input<string>[]>;
-    deletionCondition?: pulumi.Input<string>;
-    hardDeletionSyncMinIntervalInSeconds?: pulumi.Input<number>;
+    cursorColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    deletionCondition?: pulumi.Input<string | undefined>;
+    hardDeletionSyncMinIntervalInSeconds?: pulumi.Input<number | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters {
-    incremental?: pulumi.Input<boolean>;
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    reportParameters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersReportParameter>[]>;
+    incremental?: pulumi.Input<boolean | undefined>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    reportParameters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersReportParameter>[] | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParametersReportParameter {
-    key?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionSourceConfiguration {
     /**
      * The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      */
-    catalog?: pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfigurationCatalog>;
+    catalog?: pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfigurationCatalog | undefined>;
 }
 
 export interface PipelineIngestionDefinitionSourceConfigurationCatalog {
-    postgres?: pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfigurationCatalogPostgres>;
-    sourceCatalog?: pulumi.Input<string>;
+    postgres?: pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfigurationCatalogPostgres | undefined>;
+    sourceCatalog?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionSourceConfigurationCatalogPostgres {
-    slotConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfigurationCatalogPostgresSlotConfig>;
+    slotConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfigurationCatalogPostgresSlotConfig | undefined>;
 }
 
 export interface PipelineIngestionDefinitionSourceConfigurationCatalogPostgresSlotConfig {
-    publicationName?: pulumi.Input<string>;
-    slotName?: pulumi.Input<string>;
+    publicationName?: pulumi.Input<string | undefined>;
+    slotName?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionTableConfiguration {
-    autoFullRefreshPolicy?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy>;
-    excludeColumns?: pulumi.Input<pulumi.Input<string>[]>;
-    includeColumns?: pulumi.Input<pulumi.Input<string>[]>;
-    primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    queryBasedConnectorConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig>;
-    rowFilter?: pulumi.Input<string>;
-    salesforceIncludeFormulaFields?: pulumi.Input<boolean>;
-    scdType?: pulumi.Input<string>;
-    sequenceBies?: pulumi.Input<pulumi.Input<string>[]>;
-    workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters>;
+    autoFullRefreshPolicy?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy | undefined>;
+    excludeColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    includeColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    primaryKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    queryBasedConnectorConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig | undefined>;
+    rowFilter?: pulumi.Input<string | undefined>;
+    salesforceIncludeFormulaFields?: pulumi.Input<boolean | undefined>;
+    scdType?: pulumi.Input<string | undefined>;
+    sequenceBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters | undefined>;
 }
 
 export interface PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy {
     enabled: pulumi.Input<boolean>;
-    minIntervalHours?: pulumi.Input<number>;
+    minIntervalHours?: pulumi.Input<number | undefined>;
 }
 
 export interface PipelineIngestionDefinitionTableConfigurationQueryBasedConnectorConfig {
-    cursorColumns?: pulumi.Input<pulumi.Input<string>[]>;
-    deletionCondition?: pulumi.Input<string>;
-    hardDeletionSyncMinIntervalInSeconds?: pulumi.Input<number>;
+    cursorColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    deletionCondition?: pulumi.Input<string | undefined>;
+    hardDeletionSyncMinIntervalInSeconds?: pulumi.Input<number | undefined>;
 }
 
 export interface PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters {
-    incremental?: pulumi.Input<boolean>;
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    reportParameters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersReportParameter>[]>;
+    incremental?: pulumi.Input<boolean | undefined>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    reportParameters?: pulumi.Input<pulumi.Input<inputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersReportParameter>[] | undefined>;
 }
 
 export interface PipelineIngestionDefinitionTableConfigurationWorkdayReportParametersReportParameter {
-    key?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineLatestUpdate {
-    creationTime?: pulumi.Input<string>;
-    state?: pulumi.Input<string>;
-    updateId?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string | undefined>;
+    state?: pulumi.Input<string | undefined>;
+    updateId?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineLibrary {
     /**
      * specifies path to a file in Databricks Workspace to include as source. Actual path is specified as `path` attribute inside the block.
      */
-    file?: pulumi.Input<inputs.PipelineLibraryFile>;
+    file?: pulumi.Input<inputs.PipelineLibraryFile | undefined>;
     /**
      * The unified field to include source code. Each entry should have the `include` attribute that can specify a notebook path, a file path, or a folder path that ends `/**` (to include everything from that folder). This field cannot be used together with `notebook` or `file`.
      */
-    glob?: pulumi.Input<inputs.PipelineLibraryGlob>;
-    jar?: pulumi.Input<string>;
-    maven?: pulumi.Input<inputs.PipelineLibraryMaven>;
+    glob?: pulumi.Input<inputs.PipelineLibraryGlob | undefined>;
+    jar?: pulumi.Input<string | undefined>;
+    maven?: pulumi.Input<inputs.PipelineLibraryMaven | undefined>;
     /**
      * specifies path to a Databricks Notebook to include as source. Actual path is specified as `path` attribute inside the block.
      */
-    notebook?: pulumi.Input<inputs.PipelineLibraryNotebook>;
+    notebook?: pulumi.Input<inputs.PipelineLibraryNotebook | undefined>;
     /**
      * @deprecated The 'whl' field is deprecated
      */
-    whl?: pulumi.Input<string>;
+    whl?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineLibraryFile {
@@ -19251,8 +19251,8 @@ export interface PipelineLibraryGlob {
 
 export interface PipelineLibraryMaven {
     coordinates: pulumi.Input<string>;
-    exclusions?: pulumi.Input<pulumi.Input<string>[]>;
-    repo?: pulumi.Input<string>;
+    exclusions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    repo?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineLibraryNotebook {
@@ -19267,11 +19267,11 @@ export interface PipelineNotification {
      * * `on-update-fatal-failure` - a pipeline update fails with a non-retryable (fatal) error.
      * * `on-flow-failure` - a single data flow fails.
      */
-    alerts?: pulumi.Input<pulumi.Input<string>[]>;
+    alerts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * non-empty list of emails to notify.
      */
-    emailRecipients?: pulumi.Input<pulumi.Input<string>[]>;
+    emailRecipients?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface PipelineProviderConfig {
@@ -19279,9 +19279,9 @@ export interface PipelineProviderConfig {
 }
 
 export interface PipelineRestartWindow {
-    daysOfWeeks?: pulumi.Input<pulumi.Input<string>[]>;
+    daysOfWeeks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     startHour: pulumi.Input<number>;
-    timeZoneId?: pulumi.Input<string>;
+    timeZoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineRunAs {
@@ -19299,21 +19299,21 @@ export interface PipelineRunAs {
      * }});
      * ```
      */
-    servicePrincipalName?: pulumi.Input<string>;
+    servicePrincipalName?: pulumi.Input<string | undefined>;
     /**
      * The email of an active workspace user. Non-admin users can only set this field to their own email.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineTrigger {
-    cron?: pulumi.Input<inputs.PipelineTriggerCron>;
-    manual?: pulumi.Input<inputs.PipelineTriggerManual>;
+    cron?: pulumi.Input<inputs.PipelineTriggerCron | undefined>;
+    manual?: pulumi.Input<inputs.PipelineTriggerManual | undefined>;
 }
 
 export interface PipelineTriggerCron {
-    quartzCronSchedule?: pulumi.Input<string>;
-    timezoneId?: pulumi.Input<string>;
+    quartzCronSchedule?: pulumi.Input<string | undefined>;
+    timezoneId?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineTriggerManual {
@@ -19327,23 +19327,23 @@ export interface PolicyInfoColumnMask {
      * Required on create and update
      */
     onColumn: pulumi.Input<string>;
-    usings?: pulumi.Input<pulumi.Input<inputs.PolicyInfoColumnMaskUsing>[]>;
+    usings?: pulumi.Input<pulumi.Input<inputs.PolicyInfoColumnMaskUsing>[] | undefined>;
 }
 
 export interface PolicyInfoColumnMaskUsing {
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * A constant literal
      */
-    constant?: pulumi.Input<string>;
+    constant?: pulumi.Input<string | undefined>;
 }
 
 export interface PolicyInfoMatchColumn {
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * The condition expression used to match a table column
      */
-    condition?: pulumi.Input<string>;
+    condition?: pulumi.Input<string | undefined>;
 }
 
 export interface PolicyInfoProviderConfig {
@@ -19355,15 +19355,15 @@ export interface PolicyInfoProviderConfig {
 
 export interface PolicyInfoRowFilter {
     functionName: pulumi.Input<string>;
-    usings?: pulumi.Input<pulumi.Input<inputs.PolicyInfoRowFilterUsing>[]>;
+    usings?: pulumi.Input<pulumi.Input<inputs.PolicyInfoRowFilterUsing>[] | undefined>;
 }
 
 export interface PolicyInfoRowFilterUsing {
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * A constant literal
      */
-    constant?: pulumi.Input<string>;
+    constant?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresBranchProviderConfig {
@@ -19377,35 +19377,35 @@ export interface PostgresBranchSpec {
     /**
      * (string) - Absolute expiration time for the branch. Empty if expiration is disabled
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * (boolean) - Whether the branch is protected
      */
-    isProtected?: pulumi.Input<boolean>;
+    isProtected?: pulumi.Input<boolean | undefined>;
     /**
      * Explicitly disable expiration. When set to true, the branch will not expire.
      * If set to false, the request is invalid; provide either ttl or expireTime instead.
      * Mutually exclusive with `expireTime` and `ttl`. When updating, use `spec.expiration` in the update_mask
      */
-    noExpiry?: pulumi.Input<boolean>;
+    noExpiry?: pulumi.Input<boolean | undefined>;
     /**
      * (string) - The name of the source branch from which this branch was created.
      * Format: projects/{project_id}/branches/{branch_id}
      */
-    sourceBranch?: pulumi.Input<string>;
+    sourceBranch?: pulumi.Input<string | undefined>;
     /**
      * (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
      */
-    sourceBranchLsn?: pulumi.Input<string>;
+    sourceBranchLsn?: pulumi.Input<string | undefined>;
     /**
      * (string) - The point in time on the source branch from which this branch was created
      */
-    sourceBranchTime?: pulumi.Input<string>;
+    sourceBranchTime?: pulumi.Input<string | undefined>;
     /**
      * Relative time-to-live duration. When set, the branch will expire at creationTime + ttl.
      * Mutually exclusive with `expireTime` and `noExpiry`. When updating, use `spec.expiration` in the update_mask
      */
-    ttl?: pulumi.Input<string>;
+    ttl?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresBranchStatus {
@@ -19414,48 +19414,48 @@ export interface PostgresBranchStatus {
      * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
      * For example, `development` becomes `projects/my-app/branches/development`
      */
-    branchId?: pulumi.Input<string>;
+    branchId?: pulumi.Input<string | undefined>;
     /**
      * (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      */
-    currentState?: pulumi.Input<string>;
+    currentState?: pulumi.Input<string | undefined>;
     /**
      * (boolean) - Whether the branch is the project's default branch
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * (string) - Absolute expiration time for the branch. Empty if expiration is disabled
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * (boolean) - Whether the branch is protected
      */
-    isProtected?: pulumi.Input<boolean>;
+    isProtected?: pulumi.Input<boolean | undefined>;
     /**
      * (integer) - The logical size of the branch
      */
-    logicalSizeBytes?: pulumi.Input<number>;
+    logicalSizeBytes?: pulumi.Input<number | undefined>;
     /**
      * (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      */
-    pendingState?: pulumi.Input<string>;
+    pendingState?: pulumi.Input<string | undefined>;
     /**
      * (string) - The name of the source branch from which this branch was created.
      * Format: projects/{project_id}/branches/{branch_id}
      */
-    sourceBranch?: pulumi.Input<string>;
+    sourceBranch?: pulumi.Input<string | undefined>;
     /**
      * (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
      */
-    sourceBranchLsn?: pulumi.Input<string>;
+    sourceBranchLsn?: pulumi.Input<string | undefined>;
     /**
      * (string) - The point in time on the source branch from which this branch was created
      */
-    sourceBranchTime?: pulumi.Input<string>;
+    sourceBranchTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - A timestamp indicating when the `currentState` began
      */
-    stateChangeTime?: pulumi.Input<string>;
+    stateChangeTime?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresCatalogProviderConfig {
@@ -19469,7 +19469,7 @@ export interface PostgresCatalogSpec {
     /**
      * (string) - The resource path of the branch associated with the catalog.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * If set to true, the specified postgresDatabase is created on behalf of the calling user
      * if it does not already exist. In this case, the calling user has a role created for
@@ -19477,7 +19477,7 @@ export interface PostgresCatalogSpec {
      *
      * Defaults to false, meaning that the request fails if the specified postgresDatabase does not already exist
      */
-    createDatabaseIfMissing?: pulumi.Input<boolean>;
+    createDatabaseIfMissing?: pulumi.Input<boolean | undefined>;
     /**
      * (string) - The name of the Postgres database associated with the catalog
      */
@@ -19488,20 +19488,20 @@ export interface PostgresCatalogStatus {
     /**
      * (string) - The resource path of the branch associated with the catalog.
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * The ID in the Unity Catalog.
      * It becomes the full resource name, for example "myCatalog" becomes "catalogs/my_catalog"
      */
-    catalogId?: pulumi.Input<string>;
+    catalogId?: pulumi.Input<string | undefined>;
     /**
      * (string) - The name of the Postgres database associated with the catalog
      */
-    postgresDatabase?: pulumi.Input<string>;
+    postgresDatabase?: pulumi.Input<string | undefined>;
     /**
      * (string) - The resource path of the project associated with the catalog.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresDatabaseProviderConfig {
@@ -19512,8 +19512,8 @@ export interface PostgresDatabaseProviderConfig {
 }
 
 export interface PostgresDatabaseSpec {
-    postgresDatabase?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
+    postgresDatabase?: pulumi.Input<string | undefined>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresDatabaseStatus {
@@ -19527,9 +19527,9 @@ export interface PostgresDatabaseStatus {
      *
      * If databaseId is not specified in the request, it is generated automatically
      */
-    databaseId?: pulumi.Input<string>;
-    postgresDatabase?: pulumi.Input<string>;
-    role?: pulumi.Input<string>;
+    databaseId?: pulumi.Input<string | undefined>;
+    postgresDatabase?: pulumi.Input<string | undefined>;
+    role?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresEndpointProviderConfig {
@@ -19544,18 +19544,18 @@ export interface PostgresEndpointSpec {
      * (number) - The maximum number of Compute Units. The maximum value is 64.
      * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      */
-    autoscalingLimitMaxCu?: pulumi.Input<number>;
+    autoscalingLimitMaxCu?: pulumi.Input<number | undefined>;
     /**
      * (number) - The minimum number of Compute Units
      */
-    autoscalingLimitMinCu?: pulumi.Input<number>;
+    autoscalingLimitMinCu?: pulumi.Input<number | undefined>;
     /**
      * (boolean) - Whether to restrict connections to the compute endpoint.
      * Enabling this option schedules a suspend compute operation.
      * A disabled compute endpoint cannot be enabled by a connection or
      * console action
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      */
@@ -19563,21 +19563,21 @@ export interface PostgresEndpointSpec {
     /**
      * (EndpointGroupStatus) - Details on the HA configuration of the endpoint
      */
-    group?: pulumi.Input<inputs.PostgresEndpointSpecGroup>;
+    group?: pulumi.Input<inputs.PostgresEndpointSpecGroup | undefined>;
     /**
      * When set to true, explicitly disables automatic suspension (never suspend).
      * Should be set to true when provided.
      * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.suspension` in the update_mask
      */
-    noSuspension?: pulumi.Input<boolean>;
+    noSuspension?: pulumi.Input<boolean | undefined>;
     /**
      * (EndpointSettings)
      */
-    settings?: pulumi.Input<inputs.PostgresEndpointSpecSettings>;
+    settings?: pulumi.Input<inputs.PostgresEndpointSpecSettings | undefined>;
     /**
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      */
-    suspendTimeoutDuration?: pulumi.Input<string>;
+    suspendTimeoutDuration?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresEndpointSpecGroup {
@@ -19585,7 +19585,7 @@ export interface PostgresEndpointSpecGroup {
      * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
      * by specifying size.max > 1
      */
-    enableReadableSecondaries?: pulumi.Input<boolean>;
+    enableReadableSecondaries?: pulumi.Input<boolean | undefined>;
     max: pulumi.Input<number>;
     min: pulumi.Input<number>;
 }
@@ -19594,7 +19594,7 @@ export interface PostgresEndpointSpecSettings {
     /**
      * A raw representation of Postgres settings
      */
-    pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface PostgresEndpointStatus {
@@ -19602,52 +19602,52 @@ export interface PostgresEndpointStatus {
      * (number) - The maximum number of Compute Units. The maximum value is 64.
      * The difference between the minimum and maximum Compute Units (max - min) must not exceed 16
      */
-    autoscalingLimitMaxCu?: pulumi.Input<number>;
+    autoscalingLimitMaxCu?: pulumi.Input<number | undefined>;
     /**
      * (number) - The minimum number of Compute Units
      */
-    autoscalingLimitMinCu?: pulumi.Input<number>;
+    autoscalingLimitMinCu?: pulumi.Input<number | undefined>;
     /**
      * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
-    currentState?: pulumi.Input<string>;
+    currentState?: pulumi.Input<string | undefined>;
     /**
      * (boolean) - Whether to restrict connections to the compute endpoint.
      * Enabling this option schedules a suspend compute operation.
      * A disabled compute endpoint cannot be enabled by a connection or
      * console action
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
      * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
      * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
      */
-    endpointId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<string | undefined>;
     /**
      * (string) - The endpoint type. A branch can only have one READ_WRITE endpoint. Possible values are: `ENDPOINT_TYPE_READ_ONLY`, `ENDPOINT_TYPE_READ_WRITE`
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
     /**
      * (EndpointGroupStatus) - Details on the HA configuration of the endpoint
      */
-    group?: pulumi.Input<inputs.PostgresEndpointStatusGroup>;
+    group?: pulumi.Input<inputs.PostgresEndpointStatusGroup | undefined>;
     /**
      * (EndpointHosts) - Contains host information for connecting to the endpoint
      */
-    hosts?: pulumi.Input<inputs.PostgresEndpointStatusHosts>;
+    hosts?: pulumi.Input<inputs.PostgresEndpointStatusHosts | undefined>;
     /**
      * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
-    pendingState?: pulumi.Input<string>;
+    pendingState?: pulumi.Input<string | undefined>;
     /**
      * (EndpointSettings)
      */
-    settings?: pulumi.Input<inputs.PostgresEndpointStatusSettings>;
+    settings?: pulumi.Input<inputs.PostgresEndpointStatusSettings | undefined>;
     /**
      * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
      */
-    suspendTimeoutDuration?: pulumi.Input<string>;
+    suspendTimeoutDuration?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresEndpointStatusGroup {
@@ -19655,7 +19655,7 @@ export interface PostgresEndpointStatusGroup {
      * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
      * by specifying size.max > 1
      */
-    enableReadableSecondaries?: pulumi.Input<boolean>;
+    enableReadableSecondaries?: pulumi.Input<boolean | undefined>;
     max: pulumi.Input<number>;
     min: pulumi.Input<number>;
 }
@@ -19665,27 +19665,27 @@ export interface PostgresEndpointStatusHosts {
      * (string) - The hostname to connect to this endpoint. For read-write endpoints, this is a read-write hostname which connects
      * to the primary compute. For read-only endpoints, this is a read-only hostname which allows read-only operations
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * (string) - An optionally defined read-only host for the endpoint, without pooling. For read-only endpoints,
      * this attribute is always defined and is equivalent to host. For read-write endpoints, this attribute is defined
      * if the enclosing endpoint is a group with greater than 1 computes configured, and has readable secondaries enabled
      */
-    readOnlyHost?: pulumi.Input<string>;
+    readOnlyHost?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresEndpointStatusSettings {
     /**
      * A raw representation of Postgres settings
      */
-    pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface PostgresProjectInitialEndpointSpec {
     /**
      * Settings for HA configuration of the endpoint
      */
-    group?: pulumi.Input<inputs.PostgresProjectInitialEndpointSpecGroup>;
+    group?: pulumi.Input<inputs.PostgresProjectInitialEndpointSpecGroup | undefined>;
 }
 
 export interface PostgresProjectInitialEndpointSpecGroup {
@@ -19693,7 +19693,7 @@ export interface PostgresProjectInitialEndpointSpecGroup {
      * Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
      * size.max > 1
      */
-    enableReadableSecondaries?: pulumi.Input<boolean>;
+    enableReadableSecondaries?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
      * compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
@@ -19718,164 +19718,164 @@ export interface PostgresProjectSpec {
     /**
      * (string) - The budget policy that is applied to the project
      */
-    budgetPolicyId?: pulumi.Input<string>;
+    budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
      * (list of ProjectCustomTag) - The effective custom tags associated with the project
      */
-    customTags?: pulumi.Input<pulumi.Input<inputs.PostgresProjectSpecCustomTag>[]>;
+    customTags?: pulumi.Input<pulumi.Input<inputs.PostgresProjectSpecCustomTag>[] | undefined>;
     /**
      * (string) - The full resource path of the default branch of the project
      */
-    defaultBranch?: pulumi.Input<string>;
+    defaultBranch?: pulumi.Input<string | undefined>;
     /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
-    defaultEndpointSettings?: pulumi.Input<inputs.PostgresProjectSpecDefaultEndpointSettings>;
+    defaultEndpointSettings?: pulumi.Input<inputs.PostgresProjectSpecDefaultEndpointSettings | undefined>;
     /**
      * (string) - The effective human-readable project name
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * (boolean) - Whether to enable PG native password login on all endpoints in this project
      */
-    enablePgNativeLogin?: pulumi.Input<boolean>;
+    enablePgNativeLogin?: pulumi.Input<boolean | undefined>;
     /**
      * (string) - The effective number of seconds to retain the shared history for point in time recovery
      */
-    historyRetentionDuration?: pulumi.Input<string>;
+    historyRetentionDuration?: pulumi.Input<string | undefined>;
     /**
      * (integer) - The effective major Postgres version number
      */
-    pgVersion?: pulumi.Input<number>;
+    pgVersion?: pulumi.Input<number | undefined>;
 }
 
 export interface PostgresProjectSpecCustomTag {
     /**
      * The key of the custom tag
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The value of the custom tag
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresProjectSpecDefaultEndpointSettings {
     /**
      * The maximum number of Compute Units. Minimum value is 0.5
      */
-    autoscalingLimitMaxCu?: pulumi.Input<number>;
+    autoscalingLimitMaxCu?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of Compute Units. Minimum value is 0.5
      */
-    autoscalingLimitMinCu?: pulumi.Input<number>;
+    autoscalingLimitMinCu?: pulumi.Input<number | undefined>;
     /**
      * When set to true, explicitly disables automatic suspension (never suspend).
      * Should be set to true when provided.
      * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
-    noSuspension?: pulumi.Input<boolean>;
+    noSuspension?: pulumi.Input<boolean | undefined>;
     /**
      * A raw representation of Postgres settings
      */
-    pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Duration of inactivity after which the compute endpoint is automatically suspended.
      * If specified should be between 60s and 604800s (1 minute to 1 week).
      * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
-    suspendTimeoutDuration?: pulumi.Input<string>;
+    suspendTimeoutDuration?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresProjectStatus {
     /**
      * (integer) - The logical size limit for a branch
      */
-    branchLogicalSizeLimitBytes?: pulumi.Input<number>;
+    branchLogicalSizeLimitBytes?: pulumi.Input<number | undefined>;
     /**
      * (string) - The budget policy that is applied to the project
      */
-    budgetPolicyId?: pulumi.Input<string>;
+    budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
      * (list of ProjectCustomTag) - The effective custom tags associated with the project
      */
-    customTags?: pulumi.Input<pulumi.Input<inputs.PostgresProjectStatusCustomTag>[]>;
+    customTags?: pulumi.Input<pulumi.Input<inputs.PostgresProjectStatusCustomTag>[] | undefined>;
     /**
      * (string) - The full resource path of the default branch of the project
      */
-    defaultBranch?: pulumi.Input<string>;
+    defaultBranch?: pulumi.Input<string | undefined>;
     /**
      * (ProjectDefaultEndpointSettings) - The effective default endpoint settings
      */
-    defaultEndpointSettings?: pulumi.Input<inputs.PostgresProjectStatusDefaultEndpointSettings>;
+    defaultEndpointSettings?: pulumi.Input<inputs.PostgresProjectStatusDefaultEndpointSettings | undefined>;
     /**
      * (string) - The effective human-readable project name
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * (boolean) - Whether to enable PG native password login on all endpoints in this project
      */
-    enablePgNativeLogin?: pulumi.Input<boolean>;
+    enablePgNativeLogin?: pulumi.Input<boolean | undefined>;
     /**
      * (string) - The effective number of seconds to retain the shared history for point in time recovery
      */
-    historyRetentionDuration?: pulumi.Input<string>;
+    historyRetentionDuration?: pulumi.Input<string | undefined>;
     /**
      * (string) - The email of the project owner
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * (integer) - The effective major Postgres version number
      */
-    pgVersion?: pulumi.Input<number>;
+    pgVersion?: pulumi.Input<number | undefined>;
     /**
      * The ID to use for the Project. This becomes the final component of the project's resource name.
      * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
      * For example, `my-app` becomes `projects/my-app`
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * (integer) - The current space occupied by the project in storage
      */
-    syntheticStorageSizeBytes?: pulumi.Input<number>;
+    syntheticStorageSizeBytes?: pulumi.Input<number | undefined>;
 }
 
 export interface PostgresProjectStatusCustomTag {
     /**
      * The key of the custom tag
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * The value of the custom tag
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresProjectStatusDefaultEndpointSettings {
     /**
      * The maximum number of Compute Units. Minimum value is 0.5
      */
-    autoscalingLimitMaxCu?: pulumi.Input<number>;
+    autoscalingLimitMaxCu?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of Compute Units. Minimum value is 0.5
      */
-    autoscalingLimitMinCu?: pulumi.Input<number>;
+    autoscalingLimitMinCu?: pulumi.Input<number | undefined>;
     /**
      * When set to true, explicitly disables automatic suspension (never suspend).
      * Should be set to true when provided.
      * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
-    noSuspension?: pulumi.Input<boolean>;
+    noSuspension?: pulumi.Input<boolean | undefined>;
     /**
      * A raw representation of Postgres settings
      */
-    pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Duration of inactivity after which the compute endpoint is automatically suspended.
      * If specified should be between 60s and 604800s (1 minute to 1 week).
      * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
      */
-    suspendTimeoutDuration?: pulumi.Input<string>;
+    suspendTimeoutDuration?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresRoleProviderConfig {
@@ -19886,25 +19886,25 @@ export interface PostgresRoleProviderConfig {
 }
 
 export interface PostgresRoleSpec {
-    attributes?: pulumi.Input<inputs.PostgresRoleSpecAttributes>;
-    authMethod?: pulumi.Input<string>;
-    identityType?: pulumi.Input<string>;
-    membershipRoles?: pulumi.Input<pulumi.Input<string>[]>;
-    postgresRole?: pulumi.Input<string>;
+    attributes?: pulumi.Input<inputs.PostgresRoleSpecAttributes | undefined>;
+    authMethod?: pulumi.Input<string | undefined>;
+    identityType?: pulumi.Input<string | undefined>;
+    membershipRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    postgresRole?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresRoleSpecAttributes {
-    bypassrls?: pulumi.Input<boolean>;
-    createdb?: pulumi.Input<boolean>;
-    createrole?: pulumi.Input<boolean>;
+    bypassrls?: pulumi.Input<boolean | undefined>;
+    createdb?: pulumi.Input<boolean | undefined>;
+    createrole?: pulumi.Input<boolean | undefined>;
 }
 
 export interface PostgresRoleStatus {
-    attributes?: pulumi.Input<inputs.PostgresRoleStatusAttributes>;
-    authMethod?: pulumi.Input<string>;
-    identityType?: pulumi.Input<string>;
-    membershipRoles?: pulumi.Input<pulumi.Input<string>[]>;
-    postgresRole?: pulumi.Input<string>;
+    attributes?: pulumi.Input<inputs.PostgresRoleStatusAttributes | undefined>;
+    authMethod?: pulumi.Input<string | undefined>;
+    identityType?: pulumi.Input<string | undefined>;
+    membershipRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    postgresRole?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the Role, which will become the final component of
      * the role's resource name.
@@ -19915,13 +19915,13 @@ export interface PostgresRoleStatus {
      *
      * If roleId is not specified in the request, it is generated automatically
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresRoleStatusAttributes {
-    bypassrls?: pulumi.Input<boolean>;
-    createdb?: pulumi.Input<boolean>;
-    createrole?: pulumi.Input<boolean>;
+    bypassrls?: pulumi.Input<boolean | undefined>;
+    createdb?: pulumi.Input<boolean | undefined>;
+    createrole?: pulumi.Input<boolean | undefined>;
 }
 
 export interface PostgresSyncedTableProviderConfig {
@@ -19937,7 +19937,7 @@ export interface PostgresSyncedTableSpec {
      *
      * Format: "projects/{project_id}/branches/{branch_id}"
      */
-    branch?: pulumi.Input<string>;
+    branch?: pulumi.Input<string | undefined>;
     /**
      * If true, the synced table's logical database and schema resources in PG
      * will be created if they do not already exist.
@@ -19945,21 +19945,21 @@ export interface PostgresSyncedTableSpec {
      *
      * Defaults to true if omitted
      */
-    createDatabaseObjectsIfMissing?: pulumi.Input<boolean>;
+    createDatabaseObjectsIfMissing?: pulumi.Input<boolean | undefined>;
     /**
      * ID of an existing pipeline to bin-pack this synced table into.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      *
      * The pipeline used for the synced table is returned via the top level pipelineId attribute
      */
-    existingPipelineId?: pulumi.Input<string>;
+    existingPipelineId?: pulumi.Input<string | undefined>;
     /**
      * Specification for creating a new pipeline.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      *
      * The pipeline used for the synced table is returned via the top level pipelineId attribute
      */
-    newPipelineSpec?: pulumi.Input<inputs.PostgresSyncedTableSpecNewPipelineSpec>;
+    newPipelineSpec?: pulumi.Input<inputs.PostgresSyncedTableSpecNewPipelineSpec | undefined>;
     /**
      * The Postgres database name where the synced table will be created in.
      *
@@ -19968,15 +19968,15 @@ export interface PostgresSyncedTableSpec {
      *
      * A value must be specified when creating a synced table inside a Standard Catalog
      */
-    postgresDatabase?: pulumi.Input<string>;
+    postgresDatabase?: pulumi.Input<string | undefined>;
     /**
      * Primary Key columns to be used for data insert/update in the destination
      */
-    primaryKeyColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    primaryKeyColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
      */
-    schedulingPolicy?: pulumi.Input<string>;
+    schedulingPolicy?: pulumi.Input<string | undefined>;
     /**
      * Three-part (catalog, schema, table) name of the source Delta table.
      *
@@ -19985,91 +19985,91 @@ export interface PostgresSyncedTableSpec {
      * * syncedTableId used at the creation of the SyncedTable
      * * "name" consisting of "synced_tables/" prefix and the full name of the destination table
      */
-    sourceTableFullName?: pulumi.Input<string>;
+    sourceTableFullName?: pulumi.Input<string | undefined>;
     /**
      * Time series key to deduplicate (tie-break) rows with the same primary key
      */
-    timeseriesKey?: pulumi.Input<string>;
+    timeseriesKey?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresSyncedTableSpecNewPipelineSpec {
     /**
      * Budget policy to set on the newly created pipeline
      */
-    budgetPolicyId?: pulumi.Input<string>;
+    budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
      * UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
      * This needs to be a standard catalog where the user has permissions to create Delta tables
      */
-    storageCatalog?: pulumi.Input<string>;
+    storageCatalog?: pulumi.Input<string | undefined>;
     /**
      * UC schema for the pipeline to store intermediate files (checkpoints, event logs etc).
      * This needs to be in the standard catalog where the user has permissions to create Delta tables
      */
-    storageSchema?: pulumi.Input<string>;
+    storageSchema?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresSyncedTableStatus {
     /**
      * (string) - The state of the synced table. Possible values are: `SYNCED_TABLE_OFFLINE`, `SYNCED_TABLE_OFFLINE_FAILED`, `SYNCED_TABLE_ONLINE`, `SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE`, `SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE`, `SYNCED_TABLE_ONLINE_PIPELINE_FAILED`, `SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE`, `SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES`, `SYNCED_TABLE_PROVISIONING`, `SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT`, `SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES`
      */
-    detailedState?: pulumi.Input<string>;
+    detailedState?: pulumi.Input<string | undefined>;
     /**
      * (integer) - The last source table Delta version that was successfully synced to the synced table
      */
-    lastProcessedCommitVersion?: pulumi.Input<number>;
+    lastProcessedCommitVersion?: pulumi.Input<number | undefined>;
     /**
      * (SyncedTablePosition) - Summary of the last successful synchronization from source to destination
      */
-    lastSync?: pulumi.Input<inputs.PostgresSyncedTableStatusLastSync>;
+    lastSync?: pulumi.Input<inputs.PostgresSyncedTableStatusLastSync | undefined>;
     /**
      * (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
      * table. This is when the data is available in the synced table
      */
-    lastSyncTime?: pulumi.Input<string>;
+    lastSyncTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - A text description of the current state of the synced table
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * (SyncedTablePipelineProgress)
      */
-    ongoingSyncProgress?: pulumi.Input<inputs.PostgresSyncedTableStatusOngoingSyncProgress>;
+    ongoingSyncProgress?: pulumi.Input<inputs.PostgresSyncedTableStatusOngoingSyncProgress | undefined>;
     /**
      * (string) - ID of the associated pipeline
      */
-    pipelineId?: pulumi.Input<string>;
+    pipelineId?: pulumi.Input<string | undefined>;
     /**
      * (string) - The full resource name of the project associated with the table.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
      */
-    provisioningPhase?: pulumi.Input<string>;
+    provisioningPhase?: pulumi.Input<string | undefined>;
     /**
      * (string) - The provisioning state of the synced table entity in Unity Catalog. Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
      */
-    unityCatalogProvisioningState?: pulumi.Input<string>;
+    unityCatalogProvisioningState?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresSyncedTableStatusLastSync {
     /**
      * (DeltaTableSyncInfo)
      */
-    deltaTableSyncInfo?: pulumi.Input<inputs.PostgresSyncedTableStatusLastSyncDeltaTableSyncInfo>;
+    deltaTableSyncInfo?: pulumi.Input<inputs.PostgresSyncedTableStatusLastSyncDeltaTableSyncInfo | undefined>;
     /**
      * (string) - The end timestamp of the most recent successful synchronization.
      * This is the time when the data is available in the synced table
      */
-    syncEndTime?: pulumi.Input<string>;
+    syncEndTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - The starting timestamp of the most recent successful synchronization from the source table
      * to the destination (synced) table.
      * Note this is the starting timestamp of the sync operation, not the end time.
      * E.g., for a batch, this is the time when the sync operation started
      */
-    syncStartTime?: pulumi.Input<string>;
+    syncStartTime?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresSyncedTableStatusLastSyncDeltaTableSyncInfo {
@@ -20077,35 +20077,35 @@ export interface PostgresSyncedTableStatusLastSyncDeltaTableSyncInfo {
      * (string) - The timestamp when the above Delta version was committed in the source Delta table.
      * Note: This is the Delta commit time, not the time the data was written to the synced table
      */
-    deltaCommitTime?: pulumi.Input<string>;
+    deltaCommitTime?: pulumi.Input<string | undefined>;
     /**
      * (integer) - The Delta Lake commit version that was last successfully synced
      */
-    deltaCommitVersion?: pulumi.Input<number>;
+    deltaCommitVersion?: pulumi.Input<number | undefined>;
 }
 
 export interface PostgresSyncedTableStatusOngoingSyncProgress {
     /**
      * (number) - The estimated time remaining to complete this update in seconds
      */
-    estimatedCompletionTimeSeconds?: pulumi.Input<number>;
+    estimatedCompletionTimeSeconds?: pulumi.Input<number | undefined>;
     /**
      * (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
      * have completely processed this version yet
      */
-    latestVersionCurrentlyProcessing?: pulumi.Input<number>;
+    latestVersionCurrentlyProcessing?: pulumi.Input<number | undefined>;
     /**
      * (number) - The completion ratio of this update. This is a number between 0 and 1
      */
-    syncProgressCompletion?: pulumi.Input<number>;
+    syncProgressCompletion?: pulumi.Input<number | undefined>;
     /**
      * (integer) - The number of rows that have been synced in this update
      */
-    syncedRowCount?: pulumi.Input<number>;
+    syncedRowCount?: pulumi.Input<number | undefined>;
     /**
      * (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
      */
-    totalRowCount?: pulumi.Input<number>;
+    totalRowCount?: pulumi.Input<number | undefined>;
 }
 
 export interface QualityMonitorCustomMetric {
@@ -20135,7 +20135,7 @@ export interface QualityMonitorDataClassificationConfig {
     /**
      * Whether to enable data classification
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface QualityMonitorInferenceLog {
@@ -20146,7 +20146,7 @@ export interface QualityMonitorInferenceLog {
     /**
      * Column of the model label
      */
-    labelCol?: pulumi.Input<string>;
+    labelCol?: pulumi.Input<string | undefined>;
     /**
      * Column of the model id or version
      */
@@ -20158,7 +20158,7 @@ export interface QualityMonitorInferenceLog {
     /**
      * Column of the model prediction probabilities
      */
-    predictionProbaCol?: pulumi.Input<string>;
+    predictionProbaCol?: pulumi.Input<string | undefined>;
     /**
      * Problem type the model aims to solve. Either `PROBLEM_TYPE_CLASSIFICATION` or `PROBLEM_TYPE_REGRESSION`
      */
@@ -20173,19 +20173,19 @@ export interface QualityMonitorNotifications {
     /**
      * who to send notifications to on monitor failure.
      */
-    onFailure?: pulumi.Input<inputs.QualityMonitorNotificationsOnFailure>;
+    onFailure?: pulumi.Input<inputs.QualityMonitorNotificationsOnFailure | undefined>;
     /**
      * Who to send notifications to when new data classification tags are detected.
      */
-    onNewClassificationTagDetected?: pulumi.Input<inputs.QualityMonitorNotificationsOnNewClassificationTagDetected>;
+    onNewClassificationTagDetected?: pulumi.Input<inputs.QualityMonitorNotificationsOnNewClassificationTagDetected | undefined>;
 }
 
 export interface QualityMonitorNotificationsOnFailure {
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface QualityMonitorNotificationsOnNewClassificationTagDetected {
-    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface QualityMonitorProviderConfig {
@@ -20196,7 +20196,7 @@ export interface QualityMonitorProviderConfig {
 }
 
 export interface QualityMonitorSchedule {
-    pauseStatus?: pulumi.Input<string>;
+    pauseStatus?: pulumi.Input<string | undefined>;
     /**
      * string expression that determines when to run the monitor. See [Quartz documentation](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for examples.
      */
@@ -20225,15 +20225,15 @@ export interface QualityMonitorV2AnomalyDetectionConfig {
     /**
      * List of fully qualified table names to exclude from anomaly detection
      */
-    excludedTableFullNames?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedTableFullNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (string) - Run id of the last run of the workflow
      */
-    lastRunId?: pulumi.Input<string>;
+    lastRunId?: pulumi.Input<string | undefined>;
     /**
      * (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
      */
-    latestRunStatus?: pulumi.Input<string>;
+    latestRunStatus?: pulumi.Input<string | undefined>;
 }
 
 export interface QualityMonitorV2ProviderConfig {
@@ -20247,43 +20247,43 @@ export interface QualityMonitorV2ValidityCheckConfiguration {
     /**
      * Can be set by system. Does not need to be user facing
      */
-    name?: pulumi.Input<string>;
-    percentNullValidityCheck?: pulumi.Input<inputs.QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck>;
-    rangeValidityCheck?: pulumi.Input<inputs.QualityMonitorV2ValidityCheckConfigurationRangeValidityCheck>;
-    uniquenessValidityCheck?: pulumi.Input<inputs.QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck>;
+    name?: pulumi.Input<string | undefined>;
+    percentNullValidityCheck?: pulumi.Input<inputs.QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck | undefined>;
+    rangeValidityCheck?: pulumi.Input<inputs.QualityMonitorV2ValidityCheckConfigurationRangeValidityCheck | undefined>;
+    uniquenessValidityCheck?: pulumi.Input<inputs.QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck | undefined>;
 }
 
 export interface QualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck {
-    columnNames?: pulumi.Input<pulumi.Input<string>[]>;
-    upperBound?: pulumi.Input<number>;
+    columnNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    upperBound?: pulumi.Input<number | undefined>;
 }
 
 export interface QualityMonitorV2ValidityCheckConfigurationRangeValidityCheck {
-    columnNames?: pulumi.Input<pulumi.Input<string>[]>;
+    columnNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Lower bound for the range
      */
-    lowerBound?: pulumi.Input<number>;
-    upperBound?: pulumi.Input<number>;
+    lowerBound?: pulumi.Input<number | undefined>;
+    upperBound?: pulumi.Input<number | undefined>;
 }
 
 export interface QualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck {
-    columnNames?: pulumi.Input<pulumi.Input<string>[]>;
+    columnNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface QueryParameter {
     /**
      * Date-range query parameter value. Consists of following attributes (Can only specify one of `dynamicDateRangeValue` or `dateRangeValue`):
      */
-    dateRangeValue?: pulumi.Input<inputs.QueryParameterDateRangeValue>;
+    dateRangeValue?: pulumi.Input<inputs.QueryParameterDateRangeValue | undefined>;
     /**
      * Date query parameter value. Consists of following attributes (Can only specify one of `dynamicDateValue` or `dateValue`):
      */
-    dateValue?: pulumi.Input<inputs.QueryParameterDateValue>;
+    dateValue?: pulumi.Input<inputs.QueryParameterDateValue | undefined>;
     /**
      * Dropdown parameter value. Consists of following attributes:
      */
-    enumValue?: pulumi.Input<inputs.QueryParameterEnumValue>;
+    enumValue?: pulumi.Input<inputs.QueryParameterEnumValue | undefined>;
     /**
      * Literal parameter marker that appears between double curly braces in the query text.
      */
@@ -20291,38 +20291,38 @@ export interface QueryParameter {
     /**
      * Numeric parameter value. Consists of following attributes:
      */
-    numericValue?: pulumi.Input<inputs.QueryParameterNumericValue>;
+    numericValue?: pulumi.Input<inputs.QueryParameterNumericValue | undefined>;
     /**
      * Query-based dropdown parameter value. Consists of following attributes:
      */
-    queryBackedValue?: pulumi.Input<inputs.QueryParameterQueryBackedValue>;
+    queryBackedValue?: pulumi.Input<inputs.QueryParameterQueryBackedValue | undefined>;
     /**
      * Text parameter value. Consists of following attributes:
      */
-    textValue?: pulumi.Input<inputs.QueryParameterTextValue>;
+    textValue?: pulumi.Input<inputs.QueryParameterTextValue | undefined>;
     /**
      * Text displayed in the user-facing parameter widget in the UI.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 export interface QueryParameterDateRangeValue {
     /**
      * Manually specified date-time range value.  Consists of the following attributes:
      */
-    dateRangeValue?: pulumi.Input<inputs.QueryParameterDateRangeValueDateRangeValue>;
+    dateRangeValue?: pulumi.Input<inputs.QueryParameterDateRangeValueDateRangeValue | undefined>;
     /**
      * Dynamic date-time range value based on current date-time.  Possible values are `TODAY`, `YESTERDAY`, `THIS_WEEK`, `THIS_MONTH`, `THIS_YEAR`, `LAST_WEEK`, `LAST_MONTH`, `LAST_YEAR`, `LAST_HOUR`, `LAST_8_HOURS`, `LAST_24_HOURS`, `LAST_7_DAYS`, `LAST_14_DAYS`, `LAST_30_DAYS`, `LAST_60_DAYS`, `LAST_90_DAYS`, `LAST_12_MONTHS`.
      */
-    dynamicDateRangeValue?: pulumi.Input<string>;
+    dynamicDateRangeValue?: pulumi.Input<string | undefined>;
     /**
      * Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
      */
-    precision?: pulumi.Input<string>;
+    precision?: pulumi.Input<string | undefined>;
     /**
      * Specify what day that starts the week.
      */
-    startDayOfWeek?: pulumi.Input<number>;
+    startDayOfWeek?: pulumi.Input<number | undefined>;
 }
 
 export interface QueryParameterDateRangeValueDateRangeValue {
@@ -20340,45 +20340,45 @@ export interface QueryParameterDateValue {
     /**
      * Manually specified date-time value
      */
-    dateValue?: pulumi.Input<string>;
+    dateValue?: pulumi.Input<string | undefined>;
     /**
      * Dynamic date-time value based on current date-time.  Possible values are `NOW`, `YESTERDAY`.
      */
-    dynamicDateValue?: pulumi.Input<string>;
+    dynamicDateValue?: pulumi.Input<string | undefined>;
     /**
      * Date-time precision to format the value into when the query is run.  Possible values are `DAY_PRECISION`, `MINUTE_PRECISION`, `SECOND_PRECISION`.  Defaults to `DAY_PRECISION` (`YYYY-MM-DD`).
      */
-    precision?: pulumi.Input<string>;
+    precision?: pulumi.Input<string | undefined>;
 }
 
 export interface QueryParameterEnumValue {
     /**
      * List of valid query parameter values, newline delimited.
      */
-    enumOptions?: pulumi.Input<string>;
+    enumOptions?: pulumi.Input<string | undefined>;
     /**
      * If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
      */
-    multiValuesOptions?: pulumi.Input<inputs.QueryParameterEnumValueMultiValuesOptions>;
+    multiValuesOptions?: pulumi.Input<inputs.QueryParameterEnumValueMultiValuesOptions | undefined>;
     /**
      * List of selected query parameter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface QueryParameterEnumValueMultiValuesOptions {
     /**
      * Character that prefixes each selected parameter value.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * Character that separates each selected parameter value. Defaults to a comma.
      */
-    separator?: pulumi.Input<string>;
+    separator?: pulumi.Input<string | undefined>;
     /**
      * Character that suffixes each selected parameter value.
      */
-    suffix?: pulumi.Input<string>;
+    suffix?: pulumi.Input<string | undefined>;
 }
 
 export interface QueryParameterNumericValue {
@@ -20392,7 +20392,7 @@ export interface QueryParameterQueryBackedValue {
     /**
      * If specified, allows multiple values to be selected for this parameter. Consists of following attributes:
      */
-    multiValuesOptions?: pulumi.Input<inputs.QueryParameterQueryBackedValueMultiValuesOptions>;
+    multiValuesOptions?: pulumi.Input<inputs.QueryParameterQueryBackedValueMultiValuesOptions | undefined>;
     /**
      * ID of the query that provides the parameter values.
      */
@@ -20400,22 +20400,22 @@ export interface QueryParameterQueryBackedValue {
     /**
      * List of selected query parameter values.
      */
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface QueryParameterQueryBackedValueMultiValuesOptions {
     /**
      * Character that prefixes each selected parameter value.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * Character that separates each selected parameter value. Defaults to a comma.
      */
-    separator?: pulumi.Input<string>;
+    separator?: pulumi.Input<string | undefined>;
     /**
      * Character that suffixes each selected parameter value.
      */
-    suffix?: pulumi.Input<string>;
+    suffix?: pulumi.Input<string | undefined>;
 }
 
 export interface QueryParameterTextValue {
@@ -20436,7 +20436,7 @@ export interface RecipientIpAccessList {
     /**
      * Allowed IP Addresses in CIDR notation. Limit of 100.
      */
-    allowedIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedIpAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface RecipientPropertiesKvpairs {
@@ -20457,49 +20457,49 @@ export interface RecipientToken {
     /**
      * Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
      */
-    activationUrl?: pulumi.Input<string>;
+    activationUrl?: pulumi.Input<string | undefined>;
     /**
      * Time at which this recipient was created, in epoch milliseconds.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * Username of recipient creator.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Expiration timestamp of the token in epoch milliseconds.
      */
-    expirationTime?: pulumi.Input<number>;
+    expirationTime?: pulumi.Input<number | undefined>;
     /**
      * Unique ID of the recipient token.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Time at which this recipient was updated, in epoch milliseconds.
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * Username of recipient Token updater.
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
 }
 
 export interface RegisteredModelAlias {
-    aliasName?: pulumi.Input<string>;
+    aliasName?: pulumi.Input<string | undefined>;
     /**
      * The name of the catalog where the schema and the registered model reside. *Change of this parameter forces recreation of the resource.*
      */
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * Equal to the full name of the model (`catalog_name.schema_name.name`) and used to identify the model uniquely across the metastore.
      */
-    id?: pulumi.Input<string>;
-    modelName?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    modelName?: pulumi.Input<string | undefined>;
     /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      */
-    schemaName?: pulumi.Input<string>;
-    versionNum?: pulumi.Input<number>;
+    schemaName?: pulumi.Input<string | undefined>;
+    versionNum?: pulumi.Input<number | undefined>;
 }
 
 export interface RegisteredModelProviderConfig {
@@ -20533,7 +20533,7 @@ export interface RestrictWorkspaceAdminsSettingProviderConfig {
 }
 
 export interface RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins {
-    disableGovTagCreation?: pulumi.Input<boolean>;
+    disableGovTagCreation?: pulumi.Input<boolean | undefined>;
     /**
      * The restrict workspace admins status for the workspace.
      */
@@ -20545,35 +20545,35 @@ export interface RfaAccessRequestDestinationsDestination {
      * The identifier for the destination. This is the email address for EMAIL destinations, the URL for URL destinations,
      * or the unique Databricks notification destination ID for all other external destinations
      */
-    destinationId?: pulumi.Input<string>;
+    destinationId?: pulumi.Input<string | undefined>;
     /**
      * The type of the destination. Possible values are: `EMAIL`, `GENERIC_WEBHOOK`, `MICROSOFT_TEAMS`, `SLACK`, `URL`
      */
-    destinationType?: pulumi.Input<string>;
+    destinationType?: pulumi.Input<string | undefined>;
     /**
      * This field is used to denote whether the destination is the email of the owner of the securable object.
      * The special destination cannot be assigned to a securable and only represents the default destination of the securable.
      * The securable types that support default special destinations are: "catalog", "externalLocation", "connection", "credential", and "metastore".
      * The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`
      */
-    specialDestination?: pulumi.Input<string>;
+    specialDestination?: pulumi.Input<string | undefined>;
 }
 
 export interface RfaAccessRequestDestinationsDestinationSourceSecurable {
     /**
      * (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * Optional. The name of the Share object that contains the securable when the securable is
      * getting shared in D2D Delta Sharing
      */
-    providerShare?: pulumi.Input<string>;
+    providerShare?: pulumi.Input<string | undefined>;
     /**
      * Required. The type of securable (catalog/schema/table).
      * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface RfaAccessRequestDestinationsProviderConfig {
@@ -20588,17 +20588,17 @@ export interface RfaAccessRequestDestinationsSecurable {
      * Required. The full name of the catalog/schema/table.
      * Optional if resourceName is present
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * Optional. The name of the Share object that contains the securable when the securable is
      * getting shared in D2D Delta Sharing
      */
-    providerShare?: pulumi.Input<string>;
+    providerShare?: pulumi.Input<string | undefined>;
     /**
      * Required. The type of securable (catalog/schema/table).
      * Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface SchemaProviderConfig {
@@ -20642,11 +20642,11 @@ export interface ServicePrincipalFederationPolicyOidcPolicy {
      * at least one audience in the policy, the token is considered a match. If audiences
      * is unspecified, defaults to your Databricks account id
      */
-    audiences?: pulumi.Input<pulumi.Input<string>[]>;
+    audiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The required token issuer, as specified in the 'iss' claim of federated tokens
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * The public keys used to validate the signature of federated tokens, in JWKS format.
      * Most use cases should not need to specify this field. If jwksUri and jwksJson
@@ -20654,7 +20654,7 @@ export interface ServicePrincipalFederationPolicyOidcPolicy {
      * keys from your issuer’s well known endpoint. Databricks strongly recommends
      * relying on your issuer’s well known endpoint for discovering public keys
      */
-    jwksJson?: pulumi.Input<string>;
+    jwksJson?: pulumi.Input<string | undefined>;
     /**
      * URL of the public keys used to validate the signature of federated tokens, in
      * JWKS format. Most use cases should not need to specify this field. If jwksUri
@@ -20663,18 +20663,18 @@ export interface ServicePrincipalFederationPolicyOidcPolicy {
      * strongly recommends relying on your issuer’s well known endpoint for discovering
      * public keys
      */
-    jwksUri?: pulumi.Input<string>;
+    jwksUri?: pulumi.Input<string | undefined>;
     /**
      * The required token subject, as specified in the subject claim of federated tokens.
      * Must be specified for service principal federation policies. Must not be specified
      * for account federation policies
      */
-    subject?: pulumi.Input<string>;
+    subject?: pulumi.Input<string | undefined>;
     /**
      * The claim that contains the subject of the token. If unspecified, the default value
      * is 'sub'
      */
-    subjectClaim?: pulumi.Input<string>;
+    subjectClaim?: pulumi.Input<string | undefined>;
 }
 
 export interface ServicePrincipalProviderConfig {
@@ -20693,35 +20693,35 @@ export interface ServicePrincipalSecretProviderConfig {
 }
 
 export interface ShareObject {
-    addedAt?: pulumi.Input<number>;
-    addedBy?: pulumi.Input<string>;
+    addedAt?: pulumi.Input<number | undefined>;
+    addedBy?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable Change Data Feed (cdf) on the shared object. When this field is set, field `historyDataSharingStatus` can not be set.
      */
-    cdfEnabled?: pulumi.Input<boolean>;
+    cdfEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Description about the object.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The content of the notebook file when the data object type is NOTEBOOK_FILE. This should be base64 encoded. Required for adding a NOTEBOOK_FILE, optional for updating, ignored for other types.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Type of the data object. Supported types: `TABLE`, `FOREIGN_TABLE`, `SCHEMA`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`, `FEATURE_SPEC`, and `VOLUME`.
      */
     dataObjectType: pulumi.Input<string>;
-    effectiveCdfEnabled?: pulumi.Input<boolean>;
-    effectiveHistoryDataSharingStatus?: pulumi.Input<string>;
-    effectiveSharedAs?: pulumi.Input<string>;
-    effectiveStartVersion?: pulumi.Input<number>;
-    effectiveStringSharedAs?: pulumi.Input<string>;
+    effectiveCdfEnabled?: pulumi.Input<boolean | undefined>;
+    effectiveHistoryDataSharingStatus?: pulumi.Input<string | undefined>;
+    effectiveSharedAs?: pulumi.Input<string | undefined>;
+    effectiveStartVersion?: pulumi.Input<number | undefined>;
+    effectiveStringSharedAs?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable history sharing, one of: `ENABLED`, `DISABLED`. When a table has history sharing enabled, recipients can query table data by version, starting from the current table version. If not specified, clients can only query starting from the version of the object at the time it was added to the share. *NOTE*: The startVersion should be less than or equal the current version of the object. When this field is set, field `cdfEnabled` can not be set.
      *
      * To share only part of a table when you add the table to a share, you can provide partition specifications. This is specified by a number of `partition` blocks. Each entry in `partition` block takes a list of `value` blocks. The field is documented below.
      */
-    historyDataSharingStatus?: pulumi.Input<string>;
+    historyDataSharingStatus?: pulumi.Input<string | undefined>;
     /**
      * Full name of the object, e.g. `catalog.schema.name` for a tables, views, volumes and models, or `catalog.schema` for schemas.
      */
@@ -20729,30 +20729,30 @@ export interface ShareObject {
     /**
      * Array of partitions for the shared data.
      */
-    partitions?: pulumi.Input<pulumi.Input<inputs.ShareObjectPartition>[]>;
+    partitions?: pulumi.Input<pulumi.Input<inputs.ShareObjectPartition>[] | undefined>;
     /**
      * A user-provided alias name for **table-like data objects** within the share. Use this field for: `TABLE`, `VIEW`, `MATERIALIZED_VIEW`, `STREAMING_TABLE`, `FOREIGN_TABLE`. **Do not use this field for volumes, models, notebooks, or functions** (use `stringSharedAs` instead). If not provided, the object's original name will be used. Must be a 2-part name `<schema>.<table>` containing only alphanumeric characters and underscores. The `sharedAs` name must be unique within a share. Change forces creation of a new resource.
      */
-    sharedAs?: pulumi.Input<string>;
+    sharedAs?: pulumi.Input<string | undefined>;
     /**
      * The start version associated with the object for cdf. This allows data providers to control the lowest object version that is accessible by clients.
      */
-    startVersion?: pulumi.Input<number>;
+    startVersion?: pulumi.Input<number | undefined>;
     /**
      * Status of the object, one of: `ACTIVE`, `PERMISSION_DENIED`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A user-provided alias name for **non-table data objects** within the share. Use this field for: `VOLUME`, `MODEL`, `NOTEBOOK_FILE`, `FUNCTION`. **Do not use this field for tables, views, or streaming tables** (use `sharedAs` instead). Format varies by type: For volumes, models, and functions use `<schema>.<name>` (2-part name); for notebooks use the file name. Names must contain only alphanumeric characters and underscores. The `stringSharedAs` name must be unique for objects of the same type within a share. Change forces creation of a new resource.
      */
-    stringSharedAs?: pulumi.Input<string>;
+    stringSharedAs?: pulumi.Input<string | undefined>;
 }
 
 export interface ShareObjectPartition {
     /**
      * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
      */
-    values?: pulumi.Input<pulumi.Input<inputs.ShareObjectPartitionValue>[]>;
+    values?: pulumi.Input<pulumi.Input<inputs.ShareObjectPartitionValue>[] | undefined>;
 }
 
 export interface ShareObjectPartitionValue {
@@ -20767,11 +20767,11 @@ export interface ShareObjectPartitionValue {
     /**
      * The key of a Delta Sharing recipient's property. For example `databricks-account-id`. When this field is set, field `value` can not be set.
      */
-    recipientPropertyKey?: pulumi.Input<string>;
+    recipientPropertyKey?: pulumi.Input<string | undefined>;
     /**
      * The value of the partition column. When this value is not set, it means null value. When this field is set, field `recipientPropertyKey` can not be set.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface ShareProviderConfig {
@@ -20789,19 +20789,19 @@ export interface SqlAlertOptions {
     /**
      * Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
      */
-    customBody?: pulumi.Input<string>;
+    customBody?: pulumi.Input<string | undefined>;
     /**
      * Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/sql/user/alerts/index.html) for custom templating instructions.
      */
-    customSubject?: pulumi.Input<string>;
+    customSubject?: pulumi.Input<string | undefined>;
     /**
      * State that alert evaluates to when query result is empty.  Currently supported values are `unknown`, `triggered`, `ok` - check [API documentation](https://docs.databricks.com/api/workspace/alerts/create) for full list of supported values.
      */
-    emptyResultState?: pulumi.Input<string>;
+    emptyResultState?: pulumi.Input<string | undefined>;
     /**
      * Whether or not the alert is muted. If an alert is muted, it will not notify users and alert destinations when triggered.
      */
-    muted?: pulumi.Input<boolean>;
+    muted?: pulumi.Input<boolean | undefined>;
     /**
      * Operator used to compare in alert evaluation. (Enum: `>`, `>=`, `<`, `<=`, `==`, `!=`)
      */
@@ -20824,32 +20824,32 @@ export interface SqlDashboardProviderConfig {
 }
 
 export interface SqlEndpointChannel {
-    dbsqlVersion?: pulumi.Input<string>;
+    dbsqlVersion?: pulumi.Input<string | undefined>;
     /**
      * Name of the Databricks SQL release channel. Possible values are: `CHANNEL_NAME_PREVIEW` and `CHANNEL_NAME_CURRENT`. Default is `CHANNEL_NAME_CURRENT`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlEndpointHealth {
-    details?: pulumi.Input<string>;
-    failureReason?: pulumi.Input<inputs.SqlEndpointHealthFailureReason>;
-    message?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
-    summary?: pulumi.Input<string>;
+    details?: pulumi.Input<string | undefined>;
+    failureReason?: pulumi.Input<inputs.SqlEndpointHealthFailureReason | undefined>;
+    message?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
+    summary?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlEndpointHealthFailureReason {
-    code?: pulumi.Input<string>;
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    type?: pulumi.Input<string>;
+    code?: pulumi.Input<string | undefined>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlEndpointOdbcParams {
-    hostname?: pulumi.Input<string>;
-    path?: pulumi.Input<string>;
-    port?: pulumi.Input<number>;
-    protocol?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
+    path?: pulumi.Input<string | undefined>;
+    port?: pulumi.Input<number | undefined>;
+    protocol?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlEndpointProviderConfig {
@@ -20860,7 +20860,7 @@ export interface SqlEndpointProviderConfig {
 }
 
 export interface SqlEndpointTags {
-    customTags?: pulumi.Input<pulumi.Input<inputs.SqlEndpointTagsCustomTag>[]>;
+    customTags?: pulumi.Input<pulumi.Input<inputs.SqlEndpointTagsCustomTag>[] | undefined>;
 }
 
 export interface SqlEndpointTagsCustomTag {
@@ -20915,13 +20915,13 @@ export interface SqlPermissionsProviderConfig {
 }
 
 export interface SqlQueryParameter {
-    date?: pulumi.Input<inputs.SqlQueryParameterDate>;
-    dateRange?: pulumi.Input<inputs.SqlQueryParameterDateRange>;
-    datetime?: pulumi.Input<inputs.SqlQueryParameterDatetime>;
-    datetimeRange?: pulumi.Input<inputs.SqlQueryParameterDatetimeRange>;
-    datetimesec?: pulumi.Input<inputs.SqlQueryParameterDatetimesec>;
-    datetimesecRange?: pulumi.Input<inputs.SqlQueryParameterDatetimesecRange>;
-    enum?: pulumi.Input<inputs.SqlQueryParameterEnum>;
+    date?: pulumi.Input<inputs.SqlQueryParameterDate | undefined>;
+    dateRange?: pulumi.Input<inputs.SqlQueryParameterDateRange | undefined>;
+    datetime?: pulumi.Input<inputs.SqlQueryParameterDatetime | undefined>;
+    datetimeRange?: pulumi.Input<inputs.SqlQueryParameterDatetimeRange | undefined>;
+    datetimesec?: pulumi.Input<inputs.SqlQueryParameterDatetimesec | undefined>;
+    datetimesecRange?: pulumi.Input<inputs.SqlQueryParameterDatetimesecRange | undefined>;
+    enum?: pulumi.Input<inputs.SqlQueryParameterEnum | undefined>;
     /**
      * The literal parameter marker that appears between double curly braces in the query text.
      * Parameters can have several different types. Type is specified using one of the following configuration blocks: `text`, `number`, `enum`, `query`, `date`, `datetime`, `datetimesec`, `dateRange`, `datetimeRange`, `datetimesecRange`.
@@ -20929,16 +20929,16 @@ export interface SqlQueryParameter {
      * For `text`, `number`, `date`, `datetime`, `datetimesec` block
      */
     name: pulumi.Input<string>;
-    number?: pulumi.Input<inputs.SqlQueryParameterNumber>;
+    number?: pulumi.Input<inputs.SqlQueryParameterNumber | undefined>;
     /**
      * The text of the query to be run.
      */
-    query?: pulumi.Input<inputs.SqlQueryParameterQuery>;
-    text?: pulumi.Input<inputs.SqlQueryParameterText>;
+    query?: pulumi.Input<inputs.SqlQueryParameterQuery | undefined>;
+    text?: pulumi.Input<inputs.SqlQueryParameterText | undefined>;
     /**
      * The text displayed in a parameter picking widget.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlQueryParameterDate {
@@ -20949,11 +20949,11 @@ export interface SqlQueryParameterDate {
 }
 
 export interface SqlQueryParameterDateRange {
-    range?: pulumi.Input<inputs.SqlQueryParameterDateRangeRange>;
+    range?: pulumi.Input<inputs.SqlQueryParameterDateRangeRange | undefined>;
     /**
      * The default value for this parameter.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlQueryParameterDateRangeRange {
@@ -20969,11 +20969,11 @@ export interface SqlQueryParameterDatetime {
 }
 
 export interface SqlQueryParameterDatetimeRange {
-    range?: pulumi.Input<inputs.SqlQueryParameterDatetimeRangeRange>;
+    range?: pulumi.Input<inputs.SqlQueryParameterDatetimeRangeRange | undefined>;
     /**
      * The default value for this parameter.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlQueryParameterDatetimeRangeRange {
@@ -20989,11 +20989,11 @@ export interface SqlQueryParameterDatetimesec {
 }
 
 export interface SqlQueryParameterDatetimesecRange {
-    range?: pulumi.Input<inputs.SqlQueryParameterDatetimesecRangeRange>;
+    range?: pulumi.Input<inputs.SqlQueryParameterDatetimesecRangeRange | undefined>;
     /**
      * The default value for this parameter.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlQueryParameterDatetimesecRangeRange {
@@ -21002,19 +21002,19 @@ export interface SqlQueryParameterDatetimesecRangeRange {
 }
 
 export interface SqlQueryParameterEnum {
-    multiple?: pulumi.Input<inputs.SqlQueryParameterEnumMultiple>;
+    multiple?: pulumi.Input<inputs.SqlQueryParameterEnumMultiple | undefined>;
     options: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The default value for this parameter.
      */
-    value?: pulumi.Input<string>;
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    value?: pulumi.Input<string | undefined>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface SqlQueryParameterEnumMultiple {
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     separator: pulumi.Input<string>;
-    suffix?: pulumi.Input<string>;
+    suffix?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlQueryParameterNumber {
@@ -21025,19 +21025,19 @@ export interface SqlQueryParameterNumber {
 }
 
 export interface SqlQueryParameterQuery {
-    multiple?: pulumi.Input<inputs.SqlQueryParameterQueryMultiple>;
+    multiple?: pulumi.Input<inputs.SqlQueryParameterQueryMultiple | undefined>;
     queryId: pulumi.Input<string>;
     /**
      * The default value for this parameter.
      */
-    value?: pulumi.Input<string>;
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    value?: pulumi.Input<string | undefined>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface SqlQueryParameterQueryMultiple {
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     separator: pulumi.Input<string>;
-    suffix?: pulumi.Input<string>;
+    suffix?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlQueryParameterText {
@@ -21055,38 +21055,38 @@ export interface SqlQueryProviderConfig {
 }
 
 export interface SqlQuerySchedule {
-    continuous?: pulumi.Input<inputs.SqlQueryScheduleContinuous>;
-    daily?: pulumi.Input<inputs.SqlQueryScheduleDaily>;
-    weekly?: pulumi.Input<inputs.SqlQueryScheduleWeekly>;
+    continuous?: pulumi.Input<inputs.SqlQueryScheduleContinuous | undefined>;
+    daily?: pulumi.Input<inputs.SqlQueryScheduleDaily | undefined>;
+    weekly?: pulumi.Input<inputs.SqlQueryScheduleWeekly | undefined>;
 }
 
 export interface SqlQueryScheduleContinuous {
     intervalSeconds: pulumi.Input<number>;
-    untilDate?: pulumi.Input<string>;
+    untilDate?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlQueryScheduleDaily {
     intervalDays: pulumi.Input<number>;
     timeOfDay: pulumi.Input<string>;
-    untilDate?: pulumi.Input<string>;
+    untilDate?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlQueryScheduleWeekly {
     dayOfWeek: pulumi.Input<string>;
     intervalWeeks: pulumi.Input<number>;
     timeOfDay: pulumi.Input<string>;
-    untilDate?: pulumi.Input<string>;
+    untilDate?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlTableColumn {
     /**
      * User-supplied free-form text.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Whether the field is an identity column. Can be `default`, `always`, or unset. It is unset by default.
      */
-    identity?: pulumi.Input<string>;
+    identity?: pulumi.Input<string | undefined>;
     /**
      * User-visible name of column
      */
@@ -21094,14 +21094,14 @@ export interface SqlTableColumn {
     /**
      * Whether field is nullable (Default: `true`)
      */
-    nullable?: pulumi.Input<boolean>;
+    nullable?: pulumi.Input<boolean | undefined>;
     /**
      * Column type spec (with metadata) as SQL text. Not supported for `VIEW` table_type.
      *
      * > **Note:** When using `MAP` column types, do not include whitespace after commas in the type definition. For example, use `MAP<STRING,STRING>` instead of `MAP<STRING, STRING>`.
      */
-    type?: pulumi.Input<string>;
-    typeJson?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
+    typeJson?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlTableProviderConfig {
@@ -21119,18 +21119,18 @@ export interface SqlVisualizationProviderConfig {
 }
 
 export interface SqlWidgetParameter {
-    mapTo?: pulumi.Input<string>;
+    mapTo?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
     type: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
-    values?: pulumi.Input<pulumi.Input<string>[]>;
+    value?: pulumi.Input<string | undefined>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface SqlWidgetPosition {
-    autoHeight?: pulumi.Input<boolean>;
-    posX?: pulumi.Input<number>;
-    posY?: pulumi.Input<number>;
+    autoHeight?: pulumi.Input<boolean | undefined>;
+    posX?: pulumi.Input<number | undefined>;
+    posY?: pulumi.Input<number | undefined>;
     sizeX: pulumi.Input<number>;
     sizeY: pulumi.Input<number>;
 }
@@ -21146,7 +21146,7 @@ export interface StorageCredentialAwsIamRole {
     /**
      * The external ID used in role assumption to prevent the confused deputy problem.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * The Amazon Resource Name (ARN) of the AWS IAM role for S3 data access, of the form `arn:aws:iam::1234567890:role/MyRole-AJJHDSKSDF`.
      *
@@ -21156,7 +21156,7 @@ export interface StorageCredentialAwsIamRole {
     /**
      * The Amazon Resource Name (ARN) of the AWS IAM user managed by Databricks. This is the identity that is going to assume the AWS IAM role.
      */
-    unityCatalogIamArn?: pulumi.Input<string>;
+    unityCatalogIamArn?: pulumi.Input<string | undefined>;
 }
 
 export interface StorageCredentialAzureManagedIdentity {
@@ -21164,13 +21164,13 @@ export interface StorageCredentialAzureManagedIdentity {
      * The Resource ID of the Azure Databricks Access Connector resource, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.Databricks/accessConnectors/connector-name`.
      */
     accessConnectorId: pulumi.Input<string>;
-    credentialId?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string | undefined>;
     /**
      * The Resource ID of the Azure User Assigned Managed Identity associated with Azure Databricks Access Connector, of the form `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-name/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-managed-identity-name`.
      *
      * `databricksGcpServiceAccount` optional configuration block for creating a Databricks-managed GCP Service Account:
      */
-    managedIdentityId?: pulumi.Input<string>;
+    managedIdentityId?: pulumi.Input<string | undefined>;
 }
 
 export interface StorageCredentialAzureServicePrincipal {
@@ -21206,13 +21206,13 @@ export interface StorageCredentialCloudflareApiToken {
 }
 
 export interface StorageCredentialDatabricksGcpServiceAccount {
-    credentialId?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string | undefined>;
     /**
      * The email of the GCP service account created, to be granted access to relevant buckets.
      *
      * `cloudflareApiToken` optional configuration block for using a Cloudflare API Token as credential details. This requires account admin access:
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
 }
 
 export interface StorageCredentialGcpServiceAccountKey {
@@ -21241,16 +21241,16 @@ export interface SystemSchemaProviderConfig {
 }
 
 export interface TableColumn {
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
-    nullable?: pulumi.Input<boolean>;
-    partitionIndex?: pulumi.Input<number>;
+    nullable?: pulumi.Input<boolean | undefined>;
+    partitionIndex?: pulumi.Input<number | undefined>;
     position: pulumi.Input<number>;
-    typeIntervalType?: pulumi.Input<string>;
-    typeJson?: pulumi.Input<string>;
+    typeIntervalType?: pulumi.Input<string | undefined>;
+    typeJson?: pulumi.Input<string | undefined>;
     typeName: pulumi.Input<string>;
-    typePrecision?: pulumi.Input<number>;
-    typeScale?: pulumi.Input<number>;
+    typePrecision?: pulumi.Input<number | undefined>;
+    typeScale?: pulumi.Input<number | undefined>;
     typeText: pulumi.Input<string>;
 }
 
@@ -21292,11 +21292,11 @@ export interface VectorSearchEndpointEndpointStatus {
     /**
      * Additional status message.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface VectorSearchEndpointProviderConfig {
@@ -21307,107 +21307,107 @@ export interface VectorSearchEndpointProviderConfig {
 }
 
 export interface VectorSearchEndpointScalingInfo {
-    requestedMinQps?: pulumi.Input<number>;
+    requestedMinQps?: pulumi.Input<number | undefined>;
     /**
      * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpec {
     /**
      * array of objects representing columns that contain the embedding source.  Each entry consists of:
      */
-    embeddingSourceColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn>[]>;
+    embeddingSourceColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn>[] | undefined>;
     /**
      * array of objects representing columns that contain the embedding vectors. Each entry consists of:
      */
-    embeddingVectorColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn>[]>;
+    embeddingVectorColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn>[] | undefined>;
     /**
      * Automatically sync the vector index contents and computed embeddings to the specified Delta table. The only supported table name is the index name with the suffix `_writeback_table`.
      */
-    embeddingWritebackTable?: pulumi.Input<string>;
+    embeddingWritebackTable?: pulumi.Input<string | undefined>;
     /**
      * ID of the associated Delta Live Table pipeline.
      */
-    pipelineId?: pulumi.Input<string>;
+    pipelineId?: pulumi.Input<string | undefined>;
     /**
      * Pipeline execution mode. Possible values are:
      * * `TRIGGERED`: If the pipeline uses the triggered execution mode, the system stops processing after successfully refreshing the source table in the pipeline once, ensuring the table is updated based on the data available when the update started.
      * * `CONTINUOUS`: If the pipeline uses continuous execution, the pipeline processes new data as it arrives in the source table to keep the vector index fresh.
      */
-    pipelineType?: pulumi.Input<string>;
+    pipelineType?: pulumi.Input<string | undefined>;
     /**
      * The name of the source table.
      */
-    sourceTable?: pulumi.Input<string>;
+    sourceTable?: pulumi.Input<string | undefined>;
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
     /**
      * The name of the embedding model endpoint, used by default for both ingestion and querying.
      */
-    embeddingModelEndpointName?: pulumi.Input<string>;
+    embeddingModelEndpointName?: pulumi.Input<string | undefined>;
     /**
      * The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
      */
-    modelEndpointNameForQuery?: pulumi.Input<string>;
+    modelEndpointNameForQuery?: pulumi.Input<string | undefined>;
     /**
      * The name of the column
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
     /**
      * Dimension of the embedding vector.
      */
-    embeddingDimension?: pulumi.Input<number>;
+    embeddingDimension?: pulumi.Input<number | undefined>;
     /**
      * The name of the column.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface VectorSearchIndexDirectAccessIndexSpec {
     /**
      * array of objects representing columns that contain the embedding source.  Each entry consists of:
      */
-    embeddingSourceColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn>[]>;
+    embeddingSourceColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn>[] | undefined>;
     /**
      * array of objects representing columns that contain the embedding vectors. Each entry consists of:
      */
-    embeddingVectorColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn>[]>;
+    embeddingVectorColumns?: pulumi.Input<pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn>[] | undefined>;
     /**
      * The schema of the index in JSON format.  Check the [API documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes/createindex#direct_access_index_spec-schema_json) for a list of supported data types.
      */
-    schemaJson?: pulumi.Input<string>;
+    schemaJson?: pulumi.Input<string | undefined>;
 }
 
 export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
     /**
      * The name of the embedding model endpoint
      */
-    embeddingModelEndpointName?: pulumi.Input<string>;
+    embeddingModelEndpointName?: pulumi.Input<string | undefined>;
     /**
      * The name of the embedding model endpoint which, if specified, is used for querying (not ingestion).
      */
-    modelEndpointNameForQuery?: pulumi.Input<string>;
+    modelEndpointNameForQuery?: pulumi.Input<string | undefined>;
     /**
      * The name of the column
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface VectorSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
     /**
      * Dimension of the embedding vector.
      */
-    embeddingDimension?: pulumi.Input<number>;
+    embeddingDimension?: pulumi.Input<number | undefined>;
     /**
      * The name of the column.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface VectorSearchIndexProviderConfig {
@@ -21421,19 +21421,19 @@ export interface VectorSearchIndexStatus {
     /**
      * Index API Url to be used to perform operations on the index
      */
-    indexUrl?: pulumi.Input<string>;
+    indexUrl?: pulumi.Input<string | undefined>;
     /**
      * Number of rows indexed
      */
-    indexedRowCount?: pulumi.Input<number>;
+    indexedRowCount?: pulumi.Input<number | undefined>;
     /**
      * Message associated with the index status
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * Whether the index is ready for search
      */
-    ready?: pulumi.Input<boolean>;
+    ready?: pulumi.Input<boolean | undefined>;
 }
 
 export interface VolumeProviderConfig {
@@ -21486,55 +21486,55 @@ export interface WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
 }
 
 export interface WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains {
-    approvedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    approvedDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspace {
-    canToggle?: pulumi.Input<boolean>;
-    enabled?: pulumi.Input<boolean>;
-    enablementDetails?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails>;
-    maintenanceWindow?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow>;
-    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
+    canToggle?: pulumi.Input<boolean | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    enablementDetails?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails | undefined>;
+    maintenanceWindow?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow | undefined>;
+    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean | undefined>;
 }
 
 export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails {
     /**
      * The feature is force enabled if compliance mode is active
      */
-    forcedForComplianceMode?: pulumi.Input<boolean>;
+    forcedForComplianceMode?: pulumi.Input<boolean | undefined>;
     /**
      * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
      */
-    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
+    unavailableForDisabledEntitlement?: pulumi.Input<boolean | undefined>;
     /**
      * The feature is unavailable if the customer doesn't have enterprise tier
      */
-    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
+    unavailableForNonEnterpriseTier?: pulumi.Input<boolean | undefined>;
 }
 
 export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
-    weekDayBasedSchedule?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule>;
+    weekDayBasedSchedule?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule | undefined>;
 }
 
 export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
      * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
-    dayOfWeek?: pulumi.Input<string>;
+    dayOfWeek?: pulumi.Input<string | undefined>;
     /**
      * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
-    frequency?: pulumi.Input<string>;
-    windowStartTime?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime>;
+    frequency?: pulumi.Input<string | undefined>;
+    windowStartTime?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime | undefined>;
 }
 
 export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
-    hours?: pulumi.Input<number>;
-    minutes?: pulumi.Input<number>;
+    hours?: pulumi.Input<number | undefined>;
+    minutes?: pulumi.Input<number | undefined>;
 }
 
 export interface WorkspaceSettingV2BooleanVal {
-    value?: pulumi.Input<boolean>;
+    value?: pulumi.Input<boolean | undefined>;
 }
 
 export interface WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
@@ -21545,63 +21545,63 @@ export interface WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
 }
 
 export interface WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
-    approvedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    approvedDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace {
-    canToggle?: pulumi.Input<boolean>;
-    enabled?: pulumi.Input<boolean>;
-    enablementDetails?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails>;
-    maintenanceWindow?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow>;
-    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean>;
+    canToggle?: pulumi.Input<boolean | undefined>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    enablementDetails?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails | undefined>;
+    maintenanceWindow?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow | undefined>;
+    restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean | undefined>;
 }
 
 export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails {
     /**
      * The feature is force enabled if compliance mode is active
      */
-    forcedForComplianceMode?: pulumi.Input<boolean>;
+    forcedForComplianceMode?: pulumi.Input<boolean | undefined>;
     /**
      * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
      */
-    unavailableForDisabledEntitlement?: pulumi.Input<boolean>;
+    unavailableForDisabledEntitlement?: pulumi.Input<boolean | undefined>;
     /**
      * The feature is unavailable if the customer doesn't have enterprise tier
      */
-    unavailableForNonEnterpriseTier?: pulumi.Input<boolean>;
+    unavailableForNonEnterpriseTier?: pulumi.Input<boolean | undefined>;
 }
 
 export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
-    weekDayBasedSchedule?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule>;
+    weekDayBasedSchedule?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule | undefined>;
 }
 
 export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
      * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
-    dayOfWeek?: pulumi.Input<string>;
+    dayOfWeek?: pulumi.Input<string | undefined>;
     /**
      * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
-    frequency?: pulumi.Input<string>;
-    windowStartTime?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime>;
+    frequency?: pulumi.Input<string | undefined>;
+    windowStartTime?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime | undefined>;
 }
 
 export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
-    hours?: pulumi.Input<number>;
-    minutes?: pulumi.Input<number>;
+    hours?: pulumi.Input<number | undefined>;
+    minutes?: pulumi.Input<number | undefined>;
 }
 
 export interface WorkspaceSettingV2EffectiveBooleanVal {
-    value?: pulumi.Input<boolean>;
+    value?: pulumi.Input<boolean | undefined>;
 }
 
 export interface WorkspaceSettingV2EffectiveIntegerVal {
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
 }
 
 export interface WorkspaceSettingV2EffectivePersonalCompute {
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
@@ -21609,7 +21609,7 @@ export interface WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
      * When true, workspace admins cannot create governance tags.
      * ALLOW_ALL status does not override this; they are independent
      */
-    disableGovTagCreation?: pulumi.Input<boolean>;
+    disableGovTagCreation?: pulumi.Input<boolean | undefined>;
     /**
      * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
@@ -21617,15 +21617,15 @@ export interface WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
 }
 
 export interface WorkspaceSettingV2EffectiveStringVal {
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkspaceSettingV2IntegerVal {
-    value?: pulumi.Input<number>;
+    value?: pulumi.Input<number | undefined>;
 }
 
 export interface WorkspaceSettingV2PersonalCompute {
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkspaceSettingV2ProviderConfig {
@@ -21640,7 +21640,7 @@ export interface WorkspaceSettingV2RestrictWorkspaceAdmins {
      * When true, workspace admins cannot create governance tags.
      * ALLOW_ALL status does not override this; they are independent
      */
-    disableGovTagCreation?: pulumi.Input<boolean>;
+    disableGovTagCreation?: pulumi.Input<boolean | undefined>;
     /**
      * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
@@ -21648,5 +21648,5 @@ export interface WorkspaceSettingV2RestrictWorkspaceAdmins {
 }
 
 export interface WorkspaceSettingV2StringVal {
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }

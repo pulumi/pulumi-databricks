@@ -140,23 +140,23 @@ export interface InstanceProfileState {
     /**
      * The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
      */
-    iamRoleArn?: pulumi.Input<string>;
+    iamRoleArn?: pulumi.Input<string | undefined>;
     /**
      * `ARN` attribute of `awsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
      */
-    instanceProfileArn?: pulumi.Input<string>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
     /**
      * Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
      */
-    isMetaInstanceProfile?: pulumi.Input<boolean>;
+    isMetaInstanceProfile?: pulumi.Input<boolean | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.InstanceProfileProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.InstanceProfileProviderConfig | undefined>;
     /**
      * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
      */
-    skipValidation?: pulumi.Input<boolean>;
+    skipValidation?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -166,7 +166,7 @@ export interface InstanceProfileArgs {
     /**
      * The AWS IAM role ARN of the role associated with the instance profile. It must have the form `arn:aws:iam::<account-id>:role/<name>`. This field is required if your role name and instance profile name do not match and you want to use the instance profile with Databricks SQL Serverless.
      */
-    iamRoleArn?: pulumi.Input<string>;
+    iamRoleArn?: pulumi.Input<string | undefined>;
     /**
      * `ARN` attribute of `awsIamInstanceProfile` output, the EC2 instance profile association to AWS IAM role. This ARN would be validated upon resource creation.
      */
@@ -174,13 +174,13 @@ export interface InstanceProfileArgs {
     /**
      * Whether the instance profile is a meta instance profile. Used only in [IAM credential passthrough](https://docs.databricks.com/security/credential-passthrough/iam-passthrough.html).
      */
-    isMetaInstanceProfile?: pulumi.Input<boolean>;
+    isMetaInstanceProfile?: pulumi.Input<boolean | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.InstanceProfileProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.InstanceProfileProviderConfig | undefined>;
     /**
      * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
      */
-    skipValidation?: pulumi.Input<boolean>;
+    skipValidation?: pulumi.Input<boolean | undefined>;
 }

@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *     const spns = await databricks.getServicePrincipals({
  *         displayNameContains: "my-spn",
  *     });
- *     const spn = .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: await databricks.getServicePrincipal({
+ *     const spn = .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: await databricks.getServicePrincipal({
  *         applicationId: __value,
  *     }) }), {});
  *     const myMemberSpn: databricks.GroupMember[] = [];
@@ -128,7 +128,7 @@ export interface GetServicePrincipalsResult {
  *     const spns = await databricks.getServicePrincipals({
  *         displayNameContains: "my-spn",
  *     });
- *     const spn = .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: await databricks.getServicePrincipal({
+ *     const spn = .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: await databricks.getServicePrincipal({
  *         applicationId: __value,
  *     }) }), {});
  *     const myMemberSpn: databricks.GroupMember[] = [];
@@ -174,17 +174,17 @@ export interface GetServicePrincipalsOutputArgs {
     /**
      * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
      */
-    applicationIds?: pulumi.Input<pulumi.Input<string>[]>;
+    applicationIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Only return databricks.ServicePrincipal display name that match the given name string
      */
-    displayNameContains?: pulumi.Input<string>;
+    displayNameContains?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetServicePrincipalsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetServicePrincipalsProviderConfigArgs | undefined>;
     /**
      * List of objects describing individual service principals. Each object has the following attributes:
      */
-    servicePrincipals?: pulumi.Input<pulumi.Input<inputs.GetServicePrincipalsServicePrincipalArgs>[]>;
+    servicePrincipals?: pulumi.Input<pulumi.Input<inputs.GetServicePrincipalsServicePrincipalArgs>[] | undefined>;
 }

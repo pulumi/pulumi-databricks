@@ -132,9 +132,9 @@ def get_postgres_endpoints(page_size: Optional[_builtins.int] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         parent=pulumi.get(__ret__, 'parent'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_postgres_endpoints_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                  parent: Optional[pulumi.Input[_builtins.str]] = None,
-                                  provider_config: Optional[pulumi.Input[Optional[Union['GetPostgresEndpointsProviderConfigArgs', 'GetPostgresEndpointsProviderConfigArgsDict']]]] = None,
+def get_postgres_endpoints_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                  parent: pulumi.Input[Optional[_builtins.str]] = None,
+                                  provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresEndpointsProviderConfigArgs', 'GetPostgresEndpointsProviderConfigArgsDict']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresEndpointsResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)

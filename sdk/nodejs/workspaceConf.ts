@@ -107,11 +107,11 @@ export interface WorkspaceConfState {
     /**
      * Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
      */
-    customConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.WorkspaceConfProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.WorkspaceConfProviderConfig | undefined>;
 }
 
 /**
@@ -121,9 +121,9 @@ export interface WorkspaceConfArgs {
     /**
      * Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
      */
-    customConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.WorkspaceConfProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.WorkspaceConfProviderConfig | undefined>;
 }

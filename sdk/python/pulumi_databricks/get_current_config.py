@@ -153,19 +153,19 @@ def get_current_config(account_id: Optional[_builtins.str] = None,
 
     this = databricks.get_current_config()
     external = databricks.StorageCredential("external",
-        aws_iam_role=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "aws" else {
+        aws_iam_role=single_or_none([{"key": k, "value": v} for k, v in sorted({} if this.cloud_type == "aws" else {
             "aws": True,
-        }.items()].apply(lambda entries: [{
+        }.items())].apply(lambda entries: [{
             "roleArn": cloud_credential_id,
         } for entry in entries])),
-        azure_managed_identity=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "azure" else {
+        azure_managed_identity=single_or_none([{"key": k, "value": v} for k, v in sorted({} if this.cloud_type == "azure" else {
             "azure": True,
-        }.items()].apply(lambda entries: [{
+        }.items())].apply(lambda entries: [{
             "accessConnectorId": cloud_credential_id,
         } for entry2 in entries])),
-        databricks_gcp_service_account=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "gcp" else {
+        databricks_gcp_service_account=single_or_none([{"key": k, "value": v} for k, v in sorted({} if this.cloud_type == "gcp" else {
             "gcp": True,
-        }.items()].apply(lambda entries: [{} for entry3 in entries])),
+        }.items())].apply(lambda entries: [{} for entry3 in entries])),
         name="storage_cred",
         comment="Managed by TF")
     ```
@@ -215,14 +215,14 @@ def get_current_config(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         is_account=pulumi.get(__ret__, 'is_account'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_current_config_output(account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              api: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              auth_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              cloud: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              cloud_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              host: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              is_account: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                              provider_config: Optional[pulumi.Input[Optional[Union['GetCurrentConfigProviderConfigArgs', 'GetCurrentConfigProviderConfigArgsDict']]]] = None,
+def get_current_config_output(account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              api: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              auth_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              cloud: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              cloud_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              host: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              is_account: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                              provider_config: pulumi.Input[Optional[Optional[Union['GetCurrentConfigProviderConfigArgs', 'GetCurrentConfigProviderConfigArgsDict']]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCurrentConfigResult]:
     """
     Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.
@@ -245,19 +245,19 @@ def get_current_config_output(account_id: Optional[pulumi.Input[Optional[_builti
 
     this = databricks.get_current_config()
     external = databricks.StorageCredential("external",
-        aws_iam_role=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "aws" else {
+        aws_iam_role=single_or_none([{"key": k, "value": v} for k, v in sorted({} if this.cloud_type == "aws" else {
             "aws": True,
-        }.items()].apply(lambda entries: [{
+        }.items())].apply(lambda entries: [{
             "roleArn": cloud_credential_id,
         } for entry in entries])),
-        azure_managed_identity=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "azure" else {
+        azure_managed_identity=single_or_none([{"key": k, "value": v} for k, v in sorted({} if this.cloud_type == "azure" else {
             "azure": True,
-        }.items()].apply(lambda entries: [{
+        }.items())].apply(lambda entries: [{
             "accessConnectorId": cloud_credential_id,
         } for entry2 in entries])),
-        databricks_gcp_service_account=single_or_none([{"key": k, "value": v} for k, v in {} if this.cloud_type == "gcp" else {
+        databricks_gcp_service_account=single_or_none([{"key": k, "value": v} for k, v in sorted({} if this.cloud_type == "gcp" else {
             "gcp": True,
-        }.items()].apply(lambda entries: [{} for entry3 in entries])),
+        }.items())].apply(lambda entries: [{} for entry3 in entries])),
         name="storage_cred",
         comment="Managed by TF")
     ```

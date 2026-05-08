@@ -135,37 +135,37 @@ export interface GetMlflowExperimentOutputArgs {
     /**
      * Location where artifacts for the experiment are stored.
      */
-    artifactLocation?: pulumi.Input<string>;
+    artifactLocation?: pulumi.Input<string | undefined>;
     /**
      * Creation time in unix time stamp.
      */
-    creationTime?: pulumi.Input<number>;
+    creationTime?: pulumi.Input<number | undefined>;
     /**
      * Unique identifier for the experiment.
      */
-    experimentId?: pulumi.Input<string>;
+    experimentId?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier for the experiment. (same as `experimentId`)
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Last update time in unix time stamp.
      */
-    lastUpdateTime?: pulumi.Input<number>;
+    lastUpdateTime?: pulumi.Input<number | undefined>;
     /**
      * Current life cycle stage of the experiment: `active` or `deleted`.
      */
-    lifecycleStage?: pulumi.Input<string>;
+    lifecycleStage?: pulumi.Input<string | undefined>;
     /**
      * Path to experiment.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetMlflowExperimentProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetMlflowExperimentProviderConfigArgs | undefined>;
     /**
      * Additional metadata key-value pairs.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.GetMlflowExperimentTagArgs>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.GetMlflowExperimentTagArgs>[] | undefined>;
 }

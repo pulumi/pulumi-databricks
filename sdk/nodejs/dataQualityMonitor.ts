@@ -140,12 +140,12 @@ export interface DataQualityMonitorState {
     /**
      * Anomaly Detection Configuration, applicable to `schema` object types
      */
-    anomalyDetectionConfig?: pulumi.Input<inputs.DataQualityMonitorAnomalyDetectionConfig>;
+    anomalyDetectionConfig?: pulumi.Input<inputs.DataQualityMonitorAnomalyDetectionConfig | undefined>;
     /**
      * Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
      * must be present
      */
-    dataProfilingConfig?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfig>;
+    dataProfilingConfig?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfig | undefined>;
     /**
      * The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
      *
@@ -157,15 +157,15 @@ export interface DataQualityMonitorState {
      * 1. The [tableId](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
      * 2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
      */
-    objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string | undefined>;
     /**
      * The type of the monitored object. Can be one of the following: `schema` or `table`
      */
-    objectType?: pulumi.Input<string>;
+    objectType?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.DataQualityMonitorProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.DataQualityMonitorProviderConfig | undefined>;
 }
 
 /**
@@ -175,12 +175,12 @@ export interface DataQualityMonitorArgs {
     /**
      * Anomaly Detection Configuration, applicable to `schema` object types
      */
-    anomalyDetectionConfig?: pulumi.Input<inputs.DataQualityMonitorAnomalyDetectionConfig>;
+    anomalyDetectionConfig?: pulumi.Input<inputs.DataQualityMonitorAnomalyDetectionConfig | undefined>;
     /**
      * Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
      * must be present
      */
-    dataProfilingConfig?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfig>;
+    dataProfilingConfig?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfig | undefined>;
     /**
      * The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
      *
@@ -200,5 +200,5 @@ export interface DataQualityMonitorArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.DataQualityMonitorProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.DataQualityMonitorProviderConfig | undefined>;
 }

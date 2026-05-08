@@ -131,41 +131,41 @@ export interface NotebookState {
     /**
      * The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
      */
-    contentBase64?: pulumi.Input<string>;
-    format?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string | undefined>;
+    format?: pulumi.Input<string | undefined>;
     /**
      * One of `SCALA`, `PYTHON`, `SQL`, `R`.
      */
-    language?: pulumi.Input<string>;
-    md5?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
+    md5?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier for a NOTEBOOK
      */
-    objectId?: pulumi.Input<number>;
+    objectId?: pulumi.Input<number | undefined>;
     /**
      * @deprecated Always is a notebook
      */
-    objectType?: pulumi.Input<string>;
+    objectType?: pulumi.Input<string | undefined>;
     /**
      * The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.NotebookProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.NotebookProviderConfig | undefined>;
     /**
      * Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Routable URL of the notebook
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */
-    workspacePath?: pulumi.Input<string>;
+    workspacePath?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -175,21 +175,21 @@ export interface NotebookArgs {
     /**
      * The base64-encoded notebook source code. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a notebook with configuration properties for a data pipeline.
      */
-    contentBase64?: pulumi.Input<string>;
-    format?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string | undefined>;
+    format?: pulumi.Input<string | undefined>;
     /**
      * One of `SCALA`, `PYTHON`, `SQL`, `R`.
      */
-    language?: pulumi.Input<string>;
-    md5?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
+    md5?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier for a NOTEBOOK
      */
-    objectId?: pulumi.Input<number>;
+    objectId?: pulumi.Input<number | undefined>;
     /**
      * @deprecated Always is a notebook
      */
-    objectType?: pulumi.Input<string>;
+    objectType?: pulumi.Input<string | undefined>;
     /**
      * The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
      */
@@ -197,9 +197,9 @@ export interface NotebookArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.NotebookProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.NotebookProviderConfig | undefined>;
     /**
      * Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }

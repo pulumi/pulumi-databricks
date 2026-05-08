@@ -125,5 +125,5 @@ export interface GetAppSpaceOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetAppSpaceProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetAppSpaceProviderConfigArgs | undefined>;
 }

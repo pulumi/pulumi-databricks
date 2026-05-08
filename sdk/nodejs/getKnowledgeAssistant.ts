@@ -115,5 +115,5 @@ export interface GetKnowledgeAssistantOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetKnowledgeAssistantProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetKnowledgeAssistantProviderConfigArgs | undefined>;
 }

@@ -22,9 +22,9 @@ __all__ = ['PostgresRoleArgs', 'PostgresRole']
 class PostgresRoleArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[_builtins.str],
-                 provider_config: Optional[pulumi.Input['PostgresRoleProviderConfigArgs']] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input['PostgresRoleSpecArgs']] = None):
+                 provider_config: pulumi.Input[Optional['PostgresRoleProviderConfigArgs']] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional['PostgresRoleSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresRole resource.
 
@@ -64,19 +64,19 @@ class PostgresRoleArgs:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PostgresRoleProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PostgresRoleProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PostgresRoleProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PostgresRoleProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the Role, which will become the final component of
         the role's resource name.
@@ -90,33 +90,33 @@ class PostgresRoleArgs:
         return pulumi.get(self, "role_id")
 
     @role_id.setter
-    def role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['PostgresRoleSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['PostgresRoleSpecArgs']]:
         """
         The spec contains the role configuration, including identity type, authentication method, and role attributes
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['PostgresRoleSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['PostgresRoleSpecArgs']]):
         pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
 class _PostgresRoleState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['PostgresRoleProviderConfigArgs']] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input['PostgresRoleSpecArgs']] = None,
-                 status: Optional[pulumi.Input['PostgresRoleStatusArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['PostgresRoleProviderConfigArgs']] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional['PostgresRoleSpecArgs']] = None,
+                 status: pulumi.Input[Optional['PostgresRoleStatusArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PostgresRole resources.
 
@@ -157,19 +157,19 @@ class _PostgresRoleState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string)
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Output only. The full resource path of the role.
         Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
@@ -177,12 +177,12 @@ class _PostgresRoleState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Branch where this Role exists.
         Format: projects/{project_id}/branches/{branch_id}
@@ -190,24 +190,24 @@ class _PostgresRoleState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PostgresRoleProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PostgresRoleProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PostgresRoleProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PostgresRoleProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the Role, which will become the final component of
         the role's resource name.
@@ -221,43 +221,43 @@ class _PostgresRoleState:
         return pulumi.get(self, "role_id")
 
     @role_id.setter
-    def role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['PostgresRoleSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['PostgresRoleSpecArgs']]:
         """
         The spec contains the role configuration, including identity type, authentication method, and role attributes
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['PostgresRoleSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['PostgresRoleSpecArgs']]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['PostgresRoleStatusArgs']]:
+    def status(self) -> pulumi.Input[Optional['PostgresRoleStatusArgs']]:
         """
         (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input['PostgresRoleStatusArgs']]):
+    def status(self, value: pulumi.Input[Optional['PostgresRoleStatusArgs']]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string)
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -267,10 +267,10 @@ class PostgresRole(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -516,10 +516,10 @@ class PostgresRole(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -549,14 +549,14 @@ class PostgresRole(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']]] = None,
-            role_id: Optional[pulumi.Input[_builtins.str]] = None,
-            spec: Optional[pulumi.Input[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']]] = None,
-            status: Optional[pulumi.Input[Union['PostgresRoleStatusArgs', 'PostgresRoleStatusArgsDict']]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'PostgresRole':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']]] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']]] = None,
+            status: pulumi.Input[Optional[Union['PostgresRoleStatusArgs', 'PostgresRoleStatusArgsDict']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresRole':
         """
         Get an existing PostgresRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

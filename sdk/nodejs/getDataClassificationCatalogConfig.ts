@@ -123,5 +123,5 @@ export interface GetDataClassificationCatalogConfigOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetDataClassificationCatalogConfigProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetDataClassificationCatalogConfigProviderConfigArgs | undefined>;
 }

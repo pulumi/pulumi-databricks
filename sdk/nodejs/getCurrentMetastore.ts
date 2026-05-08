@@ -117,13 +117,13 @@ export interface GetCurrentMetastoreOutputArgs {
     /**
      * metastore ID. Will be `noMetastore` if there is no metastore assigned for the current workspace
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
      */
-    metastoreInfo?: pulumi.Input<inputs.GetCurrentMetastoreMetastoreInfoArgs>;
+    metastoreInfo?: pulumi.Input<inputs.GetCurrentMetastoreMetastoreInfoArgs | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetCurrentMetastoreProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetCurrentMetastoreProviderConfigArgs | undefined>;
 }

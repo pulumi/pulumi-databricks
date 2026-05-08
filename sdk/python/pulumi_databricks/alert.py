@@ -24,13 +24,13 @@ class AlertArgs:
                  condition: pulumi.Input['AlertConditionArgs'],
                  display_name: pulumi.Input[_builtins.str],
                  query_id: pulumi.Input[_builtins.str],
-                 custom_body: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_subject: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_on_ok: Optional[pulumi.Input[_builtins.bool]] = None,
-                 owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['AlertProviderConfigArgs']] = None,
-                 seconds_to_retrigger: Optional[pulumi.Input[_builtins.int]] = None):
+                 custom_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_subject: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_on_ok: pulumi.Input[Optional[_builtins.bool]] = None,
+                 owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['AlertProviderConfigArgs']] = None,
+                 seconds_to_retrigger: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Alert resource.
 
@@ -101,107 +101,107 @@ class AlertArgs:
 
     @_builtins.property
     @pulumi.getter(name="customBody")
-    def custom_body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_body(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
         """
         return pulumi.get(self, "custom_body")
 
     @custom_body.setter
-    def custom_body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_body", value)
 
     @_builtins.property
     @pulumi.getter(name="customSubject")
-    def custom_subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
         """
         return pulumi.get(self, "custom_subject")
 
     @custom_subject.setter
-    def custom_subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_subject", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyOnOk")
-    def notify_on_ok(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_on_ok(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to notify alert subscribers when alert returns back to normal.
         """
         return pulumi.get(self, "notify_on_ok")
 
     @notify_on_ok.setter
-    def notify_on_ok(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_on_ok(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_on_ok", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerUserName")
-    def owner_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alert owner's username.
         """
         return pulumi.get(self, "owner_user_name")
 
     @owner_user_name.setter
-    def owner_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner_user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="parentPath")
-    def parent_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
         """
         return pulumi.get(self, "parent_path")
 
     @parent_path.setter
-    def parent_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_path", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['AlertProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['AlertProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['AlertProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['AlertProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="secondsToRetrigger")
-    def seconds_to_retrigger(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds_to_retrigger(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
         """
         return pulumi.get(self, "seconds_to_retrigger")
 
     @seconds_to_retrigger.setter
-    def seconds_to_retrigger(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds_to_retrigger(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds_to_retrigger", value)
 
 
 @pulumi.input_type
 class _AlertState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['AlertConditionArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_body: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_subject: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_on_ok: Optional[pulumi.Input[_builtins.bool]] = None,
-                 owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['AlertProviderConfigArgs']] = None,
-                 query_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 seconds_to_retrigger: Optional[pulumi.Input[_builtins.int]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional['AlertConditionArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_subject: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_on_ok: pulumi.Input[Optional[_builtins.bool]] = None,
+                 owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['AlertProviderConfigArgs']] = None,
+                 query_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 seconds_to_retrigger: pulumi.Input[Optional[_builtins.int]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Alert resources.
 
@@ -254,182 +254,182 @@ class _AlertState:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['AlertConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['AlertConditionArgs']]:
         """
         Trigger conditions of the alert. Block consists of the following attributes:
         """
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['AlertConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['AlertConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp string indicating when the alert was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customBody")
-    def custom_body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_body(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
         """
         return pulumi.get(self, "custom_body")
 
     @custom_body.setter
-    def custom_body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_body", value)
 
     @_builtins.property
     @pulumi.getter(name="customSubject")
-    def custom_subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
         """
         return pulumi.get(self, "custom_subject")
 
     @custom_subject.setter
-    def custom_subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_subject", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the alert.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleState")
-    def lifecycle_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lifecycle_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The workspace state of the alert. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
         """
         return pulumi.get(self, "lifecycle_state")
 
     @lifecycle_state.setter
-    def lifecycle_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lifecycle_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lifecycle_state", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyOnOk")
-    def notify_on_ok(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def notify_on_ok(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to notify alert subscribers when alert returns back to normal.
         """
         return pulumi.get(self, "notify_on_ok")
 
     @notify_on_ok.setter
-    def notify_on_ok(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def notify_on_ok(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "notify_on_ok", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerUserName")
-    def owner_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alert owner's username.
         """
         return pulumi.get(self, "owner_user_name")
 
     @owner_user_name.setter
-    def owner_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner_user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="parentPath")
-    def parent_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
         """
         return pulumi.get(self, "parent_path")
 
     @parent_path.setter
-    def parent_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_path", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['AlertProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['AlertProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['AlertProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['AlertProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="queryId")
-    def query_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the query evaluated by the alert.
         """
         return pulumi.get(self, "query_id")
 
     @query_id.setter
-    def query_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secondsToRetrigger")
-    def seconds_to_retrigger(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds_to_retrigger(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
         """
         return pulumi.get(self, "seconds_to_retrigger")
 
     @seconds_to_retrigger.setter
-    def seconds_to_retrigger(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds_to_retrigger(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds_to_retrigger", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="triggerTime")
-    def trigger_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp string when the alert was last triggered if the alert has been triggered before.
         """
         return pulumi.get(self, "trigger_time")
 
     @trigger_time.setter
-    def trigger_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger_time", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp string indicating when the alert was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -439,16 +439,16 @@ class Alert(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['AlertConditionArgs', 'AlertConditionArgsDict']]] = None,
-                 custom_body: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_subject: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_on_ok: Optional[pulumi.Input[_builtins.bool]] = None,
-                 owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict']]] = None,
-                 query_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 seconds_to_retrigger: Optional[pulumi.Input[_builtins.int]] = None,
+                 condition: pulumi.Input[Optional[Union['AlertConditionArgs', 'AlertConditionArgsDict']]] = None,
+                 custom_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_subject: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_on_ok: pulumi.Input[Optional[_builtins.bool]] = None,
+                 owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict']]] = None,
+                 query_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 seconds_to_retrigger: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/en/sql/user/alerts/index.html).  It supersedes SqlAlert resource - see migration guide below for more details.
@@ -481,7 +481,7 @@ class Alert(pulumi.CustomResource):
                 },
                 "threshold": {
                     "value": {
-                        "double_value": 42,
+                        "double_value": float(42),
                     },
                 },
             })
@@ -542,7 +542,7 @@ class Alert(pulumi.CustomResource):
                 },
                 "threshold": {
                     "value": {
-                        "double_value": 42,
+                        "double_value": float(42),
                     },
                 },
             })
@@ -639,7 +639,7 @@ class Alert(pulumi.CustomResource):
                 },
                 "threshold": {
                     "value": {
-                        "double_value": 42,
+                        "double_value": float(42),
                     },
                 },
             })
@@ -700,7 +700,7 @@ class Alert(pulumi.CustomResource):
                 },
                 "threshold": {
                     "value": {
-                        "double_value": 42,
+                        "double_value": float(42),
                     },
                 },
             })
@@ -762,16 +762,16 @@ class Alert(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[Union['AlertConditionArgs', 'AlertConditionArgsDict']]] = None,
-                 custom_body: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_subject: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_on_ok: Optional[pulumi.Input[_builtins.bool]] = None,
-                 owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict']]] = None,
-                 query_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 seconds_to_retrigger: Optional[pulumi.Input[_builtins.int]] = None,
+                 condition: pulumi.Input[Optional[Union['AlertConditionArgs', 'AlertConditionArgsDict']]] = None,
+                 custom_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_subject: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_on_ok: pulumi.Input[Optional[_builtins.bool]] = None,
+                 owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict']]] = None,
+                 query_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 seconds_to_retrigger: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -812,21 +812,21 @@ class Alert(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[Union['AlertConditionArgs', 'AlertConditionArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_body: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_subject: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
-            notify_on_ok: Optional[pulumi.Input[_builtins.bool]] = None,
-            owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict']]] = None,
-            query_id: Optional[pulumi.Input[_builtins.str]] = None,
-            seconds_to_retrigger: Optional[pulumi.Input[_builtins.int]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            trigger_time: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Alert':
+            condition: pulumi.Input[Optional[Union['AlertConditionArgs', 'AlertConditionArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_body: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_subject: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_on_ok: pulumi.Input[Optional[_builtins.bool]] = None,
+            owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['AlertProviderConfigArgs', 'AlertProviderConfigArgsDict']]] = None,
+            query_id: pulumi.Input[Optional[_builtins.str]] = None,
+            seconds_to_retrigger: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_time: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Alert':
         """
         Get an existing Alert resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

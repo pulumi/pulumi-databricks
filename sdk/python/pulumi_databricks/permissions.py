@@ -22,35 +22,35 @@ __all__ = ['PermissionsArgs', 'Permissions']
 class PermissionsArgs:
     def __init__(__self__, *,
                  access_controls: pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]],
-                 alert_v2_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorization: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 notebook_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 notebook_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['PermissionsProviderConfigArgs']] = None,
-                 registered_model_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 serving_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_alert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_query_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vector_search_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_file_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 alert_v2_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorization: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 notebook_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 notebook_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['PermissionsProviderConfigArgs']] = None,
+                 registered_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 serving_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_alert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_query_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vector_search_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_file_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Permissions resource.
 
@@ -127,302 +127,302 @@ class PermissionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="alertV2Id")
-    def alert_v2_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_v2_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "alert_v2_id")
 
     @alert_v2_id.setter
-    def alert_v2_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_v2_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_v2_id", value)
 
     @_builtins.property
     @pulumi.getter(name="appName")
-    def app_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "app_name")
 
     @app_name.setter
-    def app_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def authorization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorization(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "authorization")
 
     @authorization.setter
-    def authorization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorization", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterPolicyId")
-    def cluster_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cluster_policy_id")
 
     @cluster_policy_id.setter
-    def cluster_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardId")
-    def dashboard_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dashboard_id")
 
     @dashboard_id.setter
-    def dashboard_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_id", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseInstanceName")
-    def database_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "database_instance_name")
 
     @database_instance_name.setter
-    def database_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseProjectName")
-    def database_project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "database_project_name")
 
     @database_project_name.setter
-    def database_project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_project_name", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryId")
-    def directory_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "directory_id")
 
     @directory_id.setter
-    def directory_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_id", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryPath")
-    def directory_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "directory_path")
 
     @directory_path.setter
-    def directory_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_path", value)
 
     @_builtins.property
     @pulumi.getter(name="experimentId")
-    def experiment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def experiment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "experiment_id")
 
     @experiment_id.setter
-    def experiment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def experiment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "experiment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instancePoolId")
-    def instance_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "instance_pool_id")
 
     @instance_pool_id.setter
-    def instance_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="jobId")
-    def job_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "job_id")
 
     @job_id.setter
-    def job_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_id", value)
 
     @_builtins.property
     @pulumi.getter(name="notebookId")
-    def notebook_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notebook_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "notebook_id")
 
     @notebook_id.setter
-    def notebook_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notebook_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notebook_id", value)
 
     @_builtins.property
     @pulumi.getter(name="notebookPath")
-    def notebook_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notebook_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "notebook_path")
 
     @notebook_path.setter
-    def notebook_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notebook_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notebook_path", value)
 
     @_builtins.property
     @pulumi.getter(name="objectType")
-    def object_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         type of permissions.
         """
         return pulumi.get(self, "object_type")
 
     @object_type.setter
-    def object_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineId")
-    def pipeline_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pipeline_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "pipeline_id")
 
     @pipeline_id.setter
-    def pipeline_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pipeline_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pipeline_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PermissionsProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PermissionsProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PermissionsProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PermissionsProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="registeredModelId")
-    def registered_model_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def registered_model_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "registered_model_id")
 
     @registered_model_id.setter
-    def registered_model_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def registered_model_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "registered_model_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repoId")
-    def repo_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "repo_id")
 
     @repo_id.setter
-    def repo_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repoPath")
-    def repo_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "repo_path")
 
     @repo_path.setter
-    def repo_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_path", value)
 
     @_builtins.property
     @pulumi.getter(name="servingEndpointId")
-    def serving_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serving_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "serving_endpoint_id")
 
     @serving_endpoint_id.setter
-    def serving_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serving_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serving_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlAlertId")
-    def sql_alert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_alert_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sql_alert_id")
 
     @sql_alert_id.setter
-    def sql_alert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_alert_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_alert_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlDashboardId")
-    def sql_dashboard_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_dashboard_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sql_dashboard_id")
 
     @sql_dashboard_id.setter
-    def sql_dashboard_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_dashboard_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_dashboard_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlEndpointId")
-    def sql_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sql_endpoint_id")
 
     @sql_endpoint_id.setter
-    def sql_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlQueryId")
-    def sql_query_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_query_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sql_query_id")
 
     @sql_query_id.setter
-    def sql_query_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_query_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_query_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vectorSearchEndpointId")
-    def vector_search_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vector_search_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vector_search_endpoint_id")
 
     @vector_search_endpoint_id.setter
-    def vector_search_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vector_search_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vector_search_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceFileId")
-    def workspace_file_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "workspace_file_id")
 
     @workspace_file_id.setter
-    def workspace_file_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_file_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_file_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceFilePath")
-    def workspace_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "workspace_file_path")
 
     @workspace_file_path.setter
-    def workspace_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_file_path", value)
 
 
 @pulumi.input_type
 class _PermissionsState:
     def __init__(__self__, *,
-                 access_controls: Optional[pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]]] = None,
-                 alert_v2_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorization: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 notebook_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 notebook_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['PermissionsProviderConfigArgs']] = None,
-                 registered_model_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 serving_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_alert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_query_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vector_search_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_file_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_controls: pulumi.Input[Optional[Sequence[pulumi.Input['PermissionsAccessControlArgs']]]] = None,
+                 alert_v2_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorization: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 notebook_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 notebook_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['PermissionsProviderConfigArgs']] = None,
+                 registered_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 serving_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_alert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_query_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vector_search_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_file_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Permissions resources.
 
@@ -491,275 +491,275 @@ class _PermissionsState:
 
     @_builtins.property
     @pulumi.getter(name="accessControls")
-    def access_controls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]]]:
+    def access_controls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PermissionsAccessControlArgs']]]]:
         return pulumi.get(self, "access_controls")
 
     @access_controls.setter
-    def access_controls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PermissionsAccessControlArgs']]]]):
+    def access_controls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PermissionsAccessControlArgs']]]]):
         pulumi.set(self, "access_controls", value)
 
     @_builtins.property
     @pulumi.getter(name="alertV2Id")
-    def alert_v2_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_v2_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "alert_v2_id")
 
     @alert_v2_id.setter
-    def alert_v2_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_v2_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_v2_id", value)
 
     @_builtins.property
     @pulumi.getter(name="appName")
-    def app_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "app_name")
 
     @app_name.setter
-    def app_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def authorization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorization(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "authorization")
 
     @authorization.setter
-    def authorization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorization", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterPolicyId")
-    def cluster_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cluster_policy_id")
 
     @cluster_policy_id.setter
-    def cluster_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardId")
-    def dashboard_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dashboard_id")
 
     @dashboard_id.setter
-    def dashboard_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_id", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseInstanceName")
-    def database_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "database_instance_name")
 
     @database_instance_name.setter
-    def database_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseProjectName")
-    def database_project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "database_project_name")
 
     @database_project_name.setter
-    def database_project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_project_name", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryId")
-    def directory_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "directory_id")
 
     @directory_id.setter
-    def directory_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_id", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryPath")
-    def directory_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "directory_path")
 
     @directory_path.setter
-    def directory_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_path", value)
 
     @_builtins.property
     @pulumi.getter(name="experimentId")
-    def experiment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def experiment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "experiment_id")
 
     @experiment_id.setter
-    def experiment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def experiment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "experiment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instancePoolId")
-    def instance_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "instance_pool_id")
 
     @instance_pool_id.setter
-    def instance_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="jobId")
-    def job_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "job_id")
 
     @job_id.setter
-    def job_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_id", value)
 
     @_builtins.property
     @pulumi.getter(name="notebookId")
-    def notebook_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notebook_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "notebook_id")
 
     @notebook_id.setter
-    def notebook_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notebook_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notebook_id", value)
 
     @_builtins.property
     @pulumi.getter(name="notebookPath")
-    def notebook_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notebook_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "notebook_path")
 
     @notebook_path.setter
-    def notebook_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notebook_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notebook_path", value)
 
     @_builtins.property
     @pulumi.getter(name="objectType")
-    def object_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         type of permissions.
         """
         return pulumi.get(self, "object_type")
 
     @object_type.setter
-    def object_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pipelineId")
-    def pipeline_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pipeline_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "pipeline_id")
 
     @pipeline_id.setter
-    def pipeline_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pipeline_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pipeline_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PermissionsProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PermissionsProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PermissionsProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PermissionsProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="registeredModelId")
-    def registered_model_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def registered_model_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "registered_model_id")
 
     @registered_model_id.setter
-    def registered_model_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def registered_model_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "registered_model_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repoId")
-    def repo_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "repo_id")
 
     @repo_id.setter
-    def repo_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repoPath")
-    def repo_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "repo_path")
 
     @repo_path.setter
-    def repo_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_path", value)
 
     @_builtins.property
     @pulumi.getter(name="servingEndpointId")
-    def serving_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serving_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "serving_endpoint_id")
 
     @serving_endpoint_id.setter
-    def serving_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serving_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serving_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlAlertId")
-    def sql_alert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_alert_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sql_alert_id")
 
     @sql_alert_id.setter
-    def sql_alert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_alert_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_alert_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlDashboardId")
-    def sql_dashboard_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_dashboard_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sql_dashboard_id")
 
     @sql_dashboard_id.setter
-    def sql_dashboard_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_dashboard_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_dashboard_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlEndpointId")
-    def sql_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sql_endpoint_id")
 
     @sql_endpoint_id.setter
-    def sql_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlQueryId")
-    def sql_query_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_query_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sql_query_id")
 
     @sql_query_id.setter
-    def sql_query_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_query_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_query_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vectorSearchEndpointId")
-    def vector_search_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vector_search_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vector_search_endpoint_id")
 
     @vector_search_endpoint_id.setter
-    def vector_search_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vector_search_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vector_search_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceFileId")
-    def workspace_file_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "workspace_file_id")
 
     @workspace_file_id.setter
-    def workspace_file_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_file_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_file_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceFilePath")
-    def workspace_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "workspace_file_path")
 
     @workspace_file_path.setter
-    def workspace_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_file_path", value)
 
 
@@ -769,36 +769,36 @@ class Permissions(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
-                 alert_v2_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorization: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 notebook_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 notebook_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PermissionsProviderConfigArgs', 'PermissionsProviderConfigArgsDict']]] = None,
-                 registered_model_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 serving_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_alert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_query_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vector_search_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_file_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_controls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
+                 alert_v2_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorization: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 notebook_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 notebook_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PermissionsProviderConfigArgs', 'PermissionsProviderConfigArgsDict']]] = None,
+                 registered_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 serving_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_alert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_query_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vector_search_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_file_path: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to generically manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspaces. It ensures that only _admins_, _authenticated principal_ and those declared within `access_control` blocks would have specified access. It is not possible to remove management rights from _admins_ group.
@@ -1067,7 +1067,7 @@ class Permissions(pulumi.CustomResource):
                 },
             ])
         notebook_usage_by_id = databricks.Permissions("notebook_usage_by_id",
-            notebook_id=this.object_id,
+            notebook_id=this.object_id.apply(lambda x: str(x)),
             access_controls=[
                 {
                     "group_name": "users",
@@ -1119,7 +1119,7 @@ class Permissions(pulumi.CustomResource):
                 },
             ])
         workspace_file_usage_by_id = databricks.Permissions("workspace_file_usage_by_id",
-            workspace_file_id=this.object_id,
+            workspace_file_id=this.object_id.apply(lambda x: str(x)),
             access_controls=[
                 {
                     "group_name": "users",
@@ -1173,7 +1173,7 @@ class Permissions(pulumi.CustomResource):
                 },
             ])
         folder_usage_by_id = databricks.Permissions("folder_usage_by_id",
-            directory_id=this.object_id,
+            directory_id=this.object_id.apply(lambda x: str(x)),
             access_controls=[
                 {
                     "group_name": "users",
@@ -1928,7 +1928,7 @@ class Permissions(pulumi.CustomResource):
                 },
             ])
         notebook_usage_by_id = databricks.Permissions("notebook_usage_by_id",
-            notebook_id=this.object_id,
+            notebook_id=this.object_id.apply(lambda x: str(x)),
             access_controls=[
                 {
                     "group_name": "users",
@@ -1980,7 +1980,7 @@ class Permissions(pulumi.CustomResource):
                 },
             ])
         workspace_file_usage_by_id = databricks.Permissions("workspace_file_usage_by_id",
-            workspace_file_id=this.object_id,
+            workspace_file_id=this.object_id.apply(lambda x: str(x)),
             access_controls=[
                 {
                     "group_name": "users",
@@ -2034,7 +2034,7 @@ class Permissions(pulumi.CustomResource):
                 },
             ])
         folder_usage_by_id = databricks.Permissions("folder_usage_by_id",
-            directory_id=this.object_id,
+            directory_id=this.object_id.apply(lambda x: str(x)),
             access_controls=[
                 {
                     "group_name": "users",
@@ -2527,36 +2527,36 @@ class Permissions(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
-                 alert_v2_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorization: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 notebook_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 notebook_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pipeline_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PermissionsProviderConfigArgs', 'PermissionsProviderConfigArgsDict']]] = None,
-                 registered_model_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 serving_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_alert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_query_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vector_search_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_file_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_controls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
+                 alert_v2_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorization: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 notebook_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 notebook_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PermissionsProviderConfigArgs', 'PermissionsProviderConfigArgsDict']]] = None,
+                 registered_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 serving_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_alert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_query_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vector_search_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_file_path: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2608,36 +2608,36 @@ class Permissions(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_controls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
-            alert_v2_id: Optional[pulumi.Input[_builtins.str]] = None,
-            app_name: Optional[pulumi.Input[_builtins.str]] = None,
-            authorization: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-            database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            database_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-            directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-            directory_path: Optional[pulumi.Input[_builtins.str]] = None,
-            experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            job_id: Optional[pulumi.Input[_builtins.str]] = None,
-            notebook_id: Optional[pulumi.Input[_builtins.str]] = None,
-            notebook_path: Optional[pulumi.Input[_builtins.str]] = None,
-            object_type: Optional[pulumi.Input[_builtins.str]] = None,
-            pipeline_id: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['PermissionsProviderConfigArgs', 'PermissionsProviderConfigArgsDict']]] = None,
-            registered_model_id: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_id: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_path: Optional[pulumi.Input[_builtins.str]] = None,
-            serving_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sql_alert_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sql_dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sql_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sql_query_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vector_search_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_file_path: Optional[pulumi.Input[_builtins.str]] = None) -> 'Permissions':
+            access_controls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PermissionsAccessControlArgs', 'PermissionsAccessControlArgsDict']]]]] = None,
+            alert_v2_id: pulumi.Input[Optional[_builtins.str]] = None,
+            app_name: pulumi.Input[Optional[_builtins.str]] = None,
+            authorization: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+            database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            database_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_path: pulumi.Input[Optional[_builtins.str]] = None,
+            experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            notebook_id: pulumi.Input[Optional[_builtins.str]] = None,
+            notebook_path: pulumi.Input[Optional[_builtins.str]] = None,
+            object_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['PermissionsProviderConfigArgs', 'PermissionsProviderConfigArgsDict']]] = None,
+            registered_model_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_path: pulumi.Input[Optional[_builtins.str]] = None,
+            serving_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sql_alert_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sql_dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sql_query_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vector_search_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_file_path: pulumi.Input[Optional[_builtins.str]] = None) -> 'Permissions':
         """
         Get an existing Permissions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

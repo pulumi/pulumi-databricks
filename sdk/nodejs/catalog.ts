@@ -231,159 +231,159 @@ export class Catalog extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Catalog resources.
  */
 export interface CatalogState {
-    browseOnly?: pulumi.Input<boolean>;
+    browseOnly?: pulumi.Input<boolean | undefined>;
     /**
      * the type of the catalog.
      */
-    catalogType?: pulumi.Input<string>;
+    catalogType?: pulumi.Input<string | undefined>;
     /**
      * User-supplied free-form text.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
      */
-    connectionName?: pulumi.Input<string>;
+    connectionName?: pulumi.Input<string | undefined>;
     /**
      * time at which this catalog was created, in epoch milliseconds.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * username of catalog creator.
      */
-    createdBy?: pulumi.Input<string>;
-    effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.CatalogEffectivePredictiveOptimizationFlag>;
+    createdBy?: pulumi.Input<string | undefined>;
+    effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.CatalogEffectivePredictiveOptimizationFlag | undefined>;
     /**
      * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
      */
-    enablePredictiveOptimization?: pulumi.Input<string>;
+    enablePredictiveOptimization?: pulumi.Input<string | undefined>;
     /**
      * Delete catalog regardless of its contents.
      */
-    forceDestroy?: pulumi.Input<boolean>;
-    fullName?: pulumi.Input<string>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      */
-    isolationMode?: pulumi.Input<string>;
-    managedEncryptionSettings?: pulumi.Input<inputs.CatalogManagedEncryptionSettings>;
+    isolationMode?: pulumi.Input<string | undefined>;
+    managedEncryptionSettings?: pulumi.Input<inputs.CatalogManagedEncryptionSettings | undefined>;
     /**
      * ID of the parent metastore.
      */
-    metastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * Name of Catalog relative to parent metastore.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
      */
-    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Username/groupname/sp applicationId of the catalog owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Extensible Catalog properties.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.CatalogProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.CatalogProviderConfig | undefined>;
     /**
      * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
      */
-    providerName?: pulumi.Input<string>;
-    provisioningInfo?: pulumi.Input<inputs.CatalogProvisioningInfo>;
+    providerName?: pulumi.Input<string | undefined>;
+    provisioningInfo?: pulumi.Input<inputs.CatalogProvisioningInfo | undefined>;
     /**
      * the type of Unity Catalog securable.
      */
-    securableType?: pulumi.Input<string>;
+    securableType?: pulumi.Input<string | undefined>;
     /**
      * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
      */
-    shareName?: pulumi.Input<string>;
+    shareName?: pulumi.Input<string | undefined>;
     /**
      * effective storage Location URL (full path) for managed tables within catalog.
      */
-    storageLocation?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string | undefined>;
     /**
      * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
      */
-    storageRoot?: pulumi.Input<string>;
+    storageRoot?: pulumi.Input<string | undefined>;
     /**
      * time at which this catalog was last modified, in epoch milliseconds..
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * username of user who last modified catalog.
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Catalog resource.
  */
 export interface CatalogArgs {
-    browseOnly?: pulumi.Input<boolean>;
+    browseOnly?: pulumi.Input<boolean | undefined>;
     /**
      * User-supplied free-form text.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
      */
-    connectionName?: pulumi.Input<string>;
-    effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.CatalogEffectivePredictiveOptimizationFlag>;
+    connectionName?: pulumi.Input<string | undefined>;
+    effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.CatalogEffectivePredictiveOptimizationFlag | undefined>;
     /**
      * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
      */
-    enablePredictiveOptimization?: pulumi.Input<string>;
+    enablePredictiveOptimization?: pulumi.Input<string | undefined>;
     /**
      * Delete catalog regardless of its contents.
      */
-    forceDestroy?: pulumi.Input<boolean>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the catalog is accessible from all workspaces or a specific set of workspaces. Can be `ISOLATED` or `OPEN`. Setting the catalog to `ISOLATED` will automatically allow access from the current workspace.
      */
-    isolationMode?: pulumi.Input<string>;
-    managedEncryptionSettings?: pulumi.Input<inputs.CatalogManagedEncryptionSettings>;
+    isolationMode?: pulumi.Input<string | undefined>;
+    managedEncryptionSettings?: pulumi.Input<inputs.CatalogManagedEncryptionSettings | undefined>;
     /**
      * ID of the parent metastore.
      */
-    metastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * Name of Catalog relative to parent metastore.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * For Foreign Catalogs: the name of the entity from an external data source that maps to a catalog. For example, the database name in a PostgreSQL server.
      */
-    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Username/groupname/sp applicationId of the catalog owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Extensible Catalog properties.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.CatalogProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.CatalogProviderConfig | undefined>;
     /**
      * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.
      */
-    providerName?: pulumi.Input<string>;
-    provisioningInfo?: pulumi.Input<inputs.CatalogProvisioningInfo>;
+    providerName?: pulumi.Input<string | undefined>;
+    provisioningInfo?: pulumi.Input<inputs.CatalogProvisioningInfo | undefined>;
     /**
      * For Delta Sharing Catalogs: the name of the share under the share provider. Change forces creation of a new resource.
      */
-    shareName?: pulumi.Input<string>;
+    shareName?: pulumi.Input<string | undefined>;
     /**
      * Managed location of the catalog. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the metastore root location. Change forces creation of a new resource.
      */
-    storageRoot?: pulumi.Input<string>;
+    storageRoot?: pulumi.Input<string | undefined>;
 }

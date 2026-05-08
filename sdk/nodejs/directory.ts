@@ -128,23 +128,23 @@ export interface DirectoryState {
     /**
      * Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
      */
-    deleteRecursive?: pulumi.Input<boolean>;
+    deleteRecursive?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier for a DIRECTORY
      */
-    objectId?: pulumi.Input<number>;
+    objectId?: pulumi.Input<number | undefined>;
     /**
      * The absolute path of the directory, beginning with "/", e.g. "/Demo".
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.DirectoryProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.DirectoryProviderConfig | undefined>;
     /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */
-    workspacePath?: pulumi.Input<string>;
+    workspacePath?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -154,11 +154,11 @@ export interface DirectoryArgs {
     /**
      * Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
      */
-    deleteRecursive?: pulumi.Input<boolean>;
+    deleteRecursive?: pulumi.Input<boolean | undefined>;
     /**
      * Unique identifier for a DIRECTORY
      */
-    objectId?: pulumi.Input<number>;
+    objectId?: pulumi.Input<number | undefined>;
     /**
      * The absolute path of the directory, beginning with "/", e.g. "/Demo".
      */
@@ -166,5 +166,5 @@ export interface DirectoryArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.DirectoryProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.DirectoryProviderConfig | undefined>;
 }

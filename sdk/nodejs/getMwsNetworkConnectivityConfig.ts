@@ -162,15 +162,15 @@ export interface GetMwsNetworkConnectivityConfigOutputArgs {
     /**
      * The Databricks account ID associated with this network configuration.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Time in epoch milliseconds when this object was created.
      */
-    creationTime?: pulumi.Input<number>;
+    creationTime?: pulumi.Input<number | undefined>;
     /**
      * Array of egress configuration objects.
      */
-    egressConfig?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigArgs>;
+    egressConfig?: pulumi.Input<inputs.GetMwsNetworkConnectivityConfigEgressConfigArgs | undefined>;
     /**
      * Name of the network connectivity configuration.
      */
@@ -178,13 +178,13 @@ export interface GetMwsNetworkConnectivityConfigOutputArgs {
     /**
      * The Databricks network connectivity configuration ID.
      */
-    networkConnectivityConfigId?: pulumi.Input<string>;
+    networkConnectivityConfigId?: pulumi.Input<string | undefined>;
     /**
      * The region of the network connectivity configuration.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Time in epoch milliseconds when the network was updated.
      */
-    updatedTime?: pulumi.Input<number>;
+    updatedTime?: pulumi.Input<number | undefined>;
 }

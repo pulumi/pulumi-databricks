@@ -158,52 +158,52 @@ export interface VectorSearchEndpointState {
     /**
      * The Budget Policy ID set for this resource.
      */
-    budgetPolicyId?: pulumi.Input<string>;
+    budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of endpoint creation (milliseconds).
      */
-    creationTimestamp?: pulumi.Input<number>;
+    creationTimestamp?: pulumi.Input<number | undefined>;
     /**
      * Creator of the endpoint.
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * The effective budget policy ID.
      */
-    effectiveBudgetPolicyId?: pulumi.Input<string>;
+    effectiveBudgetPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Unique internal identifier of the endpoint (UUID).
      */
-    endpointId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<string | undefined>;
     /**
      * Object describing the current status of the endpoint consisting of the following fields:
      */
-    endpointStatuses?: pulumi.Input<pulumi.Input<inputs.VectorSearchEndpointEndpointStatus>[]>;
+    endpointStatuses?: pulumi.Input<pulumi.Input<inputs.VectorSearchEndpointEndpointStatus>[] | undefined>;
     /**
      * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of the last update to the endpoint (milliseconds).
      */
-    lastUpdatedTimestamp?: pulumi.Input<number>;
+    lastUpdatedTimestamp?: pulumi.Input<number | undefined>;
     /**
      * User who last updated the endpoint.
      */
-    lastUpdatedUser?: pulumi.Input<string>;
+    lastUpdatedUser?: pulumi.Input<string | undefined>;
     /**
      * Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Number of indexes on the endpoint.
      */
-    numIndexes?: pulumi.Input<number>;
+    numIndexes?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.VectorSearchEndpointProviderConfig>;
-    scalingInfo?: pulumi.Input<inputs.VectorSearchEndpointScalingInfo>;
+    providerConfig?: pulumi.Input<inputs.VectorSearchEndpointProviderConfig | undefined>;
+    scalingInfo?: pulumi.Input<inputs.VectorSearchEndpointScalingInfo | undefined>;
 }
 
 /**
@@ -213,7 +213,7 @@ export interface VectorSearchEndpointArgs {
     /**
      * The Budget Policy ID set for this resource.
      */
-    budgetPolicyId?: pulumi.Input<string>;
+    budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Type of Mosaic AI Vector Search Endpoint.  Currently only accepting single value: `STANDARD` (See [documentation](https://docs.databricks.com/api/workspace/vectorsearchendpoints/createendpoint) for the list of currently supported values). (Change leads to recreation of the resource).
      */
@@ -221,10 +221,10 @@ export interface VectorSearchEndpointArgs {
     /**
      * Name of the Mosaic AI Vector Search Endpoint to create. (Change leads to recreation of the resource).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.VectorSearchEndpointProviderConfig>;
-    scalingInfo?: pulumi.Input<inputs.VectorSearchEndpointScalingInfo>;
+    providerConfig?: pulumi.Input<inputs.VectorSearchEndpointProviderConfig | undefined>;
+    scalingInfo?: pulumi.Input<inputs.VectorSearchEndpointScalingInfo | undefined>;
 }

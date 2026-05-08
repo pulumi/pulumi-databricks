@@ -197,45 +197,45 @@ export interface GroupState {
     /**
      * identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
      */
-    aclPrincipalId?: pulumi.Input<string>;
+    aclPrincipalId?: pulumi.Input<string | undefined>;
     /**
      * This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and clusterId argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      */
-    allowClusterCreate?: pulumi.Input<boolean>;
+    allowClusterCreate?: pulumi.Input<boolean | undefined>;
     /**
      * This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      */
-    allowInstancePoolCreate?: pulumi.Input<boolean>;
+    allowInstancePoolCreate?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      */
-    databricksSqlAccess?: pulumi.Input<boolean>;
+    databricksSqlAccess?: pulumi.Input<boolean | undefined>;
     /**
      * This is the display name for the given group.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * ID of the group in an external identity provider.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
-    force?: pulumi.Input<boolean>;
-    providerConfig?: pulumi.Input<inputs.GroupProviderConfig>;
-    url?: pulumi.Input<string>;
+    force?: pulumi.Input<boolean | undefined>;
+    providerConfig?: pulumi.Input<inputs.GroupProviderConfig | undefined>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
      */
-    workspaceAccess?: pulumi.Input<boolean>;
+    workspaceAccess?: pulumi.Input<boolean | undefined>;
     /**
      * This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
-    workspaceConsume?: pulumi.Input<boolean>;
+    workspaceConsume?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -245,43 +245,43 @@ export interface GroupArgs {
     /**
      * identifier for use in databricks_access_control_rule_set, e.g. `groups/Some Group`.
      */
-    aclPrincipalId?: pulumi.Input<string>;
+    aclPrincipalId?: pulumi.Input<string | undefined>;
     /**
      * This is a field to allow the group to have cluster create privileges. More fine grained permissions could be assigned with databricks.Permissions and clusterId argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      */
-    allowClusterCreate?: pulumi.Input<boolean>;
+    allowClusterCreate?: pulumi.Input<boolean | undefined>;
     /**
      * This is a field to allow the group to have instance pool create privileges. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      */
-    allowInstancePoolCreate?: pulumi.Input<boolean>;
+    allowInstancePoolCreate?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * This is a field to allow the group to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      */
-    databricksSqlAccess?: pulumi.Input<boolean>;
+    databricksSqlAccess?: pulumi.Input<boolean | undefined>;
     /**
      * This is the display name for the given group.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * ID of the group in an external identity provider.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
-    force?: pulumi.Input<boolean>;
-    providerConfig?: pulumi.Input<inputs.GroupProviderConfig>;
-    url?: pulumi.Input<string>;
+    force?: pulumi.Input<boolean | undefined>;
+    providerConfig?: pulumi.Input<inputs.GroupProviderConfig | undefined>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
      */
-    workspaceAccess?: pulumi.Input<boolean>;
+    workspaceAccess?: pulumi.Input<boolean | undefined>;
     /**
      * This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
-    workspaceConsume?: pulumi.Input<boolean>;
+    workspaceConsume?: pulumi.Input<boolean | undefined>;
 }

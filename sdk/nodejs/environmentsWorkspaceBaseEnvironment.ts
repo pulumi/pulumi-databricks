@@ -190,59 +190,59 @@ export interface EnvironmentsWorkspaceBaseEnvironmentState {
     /**
      * The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
      */
-    baseEnvironmentType?: pulumi.Input<string>;
+    baseEnvironmentType?: pulumi.Input<string | undefined>;
     /**
      * (string) - Timestamp when the environment was created
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - User ID of the creator
      */
-    creatorUserId?: pulumi.Input<string>;
+    creatorUserId?: pulumi.Input<string | undefined>;
     /**
      * Human-readable display name for the workspace base environment
      */
-    displayName?: pulumi.Input<string>;
-    effectiveBaseEnvironmentType?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
+    effectiveBaseEnvironmentType?: pulumi.Input<string | undefined>;
     /**
      * The WSFS or UC Volumes path to the environment YAML file
      */
-    filepath?: pulumi.Input<string>;
+    filepath?: pulumi.Input<string | undefined>;
     /**
      * (boolean) - Whether this is the default environment for the workspace
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * (string) - User ID of the last user who updated the environment
      */
-    lastUpdatedUserId?: pulumi.Input<string>;
+    lastUpdatedUserId?: pulumi.Input<string | undefined>;
     /**
      * (string) - Status message providing additional details about the environment status
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * (string) - The resource name of the workspace base environment.
      * Format: workspace-base-environments/{workspace-base-environment}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig | undefined>;
     /**
      * (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * (string) - Timestamp when the environment was last updated
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the workspace base environment, which will become the final component of
      * the resource name.
      * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
      */
-    workspaceBaseEnvironmentId?: pulumi.Input<string>;
+    workspaceBaseEnvironmentId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -252,7 +252,7 @@ export interface EnvironmentsWorkspaceBaseEnvironmentArgs {
     /**
      * The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
      */
-    baseEnvironmentType?: pulumi.Input<string>;
+    baseEnvironmentType?: pulumi.Input<string | undefined>;
     /**
      * Human-readable display name for the workspace base environment
      */
@@ -260,15 +260,15 @@ export interface EnvironmentsWorkspaceBaseEnvironmentArgs {
     /**
      * The WSFS or UC Volumes path to the environment YAML file
      */
-    filepath?: pulumi.Input<string>;
+    filepath?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig | undefined>;
     /**
      * The ID to use for the workspace base environment, which will become the final component of
      * the resource name.
      * This value should be 4-63 characters, and valid characters are /[a-z][0-9]-/
      */
-    workspaceBaseEnvironmentId?: pulumi.Input<string>;
+    workspaceBaseEnvironmentId?: pulumi.Input<string | undefined>;
 }

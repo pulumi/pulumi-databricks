@@ -179,29 +179,29 @@ export interface FileState {
     /**
      * Contents in base 64 format. Conflicts with `source`.
      */
-    contentBase64?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string | undefined>;
     /**
      * The file size of the file that is being tracked by this resource in bytes.
      */
-    fileSize?: pulumi.Input<number>;
-    md5?: pulumi.Input<string>;
+    fileSize?: pulumi.Input<number | undefined>;
+    md5?: pulumi.Input<string | undefined>;
     /**
      * The last time stamp when the file was modified
      */
-    modificationTime?: pulumi.Input<string>;
+    modificationTime?: pulumi.Input<string | undefined>;
     /**
      * The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.FileProviderConfig>;
-    remoteFileModified?: pulumi.Input<boolean>;
+    providerConfig?: pulumi.Input<inputs.FileProviderConfig | undefined>;
+    remoteFileModified?: pulumi.Input<boolean | undefined>;
     /**
      * The full absolute path to the file. Conflicts with `contentBase64`.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -211,8 +211,8 @@ export interface FileArgs {
     /**
      * Contents in base 64 format. Conflicts with `source`.
      */
-    contentBase64?: pulumi.Input<string>;
-    md5?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string | undefined>;
+    md5?: pulumi.Input<string | undefined>;
     /**
      * The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
      */
@@ -220,10 +220,10 @@ export interface FileArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.FileProviderConfig>;
-    remoteFileModified?: pulumi.Input<boolean>;
+    providerConfig?: pulumi.Input<inputs.FileProviderConfig | undefined>;
+    remoteFileModified?: pulumi.Input<boolean | undefined>;
     /**
      * The full absolute path to the file. Conflicts with `contentBase64`.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }

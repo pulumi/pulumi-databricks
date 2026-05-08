@@ -24,20 +24,20 @@ class DashboardArgs:
                  display_name: pulumi.Input[_builtins.str],
                  parent_path: pulumi.Input[_builtins.str],
                  warehouse_id: pulumi.Input[_builtins.str],
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_change_detected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset_catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset_schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 embed_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['DashboardProviderConfigArgs']] = None,
-                 serialized_dashboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_change_detected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 embed_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['DashboardProviderConfigArgs']] = None,
+                 serialized_dashboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Dashboard resource.
 
@@ -121,169 +121,169 @@ class DashboardArgs:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardChangeDetected")
-    def dashboard_change_detected(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dashboard_change_detected(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "dashboard_change_detected")
 
     @dashboard_change_detected.setter
-    def dashboard_change_detected(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dashboard_change_detected(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dashboard_change_detected", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardId")
-    def dashboard_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dashboard_id")
 
     @dashboard_id.setter
-    def dashboard_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_id", value)
 
     @_builtins.property
     @pulumi.getter(name="datasetCatalog")
-    def dataset_catalog(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_catalog(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
         """
         return pulumi.get(self, "dataset_catalog")
 
     @dataset_catalog.setter
-    def dataset_catalog(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_catalog(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_catalog", value)
 
     @_builtins.property
     @pulumi.getter(name="datasetSchema")
-    def dataset_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
         """
         return pulumi.get(self, "dataset_schema")
 
     @dataset_schema.setter
-    def dataset_schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="embedCredentials")
-    def embed_credentials(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def embed_credentials(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to embed credentials in the dashboard. Default is `true`.
         """
         return pulumi.get(self, "embed_credentials")
 
     @embed_credentials.setter
-    def embed_credentials(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def embed_credentials(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "embed_credentials", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="filePath")
-    def file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
         """
         return pulumi.get(self, "file_path")
 
     @file_path.setter
-    def file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_path", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleState")
-    def lifecycle_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lifecycle_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "lifecycle_state")
 
     @lifecycle_state.setter
-    def lifecycle_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lifecycle_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lifecycle_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def md5(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def md5(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "md5")
 
     @md5.setter
-    def md5(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def md5(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "md5", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DashboardProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DashboardProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DashboardProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DashboardProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="serializedDashboard")
-    def serialized_dashboard(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serialized_dashboard(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The contents of the dashboard in serialized string form. Conflicts with `file_path`.
         """
         return pulumi.get(self, "serialized_dashboard")
 
     @serialized_dashboard.setter
-    def serialized_dashboard(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serialized_dashboard(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serialized_dashboard", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
 @pulumi.input_type
 class _DashboardState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_change_detected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset_catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset_schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 embed_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['DashboardProviderConfigArgs']] = None,
-                 serialized_dashboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_change_detected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 embed_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['DashboardProviderConfigArgs']] = None,
+                 serialized_dashboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Dashboard resources.
 
@@ -334,182 +334,182 @@ class _DashboardState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardChangeDetected")
-    def dashboard_change_detected(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dashboard_change_detected(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "dashboard_change_detected")
 
     @dashboard_change_detected.setter
-    def dashboard_change_detected(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dashboard_change_detected(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dashboard_change_detected", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardId")
-    def dashboard_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dashboard_id")
 
     @dashboard_id.setter
-    def dashboard_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_id", value)
 
     @_builtins.property
     @pulumi.getter(name="datasetCatalog")
-    def dataset_catalog(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_catalog(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
         """
         return pulumi.get(self, "dataset_catalog")
 
     @dataset_catalog.setter
-    def dataset_catalog(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_catalog(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_catalog", value)
 
     @_builtins.property
     @pulumi.getter(name="datasetSchema")
-    def dataset_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataset_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
         """
         return pulumi.get(self, "dataset_schema")
 
     @dataset_schema.setter
-    def dataset_schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataset_schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the dashboard.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="embedCredentials")
-    def embed_credentials(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def embed_credentials(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to embed credentials in the dashboard. Default is `true`.
         """
         return pulumi.get(self, "embed_credentials")
 
     @embed_credentials.setter
-    def embed_credentials(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def embed_credentials(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "embed_credentials", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="filePath")
-    def file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the dashboard JSON file. Conflicts with `serialized_dashboard`.
         """
         return pulumi.get(self, "file_path")
 
     @file_path.setter
-    def file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_path", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleState")
-    def lifecycle_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lifecycle_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "lifecycle_state")
 
     @lifecycle_state.setter
-    def lifecycle_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lifecycle_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lifecycle_state", value)
 
     @_builtins.property
     @pulumi.getter
-    def md5(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def md5(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "md5")
 
     @md5.setter
-    def md5(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def md5(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "md5", value)
 
     @_builtins.property
     @pulumi.getter(name="parentPath")
-    def parent_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
         """
         return pulumi.get(self, "parent_path")
 
     @parent_path.setter
-    def parent_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DashboardProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DashboardProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DashboardProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DashboardProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="serializedDashboard")
-    def serialized_dashboard(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serialized_dashboard(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The contents of the dashboard in serialized string form. Conflicts with `file_path`.
         """
         return pulumi.get(self, "serialized_dashboard")
 
     @serialized_dashboard.setter
-    def serialized_dashboard(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serialized_dashboard(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serialized_dashboard", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="warehouseId")
-    def warehouse_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warehouse_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The warehouse ID used to run the dashboard.
         """
         return pulumi.get(self, "warehouse_id")
 
     @warehouse_id.setter
-    def warehouse_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warehouse_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warehouse_id", value)
 
 
@@ -519,23 +519,23 @@ class Dashboard(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_change_detected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset_catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset_schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 embed_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DashboardProviderConfigArgs', 'DashboardProviderConfigArgsDict']]] = None,
-                 serialized_dashboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_change_detected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 embed_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DashboardProviderConfigArgs', 'DashboardProviderConfigArgsDict']]] = None,
+                 serialized_dashboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to manage Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html). To manage [Dashboards](https://docs.databricks.com/en/dashboards/index.html) you must have a warehouse access on your databricks workspace.
@@ -620,23 +620,23 @@ class Dashboard(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_change_detected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset_catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataset_schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 embed_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 md5: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DashboardProviderConfigArgs', 'DashboardProviderConfigArgsDict']]] = None,
-                 serialized_dashboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_change_detected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataset_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 embed_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DashboardProviderConfigArgs', 'DashboardProviderConfigArgsDict']]] = None,
+                 serialized_dashboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -679,23 +679,23 @@ class Dashboard(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dashboard_change_detected: Optional[pulumi.Input[_builtins.bool]] = None,
-            dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dataset_catalog: Optional[pulumi.Input[_builtins.str]] = None,
-            dataset_schema: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            embed_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            file_path: Optional[pulumi.Input[_builtins.str]] = None,
-            lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
-            md5: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-            path: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['DashboardProviderConfigArgs', 'DashboardProviderConfigArgsDict']]] = None,
-            serialized_dashboard: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            warehouse_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Dashboard':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dashboard_change_detected: pulumi.Input[Optional[_builtins.bool]] = None,
+            dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset_catalog: pulumi.Input[Optional[_builtins.str]] = None,
+            dataset_schema: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            embed_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+            md5: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DashboardProviderConfigArgs', 'DashboardProviderConfigArgsDict']]] = None,
+            serialized_dashboard: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            warehouse_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Dashboard':
         """
         Get an existing Dashboard resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

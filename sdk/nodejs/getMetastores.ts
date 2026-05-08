@@ -104,5 +104,5 @@ export interface GetMetastoresOutputArgs {
     /**
      * Mapping of name to id of databricks_metastore
      */
-    ids?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    ids?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

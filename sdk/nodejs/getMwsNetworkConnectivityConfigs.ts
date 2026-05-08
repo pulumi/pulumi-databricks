@@ -129,9 +129,9 @@ export interface GetMwsNetworkConnectivityConfigsOutputArgs {
     /**
      * List of names of databricks_mws_network_connectivity_config
      */
-    names?: pulumi.Input<pulumi.Input<string>[]>;
+    names?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Filter network connectivity configurations by region.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

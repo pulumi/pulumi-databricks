@@ -260,45 +260,45 @@ export interface MwsNetworksState {
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      */
-    accountId?: pulumi.Input<string>;
-    creationTime?: pulumi.Input<number>;
-    errorMessages?: pulumi.Input<pulumi.Input<inputs.MwsNetworksErrorMessage>[]>;
+    accountId?: pulumi.Input<string | undefined>;
+    creationTime?: pulumi.Input<number | undefined>;
+    errorMessages?: pulumi.Input<pulumi.Input<inputs.MwsNetworksErrorMessage>[] | undefined>;
     /**
      * a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
      */
-    gcpNetworkInfo?: pulumi.Input<inputs.MwsNetworksGcpNetworkInfo>;
+    gcpNetworkInfo?: pulumi.Input<inputs.MwsNetworksGcpNetworkInfo | undefined>;
     /**
      * (String) id of network to be used for databricks.MwsWorkspaces resource.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * name under which this network is registered
      */
-    networkName?: pulumi.Input<string>;
+    networkName?: pulumi.Input<string | undefined>;
     /**
      * ids of aws_security_group
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ids of aws_subnet
      */
-    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
      */
-    vpcEndpoints?: pulumi.Input<inputs.MwsNetworksVpcEndpoints>;
+    vpcEndpoints?: pulumi.Input<inputs.MwsNetworksVpcEndpoints | undefined>;
     /**
      * aws_vpc id
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * (String) VPC attachment status
      */
-    vpcStatus?: pulumi.Input<string>;
+    vpcStatus?: pulumi.Input<string | undefined>;
     /**
      * (Integer) id of associated workspace
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -309,16 +309,16 @@ export interface MwsNetworksArgs {
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      */
     accountId: pulumi.Input<string>;
-    creationTime?: pulumi.Input<number>;
-    errorMessages?: pulumi.Input<pulumi.Input<inputs.MwsNetworksErrorMessage>[]>;
+    creationTime?: pulumi.Input<number | undefined>;
+    errorMessages?: pulumi.Input<pulumi.Input<inputs.MwsNetworksErrorMessage>[] | undefined>;
     /**
      * a block consists of Google Cloud specific information for this network, for example the VPC ID, subnet ID, and secondary IP ranges. It has the following fields:
      */
-    gcpNetworkInfo?: pulumi.Input<inputs.MwsNetworksGcpNetworkInfo>;
+    gcpNetworkInfo?: pulumi.Input<inputs.MwsNetworksGcpNetworkInfo | undefined>;
     /**
      * (String) id of network to be used for databricks.MwsWorkspaces resource.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * name under which this network is registered
      */
@@ -326,25 +326,25 @@ export interface MwsNetworksArgs {
     /**
      * ids of aws_security_group
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ids of aws_subnet
      */
-    subnetIds?: pulumi.Input<pulumi.Input<string>[]>;
+    subnetIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * mapping of databricks.MwsVpcEndpoint for PrivateLink or Private Service Connect connections
      */
-    vpcEndpoints?: pulumi.Input<inputs.MwsNetworksVpcEndpoints>;
+    vpcEndpoints?: pulumi.Input<inputs.MwsNetworksVpcEndpoints | undefined>;
     /**
      * aws_vpc id
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * (String) VPC attachment status
      */
-    vpcStatus?: pulumi.Input<string>;
+    vpcStatus?: pulumi.Input<string | undefined>;
     /**
      * (Integer) id of associated workspace
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }

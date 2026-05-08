@@ -22,9 +22,9 @@ __all__ = ['DisableLegacyAccessSettingArgs', 'DisableLegacyAccessSetting']
 class DisableLegacyAccessSettingArgs:
     def __init__(__self__, *,
                  disable_legacy_access: pulumi.Input['DisableLegacyAccessSettingDisableLegacyAccessArgs'],
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['DisableLegacyAccessSettingProviderConfigArgs']] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['DisableLegacyAccessSettingProviderConfigArgs']] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DisableLegacyAccessSetting resource.
 
@@ -53,42 +53,42 @@ class DisableLegacyAccessSettingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DisableLegacyAccessSettingProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DisableLegacyAccessSettingProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DisableLegacyAccessSettingProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DisableLegacyAccessSettingProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="settingName")
-    def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def setting_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "setting_name")
 
     @setting_name.setter
-    def setting_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def setting_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "setting_name", value)
 
 
 @pulumi.input_type
 class _DisableLegacyAccessSettingState:
     def __init__(__self__, *,
-                 disable_legacy_access: Optional[pulumi.Input['DisableLegacyAccessSettingDisableLegacyAccessArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['DisableLegacyAccessSettingProviderConfigArgs']] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 disable_legacy_access: pulumi.Input[Optional['DisableLegacyAccessSettingDisableLegacyAccessArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['DisableLegacyAccessSettingProviderConfigArgs']] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DisableLegacyAccessSetting resources.
 
@@ -106,44 +106,44 @@ class _DisableLegacyAccessSettingState:
 
     @_builtins.property
     @pulumi.getter(name="disableLegacyAccess")
-    def disable_legacy_access(self) -> Optional[pulumi.Input['DisableLegacyAccessSettingDisableLegacyAccessArgs']]:
+    def disable_legacy_access(self) -> pulumi.Input[Optional['DisableLegacyAccessSettingDisableLegacyAccessArgs']]:
         """
         The configuration details.
         """
         return pulumi.get(self, "disable_legacy_access")
 
     @disable_legacy_access.setter
-    def disable_legacy_access(self, value: Optional[pulumi.Input['DisableLegacyAccessSettingDisableLegacyAccessArgs']]):
+    def disable_legacy_access(self, value: pulumi.Input[Optional['DisableLegacyAccessSettingDisableLegacyAccessArgs']]):
         pulumi.set(self, "disable_legacy_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DisableLegacyAccessSettingProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DisableLegacyAccessSettingProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DisableLegacyAccessSettingProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DisableLegacyAccessSettingProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="settingName")
-    def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def setting_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "setting_name")
 
     @setting_name.setter
-    def setting_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def setting_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "setting_name", value)
 
 
@@ -153,10 +153,10 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_legacy_access: Optional[pulumi.Input[Union['DisableLegacyAccessSettingDisableLegacyAccessArgs', 'DisableLegacyAccessSettingDisableLegacyAccessArgsDict']]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DisableLegacyAccessSettingProviderConfigArgs', 'DisableLegacyAccessSettingProviderConfigArgsDict']]] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable_legacy_access: pulumi.Input[Optional[Union['DisableLegacyAccessSettingDisableLegacyAccessArgs', 'DisableLegacyAccessSettingDisableLegacyAccessArgsDict']]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DisableLegacyAccessSettingProviderConfigArgs', 'DisableLegacyAccessSettingProviderConfigArgsDict']]] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `DisableLegacyAccessSetting` resource allows you to disable legacy access. It has the following impact:
@@ -250,10 +250,10 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_legacy_access: Optional[pulumi.Input[Union['DisableLegacyAccessSettingDisableLegacyAccessArgs', 'DisableLegacyAccessSettingDisableLegacyAccessArgsDict']]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DisableLegacyAccessSettingProviderConfigArgs', 'DisableLegacyAccessSettingProviderConfigArgsDict']]] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable_legacy_access: pulumi.Input[Optional[Union['DisableLegacyAccessSettingDisableLegacyAccessArgs', 'DisableLegacyAccessSettingDisableLegacyAccessArgsDict']]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DisableLegacyAccessSettingProviderConfigArgs', 'DisableLegacyAccessSettingProviderConfigArgsDict']]] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -279,10 +279,10 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            disable_legacy_access: Optional[pulumi.Input[Union['DisableLegacyAccessSettingDisableLegacyAccessArgs', 'DisableLegacyAccessSettingDisableLegacyAccessArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['DisableLegacyAccessSettingProviderConfigArgs', 'DisableLegacyAccessSettingProviderConfigArgsDict']]] = None,
-            setting_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'DisableLegacyAccessSetting':
+            disable_legacy_access: pulumi.Input[Optional[Union['DisableLegacyAccessSettingDisableLegacyAccessArgs', 'DisableLegacyAccessSettingDisableLegacyAccessArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DisableLegacyAccessSettingProviderConfigArgs', 'DisableLegacyAccessSettingProviderConfigArgsDict']]] = None,
+            setting_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'DisableLegacyAccessSetting':
         """
         Get an existing DisableLegacyAccessSetting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

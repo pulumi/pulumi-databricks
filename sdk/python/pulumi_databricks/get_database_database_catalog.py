@@ -157,8 +157,8 @@ def get_database_database_catalog(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         uid=pulumi.get(__ret__, 'uid'))
-def get_database_database_catalog_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                         provider_config: Optional[pulumi.Input[Optional[Union['GetDatabaseDatabaseCatalogProviderConfigArgs', 'GetDatabaseDatabaseCatalogProviderConfigArgsDict']]]] = None,
+def get_database_database_catalog_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                         provider_config: pulumi.Input[Optional[Optional[Union['GetDatabaseDatabaseCatalogProviderConfigArgs', 'GetDatabaseDatabaseCatalogProviderConfigArgsDict']]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseDatabaseCatalogResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)

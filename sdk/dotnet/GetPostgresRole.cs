@@ -29,7 +29,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.Index.GetPostgresRole.Invoke(new()
+        ///     var @this = Databricks.GetPostgresRole.Invoke(new()
         ///     {
         ///         Name = "projects/my-project/branches/main/roles/jane",
         ///     });
@@ -64,7 +64,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.Index.GetPostgresRole.Invoke(new()
+        ///     var @this = Databricks.GetPostgresRole.Invoke(new()
         ///     {
         ///         Name = "projects/my-project/branches/main/roles/jane",
         ///     });
@@ -99,7 +99,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @this = Databricks.Index.GetPostgresRole.Invoke(new()
+        ///     var @this = Databricks.GetPostgresRole.Invoke(new()
         ///     {
         ///         Name = "projects/my-project/branches/main/roles/jane",
         ///     });

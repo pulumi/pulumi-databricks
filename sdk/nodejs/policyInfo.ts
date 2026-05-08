@@ -254,82 +254,82 @@ export interface PolicyInfoState {
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      */
-    columnMask?: pulumi.Input<inputs.PolicyInfoColumnMask>;
+    columnMask?: pulumi.Input<inputs.PolicyInfoColumnMask | undefined>;
     /**
      * Optional description of the policy
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * (integer) - Time at which the policy was created, in epoch milliseconds. Output only
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * (string) - Username of the user who created the policy. Output only
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Optional list of user or group names that should be excluded from the policy
      */
-    exceptPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptPrincipals?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of securables that the policy should take effect on.
      * Only `TABLE` is supported at this moment.
      * Required on create and optional on update. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
-    forSecurableType?: pulumi.Input<string>;
+    forSecurableType?: pulumi.Input<string | undefined>;
     /**
      * Optional list of condition expressions used to match table columns.
      * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      */
-    matchColumns?: pulumi.Input<pulumi.Input<inputs.PolicyInfoMatchColumn>[]>;
+    matchColumns?: pulumi.Input<pulumi.Input<inputs.PolicyInfoMatchColumn>[] | undefined>;
     /**
      * Name of the policy. Required on create and optional on update.
      * To rename the policy, set `name` to a different value on update
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Full name of the securable on which the policy is defined.
      * Required on create
      */
-    onSecurableFullname?: pulumi.Input<string>;
+    onSecurableFullname?: pulumi.Input<string | undefined>;
     /**
      * Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
      * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
-    onSecurableType?: pulumi.Input<string>;
+    onSecurableType?: pulumi.Input<string | undefined>;
     /**
      * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      */
-    policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.PolicyInfoProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PolicyInfoProviderConfig | undefined>;
     /**
      * Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      */
-    rowFilter?: pulumi.Input<inputs.PolicyInfoRowFilter>;
+    rowFilter?: pulumi.Input<inputs.PolicyInfoRowFilter | undefined>;
     /**
      * List of user or group names that the policy applies to.
      * Required on create and optional on update
      */
-    toPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
+    toPrincipals?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (integer) - Time at which the policy was last modified, in epoch milliseconds. Output only
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * (string) - Username of the user who last modified the policy. Output only
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
     /**
      * Optional condition when the policy should take effect
      */
-    whenCondition?: pulumi.Input<string>;
+    whenCondition?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -341,15 +341,15 @@ export interface PolicyInfoArgs {
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      */
-    columnMask?: pulumi.Input<inputs.PolicyInfoColumnMask>;
+    columnMask?: pulumi.Input<inputs.PolicyInfoColumnMask | undefined>;
     /**
      * Optional description of the policy
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Optional list of user or group names that should be excluded from the policy
      */
-    exceptPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptPrincipals?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of securables that the policy should take effect on.
      * Only `TABLE` is supported at this moment.
@@ -361,23 +361,23 @@ export interface PolicyInfoArgs {
      * Only valid when `forSecurableType` is `TABLE`.
      * When specified, the policy only applies to tables whose columns satisfy all match conditions
      */
-    matchColumns?: pulumi.Input<pulumi.Input<inputs.PolicyInfoMatchColumn>[]>;
+    matchColumns?: pulumi.Input<pulumi.Input<inputs.PolicyInfoMatchColumn>[] | undefined>;
     /**
      * Name of the policy. Required on create and optional on update.
      * To rename the policy, set `name` to a different value on update
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Full name of the securable on which the policy is defined.
      * Required on create
      */
-    onSecurableFullname?: pulumi.Input<string>;
+    onSecurableFullname?: pulumi.Input<string | undefined>;
     /**
      * Type of the securable on which the policy is defined.
      * Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
      * Required on create. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
      */
-    onSecurableType?: pulumi.Input<string>;
+    onSecurableType?: pulumi.Input<string | undefined>;
     /**
      * Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
      */
@@ -385,13 +385,13 @@ export interface PolicyInfoArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.PolicyInfoProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PolicyInfoProviderConfig | undefined>;
     /**
      * Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
      * Required on create and optional on update. When specified on update,
      * the new options will replace the existing options as a whole
      */
-    rowFilter?: pulumi.Input<inputs.PolicyInfoRowFilter>;
+    rowFilter?: pulumi.Input<inputs.PolicyInfoRowFilter | undefined>;
     /**
      * List of user or group names that the policy applies to.
      * Required on create and optional on update
@@ -400,5 +400,5 @@ export interface PolicyInfoArgs {
     /**
      * Optional condition when the policy should take effect
      */
-    whenCondition?: pulumi.Input<string>;
+    whenCondition?: pulumi.Input<string | undefined>;
 }

@@ -131,11 +131,11 @@ def get_directory(id: Optional[_builtins.str] = None,
         path=pulumi.get(__ret__, 'path'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         workspace_path=pulumi.get(__ret__, 'workspace_path'))
-def get_directory_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         object_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                         path: Optional[pulumi.Input[_builtins.str]] = None,
-                         provider_config: Optional[pulumi.Input[Optional[Union['GetDirectoryProviderConfigArgs', 'GetDirectoryProviderConfigArgsDict']]]] = None,
-                         workspace_path: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_directory_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         object_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                         path: pulumi.Input[Optional[_builtins.str]] = None,
+                         provider_config: pulumi.Input[Optional[Optional[Union['GetDirectoryProviderConfigArgs', 'GetDirectoryProviderConfigArgsDict']]]] = None,
+                         workspace_path: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDirectoryResult]:
     """
     This data source allows to get information about a directory in a Databricks Workspace.

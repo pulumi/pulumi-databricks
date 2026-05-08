@@ -153,19 +153,19 @@ export interface GetShareOutputArgs {
     /**
      * Description about the object.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The name of the share
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * arrays containing details of each object in the share.
      */
-    objects?: pulumi.Input<pulumi.Input<inputs.GetShareObjectArgs>[]>;
-    owner?: pulumi.Input<string>;
+    objects?: pulumi.Input<pulumi.Input<inputs.GetShareObjectArgs>[] | undefined>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetShareProviderConfigArgs>;
-    storageRoot?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.GetShareProviderConfigArgs | undefined>;
+    storageRoot?: pulumi.Input<string | undefined>;
 }

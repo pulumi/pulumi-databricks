@@ -113,8 +113,8 @@ def get_catalogs(ids: Optional[Sequence[_builtins.str]] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_catalogs_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                        provider_config: Optional[pulumi.Input[Optional[Union['GetCatalogsProviderConfigArgs', 'GetCatalogsProviderConfigArgsDict']]]] = None,
+def get_catalogs_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                        provider_config: pulumi.Input[Optional[Optional[Union['GetCatalogsProviderConfigArgs', 'GetCatalogsProviderConfigArgsDict']]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCatalogsResult]:
     """
     Retrieves a list of Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.

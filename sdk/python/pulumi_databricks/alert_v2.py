@@ -26,13 +26,13 @@ class AlertV2Args:
                  query_text: pulumi.Input[_builtins.str],
                  schedule: pulumi.Input['AlertV2ScheduleArgs'],
                  warehouse_id: pulumi.Input[_builtins.str],
-                 custom_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_summary: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['AlertV2ProviderConfigArgs']] = None,
-                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_as: Optional[pulumi.Input['AlertV2RunAsArgs']] = None,
-                 run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_summary: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['AlertV2ProviderConfigArgs']] = None,
+                 purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_as: pulumi.Input[Optional['AlertV2RunAsArgs']] = None,
+                 run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AlertV2 resource.
 
@@ -129,67 +129,67 @@ class AlertV2Args:
 
     @_builtins.property
     @pulumi.getter(name="customDescription")
-    def custom_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom description for the alert. support mustache template
         """
         return pulumi.get(self, "custom_description")
 
     @custom_description.setter
-    def custom_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_description", value)
 
     @_builtins.property
     @pulumi.getter(name="customSummary")
-    def custom_summary(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_summary(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom summary for the alert. support mustache template
         """
         return pulumi.get(self, "custom_summary")
 
     @custom_summary.setter
-    def custom_summary(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_summary(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_summary", value)
 
     @_builtins.property
     @pulumi.getter(name="parentPath")
-    def parent_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         """
         return pulumi.get(self, "parent_path")
 
     @parent_path.setter
-    def parent_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_path", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['AlertV2ProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['AlertV2ProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['AlertV2ProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['AlertV2ProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="purgeOnDelete")
-    def purge_on_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def purge_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Purge the resource on delete
         """
         return pulumi.get(self, "purge_on_delete")
 
     @purge_on_delete.setter
-    def purge_on_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def purge_on_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "purge_on_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="runAs")
-    def run_as(self) -> Optional[pulumi.Input['AlertV2RunAsArgs']]:
+    def run_as(self) -> pulumi.Input[Optional['AlertV2RunAsArgs']]:
         """
         Specifies the identity that will be used to run the alert.
         This field allows you to configure alerts to run as a specific user or service principal.
@@ -200,12 +200,12 @@ class AlertV2Args:
         return pulumi.get(self, "run_as")
 
     @run_as.setter
-    def run_as(self, value: Optional[pulumi.Input['AlertV2RunAsArgs']]):
+    def run_as(self, value: pulumi.Input[Optional['AlertV2RunAsArgs']]):
         pulumi.set(self, "run_as", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsUserName")
-    def run_as_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_as_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The run as username or application ID of service principal.
         On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
@@ -214,30 +214,30 @@ class AlertV2Args:
         return pulumi.get(self, "run_as_user_name")
 
     @run_as_user_name.setter
-    def run_as_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_as_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_as_user_name", value)
 
 
 @pulumi.input_type
 class _AlertV2State:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_summary: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_run_as: Optional[pulumi.Input['AlertV2EffectiveRunAsArgs']] = None,
-                 evaluation: Optional[pulumi.Input['AlertV2EvaluationArgs']] = None,
-                 lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['AlertV2ProviderConfigArgs']] = None,
-                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 query_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as: Optional[pulumi.Input['AlertV2RunAsArgs']] = None,
-                 run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input['AlertV2ScheduleArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_summary: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_run_as: pulumi.Input[Optional['AlertV2EffectiveRunAsArgs']] = None,
+                 evaluation: pulumi.Input[Optional['AlertV2EvaluationArgs']] = None,
+                 lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['AlertV2ProviderConfigArgs']] = None,
+                 purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 query_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as: pulumi.Input[Optional['AlertV2RunAsArgs']] = None,
+                 run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional['AlertV2ScheduleArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AlertV2 resources.
 
@@ -302,55 +302,55 @@ class _AlertV2State:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The timestamp indicating when the alert was created
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customDescription")
-    def custom_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom description for the alert. support mustache template
         """
         return pulumi.get(self, "custom_description")
 
     @custom_description.setter
-    def custom_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_description", value)
 
     @_builtins.property
     @pulumi.getter(name="customSummary")
-    def custom_summary(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_summary(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom summary for the alert. support mustache template
         """
         return pulumi.get(self, "custom_summary")
 
     @custom_summary.setter
-    def custom_summary(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_summary(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_summary", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name of the alert
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveRunAs")
-    def effective_run_as(self) -> Optional[pulumi.Input['AlertV2EffectiveRunAsArgs']]:
+    def effective_run_as(self) -> pulumi.Input[Optional['AlertV2EffectiveRunAsArgs']]:
         """
         (AlertV2RunAs) - The actual identity that will be used to execute the alert.
         This is an output-only field that shows the resolved run-as identity after applying
@@ -359,93 +359,93 @@ class _AlertV2State:
         return pulumi.get(self, "effective_run_as")
 
     @effective_run_as.setter
-    def effective_run_as(self, value: Optional[pulumi.Input['AlertV2EffectiveRunAsArgs']]):
+    def effective_run_as(self, value: pulumi.Input[Optional['AlertV2EffectiveRunAsArgs']]):
         pulumi.set(self, "effective_run_as", value)
 
     @_builtins.property
     @pulumi.getter
-    def evaluation(self) -> Optional[pulumi.Input['AlertV2EvaluationArgs']]:
+    def evaluation(self) -> pulumi.Input[Optional['AlertV2EvaluationArgs']]:
         return pulumi.get(self, "evaluation")
 
     @evaluation.setter
-    def evaluation(self, value: Optional[pulumi.Input['AlertV2EvaluationArgs']]):
+    def evaluation(self, value: pulumi.Input[Optional['AlertV2EvaluationArgs']]):
         pulumi.set(self, "evaluation", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleState")
-    def lifecycle_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lifecycle_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
         """
         return pulumi.get(self, "lifecycle_state")
 
     @lifecycle_state.setter
-    def lifecycle_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lifecycle_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lifecycle_state", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerUserName")
-    def owner_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
         """
         return pulumi.get(self, "owner_user_name")
 
     @owner_user_name.setter
-    def owner_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner_user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="parentPath")
-    def parent_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         """
         return pulumi.get(self, "parent_path")
 
     @parent_path.setter
-    def parent_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_path", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['AlertV2ProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['AlertV2ProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['AlertV2ProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['AlertV2ProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="purgeOnDelete")
-    def purge_on_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def purge_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Purge the resource on delete
         """
         return pulumi.get(self, "purge_on_delete")
 
     @purge_on_delete.setter
-    def purge_on_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def purge_on_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "purge_on_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="queryText")
-    def query_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Text of the query to be run
         """
         return pulumi.get(self, "query_text")
 
     @query_text.setter
-    def query_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query_text", value)
 
     @_builtins.property
     @pulumi.getter(name="runAs")
-    def run_as(self) -> Optional[pulumi.Input['AlertV2RunAsArgs']]:
+    def run_as(self) -> pulumi.Input[Optional['AlertV2RunAsArgs']]:
         """
         Specifies the identity that will be used to run the alert.
         This field allows you to configure alerts to run as a specific user or service principal.
@@ -456,12 +456,12 @@ class _AlertV2State:
         return pulumi.get(self, "run_as")
 
     @run_as.setter
-    def run_as(self, value: Optional[pulumi.Input['AlertV2RunAsArgs']]):
+    def run_as(self, value: pulumi.Input[Optional['AlertV2RunAsArgs']]):
         pulumi.set(self, "run_as", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsUserName")
-    def run_as_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_as_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The run as username or application ID of service principal.
         On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
@@ -470,40 +470,40 @@ class _AlertV2State:
         return pulumi.get(self, "run_as_user_name")
 
     @run_as_user_name.setter
-    def run_as_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_as_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_as_user_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['AlertV2ScheduleArgs']]:
+    def schedule(self) -> pulumi.Input[Optional['AlertV2ScheduleArgs']]:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['AlertV2ScheduleArgs']]):
+    def schedule(self, value: pulumi.Input[Optional['AlertV2ScheduleArgs']]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The timestamp indicating when the alert was updated
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="warehouseId")
-    def warehouse_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warehouse_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the SQL warehouse attached to the alert
         """
         return pulumi.get(self, "warehouse_id")
 
     @warehouse_id.setter
-    def warehouse_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warehouse_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warehouse_id", value)
 
 
@@ -513,18 +513,18 @@ class AlertV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_summary: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 evaluation: Optional[pulumi.Input[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
-                 parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']]] = None,
-                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 query_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as: Optional[pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']]] = None,
-                 run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict']]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_summary: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 evaluation: pulumi.Input[Optional[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']]] = None,
+                 purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 query_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as: pulumi.Input[Optional[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']]] = None,
+                 run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict']]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -556,7 +556,7 @@ class AlertV2(pulumi.CustomResource):
                 "comparison_operator": "GREATER_THAN",
                 "threshold": {
                     "value": {
-                        "double_value": 100,
+                        "double_value": float(100),
                     },
                 },
                 "empty_result_state": "OK",
@@ -630,7 +630,7 @@ class AlertV2(pulumi.CustomResource):
                 "comparison_operator": "GREATER_THAN",
                 "threshold": {
                     "value": {
-                        "double_value": 100,
+                        "double_value": float(100),
                     },
                 },
                 "empty_result_state": "OK",
@@ -664,18 +664,18 @@ class AlertV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_summary: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 evaluation: Optional[pulumi.Input[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
-                 parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']]] = None,
-                 purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 query_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as: Optional[pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']]] = None,
-                 run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict']]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_summary: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 evaluation: pulumi.Input[Optional[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']]] = None,
+                 purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 query_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as: pulumi.Input[Optional[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']]] = None,
+                 run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict']]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -722,23 +722,23 @@ class AlertV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_description: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_summary: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_run_as: Optional[pulumi.Input[Union['AlertV2EffectiveRunAsArgs', 'AlertV2EffectiveRunAsArgsDict']]] = None,
-            evaluation: Optional[pulumi.Input[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
-            lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
-            owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']]] = None,
-            purge_on_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            query_text: Optional[pulumi.Input[_builtins.str]] = None,
-            run_as: Optional[pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']]] = None,
-            run_as_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            schedule: Optional[pulumi.Input[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict']]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            warehouse_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AlertV2':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_description: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_summary: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_run_as: pulumi.Input[Optional[Union['AlertV2EffectiveRunAsArgs', 'AlertV2EffectiveRunAsArgsDict']]] = None,
+            evaluation: pulumi.Input[Optional[Union['AlertV2EvaluationArgs', 'AlertV2EvaluationArgsDict']]] = None,
+            lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']]] = None,
+            purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            query_text: pulumi.Input[Optional[_builtins.str]] = None,
+            run_as: pulumi.Input[Optional[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']]] = None,
+            run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[Union['AlertV2ScheduleArgs', 'AlertV2ScheduleArgsDict']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            warehouse_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AlertV2':
         """
         Get an existing AlertV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

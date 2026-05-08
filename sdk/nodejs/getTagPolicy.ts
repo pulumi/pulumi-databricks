@@ -124,6 +124,6 @@ export interface GetTagPolicyOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetTagPolicyProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetTagPolicyProviderConfigArgs | undefined>;
     tagKey: pulumi.Input<string>;
 }

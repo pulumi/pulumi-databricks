@@ -104,8 +104,8 @@ def get_materialized_features_feature_tag(key: Optional[_builtins.str] = None,
         key=pulumi.get(__ret__, 'key'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         value=pulumi.get(__ret__, 'value'))
-def get_materialized_features_feature_tag_output(key: Optional[pulumi.Input[_builtins.str]] = None,
-                                                 provider_config: Optional[pulumi.Input[Optional[Union['GetMaterializedFeaturesFeatureTagProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagProviderConfigArgsDict']]]] = None,
+def get_materialized_features_feature_tag_output(key: pulumi.Input[Optional[_builtins.str]] = None,
+                                                 provider_config: pulumi.Input[Optional[Optional[Union['GetMaterializedFeaturesFeatureTagProviderConfigArgs', 'GetMaterializedFeaturesFeatureTagProviderConfigArgsDict']]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMaterializedFeaturesFeatureTagResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)

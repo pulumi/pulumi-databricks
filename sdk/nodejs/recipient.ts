@@ -266,87 +266,87 @@ export class Recipient extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Recipient resources.
  */
 export interface RecipientState {
-    activated?: pulumi.Input<boolean>;
+    activated?: pulumi.Input<boolean | undefined>;
     /**
      * Full activation URL to retrieve the access token. It will be empty if the token is already retrieved.
      */
-    activationUrl?: pulumi.Input<string>;
+    activationUrl?: pulumi.Input<string | undefined>;
     /**
      * The delta sharing authentication type. Valid values are `TOKEN` and `DATABRICKS`.
      */
-    authenticationType?: pulumi.Input<string>;
+    authenticationType?: pulumi.Input<string | undefined>;
     /**
      * Cloud vendor of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
      */
-    cloud?: pulumi.Input<string>;
+    cloud?: pulumi.Input<string | undefined>;
     /**
      * Description about the recipient.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Time at which this recipient was created, in epoch milliseconds.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * Username of recipient creator.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Required when `authenticationType` is `DATABRICKS`.
      */
-    dataRecipientGlobalMetastoreId?: pulumi.Input<string>;
+    dataRecipientGlobalMetastoreId?: pulumi.Input<string | undefined>;
     /**
      * Expiration timestamp of the token in epoch milliseconds.
      */
-    expirationTime?: pulumi.Input<number>;
+    expirationTime?: pulumi.Input<number | undefined>;
     /**
      * Recipient IP access list.
      */
-    ipAccessList?: pulumi.Input<inputs.RecipientIpAccessList>;
+    ipAccessList?: pulumi.Input<inputs.RecipientIpAccessList | undefined>;
     /**
      * Unique identifier of recipient's Unity Catalog metastore. This field is only present when the authenticationType is `DATABRICKS`.
      */
-    metastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * Name of recipient. Change forces creation of a new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Username/groupname/sp applicationId of the recipient owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Recipient properties - object consisting of following fields:
      */
-    propertiesKvpairs?: pulumi.Input<inputs.RecipientPropertiesKvpairs>;
+    propertiesKvpairs?: pulumi.Input<inputs.RecipientPropertiesKvpairs | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.RecipientProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.RecipientProviderConfig | undefined>;
     /**
      * Unique ID of the recipient token.
      */
-    recipientId?: pulumi.Input<string>;
+    recipientId?: pulumi.Input<string | undefined>;
     /**
      * Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The one-time sharing code provided by the data recipient.
      */
-    sharingCode?: pulumi.Input<string>;
+    sharingCode?: pulumi.Input<string | undefined>;
     /**
      * List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
      */
-    tokens?: pulumi.Input<pulumi.Input<inputs.RecipientToken>[]>;
+    tokens?: pulumi.Input<pulumi.Input<inputs.RecipientToken>[] | undefined>;
     /**
      * Time at which this recipient was updated, in epoch milliseconds.
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * Username of recipient Token updater.
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -360,45 +360,45 @@ export interface RecipientArgs {
     /**
      * Description about the recipient.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Required when `authenticationType` is `DATABRICKS`.
      */
-    dataRecipientGlobalMetastoreId?: pulumi.Input<string>;
+    dataRecipientGlobalMetastoreId?: pulumi.Input<string | undefined>;
     /**
      * Expiration timestamp of the token in epoch milliseconds.
      */
-    expirationTime?: pulumi.Input<number>;
+    expirationTime?: pulumi.Input<number | undefined>;
     /**
      * Recipient IP access list.
      */
-    ipAccessList?: pulumi.Input<inputs.RecipientIpAccessList>;
+    ipAccessList?: pulumi.Input<inputs.RecipientIpAccessList | undefined>;
     /**
      * Name of recipient. Change forces creation of a new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Username/groupname/sp applicationId of the recipient owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Recipient properties - object consisting of following fields:
      */
-    propertiesKvpairs?: pulumi.Input<inputs.RecipientPropertiesKvpairs>;
+    propertiesKvpairs?: pulumi.Input<inputs.RecipientPropertiesKvpairs | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.RecipientProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.RecipientProviderConfig | undefined>;
     /**
      * Unique ID of the recipient token.
      */
-    recipientId?: pulumi.Input<string>;
+    recipientId?: pulumi.Input<string | undefined>;
     /**
      * The one-time sharing code provided by the data recipient.
      */
-    sharingCode?: pulumi.Input<string>;
+    sharingCode?: pulumi.Input<string | undefined>;
     /**
      * List of Recipient Tokens. This field is only present when the authenticationType is TOKEN. Each list element is an object with following attributes:
      */
-    tokens?: pulumi.Input<pulumi.Input<inputs.RecipientToken>[]>;
+    tokens?: pulumi.Input<pulumi.Input<inputs.RecipientToken>[] | undefined>;
 }

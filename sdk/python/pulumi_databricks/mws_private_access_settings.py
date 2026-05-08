@@ -21,11 +21,11 @@ class MwsPrivateAccessSettingsArgs:
     def __init__(__self__, *,
                  private_access_settings_name: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_vpc_endpoint_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_access_settings_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_vpc_endpoint_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 private_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_access_settings_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a MwsPrivateAccessSettings resource.
 
@@ -79,72 +79,72 @@ class MwsPrivateAccessSettingsArgs:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedVpcEndpointIds")
-    def allowed_vpc_endpoint_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_vpc_endpoint_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
         """
         return pulumi.get(self, "allowed_vpc_endpoint_ids")
 
     @allowed_vpc_endpoint_ids.setter
-    def allowed_vpc_endpoint_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_vpc_endpoint_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_vpc_endpoint_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="privateAccessLevel")
-    def private_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
         """
         return pulumi.get(self, "private_access_level")
 
     @private_access_level.setter
-    def private_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="privateAccessSettingsId")
-    def private_access_settings_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_access_settings_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier of Private Access Settings in Databricks Account
         """
         return pulumi.get(self, "private_access_settings_id")
 
     @private_access_settings_id.setter
-    def private_access_settings_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_access_settings_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_access_settings_id", value)
 
     @_builtins.property
     @pulumi.getter(name="publicAccessEnabled")
-    def public_access_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public_access_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
         """
         return pulumi.get(self, "public_access_enabled")
 
     @public_access_enabled.setter
-    def public_access_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public_access_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public_access_enabled", value)
 
 
 @pulumi.input_type
 class _MwsPrivateAccessSettingsState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_vpc_endpoint_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_access_settings_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_access_settings_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_vpc_endpoint_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 private_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_access_settings_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_access_settings_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsPrivateAccessSettings resources.
 
@@ -176,83 +176,83 @@ class _MwsPrivateAccessSettingsState:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""Configuring `account_id` at the resource-level is deprecated; please specify it in the `provider {}` configuration block instead""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedVpcEndpointIds")
-    def allowed_vpc_endpoint_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allowed_vpc_endpoint_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of MwsVpcEndpoint `vpc_endpoint_id` (not `id`). Only used when `private_access_level` is set to `ENDPOINT`. This is an allow list of MwsVpcEndpoint that in your account that can connect to your MwsWorkspaces over AWS PrivateLink. If hybrid access to your workspace is enabled by setting `public_access_enabled` to true, then this control only works for PrivateLink connections. To control how your workspace is accessed via public internet, see the article for databricks_ip_access_list.
         """
         return pulumi.get(self, "allowed_vpc_endpoint_ids")
 
     @allowed_vpc_endpoint_ids.setter
-    def allowed_vpc_endpoint_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allowed_vpc_endpoint_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allowed_vpc_endpoint_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="privateAccessLevel")
-    def private_access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_access_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private access level controls which VPC endpoints can connect to the UI or API of any workspace that attaches this private access settings object. `ACCOUNT` level access _(default)_ lets only MwsVpcEndpoint that are registered in your Databricks account connect to your databricks_mws_workspaces. `ENDPOINT` level access lets only specified MwsVpcEndpoint connect to your workspace. Please see the `allowed_vpc_endpoint_ids` documentation for more details.
         """
         return pulumi.get(self, "private_access_level")
 
     @private_access_level.setter
-    def private_access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="privateAccessSettingsId")
-    def private_access_settings_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_access_settings_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier of Private Access Settings in Databricks Account
         """
         return pulumi.get(self, "private_access_settings_id")
 
     @private_access_settings_id.setter
-    def private_access_settings_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_access_settings_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_access_settings_id", value)
 
     @_builtins.property
     @pulumi.getter(name="privateAccessSettingsName")
-    def private_access_settings_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_access_settings_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of Private Access Settings in Databricks Account
         """
         return pulumi.get(self, "private_access_settings_name")
 
     @private_access_settings_name.setter
-    def private_access_settings_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_access_settings_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_access_settings_name", value)
 
     @_builtins.property
     @pulumi.getter(name="publicAccessEnabled")
-    def public_access_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public_access_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true`, the MwsWorkspaces can be accessed over the MwsVpcEndpoint as well as over the public network. In such a case, you could also configure an IpAccessList for the workspace, to restrict the source networks that could be used to access it over the public network. If `false`, the workspace can be accessed only over VPC endpoints, and not over the public network. Once explicitly set, this field becomes mandatory.
         """
         return pulumi.get(self, "public_access_enabled")
 
     @public_access_enabled.setter
-    def public_access_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public_access_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public_access_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region of AWS VPC or the Google Cloud VPC network
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -262,13 +262,13 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_vpc_endpoint_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_access_settings_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_access_settings_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_vpc_endpoint_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 private_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_access_settings_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_access_settings_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Allows you to create a Private Access Setting resource that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html)
@@ -448,13 +448,13 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_vpc_endpoint_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_access_settings_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_access_settings_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_vpc_endpoint_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 private_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_access_settings_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_access_settings_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -485,13 +485,13 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            allowed_vpc_endpoint_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            private_access_level: Optional[pulumi.Input[_builtins.str]] = None,
-            private_access_settings_id: Optional[pulumi.Input[_builtins.str]] = None,
-            private_access_settings_name: Optional[pulumi.Input[_builtins.str]] = None,
-            public_access_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'MwsPrivateAccessSettings':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            allowed_vpc_endpoint_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            private_access_level: pulumi.Input[Optional[_builtins.str]] = None,
+            private_access_settings_id: pulumi.Input[Optional[_builtins.str]] = None,
+            private_access_settings_name: pulumi.Input[Optional[_builtins.str]] = None,
+            public_access_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'MwsPrivateAccessSettings':
         """
         Get an existing MwsPrivateAccessSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

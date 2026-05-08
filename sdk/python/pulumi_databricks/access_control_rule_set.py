@@ -21,10 +21,10 @@ __all__ = ['AccessControlRuleSetArgs', 'AccessControlRuleSet']
 @pulumi.input_type
 class AccessControlRuleSetArgs:
     def __init__(__self__, *,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 grant_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['AccessControlRuleSetProviderConfigArgs']] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 grant_rules: pulumi.Input[Optional[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['AccessControlRuleSetProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a AccessControlRuleSet resource.
 
@@ -50,19 +50,19 @@ class AccessControlRuleSetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="grantRules")
-    def grant_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]]]:
+    def grant_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]]]:
         """
         The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
 
@@ -71,12 +71,12 @@ class AccessControlRuleSetArgs:
         return pulumi.get(self, "grant_rules")
 
     @grant_rules.setter
-    def grant_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]]]):
+    def grant_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]]]):
         pulumi.set(self, "grant_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
         * `accounts/{account_id}/ruleSets/default` - account-level access control.
@@ -88,27 +88,27 @@ class AccessControlRuleSetArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['AccessControlRuleSetProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['AccessControlRuleSetProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['AccessControlRuleSetProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['AccessControlRuleSetProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _AccessControlRuleSetState:
     def __init__(__self__, *,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 grant_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['AccessControlRuleSetProviderConfigArgs']] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 grant_rules: pulumi.Input[Optional[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['AccessControlRuleSetProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering AccessControlRuleSet resources.
 
@@ -136,28 +136,28 @@ class _AccessControlRuleSetState:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="grantRules")
-    def grant_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]]]:
+    def grant_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]]]:
         """
         The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
 
@@ -166,12 +166,12 @@ class _AccessControlRuleSetState:
         return pulumi.get(self, "grant_rules")
 
     @grant_rules.setter
-    def grant_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]]]):
+    def grant_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AccessControlRuleSetGrantRuleArgs']]]]):
         pulumi.set(self, "grant_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of a rule set. The name determines the resource to which the rule set applies. **Changing the name recreates the resource!**. Currently, only default rule sets are supported. The following rule set formats are supported:
         * `accounts/{account_id}/ruleSets/default` - account-level access control.
@@ -183,16 +183,16 @@ class _AccessControlRuleSetState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['AccessControlRuleSetProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['AccessControlRuleSetProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['AccessControlRuleSetProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['AccessControlRuleSetProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
@@ -202,10 +202,10 @@ class AccessControlRuleSet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 grant_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['AccessControlRuleSetProviderConfigArgs', 'AccessControlRuleSetProviderConfigArgsDict']]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 grant_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AccessControlRuleSetProviderConfigArgs', 'AccessControlRuleSetProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
@@ -675,10 +675,10 @@ class AccessControlRuleSet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 grant_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['AccessControlRuleSetProviderConfigArgs', 'AccessControlRuleSetProviderConfigArgsDict']]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 grant_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AccessControlRuleSetProviderConfigArgs', 'AccessControlRuleSetProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -703,11 +703,11 @@ class AccessControlRuleSet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api: Optional[pulumi.Input[_builtins.str]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            grant_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['AccessControlRuleSetProviderConfigArgs', 'AccessControlRuleSetProviderConfigArgsDict']]] = None) -> 'AccessControlRuleSet':
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            grant_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessControlRuleSetGrantRuleArgs', 'AccessControlRuleSetGrantRuleArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['AccessControlRuleSetProviderConfigArgs', 'AccessControlRuleSetProviderConfigArgsDict']]] = None) -> 'AccessControlRuleSet':
         """
         Get an existing AccessControlRuleSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

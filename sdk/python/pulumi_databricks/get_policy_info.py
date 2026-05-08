@@ -327,10 +327,10 @@ def get_policy_info(name: Optional[_builtins.str] = None,
         updated_at=pulumi.get(__ret__, 'updated_at'),
         updated_by=pulumi.get(__ret__, 'updated_by'),
         when_condition=pulumi.get(__ret__, 'when_condition'))
-def get_policy_info_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                           on_securable_fullname: Optional[pulumi.Input[_builtins.str]] = None,
-                           on_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-                           provider_config: Optional[pulumi.Input[Optional[Union['GetPolicyInfoProviderConfigArgs', 'GetPolicyInfoProviderConfigArgsDict']]]] = None,
+def get_policy_info_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                           on_securable_fullname: pulumi.Input[Optional[_builtins.str]] = None,
+                           on_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                           provider_config: pulumi.Input[Optional[Optional[Union['GetPolicyInfoProviderConfigArgs', 'GetPolicyInfoProviderConfigArgsDict']]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyInfoResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)

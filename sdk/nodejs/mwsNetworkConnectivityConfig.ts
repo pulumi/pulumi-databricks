@@ -134,54 +134,54 @@ export class MwsNetworkConnectivityConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MwsNetworkConnectivityConfig resources.
  */
 export interface MwsNetworkConnectivityConfigState {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * time in epoch milliseconds when this object was created.
      */
-    creationTime?: pulumi.Input<number>;
+    creationTime?: pulumi.Input<number | undefined>;
     /**
      * block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
      */
-    egressConfig?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfig>;
+    egressConfig?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfig | undefined>;
     /**
      * Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Canonical unique identifier of Network Connectivity Config in Databricks Account
      */
-    networkConnectivityConfigId?: pulumi.Input<string>;
+    networkConnectivityConfigId?: pulumi.Input<string | undefined>;
     /**
      * Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * time in epoch milliseconds when this object was updated.
      */
-    updatedTime?: pulumi.Input<number>;
+    updatedTime?: pulumi.Input<number | undefined>;
 }
 
 /**
  * The set of arguments for constructing a MwsNetworkConnectivityConfig resource.
  */
 export interface MwsNetworkConnectivityConfigArgs {
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * time in epoch milliseconds when this object was created.
      */
-    creationTime?: pulumi.Input<number>;
+    creationTime?: pulumi.Input<number | undefined>;
     /**
      * block containing information about network connectivity rules that apply to network traffic from your serverless compute resources. Consists of the following fields:
      */
-    egressConfig?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfig>;
+    egressConfig?: pulumi.Input<inputs.MwsNetworkConnectivityConfigEgressConfig | undefined>;
     /**
      * Name of the network connectivity configuration. The name can contain alphanumeric characters, hyphens, and underscores. The length must be between 3 and 30 characters. The name must match the regular expression `^[0-9a-zA-Z-_]{3,30}$`. Change forces creation of a new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Canonical unique identifier of Network Connectivity Config in Databricks Account
      */
-    networkConnectivityConfigId?: pulumi.Input<string>;
+    networkConnectivityConfigId?: pulumi.Input<string | undefined>;
     /**
      * Region of the Network Connectivity Config. NCCs can only be referenced by your workspaces in the same region. Change forces creation of a new resource.
      */
@@ -189,5 +189,5 @@ export interface MwsNetworkConnectivityConfigArgs {
     /**
      * time in epoch milliseconds when this object was updated.
      */
-    updatedTime?: pulumi.Input<number>;
+    updatedTime?: pulumi.Input<number | undefined>;
 }

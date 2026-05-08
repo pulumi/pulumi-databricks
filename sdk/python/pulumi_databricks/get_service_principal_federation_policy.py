@@ -185,8 +185,8 @@ def get_service_principal_federation_policy(policy_id: Optional[_builtins.str] =
         service_principal_id=pulumi.get(__ret__, 'service_principal_id'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_service_principal_federation_policy_output(policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                   service_principal_id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_service_principal_federation_policy_output(policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                   service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePrincipalFederationPolicyResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)

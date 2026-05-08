@@ -165,11 +165,11 @@ def get_aws_unity_catalog_assume_role_policy(aws_account_id: Optional[_builtins.
         json=pulumi.get(__ret__, 'json'),
         role_name=pulumi.get(__ret__, 'role_name'),
         unity_catalog_iam_arn=pulumi.get(__ret__, 'unity_catalog_iam_arn'))
-def get_aws_unity_catalog_assume_role_policy_output(aws_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                    aws_partition: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                    external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                    role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                                    unity_catalog_iam_arn: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_aws_unity_catalog_assume_role_policy_output(aws_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                    aws_partition: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                    external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                    role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                                    unity_catalog_iam_arn: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsUnityCatalogAssumeRolePolicyResult]:
     """
     This data source constructs the necessary AWS Unity Catalog assume role policy for you.

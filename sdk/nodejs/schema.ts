@@ -167,44 +167,44 @@ export interface SchemaState {
     /**
      * Name of parent catalog. Change forces creation of a new resource.
      */
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * User-supplied free-form text.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
      */
-    enablePredictiveOptimization?: pulumi.Input<string>;
+    enablePredictiveOptimization?: pulumi.Input<string | undefined>;
     /**
      * Delete schema regardless of its contents.
      */
-    forceDestroy?: pulumi.Input<boolean>;
-    metastoreId?: pulumi.Input<string>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * Name of Schema relative to parent catalog. Change forces creation of a new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Username/groupname/sp applicationId of the schema owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Extensible Schema properties.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SchemaProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.SchemaProviderConfig | undefined>;
     /**
      * The unique identifier of the schema.
      */
-    schemaId?: pulumi.Input<string>;
+    schemaId?: pulumi.Input<string | undefined>;
     /**
      * Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      */
-    storageRoot?: pulumi.Input<string>;
+    storageRoot?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -218,34 +218,34 @@ export interface SchemaArgs {
     /**
      * User-supplied free-form text.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
      */
-    enablePredictiveOptimization?: pulumi.Input<string>;
+    enablePredictiveOptimization?: pulumi.Input<string | undefined>;
     /**
      * Delete schema regardless of its contents.
      */
-    forceDestroy?: pulumi.Input<boolean>;
-    metastoreId?: pulumi.Input<string>;
+    forceDestroy?: pulumi.Input<boolean | undefined>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * Name of Schema relative to parent catalog. Change forces creation of a new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Username/groupname/sp applicationId of the schema owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Extensible Schema properties.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SchemaProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.SchemaProviderConfig | undefined>;
     /**
      * Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
      */
-    storageRoot?: pulumi.Input<string>;
+    storageRoot?: pulumi.Input<string | undefined>;
 }

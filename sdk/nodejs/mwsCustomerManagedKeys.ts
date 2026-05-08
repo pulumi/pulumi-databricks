@@ -178,29 +178,29 @@ export interface MwsCustomerManagedKeysState {
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * This field is a block and is documented below. This conflicts with `gcpKeyInfo`
      */
-    awsKeyInfo?: pulumi.Input<inputs.MwsCustomerManagedKeysAwsKeyInfo>;
+    awsKeyInfo?: pulumi.Input<inputs.MwsCustomerManagedKeysAwsKeyInfo | undefined>;
     /**
      * (Integer) Time in epoch milliseconds when the customer key was created.
      */
-    creationTime?: pulumi.Input<number>;
+    creationTime?: pulumi.Input<number | undefined>;
     /**
      * (String) ID of the encryption key configuration object.
      */
-    customerManagedKeyId?: pulumi.Input<string>;
+    customerManagedKeyId?: pulumi.Input<string | undefined>;
     /**
      * This field is a block and is documented below. This conflicts with `awsKeyInfo`
      */
-    gcpKeyInfo?: pulumi.Input<inputs.MwsCustomerManagedKeysGcpKeyInfo>;
+    gcpKeyInfo?: pulumi.Input<inputs.MwsCustomerManagedKeysGcpKeyInfo | undefined>;
     /**
      * *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
      * * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
      * * `STORAGE` - for encryption of the DBFS Storage & Cluster EBS Volumes
      */
-    useCases?: pulumi.Input<pulumi.Input<string>[]>;
+    useCases?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -214,19 +214,19 @@ export interface MwsCustomerManagedKeysArgs {
     /**
      * This field is a block and is documented below. This conflicts with `gcpKeyInfo`
      */
-    awsKeyInfo?: pulumi.Input<inputs.MwsCustomerManagedKeysAwsKeyInfo>;
+    awsKeyInfo?: pulumi.Input<inputs.MwsCustomerManagedKeysAwsKeyInfo | undefined>;
     /**
      * (Integer) Time in epoch milliseconds when the customer key was created.
      */
-    creationTime?: pulumi.Input<number>;
+    creationTime?: pulumi.Input<number | undefined>;
     /**
      * (String) ID of the encryption key configuration object.
      */
-    customerManagedKeyId?: pulumi.Input<string>;
+    customerManagedKeyId?: pulumi.Input<string | undefined>;
     /**
      * This field is a block and is documented below. This conflicts with `awsKeyInfo`
      */
-    gcpKeyInfo?: pulumi.Input<inputs.MwsCustomerManagedKeysGcpKeyInfo>;
+    gcpKeyInfo?: pulumi.Input<inputs.MwsCustomerManagedKeysGcpKeyInfo | undefined>;
     /**
      * *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `useCases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
      * * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane

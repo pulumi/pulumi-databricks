@@ -134,7 +134,7 @@ export function getTableOutput(args: GetTableOutputArgs, opts?: pulumi.InvokeOut
  * A collection of arguments for invoking getTable.
  */
 export interface GetTableOutputArgs {
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Full name of the databricks_table: _`catalog`.`schema`.`table`_
      */
@@ -142,9 +142,9 @@ export interface GetTableOutputArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetTableProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetTableProviderConfigArgs | undefined>;
     /**
      * TableInfo object for a Unity Catalog table. This contains the following attributes:
      */
-    tableInfo?: pulumi.Input<inputs.GetTableTableInfoArgs>;
+    tableInfo?: pulumi.Input<inputs.GetTableTableInfoArgs | undefined>;
 }

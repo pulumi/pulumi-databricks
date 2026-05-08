@@ -295,7 +295,7 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * const notebookUsageById = new databricks.Permissions("notebook_usage_by_id", {
- *     notebookId: _this.objectId,
+ *     notebookId: _this.objectId.apply(x =>String(x)),
  *     accessControls: [
  *         {
  *             groupName: "users",
@@ -352,7 +352,7 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * const workspaceFileUsageById = new databricks.Permissions("workspace_file_usage_by_id", {
- *     workspaceFileId: _this.objectId,
+ *     workspaceFileId: _this.objectId.apply(x =>String(x)),
  *     accessControls: [
  *         {
  *             groupName: "users",
@@ -408,7 +408,7 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * const folderUsageById = new databricks.Permissions("folder_usage_by_id", {
- *     directoryId: _this.objectId,
+ *     directoryId: _this.objectId.apply(x =>String(x)),
  *     accessControls: [
  *         {
  *             groupName: "users",
@@ -1056,39 +1056,39 @@ export class Permissions extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Permissions resources.
  */
 export interface PermissionsState {
-    accessControls?: pulumi.Input<pulumi.Input<inputs.PermissionsAccessControl>[]>;
-    alertV2Id?: pulumi.Input<string>;
-    appName?: pulumi.Input<string>;
-    authorization?: pulumi.Input<string>;
-    clusterId?: pulumi.Input<string>;
-    clusterPolicyId?: pulumi.Input<string>;
-    dashboardId?: pulumi.Input<string>;
-    databaseInstanceName?: pulumi.Input<string>;
-    databaseProjectName?: pulumi.Input<string>;
-    directoryId?: pulumi.Input<string>;
-    directoryPath?: pulumi.Input<string>;
-    experimentId?: pulumi.Input<string>;
-    instancePoolId?: pulumi.Input<string>;
-    jobId?: pulumi.Input<string>;
-    notebookId?: pulumi.Input<string>;
-    notebookPath?: pulumi.Input<string>;
+    accessControls?: pulumi.Input<pulumi.Input<inputs.PermissionsAccessControl>[] | undefined>;
+    alertV2Id?: pulumi.Input<string | undefined>;
+    appName?: pulumi.Input<string | undefined>;
+    authorization?: pulumi.Input<string | undefined>;
+    clusterId?: pulumi.Input<string | undefined>;
+    clusterPolicyId?: pulumi.Input<string | undefined>;
+    dashboardId?: pulumi.Input<string | undefined>;
+    databaseInstanceName?: pulumi.Input<string | undefined>;
+    databaseProjectName?: pulumi.Input<string | undefined>;
+    directoryId?: pulumi.Input<string | undefined>;
+    directoryPath?: pulumi.Input<string | undefined>;
+    experimentId?: pulumi.Input<string | undefined>;
+    instancePoolId?: pulumi.Input<string | undefined>;
+    jobId?: pulumi.Input<string | undefined>;
+    notebookId?: pulumi.Input<string | undefined>;
+    notebookPath?: pulumi.Input<string | undefined>;
     /**
      * type of permissions.
      */
-    objectType?: pulumi.Input<string>;
-    pipelineId?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.PermissionsProviderConfig>;
-    registeredModelId?: pulumi.Input<string>;
-    repoId?: pulumi.Input<string>;
-    repoPath?: pulumi.Input<string>;
-    servingEndpointId?: pulumi.Input<string>;
-    sqlAlertId?: pulumi.Input<string>;
-    sqlDashboardId?: pulumi.Input<string>;
-    sqlEndpointId?: pulumi.Input<string>;
-    sqlQueryId?: pulumi.Input<string>;
-    vectorSearchEndpointId?: pulumi.Input<string>;
-    workspaceFileId?: pulumi.Input<string>;
-    workspaceFilePath?: pulumi.Input<string>;
+    objectType?: pulumi.Input<string | undefined>;
+    pipelineId?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.PermissionsProviderConfig | undefined>;
+    registeredModelId?: pulumi.Input<string | undefined>;
+    repoId?: pulumi.Input<string | undefined>;
+    repoPath?: pulumi.Input<string | undefined>;
+    servingEndpointId?: pulumi.Input<string | undefined>;
+    sqlAlertId?: pulumi.Input<string | undefined>;
+    sqlDashboardId?: pulumi.Input<string | undefined>;
+    sqlEndpointId?: pulumi.Input<string | undefined>;
+    sqlQueryId?: pulumi.Input<string | undefined>;
+    vectorSearchEndpointId?: pulumi.Input<string | undefined>;
+    workspaceFileId?: pulumi.Input<string | undefined>;
+    workspaceFilePath?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -1096,36 +1096,36 @@ export interface PermissionsState {
  */
 export interface PermissionsArgs {
     accessControls: pulumi.Input<pulumi.Input<inputs.PermissionsAccessControl>[]>;
-    alertV2Id?: pulumi.Input<string>;
-    appName?: pulumi.Input<string>;
-    authorization?: pulumi.Input<string>;
-    clusterId?: pulumi.Input<string>;
-    clusterPolicyId?: pulumi.Input<string>;
-    dashboardId?: pulumi.Input<string>;
-    databaseInstanceName?: pulumi.Input<string>;
-    databaseProjectName?: pulumi.Input<string>;
-    directoryId?: pulumi.Input<string>;
-    directoryPath?: pulumi.Input<string>;
-    experimentId?: pulumi.Input<string>;
-    instancePoolId?: pulumi.Input<string>;
-    jobId?: pulumi.Input<string>;
-    notebookId?: pulumi.Input<string>;
-    notebookPath?: pulumi.Input<string>;
+    alertV2Id?: pulumi.Input<string | undefined>;
+    appName?: pulumi.Input<string | undefined>;
+    authorization?: pulumi.Input<string | undefined>;
+    clusterId?: pulumi.Input<string | undefined>;
+    clusterPolicyId?: pulumi.Input<string | undefined>;
+    dashboardId?: pulumi.Input<string | undefined>;
+    databaseInstanceName?: pulumi.Input<string | undefined>;
+    databaseProjectName?: pulumi.Input<string | undefined>;
+    directoryId?: pulumi.Input<string | undefined>;
+    directoryPath?: pulumi.Input<string | undefined>;
+    experimentId?: pulumi.Input<string | undefined>;
+    instancePoolId?: pulumi.Input<string | undefined>;
+    jobId?: pulumi.Input<string | undefined>;
+    notebookId?: pulumi.Input<string | undefined>;
+    notebookPath?: pulumi.Input<string | undefined>;
     /**
      * type of permissions.
      */
-    objectType?: pulumi.Input<string>;
-    pipelineId?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.PermissionsProviderConfig>;
-    registeredModelId?: pulumi.Input<string>;
-    repoId?: pulumi.Input<string>;
-    repoPath?: pulumi.Input<string>;
-    servingEndpointId?: pulumi.Input<string>;
-    sqlAlertId?: pulumi.Input<string>;
-    sqlDashboardId?: pulumi.Input<string>;
-    sqlEndpointId?: pulumi.Input<string>;
-    sqlQueryId?: pulumi.Input<string>;
-    vectorSearchEndpointId?: pulumi.Input<string>;
-    workspaceFileId?: pulumi.Input<string>;
-    workspaceFilePath?: pulumi.Input<string>;
+    objectType?: pulumi.Input<string | undefined>;
+    pipelineId?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.PermissionsProviderConfig | undefined>;
+    registeredModelId?: pulumi.Input<string | undefined>;
+    repoId?: pulumi.Input<string | undefined>;
+    repoPath?: pulumi.Input<string | undefined>;
+    servingEndpointId?: pulumi.Input<string | undefined>;
+    sqlAlertId?: pulumi.Input<string | undefined>;
+    sqlDashboardId?: pulumi.Input<string | undefined>;
+    sqlEndpointId?: pulumi.Input<string | undefined>;
+    sqlQueryId?: pulumi.Input<string | undefined>;
+    vectorSearchEndpointId?: pulumi.Input<string | undefined>;
+    workspaceFileId?: pulumi.Input<string | undefined>;
+    workspaceFilePath?: pulumi.Input<string | undefined>;
 }

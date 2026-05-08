@@ -24,8 +24,8 @@ class EntityTagAssignmentArgs:
                  entity_name: pulumi.Input[_builtins.str],
                  entity_type: pulumi.Input[_builtins.str],
                  tag_key: pulumi.Input[_builtins.str],
-                 provider_config: Optional[pulumi.Input['EntityTagAssignmentProviderConfigArgs']] = None,
-                 tag_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 provider_config: pulumi.Input[Optional['EntityTagAssignmentProviderConfigArgs']] = None,
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EntityTagAssignment resource.
 
@@ -81,40 +81,40 @@ class EntityTagAssignmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['EntityTagAssignmentProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['EntityTagAssignmentProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['EntityTagAssignmentProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['EntityTagAssignmentProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="tagValue")
-    def tag_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the tag
         """
         return pulumi.get(self, "tag_value")
 
     @tag_value.setter
-    def tag_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_value", value)
 
 
 @pulumi.input_type
 class _EntityTagAssignmentState:
     def __init__(__self__, *,
-                 entity_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['EntityTagAssignmentProviderConfigArgs']] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_by: Optional[pulumi.Input[_builtins.str]] = None):
+                 entity_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['EntityTagAssignmentProviderConfigArgs']] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_by: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EntityTagAssignment resources.
 
@@ -146,98 +146,98 @@ class _EntityTagAssignmentState:
 
     @_builtins.property
     @pulumi.getter(name="entityName")
-    def entity_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entity_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified name of the entity to which the tag is assigned
         """
         return pulumi.get(self, "entity_name")
 
     @entity_name.setter
-    def entity_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entity_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entity_name", value)
 
     @_builtins.property
     @pulumi.getter(name="entityType")
-    def entity_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the entity to which the tag is assigned
         """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
-    def entity_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entity_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entity_type", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['EntityTagAssignmentProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['EntityTagAssignmentProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['EntityTagAssignmentProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['EntityTagAssignmentProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
         """
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
     @_builtins.property
     @pulumi.getter(name="tagKey")
-    def tag_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key of the tag
         """
         return pulumi.get(self, "tag_key")
 
     @tag_key.setter
-    def tag_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_key", value)
 
     @_builtins.property
     @pulumi.getter(name="tagValue")
-    def tag_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the tag
         """
         return pulumi.get(self, "tag_value")
 
     @tag_value.setter
-    def tag_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_value", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The timestamp when the tag assignment was last updated
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedBy")
-    def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The user or principal who updated the tag assignment
         """
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
-    def updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_by", value)
 
 
@@ -247,11 +247,11 @@ class EntityTagAssignment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entity_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']]] = None,
-                 tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 entity_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']]] = None,
+                 tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -364,11 +364,11 @@ class EntityTagAssignment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entity_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']]] = None,
-                 tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_value: Optional[pulumi.Input[_builtins.str]] = None,
+                 entity_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']]] = None,
+                 tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -402,14 +402,14 @@ class EntityTagAssignment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            entity_name: Optional[pulumi.Input[_builtins.str]] = None,
-            entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']]] = None,
-            source_type: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_key: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_value: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_by: Optional[pulumi.Input[_builtins.str]] = None) -> 'EntityTagAssignment':
+            entity_name: pulumi.Input[Optional[_builtins.str]] = None,
+            entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['EntityTagAssignmentProviderConfigArgs', 'EntityTagAssignmentProviderConfigArgsDict']]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_key: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_value: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> 'EntityTagAssignment':
         """
         Get an existing EntityTagAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

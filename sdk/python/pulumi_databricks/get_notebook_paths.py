@@ -127,9 +127,9 @@ def get_notebook_paths(path: Optional[_builtins.str] = None,
         path=pulumi.get(__ret__, 'path'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         recursive=pulumi.get(__ret__, 'recursive'))
-def get_notebook_paths_output(path: Optional[pulumi.Input[_builtins.str]] = None,
-                              provider_config: Optional[pulumi.Input[Optional[Union['GetNotebookPathsProviderConfigArgs', 'GetNotebookPathsProviderConfigArgsDict']]]] = None,
-                              recursive: Optional[pulumi.Input[_builtins.bool]] = None,
+def get_notebook_paths_output(path: pulumi.Input[Optional[_builtins.str]] = None,
+                              provider_config: pulumi.Input[Optional[Optional[Union['GetNotebookPathsProviderConfigArgs', 'GetNotebookPathsProviderConfigArgsDict']]]] = None,
+                              recursive: pulumi.Input[Optional[_builtins.bool]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotebookPathsResult]:
     """
     This data source allows to list notebooks in the Databricks Workspace.

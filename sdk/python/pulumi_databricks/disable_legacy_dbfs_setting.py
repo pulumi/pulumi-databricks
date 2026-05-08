@@ -22,9 +22,9 @@ __all__ = ['DisableLegacyDbfsSettingArgs', 'DisableLegacyDbfsSetting']
 class DisableLegacyDbfsSettingArgs:
     def __init__(__self__, *,
                  disable_legacy_dbfs: pulumi.Input['DisableLegacyDbfsSettingDisableLegacyDbfsArgs'],
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['DisableLegacyDbfsSettingProviderConfigArgs']] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['DisableLegacyDbfsSettingProviderConfigArgs']] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DisableLegacyDbfsSetting resource.
 
@@ -53,42 +53,42 @@ class DisableLegacyDbfsSettingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DisableLegacyDbfsSettingProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DisableLegacyDbfsSettingProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DisableLegacyDbfsSettingProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DisableLegacyDbfsSettingProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="settingName")
-    def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def setting_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "setting_name")
 
     @setting_name.setter
-    def setting_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def setting_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "setting_name", value)
 
 
 @pulumi.input_type
 class _DisableLegacyDbfsSettingState:
     def __init__(__self__, *,
-                 disable_legacy_dbfs: Optional[pulumi.Input['DisableLegacyDbfsSettingDisableLegacyDbfsArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['DisableLegacyDbfsSettingProviderConfigArgs']] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 disable_legacy_dbfs: pulumi.Input[Optional['DisableLegacyDbfsSettingDisableLegacyDbfsArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['DisableLegacyDbfsSettingProviderConfigArgs']] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DisableLegacyDbfsSetting resources.
 
@@ -106,44 +106,44 @@ class _DisableLegacyDbfsSettingState:
 
     @_builtins.property
     @pulumi.getter(name="disableLegacyDbfs")
-    def disable_legacy_dbfs(self) -> Optional[pulumi.Input['DisableLegacyDbfsSettingDisableLegacyDbfsArgs']]:
+    def disable_legacy_dbfs(self) -> pulumi.Input[Optional['DisableLegacyDbfsSettingDisableLegacyDbfsArgs']]:
         """
         block with following attributes:
         """
         return pulumi.get(self, "disable_legacy_dbfs")
 
     @disable_legacy_dbfs.setter
-    def disable_legacy_dbfs(self, value: Optional[pulumi.Input['DisableLegacyDbfsSettingDisableLegacyDbfsArgs']]):
+    def disable_legacy_dbfs(self, value: pulumi.Input[Optional['DisableLegacyDbfsSettingDisableLegacyDbfsArgs']]):
         pulumi.set(self, "disable_legacy_dbfs", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DisableLegacyDbfsSettingProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DisableLegacyDbfsSettingProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DisableLegacyDbfsSettingProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DisableLegacyDbfsSettingProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="settingName")
-    def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def setting_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "setting_name")
 
     @setting_name.setter
-    def setting_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def setting_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "setting_name", value)
 
 
@@ -153,10 +153,10 @@ class DisableLegacyDbfsSetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_legacy_dbfs: Optional[pulumi.Input[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict']]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DisableLegacyDbfsSettingProviderConfigArgs', 'DisableLegacyDbfsSettingProviderConfigArgsDict']]] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable_legacy_dbfs: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict']]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingProviderConfigArgs', 'DisableLegacyDbfsSettingProviderConfigArgsDict']]] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `DisableLegacyDbfsSetting` resource allows you to disable legacy DBFS.
@@ -244,10 +244,10 @@ class DisableLegacyDbfsSetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_legacy_dbfs: Optional[pulumi.Input[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict']]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DisableLegacyDbfsSettingProviderConfigArgs', 'DisableLegacyDbfsSettingProviderConfigArgsDict']]] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable_legacy_dbfs: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict']]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingProviderConfigArgs', 'DisableLegacyDbfsSettingProviderConfigArgsDict']]] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -273,10 +273,10 @@ class DisableLegacyDbfsSetting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            disable_legacy_dbfs: Optional[pulumi.Input[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['DisableLegacyDbfsSettingProviderConfigArgs', 'DisableLegacyDbfsSettingProviderConfigArgsDict']]] = None,
-            setting_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'DisableLegacyDbfsSetting':
+            disable_legacy_dbfs: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingDisableLegacyDbfsArgs', 'DisableLegacyDbfsSettingDisableLegacyDbfsArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DisableLegacyDbfsSettingProviderConfigArgs', 'DisableLegacyDbfsSettingProviderConfigArgsDict']]] = None,
+            setting_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'DisableLegacyDbfsSetting':
         """
         Get an existing DisableLegacyDbfsSetting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

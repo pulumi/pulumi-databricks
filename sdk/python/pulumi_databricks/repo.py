@@ -22,13 +22,13 @@ __all__ = ['RepoArgs', 'Repo']
 class RepoArgs:
     def __init__(__self__, *,
                  url: pulumi.Input[_builtins.str],
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['RepoProviderConfigArgs']] = None,
-                 sparse_checkout: Optional[pulumi.Input['RepoSparseCheckoutArgs']] = None,
-                 tag: Optional[pulumi.Input[_builtins.str]] = None):
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['RepoProviderConfigArgs']] = None,
+                 sparse_checkout: pulumi.Input[Optional['RepoSparseCheckoutArgs']] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Repo resource.
 
@@ -69,95 +69,95 @@ class RepoArgs:
 
     @_builtins.property
     @pulumi.getter
-    def branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
         """
         return pulumi.get(self, "branch")
 
     @branch.setter
-    def branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch", value)
 
     @_builtins.property
     @pulumi.getter(name="commitHash")
-    def commit_hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
         """
         return pulumi.get(self, "commit_hash")
 
     @commit_hash.setter
-    def commit_hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_hash", value)
 
     @_builtins.property
     @pulumi.getter(name="gitProvider")
-    def git_provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
         """
         return pulumi.get(self, "git_provider")
 
     @git_provider.setter
-    def git_provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_provider", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['RepoProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['RepoProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['RepoProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['RepoProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sparseCheckout")
-    def sparse_checkout(self) -> Optional[pulumi.Input['RepoSparseCheckoutArgs']]:
+    def sparse_checkout(self) -> pulumi.Input[Optional['RepoSparseCheckoutArgs']]:
         return pulumi.get(self, "sparse_checkout")
 
     @sparse_checkout.setter
-    def sparse_checkout(self, value: Optional[pulumi.Input['RepoSparseCheckoutArgs']]):
+    def sparse_checkout(self, value: pulumi.Input[Optional['RepoSparseCheckoutArgs']]):
         pulumi.set(self, "sparse_checkout", value)
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         name of the tag for initial checkout.  Conflicts with `branch`.
         """
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag", value)
 
 
 @pulumi.input_type
 class _RepoState:
     def __init__(__self__, *,
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['RepoProviderConfigArgs']] = None,
-                 sparse_checkout: Optional[pulumi.Input['RepoSparseCheckoutArgs']] = None,
-                 tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['RepoProviderConfigArgs']] = None,
+                 sparse_checkout: pulumi.Input[Optional['RepoSparseCheckoutArgs']] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Repo resources.
 
@@ -190,104 +190,104 @@ class _RepoState:
 
     @_builtins.property
     @pulumi.getter
-    def branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         name of the branch for initial checkout. If not specified, the default branch of the repository will be used.  Conflicts with `tag`.  If `branch` is removed, and `tag` isn't specified, then the repository will stay at the previously checked out state.
         """
         return pulumi.get(self, "branch")
 
     @branch.setter
-    def branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "branch", value)
 
     @_builtins.property
     @pulumi.getter(name="commitHash")
-    def commit_hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commit_hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hash of the HEAD commit at time of the last executed operation. It won't change if you manually perform pull operation via UI or API
         """
         return pulumi.get(self, "commit_hash")
 
     @commit_hash.setter
-    def commit_hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commit_hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commit_hash", value)
 
     @_builtins.property
     @pulumi.getter(name="gitProvider")
-    def git_provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         case insensitive name of the Git provider.  Following values are supported right now (could be a subject for a change, consult [Repos API documentation](https://docs.databricks.com/dev-tools/api/latest/repos.html)): `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
         """
         return pulumi.get(self, "git_provider")
 
     @git_provider.setter
-    def git_provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_provider", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['RepoProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['RepoProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['RepoProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['RepoProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sparseCheckout")
-    def sparse_checkout(self) -> Optional[pulumi.Input['RepoSparseCheckoutArgs']]:
+    def sparse_checkout(self) -> pulumi.Input[Optional['RepoSparseCheckoutArgs']]:
         return pulumi.get(self, "sparse_checkout")
 
     @sparse_checkout.setter
-    def sparse_checkout(self, value: Optional[pulumi.Input['RepoSparseCheckoutArgs']]):
+    def sparse_checkout(self, value: pulumi.Input[Optional['RepoSparseCheckoutArgs']]):
         pulumi.set(self, "sparse_checkout", value)
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         name of the tag for initial checkout.  Conflicts with `branch`.
         """
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the Git Repository to clone from. If the value changes, Git folder is re-created.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="workspacePath")
-    def workspace_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         return pulumi.get(self, "workspace_path")
 
     @workspace_path.setter
-    def workspace_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_path", value)
 
 
@@ -297,14 +297,14 @@ class Repo(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict']]] = None,
-                 sparse_checkout: Optional[pulumi.Input[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict']]] = None,
-                 tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict']]] = None,
+                 sparse_checkout: pulumi.Input[Optional[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict']]] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to manage [Databricks Git folders](https://docs.databricks.com/en/repos/index.html) (formerly known as Databricks Repos).
@@ -408,14 +408,14 @@ class Repo(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 commit_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 git_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict']]] = None,
-                 sparse_checkout: Optional[pulumi.Input[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict']]] = None,
-                 tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 commit_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict']]] = None,
+                 sparse_checkout: pulumi.Input[Optional[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict']]] = None,
+                 tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -446,15 +446,15 @@ class Repo(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            branch: Optional[pulumi.Input[_builtins.str]] = None,
-            commit_hash: Optional[pulumi.Input[_builtins.str]] = None,
-            git_provider: Optional[pulumi.Input[_builtins.str]] = None,
-            path: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict']]] = None,
-            sparse_checkout: Optional[pulumi.Input[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict']]] = None,
-            tag: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_path: Optional[pulumi.Input[_builtins.str]] = None) -> 'Repo':
+            branch: pulumi.Input[Optional[_builtins.str]] = None,
+            commit_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            git_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['RepoProviderConfigArgs', 'RepoProviderConfigArgsDict']]] = None,
+            sparse_checkout: pulumi.Input[Optional[Union['RepoSparseCheckoutArgs', 'RepoSparseCheckoutArgsDict']]] = None,
+            tag: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_path: pulumi.Input[Optional[_builtins.str]] = None) -> 'Repo':
         """
         Get an existing Repo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -163,68 +163,68 @@ export interface AppSpaceState {
     /**
      * (string) - The creation time of the app space. Formatted timestamp in ISO 6801
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - The email of the user that created the app space
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * The description of the app space
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (string) - The effective usage policy ID used by apps in the space
      */
-    effectiveUsagePolicyId?: pulumi.Input<string>;
+    effectiveUsagePolicyId?: pulumi.Input<string | undefined>;
     /**
      * (list of string) - The effective api scopes granted to the user access token
      */
-    effectiveUserApiScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    effectiveUserApiScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
      * It must be unique within the workspace
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.AppSpaceProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.AppSpaceProviderConfig | undefined>;
     /**
      * Resources for the app space. Resources configured at the space level are available to all apps in the space
      */
-    resources?: pulumi.Input<pulumi.Input<inputs.AppSpaceResource>[]>;
+    resources?: pulumi.Input<pulumi.Input<inputs.AppSpaceResource>[] | undefined>;
     /**
      * (string) - The service principal client ID for the app space
      */
-    servicePrincipalClientId?: pulumi.Input<string>;
+    servicePrincipalClientId?: pulumi.Input<string | undefined>;
     /**
      * (integer) - The service principal ID for the app space
      */
-    servicePrincipalId?: pulumi.Input<number>;
+    servicePrincipalId?: pulumi.Input<number | undefined>;
     /**
      * (string) - The service principal name for the app space
      */
-    servicePrincipalName?: pulumi.Input<string>;
+    servicePrincipalName?: pulumi.Input<string | undefined>;
     /**
      * (SpaceStatus) - The status of the app space
      */
-    status?: pulumi.Input<inputs.AppSpaceStatus>;
+    status?: pulumi.Input<inputs.AppSpaceStatus | undefined>;
     /**
      * (string) - The update time of the app space. Formatted timestamp in ISO 6801
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - The email of the user that last updated the app space
      */
-    updater?: pulumi.Input<string>;
+    updater?: pulumi.Input<string | undefined>;
     /**
      * The usage policy ID for managing cost at the space level
      */
-    usagePolicyId?: pulumi.Input<string>;
+    usagePolicyId?: pulumi.Input<string | undefined>;
     /**
      * OAuth scopes for apps in the space
      */
-    userApiScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    userApiScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -234,26 +234,26 @@ export interface AppSpaceArgs {
     /**
      * The description of the app space
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
      * It must be unique within the workspace
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.AppSpaceProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.AppSpaceProviderConfig | undefined>;
     /**
      * Resources for the app space. Resources configured at the space level are available to all apps in the space
      */
-    resources?: pulumi.Input<pulumi.Input<inputs.AppSpaceResource>[]>;
+    resources?: pulumi.Input<pulumi.Input<inputs.AppSpaceResource>[] | undefined>;
     /**
      * The usage policy ID for managing cost at the space level
      */
-    usagePolicyId?: pulumi.Input<string>;
+    usagePolicyId?: pulumi.Input<string | undefined>;
     /**
      * OAuth scopes for apps in the space
      */
-    userApiScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    userApiScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

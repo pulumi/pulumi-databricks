@@ -106,13 +106,13 @@ export interface AibiDashboardEmbeddingAccessPolicySettingState {
     /**
      * block with following attributes:
      */
-    aibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy>;
-    etag?: pulumi.Input<string>;
+    aibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy | undefined>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.AibiDashboardEmbeddingAccessPolicySettingProviderConfig>;
-    settingName?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.AibiDashboardEmbeddingAccessPolicySettingProviderConfig | undefined>;
+    settingName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -123,10 +123,10 @@ export interface AibiDashboardEmbeddingAccessPolicySettingArgs {
      * block with following attributes:
      */
     aibiDashboardEmbeddingAccessPolicy: pulumi.Input<inputs.AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy>;
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.AibiDashboardEmbeddingAccessPolicySettingProviderConfig>;
-    settingName?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.AibiDashboardEmbeddingAccessPolicySettingProviderConfig | undefined>;
+    settingName?: pulumi.Input<string | undefined>;
 }

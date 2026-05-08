@@ -24,8 +24,8 @@ class IpAccessListArgs:
                  ip_addresses: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  label: pulumi.Input[_builtins.str],
                  list_type: pulumi.Input[_builtins.str],
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 provider_config: Optional[pulumi.Input['IpAccessListProviderConfigArgs']] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 provider_config: pulumi.Input[Optional['IpAccessListProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a IpAccessList resource.
 
@@ -81,37 +81,37 @@ class IpAccessListArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['IpAccessListProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['IpAccessListProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['IpAccessListProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['IpAccessListProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _IpAccessListState:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 list_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['IpAccessListProviderConfigArgs']] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 list_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['IpAccessListProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering IpAccessList resources.
 
@@ -134,62 +134,62 @@ class _IpAccessListState:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean `true` or `false` indicating whether this list should be active.  Defaults to `true`
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddresses")
-    def ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A string list of IP addresses and CIDR ranges.
         """
         return pulumi.get(self, "ip_addresses")
 
     @ip_addresses.setter
-    def ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_addresses", value)
 
     @_builtins.property
     @pulumi.getter
-    def label(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the display name for the given IP ACL List.
         """
         return pulumi.get(self, "label")
 
     @label.setter
-    def label(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
 
     @_builtins.property
     @pulumi.getter(name="listType")
-    def list_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def list_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Can only be "ALLOW" or "BLOCK".
         """
         return pulumi.get(self, "list_type")
 
     @list_type.setter
-    def list_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def list_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "list_type", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['IpAccessListProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['IpAccessListProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['IpAccessListProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['IpAccessListProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
@@ -199,11 +199,11 @@ class IpAccessList(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 list_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['IpAccessListProviderConfigArgs', 'IpAccessListProviderConfigArgsDict']]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 list_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['IpAccessListProviderConfigArgs', 'IpAccessListProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         Security-conscious enterprises that use cloud SaaS applications need to restrict access to their own employees. Authentication helps to prove user identity, but that does not enforce network location of the users. Accessing a cloud service from an unsecured network can pose security risks to an enterprise, especially when the user may have authorized access to sensitive or personal data. Enterprise network perimeters apply security policies and limit access to external services (for example, firewalls, proxies, DLP, and logging), so access beyond these controls are assumed to be untrusted. Please see [IP Access List](https://docs.databricks.com/security/network/ip-access-list.html) for full feature documentation.
@@ -312,11 +312,11 @@ class IpAccessList(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 label: Optional[pulumi.Input[_builtins.str]] = None,
-                 list_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['IpAccessListProviderConfigArgs', 'IpAccessListProviderConfigArgsDict']]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 list_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['IpAccessListProviderConfigArgs', 'IpAccessListProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -347,11 +347,11 @@ class IpAccessList(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            label: Optional[pulumi.Input[_builtins.str]] = None,
-            list_type: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['IpAccessListProviderConfigArgs', 'IpAccessListProviderConfigArgsDict']]] = None) -> 'IpAccessList':
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            list_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['IpAccessListProviderConfigArgs', 'IpAccessListProviderConfigArgsDict']]] = None) -> 'IpAccessList':
         """
         Get an existing IpAccessList resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

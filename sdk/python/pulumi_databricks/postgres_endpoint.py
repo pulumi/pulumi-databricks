@@ -23,9 +23,9 @@ class PostgresEndpointArgs:
     def __init__(__self__, *,
                  endpoint_id: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
-                 provider_config: Optional[pulumi.Input['PostgresEndpointProviderConfigArgs']] = None,
-                 replace_existing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spec: Optional[pulumi.Input['PostgresEndpointSpecArgs']] = None):
+                 provider_config: pulumi.Input[Optional['PostgresEndpointProviderConfigArgs']] = None,
+                 replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spec: pulumi.Input[Optional['PostgresEndpointSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresEndpoint resource.
 
@@ -76,54 +76,54 @@ class PostgresEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PostgresEndpointProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PostgresEndpointProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PostgresEndpointProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PostgresEndpointProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="replaceExisting")
-    def replace_existing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def replace_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, update the endpoint if it already exists instead of returning an error
         """
         return pulumi.get(self, "replace_existing")
 
     @replace_existing.setter
-    def replace_existing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def replace_existing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "replace_existing", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['PostgresEndpointSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['PostgresEndpointSpecArgs']]:
         """
         The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['PostgresEndpointSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['PostgresEndpointSpecArgs']]):
         pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
 class _PostgresEndpointState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['PostgresEndpointProviderConfigArgs']] = None,
-                 replace_existing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spec: Optional[pulumi.Input['PostgresEndpointSpecArgs']] = None,
-                 status: Optional[pulumi.Input['PostgresEndpointStatusArgs']] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['PostgresEndpointProviderConfigArgs']] = None,
+                 replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spec: pulumi.Input[Optional['PostgresEndpointSpecArgs']] = None,
+                 status: pulumi.Input[Optional['PostgresEndpointStatusArgs']] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PostgresEndpoint resources.
 
@@ -165,19 +165,19 @@ class _PostgresEndpointState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - A timestamp indicating when the compute endpoint was created
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointId")
-    def endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
         The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
@@ -186,12 +186,12 @@ class _PostgresEndpointState:
         return pulumi.get(self, "endpoint_id")
 
     @endpoint_id.setter
-    def endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Output only. The full resource path of the endpoint.
         Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
@@ -199,12 +199,12 @@ class _PostgresEndpointState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The branch containing this endpoint (API resource hierarchy).
         Format: projects/{project_id}/branches/{branch_id}
@@ -212,79 +212,79 @@ class _PostgresEndpointState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PostgresEndpointProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PostgresEndpointProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PostgresEndpointProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PostgresEndpointProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="replaceExisting")
-    def replace_existing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def replace_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, update the endpoint if it already exists instead of returning an error
         """
         return pulumi.get(self, "replace_existing")
 
     @replace_existing.setter
-    def replace_existing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def replace_existing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "replace_existing", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['PostgresEndpointSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['PostgresEndpointSpecArgs']]:
         """
         The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['PostgresEndpointSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['PostgresEndpointSpecArgs']]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['PostgresEndpointStatusArgs']]:
+    def status(self) -> pulumi.Input[Optional['PostgresEndpointStatusArgs']]:
         """
         (EndpointStatus) - Current operational status of the compute endpoint
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input['PostgresEndpointStatusArgs']]):
+    def status(self, value: pulumi.Input[Optional['PostgresEndpointStatusArgs']]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - System-generated unique ID for the endpoint
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - A timestamp indicating when the compute endpoint was last updated
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -294,11 +294,11 @@ class PostgresEndpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']]] = None,
-                 replace_existing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spec: Optional[pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']]] = None,
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']]] = None,
+                 replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -333,7 +333,7 @@ class PostgresEndpoint(pulumi.CustomResource):
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
                 "suspend_timeout_duration": "600s",
             },
             replace_existing=True)
@@ -351,7 +351,7 @@ class PostgresEndpoint(pulumi.CustomResource):
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
             })
         ```
 
@@ -366,8 +366,8 @@ class PostgresEndpoint(pulumi.CustomResource):
             parent=dev["name"],
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
-                "autoscaling_limit_min_cu": 1,
-                "autoscaling_limit_max_cu": 8,
+                "autoscaling_limit_min_cu": float(1),
+                "autoscaling_limit_max_cu": float(8),
                 "suspend_timeout_duration": "600s",
             })
         ```
@@ -421,7 +421,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "no_suspension": True,
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
                 "group": {
                     "min": 2,
                     "max": 2,
@@ -448,7 +448,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "no_suspension": True,
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
                 "group": {
                     "min": 2,
                     "max": 2,
@@ -471,8 +471,8 @@ class PostgresEndpoint(pulumi.CustomResource):
                 "display_name": "Production Workloads",
                 "history_retention_duration": "2592000s",
                 "default_endpoint_settings": {
-                    "autoscaling_limit_min_cu": 1,
-                    "autoscaling_limit_max_cu": 8,
+                    "autoscaling_limit_min_cu": float(1),
+                    "autoscaling_limit_max_cu": float(8),
                     "suspend_timeout_duration": "300s",
                 },
             })
@@ -487,8 +487,8 @@ class PostgresEndpoint(pulumi.CustomResource):
             parent=main.name,
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
-                "autoscaling_limit_min_cu": 1,
-                "autoscaling_limit_max_cu": 9,
+                "autoscaling_limit_min_cu": float(1),
+                "autoscaling_limit_max_cu": float(9),
                 "no_suspension": True,
                 "group": {
                     "min": 2,
@@ -503,7 +503,7 @@ class PostgresEndpoint(pulumi.CustomResource):
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 8,
+                "autoscaling_limit_max_cu": float(8),
                 "suspend_timeout_duration": "600s",
             })
         ```
@@ -559,7 +559,7 @@ class PostgresEndpoint(pulumi.CustomResource):
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
                 "suspend_timeout_duration": "600s",
             },
             replace_existing=True)
@@ -577,7 +577,7 @@ class PostgresEndpoint(pulumi.CustomResource):
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
             })
         ```
 
@@ -592,8 +592,8 @@ class PostgresEndpoint(pulumi.CustomResource):
             parent=dev["name"],
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
-                "autoscaling_limit_min_cu": 1,
-                "autoscaling_limit_max_cu": 8,
+                "autoscaling_limit_min_cu": float(1),
+                "autoscaling_limit_max_cu": float(8),
                 "suspend_timeout_duration": "600s",
             })
         ```
@@ -647,7 +647,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "no_suspension": True,
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
                 "group": {
                     "min": 2,
                     "max": 2,
@@ -674,7 +674,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "no_suspension": True,
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 4,
+                "autoscaling_limit_max_cu": float(4),
                 "group": {
                     "min": 2,
                     "max": 2,
@@ -697,8 +697,8 @@ class PostgresEndpoint(pulumi.CustomResource):
                 "display_name": "Production Workloads",
                 "history_retention_duration": "2592000s",
                 "default_endpoint_settings": {
-                    "autoscaling_limit_min_cu": 1,
-                    "autoscaling_limit_max_cu": 8,
+                    "autoscaling_limit_min_cu": float(1),
+                    "autoscaling_limit_max_cu": float(8),
                     "suspend_timeout_duration": "300s",
                 },
             })
@@ -713,8 +713,8 @@ class PostgresEndpoint(pulumi.CustomResource):
             parent=main.name,
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
-                "autoscaling_limit_min_cu": 1,
-                "autoscaling_limit_max_cu": 9,
+                "autoscaling_limit_min_cu": float(1),
+                "autoscaling_limit_max_cu": float(9),
                 "no_suspension": True,
                 "group": {
                     "min": 2,
@@ -729,7 +729,7 @@ class PostgresEndpoint(pulumi.CustomResource):
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_ONLY",
                 "autoscaling_limit_min_cu": 0.5,
-                "autoscaling_limit_max_cu": 8,
+                "autoscaling_limit_max_cu": float(8),
                 "suspend_timeout_duration": "600s",
             })
         ```
@@ -750,11 +750,11 @@ class PostgresEndpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']]] = None,
-                 replace_existing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spec: Optional[pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']]] = None,
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']]] = None,
+                 replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spec: pulumi.Input[Optional[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -788,16 +788,16 @@ class PostgresEndpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']]] = None,
-            replace_existing: Optional[pulumi.Input[_builtins.bool]] = None,
-            spec: Optional[pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']]] = None,
-            status: Optional[pulumi.Input[Union['PostgresEndpointStatusArgs', 'PostgresEndpointStatusArgsDict']]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'PostgresEndpoint':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict']]] = None,
+            replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
+            spec: pulumi.Input[Optional[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict']]] = None,
+            status: pulumi.Input[Optional[Union['PostgresEndpointStatusArgs', 'PostgresEndpointStatusArgsDict']]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresEndpoint':
         """
         Get an existing PostgresEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

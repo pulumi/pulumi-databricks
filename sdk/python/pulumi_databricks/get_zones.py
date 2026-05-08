@@ -122,10 +122,10 @@ def get_zones(default_zone: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         zones=pulumi.get(__ret__, 'zones'))
-def get_zones_output(default_zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     provider_config: Optional[pulumi.Input[Optional[Union['GetZonesProviderConfigArgs', 'GetZonesProviderConfigArgsDict']]]] = None,
-                     zones: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_zones_output(default_zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     provider_config: pulumi.Input[Optional[Optional[Union['GetZonesProviderConfigArgs', 'GetZonesProviderConfigArgsDict']]]] = None,
+                     zones: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
     This data source allows you to fetch all available AWS availability zones on your workspace on AWS.

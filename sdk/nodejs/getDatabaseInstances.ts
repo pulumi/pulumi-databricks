@@ -93,9 +93,9 @@ export interface GetDatabaseInstancesOutputArgs {
     /**
      * Upper bound for items returned. The maximum value is 100
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetDatabaseInstancesProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetDatabaseInstancesProviderConfigArgs | undefined>;
 }

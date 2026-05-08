@@ -21,12 +21,12 @@ __all__ = ['AppSpaceArgs', 'AppSpace']
 @pulumi.input_type
 class AppSpaceArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['AppSpaceProviderConfigArgs']] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpaceResourceArgs']]]] = None,
-                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['AppSpaceProviderConfigArgs']] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input['AppSpaceResourceArgs']]]] = None,
+                 usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AppSpace resource.
 
@@ -53,19 +53,19 @@ class AppSpaceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the app space
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
         It must be unique within the workspace
@@ -73,77 +73,77 @@ class AppSpaceArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['AppSpaceProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['AppSpaceProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['AppSpaceProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['AppSpaceProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpaceResourceArgs']]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppSpaceResourceArgs']]]]:
         """
         Resources for the app space. Resources configured at the space level are available to all apps in the space
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpaceResourceArgs']]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppSpaceResourceArgs']]]]):
         pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter(name="usagePolicyId")
-    def usage_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def usage_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The usage policy ID for managing cost at the space level
         """
         return pulumi.get(self, "usage_policy_id")
 
     @usage_policy_id.setter
-    def usage_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def usage_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usage_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userApiScopes")
-    def user_api_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def user_api_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         OAuth scopes for apps in the space
         """
         return pulumi.get(self, "user_api_scopes")
 
     @user_api_scopes.setter
-    def user_api_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def user_api_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_api_scopes", value)
 
 
 @pulumi.input_type
 class _AppSpaceState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 creator: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['AppSpaceProviderConfigArgs']] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpaceResourceArgs']]]] = None,
-                 service_principal_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_principal_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input['AppSpaceStatusArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 updater: Optional[pulumi.Input[_builtins.str]] = None,
-                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['AppSpaceProviderConfigArgs']] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input['AppSpaceResourceArgs']]]] = None,
+                 service_principal_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional['AppSpaceStatusArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 updater: pulumi.Input[Optional[_builtins.str]] = None,
+                 usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AppSpace resources.
 
@@ -200,67 +200,67 @@ class _AppSpaceState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The creation time of the app space. Formatted timestamp in ISO 6801
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The email of the user that created the app space
         """
         return pulumi.get(self, "creator")
 
     @creator.setter
-    def creator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the app space
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveUsagePolicyId")
-    def effective_usage_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_usage_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The effective usage policy ID used by apps in the space
         """
         return pulumi.get(self, "effective_usage_policy_id")
 
     @effective_usage_policy_id.setter
-    def effective_usage_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_usage_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_usage_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveUserApiScopes")
-    def effective_user_api_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def effective_user_api_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         (list of string) - The effective api scopes granted to the user access token
         """
         return pulumi.get(self, "effective_user_api_scopes")
 
     @effective_user_api_scopes.setter
-    def effective_user_api_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def effective_user_api_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_user_api_scopes", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
         It must be unique within the workspace
@@ -268,127 +268,127 @@ class _AppSpaceState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['AppSpaceProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['AppSpaceProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['AppSpaceProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['AppSpaceProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpaceResourceArgs']]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppSpaceResourceArgs']]]]:
         """
         Resources for the app space. Resources configured at the space level are available to all apps in the space
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpaceResourceArgs']]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppSpaceResourceArgs']]]]):
         pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalClientId")
-    def service_principal_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_principal_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The service principal client ID for the app space
         """
         return pulumi.get(self, "service_principal_client_id")
 
     @service_principal_client_id.setter
-    def service_principal_client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_principal_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_principal_client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalId")
-    def service_principal_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def service_principal_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (integer) - The service principal ID for the app space
         """
         return pulumi.get(self, "service_principal_id")
 
     @service_principal_id.setter
-    def service_principal_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def service_principal_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "service_principal_id", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalName")
-    def service_principal_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_principal_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The service principal name for the app space
         """
         return pulumi.get(self, "service_principal_name")
 
     @service_principal_name.setter
-    def service_principal_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_principal_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_principal_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['AppSpaceStatusArgs']]:
+    def status(self) -> pulumi.Input[Optional['AppSpaceStatusArgs']]:
         """
         (SpaceStatus) - The status of the app space
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input['AppSpaceStatusArgs']]):
+    def status(self, value: pulumi.Input[Optional['AppSpaceStatusArgs']]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The update time of the app space. Formatted timestamp in ISO 6801
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def updater(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updater(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The email of the user that last updated the app space
         """
         return pulumi.get(self, "updater")
 
     @updater.setter
-    def updater(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updater(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updater", value)
 
     @_builtins.property
     @pulumi.getter(name="usagePolicyId")
-    def usage_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def usage_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The usage policy ID for managing cost at the space level
         """
         return pulumi.get(self, "usage_policy_id")
 
     @usage_policy_id.setter
-    def usage_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def usage_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usage_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userApiScopes")
-    def user_api_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def user_api_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         OAuth scopes for apps in the space
         """
         return pulumi.get(self, "user_api_scopes")
 
     @user_api_scopes.setter
-    def user_api_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def user_api_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_api_scopes", value)
 
 
@@ -398,12 +398,12 @@ class AppSpace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict']]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppSpaceResourceArgs', 'AppSpaceResourceArgsDict']]]]] = None,
-                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict']]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppSpaceResourceArgs', 'AppSpaceResourceArgsDict']]]]] = None,
+                 usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -444,12 +444,12 @@ class AppSpace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict']]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppSpaceResourceArgs', 'AppSpaceResourceArgsDict']]]]] = None,
-                 usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict']]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppSpaceResourceArgs', 'AppSpaceResourceArgsDict']]]]] = None,
+                 usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -485,22 +485,22 @@ class AppSpace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            creator: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict']]] = None,
-            resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppSpaceResourceArgs', 'AppSpaceResourceArgsDict']]]]] = None,
-            service_principal_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_principal_id: Optional[pulumi.Input[_builtins.int]] = None,
-            service_principal_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[Union['AppSpaceStatusArgs', 'AppSpaceStatusArgsDict']]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            updater: Optional[pulumi.Input[_builtins.str]] = None,
-            usage_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_api_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AppSpace':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creator: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['AppSpaceProviderConfigArgs', 'AppSpaceProviderConfigArgsDict']]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppSpaceResourceArgs', 'AppSpaceResourceArgsDict']]]]] = None,
+            service_principal_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.int]] = None,
+            service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[Union['AppSpaceStatusArgs', 'AppSpaceStatusArgsDict']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            updater: pulumi.Input[Optional[_builtins.str]] = None,
+            usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AppSpace':
         """
         Get an existing AppSpace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

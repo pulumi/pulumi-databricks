@@ -93,10 +93,11 @@ def get_dashboards(dashboard_name_contains: Optional[_builtins.str] = None,
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_databricks as databricks
 
     all = databricks.get_dashboards()
-    dashboards_permissions = []
+    dashboards_permissions: list[Any] = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate([__item.dashboard_id for __item in all.dashboards])]:
         dashboards_permissions.append(databricks.Permissions(f"dashboards_permissions-{range['key']}",
             depends=[all],
@@ -121,8 +122,8 @@ def get_dashboards(dashboard_name_contains: Optional[_builtins.str] = None,
         dashboards=pulumi.get(__ret__, 'dashboards'),
         id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_dashboards_output(dashboard_name_contains: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          provider_config: Optional[pulumi.Input[Optional[Union['GetDashboardsProviderConfigArgs', 'GetDashboardsProviderConfigArgsDict']]]] = None,
+def get_dashboards_output(dashboard_name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          provider_config: pulumi.Input[Optional[Optional[Union['GetDashboardsProviderConfigArgs', 'GetDashboardsProviderConfigArgsDict']]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDashboardsResult]:
     """
     This data source allows you to retrieve information about Databricks [Dashboards](https://docs.databricks.com/en/dashboards/index.html).
@@ -133,10 +134,11 @@ def get_dashboards_output(dashboard_name_contains: Optional[pulumi.Input[Optiona
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_databricks as databricks
 
     all = databricks.get_dashboards()
-    dashboards_permissions = []
+    dashboards_permissions: list[Any] = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate([__item.dashboard_id for __item in all.dashboards])]:
         dashboards_permissions.append(databricks.Permissions(f"dashboards_permissions-{range['key']}",
             depends=[all],

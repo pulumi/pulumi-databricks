@@ -112,9 +112,9 @@ def get_knowledge_assistant_knowledge_sources(page_size: Optional[_builtins.int]
         page_size=pulumi.get(__ret__, 'page_size'),
         parent=pulumi.get(__ret__, 'parent'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_knowledge_assistant_knowledge_sources_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                     parent: Optional[pulumi.Input[_builtins.str]] = None,
-                                                     provider_config: Optional[pulumi.Input[Optional[Union['GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgs', 'GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgsDict']]]] = None,
+def get_knowledge_assistant_knowledge_sources_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                     parent: pulumi.Input[Optional[_builtins.str]] = None,
+                                                     provider_config: pulumi.Input[Optional[Optional[Union['GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgs', 'GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgsDict']]]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKnowledgeAssistantKnowledgeSourcesResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)

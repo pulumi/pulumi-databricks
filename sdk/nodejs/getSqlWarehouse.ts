@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const all = databricks.getSqlWarehouses({});
- * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getSqlWarehouse({
+ * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: databricks.getSqlWarehouse({
  *     id: __value,
  * }) }), {}));
  * ```
@@ -264,7 +264,7 @@ export interface GetSqlWarehouseResult {
  * import * as databricks from "@pulumi/databricks";
  *
  * const all = databricks.getSqlWarehouses({});
- * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getSqlWarehouse({
+ * const _this = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: databricks.getSqlWarehouse({
  *     id: __value,
  * }) }), {}));
  * ```
@@ -326,83 +326,83 @@ export interface GetSqlWarehouseOutputArgs {
     /**
      * Time in minutes until an idle SQL warehouse terminates all clusters and stops.
      */
-    autoStopMins?: pulumi.Input<number>;
+    autoStopMins?: pulumi.Input<number | undefined>;
     /**
      * block, consisting of following fields:
      */
-    channel?: pulumi.Input<inputs.GetSqlWarehouseChannelArgs>;
+    channel?: pulumi.Input<inputs.GetSqlWarehouseChannelArgs | undefined>;
     /**
      * The size of the clusters allocated to the warehouse: "2X-Small", "X-Small", "Small", "Medium", "Large", "X-Large", "2X-Large", "3X-Large", "4X-Large", "5X-Large".
      */
-    clusterSize?: pulumi.Input<string>;
+    clusterSize?: pulumi.Input<string | undefined>;
     /**
      * The username of the user who created the endpoint.
      */
-    creatorName?: pulumi.Input<string>;
+    creatorName?: pulumi.Input<string | undefined>;
     /**
      * (Deprecated, will be removed) ID of the data source for this warehouse. This is used to bind an Databricks SQL query to an warehouse.
      */
-    dataSourceId?: pulumi.Input<string>;
+    dataSourceId?: pulumi.Input<string | undefined>;
     /**
      * Whether [Photon](https://databricks.com/product/delta-engine) is enabled.
      */
-    enablePhoton?: pulumi.Input<boolean>;
+    enablePhoton?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this SQL warehouse is a serverless SQL warehouse.
      */
-    enableServerlessCompute?: pulumi.Input<boolean>;
+    enableServerlessCompute?: pulumi.Input<boolean | undefined>;
     /**
      * Health status of the endpoint.
      */
-    health?: pulumi.Input<inputs.GetSqlWarehouseHealthArgs>;
+    health?: pulumi.Input<inputs.GetSqlWarehouseHealthArgs | undefined>;
     /**
      * The ID of the SQL warehouse.
      */
-    id?: pulumi.Input<string>;
-    instanceProfileArn?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
     /**
      * JDBC connection string.
      */
-    jdbcUrl?: pulumi.Input<string>;
+    jdbcUrl?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of clusters available when a SQL warehouse is running.
      */
-    maxNumClusters?: pulumi.Input<number>;
+    maxNumClusters?: pulumi.Input<number | undefined>;
     /**
      * Minimum number of clusters available when a SQL warehouse is running.
      */
-    minNumClusters?: pulumi.Input<number>;
+    minNumClusters?: pulumi.Input<number | undefined>;
     /**
      * Name of the SQL warehouse to search (case-sensitive).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The current number of clusters used by the endpoint.
      */
-    numActiveSessions?: pulumi.Input<number>;
+    numActiveSessions?: pulumi.Input<number | undefined>;
     /**
      * The current number of clusters used by the endpoint.
      */
-    numClusters?: pulumi.Input<number>;
+    numClusters?: pulumi.Input<number | undefined>;
     /**
      * ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
      */
-    odbcParams?: pulumi.Input<inputs.GetSqlWarehouseOdbcParamsArgs>;
-    providerConfig?: pulumi.Input<inputs.GetSqlWarehouseProviderConfigArgs>;
+    odbcParams?: pulumi.Input<inputs.GetSqlWarehouseOdbcParamsArgs | undefined>;
+    providerConfig?: pulumi.Input<inputs.GetSqlWarehouseProviderConfigArgs | undefined>;
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      */
-    spotInstancePolicy?: pulumi.Input<string>;
+    spotInstancePolicy?: pulumi.Input<string | undefined>;
     /**
      * The current state of the endpoint.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * tags used for SQL warehouse resources.
      */
-    tags?: pulumi.Input<inputs.GetSqlWarehouseTagsArgs>;
+    tags?: pulumi.Input<inputs.GetSqlWarehouseTagsArgs | undefined>;
     /**
      * SQL warehouse type. See [documentation](https://docs.databricks.com/sql/index.html#warehouse-types).
      */
-    warehouseType?: pulumi.Input<string>;
+    warehouseType?: pulumi.Input<string | undefined>;
 }

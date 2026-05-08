@@ -84,10 +84,11 @@ def get_serving_endpoints(endpoints: Optional[Sequence[Union['GetServingEndpoint
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_databricks as databricks
 
     all = databricks.get_serving_endpoints()
-    ml_serving_usage = []
+    ml_serving_usage: list[Any] = []
     for range in [{"value": i} for i in range(0, all_databricks_serving_endpoints.endpoints)]:
         ml_serving_usage.append(databricks.Permissions(f"ml_serving_usage-{range['value']}",
             serving_endpoint_id=range["value"]["id"],
@@ -126,8 +127,8 @@ def get_serving_endpoints(endpoints: Optional[Sequence[Union['GetServingEndpoint
         endpoints=pulumi.get(__ret__, 'endpoints'),
         id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_serving_endpoints_output(endpoints: Optional[pulumi.Input[Optional[Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict']]]]] = None,
-                                 provider_config: Optional[pulumi.Input[Optional[Union['GetServingEndpointsProviderConfigArgs', 'GetServingEndpointsProviderConfigArgsDict']]]] = None,
+def get_serving_endpoints_output(endpoints: pulumi.Input[Optional[Optional[Sequence[Union['GetServingEndpointsEndpointArgs', 'GetServingEndpointsEndpointArgsDict']]]]] = None,
+                                 provider_config: pulumi.Input[Optional[Optional[Union['GetServingEndpointsProviderConfigArgs', 'GetServingEndpointsProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServingEndpointsResult]:
     """
     This resource allows you to get information about [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks.
@@ -138,10 +139,11 @@ def get_serving_endpoints_output(endpoints: Optional[pulumi.Input[Optional[Seque
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_databricks as databricks
 
     all = databricks.get_serving_endpoints()
-    ml_serving_usage = []
+    ml_serving_usage: list[Any] = []
     for range in [{"value": i} for i in range(0, all_databricks_serving_endpoints.endpoints)]:
         ml_serving_usage.append(databricks.Permissions(f"ml_serving_usage-{range['value']}",
             serving_endpoint_id=range["value"]["id"],

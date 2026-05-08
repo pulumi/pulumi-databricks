@@ -129,38 +129,38 @@ export class AccountSettingUserPreferenceV2 extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccountSettingUserPreferenceV2 resources.
  */
 export interface AccountSettingUserPreferenceV2State {
-    booleanVal?: pulumi.Input<inputs.AccountSettingUserPreferenceV2BooleanVal>;
+    booleanVal?: pulumi.Input<inputs.AccountSettingUserPreferenceV2BooleanVal | undefined>;
     /**
      * (BooleanMessage)
      */
-    effectiveBooleanVal?: pulumi.Input<inputs.AccountSettingUserPreferenceV2EffectiveBooleanVal>;
+    effectiveBooleanVal?: pulumi.Input<inputs.AccountSettingUserPreferenceV2EffectiveBooleanVal | undefined>;
     /**
      * (StringMessage)
      */
-    effectiveStringVal?: pulumi.Input<inputs.AccountSettingUserPreferenceV2EffectiveStringVal>;
+    effectiveStringVal?: pulumi.Input<inputs.AccountSettingUserPreferenceV2EffectiveStringVal | undefined>;
     /**
      * Name of the setting
      */
-    name?: pulumi.Input<string>;
-    stringVal?: pulumi.Input<inputs.AccountSettingUserPreferenceV2StringVal>;
+    name?: pulumi.Input<string | undefined>;
+    stringVal?: pulumi.Input<inputs.AccountSettingUserPreferenceV2StringVal | undefined>;
     /**
      * User ID of the user
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a AccountSettingUserPreferenceV2 resource.
  */
 export interface AccountSettingUserPreferenceV2Args {
-    booleanVal?: pulumi.Input<inputs.AccountSettingUserPreferenceV2BooleanVal>;
+    booleanVal?: pulumi.Input<inputs.AccountSettingUserPreferenceV2BooleanVal | undefined>;
     /**
      * Name of the setting
      */
-    name?: pulumi.Input<string>;
-    stringVal?: pulumi.Input<inputs.AccountSettingUserPreferenceV2StringVal>;
+    name?: pulumi.Input<string | undefined>;
+    stringVal?: pulumi.Input<inputs.AccountSettingUserPreferenceV2StringVal | undefined>;
     /**
      * User ID of the user
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }

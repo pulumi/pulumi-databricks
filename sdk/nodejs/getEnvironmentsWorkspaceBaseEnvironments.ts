@@ -91,9 +91,9 @@ export interface GetEnvironmentsWorkspaceBaseEnvironmentsOutputArgs {
      * The maximum number of environments to return per page.
      * Default is 1000
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgs | undefined>;
 }

@@ -171,26 +171,26 @@ export interface MwsStorageConfigurationsState {
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * name of AWS S3 bucket
      */
-    bucketName?: pulumi.Input<string>;
-    creationTime?: pulumi.Input<number>;
+    bucketName?: pulumi.Input<string | undefined>;
+    creationTime?: pulumi.Input<number | undefined>;
     /**
      * The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * (String) id of storage config to be used for `databricksMwsWorkspace` resource.
      */
-    storageConfigurationId?: pulumi.Input<string>;
+    storageConfigurationId?: pulumi.Input<string | undefined>;
     /**
      * name under which this storage configuration is stored
      *
      * The following arguments are optional:
      */
-    storageConfigurationName?: pulumi.Input<string>;
+    storageConfigurationName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -208,7 +208,7 @@ export interface MwsStorageConfigurationsArgs {
     /**
      * The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * name under which this storage configuration is stored
      *

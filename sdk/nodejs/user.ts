@@ -260,72 +260,72 @@ export interface UserState {
     /**
      * identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
      */
-    aclPrincipalId?: pulumi.Input<string>;
+    aclPrincipalId?: pulumi.Input<string | undefined>;
     /**
      * Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      */
-    allowClusterCreate?: pulumi.Input<boolean>;
+    allowClusterCreate?: pulumi.Input<boolean | undefined>;
     /**
      * Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      */
-    allowInstancePoolCreate?: pulumi.Input<boolean>;
+    allowInstancePoolCreate?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      */
-    databricksSqlAccess?: pulumi.Input<boolean>;
+    databricksSqlAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
      */
-    disableAsUserDeletion?: pulumi.Input<boolean>;
+    disableAsUserDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * This is an alias for the username that can be the full name of the user.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * ID of the user in an external identity provider.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
      */
-    forceDeleteHomeDir?: pulumi.Input<boolean>;
+    forceDeleteHomeDir?: pulumi.Input<boolean | undefined>;
     /**
      * This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
      */
-    forceDeleteRepos?: pulumi.Input<boolean>;
+    forceDeleteRepos?: pulumi.Input<boolean | undefined>;
     /**
      * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      */
-    home?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.UserProviderConfig>;
+    home?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.UserProviderConfig | undefined>;
     /**
      * Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
      */
-    repos?: pulumi.Input<string>;
+    repos?: pulumi.Input<string | undefined>;
     /**
      * This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
     /**
      * This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
      */
-    workspaceAccess?: pulumi.Input<boolean>;
+    workspaceAccess?: pulumi.Input<boolean | undefined>;
     /**
      * This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
-    workspaceConsume?: pulumi.Input<boolean>;
+    workspaceConsume?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -335,60 +335,60 @@ export interface UserArgs {
     /**
      * identifier for use in databricks_access_control_rule_set, e.g. `users/mr.foo@example.com`.
      */
-    aclPrincipalId?: pulumi.Input<string>;
+    aclPrincipalId?: pulumi.Input<string | undefined>;
     /**
      * Either user is active or not. True by default, but can be set to false in case of user deactivation with preserving user assets.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Allow the user to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
      */
-    allowClusterCreate?: pulumi.Input<boolean>;
+    allowClusterCreate?: pulumi.Input<boolean | undefined>;
     /**
      * Allow the user to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      */
-    allowInstancePoolCreate?: pulumi.Input<boolean>;
+    allowInstancePoolCreate?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * This is a field to allow the user to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
      */
-    databricksSqlAccess?: pulumi.Input<boolean>;
+    databricksSqlAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Deactivate the user when deleting the resource, rather than deleting the user entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
      */
-    disableAsUserDeletion?: pulumi.Input<boolean>;
+    disableAsUserDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * This is an alias for the username that can be the full name of the user.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * ID of the user in an external identity provider.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Ignore `cannot create user: User with username X already exists` errors and implicitly import the specific user into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * This flag determines whether the user's home directory is deleted when the user is deleted. It will have not impact when in the accounts SCIM API. False by default.
      */
-    forceDeleteHomeDir?: pulumi.Input<boolean>;
+    forceDeleteHomeDir?: pulumi.Input<boolean | undefined>;
     /**
      * This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
      */
-    forceDeleteRepos?: pulumi.Input<boolean>;
+    forceDeleteRepos?: pulumi.Input<boolean | undefined>;
     /**
      * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      */
-    home?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.UserProviderConfig>;
+    home?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.UserProviderConfig | undefined>;
     /**
      * Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
      */
-    repos?: pulumi.Input<string>;
+    repos?: pulumi.Input<string | undefined>;
     /**
      * This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
      */
@@ -396,9 +396,9 @@ export interface UserArgs {
     /**
      * This is a field to allow the user to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
      */
-    workspaceAccess?: pulumi.Input<boolean>;
+    workspaceAccess?: pulumi.Input<boolean | undefined>;
     /**
      * This is a field to allow the user to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
-    workspaceConsume?: pulumi.Input<boolean>;
+    workspaceConsume?: pulumi.Input<boolean | undefined>;
 }

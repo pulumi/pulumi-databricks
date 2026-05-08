@@ -142,18 +142,18 @@ export class SqlWidget extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SqlWidget resources.
  */
 export interface SqlWidgetState {
-    dashboardId?: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
-    parameters?: pulumi.Input<pulumi.Input<inputs.SqlWidgetParameter>[]>;
-    position?: pulumi.Input<inputs.SqlWidgetPosition>;
+    dashboardId?: pulumi.Input<string | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.SqlWidgetParameter>[] | undefined>;
+    position?: pulumi.Input<inputs.SqlWidgetPosition | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SqlWidgetProviderConfig>;
-    text?: pulumi.Input<string>;
-    title?: pulumi.Input<string>;
-    visualizationId?: pulumi.Input<string>;
-    widgetId?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.SqlWidgetProviderConfig | undefined>;
+    text?: pulumi.Input<string | undefined>;
+    title?: pulumi.Input<string | undefined>;
+    visualizationId?: pulumi.Input<string | undefined>;
+    widgetId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -161,15 +161,15 @@ export interface SqlWidgetState {
  */
 export interface SqlWidgetArgs {
     dashboardId: pulumi.Input<string>;
-    description?: pulumi.Input<string>;
-    parameters?: pulumi.Input<pulumi.Input<inputs.SqlWidgetParameter>[]>;
-    position?: pulumi.Input<inputs.SqlWidgetPosition>;
+    description?: pulumi.Input<string | undefined>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.SqlWidgetParameter>[] | undefined>;
+    position?: pulumi.Input<inputs.SqlWidgetPosition | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SqlWidgetProviderConfig>;
-    text?: pulumi.Input<string>;
-    title?: pulumi.Input<string>;
-    visualizationId?: pulumi.Input<string>;
-    widgetId?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.SqlWidgetProviderConfig | undefined>;
+    text?: pulumi.Input<string | undefined>;
+    title?: pulumi.Input<string | undefined>;
+    visualizationId?: pulumi.Input<string | undefined>;
+    widgetId?: pulumi.Input<string | undefined>;
 }

@@ -95,5 +95,5 @@ export interface GetPostgresSyncedTableOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetPostgresSyncedTableProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetPostgresSyncedTableProviderConfigArgs | undefined>;
 }

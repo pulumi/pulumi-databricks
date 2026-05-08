@@ -109,9 +109,9 @@ export interface GetSharesOutputArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetSharesProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetSharesProviderConfigArgs | undefined>;
     /**
      * list of databricks.Share names.
      */
-    shares?: pulumi.Input<pulumi.Input<string>[]>;
+    shares?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

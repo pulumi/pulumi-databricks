@@ -112,28 +112,28 @@ export interface DbfsFileState {
     /**
      * Encoded file contents. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
      */
-    contentBase64?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string | undefined>;
     /**
      * Path, but with `dbfs:` prefix.
      */
-    dbfsPath?: pulumi.Input<string>;
+    dbfsPath?: pulumi.Input<string | undefined>;
     /**
      * The file size of the file that is being tracked by this resource in bytes.
      */
-    fileSize?: pulumi.Input<number>;
-    md5?: pulumi.Input<string>;
+    fileSize?: pulumi.Input<number | undefined>;
+    md5?: pulumi.Input<string | undefined>;
     /**
      * The path of the file in which you wish to save.
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.DbfsFileProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.DbfsFileProviderConfig | undefined>;
     /**
      * The full absolute path to the file. Conflicts with `contentBase64`.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -143,8 +143,8 @@ export interface DbfsFileArgs {
     /**
      * Encoded file contents. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a data pipeline configuration file.
      */
-    contentBase64?: pulumi.Input<string>;
-    md5?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string | undefined>;
+    md5?: pulumi.Input<string | undefined>;
     /**
      * The path of the file in which you wish to save.
      */
@@ -152,9 +152,9 @@ export interface DbfsFileArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.DbfsFileProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.DbfsFileProviderConfig | undefined>;
     /**
      * The full absolute path to the file. Conflicts with `contentBase64`.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }

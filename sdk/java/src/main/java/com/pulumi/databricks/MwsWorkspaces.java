@@ -49,8 +49,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.MwsWorkspaces;
  * import com.pulumi.databricks.MwsWorkspacesArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -85,8 +85,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.databricks.MwsWorkspaces;
  * import com.pulumi.databricks.MwsWorkspacesArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -136,8 +136,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.MwsNetworksArgs;
  * import com.pulumi.databricks.MwsWorkspaces;
  * import com.pulumi.databricks.MwsWorkspacesArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -229,8 +229,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.MwsWorkspaces;
  * import com.pulumi.databricks.MwsWorkspacesArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -286,12 +286,12 @@ import javax.annotation.Nullable;
  * 
  *         var rootVersioning = new S3BucketVersioning("rootVersioning", S3BucketVersioningArgs.builder()
  *             .bucket(rootStorageBucket.id())
- *             .versioningConfiguration(List.of(Map.of("status", "Disabled")))
+ *             .versioningConfiguration(Arrays.asList(Map.of("status", "Disabled")))
  *             .build());
  * 
  *         var rootStorageBucketS3BucketServerSideEncryptionConfiguration = new S3BucketServerSideEncryptionConfiguration("rootStorageBucketS3BucketServerSideEncryptionConfiguration", S3BucketServerSideEncryptionConfigurationArgs.builder()
  *             .bucket(rootStorageBucket.bucket())
- *             .rule(List.of(Map.of("applyServerSideEncryptionByDefault", List.of(Map.of("sseAlgorithm", "AES256")))))
+ *             .rule(Arrays.asList(Map.of("applyServerSideEncryptionByDefault", Arrays.asList(Map.of("sseAlgorithm", "AES256")))))
  *             .build());
  * 
  *         var rootStorageBucketS3BucketPublicAccessBlock = new S3BucketPublicAccessBlock("rootStorageBucketS3BucketPublicAccessBlock", S3BucketPublicAccessBlockArgs.builder()
@@ -301,7 +301,7 @@ import javax.annotation.Nullable;
  *             .ignorePublicAcls(true)
  *             .restrictPublicBuckets(true)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(rootStorageBucket))
+ *                 .dependsOn(Arrays.asList(rootStorageBucket))
  *                 .build());
  * 
  *         final var thisGetAwsBucketPolicy = DatabricksFunctions.getAwsBucketPolicy(GetAwsBucketPolicyArgs.builder()
@@ -312,7 +312,7 @@ import javax.annotation.Nullable;
  *             .bucket(rootStorageBucket.id())
  *             .policy(thisGetAwsBucketPolicy.json())
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(rootStorageBucketS3BucketPublicAccessBlock))
+ *                 .dependsOn(Arrays.asList(rootStorageBucketS3BucketPublicAccessBlock))
  *                 .build());
  * 
  *         var thisMwsStorageConfigurations = new MwsStorageConfigurations("thisMwsStorageConfigurations", MwsStorageConfigurationsArgs.builder()
@@ -357,8 +357,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.MwsWorkspacesArgs;
  * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerArgs;
  * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerGcpArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -426,8 +426,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.MwsWorkspacesArgs;
  * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerArgs;
  * import com.pulumi.databricks.inputs.MwsWorkspacesCloudResourceContainerGcpArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;

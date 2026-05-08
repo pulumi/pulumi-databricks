@@ -132,42 +132,42 @@ export interface FeatureEngineeringKafkaConfigState {
     /**
      * Authentication configuration for connection to topics
      */
-    authConfig?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigAuthConfig>;
+    authConfig?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigAuthConfig | undefined>;
     /**
      * A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
      * In the future, a separate table will be maintained by Databricks for forward filling data.
      * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
      */
-    backfillSource?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigBackfillSource>;
+    backfillSource?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigBackfillSource | undefined>;
     /**
      * A comma-separated list of host/port pairs pointing to Kafka cluster
      */
-    bootstrapServers?: pulumi.Input<string>;
+    bootstrapServers?: pulumi.Input<string | undefined>;
     /**
      * Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
      */
-    extraOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    extraOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
      */
-    keySchema?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigKeySchema>;
+    keySchema?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigKeySchema | undefined>;
     /**
      * (string) - Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
      * Can be distinct from topic name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigProviderConfig | undefined>;
     /**
      * Options to configure which Kafka topics to pull data from
      */
-    subscriptionMode?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigSubscriptionMode>;
+    subscriptionMode?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigSubscriptionMode | undefined>;
     /**
      * Schema configuration for extracting message values from topics. At least one of keySchema and valueSchema must be provided
      */
-    valueSchema?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigValueSchema>;
+    valueSchema?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigValueSchema | undefined>;
 }
 
 /**
@@ -183,7 +183,7 @@ export interface FeatureEngineeringKafkaConfigArgs {
      * In the future, a separate table will be maintained by Databricks for forward filling data.
      * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
      */
-    backfillSource?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigBackfillSource>;
+    backfillSource?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigBackfillSource | undefined>;
     /**
      * A comma-separated list of host/port pairs pointing to Kafka cluster
      */
@@ -191,15 +191,15 @@ export interface FeatureEngineeringKafkaConfigArgs {
     /**
      * Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
      */
-    extraOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    extraOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
      */
-    keySchema?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigKeySchema>;
+    keySchema?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigKeySchema | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigProviderConfig | undefined>;
     /**
      * Options to configure which Kafka topics to pull data from
      */
@@ -207,5 +207,5 @@ export interface FeatureEngineeringKafkaConfigArgs {
     /**
      * Schema configuration for extracting message values from topics. At least one of keySchema and valueSchema must be provided
      */
-    valueSchema?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigValueSchema>;
+    valueSchema?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigValueSchema | undefined>;
 }

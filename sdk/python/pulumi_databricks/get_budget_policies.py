@@ -129,9 +129,9 @@ def get_budget_policies(filter_by: Optional[Union['GetBudgetPoliciesFilterByArgs
         page_size=pulumi.get(__ret__, 'page_size'),
         policies=pulumi.get(__ret__, 'policies'),
         sort_spec=pulumi.get(__ret__, 'sort_spec'))
-def get_budget_policies_output(filter_by: Optional[pulumi.Input[Optional[Union['GetBudgetPoliciesFilterByArgs', 'GetBudgetPoliciesFilterByArgsDict']]]] = None,
-                               page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                               sort_spec: Optional[pulumi.Input[Optional[Union['GetBudgetPoliciesSortSpecArgs', 'GetBudgetPoliciesSortSpecArgsDict']]]] = None,
+def get_budget_policies_output(filter_by: pulumi.Input[Optional[Optional[Union['GetBudgetPoliciesFilterByArgs', 'GetBudgetPoliciesFilterByArgsDict']]]] = None,
+                               page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                               sort_spec: pulumi.Input[Optional[Optional[Union['GetBudgetPoliciesSortSpecArgs', 'GetBudgetPoliciesSortSpecArgsDict']]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBudgetPoliciesResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)

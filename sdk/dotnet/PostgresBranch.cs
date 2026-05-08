@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Index.PostgresProject("this", new()
+    ///     var @this = new Databricks.PostgresProject("this", new()
     ///     {
     ///         ProjectId = "my-project",
     ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
@@ -38,7 +38,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var production = new Databricks.Index.PostgresBranch("production", new()
+    ///     var production = new Databricks.PostgresBranch("production", new()
     ///     {
     ///         BranchId = "production",
     ///         Parent = @this.Name,
@@ -62,7 +62,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dev = new Databricks.Index.PostgresBranch("dev", new()
+    ///     var dev = new Databricks.PostgresBranch("dev", new()
     ///     {
     ///         BranchId = "dev-branch",
     ///         Parent = @this.Name,
@@ -87,7 +87,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @protected = new Databricks.Index.PostgresBranch("protected", new()
+    ///     var @protected = new Databricks.PostgresBranch("protected", new()
     ///     {
     ///         BranchId = "protected-branch",
     ///         Parent = @this.Name,
@@ -111,7 +111,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var temporary = new Databricks.Index.PostgresBranch("temporary", new()
+    ///     var temporary = new Databricks.PostgresBranch("temporary", new()
     ///     {
     ///         BranchId = "temp-feature-test",
     ///         Parent = @this.Name,

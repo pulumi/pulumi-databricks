@@ -152,11 +152,11 @@ def get_registered_model(full_name: Optional[_builtins.str] = None,
         include_browse=pulumi.get(__ret__, 'include_browse'),
         model_infos=pulumi.get(__ret__, 'model_infos'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_registered_model_output(full_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                include_aliases: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                include_browse: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                model_infos: Optional[pulumi.Input[Optional[Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict']]]]] = None,
-                                provider_config: Optional[pulumi.Input[Optional[Union['GetRegisteredModelProviderConfigArgs', 'GetRegisteredModelProviderConfigArgsDict']]]] = None,
+def get_registered_model_output(full_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                include_aliases: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                include_browse: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                model_infos: pulumi.Input[Optional[Optional[Sequence[Union['GetRegisteredModelModelInfoArgs', 'GetRegisteredModelModelInfoArgsDict']]]]] = None,
+                                provider_config: pulumi.Input[Optional[Optional[Union['GetRegisteredModelProviderConfigArgs', 'GetRegisteredModelProviderConfigArgsDict']]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegisteredModelResult]:
     """
     This resource allows you to get information about [Model in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.

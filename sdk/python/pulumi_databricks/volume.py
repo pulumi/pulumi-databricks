@@ -24,11 +24,11 @@ class VolumeArgs:
                  catalog_name: pulumi.Input[_builtins.str],
                  schema_name: pulumi.Input[_builtins.str],
                  volume_type: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['VolumeProviderConfigArgs']] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['VolumeProviderConfigArgs']] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Volume resource.
 
@@ -93,77 +93,77 @@ class VolumeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Free-form text.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Volume
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the volume owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['VolumeProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['VolumeProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['VolumeProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['VolumeProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="storageLocation")
-    def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
-    def storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_location", value)
 
 
 @pulumi.input_type
 class _VolumeState:
     def __init__(__self__, *,
-                 catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['VolumeProviderConfigArgs']] = None,
-                 schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['VolumeProviderConfigArgs']] = None,
+                 schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Volume resources.
 
@@ -198,110 +198,110 @@ class _VolumeState:
 
     @_builtins.property
     @pulumi.getter(name="catalogName")
-    def catalog_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def catalog_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of parent Catalog. Change forces creation of a new resource.
         """
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
-    def catalog_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def catalog_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Free-form text.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Volume
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the volume owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['VolumeProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['VolumeProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['VolumeProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['VolumeProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaName")
-    def schema_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
         """
         return pulumi.get(self, "schema_name")
 
     @schema_name.setter
-    def schema_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_name", value)
 
     @_builtins.property
     @pulumi.getter(name="storageLocation")
-    def storage_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
         """
         return pulumi.get(self, "storage_location")
 
     @storage_location.setter
-    def storage_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_location", value)
 
     @_builtins.property
     @pulumi.getter(name="volumePath")
-    def volume_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
         """
         return pulumi.get(self, "volume_path")
 
     @volume_path.setter
-    def volume_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_path", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeType")
-    def volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
-    def volume_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_type", value)
 
 
@@ -311,14 +311,14 @@ class Volume(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['VolumeProviderConfigArgs', 'VolumeProviderConfigArgsDict']]] = None,
-                 schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['VolumeProviderConfigArgs', 'VolumeProviderConfigArgsDict']]] = None,
+                 schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Volumes are Unity Catalog objects representing a logical volume of storage in a cloud object storage location. Volumes provide capabilities for accessing, storing, governing, and organizing files. While tables provide governance over tabular datasets, volumes add governance over non-tabular datasets. You can use volumes to store and access files in any format, including structured, semi-structured, and unstructured data.
@@ -486,14 +486,14 @@ class Volume(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['VolumeProviderConfigArgs', 'VolumeProviderConfigArgsDict']]] = None,
-                 schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['VolumeProviderConfigArgs', 'VolumeProviderConfigArgsDict']]] = None,
+                 schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -528,15 +528,15 @@ class Volume(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['VolumeProviderConfigArgs', 'VolumeProviderConfigArgsDict']]] = None,
-            schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_location: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_path: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Volume':
+            catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['VolumeProviderConfigArgs', 'VolumeProviderConfigArgsDict']]] = None,
+            schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_location: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_path: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Volume':
         """
         Get an existing Volume resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

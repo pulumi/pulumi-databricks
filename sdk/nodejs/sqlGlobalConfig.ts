@@ -160,31 +160,31 @@ export interface SqlGlobalConfigState {
     /**
      * Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
      */
-    dataAccessConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dataAccessConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * @deprecated This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      */
-    enableServerlessCompute?: pulumi.Input<boolean>;
+    enableServerlessCompute?: pulumi.Input<boolean | undefined>;
     /**
      * used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
      */
-    googleServiceAccount?: pulumi.Input<string>;
+    googleServiceAccount?: pulumi.Input<string | undefined>;
     /**
      * databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
      */
-    instanceProfileArn?: pulumi.Input<string>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SqlGlobalConfigProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.SqlGlobalConfigProviderConfig | undefined>;
     /**
      * The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
      */
-    securityPolicy?: pulumi.Input<string>;
+    securityPolicy?: pulumi.Input<string | undefined>;
     /**
      * SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
      */
-    sqlConfigParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sqlConfigParams?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -194,29 +194,29 @@ export interface SqlGlobalConfigArgs {
     /**
      * Data access configuration for databricks_sql_endpoint, such as configuration for an external Hive metastore, Hadoop Filesystem configuration, etc.  Please note that the list of supported configuration properties is limited, so refer to the [documentation](https://docs.databricks.com/sql/admin/data-access-configuration.html#supported-properties) for a full list.  Apply will fail if you're specifying not permitted configuration.
      */
-    dataAccessConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dataAccessConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * @deprecated This field is intended as an internal API and may be removed from the Databricks Terraform provider in the future
      */
-    enableServerlessCompute?: pulumi.Input<boolean>;
+    enableServerlessCompute?: pulumi.Input<boolean | undefined>;
     /**
      * used to access GCP services, such as Cloud Storage, from databricks_sql_endpoint. Please note that this parameter is only for GCP, and will generate an error if used on other clouds.
      */
-    googleServiceAccount?: pulumi.Input<string>;
+    googleServiceAccount?: pulumi.Input<string | undefined>;
     /**
      * databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
      */
-    instanceProfileArn?: pulumi.Input<string>;
+    instanceProfileArn?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SqlGlobalConfigProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.SqlGlobalConfigProviderConfig | undefined>;
     /**
      * The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
      */
-    securityPolicy?: pulumi.Input<string>;
+    securityPolicy?: pulumi.Input<string | undefined>;
     /**
      * SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
      */
-    sqlConfigParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sqlConfigParams?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

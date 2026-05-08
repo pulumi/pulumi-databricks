@@ -275,8 +275,8 @@ def get_app_space(name: Optional[_builtins.str] = None,
         updater=pulumi.get(__ret__, 'updater'),
         usage_policy_id=pulumi.get(__ret__, 'usage_policy_id'),
         user_api_scopes=pulumi.get(__ret__, 'user_api_scopes'))
-def get_app_space_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                         provider_config: Optional[pulumi.Input[Optional[Union['GetAppSpaceProviderConfigArgs', 'GetAppSpaceProviderConfigArgsDict']]]] = None,
+def get_app_space_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                         provider_config: pulumi.Input[Optional[Optional[Union['GetAppSpaceProviderConfigArgs', 'GetAppSpaceProviderConfigArgsDict']]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppSpaceResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)

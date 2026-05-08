@@ -21,11 +21,11 @@ __all__ = ['DatabaseSyncedDatabaseTableArgs', 'DatabaseSyncedDatabaseTable']
 @pulumi.input_type
 class DatabaseSyncedDatabaseTableArgs:
     def __init__(__self__, *,
-                 database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['DatabaseSyncedDatabaseTableProviderConfigArgs']] = None,
-                 spec: Optional[pulumi.Input['DatabaseSyncedDatabaseTableSpecArgs']] = None):
+                 database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 logical_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['DatabaseSyncedDatabaseTableProviderConfigArgs']] = None,
+                 spec: pulumi.Input[Optional['DatabaseSyncedDatabaseTableSpecArgs']] = None):
         """
         The set of arguments for constructing a DatabaseSyncedDatabaseTable resource.
 
@@ -59,7 +59,7 @@ class DatabaseSyncedDatabaseTableArgs:
 
     @_builtins.property
     @pulumi.getter(name="databaseInstanceName")
-    def database_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the target database instance. This is required when creating synced database tables in standard catalogs.
         This is optional when creating synced database tables in registered catalogs. If this field is specified
@@ -69,12 +69,12 @@ class DatabaseSyncedDatabaseTableArgs:
         return pulumi.get(self, "database_instance_name")
 
     @database_instance_name.setter
-    def database_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="logicalDatabaseName")
-    def logical_database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logical_database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Target Postgres database object (logical database) name for this table.
 
@@ -90,55 +90,55 @@ class DatabaseSyncedDatabaseTableArgs:
         return pulumi.get(self, "logical_database_name")
 
     @logical_database_name.setter
-    def logical_database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logical_database_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logical_database_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full three-part (catalog, schema, table) name of the table
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DatabaseSyncedDatabaseTableProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DatabaseSyncedDatabaseTableProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DatabaseSyncedDatabaseTableProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DatabaseSyncedDatabaseTableProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['DatabaseSyncedDatabaseTableSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['DatabaseSyncedDatabaseTableSpecArgs']]:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['DatabaseSyncedDatabaseTableSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['DatabaseSyncedDatabaseTableSpecArgs']]):
         pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
 class _DatabaseSyncedDatabaseTableState:
     def __init__(__self__, *,
-                 data_synchronization_status: Optional[pulumi.Input['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs']] = None,
-                 database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['DatabaseSyncedDatabaseTableProviderConfigArgs']] = None,
-                 spec: Optional[pulumi.Input['DatabaseSyncedDatabaseTableSpecArgs']] = None,
-                 unity_catalog_provisioning_state: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_synchronization_status: pulumi.Input[Optional['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs']] = None,
+                 database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_logical_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 logical_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['DatabaseSyncedDatabaseTableProviderConfigArgs']] = None,
+                 spec: pulumi.Input[Optional['DatabaseSyncedDatabaseTableSpecArgs']] = None,
+                 unity_catalog_provisioning_state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseSyncedDatabaseTable resources.
 
@@ -191,19 +191,19 @@ class _DatabaseSyncedDatabaseTableState:
 
     @_builtins.property
     @pulumi.getter(name="dataSynchronizationStatus")
-    def data_synchronization_status(self) -> Optional[pulumi.Input['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs']]:
+    def data_synchronization_status(self) -> pulumi.Input[Optional['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs']]:
         """
         (SyncedTableStatus) - Synced Table data synchronization status
         """
         return pulumi.get(self, "data_synchronization_status")
 
     @data_synchronization_status.setter
-    def data_synchronization_status(self, value: Optional[pulumi.Input['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs']]):
+    def data_synchronization_status(self, value: pulumi.Input[Optional['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs']]):
         pulumi.set(self, "data_synchronization_status", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseInstanceName")
-    def database_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the target database instance. This is required when creating synced database tables in standard catalogs.
         This is optional when creating synced database tables in registered catalogs. If this field is specified
@@ -213,12 +213,12 @@ class _DatabaseSyncedDatabaseTableState:
         return pulumi.get(self, "database_instance_name")
 
     @database_instance_name.setter
-    def database_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveDatabaseInstanceName")
-    def effective_database_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_database_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The name of the database instance that this table is registered to. This field is always returned, and for
         tables inside database catalogs is inferred database instance associated with the catalog.
@@ -228,12 +228,12 @@ class _DatabaseSyncedDatabaseTableState:
         return pulumi.get(self, "effective_database_instance_name")
 
     @effective_database_instance_name.setter
-    def effective_database_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_database_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_database_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLogicalDatabaseName")
-    def effective_logical_database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_logical_database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The name of the logical database that this table is registered to.
         This is an output only field that contains the value computed from the input field combined with
@@ -242,12 +242,12 @@ class _DatabaseSyncedDatabaseTableState:
         return pulumi.get(self, "effective_logical_database_name")
 
     @effective_logical_database_name.setter
-    def effective_logical_database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_logical_database_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_logical_database_name", value)
 
     @_builtins.property
     @pulumi.getter(name="logicalDatabaseName")
-    def logical_database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logical_database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Target Postgres database object (logical database) name for this table.
 
@@ -263,45 +263,45 @@ class _DatabaseSyncedDatabaseTableState:
         return pulumi.get(self, "logical_database_name")
 
     @logical_database_name.setter
-    def logical_database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logical_database_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logical_database_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full three-part (catalog, schema, table) name of the table
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DatabaseSyncedDatabaseTableProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DatabaseSyncedDatabaseTableProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DatabaseSyncedDatabaseTableProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DatabaseSyncedDatabaseTableProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input['DatabaseSyncedDatabaseTableSpecArgs']]:
+    def spec(self) -> pulumi.Input[Optional['DatabaseSyncedDatabaseTableSpecArgs']]:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input['DatabaseSyncedDatabaseTableSpecArgs']]):
+    def spec(self, value: pulumi.Input[Optional['DatabaseSyncedDatabaseTableSpecArgs']]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter(name="unityCatalogProvisioningState")
-    def unity_catalog_provisioning_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unity_catalog_provisioning_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
         state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
@@ -310,7 +310,7 @@ class _DatabaseSyncedDatabaseTableState:
         return pulumi.get(self, "unity_catalog_provisioning_state")
 
     @unity_catalog_provisioning_state.setter
-    def unity_catalog_provisioning_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unity_catalog_provisioning_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unity_catalog_provisioning_state", value)
 
 
@@ -320,11 +320,11 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict']]] = None,
-                 spec: Optional[pulumi.Input[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict']]] = None,
+                 database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 logical_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict']]] = None,
                  __props__=None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -646,11 +646,11 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict']]] = None,
-                 spec: Optional[pulumi.Input[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict']]] = None,
+                 database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 logical_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict']]] = None,
+                 spec: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -679,15 +679,15 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            data_synchronization_status: Optional[pulumi.Input[Union['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs', 'DatabaseSyncedDatabaseTableDataSynchronizationStatusArgsDict']]] = None,
-            database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_database_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-            logical_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict']]] = None,
-            spec: Optional[pulumi.Input[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict']]] = None,
-            unity_catalog_provisioning_state: Optional[pulumi.Input[_builtins.str]] = None) -> 'DatabaseSyncedDatabaseTable':
+            data_synchronization_status: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs', 'DatabaseSyncedDatabaseTableDataSynchronizationStatusArgsDict']]] = None,
+            database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_database_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_logical_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            logical_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict']]] = None,
+            spec: pulumi.Input[Optional[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict']]] = None,
+            unity_catalog_provisioning_state: pulumi.Input[Optional[_builtins.str]] = None) -> 'DatabaseSyncedDatabaseTable':
         """
         Get an existing DatabaseSyncedDatabaseTable resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

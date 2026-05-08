@@ -101,9 +101,9 @@ export interface GetWarehousesDefaultWarehouseOverridesOutputArgs {
      * If unspecified, at most 100 overrides will be returned.
      * The maximum value is 1000; values above 1000 will be coerced to 1000
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetWarehousesDefaultWarehouseOverridesProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetWarehousesDefaultWarehouseOverridesProviderConfigArgs | undefined>;
 }

@@ -139,5 +139,5 @@ export interface GetQualityMonitorV2OutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetQualityMonitorV2ProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetQualityMonitorV2ProviderConfigArgs | undefined>;
 }

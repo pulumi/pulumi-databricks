@@ -22,11 +22,11 @@ __all__ = ['WorkspaceBindingArgs', 'WorkspaceBinding']
 class WorkspaceBindingArgs:
     def __init__(__self__, *,
                  workspace_id: pulumi.Input[_builtins.str],
-                 binding_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['WorkspaceBindingProviderConfigArgs']] = None,
-                 securable_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 securable_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 binding_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['WorkspaceBindingProviderConfigArgs']] = None,
+                 securable_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 securable_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceBinding resource.
 
@@ -65,72 +65,72 @@ class WorkspaceBindingArgs:
 
     @_builtins.property
     @pulumi.getter(name="bindingType")
-    def binding_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def binding_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
         """
         return pulumi.get(self, "binding_type")
 
     @binding_type.setter
-    def binding_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def binding_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "binding_type", value)
 
     @_builtins.property
     @pulumi.getter(name="catalogName")
     @_utilities.deprecated("""Please use 'securable_name' and 'securable_type instead.""")
-    def catalog_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def catalog_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
-    def catalog_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def catalog_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog_name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['WorkspaceBindingProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['WorkspaceBindingProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['WorkspaceBindingProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['WorkspaceBindingProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="securableName")
-    def securable_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def securable_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of securable. Change forces creation of a new resource.
         """
         return pulumi.get(self, "securable_name")
 
     @securable_name.setter
-    def securable_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def securable_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "securable_name", value)
 
     @_builtins.property
     @pulumi.getter(name="securableType")
-    def securable_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def securable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of securable. Can be `catalog`, `external_location`, `storage_credential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "securable_type")
 
     @securable_type.setter
-    def securable_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def securable_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "securable_type", value)
 
 
 @pulumi.input_type
 class _WorkspaceBindingState:
     def __init__(__self__, *,
-                 binding_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['WorkspaceBindingProviderConfigArgs']] = None,
-                 securable_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 binding_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['WorkspaceBindingProviderConfigArgs']] = None,
+                 securable_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceBinding resources.
 
@@ -158,72 +158,72 @@ class _WorkspaceBindingState:
 
     @_builtins.property
     @pulumi.getter(name="bindingType")
-    def binding_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def binding_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
         """
         return pulumi.get(self, "binding_type")
 
     @binding_type.setter
-    def binding_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def binding_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "binding_type", value)
 
     @_builtins.property
     @pulumi.getter(name="catalogName")
     @_utilities.deprecated("""Please use 'securable_name' and 'securable_type instead.""")
-    def catalog_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def catalog_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "catalog_name")
 
     @catalog_name.setter
-    def catalog_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def catalog_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog_name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['WorkspaceBindingProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['WorkspaceBindingProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['WorkspaceBindingProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['WorkspaceBindingProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="securableName")
-    def securable_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def securable_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of securable. Change forces creation of a new resource.
         """
         return pulumi.get(self, "securable_name")
 
     @securable_name.setter
-    def securable_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def securable_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "securable_name", value)
 
     @_builtins.property
     @pulumi.getter(name="securableType")
-    def securable_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def securable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of securable. Can be `catalog`, `external_location`, `storage_credential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
         """
         return pulumi.get(self, "securable_type")
 
     @securable_type.setter
-    def securable_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def securable_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "securable_type", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the workspace. Change forces creation of a new resource.
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_id", value)
 
 
@@ -233,12 +233,12 @@ class WorkspaceBinding(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 binding_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['WorkspaceBindingProviderConfigArgs', 'WorkspaceBindingProviderConfigArgsDict']]] = None,
-                 securable_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 binding_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceBindingProviderConfigArgs', 'WorkspaceBindingProviderConfigArgsDict']]] = None,
+                 securable_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         If you use workspaces to isolate user data access, you may want to limit access to catalog, external locations or storage credentials from specific workspaces in your account, also known as workspace binding
@@ -329,12 +329,12 @@ class WorkspaceBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 binding_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['WorkspaceBindingProviderConfigArgs', 'WorkspaceBindingProviderConfigArgsDict']]] = None,
-                 securable_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 binding_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['WorkspaceBindingProviderConfigArgs', 'WorkspaceBindingProviderConfigArgsDict']]] = None,
+                 securable_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -362,12 +362,12 @@ class WorkspaceBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            binding_type: Optional[pulumi.Input[_builtins.str]] = None,
-            catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['WorkspaceBindingProviderConfigArgs', 'WorkspaceBindingProviderConfigArgsDict']]] = None,
-            securable_name: Optional[pulumi.Input[_builtins.str]] = None,
-            securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkspaceBinding':
+            binding_type: pulumi.Input[Optional[_builtins.str]] = None,
+            catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['WorkspaceBindingProviderConfigArgs', 'WorkspaceBindingProviderConfigArgsDict']]] = None,
+            securable_name: pulumi.Input[Optional[_builtins.str]] = None,
+            securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceBinding':
         """
         Get an existing WorkspaceBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

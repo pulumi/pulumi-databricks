@@ -130,14 +130,14 @@ export interface GetRegisteredModelOutputArgs {
     /**
      * flag to specify if list of aliases should be included into output.
      */
-    includeAliases?: pulumi.Input<boolean>;
+    includeAliases?: pulumi.Input<boolean | undefined>;
     /**
      * flag to specify if include registered models in the response for which the principal can only access selective metadata for.
      */
-    includeBrowse?: pulumi.Input<boolean>;
+    includeBrowse?: pulumi.Input<boolean | undefined>;
     /**
      * block with information about the model in Unity Catalog:
      */
-    modelInfos?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelModelInfoArgs>[]>;
-    providerConfig?: pulumi.Input<inputs.GetRegisteredModelProviderConfigArgs>;
+    modelInfos?: pulumi.Input<pulumi.Input<inputs.GetRegisteredModelModelInfoArgs>[] | undefined>;
+    providerConfig?: pulumi.Input<inputs.GetRegisteredModelProviderConfigArgs | undefined>;
 }

@@ -26,7 +26,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var appOwner = new Databricks.Index.PostgresRole("app_owner", new()
+    ///     var appOwner = new Databricks.PostgresRole("app_owner", new()
     ///     {
     ///         RoleId = "app-owner",
     ///         Parent = main.Name,
@@ -36,7 +36,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var app = new Databricks.Index.PostgresDatabase("app", new()
+    ///     var app = new Databricks.PostgresDatabase("app", new()
     ///     {
     ///         DatabaseId = "app",
     ///         Parent = main.Name,
@@ -62,7 +62,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var analytics = new Databricks.Index.PostgresDatabase("analytics", new()
+    ///     var analytics = new Databricks.PostgresDatabase("analytics", new()
     ///     {
     ///         DatabaseId = "analytics",
     ///         Parent = main.Name,
@@ -104,7 +104,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var schemaOwner = new Databricks.Index.PostgresRole("schema_owner", new()
+    ///     var schemaOwner = new Databricks.PostgresRole("schema_owner", new()
     ///     {
     ///         RoleId = "schemamigrator",
     ///         Parent = test.Name,
@@ -118,7 +118,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var application1 = new Databricks.Index.PostgresDatabase("application1", new()
+    ///     var application1 = new Databricks.PostgresDatabase("application1", new()
     ///     {
     ///         DatabaseId = "application1",
     ///         Parent = test.Name,
@@ -129,7 +129,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var application2 = new Databricks.Index.PostgresDatabase("application2", new()
+    ///     var application2 = new Databricks.PostgresDatabase("application2", new()
     ///     {
     ///         DatabaseId = "application2",
     ///         Parent = test.Name,

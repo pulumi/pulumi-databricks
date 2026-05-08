@@ -518,111 +518,111 @@ export interface MwsWorkspacesState {
     /**
      * Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/).
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * region of VPC.
      */
-    awsRegion?: pulumi.Input<string>;
-    cloud?: pulumi.Input<string>;
+    awsRegion?: pulumi.Input<string | undefined>;
+    cloud?: pulumi.Input<string | undefined>;
     /**
      * A block that specifies GCP workspace configurations, consisting of following blocks:
      */
-    cloudResourceContainer?: pulumi.Input<inputs.MwsWorkspacesCloudResourceContainer>;
+    cloudResourceContainer?: pulumi.Input<inputs.MwsWorkspacesCloudResourceContainer | undefined>;
     /**
      * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
      */
-    computeMode?: pulumi.Input<string>;
+    computeMode?: pulumi.Input<string | undefined>;
     /**
      * (Integer) time when workspace was created
      */
-    creationTime?: pulumi.Input<number>;
+    creationTime?: pulumi.Input<number | undefined>;
     /**
      * `credentialsId` from credentials. This must not be specified when `computeMode` is set to `SERVERLESS`.
      */
-    credentialsId?: pulumi.Input<string>;
+    credentialsId?: pulumi.Input<string | undefined>;
     /**
      * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
      */
-    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * @deprecated Use managedServicesCustomerManagedKeyId instead
      */
-    customerManagedKeyId?: pulumi.Input<string>;
+    customerManagedKeyId?: pulumi.Input<string | undefined>;
     /**
      * part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
      */
-    deploymentName?: pulumi.Input<string>;
+    deploymentName?: pulumi.Input<string | undefined>;
     /**
      * (String) The effective compute mode for the workspace. This is either `SERVERLESS` for serverless workspaces or `HYBRID` for classic workspaces.
      */
-    effectiveComputeMode?: pulumi.Input<string>;
+    effectiveComputeMode?: pulumi.Input<string | undefined>;
     /**
      * The expected status of the workspace. When unset, it defaults to `RUNNING`. When set to `PROVISIONING`, workspace provisioning will pause and not enter `RUNNING` status. The only allowed values for this is `RUNNING` and `PROVISIONING`.
      *
      * > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
      */
-    expectedWorkspaceStatus?: pulumi.Input<string>;
-    externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo>;
-    gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesGcpManagedNetworkConfig>;
+    expectedWorkspaceStatus?: pulumi.Input<string | undefined>;
+    externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo | undefined>;
+    gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesGcpManagedNetworkConfig | undefined>;
     /**
      * (String, GCP only) identifier of a service account created for the workspace in form of `db-<workspace-id>@prod-gcp-<region>.iam.gserviceaccount.com`
      */
-    gcpWorkspaceSa?: pulumi.Input<string>;
+    gcpWorkspaceSa?: pulumi.Input<string | undefined>;
     /**
      * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
-    gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
-    isNoPublicIpEnabled?: pulumi.Input<boolean>;
+    gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig | undefined>;
+    isNoPublicIpEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * region of the subnet.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
      */
-    managedServicesCustomerManagedKeyId?: pulumi.Input<string>;
-    networkConnectivityConfigId?: pulumi.Input<string>;
+    managedServicesCustomerManagedKeyId?: pulumi.Input<string | undefined>;
+    networkConnectivityConfigId?: pulumi.Input<string | undefined>;
     /**
      * `networkId` from networks.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * The pricing tier of the workspace.
      */
-    pricingTier?: pulumi.Input<string>;
+    pricingTier?: pulumi.Input<string | undefined>;
     /**
      * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
      */
-    privateAccessSettingsId?: pulumi.Input<string>;
+    privateAccessSettingsId?: pulumi.Input<string | undefined>;
     /**
      * `storageConfigurationId` from storage configuration. This must not be specified when `computeMode` is set to `SERVERLESS`.
      */
-    storageConfigurationId?: pulumi.Input<string>;
+    storageConfigurationId?: pulumi.Input<string | undefined>;
     /**
      * `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
      */
-    storageCustomerManagedKeyId?: pulumi.Input<string>;
-    token?: pulumi.Input<inputs.MwsWorkspacesToken>;
+    storageCustomerManagedKeyId?: pulumi.Input<string | undefined>;
+    token?: pulumi.Input<inputs.MwsWorkspacesToken | undefined>;
     /**
      * (String) workspace id
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
     /**
      * name of the workspace, will appear on UI.
      */
-    workspaceName?: pulumi.Input<string>;
+    workspaceName?: pulumi.Input<string | undefined>;
     /**
      * (String) workspace status
      */
-    workspaceStatus?: pulumi.Input<string>;
+    workspaceStatus?: pulumi.Input<string | undefined>;
     /**
      * (String) updates on workspace status
      */
-    workspaceStatusMessage?: pulumi.Input<string>;
+    workspaceStatusMessage?: pulumi.Input<string | undefined>;
     /**
      * (String) URL of the workspace
      */
-    workspaceUrl?: pulumi.Input<string>;
+    workspaceUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -636,83 +636,83 @@ export interface MwsWorkspacesArgs {
     /**
      * region of VPC.
      */
-    awsRegion?: pulumi.Input<string>;
-    cloud?: pulumi.Input<string>;
+    awsRegion?: pulumi.Input<string | undefined>;
+    cloud?: pulumi.Input<string | undefined>;
     /**
      * A block that specifies GCP workspace configurations, consisting of following blocks:
      */
-    cloudResourceContainer?: pulumi.Input<inputs.MwsWorkspacesCloudResourceContainer>;
+    cloudResourceContainer?: pulumi.Input<inputs.MwsWorkspacesCloudResourceContainer | undefined>;
     /**
      * The compute mode for the workspace. When unset, a classic workspace is created, and both `credentialsId` and `storageConfigurationId` must be specified. When set to `SERVERLESS`, the resulting workspace is a serverless workspace, and `credentialsId` and `storageConfigurationId` must not be set. The only allowed value for this is `SERVERLESS`. Changing this field requires recreation of the workspace.
      */
-    computeMode?: pulumi.Input<string>;
+    computeMode?: pulumi.Input<string | undefined>;
     /**
      * (Integer) time when workspace was created
      */
-    creationTime?: pulumi.Input<number>;
+    creationTime?: pulumi.Input<number | undefined>;
     /**
      * `credentialsId` from credentials. This must not be specified when `computeMode` is set to `SERVERLESS`.
      */
-    credentialsId?: pulumi.Input<string>;
+    credentialsId?: pulumi.Input<string | undefined>;
     /**
      * The custom tags key-value pairing that is attached to this workspace. These tags will be applied to clusters automatically in addition to any `defaultTags` or `customTags` on a cluster level. Please note it can take up to an hour for customTags to be set due to scheduling on Control Plane. After custom tags are applied, they can be modified however they can never be completely removed.
      */
-    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    customTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * @deprecated Use managedServicesCustomerManagedKeyId instead
      */
-    customerManagedKeyId?: pulumi.Input<string>;
+    customerManagedKeyId?: pulumi.Input<string | undefined>;
     /**
      * part of URL as in `https://<prefix>-<deployment-name>.cloud.databricks.com`. Deployment name cannot be used until a deployment name prefix is defined. Please contact your Databricks representative. Once a new deployment prefix is added/updated, it only will affect the new workspaces created.
      */
-    deploymentName?: pulumi.Input<string>;
+    deploymentName?: pulumi.Input<string | undefined>;
     /**
      * The expected status of the workspace. When unset, it defaults to `RUNNING`. When set to `PROVISIONING`, workspace provisioning will pause and not enter `RUNNING` status. The only allowed values for this is `RUNNING` and `PROVISIONING`.
      *
      * > Databricks strongly recommends using OAuth instead of PATs for user account client authentication and authorization due to the improved security
      */
-    expectedWorkspaceStatus?: pulumi.Input<string>;
-    externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo>;
-    gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesGcpManagedNetworkConfig>;
+    expectedWorkspaceStatus?: pulumi.Input<string | undefined>;
+    externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo | undefined>;
+    gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesGcpManagedNetworkConfig | undefined>;
     /**
      * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
-    gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig>;
-    isNoPublicIpEnabled?: pulumi.Input<boolean>;
+    gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig | undefined>;
+    isNoPublicIpEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * region of the subnet.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * `customerManagedKeyId` from customer managed keys with `useCases` set to `MANAGED_SERVICES`. This is used to encrypt the workspace's notebook and secret data in the control plane.
      */
-    managedServicesCustomerManagedKeyId?: pulumi.Input<string>;
-    networkConnectivityConfigId?: pulumi.Input<string>;
+    managedServicesCustomerManagedKeyId?: pulumi.Input<string | undefined>;
+    networkConnectivityConfigId?: pulumi.Input<string | undefined>;
     /**
      * `networkId` from networks.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * The pricing tier of the workspace.
      */
-    pricingTier?: pulumi.Input<string>;
+    pricingTier?: pulumi.Input<string | undefined>;
     /**
      * Canonical unique identifier of databricks.MwsPrivateAccessSettings in Databricks Account.
      */
-    privateAccessSettingsId?: pulumi.Input<string>;
+    privateAccessSettingsId?: pulumi.Input<string | undefined>;
     /**
      * `storageConfigurationId` from storage configuration. This must not be specified when `computeMode` is set to `SERVERLESS`.
      */
-    storageConfigurationId?: pulumi.Input<string>;
+    storageConfigurationId?: pulumi.Input<string | undefined>;
     /**
      * `customerManagedKeyId` from customer managed keys with `useCases` set to `STORAGE`. This is used to encrypt the DBFS Storage & Cluster Volumes.
      */
-    storageCustomerManagedKeyId?: pulumi.Input<string>;
-    token?: pulumi.Input<inputs.MwsWorkspacesToken>;
+    storageCustomerManagedKeyId?: pulumi.Input<string | undefined>;
+    token?: pulumi.Input<inputs.MwsWorkspacesToken | undefined>;
     /**
      * (String) workspace id
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
     /**
      * name of the workspace, will appear on UI.
      */
@@ -720,13 +720,13 @@ export interface MwsWorkspacesArgs {
     /**
      * (String) workspace status
      */
-    workspaceStatus?: pulumi.Input<string>;
+    workspaceStatus?: pulumi.Input<string | undefined>;
     /**
      * (String) updates on workspace status
      */
-    workspaceStatusMessage?: pulumi.Input<string>;
+    workspaceStatusMessage?: pulumi.Input<string | undefined>;
     /**
      * (String) URL of the workspace
      */
-    workspaceUrl?: pulumi.Input<string>;
+    workspaceUrl?: pulumi.Input<string | undefined>;
 }

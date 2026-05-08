@@ -249,10 +249,10 @@ def get_user(api: Optional[_builtins.str] = None,
         repos=pulumi.get(__ret__, 'repos'),
         user_id=pulumi.get(__ret__, 'user_id'),
         user_name=pulumi.get(__ret__, 'user_name'))
-def get_user_output(api: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    provider_config: Optional[pulumi.Input[Optional[Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict']]]] = None,
-                    user_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    user_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_user_output(api: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    provider_config: pulumi.Input[Optional[Optional[Union['GetUserProviderConfigArgs', 'GetUserProviderConfigArgsDict']]]] = None,
+                    user_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    user_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     Retrieves information about databricks_user.

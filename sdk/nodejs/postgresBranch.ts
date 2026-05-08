@@ -218,16 +218,16 @@ export interface PostgresBranchState {
      * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
      * For example, `development` becomes `projects/my-app/branches/development`
      */
-    branchId?: pulumi.Input<string>;
+    branchId?: pulumi.Input<string | undefined>;
     /**
      * (string) - A timestamp indicating when the branch was created
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - Output only. The full resource path of the branch.
      * Format: projects/{project_id}/branches/{branch_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project containing this branch (API resource hierarchy).
      * Format: projects/{project_id}
@@ -235,31 +235,31 @@ export interface PostgresBranchState {
      * Note: This field indicates where the branch exists in the resource hierarchy.
      * For point-in-time branching from another branch, see `status.source_branch`
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.PostgresBranchProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PostgresBranchProviderConfig | undefined>;
     /**
      * If true, update the branch if it already exists instead of returning an error
      */
-    replaceExisting?: pulumi.Input<boolean>;
+    replaceExisting?: pulumi.Input<boolean | undefined>;
     /**
      * The spec contains the branch configuration
      */
-    spec?: pulumi.Input<inputs.PostgresBranchSpec>;
+    spec?: pulumi.Input<inputs.PostgresBranchSpec | undefined>;
     /**
      * (BranchStatus) - The current status of a Branch
      */
-    status?: pulumi.Input<inputs.PostgresBranchStatus>;
+    status?: pulumi.Input<inputs.PostgresBranchStatus | undefined>;
     /**
      * (string) - System-generated unique ID for the branch
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * (string) - A timestamp indicating when the branch was last updated
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -283,13 +283,13 @@ export interface PostgresBranchArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.PostgresBranchProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PostgresBranchProviderConfig | undefined>;
     /**
      * If true, update the branch if it already exists instead of returning an error
      */
-    replaceExisting?: pulumi.Input<boolean>;
+    replaceExisting?: pulumi.Input<boolean | undefined>;
     /**
      * The spec contains the branch configuration
      */
-    spec?: pulumi.Input<inputs.PostgresBranchSpec>;
+    spec?: pulumi.Input<inputs.PostgresBranchSpec | undefined>;
 }

@@ -174,67 +174,67 @@ export class Dashboard extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Dashboard resources.
  */
 export interface DashboardState {
-    createTime?: pulumi.Input<string>;
-    dashboardChangeDetected?: pulumi.Input<boolean>;
-    dashboardId?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
+    dashboardChangeDetected?: pulumi.Input<boolean | undefined>;
+    dashboardId?: pulumi.Input<string | undefined>;
     /**
      * Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
      */
-    datasetCatalog?: pulumi.Input<string>;
+    datasetCatalog?: pulumi.Input<string | undefined>;
     /**
      * Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
      */
-    datasetSchema?: pulumi.Input<string>;
+    datasetSchema?: pulumi.Input<string | undefined>;
     /**
      * The display name of the dashboard.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Whether to embed credentials in the dashboard. Default is `true`.
      */
-    embedCredentials?: pulumi.Input<boolean>;
-    etag?: pulumi.Input<string>;
+    embedCredentials?: pulumi.Input<boolean | undefined>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
      */
-    filePath?: pulumi.Input<string>;
-    lifecycleState?: pulumi.Input<string>;
-    md5?: pulumi.Input<string>;
+    filePath?: pulumi.Input<string | undefined>;
+    lifecycleState?: pulumi.Input<string | undefined>;
+    md5?: pulumi.Input<string | undefined>;
     /**
      * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
      */
-    parentPath?: pulumi.Input<string>;
-    path?: pulumi.Input<string>;
+    parentPath?: pulumi.Input<string | undefined>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.DashboardProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.DashboardProviderConfig | undefined>;
     /**
      * The contents of the dashboard in serialized string form. Conflicts with `filePath`.
      */
-    serializedDashboard?: pulumi.Input<string>;
-    updateTime?: pulumi.Input<string>;
+    serializedDashboard?: pulumi.Input<string | undefined>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The warehouse ID used to run the dashboard.
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Dashboard resource.
  */
 export interface DashboardArgs {
-    createTime?: pulumi.Input<string>;
-    dashboardChangeDetected?: pulumi.Input<boolean>;
-    dashboardId?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
+    dashboardChangeDetected?: pulumi.Input<boolean | undefined>;
+    dashboardId?: pulumi.Input<string | undefined>;
     /**
      * Sets the default catalog for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
      */
-    datasetCatalog?: pulumi.Input<string>;
+    datasetCatalog?: pulumi.Input<string | undefined>;
     /**
      * Sets the default schema for all datasets in this dashboard. Does not impact table references that use fully qualified catalog names (ex: samples.nyctaxi.trips).
      */
-    datasetSchema?: pulumi.Input<string>;
+    datasetSchema?: pulumi.Input<string | undefined>;
     /**
      * The display name of the dashboard.
      */
@@ -242,28 +242,28 @@ export interface DashboardArgs {
     /**
      * Whether to embed credentials in the dashboard. Default is `true`.
      */
-    embedCredentials?: pulumi.Input<boolean>;
-    etag?: pulumi.Input<string>;
+    embedCredentials?: pulumi.Input<boolean | undefined>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The path to the dashboard JSON file. Conflicts with `serializedDashboard`.
      */
-    filePath?: pulumi.Input<string>;
-    lifecycleState?: pulumi.Input<string>;
-    md5?: pulumi.Input<string>;
+    filePath?: pulumi.Input<string | undefined>;
+    lifecycleState?: pulumi.Input<string | undefined>;
+    md5?: pulumi.Input<string | undefined>;
     /**
      * The workspace path of the folder containing the dashboard. Includes leading slash and no trailing slash.  If folder doesn't exist, it will be created.
      */
     parentPath: pulumi.Input<string>;
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.DashboardProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.DashboardProviderConfig | undefined>;
     /**
      * The contents of the dashboard in serialized string form. Conflicts with `filePath`.
      */
-    serializedDashboard?: pulumi.Input<string>;
-    updateTime?: pulumi.Input<string>;
+    serializedDashboard?: pulumi.Input<string | undefined>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The warehouse ID used to run the dashboard.
      */

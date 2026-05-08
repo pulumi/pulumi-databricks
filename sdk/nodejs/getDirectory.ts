@@ -103,11 +103,11 @@ export function getDirectoryOutput(args: GetDirectoryOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getDirectory.
  */
 export interface GetDirectoryOutputArgs {
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * directory object ID
      */
-    objectId?: pulumi.Input<number>;
+    objectId?: pulumi.Input<number | undefined>;
     /**
      * Path to a directory in the workspace
      */
@@ -115,9 +115,9 @@ export interface GetDirectoryOutputArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetDirectoryProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetDirectoryProviderConfigArgs | undefined>;
     /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */
-    workspacePath?: pulumi.Input<string>;
+    workspacePath?: pulumi.Input<string | undefined>;
 }

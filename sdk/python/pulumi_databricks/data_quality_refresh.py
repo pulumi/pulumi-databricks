@@ -23,7 +23,7 @@ class DataQualityRefreshArgs:
     def __init__(__self__, *,
                  object_id: pulumi.Input[_builtins.str],
                  object_type: pulumi.Input[_builtins.str],
-                 provider_config: Optional[pulumi.Input['DataQualityRefreshProviderConfigArgs']] = None):
+                 provider_config: pulumi.Input[Optional['DataQualityRefreshProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a DataQualityRefresh resource.
 
@@ -78,29 +78,29 @@ class DataQualityRefreshArgs:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DataQualityRefreshProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DataQualityRefreshProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DataQualityRefreshProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DataQualityRefreshProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _DataQualityRefreshState:
     def __init__(__self__, *,
-                 end_time_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['DataQualityRefreshProviderConfigArgs']] = None,
-                 refresh_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_time_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['DataQualityRefreshProviderConfigArgs']] = None,
+                 refresh_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_time_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataQualityRefresh resources.
 
@@ -143,31 +143,31 @@ class _DataQualityRefreshState:
 
     @_builtins.property
     @pulumi.getter(name="endTimeMs")
-    def end_time_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_time_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (integer) - Time when the refresh ended (milliseconds since 1/1/1970 UTC)
         """
         return pulumi.get(self, "end_time_ms")
 
     @end_time_ms.setter
-    def end_time_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_time_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_time_ms", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - An optional message to give insight into the current state of the refresh (e.g. FAILURE messages)
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the request object. It is `schema_id` for `schema`, and `table_id` for `table`.
 
@@ -182,79 +182,79 @@ class _DataQualityRefreshState:
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="objectType")
-    def object_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def object_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the monitored object. Can be one of the following: `schema`or `table`
         """
         return pulumi.get(self, "object_type")
 
     @object_type.setter
-    def object_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def object_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "object_type", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DataQualityRefreshProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DataQualityRefreshProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DataQualityRefreshProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DataQualityRefreshProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="refreshId")
-    def refresh_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def refresh_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (integer) - Unique id of the refresh operation
         """
         return pulumi.get(self, "refresh_id")
 
     @refresh_id.setter
-    def refresh_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def refresh_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "refresh_id", value)
 
     @_builtins.property
     @pulumi.getter(name="startTimeMs")
-    def start_time_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_time_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (integer) - Time when the refresh started (milliseconds since 1/1/1970 UTC)
         """
         return pulumi.get(self, "start_time_ms")
 
     @start_time_ms.setter
-    def start_time_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_time_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_time_ms", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The current state of the refresh. Possible values are: `MONITOR_REFRESH_STATE_CANCELED`, `MONITOR_REFRESH_STATE_FAILED`, `MONITOR_REFRESH_STATE_PENDING`, `MONITOR_REFRESH_STATE_RUNNING`, `MONITOR_REFRESH_STATE_SUCCESS`, `MONITOR_REFRESH_STATE_UNKNOWN`
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def trigger(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - What triggered the refresh. Possible values are: `MONITOR_REFRESH_TRIGGER_DATA_CHANGE`, `MONITOR_REFRESH_TRIGGER_MANUAL`, `MONITOR_REFRESH_TRIGGER_SCHEDULE`, `MONITOR_REFRESH_TRIGGER_UNKNOWN`
         """
         return pulumi.get(self, "trigger")
 
     @trigger.setter
-    def trigger(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger", value)
 
 
@@ -264,9 +264,9 @@ class DataQualityRefresh(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -415,9 +415,9 @@ class DataQualityRefresh(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 object_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -450,15 +450,15 @@ class DataQualityRefresh(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            end_time_ms: Optional[pulumi.Input[_builtins.int]] = None,
-            message: Optional[pulumi.Input[_builtins.str]] = None,
-            object_id: Optional[pulumi.Input[_builtins.str]] = None,
-            object_type: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']]] = None,
-            refresh_id: Optional[pulumi.Input[_builtins.int]] = None,
-            start_time_ms: Optional[pulumi.Input[_builtins.int]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            trigger: Optional[pulumi.Input[_builtins.str]] = None) -> 'DataQualityRefresh':
+            end_time_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            message: pulumi.Input[Optional[_builtins.str]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            object_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']]] = None,
+            refresh_id: pulumi.Input[Optional[_builtins.int]] = None,
+            start_time_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger: pulumi.Input[Optional[_builtins.str]] = None) -> 'DataQualityRefresh':
         """
         Get an existing DataQualityRefresh resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

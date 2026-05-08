@@ -272,71 +272,71 @@ export interface QueryState {
     /**
      * Whether to apply a 1000 row limit to the query result.
      */
-    applyAutoLimit?: pulumi.Input<boolean>;
+    applyAutoLimit?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the catalog where this query will be executed.
      */
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     /**
      * The timestamp string indicating when the query was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * General description that conveys additional information about this query such as usage notes.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the query.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Username of the user who last saved changes to this query.
      */
-    lastModifierUserName?: pulumi.Input<string>;
+    lastModifierUserName?: pulumi.Input<string | undefined>;
     /**
      * The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
      */
-    lifecycleState?: pulumi.Input<string>;
+    lifecycleState?: pulumi.Input<string | undefined>;
     /**
      * Query owner's username.
      */
-    ownerUserName?: pulumi.Input<string>;
+    ownerUserName?: pulumi.Input<string | undefined>;
     /**
      * Query parameter definition.  Consists of following attributes (one of `*_value` is required):
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.QueryParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.QueryParameter>[] | undefined>;
     /**
      * The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
      */
-    parentPath?: pulumi.Input<string>;
+    parentPath?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.QueryProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.QueryProviderConfig | undefined>;
     /**
      * Text of SQL query.
      */
-    queryText?: pulumi.Input<string>;
+    queryText?: pulumi.Input<string | undefined>;
     /**
      * Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
      */
-    runAsMode?: pulumi.Input<string>;
+    runAsMode?: pulumi.Input<string | undefined>;
     /**
      * Name of the schema where this query will be executed.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * Tags that will be added to the query.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The timestamp string indicating when the query was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * ID of a SQL warehouse which will be used to execute this query.
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -346,15 +346,15 @@ export interface QueryArgs {
     /**
      * Whether to apply a 1000 row limit to the query result.
      */
-    applyAutoLimit?: pulumi.Input<boolean>;
+    applyAutoLimit?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the catalog where this query will be executed.
      */
-    catalog?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
     /**
      * General description that conveys additional information about this query such as usage notes.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the query.
      */
@@ -362,19 +362,19 @@ export interface QueryArgs {
     /**
      * Query owner's username.
      */
-    ownerUserName?: pulumi.Input<string>;
+    ownerUserName?: pulumi.Input<string | undefined>;
     /**
      * Query parameter definition.  Consists of following attributes (one of `*_value` is required):
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.QueryParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.QueryParameter>[] | undefined>;
     /**
      * The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
      */
-    parentPath?: pulumi.Input<string>;
+    parentPath?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.QueryProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.QueryProviderConfig | undefined>;
     /**
      * Text of SQL query.
      */
@@ -382,15 +382,15 @@ export interface QueryArgs {
     /**
      * Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
      */
-    runAsMode?: pulumi.Input<string>;
+    runAsMode?: pulumi.Input<string | undefined>;
     /**
      * Name of the schema where this query will be executed.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * Tags that will be added to the query.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of a SQL warehouse which will be used to execute this query.
      */

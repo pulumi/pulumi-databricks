@@ -161,11 +161,11 @@ def get_metastore(id: Optional[_builtins.str] = None,
         metastore_info=pulumi.get(__ret__, 'metastore_info'),
         name=pulumi.get(__ret__, 'name'),
         region=pulumi.get(__ret__, 'region'))
-def get_metastore_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         metastore_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         metastore_info: Optional[pulumi.Input[Optional[Union['GetMetastoreMetastoreInfoArgs', 'GetMetastoreMetastoreInfoArgsDict']]]] = None,
-                         name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_metastore_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         metastore_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         metastore_info: pulumi.Input[Optional[Optional[Union['GetMetastoreMetastoreInfoArgs', 'GetMetastoreMetastoreInfoArgsDict']]]] = None,
+                         name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetastoreResult]:
     """
     Retrieves information about metastore for a given id of Metastore object, that was created by Pulumi or manually, so that special handling could be applied.

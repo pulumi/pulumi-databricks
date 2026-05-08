@@ -306,63 +306,63 @@ export interface AlertState {
     /**
      * Trigger conditions of the alert. Block consists of the following attributes:
      */
-    condition?: pulumi.Input<inputs.AlertCondition>;
+    condition?: pulumi.Input<inputs.AlertCondition | undefined>;
     /**
      * The timestamp string indicating when the alert was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
      */
-    customBody?: pulumi.Input<string>;
+    customBody?: pulumi.Input<string | undefined>;
     /**
      * Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
      */
-    customSubject?: pulumi.Input<string>;
+    customSubject?: pulumi.Input<string | undefined>;
     /**
      * Name of the alert.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The workspace state of the alert. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
      */
-    lifecycleState?: pulumi.Input<string>;
+    lifecycleState?: pulumi.Input<string | undefined>;
     /**
      * Whether to notify alert subscribers when alert returns back to normal.
      */
-    notifyOnOk?: pulumi.Input<boolean>;
+    notifyOnOk?: pulumi.Input<boolean | undefined>;
     /**
      * Alert owner's username.
      */
-    ownerUserName?: pulumi.Input<string>;
+    ownerUserName?: pulumi.Input<string | undefined>;
     /**
      * The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
      */
-    parentPath?: pulumi.Input<string>;
+    parentPath?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.AlertProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.AlertProviderConfig | undefined>;
     /**
      * ID of the query evaluated by the alert.
      */
-    queryId?: pulumi.Input<string>;
+    queryId?: pulumi.Input<string | undefined>;
     /**
      * Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
      */
-    secondsToRetrigger?: pulumi.Input<number>;
+    secondsToRetrigger?: pulumi.Input<number | undefined>;
     /**
      * Current state of the alert's trigger status (`UNKNOWN`, `OK`, `TRIGGERED`). This field is set to `UNKNOWN` if the alert has not yet been evaluated or ran into an error during the last evaluation.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The timestamp string when the alert was last triggered if the alert has been triggered before.
      */
-    triggerTime?: pulumi.Input<string>;
+    triggerTime?: pulumi.Input<string | undefined>;
     /**
      * The timestamp string indicating when the alert was updated.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -376,11 +376,11 @@ export interface AlertArgs {
     /**
      * Custom body of alert notification, if it exists. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
      */
-    customBody?: pulumi.Input<string>;
+    customBody?: pulumi.Input<string | undefined>;
     /**
      * Custom subject of alert notification, if it exists. This includes email subject, Slack notification header, etc. See [Alerts API reference](https://docs.databricks.com/en/sql/user/alerts/index.html) for custom templating instructions.
      */
-    customSubject?: pulumi.Input<string>;
+    customSubject?: pulumi.Input<string | undefined>;
     /**
      * Name of the alert.
      */
@@ -388,19 +388,19 @@ export interface AlertArgs {
     /**
      * Whether to notify alert subscribers when alert returns back to normal.
      */
-    notifyOnOk?: pulumi.Input<boolean>;
+    notifyOnOk?: pulumi.Input<boolean | undefined>;
     /**
      * Alert owner's username.
      */
-    ownerUserName?: pulumi.Input<string>;
+    ownerUserName?: pulumi.Input<string | undefined>;
     /**
      * The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
      */
-    parentPath?: pulumi.Input<string>;
+    parentPath?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.AlertProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.AlertProviderConfig | undefined>;
     /**
      * ID of the query evaluated by the alert.
      */
@@ -408,5 +408,5 @@ export interface AlertArgs {
     /**
      * Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
      */
-    secondsToRetrigger?: pulumi.Input<number>;
+    secondsToRetrigger?: pulumi.Input<number | undefined>;
 }

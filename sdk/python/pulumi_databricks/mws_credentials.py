@@ -21,10 +21,10 @@ class MwsCredentialsArgs:
     def __init__(__self__, *,
                  credentials_name: pulumi.Input[_builtins.str],
                  role_arn: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 credentials_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 credentials_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MwsCredentials resource.
 
@@ -75,59 +75,59 @@ class MwsCredentialsArgs:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""`account_id` should be set as part of the Databricks Config, not in the resource.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Integer) time of credentials registration
         """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="credentialsId")
-    def credentials_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credentials_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) identifier of credentials
         """
         return pulumi.get(self, "credentials_id")
 
     @credentials_id.setter
-    def credentials_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credentials_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credentials_id", value)
 
     @_builtins.property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "external_id")
 
     @external_id.setter
-    def external_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_id", value)
 
 
 @pulumi.input_type
 class _MwsCredentialsState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 credentials_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 credentials_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsCredentials resources.
 
@@ -156,71 +156,71 @@ class _MwsCredentialsState:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""`account_id` should be set as part of the Databricks Config, not in the resource.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **(Deprecated)** Maintained for backwards compatibility and will be removed in a later version. It should now be specified under a provider instance where `host = "https://accounts.cloud.databricks.com"`
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Integer) time of credentials registration
         """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="credentialsId")
-    def credentials_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credentials_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) identifier of credentials
         """
         return pulumi.get(self, "credentials_id")
 
     @credentials_id.setter
-    def credentials_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credentials_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credentials_id", value)
 
     @_builtins.property
     @pulumi.getter(name="credentialsName")
-    def credentials_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credentials_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         name of credentials to register
         """
         return pulumi.get(self, "credentials_name")
 
     @credentials_name.setter
-    def credentials_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credentials_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credentials_name", value)
 
     @_builtins.property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "external_id")
 
     @external_id.setter
-    def external_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ARN of cross-account role
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
 
@@ -230,12 +230,12 @@ class MwsCredentials(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 credentials_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 credentials_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource to configure the cross-account role for creation of new workspaces within AWS.
@@ -358,12 +358,12 @@ class MwsCredentials(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 credentials_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 credentials_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -393,12 +393,12 @@ class MwsCredentials(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-            credentials_id: Optional[pulumi.Input[_builtins.str]] = None,
-            credentials_name: Optional[pulumi.Input[_builtins.str]] = None,
-            external_id: Optional[pulumi.Input[_builtins.str]] = None,
-            role_arn: Optional[pulumi.Input[_builtins.str]] = None) -> 'MwsCredentials':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            credentials_id: pulumi.Input[Optional[_builtins.str]] = None,
+            credentials_name: pulumi.Input[Optional[_builtins.str]] = None,
+            external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_arn: pulumi.Input[Optional[_builtins.str]] = None) -> 'MwsCredentials':
         """
         Get an existing MwsCredentials resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

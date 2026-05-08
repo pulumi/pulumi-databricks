@@ -107,28 +107,28 @@ export interface GlobalInitScriptState {
     /**
      * The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
      */
-    contentBase64?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string | undefined>;
     /**
      * specifies if the script is enabled for execution, or not
      */
-    enabled?: pulumi.Input<boolean>;
-    md5?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    md5?: pulumi.Input<string | undefined>;
     /**
      * the name of the script.  It should be unique
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GlobalInitScriptProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.GlobalInitScriptProviderConfig | undefined>;
     /**
      * Path to script's source code on local filesystem. Conflicts with `contentBase64`
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -138,26 +138,26 @@ export interface GlobalInitScriptArgs {
     /**
      * The base64-encoded source code global init script. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances
      */
-    contentBase64?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string | undefined>;
     /**
      * specifies if the script is enabled for execution, or not
      */
-    enabled?: pulumi.Input<boolean>;
-    md5?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean | undefined>;
+    md5?: pulumi.Input<string | undefined>;
     /**
      * the name of the script.  It should be unique
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * the position of a global init script, where `0` represents the first global init script to run, `1` is the second global init script to run, and so on. When omitted, the script gets the last position.
      */
-    position?: pulumi.Input<number>;
+    position?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GlobalInitScriptProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.GlobalInitScriptProviderConfig | undefined>;
     /**
      * Path to script's source code on local filesystem. Conflicts with `contentBase64`
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }

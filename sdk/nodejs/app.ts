@@ -256,93 +256,93 @@ export class App extends pulumi.CustomResource {
  * Input properties used for looking up and filtering App resources.
  */
 export interface AppState {
-    activeDeployment?: pulumi.Input<inputs.AppActiveDeployment>;
+    activeDeployment?: pulumi.Input<inputs.AppActiveDeployment | undefined>;
     /**
      * attribute
      */
-    appStatus?: pulumi.Input<inputs.AppAppStatus>;
+    appStatus?: pulumi.Input<inputs.AppAppStatus | undefined>;
     /**
      * The Budget Policy ID set for this resource.
      */
-    budgetPolicyId?: pulumi.Input<string>;
+    budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
      * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
      */
-    computeSize?: pulumi.Input<string>;
+    computeSize?: pulumi.Input<string | undefined>;
     /**
      * attribute
      */
-    computeStatus?: pulumi.Input<inputs.AppComputeStatus>;
+    computeStatus?: pulumi.Input<inputs.AppComputeStatus | undefined>;
     /**
      * The creation time of the app.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The email of the user that created the app.
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
      */
-    defaultSourceCodePath?: pulumi.Input<string>;
+    defaultSourceCodePath?: pulumi.Input<string | undefined>;
     /**
      * The description of the app.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The effective budget policy ID.
      */
-    effectiveBudgetPolicyId?: pulumi.Input<string>;
-    effectiveUsagePolicyId?: pulumi.Input<string>;
+    effectiveBudgetPolicyId?: pulumi.Input<string | undefined>;
+    effectiveUsagePolicyId?: pulumi.Input<string | undefined>;
     /**
      * A list of effective api scopes granted to the user access token.
      */
-    effectiveUserApiScopes?: pulumi.Input<pulumi.Input<string>[]>;
-    gitRepository?: pulumi.Input<inputs.AppGitRepository>;
+    effectiveUserApiScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    gitRepository?: pulumi.Input<inputs.AppGitRepository | undefined>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
-    name?: pulumi.Input<string>;
-    noCompute?: pulumi.Input<boolean>;
-    oauth2AppClientId?: pulumi.Input<string>;
-    oauth2AppIntegrationId?: pulumi.Input<string>;
-    pendingDeployment?: pulumi.Input<inputs.AppPendingDeployment>;
-    providerConfig?: pulumi.Input<inputs.AppProviderConfig>;
+    name?: pulumi.Input<string | undefined>;
+    noCompute?: pulumi.Input<boolean | undefined>;
+    oauth2AppClientId?: pulumi.Input<string | undefined>;
+    oauth2AppIntegrationId?: pulumi.Input<string | undefined>;
+    pendingDeployment?: pulumi.Input<inputs.AppPendingDeployment | undefined>;
+    providerConfig?: pulumi.Input<inputs.AppProviderConfig | undefined>;
     /**
      * A list of resources that the app have access to.
      */
-    resources?: pulumi.Input<pulumi.Input<inputs.AppResource>[]>;
+    resources?: pulumi.Input<pulumi.Input<inputs.AppResource>[] | undefined>;
     /**
      * client_id (application_id) of the app service principal
      */
-    servicePrincipalClientId?: pulumi.Input<string>;
+    servicePrincipalClientId?: pulumi.Input<string | undefined>;
     /**
      * id of the app service principal
      */
-    servicePrincipalId?: pulumi.Input<number>;
+    servicePrincipalId?: pulumi.Input<number | undefined>;
     /**
      * name of the app service principal
      */
-    servicePrincipalName?: pulumi.Input<string>;
-    space?: pulumi.Input<string>;
-    telemetryExportDestinations?: pulumi.Input<pulumi.Input<inputs.AppTelemetryExportDestination>[]>;
+    servicePrincipalName?: pulumi.Input<string | undefined>;
+    space?: pulumi.Input<string | undefined>;
+    telemetryExportDestinations?: pulumi.Input<pulumi.Input<inputs.AppTelemetryExportDestination>[] | undefined>;
     /**
      * The update time of the app.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * The email of the user that last updated the app.
      */
-    updater?: pulumi.Input<string>;
+    updater?: pulumi.Input<string | undefined>;
     /**
      * The URL of the app once it is deployed.
      */
-    url?: pulumi.Input<string>;
-    usagePolicyId?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
+    usagePolicyId?: pulumi.Input<string | undefined>;
     /**
      * A list of api scopes granted to the user access token.
      */
-    userApiScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    userApiScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -352,31 +352,31 @@ export interface AppArgs {
     /**
      * The Budget Policy ID set for this resource.
      */
-    budgetPolicyId?: pulumi.Input<string>;
+    budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
      * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
      */
-    computeSize?: pulumi.Input<string>;
+    computeSize?: pulumi.Input<string | undefined>;
     /**
      * The description of the app.
      */
-    description?: pulumi.Input<string>;
-    gitRepository?: pulumi.Input<inputs.AppGitRepository>;
+    description?: pulumi.Input<string | undefined>;
+    gitRepository?: pulumi.Input<inputs.AppGitRepository | undefined>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
-    name?: pulumi.Input<string>;
-    noCompute?: pulumi.Input<boolean>;
-    providerConfig?: pulumi.Input<inputs.AppProviderConfig>;
+    name?: pulumi.Input<string | undefined>;
+    noCompute?: pulumi.Input<boolean | undefined>;
+    providerConfig?: pulumi.Input<inputs.AppProviderConfig | undefined>;
     /**
      * A list of resources that the app have access to.
      */
-    resources?: pulumi.Input<pulumi.Input<inputs.AppResource>[]>;
-    space?: pulumi.Input<string>;
-    telemetryExportDestinations?: pulumi.Input<pulumi.Input<inputs.AppTelemetryExportDestination>[]>;
-    usagePolicyId?: pulumi.Input<string>;
+    resources?: pulumi.Input<pulumi.Input<inputs.AppResource>[] | undefined>;
+    space?: pulumi.Input<string | undefined>;
+    telemetryExportDestinations?: pulumi.Input<pulumi.Input<inputs.AppTelemetryExportDestination>[] | undefined>;
+    usagePolicyId?: pulumi.Input<string | undefined>;
     /**
      * A list of api scopes granted to the user access token.
      */
-    userApiScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    userApiScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

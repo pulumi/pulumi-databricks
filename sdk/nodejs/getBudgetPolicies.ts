@@ -102,15 +102,15 @@ export interface GetBudgetPoliciesOutputArgs {
     /**
      * A filter to apply to the list of policies
      */
-    filterBy?: pulumi.Input<inputs.GetBudgetPoliciesFilterByArgs>;
+    filterBy?: pulumi.Input<inputs.GetBudgetPoliciesFilterByArgs | undefined>;
     /**
      * The maximum number of budget policies to return.
      * If unspecified, at most 100 budget policies will be returned.
      * The maximum value is 1000; values above 1000 will be coerced to 1000
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The sort specification
      */
-    sortSpec?: pulumi.Input<inputs.GetBudgetPoliciesSortSpecArgs>;
+    sortSpec?: pulumi.Input<inputs.GetBudgetPoliciesSortSpecArgs | undefined>;
 }

@@ -24,16 +24,16 @@ class QueryArgs:
                  display_name: pulumi.Input[_builtins.str],
                  query_text: pulumi.Input[_builtins.str],
                  warehouse_id: pulumi.Input[_builtins.str],
-                 apply_auto_limit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]]] = None,
-                 parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['QueryProviderConfigArgs']] = None,
-                 run_as_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 apply_auto_limit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['QueryParameterArgs']]]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['QueryProviderConfigArgs']] = None,
+                 run_as_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Query resource.
 
@@ -113,145 +113,145 @@ class QueryArgs:
 
     @_builtins.property
     @pulumi.getter(name="applyAutoLimit")
-    def apply_auto_limit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def apply_auto_limit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to apply a 1000 row limit to the query result.
         """
         return pulumi.get(self, "apply_auto_limit")
 
     @apply_auto_limit.setter
-    def apply_auto_limit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def apply_auto_limit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "apply_auto_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def catalog(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def catalog(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the catalog where this query will be executed.
         """
         return pulumi.get(self, "catalog")
 
     @catalog.setter
-    def catalog(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def catalog(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         General description that conveys additional information about this query such as usage notes.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerUserName")
-    def owner_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query owner's username.
         """
         return pulumi.get(self, "owner_user_name")
 
     @owner_user_name.setter
-    def owner_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner_user_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['QueryParameterArgs']]]]:
         """
         Query parameter definition.  Consists of following attributes (one of `*_value` is required):
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['QueryParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="parentPath")
-    def parent_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
         """
         return pulumi.get(self, "parent_path")
 
     @parent_path.setter
-    def parent_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_path", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['QueryProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['QueryProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['QueryProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['QueryProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsMode")
-    def run_as_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_as_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
         """
         return pulumi.get(self, "run_as_mode")
 
     @run_as_mode.setter
-    def run_as_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_as_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_as_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the schema where this query will be executed.
         """
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags that will be added to the query.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _QueryState:
     def __init__(__self__, *,
-                 apply_auto_limit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modifier_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]]] = None,
-                 parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['QueryProviderConfigArgs']] = None,
-                 query_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 apply_auto_limit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modifier_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['QueryParameterArgs']]]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['QueryProviderConfigArgs']] = None,
+                 query_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Query resources.
 
@@ -310,206 +310,206 @@ class _QueryState:
 
     @_builtins.property
     @pulumi.getter(name="applyAutoLimit")
-    def apply_auto_limit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def apply_auto_limit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to apply a 1000 row limit to the query result.
         """
         return pulumi.get(self, "apply_auto_limit")
 
     @apply_auto_limit.setter
-    def apply_auto_limit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def apply_auto_limit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "apply_auto_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def catalog(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def catalog(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the catalog where this query will be executed.
         """
         return pulumi.get(self, "catalog")
 
     @catalog.setter
-    def catalog(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def catalog(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "catalog", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp string indicating when the query was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         General description that conveys additional information about this query such as usage notes.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the query.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifierUserName")
-    def last_modifier_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modifier_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username of the user who last saved changes to this query.
         """
         return pulumi.get(self, "last_modifier_user_name")
 
     @last_modifier_user_name.setter
-    def last_modifier_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modifier_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modifier_user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleState")
-    def lifecycle_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lifecycle_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The workspace state of the query. Used for tracking trashed status. (Possible values are `ACTIVE` or `TRASHED`).
         """
         return pulumi.get(self, "lifecycle_state")
 
     @lifecycle_state.setter
-    def lifecycle_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lifecycle_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lifecycle_state", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerUserName")
-    def owner_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query owner's username.
         """
         return pulumi.get(self, "owner_user_name")
 
     @owner_user_name.setter
-    def owner_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner_user_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['QueryParameterArgs']]]]:
         """
         Query parameter definition.  Consists of following attributes (one of `*_value` is required):
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['QueryParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="parentPath")
-    def parent_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to a workspace folder containing the query. The default is the user's home folder.  If changed, the query will be recreated.
         """
         return pulumi.get(self, "parent_path")
 
     @parent_path.setter
-    def parent_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_path", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['QueryProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['QueryProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['QueryProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['QueryProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="queryText")
-    def query_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Text of SQL query.
         """
         return pulumi.get(self, "query_text")
 
     @query_text.setter
-    def query_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query_text", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsMode")
-    def run_as_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_as_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the "Run as" role for the object.  Should be one of `OWNER`, `VIEWER`.
         """
         return pulumi.get(self, "run_as_mode")
 
     @run_as_mode.setter
-    def run_as_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_as_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_as_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the schema where this query will be executed.
         """
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Tags that will be added to the query.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp string indicating when the query was updated.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="warehouseId")
-    def warehouse_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def warehouse_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of a SQL warehouse which will be used to execute this query.
         """
         return pulumi.get(self, "warehouse_id")
 
     @warehouse_id.setter
-    def warehouse_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def warehouse_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "warehouse_id", value)
 
 
@@ -519,19 +519,19 @@ class Query(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apply_auto_limit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict']]]]] = None,
-                 parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['QueryProviderConfigArgs', 'QueryProviderConfigArgsDict']]] = None,
-                 query_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 apply_auto_limit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict']]]]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['QueryProviderConfigArgs', 'QueryProviderConfigArgsDict']]] = None,
+                 query_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to manage [Databricks SQL Queries](https://docs.databricks.com/en/sql/user/queries/index.html).  It supersedes SqlQuery resource - see migration guide below for more details.
@@ -760,19 +760,19 @@ class Query(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apply_auto_limit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 catalog: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict']]]]] = None,
-                 parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['QueryProviderConfigArgs', 'QueryProviderConfigArgsDict']]] = None,
-                 query_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 warehouse_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 apply_auto_limit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 catalog: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict']]]]] = None,
+                 parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['QueryProviderConfigArgs', 'QueryProviderConfigArgsDict']]] = None,
+                 query_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -815,23 +815,23 @@ class Query(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            apply_auto_limit: Optional[pulumi.Input[_builtins.bool]] = None,
-            catalog: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modifier_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            lifecycle_state: Optional[pulumi.Input[_builtins.str]] = None,
-            owner_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict']]]]] = None,
-            parent_path: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['QueryProviderConfigArgs', 'QueryProviderConfigArgsDict']]] = None,
-            query_text: Optional[pulumi.Input[_builtins.str]] = None,
-            run_as_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            schema: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            warehouse_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Query':
+            apply_auto_limit: pulumi.Input[Optional[_builtins.bool]] = None,
+            catalog: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modifier_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueryParameterArgs', 'QueryParameterArgsDict']]]]] = None,
+            parent_path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['QueryProviderConfigArgs', 'QueryProviderConfigArgsDict']]] = None,
+            query_text: pulumi.Input[Optional[_builtins.str]] = None,
+            run_as_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            warehouse_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Query':
         """
         Get an existing Query resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -117,8 +117,8 @@ def get_mws_credentials(ids: Optional[Mapping[str, _builtins.str]] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_mws_credentials_output(ids: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                               provider_config: Optional[pulumi.Input[Optional[Union['GetMwsCredentialsProviderConfigArgs', 'GetMwsCredentialsProviderConfigArgsDict']]]] = None,
+def get_mws_credentials_output(ids: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                               provider_config: pulumi.Input[Optional[Optional[Union['GetMwsCredentialsProviderConfigArgs', 'GetMwsCredentialsProviderConfigArgsDict']]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMwsCredentialsResult]:
     """
     Lists all MwsCredentials in Databricks Account.

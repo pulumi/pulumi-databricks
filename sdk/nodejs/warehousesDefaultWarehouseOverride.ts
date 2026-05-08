@@ -142,25 +142,25 @@ export interface WarehousesDefaultWarehouseOverrideState {
     /**
      * The ID component of the resource name (user ID)
      */
-    defaultWarehouseOverrideId?: pulumi.Input<string>;
+    defaultWarehouseOverrideId?: pulumi.Input<string | undefined>;
     /**
      * (string) - The resource name of the default warehouse override.
      * Format: default-warehouse-overrides/{default_warehouse_override_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.WarehousesDefaultWarehouseOverrideProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.WarehousesDefaultWarehouseOverrideProviderConfig | undefined>;
     /**
      * The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The specific warehouse ID when type is CUSTOM.
      * Not set for LAST_SELECTED type
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -174,7 +174,7 @@ export interface WarehousesDefaultWarehouseOverrideArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.WarehousesDefaultWarehouseOverrideProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.WarehousesDefaultWarehouseOverrideProviderConfig | undefined>;
     /**
      * The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
      */
@@ -183,5 +183,5 @@ export interface WarehousesDefaultWarehouseOverrideArgs {
      * The specific warehouse ID when type is CUSTOM.
      * Not set for LAST_SELECTED type
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }

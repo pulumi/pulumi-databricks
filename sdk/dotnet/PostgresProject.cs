@@ -24,7 +24,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Index.PostgresProject("this", new()
+    ///     var @this = new Databricks.PostgresProject("this", new()
     ///     {
     ///         ProjectId = "my-project",
     ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
@@ -47,7 +47,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Index.PostgresProject("this", new()
+    ///     var @this = new Databricks.PostgresProject("this", new()
     ///     {
     ///         ProjectId = "analytics-project",
     ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
@@ -83,7 +83,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ha = new Databricks.Index.PostgresProject("ha", new()
+    ///     var ha = new Databricks.PostgresProject("ha", new()
     ///     {
     ///         ProjectId = "ha-project",
     ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
@@ -93,7 +93,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var production = new Databricks.Index.PostgresBranch("production", new()
+    ///     var production = new Databricks.PostgresBranch("production", new()
     ///     {
     ///         BranchId = "production",
     ///         Parent = ha.Name,
@@ -105,7 +105,7 @@ namespace Pulumi.Databricks
     ///         ReplaceExisting = true,
     ///     });
     /// 
-    ///     var primary = new Databricks.Index.PostgresEndpoint("primary", new()
+    ///     var primary = new Databricks.PostgresEndpoint("primary", new()
     ///     {
     ///         EndpointId = "primary",
     ///         Parent = production.Name,
@@ -138,7 +138,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Index.PostgresProject("this", new()
+    ///     var @this = new Databricks.PostgresProject("this", new()
     ///     {
     ///         ProjectId = "my-project",
     ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
@@ -148,7 +148,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var dev = new Databricks.Index.PostgresBranch("dev", new()
+    ///     var dev = new Databricks.PostgresBranch("dev", new()
     ///     {
     ///         BranchId = "dev-branch",
     ///         Parent = @this.Name,

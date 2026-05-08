@@ -95,9 +95,9 @@ export function getQualityMonitorsV2Output(args?: GetQualityMonitorsV2OutputArgs
  * A collection of arguments for invoking getQualityMonitorsV2.
  */
 export interface GetQualityMonitorsV2OutputArgs {
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetQualityMonitorsV2ProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetQualityMonitorsV2ProviderConfigArgs | undefined>;
 }

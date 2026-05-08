@@ -113,8 +113,8 @@ def get_endpoints(page_size: Optional[_builtins.int] = None,
         items=pulumi.get(__ret__, 'items'),
         page_size=pulumi.get(__ret__, 'page_size'),
         parent=pulumi.get(__ret__, 'parent'))
-def get_endpoints_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                         parent: Optional[pulumi.Input[_builtins.str]] = None,
+def get_endpoints_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                         parent: pulumi.Input[Optional[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEndpointsResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)

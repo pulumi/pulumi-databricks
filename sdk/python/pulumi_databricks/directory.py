@@ -22,9 +22,9 @@ __all__ = ['DirectoryArgs', 'Directory']
 class DirectoryArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
-                 delete_recursive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 object_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 provider_config: Optional[pulumi.Input['DirectoryProviderConfigArgs']] = None):
+                 delete_recursive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 provider_config: pulumi.Input[Optional['DirectoryProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a Directory resource.
 
@@ -55,49 +55,49 @@ class DirectoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="deleteRecursive")
-    def delete_recursive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_recursive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
         """
         return pulumi.get(self, "delete_recursive")
 
     @delete_recursive.setter
-    def delete_recursive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_recursive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_recursive", value)
 
     @_builtins.property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def object_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Unique identifier for a DIRECTORY
         """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def object_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "object_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DirectoryProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DirectoryProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DirectoryProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DirectoryProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _DirectoryState:
     def __init__(__self__, *,
-                 delete_recursive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 object_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['DirectoryProviderConfigArgs']] = None,
-                 workspace_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 delete_recursive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['DirectoryProviderConfigArgs']] = None,
+                 workspace_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Directory resources.
 
@@ -120,62 +120,62 @@ class _DirectoryState:
 
     @_builtins.property
     @pulumi.getter(name="deleteRecursive")
-    def delete_recursive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_recursive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not to trigger a recursive delete of this directory and its resources when deleting this on Pulumi. Defaults to `false`
         """
         return pulumi.get(self, "delete_recursive")
 
     @delete_recursive.setter
-    def delete_recursive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_recursive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_recursive", value)
 
     @_builtins.property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def object_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Unique identifier for a DIRECTORY
         """
         return pulumi.get(self, "object_id")
 
     @object_id.setter
-    def object_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def object_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "object_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The absolute path of the directory, beginning with "/", e.g. "/Demo".
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DirectoryProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DirectoryProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DirectoryProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DirectoryProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="workspacePath")
-    def workspace_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         path on Workspace File System (WSFS) in form of `/Workspace` + `path`
         """
         return pulumi.get(self, "workspace_path")
 
     @workspace_path.setter
-    def workspace_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_path", value)
 
 
@@ -185,10 +185,10 @@ class Directory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_recursive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 object_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DirectoryProviderConfigArgs', 'DirectoryProviderConfigArgsDict']]] = None,
+                 delete_recursive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DirectoryProviderConfigArgs', 'DirectoryProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         This resource allows you to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
@@ -284,10 +284,10 @@ class Directory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_recursive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 object_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DirectoryProviderConfigArgs', 'DirectoryProviderConfigArgsDict']]] = None,
+                 delete_recursive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DirectoryProviderConfigArgs', 'DirectoryProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -314,11 +314,11 @@ class Directory(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delete_recursive: Optional[pulumi.Input[_builtins.bool]] = None,
-            object_id: Optional[pulumi.Input[_builtins.int]] = None,
-            path: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['DirectoryProviderConfigArgs', 'DirectoryProviderConfigArgsDict']]] = None,
-            workspace_path: Optional[pulumi.Input[_builtins.str]] = None) -> 'Directory':
+            delete_recursive: pulumi.Input[Optional[_builtins.bool]] = None,
+            object_id: pulumi.Input[Optional[_builtins.int]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DirectoryProviderConfigArgs', 'DirectoryProviderConfigArgsDict']]] = None,
+            workspace_path: pulumi.Input[Optional[_builtins.str]] = None) -> 'Directory':
         """
         Get an existing Directory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

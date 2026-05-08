@@ -255,7 +255,7 @@ export interface GetNodeTypeOutputArgs {
     /**
      * if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_.
      */
-    arm?: pulumi.Input<boolean>;
+    arm?: pulumi.Input<boolean | undefined>;
     /**
      * Node category, which can be one of (depending on the cloud environment, could be checked with `databricks clusters list-node-types -o json|jq '.node_types[]|.category'|sort |uniq`):
      * * `General Purpose` (all clouds)
@@ -266,63 +266,63 @@ export interface GetNodeTypeOutputArgs {
      * * `Storage Optimized` (AWS, Azure)
      * * `GPU Accelerated` (AWS, Azure)
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * if we should limit the search only to [AWS fleet instance types](https://docs.databricks.com/compute/aws-fleet-instances.html). Default to _false_.
      */
-    fleet?: pulumi.Input<boolean>;
+    fleet?: pulumi.Input<boolean | undefined>;
     /**
      * Number of gigabytes per core available on instance. Conflicts with `minMemoryGb`. Defaults to _0_.
      */
-    gbPerCore?: pulumi.Input<number>;
+    gbPerCore?: pulumi.Input<number | undefined>;
     /**
      * if we should limit the search only to nodes with AWS Graviton or Azure Cobalt CPUs. Default to _false_. *Use `arm` instead!*
      *
      * @deprecated Use `arm` instead
      */
-    graviton?: pulumi.Input<boolean>;
+    graviton?: pulumi.Input<boolean | undefined>;
     /**
      * node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * . Pick only nodes that have IO Cache. Defaults to _false_.
      */
-    isIoCacheEnabled?: pulumi.Input<boolean>;
+    isIoCacheEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Pick only nodes with local storage. Defaults to _false_.
      */
-    localDisk?: pulumi.Input<boolean>;
+    localDisk?: pulumi.Input<boolean | undefined>;
     /**
      * Pick only nodes that have size local storage greater or equal to given value. Defaults to _0_.
      */
-    localDiskMinSize?: pulumi.Input<number>;
+    localDiskMinSize?: pulumi.Input<number | undefined>;
     /**
      * Minimum number of CPU cores available on instance. Defaults to _0_.
      */
-    minCores?: pulumi.Input<number>;
+    minCores?: pulumi.Input<number | undefined>;
     /**
      * Minimum number of GPU's attached to instance. Defaults to _0_.
      */
-    minGpus?: pulumi.Input<number>;
+    minGpus?: pulumi.Input<number | undefined>;
     /**
      * Minimum amount of memory per node in gigabytes. Defaults to _0_.
      */
-    minMemoryGb?: pulumi.Input<number>;
+    minMemoryGb?: pulumi.Input<number | undefined>;
     /**
      * Pick only nodes that can run Photon driver. Defaults to _false_.
      */
-    photonDriverCapable?: pulumi.Input<boolean>;
+    photonDriverCapable?: pulumi.Input<boolean | undefined>;
     /**
      * Pick only nodes that can run Photon workers. Defaults to _false_.
      */
-    photonWorkerCapable?: pulumi.Input<boolean>;
+    photonWorkerCapable?: pulumi.Input<boolean | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetNodeTypeProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetNodeTypeProviderConfigArgs | undefined>;
     /**
      * Pick only nodes that support port forwarding. Defaults to _false_.
      */
-    supportPortForwarding?: pulumi.Input<boolean>;
+    supportPortForwarding?: pulumi.Input<boolean | undefined>;
 }

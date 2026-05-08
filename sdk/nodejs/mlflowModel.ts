@@ -136,20 +136,20 @@ export interface MlflowModelState {
     /**
      * The description of the MLflow model.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of MLflow model. Change of name triggers new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.MlflowModelProviderConfig>;
-    registeredModelId?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.MlflowModelProviderConfig | undefined>;
+    registeredModelId?: pulumi.Input<string | undefined>;
     /**
      * Tags for the MLflow model.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.MlflowModelTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.MlflowModelTag>[] | undefined>;
 }
 
 /**
@@ -159,17 +159,17 @@ export interface MlflowModelArgs {
     /**
      * The description of the MLflow model.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of MLflow model. Change of name triggers new resource.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.MlflowModelProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.MlflowModelProviderConfig | undefined>;
     /**
      * Tags for the MLflow model.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.MlflowModelTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.MlflowModelTag>[] | undefined>;
 }

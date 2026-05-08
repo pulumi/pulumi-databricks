@@ -153,9 +153,9 @@ export interface GetEntityTagAssignmentsOutputArgs {
     /**
      * Optional. Maximum number of tag assignments to return in a single page
      */
-    maxResults?: pulumi.Input<number>;
+    maxResults?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetEntityTagAssignmentsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetEntityTagAssignmentsProviderConfigArgs | undefined>;
 }

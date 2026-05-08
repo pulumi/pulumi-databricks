@@ -106,11 +106,12 @@ def get_views(catalog_name: Optional[_builtins.str] = None,
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_databricks as databricks
 
     things = databricks.get_views(catalog_name="sandbox",
         schema_name="things")
-    things_grants = []
+    things_grants: list[Any] = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
         things_grants.append(databricks.Grants(f"things-{range['key']}",
             table=range["value"],
@@ -150,10 +151,10 @@ def get_views(catalog_name: Optional[_builtins.str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         schema_name=pulumi.get(__ret__, 'schema_name'))
-def get_views_output(catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                     ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                     provider_config: Optional[pulumi.Input[Optional[Union['GetViewsProviderConfigArgs', 'GetViewsProviderConfigArgsDict']]]] = None,
-                     schema_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_views_output(catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                     ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                     provider_config: pulumi.Input[Optional[Optional[Union['GetViewsProviderConfigArgs', 'GetViewsProviderConfigArgsDict']]]] = None,
+                     schema_name: pulumi.Input[Optional[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetViewsResult]:
     """
     Retrieves a list of view full names in Unity Catalog, that were created by Pulumi or manually. Use get_tables for retrieving a list of tables.
@@ -166,11 +167,12 @@ def get_views_output(catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_databricks as databricks
 
     things = databricks.get_views(catalog_name="sandbox",
         schema_name="things")
-    things_grants = []
+    things_grants: list[Any] = []
     for range in [{"key": k, "value": v} for [k, v] in enumerate(things.ids)]:
         things_grants.append(databricks.Grants(f"things-{range['key']}",
             table=range["value"],

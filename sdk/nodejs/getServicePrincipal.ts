@@ -215,42 +215,42 @@ export interface GetServicePrincipalOutputArgs {
     /**
      * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
      */
-    aclPrincipalId?: pulumi.Input<string>;
+    aclPrincipalId?: pulumi.Input<string | undefined>;
     /**
      * Whether service principal is active or not.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Application ID of the service principal. The service principal must exist before this resource can be retrieved.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * ID of the service principal in an external identity provider.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
      */
-    home?: pulumi.Input<string>;
+    home?: pulumi.Input<string | undefined>;
     /**
      * The id of the service principal (SCIM ID).
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetServicePrincipalProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetServicePrincipalProviderConfigArgs | undefined>;
     /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      */
-    repos?: pulumi.Input<string>;
+    repos?: pulumi.Input<string | undefined>;
     /**
      * Unique SCIM ID for a service principal in the Databricks workspace. The service principal must exist before this resource can be retrieved.
      */
-    scimId?: pulumi.Input<string>;
-    spId?: pulumi.Input<string>;
+    scimId?: pulumi.Input<string | undefined>;
+    spId?: pulumi.Input<string | undefined>;
 }

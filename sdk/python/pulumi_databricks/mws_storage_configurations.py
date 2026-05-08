@@ -22,7 +22,7 @@ class MwsStorageConfigurationsArgs:
                  account_id: pulumi.Input[_builtins.str],
                  bucket_name: pulumi.Input[_builtins.str],
                  storage_configuration_name: pulumi.Input[_builtins.str],
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None):
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MwsStorageConfigurations resource.
 
@@ -79,26 +79,26 @@ class MwsStorageConfigurationsArgs:
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
 
 @pulumi.input_type
 class _MwsStorageConfigurationsState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_configuration_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_configuration_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MwsStorageConfigurations resources.
 
@@ -125,64 +125,64 @@ class _MwsStorageConfigurationsState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         name of AWS S3 bucket
         """
         return pulumi.get(self, "bucket_name")
 
     @bucket_name.setter
-    def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ARN of the IAM role that Databricks will assume to access the S3 bucket. This allows sharing an S3 bucket between root storage and the default catalog for a workspace. See the [Databricks API documentation](https://docs.databricks.com/api/account/storage/create) for more details.
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="storageConfigurationId")
-    def storage_configuration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_configuration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) id of storage config to be used for `databricks_mws_workspace` resource.
         """
         return pulumi.get(self, "storage_configuration_id")
 
     @storage_configuration_id.setter
-    def storage_configuration_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_configuration_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_configuration_id", value)
 
     @_builtins.property
     @pulumi.getter(name="storageConfigurationName")
-    def storage_configuration_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_configuration_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         name under which this storage configuration is stored
 
@@ -191,7 +191,7 @@ class _MwsStorageConfigurationsState:
         return pulumi.get(self, "storage_configuration_name")
 
     @storage_configuration_name.setter
-    def storage_configuration_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_configuration_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_configuration_name", value)
 
 
@@ -201,10 +201,10 @@ class MwsStorageConfigurations(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_configuration_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource to configure root bucket new workspaces within AWS.
@@ -358,10 +358,10 @@ class MwsStorageConfigurations(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_configuration_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -395,12 +395,12 @@ class MwsStorageConfigurations(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-            role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_configuration_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'MwsStorageConfigurations':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_configuration_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'MwsStorageConfigurations':
         """
         Get an existing MwsStorageConfigurations resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

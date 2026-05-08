@@ -118,10 +118,10 @@ export interface DisableLegacyFeaturesSettingState {
     /**
      * block with following attributes:
      */
-    disableLegacyFeatures?: pulumi.Input<inputs.DisableLegacyFeaturesSettingDisableLegacyFeatures>;
-    etag?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.DisableLegacyFeaturesSettingProviderConfig>;
-    settingName?: pulumi.Input<string>;
+    disableLegacyFeatures?: pulumi.Input<inputs.DisableLegacyFeaturesSettingDisableLegacyFeatures | undefined>;
+    etag?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.DisableLegacyFeaturesSettingProviderConfig | undefined>;
+    settingName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -132,7 +132,7 @@ export interface DisableLegacyFeaturesSettingArgs {
      * block with following attributes:
      */
     disableLegacyFeatures: pulumi.Input<inputs.DisableLegacyFeaturesSettingDisableLegacyFeatures>;
-    etag?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.DisableLegacyFeaturesSettingProviderConfig>;
-    settingName?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.DisableLegacyFeaturesSettingProviderConfig | undefined>;
+    settingName?: pulumi.Input<string | undefined>;
 }

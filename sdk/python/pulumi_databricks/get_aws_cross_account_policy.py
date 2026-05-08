@@ -188,13 +188,13 @@ def get_aws_cross_account_policy(aws_account_id: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         security_group_id=pulumi.get(__ret__, 'security_group_id'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-def get_aws_cross_account_policy_output(aws_account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        aws_partition: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        pass_roles: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                        policy_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        security_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_aws_cross_account_policy_output(aws_account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        aws_partition: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        pass_roles: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                        policy_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        security_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        vpc_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsCrossAccountPolicyResult]:
     """
     This data source constructs necessary AWS cross-account policy for you, which is based on [official documentation](https://docs.databricks.com/administration-guide/account-api/iam-role.html#language-Your%C2%A0VPC,%C2%A0default).

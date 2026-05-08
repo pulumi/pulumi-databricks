@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  *     });
  *     const dataUsersGroup = new databricks.Group("data_users_group", {displayName: "Data Users"});
  *     const addUsersToGroup: databricks.GroupMember[] = [];
- *     for (const range of Object.entries(.reduce((__obj, user) => ({ ...__obj, [user.id]: user }), {})).map(([k, v]) => ({key: k, value: v}))) {
+ *     for (const range of Object.entries(.reduce((__obj, user) => ({ ...__obj, [user.id]: user }), {})).sort().map(([k, v]) => ({key: k, value: v}))) {
  *         addUsersToGroup.push(new databricks.GroupMember(`add_users_to_group-${range.key}`, {
  *             groupId: dataUsersGroup.id,
  *             memberId: range.value.id,
@@ -121,7 +121,7 @@ export interface GetUsersResult {
  *     });
  *     const dataUsersGroup = new databricks.Group("data_users_group", {displayName: "Data Users"});
  *     const addUsersToGroup: databricks.GroupMember[] = [];
- *     for (const range of Object.entries(.reduce((__obj, user) => ({ ...__obj, [user.id]: user }), {})).map(([k, v]) => ({key: k, value: v}))) {
+ *     for (const range of Object.entries(.reduce((__obj, user) => ({ ...__obj, [user.id]: user }), {})).sort().map(([k, v]) => ({key: k, value: v}))) {
  *         addUsersToGroup.push(new databricks.GroupMember(`add_users_to_group-${range.key}`, {
  *             groupId: dataUsersGroup.id,
  *             memberId: range.value.id,
@@ -159,24 +159,24 @@ export interface GetUsersOutputArgs {
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * A comma-separated list of additional user attributes to include in the results. By default, the data source returns the following attributes: `id`, `userName`, `displayName`, and `externalId`. Use this argument to request additional attributes as needed. The list of all available attributes can be found in the [API reference](https://docs.databricks.com/api/workspace/users/list).
      */
-    extraAttributes?: pulumi.Input<string>;
+    extraAttributes?: pulumi.Input<string | undefined>;
     /**
      * Query by which the results have to be filtered. If not specified, all users will be returned. Supported operators are equals (`eq`), contains (`co`), starts with (`sw`), and not equals (`ne`). Additionally, simple expressions can be formed using logical operators `and` and `or`.
      *
      * **Examples:**
      * - User whose `displayName` equals "john":
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetUsersProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetUsersProviderConfigArgs | undefined>;
     /**
      * A list of users matching the specified criteria. Each user has the following attributes:
      */
-    users?: pulumi.Input<pulumi.Input<inputs.GetUsersUserArgs>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.GetUsersUserArgs>[] | undefined>;
 }

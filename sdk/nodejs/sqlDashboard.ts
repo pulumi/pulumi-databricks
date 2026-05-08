@@ -137,32 +137,32 @@ export class SqlDashboard extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SqlDashboard resources.
  */
 export interface SqlDashboardState {
-    createdAt?: pulumi.Input<string>;
-    dashboardFiltersEnabled?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    parent?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
+    dashboardFiltersEnabled?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SqlDashboardProviderConfig>;
-    runAsRole?: pulumi.Input<string>;
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    updatedAt?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.SqlDashboardProviderConfig | undefined>;
+    runAsRole?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a SqlDashboard resource.
  */
 export interface SqlDashboardArgs {
-    createdAt?: pulumi.Input<string>;
-    dashboardFiltersEnabled?: pulumi.Input<boolean>;
-    name?: pulumi.Input<string>;
-    parent?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
+    dashboardFiltersEnabled?: pulumi.Input<boolean | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.SqlDashboardProviderConfig>;
-    runAsRole?: pulumi.Input<string>;
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    updatedAt?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.SqlDashboardProviderConfig | undefined>;
+    runAsRole?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }

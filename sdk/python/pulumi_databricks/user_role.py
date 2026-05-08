@@ -23,8 +23,8 @@ class UserRoleArgs:
     def __init__(__self__, *,
                  role: pulumi.Input[_builtins.str],
                  user_id: pulumi.Input[_builtins.str],
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['UserRoleProviderConfigArgs']] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['UserRoleProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a UserRole resource.
 
@@ -65,33 +65,33 @@ class UserRoleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['UserRoleProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['UserRoleProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['UserRoleProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['UserRoleProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _UserRoleState:
     def __init__(__self__, *,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['UserRoleProviderConfigArgs']] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['UserRoleProviderConfigArgs']] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserRole resources.
 
@@ -110,47 +110,47 @@ class _UserRoleState:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['UserRoleProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['UserRoleProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['UserRoleProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['UserRoleProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Either a role name or the ARN/ID of the instance profile resource.
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the id of the user resource.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -160,10 +160,10 @@ class UserRole(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['UserRoleProviderConfigArgs', 'UserRoleProviderConfigArgsDict']]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['UserRoleProviderConfigArgs', 'UserRoleProviderConfigArgsDict']]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to attach a role or InstanceProfile (AWS) to databricks_user.
@@ -288,10 +288,10 @@ class UserRole(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['UserRoleProviderConfigArgs', 'UserRoleProviderConfigArgsDict']]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['UserRoleProviderConfigArgs', 'UserRoleProviderConfigArgsDict']]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -319,10 +319,10 @@ class UserRole(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['UserRoleProviderConfigArgs', 'UserRoleProviderConfigArgsDict']]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'UserRole':
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['UserRoleProviderConfigArgs', 'UserRoleProviderConfigArgsDict']]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserRole':
         """
         Get an existing UserRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

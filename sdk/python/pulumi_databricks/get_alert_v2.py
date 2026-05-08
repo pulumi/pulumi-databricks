@@ -302,8 +302,8 @@ def get_alert_v2(id: Optional[_builtins.str] = None,
         schedule=pulumi.get(__ret__, 'schedule'),
         update_time=pulumi.get(__ret__, 'update_time'),
         warehouse_id=pulumi.get(__ret__, 'warehouse_id'))
-def get_alert_v2_output(id: Optional[pulumi.Input[_builtins.str]] = None,
-                        provider_config: Optional[pulumi.Input[Optional[Union['GetAlertV2ProviderConfigArgs', 'GetAlertV2ProviderConfigArgsDict']]]] = None,
+def get_alert_v2_output(id: pulumi.Input[Optional[_builtins.str]] = None,
+                        provider_config: pulumi.Input[Optional[Optional[Union['GetAlertV2ProviderConfigArgs', 'GetAlertV2ProviderConfigArgsDict']]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertV2Result]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)

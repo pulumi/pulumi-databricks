@@ -254,72 +254,72 @@ export interface ServicePrincipalState {
     /**
      * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
      */
-    aclPrincipalId?: pulumi.Input<string>;
+    aclPrincipalId?: pulumi.Input<string | undefined>;
     /**
      * Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
      */
-    allowClusterCreate?: pulumi.Input<boolean>;
+    allowClusterCreate?: pulumi.Input<boolean | undefined>;
     /**
      * Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      */
-    allowInstancePoolCreate?: pulumi.Input<boolean>;
+    allowInstancePoolCreate?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
      */
-    databricksSqlAccess?: pulumi.Input<boolean>;
+    databricksSqlAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
      */
-    disableAsUserDeletion?: pulumi.Input<boolean>;
+    disableAsUserDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * This is an alias for the service principal and can be the full name of the service principal.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * ID of the service principal in an external identity provider.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
      */
-    forceDeleteHomeDir?: pulumi.Input<boolean>;
+    forceDeleteHomeDir?: pulumi.Input<boolean | undefined>;
     /**
      * This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
      */
-    forceDeleteRepos?: pulumi.Input<boolean>;
+    forceDeleteRepos?: pulumi.Input<boolean | undefined>;
     /**
      * Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
      */
-    home?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.ServicePrincipalProviderConfig>;
+    home?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.ServicePrincipalProviderConfig | undefined>;
     /**
      * Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
      */
-    repos?: pulumi.Input<string>;
+    repos?: pulumi.Input<string | undefined>;
     /**
      * This is a field to allow the service principal to have access to a Databricks Workspace.
      */
-    workspaceAccess?: pulumi.Input<boolean>;
+    workspaceAccess?: pulumi.Input<boolean | undefined>;
     /**
      * This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
-    workspaceConsume?: pulumi.Input<boolean>;
+    workspaceConsume?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -329,70 +329,70 @@ export interface ServicePrincipalArgs {
     /**
      * identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
      */
-    aclPrincipalId?: pulumi.Input<string>;
+    aclPrincipalId?: pulumi.Input<string | undefined>;
     /**
      * Either service principal is active or not. True by default, but can be set to false in case of service principal deactivation with preserving service principal assets.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Allow the service principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and `clusterId` argument. Everyone without `allowClusterCreate` argument set, but with permission to use Cluster Policy would be able to create clusters, but within the boundaries of that specific policy.
      */
-    allowClusterCreate?: pulumi.Input<boolean>;
+    allowClusterCreate?: pulumi.Input<boolean | undefined>;
     /**
      * Allow the service principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with databricks.Permissions and instancePoolId argument.
      */
-    allowInstancePoolCreate?: pulumi.Input<boolean>;
+    allowInstancePoolCreate?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * This is the Azure Application ID of the given Azure service principal and will be their form of access and identity. For Databricks-managed service principals this value is auto-generated.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * This is a field to allow the service principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql) feature through databricks_sql_endpoint.
      */
-    databricksSqlAccess?: pulumi.Input<boolean>;
+    databricksSqlAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Deactivate the service principal when deleting the resource, rather than deleting the service principal entirely. Defaults to `true` when the provider is configured at the account-level and `false` when configured at the workspace-level. This flag is exclusive to forceDeleteRepos and forceDeleteHomeDir flags.
      */
-    disableAsUserDeletion?: pulumi.Input<boolean>;
+    disableAsUserDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * This is an alias for the service principal and can be the full name of the service principal.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * ID of the service principal in an external identity provider.
      */
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * Ignore `cannot create service principal: Service principal with application ID X already exists` errors and implicitly import the specified service principal into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * This flag determines whether the service principal's home directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
      */
-    forceDeleteHomeDir?: pulumi.Input<boolean>;
+    forceDeleteHomeDir?: pulumi.Input<boolean | undefined>;
     /**
      * This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
      */
-    forceDeleteRepos?: pulumi.Input<boolean>;
+    forceDeleteRepos?: pulumi.Input<boolean | undefined>;
     /**
      * Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
      */
-    home?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.ServicePrincipalProviderConfig>;
+    home?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.ServicePrincipalProviderConfig | undefined>;
     /**
      * Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
      */
-    repos?: pulumi.Input<string>;
+    repos?: pulumi.Input<string | undefined>;
     /**
      * This is a field to allow the service principal to have access to a Databricks Workspace.
      */
-    workspaceAccess?: pulumi.Input<boolean>;
+    workspaceAccess?: pulumi.Input<boolean | undefined>;
     /**
      * This is a field to allow the service principal to have access to a Databricks Workspace as consumer, with limited access to workspace UI.  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
      */
-    workspaceConsume?: pulumi.Input<boolean>;
+    workspaceConsume?: pulumi.Input<boolean | undefined>;
 }

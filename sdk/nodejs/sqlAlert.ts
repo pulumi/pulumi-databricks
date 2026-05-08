@@ -152,40 +152,40 @@ export class SqlAlert extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SqlAlert resources.
  */
 export interface SqlAlertState {
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the alert.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Alert configuration options.
      */
-    options?: pulumi.Input<inputs.SqlAlertOptions>;
+    options?: pulumi.Input<inputs.SqlAlertOptions | undefined>;
     /**
      * The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
      */
-    parent?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.SqlAlertProviderConfig>;
+    parent?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.SqlAlertProviderConfig | undefined>;
     /**
      * ID of the query evaluated by the alert.
      */
-    queryId?: pulumi.Input<string>;
+    queryId?: pulumi.Input<string | undefined>;
     /**
      * Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
      */
-    rearm?: pulumi.Input<number>;
-    updatedAt?: pulumi.Input<string>;
+    rearm?: pulumi.Input<number | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a SqlAlert resource.
  */
 export interface SqlAlertArgs {
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the alert.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Alert configuration options.
      */
@@ -193,8 +193,8 @@ export interface SqlAlertArgs {
     /**
      * The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
      */
-    parent?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.SqlAlertProviderConfig>;
+    parent?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.SqlAlertProviderConfig | undefined>;
     /**
      * ID of the query evaluated by the alert.
      */
@@ -202,6 +202,6 @@ export interface SqlAlertArgs {
     /**
      * Number of seconds after being triggered before the alert rearms itself and can be triggered again. If not defined, alert will never be triggered again.
      */
-    rearm?: pulumi.Input<number>;
-    updatedAt?: pulumi.Input<string>;
+    rearm?: pulumi.Input<number | undefined>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }

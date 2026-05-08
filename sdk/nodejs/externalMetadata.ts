@@ -189,59 +189,59 @@ export interface ExternalMetadataState {
     /**
      * List of columns associated with the external metadata object
      */
-    columns?: pulumi.Input<pulumi.Input<string>[]>;
+    columns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (string) - Time at which this external metadata object was created
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - Username of external metadata object creator
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * User-provided free-form text description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Type of entity within the external system
      */
-    entityType?: pulumi.Input<string>;
+    entityType?: pulumi.Input<string | undefined>;
     /**
      * (string) - Unique identifier of parent metastore
      */
-    metastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * Name of the external metadata object
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Owner of the external metadata object
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * A map of key-value properties attached to the external metadata object
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.ExternalMetadataProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.ExternalMetadataProviderConfig | undefined>;
     /**
      * Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      */
-    systemType?: pulumi.Input<string>;
+    systemType?: pulumi.Input<string | undefined>;
     /**
      * (string) - Time at which this external metadata object was last modified
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - Username of user who last modified external metadata object
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
     /**
      * URL associated with the external metadata object
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -251,11 +251,11 @@ export interface ExternalMetadataArgs {
     /**
      * List of columns associated with the external metadata object
      */
-    columns?: pulumi.Input<pulumi.Input<string>[]>;
+    columns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * User-provided free-form text description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Type of entity within the external system
      */
@@ -263,19 +263,19 @@ export interface ExternalMetadataArgs {
     /**
      * Name of the external metadata object
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Owner of the external metadata object
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * A map of key-value properties attached to the external metadata object
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.ExternalMetadataProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.ExternalMetadataProviderConfig | undefined>;
     /**
      * Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      */
@@ -283,5 +283,5 @@ export interface ExternalMetadataArgs {
     /**
      * URL associated with the external metadata object
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }

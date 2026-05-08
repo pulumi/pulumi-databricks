@@ -22,45 +22,45 @@ __all__ = ['ClusterArgs', 'Cluster']
 class ClusterArgs:
     def __init__(__self__, *,
                  spark_version: pulumi.Input[_builtins.str],
-                 apply_policy_default_values: Optional[pulumi.Input[_builtins.bool]] = None,
-                 autoscale: Optional[pulumi.Input['ClusterAutoscaleArgs']] = None,
-                 autotermination_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 aws_attributes: Optional[pulumi.Input['ClusterAwsAttributesArgs']] = None,
-                 azure_attributes: Optional[pulumi.Input['ClusterAzureAttributesArgs']] = None,
-                 cluster_log_conf: Optional[pulumi.Input['ClusterClusterLogConfArgs']] = None,
-                 cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 data_security_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_image: Optional[pulumi.Input['ClusterDockerImageArgs']] = None,
-                 driver_instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 driver_node_type_flexibility: Optional[pulumi.Input['ClusterDriverNodeTypeFlexibilityArgs']] = None,
-                 driver_node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_elastic_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_local_disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcp_attributes: Optional[pulumi.Input['ClusterGcpAttributesArgs']] = None,
-                 idempotency_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterInitScriptArgs']]]] = None,
-                 instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_pinned: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_single_node: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]] = None,
-                 no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 num_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['ClusterProviderConfigArgs']] = None,
-                 remote_disk_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 runtime_engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 single_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 total_initial_remote_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 use_ml_runtime: Optional[pulumi.Input[_builtins.bool]] = None,
-                 worker_node_type_flexibility: Optional[pulumi.Input['ClusterWorkerNodeTypeFlexibilityArgs']] = None,
-                 workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None):
+                 apply_policy_default_values: pulumi.Input[Optional[_builtins.bool]] = None,
+                 autoscale: pulumi.Input[Optional['ClusterAutoscaleArgs']] = None,
+                 autotermination_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 aws_attributes: pulumi.Input[Optional['ClusterAwsAttributesArgs']] = None,
+                 azure_attributes: pulumi.Input[Optional['ClusterAzureAttributesArgs']] = None,
+                 cluster_log_conf: pulumi.Input[Optional['ClusterClusterLogConfArgs']] = None,
+                 cluster_mount_infos: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 data_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_image: pulumi.Input[Optional['ClusterDockerImageArgs']] = None,
+                 driver_instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 driver_node_type_flexibility: pulumi.Input[Optional['ClusterDriverNodeTypeFlexibilityArgs']] = None,
+                 driver_node_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_elastic_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_local_disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcp_attributes: pulumi.Input[Optional['ClusterGcpAttributesArgs']] = None,
+                 idempotency_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 init_scripts: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterInitScriptArgs']]]] = None,
+                 instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_pinned: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_single_node: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterLibraryArgs']]]] = None,
+                 no_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['ClusterProviderConfigArgs']] = None,
+                 remote_disk_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 runtime_engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 single_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark_conf: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 spark_env_vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ssh_public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 total_initial_remote_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 use_ml_runtime: pulumi.Input[Optional[_builtins.bool]] = None,
+                 worker_node_type_flexibility: pulumi.Input[Optional['ClusterWorkerNodeTypeFlexibilityArgs']] = None,
+                 workload_type: pulumi.Input[Optional['ClusterWorkloadTypeArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
 
@@ -212,88 +212,88 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="applyPolicyDefaultValues")
-    def apply_policy_default_values(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def apply_policy_default_values(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use policy default values for missing cluster attributes.
         """
         return pulumi.get(self, "apply_policy_default_values")
 
     @apply_policy_default_values.setter
-    def apply_policy_default_values(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def apply_policy_default_values(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "apply_policy_default_values", value)
 
     @_builtins.property
     @pulumi.getter
-    def autoscale(self) -> Optional[pulumi.Input['ClusterAutoscaleArgs']]:
+    def autoscale(self) -> pulumi.Input[Optional['ClusterAutoscaleArgs']]:
         return pulumi.get(self, "autoscale")
 
     @autoscale.setter
-    def autoscale(self, value: Optional[pulumi.Input['ClusterAutoscaleArgs']]):
+    def autoscale(self, value: pulumi.Input[Optional['ClusterAutoscaleArgs']]):
         pulumi.set(self, "autoscale", value)
 
     @_builtins.property
     @pulumi.getter(name="autoterminationMinutes")
-    def autotermination_minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def autotermination_minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
         """
         return pulumi.get(self, "autotermination_minutes")
 
     @autotermination_minutes.setter
-    def autotermination_minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def autotermination_minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "autotermination_minutes", value)
 
     @_builtins.property
     @pulumi.getter(name="awsAttributes")
-    def aws_attributes(self) -> Optional[pulumi.Input['ClusterAwsAttributesArgs']]:
+    def aws_attributes(self) -> pulumi.Input[Optional['ClusterAwsAttributesArgs']]:
         return pulumi.get(self, "aws_attributes")
 
     @aws_attributes.setter
-    def aws_attributes(self, value: Optional[pulumi.Input['ClusterAwsAttributesArgs']]):
+    def aws_attributes(self, value: pulumi.Input[Optional['ClusterAwsAttributesArgs']]):
         pulumi.set(self, "aws_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="azureAttributes")
-    def azure_attributes(self) -> Optional[pulumi.Input['ClusterAzureAttributesArgs']]:
+    def azure_attributes(self) -> pulumi.Input[Optional['ClusterAzureAttributesArgs']]:
         return pulumi.get(self, "azure_attributes")
 
     @azure_attributes.setter
-    def azure_attributes(self, value: Optional[pulumi.Input['ClusterAzureAttributesArgs']]):
+    def azure_attributes(self, value: pulumi.Input[Optional['ClusterAzureAttributesArgs']]):
         pulumi.set(self, "azure_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterLogConf")
-    def cluster_log_conf(self) -> Optional[pulumi.Input['ClusterClusterLogConfArgs']]:
+    def cluster_log_conf(self) -> pulumi.Input[Optional['ClusterClusterLogConfArgs']]:
         return pulumi.get(self, "cluster_log_conf")
 
     @cluster_log_conf.setter
-    def cluster_log_conf(self, value: Optional[pulumi.Input['ClusterClusterLogConfArgs']]):
+    def cluster_log_conf(self, value: pulumi.Input[Optional['ClusterClusterLogConfArgs']]):
         pulumi.set(self, "cluster_log_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterMountInfos")
-    def cluster_mount_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]]:
+    def cluster_mount_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]]:
         return pulumi.get(self, "cluster_mount_infos")
 
     @cluster_mount_infos.setter
-    def cluster_mount_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]]):
+    def cluster_mount_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]]):
         pulumi.set(self, "cluster_mount_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster name, which doesn't have to be unique. If not specified at creation, the cluster name will be an empty string.
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         should have tag `ResourceClass` set to value `Serverless`
 
@@ -320,12 +320,12 @@ class ClusterArgs:
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSecurityMode")
-    def data_security_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_security_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
         * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
@@ -335,261 +335,261 @@ class ClusterArgs:
         return pulumi.get(self, "data_security_mode")
 
     @data_security_mode.setter
-    def data_security_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_security_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_security_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="dockerImage")
-    def docker_image(self) -> Optional[pulumi.Input['ClusterDockerImageArgs']]:
+    def docker_image(self) -> pulumi.Input[Optional['ClusterDockerImageArgs']]:
         return pulumi.get(self, "docker_image")
 
     @docker_image.setter
-    def docker_image(self, value: Optional[pulumi.Input['ClusterDockerImageArgs']]):
+    def docker_image(self, value: pulumi.Input[Optional['ClusterDockerImageArgs']]):
         pulumi.set(self, "docker_image", value)
 
     @_builtins.property
     @pulumi.getter(name="driverInstancePoolId")
-    def driver_instance_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def driver_instance_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
         """
         return pulumi.get(self, "driver_instance_pool_id")
 
     @driver_instance_pool_id.setter
-    def driver_instance_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def driver_instance_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "driver_instance_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="driverNodeTypeFlexibility")
-    def driver_node_type_flexibility(self) -> Optional[pulumi.Input['ClusterDriverNodeTypeFlexibilityArgs']]:
+    def driver_node_type_flexibility(self) -> pulumi.Input[Optional['ClusterDriverNodeTypeFlexibilityArgs']]:
         """
         a block describing the alternative driver node types if `driver_node_type_id` isn't available.
         """
         return pulumi.get(self, "driver_node_type_flexibility")
 
     @driver_node_type_flexibility.setter
-    def driver_node_type_flexibility(self, value: Optional[pulumi.Input['ClusterDriverNodeTypeFlexibilityArgs']]):
+    def driver_node_type_flexibility(self, value: pulumi.Input[Optional['ClusterDriverNodeTypeFlexibilityArgs']]):
         pulumi.set(self, "driver_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="driverNodeTypeId")
-    def driver_node_type_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def driver_node_type_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
         """
         return pulumi.get(self, "driver_node_type_id")
 
     @driver_node_type_id.setter
-    def driver_node_type_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def driver_node_type_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "driver_node_type_id", value)
 
     @_builtins.property
     @pulumi.getter(name="enableElasticDisk")
-    def enable_elastic_disk(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_elastic_disk(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If you don't want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster's Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance's local storage). To scale down EBS usage, make sure you have `autotermination_minutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
         """
         return pulumi.get(self, "enable_elastic_disk")
 
     @enable_elastic_disk.setter
-    def enable_elastic_disk(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_elastic_disk(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_elastic_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="enableLocalDiskEncryption")
-    def enable_local_disk_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_local_disk_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster's local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and uses it to encrypt all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. *Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access.*
         """
         return pulumi.get(self, "enable_local_disk_encryption")
 
     @enable_local_disk_encryption.setter
-    def enable_local_disk_encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_local_disk_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_local_disk_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpAttributes")
-    def gcp_attributes(self) -> Optional[pulumi.Input['ClusterGcpAttributesArgs']]:
+    def gcp_attributes(self) -> pulumi.Input[Optional['ClusterGcpAttributesArgs']]:
         return pulumi.get(self, "gcp_attributes")
 
     @gcp_attributes.setter
-    def gcp_attributes(self, value: Optional[pulumi.Input['ClusterGcpAttributesArgs']]):
+    def gcp_attributes(self, value: pulumi.Input[Optional['ClusterGcpAttributesArgs']]):
         pulumi.set(self, "gcp_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="idempotencyToken")
-    def idempotency_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def idempotency_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster's ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
         """
         return pulumi.get(self, "idempotency_token")
 
     @idempotency_token.setter
-    def idempotency_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def idempotency_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "idempotency_token", value)
 
     @_builtins.property
     @pulumi.getter(name="initScripts")
-    def init_scripts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterInitScriptArgs']]]]:
+    def init_scripts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterInitScriptArgs']]]]:
         return pulumi.get(self, "init_scripts")
 
     @init_scripts.setter
-    def init_scripts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterInitScriptArgs']]]]):
+    def init_scripts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterInitScriptArgs']]]]):
         pulumi.set(self, "init_scripts", value)
 
     @_builtins.property
     @pulumi.getter(name="instancePoolId")
-    def instance_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster's request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
         """
         return pulumi.get(self, "instance_pool_id")
 
     @instance_pool_id.setter
-    def instance_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isPinned")
-    def is_pinned(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_pinned(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
         """
         return pulumi.get(self, "is_pinned")
 
     @is_pinned.setter
-    def is_pinned(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_pinned(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_pinned", value)
 
     @_builtins.property
     @pulumi.getter(name="isSingleNode")
-    def is_single_node(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_single_node(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
         """
         return pulumi.get(self, "is_single_node")
 
     @is_single_node.setter
-    def is_single_node(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_single_node(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_single_node", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]]:
+    def libraries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterLibraryArgs']]]]:
         return pulumi.get(self, "libraries")
 
     @libraries.setter
-    def libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]]):
+    def libraries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterLibraryArgs']]]]):
         pulumi.set(self, "libraries", value)
 
     @_builtins.property
     @pulumi.getter(name="noWait")
-    def no_wait(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_wait(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
         """
         return pulumi.get(self, "no_wait")
 
     @no_wait.setter
-    def no_wait(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_wait(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_wait", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeTypeId")
-    def node_type_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_type_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         """
         return pulumi.get(self, "node_type_id")
 
     @node_type_id.setter
-    def node_type_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_type_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_type_id", value)
 
     @_builtins.property
     @pulumi.getter(name="numWorkers")
-    def num_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_workers(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         """
         return pulumi.get(self, "num_workers")
 
     @num_workers.setter
-    def num_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_workers(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_workers", value)
 
     @_builtins.property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
         """
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
-    def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['ClusterProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['ClusterProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['ClusterProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['ClusterProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteDiskThroughput")
-    def remote_disk_throughput(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def remote_disk_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "remote_disk_throughput")
 
     @remote_disk_throughput.setter
-    def remote_disk_throughput(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def remote_disk_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "remote_disk_throughput", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeEngine")
-    def runtime_engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime_engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
         """
         return pulumi.get(self, "runtime_engine")
 
     @runtime_engine.setter
-    def runtime_engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime_engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="singleUserName")
-    def single_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def single_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         """
         return pulumi.get(self, "single_user_name")
 
     @single_user_name.setter
-    def single_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def single_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "single_user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sparkConf")
-    def spark_conf(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def spark_conf(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         should have following items:
         * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
@@ -598,123 +598,123 @@ class ClusterArgs:
         return pulumi.get(self, "spark_conf")
 
     @spark_conf.setter
-    def spark_conf(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def spark_conf(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "spark_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="sparkEnvVars")
-    def spark_env_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def spark_env_vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         """
         return pulumi.get(self, "spark_env_vars")
 
     @spark_env_vars.setter
-    def spark_env_vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def spark_env_vars(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "spark_env_vars", value)
 
     @_builtins.property
     @pulumi.getter(name="sshPublicKeys")
-    def ssh_public_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ssh_public_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
         """
         return pulumi.get(self, "ssh_public_keys")
 
     @ssh_public_keys.setter
-    def ssh_public_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ssh_public_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ssh_public_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="totalInitialRemoteDiskSize")
-    def total_initial_remote_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_initial_remote_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "total_initial_remote_disk_size")
 
     @total_initial_remote_disk_size.setter
-    def total_initial_remote_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_initial_remote_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_initial_remote_disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="useMlRuntime")
-    def use_ml_runtime(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_ml_runtime(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
         """
         return pulumi.get(self, "use_ml_runtime")
 
     @use_ml_runtime.setter
-    def use_ml_runtime(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_ml_runtime(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_ml_runtime", value)
 
     @_builtins.property
     @pulumi.getter(name="workerNodeTypeFlexibility")
-    def worker_node_type_flexibility(self) -> Optional[pulumi.Input['ClusterWorkerNodeTypeFlexibilityArgs']]:
+    def worker_node_type_flexibility(self) -> pulumi.Input[Optional['ClusterWorkerNodeTypeFlexibilityArgs']]:
         """
         a block describing the alternative driver node types if `node_type_id` isn't available.
         """
         return pulumi.get(self, "worker_node_type_flexibility")
 
     @worker_node_type_flexibility.setter
-    def worker_node_type_flexibility(self, value: Optional[pulumi.Input['ClusterWorkerNodeTypeFlexibilityArgs']]):
+    def worker_node_type_flexibility(self, value: pulumi.Input[Optional['ClusterWorkerNodeTypeFlexibilityArgs']]):
         pulumi.set(self, "worker_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadType")
-    def workload_type(self) -> Optional[pulumi.Input['ClusterWorkloadTypeArgs']]:
+    def workload_type(self) -> pulumi.Input[Optional['ClusterWorkloadTypeArgs']]:
         return pulumi.get(self, "workload_type")
 
     @workload_type.setter
-    def workload_type(self, value: Optional[pulumi.Input['ClusterWorkloadTypeArgs']]):
+    def workload_type(self, value: pulumi.Input[Optional['ClusterWorkloadTypeArgs']]):
         pulumi.set(self, "workload_type", value)
 
 
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
-                 apply_policy_default_values: Optional[pulumi.Input[_builtins.bool]] = None,
-                 autoscale: Optional[pulumi.Input['ClusterAutoscaleArgs']] = None,
-                 autotermination_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 aws_attributes: Optional[pulumi.Input['ClusterAwsAttributesArgs']] = None,
-                 azure_attributes: Optional[pulumi.Input['ClusterAzureAttributesArgs']] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_log_conf: Optional[pulumi.Input['ClusterClusterLogConfArgs']] = None,
-                 cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 data_security_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 docker_image: Optional[pulumi.Input['ClusterDockerImageArgs']] = None,
-                 driver_instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 driver_node_type_flexibility: Optional[pulumi.Input['ClusterDriverNodeTypeFlexibilityArgs']] = None,
-                 driver_node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_elastic_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_local_disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcp_attributes: Optional[pulumi.Input['ClusterGcpAttributesArgs']] = None,
-                 idempotency_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterInitScriptArgs']]]] = None,
-                 instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_pinned: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_single_node: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]] = None,
-                 no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 num_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['ClusterProviderConfigArgs']] = None,
-                 remote_disk_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 runtime_engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 single_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 spark_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_initial_remote_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_ml_runtime: Optional[pulumi.Input[_builtins.bool]] = None,
-                 worker_node_type_flexibility: Optional[pulumi.Input['ClusterWorkerNodeTypeFlexibilityArgs']] = None,
-                 workload_type: Optional[pulumi.Input['ClusterWorkloadTypeArgs']] = None):
+                 apply_policy_default_values: pulumi.Input[Optional[_builtins.bool]] = None,
+                 autoscale: pulumi.Input[Optional['ClusterAutoscaleArgs']] = None,
+                 autotermination_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 aws_attributes: pulumi.Input[Optional['ClusterAwsAttributesArgs']] = None,
+                 azure_attributes: pulumi.Input[Optional['ClusterAzureAttributesArgs']] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_log_conf: pulumi.Input[Optional['ClusterClusterLogConfArgs']] = None,
+                 cluster_mount_infos: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 data_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 docker_image: pulumi.Input[Optional['ClusterDockerImageArgs']] = None,
+                 driver_instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 driver_node_type_flexibility: pulumi.Input[Optional['ClusterDriverNodeTypeFlexibilityArgs']] = None,
+                 driver_node_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_elastic_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_local_disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcp_attributes: pulumi.Input[Optional['ClusterGcpAttributesArgs']] = None,
+                 idempotency_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 init_scripts: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterInitScriptArgs']]]] = None,
+                 instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_pinned: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_single_node: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterLibraryArgs']]]] = None,
+                 no_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['ClusterProviderConfigArgs']] = None,
+                 remote_disk_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 runtime_engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 single_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark_conf: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 spark_env_vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 spark_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_initial_remote_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_ml_runtime: pulumi.Input[Optional[_builtins.bool]] = None,
+                 worker_node_type_flexibility: pulumi.Input[Optional['ClusterWorkerNodeTypeFlexibilityArgs']] = None,
+                 workload_type: pulumi.Input[Optional['ClusterWorkloadTypeArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
 
@@ -865,97 +865,97 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="applyPolicyDefaultValues")
-    def apply_policy_default_values(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def apply_policy_default_values(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use policy default values for missing cluster attributes.
         """
         return pulumi.get(self, "apply_policy_default_values")
 
     @apply_policy_default_values.setter
-    def apply_policy_default_values(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def apply_policy_default_values(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "apply_policy_default_values", value)
 
     @_builtins.property
     @pulumi.getter
-    def autoscale(self) -> Optional[pulumi.Input['ClusterAutoscaleArgs']]:
+    def autoscale(self) -> pulumi.Input[Optional['ClusterAutoscaleArgs']]:
         return pulumi.get(self, "autoscale")
 
     @autoscale.setter
-    def autoscale(self, value: Optional[pulumi.Input['ClusterAutoscaleArgs']]):
+    def autoscale(self, value: pulumi.Input[Optional['ClusterAutoscaleArgs']]):
         pulumi.set(self, "autoscale", value)
 
     @_builtins.property
     @pulumi.getter(name="autoterminationMinutes")
-    def autotermination_minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def autotermination_minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatically terminate the cluster after being inactive for this time in minutes. If specified, the threshold must be between 10 and 10000 minutes. You can also set this value to 0 to explicitly disable automatic termination. Defaults to `60`.  *We highly recommend having this setting present for Interactive/BI clusters.*
         """
         return pulumi.get(self, "autotermination_minutes")
 
     @autotermination_minutes.setter
-    def autotermination_minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def autotermination_minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "autotermination_minutes", value)
 
     @_builtins.property
     @pulumi.getter(name="awsAttributes")
-    def aws_attributes(self) -> Optional[pulumi.Input['ClusterAwsAttributesArgs']]:
+    def aws_attributes(self) -> pulumi.Input[Optional['ClusterAwsAttributesArgs']]:
         return pulumi.get(self, "aws_attributes")
 
     @aws_attributes.setter
-    def aws_attributes(self, value: Optional[pulumi.Input['ClusterAwsAttributesArgs']]):
+    def aws_attributes(self, value: pulumi.Input[Optional['ClusterAwsAttributesArgs']]):
         pulumi.set(self, "aws_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="azureAttributes")
-    def azure_attributes(self) -> Optional[pulumi.Input['ClusterAzureAttributesArgs']]:
+    def azure_attributes(self) -> pulumi.Input[Optional['ClusterAzureAttributesArgs']]:
         return pulumi.get(self, "azure_attributes")
 
     @azure_attributes.setter
-    def azure_attributes(self, value: Optional[pulumi.Input['ClusterAzureAttributesArgs']]):
+    def azure_attributes(self, value: pulumi.Input[Optional['ClusterAzureAttributesArgs']]):
         pulumi.set(self, "azure_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterLogConf")
-    def cluster_log_conf(self) -> Optional[pulumi.Input['ClusterClusterLogConfArgs']]:
+    def cluster_log_conf(self) -> pulumi.Input[Optional['ClusterClusterLogConfArgs']]:
         return pulumi.get(self, "cluster_log_conf")
 
     @cluster_log_conf.setter
-    def cluster_log_conf(self, value: Optional[pulumi.Input['ClusterClusterLogConfArgs']]):
+    def cluster_log_conf(self, value: pulumi.Input[Optional['ClusterClusterLogConfArgs']]):
         pulumi.set(self, "cluster_log_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterMountInfos")
-    def cluster_mount_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]]:
+    def cluster_mount_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]]:
         return pulumi.get(self, "cluster_mount_infos")
 
     @cluster_mount_infos.setter
-    def cluster_mount_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]]):
+    def cluster_mount_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterMountInfoArgs']]]]):
         pulumi.set(self, "cluster_mount_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster name, which doesn't have to be unique. If not specified at creation, the cluster name will be an empty string.
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="customTags")
-    def custom_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         should have tag `ResourceClass` set to value `Serverless`
 
@@ -982,12 +982,12 @@ class _ClusterState:
         return pulumi.get(self, "custom_tags")
 
     @custom_tags.setter
-    def custom_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSecurityMode")
-    def data_security_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_security_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Select the security features of the cluster (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#data_security_mode) for full list of values). [Unity Catalog requires](https://docs.databricks.com/data-governance/unity-catalog/compute.html#create-clusters--sql-warehouses-with-unity-catalog-access) `SINGLE_USER` or `USER_ISOLATION` mode. `LEGACY_PASSTHROUGH` for passthrough cluster and `LEGACY_TABLE_ACL` for Table ACL cluster. If omitted, default security features are enabled. To disable security features use `NONE` or legacy mode `NO_ISOLATION`.  If `kind` is specified, then the following options are available:
         * `DATA_SECURITY_MODE_AUTO`: Databricks will choose the most appropriate access mode depending on your compute configuration.
@@ -997,273 +997,273 @@ class _ClusterState:
         return pulumi.get(self, "data_security_mode")
 
     @data_security_mode.setter
-    def data_security_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_security_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_security_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTags")
-    def default_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def default_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         (map) Tags that are added by Databricks by default, regardless of any `custom_tags` that may have been added. These include: Vendor: Databricks, Creator: <username_of_creator>, ClusterName: <name_of_cluster>, ClusterId: <id_of_cluster>, Name: <Databricks internal use>, and any workspace and pool tags.
         """
         return pulumi.get(self, "default_tags")
 
     @default_tags.setter
-    def default_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def default_tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "default_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="dockerImage")
-    def docker_image(self) -> Optional[pulumi.Input['ClusterDockerImageArgs']]:
+    def docker_image(self) -> pulumi.Input[Optional['ClusterDockerImageArgs']]:
         return pulumi.get(self, "docker_image")
 
     @docker_image.setter
-    def docker_image(self, value: Optional[pulumi.Input['ClusterDockerImageArgs']]):
+    def docker_image(self, value: pulumi.Input[Optional['ClusterDockerImageArgs']]):
         pulumi.set(self, "docker_image", value)
 
     @_builtins.property
     @pulumi.getter(name="driverInstancePoolId")
-    def driver_instance_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def driver_instance_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         similar to `instance_pool_id`, but for driver node. If omitted, and `instance_pool_id` is specified, then the driver will be allocated from that pool.
         """
         return pulumi.get(self, "driver_instance_pool_id")
 
     @driver_instance_pool_id.setter
-    def driver_instance_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def driver_instance_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "driver_instance_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="driverNodeTypeFlexibility")
-    def driver_node_type_flexibility(self) -> Optional[pulumi.Input['ClusterDriverNodeTypeFlexibilityArgs']]:
+    def driver_node_type_flexibility(self) -> pulumi.Input[Optional['ClusterDriverNodeTypeFlexibilityArgs']]:
         """
         a block describing the alternative driver node types if `driver_node_type_id` isn't available.
         """
         return pulumi.get(self, "driver_node_type_flexibility")
 
     @driver_node_type_flexibility.setter
-    def driver_node_type_flexibility(self, value: Optional[pulumi.Input['ClusterDriverNodeTypeFlexibilityArgs']]):
+    def driver_node_type_flexibility(self, value: pulumi.Input[Optional['ClusterDriverNodeTypeFlexibilityArgs']]):
         pulumi.set(self, "driver_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="driverNodeTypeId")
-    def driver_node_type_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def driver_node_type_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The node type of the Spark driver. This field is optional; if unset, API will set the driver node type to the same value as `node_type_id` defined above.
         """
         return pulumi.get(self, "driver_node_type_id")
 
     @driver_node_type_id.setter
-    def driver_node_type_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def driver_node_type_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "driver_node_type_id", value)
 
     @_builtins.property
     @pulumi.getter(name="enableElasticDisk")
-    def enable_elastic_disk(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_elastic_disk(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If you don't want to allocate a fixed number of EBS volumes at cluster creation time, use autoscaling local storage. With autoscaling local storage, Databricks monitors the amount of free disk space available on your cluster's Spark workers. If a worker begins to run too low on disk, Databricks automatically attaches a new EBS volume to the worker before it runs out of disk space. EBS volumes are attached up to a limit of 5 TB of total disk space per instance (including the instance's local storage). To scale down EBS usage, make sure you have `autotermination_minutes` and `autoscale` attributes set. More documentation available at [cluster configuration page](https://docs.databricks.com/clusters/configure.html#autoscaling-local-storage-1).
         """
         return pulumi.get(self, "enable_elastic_disk")
 
     @enable_elastic_disk.setter
-    def enable_elastic_disk(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_elastic_disk(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_elastic_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="enableLocalDiskEncryption")
-    def enable_local_disk_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_local_disk_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Some instance types you use to run clusters may have locally attached disks. Databricks may store shuffle data or temporary data on these locally attached disks. To ensure that all data at rest is encrypted for all storage types, including shuffle data stored temporarily on your cluster's local disks, you can enable local disk encryption. When local disk encryption is enabled, Databricks generates an encryption key locally unique to each cluster node and uses it to encrypt all data stored on local disks. The scope of the key is local to each cluster node and is destroyed along with the cluster node itself. During its lifetime, the key resides in memory for encryption and decryption and is stored encrypted on the disk. *Your workloads may run more slowly because of the performance impact of reading and writing encrypted data to and from local volumes. This feature is not available for all Azure Databricks subscriptions. Contact your Microsoft or Databricks account representative to request access.*
         """
         return pulumi.get(self, "enable_local_disk_encryption")
 
     @enable_local_disk_encryption.setter
-    def enable_local_disk_encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_local_disk_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_local_disk_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpAttributes")
-    def gcp_attributes(self) -> Optional[pulumi.Input['ClusterGcpAttributesArgs']]:
+    def gcp_attributes(self) -> pulumi.Input[Optional['ClusterGcpAttributesArgs']]:
         return pulumi.get(self, "gcp_attributes")
 
     @gcp_attributes.setter
-    def gcp_attributes(self, value: Optional[pulumi.Input['ClusterGcpAttributesArgs']]):
+    def gcp_attributes(self, value: pulumi.Input[Optional['ClusterGcpAttributesArgs']]):
         pulumi.set(self, "gcp_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="idempotencyToken")
-    def idempotency_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def idempotency_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional token to guarantee the idempotency of cluster creation requests. If an active cluster with the provided token already exists, the request will not create a new cluster, but it will return the existing running cluster's ID instead. If you specify the idempotency token, upon failure, you can retry until the request succeeds. Databricks platform guarantees to launch exactly one cluster with that idempotency token. This token should have at most 64 characters.
         """
         return pulumi.get(self, "idempotency_token")
 
     @idempotency_token.setter
-    def idempotency_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def idempotency_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "idempotency_token", value)
 
     @_builtins.property
     @pulumi.getter(name="initScripts")
-    def init_scripts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterInitScriptArgs']]]]:
+    def init_scripts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterInitScriptArgs']]]]:
         return pulumi.get(self, "init_scripts")
 
     @init_scripts.setter
-    def init_scripts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterInitScriptArgs']]]]):
+    def init_scripts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterInitScriptArgs']]]]):
         pulumi.set(self, "init_scripts", value)
 
     @_builtins.property
     @pulumi.getter(name="instancePoolId")
-    def instance_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         To reduce cluster start time, you can attach a cluster to a predefined pool of idle instances. When attached to a pool, a cluster allocates its driver and worker nodes from the pool. If the pool does not have sufficient idle resources to accommodate the cluster's request, it expands by allocating new instances from the instance provider. When an attached cluster changes its state to `TERMINATED`, the instances it used are returned to the pool and reused by a different cluster.
         """
         return pulumi.get(self, "instance_pool_id")
 
     @instance_pool_id.setter
-    def instance_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isPinned")
-    def is_pinned(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_pinned(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         boolean value specifying if the cluster is pinned (not pinned by default). You must be a Databricks administrator to use this.  The pinned clusters' maximum number is [limited to 100](https://docs.databricks.com/clusters/clusters-manage.html#pin-a-cluster), so `apply` may fail if you have more than that (this number may change over time, so check Databricks documentation for actual number).
         """
         return pulumi.get(self, "is_pinned")
 
     @is_pinned.setter
-    def is_pinned(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_pinned(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_pinned", value)
 
     @_builtins.property
     @pulumi.getter(name="isSingleNode")
-    def is_single_node(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_single_node(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to true, Databricks will automatically set single node related `custom_tags`, `spark_conf`, and `num_workers`.
         """
         return pulumi.get(self, "is_single_node")
 
     @is_single_node.setter
-    def is_single_node(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_single_node(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_single_node", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The kind of compute described by this compute specification.  Possible values (see [API docs](https://docs.databricks.com/api/workspace/clusters/create#kind) for full list): `CLASSIC_PREVIEW` (if corresponding public preview is enabled).
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]]:
+    def libraries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterLibraryArgs']]]]:
         return pulumi.get(self, "libraries")
 
     @libraries.setter
-    def libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterLibraryArgs']]]]):
+    def libraries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterLibraryArgs']]]]):
         pulumi.set(self, "libraries", value)
 
     @_builtins.property
     @pulumi.getter(name="noWait")
-    def no_wait(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_wait(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, the provider will not wait for the cluster to reach `RUNNING` state when creating the cluster, allowing cluster creation and library installation to continue asynchronously. Defaults to false (the provider will wait for cluster creation and library installation to succeed).
         """
         return pulumi.get(self, "no_wait")
 
     @no_wait.setter
-    def no_wait(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_wait(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_wait", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeTypeId")
-    def node_type_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_type_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Any supported get_node_type id. If `instance_pool_id` is specified, this field is not needed.
         """
         return pulumi.get(self, "node_type_id")
 
     @node_type_id.setter
-    def node_type_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_type_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_type_id", value)
 
     @_builtins.property
     @pulumi.getter(name="numWorkers")
-    def num_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def num_workers(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of worker nodes that this cluster should have. A cluster has one Spark driver and `num_workers` executors for a total of `num_workers` + 1 Spark nodes.
         """
         return pulumi.get(self, "num_workers")
 
     @num_workers.setter
-    def num_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def num_workers(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "num_workers", value)
 
     @_builtins.property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policy_id` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `spark_conf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
         """
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
-    def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['ClusterProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['ClusterProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['ClusterProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['ClusterProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteDiskThroughput")
-    def remote_disk_throughput(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def remote_disk_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "remote_disk_throughput")
 
     @remote_disk_throughput.setter
-    def remote_disk_throughput(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def remote_disk_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "remote_disk_throughput", value)
 
     @_builtins.property
     @pulumi.getter(name="runtimeEngine")
-    def runtime_engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime_engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the spark_version value. Allowed values include: `PHOTON`, `STANDARD`.
         """
         return pulumi.get(self, "runtime_engine")
 
     @runtime_engine.setter
-    def runtime_engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime_engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime_engine", value)
 
     @_builtins.property
     @pulumi.getter(name="singleUserName")
-    def single_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def single_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `data_security_mode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
         """
         return pulumi.get(self, "single_user_name")
 
     @single_user_name.setter
-    def single_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def single_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "single_user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sparkConf")
-    def spark_conf(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def spark_conf(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         should have following items:
         * `spark.databricks.repl.allowedLanguages` set to a list of supported languages, for example: `python,sql`, or `python,sql,r`.  Scala is not supported!
@@ -1272,106 +1272,106 @@ class _ClusterState:
         return pulumi.get(self, "spark_conf")
 
     @spark_conf.setter
-    def spark_conf(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def spark_conf(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "spark_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="sparkEnvVars")
-    def spark_env_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def spark_env_vars(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Map with environment variable key-value pairs to fine-tune Spark clusters. Key-value pairs of the form (X,Y) are exported (i.e., X='Y') while launching the driver and workers.
         """
         return pulumi.get(self, "spark_env_vars")
 
     @spark_env_vars.setter
-    def spark_env_vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def spark_env_vars(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "spark_env_vars", value)
 
     @_builtins.property
     @pulumi.getter(name="sparkVersion")
-    def spark_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spark_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         [Runtime version](https://docs.databricks.com/runtime/index.html) of the cluster. Any supported get_spark_version id.  We advise using Cluster Policies to restrict the list of versions for simplicity while maintaining enough control.
         """
         return pulumi.get(self, "spark_version")
 
     @spark_version.setter
-    def spark_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spark_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spark_version", value)
 
     @_builtins.property
     @pulumi.getter(name="sshPublicKeys")
-    def ssh_public_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ssh_public_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         SSH public key contents that will be added to each Spark node in this cluster. The corresponding private keys can be used to login with the user name ubuntu on port 2200. You can specify up to 10 keys.
         """
         return pulumi.get(self, "ssh_public_keys")
 
     @ssh_public_keys.setter
-    def ssh_public_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ssh_public_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ssh_public_keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) State of the cluster.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="totalInitialRemoteDiskSize")
-    def total_initial_remote_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_initial_remote_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "total_initial_remote_disk_size")
 
     @total_initial_remote_disk_size.setter
-    def total_initial_remote_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_initial_remote_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_initial_remote_disk_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="useMlRuntime")
-    def use_ml_runtime(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_ml_runtime(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whenever ML runtime should be selected or not.  Actual runtime is determined by `spark_version` (DBR release), this field `use_ml_runtime`, and whether `node_type_id` is GPU node or not.
         """
         return pulumi.get(self, "use_ml_runtime")
 
     @use_ml_runtime.setter
-    def use_ml_runtime(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_ml_runtime(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_ml_runtime", value)
 
     @_builtins.property
     @pulumi.getter(name="workerNodeTypeFlexibility")
-    def worker_node_type_flexibility(self) -> Optional[pulumi.Input['ClusterWorkerNodeTypeFlexibilityArgs']]:
+    def worker_node_type_flexibility(self) -> pulumi.Input[Optional['ClusterWorkerNodeTypeFlexibilityArgs']]:
         """
         a block describing the alternative driver node types if `node_type_id` isn't available.
         """
         return pulumi.get(self, "worker_node_type_flexibility")
 
     @worker_node_type_flexibility.setter
-    def worker_node_type_flexibility(self, value: Optional[pulumi.Input['ClusterWorkerNodeTypeFlexibilityArgs']]):
+    def worker_node_type_flexibility(self, value: pulumi.Input[Optional['ClusterWorkerNodeTypeFlexibilityArgs']]):
         pulumi.set(self, "worker_node_type_flexibility", value)
 
     @_builtins.property
     @pulumi.getter(name="workloadType")
-    def workload_type(self) -> Optional[pulumi.Input['ClusterWorkloadTypeArgs']]:
+    def workload_type(self) -> pulumi.Input[Optional['ClusterWorkloadTypeArgs']]:
         return pulumi.get(self, "workload_type")
 
     @workload_type.setter
-    def workload_type(self, value: Optional[pulumi.Input['ClusterWorkloadTypeArgs']]):
+    def workload_type(self, value: pulumi.Input[Optional['ClusterWorkloadTypeArgs']]):
         pulumi.set(self, "workload_type", value)
 
 
@@ -1381,46 +1381,46 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apply_policy_default_values: Optional[pulumi.Input[_builtins.bool]] = None,
-                 autoscale: Optional[pulumi.Input[Union['ClusterAutoscaleArgs', 'ClusterAutoscaleArgsDict']]] = None,
-                 autotermination_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 aws_attributes: Optional[pulumi.Input[Union['ClusterAwsAttributesArgs', 'ClusterAwsAttributesArgsDict']]] = None,
-                 azure_attributes: Optional[pulumi.Input[Union['ClusterAzureAttributesArgs', 'ClusterAzureAttributesArgsDict']]] = None,
-                 cluster_log_conf: Optional[pulumi.Input[Union['ClusterClusterLogConfArgs', 'ClusterClusterLogConfArgsDict']]] = None,
-                 cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterMountInfoArgs', 'ClusterClusterMountInfoArgsDict']]]]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 data_security_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_image: Optional[pulumi.Input[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
-                 driver_instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 driver_node_type_flexibility: Optional[pulumi.Input[Union['ClusterDriverNodeTypeFlexibilityArgs', 'ClusterDriverNodeTypeFlexibilityArgsDict']]] = None,
-                 driver_node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_elastic_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_local_disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcp_attributes: Optional[pulumi.Input[Union['ClusterGcpAttributesArgs', 'ClusterGcpAttributesArgsDict']]] = None,
-                 idempotency_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterInitScriptArgs', 'ClusterInitScriptArgsDict']]]]] = None,
-                 instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_pinned: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_single_node: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterLibraryArgs', 'ClusterLibraryArgsDict']]]]] = None,
-                 no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 num_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['ClusterProviderConfigArgs', 'ClusterProviderConfigArgsDict']]] = None,
-                 remote_disk_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 runtime_engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 single_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 spark_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 total_initial_remote_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 use_ml_runtime: Optional[pulumi.Input[_builtins.bool]] = None,
-                 worker_node_type_flexibility: Optional[pulumi.Input[Union['ClusterWorkerNodeTypeFlexibilityArgs', 'ClusterWorkerNodeTypeFlexibilityArgsDict']]] = None,
-                 workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None,
+                 apply_policy_default_values: pulumi.Input[Optional[_builtins.bool]] = None,
+                 autoscale: pulumi.Input[Optional[Union['ClusterAutoscaleArgs', 'ClusterAutoscaleArgsDict']]] = None,
+                 autotermination_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 aws_attributes: pulumi.Input[Optional[Union['ClusterAwsAttributesArgs', 'ClusterAwsAttributesArgsDict']]] = None,
+                 azure_attributes: pulumi.Input[Optional[Union['ClusterAzureAttributesArgs', 'ClusterAzureAttributesArgsDict']]] = None,
+                 cluster_log_conf: pulumi.Input[Optional[Union['ClusterClusterLogConfArgs', 'ClusterClusterLogConfArgsDict']]] = None,
+                 cluster_mount_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterMountInfoArgs', 'ClusterClusterMountInfoArgsDict']]]]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 data_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_image: pulumi.Input[Optional[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
+                 driver_instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 driver_node_type_flexibility: pulumi.Input[Optional[Union['ClusterDriverNodeTypeFlexibilityArgs', 'ClusterDriverNodeTypeFlexibilityArgsDict']]] = None,
+                 driver_node_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_elastic_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_local_disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcp_attributes: pulumi.Input[Optional[Union['ClusterGcpAttributesArgs', 'ClusterGcpAttributesArgsDict']]] = None,
+                 idempotency_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 init_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterInitScriptArgs', 'ClusterInitScriptArgsDict']]]]] = None,
+                 instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_pinned: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_single_node: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterLibraryArgs', 'ClusterLibraryArgsDict']]]]] = None,
+                 no_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ClusterProviderConfigArgs', 'ClusterProviderConfigArgsDict']]] = None,
+                 remote_disk_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 runtime_engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 single_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark_conf: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 spark_env_vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 spark_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 total_initial_remote_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 use_ml_runtime: pulumi.Input[Optional[_builtins.bool]] = None,
+                 worker_node_type_flexibility: pulumi.Input[Optional[Union['ClusterWorkerNodeTypeFlexibilityArgs', 'ClusterWorkerNodeTypeFlexibilityArgsDict']]] = None,
+                 workload_type: pulumi.Input[Optional[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None,
                  __props__=None):
         """
         This resource allows you to manage [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
@@ -1619,46 +1619,46 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apply_policy_default_values: Optional[pulumi.Input[_builtins.bool]] = None,
-                 autoscale: Optional[pulumi.Input[Union['ClusterAutoscaleArgs', 'ClusterAutoscaleArgsDict']]] = None,
-                 autotermination_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 aws_attributes: Optional[pulumi.Input[Union['ClusterAwsAttributesArgs', 'ClusterAwsAttributesArgsDict']]] = None,
-                 azure_attributes: Optional[pulumi.Input[Union['ClusterAzureAttributesArgs', 'ClusterAzureAttributesArgsDict']]] = None,
-                 cluster_log_conf: Optional[pulumi.Input[Union['ClusterClusterLogConfArgs', 'ClusterClusterLogConfArgsDict']]] = None,
-                 cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterMountInfoArgs', 'ClusterClusterMountInfoArgsDict']]]]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 data_security_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 docker_image: Optional[pulumi.Input[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
-                 driver_instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 driver_node_type_flexibility: Optional[pulumi.Input[Union['ClusterDriverNodeTypeFlexibilityArgs', 'ClusterDriverNodeTypeFlexibilityArgsDict']]] = None,
-                 driver_node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_elastic_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_local_disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gcp_attributes: Optional[pulumi.Input[Union['ClusterGcpAttributesArgs', 'ClusterGcpAttributesArgsDict']]] = None,
-                 idempotency_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterInitScriptArgs', 'ClusterInitScriptArgsDict']]]]] = None,
-                 instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_pinned: Optional[pulumi.Input[_builtins.bool]] = None,
-                 is_single_node: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterLibraryArgs', 'ClusterLibraryArgsDict']]]]] = None,
-                 no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 num_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['ClusterProviderConfigArgs', 'ClusterProviderConfigArgsDict']]] = None,
-                 remote_disk_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 runtime_engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 single_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 spark_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 total_initial_remote_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 use_ml_runtime: Optional[pulumi.Input[_builtins.bool]] = None,
-                 worker_node_type_flexibility: Optional[pulumi.Input[Union['ClusterWorkerNodeTypeFlexibilityArgs', 'ClusterWorkerNodeTypeFlexibilityArgsDict']]] = None,
-                 workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None,
+                 apply_policy_default_values: pulumi.Input[Optional[_builtins.bool]] = None,
+                 autoscale: pulumi.Input[Optional[Union['ClusterAutoscaleArgs', 'ClusterAutoscaleArgsDict']]] = None,
+                 autotermination_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 aws_attributes: pulumi.Input[Optional[Union['ClusterAwsAttributesArgs', 'ClusterAwsAttributesArgsDict']]] = None,
+                 azure_attributes: pulumi.Input[Optional[Union['ClusterAzureAttributesArgs', 'ClusterAzureAttributesArgsDict']]] = None,
+                 cluster_log_conf: pulumi.Input[Optional[Union['ClusterClusterLogConfArgs', 'ClusterClusterLogConfArgsDict']]] = None,
+                 cluster_mount_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterMountInfoArgs', 'ClusterClusterMountInfoArgsDict']]]]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 data_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 docker_image: pulumi.Input[Optional[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
+                 driver_instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 driver_node_type_flexibility: pulumi.Input[Optional[Union['ClusterDriverNodeTypeFlexibilityArgs', 'ClusterDriverNodeTypeFlexibilityArgsDict']]] = None,
+                 driver_node_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_elastic_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_local_disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gcp_attributes: pulumi.Input[Optional[Union['ClusterGcpAttributesArgs', 'ClusterGcpAttributesArgsDict']]] = None,
+                 idempotency_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 init_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterInitScriptArgs', 'ClusterInitScriptArgsDict']]]]] = None,
+                 instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_pinned: pulumi.Input[Optional[_builtins.bool]] = None,
+                 is_single_node: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterLibraryArgs', 'ClusterLibraryArgsDict']]]]] = None,
+                 no_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ClusterProviderConfigArgs', 'ClusterProviderConfigArgsDict']]] = None,
+                 remote_disk_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 runtime_engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 single_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 spark_conf: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 spark_env_vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 spark_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 total_initial_remote_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 use_ml_runtime: pulumi.Input[Optional[_builtins.bool]] = None,
+                 worker_node_type_flexibility: pulumi.Input[Optional[Union['ClusterWorkerNodeTypeFlexibilityArgs', 'ClusterWorkerNodeTypeFlexibilityArgsDict']]] = None,
+                 workload_type: pulumi.Input[Optional[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1724,50 +1724,50 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            apply_policy_default_values: Optional[pulumi.Input[_builtins.bool]] = None,
-            autoscale: Optional[pulumi.Input[Union['ClusterAutoscaleArgs', 'ClusterAutoscaleArgsDict']]] = None,
-            autotermination_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-            aws_attributes: Optional[pulumi.Input[Union['ClusterAwsAttributesArgs', 'ClusterAwsAttributesArgsDict']]] = None,
-            azure_attributes: Optional[pulumi.Input[Union['ClusterAzureAttributesArgs', 'ClusterAzureAttributesArgsDict']]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_log_conf: Optional[pulumi.Input[Union['ClusterClusterLogConfArgs', 'ClusterClusterLogConfArgsDict']]] = None,
-            cluster_mount_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterClusterMountInfoArgs', 'ClusterClusterMountInfoArgsDict']]]]] = None,
-            cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            data_security_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            default_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            docker_image: Optional[pulumi.Input[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
-            driver_instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            driver_node_type_flexibility: Optional[pulumi.Input[Union['ClusterDriverNodeTypeFlexibilityArgs', 'ClusterDriverNodeTypeFlexibilityArgsDict']]] = None,
-            driver_node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_elastic_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_local_disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-            gcp_attributes: Optional[pulumi.Input[Union['ClusterGcpAttributesArgs', 'ClusterGcpAttributesArgsDict']]] = None,
-            idempotency_token: Optional[pulumi.Input[_builtins.str]] = None,
-            init_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterInitScriptArgs', 'ClusterInitScriptArgsDict']]]]] = None,
-            instance_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            is_pinned: Optional[pulumi.Input[_builtins.bool]] = None,
-            is_single_node: Optional[pulumi.Input[_builtins.bool]] = None,
-            kind: Optional[pulumi.Input[_builtins.str]] = None,
-            libraries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterLibraryArgs', 'ClusterLibraryArgsDict']]]]] = None,
-            no_wait: Optional[pulumi.Input[_builtins.bool]] = None,
-            node_type_id: Optional[pulumi.Input[_builtins.str]] = None,
-            num_workers: Optional[pulumi.Input[_builtins.int]] = None,
-            policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['ClusterProviderConfigArgs', 'ClusterProviderConfigArgsDict']]] = None,
-            remote_disk_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-            runtime_engine: Optional[pulumi.Input[_builtins.str]] = None,
-            single_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            spark_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            spark_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            spark_version: Optional[pulumi.Input[_builtins.str]] = None,
-            ssh_public_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            total_initial_remote_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            use_ml_runtime: Optional[pulumi.Input[_builtins.bool]] = None,
-            worker_node_type_flexibility: Optional[pulumi.Input[Union['ClusterWorkerNodeTypeFlexibilityArgs', 'ClusterWorkerNodeTypeFlexibilityArgsDict']]] = None,
-            workload_type: Optional[pulumi.Input[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None) -> 'Cluster':
+            apply_policy_default_values: pulumi.Input[Optional[_builtins.bool]] = None,
+            autoscale: pulumi.Input[Optional[Union['ClusterAutoscaleArgs', 'ClusterAutoscaleArgsDict']]] = None,
+            autotermination_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+            aws_attributes: pulumi.Input[Optional[Union['ClusterAwsAttributesArgs', 'ClusterAwsAttributesArgsDict']]] = None,
+            azure_attributes: pulumi.Input[Optional[Union['ClusterAzureAttributesArgs', 'ClusterAzureAttributesArgsDict']]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_log_conf: pulumi.Input[Optional[Union['ClusterClusterLogConfArgs', 'ClusterClusterLogConfArgsDict']]] = None,
+            cluster_mount_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterClusterMountInfoArgs', 'ClusterClusterMountInfoArgsDict']]]]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            data_security_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            default_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            docker_image: pulumi.Input[Optional[Union['ClusterDockerImageArgs', 'ClusterDockerImageArgsDict']]] = None,
+            driver_instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            driver_node_type_flexibility: pulumi.Input[Optional[Union['ClusterDriverNodeTypeFlexibilityArgs', 'ClusterDriverNodeTypeFlexibilityArgsDict']]] = None,
+            driver_node_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_elastic_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_local_disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+            gcp_attributes: pulumi.Input[Optional[Union['ClusterGcpAttributesArgs', 'ClusterGcpAttributesArgsDict']]] = None,
+            idempotency_token: pulumi.Input[Optional[_builtins.str]] = None,
+            init_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterInitScriptArgs', 'ClusterInitScriptArgsDict']]]]] = None,
+            instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_pinned: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_single_node: pulumi.Input[Optional[_builtins.bool]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            libraries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterLibraryArgs', 'ClusterLibraryArgsDict']]]]] = None,
+            no_wait: pulumi.Input[Optional[_builtins.bool]] = None,
+            node_type_id: pulumi.Input[Optional[_builtins.str]] = None,
+            num_workers: pulumi.Input[Optional[_builtins.int]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['ClusterProviderConfigArgs', 'ClusterProviderConfigArgsDict']]] = None,
+            remote_disk_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+            runtime_engine: pulumi.Input[Optional[_builtins.str]] = None,
+            single_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            spark_conf: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            spark_env_vars: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            spark_version: pulumi.Input[Optional[_builtins.str]] = None,
+            ssh_public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            total_initial_remote_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            use_ml_runtime: pulumi.Input[Optional[_builtins.bool]] = None,
+            worker_node_type_flexibility: pulumi.Input[Optional[Union['ClusterWorkerNodeTypeFlexibilityArgs', 'ClusterWorkerNodeTypeFlexibilityArgsDict']]] = None,
+            workload_type: pulumi.Input[Optional[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

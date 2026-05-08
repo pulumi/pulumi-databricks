@@ -283,82 +283,82 @@ export interface LakehouseMonitorState {
     /**
      * The directory to store the monitoring assets (Eg. Dashboard and Metric Tables)
      */
-    assetsDir?: pulumi.Input<string>;
+    assetsDir?: pulumi.Input<string | undefined>;
     /**
      * Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
      * table.
      */
-    baselineTableName?: pulumi.Input<string>;
+    baselineTableName?: pulumi.Input<string | undefined>;
     /**
      * Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
      */
-    customMetrics?: pulumi.Input<pulumi.Input<inputs.LakehouseMonitorCustomMetric>[]>;
+    customMetrics?: pulumi.Input<pulumi.Input<inputs.LakehouseMonitorCustomMetric>[] | undefined>;
     /**
      * The ID of the generated dashboard.
      */
-    dashboardId?: pulumi.Input<string>;
+    dashboardId?: pulumi.Input<string | undefined>;
     /**
      * The data classification config for the monitor
      */
-    dataClassificationConfig?: pulumi.Input<inputs.LakehouseMonitorDataClassificationConfig>;
+    dataClassificationConfig?: pulumi.Input<inputs.LakehouseMonitorDataClassificationConfig | undefined>;
     /**
      * The full name of the drift metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
      */
-    driftMetricsTableName?: pulumi.Input<string>;
+    driftMetricsTableName?: pulumi.Input<string | undefined>;
     /**
      * Configuration for the inference log monitor
      */
-    inferenceLog?: pulumi.Input<inputs.LakehouseMonitorInferenceLog>;
-    latestMonitorFailureMsg?: pulumi.Input<string>;
+    inferenceLog?: pulumi.Input<inputs.LakehouseMonitorInferenceLog | undefined>;
+    latestMonitorFailureMsg?: pulumi.Input<string | undefined>;
     /**
      * The version of the monitor config (e.g. 1,2,3). If negative, the monitor may be corrupted
      */
-    monitorVersion?: pulumi.Input<number>;
+    monitorVersion?: pulumi.Input<number | undefined>;
     /**
      * The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
      */
-    notifications?: pulumi.Input<inputs.LakehouseMonitorNotifications>;
+    notifications?: pulumi.Input<inputs.LakehouseMonitorNotifications | undefined>;
     /**
      * Schema where output metric tables are created
      */
-    outputSchemaName?: pulumi.Input<string>;
+    outputSchemaName?: pulumi.Input<string | undefined>;
     /**
      * The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
      */
-    profileMetricsTableName?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.LakehouseMonitorProviderConfig>;
+    profileMetricsTableName?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.LakehouseMonitorProviderConfig | undefined>;
     /**
      * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      */
-    schedule?: pulumi.Input<inputs.LakehouseMonitorSchedule>;
+    schedule?: pulumi.Input<inputs.LakehouseMonitorSchedule | undefined>;
     /**
      * Whether to skip creating a default dashboard summarizing data quality metrics.
      */
-    skipBuiltinDashboard?: pulumi.Input<boolean>;
+    skipBuiltinDashboard?: pulumi.Input<boolean | undefined>;
     /**
      * List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
      */
-    slicingExprs?: pulumi.Input<pulumi.Input<string>[]>;
+    slicingExprs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configuration for monitoring snapshot tables.
      */
-    snapshot?: pulumi.Input<inputs.LakehouseMonitorSnapshot>;
+    snapshot?: pulumi.Input<inputs.LakehouseMonitorSnapshot | undefined>;
     /**
      * Status of the Monitor
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
     /**
      * Configuration for monitoring timeseries tables.
      */
-    timeSeries?: pulumi.Input<inputs.LakehouseMonitorTimeSeries>;
+    timeSeries?: pulumi.Input<inputs.LakehouseMonitorTimeSeries | undefined>;
     /**
      * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -373,45 +373,45 @@ export interface LakehouseMonitorArgs {
      * Name of the baseline table from which drift metrics are computed from.Columns in the monitored table should also be present in the baseline
      * table.
      */
-    baselineTableName?: pulumi.Input<string>;
+    baselineTableName?: pulumi.Input<string | undefined>;
     /**
      * Custom metrics to compute on the monitored table. These can be aggregate metrics, derived metrics (from already computed aggregate metrics), or drift metrics (comparing metrics across time windows).
      */
-    customMetrics?: pulumi.Input<pulumi.Input<inputs.LakehouseMonitorCustomMetric>[]>;
+    customMetrics?: pulumi.Input<pulumi.Input<inputs.LakehouseMonitorCustomMetric>[] | undefined>;
     /**
      * The data classification config for the monitor
      */
-    dataClassificationConfig?: pulumi.Input<inputs.LakehouseMonitorDataClassificationConfig>;
+    dataClassificationConfig?: pulumi.Input<inputs.LakehouseMonitorDataClassificationConfig | undefined>;
     /**
      * Configuration for the inference log monitor
      */
-    inferenceLog?: pulumi.Input<inputs.LakehouseMonitorInferenceLog>;
-    latestMonitorFailureMsg?: pulumi.Input<string>;
+    inferenceLog?: pulumi.Input<inputs.LakehouseMonitorInferenceLog | undefined>;
+    latestMonitorFailureMsg?: pulumi.Input<string | undefined>;
     /**
      * The notification settings for the monitor.  The following optional blocks are supported, each consisting of the single string array field with name `emailAddresses` containing a list of emails to notify:
      */
-    notifications?: pulumi.Input<inputs.LakehouseMonitorNotifications>;
+    notifications?: pulumi.Input<inputs.LakehouseMonitorNotifications | undefined>;
     /**
      * Schema where output metric tables are created
      */
     outputSchemaName: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.LakehouseMonitorProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.LakehouseMonitorProviderConfig | undefined>;
     /**
      * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      */
-    schedule?: pulumi.Input<inputs.LakehouseMonitorSchedule>;
+    schedule?: pulumi.Input<inputs.LakehouseMonitorSchedule | undefined>;
     /**
      * Whether to skip creating a default dashboard summarizing data quality metrics.
      */
-    skipBuiltinDashboard?: pulumi.Input<boolean>;
+    skipBuiltinDashboard?: pulumi.Input<boolean | undefined>;
     /**
      * List of column expressions to slice data with for targeted analysis. The data is grouped by each expression independently, resulting in a separate slice for each predicate and its complements. For high-cardinality columns, only the top 100 unique values by frequency will generate slices.
      */
-    slicingExprs?: pulumi.Input<pulumi.Input<string>[]>;
+    slicingExprs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configuration for monitoring snapshot tables.
      */
-    snapshot?: pulumi.Input<inputs.LakehouseMonitorSnapshot>;
+    snapshot?: pulumi.Input<inputs.LakehouseMonitorSnapshot | undefined>;
     /**
      * The full name of the table to attach the monitor too. Its of the format {catalog}.{schema}.{tableName}
      */
@@ -419,9 +419,9 @@ export interface LakehouseMonitorArgs {
     /**
      * Configuration for monitoring timeseries tables.
      */
-    timeSeries?: pulumi.Input<inputs.LakehouseMonitorTimeSeries>;
+    timeSeries?: pulumi.Input<inputs.LakehouseMonitorTimeSeries | undefined>;
     /**
      * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running warehouse will be used.
      */
-    warehouseId?: pulumi.Input<string>;
+    warehouseId?: pulumi.Input<string | undefined>;
 }

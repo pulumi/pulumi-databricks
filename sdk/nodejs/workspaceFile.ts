@@ -116,32 +116,32 @@ export interface WorkspaceFileState {
     /**
      * The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
      */
-    contentBase64?: pulumi.Input<string>;
-    md5?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string | undefined>;
+    md5?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier for a workspace file
      */
-    objectId?: pulumi.Input<number>;
+    objectId?: pulumi.Input<number | undefined>;
     /**
      * The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.WorkspaceFileProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.WorkspaceFileProviderConfig | undefined>;
     /**
      * Path to file on local filesystem. Conflicts with `contentBase64`.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Routable URL of the workspace file
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */
-    workspacePath?: pulumi.Input<string>;
+    workspacePath?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -151,12 +151,12 @@ export interface WorkspaceFileArgs {
     /**
      * The base64-encoded file content. Conflicts with `source`. Use of `contentBase64` is discouraged, as it's increasing memory footprint of Pulumi state and should only be used in exceptional circumstances, like creating a workspace file with configuration properties for a data pipeline.
      */
-    contentBase64?: pulumi.Input<string>;
-    md5?: pulumi.Input<string>;
+    contentBase64?: pulumi.Input<string | undefined>;
+    md5?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier for a workspace file
      */
-    objectId?: pulumi.Input<number>;
+    objectId?: pulumi.Input<number | undefined>;
     /**
      * The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
      */
@@ -164,9 +164,9 @@ export interface WorkspaceFileArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.WorkspaceFileProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.WorkspaceFileProviderConfig | undefined>;
     /**
      * Path to file on local filesystem. Conflicts with `contentBase64`.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }

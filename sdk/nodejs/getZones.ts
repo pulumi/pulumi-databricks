@@ -103,17 +103,17 @@ export interface GetZonesOutputArgs {
     /**
      * This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
      */
-    defaultZone?: pulumi.Input<string>;
+    defaultZone?: pulumi.Input<string | undefined>;
     /**
      * The id for the zone object.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetZonesProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetZonesProviderConfigArgs | undefined>;
     /**
      * This is a list of all the zones available for your subnets in your Databricks workspace.
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

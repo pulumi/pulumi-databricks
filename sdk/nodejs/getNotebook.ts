@@ -137,15 +137,15 @@ export interface GetNotebookOutputArgs {
     /**
      * notebook language
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * notebook object ID
      */
-    objectId?: pulumi.Input<number>;
+    objectId?: pulumi.Input<number | undefined>;
     /**
      * notebook object type
      */
-    objectType?: pulumi.Input<string>;
+    objectType?: pulumi.Input<string | undefined>;
     /**
      * Notebook path on the workspace
      */
@@ -153,5 +153,5 @@ export interface GetNotebookOutputArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetNotebookProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetNotebookProviderConfigArgs | undefined>;
 }

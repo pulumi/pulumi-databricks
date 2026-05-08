@@ -22,9 +22,9 @@ __all__ = ['DisableLegacyFeaturesSettingArgs', 'DisableLegacyFeaturesSetting']
 class DisableLegacyFeaturesSettingArgs:
     def __init__(__self__, *,
                  disable_legacy_features: pulumi.Input['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs'],
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['DisableLegacyFeaturesSettingProviderConfigArgs']] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['DisableLegacyFeaturesSettingProviderConfigArgs']] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DisableLegacyFeaturesSetting resource.
 
@@ -52,39 +52,39 @@ class DisableLegacyFeaturesSettingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DisableLegacyFeaturesSettingProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DisableLegacyFeaturesSettingProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DisableLegacyFeaturesSettingProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DisableLegacyFeaturesSettingProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="settingName")
-    def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def setting_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "setting_name")
 
     @setting_name.setter
-    def setting_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def setting_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "setting_name", value)
 
 
 @pulumi.input_type
 class _DisableLegacyFeaturesSettingState:
     def __init__(__self__, *,
-                 disable_legacy_features: Optional[pulumi.Input['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['DisableLegacyFeaturesSettingProviderConfigArgs']] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 disable_legacy_features: pulumi.Input[Optional['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['DisableLegacyFeaturesSettingProviderConfigArgs']] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DisableLegacyFeaturesSetting resources.
 
@@ -101,41 +101,41 @@ class _DisableLegacyFeaturesSettingState:
 
     @_builtins.property
     @pulumi.getter(name="disableLegacyFeatures")
-    def disable_legacy_features(self) -> Optional[pulumi.Input['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs']]:
+    def disable_legacy_features(self) -> pulumi.Input[Optional['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs']]:
         """
         block with following attributes:
         """
         return pulumi.get(self, "disable_legacy_features")
 
     @disable_legacy_features.setter
-    def disable_legacy_features(self, value: Optional[pulumi.Input['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs']]):
+    def disable_legacy_features(self, value: pulumi.Input[Optional['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs']]):
         pulumi.set(self, "disable_legacy_features", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['DisableLegacyFeaturesSettingProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['DisableLegacyFeaturesSettingProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['DisableLegacyFeaturesSettingProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['DisableLegacyFeaturesSettingProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="settingName")
-    def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def setting_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "setting_name")
 
     @setting_name.setter
-    def setting_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def setting_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "setting_name", value)
 
 
@@ -145,10 +145,10 @@ class DisableLegacyFeaturesSetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_legacy_features: Optional[pulumi.Input[Union['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs', 'DisableLegacyFeaturesSettingDisableLegacyFeaturesArgsDict']]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DisableLegacyFeaturesSettingProviderConfigArgs', 'DisableLegacyFeaturesSettingProviderConfigArgsDict']]] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable_legacy_features: pulumi.Input[Optional[Union['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs', 'DisableLegacyFeaturesSettingDisableLegacyFeaturesArgsDict']]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DisableLegacyFeaturesSettingProviderConfigArgs', 'DisableLegacyFeaturesSettingProviderConfigArgsDict']]] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > This resource can only be used with an account-level provider!
@@ -251,10 +251,10 @@ class DisableLegacyFeaturesSetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable_legacy_features: Optional[pulumi.Input[Union['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs', 'DisableLegacyFeaturesSettingDisableLegacyFeaturesArgsDict']]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['DisableLegacyFeaturesSettingProviderConfigArgs', 'DisableLegacyFeaturesSettingProviderConfigArgsDict']]] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable_legacy_features: pulumi.Input[Optional[Union['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs', 'DisableLegacyFeaturesSettingDisableLegacyFeaturesArgsDict']]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['DisableLegacyFeaturesSettingProviderConfigArgs', 'DisableLegacyFeaturesSettingProviderConfigArgsDict']]] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -280,10 +280,10 @@ class DisableLegacyFeaturesSetting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            disable_legacy_features: Optional[pulumi.Input[Union['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs', 'DisableLegacyFeaturesSettingDisableLegacyFeaturesArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['DisableLegacyFeaturesSettingProviderConfigArgs', 'DisableLegacyFeaturesSettingProviderConfigArgsDict']]] = None,
-            setting_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'DisableLegacyFeaturesSetting':
+            disable_legacy_features: pulumi.Input[Optional[Union['DisableLegacyFeaturesSettingDisableLegacyFeaturesArgs', 'DisableLegacyFeaturesSettingDisableLegacyFeaturesArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['DisableLegacyFeaturesSettingProviderConfigArgs', 'DisableLegacyFeaturesSettingProviderConfigArgsDict']]] = None,
+            setting_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'DisableLegacyFeaturesSetting':
         """
         Get an existing DisableLegacyFeaturesSetting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

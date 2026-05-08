@@ -148,8 +148,8 @@ def get_account_setting_user_preference_v2(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         string_val=pulumi.get(__ret__, 'string_val'),
         user_id=pulumi.get(__ret__, 'user_id'))
-def get_account_setting_user_preference_v2_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_setting_user_preference_v2_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountSettingUserPreferenceV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)

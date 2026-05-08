@@ -57,14 +57,14 @@ namespace Pulumi.Databricks
     ///     var config = new Config();
     ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
-    ///     var dbxPrivateVpc = new Google.Index.ComputeNetwork("dbx_private_vpc", new()
+    ///     var dbxPrivateVpc = new Google.ComputeNetwork("dbx_private_vpc", new()
     ///     {
     ///         Project = googleProject,
     ///         Name = $"tf-network-{suffix.Result}",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var network_with_private_secondary_ip_ranges = new Google.Index.ComputeSubnetwork("network-with-private-secondary-ip-ranges", new()
+    ///     var network_with_private_secondary_ip_ranges = new Google.ComputeSubnetwork("network-with-private-secondary-ip-ranges", new()
     ///     {
     ///         Name = $"test-dbx-{suffix.Result}",
     ///         IpCidrRange = "10.0.0.0/16",
@@ -73,14 +73,14 @@ namespace Pulumi.Databricks
     ///         PrivateIpGoogleAccess = true,
     ///     });
     /// 
-    ///     var router = new Google.Index.ComputeRouter("router", new()
+    ///     var router = new Google.ComputeRouter("router", new()
     ///     {
     ///         Name = $"my-router-{suffix.Result}",
     ///         Region = network_with_private_secondary_ip_ranges.Region,
     ///         Network = dbxPrivateVpc.Id,
     ///     });
     /// 
-    ///     var nat = new Google.Index.ComputeRouterNat("nat", new()
+    ///     var nat = new Google.ComputeRouterNat("nat", new()
     ///     {
     ///         Name = $"my-router-nat-{suffix.Result}",
     ///         Router = router.Name,
@@ -89,7 +89,7 @@ namespace Pulumi.Databricks
     ///         SourceSubnetworkIpRangesToNat = "ALL_SUBNETWORKS_ALL_IP_RANGES",
     ///     });
     /// 
-    ///     var @this = new Databricks.Index.MwsNetworks("this", new()
+    ///     var @this = new Databricks.MwsNetworks("this", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         NetworkName = $"test-demo-{suffix.Result}",
@@ -115,7 +115,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Index.MwsNetworks("this", new()
+    ///     var @this = new Databricks.MwsNetworks("this", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         NetworkName = $"test-demo-{suffix.Result}",

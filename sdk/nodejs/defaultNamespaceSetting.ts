@@ -103,23 +103,23 @@ export class DefaultNamespaceSetting extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DefaultNamespaceSetting resources.
  */
 export interface DefaultNamespaceSettingState {
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The configuration details.
      */
-    namespace?: pulumi.Input<inputs.DefaultNamespaceSettingNamespace>;
+    namespace?: pulumi.Input<inputs.DefaultNamespaceSettingNamespace | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.DefaultNamespaceSettingProviderConfig>;
-    settingName?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.DefaultNamespaceSettingProviderConfig | undefined>;
+    settingName?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DefaultNamespaceSetting resource.
  */
 export interface DefaultNamespaceSettingArgs {
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * The configuration details.
      */
@@ -127,6 +127,6 @@ export interface DefaultNamespaceSettingArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.DefaultNamespaceSettingProviderConfig>;
-    settingName?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.DefaultNamespaceSettingProviderConfig | undefined>;
+    settingName?: pulumi.Input<string | undefined>;
 }

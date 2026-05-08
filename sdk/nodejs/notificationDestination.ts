@@ -181,23 +181,23 @@ export interface NotificationDestinationState {
     /**
      * The configuration of the Notification Destination. It must contain exactly one of the following blocks:
      */
-    config?: pulumi.Input<inputs.NotificationDestinationConfig>;
+    config?: pulumi.Input<inputs.NotificationDestinationConfig | undefined>;
     /**
      * the type of Notification Destination.
      */
-    destinationType?: pulumi.Input<string>;
+    destinationType?: pulumi.Input<string | undefined>;
     /**
      * The display name of the Notification Destination.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the Notification Destination.
      */
-    notificationDestinationId?: pulumi.Input<string>;
+    notificationDestinationId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.NotificationDestinationProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.NotificationDestinationProviderConfig | undefined>;
 }
 
 /**
@@ -207,11 +207,11 @@ export interface NotificationDestinationArgs {
     /**
      * The configuration of the Notification Destination. It must contain exactly one of the following blocks:
      */
-    config?: pulumi.Input<inputs.NotificationDestinationConfig>;
+    config?: pulumi.Input<inputs.NotificationDestinationConfig | undefined>;
     /**
      * the type of Notification Destination.
      */
-    destinationType?: pulumi.Input<string>;
+    destinationType?: pulumi.Input<string | undefined>;
     /**
      * The display name of the Notification Destination.
      */
@@ -219,9 +219,9 @@ export interface NotificationDestinationArgs {
     /**
      * The unique ID of the Notification Destination.
      */
-    notificationDestinationId?: pulumi.Input<string>;
+    notificationDestinationId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.NotificationDestinationProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.NotificationDestinationProviderConfig | undefined>;
 }

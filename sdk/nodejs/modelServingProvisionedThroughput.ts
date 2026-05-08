@@ -162,35 +162,35 @@ export interface ModelServingProvisionedThroughputState {
     /**
      * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
      */
-    aiGateway?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGateway>;
+    aiGateway?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGateway | undefined>;
     /**
      * The Budget Policy ID set for this serving endpoint.
      */
-    budgetPolicyId?: pulumi.Input<string>;
+    budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The model serving endpoint configuration.
      */
-    config?: pulumi.Input<inputs.ModelServingProvisionedThroughputConfig>;
+    config?: pulumi.Input<inputs.ModelServingProvisionedThroughputConfig | undefined>;
     /**
      * A block with Email notification setting.
      */
-    emailNotifications?: pulumi.Input<inputs.ModelServingProvisionedThroughputEmailNotifications>;
+    emailNotifications?: pulumi.Input<inputs.ModelServingProvisionedThroughputEmailNotifications | undefined>;
     /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputProviderConfig | undefined>;
     /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
      */
-    servingEndpointId?: pulumi.Input<string>;
+    servingEndpointId?: pulumi.Input<string | undefined>;
     /**
      * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.ModelServingProvisionedThroughputTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.ModelServingProvisionedThroughputTag>[] | undefined>;
 }
 
 /**
@@ -200,11 +200,11 @@ export interface ModelServingProvisionedThroughputArgs {
     /**
      * A block with AI Gateway configuration for the serving endpoint. *Note: only external model endpoints are supported as of now.*
      */
-    aiGateway?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGateway>;
+    aiGateway?: pulumi.Input<inputs.ModelServingProvisionedThroughputAiGateway | undefined>;
     /**
      * The Budget Policy ID set for this serving endpoint.
      */
-    budgetPolicyId?: pulumi.Input<string>;
+    budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The model serving endpoint configuration.
      */
@@ -212,17 +212,17 @@ export interface ModelServingProvisionedThroughputArgs {
     /**
      * A block with Email notification setting.
      */
-    emailNotifications?: pulumi.Input<inputs.ModelServingProvisionedThroughputEmailNotifications>;
+    emailNotifications?: pulumi.Input<inputs.ModelServingProvisionedThroughputEmailNotifications | undefined>;
     /**
      * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.ModelServingProvisionedThroughputProviderConfig | undefined>;
     /**
      * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.ModelServingProvisionedThroughputTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.ModelServingProvisionedThroughputTag>[] | undefined>;
 }

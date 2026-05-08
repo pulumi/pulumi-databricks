@@ -188,12 +188,12 @@ def get_notebook(format: Optional[_builtins.str] = None,
         path=pulumi.get(__ret__, 'path'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         workspace_path=pulumi.get(__ret__, 'workspace_path'))
-def get_notebook_output(format: Optional[pulumi.Input[_builtins.str]] = None,
-                        language: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        object_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                        object_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        path: Optional[pulumi.Input[_builtins.str]] = None,
-                        provider_config: Optional[pulumi.Input[Optional[Union['GetNotebookProviderConfigArgs', 'GetNotebookProviderConfigArgsDict']]]] = None,
+def get_notebook_output(format: pulumi.Input[Optional[_builtins.str]] = None,
+                        language: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        object_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                        object_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        path: pulumi.Input[Optional[_builtins.str]] = None,
+                        provider_config: pulumi.Input[Optional[Optional[Union['GetNotebookProviderConfigArgs', 'GetNotebookProviderConfigArgsDict']]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotebookResult]:
     """
     This data source allows to export a notebook from Databricks Workspace.

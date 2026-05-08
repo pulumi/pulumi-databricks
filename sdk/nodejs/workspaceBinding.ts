@@ -133,27 +133,27 @@ export interface WorkspaceBindingState {
     /**
      * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
      */
-    bindingType?: pulumi.Input<string>;
+    bindingType?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Please use 'securable_name' and 'securable_type instead.
      */
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.WorkspaceBindingProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.WorkspaceBindingProviderConfig | undefined>;
     /**
      * Name of securable. Change forces creation of a new resource.
      */
-    securableName?: pulumi.Input<string>;
+    securableName?: pulumi.Input<string | undefined>;
     /**
      * Type of securable. Can be `catalog`, `externalLocation`, `storageCredential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
      */
-    securableType?: pulumi.Input<string>;
+    securableType?: pulumi.Input<string | undefined>;
     /**
      * ID of the workspace. Change forces creation of a new resource.
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -163,23 +163,23 @@ export interface WorkspaceBindingArgs {
     /**
      * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
      */
-    bindingType?: pulumi.Input<string>;
+    bindingType?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Please use 'securable_name' and 'securable_type instead.
      */
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.WorkspaceBindingProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.WorkspaceBindingProviderConfig | undefined>;
     /**
      * Name of securable. Change forces creation of a new resource.
      */
-    securableName?: pulumi.Input<string>;
+    securableName?: pulumi.Input<string | undefined>;
     /**
      * Type of securable. Can be `catalog`, `externalLocation`, `storageCredential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
      */
-    securableType?: pulumi.Input<string>;
+    securableType?: pulumi.Input<string | undefined>;
     /**
      * ID of the workspace. Change forces creation of a new resource.
      */

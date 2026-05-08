@@ -197,39 +197,39 @@ export interface VolumeState {
     /**
      * Name of parent Catalog. Change forces creation of a new resource.
      */
-    catalogName?: pulumi.Input<string>;
+    catalogName?: pulumi.Input<string | undefined>;
     /**
      * Free-form text.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Name of the Volume
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the volume owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.VolumeProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.VolumeProviderConfig | undefined>;
     /**
      * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      */
-    schemaName?: pulumi.Input<string>;
+    schemaName?: pulumi.Input<string | undefined>;
     /**
      * URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
      */
-    storageLocation?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string | undefined>;
     /**
      * base file path for this Unity Catalog Volume in form of `/Volumes/<catalog>/<schema>/<name>`.
      */
-    volumePath?: pulumi.Input<string>;
+    volumePath?: pulumi.Input<string | undefined>;
     /**
      * Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
      */
-    volumeType?: pulumi.Input<string>;
+    volumeType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -243,19 +243,19 @@ export interface VolumeArgs {
     /**
      * Free-form text.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Name of the Volume
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the volume owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.VolumeProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.VolumeProviderConfig | undefined>;
     /**
      * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      */
@@ -263,7 +263,7 @@ export interface VolumeArgs {
     /**
      * URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
      */
-    storageLocation?: pulumi.Input<string>;
+    storageLocation?: pulumi.Input<string | undefined>;
     /**
      * Volume type. `EXTERNAL` or `MANAGED`. Change forces creation of a new resource.
      */

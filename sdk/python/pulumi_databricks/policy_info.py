@@ -24,16 +24,16 @@ class PolicyInfoArgs:
                  for_securable_type: pulumi.Input[_builtins.str],
                  policy_type: pulumi.Input[_builtins.str],
                  to_principals: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 column_mask: Optional[pulumi.Input['PolicyInfoColumnMaskArgs']] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 except_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 match_columns: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_securable_fullname: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['PolicyInfoProviderConfigArgs']] = None,
-                 row_filter: Optional[pulumi.Input['PolicyInfoRowFilterArgs']] = None,
-                 when_condition: Optional[pulumi.Input[_builtins.str]] = None):
+                 column_mask: pulumi.Input[Optional['PolicyInfoColumnMaskArgs']] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 match_columns: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_securable_fullname: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['PolicyInfoProviderConfigArgs']] = None,
+                 row_filter: pulumi.Input[Optional['PolicyInfoRowFilterArgs']] = None,
+                 when_condition: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PolicyInfo resource.
 
@@ -129,7 +129,7 @@ class PolicyInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="columnMask")
-    def column_mask(self) -> Optional[pulumi.Input['PolicyInfoColumnMaskArgs']]:
+    def column_mask(self) -> pulumi.Input[Optional['PolicyInfoColumnMaskArgs']]:
         """
         Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
         Required on create and optional on update. When specified on update,
@@ -138,36 +138,36 @@ class PolicyInfoArgs:
         return pulumi.get(self, "column_mask")
 
     @column_mask.setter
-    def column_mask(self, value: Optional[pulumi.Input['PolicyInfoColumnMaskArgs']]):
+    def column_mask(self, value: pulumi.Input[Optional['PolicyInfoColumnMaskArgs']]):
         pulumi.set(self, "column_mask", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional description of the policy
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="exceptPrincipals")
-    def except_principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def except_principals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional list of user or group names that should be excluded from the policy
         """
         return pulumi.get(self, "except_principals")
 
     @except_principals.setter
-    def except_principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def except_principals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "except_principals", value)
 
     @_builtins.property
     @pulumi.getter(name="matchColumns")
-    def match_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]]]:
+    def match_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]]]:
         """
         Optional list of condition expressions used to match table columns.
         Only valid when `for_securable_type` is `TABLE`.
@@ -176,12 +176,12 @@ class PolicyInfoArgs:
         return pulumi.get(self, "match_columns")
 
     @match_columns.setter
-    def match_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]]]):
+    def match_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]]]):
         pulumi.set(self, "match_columns", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the policy. Required on create and optional on update.
         To rename the policy, set `name` to a different value on update
@@ -189,12 +189,12 @@ class PolicyInfoArgs:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="onSecurableFullname")
-    def on_securable_fullname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def on_securable_fullname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full name of the securable on which the policy is defined.
         Required on create
@@ -202,12 +202,12 @@ class PolicyInfoArgs:
         return pulumi.get(self, "on_securable_fullname")
 
     @on_securable_fullname.setter
-    def on_securable_fullname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def on_securable_fullname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "on_securable_fullname", value)
 
     @_builtins.property
     @pulumi.getter(name="onSecurableType")
-    def on_securable_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def on_securable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the securable on which the policy is defined.
         Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
@@ -216,24 +216,24 @@ class PolicyInfoArgs:
         return pulumi.get(self, "on_securable_type")
 
     @on_securable_type.setter
-    def on_securable_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def on_securable_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "on_securable_type", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PolicyInfoProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PolicyInfoProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PolicyInfoProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PolicyInfoProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="rowFilter")
-    def row_filter(self) -> Optional[pulumi.Input['PolicyInfoRowFilterArgs']]:
+    def row_filter(self) -> pulumi.Input[Optional['PolicyInfoRowFilterArgs']]:
         """
         Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
         Required on create and optional on update. When specified on update,
@@ -242,42 +242,42 @@ class PolicyInfoArgs:
         return pulumi.get(self, "row_filter")
 
     @row_filter.setter
-    def row_filter(self, value: Optional[pulumi.Input['PolicyInfoRowFilterArgs']]):
+    def row_filter(self, value: pulumi.Input[Optional['PolicyInfoRowFilterArgs']]):
         pulumi.set(self, "row_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="whenCondition")
-    def when_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def when_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional condition when the policy should take effect
         """
         return pulumi.get(self, "when_condition")
 
     @when_condition.setter
-    def when_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def when_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "when_condition", value)
 
 
 @pulumi.input_type
 class _PolicyInfoState:
     def __init__(__self__, *,
-                 column_mask: Optional[pulumi.Input['PolicyInfoColumnMaskArgs']] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 except_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 for_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_columns: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_securable_fullname: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['PolicyInfoProviderConfigArgs']] = None,
-                 row_filter: Optional[pulumi.Input['PolicyInfoRowFilterArgs']] = None,
-                 to_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 when_condition: Optional[pulumi.Input[_builtins.str]] = None):
+                 column_mask: pulumi.Input[Optional['PolicyInfoColumnMaskArgs']] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_columns: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_securable_fullname: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['PolicyInfoProviderConfigArgs']] = None,
+                 row_filter: pulumi.Input[Optional['PolicyInfoRowFilterArgs']] = None,
+                 to_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 when_condition: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolicyInfo resources.
 
@@ -349,7 +349,7 @@ class _PolicyInfoState:
 
     @_builtins.property
     @pulumi.getter(name="columnMask")
-    def column_mask(self) -> Optional[pulumi.Input['PolicyInfoColumnMaskArgs']]:
+    def column_mask(self) -> pulumi.Input[Optional['PolicyInfoColumnMaskArgs']]:
         """
         Options for column mask policies. Valid only if `policy_type` is `POLICY_TYPE_COLUMN_MASK`.
         Required on create and optional on update. When specified on update,
@@ -358,60 +358,60 @@ class _PolicyInfoState:
         return pulumi.get(self, "column_mask")
 
     @column_mask.setter
-    def column_mask(self, value: Optional[pulumi.Input['PolicyInfoColumnMaskArgs']]):
+    def column_mask(self, value: pulumi.Input[Optional['PolicyInfoColumnMaskArgs']]):
         pulumi.set(self, "column_mask", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional description of the policy
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (integer) - Time at which the policy was created, in epoch milliseconds. Output only
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Username of the user who created the policy. Output only
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="exceptPrincipals")
-    def except_principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def except_principals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional list of user or group names that should be excluded from the policy
         """
         return pulumi.get(self, "except_principals")
 
     @except_principals.setter
-    def except_principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def except_principals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "except_principals", value)
 
     @_builtins.property
     @pulumi.getter(name="forSecurableType")
-    def for_securable_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def for_securable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of securables that the policy should take effect on.
         Only `TABLE` is supported at this moment.
@@ -420,12 +420,12 @@ class _PolicyInfoState:
         return pulumi.get(self, "for_securable_type")
 
     @for_securable_type.setter
-    def for_securable_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def for_securable_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "for_securable_type", value)
 
     @_builtins.property
     @pulumi.getter(name="matchColumns")
-    def match_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]]]:
+    def match_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]]]:
         """
         Optional list of condition expressions used to match table columns.
         Only valid when `for_securable_type` is `TABLE`.
@@ -434,12 +434,12 @@ class _PolicyInfoState:
         return pulumi.get(self, "match_columns")
 
     @match_columns.setter
-    def match_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]]]):
+    def match_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyInfoMatchColumnArgs']]]]):
         pulumi.set(self, "match_columns", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the policy. Required on create and optional on update.
         To rename the policy, set `name` to a different value on update
@@ -447,12 +447,12 @@ class _PolicyInfoState:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="onSecurableFullname")
-    def on_securable_fullname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def on_securable_fullname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full name of the securable on which the policy is defined.
         Required on create
@@ -460,12 +460,12 @@ class _PolicyInfoState:
         return pulumi.get(self, "on_securable_fullname")
 
     @on_securable_fullname.setter
-    def on_securable_fullname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def on_securable_fullname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "on_securable_fullname", value)
 
     @_builtins.property
     @pulumi.getter(name="onSecurableType")
-    def on_securable_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def on_securable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the securable on which the policy is defined.
         Only `CATALOG`, `SCHEMA` and `TABLE` are supported at this moment.
@@ -474,36 +474,36 @@ class _PolicyInfoState:
         return pulumi.get(self, "on_securable_type")
 
     @on_securable_type.setter
-    def on_securable_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def on_securable_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "on_securable_type", value)
 
     @_builtins.property
     @pulumi.getter(name="policyType")
-    def policy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
         """
         return pulumi.get(self, "policy_type")
 
     @policy_type.setter
-    def policy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_type", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['PolicyInfoProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['PolicyInfoProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['PolicyInfoProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['PolicyInfoProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="rowFilter")
-    def row_filter(self) -> Optional[pulumi.Input['PolicyInfoRowFilterArgs']]:
+    def row_filter(self) -> pulumi.Input[Optional['PolicyInfoRowFilterArgs']]:
         """
         Options for row filter policies. Valid only if `policy_type` is `POLICY_TYPE_ROW_FILTER`.
         Required on create and optional on update. When specified on update,
@@ -512,12 +512,12 @@ class _PolicyInfoState:
         return pulumi.get(self, "row_filter")
 
     @row_filter.setter
-    def row_filter(self, value: Optional[pulumi.Input['PolicyInfoRowFilterArgs']]):
+    def row_filter(self, value: pulumi.Input[Optional['PolicyInfoRowFilterArgs']]):
         pulumi.set(self, "row_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="toPrincipals")
-    def to_principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def to_principals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of user or group names that the policy applies to.
         Required on create and optional on update
@@ -525,43 +525,43 @@ class _PolicyInfoState:
         return pulumi.get(self, "to_principals")
 
     @to_principals.setter
-    def to_principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def to_principals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "to_principals", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (integer) - Time at which the policy was last modified, in epoch milliseconds. Output only
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedBy")
-    def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - Username of the user who last modified the policy. Output only
         """
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
-    def updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_by", value)
 
     @_builtins.property
     @pulumi.getter(name="whenCondition")
-    def when_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def when_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional condition when the policy should take effect
         """
         return pulumi.get(self, "when_condition")
 
     @when_condition.setter
-    def when_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def when_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "when_condition", value)
 
 
@@ -571,19 +571,19 @@ class PolicyInfo(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 column_mask: Optional[pulumi.Input[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict']]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 except_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 for_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_securable_fullname: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']]] = None,
-                 row_filter: Optional[pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']]] = None,
-                 to_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 when_condition: Optional[pulumi.Input[_builtins.str]] = None,
+                 column_mask: pulumi.Input[Optional[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict']]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_securable_fullname: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']]] = None,
+                 row_filter: pulumi.Input[Optional[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']]] = None,
+                 to_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 when_condition: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -763,19 +763,19 @@ class PolicyInfo(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 column_mask: Optional[pulumi.Input[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict']]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 except_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 for_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_securable_fullname: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']]] = None,
-                 row_filter: Optional[pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']]] = None,
-                 to_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 when_condition: Optional[pulumi.Input[_builtins.str]] = None,
+                 column_mask: pulumi.Input[Optional[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict']]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_securable_fullname: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']]] = None,
+                 row_filter: pulumi.Input[Optional[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']]] = None,
+                 to_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 when_condition: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -818,23 +818,23 @@ class PolicyInfo(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            column_mask: Optional[pulumi.Input[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict']]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.int]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            except_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            for_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-            match_columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            on_securable_fullname: Optional[pulumi.Input[_builtins.str]] = None,
-            on_securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']]] = None,
-            row_filter: Optional[pulumi.Input[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']]] = None,
-            to_principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-            when_condition: Optional[pulumi.Input[_builtins.str]] = None) -> 'PolicyInfo':
+            column_mask: pulumi.Input[Optional[Union['PolicyInfoColumnMaskArgs', 'PolicyInfoColumnMaskArgsDict']]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            except_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            for_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+            match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PolicyInfoMatchColumnArgs', 'PolicyInfoMatchColumnArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            on_securable_fullname: pulumi.Input[Optional[_builtins.str]] = None,
+            on_securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['PolicyInfoProviderConfigArgs', 'PolicyInfoProviderConfigArgsDict']]] = None,
+            row_filter: pulumi.Input[Optional[Union['PolicyInfoRowFilterArgs', 'PolicyInfoRowFilterArgsDict']]] = None,
+            to_principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            when_condition: pulumi.Input[Optional[_builtins.str]] = None) -> 'PolicyInfo':
         """
         Get an existing PolicyInfo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

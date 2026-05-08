@@ -78,12 +78,12 @@ export class MaterializedFeaturesFeatureTag extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MaterializedFeaturesFeatureTag resources.
  */
 export interface MaterializedFeaturesFeatureTagState {
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.MaterializedFeaturesFeatureTagProviderConfig>;
-    value?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.MaterializedFeaturesFeatureTagProviderConfig | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -94,6 +94,6 @@ export interface MaterializedFeaturesFeatureTagArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.MaterializedFeaturesFeatureTagProviderConfig>;
-    value?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.MaterializedFeaturesFeatureTagProviderConfig | undefined>;
+    value?: pulumi.Input<string | undefined>;
 }

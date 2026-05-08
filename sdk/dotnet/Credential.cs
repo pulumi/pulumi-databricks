@@ -31,7 +31,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var external = new Databricks.Index.Credential("external", new()
+    ///     var external = new Databricks.Credential("external", new()
     ///     {
     ///         Name = externalDataAccess.Name,
     ///         AwsIamRole = new Databricks.Inputs.CredentialAwsIamRoleArgs
@@ -42,7 +42,7 @@ namespace Pulumi.Databricks
     ///         Comment = "Managed by TF",
     ///     });
     /// 
-    ///     var externalCreds = new Databricks.Index.Grants("external_creds", new()
+    ///     var externalCreds = new Databricks.Grants("external_creds", new()
     ///     {
     ///         Credential = external.DatabricksCredentialId,
     ///         GrantDetails = new[]
@@ -71,7 +71,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var externalMi = new Databricks.Index.Credential("external_mi", new()
+    ///     var externalMi = new Databricks.Credential("external_mi", new()
     ///     {
     ///         Name = "mi_credential",
     ///         AzureManagedIdentity = new Databricks.Inputs.CredentialAzureManagedIdentityArgs
@@ -82,7 +82,7 @@ namespace Pulumi.Databricks
     ///         Comment = "Managed identity credential managed by TF",
     ///     });
     /// 
-    ///     var externalCreds = new Databricks.Index.Grants("external_creds", new()
+    ///     var externalCreds = new Databricks.Grants("external_creds", new()
     ///     {
     ///         Credential = externalMi.DatabricksCredentialId,
     ///         GrantDetails = new[]
@@ -111,7 +111,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var externalGcpSa = new Databricks.Index.Credential("external_gcp_sa", new()
+    ///     var externalGcpSa = new Databricks.Credential("external_gcp_sa", new()
     ///     {
     ///         Name = "gcp_sa_credential",
     ///         DatabricksGcpServiceAccount = null,
@@ -119,7 +119,7 @@ namespace Pulumi.Databricks
     ///         Comment = "GCP SA credential managed by TF",
     ///     });
     /// 
-    ///     var externalCreds = new Databricks.Index.Grants("external_creds", new()
+    ///     var externalCreds = new Databricks.Grants("external_creds", new()
     ///     {
     ///         Credential = externalGcpSa.DatabricksCredentialId,
     ///         GrantDetails = new[]

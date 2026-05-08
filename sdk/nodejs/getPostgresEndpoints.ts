@@ -107,7 +107,7 @@ export interface GetPostgresEndpointsOutputArgs {
     /**
      * Upper bound for items returned. Cannot be negative
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The Branch that owns this collection of endpoints.
      * Format: projects/{project_id}/branches/{branch_id}
@@ -116,5 +116,5 @@ export interface GetPostgresEndpointsOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetPostgresEndpointsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetPostgresEndpointsProviderConfigArgs | undefined>;
 }

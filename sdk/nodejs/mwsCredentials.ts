@@ -154,24 +154,24 @@ export interface MwsCredentialsState {
      *
      * @deprecated `accountId` should be set as part of the Databricks Config, not in the resource.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * (Integer) time of credentials registration
      */
-    creationTime?: pulumi.Input<number>;
+    creationTime?: pulumi.Input<number | undefined>;
     /**
      * (String) identifier of credentials
      */
-    credentialsId?: pulumi.Input<string>;
+    credentialsId?: pulumi.Input<string | undefined>;
     /**
      * name of credentials to register
      */
-    credentialsName?: pulumi.Input<string>;
-    externalId?: pulumi.Input<string>;
+    credentialsName?: pulumi.Input<string | undefined>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * ARN of cross-account role
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -183,20 +183,20 @@ export interface MwsCredentialsArgs {
      *
      * @deprecated `accountId` should be set as part of the Databricks Config, not in the resource.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * (Integer) time of credentials registration
      */
-    creationTime?: pulumi.Input<number>;
+    creationTime?: pulumi.Input<number | undefined>;
     /**
      * (String) identifier of credentials
      */
-    credentialsId?: pulumi.Input<string>;
+    credentialsId?: pulumi.Input<string | undefined>;
     /**
      * name of credentials to register
      */
     credentialsName: pulumi.Input<string>;
-    externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string | undefined>;
     /**
      * ARN of cross-account role
      */

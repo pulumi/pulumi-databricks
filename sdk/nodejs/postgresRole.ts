@@ -234,21 +234,21 @@ export interface PostgresRoleState {
     /**
      * (string)
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - Output only. The full resource path of the role.
      * Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The Branch where this Role exists.
      * Format: projects/{project_id}/branches/{branch_id}
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.PostgresRoleProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PostgresRoleProviderConfig | undefined>;
     /**
      * The ID to use for the Role, which will become the final component of
      * the role's resource name.
@@ -259,19 +259,19 @@ export interface PostgresRoleState {
      *
      * If roleId is not specified in the request, it is generated automatically
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
     /**
      * The spec contains the role configuration, including identity type, authentication method, and role attributes
      */
-    spec?: pulumi.Input<inputs.PostgresRoleSpec>;
+    spec?: pulumi.Input<inputs.PostgresRoleSpec | undefined>;
     /**
      * (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
      */
-    status?: pulumi.Input<inputs.PostgresRoleStatus>;
+    status?: pulumi.Input<inputs.PostgresRoleStatus | undefined>;
     /**
      * (string)
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -286,7 +286,7 @@ export interface PostgresRoleArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.PostgresRoleProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PostgresRoleProviderConfig | undefined>;
     /**
      * The ID to use for the Role, which will become the final component of
      * the role's resource name.
@@ -297,9 +297,9 @@ export interface PostgresRoleArgs {
      *
      * If roleId is not specified in the request, it is generated automatically
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
     /**
      * The spec contains the role configuration, including identity type, authentication method, and role attributes
      */
-    spec?: pulumi.Input<inputs.PostgresRoleSpec>;
+    spec?: pulumi.Input<inputs.PostgresRoleSpec | undefined>;
 }

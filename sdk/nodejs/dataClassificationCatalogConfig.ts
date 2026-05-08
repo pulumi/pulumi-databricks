@@ -143,24 +143,24 @@ export interface DataClassificationCatalogConfigState {
      * List of auto-tagging configurations for this catalog.
      * Empty list means no auto-tagging is enabled
      */
-    autoTagConfigs?: pulumi.Input<pulumi.Input<inputs.DataClassificationCatalogConfigAutoTagConfig>[]>;
+    autoTagConfigs?: pulumi.Input<pulumi.Input<inputs.DataClassificationCatalogConfigAutoTagConfig>[] | undefined>;
     /**
      * Schemas to include in the scan. Empty list is not supported as it results in a no-op
      * scan. If `includedSchemas` is not set, all schemas are scanned
      */
-    includedSchemas?: pulumi.Input<inputs.DataClassificationCatalogConfigIncludedSchemas>;
+    includedSchemas?: pulumi.Input<inputs.DataClassificationCatalogConfigIncludedSchemas | undefined>;
     /**
      * (string) - Resource name in the format: catalogs/{catalog_name}/config
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parent resource in the format: catalogs/{catalog_name}
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.DataClassificationCatalogConfigProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.DataClassificationCatalogConfigProviderConfig | undefined>;
 }
 
 /**
@@ -171,12 +171,12 @@ export interface DataClassificationCatalogConfigArgs {
      * List of auto-tagging configurations for this catalog.
      * Empty list means no auto-tagging is enabled
      */
-    autoTagConfigs?: pulumi.Input<pulumi.Input<inputs.DataClassificationCatalogConfigAutoTagConfig>[]>;
+    autoTagConfigs?: pulumi.Input<pulumi.Input<inputs.DataClassificationCatalogConfigAutoTagConfig>[] | undefined>;
     /**
      * Schemas to include in the scan. Empty list is not supported as it results in a no-op
      * scan. If `includedSchemas` is not set, all schemas are scanned
      */
-    includedSchemas?: pulumi.Input<inputs.DataClassificationCatalogConfigIncludedSchemas>;
+    includedSchemas?: pulumi.Input<inputs.DataClassificationCatalogConfigIncludedSchemas | undefined>;
     /**
      * Parent resource in the format: catalogs/{catalog_name}
      */
@@ -184,5 +184,5 @@ export interface DataClassificationCatalogConfigArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.DataClassificationCatalogConfigProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.DataClassificationCatalogConfigProviderConfig | undefined>;
 }

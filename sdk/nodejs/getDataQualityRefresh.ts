@@ -185,7 +185,7 @@ export interface GetDataQualityRefreshOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetDataQualityRefreshProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetDataQualityRefreshProviderConfigArgs | undefined>;
     /**
      * Unique id of the refresh operation
      */

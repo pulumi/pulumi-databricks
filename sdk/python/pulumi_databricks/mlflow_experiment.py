@@ -21,15 +21,15 @@ __all__ = ['MlflowExperimentArgs', 'MlflowExperiment']
 @pulumi.input_type
 class MlflowExperimentArgs:
     def __init__(__self__, *,
-                 artifact_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_update_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 lifecycle_stage: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['MlflowExperimentProviderConfigArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]] = None):
+                 artifact_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_update_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 lifecycle_stage: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['MlflowExperimentProviderConfigArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]] = None):
         """
         The set of arguments for constructing a MlflowExperiment resource.
 
@@ -62,111 +62,111 @@ class MlflowExperimentArgs:
 
     @_builtins.property
     @pulumi.getter(name="artifactLocation")
-    def artifact_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def artifact_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to artifact location of the MLflow experiment.
         """
         return pulumi.get(self, "artifact_location")
 
     @artifact_location.setter
-    def artifact_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def artifact_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "artifact_location", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Remove the description attribute as it no longer is used and will be removed in a future version.""")
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="experimentId")
-    def experiment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def experiment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "experiment_id")
 
     @experiment_id.setter
-    def experiment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def experiment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "experiment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUpdateTime")
-    def last_update_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last_update_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "last_update_time")
 
     @last_update_time.setter
-    def last_update_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last_update_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last_update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleStage")
-    def lifecycle_stage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lifecycle_stage(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "lifecycle_stage")
 
     @lifecycle_stage.setter
-    def lifecycle_stage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lifecycle_stage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lifecycle_stage", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['MlflowExperimentProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['MlflowExperimentProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['MlflowExperimentProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['MlflowExperimentProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]]:
         """
         Tags for the MLflow experiment.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _MlflowExperimentState:
     def __init__(__self__, *,
-                 artifact_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_update_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 lifecycle_stage: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['MlflowExperimentProviderConfigArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]] = None):
+                 artifact_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_update_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 lifecycle_stage: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['MlflowExperimentProviderConfigArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]] = None):
         """
         Input properties used for looking up and filtering MlflowExperiment resources.
 
@@ -199,96 +199,96 @@ class _MlflowExperimentState:
 
     @_builtins.property
     @pulumi.getter(name="artifactLocation")
-    def artifact_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def artifact_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to artifact location of the MLflow experiment.
         """
         return pulumi.get(self, "artifact_location")
 
     @artifact_location.setter
-    def artifact_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def artifact_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "artifact_location", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Remove the description attribute as it no longer is used and will be removed in a future version.""")
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="experimentId")
-    def experiment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def experiment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "experiment_id")
 
     @experiment_id.setter
-    def experiment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def experiment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "experiment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUpdateTime")
-    def last_update_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def last_update_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "last_update_time")
 
     @last_update_time.setter
-    def last_update_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def last_update_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "last_update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleStage")
-    def lifecycle_stage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lifecycle_stage(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "lifecycle_stage")
 
     @lifecycle_stage.setter
-    def lifecycle_stage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lifecycle_stage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lifecycle_stage", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['MlflowExperimentProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['MlflowExperimentProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['MlflowExperimentProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['MlflowExperimentProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]]:
         """
         Tags for the MLflow experiment.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MlflowExperimentTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -298,15 +298,15 @@ class MlflowExperiment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 artifact_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_update_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 lifecycle_stage: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None,
+                 artifact_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_update_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 lifecycle_stage: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource allows you to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
@@ -424,15 +424,15 @@ class MlflowExperiment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 artifact_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_update_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 lifecycle_stage: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None,
+                 artifact_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_update_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 lifecycle_stage: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -461,15 +461,15 @@ class MlflowExperiment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            artifact_location: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            experiment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            last_update_time: Optional[pulumi.Input[_builtins.int]] = None,
-            lifecycle_stage: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None) -> 'MlflowExperiment':
+            artifact_location: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            last_update_time: pulumi.Input[Optional[_builtins.int]] = None,
+            lifecycle_stage: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['MlflowExperimentProviderConfigArgs', 'MlflowExperimentProviderConfigArgsDict']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None) -> 'MlflowExperiment':
         """
         Get an existing MlflowExperiment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

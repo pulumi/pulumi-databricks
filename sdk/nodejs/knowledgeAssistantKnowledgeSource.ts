@@ -149,50 +149,50 @@ export interface KnowledgeAssistantKnowledgeSourceState {
     /**
      * (string) - Timestamp when this knowledge source was created
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the knowledge source.
      * Required when creating a Knowledge Source.
      * When updating a Knowledge Source, optional unless included in update_mask
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Human-readable display name of the knowledge source.
      * Required when creating a Knowledge Source.
      * When updating a Knowledge Source, optional unless included in update_mask
      */
-    displayName?: pulumi.Input<string>;
-    fileTable?: pulumi.Input<inputs.KnowledgeAssistantKnowledgeSourceFileTable>;
-    files?: pulumi.Input<inputs.KnowledgeAssistantKnowledgeSourceFiles>;
-    index?: pulumi.Input<inputs.KnowledgeAssistantKnowledgeSourceIndex>;
+    displayName?: pulumi.Input<string | undefined>;
+    fileTable?: pulumi.Input<inputs.KnowledgeAssistantKnowledgeSourceFileTable | undefined>;
+    files?: pulumi.Input<inputs.KnowledgeAssistantKnowledgeSourceFiles | undefined>;
+    index?: pulumi.Input<inputs.KnowledgeAssistantKnowledgeSourceIndex | undefined>;
     /**
      * (string) - Timestamp representing the cutoff before which content in this knowledge source is being ingested
      */
-    knowledgeCutoffTime?: pulumi.Input<string>;
+    knowledgeCutoffTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - Full resource name:
      * knowledge-assistants/{knowledge_assistant_id}/knowledge-sources/{knowledge_source_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Parent resource where this source will be created.
      * Format: knowledge-assistants/{knowledge_assistant_id}
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.KnowledgeAssistantKnowledgeSourceProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.KnowledgeAssistantKnowledgeSourceProviderConfig | undefined>;
     /**
      * The type of the source: "index", "files", or "fileTable".
      * Required when creating a Knowledge Source.
      * When updating a Knowledge Source, this field is ignored
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * (string) - Possible values are: `FAILED_UPDATE`, `UPDATED`, `UPDATING`
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -211,9 +211,9 @@ export interface KnowledgeAssistantKnowledgeSourceArgs {
      * When updating a Knowledge Source, optional unless included in update_mask
      */
     displayName: pulumi.Input<string>;
-    fileTable?: pulumi.Input<inputs.KnowledgeAssistantKnowledgeSourceFileTable>;
-    files?: pulumi.Input<inputs.KnowledgeAssistantKnowledgeSourceFiles>;
-    index?: pulumi.Input<inputs.KnowledgeAssistantKnowledgeSourceIndex>;
+    fileTable?: pulumi.Input<inputs.KnowledgeAssistantKnowledgeSourceFileTable | undefined>;
+    files?: pulumi.Input<inputs.KnowledgeAssistantKnowledgeSourceFiles | undefined>;
+    index?: pulumi.Input<inputs.KnowledgeAssistantKnowledgeSourceIndex | undefined>;
     /**
      * Parent resource where this source will be created.
      * Format: knowledge-assistants/{knowledge_assistant_id}
@@ -222,7 +222,7 @@ export interface KnowledgeAssistantKnowledgeSourceArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.KnowledgeAssistantKnowledgeSourceProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.KnowledgeAssistantKnowledgeSourceProviderConfig | undefined>;
     /**
      * The type of the source: "index", "files", or "fileTable".
      * Required when creating a Knowledge Source.

@@ -65,5 +65,5 @@ export interface GetMaterializedFeaturesFeatureTagOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetMaterializedFeaturesFeatureTagProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetMaterializedFeaturesFeatureTagProviderConfigArgs | undefined>;
 }

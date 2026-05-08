@@ -37,8 +37,8 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
      * import com.pulumi.databricks.Job;
      * import com.pulumi.databricks.JobArgs;
      * import com.pulumi.databricks.inputs.JobRunAsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -80,8 +80,8 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
      * import com.pulumi.databricks.Job;
      * import com.pulumi.databricks.JobArgs;
      * import com.pulumi.databricks.inputs.JobRunAsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -174,8 +174,8 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
          * import com.pulumi.databricks.Job;
          * import com.pulumi.databricks.JobArgs;
          * import com.pulumi.databricks.inputs.JobRunAsArgs;
-         * import java.util.List;
          * import java.util.ArrayList;
+         * import java.util.Arrays;
          * import java.util.Map;
          * import java.io.File;
          * import java.nio.file.Files;
@@ -221,8 +221,8 @@ public final class JobRunAsArgs extends com.pulumi.resources.ResourceArgs {
          * import com.pulumi.databricks.Job;
          * import com.pulumi.databricks.JobArgs;
          * import com.pulumi.databricks.inputs.JobRunAsArgs;
-         * import java.util.List;
          * import java.util.ArrayList;
+         * import java.util.Arrays;
          * import java.util.Map;
          * import java.io.File;
          * import java.nio.file.Files;

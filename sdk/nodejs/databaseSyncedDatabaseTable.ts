@@ -279,27 +279,27 @@ export interface DatabaseSyncedDatabaseTableState {
     /**
      * (SyncedTableStatus) - Synced Table data synchronization status
      */
-    dataSynchronizationStatus?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatus>;
+    dataSynchronizationStatus?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatus | undefined>;
     /**
      * Name of the target database instance. This is required when creating synced database tables in standard catalogs.
      * This is optional when creating synced database tables in registered catalogs. If this field is specified
      * when creating synced database tables in registered catalogs, the database instance name MUST
      * match that of the registered catalog (or the request will be rejected)
      */
-    databaseInstanceName?: pulumi.Input<string>;
+    databaseInstanceName?: pulumi.Input<string | undefined>;
     /**
      * (string) - The name of the database instance that this table is registered to. This field is always returned, and for
      * tables inside database catalogs is inferred database instance associated with the catalog.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
-    effectiveDatabaseInstanceName?: pulumi.Input<string>;
+    effectiveDatabaseInstanceName?: pulumi.Input<string | undefined>;
     /**
      * (string) - The name of the logical database that this table is registered to.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
-    effectiveLogicalDatabaseName?: pulumi.Input<string>;
+    effectiveLogicalDatabaseName?: pulumi.Input<string | undefined>;
     /**
      * Target Postgres database object (logical database) name for this table.
      *
@@ -312,22 +312,22 @@ export interface DatabaseSyncedDatabaseTableState {
      * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
      * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
      */
-    logicalDatabaseName?: pulumi.Input<string>;
+    logicalDatabaseName?: pulumi.Input<string | undefined>;
     /**
      * Full three-part (catalog, schema, table) name of the table
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableProviderConfig>;
-    spec?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableSpec>;
+    providerConfig?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableProviderConfig | undefined>;
+    spec?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableSpec | undefined>;
     /**
      * (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
      * state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
      * may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
      */
-    unityCatalogProvisioningState?: pulumi.Input<string>;
+    unityCatalogProvisioningState?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -340,7 +340,7 @@ export interface DatabaseSyncedDatabaseTableArgs {
      * when creating synced database tables in registered catalogs, the database instance name MUST
      * match that of the registered catalog (or the request will be rejected)
      */
-    databaseInstanceName?: pulumi.Input<string>;
+    databaseInstanceName?: pulumi.Input<string | undefined>;
     /**
      * Target Postgres database object (logical database) name for this table.
      *
@@ -353,14 +353,14 @@ export interface DatabaseSyncedDatabaseTableArgs {
      * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
      * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
      */
-    logicalDatabaseName?: pulumi.Input<string>;
+    logicalDatabaseName?: pulumi.Input<string | undefined>;
     /**
      * Full three-part (catalog, schema, table) name of the table
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableProviderConfig>;
-    spec?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableSpec>;
+    providerConfig?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableProviderConfig | undefined>;
+    spec?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableSpec | undefined>;
 }

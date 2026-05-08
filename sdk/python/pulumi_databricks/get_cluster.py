@@ -113,7 +113,7 @@ def get_cluster(cluster_id: Optional[_builtins.str] = None,
     import pulumi_databricks as databricks
 
     all = databricks.get_clusters()
-    all_get_cluster = {__key: databricks.get_cluster(cluster_id=__value) for __key, __value in enumerate(all.ids)}
+    all_get_cluster = {str(__key): databricks.get_cluster(cluster_id=__value) for __key, __value in enumerate(all.ids)}
     ```
 
     ### Multiple clusters with the same name
@@ -165,11 +165,11 @@ def get_cluster(cluster_id: Optional[_builtins.str] = None,
         cluster_name=pulumi.get(__ret__, 'cluster_name'),
         id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_cluster_output(cluster_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       cluster_info: Optional[pulumi.Input[Optional[Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict']]]] = None,
-                       cluster_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       provider_config: Optional[pulumi.Input[Optional[Union['GetClusterProviderConfigArgs', 'GetClusterProviderConfigArgsDict']]]] = None,
+def get_cluster_output(cluster_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       cluster_info: pulumi.Input[Optional[Optional[Union['GetClusterClusterInfoArgs', 'GetClusterClusterInfoArgsDict']]]] = None,
+                       cluster_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       provider_config: pulumi.Input[Optional[Optional[Union['GetClusterProviderConfigArgs', 'GetClusterProviderConfigArgsDict']]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterResult]:
     """
     Retrieves information about a Cluster using its id. This could be retrieved programmatically using get_clusters data source.
@@ -185,7 +185,7 @@ def get_cluster_output(cluster_id: Optional[pulumi.Input[Optional[_builtins.str]
     import pulumi_databricks as databricks
 
     all = databricks.get_clusters()
-    all_get_cluster = {__key: databricks.get_cluster(cluster_id=__value) for __key, __value in enumerate(all.ids)}
+    all_get_cluster = {str(__key): databricks.get_cluster(cluster_id=__value) for __key, __value in enumerate(all.ids)}
     ```
 
     ### Multiple clusters with the same name

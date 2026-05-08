@@ -138,25 +138,25 @@ export interface AccountNetworkPolicyState {
     /**
      * (string) - The associated account ID for this Network Policy object
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The network policies applying for egress traffic
      */
-    egress?: pulumi.Input<inputs.AccountNetworkPolicyEgress>;
+    egress?: pulumi.Input<inputs.AccountNetworkPolicyEgress | undefined>;
     /**
      * The network policies applying for ingress traffic
      */
-    ingress?: pulumi.Input<inputs.AccountNetworkPolicyIngress>;
+    ingress?: pulumi.Input<inputs.AccountNetworkPolicyIngress | undefined>;
     /**
      * The ingress policy for dry run mode. Dry run will always run even if the request
      * is allowed by the ingress policy. When this field is set, the policy will be evaluated
      * and emit logs only without blocking requests
      */
-    ingressDryRun?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRun>;
+    ingressDryRun?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRun | undefined>;
     /**
      * The unique identifier for the network policy
      */
-    networkPolicyId?: pulumi.Input<string>;
+    networkPolicyId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -166,23 +166,23 @@ export interface AccountNetworkPolicyArgs {
     /**
      * (string) - The associated account ID for this Network Policy object
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * The network policies applying for egress traffic
      */
-    egress?: pulumi.Input<inputs.AccountNetworkPolicyEgress>;
+    egress?: pulumi.Input<inputs.AccountNetworkPolicyEgress | undefined>;
     /**
      * The network policies applying for ingress traffic
      */
-    ingress?: pulumi.Input<inputs.AccountNetworkPolicyIngress>;
+    ingress?: pulumi.Input<inputs.AccountNetworkPolicyIngress | undefined>;
     /**
      * The ingress policy for dry run mode. Dry run will always run even if the request
      * is allowed by the ingress policy. When this field is set, the policy will be evaluated
      * and emit logs only without blocking requests
      */
-    ingressDryRun?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRun>;
+    ingressDryRun?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRun | undefined>;
     /**
      * The unique identifier for the network policy
      */
-    networkPolicyId?: pulumi.Input<string>;
+    networkPolicyId?: pulumi.Input<string | undefined>;
 }

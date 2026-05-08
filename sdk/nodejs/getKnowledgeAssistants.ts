@@ -67,9 +67,9 @@ export interface GetKnowledgeAssistantsOutputArgs {
      * If unspecified, at most 100 knowledge assistants will be returned.
      * The maximum value is 100; values above 100 will be coerced to 100
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetKnowledgeAssistantsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetKnowledgeAssistantsProviderConfigArgs | undefined>;
 }

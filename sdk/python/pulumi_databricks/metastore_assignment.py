@@ -23,9 +23,9 @@ class MetastoreAssignmentArgs:
     def __init__(__self__, *,
                  metastore_id: pulumi.Input[_builtins.str],
                  workspace_id: pulumi.Input[_builtins.str],
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['MetastoreAssignmentProviderConfigArgs']] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['MetastoreAssignmentProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a MetastoreAssignment resource.
 
@@ -73,50 +73,50 @@ class MetastoreAssignmentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultCatalogName")
     @_utilities.deprecated("""Use DefaultNamespaceSetting resource instead""")
-    def default_catalog_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_catalog_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
         """
         return pulumi.get(self, "default_catalog_name")
 
     @default_catalog_name.setter
-    def default_catalog_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_catalog_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_catalog_name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['MetastoreAssignmentProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['MetastoreAssignmentProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['MetastoreAssignmentProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['MetastoreAssignmentProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _MetastoreAssignmentState:
     def __init__(__self__, *,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['MetastoreAssignmentProviderConfigArgs']] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['MetastoreAssignmentProviderConfigArgs']] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MetastoreAssignment resources.
 
@@ -142,63 +142,63 @@ class _MetastoreAssignmentState:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultCatalogName")
     @_utilities.deprecated("""Use DefaultNamespaceSetting resource instead""")
-    def default_catalog_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_catalog_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default catalog used for this assignment. Please use DefaultNamespaceSetting instead.
         """
         return pulumi.get(self, "default_catalog_name")
 
     @default_catalog_name.setter
-    def default_catalog_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_catalog_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_catalog_name", value)
 
     @_builtins.property
     @pulumi.getter(name="metastoreId")
-    def metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique identifier of the parent Metastore
         """
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
-    def metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metastore_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['MetastoreAssignmentProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['MetastoreAssignmentProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['MetastoreAssignmentProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['MetastoreAssignmentProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         id of the workspace for the assignment
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_id", value)
 
 
@@ -208,11 +208,11 @@ class MetastoreAssignment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['MetastoreAssignmentProviderConfigArgs', 'MetastoreAssignmentProviderConfigArgsDict']]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MetastoreAssignmentProviderConfigArgs', 'MetastoreAssignmentProviderConfigArgsDict']]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > This resource can be used with an account or workspace-level provider.
@@ -289,11 +289,11 @@ class MetastoreAssignment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['MetastoreAssignmentProviderConfigArgs', 'MetastoreAssignmentProviderConfigArgsDict']]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MetastoreAssignmentProviderConfigArgs', 'MetastoreAssignmentProviderConfigArgsDict']]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -322,11 +322,11 @@ class MetastoreAssignment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api: Optional[pulumi.Input[_builtins.str]] = None,
-            default_catalog_name: Optional[pulumi.Input[_builtins.str]] = None,
-            metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['MetastoreAssignmentProviderConfigArgs', 'MetastoreAssignmentProviderConfigArgsDict']]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'MetastoreAssignment':
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            default_catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['MetastoreAssignmentProviderConfigArgs', 'MetastoreAssignmentProviderConfigArgsDict']]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'MetastoreAssignment':
         """
         Get an existing MetastoreAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

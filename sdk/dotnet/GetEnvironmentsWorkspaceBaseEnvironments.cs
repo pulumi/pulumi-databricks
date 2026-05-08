@@ -28,7 +28,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.Index.GetEnvironmentsWorkspaceBaseEnvironments.Invoke();
+        ///     var all = Databricks.GetEnvironmentsWorkspaceBaseEnvironments.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -57,7 +57,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.Index.GetEnvironmentsWorkspaceBaseEnvironments.Invoke();
+        ///     var all = Databricks.GetEnvironmentsWorkspaceBaseEnvironments.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -86,7 +86,7 @@ namespace Pulumi.Databricks
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = Databricks.Index.GetEnvironmentsWorkspaceBaseEnvironments.Invoke();
+        ///     var all = Databricks.GetEnvironmentsWorkspaceBaseEnvironments.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

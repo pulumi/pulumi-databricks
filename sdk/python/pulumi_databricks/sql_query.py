@@ -23,16 +23,16 @@ class SqlQueryArgs:
     def __init__(__self__, *,
                  data_source_id: pulumi.Input[_builtins.str],
                  query: pulumi.Input[_builtins.str],
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SqlQueryParameterArgs']]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['SqlQueryProviderConfigArgs']] = None,
-                 run_as_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input['SqlQueryScheduleArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['SqlQueryParameterArgs']]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['SqlQueryProviderConfigArgs']] = None,
+                 run_as_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional['SqlQueryScheduleArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SqlQuery resource.
 
@@ -95,123 +95,123 @@ class SqlQueryArgs:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         General description that conveys additional information about this query such as usage notes.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The title of this query that appears in list views, widget headings, and on the query page.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SqlQueryParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SqlQueryParameterArgs']]]]:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SqlQueryParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SqlQueryParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the workspace folder containing the object.
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['SqlQueryProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['SqlQueryProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['SqlQueryProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['SqlQueryProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsRole")
-    def run_as_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_as_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Run as role. Possible values are `viewer`, `owner`.
         """
         return pulumi.get(self, "run_as_role")
 
     @run_as_role.setter
-    def run_as_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_as_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_as_role", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Operations on `SqlQuery` schedules are deprecated. Please use `Job` resource to schedule a `sql_task`.""")
-    def schedule(self) -> Optional[pulumi.Input['SqlQueryScheduleArgs']]:
+    def schedule(self) -> pulumi.Input[Optional['SqlQueryScheduleArgs']]:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['SqlQueryScheduleArgs']]):
+    def schedule(self, value: pulumi.Input[Optional['SqlQueryScheduleArgs']]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
 @pulumi.input_type
 class _SqlQueryState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SqlQueryParameterArgs']]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['SqlQueryProviderConfigArgs']] = None,
-                 query: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input['SqlQueryScheduleArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['SqlQueryParameterArgs']]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['SqlQueryProviderConfigArgs']] = None,
+                 query: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional['SqlQueryScheduleArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SqlQuery resources.
 
@@ -252,129 +252,129 @@ class _SqlQueryState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceId")
-    def data_source_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data source ID of a SQL warehouse
         """
         return pulumi.get(self, "data_source_id")
 
     @data_source_id.setter
-    def data_source_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         General description that conveys additional information about this query such as usage notes.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The title of this query that appears in list views, widget headings, and on the query page.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SqlQueryParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SqlQueryParameterArgs']]]]:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SqlQueryParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SqlQueryParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the workspace folder containing the object.
         """
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['SqlQueryProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['SqlQueryProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['SqlQueryProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['SqlQueryProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def query(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def query(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The text of the query to be run.
         """
         return pulumi.get(self, "query")
 
     @query.setter
-    def query(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def query(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "query", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsRole")
-    def run_as_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_as_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Run as role. Possible values are `viewer`, `owner`.
         """
         return pulumi.get(self, "run_as_role")
 
     @run_as_role.setter
-    def run_as_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_as_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_as_role", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Operations on `SqlQuery` schedules are deprecated. Please use `Job` resource to schedule a `sql_task`.""")
-    def schedule(self) -> Optional[pulumi.Input['SqlQueryScheduleArgs']]:
+    def schedule(self) -> pulumi.Input[Optional['SqlQueryScheduleArgs']]:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['SqlQueryScheduleArgs']]):
+    def schedule(self, value: pulumi.Input[Optional['SqlQueryScheduleArgs']]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -384,18 +384,18 @@ class SqlQuery(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlQueryParameterArgs', 'SqlQueryParameterArgsDict']]]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['SqlQueryProviderConfigArgs', 'SqlQueryProviderConfigArgsDict']]] = None,
-                 query: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[Union['SqlQueryScheduleArgs', 'SqlQueryScheduleArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlQueryParameterArgs', 'SqlQueryParameterArgsDict']]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlQueryProviderConfigArgs', 'SqlQueryProviderConfigArgsDict']]] = None,
+                 query: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[Union['SqlQueryScheduleArgs', 'SqlQueryScheduleArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         !> This resource is deprecated! Please switch to databricks_query.
@@ -633,18 +633,18 @@ class SqlQuery(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlQueryParameterArgs', 'SqlQueryParameterArgsDict']]]]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['SqlQueryProviderConfigArgs', 'SqlQueryProviderConfigArgsDict']]] = None,
-                 query: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_as_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[Union['SqlQueryScheduleArgs', 'SqlQueryScheduleArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlQueryParameterArgs', 'SqlQueryParameterArgsDict']]]]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['SqlQueryProviderConfigArgs', 'SqlQueryProviderConfigArgsDict']]] = None,
+                 query: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_as_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[Union['SqlQueryScheduleArgs', 'SqlQueryScheduleArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -680,18 +680,18 @@ class SqlQuery(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SqlQueryParameterArgs', 'SqlQueryParameterArgsDict']]]]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['SqlQueryProviderConfigArgs', 'SqlQueryProviderConfigArgsDict']]] = None,
-            query: Optional[pulumi.Input[_builtins.str]] = None,
-            run_as_role: Optional[pulumi.Input[_builtins.str]] = None,
-            schedule: Optional[pulumi.Input[Union['SqlQueryScheduleArgs', 'SqlQueryScheduleArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'SqlQuery':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SqlQueryParameterArgs', 'SqlQueryParameterArgsDict']]]]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['SqlQueryProviderConfigArgs', 'SqlQueryProviderConfigArgsDict']]] = None,
+            query: pulumi.Input[Optional[_builtins.str]] = None,
+            run_as_role: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[Union['SqlQueryScheduleArgs', 'SqlQueryScheduleArgsDict']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'SqlQuery':
         """
         Get an existing SqlQuery resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

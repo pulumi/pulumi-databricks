@@ -135,19 +135,19 @@ export interface GetJobOutputArgs {
     /**
      * the id of databricks.Job if the resource was matched by name.
      */
-    id?: pulumi.Input<string>;
-    jobId?: pulumi.Input<string>;
-    jobName?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
+    jobId?: pulumi.Input<string | undefined>;
+    jobName?: pulumi.Input<string | undefined>;
     /**
      * the same fields as in databricks_job.
      */
-    jobSettings?: pulumi.Input<inputs.GetJobJobSettingsArgs>;
+    jobSettings?: pulumi.Input<inputs.GetJobJobSettingsArgs | undefined>;
     /**
      * the job name of databricks.Job if the resource was matched by id.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetJobProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetJobProviderConfigArgs | undefined>;
 }

@@ -101,5 +101,5 @@ export interface GetMwsWorkspacesOutputArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetMwsWorkspacesProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetMwsWorkspacesProviderConfigArgs | undefined>;
 }

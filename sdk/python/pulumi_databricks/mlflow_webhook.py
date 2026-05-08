@@ -22,12 +22,12 @@ __all__ = ['MlflowWebhookArgs', 'MlflowWebhook']
 class MlflowWebhookArgs:
     def __init__(__self__, *,
                  events: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_url_spec: Optional[pulumi.Input['MlflowWebhookHttpUrlSpecArgs']] = None,
-                 job_spec: Optional[pulumi.Input['MlflowWebhookJobSpecArgs']] = None,
-                 model_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['MlflowWebhookProviderConfigArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_url_spec: pulumi.Input[Optional['MlflowWebhookHttpUrlSpecArgs']] = None,
+                 job_spec: pulumi.Input[Optional['MlflowWebhookJobSpecArgs']] = None,
+                 model_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['MlflowWebhookProviderConfigArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MlflowWebhook resource.
 
@@ -68,78 +68,78 @@ class MlflowWebhookArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional description of the MLflow webhook.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="httpUrlSpec")
-    def http_url_spec(self) -> Optional[pulumi.Input['MlflowWebhookHttpUrlSpecArgs']]:
+    def http_url_spec(self) -> pulumi.Input[Optional['MlflowWebhookHttpUrlSpecArgs']]:
         return pulumi.get(self, "http_url_spec")
 
     @http_url_spec.setter
-    def http_url_spec(self, value: Optional[pulumi.Input['MlflowWebhookHttpUrlSpecArgs']]):
+    def http_url_spec(self, value: pulumi.Input[Optional['MlflowWebhookHttpUrlSpecArgs']]):
         pulumi.set(self, "http_url_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="jobSpec")
-    def job_spec(self) -> Optional[pulumi.Input['MlflowWebhookJobSpecArgs']]:
+    def job_spec(self) -> pulumi.Input[Optional['MlflowWebhookJobSpecArgs']]:
         return pulumi.get(self, "job_spec")
 
     @job_spec.setter
-    def job_spec(self, value: Optional[pulumi.Input['MlflowWebhookJobSpecArgs']]):
+    def job_spec(self, value: pulumi.Input[Optional['MlflowWebhookJobSpecArgs']]):
         pulumi.set(self, "job_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="modelName")
-    def model_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         """
         return pulumi.get(self, "model_name")
 
     @model_name.setter
-    def model_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['MlflowWebhookProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['MlflowWebhookProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['MlflowWebhookProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['MlflowWebhookProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _MlflowWebhookState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 http_url_spec: Optional[pulumi.Input['MlflowWebhookHttpUrlSpecArgs']] = None,
-                 job_spec: Optional[pulumi.Input['MlflowWebhookJobSpecArgs']] = None,
-                 model_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['MlflowWebhookProviderConfigArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 http_url_spec: pulumi.Input[Optional['MlflowWebhookHttpUrlSpecArgs']] = None,
+                 job_spec: pulumi.Input[Optional['MlflowWebhookJobSpecArgs']] = None,
+                 model_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['MlflowWebhookProviderConfigArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MlflowWebhook resources.
 
@@ -167,19 +167,19 @@ class _MlflowWebhookState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional description of the MLflow webhook.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def events(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def events(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of events that will trigger execution of Databricks job or POSTing to an URL, for example, `MODEL_VERSION_CREATED`, `MODEL_VERSION_TRANSITIONED_STAGE`, `TRANSITION_REQUEST_CREATED`, etc.  Refer to the [Webhooks API documentation](https://docs.databricks.com/dev-tools/api/latest/mlflow.html#operation/create-registry-webhook) for a full list of supported events.
 
@@ -188,58 +188,58 @@ class _MlflowWebhookState:
         return pulumi.get(self, "events")
 
     @events.setter
-    def events(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def events(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "events", value)
 
     @_builtins.property
     @pulumi.getter(name="httpUrlSpec")
-    def http_url_spec(self) -> Optional[pulumi.Input['MlflowWebhookHttpUrlSpecArgs']]:
+    def http_url_spec(self) -> pulumi.Input[Optional['MlflowWebhookHttpUrlSpecArgs']]:
         return pulumi.get(self, "http_url_spec")
 
     @http_url_spec.setter
-    def http_url_spec(self, value: Optional[pulumi.Input['MlflowWebhookHttpUrlSpecArgs']]):
+    def http_url_spec(self, value: pulumi.Input[Optional['MlflowWebhookHttpUrlSpecArgs']]):
         pulumi.set(self, "http_url_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="jobSpec")
-    def job_spec(self) -> Optional[pulumi.Input['MlflowWebhookJobSpecArgs']]:
+    def job_spec(self) -> pulumi.Input[Optional['MlflowWebhookJobSpecArgs']]:
         return pulumi.get(self, "job_spec")
 
     @job_spec.setter
-    def job_spec(self, value: Optional[pulumi.Input['MlflowWebhookJobSpecArgs']]):
+    def job_spec(self, value: pulumi.Input[Optional['MlflowWebhookJobSpecArgs']]):
         pulumi.set(self, "job_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="modelName")
-    def model_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
         """
         return pulumi.get(self, "model_name")
 
     @model_name.setter
-    def model_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_name", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['MlflowWebhookProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['MlflowWebhookProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['MlflowWebhookProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['MlflowWebhookProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -249,13 +249,13 @@ class MlflowWebhook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 http_url_spec: Optional[pulumi.Input[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict']]] = None,
-                 job_spec: Optional[pulumi.Input[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict']]] = None,
-                 model_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['MlflowWebhookProviderConfigArgs', 'MlflowWebhookProviderConfigArgsDict']]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 http_url_spec: pulumi.Input[Optional[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict']]] = None,
+                 job_spec: pulumi.Input[Optional[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict']]] = None,
+                 model_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MlflowWebhookProviderConfigArgs', 'MlflowWebhookProviderConfigArgsDict']]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource allows you to create [MLflow Model Registry Webhooks](https://docs.databricks.com/applications/mlflow/model-registry-webhooks.html) in Databricks.  Webhooks enable you to listen for Model Registry events so your integrations can automatically trigger actions. You can use webhooks to automate and integrate your machine learning pipeline with existing CI/CD tools and workflows. Webhooks allow trigger execution of a Databricks job or call a web service on specific event(s) that is generated in the MLflow Registry - stage transitioning, creation of registered model, creation of transition request, etc.
@@ -463,13 +463,13 @@ class MlflowWebhook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 http_url_spec: Optional[pulumi.Input[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict']]] = None,
-                 job_spec: Optional[pulumi.Input[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict']]] = None,
-                 model_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['MlflowWebhookProviderConfigArgs', 'MlflowWebhookProviderConfigArgsDict']]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 http_url_spec: pulumi.Input[Optional[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict']]] = None,
+                 job_spec: pulumi.Input[Optional[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict']]] = None,
+                 model_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['MlflowWebhookProviderConfigArgs', 'MlflowWebhookProviderConfigArgsDict']]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -498,13 +498,13 @@ class MlflowWebhook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            events: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            http_url_spec: Optional[pulumi.Input[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict']]] = None,
-            job_spec: Optional[pulumi.Input[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict']]] = None,
-            model_name: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['MlflowWebhookProviderConfigArgs', 'MlflowWebhookProviderConfigArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'MlflowWebhook':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            events: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            http_url_spec: pulumi.Input[Optional[Union['MlflowWebhookHttpUrlSpecArgs', 'MlflowWebhookHttpUrlSpecArgsDict']]] = None,
+            job_spec: pulumi.Input[Optional[Union['MlflowWebhookJobSpecArgs', 'MlflowWebhookJobSpecArgsDict']]] = None,
+            model_name: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['MlflowWebhookProviderConfigArgs', 'MlflowWebhookProviderConfigArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'MlflowWebhook':
         """
         Get an existing MlflowWebhook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

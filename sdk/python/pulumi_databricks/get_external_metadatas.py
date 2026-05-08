@@ -115,8 +115,8 @@ def get_external_metadatas(page_size: Optional[_builtins.int] = None,
         id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'))
-def get_external_metadatas_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                  provider_config: Optional[pulumi.Input[Optional[Union['GetExternalMetadatasProviderConfigArgs', 'GetExternalMetadatasProviderConfigArgsDict']]]] = None,
+def get_external_metadatas_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                  provider_config: pulumi.Input[Optional[Optional[Union['GetExternalMetadatasProviderConfigArgs', 'GetExternalMetadatasProviderConfigArgsDict']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalMetadatasResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)

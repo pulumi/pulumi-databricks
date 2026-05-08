@@ -135,22 +135,22 @@ export interface TokenState {
     /**
      * (String) Comment that will appear on the user's settings page for this token.
      */
-    comment?: pulumi.Input<string>;
-    creationTime?: pulumi.Input<number>;
-    expiryTime?: pulumi.Input<number>;
+    comment?: pulumi.Input<string | undefined>;
+    creationTime?: pulumi.Input<number | undefined>;
+    expiryTime?: pulumi.Input<number | undefined>;
     /**
      * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
      */
-    lifetimeSeconds?: pulumi.Input<number>;
+    lifetimeSeconds?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.TokenProviderConfig>;
-    tokenId?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.TokenProviderConfig | undefined>;
+    tokenId?: pulumi.Input<string | undefined>;
     /**
      * **Sensitive** value of the newly-created token.
      */
-    tokenValue?: pulumi.Input<string>;
+    tokenValue?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -160,16 +160,16 @@ export interface TokenArgs {
     /**
      * (String) Comment that will appear on the user's settings page for this token.
      */
-    comment?: pulumi.Input<string>;
-    creationTime?: pulumi.Input<number>;
-    expiryTime?: pulumi.Input<number>;
+    comment?: pulumi.Input<string | undefined>;
+    creationTime?: pulumi.Input<number | undefined>;
+    expiryTime?: pulumi.Input<number | undefined>;
     /**
      * (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
      */
-    lifetimeSeconds?: pulumi.Input<number>;
+    lifetimeSeconds?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.TokenProviderConfig>;
-    tokenId?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.TokenProviderConfig | undefined>;
+    tokenId?: pulumi.Input<string | undefined>;
 }

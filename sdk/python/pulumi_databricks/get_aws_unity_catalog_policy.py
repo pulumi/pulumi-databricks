@@ -168,11 +168,11 @@ def get_aws_unity_catalog_policy(aws_account_id: Optional[_builtins.str] = None,
         json=pulumi.get(__ret__, 'json'),
         kms_name=pulumi.get(__ret__, 'kms_name'),
         role_name=pulumi.get(__ret__, 'role_name'))
-def get_aws_unity_catalog_policy_output(aws_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                        aws_partition: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                        kms_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        role_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_aws_unity_catalog_policy_output(aws_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                        aws_partition: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                        kms_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        role_name: pulumi.Input[Optional[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsUnityCatalogPolicyResult]:
     """
     This data source constructs the necessary AWS Unity Catalog policy for you.

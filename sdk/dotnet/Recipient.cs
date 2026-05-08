@@ -34,15 +34,15 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var db2opensharecode = new Random.Index.Password("db2opensharecode", new()
+    ///     var db2opensharecode = new Random.Password("db2opensharecode", new()
     ///     {
     ///         Length = 16,
     ///         Special = true,
     ///     });
     /// 
-    ///     var current = Databricks.Index.GetCurrentUser.Invoke();
+    ///     var current = Databricks.GetCurrentUser.Invoke();
     /// 
-    ///     var db2open = new Databricks.Index.Recipient("db2open", new()
+    ///     var db2open = new Databricks.Recipient("db2open", new()
     ///     {
     ///         Name = $"{current.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)}-recipient",
     ///         Comment = "Made by Pulumi",
@@ -72,12 +72,12 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var current = Databricks.Index.GetCurrentUser.Invoke();
+    ///     var current = Databricks.GetCurrentUser.Invoke();
     /// 
-    ///     var recipientMetastore = new Databricks.Index.Metastore("recipient_metastore", new()
+    ///     var recipientMetastore = new Databricks.Metastore("recipient_metastore", new()
     ///     {
     ///         Name = "recipient",
-    ///         StorageRoot = Std.Index.Format.Invoke(new()
+    ///         StorageRoot = Std.Format.Invoke(new()
     ///         {
     ///             Input = "abfss://%s@%s.dfs.core.windows.net/",
     ///             Args = new[]
@@ -91,7 +91,7 @@ namespace Pulumi.Databricks
     ///         ForceDestroy = true,
     ///     });
     /// 
-    ///     var db2db = new Databricks.Index.Recipient("db2db", new()
+    ///     var db2db = new Databricks.Recipient("db2db", new()
     ///     {
     ///         Name = $"{current.Apply(getCurrentUserResult =&gt; getCurrentUserResult.Alphanumeric)}-recipient",
     ///         Comment = "Made by Pulumi",

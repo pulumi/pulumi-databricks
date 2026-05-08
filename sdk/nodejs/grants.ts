@@ -567,42 +567,42 @@ export class Grants extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Grants resources.
  */
 export interface GrantsState {
-    catalog?: pulumi.Input<string>;
-    credential?: pulumi.Input<string>;
-    externalLocation?: pulumi.Input<string>;
-    foreignConnection?: pulumi.Input<string>;
-    function?: pulumi.Input<string>;
-    grants?: pulumi.Input<pulumi.Input<inputs.GrantsGrant>[]>;
-    metastore?: pulumi.Input<string>;
-    model?: pulumi.Input<string>;
-    pipeline?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.GrantsProviderConfig>;
-    recipient?: pulumi.Input<string>;
-    schema?: pulumi.Input<string>;
-    share?: pulumi.Input<string>;
-    storageCredential?: pulumi.Input<string>;
-    table?: pulumi.Input<string>;
-    volume?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
+    credential?: pulumi.Input<string | undefined>;
+    externalLocation?: pulumi.Input<string | undefined>;
+    foreignConnection?: pulumi.Input<string | undefined>;
+    function?: pulumi.Input<string | undefined>;
+    grants?: pulumi.Input<pulumi.Input<inputs.GrantsGrant>[] | undefined>;
+    metastore?: pulumi.Input<string | undefined>;
+    model?: pulumi.Input<string | undefined>;
+    pipeline?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.GrantsProviderConfig | undefined>;
+    recipient?: pulumi.Input<string | undefined>;
+    schema?: pulumi.Input<string | undefined>;
+    share?: pulumi.Input<string | undefined>;
+    storageCredential?: pulumi.Input<string | undefined>;
+    table?: pulumi.Input<string | undefined>;
+    volume?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Grants resource.
  */
 export interface GrantsArgs {
-    catalog?: pulumi.Input<string>;
-    credential?: pulumi.Input<string>;
-    externalLocation?: pulumi.Input<string>;
-    foreignConnection?: pulumi.Input<string>;
-    function?: pulumi.Input<string>;
+    catalog?: pulumi.Input<string | undefined>;
+    credential?: pulumi.Input<string | undefined>;
+    externalLocation?: pulumi.Input<string | undefined>;
+    foreignConnection?: pulumi.Input<string | undefined>;
+    function?: pulumi.Input<string | undefined>;
     grants: pulumi.Input<pulumi.Input<inputs.GrantsGrant>[]>;
-    metastore?: pulumi.Input<string>;
-    model?: pulumi.Input<string>;
-    pipeline?: pulumi.Input<string>;
-    providerConfig?: pulumi.Input<inputs.GrantsProviderConfig>;
-    recipient?: pulumi.Input<string>;
-    schema?: pulumi.Input<string>;
-    share?: pulumi.Input<string>;
-    storageCredential?: pulumi.Input<string>;
-    table?: pulumi.Input<string>;
-    volume?: pulumi.Input<string>;
+    metastore?: pulumi.Input<string | undefined>;
+    model?: pulumi.Input<string | undefined>;
+    pipeline?: pulumi.Input<string | undefined>;
+    providerConfig?: pulumi.Input<inputs.GrantsProviderConfig | undefined>;
+    recipient?: pulumi.Input<string | undefined>;
+    schema?: pulumi.Input<string | undefined>;
+    share?: pulumi.Input<string | undefined>;
+    storageCredential?: pulumi.Input<string | undefined>;
+    table?: pulumi.Input<string | undefined>;
+    volume?: pulumi.Input<string | undefined>;
 }

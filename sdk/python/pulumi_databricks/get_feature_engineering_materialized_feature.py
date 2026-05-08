@@ -197,8 +197,8 @@ def get_feature_engineering_materialized_feature(materialized_feature_id: Option
         pipeline_schedule_state=pulumi.get(__ret__, 'pipeline_schedule_state'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         table_name=pulumi.get(__ret__, 'table_name'))
-def get_feature_engineering_materialized_feature_output(materialized_feature_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                        provider_config: Optional[pulumi.Input[Optional[Union['GetFeatureEngineeringMaterializedFeatureProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeatureProviderConfigArgsDict']]]] = None,
+def get_feature_engineering_materialized_feature_output(materialized_feature_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                        provider_config: pulumi.Input[Optional[Optional[Union['GetFeatureEngineeringMaterializedFeatureProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeatureProviderConfigArgsDict']]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureEngineeringMaterializedFeatureResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)

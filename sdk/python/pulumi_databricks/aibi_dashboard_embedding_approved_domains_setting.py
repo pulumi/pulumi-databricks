@@ -22,9 +22,9 @@ __all__ = ['AibiDashboardEmbeddingApprovedDomainsSettingArgs', 'AibiDashboardEmb
 class AibiDashboardEmbeddingApprovedDomainsSettingArgs:
     def __init__(__self__, *,
                  aibi_dashboard_embedding_approved_domains: pulumi.Input['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs'],
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs']] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs']] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AibiDashboardEmbeddingApprovedDomainsSetting resource.
 
@@ -53,42 +53,42 @@ class AibiDashboardEmbeddingApprovedDomainsSettingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="settingName")
-    def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def setting_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "setting_name")
 
     @setting_name.setter
-    def setting_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def setting_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "setting_name", value)
 
 
 @pulumi.input_type
 class _AibiDashboardEmbeddingApprovedDomainsSettingState:
     def __init__(__self__, *,
-                 aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs']] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs']] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs']] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs']] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AibiDashboardEmbeddingApprovedDomainsSetting resources.
 
@@ -106,44 +106,44 @@ class _AibiDashboardEmbeddingApprovedDomainsSettingState:
 
     @_builtins.property
     @pulumi.getter(name="aibiDashboardEmbeddingApprovedDomains")
-    def aibi_dashboard_embedding_approved_domains(self) -> Optional[pulumi.Input['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs']]:
+    def aibi_dashboard_embedding_approved_domains(self) -> pulumi.Input[Optional['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs']]:
         """
         block with following attributes:
         """
         return pulumi.get(self, "aibi_dashboard_embedding_approved_domains")
 
     @aibi_dashboard_embedding_approved_domains.setter
-    def aibi_dashboard_embedding_approved_domains(self, value: Optional[pulumi.Input['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs']]):
+    def aibi_dashboard_embedding_approved_domains(self, value: pulumi.Input[Optional['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs']]):
         pulumi.set(self, "aibi_dashboard_embedding_approved_domains", value)
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "etag")
 
     @etag.setter
-    def etag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "etag", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="settingName")
-    def setting_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def setting_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "setting_name")
 
     @setting_name.setter
-    def setting_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def setting_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "setting_name", value)
 
 
@@ -153,10 +153,10 @@ class AibiDashboardEmbeddingApprovedDomainsSetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgsDict']]] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgsDict']]] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The `AibiDashboardEmbeddingApprovedDomainsSetting` resource allows you to specify the list of domains allowed for  [embedding of AI/BI Dashboards](https://learn.microsoft.com/en-us/azure/databricks/dashboards/admin/#manage-dashboard-embedding) into other sites.
@@ -238,10 +238,10 @@ class AibiDashboardEmbeddingApprovedDomainsSetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
-                 etag: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgsDict']]] = None,
-                 setting_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
+                 etag: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgsDict']]] = None,
+                 setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -267,10 +267,10 @@ class AibiDashboardEmbeddingApprovedDomainsSetting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aibi_dashboard_embedding_approved_domains: Optional[pulumi.Input[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
-            etag: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgsDict']]] = None,
-            setting_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'AibiDashboardEmbeddingApprovedDomainsSetting':
+            aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgs', 'AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigArgsDict']]] = None,
+            setting_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'AibiDashboardEmbeddingApprovedDomainsSetting':
         """
         Get an existing AibiDashboardEmbeddingApprovedDomainsSetting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

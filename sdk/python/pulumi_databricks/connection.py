@@ -21,14 +21,14 @@ __all__ = ['ConnectionArgs', 'Connection']
 @pulumi.input_type
 class ConnectionArgs:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input['ConnectionProviderConfigArgs']] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional['ConnectionProviderConfigArgs']] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
 
@@ -60,123 +60,123 @@ class ConnectionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Free-form text. Change forces creation of a new resource.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionType")
-    def connection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
         """
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
-    def connection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Connection.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the connection owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Free-form connection properties. Change forces creation of a new resource.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['ConnectionProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['ConnectionProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['ConnectionProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['ConnectionProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the connection is read-only. Change forces creation of a new resource.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
 
 @pulumi.input_type
 class _ConnectionState:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 credential_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input['ConnectionProviderConfigArgs']] = None,
-                 provisioning_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 credential_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 full_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional['ConnectionProviderConfigArgs']] = None,
+                 provisioning_infos: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
 
@@ -240,227 +240,227 @@ class _ConnectionState:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Free-form text. Change forces creation of a new resource.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionId")
-    def connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique ID of the connection.
         """
         return pulumi.get(self, "connection_id")
 
     @connection_id.setter
-    def connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_id", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionType")
-    def connection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
         """
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
-    def connection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time at which this connection was created, in epoch milliseconds.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username of connection creator.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="credentialType")
-    def credential_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credential_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of credential for this connection.
         """
         return pulumi.get(self, "credential_type")
 
     @credential_type.setter
-    def credential_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credential_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credential_type", value)
 
     @_builtins.property
     @pulumi.getter(name="fullName")
-    def full_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def full_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full name of connection.
         """
         return pulumi.get(self, "full_name")
 
     @full_name.setter
-    def full_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def full_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "full_name", value)
 
     @_builtins.property
     @pulumi.getter(name="metastoreId")
-    def metastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique ID of the UC metastore for this connection.
         """
         return pulumi.get(self, "metastore_id")
 
     @metastore_id.setter
-    def metastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metastore_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Connection.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the connection owner.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
     @_builtins.property
     @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Free-form connection properties. Change forces creation of a new resource.
         """
         return pulumi.get(self, "properties")
 
     @properties.setter
-    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def properties(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "properties", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['ConnectionProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['ConnectionProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['ConnectionProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['ConnectionProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="provisioningInfos")
-    def provisioning_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]]]:
+    def provisioning_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]]]:
         """
         Object with the status of an asynchronously provisioned resource.
         """
         return pulumi.get(self, "provisioning_infos")
 
     @provisioning_infos.setter
-    def provisioning_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]]]):
+    def provisioning_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]]]):
         pulumi.set(self, "provisioning_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the connection is read-only. Change forces creation of a new resource.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="securableType")
-    def securable_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def securable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "securable_type")
 
     @securable_type.setter
-    def securable_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def securable_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "securable_type", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time at which connection this was last modified, in epoch milliseconds.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedBy")
-    def updated_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username of user who last modified the connection.
         """
         return pulumi.get(self, "updated_by")
 
     @updated_by.setter
-    def updated_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL of the remote data source, extracted from options.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -470,14 +470,14 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         > This resource can only be used with a workspace-level provider!
@@ -787,14 +787,14 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 provider_config: Optional[pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 provider_config: pulumi.Input[Optional[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -835,25 +835,25 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.int]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            credential_type: Optional[pulumi.Input[_builtins.str]] = None,
-            full_name: Optional[pulumi.Input[_builtins.str]] = None,
-            metastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None,
-            properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            provider_config: Optional[pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']]] = None,
-            provisioning_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionProvisioningInfoArgs', 'ConnectionProvisioningInfoArgsDict']]]]] = None,
-            read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-            securable_type: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.int]] = None,
-            updated_by: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None) -> 'Connection':
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.int]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            credential_type: pulumi.Input[Optional[_builtins.str]] = None,
+            full_name: pulumi.Input[Optional[_builtins.str]] = None,
+            metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            provider_config: pulumi.Input[Optional[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']]] = None,
+            provisioning_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionProvisioningInfoArgs', 'ConnectionProvisioningInfoArgsDict']]]]] = None,
+            read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            securable_type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

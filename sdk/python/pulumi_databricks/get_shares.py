@@ -114,8 +114,8 @@ def get_shares(provider_config: Optional[Union['GetSharesProviderConfigArgs', 'G
         id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         shares=pulumi.get(__ret__, 'shares'))
-def get_shares_output(provider_config: Optional[pulumi.Input[Optional[Union['GetSharesProviderConfigArgs', 'GetSharesProviderConfigArgsDict']]]] = None,
-                      shares: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_shares_output(provider_config: pulumi.Input[Optional[Optional[Union['GetSharesProviderConfigArgs', 'GetSharesProviderConfigArgsDict']]]] = None,
+                      shares: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSharesResult]:
     """
     Retrieves a list of Share name, that were created by Pulumi or manually.

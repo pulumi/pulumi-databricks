@@ -122,7 +122,7 @@ export interface GetStorageCredentialOutputArgs {
     /**
      * Unique ID of storage credential.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the storage credential
      */
@@ -130,9 +130,9 @@ export interface GetStorageCredentialOutputArgs {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetStorageCredentialProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetStorageCredentialProviderConfigArgs | undefined>;
     /**
      * array of objects with information about storage credential.
      */
-    storageCredentialInfo?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoArgs>;
+    storageCredentialInfo?: pulumi.Input<inputs.GetStorageCredentialStorageCredentialInfoArgs | undefined>;
 }

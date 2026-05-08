@@ -23,10 +23,10 @@ class MwsCustomerManagedKeysArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  use_cases: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 aws_key_info: Optional[pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs']] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcp_key_info: Optional[pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs']] = None):
+                 aws_key_info: pulumi.Input[Optional['MwsCustomerManagedKeysAwsKeyInfoArgs']] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcp_key_info: pulumi.Input[Optional['MwsCustomerManagedKeysGcpKeyInfoArgs']] = None):
         """
         The set of arguments for constructing a MwsCustomerManagedKeys resource.
 
@@ -78,62 +78,62 @@ class MwsCustomerManagedKeysArgs:
 
     @_builtins.property
     @pulumi.getter(name="awsKeyInfo")
-    def aws_key_info(self) -> Optional[pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs']]:
+    def aws_key_info(self) -> pulumi.Input[Optional['MwsCustomerManagedKeysAwsKeyInfoArgs']]:
         """
         This field is a block and is documented below. This conflicts with `gcp_key_info`
         """
         return pulumi.get(self, "aws_key_info")
 
     @aws_key_info.setter
-    def aws_key_info(self, value: Optional[pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs']]):
+    def aws_key_info(self, value: pulumi.Input[Optional['MwsCustomerManagedKeysAwsKeyInfoArgs']]):
         pulumi.set(self, "aws_key_info", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Integer) Time in epoch milliseconds when the customer key was created.
         """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customerManagedKeyId")
-    def customer_managed_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer_managed_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) ID of the encryption key configuration object.
         """
         return pulumi.get(self, "customer_managed_key_id")
 
     @customer_managed_key_id.setter
-    def customer_managed_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer_managed_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_managed_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpKeyInfo")
-    def gcp_key_info(self) -> Optional[pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs']]:
+    def gcp_key_info(self) -> pulumi.Input[Optional['MwsCustomerManagedKeysGcpKeyInfoArgs']]:
         """
         This field is a block and is documented below. This conflicts with `aws_key_info`
         """
         return pulumi.get(self, "gcp_key_info")
 
     @gcp_key_info.setter
-    def gcp_key_info(self, value: Optional[pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs']]):
+    def gcp_key_info(self, value: pulumi.Input[Optional['MwsCustomerManagedKeysGcpKeyInfoArgs']]):
         pulumi.set(self, "gcp_key_info", value)
 
 
 @pulumi.input_type
 class _MwsCustomerManagedKeysState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_key_info: Optional[pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs']] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcp_key_info: Optional[pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs']] = None,
-                 use_cases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_key_info: pulumi.Input[Optional['MwsCustomerManagedKeysAwsKeyInfoArgs']] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcp_key_info: pulumi.Input[Optional['MwsCustomerManagedKeysGcpKeyInfoArgs']] = None,
+                 use_cases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering MwsCustomerManagedKeys resources.
 
@@ -161,67 +161,67 @@ class _MwsCustomerManagedKeysState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account Id that could be found in the top right corner of [Accounts Console](https://accounts.cloud.databricks.com/)
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="awsKeyInfo")
-    def aws_key_info(self) -> Optional[pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs']]:
+    def aws_key_info(self) -> pulumi.Input[Optional['MwsCustomerManagedKeysAwsKeyInfoArgs']]:
         """
         This field is a block and is documented below. This conflicts with `gcp_key_info`
         """
         return pulumi.get(self, "aws_key_info")
 
     @aws_key_info.setter
-    def aws_key_info(self, value: Optional[pulumi.Input['MwsCustomerManagedKeysAwsKeyInfoArgs']]):
+    def aws_key_info(self, value: pulumi.Input[Optional['MwsCustomerManagedKeysAwsKeyInfoArgs']]):
         pulumi.set(self, "aws_key_info", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Integer) Time in epoch milliseconds when the customer key was created.
         """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customerManagedKeyId")
-    def customer_managed_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer_managed_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) ID of the encryption key configuration object.
         """
         return pulumi.get(self, "customer_managed_key_id")
 
     @customer_managed_key_id.setter
-    def customer_managed_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer_managed_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_managed_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpKeyInfo")
-    def gcp_key_info(self) -> Optional[pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs']]:
+    def gcp_key_info(self) -> pulumi.Input[Optional['MwsCustomerManagedKeysGcpKeyInfoArgs']]:
         """
         This field is a block and is documented below. This conflicts with `aws_key_info`
         """
         return pulumi.get(self, "gcp_key_info")
 
     @gcp_key_info.setter
-    def gcp_key_info(self, value: Optional[pulumi.Input['MwsCustomerManagedKeysGcpKeyInfoArgs']]):
+    def gcp_key_info(self, value: pulumi.Input[Optional['MwsCustomerManagedKeysGcpKeyInfoArgs']]):
         pulumi.set(self, "gcp_key_info", value)
 
     @_builtins.property
     @pulumi.getter(name="useCases")
-    def use_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def use_cases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         *(since v0.3.4)* List of use cases for which this key will be used. *If you've used the resource before, please add `use_cases = ["MANAGED_SERVICES"]` to keep the previous behaviour.* Possible values are:
         * `MANAGED_SERVICES` - for encryption of the workspace objects (notebooks, secrets) that are stored in the control plane
@@ -230,7 +230,7 @@ class _MwsCustomerManagedKeysState:
         return pulumi.get(self, "use_cases")
 
     @use_cases.setter
-    def use_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def use_cases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "use_cases", value)
 
 
@@ -240,12 +240,12 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_key_info: Optional[pulumi.Input[Union['MwsCustomerManagedKeysAwsKeyInfoArgs', 'MwsCustomerManagedKeysAwsKeyInfoArgsDict']]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcp_key_info: Optional[pulumi.Input[Union['MwsCustomerManagedKeysGcpKeyInfoArgs', 'MwsCustomerManagedKeysGcpKeyInfoArgsDict']]] = None,
-                 use_cases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysAwsKeyInfoArgs', 'MwsCustomerManagedKeysAwsKeyInfoArgsDict']]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcp_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysGcpKeyInfoArgs', 'MwsCustomerManagedKeysGcpKeyInfoArgsDict']]] = None,
+                 use_cases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         This resource to configure KMS keys for new workspaces within AWS or GCP. This is to support the following features:
@@ -419,12 +419,12 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_key_info: Optional[pulumi.Input[Union['MwsCustomerManagedKeysAwsKeyInfoArgs', 'MwsCustomerManagedKeysAwsKeyInfoArgsDict']]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 gcp_key_info: Optional[pulumi.Input[Union['MwsCustomerManagedKeysGcpKeyInfoArgs', 'MwsCustomerManagedKeysGcpKeyInfoArgsDict']]] = None,
-                 use_cases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysAwsKeyInfoArgs', 'MwsCustomerManagedKeysAwsKeyInfoArgsDict']]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 gcp_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysGcpKeyInfoArgs', 'MwsCustomerManagedKeysGcpKeyInfoArgsDict']]] = None,
+                 use_cases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -454,12 +454,12 @@ class MwsCustomerManagedKeys(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            aws_key_info: Optional[pulumi.Input[Union['MwsCustomerManagedKeysAwsKeyInfoArgs', 'MwsCustomerManagedKeysAwsKeyInfoArgsDict']]] = None,
-            creation_time: Optional[pulumi.Input[_builtins.int]] = None,
-            customer_managed_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            gcp_key_info: Optional[pulumi.Input[Union['MwsCustomerManagedKeysGcpKeyInfoArgs', 'MwsCustomerManagedKeysGcpKeyInfoArgsDict']]] = None,
-            use_cases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'MwsCustomerManagedKeys':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysAwsKeyInfoArgs', 'MwsCustomerManagedKeysAwsKeyInfoArgsDict']]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.int]] = None,
+            customer_managed_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            gcp_key_info: pulumi.Input[Optional[Union['MwsCustomerManagedKeysGcpKeyInfoArgs', 'MwsCustomerManagedKeysGcpKeyInfoArgsDict']]] = None,
+            use_cases: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'MwsCustomerManagedKeys':
         """
         Get an existing MwsCustomerManagedKeys resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

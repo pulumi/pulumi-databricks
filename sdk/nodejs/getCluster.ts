@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const all = databricks.getClusters({});
- * const allGetCluster = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getCluster({
+ * const allGetCluster = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: databricks.getCluster({
  *     clusterId: __value,
  * }) }), {}));
  * ```
@@ -127,7 +127,7 @@ export interface GetClusterResult {
  * import * as databricks from "@pulumi/databricks";
  *
  * const all = databricks.getClusters({});
- * const allGetCluster = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: databricks.getCluster({
+ * const allGetCluster = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: databricks.getCluster({
  *     clusterId: __value,
  * }) }), {}));
  * ```
@@ -182,21 +182,21 @@ export interface GetClusterOutputArgs {
     /**
      * The id of the cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * block, consisting of following fields:
      */
-    clusterInfo?: pulumi.Input<inputs.GetClusterClusterInfoArgs>;
+    clusterInfo?: pulumi.Input<inputs.GetClusterClusterInfoArgs | undefined>;
     /**
      * The exact name of the cluster to search. Can only be specified if there is exactly one cluster with the provided name.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * cluster ID
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetClusterProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetClusterProviderConfigArgs | undefined>;
 }

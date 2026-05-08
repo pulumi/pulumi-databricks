@@ -124,38 +124,38 @@ export interface FeatureEngineeringMaterializedFeatureState {
     /**
      * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
      */
-    cronSchedule?: pulumi.Input<string>;
+    cronSchedule?: pulumi.Input<string | undefined>;
     /**
      * The full name of the feature in Unity Catalog
      */
-    featureName?: pulumi.Input<string>;
+    featureName?: pulumi.Input<string | undefined>;
     /**
      * (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
      */
-    isOnline?: pulumi.Input<boolean>;
+    isOnline?: pulumi.Input<boolean | undefined>;
     /**
      * (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
      * If the pipeline has not run yet, this field will be null
      */
-    lastMaterializationTime?: pulumi.Input<string>;
+    lastMaterializationTime?: pulumi.Input<string | undefined>;
     /**
      * Unique identifier for the materialized feature
      */
-    materializedFeatureId?: pulumi.Input<string>;
-    offlineStoreConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig>;
-    onlineStoreConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig>;
+    materializedFeatureId?: pulumi.Input<string | undefined>;
+    offlineStoreConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig | undefined>;
+    onlineStoreConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig | undefined>;
     /**
      * The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
      */
-    pipelineScheduleState?: pulumi.Input<string>;
+    pipelineScheduleState?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureProviderConfig | undefined>;
     /**
      * (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -165,7 +165,7 @@ export interface FeatureEngineeringMaterializedFeatureArgs {
     /**
      * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
      */
-    cronSchedule?: pulumi.Input<string>;
+    cronSchedule?: pulumi.Input<string | undefined>;
     /**
      * The full name of the feature in Unity Catalog
      */
@@ -173,15 +173,15 @@ export interface FeatureEngineeringMaterializedFeatureArgs {
     /**
      * Unique identifier for the materialized feature
      */
-    materializedFeatureId?: pulumi.Input<string>;
-    offlineStoreConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig>;
-    onlineStoreConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig>;
+    materializedFeatureId?: pulumi.Input<string | undefined>;
+    offlineStoreConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig | undefined>;
+    onlineStoreConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig | undefined>;
     /**
      * The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
      */
-    pipelineScheduleState?: pulumi.Input<string>;
+    pipelineScheduleState?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureProviderConfig | undefined>;
 }

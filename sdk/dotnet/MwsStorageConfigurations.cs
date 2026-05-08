@@ -32,13 +32,13 @@ namespace Pulumi.Databricks
     ///     var config = new Config();
     ///     // Account Id that could be found in the top right corner of https://accounts.cloud.databricks.com/
     ///     var databricksAccountId = config.RequireObject&lt;dynamic&gt;("databricksAccountId");
-    ///     var rootStorageBucket = new Aws.Index.S3Bucket("root_storage_bucket", new()
+    ///     var rootStorageBucket = new Aws.S3Bucket("root_storage_bucket", new()
     ///     {
     ///         Bucket = $"{prefix}-rootbucket",
     ///         Acl = "private",
     ///     });
     /// 
-    ///     var rootVersioning = new Aws.Index.S3BucketVersioning("root_versioning", new()
+    ///     var rootVersioning = new Aws.S3BucketVersioning("root_versioning", new()
     ///     {
     ///         Bucket = rootStorageBucket.Id,
     ///         VersioningConfiguration = new[]
@@ -50,7 +50,7 @@ namespace Pulumi.Databricks
     ///         },
     ///     });
     /// 
-    ///     var @this = new Databricks.Index.MwsStorageConfigurations("this", new()
+    ///     var @this = new Databricks.MwsStorageConfigurations("this", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         StorageConfigurationName = $"{prefix}-storage",
@@ -72,7 +72,7 @@ namespace Pulumi.Databricks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @this = new Databricks.Index.MwsStorageConfigurations("this", new()
+    ///     var @this = new Databricks.MwsStorageConfigurations("this", new()
     ///     {
     ///         AccountId = databricksAccountId,
     ///         StorageConfigurationName = $"{prefix}-storage",

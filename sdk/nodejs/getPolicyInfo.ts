@@ -206,5 +206,5 @@ export interface GetPolicyInfoOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetPolicyInfoProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetPolicyInfoProviderConfigArgs | undefined>;
 }

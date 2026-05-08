@@ -24,7 +24,7 @@ class EndpointArgs:
                  display_name: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
-                 azure_private_endpoint_info: Optional[pulumi.Input['EndpointAzurePrivateEndpointInfoArgs']] = None):
+                 azure_private_endpoint_info: pulumi.Input[Optional['EndpointAzurePrivateEndpointInfoArgs']] = None):
         """
         The set of arguments for constructing a Endpoint resource.
 
@@ -83,30 +83,30 @@ class EndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="azurePrivateEndpointInfo")
-    def azure_private_endpoint_info(self) -> Optional[pulumi.Input['EndpointAzurePrivateEndpointInfoArgs']]:
+    def azure_private_endpoint_info(self) -> pulumi.Input[Optional['EndpointAzurePrivateEndpointInfoArgs']]:
         """
         Info for an Azure private endpoint
         """
         return pulumi.get(self, "azure_private_endpoint_info")
 
     @azure_private_endpoint_info.setter
-    def azure_private_endpoint_info(self, value: Optional[pulumi.Input['EndpointAzurePrivateEndpointInfoArgs']]):
+    def azure_private_endpoint_info(self, value: pulumi.Input[Optional['EndpointAzurePrivateEndpointInfoArgs']]):
         pulumi.set(self, "azure_private_endpoint_info", value)
 
 
 @pulumi.input_type
 class _EndpointState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 azure_private_endpoint_info: Optional[pulumi.Input['EndpointAzurePrivateEndpointInfoArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_case: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 azure_private_endpoint_info: pulumi.Input[Optional['EndpointAzurePrivateEndpointInfoArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_case: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Endpoint resources.
 
@@ -148,43 +148,43 @@ class _EndpointState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The Databricks Account in which the endpoint object exists
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="azurePrivateEndpointInfo")
-    def azure_private_endpoint_info(self) -> Optional[pulumi.Input['EndpointAzurePrivateEndpointInfoArgs']]:
+    def azure_private_endpoint_info(self) -> pulumi.Input[Optional['EndpointAzurePrivateEndpointInfoArgs']]:
         """
         Info for an Azure private endpoint
         """
         return pulumi.get(self, "azure_private_endpoint_info")
 
     @azure_private_endpoint_info.setter
-    def azure_private_endpoint_info(self, value: Optional[pulumi.Input['EndpointAzurePrivateEndpointInfoArgs']]):
+    def azure_private_endpoint_info(self, value: pulumi.Input[Optional['EndpointAzurePrivateEndpointInfoArgs']]):
         pulumi.set(self, "azure_private_endpoint_info", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The timestamp when the endpoint was created. The timestamp is in RFC 3339 format in UTC timezone
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The human-readable display name of this endpoint.
         The input should conform to RFC-1034, which restricts to letters, numbers, and hyphens,
@@ -193,36 +193,36 @@ class _EndpointState:
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointId")
-    def endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The unique identifier for this endpoint under the account. This field is a UUID generated by Databricks
         """
         return pulumi.get(self, "endpoint_id")
 
     @endpoint_id.setter
-    def endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The resource name of the endpoint, which uniquely identifies the endpoint
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parent resource name of the account under which the endpoint is created.
         Format: `accounts/{account_id}`
@@ -230,36 +230,36 @@ class _EndpointState:
         return pulumi.get(self, "parent")
 
     @parent.setter
-    def parent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud provider region where this endpoint is located
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The state of the endpoint. The endpoint can only be used if the state is `APPROVED`. Possible values are: `APPROVED`, `DISCONNECTED`, `FAILED`, `PENDING`
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="useCase")
-    def use_case(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def use_case(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (string) - The use case that determines the type of network connectivity this endpoint provides.
         This field is automatically determined based on the endpoint configuration and cloud-specific settings. Possible values are: `SERVICE_DIRECT`
@@ -267,7 +267,7 @@ class _EndpointState:
         return pulumi.get(self, "use_case")
 
     @use_case.setter
-    def use_case(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def use_case(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "use_case", value)
 
 
@@ -277,10 +277,10 @@ class Endpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 azure_private_endpoint_info: Optional[pulumi.Input[Union['EndpointAzurePrivateEndpointInfoArgs', 'EndpointAzurePrivateEndpointInfoArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 azure_private_endpoint_info: pulumi.Input[Optional[Union['EndpointAzurePrivateEndpointInfoArgs', 'EndpointAzurePrivateEndpointInfoArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -365,10 +365,10 @@ class Endpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 azure_private_endpoint_info: Optional[pulumi.Input[Union['EndpointAzurePrivateEndpointInfoArgs', 'EndpointAzurePrivateEndpointInfoArgsDict']]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 azure_private_endpoint_info: pulumi.Input[Optional[Union['EndpointAzurePrivateEndpointInfoArgs', 'EndpointAzurePrivateEndpointInfoArgsDict']]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -404,16 +404,16 @@ class Endpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            azure_private_endpoint_info: Optional[pulumi.Input[Union['EndpointAzurePrivateEndpointInfoArgs', 'EndpointAzurePrivateEndpointInfoArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            use_case: Optional[pulumi.Input[_builtins.str]] = None) -> 'Endpoint':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            azure_private_endpoint_info: pulumi.Input[Optional[Union['EndpointAzurePrivateEndpointInfoArgs', 'EndpointAzurePrivateEndpointInfoArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            use_case: pulumi.Input[Optional[_builtins.str]] = None) -> 'Endpoint':
         """
         Get an existing Endpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -113,9 +113,9 @@ export interface GetTagPoliciesOutputArgs {
      * unspecified or set to 0, this defaults to 1000. The maximum value is 1000; values above 1000 will be coerced down
      * to 1000
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetTagPoliciesProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetTagPoliciesProviderConfigArgs | undefined>;
 }

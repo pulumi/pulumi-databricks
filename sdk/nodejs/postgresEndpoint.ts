@@ -354,47 +354,47 @@ export interface PostgresEndpointState {
     /**
      * (string) - A timestamp indicating when the compute endpoint was created
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
      * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
      * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
      */
-    endpointId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<string | undefined>;
     /**
      * (string) - Output only. The full resource path of the endpoint.
      * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The branch containing this endpoint (API resource hierarchy).
      * Format: projects/{project_id}/branches/{branch_id}
      */
-    parent?: pulumi.Input<string>;
+    parent?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.PostgresEndpointProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PostgresEndpointProviderConfig | undefined>;
     /**
      * If true, update the endpoint if it already exists instead of returning an error
      */
-    replaceExisting?: pulumi.Input<boolean>;
+    replaceExisting?: pulumi.Input<boolean | undefined>;
     /**
      * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      */
-    spec?: pulumi.Input<inputs.PostgresEndpointSpec>;
+    spec?: pulumi.Input<inputs.PostgresEndpointSpec | undefined>;
     /**
      * (EndpointStatus) - Current operational status of the compute endpoint
      */
-    status?: pulumi.Input<inputs.PostgresEndpointStatus>;
+    status?: pulumi.Input<inputs.PostgresEndpointStatus | undefined>;
     /**
      * (string) - System-generated unique ID for the endpoint
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * (string) - A timestamp indicating when the compute endpoint was last updated
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -415,13 +415,13 @@ export interface PostgresEndpointArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.PostgresEndpointProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.PostgresEndpointProviderConfig | undefined>;
     /**
      * If true, update the endpoint if it already exists instead of returning an error
      */
-    replaceExisting?: pulumi.Input<boolean>;
+    replaceExisting?: pulumi.Input<boolean | undefined>;
     /**
      * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
      */
-    spec?: pulumi.Input<inputs.PostgresEndpointSpec>;
+    spec?: pulumi.Input<inputs.PostgresEndpointSpec | undefined>;
 }

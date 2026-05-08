@@ -111,13 +111,13 @@ export interface AibiDashboardEmbeddingApprovedDomainsSettingState {
     /**
      * block with following attributes:
      */
-    aibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains>;
-    etag?: pulumi.Input<string>;
+    aibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains | undefined>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig>;
-    settingName?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig | undefined>;
+    settingName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -128,10 +128,10 @@ export interface AibiDashboardEmbeddingApprovedDomainsSettingArgs {
      * block with following attributes:
      */
     aibiDashboardEmbeddingApprovedDomains: pulumi.Input<inputs.AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains>;
-    etag?: pulumi.Input<string>;
+    etag?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig>;
-    settingName?: pulumi.Input<string>;
+    providerConfig?: pulumi.Input<inputs.AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig | undefined>;
+    settingName?: pulumi.Input<string | undefined>;
 }

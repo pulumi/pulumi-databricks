@@ -164,21 +164,21 @@ export interface GetMetastoreOutputArgs {
     /**
      * ID of the metastore
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * ID of the metastore
      */
-    metastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * MetastoreInfo object for a databricks_metastore. This contains the following attributes:
      */
-    metastoreInfo?: pulumi.Input<inputs.GetMetastoreMetastoreInfoArgs>;
+    metastoreInfo?: pulumi.Input<inputs.GetMetastoreMetastoreInfoArgs | undefined>;
     /**
      * Name of the metastore
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Region of the metastore
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

@@ -165,35 +165,35 @@ export interface EntityTagAssignmentState {
     /**
      * The fully qualified name of the entity to which the tag is assigned
      */
-    entityName?: pulumi.Input<string>;
+    entityName?: pulumi.Input<string | undefined>;
     /**
      * The type of the entity to which the tag is assigned
      */
-    entityType?: pulumi.Input<string>;
+    entityType?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.EntityTagAssignmentProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.EntityTagAssignmentProviderConfig | undefined>;
     /**
      * (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * The key of the tag
      */
-    tagKey?: pulumi.Input<string>;
+    tagKey?: pulumi.Input<string | undefined>;
     /**
      * The value of the tag
      */
-    tagValue?: pulumi.Input<string>;
+    tagValue?: pulumi.Input<string | undefined>;
     /**
      * (string) - The timestamp when the tag assignment was last updated
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * (string) - The user or principal who updated the tag assignment
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -211,7 +211,7 @@ export interface EntityTagAssignmentArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.EntityTagAssignmentProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.EntityTagAssignmentProviderConfig | undefined>;
     /**
      * The key of the tag
      */
@@ -219,5 +219,5 @@ export interface EntityTagAssignmentArgs {
     /**
      * The value of the tag
      */
-    tagValue?: pulumi.Input<string>;
+    tagValue?: pulumi.Input<string | undefined>;
 }

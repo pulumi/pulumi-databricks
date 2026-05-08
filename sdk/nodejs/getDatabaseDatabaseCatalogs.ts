@@ -72,9 +72,9 @@ export interface GetDatabaseDatabaseCatalogsOutputArgs {
     /**
      * Upper bound for items returned
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetDatabaseDatabaseCatalogsProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetDatabaseDatabaseCatalogsProviderConfigArgs | undefined>;
 }

@@ -117,8 +117,8 @@ def get_quality_monitors_v2(page_size: Optional[_builtins.int] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         quality_monitors=pulumi.get(__ret__, 'quality_monitors'))
-def get_quality_monitors_v2_output(page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                   provider_config: Optional[pulumi.Input[Optional[Union['GetQualityMonitorsV2ProviderConfigArgs', 'GetQualityMonitorsV2ProviderConfigArgsDict']]]] = None,
+def get_quality_monitors_v2_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                   provider_config: pulumi.Input[Optional[Optional[Union['GetQualityMonitorsV2ProviderConfigArgs', 'GetQualityMonitorsV2ProviderConfigArgsDict']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQualityMonitorsV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)

@@ -139,11 +139,11 @@ export interface AccountFederationPolicyState {
     /**
      * (string) - Creation time of the federation policy
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the federation policy
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * (string) - Resource name for the federation policy. Example values include
      * `accounts/<account-id>/federationPolicies/my-federation-policy` for Account Federation Policies, and
@@ -152,24 +152,24 @@ export interface AccountFederationPolicyState {
      * specified in create or update requests. If specified in a request, must match the value in the
      * request URL
      */
-    name?: pulumi.Input<string>;
-    oidcPolicy?: pulumi.Input<inputs.AccountFederationPolicyOidcPolicy>;
+    name?: pulumi.Input<string | undefined>;
+    oidcPolicy?: pulumi.Input<inputs.AccountFederationPolicyOidcPolicy | undefined>;
     /**
      * (string) - The ID of the federation policy. Output only
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      */
-    servicePrincipalId?: pulumi.Input<number>;
+    servicePrincipalId?: pulumi.Input<number | undefined>;
     /**
      * (string) - Unique, immutable id of the federation policy
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * (string) - Last update time of the federation policy
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -179,14 +179,14 @@ export interface AccountFederationPolicyArgs {
     /**
      * Description of the federation policy
      */
-    description?: pulumi.Input<string>;
-    oidcPolicy?: pulumi.Input<inputs.AccountFederationPolicyOidcPolicy>;
+    description?: pulumi.Input<string | undefined>;
+    oidcPolicy?: pulumi.Input<inputs.AccountFederationPolicyOidcPolicy | undefined>;
     /**
      * (string) - The ID of the federation policy. Output only
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * (integer) - The service principal ID that this federation policy applies to. Output only. Only set for service principal federation policies
      */
-    servicePrincipalId?: pulumi.Input<number>;
+    servicePrincipalId?: pulumi.Input<number | undefined>;
 }

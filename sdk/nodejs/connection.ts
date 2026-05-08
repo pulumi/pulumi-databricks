@@ -318,76 +318,76 @@ export interface ConnectionState {
     /**
      * Free-form text. Change forces creation of a new resource.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Unique ID of the connection.
      */
-    connectionId?: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string | undefined>;
     /**
      * Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
      */
-    connectionType?: pulumi.Input<string>;
+    connectionType?: pulumi.Input<string | undefined>;
     /**
      * Time at which this connection was created, in epoch milliseconds.
      */
-    createdAt?: pulumi.Input<number>;
+    createdAt?: pulumi.Input<number | undefined>;
     /**
      * Username of connection creator.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * The type of credential for this connection.
      */
-    credentialType?: pulumi.Input<string>;
+    credentialType?: pulumi.Input<string | undefined>;
     /**
      * Full name of connection.
      */
-    fullName?: pulumi.Input<string>;
+    fullName?: pulumi.Input<string | undefined>;
     /**
      * Unique ID of the UC metastore for this connection.
      */
-    metastoreId?: pulumi.Input<string>;
+    metastoreId?: pulumi.Input<string | undefined>;
     /**
      * Name of the Connection.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      */
-    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the connection owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Free-form connection properties. Change forces creation of a new resource.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.ConnectionProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.ConnectionProviderConfig | undefined>;
     /**
      * Object with the status of an asynchronously provisioned resource.
      */
-    provisioningInfos?: pulumi.Input<pulumi.Input<inputs.ConnectionProvisioningInfo>[]>;
+    provisioningInfos?: pulumi.Input<pulumi.Input<inputs.ConnectionProvisioningInfo>[] | undefined>;
     /**
      * Indicates whether the connection is read-only. Change forces creation of a new resource.
      */
-    readOnly?: pulumi.Input<boolean>;
-    securableType?: pulumi.Input<string>;
+    readOnly?: pulumi.Input<boolean | undefined>;
+    securableType?: pulumi.Input<string | undefined>;
     /**
      * Time at which connection this was last modified, in epoch milliseconds.
      */
-    updatedAt?: pulumi.Input<number>;
+    updatedAt?: pulumi.Input<number | undefined>;
     /**
      * Username of user who last modified the connection.
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
     /**
      * URL of the remote data source, extracted from options.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -397,33 +397,33 @@ export interface ConnectionArgs {
     /**
      * Free-form text. Change forces creation of a new resource.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
      */
-    connectionType?: pulumi.Input<string>;
+    connectionType?: pulumi.Input<string | undefined>;
     /**
      * Name of the Connection.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
      */
-    options?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the connection owner.
      */
-    owner?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
     /**
      * Free-form connection properties. Change forces creation of a new resource.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.ConnectionProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.ConnectionProviderConfig | undefined>;
     /**
      * Indicates whether the connection is read-only. Change forces creation of a new resource.
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
 }

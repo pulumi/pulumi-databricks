@@ -24,14 +24,14 @@ class FeatureEngineeringFeatureArgs:
                  full_name: pulumi.Input[_builtins.str],
                  function: pulumi.Input['FeatureEngineeringFeatureFunctionArgs'],
                  source: pulumi.Input['FeatureEngineeringFeatureSourceArgs'],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]]] = None,
-                 filter_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lineage_context: Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextArgs']] = None,
-                 provider_config: Optional[pulumi.Input['FeatureEngineeringFeatureProviderConfigArgs']] = None,
-                 time_window: Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs']] = None,
-                 timeseries_column: Optional[pulumi.Input['FeatureEngineeringFeatureTimeseriesColumnArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]]] = None,
+                 filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lineage_context: pulumi.Input[Optional['FeatureEngineeringFeatureLineageContextArgs']] = None,
+                 provider_config: pulumi.Input[Optional['FeatureEngineeringFeatureProviderConfigArgs']] = None,
+                 time_window: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowArgs']] = None,
+                 timeseries_column: pulumi.Input[Optional['FeatureEngineeringFeatureTimeseriesColumnArgs']] = None):
         """
         The set of arguments for constructing a FeatureEngineeringFeature resource.
 
@@ -112,31 +112,31 @@ class FeatureEngineeringFeatureArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the feature
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]]]:
+    def entities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]]]:
         """
         The entity columns for the feature, used as aggregation keys and for query-time lookup
         """
         return pulumi.get(self, "entities")
 
     @entities.setter
-    def entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]]]):
+    def entities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]]]):
         pulumi.set(self, "entities", value)
 
     @_builtins.property
     @pulumi.getter(name="filterCondition")
-    def filter_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
         The filter condition applied to the source data before aggregation
@@ -144,12 +144,12 @@ class FeatureEngineeringFeatureArgs:
         return pulumi.get(self, "filter_condition")
 
     @filter_condition.setter
-    def filter_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def inputs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
         The input columns from which the feature is computed
@@ -157,12 +157,12 @@ class FeatureEngineeringFeatureArgs:
         return pulumi.get(self, "inputs")
 
     @inputs.setter
-    def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def inputs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "inputs", value)
 
     @_builtins.property
     @pulumi.getter(name="lineageContext")
-    def lineage_context(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextArgs']]:
+    def lineage_context(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureLineageContextArgs']]:
         """
         Lineage context information for this feature.
         WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -173,24 +173,24 @@ class FeatureEngineeringFeatureArgs:
         return pulumi.get(self, "lineage_context")
 
     @lineage_context.setter
-    def lineage_context(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextArgs']]):
+    def lineage_context(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureLineageContextArgs']]):
         pulumi.set(self, "lineage_context", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="timeWindow")
-    def time_window(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs']]:
+    def time_window(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowArgs']]:
         """
         Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
         The time window in which the feature is computed
@@ -198,36 +198,36 @@ class FeatureEngineeringFeatureArgs:
         return pulumi.get(self, "time_window")
 
     @time_window.setter
-    def time_window(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs']]):
+    def time_window(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowArgs']]):
         pulumi.set(self, "time_window", value)
 
     @_builtins.property
     @pulumi.getter(name="timeseriesColumn")
-    def timeseries_column(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureTimeseriesColumnArgs']]:
+    def timeseries_column(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureTimeseriesColumnArgs']]:
         """
         Column recording time, used for point-in-time joins, backfills, and aggregations
         """
         return pulumi.get(self, "timeseries_column")
 
     @timeseries_column.setter
-    def timeseries_column(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureTimeseriesColumnArgs']]):
+    def timeseries_column(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureTimeseriesColumnArgs']]):
         pulumi.set(self, "timeseries_column", value)
 
 
 @pulumi.input_type
 class _FeatureEngineeringFeatureState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]]] = None,
-                 filter_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 function: Optional[pulumi.Input['FeatureEngineeringFeatureFunctionArgs']] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lineage_context: Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextArgs']] = None,
-                 provider_config: Optional[pulumi.Input['FeatureEngineeringFeatureProviderConfigArgs']] = None,
-                 source: Optional[pulumi.Input['FeatureEngineeringFeatureSourceArgs']] = None,
-                 time_window: Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs']] = None,
-                 timeseries_column: Optional[pulumi.Input['FeatureEngineeringFeatureTimeseriesColumnArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]]] = None,
+                 filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 full_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 function: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionArgs']] = None,
+                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lineage_context: pulumi.Input[Optional['FeatureEngineeringFeatureLineageContextArgs']] = None,
+                 provider_config: pulumi.Input[Optional['FeatureEngineeringFeatureProviderConfigArgs']] = None,
+                 source: pulumi.Input[Optional['FeatureEngineeringFeatureSourceArgs']] = None,
+                 time_window: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowArgs']] = None,
+                 timeseries_column: pulumi.Input[Optional['FeatureEngineeringFeatureTimeseriesColumnArgs']] = None):
         """
         Input properties used for looking up and filtering FeatureEngineeringFeature resources.
 
@@ -275,31 +275,31 @@ class _FeatureEngineeringFeatureState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the feature
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]]]:
+    def entities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]]]:
         """
         The entity columns for the feature, used as aggregation keys and for query-time lookup
         """
         return pulumi.get(self, "entities")
 
     @entities.setter
-    def entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]]]):
+    def entities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]]]):
         pulumi.set(self, "entities", value)
 
     @_builtins.property
     @pulumi.getter(name="filterCondition")
-    def filter_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
         The filter condition applied to the source data before aggregation
@@ -307,36 +307,36 @@ class _FeatureEngineeringFeatureState:
         return pulumi.get(self, "filter_condition")
 
     @filter_condition.setter
-    def filter_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_condition", value)
 
     @_builtins.property
     @pulumi.getter(name="fullName")
-    def full_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def full_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full three-part name (catalog, schema, name) of the feature
         """
         return pulumi.get(self, "full_name")
 
     @full_name.setter
-    def full_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def full_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "full_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def function(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureFunctionArgs']]:
+    def function(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureFunctionArgs']]:
         """
         The function by which the feature is computed
         """
         return pulumi.get(self, "function")
 
     @function.setter
-    def function(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureFunctionArgs']]):
+    def function(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionArgs']]):
         pulumi.set(self, "function", value)
 
     @_builtins.property
     @pulumi.getter
-    def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def inputs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
         The input columns from which the feature is computed
@@ -344,12 +344,12 @@ class _FeatureEngineeringFeatureState:
         return pulumi.get(self, "inputs")
 
     @inputs.setter
-    def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def inputs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "inputs", value)
 
     @_builtins.property
     @pulumi.getter(name="lineageContext")
-    def lineage_context(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextArgs']]:
+    def lineage_context(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureLineageContextArgs']]:
         """
         Lineage context information for this feature.
         WARNING: This field is primarily intended for internal use by Databricks systems and
@@ -360,36 +360,36 @@ class _FeatureEngineeringFeatureState:
         return pulumi.get(self, "lineage_context")
 
     @lineage_context.setter
-    def lineage_context(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureLineageContextArgs']]):
+    def lineage_context(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureLineageContextArgs']]):
         pulumi.set(self, "lineage_context", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureProviderConfigArgs']]:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureSourceArgs']]:
+    def source(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureSourceArgs']]:
         """
         The data source of the feature
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureSourceArgs']]):
+    def source(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureSourceArgs']]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter(name="timeWindow")
-    def time_window(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs']]:
+    def time_window(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowArgs']]:
         """
         Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
         The time window in which the feature is computed
@@ -397,19 +397,19 @@ class _FeatureEngineeringFeatureState:
         return pulumi.get(self, "time_window")
 
     @time_window.setter
-    def time_window(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs']]):
+    def time_window(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowArgs']]):
         pulumi.set(self, "time_window", value)
 
     @_builtins.property
     @pulumi.getter(name="timeseriesColumn")
-    def timeseries_column(self) -> Optional[pulumi.Input['FeatureEngineeringFeatureTimeseriesColumnArgs']]:
+    def timeseries_column(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureTimeseriesColumnArgs']]:
         """
         Column recording time, used for point-in-time joins, backfills, and aggregations
         """
         return pulumi.get(self, "timeseries_column")
 
     @timeseries_column.setter
-    def timeseries_column(self, value: Optional[pulumi.Input['FeatureEngineeringFeatureTimeseriesColumnArgs']]):
+    def timeseries_column(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureTimeseriesColumnArgs']]):
         pulumi.set(self, "timeseries_column", value)
 
 
@@ -419,17 +419,17 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict']]]]] = None,
-                 filter_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 function: Optional[pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lineage_context: Optional[pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']]] = None,
-                 provider_config: Optional[pulumi.Input[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict']]] = None,
-                 source: Optional[pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']]] = None,
-                 time_window: Optional[pulumi.Input[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']]] = None,
-                 timeseries_column: Optional[pulumi.Input[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict']]]]] = None,
+                 filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 full_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 function: pulumi.Input[Optional[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']]] = None,
+                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lineage_context: pulumi.Input[Optional[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']]] = None,
+                 time_window: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']]] = None,
+                 timeseries_column: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict']]] = None,
                  __props__=None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -481,17 +481,17 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict']]]]] = None,
-                 filter_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 full_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 function: Optional[pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']]] = None,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 lineage_context: Optional[pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']]] = None,
-                 provider_config: Optional[pulumi.Input[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict']]] = None,
-                 source: Optional[pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']]] = None,
-                 time_window: Optional[pulumi.Input[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']]] = None,
-                 timeseries_column: Optional[pulumi.Input[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict']]]]] = None,
+                 filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 full_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 function: pulumi.Input[Optional[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']]] = None,
+                 inputs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 lineage_context: pulumi.Input[Optional[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']]] = None,
+                 provider_config: pulumi.Input[Optional[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict']]] = None,
+                 source: pulumi.Input[Optional[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']]] = None,
+                 time_window: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']]] = None,
+                 timeseries_column: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -528,17 +528,17 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict']]]]] = None,
-            filter_condition: Optional[pulumi.Input[_builtins.str]] = None,
-            full_name: Optional[pulumi.Input[_builtins.str]] = None,
-            function: Optional[pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']]] = None,
-            inputs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            lineage_context: Optional[pulumi.Input[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']]] = None,
-            provider_config: Optional[pulumi.Input[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict']]] = None,
-            source: Optional[pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']]] = None,
-            time_window: Optional[pulumi.Input[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']]] = None,
-            timeseries_column: Optional[pulumi.Input[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict']]] = None) -> 'FeatureEngineeringFeature':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict']]]]] = None,
+            filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
+            full_name: pulumi.Input[Optional[_builtins.str]] = None,
+            function: pulumi.Input[Optional[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']]] = None,
+            inputs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            lineage_context: pulumi.Input[Optional[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']]] = None,
+            provider_config: pulumi.Input[Optional[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict']]] = None,
+            source: pulumi.Input[Optional[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']]] = None,
+            time_window: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']]] = None,
+            timeseries_column: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict']]] = None) -> 'FeatureEngineeringFeature':
         """
         Get an existing FeatureEngineeringFeature resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

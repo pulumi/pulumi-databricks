@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.AppsSettingsCustomTemplate;
  * import com.pulumi.databricks.AppsSettingsCustomTemplateArgs;
  * import com.pulumi.databricks.inputs.AppsSettingsCustomTemplateManifestArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -81,8 +81,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.AppsSettingsCustomTemplate;
  * import com.pulumi.databricks.AppsSettingsCustomTemplateArgs;
  * import com.pulumi.databricks.inputs.AppsSettingsCustomTemplateManifestArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *                 .version(1)
  *                 .name("my-databricks-app")
  *                 .description("This app requires the SQL API scope.")
- *                 .userApiScopes(List.of("sql"))
+ *                 .userApiScopes(Arrays.asList("sql"))
  *                 .build())
  *             .build());
  * 
@@ -127,8 +127,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.AppsSettingsCustomTemplate;
  * import com.pulumi.databricks.AppsSettingsCustomTemplateArgs;
  * import com.pulumi.databricks.inputs.AppsSettingsCustomTemplateManifestArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;

@@ -21,13 +21,13 @@ __all__ = ['BudgetArgs', 'Budget']
 @pulumi.input_type
 class BudgetArgs:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetAlertConfigurationArgs']]]] = None,
-                 budget_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input['BudgetFilterArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_configurations: pulumi.Input[Optional[Sequence[pulumi.Input['BudgetAlertConfigurationArgs']]]] = None,
+                 budget_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional['BudgetFilterArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Budget resource.
 
@@ -52,87 +52,87 @@ class BudgetArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Databricks Account.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="alertConfigurations")
-    def alert_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BudgetAlertConfigurationArgs']]]]:
+    def alert_configurations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BudgetAlertConfigurationArgs']]]]:
         return pulumi.get(self, "alert_configurations")
 
     @alert_configurations.setter
-    def alert_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetAlertConfigurationArgs']]]]):
+    def alert_configurations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BudgetAlertConfigurationArgs']]]]):
         pulumi.set(self, "alert_configurations", value)
 
     @_builtins.property
     @pulumi.getter(name="budgetConfigurationId")
-    def budget_configuration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def budget_configuration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the budget configuration.
         """
         return pulumi.get(self, "budget_configuration_id")
 
     @budget_configuration_id.setter
-    def budget_configuration_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def budget_configuration_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "budget_configuration_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the budget in Databricks Account.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input['BudgetFilterArgs']]:
+    def filter(self) -> pulumi.Input[Optional['BudgetFilterArgs']]:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input['BudgetFilterArgs']]):
+    def filter(self, value: pulumi.Input[Optional['BudgetFilterArgs']]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "update_time", value)
 
 
 @pulumi.input_type
 class _BudgetState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetAlertConfigurationArgs']]]] = None,
-                 budget_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input['BudgetFilterArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_configurations: pulumi.Input[Optional[Sequence[pulumi.Input['BudgetAlertConfigurationArgs']]]] = None,
+                 budget_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional['BudgetFilterArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Budget resources.
 
@@ -157,74 +157,74 @@ class _BudgetState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Databricks Account.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="alertConfigurations")
-    def alert_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BudgetAlertConfigurationArgs']]]]:
+    def alert_configurations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BudgetAlertConfigurationArgs']]]]:
         return pulumi.get(self, "alert_configurations")
 
     @alert_configurations.setter
-    def alert_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BudgetAlertConfigurationArgs']]]]):
+    def alert_configurations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BudgetAlertConfigurationArgs']]]]):
         pulumi.set(self, "alert_configurations", value)
 
     @_builtins.property
     @pulumi.getter(name="budgetConfigurationId")
-    def budget_configuration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def budget_configuration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the budget configuration.
         """
         return pulumi.get(self, "budget_configuration_id")
 
     @budget_configuration_id.setter
-    def budget_configuration_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def budget_configuration_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "budget_configuration_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the budget in Databricks Account.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input['BudgetFilterArgs']]:
+    def filter(self) -> pulumi.Input[Optional['BudgetFilterArgs']]:
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input['BudgetFilterArgs']]):
+    def filter(self, value: pulumi.Input[Optional['BudgetFilterArgs']]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -234,13 +234,13 @@ class Budget(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BudgetAlertConfigurationArgs', 'BudgetAlertConfigurationArgsDict']]]]] = None,
-                 budget_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[Union['BudgetFilterArgs', 'BudgetFilterArgsDict']]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BudgetAlertConfigurationArgs', 'BudgetAlertConfigurationArgsDict']]]]] = None,
+                 budget_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[Union['BudgetFilterArgs', 'BudgetFilterArgsDict']]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         This resource allows you to manage [Databricks Budgets](https://docs.databricks.com/en/admin/account-settings/budgets.html).
@@ -270,7 +270,7 @@ class Budget(pulumi.CustomResource):
             filter={
                 "workspace_id": {
                     "operator": "IN",
-                    "values": [1234567890098765],
+                    "values": [int(1234567890098765)],
                 },
                 "tags": [
                     {
@@ -338,7 +338,7 @@ class Budget(pulumi.CustomResource):
             filter={
                 "workspace_id": {
                     "operator": "IN",
-                    "values": [1234567890098765],
+                    "values": [int(1234567890098765)],
                 },
                 "tags": [
                     {
@@ -381,13 +381,13 @@ class Budget(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 alert_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BudgetAlertConfigurationArgs', 'BudgetAlertConfigurationArgsDict']]]]] = None,
-                 budget_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[Union['BudgetFilterArgs', 'BudgetFilterArgsDict']]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 alert_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BudgetAlertConfigurationArgs', 'BudgetAlertConfigurationArgsDict']]]]] = None,
+                 budget_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[Union['BudgetFilterArgs', 'BudgetFilterArgsDict']]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -414,13 +414,13 @@ class Budget(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            alert_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BudgetAlertConfigurationArgs', 'BudgetAlertConfigurationArgsDict']]]]] = None,
-            budget_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            filter: Optional[pulumi.Input[Union['BudgetFilterArgs', 'BudgetFilterArgsDict']]] = None,
-            update_time: Optional[pulumi.Input[_builtins.int]] = None) -> 'Budget':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            alert_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BudgetAlertConfigurationArgs', 'BudgetAlertConfigurationArgsDict']]]]] = None,
+            budget_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            filter: pulumi.Input[Optional[Union['BudgetFilterArgs', 'BudgetFilterArgsDict']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.int]] = None) -> 'Budget':
         """
         Get an existing Budget resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

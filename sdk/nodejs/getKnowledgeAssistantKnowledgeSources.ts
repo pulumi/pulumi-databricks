@@ -63,7 +63,7 @@ export function getKnowledgeAssistantKnowledgeSourcesOutput(args: GetKnowledgeAs
  * A collection of arguments for invoking getKnowledgeAssistantKnowledgeSources.
  */
 export interface GetKnowledgeAssistantKnowledgeSourcesOutputArgs {
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Parent resource to list from.
      * Format: knowledge-assistants/{knowledge_assistant_id}
@@ -72,5 +72,5 @@ export interface GetKnowledgeAssistantKnowledgeSourcesOutputArgs {
     /**
      * Configure the provider for management through account provider.
      */
-    providerConfig?: pulumi.Input<inputs.GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgs | undefined>;
 }

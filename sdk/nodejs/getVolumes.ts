@@ -139,11 +139,11 @@ export interface GetVolumesOutputArgs {
     /**
      * a list of databricks.Volume full names: *`catalog`.`schema`.`volume`*
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.GetVolumesProviderConfigArgs>;
+    providerConfig?: pulumi.Input<inputs.GetVolumesProviderConfigArgs | undefined>;
     /**
      * Name of databricks_schema
      */

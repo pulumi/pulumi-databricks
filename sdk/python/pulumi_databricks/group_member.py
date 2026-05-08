@@ -23,8 +23,8 @@ class GroupMemberArgs:
     def __init__(__self__, *,
                  group_id: pulumi.Input[_builtins.str],
                  member_id: pulumi.Input[_builtins.str],
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['GroupMemberProviderConfigArgs']] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['GroupMemberProviderConfigArgs']] = None):
         """
         The set of arguments for constructing a GroupMember resource.
 
@@ -65,33 +65,33 @@ class GroupMemberArgs:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['GroupMemberProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['GroupMemberProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['GroupMemberProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['GroupMemberProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
 @pulumi.input_type
 class _GroupMemberState:
     def __init__(__self__, *,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['GroupMemberProviderConfigArgs']] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['GroupMemberProviderConfigArgs']] = None):
         """
         Input properties used for looking up and filtering GroupMember resources.
 
@@ -110,47 +110,47 @@ class _GroupMemberState:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the `id` attribute (SCIM ID) of the group resource.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="memberId")
-    def member_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This is the `id` attribute (SCIM ID) of the group, service principal, or user.
         """
         return pulumi.get(self, "member_id")
 
     @member_id.setter
-    def member_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['GroupMemberProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['GroupMemberProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['GroupMemberProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['GroupMemberProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
 
@@ -160,10 +160,10 @@ class GroupMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['GroupMemberProviderConfigArgs', 'GroupMemberProviderConfigArgsDict']]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['GroupMemberProviderConfigArgs', 'GroupMemberProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
         This resource allows you to attach users, service_principal, and groups as group members.
@@ -274,10 +274,10 @@ class GroupMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['GroupMemberProviderConfigArgs', 'GroupMemberProviderConfigArgsDict']]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['GroupMemberProviderConfigArgs', 'GroupMemberProviderConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -305,10 +305,10 @@ class GroupMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api: Optional[pulumi.Input[_builtins.str]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            member_id: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['GroupMemberProviderConfigArgs', 'GroupMemberProviderConfigArgsDict']]] = None) -> 'GroupMember':
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            member_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['GroupMemberProviderConfigArgs', 'GroupMemberProviderConfigArgsDict']]] = None) -> 'GroupMember':
         """
         Get an existing GroupMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

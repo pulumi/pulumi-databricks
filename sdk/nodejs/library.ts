@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *     const cli: databricks.Library[] = [];
  *     for (const range of all.ids.map((v, k) => ({key: k, value: v}))) {
  *         cli.push(new databricks.Library(`cli-${range.key}`, {
- *             clusterId: range.key,
+ *             clusterId: String(range.key),
  *             pypi: {
  *                 "package": "databricks-cli",
  *             },
@@ -244,42 +244,42 @@ export interface LibraryState {
      *
      * You must specify exactly **one** of the following library types:
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Configuration block for a CRAN library. The block consists of the following fields:
      */
-    cran?: pulumi.Input<inputs.LibraryCran>;
+    cran?: pulumi.Input<inputs.LibraryCran | undefined>;
     /**
      * Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
      *
      * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      */
-    egg?: pulumi.Input<string>;
+    egg?: pulumi.Input<string | undefined>;
     /**
      * Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
      */
-    jar?: pulumi.Input<string>;
-    libraryId?: pulumi.Input<string>;
+    jar?: pulumi.Input<string | undefined>;
+    libraryId?: pulumi.Input<string | undefined>;
     /**
      * Configuration block for a Maven library. The block consists of the following fields:
      */
-    maven?: pulumi.Input<inputs.LibraryMaven>;
+    maven?: pulumi.Input<inputs.LibraryMaven | undefined>;
     /**
      * Configuration block for management through the account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.LibraryProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.LibraryProviderConfig | undefined>;
     /**
      * Configuration block for a PyPI library. The block consists of the following fields:
      */
-    pypi?: pulumi.Input<inputs.LibraryPypi>;
+    pypi?: pulumi.Input<inputs.LibraryPypi | undefined>;
     /**
      * Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
      */
-    requirements?: pulumi.Input<string>;
+    requirements?: pulumi.Input<string | undefined>;
     /**
      * Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
      */
-    whl?: pulumi.Input<string>;
+    whl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -295,36 +295,36 @@ export interface LibraryArgs {
     /**
      * Configuration block for a CRAN library. The block consists of the following fields:
      */
-    cran?: pulumi.Input<inputs.LibraryCran>;
+    cran?: pulumi.Input<inputs.LibraryCran | undefined>;
     /**
      * Path to the EGG library. Installing Python egg files is deprecated and is not supported in Databricks Runtime 14.0 and above. Use `whl` or `pypi` instead.
      *
      * @deprecated The `egg` library type is deprecated. Please use `whl` or `pypi` instead.
      */
-    egg?: pulumi.Input<string>;
+    egg?: pulumi.Input<string | undefined>;
     /**
      * Path to the JAR library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.jar`, `/Volumes/path/to/library.jar` or `s3://my-bucket/library.jar`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
      */
-    jar?: pulumi.Input<string>;
-    libraryId?: pulumi.Input<string>;
+    jar?: pulumi.Input<string | undefined>;
+    libraryId?: pulumi.Input<string | undefined>;
     /**
      * Configuration block for a Maven library. The block consists of the following fields:
      */
-    maven?: pulumi.Input<inputs.LibraryMaven>;
+    maven?: pulumi.Input<inputs.LibraryMaven | undefined>;
     /**
      * Configuration block for management through the account provider. This block consists of the following fields:
      */
-    providerConfig?: pulumi.Input<inputs.LibraryProviderConfig>;
+    providerConfig?: pulumi.Input<inputs.LibraryProviderConfig | undefined>;
     /**
      * Configuration block for a PyPI library. The block consists of the following fields:
      */
-    pypi?: pulumi.Input<inputs.LibraryPypi>;
+    pypi?: pulumi.Input<inputs.LibraryPypi | undefined>;
     /**
      * Path to the requirements.txt file. Only Workspace paths and Unity Catalog Volumes paths are supported. For example: `/Workspace/path/to/requirements.txt` or `/Volumes/path/to/requirements.txt`. Requires a cluster with DBR 15.0+.
      */
-    requirements?: pulumi.Input<string>;
+    requirements?: pulumi.Input<string | undefined>;
     /**
      * Path to the wheel library. Supported URIs include Workspace paths, Unity Catalog Volumes paths, and S3 URIs. For example: `/Workspace/path/to/library.whl`, `/Volumes/path/to/library.whl` or `s3://my-bucket/library.whl`. If S3 is used, make sure the cluster has read access to the library. You may need to launch the cluster with an IAM role to access the S3 URI.
      */
-    whl?: pulumi.Input<string>;
+    whl?: pulumi.Input<string | undefined>;
 }

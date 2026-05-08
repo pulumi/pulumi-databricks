@@ -21,15 +21,15 @@ __all__ = ['EntitlementsArgs', 'Entitlements']
 @pulumi.input_type
 class EntitlementsArgs:
     def __init__(__self__, *,
-                 allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['EntitlementsProviderConfigArgs']] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None):
+                 allow_cluster_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_instance_pool_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 databricks_sql_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['EntitlementsProviderConfigArgs']] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 workspace_consume: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Entitlements resource.
 
@@ -66,67 +66,67 @@ class EntitlementsArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowClusterCreate")
-    def allow_cluster_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_cluster_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         """
         return pulumi.get(self, "allow_cluster_create")
 
     @allow_cluster_create.setter
-    def allow_cluster_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_cluster_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_cluster_create", value)
 
     @_builtins.property
     @pulumi.getter(name="allowInstancePoolCreate")
-    def allow_instance_pool_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_instance_pool_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         """
         return pulumi.get(self, "allow_instance_pool_create")
 
     @allow_instance_pool_create.setter
-    def allow_instance_pool_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_instance_pool_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_instance_pool_create", value)
 
     @_builtins.property
     @pulumi.getter(name="databricksSqlAccess")
-    def databricks_sql_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def databricks_sql_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         """
         return pulumi.get(self, "databricks_sql_access")
 
     @databricks_sql_access.setter
-    def databricks_sql_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def databricks_sql_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "databricks_sql_access", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier for the group.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['EntitlementsProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['EntitlementsProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['EntitlementsProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['EntitlementsProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalId")
-    def service_principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier for the service principal.
 
@@ -135,58 +135,58 @@ class EntitlementsArgs:
         return pulumi.get(self, "service_principal_id")
 
     @service_principal_id.setter
-    def service_principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_principal_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier for the user.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceAccess")
-    def workspace_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def workspace_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
         """
         return pulumi.get(self, "workspace_access")
 
     @workspace_access.setter
-    def workspace_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def workspace_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "workspace_access", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceConsume")
-    def workspace_consume(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def workspace_consume(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 
     @workspace_consume.setter
-    def workspace_consume(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def workspace_consume(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "workspace_consume", value)
 
 
 @pulumi.input_type
 class _EntitlementsState:
     def __init__(__self__, *,
-                 allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input['EntitlementsProviderConfigArgs']] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None):
+                 allow_cluster_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_instance_pool_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 databricks_sql_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional['EntitlementsProviderConfigArgs']] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 workspace_consume: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Entitlements resources.
 
@@ -223,67 +223,67 @@ class _EntitlementsState:
 
     @_builtins.property
     @pulumi.getter(name="allowClusterCreate")
-    def allow_cluster_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_cluster_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the principal to have cluster create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and `cluster_id` argument. Everyone without `allow_cluster_create` argument set, but with permission to use Cluster Policy would be able to create clusters, but within boundaries of that specific policy.
         """
         return pulumi.get(self, "allow_cluster_create")
 
     @allow_cluster_create.setter
-    def allow_cluster_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_cluster_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_cluster_create", value)
 
     @_builtins.property
     @pulumi.getter(name="allowInstancePoolCreate")
-    def allow_instance_pool_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_instance_pool_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow the principal to have instance pool create privileges. Defaults to false. More fine grained permissions could be assigned with Permissions and instance_pool_id argument.
         """
         return pulumi.get(self, "allow_instance_pool_create")
 
     @allow_instance_pool_create.setter
-    def allow_instance_pool_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_instance_pool_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_instance_pool_create", value)
 
     @_builtins.property
     @pulumi.getter(name="databricksSqlAccess")
-    def databricks_sql_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def databricks_sql_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is a field to allow the principal to have access to [Databricks SQL](https://databricks.com/product/databricks-sql)  UI, [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one) and through databricks_sql_endpoint.
         """
         return pulumi.get(self, "databricks_sql_access")
 
     @databricks_sql_access.setter
-    def databricks_sql_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def databricks_sql_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "databricks_sql_access", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier for the group.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional[pulumi.Input['EntitlementsProviderConfigArgs']]:
+    def provider_config(self) -> pulumi.Input[Optional['EntitlementsProviderConfigArgs']]:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """
         return pulumi.get(self, "provider_config")
 
     @provider_config.setter
-    def provider_config(self, value: Optional[pulumi.Input['EntitlementsProviderConfigArgs']]):
+    def provider_config(self, value: pulumi.Input[Optional['EntitlementsProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipalId")
-    def service_principal_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier for the service principal.
 
@@ -292,43 +292,43 @@ class _EntitlementsState:
         return pulumi.get(self, "service_principal_id")
 
     @service_principal_id.setter
-    def service_principal_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_principal_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_principal_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canonical unique identifier for the user.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceAccess")
-    def workspace_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def workspace_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is a field to allow the principal to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
         """
         return pulumi.get(self, "workspace_access")
 
     @workspace_access.setter
-    def workspace_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def workspace_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "workspace_access", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceConsume")
-    def workspace_consume(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def workspace_consume(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This is a field to allow the principal to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspace_access` or `databricks_sql_access`.
         """
         return pulumi.get(self, "workspace_consume")
 
     @workspace_consume.setter
-    def workspace_consume(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def workspace_consume(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "workspace_consume", value)
 
 
@@ -338,15 +338,15 @@ class Entitlements(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['EntitlementsProviderConfigArgs', 'EntitlementsProviderConfigArgsDict']]] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None,
+                 allow_cluster_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_instance_pool_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 databricks_sql_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EntitlementsProviderConfigArgs', 'EntitlementsProviderConfigArgsDict']]] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 workspace_consume: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         This resource allows you to set entitlements to existing databricks_users, Group or databricks_service_principal.
@@ -505,15 +505,15 @@ class Entitlements(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provider_config: Optional[pulumi.Input[Union['EntitlementsProviderConfigArgs', 'EntitlementsProviderConfigArgsDict']]] = None,
-                 service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None,
+                 allow_cluster_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_instance_pool_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 databricks_sql_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provider_config: pulumi.Input[Optional[Union['EntitlementsProviderConfigArgs', 'EntitlementsProviderConfigArgsDict']]] = None,
+                 service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 workspace_consume: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -542,15 +542,15 @@ class Entitlements(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_cluster_create: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_instance_pool_create: Optional[pulumi.Input[_builtins.bool]] = None,
-            databricks_sql_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            provider_config: Optional[pulumi.Input[Union['EntitlementsProviderConfigArgs', 'EntitlementsProviderConfigArgsDict']]] = None,
-            service_principal_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            workspace_consume: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Entitlements':
+            allow_cluster_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_instance_pool_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            databricks_sql_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provider_config: pulumi.Input[Optional[Union['EntitlementsProviderConfigArgs', 'EntitlementsProviderConfigArgsDict']]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            workspace_consume: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Entitlements':
         """
         Get an existing Entitlements resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
