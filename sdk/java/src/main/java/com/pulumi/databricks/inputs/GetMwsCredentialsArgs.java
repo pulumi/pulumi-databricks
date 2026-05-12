@@ -33,16 +33,24 @@ public final class GetMwsCredentialsArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Configure the provider for management through account provider. This block consists of the following fields:
+     * This data source is account-only and has no workspace context, so `providerConfig` has no effect and will be removed in a future major release. The block consists of the following field:
+     * 
+     * @deprecated
+     * provider_config has no effect on this account-only resource and will be removed in a future major release.
      * 
      */
+    @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
     @Import(name="providerConfig")
     private @Nullable Output<GetMwsCredentialsProviderConfigArgs> providerConfig;
 
     /**
-     * @return Configure the provider for management through account provider. This block consists of the following fields:
+     * @return This data source is account-only and has no workspace context, so `providerConfig` has no effect and will be removed in a future major release. The block consists of the following field:
+     * 
+     * @deprecated
+     * provider_config has no effect on this account-only resource and will be removed in a future major release.
      * 
      */
+    @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
     public Optional<Output<GetMwsCredentialsProviderConfigArgs>> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }
@@ -94,22 +102,30 @@ public final class GetMwsCredentialsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * @param providerConfig This data source is account-only and has no workspace context, so `providerConfig` has no effect and will be removed in a future major release. The block consists of the following field:
          * 
          * @return builder
          * 
+         * @deprecated
+         * provider_config has no effect on this account-only resource and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
         public Builder providerConfig(@Nullable Output<GetMwsCredentialsProviderConfigArgs> providerConfig) {
             $.providerConfig = providerConfig;
             return this;
         }
 
         /**
-         * @param providerConfig Configure the provider for management through account provider. This block consists of the following fields:
+         * @param providerConfig This data source is account-only and has no workspace context, so `providerConfig` has no effect and will be removed in a future major release. The block consists of the following field:
          * 
          * @return builder
          * 
+         * @deprecated
+         * provider_config has no effect on this account-only resource and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
         public Builder providerConfig(GetMwsCredentialsProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
         }

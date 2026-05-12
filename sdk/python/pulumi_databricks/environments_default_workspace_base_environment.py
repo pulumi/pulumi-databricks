@@ -169,7 +169,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         The Default Workspace Base Environment is a singleton resource that configures which workspace base environments are applied by default to new notebooks in the workspace. Defaults can be set separately for CPU and GPU compute.
 
@@ -229,7 +229,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
                  args: Optional[EnvironmentsDefaultWorkspaceBaseEnvironmentArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         The Default Workspace Base Environment is a singleton resource that configures which workspace base environments are applied by default to new notebooks in the workspace. Defaults can be set separately for CPU and GPU compute.
 
@@ -373,7 +373,7 @@ class EnvironmentsDefaultWorkspaceBaseEnvironment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

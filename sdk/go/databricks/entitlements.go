@@ -144,7 +144,7 @@ type Entitlements struct {
 	// Canonical unique identifier for the group.
 	GroupId pulumi.StringPtrOutput `pulumi:"groupId"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig EntitlementsProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig EntitlementsProviderConfigOutput `pulumi:"providerConfig"`
 	// Canonical unique identifier for the service principal.
 	//
 	// The following entitlements are available.
@@ -391,8 +391,8 @@ func (o EntitlementsOutput) GroupId() pulumi.StringPtrOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o EntitlementsOutput) ProviderConfig() EntitlementsProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Entitlements) EntitlementsProviderConfigPtrOutput { return v.ProviderConfig }).(EntitlementsProviderConfigPtrOutput)
+func (o EntitlementsOutput) ProviderConfig() EntitlementsProviderConfigOutput {
+	return o.ApplyT(func(v *Entitlements) EntitlementsProviderConfigOutput { return v.ProviderConfig }).(EntitlementsProviderConfigOutput)
 }
 
 // Canonical unique identifier for the service principal.

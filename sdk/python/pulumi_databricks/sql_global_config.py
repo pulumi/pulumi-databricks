@@ -511,7 +511,7 @@ class SqlGlobalConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.SqlGlobalConfigProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.SqlGlobalConfigProviderConfig']:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """

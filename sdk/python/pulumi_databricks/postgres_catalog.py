@@ -228,6 +228,51 @@ class PostgresCatalog(pulumi.CustomResource):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+        ## Example Usage
+
+        ### Basic Catalog Creation
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="my-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "My Project",
+            })
+        main = databricks.PostgresBranch("main",
+            branch_id="main",
+            parent=this.name,
+            spec={
+                "no_expiry": True,
+            })
+        this_postgres_catalog = databricks.PostgresCatalog("this",
+            catalog_id="my_catalog",
+            spec={
+                "postgres_database": "my_database",
+                "create_database_if_missing": True,
+                "branch": main.name,
+            })
+        ```
+
+        ### Catalog with Existing Database
+
+        If the Postgres database already exists, omit `create_database_if_missing`:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresCatalog("this",
+            catalog_id="existing_db_catalog",
+            spec={
+                "postgres_database": "existing_database",
+                "branch": main["name"],
+            })
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -244,6 +289,51 @@ class PostgresCatalog(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        ## Example Usage
+
+        ### Basic Catalog Creation
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="my-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "My Project",
+            })
+        main = databricks.PostgresBranch("main",
+            branch_id="main",
+            parent=this.name,
+            spec={
+                "no_expiry": True,
+            })
+        this_postgres_catalog = databricks.PostgresCatalog("this",
+            catalog_id="my_catalog",
+            spec={
+                "postgres_database": "my_database",
+                "create_database_if_missing": True,
+                "branch": main.name,
+            })
+        ```
+
+        ### Catalog with Existing Database
+
+        If the Postgres database already exists, omit `create_database_if_missing`:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresCatalog("this",
+            catalog_id="existing_db_catalog",
+            spec={
+                "postgres_database": "existing_database",
+                "branch": main["name"],
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -359,7 +449,7 @@ class PostgresCatalog(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.PostgresCatalogProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.PostgresCatalogProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

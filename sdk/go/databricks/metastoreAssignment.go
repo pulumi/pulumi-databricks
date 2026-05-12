@@ -64,7 +64,7 @@ type MetastoreAssignment struct {
 	// Unique identifier of the parent Metastore
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig MetastoreAssignmentProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig MetastoreAssignmentProviderConfigOutput `pulumi:"providerConfig"`
 	// id of the workspace for the assignment
 	WorkspaceId pulumi.StringOutput `pulumi:"workspaceId"`
 }
@@ -274,8 +274,8 @@ func (o MetastoreAssignmentOutput) MetastoreId() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o MetastoreAssignmentOutput) ProviderConfig() MetastoreAssignmentProviderConfigPtrOutput {
-	return o.ApplyT(func(v *MetastoreAssignment) MetastoreAssignmentProviderConfigPtrOutput { return v.ProviderConfig }).(MetastoreAssignmentProviderConfigPtrOutput)
+func (o MetastoreAssignmentOutput) ProviderConfig() MetastoreAssignmentProviderConfigOutput {
+	return o.ApplyT(func(v *MetastoreAssignment) MetastoreAssignmentProviderConfigOutput { return v.ProviderConfig }).(MetastoreAssignmentProviderConfigOutput)
 }
 
 // id of the workspace for the assignment

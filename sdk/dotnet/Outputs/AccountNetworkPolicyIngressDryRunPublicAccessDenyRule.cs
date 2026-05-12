@@ -15,10 +15,6 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly Outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthentication? Authentication;
         public readonly Outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination? Destination;
-        /// <summary>
-        /// User-provided name for this ingress rule. Helps identify which rule
-        /// caused a request to be denied or dry-run denied
-        /// </summary>
         public readonly string? Label;
         public readonly Outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOrigin? Origin;
 

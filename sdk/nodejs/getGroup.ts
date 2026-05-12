@@ -171,7 +171,7 @@ export interface GetGroupResult {
      * @deprecated Please use `users`, `servicePrincipals`, and `childGroups` instead
      */
     readonly members: string[];
-    readonly providerConfig?: outputs.GetGroupProviderConfig;
+    readonly providerConfig: outputs.GetGroupProviderConfig;
     readonly recursive?: boolean;
     /**
      * Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.

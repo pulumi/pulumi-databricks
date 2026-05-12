@@ -172,14 +172,14 @@ public class KnowledgeAssistant extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={KnowledgeAssistantProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ KnowledgeAssistantProviderConfig> providerConfig;
+    private Output<KnowledgeAssistantProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<KnowledgeAssistantProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<KnowledgeAssistantProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * (string) - State of the Knowledge Assistant. Not returned in List responses. Possible values are: `ACTIVE`, `CREATING`, `FAILED`

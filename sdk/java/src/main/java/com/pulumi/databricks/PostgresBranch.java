@@ -25,9 +25,9 @@ import javax.annotation.Nullable;
  * 
  * ### Managing Implicitly Created Root Branch
  * 
- * A root branch named `production` is implicitly created for every project. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi take ownership of the implicitly created branch and immediately apply the provided configuration to it. Support for providing a custom `branchId` will be available in later versions.
+ * A root branch named `production` is implicitly created for every project. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi represent the implicitly created branch in Pulumi state and immediately apply the provided configuration to it. Support for providing a custom `branchId` will be available in later versions.
  * 
- * This resource is only required if you want to apply configuration changes to the implicitly created branch.
+ * Pulumi uses this resource exclusively for managing updates. It does not control creation or deletion of the branch itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual branch is unaffected, because its lifecycle is currently controlled by the parent project. The only way to remove the actual branch is to delete the project it belongs to.
  * 
  * <pre>
  * {@code
@@ -272,14 +272,14 @@ public class PostgresBranch extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={PostgresBranchProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ PostgresBranchProviderConfig> providerConfig;
+    private Output<PostgresBranchProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<PostgresBranchProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<PostgresBranchProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * If true, update the branch if it already exists instead of returning an error

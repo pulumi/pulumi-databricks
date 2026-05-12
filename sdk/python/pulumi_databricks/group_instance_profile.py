@@ -348,6 +348,6 @@ class GroupInstanceProfile(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.GroupInstanceProfileProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.GroupInstanceProfileProviderConfig']:
         return pulumi.get(self, "provider_config")
 

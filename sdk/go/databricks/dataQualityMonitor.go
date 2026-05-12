@@ -81,7 +81,7 @@ type DataQualityMonitor struct {
 	// The type of the monitored object. Can be one of the following: `schema` or `table`
 	ObjectType pulumi.StringOutput `pulumi:"objectType"`
 	// Configure the provider for management through account provider.
-	ProviderConfig DataQualityMonitorProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig DataQualityMonitorProviderConfigOutput `pulumi:"providerConfig"`
 }
 
 // NewDataQualityMonitor registers a new resource with the given unique name, arguments, and options.
@@ -333,8 +333,8 @@ func (o DataQualityMonitorOutput) ObjectType() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o DataQualityMonitorOutput) ProviderConfig() DataQualityMonitorProviderConfigPtrOutput {
-	return o.ApplyT(func(v *DataQualityMonitor) DataQualityMonitorProviderConfigPtrOutput { return v.ProviderConfig }).(DataQualityMonitorProviderConfigPtrOutput)
+func (o DataQualityMonitorOutput) ProviderConfig() DataQualityMonitorProviderConfigOutput {
+	return o.ApplyT(func(v *DataQualityMonitor) DataQualityMonitorProviderConfigOutput { return v.ProviderConfig }).(DataQualityMonitorProviderConfigOutput)
 }
 
 type DataQualityMonitorArrayOutput struct{ *pulumi.OutputState }

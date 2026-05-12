@@ -158,14 +158,14 @@ public class DataQualityMonitor extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={DataQualityMonitorProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ DataQualityMonitorProviderConfig> providerConfig;
+    private Output<DataQualityMonitorProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<DataQualityMonitorProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<DataQualityMonitorProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
 
     /**

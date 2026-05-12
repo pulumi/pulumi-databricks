@@ -164,7 +164,7 @@ export class PermissionAssignment extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.PermissionAssignmentProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.PermissionAssignmentProviderConfig>;
     /**
      * the application ID of service principal to assign to a workspace.
      */

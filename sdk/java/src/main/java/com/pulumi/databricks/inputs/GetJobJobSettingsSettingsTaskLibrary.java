@@ -8,6 +8,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskLibraryCran;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskLibraryMaven;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskLibraryProviderConfig;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskLibraryPypi;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -62,15 +63,15 @@ public final class GetJobJobSettingsSettingsTaskLibrary extends com.pulumi.resou
      * Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    @Import(name="providerConfig")
-    private @Nullable GetJobJobSettingsSettingsTaskLibraryProviderConfig providerConfig;
+    @Import(name="providerConfig", required=true)
+    private GetJobJobSettingsSettingsTaskLibraryProviderConfig providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Optional<GetJobJobSettingsSettingsTaskLibraryProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetJobJobSettingsSettingsTaskLibraryProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     @Import(name="pypi")
@@ -159,7 +160,7 @@ public final class GetJobJobSettingsSettingsTaskLibrary extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder providerConfig(@Nullable GetJobJobSettingsSettingsTaskLibraryProviderConfig providerConfig) {
+        public Builder providerConfig(GetJobJobSettingsSettingsTaskLibraryProviderConfig providerConfig) {
             $.providerConfig = providerConfig;
             return this;
         }
@@ -180,6 +181,9 @@ public final class GetJobJobSettingsSettingsTaskLibrary extends com.pulumi.resou
         }
 
         public GetJobJobSettingsSettingsTaskLibrary build() {
+            if ($.providerConfig == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskLibrary", "providerConfig");
+            }
             return $;
         }
     }

@@ -90,7 +90,7 @@ type WarehousesDefaultWarehouseOverride struct {
 	// Format: default-warehouse-overrides/{default_warehouse_override_id}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
-	ProviderConfig WarehousesDefaultWarehouseOverrideProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig WarehousesDefaultWarehouseOverrideProviderConfigOutput `pulumi:"providerConfig"`
 	// The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The specific warehouse ID when type is CUSTOM.
@@ -291,10 +291,10 @@ func (o WarehousesDefaultWarehouseOverrideOutput) Name() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o WarehousesDefaultWarehouseOverrideOutput) ProviderConfig() WarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
-	return o.ApplyT(func(v *WarehousesDefaultWarehouseOverride) WarehousesDefaultWarehouseOverrideProviderConfigPtrOutput {
+func (o WarehousesDefaultWarehouseOverrideOutput) ProviderConfig() WarehousesDefaultWarehouseOverrideProviderConfigOutput {
+	return o.ApplyT(func(v *WarehousesDefaultWarehouseOverride) WarehousesDefaultWarehouseOverrideProviderConfigOutput {
 		return v.ProviderConfig
-	}).(WarehousesDefaultWarehouseOverrideProviderConfigPtrOutput)
+	}).(WarehousesDefaultWarehouseOverrideProviderConfigOutput)
 }
 
 // The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`

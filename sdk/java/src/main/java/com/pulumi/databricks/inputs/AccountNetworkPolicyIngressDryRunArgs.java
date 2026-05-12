@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressDryRunPrivateAccessArgs;
 import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressDryRunPublicAccessArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,9 +16,36 @@ public final class AccountNetworkPolicyIngressDryRunArgs extends com.pulumi.reso
 
     public static final AccountNetworkPolicyIngressDryRunArgs Empty = new AccountNetworkPolicyIngressDryRunArgs();
 
+    /**
+     * The network policy restrictions for private access to the workspace.
+     * Configures how registered private endpoints are allowed or denied access
+     * 
+     */
+    @Import(name="privateAccess")
+    private @Nullable Output<AccountNetworkPolicyIngressDryRunPrivateAccessArgs> privateAccess;
+
+    /**
+     * @return The network policy restrictions for private access to the workspace.
+     * Configures how registered private endpoints are allowed or denied access
+     * 
+     */
+    public Optional<Output<AccountNetworkPolicyIngressDryRunPrivateAccessArgs>> privateAccess() {
+        return Optional.ofNullable(this.privateAccess);
+    }
+
+    /**
+     * The network policy restrictions for public access to the workspace.
+     * Configures how public internet traffic is allowed or denied access
+     * 
+     */
     @Import(name="publicAccess")
     private @Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessArgs> publicAccess;
 
+    /**
+     * @return The network policy restrictions for public access to the workspace.
+     * Configures how public internet traffic is allowed or denied access
+     * 
+     */
     public Optional<Output<AccountNetworkPolicyIngressDryRunPublicAccessArgs>> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
@@ -25,6 +53,7 @@ public final class AccountNetworkPolicyIngressDryRunArgs extends com.pulumi.reso
     private AccountNetworkPolicyIngressDryRunArgs() {}
 
     private AccountNetworkPolicyIngressDryRunArgs(AccountNetworkPolicyIngressDryRunArgs $) {
+        this.privateAccess = $.privateAccess;
         this.publicAccess = $.publicAccess;
     }
 
@@ -46,11 +75,48 @@ public final class AccountNetworkPolicyIngressDryRunArgs extends com.pulumi.reso
             $ = new AccountNetworkPolicyIngressDryRunArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param privateAccess The network policy restrictions for private access to the workspace.
+         * Configures how registered private endpoints are allowed or denied access
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateAccess(@Nullable Output<AccountNetworkPolicyIngressDryRunPrivateAccessArgs> privateAccess) {
+            $.privateAccess = privateAccess;
+            return this;
+        }
+
+        /**
+         * @param privateAccess The network policy restrictions for private access to the workspace.
+         * Configures how registered private endpoints are allowed or denied access
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateAccess(AccountNetworkPolicyIngressDryRunPrivateAccessArgs privateAccess) {
+            return privateAccess(Output.of(privateAccess));
+        }
+
+        /**
+         * @param publicAccess The network policy restrictions for public access to the workspace.
+         * Configures how public internet traffic is allowed or denied access
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(@Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessArgs> publicAccess) {
             $.publicAccess = publicAccess;
             return this;
         }
 
+        /**
+         * @param publicAccess The network policy restrictions for public access to the workspace.
+         * Configures how public internet traffic is allowed or denied access
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(AccountNetworkPolicyIngressDryRunPublicAccessArgs publicAccess) {
             return publicAccess(Output.of(publicAccess));
         }

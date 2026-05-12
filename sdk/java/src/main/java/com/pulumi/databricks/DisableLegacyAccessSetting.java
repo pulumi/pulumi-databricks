@@ -13,7 +13,6 @@ import com.pulumi.databricks.inputs.DisableLegacyAccessSettingState;
 import com.pulumi.databricks.outputs.DisableLegacyAccessSettingDisableLegacyAccess;
 import com.pulumi.databricks.outputs.DisableLegacyAccessSettingProviderConfig;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -101,14 +100,14 @@ public class DisableLegacyAccessSetting extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="providerConfig", refs={DisableLegacyAccessSettingProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ DisableLegacyAccessSettingProviderConfig> providerConfig;
+    private Output<DisableLegacyAccessSettingProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<DisableLegacyAccessSettingProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<DisableLegacyAccessSettingProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="settingName", refs={String.class}, tree="[0]")
     private Output<String> settingName;

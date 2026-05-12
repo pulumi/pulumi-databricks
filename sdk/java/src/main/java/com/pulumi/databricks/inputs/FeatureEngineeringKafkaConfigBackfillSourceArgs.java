@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,16 +17,33 @@ public final class FeatureEngineeringKafkaConfigBackfillSourceArgs extends com.p
     public static final FeatureEngineeringKafkaConfigBackfillSourceArgs Empty = new FeatureEngineeringKafkaConfigBackfillSourceArgs();
 
     /**
-     * The Delta table source containing the historic data to backfill.
-     * Only the delta table name is used for backfill, the entity columns and timeseries column are ignored as they are defined by the associated KafkaSource
+     * The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
+     * 
+     */
+    @Import(name="deltaTableName")
+    private @Nullable Output<String> deltaTableName;
+
+    /**
+     * @return The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
+     * 
+     */
+    public Optional<Output<String>> deltaTableName() {
+        return Optional.ofNullable(this.deltaTableName);
+    }
+
+    /**
+     * Deprecated: Use deltaTableName instead. Kept for backwards compatibility.
+     * The Delta table source containing the historical data to backfill.
+     * Only the delta table name is used for backfill, other fields are ignored
      * 
      */
     @Import(name="deltaTableSource")
     private @Nullable Output<FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs> deltaTableSource;
 
     /**
-     * @return The Delta table source containing the historic data to backfill.
-     * Only the delta table name is used for backfill, the entity columns and timeseries column are ignored as they are defined by the associated KafkaSource
+     * @return Deprecated: Use deltaTableName instead. Kept for backwards compatibility.
+     * The Delta table source containing the historical data to backfill.
+     * Only the delta table name is used for backfill, other fields are ignored
      * 
      */
     public Optional<Output<FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceArgs>> deltaTableSource() {
@@ -35,6 +53,7 @@ public final class FeatureEngineeringKafkaConfigBackfillSourceArgs extends com.p
     private FeatureEngineeringKafkaConfigBackfillSourceArgs() {}
 
     private FeatureEngineeringKafkaConfigBackfillSourceArgs(FeatureEngineeringKafkaConfigBackfillSourceArgs $) {
+        this.deltaTableName = $.deltaTableName;
         this.deltaTableSource = $.deltaTableSource;
     }
 
@@ -57,8 +76,30 @@ public final class FeatureEngineeringKafkaConfigBackfillSourceArgs extends com.p
         }
 
         /**
-         * @param deltaTableSource The Delta table source containing the historic data to backfill.
-         * Only the delta table name is used for backfill, the entity columns and timeseries column are ignored as they are defined by the associated KafkaSource
+         * @param deltaTableName The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deltaTableName(@Nullable Output<String> deltaTableName) {
+            $.deltaTableName = deltaTableName;
+            return this;
+        }
+
+        /**
+         * @param deltaTableName The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deltaTableName(String deltaTableName) {
+            return deltaTableName(Output.of(deltaTableName));
+        }
+
+        /**
+         * @param deltaTableSource Deprecated: Use deltaTableName instead. Kept for backwards compatibility.
+         * The Delta table source containing the historical data to backfill.
+         * Only the delta table name is used for backfill, other fields are ignored
          * 
          * @return builder
          * 
@@ -69,8 +110,9 @@ public final class FeatureEngineeringKafkaConfigBackfillSourceArgs extends com.p
         }
 
         /**
-         * @param deltaTableSource The Delta table source containing the historic data to backfill.
-         * Only the delta table name is used for backfill, the entity columns and timeseries column are ignored as they are defined by the associated KafkaSource
+         * @param deltaTableSource Deprecated: Use deltaTableName instead. Kept for backwards compatibility.
+         * The Delta table source containing the historical data to backfill.
+         * Only the delta table name is used for backfill, other fields are ignored
          * 
          * @return builder
          * 

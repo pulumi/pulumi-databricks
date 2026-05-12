@@ -171,14 +171,14 @@ public class ModelServingProvisionedThroughput extends com.pulumi.resources.Cust
      * 
      */
     @Export(name="providerConfig", refs={ModelServingProvisionedThroughputProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ModelServingProvisionedThroughputProviderConfig> providerConfig;
+    private Output<ModelServingProvisionedThroughputProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<ModelServingProvisionedThroughputProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<ModelServingProvisionedThroughputProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.

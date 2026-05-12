@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,16 +13,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFeatureEngineeringKafkaConfigBackfillSource {
     /**
-     * @return (DeltaTableSource) - The Delta table source containing the historic data to backfill.
-     * Only the delta table name is used for backfill, the entity columns and timeseries column are ignored as they are defined by the associated KafkaSource
+     * @return (string) - The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
+     * 
+     */
+    private @Nullable String deltaTableName;
+    /**
+     * @return (DeltaTableSource, deprecated) - Deprecated: Use deltaTableName instead. Kept for backwards compatibility.
+     * The Delta table source containing the historical data to backfill.
+     * Only the delta table name is used for backfill, other fields are ignored
      * 
      */
     private @Nullable GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource deltaTableSource;
 
     private GetFeatureEngineeringKafkaConfigBackfillSource() {}
     /**
-     * @return (DeltaTableSource) - The Delta table source containing the historic data to backfill.
-     * Only the delta table name is used for backfill, the entity columns and timeseries column are ignored as they are defined by the associated KafkaSource
+     * @return (string) - The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
+     * 
+     */
+    public Optional<String> deltaTableName() {
+        return Optional.ofNullable(this.deltaTableName);
+    }
+    /**
+     * @return (DeltaTableSource, deprecated) - Deprecated: Use deltaTableName instead. Kept for backwards compatibility.
+     * The Delta table source containing the historical data to backfill.
+     * Only the delta table name is used for backfill, other fields are ignored
      * 
      */
     public Optional<GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource> deltaTableSource() {
@@ -37,13 +52,21 @@ public final class GetFeatureEngineeringKafkaConfigBackfillSource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String deltaTableName;
         private @Nullable GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource deltaTableSource;
         public Builder() {}
         public Builder(GetFeatureEngineeringKafkaConfigBackfillSource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deltaTableName = defaults.deltaTableName;
     	      this.deltaTableSource = defaults.deltaTableSource;
         }
 
+        @CustomType.Setter
+        public Builder deltaTableName(@Nullable String deltaTableName) {
+
+            this.deltaTableName = deltaTableName;
+            return this;
+        }
         @CustomType.Setter
         public Builder deltaTableSource(@Nullable GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource deltaTableSource) {
 
@@ -52,6 +75,7 @@ public final class GetFeatureEngineeringKafkaConfigBackfillSource {
         }
         public GetFeatureEngineeringKafkaConfigBackfillSource build() {
             final var _resultValue = new GetFeatureEngineeringKafkaConfigBackfillSource();
+            _resultValue.deltaTableName = deltaTableName;
             _resultValue.deltaTableSource = deltaTableSource;
             return _resultValue;
         }

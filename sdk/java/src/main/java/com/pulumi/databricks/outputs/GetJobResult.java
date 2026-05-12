@@ -9,8 +9,6 @@ import com.pulumi.databricks.outputs.GetJobProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetJobResult {
@@ -31,7 +29,7 @@ public final class GetJobResult {
      * 
      */
     private String name;
-    private @Nullable GetJobProviderConfig providerConfig;
+    private GetJobProviderConfig providerConfig;
 
     private GetJobResult() {}
     /**
@@ -61,8 +59,8 @@ public final class GetJobResult {
     public String name() {
         return this.name;
     }
-    public Optional<GetJobProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetJobProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -79,7 +77,7 @@ public final class GetJobResult {
         private String jobName;
         private GetJobJobSettings jobSettings;
         private String name;
-        private @Nullable GetJobProviderConfig providerConfig;
+        private GetJobProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetJobResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -132,8 +130,10 @@ public final class GetJobResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetJobProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetJobProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

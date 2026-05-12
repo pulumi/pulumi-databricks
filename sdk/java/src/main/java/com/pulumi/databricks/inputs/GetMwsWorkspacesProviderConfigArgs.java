@@ -15,16 +15,24 @@ public final class GetMwsWorkspacesProviderConfigArgs extends com.pulumi.resourc
     public static final GetMwsWorkspacesProviderConfigArgs Empty = new GetMwsWorkspacesProviderConfigArgs();
 
     /**
-     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     * Ignored. This data source always operates against the account configured on the provider.
+     * 
+     * @deprecated
+     * workspace_id is ignored for account-only resources.
      * 
      */
+    @Deprecated /* workspace_id is ignored for account-only resources. */
     @Import(name="workspaceId", required=true)
     private Output<String> workspaceId;
 
     /**
-     * @return Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     * @return Ignored. This data source always operates against the account configured on the provider.
+     * 
+     * @deprecated
+     * workspace_id is ignored for account-only resources.
      * 
      */
+    @Deprecated /* workspace_id is ignored for account-only resources. */
     public Output<String> workspaceId() {
         return this.workspaceId;
     }
@@ -54,22 +62,30 @@ public final class GetMwsWorkspacesProviderConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param workspaceId Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+         * @param workspaceId Ignored. This data source always operates against the account configured on the provider.
          * 
          * @return builder
          * 
+         * @deprecated
+         * workspace_id is ignored for account-only resources.
+         * 
          */
+        @Deprecated /* workspace_id is ignored for account-only resources. */
         public Builder workspaceId(Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
 
         /**
-         * @param workspaceId Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+         * @param workspaceId Ignored. This data source always operates against the account configured on the provider.
          * 
          * @return builder
          * 
+         * @deprecated
+         * workspace_id is ignored for account-only resources.
+         * 
          */
+        @Deprecated /* workspace_id is ignored for account-only resources. */
         public Builder workspaceId(String workspaceId) {
             return workspaceId(Output.of(workspaceId));
         }

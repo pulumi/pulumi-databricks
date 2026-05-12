@@ -245,10 +245,10 @@ public class MlflowWebhook extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.modelName);
     }
     @Export(name="providerConfig", refs={MlflowWebhookProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ MlflowWebhookProviderConfig> providerConfig;
+    private Output<MlflowWebhookProviderConfig> providerConfig;
 
-    public Output<Optional<MlflowWebhookProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<MlflowWebhookProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.

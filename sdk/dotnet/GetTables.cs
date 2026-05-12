@@ -273,7 +273,7 @@ namespace Pulumi.Databricks
         /// set of databricks.Table full names: *`Catalog`.`Schema`.`Table`*
         /// </summary>
         public readonly ImmutableArray<string> Ids;
-        public readonly Outputs.GetTablesProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetTablesProviderConfigResult ProviderConfig;
         public readonly string SchemaName;
 
         [OutputConstructor]
@@ -284,7 +284,7 @@ namespace Pulumi.Databricks
 
             ImmutableArray<string> ids,
 
-            Outputs.GetTablesProviderConfigResult? providerConfig,
+            Outputs.GetTablesProviderConfigResult providerConfig,
 
             string schemaName)
         {

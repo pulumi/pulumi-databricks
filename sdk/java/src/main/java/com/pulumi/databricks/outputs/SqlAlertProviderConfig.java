@@ -4,17 +4,18 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SqlAlertProviderConfig {
-    private String workspaceId;
+    private @Nullable String workspaceId;
 
     private SqlAlertProviderConfig() {}
-    public String workspaceId() {
-        return this.workspaceId;
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -26,7 +27,7 @@ public final class SqlAlertProviderConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String workspaceId;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(SqlAlertProviderConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -34,10 +35,8 @@ public final class SqlAlertProviderConfig {
         }
 
         @CustomType.Setter
-        public Builder workspaceId(String workspaceId) {
-            if (workspaceId == null) {
-              throw new MissingRequiredPropertyException("SqlAlertProviderConfig", "workspaceId");
-            }
+        public Builder workspaceId(@Nullable String workspaceId) {
+
             this.workspaceId = workspaceId;
             return this;
         }

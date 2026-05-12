@@ -88,7 +88,7 @@ type DataClassificationCatalogConfig struct {
 	// Parent resource in the format: catalogs/{catalog_name}
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
-	ProviderConfig DataClassificationCatalogConfigProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig DataClassificationCatalogConfigProviderConfigOutput `pulumi:"providerConfig"`
 }
 
 // NewDataClassificationCatalogConfig registers a new resource with the given unique name, arguments, and options.
@@ -298,10 +298,10 @@ func (o DataClassificationCatalogConfigOutput) Parent() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o DataClassificationCatalogConfigOutput) ProviderConfig() DataClassificationCatalogConfigProviderConfigPtrOutput {
-	return o.ApplyT(func(v *DataClassificationCatalogConfig) DataClassificationCatalogConfigProviderConfigPtrOutput {
+func (o DataClassificationCatalogConfigOutput) ProviderConfig() DataClassificationCatalogConfigProviderConfigOutput {
+	return o.ApplyT(func(v *DataClassificationCatalogConfig) DataClassificationCatalogConfigProviderConfigOutput {
 		return v.ProviderConfig
-	}).(DataClassificationCatalogConfigProviderConfigPtrOutput)
+	}).(DataClassificationCatalogConfigProviderConfigOutput)
 }
 
 type DataClassificationCatalogConfigArrayOutput struct{ *pulumi.OutputState }

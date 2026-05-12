@@ -82,7 +82,7 @@ type WorkspaceSettingV2 struct {
 	// Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
 	PersonalCompute WorkspaceSettingV2PersonalComputePtrOutput `pulumi:"personalCompute"`
 	// Configure the provider for management through account provider.
-	ProviderConfig WorkspaceSettingV2ProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig WorkspaceSettingV2ProviderConfigOutput `pulumi:"providerConfig"`
 	// Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
 	RestrictWorkspaceAdmins WorkspaceSettingV2RestrictWorkspaceAdminsPtrOutput `pulumi:"restrictWorkspaceAdmins"`
 	// Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
@@ -446,8 +446,8 @@ func (o WorkspaceSettingV2Output) PersonalCompute() WorkspaceSettingV2PersonalCo
 }
 
 // Configure the provider for management through account provider.
-func (o WorkspaceSettingV2Output) ProviderConfig() WorkspaceSettingV2ProviderConfigPtrOutput {
-	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2ProviderConfigPtrOutput { return v.ProviderConfig }).(WorkspaceSettingV2ProviderConfigPtrOutput)
+func (o WorkspaceSettingV2Output) ProviderConfig() WorkspaceSettingV2ProviderConfigOutput {
+	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2ProviderConfigOutput { return v.ProviderConfig }).(WorkspaceSettingV2ProviderConfigOutput)
 }
 
 // Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value

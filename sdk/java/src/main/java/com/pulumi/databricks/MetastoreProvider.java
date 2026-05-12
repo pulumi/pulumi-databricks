@@ -126,14 +126,14 @@ public class MetastoreProvider extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={MetastoreProviderProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ MetastoreProviderProviderConfig> providerConfig;
+    private Output<MetastoreProviderProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<MetastoreProviderProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<MetastoreProviderProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * This is the json file that is created from a recipient url.

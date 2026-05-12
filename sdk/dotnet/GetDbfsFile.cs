@@ -191,7 +191,7 @@ namespace Pulumi.Databricks
         public readonly string Id;
         public readonly bool LimitFileSize;
         public readonly string Path;
-        public readonly Outputs.GetDbfsFileProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetDbfsFileProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetDbfsFileResult(
@@ -205,7 +205,7 @@ namespace Pulumi.Databricks
 
             string path,
 
-            Outputs.GetDbfsFileProviderConfigResult? providerConfig)
+            Outputs.GetDbfsFileProviderConfigResult providerConfig)
         {
             Content = content;
             FileSize = fileSize;

@@ -598,10 +598,10 @@ public class Mount extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     @Export(name="providerConfig", refs={MountProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ MountProviderConfig> providerConfig;
+    private Output<MountProviderConfig> providerConfig;
 
-    public Output<Optional<MountProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<MountProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="resourceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceId;

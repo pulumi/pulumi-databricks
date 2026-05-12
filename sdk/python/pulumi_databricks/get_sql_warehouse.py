@@ -231,7 +231,7 @@ class GetSqlWarehouseResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetSqlWarehouseProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetSqlWarehouseProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

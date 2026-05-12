@@ -93,7 +93,7 @@ export class InstanceProfile extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.InstanceProfileProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.InstanceProfileProviderConfig>;
     /**
      * **For advanced usage only.** If validation fails with an error message that does not indicate an IAM related permission issue, (e.g. "Your requested instance type is not supported in your requested availability zone"), you can pass this flag to skip the validation and forcibly add the instance profile.
      */

@@ -99,8 +99,8 @@ type AlertV2 struct {
 	// The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
 	ParentPath pulumi.StringPtrOutput `pulumi:"parentPath"`
 	// Configure the provider for management through account provider.
-	ProviderConfig AlertV2ProviderConfigPtrOutput `pulumi:"providerConfig"`
-	// Purge the resource on delete
+	ProviderConfig AlertV2ProviderConfigOutput `pulumi:"providerConfig"`
+	// Whether to permanently delete the alert. If not set, the alert will only be soft deleted
 	PurgeOnDelete pulumi.BoolPtrOutput `pulumi:"purgeOnDelete"`
 	// Text of the query to be run
 	QueryText pulumi.StringOutput `pulumi:"queryText"`
@@ -187,7 +187,7 @@ type alertV2State struct {
 	ParentPath *string `pulumi:"parentPath"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *AlertV2ProviderConfig `pulumi:"providerConfig"`
-	// Purge the resource on delete
+	// Whether to permanently delete the alert. If not set, the alert will only be soft deleted
 	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
 	// Text of the query to be run
 	QueryText *string `pulumi:"queryText"`
@@ -230,7 +230,7 @@ type AlertV2State struct {
 	ParentPath pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig AlertV2ProviderConfigPtrInput
-	// Purge the resource on delete
+	// Whether to permanently delete the alert. If not set, the alert will only be soft deleted
 	PurgeOnDelete pulumi.BoolPtrInput
 	// Text of the query to be run
 	QueryText pulumi.StringPtrInput
@@ -267,7 +267,7 @@ type alertV2Args struct {
 	ParentPath *string `pulumi:"parentPath"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *AlertV2ProviderConfig `pulumi:"providerConfig"`
-	// Purge the resource on delete
+	// Whether to permanently delete the alert. If not set, the alert will only be soft deleted
 	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
 	// Text of the query to be run
 	QueryText string `pulumi:"queryText"`
@@ -299,7 +299,7 @@ type AlertV2Args struct {
 	ParentPath pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig AlertV2ProviderConfigPtrInput
-	// Purge the resource on delete
+	// Whether to permanently delete the alert. If not set, the alert will only be soft deleted
 	PurgeOnDelete pulumi.BoolPtrInput
 	// Text of the query to be run
 	QueryText pulumi.StringInput
@@ -452,11 +452,11 @@ func (o AlertV2Output) ParentPath() pulumi.StringPtrOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o AlertV2Output) ProviderConfig() AlertV2ProviderConfigPtrOutput {
-	return o.ApplyT(func(v *AlertV2) AlertV2ProviderConfigPtrOutput { return v.ProviderConfig }).(AlertV2ProviderConfigPtrOutput)
+func (o AlertV2Output) ProviderConfig() AlertV2ProviderConfigOutput {
+	return o.ApplyT(func(v *AlertV2) AlertV2ProviderConfigOutput { return v.ProviderConfig }).(AlertV2ProviderConfigOutput)
 }
 
-// Purge the resource on delete
+// Whether to permanently delete the alert. If not set, the alert will only be soft deleted
 func (o AlertV2Output) PurgeOnDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AlertV2) pulumi.BoolPtrOutput { return v.PurgeOnDelete }).(pulumi.BoolPtrOutput)
 }

@@ -37,7 +37,7 @@ export interface AccessControlRuleSetGrantRule {
 }
 
 export interface AccessControlRuleSetProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface AccountFederationPolicyOidcPolicy {
@@ -100,6 +100,12 @@ export interface AccountNetworkPolicyEgressNetworkAccess {
      */
     allowedStorageDestinations?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination>[] | undefined>;
     /**
+     * List of internet destinations that serverless workloads are blocked from accessing.
+     * These destinations are enforced when restriction mode is RESTRICTED_ACCESS or DRY_RUN.
+     * Currently supports DNS_NAME type only; IP_RANGE support is planned
+     */
+    blockedInternetDestinations?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccessBlockedInternetDestination>[] | undefined>;
+    /**
      * Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
      */
     policyEnforcement?: pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement | undefined>;
@@ -131,6 +137,14 @@ export interface AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinatio
     storageDestinationType?: pulumi.Input<string | undefined>;
 }
 
+export interface AccountNetworkPolicyEgressNetworkAccessBlockedInternetDestination {
+    destination?: pulumi.Input<string | undefined>;
+    /**
+     * The type of internet destination. Currently only DNS_NAME is supported. Possible values are: `DNS_NAME`
+     */
+    internetDestinationType?: pulumi.Input<string | undefined>;
+}
+
 export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
     /**
      * When empty, it means dry run for all products.
@@ -146,11 +160,191 @@ export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
 }
 
 export interface AccountNetworkPolicyIngress {
+    /**
+     * The network policy restrictions for private access to the workspace.
+     * Configures how registered private endpoints are allowed or denied access
+     */
+    privateAccess?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccess | undefined>;
+    /**
+     * The network policy restrictions for public access to the workspace.
+     * Configures how public internet traffic is allowed or denied access
+     */
     publicAccess?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccess | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRun {
+    /**
+     * The network policy restrictions for private access to the workspace.
+     * Configures how registered private endpoints are allowed or denied access
+     */
+    privateAccess?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccess | undefined>;
+    /**
+     * The network policy restrictions for public access to the workspace.
+     * Configures how public internet traffic is allowed or denied access
+     */
     publicAccess?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccess | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccess {
+    allowRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRule>[] | undefined>;
+    denyRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRule>[] | undefined>;
+    restrictionMode: pulumi.Input<string>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRule {
+    authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleAuthentication | undefined>;
+    destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestination | undefined>;
+    label?: pulumi.Input<string | undefined>;
+    origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOrigin | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleAuthentication {
+    /**
+     * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleAuthenticationIdentity>[] | undefined>;
+    /**
+     * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleAuthenticationIdentity {
+    principalId?: pulumi.Input<string | undefined>;
+    /**
+     * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestination {
+    accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountApi | undefined>;
+    accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountDatabricksOne | undefined>;
+    accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountUi | undefined>;
+    allDestinations?: pulumi.Input<boolean | undefined>;
+    appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAppsRuntime | undefined>;
+    lakebaseRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationLakebaseRuntime | undefined>;
+    workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApi | undefined>;
+    workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceUi | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountApi {
+    scopeQualifier?: pulumi.Input<string | undefined>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountDatabricksOne {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountUi {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAppsRuntime {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationLakebaseRuntime {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceApi {
+    scopeQualifier?: pulumi.Input<string | undefined>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationWorkspaceUi {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOrigin {
+    allPrivateAccess?: pulumi.Input<boolean | undefined>;
+    allRegisteredEndpoints?: pulumi.Input<boolean | undefined>;
+    azureWorkspacePrivateLink?: pulumi.Input<boolean | undefined>;
+    endpoints?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOriginEndpoints | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleOriginEndpoints {
+    endpointIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRule {
+    authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleAuthentication | undefined>;
+    destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestination | undefined>;
+    label?: pulumi.Input<string | undefined>;
+    origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleOrigin | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleAuthentication {
+    /**
+     * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleAuthenticationIdentity>[] | undefined>;
+    /**
+     * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleAuthenticationIdentity {
+    principalId?: pulumi.Input<string | undefined>;
+    /**
+     * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestination {
+    accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountApi | undefined>;
+    accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountDatabricksOne | undefined>;
+    accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountUi | undefined>;
+    allDestinations?: pulumi.Input<boolean | undefined>;
+    appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAppsRuntime | undefined>;
+    lakebaseRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationLakebaseRuntime | undefined>;
+    workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApi | undefined>;
+    workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceUi | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountApi {
+    scopeQualifier?: pulumi.Input<string | undefined>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountDatabricksOne {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountUi {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAppsRuntime {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationLakebaseRuntime {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceApi {
+    scopeQualifier?: pulumi.Input<string | undefined>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationWorkspaceUi {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleOrigin {
+    allPrivateAccess?: pulumi.Input<boolean | undefined>;
+    allRegisteredEndpoints?: pulumi.Input<boolean | undefined>;
+    azureWorkspacePrivateLink?: pulumi.Input<boolean | undefined>;
+    endpoints?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleOriginEndpoints | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleOriginEndpoints {
+    endpointIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccess {
@@ -162,10 +356,6 @@ export interface AccountNetworkPolicyIngressDryRunPublicAccess {
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRule {
     authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthentication | undefined>;
     destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination | undefined>;
-    /**
-     * User-provided name for this ingress rule. Helps identify which rule
-     * caused a request to be denied or dry-run denied
-     */
     label?: pulumi.Input<string | undefined>;
     origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOrigin | undefined>;
 }
@@ -190,15 +380,39 @@ export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthentic
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination {
+    accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountApi | undefined>;
+    accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOne | undefined>;
+    accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
+    appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAppsRuntime | undefined>;
+    lakebaseRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationLakebaseRuntime | undefined>;
     workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi | undefined>;
-    /**
-     * Workspace destinations
-     */
     workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUi | undefined>;
 }
 
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountApi {
+    scopeQualifier?: pulumi.Input<string | undefined>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOne {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountUi {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAppsRuntime {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationLakebaseRuntime {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi {
+    scopeQualifier?: pulumi.Input<string | undefined>;
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
@@ -238,10 +452,6 @@ export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleOriginInc
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRule {
     authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthentication | undefined>;
     destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination | undefined>;
-    /**
-     * User-provided name for this ingress rule. Helps identify which rule
-     * caused a request to be denied or dry-run denied
-     */
     label?: pulumi.Input<string | undefined>;
     origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOrigin | undefined>;
 }
@@ -266,15 +476,39 @@ export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthentica
 }
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination {
+    accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountApi | undefined>;
+    accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOne | undefined>;
+    accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
+    appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAppsRuntime | undefined>;
+    lakebaseRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationLakebaseRuntime | undefined>;
     workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi | undefined>;
-    /**
-     * Workspace destinations
-     */
     workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceUi | undefined>;
 }
 
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountApi {
+    scopeQualifier?: pulumi.Input<string | undefined>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOne {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountUi {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAppsRuntime {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationLakebaseRuntime {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApi {
+    scopeQualifier?: pulumi.Input<string | undefined>;
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
@@ -311,6 +545,168 @@ export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOriginIncl
     ipRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
+export interface AccountNetworkPolicyIngressPrivateAccess {
+    allowRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRule>[] | undefined>;
+    denyRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRule>[] | undefined>;
+    restrictionMode: pulumi.Input<string>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessAllowRule {
+    authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleAuthentication | undefined>;
+    destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestination | undefined>;
+    label?: pulumi.Input<string | undefined>;
+    origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleOrigin | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleAuthentication {
+    /**
+     * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleAuthenticationIdentity>[] | undefined>;
+    /**
+     * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleAuthenticationIdentity {
+    principalId?: pulumi.Input<string | undefined>;
+    /**
+     * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestination {
+    accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountApi | undefined>;
+    accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountDatabricksOne | undefined>;
+    accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountUi | undefined>;
+    allDestinations?: pulumi.Input<boolean | undefined>;
+    appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAppsRuntime | undefined>;
+    lakebaseRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationLakebaseRuntime | undefined>;
+    workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApi | undefined>;
+    workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceUi | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountApi {
+    scopeQualifier?: pulumi.Input<string | undefined>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountDatabricksOne {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountUi {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAppsRuntime {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationLakebaseRuntime {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceApi {
+    scopeQualifier?: pulumi.Input<string | undefined>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationWorkspaceUi {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleOrigin {
+    allPrivateAccess?: pulumi.Input<boolean | undefined>;
+    allRegisteredEndpoints?: pulumi.Input<boolean | undefined>;
+    azureWorkspacePrivateLink?: pulumi.Input<boolean | undefined>;
+    endpoints?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleOriginEndpoints | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleOriginEndpoints {
+    endpointIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessDenyRule {
+    authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleAuthentication | undefined>;
+    destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestination | undefined>;
+    label?: pulumi.Input<string | undefined>;
+    origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleOrigin | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleAuthentication {
+    /**
+     * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleAuthenticationIdentity>[] | undefined>;
+    /**
+     * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleAuthenticationIdentity {
+    principalId?: pulumi.Input<string | undefined>;
+    /**
+     * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestination {
+    accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountApi | undefined>;
+    accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountDatabricksOne | undefined>;
+    accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountUi | undefined>;
+    allDestinations?: pulumi.Input<boolean | undefined>;
+    appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAppsRuntime | undefined>;
+    lakebaseRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationLakebaseRuntime | undefined>;
+    workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApi | undefined>;
+    workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceUi | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountApi {
+    scopeQualifier?: pulumi.Input<string | undefined>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountDatabricksOne {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountUi {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAppsRuntime {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationLakebaseRuntime {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceApi {
+    scopeQualifier?: pulumi.Input<string | undefined>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationWorkspaceUi {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleOrigin {
+    allPrivateAccess?: pulumi.Input<boolean | undefined>;
+    allRegisteredEndpoints?: pulumi.Input<boolean | undefined>;
+    azureWorkspacePrivateLink?: pulumi.Input<boolean | undefined>;
+    endpoints?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpoints | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleOriginEndpoints {
+    endpointIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
 export interface AccountNetworkPolicyIngressPublicAccess {
     allowRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRule>[] | undefined>;
     denyRules?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRule>[] | undefined>;
@@ -320,10 +716,6 @@ export interface AccountNetworkPolicyIngressPublicAccess {
 export interface AccountNetworkPolicyIngressPublicAccessAllowRule {
     authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleAuthentication | undefined>;
     destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestination | undefined>;
-    /**
-     * User-provided name for this ingress rule. Helps identify which rule
-     * caused a request to be denied or dry-run denied
-     */
     label?: pulumi.Input<string | undefined>;
     origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleOrigin | undefined>;
 }
@@ -348,15 +740,39 @@ export interface AccountNetworkPolicyIngressPublicAccessAllowRuleAuthenticationI
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestination {
+    accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountApi | undefined>;
+    accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountDatabricksOne | undefined>;
+    accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
+    appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAppsRuntime | undefined>;
+    lakebaseRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationLakebaseRuntime | undefined>;
     workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi | undefined>;
-    /**
-     * Workspace destinations
-     */
     workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceUi | undefined>;
 }
 
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountApi {
+    scopeQualifier?: pulumi.Input<string | undefined>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountDatabricksOne {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountUi {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAppsRuntime {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationLakebaseRuntime {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
 export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi {
+    scopeQualifier?: pulumi.Input<string | undefined>;
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
@@ -396,10 +812,6 @@ export interface AccountNetworkPolicyIngressPublicAccessAllowRuleOriginIncludedI
 export interface AccountNetworkPolicyIngressPublicAccessDenyRule {
     authentication?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleAuthentication | undefined>;
     destination?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestination | undefined>;
-    /**
-     * User-provided name for this ingress rule. Helps identify which rule
-     * caused a request to be denied or dry-run denied
-     */
     label?: pulumi.Input<string | undefined>;
     origin?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleOrigin | undefined>;
 }
@@ -424,15 +836,39 @@ export interface AccountNetworkPolicyIngressPublicAccessDenyRuleAuthenticationId
 }
 
 export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestination {
+    accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountApi | undefined>;
+    accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOne | undefined>;
+    accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
+    appsRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAppsRuntime | undefined>;
+    lakebaseRuntime?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationLakebaseRuntime | undefined>;
     workspaceApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi | undefined>;
-    /**
-     * Workspace destinations
-     */
     workspaceUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceUi | undefined>;
 }
 
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountApi {
+    scopeQualifier?: pulumi.Input<string | undefined>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOne {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountUi {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAppsRuntime {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationLakebaseRuntime {
+    allDestinations?: pulumi.Input<boolean | undefined>;
+}
+
 export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi {
+    scopeQualifier?: pulumi.Input<string | undefined>;
     scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
@@ -662,7 +1098,7 @@ export interface AibiDashboardEmbeddingAccessPolicySettingProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomains {
@@ -676,7 +1112,7 @@ export interface AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface AlertCondition {
@@ -738,7 +1174,7 @@ export interface AlertProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface AlertV2EffectiveRunAs {
@@ -837,7 +1273,7 @@ export interface AlertV2ProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface AlertV2RunAs {
@@ -1193,7 +1629,7 @@ export interface AppSpaceProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface AppSpaceResource {
@@ -1393,7 +1829,7 @@ export interface AppsSettingsCustomTemplateProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ArtifactAllowlistArtifactMatcher {
@@ -1411,7 +1847,7 @@ export interface ArtifactAllowlistProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace {
@@ -1444,7 +1880,7 @@ export interface AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWor
 }
 
 export interface AutomaticClusterUpdateWorkspaceSettingProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface BudgetAlertConfiguration {
@@ -1563,7 +1999,7 @@ export interface CatalogProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface CatalogProvisioningInfo {
@@ -1574,7 +2010,7 @@ export interface CatalogWorkspaceBindingProviderConfig {
     /**
      * ID of the workspace. Change forces creation of a new resource.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterAutoscale {
@@ -1821,6 +2257,7 @@ export interface ClusterGcpAttributes {
      * Boot disk size in GB
      */
     bootDiskSize?: pulumi.Input<number | undefined>;
+    confidentialComputeType?: pulumi.Input<string | undefined>;
     /**
      * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
      */
@@ -1993,7 +2430,7 @@ export interface ClusterPolicyLibraryProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterPolicyLibraryPypi {
@@ -2005,7 +2442,7 @@ export interface ClusterPolicyProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterProviderConfig {
@@ -2041,7 +2478,7 @@ export interface ClusterProviderConfig {
      * });
      * ```
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ClusterWorkerNodeTypeFlexibility {
@@ -2084,14 +2521,14 @@ export interface ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProf
 }
 
 export interface ComplianceSecurityProfileWorkspaceSettingProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectionProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ConnectionProvisioningInfo {
@@ -2159,7 +2596,7 @@ export interface CredentialProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface CustomAppIntegrationTokenAccessPolicy {
@@ -2179,7 +2616,7 @@ export interface DashboardProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface DataClassificationCatalogConfigAutoTagConfig {
@@ -2188,7 +2625,8 @@ export interface DataClassificationCatalogConfigAutoTagConfig {
      */
     autoTaggingMode: pulumi.Input<string>;
     /**
-     * The Classification Tag (e.g., "class.name", "class.location")
+     * The Classification Tag. For built-in classes this is a system tag (e.g., "class.name",
+     * "class.location"); for custom classes it is a user-defined governance tag key
      */
     classificationTag: pulumi.Input<string>;
 }
@@ -2201,7 +2639,7 @@ export interface DataClassificationCatalogConfigProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface DataQualityMonitorAnomalyDetectionConfig {
@@ -2364,21 +2802,21 @@ export interface DataQualityMonitorProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface DataQualityRefreshProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface DatabaseDatabaseCatalogProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface DatabaseInstanceChildInstanceRef {
@@ -2481,7 +2919,7 @@ export interface DatabaseInstanceProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface DatabaseSyncedDatabaseTableDataSynchronizationStatus {
@@ -2680,7 +3118,7 @@ export interface DatabaseSyncedDatabaseTableProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface DatabaseSyncedDatabaseTableSpec {
@@ -2749,7 +3187,7 @@ export interface DbfsFileProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface DefaultNamespaceSettingNamespace {
@@ -2763,14 +3201,14 @@ export interface DefaultNamespaceSettingProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface DirectoryProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface DisableLegacyAccessSettingDisableLegacyAccess {
@@ -2784,7 +3222,7 @@ export interface DisableLegacyAccessSettingProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface DisableLegacyDbfsSettingDisableLegacyDbfs {
@@ -2798,7 +3236,7 @@ export interface DisableLegacyDbfsSettingProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface DisableLegacyFeaturesSettingDisableLegacyFeatures {
@@ -2809,7 +3247,81 @@ export interface DisableLegacyFeaturesSettingDisableLegacyFeatures {
 }
 
 export interface DisableLegacyFeaturesSettingProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    /**
+     * @deprecated workspace_id is ignored for account-only resources.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface DisasterRecoveryFailoverGroupUnityCatalogAssets {
+    /**
+     * UC catalogs to replicate
+     */
+    catalogs: pulumi.Input<pulumi.Input<inputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog>[]>;
+    /**
+     * The workspace set whose workspaces will be used for data replication
+     * of all UC catalogs' underlying storage
+     */
+    dataReplicationWorkspaceSet: pulumi.Input<string>;
+    /**
+     * Location mappings - storage URI per region for each location
+     */
+    locationMappings?: pulumi.Input<pulumi.Input<inputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping>[] | undefined>;
+}
+
+export interface DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog {
+    /**
+     * (string) - Fully qualified resource name in the format
+     * accounts/{account_id}/failover-groups/{failover_group_id}
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping {
+    /**
+     * (string) - Fully qualified resource name in the format
+     * accounts/{account_id}/failover-groups/{failover_group_id}
+     */
+    name: pulumi.Input<string>;
+    /**
+     * URI for each region. Each entry maps a region name to a storage URI
+     */
+    uriByRegions: pulumi.Input<pulumi.Input<inputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion>[]>;
+}
+
+export interface DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion {
+    /**
+     * The region name
+     */
+    region: pulumi.Input<string>;
+    /**
+     * The storage URI for this region
+     */
+    uri: pulumi.Input<string>;
+}
+
+export interface DisasterRecoveryFailoverGroupWorkspaceSet {
+    /**
+     * (string) - Fully qualified resource name in the format
+     * accounts/{account_id}/failover-groups/{failover_group_id}
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
+     * Requires all workspaces in the set to be Mission Critical tier
+     */
+    replicateWorkspaceAssets: pulumi.Input<boolean>;
+    /**
+     * Resource names of stable URLs associated with this workspace set.
+     * Format: accounts/{account_id}/stable-urls/{stable_url_id}.
+     * The referenced stable URLs must already exist (via CreateStableUrl)
+     */
+    stableUrlNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Workspace IDs in this set. The system derives and validates regions.
+     * EA: exactly 2 workspaces (one per region)
+     */
+    workspaceIds: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface EndpointAzurePrivateEndpointInfo {
@@ -2837,35 +3349,35 @@ export interface EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonit
 }
 
 export interface EnhancedSecurityMonitoringWorkspaceSettingProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface EntitlementsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface EntityTagAssignmentProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface EnvironmentsWorkspaceBaseEnvironmentProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ExternalLocationEffectiveFileEventQueue {
@@ -3063,14 +3575,14 @@ export interface ExternalLocationProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ExternalMetadataProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringFeatureEntity {
@@ -3253,7 +3765,7 @@ export interface FeatureEngineeringFeatureProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringFeatureSource {
@@ -3400,8 +3912,13 @@ export interface FeatureEngineeringKafkaConfigAuthConfig {
 
 export interface FeatureEngineeringKafkaConfigBackfillSource {
     /**
-     * The Delta table source containing the historic data to backfill.
-     * Only the delta table name is used for backfill, the entity columns and timeseries column are ignored as they are defined by the associated KafkaSource
+     * The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
+     */
+    deltaTableName?: pulumi.Input<string | undefined>;
+    /**
+     * Deprecated: Use deltaTableName instead. Kept for backwards compatibility.
+     * The Delta table source containing the historical data to backfill.
+     * Only the delta table name is used for backfill, other fields are ignored
      */
     deltaTableSource?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource | undefined>;
 }
@@ -3450,7 +3967,7 @@ export interface FeatureEngineeringKafkaConfigProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringKafkaConfigSubscriptionMode {
@@ -3496,114 +4013,114 @@ export interface FeatureEngineeringMaterializedFeatureProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface FileProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetAlertV2ProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetAlertV2ProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetAlertsV2ProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetAlertsV2ProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetAppProviderConfig {
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetAppProviderConfigArgs {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetAppSpaceProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetAppSpaceProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetAppSpacesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetAppSpacesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetAppsProviderConfig {
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetAppsProviderConfigArgs {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetAppsSettingsCustomTemplateProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetAppsSettingsCustomTemplateProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetAppsSettingsCustomTemplatesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetAppsSettingsCustomTemplatesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetBudgetPoliciesFilterBy {
@@ -3896,28 +4413,28 @@ export interface GetCatalogProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetCatalogProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetCatalogsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetCatalogsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfo {
@@ -4343,6 +4860,7 @@ export interface GetClusterClusterInfoExecutorNodeAwsAttributesArgs {
 export interface GetClusterClusterInfoGcpAttributes {
     availability?: string;
     bootDiskSize?: number;
+    confidentialComputeType?: string;
     firstOnDemand?: number;
     googleServiceAccount?: string;
     localSsdCount?: number;
@@ -4353,6 +4871,7 @@ export interface GetClusterClusterInfoGcpAttributes {
 export interface GetClusterClusterInfoGcpAttributesArgs {
     availability?: pulumi.Input<string | undefined>;
     bootDiskSize?: pulumi.Input<number | undefined>;
+    confidentialComputeType?: pulumi.Input<string | undefined>;
     firstOnDemand?: pulumi.Input<number | undefined>;
     googleServiceAccount?: pulumi.Input<string | undefined>;
     localSsdCount?: pulumi.Input<number | undefined>;
@@ -4805,6 +5324,7 @@ export interface GetClusterClusterInfoSpecDriverNodeTypeFlexibilityArgs {
 export interface GetClusterClusterInfoSpecGcpAttributes {
     availability?: string;
     bootDiskSize?: number;
+    confidentialComputeType?: string;
     firstOnDemand?: number;
     googleServiceAccount?: string;
     localSsdCount?: number;
@@ -4815,6 +5335,7 @@ export interface GetClusterClusterInfoSpecGcpAttributes {
 export interface GetClusterClusterInfoSpecGcpAttributesArgs {
     availability?: pulumi.Input<string | undefined>;
     bootDiskSize?: pulumi.Input<number | undefined>;
+    confidentialComputeType?: pulumi.Input<string | undefined>;
     firstOnDemand?: pulumi.Input<number | undefined>;
     googleServiceAccount?: pulumi.Input<string | undefined>;
     localSsdCount?: pulumi.Input<number | undefined>;
@@ -4976,14 +5497,14 @@ export interface GetClusterClusterInfoSpecLibraryProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetClusterClusterInfoSpecLibraryProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecLibraryPypi {
@@ -5000,14 +5521,14 @@ export interface GetClusterClusterInfoSpecProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetClusterClusterInfoSpecProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterClusterInfoSpecWorkerNodeTypeFlexibility {
@@ -5078,28 +5599,28 @@ export interface GetClusterPolicyProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetClusterPolicyProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClusterProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetClusterProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetClustersFilterBy {
@@ -5144,28 +5665,28 @@ export interface GetClustersProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetClustersProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetCurrentConfigProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetCurrentConfigProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetCurrentMetastoreMetastoreInfo {
@@ -5318,302 +5839,302 @@ export interface GetCurrentMetastoreProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetCurrentMetastoreProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetCurrentUserProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetCurrentUserProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDashboardsProviderConfig {
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetDashboardsProviderConfigArgs {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDataClassificationCatalogConfigProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetDataClassificationCatalogConfigProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDataQualityMonitorProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetDataQualityMonitorProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDataQualityMonitorsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetDataQualityMonitorsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDataQualityRefreshProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetDataQualityRefreshProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDataQualityRefreshesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetDataQualityRefreshesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDatabaseDatabaseCatalogProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetDatabaseDatabaseCatalogProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDatabaseDatabaseCatalogsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetDatabaseDatabaseCatalogsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDatabaseInstanceProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetDatabaseInstanceProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDatabaseInstancesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetDatabaseInstancesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDatabaseSyncedDatabaseTableProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetDatabaseSyncedDatabaseTableProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDatabaseSyncedDatabaseTablesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetDatabaseSyncedDatabaseTablesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDbfsFilePathsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetDbfsFilePathsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDbfsFileProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetDbfsFileProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDirectoryProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetDirectoryProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetEntityTagAssignmentProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetEntityTagAssignmentProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetEntityTagAssignmentsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetEntityTagAssignmentsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetEnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetEnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetEnvironmentsWorkspaceBaseEnvironmentProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLocationExternalLocationInfo {
@@ -5952,140 +6473,140 @@ export interface GetExternalLocationProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetExternalLocationProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalLocationsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetExternalLocationsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalMetadataProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetExternalMetadataProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetExternalMetadatasProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetExternalMetadatasProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetFeatureEngineeringFeatureProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetFeatureEngineeringFeatureProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetFeatureEngineeringFeaturesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetFeatureEngineeringFeaturesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetFeatureEngineeringKafkaConfigProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetFeatureEngineeringKafkaConfigProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetFeatureEngineeringKafkaConfigsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetFeatureEngineeringKafkaConfigsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetFeatureEngineeringMaterializedFeatureProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetFeatureEngineeringMaterializedFeatureProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetFeatureEngineeringMaterializedFeaturesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetFeatureEngineeringMaterializedFeaturesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetFunctionsFunction {
@@ -6621,25 +7142,25 @@ export interface GetFunctionsFunctionRoutineDependenciesDependencyTableArgs {
 }
 
 export interface GetFunctionsProviderConfig {
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetFunctionsProviderConfigArgs {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetGroupProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetGroupProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetInstancePoolPoolInfo {
@@ -6832,14 +7353,14 @@ export interface GetInstancePoolProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetInstancePoolProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetInstanceProfilesInstanceProfile {
@@ -6884,14 +7405,14 @@ export interface GetInstanceProfilesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetInstanceProfilesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettings {
@@ -7510,14 +8031,14 @@ export interface GetJobJobSettingsSettingsLibraryProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetJobJobSettingsSettingsLibraryProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsLibraryPypi {
@@ -8394,14 +8915,14 @@ export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConf
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi {
@@ -9120,14 +9641,14 @@ export interface GetJobJobSettingsSettingsTaskLibraryProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsTaskLibraryPypi {
@@ -9906,112 +10427,112 @@ export interface GetJobProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetJobProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetJobsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetKnowledgeAssistantKnowledgeSourceProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetKnowledgeAssistantKnowledgeSourceProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetKnowledgeAssistantKnowledgeSourcesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetKnowledgeAssistantKnowledgeSourcesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetKnowledgeAssistantProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetKnowledgeAssistantProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetKnowledgeAssistantsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetKnowledgeAssistantsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetMaterializedFeaturesFeatureTagProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetMaterializedFeaturesFeatureTagProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetMaterializedFeaturesFeatureTagsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetMaterializedFeaturesFeatureTagsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetMetastoreMetastoreInfo {
@@ -10176,14 +10697,14 @@ export interface GetMlflowExperimentProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetMlflowExperimentProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetMlflowExperimentTag {
@@ -10266,14 +10787,14 @@ export interface GetMlflowModelProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetMlflowModelProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetMlflowModelTag {
@@ -10290,28 +10811,32 @@ export interface GetMlflowModelsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetMlflowModelsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetMwsCredentialsProviderConfig {
     /**
-     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     * Ignored. This data source always operates against the account configured on the provider.
+     *
+     * @deprecated workspace_id is ignored for account-only resources.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetMwsCredentialsProviderConfigArgs {
     /**
-     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     * Ignored. This data source always operates against the account configured on the provider.
+     *
+     * @deprecated workspace_id is ignored for account-only resources.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetMwsNetworkConnectivityConfigEgressConfig {
@@ -10592,332 +11117,336 @@ export interface GetMwsNetworkConnectivityConfigEgressConfigTargetRulesAzurePriv
 
 export interface GetMwsWorkspacesProviderConfig {
     /**
-     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     * Ignored. This data source always operates against the account configured on the provider.
+     *
+     * @deprecated workspace_id is ignored for account-only resources.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetMwsWorkspacesProviderConfigArgs {
     /**
-     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     * Ignored. This data source always operates against the account configured on the provider.
+     *
+     * @deprecated workspace_id is ignored for account-only resources.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetNodeTypeProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetNodeTypeProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetNotebookPathsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetNotebookPathsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetNotebookProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetNotebookProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetNotificationDestinationsProviderConfig {
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetNotificationDestinationsProviderConfigArgs {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetOnlineStoreProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetOnlineStoreProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetOnlineStoresProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetOnlineStoresProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPipelinesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetPipelinesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPolicyInfoProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetPolicyInfoProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPolicyInfosProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetPolicyInfosProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPostgresBranchProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetPostgresBranchProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPostgresBranchesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetPostgresBranchesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPostgresCatalogProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetPostgresCatalogProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPostgresDatabaseProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetPostgresDatabaseProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPostgresDatabasesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetPostgresDatabasesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPostgresEndpointProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetPostgresEndpointProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPostgresEndpointsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetPostgresEndpointsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPostgresProjectProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetPostgresProjectProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPostgresProjectsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetPostgresProjectsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPostgresRoleProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetPostgresRoleProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPostgresRolesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetPostgresRolesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPostgresSyncedTableProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetPostgresSyncedTableProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetQualityMonitorV2ProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetQualityMonitorV2ProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetQualityMonitorsV2ProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetQualityMonitorsV2ProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetRegisteredModelModelInfo {
@@ -11075,11 +11604,11 @@ export interface GetRegisteredModelModelInfoAliasArgs {
 }
 
 export interface GetRegisteredModelProviderConfig {
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetRegisteredModelProviderConfigArgs {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetRegisteredModelVersionsModelVersion {
@@ -11359,39 +11888,39 @@ export interface GetRegisteredModelVersionsModelVersionModelVersionDependencyDep
 }
 
 export interface GetRegisteredModelVersionsProviderConfig {
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetRegisteredModelVersionsProviderConfigArgs {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetRfaAccessRequestDestinationsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetRfaAccessRequestDestinationsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetSchemaProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetSchemaProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetSchemaSchemaInfo {
@@ -11560,42 +12089,70 @@ export interface GetSchemasProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetSchemasProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetSecretUcProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetSecretUcProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetSecretUcsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetSecretUcsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServicePrincipalProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetServicePrincipalProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServicePrincipalsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetServicePrincipalsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetServicePrincipalsServicePrincipal {
@@ -12133,11 +12690,11 @@ export interface GetServingEndpointsEndpointTagArgs {
 }
 
 export interface GetServingEndpointsProviderConfig {
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetServingEndpointsProviderConfigArgs {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetShareObject {
@@ -12232,42 +12789,42 @@ export interface GetShareProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetShareProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetSharesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetSharesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetSparkVersionProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetSparkVersionProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetSqlWarehouseChannel {
@@ -12329,11 +12886,11 @@ export interface GetSqlWarehouseOdbcParamsArgs {
 }
 
 export interface GetSqlWarehouseProviderConfig {
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetSqlWarehouseProviderConfigArgs {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetSqlWarehouseTags {
@@ -12358,28 +12915,28 @@ export interface GetSqlWarehousesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetSqlWarehousesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetStorageCredentialProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetStorageCredentialProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetStorageCredentialStorageCredentialInfo {
@@ -12612,28 +13169,84 @@ export interface GetStorageCredentialsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetStorageCredentialsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetSupervisorAgentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetSupervisorAgentProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetSupervisorAgentToolProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetSupervisorAgentToolProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetSupervisorAgentToolsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetSupervisorAgentToolsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetSupervisorAgentsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetSupervisorAgentsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTableProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetTableProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTableTableInfo {
@@ -13080,70 +13693,70 @@ export interface GetTablesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetTablesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTagPoliciesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetTagPoliciesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetTagPolicyProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetTagPolicyProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetUserProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetUserProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetUsersProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetUsersProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetUsersUser {
@@ -13308,28 +13921,28 @@ export interface GetViewsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetViewsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetVolumeProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetVolumeProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetVolumeVolumeInfo {
@@ -13496,116 +14109,116 @@ export interface GetVolumesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetVolumesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetWarehousesDefaultWarehouseOverrideProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetWarehousesDefaultWarehouseOverrideProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetWarehousesDefaultWarehouseOverridesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetWarehousesDefaultWarehouseOverridesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetWorkspaceEntityTagAssignmentProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetWorkspaceEntityTagAssignmentProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetWorkspaceEntityTagAssignmentsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetWorkspaceEntityTagAssignmentsProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetWorkspaceSettingV2ProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetWorkspaceSettingV2ProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetZonesProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: string;
+    workspaceId?: string;
 }
 
 export interface GetZonesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GitCredentialProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GlobalInitScriptProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GrantProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GrantsGrant {
@@ -13614,23 +14227,23 @@ export interface GrantsGrant {
 }
 
 export interface GrantsProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GroupInstanceProfileProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GroupMemberProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GroupProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GroupRoleProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface InstancePoolAwsAttributes {
@@ -13763,21 +14376,21 @@ export interface InstancePoolProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface InstanceProfileProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface IpAccessListProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobContinuous {
@@ -14096,6 +14709,7 @@ export interface JobJobClusterNewClusterDriverNodeTypeFlexibility {
 export interface JobJobClusterNewClusterGcpAttributes {
     availability?: pulumi.Input<string | undefined>;
     bootDiskSize?: pulumi.Input<number | undefined>;
+    confidentialComputeType?: pulumi.Input<string | undefined>;
     firstOnDemand?: pulumi.Input<number | undefined>;
     googleServiceAccount?: pulumi.Input<string | undefined>;
     localSsdCount?: pulumi.Input<number | undefined>;
@@ -14185,7 +14799,7 @@ export interface JobJobClusterNewClusterLibraryProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobJobClusterNewClusterLibraryPypi {
@@ -14197,7 +14811,7 @@ export interface JobJobClusterNewClusterProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobJobClusterNewClusterWorkerNodeTypeFlexibility {
@@ -14245,7 +14859,7 @@ export interface JobLibraryProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobLibraryPypi {
@@ -14388,6 +15002,7 @@ export interface JobNewClusterDriverNodeTypeFlexibility {
 export interface JobNewClusterGcpAttributes {
     availability?: pulumi.Input<string | undefined>;
     bootDiskSize?: pulumi.Input<number | undefined>;
+    confidentialComputeType?: pulumi.Input<string | undefined>;
     firstOnDemand?: pulumi.Input<number | undefined>;
     googleServiceAccount?: pulumi.Input<string | undefined>;
     localSsdCount?: pulumi.Input<number | undefined>;
@@ -14477,7 +15092,7 @@ export interface JobNewClusterLibraryProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobNewClusterLibraryPypi {
@@ -14489,7 +15104,7 @@ export interface JobNewClusterProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobNewClusterWorkerNodeTypeFlexibility {
@@ -14567,7 +15182,7 @@ export interface JobProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobPythonWheelTask {
@@ -15375,7 +15990,7 @@ export interface JobTaskForEachTaskTaskLibraryProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskLibraryPypi {
@@ -15518,6 +16133,7 @@ export interface JobTaskForEachTaskTaskNewClusterDriverNodeTypeFlexibility {
 export interface JobTaskForEachTaskTaskNewClusterGcpAttributes {
     availability?: pulumi.Input<string | undefined>;
     bootDiskSize?: pulumi.Input<number | undefined>;
+    confidentialComputeType?: pulumi.Input<string | undefined>;
     firstOnDemand?: pulumi.Input<number | undefined>;
     googleServiceAccount?: pulumi.Input<string | undefined>;
     localSsdCount?: pulumi.Input<number | undefined>;
@@ -15607,7 +16223,7 @@ export interface JobTaskForEachTaskTaskNewClusterLibraryProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterLibraryPypi {
@@ -15619,7 +16235,7 @@ export interface JobTaskForEachTaskTaskNewClusterProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskForEachTaskTaskNewClusterWorkerNodeTypeFlexibility {
@@ -16109,7 +16725,7 @@ export interface JobTaskLibraryProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskLibraryPypi {
@@ -16253,6 +16869,7 @@ export interface JobTaskNewClusterDriverNodeTypeFlexibility {
 export interface JobTaskNewClusterGcpAttributes {
     availability?: pulumi.Input<string | undefined>;
     bootDiskSize?: pulumi.Input<number | undefined>;
+    confidentialComputeType?: pulumi.Input<string | undefined>;
     firstOnDemand?: pulumi.Input<number | undefined>;
     googleServiceAccount?: pulumi.Input<string | undefined>;
     localSsdCount?: pulumi.Input<number | undefined>;
@@ -16342,7 +16959,7 @@ export interface JobTaskNewClusterLibraryProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskNewClusterLibraryPypi {
@@ -16354,7 +16971,7 @@ export interface JobTaskNewClusterProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobTaskNewClusterWorkerNodeTypeFlexibility {
@@ -16943,14 +17560,14 @@ export interface KnowledgeAssistantKnowledgeSourceProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface KnowledgeAssistantProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface LakehouseMonitorCustomMetric {
@@ -17031,7 +17648,7 @@ export interface LakehouseMonitorNotificationsOnNewClassificationTagDetected {
 }
 
 export interface LakehouseMonitorProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface LakehouseMonitorSchedule {
@@ -17111,14 +17728,14 @@ export interface MaterializedFeaturesFeatureTagProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface MetastoreAssignmentProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface MetastoreDataAccessAwsIamRole {
@@ -17160,28 +17777,28 @@ export interface MetastoreDataAccessProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface MetastoreProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface MetastoreProviderProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface MlflowExperimentProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface MlflowExperimentTag {
@@ -17193,7 +17810,7 @@ export interface MlflowModelProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface MlflowModelTag {
@@ -17239,7 +17856,7 @@ export interface MlflowWebhookProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingAiGateway {
@@ -17813,7 +18430,7 @@ export interface ModelServingProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingProvisionedThroughputAiGateway {
@@ -17999,7 +18616,7 @@ export interface ModelServingProvisionedThroughputProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingProvisionedThroughputTag {
@@ -18066,7 +18683,7 @@ export interface MountGs {
 }
 
 export interface MountProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface MountS3 {
@@ -18226,11 +18843,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.115.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.115.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string | undefined>;
     /**
@@ -18297,11 +18914,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.115.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.113.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.115.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string | undefined>;
     subnetCidr: pulumi.Input<string>;
@@ -18329,7 +18946,7 @@ export interface NotebookProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface NotificationDestinationConfig {
@@ -18440,28 +19057,28 @@ export interface NotificationDestinationProviderConfig {
      *
      * > **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface OboTokenProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface OnlineStoreProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface OnlineTableProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface OnlineTableSpec {
@@ -18565,7 +19182,7 @@ export interface PermissionAssignmentProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface PermissionsAccessControl {
@@ -18593,7 +19210,7 @@ export interface PermissionsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineCluster {
@@ -18675,6 +19292,7 @@ export interface PipelineClusterClusterLogConfVolumes {
 
 export interface PipelineClusterGcpAttributes {
     availability?: pulumi.Input<string | undefined>;
+    confidentialComputeType?: pulumi.Input<string | undefined>;
     firstOnDemand?: pulumi.Input<number | undefined>;
     googleServiceAccount?: pulumi.Input<string | undefined>;
     localSsdCount?: pulumi.Input<number | undefined>;
@@ -18913,10 +19531,20 @@ export interface PipelineIngestionDefinitionObjectSchema {
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptions {
+    confluenceOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsConfluenceOptions | undefined>;
     gdriveOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptions | undefined>;
     googleAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions | undefined>;
+    jiraOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptions | undefined>;
+    metaAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions | undefined>;
+    outlookOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions | undefined>;
     sharepointOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions | undefined>;
+    smartsheetOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptions | undefined>;
     tiktokAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptions | undefined>;
+    zendeskSupportOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsZendeskSupportOptions | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsConfluenceOptions {
+    includeConfluenceSpaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptions {
@@ -18954,6 +19582,34 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAd
     syncStartDate?: pulumi.Input<string | undefined>;
 }
 
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptions {
+    includeJiraSpaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions {
+    actionAttributionWindows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    actionBreakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    actionReportTime?: pulumi.Input<string | undefined>;
+    breakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    customInsightsLookbackWindow?: pulumi.Input<number | undefined>;
+    level?: pulumi.Input<string | undefined>;
+    startDate?: pulumi.Input<string | undefined>;
+    timeIncrement?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions {
+    attachmentMode?: pulumi.Input<string | undefined>;
+    bodyFormat?: pulumi.Input<string | undefined>;
+    folderFilters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    includeFolders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    includeMailboxes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    includeSenders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    includeSubjects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    senderFilters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    startDate?: pulumi.Input<string | undefined>;
+    subjectFilters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions {
     entityType?: pulumi.Input<string | undefined>;
     fileIngestionOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsFileIngestionOptions | undefined>;
@@ -18983,6 +19639,10 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepoi
     pathFilter?: pulumi.Input<string | undefined>;
 }
 
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptions {
+    enforceSchema?: pulumi.Input<boolean | undefined>;
+}
+
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptions {
     dataLevel?: pulumi.Input<string | undefined>;
     dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -18991,6 +19651,10 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAd
     queryLifetime?: pulumi.Input<boolean | undefined>;
     reportType?: pulumi.Input<string | undefined>;
     syncStartDate?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsZendeskSupportOptions {
+    startDate?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
@@ -19040,10 +19704,20 @@ export interface PipelineIngestionDefinitionObjectTable {
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptions {
+    confluenceOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptions | undefined>;
     gdriveOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions | undefined>;
     googleAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions | undefined>;
+    jiraOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsJiraOptions | undefined>;
+    metaAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions | undefined>;
+    outlookOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions | undefined>;
     sharepointOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions | undefined>;
+    smartsheetOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSmartsheetOptions | undefined>;
     tiktokAdsOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions | undefined>;
+    zendeskSupportOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsZendeskSupportOptions | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptions {
+    includeConfluenceSpaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions {
@@ -19081,6 +19755,34 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAds
     syncStartDate?: pulumi.Input<string | undefined>;
 }
 
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsJiraOptions {
+    includeJiraSpaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions {
+    actionAttributionWindows?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    actionBreakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    actionReportTime?: pulumi.Input<string | undefined>;
+    breakdowns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    customInsightsLookbackWindow?: pulumi.Input<number | undefined>;
+    level?: pulumi.Input<string | undefined>;
+    startDate?: pulumi.Input<string | undefined>;
+    timeIncrement?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions {
+    attachmentMode?: pulumi.Input<string | undefined>;
+    bodyFormat?: pulumi.Input<string | undefined>;
+    folderFilters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    includeFolders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    includeMailboxes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    includeSenders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    includeSubjects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    senderFilters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    startDate?: pulumi.Input<string | undefined>;
+    subjectFilters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions {
     entityType?: pulumi.Input<string | undefined>;
     fileIngestionOptions?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsFileIngestionOptions | undefined>;
@@ -19110,6 +19812,10 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsSharepoin
     pathFilter?: pulumi.Input<string | undefined>;
 }
 
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsSmartsheetOptions {
+    enforceSchema?: pulumi.Input<boolean | undefined>;
+}
+
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions {
     dataLevel?: pulumi.Input<string | undefined>;
     dimensions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -19118,6 +19824,10 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAds
     queryLifetime?: pulumi.Input<boolean | undefined>;
     reportType?: pulumi.Input<string | undefined>;
     syncStartDate?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsZendeskSupportOptions {
+    startDate?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
@@ -19160,6 +19870,7 @@ export interface PipelineIngestionDefinitionSourceConfiguration {
      * The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `storage` to `catalog` or vice versa.  If pipeline was already created with `catalog` set, the value could be changed.* (Conflicts with `storage`).
      */
     catalog?: pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfigurationCatalog | undefined>;
+    googleAdsConfig?: pulumi.Input<inputs.PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfig | undefined>;
 }
 
 export interface PipelineIngestionDefinitionSourceConfigurationCatalog {
@@ -19174,6 +19885,10 @@ export interface PipelineIngestionDefinitionSourceConfigurationCatalogPostgres {
 export interface PipelineIngestionDefinitionSourceConfigurationCatalogPostgresSlotConfig {
     publicationName?: pulumi.Input<string | undefined>;
     slotName?: pulumi.Input<string | undefined>;
+}
+
+export interface PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfig {
+    managerAccountId?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineIngestionDefinitionTableConfiguration {
@@ -19275,7 +19990,7 @@ export interface PipelineNotification {
 }
 
 export interface PipelineProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineRestartWindow {
@@ -19350,7 +20065,7 @@ export interface PolicyInfoProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface PolicyInfoRowFilter {
@@ -19370,7 +20085,7 @@ export interface PostgresBranchProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresBranchSpec {
@@ -19462,7 +20177,7 @@ export interface PostgresCatalogProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresCatalogSpec {
@@ -19508,7 +20223,7 @@ export interface PostgresDatabaseProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresDatabaseSpec {
@@ -19536,7 +20251,7 @@ export interface PostgresEndpointProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresEndpointSpec {
@@ -19711,7 +20426,7 @@ export interface PostgresProjectProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresProjectSpec {
@@ -19882,7 +20597,7 @@ export interface PostgresRoleProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresRoleSpec {
@@ -19928,7 +20643,7 @@ export interface PostgresSyncedTableProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresSyncedTableSpec {
@@ -20240,7 +20955,7 @@ export interface QualityMonitorV2ProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface QualityMonitorV2ValidityCheckConfiguration {
@@ -20429,7 +21144,7 @@ export interface QueryProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface RecipientIpAccessList {
@@ -20450,7 +21165,7 @@ export interface RecipientProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface RecipientToken {
@@ -20506,14 +21221,14 @@ export interface RegisteredModelProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface RepoProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface RepoSparseCheckout {
@@ -20529,7 +21244,7 @@ export interface RestrictWorkspaceAdminsSettingProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface RestrictWorkspaceAdminsSettingRestrictWorkspaceAdmins {
@@ -20580,7 +21295,7 @@ export interface RfaAccessRequestDestinationsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface RfaAccessRequestDestinationsSecurable {
@@ -20605,21 +21320,21 @@ export interface SchemaProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface SecretAclProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface SecretProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface SecretScopeKeyvaultMetadata {
@@ -20631,7 +21346,14 @@ export interface SecretScopeProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface SecretUcProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ServicePrincipalFederationPolicyOidcPolicy {
@@ -20678,18 +21400,18 @@ export interface ServicePrincipalFederationPolicyOidcPolicy {
 }
 
 export interface ServicePrincipalProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ServicePrincipalRoleProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ServicePrincipalSecretProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface ShareObject {
@@ -20813,14 +21535,14 @@ export interface SqlAlertOptions {
 }
 
 export interface SqlAlertProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlDashboardProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlEndpointChannel {
@@ -20856,7 +21578,7 @@ export interface SqlEndpointProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlEndpointTags {
@@ -20872,7 +21594,7 @@ export interface SqlGlobalConfigProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlPermissionsPrivilegeAssignment {
@@ -20911,7 +21633,7 @@ export interface SqlPermissionsPrivilegeAssignment {
 }
 
 export interface SqlPermissionsProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlQueryParameter {
@@ -21051,7 +21773,7 @@ export interface SqlQueryProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlQuerySchedule {
@@ -21108,14 +21830,14 @@ export interface SqlTableProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlVisualizationProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlWidgetParameter {
@@ -21139,7 +21861,7 @@ export interface SqlWidgetProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface StorageCredentialAwsIamRole {
@@ -21230,14 +21952,76 @@ export interface StorageCredentialProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface SupervisorAgentProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface SupervisorAgentToolApp {
+    /**
+     * App name
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface SupervisorAgentToolGenieSpace {
+    /**
+     * (string, deprecated) - Deprecated: Use toolId instead
+     */
+    id: pulumi.Input<string>;
+}
+
+export interface SupervisorAgentToolKnowledgeAssistant {
+    /**
+     * The ID of the knowledge assistant
+     */
+    knowledgeAssistantId: pulumi.Input<string>;
+    /**
+     * Deprecated: use knowledgeAssistantId instead
+     */
+    servingEndpointName?: pulumi.Input<string | undefined>;
+}
+
+export interface SupervisorAgentToolProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface SupervisorAgentToolUcConnection {
+    /**
+     * (string) - Full resource name:
+     * supervisor-agents/{supervisor_agent_id}/tools/{tool_id}
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface SupervisorAgentToolUcFunction {
+    /**
+     * (string) - Full resource name:
+     * supervisor-agents/{supervisor_agent_id}/tools/{tool_id}
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface SupervisorAgentToolVolume {
+    /**
+     * Full uc volume name
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface SystemSchemaProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface TableColumn {
@@ -21255,14 +22039,14 @@ export interface TableColumn {
 }
 
 export interface TableProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface TagPolicyProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface TagPolicyValue {
@@ -21273,19 +22057,19 @@ export interface TokenProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface UserInstanceProfileProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface UserProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface UserRoleProviderConfig {
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface VectorSearchEndpointEndpointStatus {
@@ -21303,11 +22087,11 @@ export interface VectorSearchEndpointProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface VectorSearchEndpointScalingInfo {
-    requestedMinQps?: pulumi.Input<number | undefined>;
+    requestedTargetQps?: pulumi.Input<number | undefined>;
     /**
      * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
      */
@@ -21315,6 +22099,11 @@ export interface VectorSearchEndpointScalingInfo {
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpec {
+    columnsToIndices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * list of columns to sync. If not specified, all columns are syncronized.
+     */
+    columnsToSyncs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * array of objects representing columns that contain the embedding source.  Each entry consists of:
      */
@@ -21414,7 +22203,7 @@ export interface VectorSearchIndexProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface VectorSearchIndexStatus {
@@ -21440,42 +22229,42 @@ export interface VolumeProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface WarehousesDefaultWarehouseOverrideProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkspaceBindingProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkspaceConfProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkspaceEntityTagAssignmentProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkspaceFileProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
@@ -21632,7 +22421,7 @@ export interface WorkspaceSettingV2ProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
-    workspaceId: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface WorkspaceSettingV2RestrictWorkspaceAdmins {

@@ -507,7 +507,7 @@ class SqlAlert(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.SqlAlertProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.SqlAlertProviderConfig']:
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

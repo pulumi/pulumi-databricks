@@ -99,7 +99,7 @@ export class DataClassificationCatalogConfig extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.DataClassificationCatalogConfigProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.DataClassificationCatalogConfigProviderConfig>;
 
     /**
      * Create a DataClassificationCatalogConfig resource with the given unique name, arguments, and options.

@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineProviderConfig
     {
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private PipelineProviderConfig(string workspaceId)
+        private PipelineProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

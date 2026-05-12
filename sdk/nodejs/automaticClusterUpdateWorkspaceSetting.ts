@@ -36,7 +36,7 @@ export class AutomaticClusterUpdateWorkspaceSetting extends pulumi.CustomResourc
 
     declare public readonly automaticClusterUpdateWorkspace: pulumi.Output<outputs.AutomaticClusterUpdateWorkspaceSettingAutomaticClusterUpdateWorkspace>;
     declare public readonly etag: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.AutomaticClusterUpdateWorkspaceSettingProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.AutomaticClusterUpdateWorkspaceSettingProviderConfig>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**

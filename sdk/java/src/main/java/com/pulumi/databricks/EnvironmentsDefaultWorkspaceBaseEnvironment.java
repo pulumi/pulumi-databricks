@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * The Default Workspace Base Environment is a singleton resource that configures which workspace base environments are applied by default to new notebooks in the workspace. Defaults can be set separately for CPU and GPU compute.
  * 
@@ -190,14 +190,14 @@ public class EnvironmentsDefaultWorkspaceBaseEnvironment extends com.pulumi.reso
      * 
      */
     @Export(name="providerConfig", refs={EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig> providerConfig;
+    private Output<EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
 
     /**

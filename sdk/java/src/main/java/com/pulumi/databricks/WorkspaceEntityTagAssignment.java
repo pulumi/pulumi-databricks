@@ -113,14 +113,14 @@ public class WorkspaceEntityTagAssignment extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="providerConfig", refs={WorkspaceEntityTagAssignmentProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ WorkspaceEntityTagAssignmentProviderConfig> providerConfig;
+    private Output<WorkspaceEntityTagAssignmentProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<WorkspaceEntityTagAssignmentProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<WorkspaceEntityTagAssignmentProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed

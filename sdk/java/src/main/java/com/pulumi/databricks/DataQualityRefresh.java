@@ -13,7 +13,6 @@ import com.pulumi.databricks.inputs.DataQualityRefreshState;
 import com.pulumi.databricks.outputs.DataQualityRefreshProviderConfig;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -188,14 +187,14 @@ public class DataQualityRefresh extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={DataQualityRefreshProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ DataQualityRefreshProviderConfig> providerConfig;
+    private Output<DataQualityRefreshProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<DataQualityRefreshProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<DataQualityRefreshProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * (integer) - Unique id of the refresh operation

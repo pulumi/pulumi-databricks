@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSchemasResult {
@@ -25,7 +23,7 @@ public final class GetSchemasResult {
      * 
      */
     private List<String> ids;
-    private @Nullable GetSchemasProviderConfig providerConfig;
+    private GetSchemasProviderConfig providerConfig;
 
     private GetSchemasResult() {}
     public String catalogName() {
@@ -45,8 +43,8 @@ public final class GetSchemasResult {
     public List<String> ids() {
         return this.ids;
     }
-    public Optional<GetSchemasProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetSchemasProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -61,7 +59,7 @@ public final class GetSchemasResult {
         private String catalogName;
         private String id;
         private List<String> ids;
-        private @Nullable GetSchemasProviderConfig providerConfig;
+        private GetSchemasProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetSchemasResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -99,8 +97,10 @@ public final class GetSchemasResult {
             return ids(List.of(ids));
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetSchemasProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetSchemasProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetSchemasResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

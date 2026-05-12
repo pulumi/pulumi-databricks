@@ -88,7 +88,7 @@ export class GroupMember extends pulumi.CustomResource {
      * This is the `id` attribute (SCIM ID) of the group, service principal, or user.
      */
     declare public readonly memberId: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.GroupMemberProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.GroupMemberProviderConfig>;
 
     /**
      * Create a GroupMember resource with the given unique name, arguments, and options.

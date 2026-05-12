@@ -121,14 +121,14 @@ public class MlflowModel extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={MlflowModelProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ MlflowModelProviderConfig> providerConfig;
+    private Output<MlflowModelProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<MlflowModelProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<MlflowModelProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="registeredModelId", refs={String.class}, tree="[0]")
     private Output<String> registeredModelId;

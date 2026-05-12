@@ -432,10 +432,10 @@ public class ExternalLocation extends com.pulumi.resources.CustomResource {
         return this.owner;
     }
     @Export(name="providerConfig", refs={ExternalLocationProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ExternalLocationProviderConfig> providerConfig;
+    private Output<ExternalLocationProviderConfig> providerConfig;
 
-    public Output<Optional<ExternalLocationProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<ExternalLocationProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Indicates whether the external location is read-only.

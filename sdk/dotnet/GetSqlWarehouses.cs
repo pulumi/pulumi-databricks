@@ -248,7 +248,7 @@ namespace Pulumi.Databricks
         /// list of databricks.SqlEndpoint ids
         /// </summary>
         public readonly ImmutableArray<string> Ids;
-        public readonly Outputs.GetSqlWarehousesProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetSqlWarehousesProviderConfigResult ProviderConfig;
         public readonly string? WarehouseNameContains;
 
         [OutputConstructor]
@@ -257,7 +257,7 @@ namespace Pulumi.Databricks
 
             ImmutableArray<string> ids,
 
-            Outputs.GetSqlWarehousesProviderConfigResult? providerConfig,
+            Outputs.GetSqlWarehousesProviderConfigResult providerConfig,
 
             string? warehouseNameContains)
         {

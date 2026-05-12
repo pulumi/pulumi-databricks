@@ -199,8 +199,8 @@ type LakehouseMonitor struct {
 	// Schema where output metric tables are created
 	OutputSchemaName pulumi.StringOutput `pulumi:"outputSchemaName"`
 	// The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
-	ProfileMetricsTableName pulumi.StringOutput                     `pulumi:"profileMetricsTableName"`
-	ProviderConfig          LakehouseMonitorProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProfileMetricsTableName pulumi.StringOutput                  `pulumi:"profileMetricsTableName"`
+	ProviderConfig          LakehouseMonitorProviderConfigOutput `pulumi:"providerConfig"`
 	// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
 	Schedule LakehouseMonitorSchedulePtrOutput `pulumi:"schedule"`
 	// Whether to skip creating a default dashboard summarizing data quality metrics.
@@ -567,8 +567,8 @@ func (o LakehouseMonitorOutput) ProfileMetricsTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakehouseMonitor) pulumi.StringOutput { return v.ProfileMetricsTableName }).(pulumi.StringOutput)
 }
 
-func (o LakehouseMonitorOutput) ProviderConfig() LakehouseMonitorProviderConfigPtrOutput {
-	return o.ApplyT(func(v *LakehouseMonitor) LakehouseMonitorProviderConfigPtrOutput { return v.ProviderConfig }).(LakehouseMonitorProviderConfigPtrOutput)
+func (o LakehouseMonitorOutput) ProviderConfig() LakehouseMonitorProviderConfigOutput {
+	return o.ApplyT(func(v *LakehouseMonitor) LakehouseMonitorProviderConfigOutput { return v.ProviderConfig }).(LakehouseMonitorProviderConfigOutput)
 }
 
 // The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:

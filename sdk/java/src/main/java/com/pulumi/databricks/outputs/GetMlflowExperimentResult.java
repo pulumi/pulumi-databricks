@@ -11,8 +11,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMlflowExperimentResult {
@@ -51,7 +49,7 @@ public final class GetMlflowExperimentResult {
      * 
      */
     private String name;
-    private @Nullable GetMlflowExperimentProviderConfig providerConfig;
+    private GetMlflowExperimentProviderConfig providerConfig;
     /**
      * @return Additional metadata key-value pairs.
      * 
@@ -108,8 +106,8 @@ public final class GetMlflowExperimentResult {
     public String name() {
         return this.name;
     }
-    public Optional<GetMlflowExperimentProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetMlflowExperimentProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     /**
      * @return Additional metadata key-value pairs.
@@ -135,7 +133,7 @@ public final class GetMlflowExperimentResult {
         private Integer lastUpdateTime;
         private String lifecycleStage;
         private String name;
-        private @Nullable GetMlflowExperimentProviderConfig providerConfig;
+        private GetMlflowExperimentProviderConfig providerConfig;
         private List<GetMlflowExperimentTag> tags;
         public Builder() {}
         public Builder(GetMlflowExperimentResult defaults) {
@@ -208,8 +206,10 @@ public final class GetMlflowExperimentResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetMlflowExperimentProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetMlflowExperimentProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetMlflowExperimentResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMwsCredentialsResult {
@@ -24,7 +22,13 @@ public final class GetMwsCredentialsResult {
      * 
      */
     private Map<String,String> ids;
-    private @Nullable GetMwsCredentialsProviderConfig providerConfig;
+    /**
+     * @deprecated
+     * provider_config has no effect on this account-only resource and will be removed in a future major release.
+     * 
+     */
+    @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
+    private GetMwsCredentialsProviderConfig providerConfig;
 
     private GetMwsCredentialsResult() {}
     /**
@@ -41,8 +45,14 @@ public final class GetMwsCredentialsResult {
     public Map<String,String> ids() {
         return this.ids;
     }
-    public Optional<GetMwsCredentialsProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    /**
+     * @deprecated
+     * provider_config has no effect on this account-only resource and will be removed in a future major release.
+     * 
+     */
+    @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
+    public GetMwsCredentialsProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -56,7 +66,7 @@ public final class GetMwsCredentialsResult {
     public static final class Builder {
         private String id;
         private Map<String,String> ids;
-        private @Nullable GetMwsCredentialsProviderConfig providerConfig;
+        private GetMwsCredentialsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetMwsCredentialsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -82,8 +92,10 @@ public final class GetMwsCredentialsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetMwsCredentialsProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetMwsCredentialsProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetMwsCredentialsResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

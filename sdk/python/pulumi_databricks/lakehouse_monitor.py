@@ -1097,7 +1097,7 @@ class LakehouseMonitor(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.LakehouseMonitorProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.LakehouseMonitorProviderConfig']:
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

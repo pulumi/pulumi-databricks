@@ -430,7 +430,7 @@ namespace Pulumi.Databricks
         /// list of databricks.Cluster ids
         /// </summary>
         public readonly ImmutableArray<string> Ids;
-        public readonly Outputs.GetClustersProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetClustersProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetClustersResult(
@@ -442,7 +442,7 @@ namespace Pulumi.Databricks
 
             ImmutableArray<string> ids,
 
-            Outputs.GetClustersProviderConfigResult? providerConfig)
+            Outputs.GetClustersProviderConfigResult providerConfig)
         {
             ClusterNameContains = clusterNameContains;
             FilterBy = filterBy;

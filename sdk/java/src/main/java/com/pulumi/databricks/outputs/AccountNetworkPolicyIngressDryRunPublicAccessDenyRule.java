@@ -16,11 +16,6 @@ import javax.annotation.Nullable;
 public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRule {
     private @Nullable AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthentication authentication;
     private @Nullable AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination destination;
-    /**
-     * @return User-provided name for this ingress rule. Helps identify which rule
-     * caused a request to be denied or dry-run denied
-     * 
-     */
     private @Nullable String label;
     private @Nullable AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleOrigin origin;
 
@@ -31,11 +26,6 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRule {
     public Optional<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination> destination() {
         return Optional.ofNullable(this.destination);
     }
-    /**
-     * @return User-provided name for this ingress rule. Helps identify which rule
-     * caused a request to be denied or dry-run denied
-     * 
-     */
     public Optional<String> label() {
         return Optional.ofNullable(this.label);
     }

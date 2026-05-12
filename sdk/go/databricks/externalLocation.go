@@ -230,8 +230,8 @@ type ExternalLocation struct {
 	// Name of External Location, which must be unique within the databricks_metastore. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Username/groupname/sp applicationId of the external location owner.
-	Owner          pulumi.StringOutput                     `pulumi:"owner"`
-	ProviderConfig ExternalLocationProviderConfigPtrOutput `pulumi:"providerConfig"`
+	Owner          pulumi.StringOutput                  `pulumi:"owner"`
+	ProviderConfig ExternalLocationProviderConfigOutput `pulumi:"providerConfig"`
 	// Indicates whether the external location is read-only.
 	ReadOnly pulumi.BoolPtrOutput `pulumi:"readOnly"`
 	// Suppress validation errors if any & force save the external location
@@ -609,8 +609,8 @@ func (o ExternalLocationOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalLocation) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-func (o ExternalLocationOutput) ProviderConfig() ExternalLocationProviderConfigPtrOutput {
-	return o.ApplyT(func(v *ExternalLocation) ExternalLocationProviderConfigPtrOutput { return v.ProviderConfig }).(ExternalLocationProviderConfigPtrOutput)
+func (o ExternalLocationOutput) ProviderConfig() ExternalLocationProviderConfigOutput {
+	return o.ApplyT(func(v *ExternalLocation) ExternalLocationProviderConfigOutput { return v.ProviderConfig }).(ExternalLocationProviderConfigOutput)
 }
 
 // Indicates whether the external location is read-only.

@@ -427,14 +427,14 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={AlertProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ AlertProviderConfig> providerConfig;
+    private Output<AlertProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<AlertProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<AlertProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * ID of the query evaluated by the alert.

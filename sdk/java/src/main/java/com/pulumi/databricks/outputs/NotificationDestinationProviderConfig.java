@@ -4,9 +4,10 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class NotificationDestinationProviderConfig {
@@ -16,7 +17,7 @@ public final class NotificationDestinationProviderConfig {
      * &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
      * 
      */
-    private String workspaceId;
+    private @Nullable String workspaceId;
 
     private NotificationDestinationProviderConfig() {}
     /**
@@ -25,8 +26,8 @@ public final class NotificationDestinationProviderConfig {
      * &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
      * 
      */
-    public String workspaceId() {
-        return this.workspaceId;
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -38,7 +39,7 @@ public final class NotificationDestinationProviderConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String workspaceId;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(NotificationDestinationProviderConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -46,10 +47,8 @@ public final class NotificationDestinationProviderConfig {
         }
 
         @CustomType.Setter
-        public Builder workspaceId(String workspaceId) {
-            if (workspaceId == null) {
-              throw new MissingRequiredPropertyException("NotificationDestinationProviderConfig", "workspaceId");
-            }
+        public Builder workspaceId(@Nullable String workspaceId) {
+
             this.workspaceId = workspaceId;
             return this;
         }

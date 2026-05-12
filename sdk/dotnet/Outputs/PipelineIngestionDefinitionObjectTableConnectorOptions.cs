@@ -13,25 +13,49 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineIngestionDefinitionObjectTableConnectorOptions
     {
+        public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptions? ConfluenceOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions? GdriveOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions? GoogleAdsOptions;
+        public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsJiraOptions? JiraOptions;
+        public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions? MetaAdsOptions;
+        public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions? OutlookOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions? SharepointOptions;
+        public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSmartsheetOptions? SmartsheetOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions? TiktokAdsOptions;
+        public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsZendeskSupportOptions? ZendeskSupportOptions;
 
         [OutputConstructor]
         private PipelineIngestionDefinitionObjectTableConnectorOptions(
+            Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptions? confluenceOptions,
+
             Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions? gdriveOptions,
 
             Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions? googleAdsOptions,
 
+            Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsJiraOptions? jiraOptions,
+
+            Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions? metaAdsOptions,
+
+            Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions? outlookOptions,
+
             Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions? sharepointOptions,
 
-            Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions? tiktokAdsOptions)
+            Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSmartsheetOptions? smartsheetOptions,
+
+            Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptions? tiktokAdsOptions,
+
+            Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsZendeskSupportOptions? zendeskSupportOptions)
         {
+            ConfluenceOptions = confluenceOptions;
             GdriveOptions = gdriveOptions;
             GoogleAdsOptions = googleAdsOptions;
+            JiraOptions = jiraOptions;
+            MetaAdsOptions = metaAdsOptions;
+            OutlookOptions = outlookOptions;
             SharepointOptions = sharepointOptions;
+            SmartsheetOptions = smartsheetOptions;
             TiktokAdsOptions = tiktokAdsOptions;
+            ZendeskSupportOptions = zendeskSupportOptions;
         }
     }
 }

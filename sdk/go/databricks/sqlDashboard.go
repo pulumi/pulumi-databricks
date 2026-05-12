@@ -108,10 +108,10 @@ type SqlDashboard struct {
 	Name                    pulumi.StringOutput    `pulumi:"name"`
 	Parent                  pulumi.StringPtrOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig SqlDashboardProviderConfigPtrOutput `pulumi:"providerConfig"`
-	RunAsRole      pulumi.StringPtrOutput              `pulumi:"runAsRole"`
-	Tags           pulumi.StringArrayOutput            `pulumi:"tags"`
-	UpdatedAt      pulumi.StringOutput                 `pulumi:"updatedAt"`
+	ProviderConfig SqlDashboardProviderConfigOutput `pulumi:"providerConfig"`
+	RunAsRole      pulumi.StringPtrOutput           `pulumi:"runAsRole"`
+	Tags           pulumi.StringArrayOutput         `pulumi:"tags"`
+	UpdatedAt      pulumi.StringOutput              `pulumi:"updatedAt"`
 }
 
 // NewSqlDashboard registers a new resource with the given unique name, arguments, and options.
@@ -300,8 +300,8 @@ func (o SqlDashboardOutput) Parent() pulumi.StringPtrOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o SqlDashboardOutput) ProviderConfig() SqlDashboardProviderConfigPtrOutput {
-	return o.ApplyT(func(v *SqlDashboard) SqlDashboardProviderConfigPtrOutput { return v.ProviderConfig }).(SqlDashboardProviderConfigPtrOutput)
+func (o SqlDashboardOutput) ProviderConfig() SqlDashboardProviderConfigOutput {
+	return o.ApplyT(func(v *SqlDashboard) SqlDashboardProviderConfigOutput { return v.ProviderConfig }).(SqlDashboardProviderConfigOutput)
 }
 
 func (o SqlDashboardOutput) RunAsRole() pulumi.StringPtrOutput {

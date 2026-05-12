@@ -42,7 +42,6 @@ class ProviderArgs:
                  debug_truncate_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  disable_oauth_refresh_token: pulumi.Input[Optional[_builtins.bool]] = None,
                  discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
-                 experimental_is_unified_host: pulumi.Input[Optional[_builtins.bool]] = None,
                  google_credentials: pulumi.Input[Optional[_builtins.str]] = None,
                  google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  host: pulumi.Input[Optional[_builtins.str]] = None,
@@ -110,8 +109,6 @@ class ProviderArgs:
             pulumi.set(__self__, "disable_oauth_refresh_token", disable_oauth_refresh_token)
         if discovery_url is not None:
             pulumi.set(__self__, "discovery_url", discovery_url)
-        if experimental_is_unified_host is not None:
-            pulumi.set(__self__, "experimental_is_unified_host", experimental_is_unified_host)
         if google_credentials is not None:
             pulumi.set(__self__, "google_credentials", google_credentials)
         if google_service_account is not None:
@@ -357,15 +354,6 @@ class ProviderArgs:
         pulumi.set(self, "discovery_url", value)
 
     @_builtins.property
-    @pulumi.getter(name="experimentalIsUnifiedHost")
-    def experimental_is_unified_host(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        return pulumi.get(self, "experimental_is_unified_host")
-
-    @experimental_is_unified_host.setter
-    def experimental_is_unified_host(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "experimental_is_unified_host", value)
-
-    @_builtins.property
     @pulumi.getter(name="googleCredentials")
     def google_credentials(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "google_credentials")
@@ -557,7 +545,6 @@ class Provider(pulumi.ProviderResource):
                  debug_truncate_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  disable_oauth_refresh_token: pulumi.Input[Optional[_builtins.bool]] = None,
                  discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
-                 experimental_is_unified_host: pulumi.Input[Optional[_builtins.bool]] = None,
                  google_credentials: pulumi.Input[Optional[_builtins.str]] = None,
                  google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  host: pulumi.Input[Optional[_builtins.str]] = None,
@@ -638,7 +625,6 @@ class Provider(pulumi.ProviderResource):
                  debug_truncate_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  disable_oauth_refresh_token: pulumi.Input[Optional[_builtins.bool]] = None,
                  discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
-                 experimental_is_unified_host: pulumi.Input[Optional[_builtins.bool]] = None,
                  google_credentials: pulumi.Input[Optional[_builtins.str]] = None,
                  google_service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  host: pulumi.Input[Optional[_builtins.str]] = None,
@@ -689,7 +675,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["debug_truncate_bytes"] = pulumi.Output.from_input(debug_truncate_bytes).apply(pulumi.runtime.to_json) if debug_truncate_bytes is not None else None
             __props__.__dict__["disable_oauth_refresh_token"] = pulumi.Output.from_input(disable_oauth_refresh_token).apply(pulumi.runtime.to_json) if disable_oauth_refresh_token is not None else None
             __props__.__dict__["discovery_url"] = discovery_url
-            __props__.__dict__["experimental_is_unified_host"] = pulumi.Output.from_input(experimental_is_unified_host).apply(pulumi.runtime.to_json) if experimental_is_unified_host is not None else None
             __props__.__dict__["google_credentials"] = None if google_credentials is None else pulumi.Output.secret(google_credentials)
             __props__.__dict__["google_service_account"] = google_service_account
             __props__.__dict__["host"] = host

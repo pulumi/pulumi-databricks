@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApiGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("scopeQualifier")]
+        public Input<string>? ScopeQualifier { get; set; }
+
         [Input("scopes")]
         private InputList<string>? _scopes;
         public InputList<string> Scopes

@@ -467,7 +467,7 @@ export class Grant extends pulumi.CustomResource {
     declare public readonly pipeline: pulumi.Output<string | undefined>;
     declare public readonly principal: pulumi.Output<string>;
     declare public readonly privileges: pulumi.Output<string[]>;
-    declare public readonly providerConfig: pulumi.Output<outputs.GrantProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.GrantProviderConfig>;
     declare public readonly recipient: pulumi.Output<string | undefined>;
     declare public readonly schema: pulumi.Output<string | undefined>;
     declare public readonly share: pulumi.Output<string | undefined>;

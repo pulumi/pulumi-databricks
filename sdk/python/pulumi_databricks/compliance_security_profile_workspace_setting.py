@@ -233,7 +233,7 @@ class ComplianceSecurityProfileWorkspaceSetting(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig']:
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

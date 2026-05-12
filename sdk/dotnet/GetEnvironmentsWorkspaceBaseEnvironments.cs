@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetEnvironmentsWorkspaceBaseEnvironments
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves the list of all Workspace Base Environments in the workspace.
         /// The list can be accessed via the data object's `WorkspaceBaseEnvironments` field.
@@ -41,7 +41,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentsWorkspaceBaseEnvironmentsResult>("databricks:index/getEnvironmentsWorkspaceBaseEnvironments:getEnvironmentsWorkspaceBaseEnvironments", args ?? new GetEnvironmentsWorkspaceBaseEnvironmentsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves the list of all Workspace Base Environments in the workspace.
         /// The list can be accessed via the data object's `WorkspaceBaseEnvironments` field.
@@ -70,7 +70,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentsWorkspaceBaseEnvironmentsResult>("databricks:index/getEnvironmentsWorkspaceBaseEnvironments:getEnvironmentsWorkspaceBaseEnvironments", args ?? new GetEnvironmentsWorkspaceBaseEnvironmentsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves the list of all Workspace Base Environments in the workspace.
         /// The list can be accessed via the data object's `WorkspaceBaseEnvironments` field.

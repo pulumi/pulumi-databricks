@@ -76,7 +76,7 @@ class GetClusterResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetClusterProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetClusterProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
 

@@ -212,8 +212,8 @@ type User struct {
 	// This flag determines whether the user's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
 	ForceDeleteRepos pulumi.BoolPtrOutput `pulumi:"forceDeleteRepos"`
 	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
-	Home           pulumi.StringOutput         `pulumi:"home"`
-	ProviderConfig UserProviderConfigPtrOutput `pulumi:"providerConfig"`
+	Home           pulumi.StringOutput      `pulumi:"home"`
+	ProviderConfig UserProviderConfigOutput `pulumi:"providerConfig"`
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
 	Repos pulumi.StringOutput `pulumi:"repos"`
 	// This is the username of the given user and will be their form of access and identity.  Provided username will be converted to lower case if it contains upper case characters.
@@ -565,8 +565,8 @@ func (o UserOutput) Home() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Home }).(pulumi.StringOutput)
 }
 
-func (o UserOutput) ProviderConfig() UserProviderConfigPtrOutput {
-	return o.ApplyT(func(v *User) UserProviderConfigPtrOutput { return v.ProviderConfig }).(UserProviderConfigPtrOutput)
+func (o UserOutput) ProviderConfig() UserProviderConfigOutput {
+	return o.ApplyT(func(v *User) UserProviderConfigOutput { return v.ProviderConfig }).(UserProviderConfigOutput)
 }
 
 // Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.

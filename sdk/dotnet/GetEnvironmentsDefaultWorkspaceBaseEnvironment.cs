@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetEnvironmentsDefaultWorkspaceBaseEnvironment
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves the current default Workspace Base Environment configuration for the workspace.
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult>("databricks:index/getEnvironmentsDefaultWorkspaceBaseEnvironment:getEnvironmentsDefaultWorkspaceBaseEnvironment", args ?? new GetEnvironmentsDefaultWorkspaceBaseEnvironmentArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves the current default Workspace Base Environment configuration for the workspace.
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult>("databricks:index/getEnvironmentsDefaultWorkspaceBaseEnvironment:getEnvironmentsDefaultWorkspaceBaseEnvironment", args ?? new GetEnvironmentsDefaultWorkspaceBaseEnvironmentInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves the current default Workspace Base Environment configuration for the workspace.
         /// 

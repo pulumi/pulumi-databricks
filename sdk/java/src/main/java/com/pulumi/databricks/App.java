@@ -372,6 +372,12 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<AppTelemetryExportDestination>>> telemetryExportDestinations() {
         return Codegen.optional(this.telemetryExportDestinations);
     }
+    @Export(name="thumbnailUrl", refs={String.class}, tree="[0]")
+    private Output<String> thumbnailUrl;
+
+    public Output<String> thumbnailUrl() {
+        return this.thumbnailUrl;
+    }
     /**
      * The update time of the app.
      * 

@@ -83,14 +83,14 @@ public class OnlineStore extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={OnlineStoreProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ OnlineStoreProviderConfig> providerConfig;
+    private Output<OnlineStoreProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<OnlineStoreProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<OnlineStoreProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * The number of read replicas for the online store. Defaults to 0

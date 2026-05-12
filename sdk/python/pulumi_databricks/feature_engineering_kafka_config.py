@@ -511,7 +511,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.FeatureEngineeringKafkaConfigProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.FeatureEngineeringKafkaConfigProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

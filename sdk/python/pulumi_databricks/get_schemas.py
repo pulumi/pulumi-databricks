@@ -65,7 +65,7 @@ class GetSchemasResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetSchemasProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetSchemasProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
 

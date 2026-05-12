@@ -158,7 +158,7 @@ namespace Pulumi.Databricks
         /// List of names of databricks_mlflow_model
         /// </summary>
         public readonly ImmutableArray<string> Names;
-        public readonly Outputs.GetMlflowModelsProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetMlflowModelsProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetMlflowModelsResult(
@@ -166,7 +166,7 @@ namespace Pulumi.Databricks
 
             ImmutableArray<string> names,
 
-            Outputs.GetMlflowModelsProviderConfigResult? providerConfig)
+            Outputs.GetMlflowModelsProviderConfigResult providerConfig)
         {
             Id = id;
             Names = names;

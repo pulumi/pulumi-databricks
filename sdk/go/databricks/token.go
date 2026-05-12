@@ -95,8 +95,8 @@ type Token struct {
 	// (Integer) The lifetime of the token, in seconds. If no lifetime is specified, then expire time will be set to maximum allowed by the workspace configuration or platform.
 	LifetimeSeconds pulumi.IntPtrOutput `pulumi:"lifetimeSeconds"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig TokenProviderConfigPtrOutput `pulumi:"providerConfig"`
-	TokenId        pulumi.StringOutput          `pulumi:"tokenId"`
+	ProviderConfig TokenProviderConfigOutput `pulumi:"providerConfig"`
+	TokenId        pulumi.StringOutput       `pulumi:"tokenId"`
 	// **Sensitive** value of the newly-created token.
 	TokenValue pulumi.StringOutput `pulumi:"tokenValue"`
 }
@@ -297,8 +297,8 @@ func (o TokenOutput) LifetimeSeconds() pulumi.IntPtrOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o TokenOutput) ProviderConfig() TokenProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Token) TokenProviderConfigPtrOutput { return v.ProviderConfig }).(TokenProviderConfigPtrOutput)
+func (o TokenOutput) ProviderConfig() TokenProviderConfigOutput {
+	return o.ApplyT(func(v *Token) TokenProviderConfigOutput { return v.ProviderConfig }).(TokenProviderConfigOutput)
 }
 
 func (o TokenOutput) TokenId() pulumi.StringOutput {

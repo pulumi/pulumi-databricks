@@ -78,7 +78,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.WorkspaceEntityTagAssignmentProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.WorkspaceEntityTagAssignmentProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed

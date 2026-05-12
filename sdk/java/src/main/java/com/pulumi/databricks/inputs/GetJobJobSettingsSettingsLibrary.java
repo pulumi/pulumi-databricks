@@ -8,6 +8,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryCran;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryMaven;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryProviderConfig;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryPypi;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -62,15 +63,15 @@ public final class GetJobJobSettingsSettingsLibrary extends com.pulumi.resources
      * Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    @Import(name="providerConfig")
-    private @Nullable GetJobJobSettingsSettingsLibraryProviderConfig providerConfig;
+    @Import(name="providerConfig", required=true)
+    private GetJobJobSettingsSettingsLibraryProviderConfig providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Optional<GetJobJobSettingsSettingsLibraryProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetJobJobSettingsSettingsLibraryProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     @Import(name="pypi")
@@ -159,7 +160,7 @@ public final class GetJobJobSettingsSettingsLibrary extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder providerConfig(@Nullable GetJobJobSettingsSettingsLibraryProviderConfig providerConfig) {
+        public Builder providerConfig(GetJobJobSettingsSettingsLibraryProviderConfig providerConfig) {
             $.providerConfig = providerConfig;
             return this;
         }
@@ -180,6 +181,9 @@ public final class GetJobJobSettingsSettingsLibrary extends com.pulumi.resources
         }
 
         public GetJobJobSettingsSettingsLibrary build() {
+            if ($.providerConfig == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsLibrary", "providerConfig");
+            }
             return $;
         }
     }

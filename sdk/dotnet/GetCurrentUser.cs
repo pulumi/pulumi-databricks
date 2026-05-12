@@ -77,7 +77,7 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly Outputs.GetCurrentUserProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetCurrentUserProviderConfigResult ProviderConfig;
         public readonly string Repos;
         public readonly string UserName;
         public readonly string WorkspaceUrl;
@@ -94,7 +94,7 @@ namespace Pulumi.Databricks
 
             string id,
 
-            Outputs.GetCurrentUserProviderConfigResult? providerConfig,
+            Outputs.GetCurrentUserProviderConfigResult providerConfig,
 
             string repos,
 

@@ -178,7 +178,7 @@ type StorageCredential struct {
 	// Username/groupname/sp applicationId of the storage credential owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig StorageCredentialProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig StorageCredentialProviderConfigOutput `pulumi:"providerConfig"`
 	// Indicates whether the storage credential is only usable for read operations.
 	ReadOnly pulumi.BoolPtrOutput `pulumi:"readOnly"`
 	// Suppress validation errors if any & force save the storage credential.
@@ -519,8 +519,8 @@ func (o StorageCredentialOutput) Owner() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o StorageCredentialOutput) ProviderConfig() StorageCredentialProviderConfigPtrOutput {
-	return o.ApplyT(func(v *StorageCredential) StorageCredentialProviderConfigPtrOutput { return v.ProviderConfig }).(StorageCredentialProviderConfigPtrOutput)
+func (o StorageCredentialOutput) ProviderConfig() StorageCredentialProviderConfigOutput {
+	return o.ApplyT(func(v *StorageCredential) StorageCredentialProviderConfigOutput { return v.ProviderConfig }).(StorageCredentialProviderConfigOutput)
 }
 
 // Indicates whether the storage credential is only usable for read operations.

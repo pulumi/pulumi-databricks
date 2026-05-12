@@ -156,7 +156,7 @@ export class SqlQuery extends pulumi.CustomResource {
      * The identifier of the workspace folder containing the object.
      */
     declare public readonly parent: pulumi.Output<string | undefined>;
-    declare public readonly providerConfig: pulumi.Output<outputs.SqlQueryProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.SqlQueryProviderConfig>;
     /**
      * The text of the query to be run.
      */

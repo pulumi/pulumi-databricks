@@ -18,10 +18,10 @@ namespace Pulumi.Databricks.Outputs
         /// 
         /// &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
         /// </summary>
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private NotificationDestinationProviderConfig(string workspaceId)
+        private NotificationDestinationProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

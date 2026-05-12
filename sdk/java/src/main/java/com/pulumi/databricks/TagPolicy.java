@@ -104,14 +104,14 @@ public class TagPolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={TagPolicyProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ TagPolicyProviderConfig> providerConfig;
+    private Output<TagPolicyProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<TagPolicyProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<TagPolicyProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="tagKey", refs={String.class}, tree="[0]")
     private Output<String> tagKey;

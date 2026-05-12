@@ -354,7 +354,7 @@ class UserRole(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.UserRoleProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.UserRoleProviderConfig']:
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

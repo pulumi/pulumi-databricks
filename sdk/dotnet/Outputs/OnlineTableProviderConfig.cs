@@ -16,10 +16,10 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         /// </summary>
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private OnlineTableProviderConfig(string workspaceId)
+        private OnlineTableProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

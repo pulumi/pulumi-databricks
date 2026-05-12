@@ -1138,7 +1138,7 @@ class Mount(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.MountProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.MountProviderConfig']:
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

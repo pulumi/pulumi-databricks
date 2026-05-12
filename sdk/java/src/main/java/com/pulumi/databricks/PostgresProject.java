@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *                 .defaultEndpointSettings(PostgresProjectSpecDefaultEndpointSettingsArgs.builder()
  *                     .autoscalingLimitMinCu(1.0)
  *                     .autoscalingLimitMaxCu(8.0)
- *                     .suspendTimeoutDuration("300s")
+ *                     .suspendTimeoutDuration("86400s")
  *                     .build())
  *                 .build())
  *             .build());
@@ -326,14 +326,14 @@ public class PostgresProject extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={PostgresProjectProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ PostgresProjectProviderConfig> providerConfig;
+    private Output<PostgresProjectProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<PostgresProjectProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<PostgresProjectProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * If true, permanently deletes the project (hard delete).

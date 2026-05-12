@@ -73,7 +73,7 @@ export class KnowledgeAssistantKnowledgeSource extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.KnowledgeAssistantKnowledgeSourceProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.KnowledgeAssistantKnowledgeSourceProviderConfig>;
     /**
      * The type of the source: "index", "files", or "fileTable".
      * Required when creating a Knowledge Source.

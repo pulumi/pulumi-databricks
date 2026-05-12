@@ -14,6 +14,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VectorSearchIndexDeltaSyncIndexSpec {
+    private @Nullable List<String> columnsToIndices;
+    /**
+     * @return list of columns to sync. If not specified, all columns are syncronized.
+     * 
+     */
+    private @Nullable List<String> columnsToSyncs;
     /**
      * @return array of objects representing columns that contain the embedding source.  Each entry consists of:
      * 
@@ -48,6 +54,16 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
     private @Nullable String sourceTable;
 
     private VectorSearchIndexDeltaSyncIndexSpec() {}
+    public List<String> columnsToIndices() {
+        return this.columnsToIndices == null ? List.of() : this.columnsToIndices;
+    }
+    /**
+     * @return list of columns to sync. If not specified, all columns are syncronized.
+     * 
+     */
+    public List<String> columnsToSyncs() {
+        return this.columnsToSyncs == null ? List.of() : this.columnsToSyncs;
+    }
     /**
      * @return array of objects representing columns that contain the embedding source.  Each entry consists of:
      * 
@@ -102,6 +118,8 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> columnsToIndices;
+        private @Nullable List<String> columnsToSyncs;
         private @Nullable List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> embeddingSourceColumns;
         private @Nullable List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> embeddingVectorColumns;
         private @Nullable String embeddingWritebackTable;
@@ -111,6 +129,8 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
         public Builder() {}
         public Builder(VectorSearchIndexDeltaSyncIndexSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.columnsToIndices = defaults.columnsToIndices;
+    	      this.columnsToSyncs = defaults.columnsToSyncs;
     	      this.embeddingSourceColumns = defaults.embeddingSourceColumns;
     	      this.embeddingVectorColumns = defaults.embeddingVectorColumns;
     	      this.embeddingWritebackTable = defaults.embeddingWritebackTable;
@@ -119,6 +139,24 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
     	      this.sourceTable = defaults.sourceTable;
         }
 
+        @CustomType.Setter
+        public Builder columnsToIndices(@Nullable List<String> columnsToIndices) {
+
+            this.columnsToIndices = columnsToIndices;
+            return this;
+        }
+        public Builder columnsToIndices(String... columnsToIndices) {
+            return columnsToIndices(List.of(columnsToIndices));
+        }
+        @CustomType.Setter
+        public Builder columnsToSyncs(@Nullable List<String> columnsToSyncs) {
+
+            this.columnsToSyncs = columnsToSyncs;
+            return this;
+        }
+        public Builder columnsToSyncs(String... columnsToSyncs) {
+            return columnsToSyncs(List.of(columnsToSyncs));
+        }
         @CustomType.Setter
         public Builder embeddingSourceColumns(@Nullable List<VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> embeddingSourceColumns) {
 
@@ -163,6 +201,8 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
         }
         public VectorSearchIndexDeltaSyncIndexSpec build() {
             final var _resultValue = new VectorSearchIndexDeltaSyncIndexSpec();
+            _resultValue.columnsToIndices = columnsToIndices;
+            _resultValue.columnsToSyncs = columnsToSyncs;
             _resultValue.embeddingSourceColumns = embeddingSourceColumns;
             _resultValue.embeddingVectorColumns = embeddingVectorColumns;
             _resultValue.embeddingWritebackTable = embeddingWritebackTable;

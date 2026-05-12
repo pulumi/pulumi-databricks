@@ -14,7 +14,6 @@ import com.pulumi.databricks.outputs.PostgresDatabaseProviderConfig;
 import com.pulumi.databricks.outputs.PostgresDatabaseSpec;
 import com.pulumi.databricks.outputs.PostgresDatabaseStatus;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -278,14 +277,14 @@ public class PostgresDatabase extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={PostgresDatabaseProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ PostgresDatabaseProviderConfig> providerConfig;
+    private Output<PostgresDatabaseProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<PostgresDatabaseProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<PostgresDatabaseProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * The desired state of the Database

@@ -130,7 +130,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.DataQualityRefreshProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.DataQualityRefreshProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// (integer) - Unique id of the refresh operation

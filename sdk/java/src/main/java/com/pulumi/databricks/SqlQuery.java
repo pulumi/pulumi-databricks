@@ -246,10 +246,10 @@ public class SqlQuery extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.parent);
     }
     @Export(name="providerConfig", refs={SqlQueryProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ SqlQueryProviderConfig> providerConfig;
+    private Output<SqlQueryProviderConfig> providerConfig;
 
-    public Output<Optional<SqlQueryProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<SqlQueryProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * The text of the query to be run.

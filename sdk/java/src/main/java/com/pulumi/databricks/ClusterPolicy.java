@@ -313,10 +313,10 @@ public class ClusterPolicy extends com.pulumi.resources.CustomResource {
         return this.policyId;
     }
     @Export(name="providerConfig", refs={ClusterPolicyProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ClusterPolicyProviderConfig> providerConfig;
+    private Output<ClusterPolicyProviderConfig> providerConfig;
 
-    public Output<Optional<ClusterPolicyProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<ClusterPolicyProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
 
     /**

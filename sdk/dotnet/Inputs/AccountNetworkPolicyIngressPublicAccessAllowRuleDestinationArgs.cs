@@ -12,15 +12,27 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accountApi")]
+        public Input<Inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountApiArgs>? AccountApi { get; set; }
+
+        [Input("accountDatabricksOne")]
+        public Input<Inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountDatabricksOneArgs>? AccountDatabricksOne { get; set; }
+
+        [Input("accountUi")]
+        public Input<Inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountUiArgs>? AccountUi { get; set; }
+
         [Input("allDestinations")]
         public Input<bool>? AllDestinations { get; set; }
+
+        [Input("appsRuntime")]
+        public Input<Inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAppsRuntimeArgs>? AppsRuntime { get; set; }
+
+        [Input("lakebaseRuntime")]
+        public Input<Inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationLakebaseRuntimeArgs>? LakebaseRuntime { get; set; }
 
         [Input("workspaceApi")]
         public Input<Inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApiArgs>? WorkspaceApi { get; set; }
 
-        /// <summary>
-        /// Workspace destinations
-        /// </summary>
         [Input("workspaceUi")]
         public Input<Inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceUiArgs>? WorkspaceUi { get; set; }
 

@@ -122,14 +122,14 @@ public class FeatureEngineeringKafkaConfig extends com.pulumi.resources.CustomRe
      * 
      */
     @Export(name="providerConfig", refs={FeatureEngineeringKafkaConfigProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ FeatureEngineeringKafkaConfigProviderConfig> providerConfig;
+    private Output<FeatureEngineeringKafkaConfigProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<FeatureEngineeringKafkaConfigProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<FeatureEngineeringKafkaConfigProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Options to configure which Kafka topics to pull data from

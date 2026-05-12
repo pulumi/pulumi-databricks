@@ -146,7 +146,7 @@ export class MlflowWebhook extends pulumi.CustomResource {
      * Name of MLflow model for which webhook will be created. If the model name is not specified, a registry-wide webhook is created that listens for the specified events across all versions of all registered models.
      */
     declare public readonly modelName: pulumi.Output<string | undefined>;
-    declare public readonly providerConfig: pulumi.Output<outputs.MlflowWebhookProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.MlflowWebhookProviderConfig>;
     /**
      * Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.
      */

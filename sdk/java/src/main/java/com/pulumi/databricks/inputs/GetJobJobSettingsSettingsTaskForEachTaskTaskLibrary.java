@@ -8,6 +8,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTask
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -62,15 +63,15 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary extends c
      * Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    @Import(name="providerConfig")
-    private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig providerConfig;
+    @Import(name="providerConfig", required=true)
+    private GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Optional<GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     @Import(name="pypi")
@@ -159,7 +160,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary extends c
          * @return builder
          * 
          */
-        public Builder providerConfig(@Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig providerConfig) {
+        public Builder providerConfig(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig providerConfig) {
             $.providerConfig = providerConfig;
             return this;
         }
@@ -180,6 +181,9 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary extends c
         }
 
         public GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary build() {
+            if ($.providerConfig == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary", "providerConfig");
+            }
             return $;
         }
     }

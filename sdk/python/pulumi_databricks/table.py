@@ -523,7 +523,7 @@ class Table(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.TableProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.TableProviderConfig']:
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

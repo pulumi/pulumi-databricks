@@ -50,7 +50,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.DbfsFileProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.DbfsFileProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// The full absolute path to the file. Conflicts with `ContentBase64`.

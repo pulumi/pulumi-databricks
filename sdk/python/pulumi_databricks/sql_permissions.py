@@ -661,7 +661,7 @@ class SqlPermissions(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.SqlPermissionsProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.SqlPermissionsProviderConfig']:
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

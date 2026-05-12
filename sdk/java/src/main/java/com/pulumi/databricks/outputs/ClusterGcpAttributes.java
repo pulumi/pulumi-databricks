@@ -23,6 +23,7 @@ public final class ClusterGcpAttributes {
      * 
      */
     private @Nullable Integer bootDiskSize;
+    private @Nullable String confidentialComputeType;
     /**
      * @return The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
      * 
@@ -66,6 +67,9 @@ public final class ClusterGcpAttributes {
      */
     public Optional<Integer> bootDiskSize() {
         return Optional.ofNullable(this.bootDiskSize);
+    }
+    public Optional<String> confidentialComputeType() {
+        return Optional.ofNullable(this.confidentialComputeType);
     }
     /**
      * @return The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
@@ -117,6 +121,7 @@ public final class ClusterGcpAttributes {
     public static final class Builder {
         private @Nullable String availability;
         private @Nullable Integer bootDiskSize;
+        private @Nullable String confidentialComputeType;
         private @Nullable Integer firstOnDemand;
         private @Nullable String googleServiceAccount;
         private @Nullable Integer localSsdCount;
@@ -127,6 +132,7 @@ public final class ClusterGcpAttributes {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
     	      this.bootDiskSize = defaults.bootDiskSize;
+    	      this.confidentialComputeType = defaults.confidentialComputeType;
     	      this.firstOnDemand = defaults.firstOnDemand;
     	      this.googleServiceAccount = defaults.googleServiceAccount;
     	      this.localSsdCount = defaults.localSsdCount;
@@ -144,6 +150,12 @@ public final class ClusterGcpAttributes {
         public Builder bootDiskSize(@Nullable Integer bootDiskSize) {
 
             this.bootDiskSize = bootDiskSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder confidentialComputeType(@Nullable String confidentialComputeType) {
+
+            this.confidentialComputeType = confidentialComputeType;
             return this;
         }
         @CustomType.Setter
@@ -180,6 +192,7 @@ public final class ClusterGcpAttributes {
             final var _resultValue = new ClusterGcpAttributes();
             _resultValue.availability = availability;
             _resultValue.bootDiskSize = bootDiskSize;
+            _resultValue.confidentialComputeType = confidentialComputeType;
             _resultValue.firstOnDemand = firstOnDemand;
             _resultValue.googleServiceAccount = googleServiceAccount;
             _resultValue.localSsdCount = localSsdCount;

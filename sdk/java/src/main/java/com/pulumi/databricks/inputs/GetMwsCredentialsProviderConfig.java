@@ -14,16 +14,24 @@ public final class GetMwsCredentialsProviderConfig extends com.pulumi.resources.
     public static final GetMwsCredentialsProviderConfig Empty = new GetMwsCredentialsProviderConfig();
 
     /**
-     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     * Ignored. This data source always operates against the account configured on the provider.
+     * 
+     * @deprecated
+     * workspace_id is ignored for account-only resources.
      * 
      */
+    @Deprecated /* workspace_id is ignored for account-only resources. */
     @Import(name="workspaceId", required=true)
     private String workspaceId;
 
     /**
-     * @return Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     * @return Ignored. This data source always operates against the account configured on the provider.
+     * 
+     * @deprecated
+     * workspace_id is ignored for account-only resources.
      * 
      */
+    @Deprecated /* workspace_id is ignored for account-only resources. */
     public String workspaceId() {
         return this.workspaceId;
     }
@@ -53,11 +61,15 @@ public final class GetMwsCredentialsProviderConfig extends com.pulumi.resources.
         }
 
         /**
-         * @param workspaceId Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+         * @param workspaceId Ignored. This data source always operates against the account configured on the provider.
          * 
          * @return builder
          * 
+         * @deprecated
+         * workspace_id is ignored for account-only resources.
+         * 
          */
+        @Deprecated /* workspace_id is ignored for account-only resources. */
         public Builder workspaceId(String workspaceId) {
             $.workspaceId = workspaceId;
             return this;

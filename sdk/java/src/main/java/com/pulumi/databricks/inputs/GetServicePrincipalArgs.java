@@ -47,6 +47,13 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.active);
     }
 
+    @Import(name="api")
+    private @Nullable Output<String> api;
+
+    public Optional<Output<String>> api() {
+        return Optional.ofNullable(this.api);
+    }
+
     /**
      * Application ID of the service principal. The service principal must exist before this resource can be retrieved.
      * 
@@ -179,6 +186,7 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
     private GetServicePrincipalArgs(GetServicePrincipalArgs $) {
         this.aclPrincipalId = $.aclPrincipalId;
         this.active = $.active;
+        this.api = $.api;
         this.applicationId = $.applicationId;
         this.displayName = $.displayName;
         this.externalId = $.externalId;
@@ -248,6 +256,15 @@ public final class GetServicePrincipalArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder active(Boolean active) {
             return active(Output.of(active));
+        }
+
+        public Builder api(@Nullable Output<String> api) {
+            $.api = api;
+            return this;
+        }
+
+        public Builder api(String api) {
+            return api(Output.of(api));
         }
 
         /**

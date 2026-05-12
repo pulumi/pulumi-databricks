@@ -80,7 +80,7 @@ namespace Pulumi.Databricks
         public Output<string> MetastoreId { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.ArtifactAllowlistProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.ArtifactAllowlistProviderConfig> ProviderConfig { get; private set; } = null!;
 
 
         /// <summary>

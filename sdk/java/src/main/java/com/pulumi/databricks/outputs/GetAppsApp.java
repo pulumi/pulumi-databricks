@@ -109,6 +109,7 @@ public final class GetAppsApp {
     private String servicePrincipalName;
     private @Nullable String space;
     private @Nullable List<GetAppsAppTelemetryExportDestination> telemetryExportDestinations;
+    private String thumbnailUrl;
     /**
      * @return The update time of the app.
      * 
@@ -264,6 +265,9 @@ public final class GetAppsApp {
     public List<GetAppsAppTelemetryExportDestination> telemetryExportDestinations() {
         return this.telemetryExportDestinations == null ? List.of() : this.telemetryExportDestinations;
     }
+    public String thumbnailUrl() {
+        return this.thumbnailUrl;
+    }
     /**
      * @return The update time of the app.
      * 
@@ -325,6 +329,7 @@ public final class GetAppsApp {
         private String servicePrincipalName;
         private @Nullable String space;
         private @Nullable List<GetAppsAppTelemetryExportDestination> telemetryExportDestinations;
+        private String thumbnailUrl;
         private String updateTime;
         private String updater;
         private String url;
@@ -357,6 +362,7 @@ public final class GetAppsApp {
     	      this.servicePrincipalName = defaults.servicePrincipalName;
     	      this.space = defaults.space;
     	      this.telemetryExportDestinations = defaults.telemetryExportDestinations;
+    	      this.thumbnailUrl = defaults.thumbnailUrl;
     	      this.updateTime = defaults.updateTime;
     	      this.updater = defaults.updater;
     	      this.url = defaults.url;
@@ -552,6 +558,14 @@ public final class GetAppsApp {
             return telemetryExportDestinations(List.of(telemetryExportDestinations));
         }
         @CustomType.Setter
+        public Builder thumbnailUrl(String thumbnailUrl) {
+            if (thumbnailUrl == null) {
+              throw new MissingRequiredPropertyException("GetAppsApp", "thumbnailUrl");
+            }
+            this.thumbnailUrl = thumbnailUrl;
+            return this;
+        }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             if (updateTime == null) {
               throw new MissingRequiredPropertyException("GetAppsApp", "updateTime");
@@ -616,6 +630,7 @@ public final class GetAppsApp {
             _resultValue.servicePrincipalName = servicePrincipalName;
             _resultValue.space = space;
             _resultValue.telemetryExportDestinations = telemetryExportDestinations;
+            _resultValue.thumbnailUrl = thumbnailUrl;
             _resultValue.updateTime = updateTime;
             _resultValue.updater = updater;
             _resultValue.url = url;

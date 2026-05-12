@@ -475,7 +475,7 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.AccessControlRuleSetProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.AccessControlRuleSetProviderConfig> ProviderConfig { get; private set; } = null!;
 
 
         /// <summary>

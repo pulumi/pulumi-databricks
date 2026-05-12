@@ -9,8 +9,6 @@ import com.pulumi.databricks.outputs.GetCatalogProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCatalogResult {
@@ -29,7 +27,7 @@ public final class GetCatalogResult {
      * 
      */
     private String name;
-    private @Nullable GetCatalogProviderConfig providerConfig;
+    private GetCatalogProviderConfig providerConfig;
 
     private GetCatalogResult() {}
     /**
@@ -53,8 +51,8 @@ public final class GetCatalogResult {
     public String name() {
         return this.name;
     }
-    public Optional<GetCatalogProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetCatalogProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -69,7 +67,7 @@ public final class GetCatalogResult {
         private GetCatalogCatalogInfo catalogInfo;
         private String id;
         private String name;
-        private @Nullable GetCatalogProviderConfig providerConfig;
+        private GetCatalogProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetCatalogResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -104,8 +102,10 @@ public final class GetCatalogResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetCatalogProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetCatalogProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetCatalogResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

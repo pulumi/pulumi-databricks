@@ -13,18 +13,99 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres synced table.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Synced Table by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresSyncedTable.Invoke(new()
+        ///     {
+        ///         Name = "synced_tables/my_catalog.my_schema.my_synced_table",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["syncedTableState"] = @this.Apply(@this =&gt; @this.Apply(getPostgresSyncedTableResult =&gt; getPostgresSyncedTableResult.Status?.DetailedState)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetPostgresSyncedTableResult> InvokeAsync(GetPostgresSyncedTableArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresSyncedTableResult>("databricks:index/getPostgresSyncedTable:getPostgresSyncedTable", args ?? new GetPostgresSyncedTableArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres synced table.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Synced Table by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresSyncedTable.Invoke(new()
+        ///     {
+        ///         Name = "synced_tables/my_catalog.my_schema.my_synced_table",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["syncedTableState"] = @this.Apply(@this =&gt; @this.Apply(getPostgresSyncedTableResult =&gt; getPostgresSyncedTableResult.Status?.DetailedState)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresSyncedTableResult> Invoke(GetPostgresSyncedTableInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresSyncedTableResult>("databricks:index/getPostgresSyncedTable:getPostgresSyncedTable", args ?? new GetPostgresSyncedTableInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres synced table.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Synced Table by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresSyncedTable.Invoke(new()
+        ///     {
+        ///         Name = "synced_tables/my_catalog.my_schema.my_synced_table",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["syncedTableState"] = @this.Apply(@this =&gt; @this.Apply(getPostgresSyncedTableResult =&gt; getPostgresSyncedTableResult.Status?.DetailedState)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresSyncedTableResult> Invoke(GetPostgresSyncedTableInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresSyncedTableResult>("databricks:index/getPostgresSyncedTable:getPostgresSyncedTable", args ?? new GetPostgresSyncedTableInvokeArgs(), options.WithDefaults());

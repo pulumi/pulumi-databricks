@@ -369,7 +369,7 @@ namespace Pulumi.Databricks
         public readonly bool? LongTermSupport;
         public readonly bool? Ml;
         public readonly bool? Photon;
-        public readonly Outputs.GetSparkVersionProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetSparkVersionProviderConfigResult ProviderConfig;
         public readonly string? Scala;
         public readonly string? SparkVersion;
 
@@ -393,7 +393,7 @@ namespace Pulumi.Databricks
 
             bool? photon,
 
-            Outputs.GetSparkVersionProviderConfigResult? providerConfig,
+            Outputs.GetSparkVersionProviderConfigResult providerConfig,
 
             string? scala,
 

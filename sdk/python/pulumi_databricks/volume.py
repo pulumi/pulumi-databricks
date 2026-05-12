@@ -603,7 +603,7 @@ class Volume(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.VolumeProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.VolumeProviderConfig']:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """

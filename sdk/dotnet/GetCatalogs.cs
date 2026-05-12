@@ -185,7 +185,7 @@ namespace Pulumi.Databricks
         /// set of databricks.Catalog names
         /// </summary>
         public readonly ImmutableArray<string> Ids;
-        public readonly Outputs.GetCatalogsProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetCatalogsProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetCatalogsResult(
@@ -193,7 +193,7 @@ namespace Pulumi.Databricks
 
             ImmutableArray<string> ids,
 
-            Outputs.GetCatalogsProviderConfigResult? providerConfig)
+            Outputs.GetCatalogsProviderConfigResult providerConfig)
         {
             Id = id;
             Ids = ids;

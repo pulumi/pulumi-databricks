@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 public final class GetClusterClusterInfoSpecGcpAttributes {
     private @Nullable String availability;
     private @Nullable Integer bootDiskSize;
+    private @Nullable String confidentialComputeType;
     private @Nullable Integer firstOnDemand;
     private @Nullable String googleServiceAccount;
     private @Nullable Integer localSsdCount;
@@ -27,6 +28,9 @@ public final class GetClusterClusterInfoSpecGcpAttributes {
     }
     public Optional<Integer> bootDiskSize() {
         return Optional.ofNullable(this.bootDiskSize);
+    }
+    public Optional<String> confidentialComputeType() {
+        return Optional.ofNullable(this.confidentialComputeType);
     }
     public Optional<Integer> firstOnDemand() {
         return Optional.ofNullable(this.firstOnDemand);
@@ -55,6 +59,7 @@ public final class GetClusterClusterInfoSpecGcpAttributes {
     public static final class Builder {
         private @Nullable String availability;
         private @Nullable Integer bootDiskSize;
+        private @Nullable String confidentialComputeType;
         private @Nullable Integer firstOnDemand;
         private @Nullable String googleServiceAccount;
         private @Nullable Integer localSsdCount;
@@ -65,6 +70,7 @@ public final class GetClusterClusterInfoSpecGcpAttributes {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
     	      this.bootDiskSize = defaults.bootDiskSize;
+    	      this.confidentialComputeType = defaults.confidentialComputeType;
     	      this.firstOnDemand = defaults.firstOnDemand;
     	      this.googleServiceAccount = defaults.googleServiceAccount;
     	      this.localSsdCount = defaults.localSsdCount;
@@ -82,6 +88,12 @@ public final class GetClusterClusterInfoSpecGcpAttributes {
         public Builder bootDiskSize(@Nullable Integer bootDiskSize) {
 
             this.bootDiskSize = bootDiskSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder confidentialComputeType(@Nullable String confidentialComputeType) {
+
+            this.confidentialComputeType = confidentialComputeType;
             return this;
         }
         @CustomType.Setter
@@ -118,6 +130,7 @@ public final class GetClusterClusterInfoSpecGcpAttributes {
             final var _resultValue = new GetClusterClusterInfoSpecGcpAttributes();
             _resultValue.availability = availability;
             _resultValue.bootDiskSize = bootDiskSize;
+            _resultValue.confidentialComputeType = confidentialComputeType;
             _resultValue.firstOnDemand = firstOnDemand;
             _resultValue.googleServiceAccount = googleServiceAccount;
             _resultValue.localSsdCount = localSsdCount;

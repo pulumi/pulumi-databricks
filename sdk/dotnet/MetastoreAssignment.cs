@@ -67,7 +67,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.MetastoreAssignmentProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.MetastoreAssignmentProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// id of the workspace for the assignment

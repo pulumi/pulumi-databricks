@@ -60,8 +60,6 @@ disableOauthRefreshToken: Optional[bool]
 
 discoveryUrl: Optional[str]
 
-experimentalIsUnifiedHost: Optional[bool]
-
 googleCredentials: Optional[str]
 
 googleServiceAccount: Optional[str]

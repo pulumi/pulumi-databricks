@@ -74,7 +74,7 @@ export class SecretScope extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.SecretScopeProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.SecretScopeProviderConfig>;
 
     /**
      * Create a SecretScope resource with the given unique name, arguments, and options.

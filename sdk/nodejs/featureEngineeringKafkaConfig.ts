@@ -67,7 +67,7 @@ export class FeatureEngineeringKafkaConfig extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.FeatureEngineeringKafkaConfigProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.FeatureEngineeringKafkaConfigProviderConfig>;
     /**
      * Options to configure which Kafka topics to pull data from
      */

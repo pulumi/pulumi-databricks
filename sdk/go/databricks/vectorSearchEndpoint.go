@@ -68,8 +68,8 @@ type VectorSearchEndpoint struct {
 	// Number of indexes on the endpoint.
 	NumIndexes pulumi.IntOutput `pulumi:"numIndexes"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig VectorSearchEndpointProviderConfigPtrOutput `pulumi:"providerConfig"`
-	ScalingInfo    VectorSearchEndpointScalingInfoPtrOutput    `pulumi:"scalingInfo"`
+	ProviderConfig VectorSearchEndpointProviderConfigOutput `pulumi:"providerConfig"`
+	ScalingInfo    VectorSearchEndpointScalingInfoPtrOutput `pulumi:"scalingInfo"`
 }
 
 // NewVectorSearchEndpoint registers a new resource with the given unique name, arguments, and options.
@@ -332,8 +332,8 @@ func (o VectorSearchEndpointOutput) NumIndexes() pulumi.IntOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o VectorSearchEndpointOutput) ProviderConfig() VectorSearchEndpointProviderConfigPtrOutput {
-	return o.ApplyT(func(v *VectorSearchEndpoint) VectorSearchEndpointProviderConfigPtrOutput { return v.ProviderConfig }).(VectorSearchEndpointProviderConfigPtrOutput)
+func (o VectorSearchEndpointOutput) ProviderConfig() VectorSearchEndpointProviderConfigOutput {
+	return o.ApplyT(func(v *VectorSearchEndpoint) VectorSearchEndpointProviderConfigOutput { return v.ProviderConfig }).(VectorSearchEndpointProviderConfigOutput)
 }
 
 func (o VectorSearchEndpointOutput) ScalingInfo() VectorSearchEndpointScalingInfoPtrOutput {

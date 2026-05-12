@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class DisableLegacyFeaturesSettingProviderConfig
     {
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private DisableLegacyFeaturesSettingProviderConfig(string workspaceId)
+        private DisableLegacyFeaturesSettingProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

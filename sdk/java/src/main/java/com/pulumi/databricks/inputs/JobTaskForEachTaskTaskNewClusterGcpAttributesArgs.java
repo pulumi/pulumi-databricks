@@ -31,6 +31,13 @@ public final class JobTaskForEachTaskTaskNewClusterGcpAttributesArgs extends com
         return Optional.ofNullable(this.bootDiskSize);
     }
 
+    @Import(name="confidentialComputeType")
+    private @Nullable Output<String> confidentialComputeType;
+
+    public Optional<Output<String>> confidentialComputeType() {
+        return Optional.ofNullable(this.confidentialComputeType);
+    }
+
     @Import(name="firstOnDemand")
     private @Nullable Output<Integer> firstOnDemand;
 
@@ -71,6 +78,7 @@ public final class JobTaskForEachTaskTaskNewClusterGcpAttributesArgs extends com
     private JobTaskForEachTaskTaskNewClusterGcpAttributesArgs(JobTaskForEachTaskTaskNewClusterGcpAttributesArgs $) {
         this.availability = $.availability;
         this.bootDiskSize = $.bootDiskSize;
+        this.confidentialComputeType = $.confidentialComputeType;
         this.firstOnDemand = $.firstOnDemand;
         this.googleServiceAccount = $.googleServiceAccount;
         this.localSsdCount = $.localSsdCount;
@@ -112,6 +120,15 @@ public final class JobTaskForEachTaskTaskNewClusterGcpAttributesArgs extends com
 
         public Builder bootDiskSize(Integer bootDiskSize) {
             return bootDiskSize(Output.of(bootDiskSize));
+        }
+
+        public Builder confidentialComputeType(@Nullable Output<String> confidentialComputeType) {
+            $.confidentialComputeType = confidentialComputeType;
+            return this;
+        }
+
+        public Builder confidentialComputeType(String confidentialComputeType) {
+            return confidentialComputeType(Output.of(confidentialComputeType));
         }
 
         public Builder firstOnDemand(@Nullable Output<Integer> firstOnDemand) {

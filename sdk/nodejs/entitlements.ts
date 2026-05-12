@@ -122,7 +122,7 @@ export class Entitlements extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.EntitlementsProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.EntitlementsProviderConfig>;
     /**
      * Canonical unique identifier for the service principal.
      *

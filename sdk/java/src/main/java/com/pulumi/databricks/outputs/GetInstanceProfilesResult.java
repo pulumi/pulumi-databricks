@@ -10,8 +10,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstanceProfilesResult {
@@ -25,7 +23,7 @@ public final class GetInstanceProfilesResult {
      * 
      */
     private List<GetInstanceProfilesInstanceProfile> instanceProfiles;
-    private @Nullable GetInstanceProfilesProviderConfig providerConfig;
+    private GetInstanceProfilesProviderConfig providerConfig;
 
     private GetInstanceProfilesResult() {}
     /**
@@ -42,8 +40,8 @@ public final class GetInstanceProfilesResult {
     public List<GetInstanceProfilesInstanceProfile> instanceProfiles() {
         return this.instanceProfiles;
     }
-    public Optional<GetInstanceProfilesProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetInstanceProfilesProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -57,7 +55,7 @@ public final class GetInstanceProfilesResult {
     public static final class Builder {
         private String id;
         private List<GetInstanceProfilesInstanceProfile> instanceProfiles;
-        private @Nullable GetInstanceProfilesProviderConfig providerConfig;
+        private GetInstanceProfilesProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetInstanceProfilesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -86,8 +84,10 @@ public final class GetInstanceProfilesResult {
             return instanceProfiles(List.of(instanceProfiles));
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetInstanceProfilesProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetInstanceProfilesProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetInstanceProfilesResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

@@ -64,7 +64,7 @@ type WorkspaceConf struct {
 	// Key-value map of strings that represent workspace configuration. Upon resource deletion, properties that start with `enable` or `enforce` will be reset to `false` value, regardless of initial default one.
 	CustomConfig pulumi.StringMapOutput `pulumi:"customConfig"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig WorkspaceConfProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig WorkspaceConfProviderConfigOutput `pulumi:"providerConfig"`
 }
 
 // NewWorkspaceConf registers a new resource with the given unique name, arguments, and options.
@@ -222,8 +222,8 @@ func (o WorkspaceConfOutput) CustomConfig() pulumi.StringMapOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o WorkspaceConfOutput) ProviderConfig() WorkspaceConfProviderConfigPtrOutput {
-	return o.ApplyT(func(v *WorkspaceConf) WorkspaceConfProviderConfigPtrOutput { return v.ProviderConfig }).(WorkspaceConfProviderConfigPtrOutput)
+func (o WorkspaceConfOutput) ProviderConfig() WorkspaceConfProviderConfigOutput {
+	return o.ApplyT(func(v *WorkspaceConf) WorkspaceConfProviderConfigOutput { return v.ProviderConfig }).(WorkspaceConfProviderConfigOutput)
 }
 
 type WorkspaceConfArrayOutput struct{ *pulumi.OutputState }

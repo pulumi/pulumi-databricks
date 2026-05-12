@@ -273,7 +273,7 @@ namespace Pulumi.Databricks
         /// set of DatabricksView full names: *`Catalog`.`Schema`.`View`*
         /// </summary>
         public readonly ImmutableArray<string> Ids;
-        public readonly Outputs.GetViewsProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetViewsProviderConfigResult ProviderConfig;
         public readonly string SchemaName;
 
         [OutputConstructor]
@@ -284,7 +284,7 @@ namespace Pulumi.Databricks
 
             ImmutableArray<string> ids,
 
-            Outputs.GetViewsProviderConfigResult? providerConfig,
+            Outputs.GetViewsProviderConfigResult providerConfig,
 
             string schemaName)
         {

@@ -138,8 +138,8 @@ type LookupMlflowModelResult struct {
 	// Name of the model.
 	Name string `pulumi:"name"`
 	// Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
-	PermissionLevel string                        `pulumi:"permissionLevel"`
-	ProviderConfig  *GetMlflowModelProviderConfig `pulumi:"providerConfig"`
+	PermissionLevel string                       `pulumi:"permissionLevel"`
+	ProviderConfig  GetMlflowModelProviderConfig `pulumi:"providerConfig"`
 	// Array of tags associated with the model.
 	Tags []GetMlflowModelTag `pulumi:"tags"`
 	// The username of the user that created the object.
@@ -217,8 +217,8 @@ func (o LookupMlflowModelResultOutput) PermissionLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMlflowModelResult) string { return v.PermissionLevel }).(pulumi.StringOutput)
 }
 
-func (o LookupMlflowModelResultOutput) ProviderConfig() GetMlflowModelProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupMlflowModelResult) *GetMlflowModelProviderConfig { return v.ProviderConfig }).(GetMlflowModelProviderConfigPtrOutput)
+func (o LookupMlflowModelResultOutput) ProviderConfig() GetMlflowModelProviderConfigOutput {
+	return o.ApplyT(func(v LookupMlflowModelResult) GetMlflowModelProviderConfig { return v.ProviderConfig }).(GetMlflowModelProviderConfigOutput)
 }
 
 // Array of tags associated with the model.

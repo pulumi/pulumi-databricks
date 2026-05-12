@@ -66,7 +66,9 @@ func LookupMwsCredentials(ctx *pulumi.Context, args *LookupMwsCredentialsArgs, o
 type LookupMwsCredentialsArgs struct {
 	// name-to-id map for all of the credentials in the account
 	Ids map[string]string `pulumi:"ids"`
-	// Configure the provider for management through account provider. This block consists of the following fields:
+	// This data source is account-only and has no workspace context, so `providerConfig` has no effect and will be removed in a future major release. The block consists of the following field:
+	//
+	// Deprecated: provider_config has no effect on this account-only resource and will be removed in a future major release.
 	ProviderConfig *GetMwsCredentialsProviderConfig `pulumi:"providerConfig"`
 }
 
@@ -75,8 +77,9 @@ type LookupMwsCredentialsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// name-to-id map for all of the credentials in the account
-	Ids            map[string]string                `pulumi:"ids"`
-	ProviderConfig *GetMwsCredentialsProviderConfig `pulumi:"providerConfig"`
+	Ids map[string]string `pulumi:"ids"`
+	// Deprecated: provider_config has no effect on this account-only resource and will be removed in a future major release.
+	ProviderConfig GetMwsCredentialsProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupMwsCredentialsOutput(ctx *pulumi.Context, args LookupMwsCredentialsOutputArgs, opts ...pulumi.InvokeOption) LookupMwsCredentialsResultOutput {
@@ -92,7 +95,9 @@ func LookupMwsCredentialsOutput(ctx *pulumi.Context, args LookupMwsCredentialsOu
 type LookupMwsCredentialsOutputArgs struct {
 	// name-to-id map for all of the credentials in the account
 	Ids pulumi.StringMapInput `pulumi:"ids"`
-	// Configure the provider for management through account provider. This block consists of the following fields:
+	// This data source is account-only and has no workspace context, so `providerConfig` has no effect and will be removed in a future major release. The block consists of the following field:
+	//
+	// Deprecated: provider_config has no effect on this account-only resource and will be removed in a future major release.
 	ProviderConfig GetMwsCredentialsProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
@@ -125,8 +130,9 @@ func (o LookupMwsCredentialsResultOutput) Ids() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMwsCredentialsResult) map[string]string { return v.Ids }).(pulumi.StringMapOutput)
 }
 
-func (o LookupMwsCredentialsResultOutput) ProviderConfig() GetMwsCredentialsProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupMwsCredentialsResult) *GetMwsCredentialsProviderConfig { return v.ProviderConfig }).(GetMwsCredentialsProviderConfigPtrOutput)
+// Deprecated: provider_config has no effect on this account-only resource and will be removed in a future major release.
+func (o LookupMwsCredentialsResultOutput) ProviderConfig() GetMwsCredentialsProviderConfigOutput {
+	return o.ApplyT(func(v LookupMwsCredentialsResult) GetMwsCredentialsProviderConfig { return v.ProviderConfig }).(GetMwsCredentialsProviderConfigOutput)
 }
 
 func init() {

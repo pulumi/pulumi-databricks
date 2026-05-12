@@ -71,8 +71,8 @@ type GetStorageCredentialsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// List of names of StorageCredential in the metastore
-	Names          []string                             `pulumi:"names"`
-	ProviderConfig *GetStorageCredentialsProviderConfig `pulumi:"providerConfig"`
+	Names          []string                            `pulumi:"names"`
+	ProviderConfig GetStorageCredentialsProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetStorageCredentialsOutput(ctx *pulumi.Context, args GetStorageCredentialsOutputArgs, opts ...pulumi.InvokeOption) GetStorageCredentialsResultOutput {
@@ -121,8 +121,8 @@ func (o GetStorageCredentialsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetStorageCredentialsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
-func (o GetStorageCredentialsResultOutput) ProviderConfig() GetStorageCredentialsProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetStorageCredentialsResult) *GetStorageCredentialsProviderConfig { return v.ProviderConfig }).(GetStorageCredentialsProviderConfigPtrOutput)
+func (o GetStorageCredentialsResultOutput) ProviderConfig() GetStorageCredentialsProviderConfigOutput {
+	return o.ApplyT(func(v GetStorageCredentialsResult) GetStorageCredentialsProviderConfig { return v.ProviderConfig }).(GetStorageCredentialsProviderConfigOutput)
 }
 
 func init() {

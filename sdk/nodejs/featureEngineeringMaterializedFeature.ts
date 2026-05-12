@@ -67,7 +67,7 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.FeatureEngineeringMaterializedFeatureProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.FeatureEngineeringMaterializedFeatureProviderConfig>;
     /**
      * (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
      */

@@ -315,14 +315,14 @@ public class PolicyInfo extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={PolicyInfoProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ PolicyInfoProviderConfig> providerConfig;
+    private Output<PolicyInfoProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<PolicyInfoProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<PolicyInfoProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.

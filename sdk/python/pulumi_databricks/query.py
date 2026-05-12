@@ -962,7 +962,7 @@ class Query(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.QueryProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.QueryProviderConfig']:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """

@@ -147,10 +147,10 @@ public class SqlAlert extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.parent);
     }
     @Export(name="providerConfig", refs={SqlAlertProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ SqlAlertProviderConfig> providerConfig;
+    private Output<SqlAlertProviderConfig> providerConfig;
 
-    public Output<Optional<SqlAlertProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<SqlAlertProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * ID of the query evaluated by the alert.

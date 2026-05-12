@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.GetClusterClusterInfoSpecLibraryCran;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoSpecLibraryMaven;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoSpecLibraryProviderConfig;
 import com.pulumi.databricks.outputs.GetClusterClusterInfoSpecLibraryPypi;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,7 +30,7 @@ public final class GetClusterClusterInfoSpecLibrary {
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    private @Nullable GetClusterClusterInfoSpecLibraryProviderConfig providerConfig;
+    private GetClusterClusterInfoSpecLibraryProviderConfig providerConfig;
     private @Nullable GetClusterClusterInfoSpecLibraryPypi pypi;
     private @Nullable String requirements;
     private @Nullable String whl;
@@ -57,8 +58,8 @@ public final class GetClusterClusterInfoSpecLibrary {
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Optional<GetClusterClusterInfoSpecLibraryProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetClusterClusterInfoSpecLibraryProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     public Optional<GetClusterClusterInfoSpecLibraryPypi> pypi() {
         return Optional.ofNullable(this.pypi);
@@ -83,7 +84,7 @@ public final class GetClusterClusterInfoSpecLibrary {
         private @Nullable String egg;
         private @Nullable String jar;
         private @Nullable GetClusterClusterInfoSpecLibraryMaven maven;
-        private @Nullable GetClusterClusterInfoSpecLibraryProviderConfig providerConfig;
+        private GetClusterClusterInfoSpecLibraryProviderConfig providerConfig;
         private @Nullable GetClusterClusterInfoSpecLibraryPypi pypi;
         private @Nullable String requirements;
         private @Nullable String whl;
@@ -125,8 +126,10 @@ public final class GetClusterClusterInfoSpecLibrary {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetClusterClusterInfoSpecLibraryProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetClusterClusterInfoSpecLibraryProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterInfoSpecLibrary", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

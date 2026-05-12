@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionSourceConfigurationCatalogArgs;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfigArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +31,18 @@ public final class PipelineIngestionDefinitionSourceConfigurationArgs extends co
         return Optional.ofNullable(this.catalog);
     }
 
+    @Import(name="googleAdsConfig")
+    private @Nullable Output<PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfigArgs> googleAdsConfig;
+
+    public Optional<Output<PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfigArgs>> googleAdsConfig() {
+        return Optional.ofNullable(this.googleAdsConfig);
+    }
+
     private PipelineIngestionDefinitionSourceConfigurationArgs() {}
 
     private PipelineIngestionDefinitionSourceConfigurationArgs(PipelineIngestionDefinitionSourceConfigurationArgs $) {
         this.catalog = $.catalog;
+        this.googleAdsConfig = $.googleAdsConfig;
     }
 
     public static Builder builder() {
@@ -73,6 +82,15 @@ public final class PipelineIngestionDefinitionSourceConfigurationArgs extends co
          */
         public Builder catalog(PipelineIngestionDefinitionSourceConfigurationCatalogArgs catalog) {
             return catalog(Output.of(catalog));
+        }
+
+        public Builder googleAdsConfig(@Nullable Output<PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfigArgs> googleAdsConfig) {
+            $.googleAdsConfig = googleAdsConfig;
+            return this;
+        }
+
+        public Builder googleAdsConfig(PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfigArgs googleAdsConfig) {
+            return googleAdsConfig(Output.of(googleAdsConfig));
         }
 
         public PipelineIngestionDefinitionSourceConfigurationArgs build() {

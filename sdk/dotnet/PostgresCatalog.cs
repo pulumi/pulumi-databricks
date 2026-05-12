@@ -11,6 +11,77 @@ namespace Pulumi.Databricks
 {
     /// <summary>
     /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Basic Catalog Creation
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.PostgresProject("this", new()
+    ///     {
+    ///         ProjectId = "my-project",
+    ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
+    ///         {
+    ///             PgVersion = 17,
+    ///             DisplayName = "My Project",
+    ///         },
+    ///     });
+    /// 
+    ///     var main = new Databricks.PostgresBranch("main", new()
+    ///     {
+    ///         BranchId = "main",
+    ///         Parent = @this.Name,
+    ///         Spec = new Databricks.Inputs.PostgresBranchSpecArgs
+    ///         {
+    ///             NoExpiry = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var thisPostgresCatalog = new Databricks.PostgresCatalog("this", new()
+    ///     {
+    ///         CatalogId = "my_catalog",
+    ///         Spec = new Databricks.Inputs.PostgresCatalogSpecArgs
+    ///         {
+    ///             PostgresDatabase = "my_database",
+    ///             CreateDatabaseIfMissing = true,
+    ///             Branch = main.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Catalog with Existing Database
+    /// 
+    /// If the Postgres database already exists, omit `CreateDatabaseIfMissing`:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.PostgresCatalog("this", new()
+    ///     {
+    ///         CatalogId = "existing_db_catalog",
+    ///         Spec = new Databricks.Inputs.PostgresCatalogSpecArgs
+    ///         {
+    ///             PostgresDatabase = "existing_database",
+    ///             Branch = main.Name,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/postgresCatalog:PostgresCatalog")]
     public partial class PostgresCatalog : global::Pulumi.CustomResource
@@ -38,7 +109,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.PostgresCatalogProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.PostgresCatalogProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// The desired state of the Catalog

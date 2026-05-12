@@ -71,8 +71,8 @@ type GetExternalLocationsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// List of names of ExternalLocation in the metastore
-	Names          []string                            `pulumi:"names"`
-	ProviderConfig *GetExternalLocationsProviderConfig `pulumi:"providerConfig"`
+	Names          []string                           `pulumi:"names"`
+	ProviderConfig GetExternalLocationsProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetExternalLocationsOutput(ctx *pulumi.Context, args GetExternalLocationsOutputArgs, opts ...pulumi.InvokeOption) GetExternalLocationsResultOutput {
@@ -121,8 +121,8 @@ func (o GetExternalLocationsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetExternalLocationsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
-func (o GetExternalLocationsResultOutput) ProviderConfig() GetExternalLocationsProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetExternalLocationsResult) *GetExternalLocationsProviderConfig { return v.ProviderConfig }).(GetExternalLocationsProviderConfigPtrOutput)
+func (o GetExternalLocationsResultOutput) ProviderConfig() GetExternalLocationsProviderConfigOutput {
+	return o.ApplyT(func(v GetExternalLocationsResult) GetExternalLocationsProviderConfig { return v.ProviderConfig }).(GetExternalLocationsProviderConfigOutput)
 }
 
 func init() {

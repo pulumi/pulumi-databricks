@@ -104,14 +104,14 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Purge the resource on delete
+     * Whether to permanently delete the alert. If not set, the alert will only be soft deleted
      * 
      */
     @Import(name="purgeOnDelete")
     private @Nullable Output<Boolean> purgeOnDelete;
 
     /**
-     * @return Purge the resource on delete
+     * @return Whether to permanently delete the alert. If not set, the alert will only be soft deleted
      * 
      */
     public Optional<Output<Boolean>> purgeOnDelete() {
@@ -347,7 +347,7 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purgeOnDelete Purge the resource on delete
+         * @param purgeOnDelete Whether to permanently delete the alert. If not set, the alert will only be soft deleted
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class AlertV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purgeOnDelete Purge the resource on delete
+         * @param purgeOnDelete Whether to permanently delete the alert. If not set, the alert will only be soft deleted
          * 
          * @return builder
          * 

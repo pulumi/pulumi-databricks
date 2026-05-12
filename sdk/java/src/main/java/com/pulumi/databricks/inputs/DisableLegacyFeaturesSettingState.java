@@ -39,9 +39,21 @@ public final class DisableLegacyFeaturesSettingState extends com.pulumi.resource
         return Optional.ofNullable(this.etag);
     }
 
+    /**
+     * @deprecated
+     * provider_config has no effect on this account-only resource and will be removed in a future major release.
+     * 
+     */
+    @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
     @Import(name="providerConfig")
     private @Nullable Output<DisableLegacyFeaturesSettingProviderConfigArgs> providerConfig;
 
+    /**
+     * @deprecated
+     * provider_config has no effect on this account-only resource and will be removed in a future major release.
+     * 
+     */
+    @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
     public Optional<Output<DisableLegacyFeaturesSettingProviderConfigArgs>> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }
@@ -110,11 +122,27 @@ public final class DisableLegacyFeaturesSettingState extends com.pulumi.resource
             return etag(Output.of(etag));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * provider_config has no effect on this account-only resource and will be removed in a future major release.
+         * 
+         */
+        @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
         public Builder providerConfig(@Nullable Output<DisableLegacyFeaturesSettingProviderConfigArgs> providerConfig) {
             $.providerConfig = providerConfig;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * provider_config has no effect on this account-only resource and will be removed in a future major release.
+         * 
+         */
+        @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
         public Builder providerConfig(DisableLegacyFeaturesSettingProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
         }

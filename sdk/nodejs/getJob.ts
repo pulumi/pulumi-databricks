@@ -87,7 +87,7 @@ export interface GetJobResult {
      * the job name of databricks.Job if the resource was matched by id.
      */
     readonly name: string;
-    readonly providerConfig?: outputs.GetJobProviderConfig;
+    readonly providerConfig: outputs.GetJobProviderConfig;
 }
 /**
  * Retrieves the settings of databricks.Job by name or by id. Complements the feature of the databricks.getJobs data source.

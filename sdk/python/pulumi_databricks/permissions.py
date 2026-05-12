@@ -2778,7 +2778,7 @@ class Permissions(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.PermissionsProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.PermissionsProviderConfig']:
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

@@ -124,7 +124,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.VolumeProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.VolumeProviderConfig>;
     /**
      * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
      */

@@ -8,6 +8,55 @@ import * as utilities from "./utilities";
 
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * ## Example Usage
+ *
+ * ### Basic Catalog Creation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.PostgresProject("this", {
+ *     projectId: "my-project",
+ *     spec: {
+ *         pgVersion: 17,
+ *         displayName: "My Project",
+ *     },
+ * });
+ * const main = new databricks.PostgresBranch("main", {
+ *     branchId: "main",
+ *     parent: _this.name,
+ *     spec: {
+ *         noExpiry: true,
+ *     },
+ * });
+ * const thisPostgresCatalog = new databricks.PostgresCatalog("this", {
+ *     catalogId: "my_catalog",
+ *     spec: {
+ *         postgresDatabase: "my_database",
+ *         createDatabaseIfMissing: true,
+ *         branch: main.name,
+ *     },
+ * });
+ * ```
+ *
+ * ### Catalog with Existing Database
+ *
+ * If the Postgres database already exists, omit `createDatabaseIfMissing`:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.PostgresCatalog("this", {
+ *     catalogId: "existing_db_catalog",
+ *     spec: {
+ *         postgresDatabase: "existing_database",
+ *         branch: main.name,
+ *     },
+ * });
+ * ```
  */
 export class PostgresCatalog extends pulumi.CustomResource {
     /**
@@ -53,7 +102,7 @@ export class PostgresCatalog extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.PostgresCatalogProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.PostgresCatalogProviderConfig>;
     /**
      * The desired state of the Catalog
      */

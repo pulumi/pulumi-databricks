@@ -180,7 +180,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.AppsSettingsCustomTemplateProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.AppsSettingsCustomTemplateProviderConfig> ProviderConfig { get; private set; } = null!;
 
 
         /// <summary>

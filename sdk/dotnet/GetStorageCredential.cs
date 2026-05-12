@@ -203,7 +203,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly string Name;
-        public readonly Outputs.GetStorageCredentialProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetStorageCredentialProviderConfigResult ProviderConfig;
         /// <summary>
         /// array of objects with information about storage credential.
         /// </summary>
@@ -215,7 +215,7 @@ namespace Pulumi.Databricks
 
             string name,
 
-            Outputs.GetStorageCredentialProviderConfigResult? providerConfig,
+            Outputs.GetStorageCredentialProviderConfigResult providerConfig,
 
             Outputs.GetStorageCredentialStorageCredentialInfoResult storageCredentialInfo)
         {

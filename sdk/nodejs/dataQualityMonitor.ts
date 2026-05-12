@@ -94,7 +94,7 @@ export class DataQualityMonitor extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.DataQualityMonitorProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.DataQualityMonitorProviderConfig>;
 
     /**
      * Create a DataQualityMonitor resource with the given unique name, arguments, and options.

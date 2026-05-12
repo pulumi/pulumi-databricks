@@ -269,10 +269,10 @@ public class SqlPermissions extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.privilegeAssignments);
     }
     @Export(name="providerConfig", refs={SqlPermissionsProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ SqlPermissionsProviderConfig> providerConfig;
+    private Output<SqlPermissionsProviderConfig> providerConfig;
 
-    public Output<Optional<SqlPermissionsProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<SqlPermissionsProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Name of the table. Can be combined with the `database`.

@@ -22,6 +22,12 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination> AllowedStorageDestinations;
         /// <summary>
+        /// List of internet destinations that serverless workloads are blocked from accessing.
+        /// These destinations are enforced when restriction mode is RESTRICTED_ACCESS or DRY_RUN.
+        /// Currently supports DNS_NAME type only; IP_RANGE support is planned
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AccountNetworkPolicyEgressNetworkAccessBlockedInternetDestination> BlockedInternetDestinations;
+        /// <summary>
         /// Optional. When PolicyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
         /// </summary>
         public readonly Outputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement? PolicyEnforcement;
@@ -33,12 +39,15 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<Outputs.AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination> allowedStorageDestinations,
 
+            ImmutableArray<Outputs.AccountNetworkPolicyEgressNetworkAccessBlockedInternetDestination> blockedInternetDestinations,
+
             Outputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement? policyEnforcement,
 
             string restrictionMode)
         {
             AllowedInternetDestinations = allowedInternetDestinations;
             AllowedStorageDestinations = allowedStorageDestinations;
+            BlockedInternetDestinations = blockedInternetDestinations;
             PolicyEnforcement = policyEnforcement;
             RestrictionMode = restrictionMode;
         }

@@ -15,7 +15,6 @@ import com.pulumi.databricks.outputs.QualityMonitorV2ProviderConfig;
 import com.pulumi.databricks.outputs.QualityMonitorV2ValidityCheckConfiguration;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -120,14 +119,14 @@ public class QualityMonitorV2 extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={QualityMonitorV2ProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ QualityMonitorV2ProviderConfig> providerConfig;
+    private Output<QualityMonitorV2ProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<QualityMonitorV2ProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<QualityMonitorV2ProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Validity check configurations for anomaly detection

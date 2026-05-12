@@ -118,14 +118,14 @@ public class MetastoreAssignment extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={MetastoreAssignmentProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ MetastoreAssignmentProviderConfig> providerConfig;
+    private Output<MetastoreAssignmentProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<MetastoreAssignmentProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<MetastoreAssignmentProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * id of the workspace for the assignment

@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetExternalLocationsResult {
@@ -24,7 +22,7 @@ public final class GetExternalLocationsResult {
      * 
      */
     private List<String> names;
-    private @Nullable GetExternalLocationsProviderConfig providerConfig;
+    private GetExternalLocationsProviderConfig providerConfig;
 
     private GetExternalLocationsResult() {}
     /**
@@ -41,8 +39,8 @@ public final class GetExternalLocationsResult {
     public List<String> names() {
         return this.names;
     }
-    public Optional<GetExternalLocationsProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetExternalLocationsProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -56,7 +54,7 @@ public final class GetExternalLocationsResult {
     public static final class Builder {
         private String id;
         private List<String> names;
-        private @Nullable GetExternalLocationsProviderConfig providerConfig;
+        private GetExternalLocationsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetExternalLocationsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -85,8 +83,10 @@ public final class GetExternalLocationsResult {
             return names(List.of(names));
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetExternalLocationsProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetExternalLocationsProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetExternalLocationsResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

@@ -130,10 +130,10 @@ public class GroupInstanceProfile extends com.pulumi.resources.CustomResource {
         return this.instanceProfileId;
     }
     @Export(name="providerConfig", refs={GroupInstanceProfileProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ GroupInstanceProfileProviderConfig> providerConfig;
+    private Output<GroupInstanceProfileProviderConfig> providerConfig;
 
-    public Output<Optional<GroupInstanceProfileProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<GroupInstanceProfileProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
 
     /**

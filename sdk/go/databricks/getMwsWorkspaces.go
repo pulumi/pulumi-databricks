@@ -60,7 +60,9 @@ func LookupMwsWorkspaces(ctx *pulumi.Context, args *LookupMwsWorkspacesArgs, opt
 
 // A collection of arguments for invoking getMwsWorkspaces.
 type LookupMwsWorkspacesArgs struct {
-	// Configure the provider for management through account provider. This block consists of the following fields:
+	// This data source is account-only and has no workspace context, so `providerConfig` has no effect and will be removed in a future major release. The block consists of the following field:
+	//
+	// Deprecated: provider_config has no effect on this account-only resource and will be removed in a future major release.
 	ProviderConfig *GetMwsWorkspacesProviderConfig `pulumi:"providerConfig"`
 }
 
@@ -69,8 +71,9 @@ type LookupMwsWorkspacesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// name-to-id map for all of the workspaces in the account
-	Ids            map[string]string               `pulumi:"ids"`
-	ProviderConfig *GetMwsWorkspacesProviderConfig `pulumi:"providerConfig"`
+	Ids map[string]string `pulumi:"ids"`
+	// Deprecated: provider_config has no effect on this account-only resource and will be removed in a future major release.
+	ProviderConfig GetMwsWorkspacesProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupMwsWorkspacesOutput(ctx *pulumi.Context, args LookupMwsWorkspacesOutputArgs, opts ...pulumi.InvokeOption) LookupMwsWorkspacesResultOutput {
@@ -84,7 +87,9 @@ func LookupMwsWorkspacesOutput(ctx *pulumi.Context, args LookupMwsWorkspacesOutp
 
 // A collection of arguments for invoking getMwsWorkspaces.
 type LookupMwsWorkspacesOutputArgs struct {
-	// Configure the provider for management through account provider. This block consists of the following fields:
+	// This data source is account-only and has no workspace context, so `providerConfig` has no effect and will be removed in a future major release. The block consists of the following field:
+	//
+	// Deprecated: provider_config has no effect on this account-only resource and will be removed in a future major release.
 	ProviderConfig GetMwsWorkspacesProviderConfigPtrInput `pulumi:"providerConfig"`
 }
 
@@ -117,8 +122,9 @@ func (o LookupMwsWorkspacesResultOutput) Ids() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMwsWorkspacesResult) map[string]string { return v.Ids }).(pulumi.StringMapOutput)
 }
 
-func (o LookupMwsWorkspacesResultOutput) ProviderConfig() GetMwsWorkspacesProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupMwsWorkspacesResult) *GetMwsWorkspacesProviderConfig { return v.ProviderConfig }).(GetMwsWorkspacesProviderConfigPtrOutput)
+// Deprecated: provider_config has no effect on this account-only resource and will be removed in a future major release.
+func (o LookupMwsWorkspacesResultOutput) ProviderConfig() GetMwsWorkspacesProviderConfigOutput {
+	return o.ApplyT(func(v LookupMwsWorkspacesResult) GetMwsWorkspacesProviderConfig { return v.ProviderConfig }).(GetMwsWorkspacesProviderConfigOutput)
 }
 
 func init() {

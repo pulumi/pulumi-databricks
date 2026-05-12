@@ -1503,7 +1503,7 @@ namespace Pulumi.Databricks
         public Output<string?> PipelineId { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.PermissionsProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.PermissionsProviderConfig> ProviderConfig { get; private set; } = null!;
 
         [Output("registeredModelId")]
         public Output<string?> RegisteredModelId { get; private set; } = null!;

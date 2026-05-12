@@ -27,8 +27,8 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
-        [Input("providerConfig")]
-        public Inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs? ProviderConfig { get; set; }
+        [Input("providerConfig", required: true)]
+        public Inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs ProviderConfig { get; set; } = null!;
 
         [Input("pypi")]
         public Inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs? Pypi { get; set; }

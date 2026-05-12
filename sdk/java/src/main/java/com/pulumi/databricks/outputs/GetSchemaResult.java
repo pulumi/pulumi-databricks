@@ -9,8 +9,6 @@ import com.pulumi.databricks.outputs.GetSchemaSchemaInfo;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSchemaResult {
@@ -24,7 +22,7 @@ public final class GetSchemaResult {
      * 
      */
     private String name;
-    private @Nullable GetSchemaProviderConfig providerConfig;
+    private GetSchemaProviderConfig providerConfig;
     /**
      * @return `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
      * 
@@ -46,8 +44,8 @@ public final class GetSchemaResult {
     public String name() {
         return this.name;
     }
-    public Optional<GetSchemaProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetSchemaProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     /**
      * @return `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
@@ -68,7 +66,7 @@ public final class GetSchemaResult {
     public static final class Builder {
         private String id;
         private String name;
-        private @Nullable GetSchemaProviderConfig providerConfig;
+        private GetSchemaProviderConfig providerConfig;
         private GetSchemaSchemaInfo schemaInfo;
         public Builder() {}
         public Builder(GetSchemaResult defaults) {
@@ -96,8 +94,10 @@ public final class GetSchemaResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetSchemaProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetSchemaProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetSchemaResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

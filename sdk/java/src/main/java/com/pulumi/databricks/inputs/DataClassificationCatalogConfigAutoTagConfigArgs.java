@@ -30,14 +30,16 @@ public final class DataClassificationCatalogConfigAutoTagConfigArgs extends com.
     }
 
     /**
-     * The Classification Tag (e.g., &#34;class.name&#34;, &#34;class.location&#34;)
+     * The Classification Tag. For built-in classes this is a system tag (e.g., &#34;class.name&#34;,
+     * &#34;class.location&#34;); for custom classes it is a user-defined governance tag key
      * 
      */
     @Import(name="classificationTag", required=true)
     private Output<String> classificationTag;
 
     /**
-     * @return The Classification Tag (e.g., &#34;class.name&#34;, &#34;class.location&#34;)
+     * @return The Classification Tag. For built-in classes this is a system tag (e.g., &#34;class.name&#34;,
+     * &#34;class.location&#34;); for custom classes it is a user-defined governance tag key
      * 
      */
     public Output<String> classificationTag() {
@@ -91,7 +93,8 @@ public final class DataClassificationCatalogConfigAutoTagConfigArgs extends com.
         }
 
         /**
-         * @param classificationTag The Classification Tag (e.g., &#34;class.name&#34;, &#34;class.location&#34;)
+         * @param classificationTag The Classification Tag. For built-in classes this is a system tag (e.g., &#34;class.name&#34;,
+         * &#34;class.location&#34;); for custom classes it is a user-defined governance tag key
          * 
          * @return builder
          * 
@@ -102,7 +105,8 @@ public final class DataClassificationCatalogConfigAutoTagConfigArgs extends com.
         }
 
         /**
-         * @param classificationTag The Classification Tag (e.g., &#34;class.name&#34;, &#34;class.location&#34;)
+         * @param classificationTag The Classification Tag. For built-in classes this is a system tag (e.g., &#34;class.name&#34;,
+         * &#34;class.location&#34;); for custom classes it is a user-defined governance tag key
          * 
          * @return builder
          * 

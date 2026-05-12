@@ -135,10 +135,10 @@ public class Repo extends com.pulumi.resources.CustomResource {
         return this.path;
     }
     @Export(name="providerConfig", refs={RepoProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ RepoProviderConfig> providerConfig;
+    private Output<RepoProviderConfig> providerConfig;
 
-    public Output<Optional<RepoProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<RepoProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="sparseCheckout", refs={RepoSparseCheckout.class}, tree="[0]")
     private Output</* @Nullable */ RepoSparseCheckout> sparseCheckout;

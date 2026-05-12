@@ -94,7 +94,7 @@ namespace Pulumi.Databricks
         public Output<string> MemberId { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.GroupMemberProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.GroupMemberProviderConfig> ProviderConfig { get; private set; } = null!;
 
 
         /// <summary>

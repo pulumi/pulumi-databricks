@@ -236,7 +236,7 @@ namespace Pulumi.Databricks
         /// Name of table, relative to parent schema.
         /// </summary>
         public readonly string Name;
-        public readonly Outputs.GetTableProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetTableProviderConfigResult ProviderConfig;
         /// <summary>
         /// TableInfo object for a Unity Catalog table. This contains the following attributes:
         /// </summary>
@@ -248,7 +248,7 @@ namespace Pulumi.Databricks
 
             string name,
 
-            Outputs.GetTableProviderConfigResult? providerConfig,
+            Outputs.GetTableProviderConfigResult providerConfig,
 
             Outputs.GetTableTableInfoResult tableInfo)
         {

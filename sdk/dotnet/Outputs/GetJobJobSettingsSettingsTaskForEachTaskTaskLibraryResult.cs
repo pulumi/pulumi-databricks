@@ -20,7 +20,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
-        public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigResult ProviderConfig;
         public readonly Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiResult? Pypi;
         public readonly string? Requirements;
         public readonly string? Whl;
@@ -35,7 +35,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenResult? maven,
 
-            Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigResult? providerConfig,
+            Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigResult providerConfig,
 
             Outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiResult? pypi,
 

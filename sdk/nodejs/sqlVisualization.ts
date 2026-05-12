@@ -93,7 +93,7 @@ export class SqlVisualization extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.SqlVisualizationProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.SqlVisualizationProviderConfig>;
     declare public readonly queryId: pulumi.Output<string>;
     declare public readonly queryPlan: pulumi.Output<string | undefined>;
     declare public readonly type: pulumi.Output<string>;

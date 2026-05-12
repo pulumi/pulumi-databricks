@@ -62,7 +62,7 @@ export class OnlineTable extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.OnlineTableProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.OnlineTableProviderConfig>;
     /**
      * object containing specification of the online table:
      */

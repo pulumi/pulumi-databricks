@@ -79,8 +79,8 @@ type LookupSchemaResult struct {
 	// ID of this Unity Catalog Schema in form of `<catalog>.<schema>`.
 	Id string `pulumi:"id"`
 	// Name of schema, relative to parent catalog.
-	Name           string                   `pulumi:"name"`
-	ProviderConfig *GetSchemaProviderConfig `pulumi:"providerConfig"`
+	Name           string                  `pulumi:"name"`
+	ProviderConfig GetSchemaProviderConfig `pulumi:"providerConfig"`
 	// `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
 	SchemaInfo GetSchemaSchemaInfo `pulumi:"schemaInfo"`
 }
@@ -135,8 +135,8 @@ func (o LookupSchemaResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSchemaResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupSchemaResultOutput) ProviderConfig() GetSchemaProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupSchemaResult) *GetSchemaProviderConfig { return v.ProviderConfig }).(GetSchemaProviderConfigPtrOutput)
+func (o LookupSchemaResultOutput) ProviderConfig() GetSchemaProviderConfigOutput {
+	return o.ApplyT(func(v LookupSchemaResult) GetSchemaProviderConfig { return v.ProviderConfig }).(GetSchemaProviderConfigOutput)
 }
 
 // `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:

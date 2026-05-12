@@ -195,6 +195,9 @@ namespace Pulumi.Databricks
         [Output("telemetryExportDestinations")]
         public Output<ImmutableArray<Outputs.AppTelemetryExportDestination>> TelemetryExportDestinations { get; private set; } = null!;
 
+        [Output("thumbnailUrl")]
+        public Output<string> ThumbnailUrl { get; private set; } = null!;
+
         /// <summary>
         /// The update time of the app.
         /// </summary>
@@ -483,6 +486,9 @@ namespace Pulumi.Databricks
             get => _telemetryExportDestinations ?? (_telemetryExportDestinations = new InputList<Inputs.AppTelemetryExportDestinationGetArgs>());
             set => _telemetryExportDestinations = value;
         }
+
+        [Input("thumbnailUrl")]
+        public Input<string>? ThumbnailUrl { get; set; }
 
         /// <summary>
         /// The update time of the app.

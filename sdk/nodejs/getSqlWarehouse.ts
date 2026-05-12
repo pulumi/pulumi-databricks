@@ -232,7 +232,7 @@ export interface GetSqlWarehouseResult {
      * ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
      */
     readonly odbcParams: outputs.GetSqlWarehouseOdbcParams;
-    readonly providerConfig?: outputs.GetSqlWarehouseProviderConfig;
+    readonly providerConfig: outputs.GetSqlWarehouseProviderConfig;
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      */

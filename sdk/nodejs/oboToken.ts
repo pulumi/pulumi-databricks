@@ -122,7 +122,7 @@ export class OboToken extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.OboTokenProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.OboTokenProviderConfig>;
     /**
      * **Sensitive** value of the newly-created token.
      */

@@ -61,8 +61,8 @@ type CatalogWorkspaceBinding struct {
 	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`
 	BindingType pulumi.StringPtrOutput `pulumi:"bindingType"`
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
-	CatalogName    pulumi.StringPtrOutput                         `pulumi:"catalogName"`
-	ProviderConfig CatalogWorkspaceBindingProviderConfigPtrOutput `pulumi:"providerConfig"`
+	CatalogName    pulumi.StringPtrOutput                      `pulumi:"catalogName"`
+	ProviderConfig CatalogWorkspaceBindingProviderConfigOutput `pulumi:"providerConfig"`
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName pulumi.StringOutput `pulumi:"securableName"`
 	// Type of securable. Default to `catalog`. Change forces creation of a new resource.
@@ -261,10 +261,8 @@ func (o CatalogWorkspaceBindingOutput) CatalogName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CatalogWorkspaceBinding) pulumi.StringPtrOutput { return v.CatalogName }).(pulumi.StringPtrOutput)
 }
 
-func (o CatalogWorkspaceBindingOutput) ProviderConfig() CatalogWorkspaceBindingProviderConfigPtrOutput {
-	return o.ApplyT(func(v *CatalogWorkspaceBinding) CatalogWorkspaceBindingProviderConfigPtrOutput {
-		return v.ProviderConfig
-	}).(CatalogWorkspaceBindingProviderConfigPtrOutput)
+func (o CatalogWorkspaceBindingOutput) ProviderConfig() CatalogWorkspaceBindingProviderConfigOutput {
+	return o.ApplyT(func(v *CatalogWorkspaceBinding) CatalogWorkspaceBindingProviderConfigOutput { return v.ProviderConfig }).(CatalogWorkspaceBindingProviderConfigOutput)
 }
 
 // Name of securable. Change forces creation of a new resource.

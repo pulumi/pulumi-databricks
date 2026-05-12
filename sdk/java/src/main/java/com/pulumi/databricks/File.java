@@ -209,14 +209,14 @@ public class File extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={FileProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ FileProviderConfig> providerConfig;
+    private Output<FileProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<FileProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<FileProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="remoteFileModified", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> remoteFileModified;

@@ -224,7 +224,7 @@ export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.DatabaseSyncedDatabaseTableProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.DatabaseSyncedDatabaseTableProviderConfig>;
     declare public readonly spec: pulumi.Output<outputs.DatabaseSyncedDatabaseTableSpec | undefined>;
     /**
      * (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the

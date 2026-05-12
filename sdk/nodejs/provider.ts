@@ -91,7 +91,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["debugTruncateBytes"] = pulumi.output(args?.debugTruncateBytes).apply(JSON.stringify);
             resourceInputs["disableOauthRefreshToken"] = pulumi.output(args?.disableOauthRefreshToken).apply(JSON.stringify);
             resourceInputs["discoveryUrl"] = args?.discoveryUrl;
-            resourceInputs["experimentalIsUnifiedHost"] = pulumi.output(args?.experimentalIsUnifiedHost).apply(JSON.stringify);
             resourceInputs["googleCredentials"] = args?.googleCredentials ? pulumi.secret(args.googleCredentials) : undefined;
             resourceInputs["googleServiceAccount"] = args?.googleServiceAccount;
             resourceInputs["host"] = args?.host;
@@ -154,7 +153,6 @@ export interface ProviderArgs {
     debugTruncateBytes?: pulumi.Input<number | undefined>;
     disableOauthRefreshToken?: pulumi.Input<boolean | undefined>;
     discoveryUrl?: pulumi.Input<string | undefined>;
-    experimentalIsUnifiedHost?: pulumi.Input<boolean | undefined>;
     googleCredentials?: pulumi.Input<string | undefined>;
     googleServiceAccount?: pulumi.Input<string | undefined>;
     host?: pulumi.Input<string | undefined>;

@@ -263,7 +263,7 @@ namespace Pulumi.Databricks
         /// the name of the volume
         /// </summary>
         public readonly string Name;
-        public readonly Outputs.GetVolumeProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetVolumeProviderConfigResult ProviderConfig;
         /// <summary>
         /// `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
         /// </summary>
@@ -275,7 +275,7 @@ namespace Pulumi.Databricks
 
             string name,
 
-            Outputs.GetVolumeProviderConfigResult? providerConfig,
+            Outputs.GetVolumeProviderConfigResult providerConfig,
 
             Outputs.GetVolumeVolumeInfoResult volumeInfo)
         {

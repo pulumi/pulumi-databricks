@@ -177,7 +177,7 @@ namespace Pulumi.Databricks
         /// block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
         /// </summary>
         public readonly Outputs.GetInstancePoolPoolInfoResult PoolInfo;
-        public readonly Outputs.GetInstancePoolProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetInstancePoolProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetInstancePoolResult(
@@ -187,7 +187,7 @@ namespace Pulumi.Databricks
 
             Outputs.GetInstancePoolPoolInfoResult poolInfo,
 
-            Outputs.GetInstancePoolProviderConfigResult? providerConfig)
+            Outputs.GetInstancePoolProviderConfigResult providerConfig)
         {
             Id = id;
             Name = name;

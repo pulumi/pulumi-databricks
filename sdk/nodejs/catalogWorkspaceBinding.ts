@@ -69,7 +69,7 @@ export class CatalogWorkspaceBinding extends pulumi.CustomResource {
      * @deprecated Please use 'securable_name' and 'securable_type instead.
      */
     declare public readonly catalogName: pulumi.Output<string | undefined>;
-    declare public readonly providerConfig: pulumi.Output<outputs.CatalogWorkspaceBindingProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.CatalogWorkspaceBindingProviderConfig>;
     /**
      * Name of securable. Change forces creation of a new resource.
      */

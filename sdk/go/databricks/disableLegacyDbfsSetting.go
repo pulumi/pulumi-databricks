@@ -63,8 +63,8 @@ type DisableLegacyDbfsSetting struct {
 	DisableLegacyDbfs DisableLegacyDbfsSettingDisableLegacyDbfsOutput `pulumi:"disableLegacyDbfs"`
 	Etag              pulumi.StringOutput                             `pulumi:"etag"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig DisableLegacyDbfsSettingProviderConfigPtrOutput `pulumi:"providerConfig"`
-	SettingName    pulumi.StringOutput                             `pulumi:"settingName"`
+	ProviderConfig DisableLegacyDbfsSettingProviderConfigOutput `pulumi:"providerConfig"`
+	SettingName    pulumi.StringOutput                          `pulumi:"settingName"`
 }
 
 // NewDisableLegacyDbfsSetting registers a new resource with the given unique name, arguments, and options.
@@ -239,10 +239,10 @@ func (o DisableLegacyDbfsSettingOutput) Etag() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o DisableLegacyDbfsSettingOutput) ProviderConfig() DisableLegacyDbfsSettingProviderConfigPtrOutput {
-	return o.ApplyT(func(v *DisableLegacyDbfsSetting) DisableLegacyDbfsSettingProviderConfigPtrOutput {
+func (o DisableLegacyDbfsSettingOutput) ProviderConfig() DisableLegacyDbfsSettingProviderConfigOutput {
+	return o.ApplyT(func(v *DisableLegacyDbfsSetting) DisableLegacyDbfsSettingProviderConfigOutput {
 		return v.ProviderConfig
-	}).(DisableLegacyDbfsSettingProviderConfigPtrOutput)
+	}).(DisableLegacyDbfsSettingProviderConfigOutput)
 }
 
 func (o DisableLegacyDbfsSettingOutput) SettingName() pulumi.StringOutput {

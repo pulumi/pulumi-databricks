@@ -92,7 +92,7 @@ export interface GetViewsResult {
      * set of databricksView full names: *`catalog`.`schema`.`view`*
      */
     readonly ids: string[];
-    readonly providerConfig?: outputs.GetViewsProviderConfig;
+    readonly providerConfig: outputs.GetViewsProviderConfig;
     readonly schemaName: string;
 }
 /**

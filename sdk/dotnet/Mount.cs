@@ -460,7 +460,7 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.MountProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.MountProviderConfig> ProviderConfig { get; private set; } = null!;
 
         [Output("resourceId")]
         public Output<string?> ResourceId { get; private set; } = null!;

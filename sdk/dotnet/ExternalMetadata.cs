@@ -115,7 +115,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.ExternalMetadataProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.ExternalMetadataProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`

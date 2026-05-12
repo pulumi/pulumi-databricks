@@ -193,13 +193,6 @@ namespace Pulumi.Databricks
             set => _discoveryUrl.Set(value);
         }
 
-        private static readonly __Value<bool?> _experimentalIsUnifiedHost = new __Value<bool?>(() => __config.GetBoolean("experimentalIsUnifiedHost"));
-        public static bool? ExperimentalIsUnifiedHost
-        {
-            get => _experimentalIsUnifiedHost.Get();
-            set => _experimentalIsUnifiedHost.Set(value);
-        }
-
         private static readonly __Value<string?> _googleCredentials = new __Value<string?>(() => __config.Get("googleCredentials"));
         public static string? GoogleCredentials
         {

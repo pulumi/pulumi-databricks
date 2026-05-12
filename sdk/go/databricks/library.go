@@ -20,11 +20,13 @@ import (
 //
 // ## Plugin Framework Migration
 //
-// The library resource has been migrated from sdkv2 to plugin framework。 If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES="Library"`.
+// The library resource has been migrated from sdkv2 to plugin framework. If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES="Library"`.
+//
+// > **Upgrading from v1.114.0**: state written by v1.114.0 encodes `providerConfig` as a single object instead of a list. After upgrading the provider, edit each `Library` instance in your state file to convert `"providerConfig": {"workspaceId": "X"}` to `"providerConfig": null` (recommended if you didn't set `providerConfig` in HCL) or to `"providerConfig": [{"workspaceId": "X"}]` (if you did). Without this edit, `pulumi preview` fails with ` Error decoding ... missing expected  `. Users on v1.113.0 are unaffected.
 //
 // ## Installing library on all clusters
 //
-// You can install libraries on all clusters with the help of getClusters data resource:
+// You can install libraries on all clusters with the help of [getClusters data resource:
 //
 // ```go
 // package main

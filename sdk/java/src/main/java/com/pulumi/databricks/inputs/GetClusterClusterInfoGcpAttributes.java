@@ -30,6 +30,13 @@ public final class GetClusterClusterInfoGcpAttributes extends com.pulumi.resourc
         return Optional.ofNullable(this.bootDiskSize);
     }
 
+    @Import(name="confidentialComputeType")
+    private @Nullable String confidentialComputeType;
+
+    public Optional<String> confidentialComputeType() {
+        return Optional.ofNullable(this.confidentialComputeType);
+    }
+
     @Import(name="firstOnDemand")
     private @Nullable Integer firstOnDemand;
 
@@ -70,6 +77,7 @@ public final class GetClusterClusterInfoGcpAttributes extends com.pulumi.resourc
     private GetClusterClusterInfoGcpAttributes(GetClusterClusterInfoGcpAttributes $) {
         this.availability = $.availability;
         this.bootDiskSize = $.bootDiskSize;
+        this.confidentialComputeType = $.confidentialComputeType;
         this.firstOnDemand = $.firstOnDemand;
         this.googleServiceAccount = $.googleServiceAccount;
         this.localSsdCount = $.localSsdCount;
@@ -102,6 +110,11 @@ public final class GetClusterClusterInfoGcpAttributes extends com.pulumi.resourc
 
         public Builder bootDiskSize(@Nullable Integer bootDiskSize) {
             $.bootDiskSize = bootDiskSize;
+            return this;
+        }
+
+        public Builder confidentialComputeType(@Nullable String confidentialComputeType) {
+            $.confidentialComputeType = confidentialComputeType;
             return this;
         }
 

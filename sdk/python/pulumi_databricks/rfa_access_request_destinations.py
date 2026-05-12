@@ -428,7 +428,7 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.RfaAccessRequestDestinationsProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.RfaAccessRequestDestinationsProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

@@ -176,7 +176,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
      * Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
      */
     declare public readonly home: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.ServicePrincipalProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.ServicePrincipalProviderConfig>;
     /**
      * Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
      */

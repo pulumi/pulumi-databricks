@@ -108,7 +108,7 @@ export class SqlGlobalConfig extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.SqlGlobalConfigProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.SqlGlobalConfigProviderConfig>;
     /**
      * The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
      */

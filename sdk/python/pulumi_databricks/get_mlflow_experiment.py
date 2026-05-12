@@ -115,7 +115,7 @@ class GetMlflowExperimentResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetMlflowExperimentProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetMlflowExperimentProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

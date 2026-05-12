@@ -118,7 +118,7 @@ class GetSparkVersionResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetSparkVersionProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetSparkVersionProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

@@ -213,7 +213,7 @@ class MaterializedFeaturesFeatureTag(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.MaterializedFeaturesFeatureTagProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.MaterializedFeaturesFeatureTagProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

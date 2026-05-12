@@ -191,7 +191,7 @@ namespace Pulumi.Databricks
         /// summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
         /// </summary>
         public readonly Outputs.GetCurrentMetastoreMetastoreInfoResult MetastoreInfo;
-        public readonly Outputs.GetCurrentMetastoreProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetCurrentMetastoreProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetCurrentMetastoreResult(
@@ -199,7 +199,7 @@ namespace Pulumi.Databricks
 
             Outputs.GetCurrentMetastoreMetastoreInfoResult metastoreInfo,
 
-            Outputs.GetCurrentMetastoreProviderConfigResult? providerConfig)
+            Outputs.GetCurrentMetastoreProviderConfigResult providerConfig)
         {
             Id = id;
             MetastoreInfo = metastoreInfo;

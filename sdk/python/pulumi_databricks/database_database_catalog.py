@@ -434,7 +434,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.DatabaseDatabaseCatalogProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.DatabaseDatabaseCatalogProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

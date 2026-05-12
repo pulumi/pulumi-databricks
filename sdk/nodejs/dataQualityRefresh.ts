@@ -121,7 +121,7 @@ export class DataQualityRefresh extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.DataQualityRefreshProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.DataQualityRefreshProviderConfig>;
     /**
      * (integer) - Unique id of the refresh operation
      */

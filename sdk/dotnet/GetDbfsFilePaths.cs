@@ -192,7 +192,7 @@ namespace Pulumi.Databricks
         /// returns list of objects with `Path` and `FileSize` attributes in each
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDbfsFilePathsPathListResult> PathLists;
-        public readonly Outputs.GetDbfsFilePathsProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetDbfsFilePathsProviderConfigResult ProviderConfig;
         public readonly bool Recursive;
 
         [OutputConstructor]
@@ -203,7 +203,7 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetDbfsFilePathsPathListResult> pathLists,
 
-            Outputs.GetDbfsFilePathsProviderConfigResult? providerConfig,
+            Outputs.GetDbfsFilePathsProviderConfigResult providerConfig,
 
             bool recursive)
         {

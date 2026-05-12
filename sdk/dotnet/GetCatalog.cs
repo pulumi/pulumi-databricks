@@ -246,7 +246,7 @@ namespace Pulumi.Databricks
         /// Name of the catalog
         /// </summary>
         public readonly string Name;
-        public readonly Outputs.GetCatalogProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetCatalogProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetCatalogResult(
@@ -256,7 +256,7 @@ namespace Pulumi.Databricks
 
             string name,
 
-            Outputs.GetCatalogProviderConfigResult? providerConfig)
+            Outputs.GetCatalogProviderConfigResult providerConfig)
         {
             CatalogInfo = catalogInfo;
             Id = id;

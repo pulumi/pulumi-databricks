@@ -78,7 +78,7 @@ type Secret struct {
 	// (Integer) time secret was updated
 	LastUpdatedTimestamp pulumi.IntOutput `pulumi:"lastUpdatedTimestamp"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig SecretProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig SecretProviderConfigOutput `pulumi:"providerConfig"`
 	// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Scope pulumi.StringOutput `pulumi:"scope"`
 	// (String) super secret sensitive value.
@@ -290,8 +290,8 @@ func (o SecretOutput) LastUpdatedTimestamp() pulumi.IntOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o SecretOutput) ProviderConfig() SecretProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Secret) SecretProviderConfigPtrOutput { return v.ProviderConfig }).(SecretProviderConfigPtrOutput)
+func (o SecretOutput) ProviderConfig() SecretProviderConfigOutput {
+	return o.ApplyT(func(v *Secret) SecretProviderConfigOutput { return v.ProviderConfig }).(SecretProviderConfigOutput)
 }
 
 // (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.

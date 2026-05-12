@@ -383,7 +383,7 @@ class PostgresProject(pulumi.CustomResource):
                 "default_endpoint_settings": {
                     "autoscaling_limit_min_cu": float(1),
                     "autoscaling_limit_max_cu": float(8),
-                    "suspend_timeout_duration": "300s",
+                    "suspend_timeout_duration": "86400s",
                 },
             })
         ```
@@ -506,7 +506,7 @@ class PostgresProject(pulumi.CustomResource):
                 "default_endpoint_settings": {
                     "autoscaling_limit_min_cu": float(1),
                     "autoscaling_limit_max_cu": float(8),
-                    "suspend_timeout_duration": "300s",
+                    "suspend_timeout_duration": "86400s",
                 },
             })
         ```
@@ -736,7 +736,7 @@ class PostgresProject(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.PostgresProjectProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.PostgresProjectProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

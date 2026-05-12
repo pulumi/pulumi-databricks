@@ -87,7 +87,7 @@ export class UserRole extends pulumi.CustomResource {
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
     declare public readonly api: pulumi.Output<string | undefined>;
-    declare public readonly providerConfig: pulumi.Output<outputs.UserRoleProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.UserRoleProviderConfig>;
     /**
      * Either a role name or the ARN/ID of the instance profile resource.
      */

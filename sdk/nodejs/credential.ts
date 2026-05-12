@@ -155,7 +155,7 @@ export class Credential extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.CredentialProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.CredentialProviderConfig>;
     /**
      * Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
      */

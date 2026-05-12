@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryCranArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryMavenArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryProviderConfigArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsLibraryPypiArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -63,15 +64,15 @@ public final class GetJobJobSettingsSettingsLibraryArgs extends com.pulumi.resou
      * Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    @Import(name="providerConfig")
-    private @Nullable Output<GetJobJobSettingsSettingsLibraryProviderConfigArgs> providerConfig;
+    @Import(name="providerConfig", required=true)
+    private Output<GetJobJobSettingsSettingsLibraryProviderConfigArgs> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Optional<Output<GetJobJobSettingsSettingsLibraryProviderConfigArgs>> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public Output<GetJobJobSettingsSettingsLibraryProviderConfigArgs> providerConfig() {
+        return this.providerConfig;
     }
 
     @Import(name="pypi")
@@ -184,7 +185,7 @@ public final class GetJobJobSettingsSettingsLibraryArgs extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder providerConfig(@Nullable Output<GetJobJobSettingsSettingsLibraryProviderConfigArgs> providerConfig) {
+        public Builder providerConfig(Output<GetJobJobSettingsSettingsLibraryProviderConfigArgs> providerConfig) {
             $.providerConfig = providerConfig;
             return this;
         }
@@ -227,6 +228,9 @@ public final class GetJobJobSettingsSettingsLibraryArgs extends com.pulumi.resou
         }
 
         public GetJobJobSettingsSettingsLibraryArgs build() {
+            if ($.providerConfig == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsLibraryArgs", "providerConfig");
+            }
             return $;
         }
     }

@@ -143,14 +143,14 @@ public class KnowledgeAssistantKnowledgeSource extends com.pulumi.resources.Cust
      * 
      */
     @Export(name="providerConfig", refs={KnowledgeAssistantKnowledgeSourceProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ KnowledgeAssistantKnowledgeSourceProviderConfig> providerConfig;
+    private Output<KnowledgeAssistantKnowledgeSourceProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<KnowledgeAssistantKnowledgeSourceProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<KnowledgeAssistantKnowledgeSourceProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * The type of the source: &#34;index&#34;, &#34;files&#34;, or &#34;fileTable&#34;.

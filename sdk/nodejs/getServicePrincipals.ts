@@ -59,6 +59,7 @@ export function getServicePrincipals(args?: GetServicePrincipalsArgs, opts?: pul
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getServicePrincipals:getServicePrincipals", {
+        "api": args.api,
         "applicationIds": args.applicationIds,
         "displayNameContains": args.displayNameContains,
         "providerConfig": args.providerConfig,
@@ -70,6 +71,7 @@ export function getServicePrincipals(args?: GetServicePrincipalsArgs, opts?: pul
  * A collection of arguments for invoking getServicePrincipals.
  */
 export interface GetServicePrincipalsArgs {
+    api?: string;
     /**
      * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
      */
@@ -92,6 +94,7 @@ export interface GetServicePrincipalsArgs {
  * A collection of values returned by getServicePrincipals.
  */
 export interface GetServicePrincipalsResult {
+    readonly api?: string;
     /**
      * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
      */
@@ -101,7 +104,7 @@ export interface GetServicePrincipalsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly providerConfig?: outputs.GetServicePrincipalsProviderConfig;
+    readonly providerConfig: outputs.GetServicePrincipalsProviderConfig;
     /**
      * List of objects describing individual service principals. Each object has the following attributes:
      */
@@ -160,6 +163,7 @@ export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getServicePrincipals:getServicePrincipals", {
+        "api": args.api,
         "applicationIds": args.applicationIds,
         "displayNameContains": args.displayNameContains,
         "providerConfig": args.providerConfig,
@@ -171,6 +175,7 @@ export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs
  * A collection of arguments for invoking getServicePrincipals.
  */
 export interface GetServicePrincipalsOutputArgs {
+    api?: pulumi.Input<string | undefined>;
     /**
      * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
      */

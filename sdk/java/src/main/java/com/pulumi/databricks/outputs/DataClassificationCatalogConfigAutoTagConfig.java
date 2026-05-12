@@ -16,7 +16,8 @@ public final class DataClassificationCatalogConfigAutoTagConfig {
      */
     private String autoTaggingMode;
     /**
-     * @return The Classification Tag (e.g., &#34;class.name&#34;, &#34;class.location&#34;)
+     * @return The Classification Tag. For built-in classes this is a system tag (e.g., &#34;class.name&#34;,
+     * &#34;class.location&#34;); for custom classes it is a user-defined governance tag key
      * 
      */
     private String classificationTag;
@@ -30,7 +31,8 @@ public final class DataClassificationCatalogConfigAutoTagConfig {
         return this.autoTaggingMode;
     }
     /**
-     * @return The Classification Tag (e.g., &#34;class.name&#34;, &#34;class.location&#34;)
+     * @return The Classification Tag. For built-in classes this is a system tag (e.g., &#34;class.name&#34;,
+     * &#34;class.location&#34;); for custom classes it is a user-defined governance tag key
      * 
      */
     public String classificationTag() {

@@ -101,7 +101,7 @@ export class DatabaseDatabaseCatalog extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.DatabaseDatabaseCatalogProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.DatabaseDatabaseCatalogProviderConfig>;
     /**
      * (string)
      */

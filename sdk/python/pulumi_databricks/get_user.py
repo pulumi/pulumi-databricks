@@ -137,7 +137,7 @@ class GetUserResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetUserProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetUserProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

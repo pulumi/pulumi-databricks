@@ -253,7 +253,7 @@ namespace Pulumi.Databricks
         public Output<string> PipelineId { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.PipelineProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.PipelineProviderConfig> ProviderConfig { get; private set; } = null!;
 
         [Output("restartWindow")]
         public Output<Outputs.PipelineRestartWindow?> RestartWindow { get; private set; } = null!;

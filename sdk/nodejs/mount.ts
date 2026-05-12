@@ -378,7 +378,7 @@ export class Mount extends pulumi.CustomResource {
     declare public readonly extraConfigs: pulumi.Output<{[key: string]: string} | undefined>;
     declare public readonly gs: pulumi.Output<outputs.MountGs | undefined>;
     declare public readonly name: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.MountProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.MountProviderConfig>;
     declare public readonly resourceId: pulumi.Output<string | undefined>;
     declare public readonly s3: pulumi.Output<outputs.MountS3 | undefined>;
     /**

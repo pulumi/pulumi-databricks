@@ -18,9 +18,9 @@ import (
 //
 // ### Managing Implicitly Created Read-Write Endpoint
 //
-// A read-write endpoint named `primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi take ownership of the implicitly created endpoint and immediately apply the provided configuration to it. Support for providing a custom `endpointId` will be available in later versions.
+// A read-write endpoint named `primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi represent the implicitly created endpoint in Pulumi state and immediately apply the provided configuration to it. Support for providing a custom `endpointId` will be available in later versions.
 //
-// This resource is only required if you want to apply configuration changes to the implicitly created endpoint.
+// Pulumi uses this resource exclusively for managing updates. It does not control creation or deletion of the endpoint itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual endpoint is unaffected, because its lifecycle is controlled by the parent branch. The only way to remove the actual endpoint is to delete the branch it belongs to. If you don't want to delete the parent branch and are concerned about the cost, use the `disabled` or `suspendTimeoutDuration` fields in `spec`.
 //
 // ```go
 // package main
@@ -312,7 +312,7 @@ import (
 //					DefaultEndpointSettings: &databricks.PostgresProjectSpecDefaultEndpointSettingsArgs{
 //						AutoscalingLimitMinCu:  pulumi.Float64(1),
 //						AutoscalingLimitMaxCu:  pulumi.Float64(8),
-//						SuspendTimeoutDuration: pulumi.String("300s"),
+//						SuspendTimeoutDuration: pulumi.String("86400s"),
 //					},
 //				},
 //			})
@@ -382,7 +382,7 @@ type PostgresEndpoint struct {
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
-	ProviderConfig PostgresEndpointProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig PostgresEndpointProviderConfigOutput `pulumi:"providerConfig"`
 	// If true, update the endpoint if it already exists instead of returning an error
 	ReplaceExisting pulumi.BoolPtrOutput `pulumi:"replaceExisting"`
 	// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
@@ -633,8 +633,8 @@ func (o PostgresEndpointOutput) Parent() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o PostgresEndpointOutput) ProviderConfig() PostgresEndpointProviderConfigPtrOutput {
-	return o.ApplyT(func(v *PostgresEndpoint) PostgresEndpointProviderConfigPtrOutput { return v.ProviderConfig }).(PostgresEndpointProviderConfigPtrOutput)
+func (o PostgresEndpointOutput) ProviderConfig() PostgresEndpointProviderConfigOutput {
+	return o.ApplyT(func(v *PostgresEndpoint) PostgresEndpointProviderConfigOutput { return v.ProviderConfig }).(PostgresEndpointProviderConfigOutput)
 }
 
 // If true, update the endpoint if it already exists instead of returning an error

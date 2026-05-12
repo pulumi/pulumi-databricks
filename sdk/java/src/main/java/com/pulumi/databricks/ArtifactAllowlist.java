@@ -15,7 +15,6 @@ import com.pulumi.databricks.outputs.ArtifactAllowlistProviderConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -136,10 +135,10 @@ public class ArtifactAllowlist extends com.pulumi.resources.CustomResource {
         return this.metastoreId;
     }
     @Export(name="providerConfig", refs={ArtifactAllowlistProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ArtifactAllowlistProviderConfig> providerConfig;
+    private Output<ArtifactAllowlistProviderConfig> providerConfig;
 
-    public Output<Optional<ArtifactAllowlistProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<ArtifactAllowlistProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
 
     /**

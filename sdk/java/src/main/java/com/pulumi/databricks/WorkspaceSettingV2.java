@@ -296,14 +296,14 @@ public class WorkspaceSettingV2 extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={WorkspaceSettingV2ProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ WorkspaceSettingV2ProviderConfig> providerConfig;
+    private Output<WorkspaceSettingV2ProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<WorkspaceSettingV2ProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<WorkspaceSettingV2ProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value

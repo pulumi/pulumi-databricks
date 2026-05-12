@@ -206,14 +206,14 @@ public class OboToken extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={OboTokenProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ OboTokenProviderConfig> providerConfig;
+    private Output<OboTokenProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<OboTokenProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<OboTokenProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * **Sensitive** value of the newly-created token.

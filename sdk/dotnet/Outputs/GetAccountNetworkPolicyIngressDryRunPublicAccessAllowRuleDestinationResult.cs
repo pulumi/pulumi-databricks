@@ -14,27 +14,62 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationResult
     {
         /// <summary>
+        /// (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+        /// </summary>
+        public readonly Outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountApiResult? AccountApi;
+        /// <summary>
+        /// (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+        /// </summary>
+        public readonly Outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOneResult? AccountDatabricksOne;
+        /// <summary>
+        /// (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+        /// </summary>
+        public readonly Outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountUiResult? AccountUi;
+        /// <summary>
         /// (boolean) - Must be set to true
         /// </summary>
         public readonly bool? AllDestinations;
+        /// <summary>
+        /// (CustomerFacingIngressNetworkPolicyAppsRuntimeDestination)
+        /// </summary>
+        public readonly Outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAppsRuntimeResult? AppsRuntime;
+        /// <summary>
+        /// (CustomerFacingIngressNetworkPolicyLakebaseRuntimeDestination)
+        /// </summary>
+        public readonly Outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationLakebaseRuntimeResult? LakebaseRuntime;
         /// <summary>
         /// (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
         /// </summary>
         public readonly Outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApiResult? WorkspaceApi;
         /// <summary>
-        /// (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination) - Workspace destinations
+        /// (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination)
         /// </summary>
         public readonly Outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUiResult? WorkspaceUi;
 
         [OutputConstructor]
         private GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationResult(
+            Outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountApiResult? accountApi,
+
+            Outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOneResult? accountDatabricksOne,
+
+            Outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountUiResult? accountUi,
+
             bool? allDestinations,
+
+            Outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAppsRuntimeResult? appsRuntime,
+
+            Outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationLakebaseRuntimeResult? lakebaseRuntime,
 
             Outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApiResult? workspaceApi,
 
             Outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUiResult? workspaceUi)
         {
+            AccountApi = accountApi;
+            AccountDatabricksOne = accountDatabricksOne;
+            AccountUi = accountUi;
             AllDestinations = allDestinations;
+            AppsRuntime = appsRuntime;
+            LakebaseRuntime = lakebaseRuntime;
             WorkspaceApi = workspaceApi;
             WorkspaceUi = workspaceUi;
         }

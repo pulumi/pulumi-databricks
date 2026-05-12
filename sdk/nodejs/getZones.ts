@@ -65,7 +65,7 @@ export interface GetZonesResult {
      * The id for the zone object.
      */
     readonly id: string;
-    readonly providerConfig?: outputs.GetZonesProviderConfig;
+    readonly providerConfig: outputs.GetZonesProviderConfig;
     /**
      * This is a list of all the zones available for your subnets in your Databricks workspace.
      */

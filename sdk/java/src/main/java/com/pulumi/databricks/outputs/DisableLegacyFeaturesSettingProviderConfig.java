@@ -4,17 +4,30 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class DisableLegacyFeaturesSettingProviderConfig {
-    private String workspaceId;
+    /**
+     * @deprecated
+     * workspace_id is ignored for account-only resources.
+     * 
+     */
+    @Deprecated /* workspace_id is ignored for account-only resources. */
+    private @Nullable String workspaceId;
 
     private DisableLegacyFeaturesSettingProviderConfig() {}
-    public String workspaceId() {
-        return this.workspaceId;
+    /**
+     * @deprecated
+     * workspace_id is ignored for account-only resources.
+     * 
+     */
+    @Deprecated /* workspace_id is ignored for account-only resources. */
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -26,7 +39,7 @@ public final class DisableLegacyFeaturesSettingProviderConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String workspaceId;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(DisableLegacyFeaturesSettingProviderConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -34,10 +47,8 @@ public final class DisableLegacyFeaturesSettingProviderConfig {
         }
 
         @CustomType.Setter
-        public Builder workspaceId(String workspaceId) {
-            if (workspaceId == null) {
-              throw new MissingRequiredPropertyException("DisableLegacyFeaturesSettingProviderConfig", "workspaceId");
-            }
+        public Builder workspaceId(@Nullable String workspaceId) {
+
             this.workspaceId = workspaceId;
             return this;
         }

@@ -123,14 +123,14 @@ public class Directory extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={DirectoryProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ DirectoryProviderConfig> providerConfig;
+    private Output<DirectoryProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<DirectoryProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<DirectoryProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`

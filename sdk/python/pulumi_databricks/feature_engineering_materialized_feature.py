@@ -486,7 +486,7 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.FeatureEngineeringMaterializedFeatureProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.FeatureEngineeringMaterializedFeatureProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

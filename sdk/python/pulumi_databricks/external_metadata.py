@@ -699,7 +699,7 @@ class ExternalMetadata(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.ExternalMetadataProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.ExternalMetadataProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

@@ -148,14 +148,14 @@ public class SqlDashboard extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={SqlDashboardProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ SqlDashboardProviderConfig> providerConfig;
+    private Output<SqlDashboardProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<SqlDashboardProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<SqlDashboardProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="runAsRole", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> runAsRole;

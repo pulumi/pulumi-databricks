@@ -165,7 +165,7 @@ type Recipient struct {
 	// Recipient properties - object consisting of following fields:
 	PropertiesKvpairs RecipientPropertiesKvpairsPtrOutput `pulumi:"propertiesKvpairs"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig RecipientProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig RecipientProviderConfigOutput `pulumi:"providerConfig"`
 	// Unique ID of the recipient token.
 	RecipientId pulumi.StringOutput `pulumi:"recipientId"`
 	// Cloud region of the recipient's Unity Catalog Metstore. This field is only present when the authenticationType is `DATABRICKS`.
@@ -523,8 +523,8 @@ func (o RecipientOutput) PropertiesKvpairs() RecipientPropertiesKvpairsPtrOutput
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o RecipientOutput) ProviderConfig() RecipientProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Recipient) RecipientProviderConfigPtrOutput { return v.ProviderConfig }).(RecipientProviderConfigPtrOutput)
+func (o RecipientOutput) ProviderConfig() RecipientProviderConfigOutput {
+	return o.ApplyT(func(v *Recipient) RecipientProviderConfigOutput { return v.ProviderConfig }).(RecipientProviderConfigOutput)
 }
 
 // Unique ID of the recipient token.

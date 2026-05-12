@@ -161,8 +161,8 @@ type SqlQuery struct {
 	Name       pulumi.StringOutput          `pulumi:"name"`
 	Parameters SqlQueryParameterArrayOutput `pulumi:"parameters"`
 	// The identifier of the workspace folder containing the object.
-	Parent         pulumi.StringPtrOutput          `pulumi:"parent"`
-	ProviderConfig SqlQueryProviderConfigPtrOutput `pulumi:"providerConfig"`
+	Parent         pulumi.StringPtrOutput       `pulumi:"parent"`
+	ProviderConfig SqlQueryProviderConfigOutput `pulumi:"providerConfig"`
 	// The text of the query to be run.
 	Query pulumi.StringOutput `pulumi:"query"`
 	// Run as role. Possible values are `viewer`, `owner`.
@@ -416,8 +416,8 @@ func (o SqlQueryOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlQuery) pulumi.StringPtrOutput { return v.Parent }).(pulumi.StringPtrOutput)
 }
 
-func (o SqlQueryOutput) ProviderConfig() SqlQueryProviderConfigPtrOutput {
-	return o.ApplyT(func(v *SqlQuery) SqlQueryProviderConfigPtrOutput { return v.ProviderConfig }).(SqlQueryProviderConfigPtrOutput)
+func (o SqlQueryOutput) ProviderConfig() SqlQueryProviderConfigOutput {
+	return o.ApplyT(func(v *SqlQuery) SqlQueryProviderConfigOutput { return v.ProviderConfig }).(SqlQueryProviderConfigOutput)
 }
 
 // The text of the query to be run.

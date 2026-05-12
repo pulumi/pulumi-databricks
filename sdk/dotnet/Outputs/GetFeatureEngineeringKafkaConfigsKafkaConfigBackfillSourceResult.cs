@@ -14,14 +14,23 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceResult
     {
         /// <summary>
-        /// (DeltaTableSource) - The Delta table source containing the historic data to backfill.
-        /// Only the delta table name is used for backfill, the entity columns and timeseries column are ignored as they are defined by the associated KafkaSource
+        /// (string) - The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
+        /// </summary>
+        public readonly string? DeltaTableName;
+        /// <summary>
+        /// (DeltaTableSource, deprecated) - Deprecated: Use DeltaTableName instead. Kept for backwards compatibility.
+        /// The Delta table source containing the historical data to backfill.
+        /// Only the delta table name is used for backfill, other fields are ignored
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDeltaTableSourceResult? DeltaTableSource;
 
         [OutputConstructor]
-        private GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceResult(Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDeltaTableSourceResult? deltaTableSource)
+        private GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceResult(
+            string? deltaTableName,
+
+            Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDeltaTableSourceResult? deltaTableSource)
         {
+            DeltaTableName = deltaTableName;
             DeltaTableSource = deltaTableSource;
         }
     }

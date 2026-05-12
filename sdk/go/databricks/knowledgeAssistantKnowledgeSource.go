@@ -38,7 +38,7 @@ type KnowledgeAssistantKnowledgeSource struct {
 	// Format: knowledge-assistants/{knowledge_assistant_id}
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
-	ProviderConfig KnowledgeAssistantKnowledgeSourceProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig KnowledgeAssistantKnowledgeSourceProviderConfigOutput `pulumi:"providerConfig"`
 	// The type of the source: "index", "files", or "fileTable".
 	// Required when creating a Knowledge Source.
 	// When updating a Knowledge Source, this field is ignored
@@ -345,10 +345,10 @@ func (o KnowledgeAssistantKnowledgeSourceOutput) Parent() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o KnowledgeAssistantKnowledgeSourceOutput) ProviderConfig() KnowledgeAssistantKnowledgeSourceProviderConfigPtrOutput {
-	return o.ApplyT(func(v *KnowledgeAssistantKnowledgeSource) KnowledgeAssistantKnowledgeSourceProviderConfigPtrOutput {
+func (o KnowledgeAssistantKnowledgeSourceOutput) ProviderConfig() KnowledgeAssistantKnowledgeSourceProviderConfigOutput {
+	return o.ApplyT(func(v *KnowledgeAssistantKnowledgeSource) KnowledgeAssistantKnowledgeSourceProviderConfigOutput {
 		return v.ProviderConfig
-	}).(KnowledgeAssistantKnowledgeSourceProviderConfigPtrOutput)
+	}).(KnowledgeAssistantKnowledgeSourceProviderConfigOutput)
 }
 
 // The type of the source: "index", "files", or "fileTable".

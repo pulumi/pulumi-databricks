@@ -209,7 +209,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.StorageCredentialProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.StorageCredentialProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether the storage credential is only usable for read operations.

@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class SqlPermissionsProviderConfig
     {
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private SqlPermissionsProviderConfig(string workspaceId)
+        private SqlPermissionsProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

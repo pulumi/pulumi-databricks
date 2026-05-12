@@ -92,6 +92,14 @@ import com.pulumi.databricks.inputs.GetDbfsFilePathsPlainArgs;
 import com.pulumi.databricks.inputs.GetDbfsFilePlainArgs;
 import com.pulumi.databricks.inputs.GetDirectoryArgs;
 import com.pulumi.databricks.inputs.GetDirectoryPlainArgs;
+import com.pulumi.databricks.inputs.GetDisasterRecoveryFailoverGroupArgs;
+import com.pulumi.databricks.inputs.GetDisasterRecoveryFailoverGroupPlainArgs;
+import com.pulumi.databricks.inputs.GetDisasterRecoveryFailoverGroupsArgs;
+import com.pulumi.databricks.inputs.GetDisasterRecoveryFailoverGroupsPlainArgs;
+import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlArgs;
+import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlPlainArgs;
+import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlsArgs;
+import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlsPlainArgs;
 import com.pulumi.databricks.inputs.GetEndpointArgs;
 import com.pulumi.databricks.inputs.GetEndpointPlainArgs;
 import com.pulumi.databricks.inputs.GetEndpointsArgs;
@@ -224,6 +232,10 @@ import com.pulumi.databricks.inputs.GetSchemaArgs;
 import com.pulumi.databricks.inputs.GetSchemaPlainArgs;
 import com.pulumi.databricks.inputs.GetSchemasArgs;
 import com.pulumi.databricks.inputs.GetSchemasPlainArgs;
+import com.pulumi.databricks.inputs.GetSecretUcArgs;
+import com.pulumi.databricks.inputs.GetSecretUcPlainArgs;
+import com.pulumi.databricks.inputs.GetSecretUcsArgs;
+import com.pulumi.databricks.inputs.GetSecretUcsPlainArgs;
 import com.pulumi.databricks.inputs.GetServicePrincipalArgs;
 import com.pulumi.databricks.inputs.GetServicePrincipalFederationPoliciesArgs;
 import com.pulumi.databricks.inputs.GetServicePrincipalFederationPoliciesPlainArgs;
@@ -248,6 +260,14 @@ import com.pulumi.databricks.inputs.GetStorageCredentialArgs;
 import com.pulumi.databricks.inputs.GetStorageCredentialPlainArgs;
 import com.pulumi.databricks.inputs.GetStorageCredentialsArgs;
 import com.pulumi.databricks.inputs.GetStorageCredentialsPlainArgs;
+import com.pulumi.databricks.inputs.GetSupervisorAgentArgs;
+import com.pulumi.databricks.inputs.GetSupervisorAgentPlainArgs;
+import com.pulumi.databricks.inputs.GetSupervisorAgentToolArgs;
+import com.pulumi.databricks.inputs.GetSupervisorAgentToolPlainArgs;
+import com.pulumi.databricks.inputs.GetSupervisorAgentToolsArgs;
+import com.pulumi.databricks.inputs.GetSupervisorAgentToolsPlainArgs;
+import com.pulumi.databricks.inputs.GetSupervisorAgentsArgs;
+import com.pulumi.databricks.inputs.GetSupervisorAgentsPlainArgs;
 import com.pulumi.databricks.inputs.GetTableArgs;
 import com.pulumi.databricks.inputs.GetTablePlainArgs;
 import com.pulumi.databricks.inputs.GetTablesArgs;
@@ -324,6 +344,10 @@ import com.pulumi.databricks.outputs.GetDatabaseSyncedDatabaseTablesResult;
 import com.pulumi.databricks.outputs.GetDbfsFilePathsResult;
 import com.pulumi.databricks.outputs.GetDbfsFileResult;
 import com.pulumi.databricks.outputs.GetDirectoryResult;
+import com.pulumi.databricks.outputs.GetDisasterRecoveryFailoverGroupResult;
+import com.pulumi.databricks.outputs.GetDisasterRecoveryFailoverGroupsResult;
+import com.pulumi.databricks.outputs.GetDisasterRecoveryStableUrlResult;
+import com.pulumi.databricks.outputs.GetDisasterRecoveryStableUrlsResult;
 import com.pulumi.databricks.outputs.GetEndpointResult;
 import com.pulumi.databricks.outputs.GetEndpointsResult;
 import com.pulumi.databricks.outputs.GetEntityTagAssignmentResult;
@@ -390,6 +414,8 @@ import com.pulumi.databricks.outputs.GetRegisteredModelVersionsResult;
 import com.pulumi.databricks.outputs.GetRfaAccessRequestDestinationsResult;
 import com.pulumi.databricks.outputs.GetSchemaResult;
 import com.pulumi.databricks.outputs.GetSchemasResult;
+import com.pulumi.databricks.outputs.GetSecretUcResult;
+import com.pulumi.databricks.outputs.GetSecretUcsResult;
 import com.pulumi.databricks.outputs.GetServicePrincipalFederationPoliciesResult;
 import com.pulumi.databricks.outputs.GetServicePrincipalFederationPolicyResult;
 import com.pulumi.databricks.outputs.GetServicePrincipalResult;
@@ -402,6 +428,10 @@ import com.pulumi.databricks.outputs.GetSqlWarehouseResult;
 import com.pulumi.databricks.outputs.GetSqlWarehousesResult;
 import com.pulumi.databricks.outputs.GetStorageCredentialResult;
 import com.pulumi.databricks.outputs.GetStorageCredentialsResult;
+import com.pulumi.databricks.outputs.GetSupervisorAgentResult;
+import com.pulumi.databricks.outputs.GetSupervisorAgentToolResult;
+import com.pulumi.databricks.outputs.GetSupervisorAgentToolsResult;
+import com.pulumi.databricks.outputs.GetSupervisorAgentsResult;
 import com.pulumi.databricks.outputs.GetTableResult;
 import com.pulumi.databricks.outputs.GetTablesResult;
 import com.pulumi.databricks.outputs.GetTagPoliciesResult;
@@ -12431,6 +12461,146 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDirectory:getDirectory", TypeShape.of(GetDirectoryResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetDisasterRecoveryFailoverGroupResult> getDisasterRecoveryFailoverGroup(GetDisasterRecoveryFailoverGroupArgs args) {
+        return getDisasterRecoveryFailoverGroup(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetDisasterRecoveryFailoverGroupResult> getDisasterRecoveryFailoverGroupPlain(GetDisasterRecoveryFailoverGroupPlainArgs args) {
+        return getDisasterRecoveryFailoverGroupPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetDisasterRecoveryFailoverGroupResult> getDisasterRecoveryFailoverGroup(GetDisasterRecoveryFailoverGroupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryFailoverGroup:getDisasterRecoveryFailoverGroup", TypeShape.of(GetDisasterRecoveryFailoverGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetDisasterRecoveryFailoverGroupResult> getDisasterRecoveryFailoverGroup(GetDisasterRecoveryFailoverGroupArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryFailoverGroup:getDisasterRecoveryFailoverGroup", TypeShape.of(GetDisasterRecoveryFailoverGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetDisasterRecoveryFailoverGroupResult> getDisasterRecoveryFailoverGroupPlain(GetDisasterRecoveryFailoverGroupPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getDisasterRecoveryFailoverGroup:getDisasterRecoveryFailoverGroup", TypeShape.of(GetDisasterRecoveryFailoverGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetDisasterRecoveryFailoverGroupsResult> getDisasterRecoveryFailoverGroups(GetDisasterRecoveryFailoverGroupsArgs args) {
+        return getDisasterRecoveryFailoverGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetDisasterRecoveryFailoverGroupsResult> getDisasterRecoveryFailoverGroupsPlain(GetDisasterRecoveryFailoverGroupsPlainArgs args) {
+        return getDisasterRecoveryFailoverGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetDisasterRecoveryFailoverGroupsResult> getDisasterRecoveryFailoverGroups(GetDisasterRecoveryFailoverGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryFailoverGroups:getDisasterRecoveryFailoverGroups", TypeShape.of(GetDisasterRecoveryFailoverGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetDisasterRecoveryFailoverGroupsResult> getDisasterRecoveryFailoverGroups(GetDisasterRecoveryFailoverGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryFailoverGroups:getDisasterRecoveryFailoverGroups", TypeShape.of(GetDisasterRecoveryFailoverGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetDisasterRecoveryFailoverGroupsResult> getDisasterRecoveryFailoverGroupsPlain(GetDisasterRecoveryFailoverGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getDisasterRecoveryFailoverGroups:getDisasterRecoveryFailoverGroups", TypeShape.of(GetDisasterRecoveryFailoverGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetDisasterRecoveryStableUrlResult> getDisasterRecoveryStableUrl(GetDisasterRecoveryStableUrlArgs args) {
+        return getDisasterRecoveryStableUrl(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetDisasterRecoveryStableUrlResult> getDisasterRecoveryStableUrlPlain(GetDisasterRecoveryStableUrlPlainArgs args) {
+        return getDisasterRecoveryStableUrlPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetDisasterRecoveryStableUrlResult> getDisasterRecoveryStableUrl(GetDisasterRecoveryStableUrlArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl", TypeShape.of(GetDisasterRecoveryStableUrlResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetDisasterRecoveryStableUrlResult> getDisasterRecoveryStableUrl(GetDisasterRecoveryStableUrlArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl", TypeShape.of(GetDisasterRecoveryStableUrlResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetDisasterRecoveryStableUrlResult> getDisasterRecoveryStableUrlPlain(GetDisasterRecoveryStableUrlPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl", TypeShape.of(GetDisasterRecoveryStableUrlResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetDisasterRecoveryStableUrlsResult> getDisasterRecoveryStableUrls(GetDisasterRecoveryStableUrlsArgs args) {
+        return getDisasterRecoveryStableUrls(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetDisasterRecoveryStableUrlsResult> getDisasterRecoveryStableUrlsPlain(GetDisasterRecoveryStableUrlsPlainArgs args) {
+        return getDisasterRecoveryStableUrlsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetDisasterRecoveryStableUrlsResult> getDisasterRecoveryStableUrls(GetDisasterRecoveryStableUrlsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryStableUrls:getDisasterRecoveryStableUrls", TypeShape.of(GetDisasterRecoveryStableUrlsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetDisasterRecoveryStableUrlsResult> getDisasterRecoveryStableUrls(GetDisasterRecoveryStableUrlsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryStableUrls:getDisasterRecoveryStableUrls", TypeShape.of(GetDisasterRecoveryStableUrlsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetDisasterRecoveryStableUrlsResult> getDisasterRecoveryStableUrlsPlain(GetDisasterRecoveryStableUrlsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getDisasterRecoveryStableUrls:getDisasterRecoveryStableUrls", TypeShape.of(GetDisasterRecoveryStableUrlsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
@@ -13416,7 +13586,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getEntityTagAssignments:getEntityTagAssignments", TypeShape.of(GetEntityTagAssignmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
      * 
@@ -13459,7 +13629,7 @@ public final class DatabricksFunctions {
         return getEnvironmentsDefaultWorkspaceBaseEnvironment(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
      * 
@@ -13502,7 +13672,7 @@ public final class DatabricksFunctions {
         return getEnvironmentsDefaultWorkspaceBaseEnvironmentPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
      * 
@@ -13545,7 +13715,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEnvironmentsDefaultWorkspaceBaseEnvironment:getEnvironmentsDefaultWorkspaceBaseEnvironment", TypeShape.of(GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
      * 
@@ -13588,7 +13758,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEnvironmentsDefaultWorkspaceBaseEnvironment:getEnvironmentsDefaultWorkspaceBaseEnvironment", TypeShape.of(GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
      * 
@@ -13631,7 +13801,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getEnvironmentsDefaultWorkspaceBaseEnvironment:getEnvironmentsDefaultWorkspaceBaseEnvironment", TypeShape.of(GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves a single Workspace Base Environment by its resource name.
      * 
@@ -13673,7 +13843,7 @@ public final class DatabricksFunctions {
         return getEnvironmentsWorkspaceBaseEnvironment(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves a single Workspace Base Environment by its resource name.
      * 
@@ -13715,7 +13885,7 @@ public final class DatabricksFunctions {
         return getEnvironmentsWorkspaceBaseEnvironmentPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves a single Workspace Base Environment by its resource name.
      * 
@@ -13757,7 +13927,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEnvironmentsWorkspaceBaseEnvironment:getEnvironmentsWorkspaceBaseEnvironment", TypeShape.of(GetEnvironmentsWorkspaceBaseEnvironmentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves a single Workspace Base Environment by its resource name.
      * 
@@ -13799,7 +13969,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEnvironmentsWorkspaceBaseEnvironment:getEnvironmentsWorkspaceBaseEnvironment", TypeShape.of(GetEnvironmentsWorkspaceBaseEnvironmentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves a single Workspace Base Environment by its resource name.
      * 
@@ -13841,7 +14011,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getEnvironmentsWorkspaceBaseEnvironment:getEnvironmentsWorkspaceBaseEnvironment", TypeShape.of(GetEnvironmentsWorkspaceBaseEnvironmentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
@@ -13884,7 +14054,7 @@ public final class DatabricksFunctions {
         return getEnvironmentsWorkspaceBaseEnvironments(GetEnvironmentsWorkspaceBaseEnvironmentsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
@@ -13927,7 +14097,7 @@ public final class DatabricksFunctions {
         return getEnvironmentsWorkspaceBaseEnvironmentsPlain(GetEnvironmentsWorkspaceBaseEnvironmentsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
@@ -13970,7 +14140,7 @@ public final class DatabricksFunctions {
         return getEnvironmentsWorkspaceBaseEnvironments(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
@@ -14013,7 +14183,7 @@ public final class DatabricksFunctions {
         return getEnvironmentsWorkspaceBaseEnvironmentsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
@@ -14056,7 +14226,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEnvironmentsWorkspaceBaseEnvironments:getEnvironmentsWorkspaceBaseEnvironments", TypeShape.of(GetEnvironmentsWorkspaceBaseEnvironmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
@@ -14099,7 +14269,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEnvironmentsWorkspaceBaseEnvironments:getEnvironmentsWorkspaceBaseEnvironments", TypeShape.of(GetEnvironmentsWorkspaceBaseEnvironmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
@@ -24943,12 +25113,88 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * This data source retrieves a single Postgres catalog.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Catalog by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresCatalogArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresCatalog(GetPostgresCatalogArgs.builder()
+     *             .name("catalogs/my_catalog")
+     *             .build());
+     * 
+     *         ctx.export("catalogPostgresDatabase", this_.status().postgresDatabase());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetPostgresCatalogResult> getPostgresCatalog(GetPostgresCatalogArgs args) {
         return getPostgresCatalog(args, InvokeOptions.Empty);
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres catalog.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Catalog by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresCatalogArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresCatalog(GetPostgresCatalogArgs.builder()
+     *             .name("catalogs/my_catalog")
+     *             .build());
+     * 
+     *         ctx.export("catalogPostgresDatabase", this_.status().postgresDatabase());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPostgresCatalogResult> getPostgresCatalogPlain(GetPostgresCatalogPlainArgs args) {
@@ -24957,6 +25203,44 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * This data source retrieves a single Postgres catalog.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Catalog by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresCatalogArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresCatalog(GetPostgresCatalogArgs.builder()
+     *             .name("catalogs/my_catalog")
+     *             .build());
+     * 
+     *         ctx.export("catalogPostgresDatabase", this_.status().postgresDatabase());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetPostgresCatalogResult> getPostgresCatalog(GetPostgresCatalogArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresCatalog:getPostgresCatalog", TypeShape.of(GetPostgresCatalogResult.class), args, Utilities.withVersion(options));
@@ -24964,12 +25248,88 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * This data source retrieves a single Postgres catalog.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Catalog by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresCatalogArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresCatalog(GetPostgresCatalogArgs.builder()
+     *             .name("catalogs/my_catalog")
+     *             .build());
+     * 
+     *         ctx.export("catalogPostgresDatabase", this_.status().postgresDatabase());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetPostgresCatalogResult> getPostgresCatalog(GetPostgresCatalogArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresCatalog:getPostgresCatalog", TypeShape.of(GetPostgresCatalogResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres catalog.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Catalog by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresCatalogArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresCatalog(GetPostgresCatalogArgs.builder()
+     *             .name("catalogs/my_catalog")
+     *             .build());
+     * 
+     *         ctx.export("catalogPostgresDatabase", this_.status().postgresDatabase());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPostgresCatalogResult> getPostgresCatalogPlain(GetPostgresCatalogPlainArgs args, InvokeOptions options) {
@@ -26189,12 +26549,88 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * This data source retrieves a single Postgres synced table.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Synced Table by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresSyncedTableArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresSyncedTable(GetPostgresSyncedTableArgs.builder()
+     *             .name("synced_tables/my_catalog.my_schema.my_synced_table")
+     *             .build());
+     * 
+     *         ctx.export("syncedTableState", this_.status().detailedState());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetPostgresSyncedTableResult> getPostgresSyncedTable(GetPostgresSyncedTableArgs args) {
         return getPostgresSyncedTable(args, InvokeOptions.Empty);
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres synced table.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Synced Table by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresSyncedTableArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresSyncedTable(GetPostgresSyncedTableArgs.builder()
+     *             .name("synced_tables/my_catalog.my_schema.my_synced_table")
+     *             .build());
+     * 
+     *         ctx.export("syncedTableState", this_.status().detailedState());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPostgresSyncedTableResult> getPostgresSyncedTablePlain(GetPostgresSyncedTablePlainArgs args) {
@@ -26203,6 +26639,44 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * This data source retrieves a single Postgres synced table.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Synced Table by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresSyncedTableArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresSyncedTable(GetPostgresSyncedTableArgs.builder()
+     *             .name("synced_tables/my_catalog.my_schema.my_synced_table")
+     *             .build());
+     * 
+     *         ctx.export("syncedTableState", this_.status().detailedState());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetPostgresSyncedTableResult> getPostgresSyncedTable(GetPostgresSyncedTableArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresSyncedTable:getPostgresSyncedTable", TypeShape.of(GetPostgresSyncedTableResult.class), args, Utilities.withVersion(options));
@@ -26210,12 +26684,88 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * This data source retrieves a single Postgres synced table.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Synced Table by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresSyncedTableArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresSyncedTable(GetPostgresSyncedTableArgs.builder()
+     *             .name("synced_tables/my_catalog.my_schema.my_synced_table")
+     *             .build());
+     * 
+     *         ctx.export("syncedTableState", this_.status().detailedState());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetPostgresSyncedTableResult> getPostgresSyncedTable(GetPostgresSyncedTableArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getPostgresSyncedTable:getPostgresSyncedTable", TypeShape.of(GetPostgresSyncedTableResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * This data source retrieves a single Postgres synced table.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Synced Table by Name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresSyncedTableArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getPostgresSyncedTable(GetPostgresSyncedTableArgs.builder()
+     *             .name("synced_tables/my_catalog.my_schema.my_synced_table")
+     *             .build());
+     * 
+     *         ctx.export("syncedTableState", this_.status().detailedState());
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetPostgresSyncedTableResult> getPostgresSyncedTablePlain(GetPostgresSyncedTablePlainArgs args, InvokeOptions options) {
@@ -28103,6 +28653,90 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetSchemasResult> getSchemasPlain(GetSchemasPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getSchemas:getSchemas", TypeShape.of(GetSchemasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSecretUcResult> getSecretUc(GetSecretUcArgs args) {
+        return getSecretUc(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetSecretUcResult> getSecretUcPlain(GetSecretUcPlainArgs args) {
+        return getSecretUcPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSecretUcResult> getSecretUc(GetSecretUcArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getSecretUc:getSecretUc", TypeShape.of(GetSecretUcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSecretUcResult> getSecretUc(GetSecretUcArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getSecretUc:getSecretUc", TypeShape.of(GetSecretUcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetSecretUcResult> getSecretUcPlain(GetSecretUcPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getSecretUc:getSecretUc", TypeShape.of(GetSecretUcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSecretUcsResult> getSecretUcs() {
+        return getSecretUcs(GetSecretUcsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetSecretUcsResult> getSecretUcsPlain() {
+        return getSecretUcsPlain(GetSecretUcsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSecretUcsResult> getSecretUcs(GetSecretUcsArgs args) {
+        return getSecretUcs(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetSecretUcsResult> getSecretUcsPlain(GetSecretUcsPlainArgs args) {
+        return getSecretUcsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSecretUcsResult> getSecretUcs(GetSecretUcsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getSecretUcs:getSecretUcs", TypeShape.of(GetSecretUcsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSecretUcsResult> getSecretUcs(GetSecretUcsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getSecretUcs:getSecretUcs", TypeShape.of(GetSecretUcsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetSecretUcsResult> getSecretUcsPlain(GetSecretUcsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getSecretUcs:getSecretUcs", TypeShape.of(GetSecretUcsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about databricks_service_principal.
@@ -32455,6 +33089,160 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetStorageCredentialsResult> getStorageCredentialsPlain(GetStorageCredentialsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getStorageCredentials:getStorageCredentials", TypeShape.of(GetStorageCredentialsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSupervisorAgentResult> getSupervisorAgent(GetSupervisorAgentArgs args) {
+        return getSupervisorAgent(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetSupervisorAgentResult> getSupervisorAgentPlain(GetSupervisorAgentPlainArgs args) {
+        return getSupervisorAgentPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSupervisorAgentResult> getSupervisorAgent(GetSupervisorAgentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getSupervisorAgent:getSupervisorAgent", TypeShape.of(GetSupervisorAgentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSupervisorAgentResult> getSupervisorAgent(GetSupervisorAgentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getSupervisorAgent:getSupervisorAgent", TypeShape.of(GetSupervisorAgentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetSupervisorAgentResult> getSupervisorAgentPlain(GetSupervisorAgentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getSupervisorAgent:getSupervisorAgent", TypeShape.of(GetSupervisorAgentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSupervisorAgentToolResult> getSupervisorAgentTool(GetSupervisorAgentToolArgs args) {
+        return getSupervisorAgentTool(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetSupervisorAgentToolResult> getSupervisorAgentToolPlain(GetSupervisorAgentToolPlainArgs args) {
+        return getSupervisorAgentToolPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSupervisorAgentToolResult> getSupervisorAgentTool(GetSupervisorAgentToolArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getSupervisorAgentTool:getSupervisorAgentTool", TypeShape.of(GetSupervisorAgentToolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSupervisorAgentToolResult> getSupervisorAgentTool(GetSupervisorAgentToolArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getSupervisorAgentTool:getSupervisorAgentTool", TypeShape.of(GetSupervisorAgentToolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetSupervisorAgentToolResult> getSupervisorAgentToolPlain(GetSupervisorAgentToolPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getSupervisorAgentTool:getSupervisorAgentTool", TypeShape.of(GetSupervisorAgentToolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSupervisorAgentToolsResult> getSupervisorAgentTools(GetSupervisorAgentToolsArgs args) {
+        return getSupervisorAgentTools(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetSupervisorAgentToolsResult> getSupervisorAgentToolsPlain(GetSupervisorAgentToolsPlainArgs args) {
+        return getSupervisorAgentToolsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSupervisorAgentToolsResult> getSupervisorAgentTools(GetSupervisorAgentToolsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getSupervisorAgentTools:getSupervisorAgentTools", TypeShape.of(GetSupervisorAgentToolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSupervisorAgentToolsResult> getSupervisorAgentTools(GetSupervisorAgentToolsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getSupervisorAgentTools:getSupervisorAgentTools", TypeShape.of(GetSupervisorAgentToolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetSupervisorAgentToolsResult> getSupervisorAgentToolsPlain(GetSupervisorAgentToolsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getSupervisorAgentTools:getSupervisorAgentTools", TypeShape.of(GetSupervisorAgentToolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSupervisorAgentsResult> getSupervisorAgents() {
+        return getSupervisorAgents(GetSupervisorAgentsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetSupervisorAgentsResult> getSupervisorAgentsPlain() {
+        return getSupervisorAgentsPlain(GetSupervisorAgentsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSupervisorAgentsResult> getSupervisorAgents(GetSupervisorAgentsArgs args) {
+        return getSupervisorAgents(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetSupervisorAgentsResult> getSupervisorAgentsPlain(GetSupervisorAgentsPlainArgs args) {
+        return getSupervisorAgentsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSupervisorAgentsResult> getSupervisorAgents(GetSupervisorAgentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getSupervisorAgents:getSupervisorAgents", TypeShape.of(GetSupervisorAgentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetSupervisorAgentsResult> getSupervisorAgents(GetSupervisorAgentsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getSupervisorAgents:getSupervisorAgents", TypeShape.of(GetSupervisorAgentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetSupervisorAgentsResult> getSupervisorAgentsPlain(GetSupervisorAgentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getSupervisorAgents:getSupervisorAgents", TypeShape.of(GetSupervisorAgentsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves details of a specific table in Unity Catalog, that were created by Pulumi or manually. Use databricks.getTables to retrieve multiple tables in Unity Catalog

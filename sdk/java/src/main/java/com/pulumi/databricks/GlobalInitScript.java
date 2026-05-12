@@ -92,14 +92,14 @@ public class GlobalInitScript extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={GlobalInitScriptProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ GlobalInitScriptProviderConfig> providerConfig;
+    private Output<GlobalInitScriptProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<GlobalInitScriptProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<GlobalInitScriptProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Path to script&#39;s source code on local filesystem. Conflicts with `contentBase64`

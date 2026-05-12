@@ -74,7 +74,7 @@ namespace Pulumi.Databricks
         public Output<string> Etag { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.DisableLegacyFeaturesSettingProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.DisableLegacyFeaturesSettingProviderConfig> ProviderConfig { get; private set; } = null!;
 
         [Output("settingName")]
         public Output<string> SettingName { get; private set; } = null!;

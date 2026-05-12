@@ -11,8 +11,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMlflowModelResult {
@@ -41,7 +39,7 @@ public final class GetMlflowModelResult {
      * 
      */
     private String permissionLevel;
-    private @Nullable GetMlflowModelProviderConfig providerConfig;
+    private GetMlflowModelProviderConfig providerConfig;
     /**
      * @return Array of tags associated with the model.
      * 
@@ -89,8 +87,8 @@ public final class GetMlflowModelResult {
     public String permissionLevel() {
         return this.permissionLevel;
     }
-    public Optional<GetMlflowModelProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetMlflowModelProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     /**
      * @return Array of tags associated with the model.
@@ -121,7 +119,7 @@ public final class GetMlflowModelResult {
         private List<GetMlflowModelLatestVersion> latestVersions;
         private String name;
         private String permissionLevel;
-        private @Nullable GetMlflowModelProviderConfig providerConfig;
+        private GetMlflowModelProviderConfig providerConfig;
         private List<GetMlflowModelTag> tags;
         private String userId;
         public Builder() {}
@@ -181,8 +179,10 @@ public final class GetMlflowModelResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetMlflowModelProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetMlflowModelProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetMlflowModelResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

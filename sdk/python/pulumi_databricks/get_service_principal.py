@@ -28,13 +28,16 @@ class GetServicePrincipalResult:
     """
     A collection of values returned by getServicePrincipal.
     """
-    def __init__(__self__, acl_principal_id=None, active=None, application_id=None, display_name=None, external_id=None, home=None, id=None, provider_config=None, repos=None, scim_id=None, sp_id=None):
+    def __init__(__self__, acl_principal_id=None, active=None, api=None, application_id=None, display_name=None, external_id=None, home=None, id=None, provider_config=None, repos=None, scim_id=None, sp_id=None):
         if acl_principal_id and not isinstance(acl_principal_id, str):
             raise TypeError("Expected argument 'acl_principal_id' to be a str")
         pulumi.set(__self__, "acl_principal_id", acl_principal_id)
         if active and not isinstance(active, bool):
             raise TypeError("Expected argument 'active' to be a bool")
         pulumi.set(__self__, "active", active)
+        if api and not isinstance(api, str):
+            raise TypeError("Expected argument 'api' to be a str")
+        pulumi.set(__self__, "api", api)
         if application_id and not isinstance(application_id, str):
             raise TypeError("Expected argument 'application_id' to be a str")
         pulumi.set(__self__, "application_id", application_id)
@@ -80,6 +83,11 @@ class GetServicePrincipalResult:
         return pulumi.get(self, "active")
 
     @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "api")
+
+    @_builtins.property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> _builtins.str:
         """
@@ -121,7 +129,7 @@ class GetServicePrincipalResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetServicePrincipalProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetServicePrincipalProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
     @_builtins.property
@@ -154,6 +162,7 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
         return GetServicePrincipalResult(
             acl_principal_id=self.acl_principal_id,
             active=self.active,
+            api=self.api,
             application_id=self.application_id,
             display_name=self.display_name,
             external_id=self.external_id,
@@ -167,6 +176,7 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
 
 def get_service_principal(acl_principal_id: Optional[_builtins.str] = None,
                           active: Optional[_builtins.bool] = None,
+                          api: Optional[_builtins.str] = None,
                           application_id: Optional[_builtins.str] = None,
                           display_name: Optional[_builtins.str] = None,
                           external_id: Optional[_builtins.str] = None,
@@ -225,6 +235,7 @@ def get_service_principal(acl_principal_id: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['aclPrincipalId'] = acl_principal_id
     __args__['active'] = active
+    __args__['api'] = api
     __args__['applicationId'] = application_id
     __args__['displayName'] = display_name
     __args__['externalId'] = external_id
@@ -240,6 +251,7 @@ def get_service_principal(acl_principal_id: Optional[_builtins.str] = None,
     return AwaitableGetServicePrincipalResult(
         acl_principal_id=pulumi.get(__ret__, 'acl_principal_id'),
         active=pulumi.get(__ret__, 'active'),
+        api=pulumi.get(__ret__, 'api'),
         application_id=pulumi.get(__ret__, 'application_id'),
         display_name=pulumi.get(__ret__, 'display_name'),
         external_id=pulumi.get(__ret__, 'external_id'),
@@ -251,6 +263,7 @@ def get_service_principal(acl_principal_id: Optional[_builtins.str] = None,
         sp_id=pulumi.get(__ret__, 'sp_id'))
 def get_service_principal_output(acl_principal_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  active: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                 api: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  application_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  display_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  external_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -309,6 +322,7 @@ def get_service_principal_output(acl_principal_id: pulumi.Input[Optional[Optiona
     __args__ = dict()
     __args__['aclPrincipalId'] = acl_principal_id
     __args__['active'] = active
+    __args__['api'] = api
     __args__['applicationId'] = application_id
     __args__['displayName'] = display_name
     __args__['externalId'] = external_id
@@ -323,6 +337,7 @@ def get_service_principal_output(acl_principal_id: pulumi.Input[Optional[Optiona
     return __ret__.apply(lambda __response__: GetServicePrincipalResult(
         acl_principal_id=pulumi.get(__response__, 'acl_principal_id'),
         active=pulumi.get(__response__, 'active'),
+        api=pulumi.get(__response__, 'api'),
         application_id=pulumi.get(__response__, 'application_id'),
         display_name=pulumi.get(__response__, 'display_name'),
         external_id=pulumi.get(__response__, 'external_id'),

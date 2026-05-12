@@ -32,19 +32,9 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleArgs ext
         return Optional.ofNullable(this.destination);
     }
 
-    /**
-     * User-provided name for this ingress rule. Helps identify which rule
-     * caused a request to be denied or dry-run denied
-     * 
-     */
     @Import(name="label")
     private @Nullable Output<String> label;
 
-    /**
-     * @return User-provided name for this ingress rule. Helps identify which rule
-     * caused a request to be denied or dry-run denied
-     * 
-     */
     public Optional<Output<String>> label() {
         return Optional.ofNullable(this.label);
     }
@@ -101,25 +91,11 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleArgs ext
             return destination(Output.of(destination));
         }
 
-        /**
-         * @param label User-provided name for this ingress rule. Helps identify which rule
-         * caused a request to be denied or dry-run denied
-         * 
-         * @return builder
-         * 
-         */
         public Builder label(@Nullable Output<String> label) {
             $.label = label;
             return this;
         }
 
-        /**
-         * @param label User-provided name for this ingress rule. Helps identify which rule
-         * caused a request to be denied or dry-run denied
-         * 
-         * @return builder
-         * 
-         */
         public Builder label(String label) {
             return label(Output.of(label));
         }

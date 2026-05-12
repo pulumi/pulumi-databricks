@@ -198,7 +198,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.PolicyInfoProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.PolicyInfoProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Options for row filter policies. Valid only if `PolicyType` is `POLICY_TYPE_ROW_FILTER`.

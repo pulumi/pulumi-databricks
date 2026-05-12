@@ -424,7 +424,7 @@ namespace Pulumi.Databricks
         public readonly ImmutableDictionary<string, string> Ids;
         public readonly string? JobNameContains;
         public readonly string? Key;
-        public readonly Outputs.GetJobsProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetJobsProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetJobsResult(
@@ -436,7 +436,7 @@ namespace Pulumi.Databricks
 
             string? key,
 
-            Outputs.GetJobsProviderConfigResult? providerConfig)
+            Outputs.GetJobsProviderConfigResult providerConfig)
         {
             Id = id;
             Ids = ids;

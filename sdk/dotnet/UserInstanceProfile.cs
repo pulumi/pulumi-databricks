@@ -74,7 +74,7 @@ namespace Pulumi.Databricks
         public Output<string> InstanceProfileId { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.UserInstanceProfileProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.UserInstanceProfileProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// This is the id of the user resource.

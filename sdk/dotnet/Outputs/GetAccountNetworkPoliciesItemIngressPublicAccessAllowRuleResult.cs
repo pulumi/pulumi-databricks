@@ -22,8 +22,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestinationResult? Destination;
         /// <summary>
-        /// (string) - User-provided name for this ingress rule. Helps identify which rule
-        /// caused a request to be denied or dry-run denied
+        /// (string) - The label for this ingress rule
         /// </summary>
         public readonly string? Label;
         /// <summary>

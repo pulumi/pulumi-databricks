@@ -108,7 +108,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.ModelServingProvisionedThroughputProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.ModelServingProvisionedThroughputProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.

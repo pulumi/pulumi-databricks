@@ -93,8 +93,8 @@ type GroupMember struct {
 	// This is the `id` attribute (SCIM ID) of the group resource.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// This is the `id` attribute (SCIM ID) of the group, service principal, or user.
-	MemberId       pulumi.StringOutput                `pulumi:"memberId"`
-	ProviderConfig GroupMemberProviderConfigPtrOutput `pulumi:"providerConfig"`
+	MemberId       pulumi.StringOutput             `pulumi:"memberId"`
+	ProviderConfig GroupMemberProviderConfigOutput `pulumi:"providerConfig"`
 }
 
 // NewGroupMember registers a new resource with the given unique name, arguments, and options.
@@ -279,8 +279,8 @@ func (o GroupMemberOutput) MemberId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMember) pulumi.StringOutput { return v.MemberId }).(pulumi.StringOutput)
 }
 
-func (o GroupMemberOutput) ProviderConfig() GroupMemberProviderConfigPtrOutput {
-	return o.ApplyT(func(v *GroupMember) GroupMemberProviderConfigPtrOutput { return v.ProviderConfig }).(GroupMemberProviderConfigPtrOutput)
+func (o GroupMemberOutput) ProviderConfig() GroupMemberProviderConfigOutput {
+	return o.ApplyT(func(v *GroupMember) GroupMemberProviderConfigOutput { return v.ProviderConfig }).(GroupMemberProviderConfigOutput)
 }
 
 type GroupMemberArrayOutput struct{ *pulumi.OutputState }

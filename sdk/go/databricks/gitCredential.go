@@ -100,7 +100,7 @@ type GitCredential struct {
 	PersonalAccessToken pulumi.StringPtrOutput `pulumi:"personalAccessToken"`
 	PrincipalId         pulumi.StringPtrOutput `pulumi:"principalId"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig GitCredentialProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig GitCredentialProviderConfigOutput `pulumi:"providerConfig"`
 }
 
 // NewGitCredential registers a new resource with the given unique name, arguments, and options.
@@ -354,8 +354,8 @@ func (o GitCredentialOutput) PrincipalId() pulumi.StringPtrOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o GitCredentialOutput) ProviderConfig() GitCredentialProviderConfigPtrOutput {
-	return o.ApplyT(func(v *GitCredential) GitCredentialProviderConfigPtrOutput { return v.ProviderConfig }).(GitCredentialProviderConfigPtrOutput)
+func (o GitCredentialOutput) ProviderConfig() GitCredentialProviderConfigOutput {
+	return o.ApplyT(func(v *GitCredential) GitCredentialProviderConfigOutput { return v.ProviderConfig }).(GitCredentialProviderConfigOutput)
 }
 
 type GitCredentialArrayOutput struct{ *pulumi.OutputState }

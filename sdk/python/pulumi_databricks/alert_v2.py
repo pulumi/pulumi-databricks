@@ -43,7 +43,7 @@ class AlertV2Args:
         :param pulumi.Input[_builtins.str] custom_summary: Custom summary for the alert. support mustache template
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input['AlertV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] purge_on_delete: Purge the resource on delete
+        :param pulumi.Input[_builtins.bool] purge_on_delete: Whether to permanently delete the alert. If not set, the alert will only be soft deleted
         :param pulumi.Input['AlertV2RunAsArgs'] run_as: Specifies the identity that will be used to run the alert.
                This field allows you to configure alerts to run as a specific user or service principal.
                - For user identity: Set `user_name` to the email of an active workspace user. Users can only set this to their own email.
@@ -179,7 +179,7 @@ class AlertV2Args:
     @pulumi.getter(name="purgeOnDelete")
     def purge_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Purge the resource on delete
+        Whether to permanently delete the alert. If not set, the alert will only be soft deleted
         """
         return pulumi.get(self, "purge_on_delete")
 
@@ -252,7 +252,7 @@ class _AlertV2State:
         :param pulumi.Input[_builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input['AlertV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] purge_on_delete: Purge the resource on delete
+        :param pulumi.Input[_builtins.bool] purge_on_delete: Whether to permanently delete the alert. If not set, the alert will only be soft deleted
         :param pulumi.Input[_builtins.str] query_text: Text of the query to be run
         :param pulumi.Input['AlertV2RunAsArgs'] run_as: Specifies the identity that will be used to run the alert.
                This field allows you to configure alerts to run as a specific user or service principal.
@@ -423,7 +423,7 @@ class _AlertV2State:
     @pulumi.getter(name="purgeOnDelete")
     def purge_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Purge the resource on delete
+        Whether to permanently delete the alert. If not set, the alert will only be soft deleted
         """
         return pulumi.get(self, "purge_on_delete")
 
@@ -582,7 +582,7 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The display name of the alert
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] purge_on_delete: Purge the resource on delete
+        :param pulumi.Input[_builtins.bool] purge_on_delete: Whether to permanently delete the alert. If not set, the alert will only be soft deleted
         :param pulumi.Input[_builtins.str] query_text: Text of the query to be run
         :param pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']] run_as: Specifies the identity that will be used to run the alert.
                This field allows you to configure alerts to run as a specific user or service principal.
@@ -757,7 +757,7 @@ class AlertV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] owner_user_name: (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
         :param pulumi.Input[_builtins.str] parent_path: The workspace path of the folder containing the alert. Can only be set on create, and cannot be updated
         :param pulumi.Input[Union['AlertV2ProviderConfigArgs', 'AlertV2ProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] purge_on_delete: Purge the resource on delete
+        :param pulumi.Input[_builtins.bool] purge_on_delete: Whether to permanently delete the alert. If not set, the alert will only be soft deleted
         :param pulumi.Input[_builtins.str] query_text: Text of the query to be run
         :param pulumi.Input[Union['AlertV2RunAsArgs', 'AlertV2RunAsArgsDict']] run_as: Specifies the identity that will be used to run the alert.
                This field allows you to configure alerts to run as a specific user or service principal.
@@ -866,7 +866,7 @@ class AlertV2(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.AlertV2ProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.AlertV2ProviderConfig']:
         """
         Configure the provider for management through account provider.
         """
@@ -876,7 +876,7 @@ class AlertV2(pulumi.CustomResource):
     @pulumi.getter(name="purgeOnDelete")
     def purge_on_delete(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Purge the resource on delete
+        Whether to permanently delete the alert. If not set, the alert will only be soft deleted
         """
         return pulumi.get(self, "purge_on_delete")
 

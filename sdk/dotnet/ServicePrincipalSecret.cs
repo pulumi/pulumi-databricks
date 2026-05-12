@@ -100,7 +100,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.ServicePrincipalSecretProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.ServicePrincipalSecretProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// **Sensitive** Generated secret for the service principal.

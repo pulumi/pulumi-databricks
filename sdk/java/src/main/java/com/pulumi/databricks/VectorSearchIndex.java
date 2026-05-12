@@ -181,10 +181,10 @@ public class VectorSearchIndex extends com.pulumi.resources.CustomResource {
         return this.primaryKey;
     }
     @Export(name="providerConfig", refs={VectorSearchIndexProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ VectorSearchIndexProviderConfig> providerConfig;
+    private Output<VectorSearchIndexProviderConfig> providerConfig;
 
-    public Output<Optional<VectorSearchIndexProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<VectorSearchIndexProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Object describing the current status of the index consisting of the following fields:

@@ -83,7 +83,7 @@ namespace Pulumi.Databricks
         public Output<string> InstanceProfileId { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.GroupInstanceProfileProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.GroupInstanceProfileProviderConfig> ProviderConfig { get; private set; } = null!;
 
 
         /// <summary>

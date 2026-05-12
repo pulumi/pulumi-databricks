@@ -745,23 +745,23 @@ import (
 type Grant struct {
 	pulumi.CustomResourceState
 
-	Catalog           pulumi.StringPtrOutput       `pulumi:"catalog"`
-	Credential        pulumi.StringPtrOutput       `pulumi:"credential"`
-	ExternalLocation  pulumi.StringPtrOutput       `pulumi:"externalLocation"`
-	ForeignConnection pulumi.StringPtrOutput       `pulumi:"foreignConnection"`
-	Function          pulumi.StringPtrOutput       `pulumi:"function"`
-	Metastore         pulumi.StringPtrOutput       `pulumi:"metastore"`
-	Model             pulumi.StringPtrOutput       `pulumi:"model"`
-	Pipeline          pulumi.StringPtrOutput       `pulumi:"pipeline"`
-	Principal         pulumi.StringOutput          `pulumi:"principal"`
-	Privileges        pulumi.StringArrayOutput     `pulumi:"privileges"`
-	ProviderConfig    GrantProviderConfigPtrOutput `pulumi:"providerConfig"`
-	Recipient         pulumi.StringPtrOutput       `pulumi:"recipient"`
-	Schema            pulumi.StringPtrOutput       `pulumi:"schema"`
-	Share             pulumi.StringPtrOutput       `pulumi:"share"`
-	StorageCredential pulumi.StringPtrOutput       `pulumi:"storageCredential"`
-	Table             pulumi.StringPtrOutput       `pulumi:"table"`
-	Volume            pulumi.StringPtrOutput       `pulumi:"volume"`
+	Catalog           pulumi.StringPtrOutput    `pulumi:"catalog"`
+	Credential        pulumi.StringPtrOutput    `pulumi:"credential"`
+	ExternalLocation  pulumi.StringPtrOutput    `pulumi:"externalLocation"`
+	ForeignConnection pulumi.StringPtrOutput    `pulumi:"foreignConnection"`
+	Function          pulumi.StringPtrOutput    `pulumi:"function"`
+	Metastore         pulumi.StringPtrOutput    `pulumi:"metastore"`
+	Model             pulumi.StringPtrOutput    `pulumi:"model"`
+	Pipeline          pulumi.StringPtrOutput    `pulumi:"pipeline"`
+	Principal         pulumi.StringOutput       `pulumi:"principal"`
+	Privileges        pulumi.StringArrayOutput  `pulumi:"privileges"`
+	ProviderConfig    GrantProviderConfigOutput `pulumi:"providerConfig"`
+	Recipient         pulumi.StringPtrOutput    `pulumi:"recipient"`
+	Schema            pulumi.StringPtrOutput    `pulumi:"schema"`
+	Share             pulumi.StringPtrOutput    `pulumi:"share"`
+	StorageCredential pulumi.StringPtrOutput    `pulumi:"storageCredential"`
+	Table             pulumi.StringPtrOutput    `pulumi:"table"`
+	Volume            pulumi.StringPtrOutput    `pulumi:"volume"`
 }
 
 // NewGrant registers a new resource with the given unique name, arguments, and options.
@@ -1011,8 +1011,8 @@ func (o GrantOutput) Privileges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Grant) pulumi.StringArrayOutput { return v.Privileges }).(pulumi.StringArrayOutput)
 }
 
-func (o GrantOutput) ProviderConfig() GrantProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Grant) GrantProviderConfigPtrOutput { return v.ProviderConfig }).(GrantProviderConfigPtrOutput)
+func (o GrantOutput) ProviderConfig() GrantProviderConfigOutput {
+	return o.ApplyT(func(v *Grant) GrantProviderConfigOutput { return v.ProviderConfig }).(GrantProviderConfigOutput)
 }
 
 func (o GrantOutput) Recipient() pulumi.StringPtrOutput {

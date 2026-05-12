@@ -133,9 +133,9 @@ type LookupGroupResult struct {
 	// Set of instance profile ARNs, that can be modified by GroupInstanceProfile resource.
 	InstanceProfiles []string `pulumi:"instanceProfiles"`
 	// Deprecated: Please use `users`, `servicePrincipals`, and `childGroups` instead
-	Members        []string                `pulumi:"members"`
-	ProviderConfig *GetGroupProviderConfig `pulumi:"providerConfig"`
-	Recursive      *bool                   `pulumi:"recursive"`
+	Members        []string               `pulumi:"members"`
+	ProviderConfig GetGroupProviderConfig `pulumi:"providerConfig"`
+	Recursive      *bool                  `pulumi:"recursive"`
 	// Set of ServicePrincipal identifiers, that can be modified with GroupMember resource.
 	ServicePrincipals []string `pulumi:"servicePrincipals"`
 	// Set of User identifiers, that can be modified with GroupMember resource.
@@ -264,8 +264,8 @@ func (o LookupGroupResultOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-func (o LookupGroupResultOutput) ProviderConfig() GetGroupProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupGroupResult) *GetGroupProviderConfig { return v.ProviderConfig }).(GetGroupProviderConfigPtrOutput)
+func (o LookupGroupResultOutput) ProviderConfig() GetGroupProviderConfigOutput {
+	return o.ApplyT(func(v LookupGroupResult) GetGroupProviderConfig { return v.ProviderConfig }).(GetGroupProviderConfigOutput)
 }
 
 func (o LookupGroupResultOutput) Recursive() pulumi.BoolPtrOutput {

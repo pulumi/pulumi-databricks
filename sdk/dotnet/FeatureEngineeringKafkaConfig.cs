@@ -58,7 +58,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.FeatureEngineeringKafkaConfigProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.FeatureEngineeringKafkaConfigProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Options to configure which Kafka topics to pull data from

@@ -213,8 +213,9 @@ type DatabaseInstance struct {
 	// (string) - The version of Postgres running on the instance
 	PgVersion pulumi.StringOutput `pulumi:"pgVersion"`
 	// Configure the provider for management through account provider.
-	ProviderConfig DatabaseInstanceProviderConfigPtrOutput `pulumi:"providerConfig"`
-	// Purge the resource on delete
+	ProviderConfig DatabaseInstanceProviderConfigOutput `pulumi:"providerConfig"`
+	// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+	// of false will throw a bad request
 	PurgeOnDelete pulumi.BoolPtrOutput `pulumi:"purgeOnDelete"`
 	// (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
 	// enableReadableSecondaries is true
@@ -328,7 +329,8 @@ type databaseInstanceState struct {
 	PgVersion *string `pulumi:"pgVersion"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *DatabaseInstanceProviderConfig `pulumi:"providerConfig"`
-	// Purge the resource on delete
+	// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+	// of false will throw a bad request
 	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
 	// (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
 	// enableReadableSecondaries is true
@@ -413,7 +415,8 @@ type DatabaseInstanceState struct {
 	PgVersion pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig DatabaseInstanceProviderConfigPtrInput
-	// Purge the resource on delete
+	// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+	// of false will throw a bad request
 	PurgeOnDelete pulumi.BoolPtrInput
 	// (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
 	// enableReadableSecondaries is true
@@ -459,7 +462,8 @@ type databaseInstanceArgs struct {
 	ParentInstanceRef *DatabaseInstanceParentInstanceRef `pulumi:"parentInstanceRef"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *DatabaseInstanceProviderConfig `pulumi:"providerConfig"`
-	// Purge the resource on delete
+	// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+	// of false will throw a bad request
 	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
 	// The retention window for the instance. This is the time window in days
 	// for which the historical data is retained. The default value is 7 days.
@@ -493,7 +497,8 @@ type DatabaseInstanceArgs struct {
 	ParentInstanceRef DatabaseInstanceParentInstanceRefPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig DatabaseInstanceProviderConfigPtrInput
-	// Purge the resource on delete
+	// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+	// of false will throw a bad request
 	PurgeOnDelete pulumi.BoolPtrInput
 	// The retention window for the instance. This is the time window in days
 	// for which the historical data is retained. The default value is 7 days.
@@ -711,11 +716,12 @@ func (o DatabaseInstanceOutput) PgVersion() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o DatabaseInstanceOutput) ProviderConfig() DatabaseInstanceProviderConfigPtrOutput {
-	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceProviderConfigPtrOutput { return v.ProviderConfig }).(DatabaseInstanceProviderConfigPtrOutput)
+func (o DatabaseInstanceOutput) ProviderConfig() DatabaseInstanceProviderConfigOutput {
+	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceProviderConfigOutput { return v.ProviderConfig }).(DatabaseInstanceProviderConfigOutput)
 }
 
-// Purge the resource on delete
+// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+// of false will throw a bad request
 func (o DatabaseInstanceOutput) PurgeOnDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolPtrOutput { return v.PurgeOnDelete }).(pulumi.BoolPtrOutput)
 }

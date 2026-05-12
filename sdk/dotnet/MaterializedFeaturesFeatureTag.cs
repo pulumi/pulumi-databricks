@@ -22,7 +22,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.MaterializedFeaturesFeatureTagProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.MaterializedFeaturesFeatureTagProviderConfig> ProviderConfig { get; private set; } = null!;
 
         [Output("value")]
         public Output<string?> Value { get; private set; } = null!;

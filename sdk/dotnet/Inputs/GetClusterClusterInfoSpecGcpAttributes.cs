@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("bootDiskSize")]
         public int? BootDiskSize { get; set; }
 
+        [Input("confidentialComputeType")]
+        public string? ConfidentialComputeType { get; set; }
+
         [Input("firstOnDemand")]
         public int? FirstOnDemand { get; set; }
 

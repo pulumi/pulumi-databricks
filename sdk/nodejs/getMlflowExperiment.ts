@@ -101,7 +101,7 @@ export interface GetMlflowExperimentResult {
      * Path to experiment.
      */
     readonly name: string;
-    readonly providerConfig?: outputs.GetMlflowExperimentProviderConfig;
+    readonly providerConfig: outputs.GetMlflowExperimentProviderConfig;
     /**
      * Additional metadata key-value pairs.
      */

@@ -144,8 +144,8 @@ type GetSqlWarehouseResult struct {
 	// The current number of clusters used by the endpoint.
 	NumClusters int `pulumi:"numClusters"`
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
-	OdbcParams     GetSqlWarehouseOdbcParams      `pulumi:"odbcParams"`
-	ProviderConfig *GetSqlWarehouseProviderConfig `pulumi:"providerConfig"`
+	OdbcParams     GetSqlWarehouseOdbcParams     `pulumi:"odbcParams"`
+	ProviderConfig GetSqlWarehouseProviderConfig `pulumi:"providerConfig"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
 	SpotInstancePolicy string `pulumi:"spotInstancePolicy"`
 	// The current state of the endpoint.
@@ -314,8 +314,8 @@ func (o GetSqlWarehouseResultOutput) OdbcParams() GetSqlWarehouseOdbcParamsOutpu
 	return o.ApplyT(func(v GetSqlWarehouseResult) GetSqlWarehouseOdbcParams { return v.OdbcParams }).(GetSqlWarehouseOdbcParamsOutput)
 }
 
-func (o GetSqlWarehouseResultOutput) ProviderConfig() GetSqlWarehouseProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetSqlWarehouseResult) *GetSqlWarehouseProviderConfig { return v.ProviderConfig }).(GetSqlWarehouseProviderConfigPtrOutput)
+func (o GetSqlWarehouseResultOutput) ProviderConfig() GetSqlWarehouseProviderConfigOutput {
+	return o.ApplyT(func(v GetSqlWarehouseResult) GetSqlWarehouseProviderConfig { return v.ProviderConfig }).(GetSqlWarehouseProviderConfigOutput)
 }
 
 // The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.

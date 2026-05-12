@@ -91,7 +91,7 @@ export interface GetNotebookResult {
      */
     readonly objectType: string;
     readonly path: string;
-    readonly providerConfig?: outputs.GetNotebookProviderConfig;
+    readonly providerConfig: outputs.GetNotebookProviderConfig;
     /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */

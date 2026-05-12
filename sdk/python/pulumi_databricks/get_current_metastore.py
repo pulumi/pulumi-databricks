@@ -57,7 +57,7 @@ class GetCurrentMetastoreResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetCurrentMetastoreProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetCurrentMetastoreProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
 

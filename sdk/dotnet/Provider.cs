@@ -241,9 +241,6 @@ namespace Pulumi.Databricks
         [Input("discoveryUrl")]
         public Input<string>? DiscoveryUrl { get; set; }
 
-        [Input("experimentalIsUnifiedHost", json: true)]
-        public Input<bool>? ExperimentalIsUnifiedHost { get; set; }
-
         [Input("googleCredentials")]
         private Input<string>? _googleCredentials;
         public Input<string>? GoogleCredentials

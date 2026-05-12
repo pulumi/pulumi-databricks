@@ -77,10 +77,10 @@ type LookupDbfsFileResult struct {
 	// size of the file in bytes
 	FileSize int `pulumi:"fileSize"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string                     `pulumi:"id"`
-	LimitFileSize  bool                       `pulumi:"limitFileSize"`
-	Path           string                     `pulumi:"path"`
-	ProviderConfig *GetDbfsFileProviderConfig `pulumi:"providerConfig"`
+	Id             string                    `pulumi:"id"`
+	LimitFileSize  bool                      `pulumi:"limitFileSize"`
+	Path           string                    `pulumi:"path"`
+	ProviderConfig GetDbfsFileProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupDbfsFileOutput(ctx *pulumi.Context, args LookupDbfsFileOutputArgs, opts ...pulumi.InvokeOption) LookupDbfsFileResultOutput {
@@ -144,8 +144,8 @@ func (o LookupDbfsFileResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDbfsFileResult) string { return v.Path }).(pulumi.StringOutput)
 }
 
-func (o LookupDbfsFileResultOutput) ProviderConfig() GetDbfsFileProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupDbfsFileResult) *GetDbfsFileProviderConfig { return v.ProviderConfig }).(GetDbfsFileProviderConfigPtrOutput)
+func (o LookupDbfsFileResultOutput) ProviderConfig() GetDbfsFileProviderConfigOutput {
+	return o.ApplyT(func(v LookupDbfsFileResult) GetDbfsFileProviderConfig { return v.ProviderConfig }).(GetDbfsFileProviderConfigOutput)
 }
 
 func init() {

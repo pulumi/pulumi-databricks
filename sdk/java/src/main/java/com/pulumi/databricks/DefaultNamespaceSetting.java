@@ -13,7 +13,6 @@ import com.pulumi.databricks.inputs.DefaultNamespaceSettingState;
 import com.pulumi.databricks.outputs.DefaultNamespaceSettingNamespace;
 import com.pulumi.databricks.outputs.DefaultNamespaceSettingProviderConfig;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -91,14 +90,14 @@ public class DefaultNamespaceSetting extends com.pulumi.resources.CustomResource
      * 
      */
     @Export(name="providerConfig", refs={DefaultNamespaceSettingProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ DefaultNamespaceSettingProviderConfig> providerConfig;
+    private Output<DefaultNamespaceSettingProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<DefaultNamespaceSettingProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<DefaultNamespaceSettingProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="settingName", refs={String.class}, tree="[0]")
     private Output<String> settingName;

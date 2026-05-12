@@ -27,11 +27,13 @@ import javax.annotation.Nullable;
  * 
  * ## Plugin Framework Migration
  * 
- * The library resource has been migrated from sdkv2 to plugin framework。 If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES=&#34;databricks.Library&#34;`.
+ * The library resource has been migrated from sdkv2 to plugin framework. If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES=&#34;databricks.Library&#34;`.
+ * 
+ * &gt; **Upgrading from v1.114.0**: state written by v1.114.0 encodes `providerConfig` as a single object instead of a list. After upgrading the provider, edit each `databricks.Library` instance in your state file to convert `&#34;providerConfig&#34;: {&#34;workspaceId&#34;: &#34;X&#34;}` to `&#34;providerConfig&#34;: null` (recommended if you didn&#39;t set `providerConfig` in HCL) or to `&#34;providerConfig&#34;: [{&#34;workspaceId&#34;: &#34;X&#34;}]` (if you did). Without this edit, `pulumi preview` fails with ` Error decoding ... missing expected  `. Users on v1.113.0 are unaffected.
  * 
  * ## Installing library on all clusters
  * 
- * You can install libraries on all clusters with the help of databricks.getClusters data resource:
+ * You can install libraries on all clusters with the help of [databricks.getClusters data resource:
  * 
  * <pre>
  * {@code

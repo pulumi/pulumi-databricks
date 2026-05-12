@@ -898,10 +898,10 @@ public class Grants extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.pipeline);
     }
     @Export(name="providerConfig", refs={GrantsProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ GrantsProviderConfig> providerConfig;
+    private Output<GrantsProviderConfig> providerConfig;
 
-    public Output<Optional<GrantsProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<GrantsProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="recipient", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> recipient;

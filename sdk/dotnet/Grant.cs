@@ -661,7 +661,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<string>> Privileges { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.GrantProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.GrantProviderConfig> ProviderConfig { get; private set; } = null!;
 
         [Output("recipient")]
         public Output<string?> Recipient { get; private set; } = null!;

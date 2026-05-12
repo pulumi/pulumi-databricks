@@ -146,14 +146,14 @@ public class IpAccessList extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={IpAccessListProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ IpAccessListProviderConfig> providerConfig;
+    private Output<IpAccessListProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<IpAccessListProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<IpAccessListProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
 
     /**

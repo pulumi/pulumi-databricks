@@ -492,7 +492,7 @@ class NotificationDestination(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.NotificationDestinationProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.NotificationDestinationProviderConfig']:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """

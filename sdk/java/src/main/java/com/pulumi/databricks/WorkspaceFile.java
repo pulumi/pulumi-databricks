@@ -77,14 +77,14 @@ public class WorkspaceFile extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={WorkspaceFileProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ WorkspaceFileProviderConfig> providerConfig;
+    private Output<WorkspaceFileProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<WorkspaceFileProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<WorkspaceFileProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Path to file on local filesystem. Conflicts with `contentBase64`.

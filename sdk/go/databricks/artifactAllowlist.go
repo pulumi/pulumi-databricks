@@ -67,8 +67,8 @@ type ArtifactAllowlist struct {
 	// Identity that set the artifact allowlist.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// ID of the parent metastore.
-	MetastoreId    pulumi.StringOutput                      `pulumi:"metastoreId"`
-	ProviderConfig ArtifactAllowlistProviderConfigPtrOutput `pulumi:"providerConfig"`
+	MetastoreId    pulumi.StringOutput                   `pulumi:"metastoreId"`
+	ProviderConfig ArtifactAllowlistProviderConfigOutput `pulumi:"providerConfig"`
 }
 
 // NewArtifactAllowlist registers a new resource with the given unique name, arguments, and options.
@@ -274,8 +274,8 @@ func (o ArtifactAllowlistOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArtifactAllowlist) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
-func (o ArtifactAllowlistOutput) ProviderConfig() ArtifactAllowlistProviderConfigPtrOutput {
-	return o.ApplyT(func(v *ArtifactAllowlist) ArtifactAllowlistProviderConfigPtrOutput { return v.ProviderConfig }).(ArtifactAllowlistProviderConfigPtrOutput)
+func (o ArtifactAllowlistOutput) ProviderConfig() ArtifactAllowlistProviderConfigOutput {
+	return o.ApplyT(func(v *ArtifactAllowlist) ArtifactAllowlistProviderConfigOutput { return v.ProviderConfig }).(ArtifactAllowlistProviderConfigOutput)
 }
 
 type ArtifactAllowlistArrayOutput struct{ *pulumi.OutputState }

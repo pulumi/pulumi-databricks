@@ -181,14 +181,14 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={VolumeProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ VolumeProviderConfig> providerConfig;
+    private Output<VolumeProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<VolumeProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<VolumeProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.

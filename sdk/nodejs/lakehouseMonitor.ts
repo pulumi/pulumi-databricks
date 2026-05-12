@@ -170,7 +170,7 @@ export class LakehouseMonitor extends pulumi.CustomResource {
      * The full name of the profile metrics table. Format: __catalog_name__.__schema_name__.__table_name__.
      */
     declare public /*out*/ readonly profileMetricsTableName: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.LakehouseMonitorProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.LakehouseMonitorProviderConfig>;
     /**
      * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:
      */

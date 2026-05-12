@@ -515,7 +515,7 @@ namespace Pulumi.Databricks
         /// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
         /// </summary>
         public readonly Outputs.GetSqlWarehouseOdbcParamsResult OdbcParams;
-        public readonly Outputs.GetSqlWarehouseProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetSqlWarehouseProviderConfigResult ProviderConfig;
         /// <summary>
         /// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
         /// </summary>
@@ -569,7 +569,7 @@ namespace Pulumi.Databricks
 
             Outputs.GetSqlWarehouseOdbcParamsResult odbcParams,
 
-            Outputs.GetSqlWarehouseProviderConfigResult? providerConfig,
+            Outputs.GetSqlWarehouseProviderConfigResult providerConfig,
 
             string spotInstancePolicy,
 

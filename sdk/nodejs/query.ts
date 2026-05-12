@@ -175,7 +175,7 @@ export class Query extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.QueryProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.QueryProviderConfig>;
     /**
      * Text of SQL query.
      */

@@ -76,8 +76,8 @@ type GetSchemasResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// set of Schema full names: *`catalog`.`schema`*
-	Ids            []string                  `pulumi:"ids"`
-	ProviderConfig *GetSchemasProviderConfig `pulumi:"providerConfig"`
+	Ids            []string                 `pulumi:"ids"`
+	ProviderConfig GetSchemasProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetSchemasOutput(ctx *pulumi.Context, args GetSchemasOutputArgs, opts ...pulumi.InvokeOption) GetSchemasResultOutput {
@@ -132,8 +132,8 @@ func (o GetSchemasResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSchemasResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-func (o GetSchemasResultOutput) ProviderConfig() GetSchemasProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetSchemasResult) *GetSchemasProviderConfig { return v.ProviderConfig }).(GetSchemasProviderConfigPtrOutput)
+func (o GetSchemasResultOutput) ProviderConfig() GetSchemasProviderConfigOutput {
+	return o.ApplyT(func(v GetSchemasResult) GetSchemasProviderConfig { return v.ProviderConfig }).(GetSchemasProviderConfigOutput)
 }
 
 func init() {

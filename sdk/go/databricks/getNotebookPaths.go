@@ -68,7 +68,7 @@ type GetNotebookPathsResult struct {
 	// list of objects with `path` and `language` attributes
 	NotebookPathLists []GetNotebookPathsNotebookPathList `pulumi:"notebookPathLists"`
 	Path              string                             `pulumi:"path"`
-	ProviderConfig    *GetNotebookPathsProviderConfig    `pulumi:"providerConfig"`
+	ProviderConfig    GetNotebookPathsProviderConfig     `pulumi:"providerConfig"`
 	Recursive         bool                               `pulumi:"recursive"`
 }
 
@@ -124,8 +124,8 @@ func (o GetNotebookPathsResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNotebookPathsResult) string { return v.Path }).(pulumi.StringOutput)
 }
 
-func (o GetNotebookPathsResultOutput) ProviderConfig() GetNotebookPathsProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetNotebookPathsResult) *GetNotebookPathsProviderConfig { return v.ProviderConfig }).(GetNotebookPathsProviderConfigPtrOutput)
+func (o GetNotebookPathsResultOutput) ProviderConfig() GetNotebookPathsProviderConfigOutput {
+	return o.ApplyT(func(v GetNotebookPathsResult) GetNotebookPathsProviderConfig { return v.ProviderConfig }).(GetNotebookPathsProviderConfigOutput)
 }
 
 func (o GetNotebookPathsResultOutput) Recursive() pulumi.BoolOutput {

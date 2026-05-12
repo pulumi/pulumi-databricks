@@ -285,14 +285,14 @@ public class NotificationDestination extends com.pulumi.resources.CustomResource
      * 
      */
     @Export(name="providerConfig", refs={NotificationDestinationProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ NotificationDestinationProviderConfig> providerConfig;
+    private Output<NotificationDestinationProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<NotificationDestinationProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<NotificationDestinationProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
 
     /**

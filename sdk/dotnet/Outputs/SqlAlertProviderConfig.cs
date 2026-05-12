@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class SqlAlertProviderConfig
     {
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private SqlAlertProviderConfig(string workspaceId)
+        private SqlAlertProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

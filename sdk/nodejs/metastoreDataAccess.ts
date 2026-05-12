@@ -118,7 +118,7 @@ export class MetastoreDataAccess extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.MetastoreDataAccessProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.MetastoreDataAccessProviderConfig>;
     declare public readonly readOnly: pulumi.Output<boolean | undefined>;
     declare public readonly skipValidation: pulumi.Output<boolean | undefined>;
 

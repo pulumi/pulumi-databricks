@@ -78,8 +78,8 @@ type MlflowModel struct {
 	// Name of MLflow model. Change of name triggers new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig    MlflowModelProviderConfigPtrOutput `pulumi:"providerConfig"`
-	RegisteredModelId pulumi.StringOutput                `pulumi:"registeredModelId"`
+	ProviderConfig    MlflowModelProviderConfigOutput `pulumi:"providerConfig"`
+	RegisteredModelId pulumi.StringOutput             `pulumi:"registeredModelId"`
 	// Tags for the MLflow model.
 	Tags MlflowModelTagArrayOutput `pulumi:"tags"`
 }
@@ -262,8 +262,8 @@ func (o MlflowModelOutput) Name() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o MlflowModelOutput) ProviderConfig() MlflowModelProviderConfigPtrOutput {
-	return o.ApplyT(func(v *MlflowModel) MlflowModelProviderConfigPtrOutput { return v.ProviderConfig }).(MlflowModelProviderConfigPtrOutput)
+func (o MlflowModelOutput) ProviderConfig() MlflowModelProviderConfigOutput {
+	return o.ApplyT(func(v *MlflowModel) MlflowModelProviderConfigOutput { return v.ProviderConfig }).(MlflowModelProviderConfigOutput)
 }
 
 func (o MlflowModelOutput) RegisteredModelId() pulumi.StringOutput {

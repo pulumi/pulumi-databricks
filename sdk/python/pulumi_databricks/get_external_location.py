@@ -65,7 +65,7 @@ class GetExternalLocationResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetExternalLocationProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetExternalLocationProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
 

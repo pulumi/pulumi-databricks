@@ -203,7 +203,7 @@ export class ExternalLocation extends pulumi.CustomResource {
      * Username/groupname/sp applicationId of the external location owner.
      */
     declare public readonly owner: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.ExternalLocationProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.ExternalLocationProviderConfig>;
     /**
      * Indicates whether the external location is read-only.
      */

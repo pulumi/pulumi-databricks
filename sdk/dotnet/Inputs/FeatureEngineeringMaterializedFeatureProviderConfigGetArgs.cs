@@ -15,8 +15,8 @@ namespace Pulumi.Databricks.Inputs
         /// <summary>
         /// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
         /// </summary>
-        [Input("workspaceId", required: true)]
-        public Input<string> WorkspaceId { get; set; } = null!;
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public FeatureEngineeringMaterializedFeatureProviderConfigGetArgs()
         {

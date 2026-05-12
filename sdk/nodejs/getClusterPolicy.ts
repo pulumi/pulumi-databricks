@@ -116,7 +116,7 @@ export interface GetClusterPolicyResult {
      * ID of the policy family.
      */
     readonly policyFamilyId: string;
-    readonly providerConfig?: outputs.GetClusterPolicyProviderConfig;
+    readonly providerConfig: outputs.GetClusterPolicyProviderConfig;
 }
 /**
  * Retrieves information about databricks_cluster_policy.

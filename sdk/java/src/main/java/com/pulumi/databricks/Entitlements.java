@@ -224,14 +224,14 @@ public class Entitlements extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={EntitlementsProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ EntitlementsProviderConfig> providerConfig;
+    private Output<EntitlementsProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<EntitlementsProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<EntitlementsProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Canonical unique identifier for the service principal.

@@ -248,14 +248,14 @@ public class MetastoreDataAccess extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={MetastoreDataAccessProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ MetastoreDataAccessProviderConfig> providerConfig;
+    private Output<MetastoreDataAccessProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<MetastoreDataAccessProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<MetastoreDataAccessProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="readOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> readOnly;

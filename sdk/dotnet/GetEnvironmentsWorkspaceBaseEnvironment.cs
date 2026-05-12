@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetEnvironmentsWorkspaceBaseEnvironment
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves a single Workspace Base Environment by its resource name.
         /// 
@@ -39,7 +39,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentsWorkspaceBaseEnvironmentResult>("databricks:index/getEnvironmentsWorkspaceBaseEnvironment:getEnvironmentsWorkspaceBaseEnvironment", args ?? new GetEnvironmentsWorkspaceBaseEnvironmentArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves a single Workspace Base Environment by its resource name.
         /// 
@@ -66,7 +66,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentsWorkspaceBaseEnvironmentResult>("databricks:index/getEnvironmentsWorkspaceBaseEnvironment:getEnvironmentsWorkspaceBaseEnvironment", args ?? new GetEnvironmentsWorkspaceBaseEnvironmentInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves a single Workspace Base Environment by its resource name.
         /// 

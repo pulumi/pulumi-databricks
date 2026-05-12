@@ -74,8 +74,8 @@ type LookupInstancePoolResult struct {
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 	// block describing instance pool and its state. Check documentation for InstancePool for a list of exposed attributes.
-	PoolInfo       GetInstancePoolPoolInfo        `pulumi:"poolInfo"`
-	ProviderConfig *GetInstancePoolProviderConfig `pulumi:"providerConfig"`
+	PoolInfo       GetInstancePoolPoolInfo       `pulumi:"poolInfo"`
+	ProviderConfig GetInstancePoolProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupInstancePoolOutput(ctx *pulumi.Context, args LookupInstancePoolOutputArgs, opts ...pulumi.InvokeOption) LookupInstancePoolResultOutput {
@@ -130,8 +130,8 @@ func (o LookupInstancePoolResultOutput) PoolInfo() GetInstancePoolPoolInfoOutput
 	return o.ApplyT(func(v LookupInstancePoolResult) GetInstancePoolPoolInfo { return v.PoolInfo }).(GetInstancePoolPoolInfoOutput)
 }
 
-func (o LookupInstancePoolResultOutput) ProviderConfig() GetInstancePoolProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupInstancePoolResult) *GetInstancePoolProviderConfig { return v.ProviderConfig }).(GetInstancePoolProviderConfigPtrOutput)
+func (o LookupInstancePoolResultOutput) ProviderConfig() GetInstancePoolProviderConfigOutput {
+	return o.ApplyT(func(v LookupInstancePoolResult) GetInstancePoolProviderConfig { return v.ProviderConfig }).(GetInstancePoolProviderConfigOutput)
 }
 
 func init() {

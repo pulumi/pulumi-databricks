@@ -150,14 +150,14 @@ public class Token extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={TokenProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ TokenProviderConfig> providerConfig;
+    private Output<TokenProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<TokenProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<TokenProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="tokenId", refs={String.class}, tree="[0]")
     private Output<String> tokenId;

@@ -80,7 +80,7 @@ export class ArtifactAllowlist extends pulumi.CustomResource {
      * ID of the parent metastore.
      */
     declare public readonly metastoreId: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.ArtifactAllowlistProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.ArtifactAllowlistProviderConfig>;
 
     /**
      * Create a ArtifactAllowlist resource with the given unique name, arguments, and options.

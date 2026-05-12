@@ -90,7 +90,7 @@ export class EntityTagAssignment extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.EntityTagAssignmentProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.EntityTagAssignmentProviderConfig>;
     /**
      * (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
      */

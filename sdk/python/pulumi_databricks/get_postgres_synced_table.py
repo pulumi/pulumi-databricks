@@ -128,6 +128,20 @@ def get_postgres_synced_table(name: Optional[_builtins.str] = None,
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    This data source retrieves a single Postgres synced table.
+
+    ## Example Usage
+
+    ### Retrieve Synced Table by Name
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_postgres_synced_table(name="synced_tables/my_catalog.my_schema.my_synced_table")
+    pulumi.export("syncedTableState", this.status.detailed_state)
+    ```
+
 
     :param _builtins.str name: Output only. The Full resource name of the synced table in Postgres
            where (catalog, schema, table) are the UC entity names.
@@ -156,6 +170,20 @@ def get_postgres_synced_table_output(name: pulumi.Input[Optional[_builtins.str]]
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresSyncedTableResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    This data source retrieves a single Postgres synced table.
+
+    ## Example Usage
+
+    ### Retrieve Synced Table by Name
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_postgres_synced_table(name="synced_tables/my_catalog.my_schema.my_synced_table")
+    pulumi.export("syncedTableState", this.status.detailed_state)
+    ```
 
 
     :param _builtins.str name: Output only. The Full resource name of the synced table in Postgres

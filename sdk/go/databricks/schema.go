@@ -85,7 +85,7 @@ type Schema struct {
 	// Extensible Schema properties.
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig SchemaProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig SchemaProviderConfigOutput `pulumi:"providerConfig"`
 	// The unique identifier of the schema.
 	SchemaId pulumi.StringOutput `pulumi:"schemaId"`
 	// Managed location of the schema. Location in cloud storage where data for managed tables will be stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). If not specified, the location will default to the catalog root location. Change forces creation of a new resource.
@@ -348,8 +348,8 @@ func (o SchemaOutput) Properties() pulumi.StringMapOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o SchemaOutput) ProviderConfig() SchemaProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Schema) SchemaProviderConfigPtrOutput { return v.ProviderConfig }).(SchemaProviderConfigPtrOutput)
+func (o SchemaOutput) ProviderConfig() SchemaProviderConfigOutput {
+	return o.ApplyT(func(v *Schema) SchemaProviderConfigOutput { return v.ProviderConfig }).(SchemaProviderConfigOutput)
 }
 
 // The unique identifier of the schema.

@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStorageCredentialsResult {
@@ -24,7 +22,7 @@ public final class GetStorageCredentialsResult {
      * 
      */
     private List<String> names;
-    private @Nullable GetStorageCredentialsProviderConfig providerConfig;
+    private GetStorageCredentialsProviderConfig providerConfig;
 
     private GetStorageCredentialsResult() {}
     /**
@@ -41,8 +39,8 @@ public final class GetStorageCredentialsResult {
     public List<String> names() {
         return this.names;
     }
-    public Optional<GetStorageCredentialsProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetStorageCredentialsProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -56,7 +54,7 @@ public final class GetStorageCredentialsResult {
     public static final class Builder {
         private String id;
         private List<String> names;
-        private @Nullable GetStorageCredentialsProviderConfig providerConfig;
+        private GetStorageCredentialsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetStorageCredentialsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -85,8 +83,10 @@ public final class GetStorageCredentialsResult {
             return names(List.of(names));
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetStorageCredentialsProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetStorageCredentialsProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetStorageCredentialsResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

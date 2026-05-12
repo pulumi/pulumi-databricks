@@ -82,7 +82,7 @@ type IpAccessList struct {
 	// Can only be "ALLOW" or "BLOCK".
 	ListType pulumi.StringOutput `pulumi:"listType"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig IpAccessListProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig IpAccessListProviderConfigOutput `pulumi:"providerConfig"`
 }
 
 // NewIpAccessList registers a new resource with the given unique name, arguments, and options.
@@ -288,8 +288,8 @@ func (o IpAccessListOutput) ListType() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o IpAccessListOutput) ProviderConfig() IpAccessListProviderConfigPtrOutput {
-	return o.ApplyT(func(v *IpAccessList) IpAccessListProviderConfigPtrOutput { return v.ProviderConfig }).(IpAccessListProviderConfigPtrOutput)
+func (o IpAccessListOutput) ProviderConfig() IpAccessListProviderConfigOutput {
+	return o.ApplyT(func(v *IpAccessList) IpAccessListProviderConfigOutput { return v.ProviderConfig }).(IpAccessListProviderConfigOutput)
 }
 
 type IpAccessListArrayOutput struct{ *pulumi.OutputState }

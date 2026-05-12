@@ -10,8 +10,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDbfsFileResult {
@@ -32,7 +30,7 @@ public final class GetDbfsFileResult {
     private String id;
     private Boolean limitFileSize;
     private String path;
-    private @Nullable GetDbfsFileProviderConfig providerConfig;
+    private GetDbfsFileProviderConfig providerConfig;
 
     private GetDbfsFileResult() {}
     /**
@@ -62,8 +60,8 @@ public final class GetDbfsFileResult {
     public String path() {
         return this.path;
     }
-    public Optional<GetDbfsFileProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetDbfsFileProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -80,7 +78,7 @@ public final class GetDbfsFileResult {
         private String id;
         private Boolean limitFileSize;
         private String path;
-        private @Nullable GetDbfsFileProviderConfig providerConfig;
+        private GetDbfsFileProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetDbfsFileResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -133,8 +131,10 @@ public final class GetDbfsFileResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetDbfsFileProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetDbfsFileProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetDbfsFileResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

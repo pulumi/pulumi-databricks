@@ -31,7 +31,7 @@ type Notebook struct {
 	// The absolute path of the notebook or directory, beginning with "/", e.g. "/Demo".
 	Path pulumi.StringOutput `pulumi:"path"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig NotebookProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig NotebookProviderConfigOutput `pulumi:"providerConfig"`
 	// Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
 	// Routable URL of the notebook
@@ -282,8 +282,8 @@ func (o NotebookOutput) Path() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o NotebookOutput) ProviderConfig() NotebookProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Notebook) NotebookProviderConfigPtrOutput { return v.ProviderConfig }).(NotebookProviderConfigPtrOutput)
+func (o NotebookOutput) ProviderConfig() NotebookProviderConfigOutput {
+	return o.ApplyT(func(v *Notebook) NotebookProviderConfigOutput { return v.ProviderConfig }).(NotebookProviderConfigOutput)
 }
 
 // Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.

@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTask
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMavenArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypiArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -63,15 +64,15 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs exten
      * Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    @Import(name="providerConfig")
-    private @Nullable Output<GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs> providerConfig;
+    @Import(name="providerConfig", required=true)
+    private Output<GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Optional<Output<GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs>> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public Output<GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs> providerConfig() {
+        return this.providerConfig;
     }
 
     @Import(name="pypi")
@@ -184,7 +185,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs exten
          * @return builder
          * 
          */
-        public Builder providerConfig(@Nullable Output<GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs> providerConfig) {
+        public Builder providerConfig(Output<GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfigArgs> providerConfig) {
             $.providerConfig = providerConfig;
             return this;
         }
@@ -227,6 +228,9 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs exten
         }
 
         public GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs build() {
+            if ($.providerConfig == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryArgs", "providerConfig");
+            }
             return $;
         }
     }

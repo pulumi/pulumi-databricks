@@ -93,14 +93,14 @@ public class DbfsFile extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={DbfsFileProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ DbfsFileProviderConfig> providerConfig;
+    private Output<DbfsFileProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<DbfsFileProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<DbfsFileProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * The full absolute path to the file. Conflicts with `contentBase64`.

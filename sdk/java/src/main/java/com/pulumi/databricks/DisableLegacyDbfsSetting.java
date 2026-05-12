@@ -13,7 +13,6 @@ import com.pulumi.databricks.inputs.DisableLegacyDbfsSettingState;
 import com.pulumi.databricks.outputs.DisableLegacyDbfsSettingDisableLegacyDbfs;
 import com.pulumi.databricks.outputs.DisableLegacyDbfsSettingProviderConfig;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -98,14 +97,14 @@ public class DisableLegacyDbfsSetting extends com.pulumi.resources.CustomResourc
      * 
      */
     @Export(name="providerConfig", refs={DisableLegacyDbfsSettingProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ DisableLegacyDbfsSettingProviderConfig> providerConfig;
+    private Output<DisableLegacyDbfsSettingProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<DisableLegacyDbfsSettingProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<DisableLegacyDbfsSettingProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="settingName", refs={String.class}, tree="[0]")
     private Output<String> settingName;

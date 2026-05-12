@@ -58,10 +58,10 @@ namespace Pulumi.Databricks.Outputs
         /// });
         /// ```
         /// </summary>
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private ClusterProviderConfig(string workspaceId)
+        private ClusterProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

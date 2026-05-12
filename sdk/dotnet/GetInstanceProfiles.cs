@@ -164,7 +164,7 @@ namespace Pulumi.Databricks
         /// Set of objects for a databricks_instance_profile. This contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceProfilesInstanceProfileResult> InstanceProfiles;
-        public readonly Outputs.GetInstanceProfilesProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetInstanceProfilesProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetInstanceProfilesResult(
@@ -172,7 +172,7 @@ namespace Pulumi.Databricks
 
             ImmutableArray<Outputs.GetInstanceProfilesInstanceProfileResult> instanceProfiles,
 
-            Outputs.GetInstanceProfilesProviderConfigResult? providerConfig)
+            Outputs.GetInstanceProfilesProviderConfigResult providerConfig)
         {
             Id = id;
             InstanceProfiles = instanceProfiles;

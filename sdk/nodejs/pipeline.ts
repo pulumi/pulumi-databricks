@@ -192,7 +192,7 @@ export class Pipeline extends pulumi.CustomResource {
      * Canonical unique identifier of the Lakeflow Declarative Pipeline.
      */
     declare public readonly pipelineId: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.PipelineProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.PipelineProviderConfig>;
     declare public readonly restartWindow: pulumi.Output<outputs.PipelineRestartWindow | undefined>;
     /**
      * An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.

@@ -97,7 +97,7 @@ export class MlflowExperiment extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.MlflowExperimentProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.MlflowExperimentProviderConfig>;
     /**
      * Tags for the MLflow experiment.
      */

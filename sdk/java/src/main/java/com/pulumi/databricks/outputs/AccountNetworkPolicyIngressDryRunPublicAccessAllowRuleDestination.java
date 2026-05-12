@@ -4,6 +4,11 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountApi;
+import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOne;
+import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountUi;
+import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAppsRuntime;
+import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationLakebaseRuntime;
 import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi;
 import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUi;
 import java.lang.Boolean;
@@ -13,25 +18,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination {
+    private @Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountApi accountApi;
+    private @Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOne accountDatabricksOne;
+    private @Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountUi accountUi;
     private @Nullable Boolean allDestinations;
+    private @Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAppsRuntime appsRuntime;
+    private @Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationLakebaseRuntime lakebaseRuntime;
     private @Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi workspaceApi;
-    /**
-     * @return Workspace destinations
-     * 
-     */
     private @Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUi workspaceUi;
 
     private AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination() {}
+    public Optional<AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountApi> accountApi() {
+        return Optional.ofNullable(this.accountApi);
+    }
+    public Optional<AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOne> accountDatabricksOne() {
+        return Optional.ofNullable(this.accountDatabricksOne);
+    }
+    public Optional<AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountUi> accountUi() {
+        return Optional.ofNullable(this.accountUi);
+    }
     public Optional<Boolean> allDestinations() {
         return Optional.ofNullable(this.allDestinations);
+    }
+    public Optional<AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAppsRuntime> appsRuntime() {
+        return Optional.ofNullable(this.appsRuntime);
+    }
+    public Optional<AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationLakebaseRuntime> lakebaseRuntime() {
+        return Optional.ofNullable(this.lakebaseRuntime);
     }
     public Optional<AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi> workspaceApi() {
         return Optional.ofNullable(this.workspaceApi);
     }
-    /**
-     * @return Workspace destinations
-     * 
-     */
     public Optional<AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUi> workspaceUi() {
         return Optional.ofNullable(this.workspaceUi);
     }
@@ -45,21 +62,61 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestina
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountApi accountApi;
+        private @Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOne accountDatabricksOne;
+        private @Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountUi accountUi;
         private @Nullable Boolean allDestinations;
+        private @Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAppsRuntime appsRuntime;
+        private @Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationLakebaseRuntime lakebaseRuntime;
         private @Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi workspaceApi;
         private @Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUi workspaceUi;
         public Builder() {}
         public Builder(AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accountApi = defaults.accountApi;
+    	      this.accountDatabricksOne = defaults.accountDatabricksOne;
+    	      this.accountUi = defaults.accountUi;
     	      this.allDestinations = defaults.allDestinations;
+    	      this.appsRuntime = defaults.appsRuntime;
+    	      this.lakebaseRuntime = defaults.lakebaseRuntime;
     	      this.workspaceApi = defaults.workspaceApi;
     	      this.workspaceUi = defaults.workspaceUi;
         }
 
         @CustomType.Setter
+        public Builder accountApi(@Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountApi accountApi) {
+
+            this.accountApi = accountApi;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder accountDatabricksOne(@Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOne accountDatabricksOne) {
+
+            this.accountDatabricksOne = accountDatabricksOne;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder accountUi(@Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountUi accountUi) {
+
+            this.accountUi = accountUi;
+            return this;
+        }
+        @CustomType.Setter
         public Builder allDestinations(@Nullable Boolean allDestinations) {
 
             this.allDestinations = allDestinations;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder appsRuntime(@Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAppsRuntime appsRuntime) {
+
+            this.appsRuntime = appsRuntime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lakebaseRuntime(@Nullable AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationLakebaseRuntime lakebaseRuntime) {
+
+            this.lakebaseRuntime = lakebaseRuntime;
             return this;
         }
         @CustomType.Setter
@@ -76,7 +133,12 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestina
         }
         public AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination build() {
             final var _resultValue = new AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination();
+            _resultValue.accountApi = accountApi;
+            _resultValue.accountDatabricksOne = accountDatabricksOne;
+            _resultValue.accountUi = accountUi;
             _resultValue.allDestinations = allDestinations;
+            _resultValue.appsRuntime = appsRuntime;
+            _resultValue.lakebaseRuntime = lakebaseRuntime;
             _resultValue.workspaceApi = workspaceApi;
             _resultValue.workspaceUi = workspaceUi;
             return _resultValue;

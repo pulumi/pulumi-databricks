@@ -25,7 +25,7 @@ public final class GetPipelinesResult {
      */
     private List<String> ids;
     private @Nullable String pipelineName;
-    private @Nullable GetPipelinesProviderConfig providerConfig;
+    private GetPipelinesProviderConfig providerConfig;
 
     private GetPipelinesResult() {}
     /**
@@ -45,8 +45,8 @@ public final class GetPipelinesResult {
     public Optional<String> pipelineName() {
         return Optional.ofNullable(this.pipelineName);
     }
-    public Optional<GetPipelinesProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetPipelinesProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -61,7 +61,7 @@ public final class GetPipelinesResult {
         private String id;
         private List<String> ids;
         private @Nullable String pipelineName;
-        private @Nullable GetPipelinesProviderConfig providerConfig;
+        private GetPipelinesProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetPipelinesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -97,8 +97,10 @@ public final class GetPipelinesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetPipelinesProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetPipelinesProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetPipelinesResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

@@ -175,7 +175,7 @@ export class User extends pulumi.CustomResource {
      * Home folder of the user, e.g. `/Users/mr.foo@example.com`.
      */
     declare public readonly home: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.UserProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.UserProviderConfig>;
     /**
      * Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
      */

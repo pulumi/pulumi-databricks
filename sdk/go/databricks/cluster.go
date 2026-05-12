@@ -185,8 +185,8 @@ type Cluster struct {
 	// Identifier of Cluster Policy to validate cluster and preset certain defaults. *The primary use for cluster policies is to allow users to create policy-scoped clusters via UI rather than sharing configuration for API-created clusters.* For example, when you specify `policyId` of [external metastore](https://docs.databricks.com/administration-guide/clusters/policies.html#external-metastore-policy) policy, you still have to fill in relevant keys for `sparkConf`.  If relevant fields aren't filled in, then it will cause the configuration drift detected on each plan/apply, and Pulumi will try to apply the detected changes.
 	PolicyId pulumi.StringPtrOutput `pulumi:"policyId"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig       ClusterProviderConfigPtrOutput `pulumi:"providerConfig"`
-	RemoteDiskThroughput pulumi.IntPtrOutput            `pulumi:"remoteDiskThroughput"`
+	ProviderConfig       ClusterProviderConfigOutput `pulumi:"providerConfig"`
+	RemoteDiskThroughput pulumi.IntPtrOutput         `pulumi:"remoteDiskThroughput"`
 	// The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.
 	RuntimeEngine pulumi.StringPtrOutput `pulumi:"runtimeEngine"`
 	// The optional user name of the user (or group name if `kind` if specified) to assign to an interactive cluster. This field is required when using `dataSecurityMode` set to `SINGLE_USER` or AAD Passthrough for Azure Data Lake Storage (ADLS) with a single-user cluster (i.e., not high-concurrency clusters).
@@ -964,8 +964,8 @@ func (o ClusterOutput) PolicyId() pulumi.StringPtrOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o ClusterOutput) ProviderConfig() ClusterProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Cluster) ClusterProviderConfigPtrOutput { return v.ProviderConfig }).(ClusterProviderConfigPtrOutput)
+func (o ClusterOutput) ProviderConfig() ClusterProviderConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterProviderConfigOutput { return v.ProviderConfig }).(ClusterProviderConfigOutput)
 }
 
 func (o ClusterOutput) RemoteDiskThroughput() pulumi.IntPtrOutput {

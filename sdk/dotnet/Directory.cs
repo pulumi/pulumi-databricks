@@ -75,7 +75,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.DirectoryProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.DirectoryProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`

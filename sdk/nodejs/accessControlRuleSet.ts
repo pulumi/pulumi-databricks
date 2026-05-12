@@ -301,7 +301,7 @@ export class AccessControlRuleSet extends pulumi.CustomResource {
      * * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
      */
     declare public readonly name: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.AccessControlRuleSetProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.AccessControlRuleSetProviderConfig>;
 
     /**
      * Create a AccessControlRuleSet resource with the given unique name, arguments, and options.

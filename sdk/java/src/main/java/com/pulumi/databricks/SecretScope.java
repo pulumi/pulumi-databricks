@@ -120,14 +120,14 @@ public class SecretScope extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={SecretScopeProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ SecretScopeProviderConfig> providerConfig;
+    private Output<SecretScopeProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<SecretScopeProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<SecretScopeProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
 
     /**

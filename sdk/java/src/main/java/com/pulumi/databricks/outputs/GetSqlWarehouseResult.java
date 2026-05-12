@@ -14,8 +14,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSqlWarehouseResult {
@@ -100,7 +98,7 @@ public final class GetSqlWarehouseResult {
      * 
      */
     private GetSqlWarehouseOdbcParams odbcParams;
-    private @Nullable GetSqlWarehouseProviderConfig providerConfig;
+    private GetSqlWarehouseProviderConfig providerConfig;
     /**
      * @return The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
      * 
@@ -238,8 +236,8 @@ public final class GetSqlWarehouseResult {
     public GetSqlWarehouseOdbcParams odbcParams() {
         return this.odbcParams;
     }
-    public Optional<GetSqlWarehouseProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetSqlWarehouseProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     /**
      * @return The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`.
@@ -296,7 +294,7 @@ public final class GetSqlWarehouseResult {
         private Integer numActiveSessions;
         private Integer numClusters;
         private GetSqlWarehouseOdbcParams odbcParams;
-        private @Nullable GetSqlWarehouseProviderConfig providerConfig;
+        private GetSqlWarehouseProviderConfig providerConfig;
         private String spotInstancePolicy;
         private String state;
         private GetSqlWarehouseTags tags;
@@ -465,8 +463,10 @@ public final class GetSqlWarehouseResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetSqlWarehouseProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetSqlWarehouseProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehouseResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PipelineClusterGcpAttributes {
     private @Nullable String availability;
+    private @Nullable String confidentialComputeType;
     private @Nullable Integer firstOnDemand;
     private @Nullable String googleServiceAccount;
     private @Nullable Integer localSsdCount;
@@ -21,6 +22,9 @@ public final class PipelineClusterGcpAttributes {
     private PipelineClusterGcpAttributes() {}
     public Optional<String> availability() {
         return Optional.ofNullable(this.availability);
+    }
+    public Optional<String> confidentialComputeType() {
+        return Optional.ofNullable(this.confidentialComputeType);
     }
     public Optional<Integer> firstOnDemand() {
         return Optional.ofNullable(this.firstOnDemand);
@@ -45,6 +49,7 @@ public final class PipelineClusterGcpAttributes {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String availability;
+        private @Nullable String confidentialComputeType;
         private @Nullable Integer firstOnDemand;
         private @Nullable String googleServiceAccount;
         private @Nullable Integer localSsdCount;
@@ -53,6 +58,7 @@ public final class PipelineClusterGcpAttributes {
         public Builder(PipelineClusterGcpAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
+    	      this.confidentialComputeType = defaults.confidentialComputeType;
     	      this.firstOnDemand = defaults.firstOnDemand;
     	      this.googleServiceAccount = defaults.googleServiceAccount;
     	      this.localSsdCount = defaults.localSsdCount;
@@ -63,6 +69,12 @@ public final class PipelineClusterGcpAttributes {
         public Builder availability(@Nullable String availability) {
 
             this.availability = availability;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder confidentialComputeType(@Nullable String confidentialComputeType) {
+
+            this.confidentialComputeType = confidentialComputeType;
             return this;
         }
         @CustomType.Setter
@@ -92,6 +104,7 @@ public final class PipelineClusterGcpAttributes {
         public PipelineClusterGcpAttributes build() {
             final var _resultValue = new PipelineClusterGcpAttributes();
             _resultValue.availability = availability;
+            _resultValue.confidentialComputeType = confidentialComputeType;
             _resultValue.firstOnDemand = firstOnDemand;
             _resultValue.googleServiceAccount = googleServiceAccount;
             _resultValue.localSsdCount = localSsdCount;

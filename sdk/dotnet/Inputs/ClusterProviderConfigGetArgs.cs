@@ -57,8 +57,8 @@ namespace Pulumi.Databricks.Inputs
         /// });
         /// ```
         /// </summary>
-        [Input("workspaceId", required: true)]
-        public Input<string> WorkspaceId { get; set; } = null!;
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public ClusterProviderConfigGetArgs()
         {

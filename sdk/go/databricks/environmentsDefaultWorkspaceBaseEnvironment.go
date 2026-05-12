@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // The Default Workspace Base Environment is a singleton resource that configures which workspace base environments are applied by default to new notebooks in the workspace. Defaults can be set separately for CPU and GPU compute.
 //
@@ -123,7 +123,7 @@ type EnvironmentsDefaultWorkspaceBaseEnvironment struct {
 	// Format: default-workspace-base-environment
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
-	ProviderConfig EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigOutput `pulumi:"providerConfig"`
 }
 
 // NewEnvironmentsDefaultWorkspaceBaseEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -320,10 +320,10 @@ func (o EnvironmentsDefaultWorkspaceBaseEnvironmentOutput) Name() pulumi.StringO
 }
 
 // Configure the provider for management through account provider.
-func (o EnvironmentsDefaultWorkspaceBaseEnvironmentOutput) ProviderConfig() EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigPtrOutput {
-	return o.ApplyT(func(v *EnvironmentsDefaultWorkspaceBaseEnvironment) EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigPtrOutput {
+func (o EnvironmentsDefaultWorkspaceBaseEnvironmentOutput) ProviderConfig() EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigOutput {
+	return o.ApplyT(func(v *EnvironmentsDefaultWorkspaceBaseEnvironment) EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigOutput {
 		return v.ProviderConfig
-	}).(EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigPtrOutput)
+	}).(EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfigOutput)
 }
 
 type EnvironmentsDefaultWorkspaceBaseEnvironmentArrayOutput struct{ *pulumi.OutputState }

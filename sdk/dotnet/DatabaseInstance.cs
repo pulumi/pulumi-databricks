@@ -264,10 +264,11 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.DatabaseInstanceProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.DatabaseInstanceProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Purge the resource on delete
+        /// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+        /// of false will throw a bad request
         /// </summary>
         [Output("purgeOnDelete")]
         public Output<bool?> PurgeOnDelete { get; private set; } = null!;
@@ -422,7 +423,8 @@ namespace Pulumi.Databricks
         public Input<Inputs.DatabaseInstanceProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// Purge the resource on delete
+        /// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+        /// of false will throw a bad request
         /// </summary>
         [Input("purgeOnDelete")]
         public Input<bool>? PurgeOnDelete { get; set; }
@@ -617,7 +619,8 @@ namespace Pulumi.Databricks
         public Input<Inputs.DatabaseInstanceProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// Purge the resource on delete
+        /// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+        /// of false will throw a bad request
         /// </summary>
         [Input("purgeOnDelete")]
         public Input<bool>? PurgeOnDelete { get; set; }

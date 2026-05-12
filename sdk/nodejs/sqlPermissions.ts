@@ -124,7 +124,7 @@ export class SqlPermissions extends pulumi.CustomResource {
      */
     declare public readonly database: pulumi.Output<string | undefined>;
     declare public readonly privilegeAssignments: pulumi.Output<outputs.SqlPermissionsPrivilegeAssignment[] | undefined>;
-    declare public readonly providerConfig: pulumi.Output<outputs.SqlPermissionsProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.SqlPermissionsProviderConfig>;
     /**
      * Name of the table. Can be combined with the `database`.
      */

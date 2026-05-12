@@ -81,7 +81,7 @@ namespace Pulumi.Databricks
         public Output<string> Path { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.RepoProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.RepoProviderConfig> ProviderConfig { get; private set; } = null!;
 
         [Output("sparseCheckout")]
         public Output<Outputs.RepoSparseCheckout?> SparseCheckout { get; private set; } = null!;

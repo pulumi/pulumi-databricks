@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs;
 import com.pulumi.databricks.inputs.AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs;
+import com.pulumi.databricks.inputs.AccountNetworkPolicyEgressNetworkAccessBlockedInternetDestinationArgs;
 import com.pulumi.databricks.inputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -51,6 +52,25 @@ public final class AccountNetworkPolicyEgressNetworkAccessArgs extends com.pulum
     }
 
     /**
+     * List of internet destinations that serverless workloads are blocked from accessing.
+     * These destinations are enforced when restriction mode is RESTRICTED_ACCESS or DRY_RUN.
+     * Currently supports DNS_NAME type only; IP_RANGE support is planned
+     * 
+     */
+    @Import(name="blockedInternetDestinations")
+    private @Nullable Output<List<AccountNetworkPolicyEgressNetworkAccessBlockedInternetDestinationArgs>> blockedInternetDestinations;
+
+    /**
+     * @return List of internet destinations that serverless workloads are blocked from accessing.
+     * These destinations are enforced when restriction mode is RESTRICTED_ACCESS or DRY_RUN.
+     * Currently supports DNS_NAME type only; IP_RANGE support is planned
+     * 
+     */
+    public Optional<Output<List<AccountNetworkPolicyEgressNetworkAccessBlockedInternetDestinationArgs>>> blockedInternetDestinations() {
+        return Optional.ofNullable(this.blockedInternetDestinations);
+    }
+
+    /**
      * Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
      * 
      */
@@ -77,6 +97,7 @@ public final class AccountNetworkPolicyEgressNetworkAccessArgs extends com.pulum
     private AccountNetworkPolicyEgressNetworkAccessArgs(AccountNetworkPolicyEgressNetworkAccessArgs $) {
         this.allowedInternetDestinations = $.allowedInternetDestinations;
         this.allowedStorageDestinations = $.allowedStorageDestinations;
+        this.blockedInternetDestinations = $.blockedInternetDestinations;
         this.policyEnforcement = $.policyEnforcement;
         this.restrictionMode = $.restrictionMode;
     }
@@ -159,6 +180,43 @@ public final class AccountNetworkPolicyEgressNetworkAccessArgs extends com.pulum
          */
         public Builder allowedStorageDestinations(AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs... allowedStorageDestinations) {
             return allowedStorageDestinations(List.of(allowedStorageDestinations));
+        }
+
+        /**
+         * @param blockedInternetDestinations List of internet destinations that serverless workloads are blocked from accessing.
+         * These destinations are enforced when restriction mode is RESTRICTED_ACCESS or DRY_RUN.
+         * Currently supports DNS_NAME type only; IP_RANGE support is planned
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockedInternetDestinations(@Nullable Output<List<AccountNetworkPolicyEgressNetworkAccessBlockedInternetDestinationArgs>> blockedInternetDestinations) {
+            $.blockedInternetDestinations = blockedInternetDestinations;
+            return this;
+        }
+
+        /**
+         * @param blockedInternetDestinations List of internet destinations that serverless workloads are blocked from accessing.
+         * These destinations are enforced when restriction mode is RESTRICTED_ACCESS or DRY_RUN.
+         * Currently supports DNS_NAME type only; IP_RANGE support is planned
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockedInternetDestinations(List<AccountNetworkPolicyEgressNetworkAccessBlockedInternetDestinationArgs> blockedInternetDestinations) {
+            return blockedInternetDestinations(Output.of(blockedInternetDestinations));
+        }
+
+        /**
+         * @param blockedInternetDestinations List of internet destinations that serverless workloads are blocked from accessing.
+         * These destinations are enforced when restriction mode is RESTRICTED_ACCESS or DRY_RUN.
+         * Currently supports DNS_NAME type only; IP_RANGE support is planned
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockedInternetDestinations(AccountNetworkPolicyEgressNetworkAccessBlockedInternetDestinationArgs... blockedInternetDestinations) {
+            return blockedInternetDestinations(List.of(blockedInternetDestinations));
         }
 
         /**

@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskLibraryCranArgs
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskLibraryMavenArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs;
 import com.pulumi.databricks.inputs.GetJobJobSettingsSettingsTaskLibraryPypiArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -63,15 +64,15 @@ public final class GetJobJobSettingsSettingsTaskLibraryArgs extends com.pulumi.r
      * Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    @Import(name="providerConfig")
-    private @Nullable Output<GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs> providerConfig;
+    @Import(name="providerConfig", required=true)
+    private Output<GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Optional<Output<GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs>> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public Output<GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs> providerConfig() {
+        return this.providerConfig;
     }
 
     @Import(name="pypi")
@@ -184,7 +185,7 @@ public final class GetJobJobSettingsSettingsTaskLibraryArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder providerConfig(@Nullable Output<GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs> providerConfig) {
+        public Builder providerConfig(Output<GetJobJobSettingsSettingsTaskLibraryProviderConfigArgs> providerConfig) {
             $.providerConfig = providerConfig;
             return this;
         }
@@ -227,6 +228,9 @@ public final class GetJobJobSettingsSettingsTaskLibraryArgs extends com.pulumi.r
         }
 
         public GetJobJobSettingsSettingsTaskLibraryArgs build() {
+            if ($.providerConfig == null) {
+                throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskLibraryArgs", "providerConfig");
+            }
             return $;
         }
     }

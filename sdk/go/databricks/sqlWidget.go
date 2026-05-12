@@ -85,11 +85,11 @@ type SqlWidget struct {
 	Parameters  SqlWidgetParameterArrayOutput `pulumi:"parameters"`
 	Position    SqlWidgetPositionPtrOutput    `pulumi:"position"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig  SqlWidgetProviderConfigPtrOutput `pulumi:"providerConfig"`
-	Text            pulumi.StringPtrOutput           `pulumi:"text"`
-	Title           pulumi.StringPtrOutput           `pulumi:"title"`
-	VisualizationId pulumi.StringPtrOutput           `pulumi:"visualizationId"`
-	WidgetId        pulumi.StringOutput              `pulumi:"widgetId"`
+	ProviderConfig  SqlWidgetProviderConfigOutput `pulumi:"providerConfig"`
+	Text            pulumi.StringPtrOutput        `pulumi:"text"`
+	Title           pulumi.StringPtrOutput        `pulumi:"title"`
+	VisualizationId pulumi.StringPtrOutput        `pulumi:"visualizationId"`
+	WidgetId        pulumi.StringOutput           `pulumi:"widgetId"`
 }
 
 // NewSqlWidget registers a new resource with the given unique name, arguments, and options.
@@ -285,8 +285,8 @@ func (o SqlWidgetOutput) Position() SqlWidgetPositionPtrOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o SqlWidgetOutput) ProviderConfig() SqlWidgetProviderConfigPtrOutput {
-	return o.ApplyT(func(v *SqlWidget) SqlWidgetProviderConfigPtrOutput { return v.ProviderConfig }).(SqlWidgetProviderConfigPtrOutput)
+func (o SqlWidgetOutput) ProviderConfig() SqlWidgetProviderConfigOutput {
+	return o.ApplyT(func(v *SqlWidget) SqlWidgetProviderConfigOutput { return v.ProviderConfig }).(SqlWidgetProviderConfigOutput)
 }
 
 func (o SqlWidgetOutput) Text() pulumi.StringPtrOutput {

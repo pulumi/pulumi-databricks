@@ -99,7 +99,7 @@ type InstancePool struct {
 	// (List) A list with at most one runtime version the pool installs on each instance. Pool clusters that use a preloaded runtime version start faster as they do not have to wait for the image to download. You can retrieve them via getSparkVersion data source or via  [Runtime Versions API](https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterservicelistsparkversions) call.
 	PreloadedSparkVersions pulumi.StringArrayOutput `pulumi:"preloadedSparkVersions"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig InstancePoolProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig InstancePoolProviderConfigOutput `pulumi:"providerConfig"`
 }
 
 // NewInstancePool registers a new resource with the given unique name, arguments, and options.
@@ -425,8 +425,8 @@ func (o InstancePoolOutput) PreloadedSparkVersions() pulumi.StringArrayOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o InstancePoolOutput) ProviderConfig() InstancePoolProviderConfigPtrOutput {
-	return o.ApplyT(func(v *InstancePool) InstancePoolProviderConfigPtrOutput { return v.ProviderConfig }).(InstancePoolProviderConfigPtrOutput)
+func (o InstancePoolOutput) ProviderConfig() InstancePoolProviderConfigOutput {
+	return o.ApplyT(func(v *InstancePool) InstancePoolProviderConfigOutput { return v.ProviderConfig }).(InstancePoolProviderConfigOutput)
 }
 
 type InstancePoolArrayOutput struct{ *pulumi.OutputState }

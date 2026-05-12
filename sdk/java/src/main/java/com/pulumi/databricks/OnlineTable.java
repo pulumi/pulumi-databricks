@@ -86,14 +86,14 @@ public class OnlineTable extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={OnlineTableProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ OnlineTableProviderConfig> providerConfig;
+    private Output<OnlineTableProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<OnlineTableProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<OnlineTableProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * object containing specification of the online table:

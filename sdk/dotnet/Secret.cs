@@ -83,7 +83,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.SecretProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.SecretProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.

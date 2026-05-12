@@ -264,7 +264,7 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly Outputs.GetUserProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetUserProviderConfigResult ProviderConfig;
         /// <summary>
         /// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
         /// </summary>
@@ -295,7 +295,7 @@ namespace Pulumi.Databricks
 
             string id,
 
-            Outputs.GetUserProviderConfigResult? providerConfig,
+            Outputs.GetUserProviderConfigResult providerConfig,
 
             string repos,
 

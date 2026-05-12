@@ -12,8 +12,8 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class UserInstanceProfileProviderConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("workspaceId", required: true)]
-        public Input<string> WorkspaceId { get; set; } = null!;
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public UserInstanceProfileProviderConfigGetArgs()
         {

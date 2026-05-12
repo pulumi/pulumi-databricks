@@ -154,7 +154,7 @@ class GetNodeTypeResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetNodeTypeProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetNodeTypeProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

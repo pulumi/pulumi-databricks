@@ -229,7 +229,7 @@ namespace Pulumi.Databricks
         public Output<string> PolicyId { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.ClusterPolicyProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.ClusterPolicyProviderConfig> ProviderConfig { get; private set; } = null!;
 
 
         /// <summary>

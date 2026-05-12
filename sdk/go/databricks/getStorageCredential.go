@@ -75,9 +75,9 @@ type LookupStorageCredentialArgs struct {
 // A collection of values returned by getStorageCredential.
 type LookupStorageCredentialResult struct {
 	// Unique ID of storage credential.
-	Id             string                              `pulumi:"id"`
-	Name           string                              `pulumi:"name"`
-	ProviderConfig *GetStorageCredentialProviderConfig `pulumi:"providerConfig"`
+	Id             string                             `pulumi:"id"`
+	Name           string                             `pulumi:"name"`
+	ProviderConfig GetStorageCredentialProviderConfig `pulumi:"providerConfig"`
 	// array of objects with information about storage credential.
 	StorageCredentialInfo GetStorageCredentialStorageCredentialInfo `pulumi:"storageCredentialInfo"`
 }
@@ -131,8 +131,8 @@ func (o LookupStorageCredentialResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageCredentialResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupStorageCredentialResultOutput) ProviderConfig() GetStorageCredentialProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupStorageCredentialResult) *GetStorageCredentialProviderConfig { return v.ProviderConfig }).(GetStorageCredentialProviderConfigPtrOutput)
+func (o LookupStorageCredentialResultOutput) ProviderConfig() GetStorageCredentialProviderConfigOutput {
+	return o.ApplyT(func(v LookupStorageCredentialResult) GetStorageCredentialProviderConfig { return v.ProviderConfig }).(GetStorageCredentialProviderConfigOutput)
 }
 
 // array of objects with information about storage credential.

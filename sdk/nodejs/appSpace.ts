@@ -65,7 +65,7 @@ export class AppSpace extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.AppSpaceProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.AppSpaceProviderConfig>;
     /**
      * Resources for the app space. Resources configured at the space level are available to all apps in the space
      */

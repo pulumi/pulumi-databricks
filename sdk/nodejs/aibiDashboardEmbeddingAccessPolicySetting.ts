@@ -64,7 +64,7 @@ export class AibiDashboardEmbeddingAccessPolicySetting extends pulumi.CustomReso
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.AibiDashboardEmbeddingAccessPolicySettingProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.AibiDashboardEmbeddingAccessPolicySettingProviderConfig>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**

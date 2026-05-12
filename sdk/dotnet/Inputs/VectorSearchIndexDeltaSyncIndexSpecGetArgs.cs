@@ -12,6 +12,26 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class VectorSearchIndexDeltaSyncIndexSpecGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("columnsToIndices")]
+        private InputList<string>? _columnsToIndices;
+        public InputList<string> ColumnsToIndices
+        {
+            get => _columnsToIndices ?? (_columnsToIndices = new InputList<string>());
+            set => _columnsToIndices = value;
+        }
+
+        [Input("columnsToSyncs")]
+        private InputList<string>? _columnsToSyncs;
+
+        /// <summary>
+        /// list of columns to sync. If not specified, all columns are syncronized.
+        /// </summary>
+        public InputList<string> ColumnsToSyncs
+        {
+            get => _columnsToSyncs ?? (_columnsToSyncs = new InputList<string>());
+            set => _columnsToSyncs = value;
+        }
+
         [Input("embeddingSourceColumns")]
         private InputList<Inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnGetArgs>? _embeddingSourceColumns;
 

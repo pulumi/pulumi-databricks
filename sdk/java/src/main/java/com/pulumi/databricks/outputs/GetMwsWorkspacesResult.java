@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMwsWorkspacesResult {
@@ -24,7 +22,13 @@ public final class GetMwsWorkspacesResult {
      * 
      */
     private Map<String,String> ids;
-    private @Nullable GetMwsWorkspacesProviderConfig providerConfig;
+    /**
+     * @deprecated
+     * provider_config has no effect on this account-only resource and will be removed in a future major release.
+     * 
+     */
+    @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
+    private GetMwsWorkspacesProviderConfig providerConfig;
 
     private GetMwsWorkspacesResult() {}
     /**
@@ -41,8 +45,14 @@ public final class GetMwsWorkspacesResult {
     public Map<String,String> ids() {
         return this.ids;
     }
-    public Optional<GetMwsWorkspacesProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    /**
+     * @deprecated
+     * provider_config has no effect on this account-only resource and will be removed in a future major release.
+     * 
+     */
+    @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
+    public GetMwsWorkspacesProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -56,7 +66,7 @@ public final class GetMwsWorkspacesResult {
     public static final class Builder {
         private String id;
         private Map<String,String> ids;
-        private @Nullable GetMwsWorkspacesProviderConfig providerConfig;
+        private GetMwsWorkspacesProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetMwsWorkspacesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -82,8 +92,10 @@ public final class GetMwsWorkspacesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetMwsWorkspacesProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetMwsWorkspacesProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetMwsWorkspacesResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

@@ -83,7 +83,8 @@ type LookupServicePrincipalArgs struct {
 	// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
 	AclPrincipalId *string `pulumi:"aclPrincipalId"`
 	// Whether service principal is active or not.
-	Active *bool `pulumi:"active"`
+	Active *bool   `pulumi:"active"`
+	Api    *string `pulumi:"api"`
 	// Application ID of the service principal. The service principal must exist before this resource can be retrieved.
 	ApplicationId *string `pulumi:"applicationId"`
 	// Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
@@ -108,7 +109,8 @@ type LookupServicePrincipalResult struct {
 	// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
 	AclPrincipalId string `pulumi:"aclPrincipalId"`
 	// Whether service principal is active or not.
-	Active bool `pulumi:"active"`
+	Active bool    `pulumi:"active"`
+	Api    *string `pulumi:"api"`
 	// Application ID of the service principal.
 	ApplicationId string `pulumi:"applicationId"`
 	// Display name of the service principal, e.g. `Foo SPN`.
@@ -118,8 +120,8 @@ type LookupServicePrincipalResult struct {
 	// Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
 	Home string `pulumi:"home"`
 	// The id of the service principal (SCIM ID).
-	Id             string                             `pulumi:"id"`
-	ProviderConfig *GetServicePrincipalProviderConfig `pulumi:"providerConfig"`
+	Id             string                            `pulumi:"id"`
+	ProviderConfig GetServicePrincipalProviderConfig `pulumi:"providerConfig"`
 	// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
 	Repos string `pulumi:"repos"`
 	// same as `id`.
@@ -141,7 +143,8 @@ type LookupServicePrincipalOutputArgs struct {
 	// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
 	AclPrincipalId pulumi.StringPtrInput `pulumi:"aclPrincipalId"`
 	// Whether service principal is active or not.
-	Active pulumi.BoolPtrInput `pulumi:"active"`
+	Active pulumi.BoolPtrInput   `pulumi:"active"`
+	Api    pulumi.StringPtrInput `pulumi:"api"`
 	// Application ID of the service principal. The service principal must exist before this resource can be retrieved.
 	ApplicationId pulumi.StringPtrInput `pulumi:"applicationId"`
 	// Exact display name of the service principal. The service principal must exist before this resource can be retrieved.  In case if there are several service principals with the same name, an error is thrown.
@@ -190,6 +193,10 @@ func (o LookupServicePrincipalResultOutput) Active() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) bool { return v.Active }).(pulumi.BoolOutput)
 }
 
+func (o LookupServicePrincipalResultOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) *string { return v.Api }).(pulumi.StringPtrOutput)
+}
+
 // Application ID of the service principal.
 func (o LookupServicePrincipalResultOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.ApplicationId }).(pulumi.StringOutput)
@@ -215,8 +222,8 @@ func (o LookupServicePrincipalResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupServicePrincipalResultOutput) ProviderConfig() GetServicePrincipalProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupServicePrincipalResult) *GetServicePrincipalProviderConfig { return v.ProviderConfig }).(GetServicePrincipalProviderConfigPtrOutput)
+func (o LookupServicePrincipalResultOutput) ProviderConfig() GetServicePrincipalProviderConfigOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) GetServicePrincipalProviderConfig { return v.ProviderConfig }).(GetServicePrincipalProviderConfigOutput)
 }
 
 // Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.

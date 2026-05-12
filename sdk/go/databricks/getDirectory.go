@@ -67,9 +67,9 @@ type LookupDirectoryArgs struct {
 type LookupDirectoryResult struct {
 	Id string `pulumi:"id"`
 	// directory object ID
-	ObjectId       int                         `pulumi:"objectId"`
-	Path           string                      `pulumi:"path"`
-	ProviderConfig *GetDirectoryProviderConfig `pulumi:"providerConfig"`
+	ObjectId       int                        `pulumi:"objectId"`
+	Path           string                     `pulumi:"path"`
+	ProviderConfig GetDirectoryProviderConfig `pulumi:"providerConfig"`
 	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
 	WorkspacePath string `pulumi:"workspacePath"`
 }
@@ -128,8 +128,8 @@ func (o LookupDirectoryResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDirectoryResult) string { return v.Path }).(pulumi.StringOutput)
 }
 
-func (o LookupDirectoryResultOutput) ProviderConfig() GetDirectoryProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupDirectoryResult) *GetDirectoryProviderConfig { return v.ProviderConfig }).(GetDirectoryProviderConfigPtrOutput)
+func (o LookupDirectoryResultOutput) ProviderConfig() GetDirectoryProviderConfigOutput {
+	return o.ApplyT(func(v LookupDirectoryResult) GetDirectoryProviderConfig { return v.ProviderConfig }).(GetDirectoryProviderConfigOutput)
 }
 
 // path on Workspace File System (WSFS) in form of `/Workspace` + `path`

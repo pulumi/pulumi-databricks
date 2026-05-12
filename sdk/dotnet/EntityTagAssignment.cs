@@ -88,7 +88,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.EntityTagAssignmentProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.EntityTagAssignmentProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`

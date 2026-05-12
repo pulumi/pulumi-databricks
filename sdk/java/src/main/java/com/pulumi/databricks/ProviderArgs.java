@@ -179,13 +179,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.discoveryUrl);
     }
 
-    @Import(name="experimentalIsUnifiedHost", json=true)
-    private @Nullable Output<Boolean> experimentalIsUnifiedHost;
-
-    public Optional<Output<Boolean>> experimentalIsUnifiedHost() {
-        return Optional.ofNullable(this.experimentalIsUnifiedHost);
-    }
-
     @Import(name="googleCredentials")
     private @Nullable Output<String> googleCredentials;
 
@@ -338,7 +331,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.debugTruncateBytes = $.debugTruncateBytes;
         this.disableOauthRefreshToken = $.disableOauthRefreshToken;
         this.discoveryUrl = $.discoveryUrl;
-        this.experimentalIsUnifiedHost = $.experimentalIsUnifiedHost;
         this.googleCredentials = $.googleCredentials;
         this.googleServiceAccount = $.googleServiceAccount;
         this.host = $.host;
@@ -582,15 +574,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder discoveryUrl(String discoveryUrl) {
             return discoveryUrl(Output.of(discoveryUrl));
-        }
-
-        public Builder experimentalIsUnifiedHost(@Nullable Output<Boolean> experimentalIsUnifiedHost) {
-            $.experimentalIsUnifiedHost = experimentalIsUnifiedHost;
-            return this;
-        }
-
-        public Builder experimentalIsUnifiedHost(Boolean experimentalIsUnifiedHost) {
-            return experimentalIsUnifiedHost(Output.of(experimentalIsUnifiedHost));
         }
 
         public Builder googleCredentials(@Nullable Output<String> googleCredentials) {

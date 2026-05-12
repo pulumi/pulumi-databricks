@@ -23,6 +23,13 @@ public final class PipelineClusterGcpAttributesArgs extends com.pulumi.resources
         return Optional.ofNullable(this.availability);
     }
 
+    @Import(name="confidentialComputeType")
+    private @Nullable Output<String> confidentialComputeType;
+
+    public Optional<Output<String>> confidentialComputeType() {
+        return Optional.ofNullable(this.confidentialComputeType);
+    }
+
     @Import(name="firstOnDemand")
     private @Nullable Output<Integer> firstOnDemand;
 
@@ -55,6 +62,7 @@ public final class PipelineClusterGcpAttributesArgs extends com.pulumi.resources
 
     private PipelineClusterGcpAttributesArgs(PipelineClusterGcpAttributesArgs $) {
         this.availability = $.availability;
+        this.confidentialComputeType = $.confidentialComputeType;
         this.firstOnDemand = $.firstOnDemand;
         this.googleServiceAccount = $.googleServiceAccount;
         this.localSsdCount = $.localSsdCount;
@@ -86,6 +94,15 @@ public final class PipelineClusterGcpAttributesArgs extends com.pulumi.resources
 
         public Builder availability(String availability) {
             return availability(Output.of(availability));
+        }
+
+        public Builder confidentialComputeType(@Nullable Output<String> confidentialComputeType) {
+            $.confidentialComputeType = confidentialComputeType;
+            return this;
+        }
+
+        public Builder confidentialComputeType(String confidentialComputeType) {
+            return confidentialComputeType(Output.of(confidentialComputeType));
         }
 
         public Builder firstOnDemand(@Nullable Output<Integer> firstOnDemand) {

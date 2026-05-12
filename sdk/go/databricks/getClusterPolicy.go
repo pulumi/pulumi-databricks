@@ -96,8 +96,8 @@ type LookupClusterPolicyResult struct {
 	// Policy definition JSON document expressed in Databricks [Policy Definition Language](https://docs.databricks.com/administration-guide/clusters/policies.html#cluster-policy-definitions).
 	PolicyFamilyDefinitionOverrides string `pulumi:"policyFamilyDefinitionOverrides"`
 	// ID of the policy family.
-	PolicyFamilyId string                          `pulumi:"policyFamilyId"`
-	ProviderConfig *GetClusterPolicyProviderConfig `pulumi:"providerConfig"`
+	PolicyFamilyId string                         `pulumi:"policyFamilyId"`
+	ProviderConfig GetClusterPolicyProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupClusterPolicyOutput(ctx *pulumi.Context, args LookupClusterPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupClusterPolicyResultOutput {
@@ -189,8 +189,8 @@ func (o LookupClusterPolicyResultOutput) PolicyFamilyId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterPolicyResult) string { return v.PolicyFamilyId }).(pulumi.StringOutput)
 }
 
-func (o LookupClusterPolicyResultOutput) ProviderConfig() GetClusterPolicyProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupClusterPolicyResult) *GetClusterPolicyProviderConfig { return v.ProviderConfig }).(GetClusterPolicyProviderConfigPtrOutput)
+func (o LookupClusterPolicyResultOutput) ProviderConfig() GetClusterPolicyProviderConfigOutput {
+	return o.ApplyT(func(v LookupClusterPolicyResult) GetClusterPolicyProviderConfig { return v.ProviderConfig }).(GetClusterPolicyProviderConfigOutput)
 }
 
 func init() {

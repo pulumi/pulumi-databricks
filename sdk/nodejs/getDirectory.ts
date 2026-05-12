@@ -66,7 +66,7 @@ export interface GetDirectoryResult {
      */
     readonly objectId: number;
     readonly path: string;
-    readonly providerConfig?: outputs.GetDirectoryProviderConfig;
+    readonly providerConfig: outputs.GetDirectoryProviderConfig;
     /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */

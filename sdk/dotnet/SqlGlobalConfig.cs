@@ -109,7 +109,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.SqlGlobalConfigProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.SqlGlobalConfigProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values

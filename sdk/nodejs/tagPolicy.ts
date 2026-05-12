@@ -79,7 +79,7 @@ export class TagPolicy extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.TagPolicyProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.TagPolicyProviderConfig>;
     declare public readonly tagKey: pulumi.Output<string>;
     /**
      * (string) - Timestamp when the tag policy was last updated

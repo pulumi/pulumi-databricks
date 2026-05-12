@@ -775,6 +775,6 @@ class AccessControlRuleSet(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.AccessControlRuleSetProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.AccessControlRuleSetProviderConfig']:
         return pulumi.get(self, "provider_config")
 

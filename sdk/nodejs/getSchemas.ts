@@ -72,7 +72,7 @@ export interface GetSchemasResult {
      * set of databricks.Schema full names: *`catalog`.`schema`*
      */
     readonly ids: string[];
-    readonly providerConfig?: outputs.GetSchemasProviderConfig;
+    readonly providerConfig: outputs.GetSchemasProviderConfig;
 }
 /**
  * Retrieves a list of databricks.Schema ids, that were created by Pulumi or manually, so that special handling could be applied.

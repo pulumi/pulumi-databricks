@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("catalog")]
         public Input<Inputs.PipelineIngestionDefinitionSourceConfigurationCatalogGetArgs>? Catalog { get; set; }
 
+        [Input("googleAdsConfig")]
+        public Input<Inputs.PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfigGetArgs>? GoogleAdsConfig { get; set; }
+
         public PipelineIngestionDefinitionSourceConfigurationGetArgs()
         {
         }

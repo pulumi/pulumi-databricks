@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class LakehouseMonitorProviderConfig
     {
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private LakehouseMonitorProviderConfig(string workspaceId)
+        private LakehouseMonitorProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

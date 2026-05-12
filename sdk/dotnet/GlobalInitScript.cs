@@ -48,7 +48,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.GlobalInitScriptProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.GlobalInitScriptProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Path to script's source code on local filesystem. Conflicts with `ContentBase64`

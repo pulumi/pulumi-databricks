@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// A Workspace Base Environment is a shareable specification that defines a serverless environment version and additional Python dependencies for serverless notebooks and jobs.
     /// 
@@ -128,7 +128,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`

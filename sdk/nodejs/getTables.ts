@@ -92,7 +92,7 @@ export interface GetTablesResult {
      * set of databricks.Table full names: *`catalog`.`schema`.`table`*
      */
     readonly ids: string[];
-    readonly providerConfig?: outputs.GetTablesProviderConfig;
+    readonly providerConfig: outputs.GetTablesProviderConfig;
     readonly schemaName: string;
 }
 /**

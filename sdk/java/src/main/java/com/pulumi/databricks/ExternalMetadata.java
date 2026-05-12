@@ -208,14 +208,14 @@ public class ExternalMetadata extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={ExternalMetadataProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ExternalMetadataProviderConfig> providerConfig;
+    private Output<ExternalMetadataProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<ExternalMetadataProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<ExternalMetadataProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`

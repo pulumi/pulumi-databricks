@@ -1072,7 +1072,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.ServicePrincipalProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.ServicePrincipalProviderConfig']:
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

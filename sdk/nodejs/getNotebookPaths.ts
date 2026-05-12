@@ -63,7 +63,7 @@ export interface GetNotebookPathsResult {
      */
     readonly notebookPathLists: outputs.GetNotebookPathsNotebookPathList[];
     readonly path: string;
-    readonly providerConfig?: outputs.GetNotebookPathsProviderConfig;
+    readonly providerConfig: outputs.GetNotebookPathsProviderConfig;
     readonly recursive: boolean;
 }
 /**

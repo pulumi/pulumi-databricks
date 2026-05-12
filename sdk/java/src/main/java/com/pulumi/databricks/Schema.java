@@ -188,14 +188,14 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={SchemaProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ SchemaProviderConfig> providerConfig;
+    private Output<SchemaProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<SchemaProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<SchemaProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * The unique identifier of the schema.

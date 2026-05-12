@@ -70,9 +70,9 @@ type GetCurrentConfigResult struct {
 	CloudType string  `pulumi:"cloudType"`
 	Host      string  `pulumi:"host"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string                          `pulumi:"id"`
-	IsAccount      bool                            `pulumi:"isAccount"`
-	ProviderConfig *GetCurrentConfigProviderConfig `pulumi:"providerConfig"`
+	Id             string                         `pulumi:"id"`
+	IsAccount      bool                           `pulumi:"isAccount"`
+	ProviderConfig GetCurrentConfigProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetCurrentConfigOutput(ctx *pulumi.Context, args GetCurrentConfigOutputArgs, opts ...pulumi.InvokeOption) GetCurrentConfigResultOutput {
@@ -150,8 +150,8 @@ func (o GetCurrentConfigResultOutput) IsAccount() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCurrentConfigResult) bool { return v.IsAccount }).(pulumi.BoolOutput)
 }
 
-func (o GetCurrentConfigResultOutput) ProviderConfig() GetCurrentConfigProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetCurrentConfigResult) *GetCurrentConfigProviderConfig { return v.ProviderConfig }).(GetCurrentConfigProviderConfigPtrOutput)
+func (o GetCurrentConfigResultOutput) ProviderConfig() GetCurrentConfigProviderConfigOutput {
+	return o.ApplyT(func(v GetCurrentConfigResult) GetCurrentConfigProviderConfig { return v.ProviderConfig }).(GetCurrentConfigProviderConfigOutput)
 }
 
 func init() {

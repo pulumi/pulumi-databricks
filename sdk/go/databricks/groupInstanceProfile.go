@@ -80,8 +80,8 @@ type GroupInstanceProfile struct {
 	// This is the id of the group resource.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// This is the id of the instance profile resource.
-	InstanceProfileId pulumi.StringOutput                         `pulumi:"instanceProfileId"`
-	ProviderConfig    GroupInstanceProfileProviderConfigPtrOutput `pulumi:"providerConfig"`
+	InstanceProfileId pulumi.StringOutput                      `pulumi:"instanceProfileId"`
+	ProviderConfig    GroupInstanceProfileProviderConfigOutput `pulumi:"providerConfig"`
 }
 
 // NewGroupInstanceProfile registers a new resource with the given unique name, arguments, and options.
@@ -266,8 +266,8 @@ func (o GroupInstanceProfileOutput) InstanceProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupInstanceProfile) pulumi.StringOutput { return v.InstanceProfileId }).(pulumi.StringOutput)
 }
 
-func (o GroupInstanceProfileOutput) ProviderConfig() GroupInstanceProfileProviderConfigPtrOutput {
-	return o.ApplyT(func(v *GroupInstanceProfile) GroupInstanceProfileProviderConfigPtrOutput { return v.ProviderConfig }).(GroupInstanceProfileProviderConfigPtrOutput)
+func (o GroupInstanceProfileOutput) ProviderConfig() GroupInstanceProfileProviderConfigOutput {
+	return o.ApplyT(func(v *GroupInstanceProfile) GroupInstanceProfileProviderConfigOutput { return v.ProviderConfig }).(GroupInstanceProfileProviderConfigOutput)
 }
 
 type GroupInstanceProfileArrayOutput struct{ *pulumi.OutputState }

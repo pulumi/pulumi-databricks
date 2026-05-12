@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetZonesResult {
@@ -24,7 +22,7 @@ public final class GetZonesResult {
      * 
      */
     private String id;
-    private @Nullable GetZonesProviderConfig providerConfig;
+    private GetZonesProviderConfig providerConfig;
     /**
      * @return This is a list of all the zones available for your subnets in your Databricks workspace.
      * 
@@ -46,8 +44,8 @@ public final class GetZonesResult {
     public String id() {
         return this.id;
     }
-    public Optional<GetZonesProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetZonesProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     /**
      * @return This is a list of all the zones available for your subnets in your Databricks workspace.
@@ -68,7 +66,7 @@ public final class GetZonesResult {
     public static final class Builder {
         private String defaultZone;
         private String id;
-        private @Nullable GetZonesProviderConfig providerConfig;
+        private GetZonesProviderConfig providerConfig;
         private List<String> zones;
         public Builder() {}
         public Builder(GetZonesResult defaults) {
@@ -96,8 +94,10 @@ public final class GetZonesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetZonesProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetZonesProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

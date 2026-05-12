@@ -62,7 +62,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.FeatureEngineeringMaterializedFeatureProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.FeatureEngineeringMaterializedFeatureProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only

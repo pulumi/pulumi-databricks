@@ -73,7 +73,7 @@ export class WorkspaceConf extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceConfProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceConfProviderConfig>;
 
     /**
      * Create a WorkspaceConf resource with the given unique name, arguments, and options.

@@ -92,11 +92,11 @@ type SqlVisualization struct {
 	Name        pulumi.StringOutput    `pulumi:"name"`
 	Options     pulumi.StringOutput    `pulumi:"options"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig  SqlVisualizationProviderConfigPtrOutput `pulumi:"providerConfig"`
-	QueryId         pulumi.StringOutput                     `pulumi:"queryId"`
-	QueryPlan       pulumi.StringPtrOutput                  `pulumi:"queryPlan"`
-	Type            pulumi.StringOutput                     `pulumi:"type"`
-	VisualizationId pulumi.StringOutput                     `pulumi:"visualizationId"`
+	ProviderConfig  SqlVisualizationProviderConfigOutput `pulumi:"providerConfig"`
+	QueryId         pulumi.StringOutput                  `pulumi:"queryId"`
+	QueryPlan       pulumi.StringPtrOutput               `pulumi:"queryPlan"`
+	Type            pulumi.StringOutput                  `pulumi:"type"`
+	VisualizationId pulumi.StringOutput                  `pulumi:"visualizationId"`
 }
 
 // NewSqlVisualization registers a new resource with the given unique name, arguments, and options.
@@ -290,8 +290,8 @@ func (o SqlVisualizationOutput) Options() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o SqlVisualizationOutput) ProviderConfig() SqlVisualizationProviderConfigPtrOutput {
-	return o.ApplyT(func(v *SqlVisualization) SqlVisualizationProviderConfigPtrOutput { return v.ProviderConfig }).(SqlVisualizationProviderConfigPtrOutput)
+func (o SqlVisualizationOutput) ProviderConfig() SqlVisualizationProviderConfigOutput {
+	return o.ApplyT(func(v *SqlVisualization) SqlVisualizationProviderConfigOutput { return v.ProviderConfig }).(SqlVisualizationProviderConfigOutput)
 }
 
 func (o SqlVisualizationOutput) QueryId() pulumi.StringOutput {

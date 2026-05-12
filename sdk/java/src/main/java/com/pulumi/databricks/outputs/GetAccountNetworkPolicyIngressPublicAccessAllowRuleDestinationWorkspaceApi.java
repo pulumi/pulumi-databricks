@@ -7,10 +7,16 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * @return (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     * 
+     */
+    private @Nullable String scopeQualifier;
     /**
      * @return (list of string)
      * 
@@ -18,6 +24,13 @@ public final class GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinatio
     private @Nullable List<String> scopes;
 
     private GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi() {}
+    /**
+     * @return (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     * 
+     */
+    public Optional<String> scopeQualifier() {
+        return Optional.ofNullable(this.scopeQualifier);
+    }
     /**
      * @return (list of string)
      * 
@@ -35,13 +48,21 @@ public final class GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinatio
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String scopeQualifier;
         private @Nullable List<String> scopes;
         public Builder() {}
         public Builder(GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.scopeQualifier = defaults.scopeQualifier;
     	      this.scopes = defaults.scopes;
         }
 
+        @CustomType.Setter
+        public Builder scopeQualifier(@Nullable String scopeQualifier) {
+
+            this.scopeQualifier = scopeQualifier;
+            return this;
+        }
         @CustomType.Setter
         public Builder scopes(@Nullable List<String> scopes) {
 
@@ -53,6 +74,7 @@ public final class GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinatio
         }
         public GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi build() {
             final var _resultValue = new GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi();
+            _resultValue.scopeQualifier = scopeQualifier;
             _resultValue.scopes = scopes;
             return _resultValue;
         }

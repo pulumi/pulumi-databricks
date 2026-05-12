@@ -99,9 +99,9 @@ type GetViewsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// set of databricksView full names: *`catalog`.`schema`.`view`*
-	Ids            []string                `pulumi:"ids"`
-	ProviderConfig *GetViewsProviderConfig `pulumi:"providerConfig"`
-	SchemaName     string                  `pulumi:"schemaName"`
+	Ids            []string               `pulumi:"ids"`
+	ProviderConfig GetViewsProviderConfig `pulumi:"providerConfig"`
+	SchemaName     string                 `pulumi:"schemaName"`
 }
 
 func GetViewsOutput(ctx *pulumi.Context, args GetViewsOutputArgs, opts ...pulumi.InvokeOption) GetViewsResultOutput {
@@ -158,8 +158,8 @@ func (o GetViewsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetViewsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-func (o GetViewsResultOutput) ProviderConfig() GetViewsProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetViewsResult) *GetViewsProviderConfig { return v.ProviderConfig }).(GetViewsProviderConfigPtrOutput)
+func (o GetViewsResultOutput) ProviderConfig() GetViewsProviderConfigOutput {
+	return o.ApplyT(func(v GetViewsResult) GetViewsProviderConfig { return v.ProviderConfig }).(GetViewsProviderConfigOutput)
 }
 
 func (o GetViewsResultOutput) SchemaName() pulumi.StringOutput {

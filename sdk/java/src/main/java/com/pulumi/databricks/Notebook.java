@@ -109,14 +109,14 @@ public class Notebook extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={NotebookProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ NotebookProviderConfig> providerConfig;
+    private Output<NotebookProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<NotebookProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<NotebookProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.

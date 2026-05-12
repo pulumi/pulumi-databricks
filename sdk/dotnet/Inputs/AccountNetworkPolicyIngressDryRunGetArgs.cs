@@ -12,6 +12,17 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AccountNetworkPolicyIngressDryRunGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The network policy restrictions for private access to the workspace.
+        /// Configures how registered private endpoints are allowed or denied access
+        /// </summary>
+        [Input("privateAccess")]
+        public Input<Inputs.AccountNetworkPolicyIngressDryRunPrivateAccessGetArgs>? PrivateAccess { get; set; }
+
+        /// <summary>
+        /// The network policy restrictions for public access to the workspace.
+        /// Configures how public internet traffic is allowed or denied access
+        /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.AccountNetworkPolicyIngressDryRunPublicAccessGetArgs>? PublicAccess { get; set; }
 

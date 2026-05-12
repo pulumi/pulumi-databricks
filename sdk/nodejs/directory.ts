@@ -81,7 +81,7 @@ export class Directory extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.DirectoryProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.DirectoryProviderConfig>;
     /**
      * path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      */

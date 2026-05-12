@@ -55,7 +55,7 @@ export class WorkspaceFile extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceFileProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceFileProviderConfig>;
     /**
      * Path to file on local filesystem. Conflicts with `contentBase64`.
      */

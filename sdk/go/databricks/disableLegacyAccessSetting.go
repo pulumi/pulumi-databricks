@@ -66,8 +66,8 @@ type DisableLegacyAccessSetting struct {
 	DisableLegacyAccess DisableLegacyAccessSettingDisableLegacyAccessOutput `pulumi:"disableLegacyAccess"`
 	Etag                pulumi.StringOutput                                 `pulumi:"etag"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig DisableLegacyAccessSettingProviderConfigPtrOutput `pulumi:"providerConfig"`
-	SettingName    pulumi.StringOutput                               `pulumi:"settingName"`
+	ProviderConfig DisableLegacyAccessSettingProviderConfigOutput `pulumi:"providerConfig"`
+	SettingName    pulumi.StringOutput                            `pulumi:"settingName"`
 }
 
 // NewDisableLegacyAccessSetting registers a new resource with the given unique name, arguments, and options.
@@ -242,10 +242,10 @@ func (o DisableLegacyAccessSettingOutput) Etag() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o DisableLegacyAccessSettingOutput) ProviderConfig() DisableLegacyAccessSettingProviderConfigPtrOutput {
-	return o.ApplyT(func(v *DisableLegacyAccessSetting) DisableLegacyAccessSettingProviderConfigPtrOutput {
+func (o DisableLegacyAccessSettingOutput) ProviderConfig() DisableLegacyAccessSettingProviderConfigOutput {
+	return o.ApplyT(func(v *DisableLegacyAccessSetting) DisableLegacyAccessSettingProviderConfigOutput {
 		return v.ProviderConfig
-	}).(DisableLegacyAccessSettingProviderConfigPtrOutput)
+	}).(DisableLegacyAccessSettingProviderConfigOutput)
 }
 
 func (o DisableLegacyAccessSettingOutput) SettingName() pulumi.StringOutput {

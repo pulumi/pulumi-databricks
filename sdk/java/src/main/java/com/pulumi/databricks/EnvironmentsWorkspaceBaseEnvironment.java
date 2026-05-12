@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * A Workspace Base Environment is a shareable specification that defines a serverless environment version and additional Python dependencies for serverless notebooks and jobs.
  * 
@@ -242,14 +242,14 @@ public class EnvironmentsWorkspaceBaseEnvironment extends com.pulumi.resources.C
      * 
      */
     @Export(name="providerConfig", refs={EnvironmentsWorkspaceBaseEnvironmentProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ EnvironmentsWorkspaceBaseEnvironmentProviderConfig> providerConfig;
+    private Output<EnvironmentsWorkspaceBaseEnvironmentProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<EnvironmentsWorkspaceBaseEnvironmentProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<EnvironmentsWorkspaceBaseEnvironmentProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`

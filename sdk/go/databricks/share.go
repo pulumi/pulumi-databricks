@@ -17,6 +17,8 @@ import (
 //
 // In a Unity Catalog-enabled Databricks workspace, a share is a securable object registered in Unity Catalog. A `Share` is contained within a databricks_metastore. If you remove a share from your Unity Catalog metastore, all recipients of that share lose the ability to access it.
 //
+// > **Upgrading from v1.114.0**: state written by v1.114.0 encodes `providerConfig` as a single object instead of a list. After upgrading the provider, edit each `Share` instance in your state file to convert `"providerConfig": {"workspaceId": "X"}` to `"providerConfig": null` (recommended if you didn't set `providerConfig` in HCL) or to `"providerConfig": [{"workspaceId": "X"}]` (if you did). Without this edit, `pulumi preview` fails with `Error decoding ... missing expected [`. Users on v1.113.0 are unaffected.
+//
 // ## Example Usage
 //
 // > In Pulumi configuration, it is recommended to define objects in alphabetical order of their `name` arguments, so that you get consistent and readable diff. Whenever objects are added or removed, or `name` is renamed, you'll observe a change in the majority of tasks. It's related to the fact that the current version of the provider treats `object` blocks as an ordered list. Alternatively, `object` block could have been an unordered set, though end-users would see the entire block replaced upon a change in single property of the task.

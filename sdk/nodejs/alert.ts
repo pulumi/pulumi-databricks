@@ -217,7 +217,7 @@ export class Alert extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.AlertProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.AlertProviderConfig>;
     /**
      * ID of the query evaluated by the alert.
      */

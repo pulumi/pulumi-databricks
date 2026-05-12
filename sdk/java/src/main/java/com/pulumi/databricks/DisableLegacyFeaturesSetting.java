@@ -13,7 +13,6 @@ import com.pulumi.databricks.inputs.DisableLegacyFeaturesSettingState;
 import com.pulumi.databricks.outputs.DisableLegacyFeaturesSettingDisableLegacyFeatures;
 import com.pulumi.databricks.outputs.DisableLegacyFeaturesSettingProviderConfig;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -107,11 +106,17 @@ public class DisableLegacyFeaturesSetting extends com.pulumi.resources.CustomRes
     public Output<String> etag() {
         return this.etag;
     }
+    /**
+     * @deprecated
+     * provider_config has no effect on this account-only resource and will be removed in a future major release.
+     * 
+     */
+    @Deprecated /* provider_config has no effect on this account-only resource and will be removed in a future major release. */
     @Export(name="providerConfig", refs={DisableLegacyFeaturesSettingProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ DisableLegacyFeaturesSettingProviderConfig> providerConfig;
+    private Output<DisableLegacyFeaturesSettingProviderConfig> providerConfig;
 
-    public Output<Optional<DisableLegacyFeaturesSettingProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<DisableLegacyFeaturesSettingProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="settingName", refs={String.class}, tree="[0]")
     private Output<String> settingName;

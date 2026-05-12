@@ -36,7 +36,7 @@ export class EnhancedSecurityMonitoringWorkspaceSetting extends pulumi.CustomRes
 
     declare public readonly enhancedSecurityMonitoringWorkspace: pulumi.Output<outputs.EnhancedSecurityMonitoringWorkspaceSettingEnhancedSecurityMonitoringWorkspace>;
     declare public readonly etag: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.EnhancedSecurityMonitoringWorkspaceSettingProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.EnhancedSecurityMonitoringWorkspaceSettingProviderConfig>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**

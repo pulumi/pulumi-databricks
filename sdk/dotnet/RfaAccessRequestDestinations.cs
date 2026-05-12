@@ -100,7 +100,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.RfaAccessRequestDestinationsProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.RfaAccessRequestDestinationsProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// The securable for which the access request destinations are being modified or read

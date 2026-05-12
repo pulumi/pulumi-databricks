@@ -5,9 +5,10 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PermissionsProviderConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,15 +19,15 @@ public final class PermissionsProviderConfigArgs extends com.pulumi.resources.Re
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      * 
      */
-    @Import(name="workspaceId", required=true)
-    private Output<String> workspaceId;
+    @Import(name="workspaceId")
+    private @Nullable Output<String> workspaceId;
 
     /**
      * @return Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      * 
      */
-    public Output<String> workspaceId() {
-        return this.workspaceId;
+    public Optional<Output<String>> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     private PermissionsProviderConfigArgs() {}
@@ -59,7 +60,7 @@ public final class PermissionsProviderConfigArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder workspaceId(Output<String> workspaceId) {
+        public Builder workspaceId(@Nullable Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
@@ -75,9 +76,6 @@ public final class PermissionsProviderConfigArgs extends com.pulumi.resources.Re
         }
 
         public PermissionsProviderConfigArgs build() {
-            if ($.workspaceId == null) {
-                throw new MissingRequiredPropertyException("PermissionsProviderConfigArgs", "workspaceId");
-            }
             return $;
         }
     }

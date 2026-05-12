@@ -88,7 +88,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.SqlWidgetProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.SqlWidgetProviderConfig> ProviderConfig { get; private set; } = null!;
 
         [Output("text")]
         public Output<string?> Text { get; private set; } = null!;

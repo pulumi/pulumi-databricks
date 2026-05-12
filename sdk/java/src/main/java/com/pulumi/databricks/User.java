@@ -411,10 +411,10 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.home;
     }
     @Export(name="providerConfig", refs={UserProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ UserProviderConfig> providerConfig;
+    private Output<UserProviderConfig> providerConfig;
 
-    public Output<Optional<UserProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<UserProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Personal Repos location of the user, e.g. `/Repos/mr.foo{@literal @}example.com`.

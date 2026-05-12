@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class MountProviderConfig
     {
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private MountProviderConfig(string workspaceId)
+        private MountProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

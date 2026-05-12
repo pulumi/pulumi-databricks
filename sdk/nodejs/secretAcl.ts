@@ -83,7 +83,7 @@ export class SecretAcl extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.SecretAclProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.SecretAclProviderConfig>;
     /**
      * name of the scope
      */

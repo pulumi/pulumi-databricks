@@ -13,11 +13,16 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi
     {
+        public readonly string? ScopeQualifier;
         public readonly ImmutableArray<string> Scopes;
 
         [OutputConstructor]
-        private AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi(ImmutableArray<string> scopes)
+        private AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi(
+            string? scopeQualifier,
+
+            ImmutableArray<string> scopes)
         {
+            ScopeQualifier = scopeQualifier;
             Scopes = scopes;
         }
     }

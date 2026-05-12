@@ -120,7 +120,7 @@ type DatabaseDatabaseCatalog struct {
 	// The name of the catalog in UC
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
-	ProviderConfig DatabaseDatabaseCatalogProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig DatabaseDatabaseCatalogProviderConfigOutput `pulumi:"providerConfig"`
 	// (string)
 	Uid pulumi.StringOutput `pulumi:"uid"`
 }
@@ -324,10 +324,8 @@ func (o DatabaseDatabaseCatalogOutput) Name() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o DatabaseDatabaseCatalogOutput) ProviderConfig() DatabaseDatabaseCatalogProviderConfigPtrOutput {
-	return o.ApplyT(func(v *DatabaseDatabaseCatalog) DatabaseDatabaseCatalogProviderConfigPtrOutput {
-		return v.ProviderConfig
-	}).(DatabaseDatabaseCatalogProviderConfigPtrOutput)
+func (o DatabaseDatabaseCatalogOutput) ProviderConfig() DatabaseDatabaseCatalogProviderConfigOutput {
+	return o.ApplyT(func(v *DatabaseDatabaseCatalog) DatabaseDatabaseCatalogProviderConfigOutput { return v.ProviderConfig }).(DatabaseDatabaseCatalogProviderConfigOutput)
 }
 
 // (string)

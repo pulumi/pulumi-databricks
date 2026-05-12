@@ -139,17 +139,17 @@ type GetNodeTypeResult struct {
 	// Deprecated: Use `arm` instead
 	Graviton *bool `pulumi:"graviton"`
 	// node type, that can be used for databricks_job, databricks_cluster, or databricks_instance_pool.
-	Id                    string                     `pulumi:"id"`
-	IsIoCacheEnabled      *bool                      `pulumi:"isIoCacheEnabled"`
-	LocalDisk             *bool                      `pulumi:"localDisk"`
-	LocalDiskMinSize      *int                       `pulumi:"localDiskMinSize"`
-	MinCores              *int                       `pulumi:"minCores"`
-	MinGpus               *int                       `pulumi:"minGpus"`
-	MinMemoryGb           *int                       `pulumi:"minMemoryGb"`
-	PhotonDriverCapable   *bool                      `pulumi:"photonDriverCapable"`
-	PhotonWorkerCapable   *bool                      `pulumi:"photonWorkerCapable"`
-	ProviderConfig        *GetNodeTypeProviderConfig `pulumi:"providerConfig"`
-	SupportPortForwarding *bool                      `pulumi:"supportPortForwarding"`
+	Id                    string                    `pulumi:"id"`
+	IsIoCacheEnabled      *bool                     `pulumi:"isIoCacheEnabled"`
+	LocalDisk             *bool                     `pulumi:"localDisk"`
+	LocalDiskMinSize      *int                      `pulumi:"localDiskMinSize"`
+	MinCores              *int                      `pulumi:"minCores"`
+	MinGpus               *int                      `pulumi:"minGpus"`
+	MinMemoryGb           *int                      `pulumi:"minMemoryGb"`
+	PhotonDriverCapable   *bool                     `pulumi:"photonDriverCapable"`
+	PhotonWorkerCapable   *bool                     `pulumi:"photonWorkerCapable"`
+	ProviderConfig        GetNodeTypeProviderConfig `pulumi:"providerConfig"`
+	SupportPortForwarding *bool                     `pulumi:"supportPortForwarding"`
 }
 
 func GetNodeTypeOutput(ctx *pulumi.Context, args GetNodeTypeOutputArgs, opts ...pulumi.InvokeOption) GetNodeTypeResultOutput {
@@ -283,8 +283,8 @@ func (o GetNodeTypeResultOutput) PhotonWorkerCapable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetNodeTypeResult) *bool { return v.PhotonWorkerCapable }).(pulumi.BoolPtrOutput)
 }
 
-func (o GetNodeTypeResultOutput) ProviderConfig() GetNodeTypeProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetNodeTypeResult) *GetNodeTypeProviderConfig { return v.ProviderConfig }).(GetNodeTypeProviderConfigPtrOutput)
+func (o GetNodeTypeResultOutput) ProviderConfig() GetNodeTypeProviderConfigOutput {
+	return o.ApplyT(func(v GetNodeTypeResult) GetNodeTypeProviderConfig { return v.ProviderConfig }).(GetNodeTypeProviderConfigOutput)
 }
 
 func (o GetNodeTypeResultOutput) SupportPortForwarding() pulumi.BoolPtrOutput {

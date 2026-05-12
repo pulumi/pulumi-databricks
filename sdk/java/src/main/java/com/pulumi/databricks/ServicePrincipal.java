@@ -426,10 +426,10 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
         return this.home;
     }
     @Export(name="providerConfig", refs={ServicePrincipalProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ServicePrincipalProviderConfig> providerConfig;
+    private Output<ServicePrincipalProviderConfig> providerConfig;
 
-    public Output<Optional<ServicePrincipalProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<ServicePrincipalProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.

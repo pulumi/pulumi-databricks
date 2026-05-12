@@ -71,8 +71,8 @@ type GetCatalogsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// set of Catalog names
-	Ids            []string                   `pulumi:"ids"`
-	ProviderConfig *GetCatalogsProviderConfig `pulumi:"providerConfig"`
+	Ids            []string                  `pulumi:"ids"`
+	ProviderConfig GetCatalogsProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetCatalogsOutput(ctx *pulumi.Context, args GetCatalogsOutputArgs, opts ...pulumi.InvokeOption) GetCatalogsResultOutput {
@@ -121,8 +121,8 @@ func (o GetCatalogsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCatalogsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-func (o GetCatalogsResultOutput) ProviderConfig() GetCatalogsProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetCatalogsResult) *GetCatalogsProviderConfig { return v.ProviderConfig }).(GetCatalogsProviderConfigPtrOutput)
+func (o GetCatalogsResultOutput) ProviderConfig() GetCatalogsProviderConfigOutput {
+	return o.ApplyT(func(v GetCatalogsResult) GetCatalogsProviderConfig { return v.ProviderConfig }).(GetCatalogsProviderConfigOutput)
 }
 
 func init() {

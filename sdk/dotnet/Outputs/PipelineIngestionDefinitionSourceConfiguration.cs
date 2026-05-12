@@ -17,11 +17,16 @@ namespace Pulumi.Databricks.Outputs
         /// The name of default catalog in Unity Catalog. *Change of this parameter forces recreation of the pipeline if you switch from `Storage` to `Catalog` or vice versa.  If pipeline was already created with `Catalog` set, the value could be changed.* (Conflicts with `Storage`).
         /// </summary>
         public readonly Outputs.PipelineIngestionDefinitionSourceConfigurationCatalog? Catalog;
+        public readonly Outputs.PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfig? GoogleAdsConfig;
 
         [OutputConstructor]
-        private PipelineIngestionDefinitionSourceConfiguration(Outputs.PipelineIngestionDefinitionSourceConfigurationCatalog? catalog)
+        private PipelineIngestionDefinitionSourceConfiguration(
+            Outputs.PipelineIngestionDefinitionSourceConfigurationCatalog? catalog,
+
+            Outputs.PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfig? googleAdsConfig)
         {
             Catalog = catalog;
+            GoogleAdsConfig = googleAdsConfig;
         }
     }
 }

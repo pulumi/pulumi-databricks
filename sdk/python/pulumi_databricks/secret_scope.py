@@ -366,7 +366,7 @@ class SecretScope(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.SecretScopeProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.SecretScopeProviderConfig']:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """

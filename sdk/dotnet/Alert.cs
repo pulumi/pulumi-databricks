@@ -274,7 +274,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.AlertProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.AlertProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// ID of the query evaluated by the alert.

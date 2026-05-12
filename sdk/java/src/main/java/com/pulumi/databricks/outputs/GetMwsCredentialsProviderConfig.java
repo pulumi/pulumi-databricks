@@ -11,16 +11,24 @@ import java.util.Objects;
 @CustomType
 public final class GetMwsCredentialsProviderConfig {
     /**
-     * @return Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     * @return Ignored. This data source always operates against the account configured on the provider.
+     * 
+     * @deprecated
+     * workspace_id is ignored for account-only resources.
      * 
      */
+    @Deprecated /* workspace_id is ignored for account-only resources. */
     private String workspaceId;
 
     private GetMwsCredentialsProviderConfig() {}
     /**
-     * @return Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     * @return Ignored. This data source always operates against the account configured on the provider.
+     * 
+     * @deprecated
+     * workspace_id is ignored for account-only resources.
      * 
      */
+    @Deprecated /* workspace_id is ignored for account-only resources. */
     public String workspaceId() {
         return this.workspaceId;
     }

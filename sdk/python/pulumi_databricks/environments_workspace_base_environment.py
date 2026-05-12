@@ -358,7 +358,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
                  workspace_base_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         A Workspace Base Environment is a shareable specification that defines a serverless environment version and additional Python dependencies for serverless notebooks and jobs.
 
@@ -413,7 +413,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
                  args: EnvironmentsWorkspaceBaseEnvironmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         A Workspace Base Environment is a shareable specification that defines a serverless environment version and additional Python dependencies for serverless notebooks and jobs.
 
@@ -644,7 +644,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

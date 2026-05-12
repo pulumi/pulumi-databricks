@@ -155,7 +155,7 @@ type PolicyInfo struct {
 	// Type of the policy. Required on create. Possible values are: `POLICY_TYPE_COLUMN_MASK`, `POLICY_TYPE_ROW_FILTER`
 	PolicyType pulumi.StringOutput `pulumi:"policyType"`
 	// Configure the provider for management through account provider.
-	ProviderConfig PolicyInfoProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig PolicyInfoProviderConfigOutput `pulumi:"providerConfig"`
 	// Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
 	// Required on create and optional on update. When specified on update,
 	// the new options will replace the existing options as a whole
@@ -551,8 +551,8 @@ func (o PolicyInfoOutput) PolicyType() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o PolicyInfoOutput) ProviderConfig() PolicyInfoProviderConfigPtrOutput {
-	return o.ApplyT(func(v *PolicyInfo) PolicyInfoProviderConfigPtrOutput { return v.ProviderConfig }).(PolicyInfoProviderConfigPtrOutput)
+func (o PolicyInfoOutput) ProviderConfig() PolicyInfoProviderConfigOutput {
+	return o.ApplyT(func(v *PolicyInfo) PolicyInfoProviderConfigOutput { return v.ProviderConfig }).(PolicyInfoProviderConfigOutput)
 }
 
 // Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.

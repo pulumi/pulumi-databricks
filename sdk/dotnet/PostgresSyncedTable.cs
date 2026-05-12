@@ -11,6 +11,144 @@ namespace Pulumi.Databricks
 {
     /// <summary>
     /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Basic Synced Table with Snapshot Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.PostgresProject("this", new()
+    ///     {
+    ///         ProjectId = "my-project",
+    ///         Spec = new Databricks.Inputs.PostgresProjectSpecArgs
+    ///         {
+    ///             PgVersion = 17,
+    ///             DisplayName = "My Project",
+    ///         },
+    ///     });
+    /// 
+    ///     var main = new Databricks.PostgresBranch("main", new()
+    ///     {
+    ///         BranchId = "main",
+    ///         Parent = @this.Name,
+    ///         Spec = new Databricks.Inputs.PostgresBranchSpecArgs
+    ///         {
+    ///             NoExpiry = true,
+    ///         },
+    ///     });
+    /// 
+    ///     var thisPostgresCatalog = new Databricks.PostgresCatalog("this", new()
+    ///     {
+    ///         CatalogId = "app_catalog",
+    ///         Spec = new Databricks.Inputs.PostgresCatalogSpecArgs
+    ///         {
+    ///             PostgresDatabase = "app_db",
+    ///             CreateDatabaseIfMissing = true,
+    ///             Branch = main.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var thisPostgresSyncedTable = new Databricks.PostgresSyncedTable("this", new()
+    ///     {
+    ///         SyncedTableId = "app_catalog.default.users_synced",
+    ///         Spec = new Databricks.Inputs.PostgresSyncedTableSpecArgs
+    ///         {
+    ///             SourceTableFullName = "main.default.users",
+    ///             PrimaryKeyColumns = new[]
+    ///             {
+    ///                 "user_id",
+    ///             },
+    ///             SchedulingPolicy = "SNAPSHOT",
+    ///             PostgresDatabase = "app_db",
+    ///             Branch = main.Name,
+    ///             CreateDatabaseObjectsIfMissing = true,
+    ///             NewPipelineSpec = new Databricks.Inputs.PostgresSyncedTableSpecNewPipelineSpecArgs
+    ///             {
+    ///                 StorageCatalog = "main",
+    ///                 StorageSchema = "default",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Synced Table with Triggered Policy
+    /// 
+    /// Use `TRIGGERED` for on-demand updates. Requires Change Data Feed (CDF) enabled on the source table.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var triggered = new Databricks.PostgresSyncedTable("triggered", new()
+    ///     {
+    ///         SyncedTableId = "app_catalog.default.orders_synced",
+    ///         Spec = new Databricks.Inputs.PostgresSyncedTableSpecArgs
+    ///         {
+    ///             SourceTableFullName = "main.default.orders",
+    ///             PrimaryKeyColumns = new[]
+    ///             {
+    ///                 "order_id",
+    ///             },
+    ///             SchedulingPolicy = "TRIGGERED",
+    ///             PostgresDatabase = "app_db",
+    ///             Branch = main.Name,
+    ///             CreateDatabaseObjectsIfMissing = true,
+    ///             NewPipelineSpec = new Databricks.Inputs.PostgresSyncedTableSpecNewPipelineSpecArgs
+    ///             {
+    ///                 StorageCatalog = "main",
+    ///                 StorageSchema = "default",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Synced Table with Existing Pipeline
+    /// 
+    /// Bin-pack into an existing pipeline instead of creating a new one:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.PostgresSyncedTable("this", new()
+    ///     {
+    ///         SyncedTableId = "app_catalog.default.products_synced",
+    ///         Spec = new Databricks.Inputs.PostgresSyncedTableSpecArgs
+    ///         {
+    ///             SourceTableFullName = "main.default.products",
+    ///             PrimaryKeyColumns = new[]
+    ///             {
+    ///                 "product_id",
+    ///             },
+    ///             SchedulingPolicy = "SNAPSHOT",
+    ///             PostgresDatabase = "app_db",
+    ///             Branch = main.Name,
+    ///             CreateDatabaseObjectsIfMissing = true,
+    ///             ExistingPipelineId = "abc123-def456",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/postgresSyncedTable:PostgresSyncedTable")]
     public partial class PostgresSyncedTable : global::Pulumi.CustomResource
@@ -32,7 +170,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.PostgresSyncedTableProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.PostgresSyncedTableProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Configuration details of the synced table, such as the source table, scheduling policy, etc.

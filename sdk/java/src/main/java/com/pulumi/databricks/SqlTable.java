@@ -508,14 +508,14 @@ public class SqlTable extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={SqlTableProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ SqlTableProviderConfig> providerConfig;
+    private Output<SqlTableProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<SqlTableProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<SqlTableProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.

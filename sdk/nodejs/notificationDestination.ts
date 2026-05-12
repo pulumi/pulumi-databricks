@@ -138,7 +138,7 @@ export class NotificationDestination extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.NotificationDestinationProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.NotificationDestinationProviderConfig>;
 
     /**
      * Create a NotificationDestination resource with the given unique name, arguments, and options.

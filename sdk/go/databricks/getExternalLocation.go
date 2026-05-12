@@ -77,9 +77,9 @@ type LookupExternalLocationResult struct {
 	// array of objects with information about external location:
 	ExternalLocationInfo GetExternalLocationExternalLocationInfo `pulumi:"externalLocationInfo"`
 	// external location ID - same as name.
-	Id             string                             `pulumi:"id"`
-	Name           string                             `pulumi:"name"`
-	ProviderConfig *GetExternalLocationProviderConfig `pulumi:"providerConfig"`
+	Id             string                            `pulumi:"id"`
+	Name           string                            `pulumi:"name"`
+	ProviderConfig GetExternalLocationProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupExternalLocationOutput(ctx *pulumi.Context, args LookupExternalLocationOutputArgs, opts ...pulumi.InvokeOption) LookupExternalLocationResultOutput {
@@ -138,8 +138,8 @@ func (o LookupExternalLocationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalLocationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupExternalLocationResultOutput) ProviderConfig() GetExternalLocationProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupExternalLocationResult) *GetExternalLocationProviderConfig { return v.ProviderConfig }).(GetExternalLocationProviderConfigPtrOutput)
+func (o LookupExternalLocationResultOutput) ProviderConfig() GetExternalLocationProviderConfigOutput {
+	return o.ApplyT(func(v LookupExternalLocationResult) GetExternalLocationProviderConfig { return v.ProviderConfig }).(GetExternalLocationProviderConfigOutput)
 }
 
 func init() {

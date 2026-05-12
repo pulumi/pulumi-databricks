@@ -183,6 +183,9 @@ namespace Pulumi.Databricks
         [Input("active")]
         public bool? Active { get; set; }
 
+        [Input("api")]
+        public string? Api { get; set; }
+
         /// <summary>
         /// Application ID of the service principal. The service principal must exist before this resource can be retrieved.
         /// </summary>
@@ -254,6 +257,9 @@ namespace Pulumi.Databricks
         [Input("active")]
         public Input<bool>? Active { get; set; }
 
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
         /// <summary>
         /// Application ID of the service principal. The service principal must exist before this resource can be retrieved.
         /// </summary>
@@ -323,6 +329,7 @@ namespace Pulumi.Databricks
         /// Whether service principal is active or not.
         /// </summary>
         public readonly bool Active;
+        public readonly string? Api;
         /// <summary>
         /// Application ID of the service principal.
         /// </summary>
@@ -343,7 +350,7 @@ namespace Pulumi.Databricks
         /// The id of the service principal (SCIM ID).
         /// </summary>
         public readonly string Id;
-        public readonly Outputs.GetServicePrincipalProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetServicePrincipalProviderConfigResult ProviderConfig;
         /// <summary>
         /// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
         /// </summary>
@@ -360,6 +367,8 @@ namespace Pulumi.Databricks
 
             bool active,
 
+            string? api,
+
             string applicationId,
 
             string displayName,
@@ -370,7 +379,7 @@ namespace Pulumi.Databricks
 
             string id,
 
-            Outputs.GetServicePrincipalProviderConfigResult? providerConfig,
+            Outputs.GetServicePrincipalProviderConfigResult providerConfig,
 
             string repos,
 
@@ -380,6 +389,7 @@ namespace Pulumi.Databricks
         {
             AclPrincipalId = aclPrincipalId;
             Active = active;
+            Api = api;
             ApplicationId = applicationId;
             DisplayName = displayName;
             ExternalId = externalId;

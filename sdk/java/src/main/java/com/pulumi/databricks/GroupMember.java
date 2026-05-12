@@ -139,10 +139,10 @@ public class GroupMember extends com.pulumi.resources.CustomResource {
         return this.memberId;
     }
     @Export(name="providerConfig", refs={GroupMemberProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ GroupMemberProviderConfig> providerConfig;
+    private Output<GroupMemberProviderConfig> providerConfig;
 
-    public Output<Optional<GroupMemberProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<GroupMemberProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
 
     /**

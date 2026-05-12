@@ -185,7 +185,7 @@ namespace Pulumi.Databricks
         /// List of names of databricks.StorageCredential in the metastore
         /// </summary>
         public readonly ImmutableArray<string> Names;
-        public readonly Outputs.GetStorageCredentialsProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetStorageCredentialsProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetStorageCredentialsResult(
@@ -193,7 +193,7 @@ namespace Pulumi.Databricks
 
             ImmutableArray<string> names,
 
-            Outputs.GetStorageCredentialsProviderConfigResult? providerConfig)
+            Outputs.GetStorageCredentialsProviderConfigResult providerConfig)
         {
             Id = id;
             Names = names;

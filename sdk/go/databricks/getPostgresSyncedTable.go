@@ -12,6 +12,37 @@ import (
 )
 
 // [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// This data source retrieves a single Postgres synced table.
+//
+// ## Example Usage
+//
+// ### Retrieve Synced Table by Name
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.GetPostgresSyncedTable(ctx, &databricks.LookupPostgresSyncedTableArgs{
+//				Name: "synced_tables/my_catalog.my_schema.my_synced_table",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("syncedTableState", this.Status.DetailedState)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupPostgresSyncedTable(ctx *pulumi.Context, args *LookupPostgresSyncedTableArgs, opts ...pulumi.InvokeOption) (*LookupPostgresSyncedTableResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPostgresSyncedTableResult

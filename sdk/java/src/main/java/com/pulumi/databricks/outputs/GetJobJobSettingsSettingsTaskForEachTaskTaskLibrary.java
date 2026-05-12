@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskForEachTaskTas
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,7 +30,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary {
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig providerConfig;
+    private GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig providerConfig;
     private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi pypi;
     private @Nullable String requirements;
     private @Nullable String whl;
@@ -57,8 +58,8 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary {
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Optional<GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     public Optional<GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi> pypi() {
         return Optional.ofNullable(this.pypi);
@@ -83,7 +84,7 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary {
         private @Nullable String egg;
         private @Nullable String jar;
         private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryMaven maven;
-        private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig providerConfig;
+        private GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig providerConfig;
         private @Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryPypi pypi;
         private @Nullable String requirements;
         private @Nullable String whl;
@@ -125,8 +126,10 @@ public final class GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetJobJobSettingsSettingsTaskForEachTaskTaskLibraryProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsTaskForEachTaskTaskLibrary", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

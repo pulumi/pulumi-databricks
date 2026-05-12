@@ -5,10 +5,16 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsConfluenceOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsArgs;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptionsArgs;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsArgs;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsArgs;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsArgs;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsZendeskSupportOptionsArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +23,13 @@ import javax.annotation.Nullable;
 public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs Empty = new PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs();
+
+    @Import(name="confluenceOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsConfluenceOptionsArgs> confluenceOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsConfluenceOptionsArgs>> confluenceOptions() {
+        return Optional.ofNullable(this.confluenceOptions);
+    }
 
     @Import(name="gdriveOptions")
     private @Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsArgs> gdriveOptions;
@@ -32,11 +45,39 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs e
         return Optional.ofNullable(this.googleAdsOptions);
     }
 
+    @Import(name="jiraOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptionsArgs> jiraOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptionsArgs>> jiraOptions() {
+        return Optional.ofNullable(this.jiraOptions);
+    }
+
+    @Import(name="metaAdsOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsArgs> metaAdsOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsArgs>> metaAdsOptions() {
+        return Optional.ofNullable(this.metaAdsOptions);
+    }
+
+    @Import(name="outlookOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsArgs> outlookOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsArgs>> outlookOptions() {
+        return Optional.ofNullable(this.outlookOptions);
+    }
+
     @Import(name="sharepointOptions")
     private @Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsArgs> sharepointOptions;
 
     public Optional<Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsArgs>> sharepointOptions() {
         return Optional.ofNullable(this.sharepointOptions);
+    }
+
+    @Import(name="smartsheetOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptionsArgs> smartsheetOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptionsArgs>> smartsheetOptions() {
+        return Optional.ofNullable(this.smartsheetOptions);
     }
 
     @Import(name="tiktokAdsOptions")
@@ -46,13 +87,26 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs e
         return Optional.ofNullable(this.tiktokAdsOptions);
     }
 
+    @Import(name="zendeskSupportOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsZendeskSupportOptionsArgs> zendeskSupportOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsZendeskSupportOptionsArgs>> zendeskSupportOptions() {
+        return Optional.ofNullable(this.zendeskSupportOptions);
+    }
+
     private PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs() {}
 
     private PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs(PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs $) {
+        this.confluenceOptions = $.confluenceOptions;
         this.gdriveOptions = $.gdriveOptions;
         this.googleAdsOptions = $.googleAdsOptions;
+        this.jiraOptions = $.jiraOptions;
+        this.metaAdsOptions = $.metaAdsOptions;
+        this.outlookOptions = $.outlookOptions;
         this.sharepointOptions = $.sharepointOptions;
+        this.smartsheetOptions = $.smartsheetOptions;
         this.tiktokAdsOptions = $.tiktokAdsOptions;
+        this.zendeskSupportOptions = $.zendeskSupportOptions;
     }
 
     public static Builder builder() {
@@ -73,6 +127,15 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs e
             $ = new PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder confluenceOptions(@Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsConfluenceOptionsArgs> confluenceOptions) {
+            $.confluenceOptions = confluenceOptions;
+            return this;
+        }
+
+        public Builder confluenceOptions(PipelineIngestionDefinitionObjectSchemaConnectorOptionsConfluenceOptionsArgs confluenceOptions) {
+            return confluenceOptions(Output.of(confluenceOptions));
+        }
+
         public Builder gdriveOptions(@Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsArgs> gdriveOptions) {
             $.gdriveOptions = gdriveOptions;
             return this;
@@ -91,6 +154,33 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs e
             return googleAdsOptions(Output.of(googleAdsOptions));
         }
 
+        public Builder jiraOptions(@Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptionsArgs> jiraOptions) {
+            $.jiraOptions = jiraOptions;
+            return this;
+        }
+
+        public Builder jiraOptions(PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptionsArgs jiraOptions) {
+            return jiraOptions(Output.of(jiraOptions));
+        }
+
+        public Builder metaAdsOptions(@Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsArgs> metaAdsOptions) {
+            $.metaAdsOptions = metaAdsOptions;
+            return this;
+        }
+
+        public Builder metaAdsOptions(PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsArgs metaAdsOptions) {
+            return metaAdsOptions(Output.of(metaAdsOptions));
+        }
+
+        public Builder outlookOptions(@Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsArgs> outlookOptions) {
+            $.outlookOptions = outlookOptions;
+            return this;
+        }
+
+        public Builder outlookOptions(PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsArgs outlookOptions) {
+            return outlookOptions(Output.of(outlookOptions));
+        }
+
         public Builder sharepointOptions(@Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsArgs> sharepointOptions) {
             $.sharepointOptions = sharepointOptions;
             return this;
@@ -100,6 +190,15 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs e
             return sharepointOptions(Output.of(sharepointOptions));
         }
 
+        public Builder smartsheetOptions(@Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptionsArgs> smartsheetOptions) {
+            $.smartsheetOptions = smartsheetOptions;
+            return this;
+        }
+
+        public Builder smartsheetOptions(PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptionsArgs smartsheetOptions) {
+            return smartsheetOptions(Output.of(smartsheetOptions));
+        }
+
         public Builder tiktokAdsOptions(@Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsArgs> tiktokAdsOptions) {
             $.tiktokAdsOptions = tiktokAdsOptions;
             return this;
@@ -107,6 +206,15 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs e
 
         public Builder tiktokAdsOptions(PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsArgs tiktokAdsOptions) {
             return tiktokAdsOptions(Output.of(tiktokAdsOptions));
+        }
+
+        public Builder zendeskSupportOptions(@Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsZendeskSupportOptionsArgs> zendeskSupportOptions) {
+            $.zendeskSupportOptions = zendeskSupportOptions;
+            return this;
+        }
+
+        public Builder zendeskSupportOptions(PipelineIngestionDefinitionObjectSchemaConnectorOptionsZendeskSupportOptionsArgs zendeskSupportOptions) {
+            return zendeskSupportOptions(Output.of(zendeskSupportOptions));
         }
 
         public PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs build() {

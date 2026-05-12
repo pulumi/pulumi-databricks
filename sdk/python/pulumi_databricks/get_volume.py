@@ -60,7 +60,7 @@ class GetVolumeResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetVolumeProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetVolumeProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

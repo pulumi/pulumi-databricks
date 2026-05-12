@@ -12,17 +12,35 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineIngestionDefinitionObjectSchemaConnectorOptionsGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("confluenceOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsConfluenceOptionsGetArgs>? ConfluenceOptions { get; set; }
+
         [Input("gdriveOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsGetArgs>? GdriveOptions { get; set; }
 
         [Input("googleAdsOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsGetArgs>? GoogleAdsOptions { get; set; }
 
+        [Input("jiraOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptionsGetArgs>? JiraOptions { get; set; }
+
+        [Input("metaAdsOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsGetArgs>? MetaAdsOptions { get; set; }
+
+        [Input("outlookOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsGetArgs>? OutlookOptions { get; set; }
+
         [Input("sharepointOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsGetArgs>? SharepointOptions { get; set; }
 
+        [Input("smartsheetOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSmartsheetOptionsGetArgs>? SmartsheetOptions { get; set; }
+
         [Input("tiktokAdsOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsTiktokAdsOptionsGetArgs>? TiktokAdsOptions { get; set; }
+
+        [Input("zendeskSupportOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsZendeskSupportOptionsGetArgs>? ZendeskSupportOptions { get; set; }
 
         public PipelineIngestionDefinitionObjectSchemaConnectorOptionsGetArgs()
         {

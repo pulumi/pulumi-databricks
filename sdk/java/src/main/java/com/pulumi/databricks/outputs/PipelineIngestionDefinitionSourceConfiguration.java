@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionSourceConfigurationCatalog;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfig;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,7 @@ public final class PipelineIngestionDefinitionSourceConfiguration {
      * 
      */
     private @Nullable PipelineIngestionDefinitionSourceConfigurationCatalog catalog;
+    private @Nullable PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfig googleAdsConfig;
 
     private PipelineIngestionDefinitionSourceConfiguration() {}
     /**
@@ -24,6 +26,9 @@ public final class PipelineIngestionDefinitionSourceConfiguration {
      */
     public Optional<PipelineIngestionDefinitionSourceConfigurationCatalog> catalog() {
         return Optional.ofNullable(this.catalog);
+    }
+    public Optional<PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfig> googleAdsConfig() {
+        return Optional.ofNullable(this.googleAdsConfig);
     }
 
     public static Builder builder() {
@@ -36,10 +41,12 @@ public final class PipelineIngestionDefinitionSourceConfiguration {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable PipelineIngestionDefinitionSourceConfigurationCatalog catalog;
+        private @Nullable PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfig googleAdsConfig;
         public Builder() {}
         public Builder(PipelineIngestionDefinitionSourceConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.catalog = defaults.catalog;
+    	      this.googleAdsConfig = defaults.googleAdsConfig;
         }
 
         @CustomType.Setter
@@ -48,9 +55,16 @@ public final class PipelineIngestionDefinitionSourceConfiguration {
             this.catalog = catalog;
             return this;
         }
+        @CustomType.Setter
+        public Builder googleAdsConfig(@Nullable PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfig googleAdsConfig) {
+
+            this.googleAdsConfig = googleAdsConfig;
+            return this;
+        }
         public PipelineIngestionDefinitionSourceConfiguration build() {
             final var _resultValue = new PipelineIngestionDefinitionSourceConfiguration();
             _resultValue.catalog = catalog;
+            _resultValue.googleAdsConfig = googleAdsConfig;
             return _resultValue;
         }
     }

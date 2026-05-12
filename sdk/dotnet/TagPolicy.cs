@@ -73,7 +73,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.TagPolicyProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.TagPolicyProviderConfig> ProviderConfig { get; private set; } = null!;
 
         [Output("tagKey")]
         public Output<string> TagKey { get; private set; } = null!;

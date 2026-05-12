@@ -269,7 +269,7 @@ namespace Pulumi.Databricks
         /// ID of the policy family.
         /// </summary>
         public readonly string PolicyFamilyId;
-        public readonly Outputs.GetClusterPolicyProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetClusterPolicyProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetClusterPolicyResult(
@@ -289,7 +289,7 @@ namespace Pulumi.Databricks
 
             string policyFamilyId,
 
-            Outputs.GetClusterPolicyProviderConfigResult? providerConfig)
+            Outputs.GetClusterPolicyProviderConfigResult providerConfig)
         {
             Definition = definition;
             Description = description;

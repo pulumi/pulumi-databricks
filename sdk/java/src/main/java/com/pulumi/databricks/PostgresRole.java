@@ -14,7 +14,6 @@ import com.pulumi.databricks.outputs.PostgresRoleProviderConfig;
 import com.pulumi.databricks.outputs.PostgresRoleSpec;
 import com.pulumi.databricks.outputs.PostgresRoleStatus;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -265,14 +264,14 @@ public class PostgresRole extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={PostgresRoleProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ PostgresRoleProviderConfig> providerConfig;
+    private Output<PostgresRoleProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<PostgresRoleProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<PostgresRoleProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * The ID to use for the Role, which will become the final component of

@@ -174,7 +174,7 @@ namespace Pulumi.Databricks
         public Output<string?> ModelName { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.MlflowWebhookProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.MlflowWebhookProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Optional status of webhook. Possible values are `ACTIVE`, `TEST_MODE`, `DISABLED`. Default is `ACTIVE`.

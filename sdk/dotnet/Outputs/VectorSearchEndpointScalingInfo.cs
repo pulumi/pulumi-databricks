@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class VectorSearchEndpointScalingInfo
     {
-        public readonly int? RequestedMinQps;
+        public readonly int? RequestedTargetQps;
         /// <summary>
         /// Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
         /// </summary>
@@ -21,11 +21,11 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private VectorSearchEndpointScalingInfo(
-            int? requestedMinQps,
+            int? requestedTargetQps,
 
             string? state)
         {
-            RequestedMinQps = requestedMinQps;
+            RequestedTargetQps = requestedTargetQps;
             State = state;
         }
     }

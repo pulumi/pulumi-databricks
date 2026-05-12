@@ -144,7 +144,7 @@ export class SqlEndpoint extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.SqlEndpointProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.SqlEndpointProviderConfig>;
     /**
      * The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
      */

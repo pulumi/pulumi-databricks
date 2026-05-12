@@ -152,7 +152,7 @@ type OboToken struct {
 	// The number of seconds before the token expires. Token resource is re-created when it expires. If no lifetime is specified, the token remains valid indefinitely.
 	LifetimeSeconds pulumi.IntPtrOutput `pulumi:"lifetimeSeconds"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig OboTokenProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig OboTokenProviderConfigOutput `pulumi:"providerConfig"`
 	// **Sensitive** value of the newly-created token.
 	TokenValue pulumi.StringOutput `pulumi:"tokenValue"`
 }
@@ -349,8 +349,8 @@ func (o OboTokenOutput) LifetimeSeconds() pulumi.IntPtrOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o OboTokenOutput) ProviderConfig() OboTokenProviderConfigPtrOutput {
-	return o.ApplyT(func(v *OboToken) OboTokenProviderConfigPtrOutput { return v.ProviderConfig }).(OboTokenProviderConfigPtrOutput)
+func (o OboTokenOutput) ProviderConfig() OboTokenProviderConfigOutput {
+	return o.ApplyT(func(v *OboToken) OboTokenProviderConfigOutput { return v.ProviderConfig }).(OboTokenProviderConfigOutput)
 }
 
 // **Sensitive** value of the newly-created token.
