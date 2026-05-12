@@ -9,8 +9,6 @@ import com.pulumi.databricks.outputs.GetStorageCredentialStorageCredentialInfo;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStorageCredentialResult {
@@ -20,7 +18,7 @@ public final class GetStorageCredentialResult {
      */
     private String id;
     private String name;
-    private @Nullable GetStorageCredentialProviderConfig providerConfig;
+    private GetStorageCredentialProviderConfig providerConfig;
     /**
      * @return array of objects with information about storage credential.
      * 
@@ -38,8 +36,8 @@ public final class GetStorageCredentialResult {
     public String name() {
         return this.name;
     }
-    public Optional<GetStorageCredentialProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetStorageCredentialProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     /**
      * @return array of objects with information about storage credential.
@@ -60,7 +58,7 @@ public final class GetStorageCredentialResult {
     public static final class Builder {
         private String id;
         private String name;
-        private @Nullable GetStorageCredentialProviderConfig providerConfig;
+        private GetStorageCredentialProviderConfig providerConfig;
         private GetStorageCredentialStorageCredentialInfo storageCredentialInfo;
         public Builder() {}
         public Builder(GetStorageCredentialResult defaults) {
@@ -88,8 +86,10 @@ public final class GetStorageCredentialResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetStorageCredentialProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetStorageCredentialProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetStorageCredentialResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetMwsCredentialsProviderConfigResult
     {
         /// <summary>
-        /// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        /// Ignored. This data source always operates against the account configured on the provider.
         /// </summary>
         public readonly string WorkspaceId;
 

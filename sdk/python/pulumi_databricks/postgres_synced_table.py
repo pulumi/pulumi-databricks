@@ -250,6 +250,94 @@ class PostgresSyncedTable(pulumi.CustomResource):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+        ## Example Usage
+
+        ### Basic Synced Table with Snapshot Policy
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="my-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "My Project",
+            })
+        main = databricks.PostgresBranch("main",
+            branch_id="main",
+            parent=this.name,
+            spec={
+                "no_expiry": True,
+            })
+        this_postgres_catalog = databricks.PostgresCatalog("this",
+            catalog_id="app_catalog",
+            spec={
+                "postgres_database": "app_db",
+                "create_database_if_missing": True,
+                "branch": main.name,
+            })
+        this_postgres_synced_table = databricks.PostgresSyncedTable("this",
+            synced_table_id="app_catalog.default.users_synced",
+            spec={
+                "source_table_full_name": "main.default.users",
+                "primary_key_columns": ["user_id"],
+                "scheduling_policy": "SNAPSHOT",
+                "postgres_database": "app_db",
+                "branch": main.name,
+                "create_database_objects_if_missing": True,
+                "new_pipeline_spec": {
+                    "storage_catalog": "main",
+                    "storage_schema": "default",
+                },
+            })
+        ```
+
+        ### Synced Table with Triggered Policy
+
+        Use `TRIGGERED` for on-demand updates. Requires Change Data Feed (CDF) enabled on the source table.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        triggered = databricks.PostgresSyncedTable("triggered",
+            synced_table_id="app_catalog.default.orders_synced",
+            spec={
+                "source_table_full_name": "main.default.orders",
+                "primary_key_columns": ["order_id"],
+                "scheduling_policy": "TRIGGERED",
+                "postgres_database": "app_db",
+                "branch": main["name"],
+                "create_database_objects_if_missing": True,
+                "new_pipeline_spec": {
+                    "storage_catalog": "main",
+                    "storage_schema": "default",
+                },
+            })
+        ```
+
+        ### Synced Table with Existing Pipeline
+
+        Bin-pack into an existing pipeline instead of creating a new one:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresSyncedTable("this",
+            synced_table_id="app_catalog.default.products_synced",
+            spec={
+                "source_table_full_name": "main.default.products",
+                "primary_key_columns": ["product_id"],
+                "scheduling_policy": "SNAPSHOT",
+                "postgres_database": "app_db",
+                "branch": main["name"],
+                "create_database_objects_if_missing": True,
+                "existing_pipeline_id": "abc123-def456",
+            })
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -275,6 +363,94 @@ class PostgresSyncedTable(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        ## Example Usage
+
+        ### Basic Synced Table with Snapshot Policy
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresProject("this",
+            project_id="my-project",
+            spec={
+                "pg_version": 17,
+                "display_name": "My Project",
+            })
+        main = databricks.PostgresBranch("main",
+            branch_id="main",
+            parent=this.name,
+            spec={
+                "no_expiry": True,
+            })
+        this_postgres_catalog = databricks.PostgresCatalog("this",
+            catalog_id="app_catalog",
+            spec={
+                "postgres_database": "app_db",
+                "create_database_if_missing": True,
+                "branch": main.name,
+            })
+        this_postgres_synced_table = databricks.PostgresSyncedTable("this",
+            synced_table_id="app_catalog.default.users_synced",
+            spec={
+                "source_table_full_name": "main.default.users",
+                "primary_key_columns": ["user_id"],
+                "scheduling_policy": "SNAPSHOT",
+                "postgres_database": "app_db",
+                "branch": main.name,
+                "create_database_objects_if_missing": True,
+                "new_pipeline_spec": {
+                    "storage_catalog": "main",
+                    "storage_schema": "default",
+                },
+            })
+        ```
+
+        ### Synced Table with Triggered Policy
+
+        Use `TRIGGERED` for on-demand updates. Requires Change Data Feed (CDF) enabled on the source table.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        triggered = databricks.PostgresSyncedTable("triggered",
+            synced_table_id="app_catalog.default.orders_synced",
+            spec={
+                "source_table_full_name": "main.default.orders",
+                "primary_key_columns": ["order_id"],
+                "scheduling_policy": "TRIGGERED",
+                "postgres_database": "app_db",
+                "branch": main["name"],
+                "create_database_objects_if_missing": True,
+                "new_pipeline_spec": {
+                    "storage_catalog": "main",
+                    "storage_schema": "default",
+                },
+            })
+        ```
+
+        ### Synced Table with Existing Pipeline
+
+        Bin-pack into an existing pipeline instead of creating a new one:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.PostgresSyncedTable("this",
+            synced_table_id="app_catalog.default.products_synced",
+            spec={
+                "source_table_full_name": "main.default.products",
+                "primary_key_columns": ["product_id"],
+                "scheduling_policy": "SNAPSHOT",
+                "postgres_database": "app_db",
+                "branch": main["name"],
+                "create_database_objects_if_missing": True,
+                "existing_pipeline_id": "abc123-def456",
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -388,7 +564,7 @@ class PostgresSyncedTable(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.PostgresSyncedTableProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.PostgresSyncedTableProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

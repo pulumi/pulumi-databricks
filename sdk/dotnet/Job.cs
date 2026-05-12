@@ -247,7 +247,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.JobProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.JobProviderConfig> ProviderConfig { get; private set; } = null!;
 
         [Output("pythonWheelTask")]
         public Output<Outputs.JobPythonWheelTask?> PythonWheelTask { get; private set; } = null!;

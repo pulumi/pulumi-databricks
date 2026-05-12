@@ -18,10 +18,6 @@ namespace Pulumi.Databricks.Inputs
         [Input("destination")]
         public Input<Inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationGetArgs>? Destination { get; set; }
 
-        /// <summary>
-        /// User-provided name for this ingress rule. Helps identify which rule
-        /// caused a request to be denied or dry-run denied
-        /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
 

@@ -91,7 +91,7 @@ export class MlflowModel extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.MlflowModelProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.MlflowModelProviderConfig>;
     declare public /*out*/ readonly registeredModelId: pulumi.Output<string>;
     /**
      * Tags for the MLflow model.

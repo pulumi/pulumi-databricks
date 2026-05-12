@@ -53,7 +53,7 @@ type SystemSchema struct {
 	FullName    pulumi.StringOutput `pulumi:"fullName"`
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig SystemSchemaProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig SystemSchemaProviderConfigOutput `pulumi:"providerConfig"`
 	// name of the system schema.
 	Schema pulumi.StringOutput `pulumi:"schema"`
 	// The current state of enablement for the system schema.
@@ -238,8 +238,8 @@ func (o SystemSchemaOutput) MetastoreId() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o SystemSchemaOutput) ProviderConfig() SystemSchemaProviderConfigPtrOutput {
-	return o.ApplyT(func(v *SystemSchema) SystemSchemaProviderConfigPtrOutput { return v.ProviderConfig }).(SystemSchemaProviderConfigPtrOutput)
+func (o SystemSchemaOutput) ProviderConfig() SystemSchemaProviderConfigOutput {
+	return o.ApplyT(func(v *SystemSchema) SystemSchemaProviderConfigOutput { return v.ProviderConfig }).(SystemSchemaProviderConfigOutput)
 }
 
 // name of the system schema.

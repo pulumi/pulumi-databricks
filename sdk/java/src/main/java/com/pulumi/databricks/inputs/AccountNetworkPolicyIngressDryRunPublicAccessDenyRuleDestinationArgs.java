@@ -5,6 +5,11 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountApiArgs;
+import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOneArgs;
+import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountUiArgs;
+import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAppsRuntimeArgs;
+import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationLakebaseRuntimeArgs;
 import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiArgs;
 import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceUiArgs;
 import java.lang.Boolean;
@@ -17,11 +22,46 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinat
 
     public static final AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationArgs Empty = new AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationArgs();
 
+    @Import(name="accountApi")
+    private @Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountApiArgs> accountApi;
+
+    public Optional<Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountApiArgs>> accountApi() {
+        return Optional.ofNullable(this.accountApi);
+    }
+
+    @Import(name="accountDatabricksOne")
+    private @Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOneArgs> accountDatabricksOne;
+
+    public Optional<Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOneArgs>> accountDatabricksOne() {
+        return Optional.ofNullable(this.accountDatabricksOne);
+    }
+
+    @Import(name="accountUi")
+    private @Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountUiArgs> accountUi;
+
+    public Optional<Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountUiArgs>> accountUi() {
+        return Optional.ofNullable(this.accountUi);
+    }
+
     @Import(name="allDestinations")
     private @Nullable Output<Boolean> allDestinations;
 
     public Optional<Output<Boolean>> allDestinations() {
         return Optional.ofNullable(this.allDestinations);
+    }
+
+    @Import(name="appsRuntime")
+    private @Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAppsRuntimeArgs> appsRuntime;
+
+    public Optional<Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAppsRuntimeArgs>> appsRuntime() {
+        return Optional.ofNullable(this.appsRuntime);
+    }
+
+    @Import(name="lakebaseRuntime")
+    private @Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationLakebaseRuntimeArgs> lakebaseRuntime;
+
+    public Optional<Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationLakebaseRuntimeArgs>> lakebaseRuntime() {
+        return Optional.ofNullable(this.lakebaseRuntime);
     }
 
     @Import(name="workspaceApi")
@@ -31,17 +71,9 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinat
         return Optional.ofNullable(this.workspaceApi);
     }
 
-    /**
-     * Workspace destinations
-     * 
-     */
     @Import(name="workspaceUi")
     private @Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceUiArgs> workspaceUi;
 
-    /**
-     * @return Workspace destinations
-     * 
-     */
     public Optional<Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceUiArgs>> workspaceUi() {
         return Optional.ofNullable(this.workspaceUi);
     }
@@ -49,7 +81,12 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinat
     private AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationArgs() {}
 
     private AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationArgs(AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationArgs $) {
+        this.accountApi = $.accountApi;
+        this.accountDatabricksOne = $.accountDatabricksOne;
+        this.accountUi = $.accountUi;
         this.allDestinations = $.allDestinations;
+        this.appsRuntime = $.appsRuntime;
+        this.lakebaseRuntime = $.lakebaseRuntime;
         this.workspaceApi = $.workspaceApi;
         this.workspaceUi = $.workspaceUi;
     }
@@ -72,6 +109,33 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinat
             $ = new AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder accountApi(@Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountApiArgs> accountApi) {
+            $.accountApi = accountApi;
+            return this;
+        }
+
+        public Builder accountApi(AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountApiArgs accountApi) {
+            return accountApi(Output.of(accountApi));
+        }
+
+        public Builder accountDatabricksOne(@Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOneArgs> accountDatabricksOne) {
+            $.accountDatabricksOne = accountDatabricksOne;
+            return this;
+        }
+
+        public Builder accountDatabricksOne(AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOneArgs accountDatabricksOne) {
+            return accountDatabricksOne(Output.of(accountDatabricksOne));
+        }
+
+        public Builder accountUi(@Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountUiArgs> accountUi) {
+            $.accountUi = accountUi;
+            return this;
+        }
+
+        public Builder accountUi(AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountUiArgs accountUi) {
+            return accountUi(Output.of(accountUi));
+        }
+
         public Builder allDestinations(@Nullable Output<Boolean> allDestinations) {
             $.allDestinations = allDestinations;
             return this;
@@ -79,6 +143,24 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinat
 
         public Builder allDestinations(Boolean allDestinations) {
             return allDestinations(Output.of(allDestinations));
+        }
+
+        public Builder appsRuntime(@Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAppsRuntimeArgs> appsRuntime) {
+            $.appsRuntime = appsRuntime;
+            return this;
+        }
+
+        public Builder appsRuntime(AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAppsRuntimeArgs appsRuntime) {
+            return appsRuntime(Output.of(appsRuntime));
+        }
+
+        public Builder lakebaseRuntime(@Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationLakebaseRuntimeArgs> lakebaseRuntime) {
+            $.lakebaseRuntime = lakebaseRuntime;
+            return this;
+        }
+
+        public Builder lakebaseRuntime(AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationLakebaseRuntimeArgs lakebaseRuntime) {
+            return lakebaseRuntime(Output.of(lakebaseRuntime));
         }
 
         public Builder workspaceApi(@Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiArgs> workspaceApi) {
@@ -90,23 +172,11 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinat
             return workspaceApi(Output.of(workspaceApi));
         }
 
-        /**
-         * @param workspaceUi Workspace destinations
-         * 
-         * @return builder
-         * 
-         */
         public Builder workspaceUi(@Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceUiArgs> workspaceUi) {
             $.workspaceUi = workspaceUi;
             return this;
         }
 
-        /**
-         * @param workspaceUi Workspace destinations
-         * 
-         * @return builder
-         * 
-         */
         public Builder workspaceUi(AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceUiArgs workspaceUi) {
             return workspaceUi(Output.of(workspaceUi));
         }

@@ -207,7 +207,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly string Name;
-        public readonly Outputs.GetExternalLocationProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetExternalLocationProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetExternalLocationResult(
@@ -217,7 +217,7 @@ namespace Pulumi.Databricks
 
             string name,
 
-            Outputs.GetExternalLocationProviderConfigResult? providerConfig)
+            Outputs.GetExternalLocationProviderConfigResult providerConfig)
         {
             ExternalLocationInfo = externalLocationInfo;
             Id = id;

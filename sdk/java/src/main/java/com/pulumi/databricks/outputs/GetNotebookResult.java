@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotebookResult {
@@ -41,7 +39,7 @@ public final class GetNotebookResult {
      */
     private String objectType;
     private String path;
-    private @Nullable GetNotebookProviderConfig providerConfig;
+    private GetNotebookProviderConfig providerConfig;
     /**
      * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      * 
@@ -90,8 +88,8 @@ public final class GetNotebookResult {
     public String path() {
         return this.path;
     }
-    public Optional<GetNotebookProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetNotebookProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     /**
      * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
@@ -117,7 +115,7 @@ public final class GetNotebookResult {
         private Integer objectId;
         private String objectType;
         private String path;
-        private @Nullable GetNotebookProviderConfig providerConfig;
+        private GetNotebookProviderConfig providerConfig;
         private String workspacePath;
         public Builder() {}
         public Builder(GetNotebookResult defaults) {
@@ -190,8 +188,10 @@ public final class GetNotebookResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetNotebookProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetNotebookProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetNotebookResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

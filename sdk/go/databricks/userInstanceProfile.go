@@ -75,8 +75,8 @@ type UserInstanceProfile struct {
 	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
 	Api pulumi.StringPtrOutput `pulumi:"api"`
 	// This is the id of the instance profile resource.
-	InstanceProfileId pulumi.StringOutput                        `pulumi:"instanceProfileId"`
-	ProviderConfig    UserInstanceProfileProviderConfigPtrOutput `pulumi:"providerConfig"`
+	InstanceProfileId pulumi.StringOutput                     `pulumi:"instanceProfileId"`
+	ProviderConfig    UserInstanceProfileProviderConfigOutput `pulumi:"providerConfig"`
 	// This is the id of the user resource.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 }
@@ -258,8 +258,8 @@ func (o UserInstanceProfileOutput) InstanceProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserInstanceProfile) pulumi.StringOutput { return v.InstanceProfileId }).(pulumi.StringOutput)
 }
 
-func (o UserInstanceProfileOutput) ProviderConfig() UserInstanceProfileProviderConfigPtrOutput {
-	return o.ApplyT(func(v *UserInstanceProfile) UserInstanceProfileProviderConfigPtrOutput { return v.ProviderConfig }).(UserInstanceProfileProviderConfigPtrOutput)
+func (o UserInstanceProfileOutput) ProviderConfig() UserInstanceProfileProviderConfigOutput {
+	return o.ApplyT(func(v *UserInstanceProfile) UserInstanceProfileProviderConfigOutput { return v.ProviderConfig }).(UserInstanceProfileProviderConfigOutput)
 }
 
 // This is the id of the user resource.

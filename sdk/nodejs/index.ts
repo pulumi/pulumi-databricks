@@ -190,6 +190,16 @@ export type DisableLegacyFeaturesSetting = import("./disableLegacyFeaturesSettin
 export const DisableLegacyFeaturesSetting: typeof import("./disableLegacyFeaturesSetting").DisableLegacyFeaturesSetting = null as any;
 utilities.lazyLoad(exports, ["DisableLegacyFeaturesSetting"], () => require("./disableLegacyFeaturesSetting"));
 
+export { DisasterRecoveryFailoverGroupArgs, DisasterRecoveryFailoverGroupState } from "./disasterRecoveryFailoverGroup";
+export type DisasterRecoveryFailoverGroup = import("./disasterRecoveryFailoverGroup").DisasterRecoveryFailoverGroup;
+export const DisasterRecoveryFailoverGroup: typeof import("./disasterRecoveryFailoverGroup").DisasterRecoveryFailoverGroup = null as any;
+utilities.lazyLoad(exports, ["DisasterRecoveryFailoverGroup"], () => require("./disasterRecoveryFailoverGroup"));
+
+export { DisasterRecoveryStableUrlArgs, DisasterRecoveryStableUrlState } from "./disasterRecoveryStableUrl";
+export type DisasterRecoveryStableUrl = import("./disasterRecoveryStableUrl").DisasterRecoveryStableUrl;
+export const DisasterRecoveryStableUrl: typeof import("./disasterRecoveryStableUrl").DisasterRecoveryStableUrl = null as any;
+utilities.lazyLoad(exports, ["DisasterRecoveryStableUrl"], () => require("./disasterRecoveryStableUrl"));
+
 export { EndpointArgs, EndpointState } from "./endpoint";
 export type Endpoint = import("./endpoint").Endpoint;
 export const Endpoint: typeof import("./endpoint").Endpoint = null as any;
@@ -469,6 +479,26 @@ export { GetDirectoryArgs, GetDirectoryResult, GetDirectoryOutputArgs } from "./
 export const getDirectory: typeof import("./getDirectory").getDirectory = null as any;
 export const getDirectoryOutput: typeof import("./getDirectory").getDirectoryOutput = null as any;
 utilities.lazyLoad(exports, ["getDirectory","getDirectoryOutput"], () => require("./getDirectory"));
+
+export { GetDisasterRecoveryFailoverGroupArgs, GetDisasterRecoveryFailoverGroupResult, GetDisasterRecoveryFailoverGroupOutputArgs } from "./getDisasterRecoveryFailoverGroup";
+export const getDisasterRecoveryFailoverGroup: typeof import("./getDisasterRecoveryFailoverGroup").getDisasterRecoveryFailoverGroup = null as any;
+export const getDisasterRecoveryFailoverGroupOutput: typeof import("./getDisasterRecoveryFailoverGroup").getDisasterRecoveryFailoverGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getDisasterRecoveryFailoverGroup","getDisasterRecoveryFailoverGroupOutput"], () => require("./getDisasterRecoveryFailoverGroup"));
+
+export { GetDisasterRecoveryFailoverGroupsArgs, GetDisasterRecoveryFailoverGroupsResult, GetDisasterRecoveryFailoverGroupsOutputArgs } from "./getDisasterRecoveryFailoverGroups";
+export const getDisasterRecoveryFailoverGroups: typeof import("./getDisasterRecoveryFailoverGroups").getDisasterRecoveryFailoverGroups = null as any;
+export const getDisasterRecoveryFailoverGroupsOutput: typeof import("./getDisasterRecoveryFailoverGroups").getDisasterRecoveryFailoverGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getDisasterRecoveryFailoverGroups","getDisasterRecoveryFailoverGroupsOutput"], () => require("./getDisasterRecoveryFailoverGroups"));
+
+export { GetDisasterRecoveryStableUrlArgs, GetDisasterRecoveryStableUrlResult, GetDisasterRecoveryStableUrlOutputArgs } from "./getDisasterRecoveryStableUrl";
+export const getDisasterRecoveryStableUrl: typeof import("./getDisasterRecoveryStableUrl").getDisasterRecoveryStableUrl = null as any;
+export const getDisasterRecoveryStableUrlOutput: typeof import("./getDisasterRecoveryStableUrl").getDisasterRecoveryStableUrlOutput = null as any;
+utilities.lazyLoad(exports, ["getDisasterRecoveryStableUrl","getDisasterRecoveryStableUrlOutput"], () => require("./getDisasterRecoveryStableUrl"));
+
+export { GetDisasterRecoveryStableUrlsArgs, GetDisasterRecoveryStableUrlsResult, GetDisasterRecoveryStableUrlsOutputArgs } from "./getDisasterRecoveryStableUrls";
+export const getDisasterRecoveryStableUrls: typeof import("./getDisasterRecoveryStableUrls").getDisasterRecoveryStableUrls = null as any;
+export const getDisasterRecoveryStableUrlsOutput: typeof import("./getDisasterRecoveryStableUrls").getDisasterRecoveryStableUrlsOutput = null as any;
+utilities.lazyLoad(exports, ["getDisasterRecoveryStableUrls","getDisasterRecoveryStableUrlsOutput"], () => require("./getDisasterRecoveryStableUrls"));
 
 export { GetEndpointArgs, GetEndpointResult, GetEndpointOutputArgs } from "./getEndpoint";
 export const getEndpoint: typeof import("./getEndpoint").getEndpoint = null as any;
@@ -800,6 +830,16 @@ export const getSchemas: typeof import("./getSchemas").getSchemas = null as any;
 export const getSchemasOutput: typeof import("./getSchemas").getSchemasOutput = null as any;
 utilities.lazyLoad(exports, ["getSchemas","getSchemasOutput"], () => require("./getSchemas"));
 
+export { GetSecretUcArgs, GetSecretUcResult, GetSecretUcOutputArgs } from "./getSecretUc";
+export const getSecretUc: typeof import("./getSecretUc").getSecretUc = null as any;
+export const getSecretUcOutput: typeof import("./getSecretUc").getSecretUcOutput = null as any;
+utilities.lazyLoad(exports, ["getSecretUc","getSecretUcOutput"], () => require("./getSecretUc"));
+
+export { GetSecretUcsArgs, GetSecretUcsResult, GetSecretUcsOutputArgs } from "./getSecretUcs";
+export const getSecretUcs: typeof import("./getSecretUcs").getSecretUcs = null as any;
+export const getSecretUcsOutput: typeof import("./getSecretUcs").getSecretUcsOutput = null as any;
+utilities.lazyLoad(exports, ["getSecretUcs","getSecretUcsOutput"], () => require("./getSecretUcs"));
+
 export { GetServicePrincipalArgs, GetServicePrincipalResult, GetServicePrincipalOutputArgs } from "./getServicePrincipal";
 export const getServicePrincipal: typeof import("./getServicePrincipal").getServicePrincipal = null as any;
 export const getServicePrincipalOutput: typeof import("./getServicePrincipal").getServicePrincipalOutput = null as any;
@@ -859,6 +899,26 @@ export { GetStorageCredentialsArgs, GetStorageCredentialsResult, GetStorageCrede
 export const getStorageCredentials: typeof import("./getStorageCredentials").getStorageCredentials = null as any;
 export const getStorageCredentialsOutput: typeof import("./getStorageCredentials").getStorageCredentialsOutput = null as any;
 utilities.lazyLoad(exports, ["getStorageCredentials","getStorageCredentialsOutput"], () => require("./getStorageCredentials"));
+
+export { GetSupervisorAgentArgs, GetSupervisorAgentResult, GetSupervisorAgentOutputArgs } from "./getSupervisorAgent";
+export const getSupervisorAgent: typeof import("./getSupervisorAgent").getSupervisorAgent = null as any;
+export const getSupervisorAgentOutput: typeof import("./getSupervisorAgent").getSupervisorAgentOutput = null as any;
+utilities.lazyLoad(exports, ["getSupervisorAgent","getSupervisorAgentOutput"], () => require("./getSupervisorAgent"));
+
+export { GetSupervisorAgentToolArgs, GetSupervisorAgentToolResult, GetSupervisorAgentToolOutputArgs } from "./getSupervisorAgentTool";
+export const getSupervisorAgentTool: typeof import("./getSupervisorAgentTool").getSupervisorAgentTool = null as any;
+export const getSupervisorAgentToolOutput: typeof import("./getSupervisorAgentTool").getSupervisorAgentToolOutput = null as any;
+utilities.lazyLoad(exports, ["getSupervisorAgentTool","getSupervisorAgentToolOutput"], () => require("./getSupervisorAgentTool"));
+
+export { GetSupervisorAgentToolsArgs, GetSupervisorAgentToolsResult, GetSupervisorAgentToolsOutputArgs } from "./getSupervisorAgentTools";
+export const getSupervisorAgentTools: typeof import("./getSupervisorAgentTools").getSupervisorAgentTools = null as any;
+export const getSupervisorAgentToolsOutput: typeof import("./getSupervisorAgentTools").getSupervisorAgentToolsOutput = null as any;
+utilities.lazyLoad(exports, ["getSupervisorAgentTools","getSupervisorAgentToolsOutput"], () => require("./getSupervisorAgentTools"));
+
+export { GetSupervisorAgentsArgs, GetSupervisorAgentsResult, GetSupervisorAgentsOutputArgs } from "./getSupervisorAgents";
+export const getSupervisorAgents: typeof import("./getSupervisorAgents").getSupervisorAgents = null as any;
+export const getSupervisorAgentsOutput: typeof import("./getSupervisorAgents").getSupervisorAgentsOutput = null as any;
+utilities.lazyLoad(exports, ["getSupervisorAgents","getSupervisorAgentsOutput"], () => require("./getSupervisorAgents"));
 
 export { GetTableArgs, GetTableResult, GetTableOutputArgs } from "./getTable";
 export const getTable: typeof import("./getTable").getTable = null as any;
@@ -1278,6 +1338,11 @@ export type SecretScope = import("./secretScope").SecretScope;
 export const SecretScope: typeof import("./secretScope").SecretScope = null as any;
 utilities.lazyLoad(exports, ["SecretScope"], () => require("./secretScope"));
 
+export { SecretUcArgs, SecretUcState } from "./secretUc";
+export type SecretUc = import("./secretUc").SecretUc;
+export const SecretUc: typeof import("./secretUc").SecretUc = null as any;
+utilities.lazyLoad(exports, ["SecretUc"], () => require("./secretUc"));
+
 export { ServicePrincipalArgs, ServicePrincipalState } from "./servicePrincipal";
 export type ServicePrincipal = import("./servicePrincipal").ServicePrincipal;
 export const ServicePrincipal: typeof import("./servicePrincipal").ServicePrincipal = null as any;
@@ -1352,6 +1417,16 @@ export { StorageCredentialArgs, StorageCredentialState } from "./storageCredenti
 export type StorageCredential = import("./storageCredential").StorageCredential;
 export const StorageCredential: typeof import("./storageCredential").StorageCredential = null as any;
 utilities.lazyLoad(exports, ["StorageCredential"], () => require("./storageCredential"));
+
+export { SupervisorAgentArgs, SupervisorAgentState } from "./supervisorAgent";
+export type SupervisorAgent = import("./supervisorAgent").SupervisorAgent;
+export const SupervisorAgent: typeof import("./supervisorAgent").SupervisorAgent = null as any;
+utilities.lazyLoad(exports, ["SupervisorAgent"], () => require("./supervisorAgent"));
+
+export { SupervisorAgentToolArgs, SupervisorAgentToolState } from "./supervisorAgentTool";
+export type SupervisorAgentTool = import("./supervisorAgentTool").SupervisorAgentTool;
+export const SupervisorAgentTool: typeof import("./supervisorAgentTool").SupervisorAgentTool = null as any;
+utilities.lazyLoad(exports, ["SupervisorAgentTool"], () => require("./supervisorAgentTool"));
 
 export { SystemSchemaArgs, SystemSchemaState } from "./systemSchema";
 export type SystemSchema = import("./systemSchema").SystemSchema;
@@ -1526,6 +1601,10 @@ const _module = {
                 return new DisableLegacyDbfsSetting(name, <any>undefined, { urn })
             case "databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting":
                 return new DisableLegacyFeaturesSetting(name, <any>undefined, { urn })
+            case "databricks:index/disasterRecoveryFailoverGroup:DisasterRecoveryFailoverGroup":
+                return new DisasterRecoveryFailoverGroup(name, <any>undefined, { urn })
+            case "databricks:index/disasterRecoveryStableUrl:DisasterRecoveryStableUrl":
+                return new DisasterRecoveryStableUrl(name, <any>undefined, { urn })
             case "databricks:index/endpoint:Endpoint":
                 return new Endpoint(name, <any>undefined, { urn })
             case "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting":
@@ -1684,6 +1763,8 @@ const _module = {
                 return new SecretAcl(name, <any>undefined, { urn })
             case "databricks:index/secretScope:SecretScope":
                 return new SecretScope(name, <any>undefined, { urn })
+            case "databricks:index/secretUc:SecretUc":
+                return new SecretUc(name, <any>undefined, { urn })
             case "databricks:index/servicePrincipal:ServicePrincipal":
                 return new ServicePrincipal(name, <any>undefined, { urn })
             case "databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy":
@@ -1714,6 +1795,10 @@ const _module = {
                 return new SqlWidget(name, <any>undefined, { urn })
             case "databricks:index/storageCredential:StorageCredential":
                 return new StorageCredential(name, <any>undefined, { urn })
+            case "databricks:index/supervisorAgent:SupervisorAgent":
+                return new SupervisorAgent(name, <any>undefined, { urn })
+            case "databricks:index/supervisorAgentTool:SupervisorAgentTool":
+                return new SupervisorAgentTool(name, <any>undefined, { urn })
             case "databricks:index/systemSchema:SystemSchema":
                 return new SystemSchema(name, <any>undefined, { urn })
             case "databricks:index/table:Table":
@@ -1790,6 +1875,8 @@ pulumi.runtime.registerResourceModule("databricks", "index/directory", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/disableLegacyAccessSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/disableLegacyDbfsSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/disableLegacyFeaturesSetting", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/disasterRecoveryFailoverGroup", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/disasterRecoveryStableUrl", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/endpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/enhancedSecurityMonitoringWorkspaceSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/entitlements", _module)
@@ -1869,6 +1956,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/schema", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/secret", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/secretAcl", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/secretScope", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/secretUc", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/servicePrincipal", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/servicePrincipalFederationPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/servicePrincipalRole", _module)
@@ -1884,6 +1972,8 @@ pulumi.runtime.registerResourceModule("databricks", "index/sqlTable", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/sqlVisualization", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/sqlWidget", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/storageCredential", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/supervisorAgent", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/supervisorAgentTool", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/systemSchema", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/table", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/tagPolicy", _module)

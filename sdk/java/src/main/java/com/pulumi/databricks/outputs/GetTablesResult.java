@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTablesResult {
@@ -25,7 +23,7 @@ public final class GetTablesResult {
      * 
      */
     private List<String> ids;
-    private @Nullable GetTablesProviderConfig providerConfig;
+    private GetTablesProviderConfig providerConfig;
     private String schemaName;
 
     private GetTablesResult() {}
@@ -46,8 +44,8 @@ public final class GetTablesResult {
     public List<String> ids() {
         return this.ids;
     }
-    public Optional<GetTablesProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetTablesProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     public String schemaName() {
         return this.schemaName;
@@ -65,7 +63,7 @@ public final class GetTablesResult {
         private String catalogName;
         private String id;
         private List<String> ids;
-        private @Nullable GetTablesProviderConfig providerConfig;
+        private GetTablesProviderConfig providerConfig;
         private String schemaName;
         public Builder() {}
         public Builder(GetTablesResult defaults) {
@@ -105,8 +103,10 @@ public final class GetTablesResult {
             return ids(List.of(ids));
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetTablesProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetTablesProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetTablesResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

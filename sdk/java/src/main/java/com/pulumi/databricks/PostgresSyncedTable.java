@@ -14,11 +14,187 @@ import com.pulumi.databricks.outputs.PostgresSyncedTableProviderConfig;
 import com.pulumi.databricks.outputs.PostgresSyncedTableSpec;
 import com.pulumi.databricks.outputs.PostgresSyncedTableStatus;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
+ * ## Example Usage
+ * 
+ * ### Basic Synced Table with Snapshot Policy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresProject;
+ * import com.pulumi.databricks.PostgresProjectArgs;
+ * import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
+ * import com.pulumi.databricks.PostgresBranch;
+ * import com.pulumi.databricks.PostgresBranchArgs;
+ * import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
+ * import com.pulumi.databricks.PostgresCatalog;
+ * import com.pulumi.databricks.PostgresCatalogArgs;
+ * import com.pulumi.databricks.inputs.PostgresCatalogSpecArgs;
+ * import com.pulumi.databricks.PostgresSyncedTable;
+ * import com.pulumi.databricks.PostgresSyncedTableArgs;
+ * import com.pulumi.databricks.inputs.PostgresSyncedTableSpecArgs;
+ * import com.pulumi.databricks.inputs.PostgresSyncedTableSpecNewPipelineSpecArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new PostgresProject("this", PostgresProjectArgs.builder()
+ *             .projectId("my-project")
+ *             .spec(PostgresProjectSpecArgs.builder()
+ *                 .pgVersion(17)
+ *                 .displayName("My Project")
+ *                 .build())
+ *             .build());
+ * 
+ *         var main = new PostgresBranch("main", PostgresBranchArgs.builder()
+ *             .branchId("main")
+ *             .parent(this_.name())
+ *             .spec(PostgresBranchSpecArgs.builder()
+ *                 .noExpiry(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var thisPostgresCatalog = new PostgresCatalog("thisPostgresCatalog", PostgresCatalogArgs.builder()
+ *             .catalogId("app_catalog")
+ *             .spec(PostgresCatalogSpecArgs.builder()
+ *                 .postgresDatabase("app_db")
+ *                 .createDatabaseIfMissing(true)
+ *                 .branch(main.name())
+ *                 .build())
+ *             .build());
+ * 
+ *         var thisPostgresSyncedTable = new PostgresSyncedTable("thisPostgresSyncedTable", PostgresSyncedTableArgs.builder()
+ *             .syncedTableId("app_catalog.default.users_synced")
+ *             .spec(PostgresSyncedTableSpecArgs.builder()
+ *                 .sourceTableFullName("main.default.users")
+ *                 .primaryKeyColumns("user_id")
+ *                 .schedulingPolicy("SNAPSHOT")
+ *                 .postgresDatabase("app_db")
+ *                 .branch(main.name())
+ *                 .createDatabaseObjectsIfMissing(true)
+ *                 .newPipelineSpec(PostgresSyncedTableSpecNewPipelineSpecArgs.builder()
+ *                     .storageCatalog("main")
+ *                     .storageSchema("default")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Synced Table with Triggered Policy
+ * 
+ * Use `TRIGGERED` for on-demand updates. Requires Change Data Feed (CDF) enabled on the source table.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresSyncedTable;
+ * import com.pulumi.databricks.PostgresSyncedTableArgs;
+ * import com.pulumi.databricks.inputs.PostgresSyncedTableSpecArgs;
+ * import com.pulumi.databricks.inputs.PostgresSyncedTableSpecNewPipelineSpecArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var triggered = new PostgresSyncedTable("triggered", PostgresSyncedTableArgs.builder()
+ *             .syncedTableId("app_catalog.default.orders_synced")
+ *             .spec(PostgresSyncedTableSpecArgs.builder()
+ *                 .sourceTableFullName("main.default.orders")
+ *                 .primaryKeyColumns("order_id")
+ *                 .schedulingPolicy("TRIGGERED")
+ *                 .postgresDatabase("app_db")
+ *                 .branch(main.name())
+ *                 .createDatabaseObjectsIfMissing(true)
+ *                 .newPipelineSpec(PostgresSyncedTableSpecNewPipelineSpecArgs.builder()
+ *                     .storageCatalog("main")
+ *                     .storageSchema("default")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Synced Table with Existing Pipeline
+ * 
+ * Bin-pack into an existing pipeline instead of creating a new one:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresSyncedTable;
+ * import com.pulumi.databricks.PostgresSyncedTableArgs;
+ * import com.pulumi.databricks.inputs.PostgresSyncedTableSpecArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new PostgresSyncedTable("this", PostgresSyncedTableArgs.builder()
+ *             .syncedTableId("app_catalog.default.products_synced")
+ *             .spec(PostgresSyncedTableSpecArgs.builder()
+ *                 .sourceTableFullName("main.default.products")
+ *                 .primaryKeyColumns("product_id")
+ *                 .schedulingPolicy("SNAPSHOT")
+ *                 .postgresDatabase("app_db")
+ *                 .branch(main.name())
+ *                 .createDatabaseObjectsIfMissing(true)
+ *                 .existingPipelineId("abc123-def456")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="databricks:index/postgresSyncedTable:PostgresSyncedTable")
@@ -58,14 +234,14 @@ public class PostgresSyncedTable extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={PostgresSyncedTableProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ PostgresSyncedTableProviderConfig> providerConfig;
+    private Output<PostgresSyncedTableProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<PostgresSyncedTableProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<PostgresSyncedTableProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Configuration details of the synced table, such as the source table, scheduling policy, etc.

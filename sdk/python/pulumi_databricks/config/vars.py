@@ -113,10 +113,6 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('discoveryUrl')
 
     @_builtins.property
-    def experimental_is_unified_host(self) -> Optional[bool]:
-        return __config__.get_bool('experimentalIsUnifiedHost')
-
-    @_builtins.property
     def google_credentials(self) -> Optional[str]:
         return __config__.get('googleCredentials')
 

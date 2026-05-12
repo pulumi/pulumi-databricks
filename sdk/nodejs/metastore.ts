@@ -172,7 +172,7 @@ export class Metastore extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.MetastoreProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.MetastoreProviderConfig>;
     /**
      * The region of the metastore
      */

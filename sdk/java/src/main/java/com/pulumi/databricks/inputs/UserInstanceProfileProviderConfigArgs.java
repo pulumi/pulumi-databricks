@@ -5,20 +5,21 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class UserInstanceProfileProviderConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final UserInstanceProfileProviderConfigArgs Empty = new UserInstanceProfileProviderConfigArgs();
 
-    @Import(name="workspaceId", required=true)
-    private Output<String> workspaceId;
+    @Import(name="workspaceId")
+    private @Nullable Output<String> workspaceId;
 
-    public Output<String> workspaceId() {
-        return this.workspaceId;
+    public Optional<Output<String>> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     private UserInstanceProfileProviderConfigArgs() {}
@@ -45,7 +46,7 @@ public final class UserInstanceProfileProviderConfigArgs extends com.pulumi.reso
             $ = new UserInstanceProfileProviderConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder workspaceId(Output<String> workspaceId) {
+        public Builder workspaceId(@Nullable Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
@@ -55,9 +56,6 @@ public final class UserInstanceProfileProviderConfigArgs extends com.pulumi.reso
         }
 
         public UserInstanceProfileProviderConfigArgs build() {
-            if ($.workspaceId == null) {
-                throw new MissingRequiredPropertyException("UserInstanceProfileProviderConfigArgs", "workspaceId");
-            }
             return $;
         }
     }

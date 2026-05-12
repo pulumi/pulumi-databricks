@@ -13,18 +13,99 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres catalog.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Catalog by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresCatalog.Invoke(new()
+        ///     {
+        ///         Name = "catalogs/my_catalog",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["catalogPostgresDatabase"] = @this.Apply(@this =&gt; @this.Apply(getPostgresCatalogResult =&gt; getPostgresCatalogResult.Status?.PostgresDatabase)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetPostgresCatalogResult> InvokeAsync(GetPostgresCatalogArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresCatalogResult>("databricks:index/getPostgresCatalog:getPostgresCatalog", args ?? new GetPostgresCatalogArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres catalog.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Catalog by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresCatalog.Invoke(new()
+        ///     {
+        ///         Name = "catalogs/my_catalog",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["catalogPostgresDatabase"] = @this.Apply(@this =&gt; @this.Apply(getPostgresCatalogResult =&gt; getPostgresCatalogResult.Status?.PostgresDatabase)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresCatalogResult> Invoke(GetPostgresCatalogInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresCatalogResult>("databricks:index/getPostgresCatalog:getPostgresCatalog", args ?? new GetPostgresCatalogInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// This data source retrieves a single Postgres catalog.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Catalog by Name
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetPostgresCatalog.Invoke(new()
+        ///     {
+        ///         Name = "catalogs/my_catalog",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["catalogPostgresDatabase"] = @this.Apply(@this =&gt; @this.Apply(getPostgresCatalogResult =&gt; getPostgresCatalogResult.Status?.PostgresDatabase)),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetPostgresCatalogResult> Invoke(GetPostgresCatalogInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresCatalogResult>("databricks:index/getPostgresCatalog:getPostgresCatalog", args ?? new GetPostgresCatalogInvokeArgs(), options.WithDefaults());

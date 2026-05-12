@@ -16,6 +16,13 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinat
 
     public static final AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiArgs Empty = new AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiArgs();
 
+    @Import(name="scopeQualifier")
+    private @Nullable Output<String> scopeQualifier;
+
+    public Optional<Output<String>> scopeQualifier() {
+        return Optional.ofNullable(this.scopeQualifier);
+    }
+
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
@@ -26,6 +33,7 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinat
     private AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiArgs() {}
 
     private AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiArgs(AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiArgs $) {
+        this.scopeQualifier = $.scopeQualifier;
         this.scopes = $.scopes;
     }
 
@@ -45,6 +53,15 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinat
 
         public Builder(AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiArgs defaults) {
             $ = new AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationWorkspaceApiArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder scopeQualifier(@Nullable Output<String> scopeQualifier) {
+            $.scopeQualifier = scopeQualifier;
+            return this;
+        }
+
+        public Builder scopeQualifier(String scopeQualifier) {
+            return scopeQualifier(Output.of(scopeQualifier));
         }
 
         public Builder scopes(@Nullable Output<List<String>> scopes) {

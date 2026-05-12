@@ -84,7 +84,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.WarehousesDefaultWarehouseOverrideProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.WarehousesDefaultWarehouseOverrideProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`

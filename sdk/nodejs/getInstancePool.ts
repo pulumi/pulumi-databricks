@@ -65,7 +65,7 @@ export interface GetInstancePoolResult {
      * block describing instance pool and its state. Check documentation for databricks.InstancePool for a list of exposed attributes.
      */
     readonly poolInfo: outputs.GetInstancePoolPoolInfo;
-    readonly providerConfig?: outputs.GetInstancePoolProviderConfig;
+    readonly providerConfig: outputs.GetInstancePoolProviderConfig;
 }
 /**
  * Retrieves information about databricks_instance_pool.

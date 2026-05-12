@@ -23,7 +23,7 @@ public final class GetClustersResult {
      * 
      */
     private List<String> ids;
-    private @Nullable GetClustersProviderConfig providerConfig;
+    private GetClustersProviderConfig providerConfig;
 
     private GetClustersResult() {}
     public Optional<String> clusterNameContains() {
@@ -42,8 +42,8 @@ public final class GetClustersResult {
     public List<String> ids() {
         return this.ids;
     }
-    public Optional<GetClustersProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetClustersProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -59,7 +59,7 @@ public final class GetClustersResult {
         private @Nullable GetClustersFilterBy filterBy;
         private String id;
         private List<String> ids;
-        private @Nullable GetClustersProviderConfig providerConfig;
+        private GetClustersProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetClustersResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -102,8 +102,10 @@ public final class GetClustersResult {
             return ids(List.of(ids));
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetClustersProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetClustersProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetClustersResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

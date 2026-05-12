@@ -58,7 +58,7 @@ export interface GetInstanceProfilesResult {
      * Set of objects for a databricks_instance_profile. This contains the following attributes:
      */
     readonly instanceProfiles: outputs.GetInstanceProfilesInstanceProfile[];
-    readonly providerConfig?: outputs.GetInstanceProfilesProviderConfig;
+    readonly providerConfig: outputs.GetInstanceProfilesProviderConfig;
 }
 /**
  * Lists all available databricks_instance_profiles.

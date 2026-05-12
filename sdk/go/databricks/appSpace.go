@@ -29,7 +29,7 @@ type AppSpace struct {
 	// It must be unique within the workspace
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
-	ProviderConfig AppSpaceProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig AppSpaceProviderConfigOutput `pulumi:"providerConfig"`
 	// Resources for the app space. Resources configured at the space level are available to all apps in the space
 	Resources AppSpaceResourceArrayOutput `pulumi:"resources"`
 	// (string) - The service principal client ID for the app space
@@ -307,8 +307,8 @@ func (o AppSpaceOutput) Name() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o AppSpaceOutput) ProviderConfig() AppSpaceProviderConfigPtrOutput {
-	return o.ApplyT(func(v *AppSpace) AppSpaceProviderConfigPtrOutput { return v.ProviderConfig }).(AppSpaceProviderConfigPtrOutput)
+func (o AppSpaceOutput) ProviderConfig() AppSpaceProviderConfigOutput {
+	return o.ApplyT(func(v *AppSpace) AppSpaceProviderConfigOutput { return v.ProviderConfig }).(AppSpaceProviderConfigOutput)
 }
 
 // Resources for the app space. Resources configured at the space level are available to all apps in the space

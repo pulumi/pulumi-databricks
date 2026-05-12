@@ -45,7 +45,7 @@ type KnowledgeAssistant struct {
 	// Format: knowledge-assistants/{knowledge_assistant_id}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
-	ProviderConfig KnowledgeAssistantProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig KnowledgeAssistantProviderConfigOutput `pulumi:"providerConfig"`
 	// (string) - State of the Knowledge Assistant. Not returned in List responses. Possible values are: `ACTIVE`, `CREATING`, `FAILED`
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -343,8 +343,8 @@ func (o KnowledgeAssistantOutput) Name() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o KnowledgeAssistantOutput) ProviderConfig() KnowledgeAssistantProviderConfigPtrOutput {
-	return o.ApplyT(func(v *KnowledgeAssistant) KnowledgeAssistantProviderConfigPtrOutput { return v.ProviderConfig }).(KnowledgeAssistantProviderConfigPtrOutput)
+func (o KnowledgeAssistantOutput) ProviderConfig() KnowledgeAssistantProviderConfigOutput {
+	return o.ApplyT(func(v *KnowledgeAssistant) KnowledgeAssistantProviderConfigOutput { return v.ProviderConfig }).(KnowledgeAssistantProviderConfigOutput)
 }
 
 // (string) - State of the Knowledge Assistant. Not returned in List responses. Possible values are: `ACTIVE`, `CREATING`, `FAILED`

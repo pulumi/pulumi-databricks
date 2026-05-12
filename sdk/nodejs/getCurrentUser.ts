@@ -41,7 +41,7 @@ export interface GetCurrentUserResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly providerConfig?: outputs.GetCurrentUserProviderConfig;
+    readonly providerConfig: outputs.GetCurrentUserProviderConfig;
     readonly repos: string;
     readonly userName: string;
     readonly workspaceUrl: string;

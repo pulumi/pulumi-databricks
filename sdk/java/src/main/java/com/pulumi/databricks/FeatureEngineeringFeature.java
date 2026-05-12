@@ -143,14 +143,14 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
      * 
      */
     @Export(name="providerConfig", refs={FeatureEngineeringFeatureProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ FeatureEngineeringFeatureProviderConfig> providerConfig;
+    private Output<FeatureEngineeringFeatureProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<FeatureEngineeringFeatureProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<FeatureEngineeringFeatureProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * The data source of the feature

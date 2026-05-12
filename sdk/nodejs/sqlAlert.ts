@@ -94,7 +94,7 @@ export class SqlAlert extends pulumi.CustomResource {
      * The identifier of the workspace folder containing the alert. The default is ther user's home folder. The folder identifier is formatted as `folder/<folder_id>`.
      */
     declare public readonly parent: pulumi.Output<string | undefined>;
-    declare public readonly providerConfig: pulumi.Output<outputs.SqlAlertProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.SqlAlertProviderConfig>;
     /**
      * ID of the query evaluated by the alert.
      */

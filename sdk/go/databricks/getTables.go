@@ -99,9 +99,9 @@ type GetTablesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// set of Table full names: *`catalog`.`schema`.`table`*
-	Ids            []string                 `pulumi:"ids"`
-	ProviderConfig *GetTablesProviderConfig `pulumi:"providerConfig"`
-	SchemaName     string                   `pulumi:"schemaName"`
+	Ids            []string                `pulumi:"ids"`
+	ProviderConfig GetTablesProviderConfig `pulumi:"providerConfig"`
+	SchemaName     string                  `pulumi:"schemaName"`
 }
 
 func GetTablesOutput(ctx *pulumi.Context, args GetTablesOutputArgs, opts ...pulumi.InvokeOption) GetTablesResultOutput {
@@ -158,8 +158,8 @@ func (o GetTablesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTablesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-func (o GetTablesResultOutput) ProviderConfig() GetTablesProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetTablesResult) *GetTablesProviderConfig { return v.ProviderConfig }).(GetTablesProviderConfigPtrOutput)
+func (o GetTablesResultOutput) ProviderConfig() GetTablesProviderConfigOutput {
+	return o.ApplyT(func(v GetTablesResult) GetTablesProviderConfig { return v.ProviderConfig }).(GetTablesProviderConfigOutput)
 }
 
 func (o GetTablesResultOutput) SchemaName() pulumi.StringOutput {

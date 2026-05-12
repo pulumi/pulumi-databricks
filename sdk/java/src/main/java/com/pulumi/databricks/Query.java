@@ -362,14 +362,14 @@ public class Query extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={QueryProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ QueryProviderConfig> providerConfig;
+    private Output<QueryProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<QueryProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<QueryProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Text of SQL query.

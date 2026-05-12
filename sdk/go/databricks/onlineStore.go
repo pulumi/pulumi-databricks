@@ -25,7 +25,7 @@ type OnlineStore struct {
 	// The name of the online store. This is the unique identifier for the online store
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
-	ProviderConfig OnlineStoreProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig OnlineStoreProviderConfigOutput `pulumi:"providerConfig"`
 	// The number of read replicas for the online store. Defaults to 0
 	ReadReplicaCount pulumi.IntPtrOutput `pulumi:"readReplicaCount"`
 	// (string) - The current state of the online store. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
@@ -243,8 +243,8 @@ func (o OnlineStoreOutput) Name() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o OnlineStoreOutput) ProviderConfig() OnlineStoreProviderConfigPtrOutput {
-	return o.ApplyT(func(v *OnlineStore) OnlineStoreProviderConfigPtrOutput { return v.ProviderConfig }).(OnlineStoreProviderConfigPtrOutput)
+func (o OnlineStoreOutput) ProviderConfig() OnlineStoreProviderConfigOutput {
+	return o.ApplyT(func(v *OnlineStore) OnlineStoreProviderConfigOutput { return v.ProviderConfig }).(OnlineStoreProviderConfigOutput)
 }
 
 // The number of read replicas for the online store. Defaults to 0

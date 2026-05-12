@@ -83,7 +83,7 @@ export interface GetSqlWarehousesResult {
      * list of databricks.SqlEndpoint ids
      */
     readonly ids: string[];
-    readonly providerConfig?: outputs.GetSqlWarehousesProviderConfig;
+    readonly providerConfig: outputs.GetSqlWarehousesProviderConfig;
     readonly warehouseNameContains?: string;
 }
 /**

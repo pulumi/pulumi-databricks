@@ -98,7 +98,7 @@ export interface GetPipelinesResult {
      */
     readonly ids: string[];
     readonly pipelineName?: string;
-    readonly providerConfig?: outputs.GetPipelinesProviderConfig;
+    readonly providerConfig: outputs.GetPipelinesProviderConfig;
 }
 /**
  * Retrieves a list of all databricks.Pipeline ([Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt)) ids deployed in a workspace, or those matching the provided search term. Maximum 100 results.

@@ -174,14 +174,14 @@ public class SqlGlobalConfig extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={SqlGlobalConfigProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ SqlGlobalConfigProviderConfig> providerConfig;
+    private Output<SqlGlobalConfigProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<SqlGlobalConfigProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<SqlGlobalConfigProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values

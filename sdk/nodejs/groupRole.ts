@@ -94,7 +94,7 @@ export class GroupRole extends pulumi.CustomResource {
      * This is the id of the group resource.
      */
     declare public readonly groupId: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.GroupRoleProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.GroupRoleProviderConfig>;
     /**
      * Either a role name or the ARN/ID of the instance profile resource.
      */

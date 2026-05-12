@@ -65,8 +65,8 @@ type GetZonesResult struct {
 	// This is the default zone that gets assigned to your workspace. This is the zone used by default for clusters and instance pools.
 	DefaultZone string `pulumi:"defaultZone"`
 	// The id for the zone object.
-	Id             string                  `pulumi:"id"`
-	ProviderConfig *GetZonesProviderConfig `pulumi:"providerConfig"`
+	Id             string                 `pulumi:"id"`
+	ProviderConfig GetZonesProviderConfig `pulumi:"providerConfig"`
 	// This is a list of all the zones available for your subnets in your Databricks workspace.
 	Zones []string `pulumi:"zones"`
 }
@@ -121,8 +121,8 @@ func (o GetZonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetZonesResultOutput) ProviderConfig() GetZonesProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetZonesResult) *GetZonesProviderConfig { return v.ProviderConfig }).(GetZonesProviderConfigPtrOutput)
+func (o GetZonesResultOutput) ProviderConfig() GetZonesProviderConfigOutput {
+	return o.ApplyT(func(v GetZonesResult) GetZonesProviderConfig { return v.ProviderConfig }).(GetZonesProviderConfigOutput)
 }
 
 // This is a list of all the zones available for your subnets in your Databricks workspace.

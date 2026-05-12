@@ -155,14 +155,14 @@ public class RfaAccessRequestDestinations extends com.pulumi.resources.CustomRes
      * 
      */
     @Export(name="providerConfig", refs={RfaAccessRequestDestinationsProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ RfaAccessRequestDestinationsProviderConfig> providerConfig;
+    private Output<RfaAccessRequestDestinationsProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<RfaAccessRequestDestinationsProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<RfaAccessRequestDestinationsProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * The securable for which the access request destinations are being modified or read

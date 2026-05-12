@@ -135,10 +135,10 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.AlertV2ProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.AlertV2ProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Purge the resource on delete
+        /// Whether to permanently delete the alert. If not set, the alert will only be soft deleted
         /// </summary>
         [Output("purgeOnDelete")]
         public Output<bool?> PurgeOnDelete { get; private set; } = null!;
@@ -262,7 +262,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.AlertV2ProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// Purge the resource on delete
+        /// Whether to permanently delete the alert. If not set, the alert will only be soft deleted
         /// </summary>
         [Input("purgeOnDelete")]
         public Input<bool>? PurgeOnDelete { get; set; }
@@ -368,7 +368,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.AlertV2ProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// Purge the resource on delete
+        /// Whether to permanently delete the alert. If not set, the alert will only be soft deleted
         /// </summary>
         [Input("purgeOnDelete")]
         public Input<bool>? PurgeOnDelete { get; set; }

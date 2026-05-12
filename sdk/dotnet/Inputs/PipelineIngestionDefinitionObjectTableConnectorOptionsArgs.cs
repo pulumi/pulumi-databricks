@@ -12,17 +12,35 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineIngestionDefinitionObjectTableConnectorOptionsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("confluenceOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsConfluenceOptionsArgs>? ConfluenceOptions { get; set; }
+
         [Input("gdriveOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptionsArgs>? GdriveOptions { get; set; }
 
         [Input("googleAdsOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptionsArgs>? GoogleAdsOptions { get; set; }
 
+        [Input("jiraOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsJiraOptionsArgs>? JiraOptions { get; set; }
+
+        [Input("metaAdsOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptionsArgs>? MetaAdsOptions { get; set; }
+
+        [Input("outlookOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptionsArgs>? OutlookOptions { get; set; }
+
         [Input("sharepointOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptionsArgs>? SharepointOptions { get; set; }
 
+        [Input("smartsheetOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSmartsheetOptionsArgs>? SmartsheetOptions { get; set; }
+
         [Input("tiktokAdsOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsTiktokAdsOptionsArgs>? TiktokAdsOptions { get; set; }
+
+        [Input("zendeskSupportOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectTableConnectorOptionsZendeskSupportOptionsArgs>? ZendeskSupportOptions { get; set; }
 
         public PipelineIngestionDefinitionObjectTableConnectorOptionsArgs()
         {

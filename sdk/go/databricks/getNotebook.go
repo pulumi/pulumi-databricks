@@ -79,9 +79,9 @@ type LookupNotebookResult struct {
 	// notebook object ID
 	ObjectId int `pulumi:"objectId"`
 	// notebook object type
-	ObjectType     string                     `pulumi:"objectType"`
-	Path           string                     `pulumi:"path"`
-	ProviderConfig *GetNotebookProviderConfig `pulumi:"providerConfig"`
+	ObjectType     string                    `pulumi:"objectType"`
+	Path           string                    `pulumi:"path"`
+	ProviderConfig GetNotebookProviderConfig `pulumi:"providerConfig"`
 	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
 	WorkspacePath string `pulumi:"workspacePath"`
 }
@@ -163,8 +163,8 @@ func (o LookupNotebookResultOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotebookResult) string { return v.Path }).(pulumi.StringOutput)
 }
 
-func (o LookupNotebookResultOutput) ProviderConfig() GetNotebookProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupNotebookResult) *GetNotebookProviderConfig { return v.ProviderConfig }).(GetNotebookProviderConfigPtrOutput)
+func (o LookupNotebookResultOutput) ProviderConfig() GetNotebookProviderConfigOutput {
+	return o.ApplyT(func(v LookupNotebookResult) GetNotebookProviderConfig { return v.ProviderConfig }).(GetNotebookProviderConfigOutput)
 }
 
 // path on Workspace File System (WSFS) in form of `/Workspace` + `path`

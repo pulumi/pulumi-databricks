@@ -109,7 +109,7 @@ type SqlEndpoint struct {
 	// ODBC connection params: `odbc_params.hostname`, `odbc_params.path`, `odbc_params.protocol`, and `odbc_params.port`.
 	OdbcParams SqlEndpointOdbcParamsOutput `pulumi:"odbcParams"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig SqlEndpointProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig SqlEndpointProviderConfigOutput `pulumi:"providerConfig"`
 	// The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.
 	SpotInstancePolicy pulumi.StringPtrOutput `pulumi:"spotInstancePolicy"`
 	// the unique ID of the SQL warehouse.
@@ -505,8 +505,8 @@ func (o SqlEndpointOutput) OdbcParams() SqlEndpointOdbcParamsOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o SqlEndpointOutput) ProviderConfig() SqlEndpointProviderConfigPtrOutput {
-	return o.ApplyT(func(v *SqlEndpoint) SqlEndpointProviderConfigPtrOutput { return v.ProviderConfig }).(SqlEndpointProviderConfigPtrOutput)
+func (o SqlEndpointOutput) ProviderConfig() SqlEndpointProviderConfigOutput {
+	return o.ApplyT(func(v *SqlEndpoint) SqlEndpointProviderConfigOutput { return v.ProviderConfig }).(SqlEndpointProviderConfigOutput)
 }
 
 // The spot policy to use for allocating instances to clusters: `COST_OPTIMIZED` or `RELIABILITY_OPTIMIZED`. This field is optional. Default is `COST_OPTIMIZED`.

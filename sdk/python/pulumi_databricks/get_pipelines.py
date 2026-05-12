@@ -65,7 +65,7 @@ class GetPipelinesResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetPipelinesProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetPipelinesProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
 

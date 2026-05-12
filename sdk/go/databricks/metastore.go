@@ -176,7 +176,7 @@ type Metastore struct {
 	// Privilege model version of the metastore, of the form `major.minor` (e.g., `1.0`).
 	PrivilegeModelVersion pulumi.StringOutput `pulumi:"privilegeModelVersion"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig MetastoreProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig MetastoreProviderConfigOutput `pulumi:"providerConfig"`
 	// The region of the metastore
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Path on cloud storage account, where managed `Table` are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource. If no `storageRoot` is defined for the metastore, each catalog must have a `storageRoot` defined.  **It's recommended to define `storageRoot` on the catalog level.
@@ -548,8 +548,8 @@ func (o MetastoreOutput) PrivilegeModelVersion() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o MetastoreOutput) ProviderConfig() MetastoreProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Metastore) MetastoreProviderConfigPtrOutput { return v.ProviderConfig }).(MetastoreProviderConfigPtrOutput)
+func (o MetastoreOutput) ProviderConfig() MetastoreProviderConfigOutput {
+	return o.ApplyT(func(v *Metastore) MetastoreProviderConfigOutput { return v.ProviderConfig }).(MetastoreProviderConfigOutput)
 }
 
 // The region of the metastore

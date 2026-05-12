@@ -398,7 +398,7 @@ class OnlineStore(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.OnlineStoreProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.OnlineStoreProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

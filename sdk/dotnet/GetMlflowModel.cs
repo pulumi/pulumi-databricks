@@ -413,7 +413,7 @@ namespace Pulumi.Databricks
         /// Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
         /// </summary>
         public readonly string PermissionLevel;
-        public readonly Outputs.GetMlflowModelProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetMlflowModelProviderConfigResult ProviderConfig;
         /// <summary>
         /// Array of tags associated with the model.
         /// </summary>
@@ -435,7 +435,7 @@ namespace Pulumi.Databricks
 
             string permissionLevel,
 
-            Outputs.GetMlflowModelProviderConfigResult? providerConfig,
+            Outputs.GetMlflowModelProviderConfigResult providerConfig,
 
             ImmutableArray<Outputs.GetMlflowModelTagResult> tags,
 

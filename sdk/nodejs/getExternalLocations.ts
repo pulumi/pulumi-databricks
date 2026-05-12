@@ -65,7 +65,7 @@ export interface GetExternalLocationsResult {
      * List of names of databricks.ExternalLocation in the metastore
      */
     readonly names: string[];
-    readonly providerConfig?: outputs.GetExternalLocationsProviderConfig;
+    readonly providerConfig: outputs.GetExternalLocationsProviderConfig;
 }
 /**
  * Retrieves a list of databricks.ExternalLocation objects, that were created by Pulumi or manually, so that special handling could be applied.

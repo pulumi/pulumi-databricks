@@ -521,8 +521,8 @@ type AccessControlRuleSet struct {
 	// * `accounts/{account_id}/groups/{group_id}/ruleSets/default` - access control for a specific group.
 	// * `accounts/{account_id}/budgetPolicies/{budget_policy_id}/ruleSets/default` - access control for a specific budget policy.
 	// * `accounts/{account_id}/tagPolicies/{tag_policy_id}/ruleSets/default` - access control for a specific tag policy.
-	Name           pulumi.StringOutput                         `pulumi:"name"`
-	ProviderConfig AccessControlRuleSetProviderConfigPtrOutput `pulumi:"providerConfig"`
+	Name           pulumi.StringOutput                      `pulumi:"name"`
+	ProviderConfig AccessControlRuleSetProviderConfigOutput `pulumi:"providerConfig"`
 }
 
 // NewAccessControlRuleSet registers a new resource with the given unique name, arguments, and options.
@@ -742,8 +742,8 @@ func (o AccessControlRuleSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessControlRuleSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o AccessControlRuleSetOutput) ProviderConfig() AccessControlRuleSetProviderConfigPtrOutput {
-	return o.ApplyT(func(v *AccessControlRuleSet) AccessControlRuleSetProviderConfigPtrOutput { return v.ProviderConfig }).(AccessControlRuleSetProviderConfigPtrOutput)
+func (o AccessControlRuleSetOutput) ProviderConfig() AccessControlRuleSetProviderConfigOutput {
+	return o.ApplyT(func(v *AccessControlRuleSet) AccessControlRuleSetProviderConfigOutput { return v.ProviderConfig }).(AccessControlRuleSetProviderConfigOutput)
 }
 
 type AccessControlRuleSetArrayOutput struct{ *pulumi.OutputState }

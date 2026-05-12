@@ -47,6 +47,13 @@ public final class ClusterGcpAttributesArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.bootDiskSize);
     }
 
+    @Import(name="confidentialComputeType")
+    private @Nullable Output<String> confidentialComputeType;
+
+    public Optional<Output<String>> confidentialComputeType() {
+        return Optional.ofNullable(this.confidentialComputeType);
+    }
+
     /**
      * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
      * 
@@ -133,6 +140,7 @@ public final class ClusterGcpAttributesArgs extends com.pulumi.resources.Resourc
     private ClusterGcpAttributesArgs(ClusterGcpAttributesArgs $) {
         this.availability = $.availability;
         this.bootDiskSize = $.bootDiskSize;
+        this.confidentialComputeType = $.confidentialComputeType;
         this.firstOnDemand = $.firstOnDemand;
         this.googleServiceAccount = $.googleServiceAccount;
         this.localSsdCount = $.localSsdCount;
@@ -198,6 +206,15 @@ public final class ClusterGcpAttributesArgs extends com.pulumi.resources.Resourc
          */
         public Builder bootDiskSize(Integer bootDiskSize) {
             return bootDiskSize(Output.of(bootDiskSize));
+        }
+
+        public Builder confidentialComputeType(@Nullable Output<String> confidentialComputeType) {
+            $.confidentialComputeType = confidentialComputeType;
+            return this;
+        }
+
+        public Builder confidentialComputeType(String confidentialComputeType) {
+            return confidentialComputeType(Output.of(confidentialComputeType));
         }
 
         /**

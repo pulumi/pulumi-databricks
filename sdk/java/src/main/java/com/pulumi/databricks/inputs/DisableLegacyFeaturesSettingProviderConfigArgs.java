@@ -5,20 +5,33 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DisableLegacyFeaturesSettingProviderConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DisableLegacyFeaturesSettingProviderConfigArgs Empty = new DisableLegacyFeaturesSettingProviderConfigArgs();
 
-    @Import(name="workspaceId", required=true)
-    private Output<String> workspaceId;
+    /**
+     * @deprecated
+     * workspace_id is ignored for account-only resources.
+     * 
+     */
+    @Deprecated /* workspace_id is ignored for account-only resources. */
+    @Import(name="workspaceId")
+    private @Nullable Output<String> workspaceId;
 
-    public Output<String> workspaceId() {
-        return this.workspaceId;
+    /**
+     * @deprecated
+     * workspace_id is ignored for account-only resources.
+     * 
+     */
+    @Deprecated /* workspace_id is ignored for account-only resources. */
+    public Optional<Output<String>> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     private DisableLegacyFeaturesSettingProviderConfigArgs() {}
@@ -45,19 +58,32 @@ public final class DisableLegacyFeaturesSettingProviderConfigArgs extends com.pu
             $ = new DisableLegacyFeaturesSettingProviderConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder workspaceId(Output<String> workspaceId) {
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * workspace_id is ignored for account-only resources.
+         * 
+         */
+        @Deprecated /* workspace_id is ignored for account-only resources. */
+        public Builder workspaceId(@Nullable Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * workspace_id is ignored for account-only resources.
+         * 
+         */
+        @Deprecated /* workspace_id is ignored for account-only resources. */
         public Builder workspaceId(String workspaceId) {
             return workspaceId(Output.of(workspaceId));
         }
 
         public DisableLegacyFeaturesSettingProviderConfigArgs build() {
-            if ($.workspaceId == null) {
-                throw new MissingRequiredPropertyException("DisableLegacyFeaturesSettingProviderConfigArgs", "workspaceId");
-            }
             return $;
         }
     }

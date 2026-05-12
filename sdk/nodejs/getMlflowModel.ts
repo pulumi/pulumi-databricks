@@ -129,7 +129,7 @@ export interface GetMlflowModelResult {
      * Permission level of the requesting user on the object. For what is allowed at each level, see MLflow Model permissions.
      */
     readonly permissionLevel: string;
-    readonly providerConfig?: outputs.GetMlflowModelProviderConfig;
+    readonly providerConfig: outputs.GetMlflowModelProviderConfig;
     /**
      * Array of tags associated with the model.
      */

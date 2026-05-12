@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class GetMwsWorkspacesProviderConfigArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+        /// Ignored. This data source always operates against the account configured on the provider.
         /// </summary>
         [Input("workspaceId", required: true)]
         public string WorkspaceId { get; set; } = null!;

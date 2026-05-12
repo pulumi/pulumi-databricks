@@ -30,7 +30,7 @@ type DbfsFile struct {
 	// The path of the file in which you wish to save.
 	Path pulumi.StringOutput `pulumi:"path"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig DbfsFileProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig DbfsFileProviderConfigOutput `pulumi:"providerConfig"`
 	// The full absolute path to the file. Conflicts with `contentBase64`.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
 }
@@ -240,8 +240,8 @@ func (o DbfsFileOutput) Path() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o DbfsFileOutput) ProviderConfig() DbfsFileProviderConfigPtrOutput {
-	return o.ApplyT(func(v *DbfsFile) DbfsFileProviderConfigPtrOutput { return v.ProviderConfig }).(DbfsFileProviderConfigPtrOutput)
+func (o DbfsFileOutput) ProviderConfig() DbfsFileProviderConfigOutput {
+	return o.ApplyT(func(v *DbfsFile) DbfsFileProviderConfigOutput { return v.ProviderConfig }).(DbfsFileProviderConfigOutput)
 }
 
 // The full absolute path to the file. Conflicts with `contentBase64`.

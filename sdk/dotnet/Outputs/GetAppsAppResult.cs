@@ -85,6 +85,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly string ServicePrincipalName;
         public readonly string? Space;
         public readonly ImmutableArray<Outputs.GetAppsAppTelemetryExportDestinationResult> TelemetryExportDestinations;
+        public readonly string ThumbnailUrl;
         /// <summary>
         /// The update time of the app.
         /// </summary>
@@ -150,6 +151,8 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<Outputs.GetAppsAppTelemetryExportDestinationResult> telemetryExportDestinations,
 
+            string thumbnailUrl,
+
             string updateTime,
 
             string updater,
@@ -184,6 +187,7 @@ namespace Pulumi.Databricks.Outputs
             ServicePrincipalName = servicePrincipalName;
             Space = space;
             TelemetryExportDestinations = telemetryExportDestinations;
+            ThumbnailUrl = thumbnailUrl;
             UpdateTime = updateTime;
             Updater = updater;
             Url = url;

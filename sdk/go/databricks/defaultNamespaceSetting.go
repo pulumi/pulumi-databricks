@@ -56,8 +56,8 @@ type DefaultNamespaceSetting struct {
 	// The configuration details.
 	Namespace DefaultNamespaceSettingNamespaceOutput `pulumi:"namespace"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig DefaultNamespaceSettingProviderConfigPtrOutput `pulumi:"providerConfig"`
-	SettingName    pulumi.StringOutput                            `pulumi:"settingName"`
+	ProviderConfig DefaultNamespaceSettingProviderConfigOutput `pulumi:"providerConfig"`
+	SettingName    pulumi.StringOutput                         `pulumi:"settingName"`
 }
 
 // NewDefaultNamespaceSetting registers a new resource with the given unique name, arguments, and options.
@@ -230,10 +230,8 @@ func (o DefaultNamespaceSettingOutput) Namespace() DefaultNamespaceSettingNamesp
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o DefaultNamespaceSettingOutput) ProviderConfig() DefaultNamespaceSettingProviderConfigPtrOutput {
-	return o.ApplyT(func(v *DefaultNamespaceSetting) DefaultNamespaceSettingProviderConfigPtrOutput {
-		return v.ProviderConfig
-	}).(DefaultNamespaceSettingProviderConfigPtrOutput)
+func (o DefaultNamespaceSettingOutput) ProviderConfig() DefaultNamespaceSettingProviderConfigOutput {
+	return o.ApplyT(func(v *DefaultNamespaceSetting) DefaultNamespaceSettingProviderConfigOutput { return v.ProviderConfig }).(DefaultNamespaceSettingProviderConfigOutput)
 }
 
 func (o DefaultNamespaceSettingOutput) SettingName() pulumi.StringOutput {

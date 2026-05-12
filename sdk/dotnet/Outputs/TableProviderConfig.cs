@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class TableProviderConfig
     {
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private TableProviderConfig(string workspaceId)
+        private TableProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

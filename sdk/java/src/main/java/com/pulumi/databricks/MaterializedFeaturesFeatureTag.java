@@ -32,14 +32,14 @@ public class MaterializedFeaturesFeatureTag extends com.pulumi.resources.CustomR
      * 
      */
     @Export(name="providerConfig", refs={MaterializedFeaturesFeatureTagProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ MaterializedFeaturesFeatureTagProviderConfig> providerConfig;
+    private Output<MaterializedFeaturesFeatureTagProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<MaterializedFeaturesFeatureTagProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<MaterializedFeaturesFeatureTagProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="value", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> value;

@@ -59,7 +59,7 @@ namespace Pulumi.Databricks
     ///             {
     ///                 AutoscalingLimitMinCu = 1,
     ///                 AutoscalingLimitMaxCu = 8,
-    ///                 SuspendTimeoutDuration = "300s",
+    ///                 SuspendTimeoutDuration = "86400s",
     ///             },
     ///         },
     ///     });
@@ -205,7 +205,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.PostgresProjectProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.PostgresProjectProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// If true, permanently deletes the project (hard delete).

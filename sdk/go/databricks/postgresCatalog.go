@@ -13,6 +13,91 @@ import (
 )
 
 // [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// ## Example Usage
+//
+// ### Basic Catalog Creation
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewPostgresProject(ctx, "this", &databricks.PostgresProjectArgs{
+//				ProjectId: pulumi.String("my-project"),
+//				Spec: &databricks.PostgresProjectSpecArgs{
+//					PgVersion:   pulumi.Int(17),
+//					DisplayName: pulumi.String("My Project"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			main, err := databricks.NewPostgresBranch(ctx, "main", &databricks.PostgresBranchArgs{
+//				BranchId: pulumi.String("main"),
+//				Parent:   this.Name,
+//				Spec: &databricks.PostgresBranchSpecArgs{
+//					NoExpiry: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPostgresCatalog(ctx, "this", &databricks.PostgresCatalogArgs{
+//				CatalogId: pulumi.String("my_catalog"),
+//				Spec: &databricks.PostgresCatalogSpecArgs{
+//					PostgresDatabase:        pulumi.String("my_database"),
+//					CreateDatabaseIfMissing: pulumi.Bool(true),
+//					Branch:                  main.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Catalog with Existing Database
+//
+// If the Postgres database already exists, omit `createDatabaseIfMissing`:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPostgresCatalog(ctx, "this", &databricks.PostgresCatalogArgs{
+//				CatalogId: pulumi.String("existing_db_catalog"),
+//				Spec: &databricks.PostgresCatalogSpecArgs{
+//					PostgresDatabase: pulumi.String("existing_database"),
+//					Branch:           pulumi.Any(main.Name),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type PostgresCatalog struct {
 	pulumi.CustomResourceState
 
@@ -24,7 +109,7 @@ type PostgresCatalog struct {
 	// (string) - Output only. The full resource path of the catalog.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
-	ProviderConfig PostgresCatalogProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig PostgresCatalogProviderConfigOutput `pulumi:"providerConfig"`
 	// The desired state of the Catalog
 	Spec PostgresCatalogSpecOutput `pulumi:"spec"`
 	// (CatalogCatalogStatus) - The observed state of the Catalog
@@ -236,8 +321,8 @@ func (o PostgresCatalogOutput) Name() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o PostgresCatalogOutput) ProviderConfig() PostgresCatalogProviderConfigPtrOutput {
-	return o.ApplyT(func(v *PostgresCatalog) PostgresCatalogProviderConfigPtrOutput { return v.ProviderConfig }).(PostgresCatalogProviderConfigPtrOutput)
+func (o PostgresCatalogOutput) ProviderConfig() PostgresCatalogProviderConfigOutput {
+	return o.ApplyT(func(v *PostgresCatalog) PostgresCatalogProviderConfigOutput { return v.ProviderConfig }).(PostgresCatalogProviderConfigOutput)
 }
 
 // The desired state of the Catalog

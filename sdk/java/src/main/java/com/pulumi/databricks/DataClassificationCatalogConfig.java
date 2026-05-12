@@ -155,14 +155,14 @@ public class DataClassificationCatalogConfig extends com.pulumi.resources.Custom
      * 
      */
     @Export(name="providerConfig", refs={DataClassificationCatalogConfigProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ DataClassificationCatalogConfigProviderConfig> providerConfig;
+    private Output<DataClassificationCatalogConfigProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<DataClassificationCatalogConfigProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<DataClassificationCatalogConfigProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
 
     /**

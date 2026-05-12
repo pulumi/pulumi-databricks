@@ -67,7 +67,7 @@ type WorkspaceBinding struct {
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
 	CatalogName pulumi.StringPtrOutput `pulumi:"catalogName"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig WorkspaceBindingProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig WorkspaceBindingProviderConfigOutput `pulumi:"providerConfig"`
 	// Name of securable. Change forces creation of a new resource.
 	SecurableName pulumi.StringOutput `pulumi:"securableName"`
 	// Type of securable. Can be `catalog`, `externalLocation`, `storageCredential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
@@ -271,8 +271,8 @@ func (o WorkspaceBindingOutput) CatalogName() pulumi.StringPtrOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o WorkspaceBindingOutput) ProviderConfig() WorkspaceBindingProviderConfigPtrOutput {
-	return o.ApplyT(func(v *WorkspaceBinding) WorkspaceBindingProviderConfigPtrOutput { return v.ProviderConfig }).(WorkspaceBindingProviderConfigPtrOutput)
+func (o WorkspaceBindingOutput) ProviderConfig() WorkspaceBindingProviderConfigOutput {
+	return o.ApplyT(func(v *WorkspaceBinding) WorkspaceBindingProviderConfigOutput { return v.ProviderConfig }).(WorkspaceBindingProviderConfigOutput)
 }
 
 // Name of securable. Change forces creation of a new resource.

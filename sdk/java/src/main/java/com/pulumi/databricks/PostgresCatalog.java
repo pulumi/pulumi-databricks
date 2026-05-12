@@ -14,11 +14,113 @@ import com.pulumi.databricks.outputs.PostgresCatalogProviderConfig;
 import com.pulumi.databricks.outputs.PostgresCatalogSpec;
 import com.pulumi.databricks.outputs.PostgresCatalogStatus;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
+ * ## Example Usage
+ * 
+ * ### Basic Catalog Creation
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresProject;
+ * import com.pulumi.databricks.PostgresProjectArgs;
+ * import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
+ * import com.pulumi.databricks.PostgresBranch;
+ * import com.pulumi.databricks.PostgresBranchArgs;
+ * import com.pulumi.databricks.inputs.PostgresBranchSpecArgs;
+ * import com.pulumi.databricks.PostgresCatalog;
+ * import com.pulumi.databricks.PostgresCatalogArgs;
+ * import com.pulumi.databricks.inputs.PostgresCatalogSpecArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new PostgresProject("this", PostgresProjectArgs.builder()
+ *             .projectId("my-project")
+ *             .spec(PostgresProjectSpecArgs.builder()
+ *                 .pgVersion(17)
+ *                 .displayName("My Project")
+ *                 .build())
+ *             .build());
+ * 
+ *         var main = new PostgresBranch("main", PostgresBranchArgs.builder()
+ *             .branchId("main")
+ *             .parent(this_.name())
+ *             .spec(PostgresBranchSpecArgs.builder()
+ *                 .noExpiry(true)
+ *                 .build())
+ *             .build());
+ * 
+ *         var thisPostgresCatalog = new PostgresCatalog("thisPostgresCatalog", PostgresCatalogArgs.builder()
+ *             .catalogId("my_catalog")
+ *             .spec(PostgresCatalogSpecArgs.builder()
+ *                 .postgresDatabase("my_database")
+ *                 .createDatabaseIfMissing(true)
+ *                 .branch(main.name())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Catalog with Existing Database
+ * 
+ * If the Postgres database already exists, omit `createDatabaseIfMissing`:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.PostgresCatalog;
+ * import com.pulumi.databricks.PostgresCatalogArgs;
+ * import com.pulumi.databricks.inputs.PostgresCatalogSpecArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new PostgresCatalog("this", PostgresCatalogArgs.builder()
+ *             .catalogId("existing_db_catalog")
+ *             .spec(PostgresCatalogSpecArgs.builder()
+ *                 .postgresDatabase("existing_database")
+ *                 .branch(main.name())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="databricks:index/postgresCatalog:PostgresCatalog")
@@ -72,14 +174,14 @@ public class PostgresCatalog extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={PostgresCatalogProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ PostgresCatalogProviderConfig> providerConfig;
+    private Output<PostgresCatalogProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<PostgresCatalogProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<PostgresCatalogProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * The desired state of the Catalog

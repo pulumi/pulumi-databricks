@@ -191,14 +191,6 @@ Object.defineProperty(exports, "discoveryUrl", {
     enumerable: true,
 });
 
-export declare const experimentalIsUnifiedHost: boolean | undefined;
-Object.defineProperty(exports, "experimentalIsUnifiedHost", {
-    get() {
-        return __config.getObject<boolean>("experimentalIsUnifiedHost");
-    },
-    enumerable: true,
-});
-
 export declare const googleCredentials: string | undefined;
 Object.defineProperty(exports, "googleCredentials", {
     get() {

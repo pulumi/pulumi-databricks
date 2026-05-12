@@ -436,7 +436,7 @@ namespace Pulumi.Databricks
         public readonly int? MinMemoryGb;
         public readonly bool? PhotonDriverCapable;
         public readonly bool? PhotonWorkerCapable;
-        public readonly Outputs.GetNodeTypeProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetNodeTypeProviderConfigResult ProviderConfig;
         public readonly bool? SupportPortForwarding;
 
         [OutputConstructor]
@@ -469,7 +469,7 @@ namespace Pulumi.Databricks
 
             bool? photonWorkerCapable,
 
-            Outputs.GetNodeTypeProviderConfigResult? providerConfig,
+            Outputs.GetNodeTypeProviderConfigResult providerConfig,
 
             bool? supportPortForwarding)
         {

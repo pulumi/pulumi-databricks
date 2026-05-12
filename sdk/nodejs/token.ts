@@ -84,7 +84,7 @@ export class Token extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.TokenProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.TokenProviderConfig>;
     declare public readonly tokenId: pulumi.Output<string>;
     /**
      * **Sensitive** value of the newly-created token.

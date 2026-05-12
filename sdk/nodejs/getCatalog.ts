@@ -86,7 +86,7 @@ export interface GetCatalogResult {
      * Name of the catalog
      */
     readonly name: string;
-    readonly providerConfig?: outputs.GetCatalogProviderConfig;
+    readonly providerConfig: outputs.GetCatalogProviderConfig;
 }
 /**
  * Retrieves details of a specific catalog in Unity Catalog, that were created by Pulumi or manually. Use databricks.getCatalogs to retrieve IDs of multiple catalogs from Unity Catalog

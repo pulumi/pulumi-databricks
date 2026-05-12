@@ -48,7 +48,8 @@ class DatabaseInstanceArgs:
                Input: For specifying the parent instance to create a child instance. Optional.
                Output: Only populated if provided as input to create a child instance
         :param pulumi.Input['DatabaseInstanceProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] purge_on_delete: Purge the resource on delete
+        :param pulumi.Input[_builtins.bool] purge_on_delete: Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+               of false will throw a bad request
         :param pulumi.Input[_builtins.int] retention_window_in_days: The retention window for the instance. This is the time window in days
                for which the historical data is retained. The default value is 7 days.
                Valid values are 2 to 35 days
@@ -184,7 +185,8 @@ class DatabaseInstanceArgs:
     @pulumi.getter(name="purgeOnDelete")
     def purge_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Purge the resource on delete
+        Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+        of false will throw a bad request
         """
         return pulumi.get(self, "purge_on_delete")
 
@@ -308,7 +310,8 @@ class _DatabaseInstanceState:
                Output: Only populated if provided as input to create a child instance
         :param pulumi.Input[_builtins.str] pg_version: (string) - The version of Postgres running on the instance
         :param pulumi.Input['DatabaseInstanceProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] purge_on_delete: Purge the resource on delete
+        :param pulumi.Input[_builtins.bool] purge_on_delete: Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+               of false will throw a bad request
         :param pulumi.Input[_builtins.str] read_only_dns: (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
                enable_readable_secondaries is true
         :param pulumi.Input[_builtins.str] read_write_dns: (string) - The DNS endpoint to connect to the instance for read+write access
@@ -644,7 +647,8 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="purgeOnDelete")
     def purge_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Purge the resource on delete
+        Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+        of false will throw a bad request
         """
         return pulumi.get(self, "purge_on_delete")
 
@@ -849,7 +853,8 @@ class DatabaseInstance(pulumi.CustomResource):
                Input: For specifying the parent instance to create a child instance. Optional.
                Output: Only populated if provided as input to create a child instance
         :param pulumi.Input[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] purge_on_delete: Purge the resource on delete
+        :param pulumi.Input[_builtins.bool] purge_on_delete: Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+               of false will throw a bad request
         :param pulumi.Input[_builtins.int] retention_window_in_days: The retention window for the instance. This is the time window in days
                for which the historical data is retained. The default value is 7 days.
                Valid values are 2 to 35 days
@@ -1090,7 +1095,8 @@ class DatabaseInstance(pulumi.CustomResource):
                Output: Only populated if provided as input to create a child instance
         :param pulumi.Input[_builtins.str] pg_version: (string) - The version of Postgres running on the instance
         :param pulumi.Input[Union['DatabaseInstanceProviderConfigArgs', 'DatabaseInstanceProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] purge_on_delete: Purge the resource on delete
+        :param pulumi.Input[_builtins.bool] purge_on_delete: Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+               of false will throw a bad request
         :param pulumi.Input[_builtins.str] read_only_dns: (string) - The DNS endpoint to connect to the instance for read only access. This is only available if
                enable_readable_secondaries is true
         :param pulumi.Input[_builtins.str] read_write_dns: (string) - The DNS endpoint to connect to the instance for read+write access
@@ -1313,7 +1319,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.DatabaseInstanceProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.DatabaseInstanceProviderConfig']:
         """
         Configure the provider for management through account provider.
         """
@@ -1323,7 +1329,8 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="purgeOnDelete")
     def purge_on_delete(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Purge the resource on delete
+        Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+        of false will throw a bad request
         """
         return pulumi.get(self, "purge_on_delete")
 

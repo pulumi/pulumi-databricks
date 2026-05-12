@@ -9,8 +9,6 @@ import com.pulumi.databricks.outputs.GetClusterProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterResult {
@@ -30,7 +28,7 @@ public final class GetClusterResult {
      * 
      */
     private String id;
-    private @Nullable GetClusterProviderConfig providerConfig;
+    private GetClusterProviderConfig providerConfig;
 
     private GetClusterResult() {}
     public String clusterId() {
@@ -57,8 +55,8 @@ public final class GetClusterResult {
     public String id() {
         return this.id;
     }
-    public Optional<GetClusterProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetClusterProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -74,7 +72,7 @@ public final class GetClusterResult {
         private GetClusterClusterInfo clusterInfo;
         private String clusterName;
         private String id;
-        private @Nullable GetClusterProviderConfig providerConfig;
+        private GetClusterProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -118,8 +116,10 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetClusterProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetClusterProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

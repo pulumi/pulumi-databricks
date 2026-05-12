@@ -167,7 +167,7 @@ namespace Pulumi.Databricks
         public Output<bool?> Force { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.GroupProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.GroupProviderConfig> ProviderConfig { get; private set; } = null!;
 
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;

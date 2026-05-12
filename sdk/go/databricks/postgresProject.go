@@ -69,7 +69,7 @@ import (
 //					DefaultEndpointSettings: &databricks.PostgresProjectSpecDefaultEndpointSettingsArgs{
 //						AutoscalingLimitMinCu:  pulumi.Float64(1),
 //						AutoscalingLimitMaxCu:  pulumi.Float64(8),
-//						SuspendTimeoutDuration: pulumi.String("300s"),
+//						SuspendTimeoutDuration: pulumi.String("86400s"),
 //					},
 //				},
 //			})
@@ -209,7 +209,7 @@ type PostgresProject struct {
 	// For example, `my-app` becomes `projects/my-app`
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Configure the provider for management through account provider.
-	ProviderConfig PostgresProjectProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig PostgresProjectProviderConfigOutput `pulumi:"providerConfig"`
 	// If true, permanently deletes the project (hard delete).
 	// If false or unset, performs a soft delete
 	PurgeOnDelete pulumi.BoolPtrOutput `pulumi:"purgeOnDelete"`
@@ -493,8 +493,8 @@ func (o PostgresProjectOutput) ProjectId() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o PostgresProjectOutput) ProviderConfig() PostgresProjectProviderConfigPtrOutput {
-	return o.ApplyT(func(v *PostgresProject) PostgresProjectProviderConfigPtrOutput { return v.ProviderConfig }).(PostgresProjectProviderConfigPtrOutput)
+func (o PostgresProjectOutput) ProviderConfig() PostgresProjectProviderConfigOutput {
+	return o.ApplyT(func(v *PostgresProject) PostgresProjectProviderConfigOutput { return v.ProviderConfig }).(PostgresProjectProviderConfigOutput)
 }
 
 // If true, permanently deletes the project (hard delete).

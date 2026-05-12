@@ -223,7 +223,7 @@ namespace Pulumi.Databricks
         public Output<string> Home { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.UserProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.UserProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.

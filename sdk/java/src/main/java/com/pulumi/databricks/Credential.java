@@ -346,14 +346,14 @@ public class Credential extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={CredentialProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ CredentialProviderConfig> providerConfig;
+    private Output<CredentialProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<CredentialProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<CredentialProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.

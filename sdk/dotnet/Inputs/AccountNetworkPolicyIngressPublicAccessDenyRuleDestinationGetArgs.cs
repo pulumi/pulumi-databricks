@@ -12,15 +12,27 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accountApi")]
+        public Input<Inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountApiGetArgs>? AccountApi { get; set; }
+
+        [Input("accountDatabricksOne")]
+        public Input<Inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOneGetArgs>? AccountDatabricksOne { get; set; }
+
+        [Input("accountUi")]
+        public Input<Inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountUiGetArgs>? AccountUi { get; set; }
+
         [Input("allDestinations")]
         public Input<bool>? AllDestinations { get; set; }
+
+        [Input("appsRuntime")]
+        public Input<Inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAppsRuntimeGetArgs>? AppsRuntime { get; set; }
+
+        [Input("lakebaseRuntime")]
+        public Input<Inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationLakebaseRuntimeGetArgs>? LakebaseRuntime { get; set; }
 
         [Input("workspaceApi")]
         public Input<Inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApiGetArgs>? WorkspaceApi { get; set; }
 
-        /// <summary>
-        /// Workspace destinations
-        /// </summary>
         [Input("workspaceUi")]
         public Input<Inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceUiGetArgs>? WorkspaceUi { get; set; }
 

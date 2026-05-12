@@ -70,7 +70,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.KnowledgeAssistantKnowledgeSourceProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.KnowledgeAssistantKnowledgeSourceProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// The type of the source: "index", "files", or "FileTable".

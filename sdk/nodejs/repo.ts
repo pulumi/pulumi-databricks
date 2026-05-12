@@ -85,7 +85,7 @@ export class Repo extends pulumi.CustomResource {
      * path to put the checked out Git folder. If not specified, , then the Git folder will be created in the default location.  If the value changes, Git folder is re-created.
      */
     declare public readonly path: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.RepoProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.RepoProviderConfig>;
     declare public readonly sparseCheckout: pulumi.Output<outputs.RepoSparseCheckout | undefined>;
     /**
      * name of the tag for initial checkout.  Conflicts with `branch`.

@@ -24,6 +24,7 @@ public final class GetServicePrincipalResult {
      * 
      */
     private Boolean active;
+    private @Nullable String api;
     /**
      * @return Application ID of the service principal.
      * 
@@ -49,7 +50,7 @@ public final class GetServicePrincipalResult {
      * 
      */
     private String id;
-    private @Nullable GetServicePrincipalProviderConfig providerConfig;
+    private GetServicePrincipalProviderConfig providerConfig;
     /**
      * @return Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      * 
@@ -76,6 +77,9 @@ public final class GetServicePrincipalResult {
      */
     public Boolean active() {
         return this.active;
+    }
+    public Optional<String> api() {
+        return Optional.ofNullable(this.api);
     }
     /**
      * @return Application ID of the service principal.
@@ -112,8 +116,8 @@ public final class GetServicePrincipalResult {
     public String id() {
         return this.id;
     }
-    public Optional<GetServicePrincipalProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetServicePrincipalProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     /**
      * @return Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
@@ -144,12 +148,13 @@ public final class GetServicePrincipalResult {
     public static final class Builder {
         private String aclPrincipalId;
         private Boolean active;
+        private @Nullable String api;
         private String applicationId;
         private String displayName;
         private String externalId;
         private String home;
         private String id;
-        private @Nullable GetServicePrincipalProviderConfig providerConfig;
+        private GetServicePrincipalProviderConfig providerConfig;
         private String repos;
         private String scimId;
         private String spId;
@@ -158,6 +163,7 @@ public final class GetServicePrincipalResult {
     	      Objects.requireNonNull(defaults);
     	      this.aclPrincipalId = defaults.aclPrincipalId;
     	      this.active = defaults.active;
+    	      this.api = defaults.api;
     	      this.applicationId = defaults.applicationId;
     	      this.displayName = defaults.displayName;
     	      this.externalId = defaults.externalId;
@@ -183,6 +189,12 @@ public final class GetServicePrincipalResult {
               throw new MissingRequiredPropertyException("GetServicePrincipalResult", "active");
             }
             this.active = active;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder api(@Nullable String api) {
+
+            this.api = api;
             return this;
         }
         @CustomType.Setter
@@ -226,8 +238,10 @@ public final class GetServicePrincipalResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetServicePrincipalProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetServicePrincipalProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }
@@ -259,6 +273,7 @@ public final class GetServicePrincipalResult {
             final var _resultValue = new GetServicePrincipalResult();
             _resultValue.aclPrincipalId = aclPrincipalId;
             _resultValue.active = active;
+            _resultValue.api = api;
             _resultValue.applicationId = applicationId;
             _resultValue.displayName = displayName;
             _resultValue.externalId = externalId;

@@ -92,7 +92,7 @@ export interface GetVolumeResult {
      * the name of the volume
      */
     readonly name: string;
-    readonly providerConfig?: outputs.GetVolumeProviderConfig;
+    readonly providerConfig: outputs.GetVolumeProviderConfig;
     /**
      * `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
      */

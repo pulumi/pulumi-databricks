@@ -105,14 +105,14 @@ public class WorkspaceBinding extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={WorkspaceBindingProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ WorkspaceBindingProviderConfig> providerConfig;
+    private Output<WorkspaceBindingProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<WorkspaceBindingProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<WorkspaceBindingProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Name of securable. Change forces creation of a new resource.

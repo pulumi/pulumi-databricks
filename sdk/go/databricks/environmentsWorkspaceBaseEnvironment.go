@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // A Workspace Base Environment is a shareable specification that defines a serverless environment version and additional Python dependencies for serverless notebooks and jobs.
 //
@@ -104,7 +104,7 @@ type EnvironmentsWorkspaceBaseEnvironment struct {
 	// Format: workspace-base-environments/{workspace-base-environment}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
-	ProviderConfig EnvironmentsWorkspaceBaseEnvironmentProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig EnvironmentsWorkspaceBaseEnvironmentProviderConfigOutput `pulumi:"providerConfig"`
 	// (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
 	Status pulumi.StringOutput `pulumi:"status"`
 	// (string) - Timestamp when the environment was last updated
@@ -388,10 +388,10 @@ func (o EnvironmentsWorkspaceBaseEnvironmentOutput) Name() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o EnvironmentsWorkspaceBaseEnvironmentOutput) ProviderConfig() EnvironmentsWorkspaceBaseEnvironmentProviderConfigPtrOutput {
-	return o.ApplyT(func(v *EnvironmentsWorkspaceBaseEnvironment) EnvironmentsWorkspaceBaseEnvironmentProviderConfigPtrOutput {
+func (o EnvironmentsWorkspaceBaseEnvironmentOutput) ProviderConfig() EnvironmentsWorkspaceBaseEnvironmentProviderConfigOutput {
+	return o.ApplyT(func(v *EnvironmentsWorkspaceBaseEnvironment) EnvironmentsWorkspaceBaseEnvironmentProviderConfigOutput {
 		return v.ProviderConfig
-	}).(EnvironmentsWorkspaceBaseEnvironmentProviderConfigPtrOutput)
+	}).(EnvironmentsWorkspaceBaseEnvironmentProviderConfigOutput)
 }
 
 // (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`

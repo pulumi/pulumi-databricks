@@ -111,7 +111,7 @@ export interface GetClusterResult {
      * cluster ID
      */
     readonly id: string;
-    readonly providerConfig?: outputs.GetClusterProviderConfig;
+    readonly providerConfig: outputs.GetClusterProviderConfig;
 }
 /**
  * Retrieves information about a databricks.Cluster using its id. This could be retrieved programmatically using databricks.getClusters data source.

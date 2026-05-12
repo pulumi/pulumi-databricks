@@ -8,8 +8,6 @@ import com.pulumi.databricks.outputs.GetCurrentUserProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCurrentUserResult {
@@ -22,7 +20,7 @@ public final class GetCurrentUserResult {
      * 
      */
     private String id;
-    private @Nullable GetCurrentUserProviderConfig providerConfig;
+    private GetCurrentUserProviderConfig providerConfig;
     private String repos;
     private String userName;
     private String workspaceUrl;
@@ -47,8 +45,8 @@ public final class GetCurrentUserResult {
     public String id() {
         return this.id;
     }
-    public Optional<GetCurrentUserProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetCurrentUserProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     public String repos() {
         return this.repos;
@@ -74,7 +72,7 @@ public final class GetCurrentUserResult {
         private String externalId;
         private String home;
         private String id;
-        private @Nullable GetCurrentUserProviderConfig providerConfig;
+        private GetCurrentUserProviderConfig providerConfig;
         private String repos;
         private String userName;
         private String workspaceUrl;
@@ -133,8 +131,10 @@ public final class GetCurrentUserResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetCurrentUserProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetCurrentUserProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetCurrentUserResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

@@ -139,8 +139,8 @@ type File struct {
 	// The path of the file in which you wish to save. For example, `/Volumes/main/default/volume1/file.txt`.
 	Path pulumi.StringOutput `pulumi:"path"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig     FileProviderConfigPtrOutput `pulumi:"providerConfig"`
-	RemoteFileModified pulumi.BoolPtrOutput        `pulumi:"remoteFileModified"`
+	ProviderConfig     FileProviderConfigOutput `pulumi:"providerConfig"`
+	RemoteFileModified pulumi.BoolPtrOutput     `pulumi:"remoteFileModified"`
 	// The full absolute path to the file. Conflicts with `contentBase64`.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
 }
@@ -354,8 +354,8 @@ func (o FileOutput) Path() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o FileOutput) ProviderConfig() FileProviderConfigPtrOutput {
-	return o.ApplyT(func(v *File) FileProviderConfigPtrOutput { return v.ProviderConfig }).(FileProviderConfigPtrOutput)
+func (o FileOutput) ProviderConfig() FileProviderConfigOutput {
+	return o.ApplyT(func(v *File) FileProviderConfigOutput { return v.ProviderConfig }).(FileProviderConfigOutput)
 }
 
 func (o FileOutput) RemoteFileModified() pulumi.BoolPtrOutput {

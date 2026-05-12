@@ -74,7 +74,7 @@ export interface GetDbfsFilePathsResult {
      * returns list of objects with `path` and `fileSize` attributes in each
      */
     readonly pathLists: outputs.GetDbfsFilePathsPathList[];
-    readonly providerConfig?: outputs.GetDbfsFilePathsProviderConfig;
+    readonly providerConfig: outputs.GetDbfsFilePathsProviderConfig;
     readonly recursive: boolean;
 }
 /**

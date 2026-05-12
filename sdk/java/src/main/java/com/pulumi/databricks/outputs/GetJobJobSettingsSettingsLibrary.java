@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsLibraryCran;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsLibraryMaven;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsLibraryProviderConfig;
 import com.pulumi.databricks.outputs.GetJobJobSettingsSettingsLibraryPypi;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,7 +30,7 @@ public final class GetJobJobSettingsSettingsLibrary {
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    private @Nullable GetJobJobSettingsSettingsLibraryProviderConfig providerConfig;
+    private GetJobJobSettingsSettingsLibraryProviderConfig providerConfig;
     private @Nullable GetJobJobSettingsSettingsLibraryPypi pypi;
     private @Nullable String requirements;
     private @Nullable String whl;
@@ -57,8 +58,8 @@ public final class GetJobJobSettingsSettingsLibrary {
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Optional<GetJobJobSettingsSettingsLibraryProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetJobJobSettingsSettingsLibraryProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     public Optional<GetJobJobSettingsSettingsLibraryPypi> pypi() {
         return Optional.ofNullable(this.pypi);
@@ -83,7 +84,7 @@ public final class GetJobJobSettingsSettingsLibrary {
         private @Nullable String egg;
         private @Nullable String jar;
         private @Nullable GetJobJobSettingsSettingsLibraryMaven maven;
-        private @Nullable GetJobJobSettingsSettingsLibraryProviderConfig providerConfig;
+        private GetJobJobSettingsSettingsLibraryProviderConfig providerConfig;
         private @Nullable GetJobJobSettingsSettingsLibraryPypi pypi;
         private @Nullable String requirements;
         private @Nullable String whl;
@@ -125,8 +126,10 @@ public final class GetJobJobSettingsSettingsLibrary {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetJobJobSettingsSettingsLibraryProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetJobJobSettingsSettingsLibraryProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetJobJobSettingsSettingsLibrary", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

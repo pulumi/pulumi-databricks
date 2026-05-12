@@ -79,7 +79,7 @@ export interface GetTableResult {
      * Name of table, relative to parent schema.
      */
     readonly name: string;
-    readonly providerConfig?: outputs.GetTableProviderConfig;
+    readonly providerConfig: outputs.GetTableProviderConfig;
     /**
      * TableInfo object for a Unity Catalog table. This contains the following attributes:
      */

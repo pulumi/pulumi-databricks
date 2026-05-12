@@ -123,14 +123,14 @@ public class SqlWidget extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={SqlWidgetProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ SqlWidgetProviderConfig> providerConfig;
+    private Output<SqlWidgetProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<SqlWidgetProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<SqlWidgetProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="text", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> text;

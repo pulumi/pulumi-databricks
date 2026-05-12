@@ -76,7 +76,7 @@ export class UserInstanceProfile extends pulumi.CustomResource {
      * This is the id of the instance profile resource.
      */
     declare public readonly instanceProfileId: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.UserInstanceProfileProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.UserInstanceProfileProviderConfig>;
     /**
      * This is the id of the user resource.
      */

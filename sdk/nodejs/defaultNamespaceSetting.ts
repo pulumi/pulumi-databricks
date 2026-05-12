@@ -64,7 +64,7 @@ export class DefaultNamespaceSetting extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.DefaultNamespaceSettingProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.DefaultNamespaceSettingProviderConfig>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**

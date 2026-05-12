@@ -220,14 +220,14 @@ public class VectorSearchEndpoint extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={VectorSearchEndpointProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ VectorSearchEndpointProviderConfig> providerConfig;
+    private Output<VectorSearchEndpointProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<VectorSearchEndpointProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<VectorSearchEndpointProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="scalingInfo", refs={VectorSearchEndpointScalingInfo.class}, tree="[0]")
     private Output</* @Nullable */ VectorSearchEndpointScalingInfo> scalingInfo;

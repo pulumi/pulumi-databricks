@@ -148,7 +148,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<Outputs.SqlPermissionsPrivilegeAssignment>> PrivilegeAssignments { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.SqlPermissionsProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.SqlPermissionsProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Name of the table. Can be combined with the `Database`.

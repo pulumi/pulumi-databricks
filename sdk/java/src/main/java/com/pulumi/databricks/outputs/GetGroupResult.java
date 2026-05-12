@@ -65,7 +65,7 @@ public final class GetGroupResult {
      */
     @Deprecated /* Please use `users`, `servicePrincipals`, and `childGroups` instead */
     private List<String> members;
-    private @Nullable GetGroupProviderConfig providerConfig;
+    private GetGroupProviderConfig providerConfig;
     private @Nullable Boolean recursive;
     /**
      * @return Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
@@ -155,8 +155,8 @@ public final class GetGroupResult {
     public List<String> members() {
         return this.members;
     }
-    public Optional<GetGroupProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetGroupProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     public Optional<Boolean> recursive() {
         return Optional.ofNullable(this.recursive);
@@ -203,7 +203,7 @@ public final class GetGroupResult {
         private String id;
         private List<String> instanceProfiles;
         private List<String> members;
-        private @Nullable GetGroupProviderConfig providerConfig;
+        private GetGroupProviderConfig providerConfig;
         private @Nullable Boolean recursive;
         private List<String> servicePrincipals;
         private List<String> users;
@@ -333,8 +333,10 @@ public final class GetGroupResult {
             return members(List.of(members));
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetGroupProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetGroupProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetGroupResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

@@ -84,7 +84,7 @@ class GetDbfsFileResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetDbfsFileProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetDbfsFileProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
 

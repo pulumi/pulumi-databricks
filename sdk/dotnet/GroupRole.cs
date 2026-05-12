@@ -103,7 +103,7 @@ namespace Pulumi.Databricks
         public Output<string> GroupId { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.GroupRoleProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.GroupRoleProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Either a role name or the ARN/ID of the instance profile resource.

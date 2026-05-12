@@ -105,7 +105,7 @@ export class GitCredential extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.GitCredentialProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.GitCredentialProviderConfig>;
 
     /**
      * Create a GitCredential resource with the given unique name, arguments, and options.

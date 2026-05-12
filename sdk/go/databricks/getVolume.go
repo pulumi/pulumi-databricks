@@ -80,8 +80,8 @@ type LookupVolumeResult struct {
 	// ID of this Unity Catalog Volume in form of `<catalog>.<schema>.<name>`.
 	Id string `pulumi:"id"`
 	// the name of the volume
-	Name           string                   `pulumi:"name"`
-	ProviderConfig *GetVolumeProviderConfig `pulumi:"providerConfig"`
+	Name           string                  `pulumi:"name"`
+	ProviderConfig GetVolumeProviderConfig `pulumi:"providerConfig"`
 	// `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
 	VolumeInfo GetVolumeVolumeInfo `pulumi:"volumeInfo"`
 }
@@ -136,8 +136,8 @@ func (o LookupVolumeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupVolumeResultOutput) ProviderConfig() GetVolumeProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupVolumeResult) *GetVolumeProviderConfig { return v.ProviderConfig }).(GetVolumeProviderConfigPtrOutput)
+func (o LookupVolumeResultOutput) ProviderConfig() GetVolumeProviderConfigOutput {
+	return o.ApplyT(func(v LookupVolumeResult) GetVolumeProviderConfig { return v.ProviderConfig }).(GetVolumeProviderConfigOutput)
 }
 
 // `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:

@@ -222,7 +222,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.PermissionAssignmentProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.PermissionAssignmentProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// the application ID of service principal to assign to a workspace.

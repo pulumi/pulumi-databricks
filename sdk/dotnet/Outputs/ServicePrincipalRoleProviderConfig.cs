@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ServicePrincipalRoleProviderConfig
     {
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private ServicePrincipalRoleProviderConfig(string workspaceId)
+        private ServicePrincipalRoleProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

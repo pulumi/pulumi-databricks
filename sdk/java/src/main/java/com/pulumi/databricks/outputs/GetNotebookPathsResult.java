@@ -11,8 +11,6 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotebookPathsResult {
@@ -27,7 +25,7 @@ public final class GetNotebookPathsResult {
      */
     private List<GetNotebookPathsNotebookPathList> notebookPathLists;
     private String path;
-    private @Nullable GetNotebookPathsProviderConfig providerConfig;
+    private GetNotebookPathsProviderConfig providerConfig;
     private Boolean recursive;
 
     private GetNotebookPathsResult() {}
@@ -48,8 +46,8 @@ public final class GetNotebookPathsResult {
     public String path() {
         return this.path;
     }
-    public Optional<GetNotebookPathsProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetNotebookPathsProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     public Boolean recursive() {
         return this.recursive;
@@ -67,7 +65,7 @@ public final class GetNotebookPathsResult {
         private String id;
         private List<GetNotebookPathsNotebookPathList> notebookPathLists;
         private String path;
-        private @Nullable GetNotebookPathsProviderConfig providerConfig;
+        private GetNotebookPathsProviderConfig providerConfig;
         private Boolean recursive;
         public Builder() {}
         public Builder(GetNotebookPathsResult defaults) {
@@ -107,8 +105,10 @@ public final class GetNotebookPathsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetNotebookPathsProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetNotebookPathsProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetNotebookPathsResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

@@ -12,6 +12,37 @@ import (
 )
 
 // [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// This data source retrieves a single Postgres catalog.
+//
+// ## Example Usage
+//
+// ### Retrieve Catalog by Name
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.GetPostgresCatalog(ctx, &databricks.LookupPostgresCatalogArgs{
+//				Name: "catalogs/my_catalog",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("catalogPostgresDatabase", this.Status.PostgresDatabase)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupPostgresCatalog(ctx *pulumi.Context, args *LookupPostgresCatalogArgs, opts ...pulumi.InvokeOption) (*LookupPostgresCatalogResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPostgresCatalogResult

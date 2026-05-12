@@ -177,7 +177,7 @@ export interface GetNodeTypeResult {
     readonly minMemoryGb?: number;
     readonly photonDriverCapable?: boolean;
     readonly photonWorkerCapable?: boolean;
-    readonly providerConfig?: outputs.GetNodeTypeProviderConfig;
+    readonly providerConfig: outputs.GetNodeTypeProviderConfig;
     readonly supportPortForwarding?: boolean;
 }
 /**

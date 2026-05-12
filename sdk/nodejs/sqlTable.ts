@@ -288,7 +288,7 @@ export class SqlTable extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.SqlTableProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.SqlTableProviderConfig>;
     /**
      * Name of parent Schema relative to parent Catalog. Change forces the creation of a new resource.
      */

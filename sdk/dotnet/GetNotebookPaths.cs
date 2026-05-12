@@ -159,7 +159,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNotebookPathsNotebookPathListResult> NotebookPathLists;
         public readonly string Path;
-        public readonly Outputs.GetNotebookPathsProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetNotebookPathsProviderConfigResult ProviderConfig;
         public readonly bool Recursive;
 
         [OutputConstructor]
@@ -170,7 +170,7 @@ namespace Pulumi.Databricks
 
             string path,
 
-            Outputs.GetNotebookPathsProviderConfigResult? providerConfig,
+            Outputs.GetNotebookPathsProviderConfigResult providerConfig,
 
             bool recursive)
         {

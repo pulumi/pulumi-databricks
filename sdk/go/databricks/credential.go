@@ -184,7 +184,7 @@ type Credential struct {
 	// Username/groupname/sp applicationId of the credential owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig CredentialProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig CredentialProviderConfigOutput `pulumi:"providerConfig"`
 	// Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
 	// Indicates whether the credential is only usable for read operations. Only applicable when purpose is `STORAGE`.
@@ -546,8 +546,8 @@ func (o CredentialOutput) Owner() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o CredentialOutput) ProviderConfig() CredentialProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Credential) CredentialProviderConfigPtrOutput { return v.ProviderConfig }).(CredentialProviderConfigPtrOutput)
+func (o CredentialOutput) ProviderConfig() CredentialProviderConfigOutput {
+	return o.ApplyT(func(v *Credential) CredentialProviderConfigOutput { return v.ProviderConfig }).(CredentialProviderConfigOutput)
 }
 
 // Indicates the purpose of the credential. Can be `SERVICE` or `STORAGE`.

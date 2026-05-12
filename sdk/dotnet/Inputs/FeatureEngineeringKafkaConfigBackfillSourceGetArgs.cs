@@ -13,8 +13,15 @@ namespace Pulumi.Databricks.Inputs
     public sealed class FeatureEngineeringKafkaConfigBackfillSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Delta table source containing the historic data to backfill.
-        /// Only the delta table name is used for backfill, the entity columns and timeseries column are ignored as they are defined by the associated KafkaSource
+        /// The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
+        /// </summary>
+        [Input("deltaTableName")]
+        public Input<string>? DeltaTableName { get; set; }
+
+        /// <summary>
+        /// Deprecated: Use DeltaTableName instead. Kept for backwards compatibility.
+        /// The Delta table source containing the historical data to backfill.
+        /// Only the delta table name is used for backfill, other fields are ignored
         /// </summary>
         [Input("deltaTableSource")]
         public Input<Inputs.FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSourceGetArgs>? DeltaTableSource { get; set; }

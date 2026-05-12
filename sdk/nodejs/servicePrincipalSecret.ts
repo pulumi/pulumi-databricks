@@ -93,7 +93,7 @@ export class ServicePrincipalSecret extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.ServicePrincipalSecretProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.ServicePrincipalSecretProviderConfig>;
     /**
      * **Sensitive** Generated secret for the service principal.
      */

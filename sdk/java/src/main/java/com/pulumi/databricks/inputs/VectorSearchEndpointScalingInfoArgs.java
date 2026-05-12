@@ -16,11 +16,11 @@ public final class VectorSearchEndpointScalingInfoArgs extends com.pulumi.resour
 
     public static final VectorSearchEndpointScalingInfoArgs Empty = new VectorSearchEndpointScalingInfoArgs();
 
-    @Import(name="requestedMinQps")
-    private @Nullable Output<Integer> requestedMinQps;
+    @Import(name="requestedTargetQps")
+    private @Nullable Output<Integer> requestedTargetQps;
 
-    public Optional<Output<Integer>> requestedMinQps() {
-        return Optional.ofNullable(this.requestedMinQps);
+    public Optional<Output<Integer>> requestedTargetQps() {
+        return Optional.ofNullable(this.requestedTargetQps);
     }
 
     /**
@@ -41,7 +41,7 @@ public final class VectorSearchEndpointScalingInfoArgs extends com.pulumi.resour
     private VectorSearchEndpointScalingInfoArgs() {}
 
     private VectorSearchEndpointScalingInfoArgs(VectorSearchEndpointScalingInfoArgs $) {
-        this.requestedMinQps = $.requestedMinQps;
+        this.requestedTargetQps = $.requestedTargetQps;
         this.state = $.state;
     }
 
@@ -63,13 +63,13 @@ public final class VectorSearchEndpointScalingInfoArgs extends com.pulumi.resour
             $ = new VectorSearchEndpointScalingInfoArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder requestedMinQps(@Nullable Output<Integer> requestedMinQps) {
-            $.requestedMinQps = requestedMinQps;
+        public Builder requestedTargetQps(@Nullable Output<Integer> requestedTargetQps) {
+            $.requestedTargetQps = requestedTargetQps;
             return this;
         }
 
-        public Builder requestedMinQps(Integer requestedMinQps) {
-            return requestedMinQps(Output.of(requestedMinQps));
+        public Builder requestedTargetQps(Integer requestedTargetQps) {
+            return requestedTargetQps(Output.of(requestedTargetQps));
         }
 
         /**

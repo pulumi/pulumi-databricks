@@ -207,7 +207,7 @@ namespace Pulumi.Databricks
         /// set of databricks.Schema full names: *`Catalog`.`Schema`*
         /// </summary>
         public readonly ImmutableArray<string> Ids;
-        public readonly Outputs.GetSchemasProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetSchemasProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetSchemasResult(
@@ -217,7 +217,7 @@ namespace Pulumi.Databricks
 
             ImmutableArray<string> ids,
 
-            Outputs.GetSchemasProviderConfigResult? providerConfig)
+            Outputs.GetSchemasProviderConfigResult providerConfig)
         {
             CatalogName = catalogName;
             Id = id;

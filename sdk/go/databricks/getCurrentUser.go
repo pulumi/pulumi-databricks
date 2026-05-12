@@ -37,11 +37,11 @@ type GetCurrentUserResult struct {
 	ExternalId     string `pulumi:"externalId"`
 	Home           string `pulumi:"home"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string                        `pulumi:"id"`
-	ProviderConfig *GetCurrentUserProviderConfig `pulumi:"providerConfig"`
-	Repos          string                        `pulumi:"repos"`
-	UserName       string                        `pulumi:"userName"`
-	WorkspaceUrl   string                        `pulumi:"workspaceUrl"`
+	Id             string                       `pulumi:"id"`
+	ProviderConfig GetCurrentUserProviderConfig `pulumi:"providerConfig"`
+	Repos          string                       `pulumi:"repos"`
+	UserName       string                       `pulumi:"userName"`
+	WorkspaceUrl   string                       `pulumi:"workspaceUrl"`
 }
 
 func GetCurrentUserOutput(ctx *pulumi.Context, args GetCurrentUserOutputArgs, opts ...pulumi.InvokeOption) GetCurrentUserResultOutput {
@@ -99,8 +99,8 @@ func (o GetCurrentUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCurrentUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetCurrentUserResultOutput) ProviderConfig() GetCurrentUserProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetCurrentUserResult) *GetCurrentUserProviderConfig { return v.ProviderConfig }).(GetCurrentUserProviderConfigPtrOutput)
+func (o GetCurrentUserResultOutput) ProviderConfig() GetCurrentUserProviderConfigOutput {
+	return o.ApplyT(func(v GetCurrentUserResult) GetCurrentUserProviderConfig { return v.ProviderConfig }).(GetCurrentUserProviderConfigOutput)
 }
 
 func (o GetCurrentUserResultOutput) Repos() pulumi.StringOutput {

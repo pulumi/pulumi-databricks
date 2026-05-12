@@ -73,7 +73,7 @@ export interface GetStorageCredentialResult {
      */
     readonly id: string;
     readonly name: string;
-    readonly providerConfig?: outputs.GetStorageCredentialProviderConfig;
+    readonly providerConfig: outputs.GetStorageCredentialProviderConfig;
     /**
      * array of objects with information about storage credential.
      */

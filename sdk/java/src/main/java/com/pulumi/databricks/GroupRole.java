@@ -158,10 +158,10 @@ public class GroupRole extends com.pulumi.resources.CustomResource {
         return this.groupId;
     }
     @Export(name="providerConfig", refs={GroupRoleProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ GroupRoleProviderConfig> providerConfig;
+    private Output<GroupRoleProviderConfig> providerConfig;
 
-    public Output<Optional<GroupRoleProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<GroupRoleProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Either a role name or the ARN/ID of the instance profile resource.

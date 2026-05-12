@@ -16,10 +16,10 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// ID of the workspace. Change forces creation of a new resource.
         /// </summary>
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private CatalogWorkspaceBindingProviderConfig(string workspaceId)
+        private CatalogWorkspaceBindingProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

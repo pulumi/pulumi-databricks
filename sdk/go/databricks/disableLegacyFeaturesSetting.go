@@ -75,8 +75,9 @@ type DisableLegacyFeaturesSetting struct {
 	// block with following attributes:
 	DisableLegacyFeatures DisableLegacyFeaturesSettingDisableLegacyFeaturesOutput `pulumi:"disableLegacyFeatures"`
 	Etag                  pulumi.StringOutput                                     `pulumi:"etag"`
-	ProviderConfig        DisableLegacyFeaturesSettingProviderConfigPtrOutput     `pulumi:"providerConfig"`
-	SettingName           pulumi.StringOutput                                     `pulumi:"settingName"`
+	// Deprecated: provider_config has no effect on this account-only resource and will be removed in a future major release.
+	ProviderConfig DisableLegacyFeaturesSettingProviderConfigOutput `pulumi:"providerConfig"`
+	SettingName    pulumi.StringOutput                              `pulumi:"settingName"`
 }
 
 // NewDisableLegacyFeaturesSetting registers a new resource with the given unique name, arguments, and options.
@@ -115,16 +116,18 @@ type disableLegacyFeaturesSettingState struct {
 	// block with following attributes:
 	DisableLegacyFeatures *DisableLegacyFeaturesSettingDisableLegacyFeatures `pulumi:"disableLegacyFeatures"`
 	Etag                  *string                                            `pulumi:"etag"`
-	ProviderConfig        *DisableLegacyFeaturesSettingProviderConfig        `pulumi:"providerConfig"`
-	SettingName           *string                                            `pulumi:"settingName"`
+	// Deprecated: provider_config has no effect on this account-only resource and will be removed in a future major release.
+	ProviderConfig *DisableLegacyFeaturesSettingProviderConfig `pulumi:"providerConfig"`
+	SettingName    *string                                     `pulumi:"settingName"`
 }
 
 type DisableLegacyFeaturesSettingState struct {
 	// block with following attributes:
 	DisableLegacyFeatures DisableLegacyFeaturesSettingDisableLegacyFeaturesPtrInput
 	Etag                  pulumi.StringPtrInput
-	ProviderConfig        DisableLegacyFeaturesSettingProviderConfigPtrInput
-	SettingName           pulumi.StringPtrInput
+	// Deprecated: provider_config has no effect on this account-only resource and will be removed in a future major release.
+	ProviderConfig DisableLegacyFeaturesSettingProviderConfigPtrInput
+	SettingName    pulumi.StringPtrInput
 }
 
 func (DisableLegacyFeaturesSettingState) ElementType() reflect.Type {
@@ -135,8 +138,9 @@ type disableLegacyFeaturesSettingArgs struct {
 	// block with following attributes:
 	DisableLegacyFeatures DisableLegacyFeaturesSettingDisableLegacyFeatures `pulumi:"disableLegacyFeatures"`
 	Etag                  *string                                           `pulumi:"etag"`
-	ProviderConfig        *DisableLegacyFeaturesSettingProviderConfig       `pulumi:"providerConfig"`
-	SettingName           *string                                           `pulumi:"settingName"`
+	// Deprecated: provider_config has no effect on this account-only resource and will be removed in a future major release.
+	ProviderConfig *DisableLegacyFeaturesSettingProviderConfig `pulumi:"providerConfig"`
+	SettingName    *string                                     `pulumi:"settingName"`
 }
 
 // The set of arguments for constructing a DisableLegacyFeaturesSetting resource.
@@ -144,8 +148,9 @@ type DisableLegacyFeaturesSettingArgs struct {
 	// block with following attributes:
 	DisableLegacyFeatures DisableLegacyFeaturesSettingDisableLegacyFeaturesInput
 	Etag                  pulumi.StringPtrInput
-	ProviderConfig        DisableLegacyFeaturesSettingProviderConfigPtrInput
-	SettingName           pulumi.StringPtrInput
+	// Deprecated: provider_config has no effect on this account-only resource and will be removed in a future major release.
+	ProviderConfig DisableLegacyFeaturesSettingProviderConfigPtrInput
+	SettingName    pulumi.StringPtrInput
 }
 
 func (DisableLegacyFeaturesSettingArgs) ElementType() reflect.Type {
@@ -246,10 +251,11 @@ func (o DisableLegacyFeaturesSettingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *DisableLegacyFeaturesSetting) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-func (o DisableLegacyFeaturesSettingOutput) ProviderConfig() DisableLegacyFeaturesSettingProviderConfigPtrOutput {
-	return o.ApplyT(func(v *DisableLegacyFeaturesSetting) DisableLegacyFeaturesSettingProviderConfigPtrOutput {
+// Deprecated: provider_config has no effect on this account-only resource and will be removed in a future major release.
+func (o DisableLegacyFeaturesSettingOutput) ProviderConfig() DisableLegacyFeaturesSettingProviderConfigOutput {
+	return o.ApplyT(func(v *DisableLegacyFeaturesSetting) DisableLegacyFeaturesSettingProviderConfigOutput {
 		return v.ProviderConfig
-	}).(DisableLegacyFeaturesSettingProviderConfigPtrOutput)
+	}).(DisableLegacyFeaturesSettingProviderConfigOutput)
 }
 
 func (o DisableLegacyFeaturesSettingOutput) SettingName() pulumi.StringOutput {

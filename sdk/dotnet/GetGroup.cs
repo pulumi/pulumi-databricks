@@ -471,7 +471,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly ImmutableArray<string> InstanceProfiles;
         public readonly ImmutableArray<string> Members;
-        public readonly Outputs.GetGroupProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetGroupProviderConfigResult ProviderConfig;
         public readonly bool? Recursive;
         /// <summary>
         /// Set of databricks.ServicePrincipal identifiers, that can be modified with databricks.GroupMember resource.
@@ -510,7 +510,7 @@ namespace Pulumi.Databricks
 
             ImmutableArray<string> members,
 
-            Outputs.GetGroupProviderConfigResult? providerConfig,
+            Outputs.GetGroupProviderConfigResult providerConfig,
 
             bool? recursive,
 

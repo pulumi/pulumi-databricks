@@ -13,7 +13,6 @@ import com.pulumi.databricks.inputs.AibiDashboardEmbeddingAccessPolicySettingSta
 import com.pulumi.databricks.outputs.AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy;
 import com.pulumi.databricks.outputs.AibiDashboardEmbeddingAccessPolicySettingProviderConfig;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -91,14 +90,14 @@ public class AibiDashboardEmbeddingAccessPolicySetting extends com.pulumi.resour
      * 
      */
     @Export(name="providerConfig", refs={AibiDashboardEmbeddingAccessPolicySettingProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ AibiDashboardEmbeddingAccessPolicySettingProviderConfig> providerConfig;
+    private Output<AibiDashboardEmbeddingAccessPolicySettingProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<AibiDashboardEmbeddingAccessPolicySettingProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<AibiDashboardEmbeddingAccessPolicySettingProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="settingName", refs={String.class}, tree="[0]")
     private Output<String> settingName;

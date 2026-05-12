@@ -386,7 +386,7 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.WarehousesDefaultWarehouseOverrideProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.WarehousesDefaultWarehouseOverrideProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

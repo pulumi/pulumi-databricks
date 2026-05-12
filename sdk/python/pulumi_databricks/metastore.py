@@ -1083,7 +1083,7 @@ class Metastore(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.MetastoreProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.MetastoreProviderConfig']:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """

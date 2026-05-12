@@ -76,7 +76,7 @@ export class WorkspaceBinding extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceBindingProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceBindingProviderConfig>;
     /**
      * Name of securable. Change forces creation of a new resource.
      */

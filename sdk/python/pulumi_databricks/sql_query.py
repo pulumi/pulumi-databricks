@@ -768,7 +768,7 @@ class SqlQuery(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.SqlQueryProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.SqlQueryProviderConfig']:
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

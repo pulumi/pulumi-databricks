@@ -55,7 +55,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.SystemSchemaProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.SystemSchemaProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// name of the system schema.

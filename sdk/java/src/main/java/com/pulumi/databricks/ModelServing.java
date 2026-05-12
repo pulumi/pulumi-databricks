@@ -351,14 +351,14 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={ModelServingProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ModelServingProviderConfig> providerConfig;
+    private Output<ModelServingProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<ModelServingProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<ModelServingProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*

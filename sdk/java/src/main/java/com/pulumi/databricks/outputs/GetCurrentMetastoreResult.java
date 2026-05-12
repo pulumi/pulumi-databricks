@@ -9,8 +9,6 @@ import com.pulumi.databricks.outputs.GetCurrentMetastoreProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCurrentMetastoreResult {
@@ -24,7 +22,7 @@ public final class GetCurrentMetastoreResult {
      * 
      */
     private GetCurrentMetastoreMetastoreInfo metastoreInfo;
-    private @Nullable GetCurrentMetastoreProviderConfig providerConfig;
+    private GetCurrentMetastoreProviderConfig providerConfig;
 
     private GetCurrentMetastoreResult() {}
     /**
@@ -41,8 +39,8 @@ public final class GetCurrentMetastoreResult {
     public GetCurrentMetastoreMetastoreInfo metastoreInfo() {
         return this.metastoreInfo;
     }
-    public Optional<GetCurrentMetastoreProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetCurrentMetastoreProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -56,7 +54,7 @@ public final class GetCurrentMetastoreResult {
     public static final class Builder {
         private String id;
         private GetCurrentMetastoreMetastoreInfo metastoreInfo;
-        private @Nullable GetCurrentMetastoreProviderConfig providerConfig;
+        private GetCurrentMetastoreProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetCurrentMetastoreResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -82,8 +80,10 @@ public final class GetCurrentMetastoreResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetCurrentMetastoreProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetCurrentMetastoreProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetCurrentMetastoreResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

@@ -75,7 +75,7 @@ export class MetastoreAssignment extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.MetastoreAssignmentProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.MetastoreAssignmentProviderConfig>;
     /**
      * id of the workspace for the assignment
      */

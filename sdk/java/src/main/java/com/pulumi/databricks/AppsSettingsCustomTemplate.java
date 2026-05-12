@@ -281,14 +281,14 @@ public class AppsSettingsCustomTemplate extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="providerConfig", refs={AppsSettingsCustomTemplateProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ AppsSettingsCustomTemplateProviderConfig> providerConfig;
+    private Output<AppsSettingsCustomTemplateProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<AppsSettingsCustomTemplateProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<AppsSettingsCustomTemplateProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
 
     /**

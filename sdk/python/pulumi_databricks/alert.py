@@ -945,7 +945,7 @@ class Alert(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.AlertProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.AlertProviderConfig']:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """

@@ -74,7 +74,7 @@ export class DisableLegacyAccessSetting extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.DisableLegacyAccessSettingProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.DisableLegacyAccessSettingProviderConfig>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**

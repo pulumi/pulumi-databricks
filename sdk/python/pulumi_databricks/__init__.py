@@ -43,6 +43,8 @@ from .directory import *
 from .disable_legacy_access_setting import *
 from .disable_legacy_dbfs_setting import *
 from .disable_legacy_features_setting import *
+from .disaster_recovery_failover_group import *
+from .disaster_recovery_stable_url import *
 from .endpoint import *
 from .enhanced_security_monitoring_workspace_setting import *
 from .entitlements import *
@@ -99,6 +101,10 @@ from .get_database_synced_database_tables import *
 from .get_dbfs_file import *
 from .get_dbfs_file_paths import *
 from .get_directory import *
+from .get_disaster_recovery_failover_group import *
+from .get_disaster_recovery_failover_groups import *
+from .get_disaster_recovery_stable_url import *
+from .get_disaster_recovery_stable_urls import *
 from .get_endpoint import *
 from .get_endpoints import *
 from .get_entity_tag_assignment import *
@@ -165,6 +171,8 @@ from .get_registered_model_versions import *
 from .get_rfa_access_request_destinations import *
 from .get_schema import *
 from .get_schemas import *
+from .get_secret_uc import *
+from .get_secret_ucs import *
 from .get_service_principal import *
 from .get_service_principal_federation_policies import *
 from .get_service_principal_federation_policy import *
@@ -177,6 +185,10 @@ from .get_sql_warehouse import *
 from .get_sql_warehouses import *
 from .get_storage_credential import *
 from .get_storage_credentials import *
+from .get_supervisor_agent import *
+from .get_supervisor_agent_tool import *
+from .get_supervisor_agent_tools import *
+from .get_supervisor_agents import *
 from .get_table import *
 from .get_tables import *
 from .get_tag_policies import *
@@ -261,6 +273,7 @@ from .schema import *
 from .secret import *
 from .secret_acl import *
 from .secret_scope import *
+from .secret_uc import *
 from .service_principal import *
 from .service_principal_federation_policy import *
 from .service_principal_role import *
@@ -276,6 +289,8 @@ from .sql_table import *
 from .sql_visualization import *
 from .sql_widget import *
 from .storage_credential import *
+from .supervisor_agent import *
+from .supervisor_agent_tool import *
 from .system_schema import *
 from .table import *
 from .tag_policy import *
@@ -600,6 +615,22 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting": "DisableLegacyFeaturesSetting"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/disasterRecoveryFailoverGroup",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/disasterRecoveryFailoverGroup:DisasterRecoveryFailoverGroup": "DisasterRecoveryFailoverGroup"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/disasterRecoveryStableUrl",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/disasterRecoveryStableUrl:DisasterRecoveryStableUrl": "DisasterRecoveryStableUrl"
   }
  },
  {
@@ -1236,6 +1267,14 @@ _utilities.register(
  },
  {
   "pkg": "databricks",
+  "mod": "index/secretUc",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/secretUc:SecretUc": "SecretUc"
+  }
+ },
+ {
+  "pkg": "databricks",
   "mod": "index/servicePrincipal",
   "fqn": "pulumi_databricks",
   "classes": {
@@ -1352,6 +1391,22 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/storageCredential:StorageCredential": "StorageCredential"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/supervisorAgent",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/supervisorAgent:SupervisorAgent": "SupervisorAgent"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/supervisorAgentTool",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/supervisorAgentTool:SupervisorAgentTool": "SupervisorAgentTool"
   }
  },
  {

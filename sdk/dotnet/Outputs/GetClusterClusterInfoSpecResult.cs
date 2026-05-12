@@ -78,7 +78,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
-        public readonly Outputs.GetClusterClusterInfoSpecProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetClusterClusterInfoSpecProviderConfigResult ProviderConfig;
         public readonly int? RemoteDiskThroughput;
         /// <summary>
         /// The type of runtime of the cluster
@@ -163,7 +163,7 @@ namespace Pulumi.Databricks.Outputs
 
             string? policyId,
 
-            Outputs.GetClusterClusterInfoSpecProviderConfigResult? providerConfig,
+            Outputs.GetClusterClusterInfoSpecProviderConfigResult providerConfig,
 
             int? remoteDiskThroughput,
 

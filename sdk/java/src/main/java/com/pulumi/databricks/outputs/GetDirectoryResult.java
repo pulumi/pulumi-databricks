@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDirectoryResult {
@@ -21,7 +19,7 @@ public final class GetDirectoryResult {
      */
     private Integer objectId;
     private String path;
-    private @Nullable GetDirectoryProviderConfig providerConfig;
+    private GetDirectoryProviderConfig providerConfig;
     /**
      * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
      * 
@@ -42,8 +40,8 @@ public final class GetDirectoryResult {
     public String path() {
         return this.path;
     }
-    public Optional<GetDirectoryProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetDirectoryProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     /**
      * @return path on Workspace File System (WSFS) in form of `/Workspace` + `path`
@@ -65,7 +63,7 @@ public final class GetDirectoryResult {
         private String id;
         private Integer objectId;
         private String path;
-        private @Nullable GetDirectoryProviderConfig providerConfig;
+        private GetDirectoryProviderConfig providerConfig;
         private String workspacePath;
         public Builder() {}
         public Builder(GetDirectoryResult defaults) {
@@ -102,8 +100,10 @@ public final class GetDirectoryResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetDirectoryProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetDirectoryProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetDirectoryResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

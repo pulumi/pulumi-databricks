@@ -109,7 +109,7 @@ export interface GetCurrentConfigResult {
      */
     readonly id: string;
     readonly isAccount: boolean;
-    readonly providerConfig?: outputs.GetCurrentConfigProviderConfig;
+    readonly providerConfig: outputs.GetCurrentConfigProviderConfig;
 }
 /**
  * Retrieves information about the currently configured provider to make a decision, for example, add a dynamic block based on the specific cloud.

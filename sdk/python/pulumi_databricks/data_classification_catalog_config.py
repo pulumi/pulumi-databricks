@@ -413,7 +413,7 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.DataClassificationCatalogConfigProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.DataClassificationCatalogConfigProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

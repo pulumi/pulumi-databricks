@@ -314,15 +314,15 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
      * Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    @Import(name="providerConfig")
-    private @Nullable GetClusterClusterInfoSpecProviderConfig providerConfig;
+    @Import(name="providerConfig", required=true)
+    private GetClusterClusterInfoSpecProviderConfig providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Optional<GetClusterClusterInfoSpecProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetClusterClusterInfoSpecProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     @Import(name="remoteDiskThroughput")
@@ -731,7 +731,7 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
          * @return builder
          * 
          */
-        public Builder providerConfig(@Nullable GetClusterClusterInfoSpecProviderConfig providerConfig) {
+        public Builder providerConfig(GetClusterClusterInfoSpecProviderConfig providerConfig) {
             $.providerConfig = providerConfig;
             return this;
         }
@@ -855,6 +855,9 @@ public final class GetClusterClusterInfoSpec extends com.pulumi.resources.Invoke
             }
             if ($.nodeTypeId == null) {
                 throw new MissingRequiredPropertyException("GetClusterClusterInfoSpec", "nodeTypeId");
+            }
+            if ($.providerConfig == null) {
+                throw new MissingRequiredPropertyException("GetClusterClusterInfoSpec", "providerConfig");
             }
             return $;
         }

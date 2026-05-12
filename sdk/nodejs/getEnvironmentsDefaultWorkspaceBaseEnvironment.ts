@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
  *
@@ -72,7 +72,7 @@ export interface GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult {
     readonly providerConfig?: outputs.GetEnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
  *

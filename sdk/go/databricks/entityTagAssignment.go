@@ -90,7 +90,7 @@ type EntityTagAssignment struct {
 	// The type of the entity to which the tag is assigned
 	EntityType pulumi.StringOutput `pulumi:"entityType"`
 	// Configure the provider for management through account provider.
-	ProviderConfig EntityTagAssignmentProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig EntityTagAssignmentProviderConfigOutput `pulumi:"providerConfig"`
 	// (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`
 	SourceType pulumi.StringOutput `pulumi:"sourceType"`
 	// The key of the tag
@@ -308,8 +308,8 @@ func (o EntityTagAssignmentOutput) EntityType() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o EntityTagAssignmentOutput) ProviderConfig() EntityTagAssignmentProviderConfigPtrOutput {
-	return o.ApplyT(func(v *EntityTagAssignment) EntityTagAssignmentProviderConfigPtrOutput { return v.ProviderConfig }).(EntityTagAssignmentProviderConfigPtrOutput)
+func (o EntityTagAssignmentOutput) ProviderConfig() EntityTagAssignmentProviderConfigOutput {
+	return o.ApplyT(func(v *EntityTagAssignment) EntityTagAssignmentProviderConfigOutput { return v.ProviderConfig }).(EntityTagAssignmentProviderConfigOutput)
 }
 
 // (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`

@@ -10,8 +10,6 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClusterPolicyResult {
@@ -51,7 +49,7 @@ public final class GetClusterPolicyResult {
      * 
      */
     private String policyFamilyId;
-    private @Nullable GetClusterPolicyProviderConfig providerConfig;
+    private GetClusterPolicyProviderConfig providerConfig;
 
     private GetClusterPolicyResult() {}
     /**
@@ -106,8 +104,8 @@ public final class GetClusterPolicyResult {
     public String policyFamilyId() {
         return this.policyFamilyId;
     }
-    public Optional<GetClusterPolicyProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetClusterPolicyProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -127,7 +125,7 @@ public final class GetClusterPolicyResult {
         private String name;
         private String policyFamilyDefinitionOverrides;
         private String policyFamilyId;
-        private @Nullable GetClusterPolicyProviderConfig providerConfig;
+        private GetClusterPolicyProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetClusterPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -207,8 +205,10 @@ public final class GetClusterPolicyResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetClusterPolicyProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetClusterPolicyProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetClusterPolicyResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

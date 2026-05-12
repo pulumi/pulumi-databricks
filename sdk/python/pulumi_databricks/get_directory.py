@@ -65,7 +65,7 @@ class GetDirectoryResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetDirectoryProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetDirectoryProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

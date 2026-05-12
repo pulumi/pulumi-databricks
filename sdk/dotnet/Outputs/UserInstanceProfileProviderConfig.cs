@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class UserInstanceProfileProviderConfig
     {
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private UserInstanceProfileProviderConfig(string workspaceId)
+        private UserInstanceProfileProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

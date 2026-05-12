@@ -5,9 +5,10 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class NotificationDestinationProviderConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -20,8 +21,8 @@ public final class NotificationDestinationProviderConfigArgs extends com.pulumi.
      * &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
      * 
      */
-    @Import(name="workspaceId", required=true)
-    private Output<String> workspaceId;
+    @Import(name="workspaceId")
+    private @Nullable Output<String> workspaceId;
 
     /**
      * @return Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -29,8 +30,8 @@ public final class NotificationDestinationProviderConfigArgs extends com.pulumi.
      * &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
      * 
      */
-    public Output<String> workspaceId() {
-        return this.workspaceId;
+    public Optional<Output<String>> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     private NotificationDestinationProviderConfigArgs() {}
@@ -65,7 +66,7 @@ public final class NotificationDestinationProviderConfigArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder workspaceId(Output<String> workspaceId) {
+        public Builder workspaceId(@Nullable Output<String> workspaceId) {
             $.workspaceId = workspaceId;
             return this;
         }
@@ -83,9 +84,6 @@ public final class NotificationDestinationProviderConfigArgs extends com.pulumi.
         }
 
         public NotificationDestinationProviderConfigArgs build() {
-            if ($.workspaceId == null) {
-                throw new MissingRequiredPropertyException("NotificationDestinationProviderConfigArgs", "workspaceId");
-            }
             return $;
         }
     }

@@ -4,6 +4,11 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountApi;
+import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOne;
+import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountUi;
+import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAppsRuntime;
+import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationLakebaseRuntime;
 import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi;
 import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceUi;
 import java.lang.Boolean;
@@ -13,25 +18,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccountNetworkPolicyIngressPublicAccessDenyRuleDestination {
+    private @Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountApi accountApi;
+    private @Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOne accountDatabricksOne;
+    private @Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountUi accountUi;
     private @Nullable Boolean allDestinations;
+    private @Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAppsRuntime appsRuntime;
+    private @Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationLakebaseRuntime lakebaseRuntime;
     private @Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi workspaceApi;
-    /**
-     * @return Workspace destinations
-     * 
-     */
     private @Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceUi workspaceUi;
 
     private AccountNetworkPolicyIngressPublicAccessDenyRuleDestination() {}
+    public Optional<AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountApi> accountApi() {
+        return Optional.ofNullable(this.accountApi);
+    }
+    public Optional<AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOne> accountDatabricksOne() {
+        return Optional.ofNullable(this.accountDatabricksOne);
+    }
+    public Optional<AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountUi> accountUi() {
+        return Optional.ofNullable(this.accountUi);
+    }
     public Optional<Boolean> allDestinations() {
         return Optional.ofNullable(this.allDestinations);
+    }
+    public Optional<AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAppsRuntime> appsRuntime() {
+        return Optional.ofNullable(this.appsRuntime);
+    }
+    public Optional<AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationLakebaseRuntime> lakebaseRuntime() {
+        return Optional.ofNullable(this.lakebaseRuntime);
     }
     public Optional<AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi> workspaceApi() {
         return Optional.ofNullable(this.workspaceApi);
     }
-    /**
-     * @return Workspace destinations
-     * 
-     */
     public Optional<AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceUi> workspaceUi() {
         return Optional.ofNullable(this.workspaceUi);
     }
@@ -45,21 +62,61 @@ public final class AccountNetworkPolicyIngressPublicAccessDenyRuleDestination {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountApi accountApi;
+        private @Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOne accountDatabricksOne;
+        private @Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountUi accountUi;
         private @Nullable Boolean allDestinations;
+        private @Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAppsRuntime appsRuntime;
+        private @Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationLakebaseRuntime lakebaseRuntime;
         private @Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceApi workspaceApi;
         private @Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationWorkspaceUi workspaceUi;
         public Builder() {}
         public Builder(AccountNetworkPolicyIngressPublicAccessDenyRuleDestination defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accountApi = defaults.accountApi;
+    	      this.accountDatabricksOne = defaults.accountDatabricksOne;
+    	      this.accountUi = defaults.accountUi;
     	      this.allDestinations = defaults.allDestinations;
+    	      this.appsRuntime = defaults.appsRuntime;
+    	      this.lakebaseRuntime = defaults.lakebaseRuntime;
     	      this.workspaceApi = defaults.workspaceApi;
     	      this.workspaceUi = defaults.workspaceUi;
         }
 
         @CustomType.Setter
+        public Builder accountApi(@Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountApi accountApi) {
+
+            this.accountApi = accountApi;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder accountDatabricksOne(@Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOne accountDatabricksOne) {
+
+            this.accountDatabricksOne = accountDatabricksOne;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder accountUi(@Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountUi accountUi) {
+
+            this.accountUi = accountUi;
+            return this;
+        }
+        @CustomType.Setter
         public Builder allDestinations(@Nullable Boolean allDestinations) {
 
             this.allDestinations = allDestinations;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder appsRuntime(@Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAppsRuntime appsRuntime) {
+
+            this.appsRuntime = appsRuntime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lakebaseRuntime(@Nullable AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationLakebaseRuntime lakebaseRuntime) {
+
+            this.lakebaseRuntime = lakebaseRuntime;
             return this;
         }
         @CustomType.Setter
@@ -76,7 +133,12 @@ public final class AccountNetworkPolicyIngressPublicAccessDenyRuleDestination {
         }
         public AccountNetworkPolicyIngressPublicAccessDenyRuleDestination build() {
             final var _resultValue = new AccountNetworkPolicyIngressPublicAccessDenyRuleDestination();
+            _resultValue.accountApi = accountApi;
+            _resultValue.accountDatabricksOne = accountDatabricksOne;
+            _resultValue.accountUi = accountUi;
             _resultValue.allDestinations = allDestinations;
+            _resultValue.appsRuntime = appsRuntime;
+            _resultValue.lakebaseRuntime = lakebaseRuntime;
             _resultValue.workspaceApi = workspaceApi;
             _resultValue.workspaceUi = workspaceUi;
             return _resultValue;

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VectorSearchEndpointScalingInfo {
-    private @Nullable Integer requestedMinQps;
+    private @Nullable Integer requestedTargetQps;
     /**
      * @return Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
      * 
@@ -20,8 +20,8 @@ public final class VectorSearchEndpointScalingInfo {
     private @Nullable String state;
 
     private VectorSearchEndpointScalingInfo() {}
-    public Optional<Integer> requestedMinQps() {
-        return Optional.ofNullable(this.requestedMinQps);
+    public Optional<Integer> requestedTargetQps() {
+        return Optional.ofNullable(this.requestedTargetQps);
     }
     /**
      * @return Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
@@ -40,19 +40,19 @@ public final class VectorSearchEndpointScalingInfo {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer requestedMinQps;
+        private @Nullable Integer requestedTargetQps;
         private @Nullable String state;
         public Builder() {}
         public Builder(VectorSearchEndpointScalingInfo defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.requestedMinQps = defaults.requestedMinQps;
+    	      this.requestedTargetQps = defaults.requestedTargetQps;
     	      this.state = defaults.state;
         }
 
         @CustomType.Setter
-        public Builder requestedMinQps(@Nullable Integer requestedMinQps) {
+        public Builder requestedTargetQps(@Nullable Integer requestedTargetQps) {
 
-            this.requestedMinQps = requestedMinQps;
+            this.requestedTargetQps = requestedTargetQps;
             return this;
         }
         @CustomType.Setter
@@ -63,7 +63,7 @@ public final class VectorSearchEndpointScalingInfo {
         }
         public VectorSearchEndpointScalingInfo build() {
             final var _resultValue = new VectorSearchEndpointScalingInfo();
-            _resultValue.requestedMinQps = requestedMinQps;
+            _resultValue.requestedTargetQps = requestedTargetQps;
             _resultValue.state = state;
             return _resultValue;
         }

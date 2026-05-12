@@ -8,6 +8,100 @@ import * as utilities from "./utilities";
 
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * ## Example Usage
+ *
+ * ### Basic Synced Table with Snapshot Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.PostgresProject("this", {
+ *     projectId: "my-project",
+ *     spec: {
+ *         pgVersion: 17,
+ *         displayName: "My Project",
+ *     },
+ * });
+ * const main = new databricks.PostgresBranch("main", {
+ *     branchId: "main",
+ *     parent: _this.name,
+ *     spec: {
+ *         noExpiry: true,
+ *     },
+ * });
+ * const thisPostgresCatalog = new databricks.PostgresCatalog("this", {
+ *     catalogId: "app_catalog",
+ *     spec: {
+ *         postgresDatabase: "app_db",
+ *         createDatabaseIfMissing: true,
+ *         branch: main.name,
+ *     },
+ * });
+ * const thisPostgresSyncedTable = new databricks.PostgresSyncedTable("this", {
+ *     syncedTableId: "app_catalog.default.users_synced",
+ *     spec: {
+ *         sourceTableFullName: "main.default.users",
+ *         primaryKeyColumns: ["user_id"],
+ *         schedulingPolicy: "SNAPSHOT",
+ *         postgresDatabase: "app_db",
+ *         branch: main.name,
+ *         createDatabaseObjectsIfMissing: true,
+ *         newPipelineSpec: {
+ *             storageCatalog: "main",
+ *             storageSchema: "default",
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Synced Table with Triggered Policy
+ *
+ * Use `TRIGGERED` for on-demand updates. Requires Change Data Feed (CDF) enabled on the source table.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const triggered = new databricks.PostgresSyncedTable("triggered", {
+ *     syncedTableId: "app_catalog.default.orders_synced",
+ *     spec: {
+ *         sourceTableFullName: "main.default.orders",
+ *         primaryKeyColumns: ["order_id"],
+ *         schedulingPolicy: "TRIGGERED",
+ *         postgresDatabase: "app_db",
+ *         branch: main.name,
+ *         createDatabaseObjectsIfMissing: true,
+ *         newPipelineSpec: {
+ *             storageCatalog: "main",
+ *             storageSchema: "default",
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ### Synced Table with Existing Pipeline
+ *
+ * Bin-pack into an existing pipeline instead of creating a new one:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = new databricks.PostgresSyncedTable("this", {
+ *     syncedTableId: "app_catalog.default.products_synced",
+ *     spec: {
+ *         sourceTableFullName: "main.default.products",
+ *         primaryKeyColumns: ["product_id"],
+ *         schedulingPolicy: "SNAPSHOT",
+ *         postgresDatabase: "app_db",
+ *         branch: main.name,
+ *         createDatabaseObjectsIfMissing: true,
+ *         existingPipelineId: "abc123-def456",
+ *     },
+ * });
+ * ```
  */
 export class PostgresSyncedTable extends pulumi.CustomResource {
     /**
@@ -49,7 +143,7 @@ export class PostgresSyncedTable extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.PostgresSyncedTableProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.PostgresSyncedTableProviderConfig>;
     /**
      * Configuration details of the synced table, such as the source table, scheduling policy, etc.
      * This attribute is specified at creation time and most fields are returned as is on subsequent queries

@@ -8,6 +8,22 @@ import * as utilities from "./utilities";
 
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source retrieves a single Postgres synced table.
+ *
+ * ## Example Usage
+ *
+ * ### Retrieve Synced Table by Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getPostgresSyncedTable({
+ *     name: "synced_tables/my_catalog.my_schema.my_synced_table",
+ * });
+ * export const syncedTableState = _this.then(_this => _this.status?.detailedState);
+ * ```
  */
 export function getPostgresSyncedTable(args: GetPostgresSyncedTableArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresSyncedTableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -70,6 +86,22 @@ export interface GetPostgresSyncedTableResult {
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source retrieves a single Postgres synced table.
+ *
+ * ## Example Usage
+ *
+ * ### Retrieve Synced Table by Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getPostgresSyncedTable({
+ *     name: "synced_tables/my_catalog.my_schema.my_synced_table",
+ * });
+ * export const syncedTableState = _this.then(_this => _this.status?.detailedState);
+ * ```
  */
 export function getPostgresSyncedTableOutput(args: GetPostgresSyncedTableOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresSyncedTableResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -92,7 +92,7 @@ export class VectorSearchIndex extends pulumi.CustomResource {
      * The column name that will be used as a primary key.
      */
     declare public readonly primaryKey: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.VectorSearchIndexProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.VectorSearchIndexProviderConfig>;
     /**
      * Object describing the current status of the index consisting of the following fields:
      */

@@ -192,6 +192,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetServicePrincipalsArgs : global::Pulumi.InvokeArgs
     {
+        [Input("api")]
+        public string? Api { get; set; }
+
         [Input("applicationIds")]
         private List<string>? _applicationIds;
 
@@ -236,6 +239,9 @@ namespace Pulumi.Databricks
 
     public sealed class GetServicePrincipalsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("api")]
+        public Input<string>? Api { get; set; }
+
         [Input("applicationIds")]
         private InputList<string>? _applicationIds;
 
@@ -282,6 +288,7 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetServicePrincipalsResult
     {
+        public readonly string? Api;
         /// <summary>
         /// List of `ApplicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `ServicePrincipals` attribute.
         /// </summary>
@@ -291,7 +298,7 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly Outputs.GetServicePrincipalsProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetServicePrincipalsProviderConfigResult ProviderConfig;
         /// <summary>
         /// List of objects describing individual service principals. Each object has the following attributes:
         /// </summary>
@@ -299,16 +306,19 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetServicePrincipalsResult(
+            string? api,
+
             ImmutableArray<string> applicationIds,
 
             string displayNameContains,
 
             string id,
 
-            Outputs.GetServicePrincipalsProviderConfigResult? providerConfig,
+            Outputs.GetServicePrincipalsProviderConfigResult providerConfig,
 
             ImmutableArray<Outputs.GetServicePrincipalsServicePrincipalResult> servicePrincipals)
         {
+            Api = api;
             ApplicationIds = applicationIds;
             DisplayNameContains = displayNameContains;
             Id = id;

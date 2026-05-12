@@ -32,7 +32,7 @@ type FeatureEngineeringMaterializedFeature struct {
 	// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState pulumi.StringPtrOutput `pulumi:"pipelineScheduleState"`
 	// Configure the provider for management through account provider.
-	ProviderConfig FeatureEngineeringMaterializedFeatureProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig FeatureEngineeringMaterializedFeatureProviderConfigOutput `pulumi:"providerConfig"`
 	// (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
 	TableName pulumi.StringOutput `pulumi:"tableName"`
 }
@@ -279,10 +279,10 @@ func (o FeatureEngineeringMaterializedFeatureOutput) PipelineScheduleState() pul
 }
 
 // Configure the provider for management through account provider.
-func (o FeatureEngineeringMaterializedFeatureOutput) ProviderConfig() FeatureEngineeringMaterializedFeatureProviderConfigPtrOutput {
-	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) FeatureEngineeringMaterializedFeatureProviderConfigPtrOutput {
+func (o FeatureEngineeringMaterializedFeatureOutput) ProviderConfig() FeatureEngineeringMaterializedFeatureProviderConfigOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) FeatureEngineeringMaterializedFeatureProviderConfigOutput {
 		return v.ProviderConfig
-	}).(FeatureEngineeringMaterializedFeatureProviderConfigPtrOutput)
+	}).(FeatureEngineeringMaterializedFeatureProviderConfigOutput)
 }
 
 // (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only

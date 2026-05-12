@@ -955,7 +955,7 @@ export class Permissions extends pulumi.CustomResource {
      */
     declare public readonly objectType: pulumi.Output<string>;
     declare public readonly pipelineId: pulumi.Output<string | undefined>;
-    declare public readonly providerConfig: pulumi.Output<outputs.PermissionsProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.PermissionsProviderConfig>;
     declare public readonly registeredModelId: pulumi.Output<string | undefined>;
     declare public readonly repoId: pulumi.Output<string | undefined>;
     declare public readonly repoPath: pulumi.Output<string | undefined>;

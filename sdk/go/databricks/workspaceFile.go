@@ -26,7 +26,7 @@ type WorkspaceFile struct {
 	// The absolute path of the workspace file, beginning with "/", e.g. "/Demo".
 	Path pulumi.StringOutput `pulumi:"path"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig WorkspaceFileProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig WorkspaceFileProviderConfigOutput `pulumi:"providerConfig"`
 	// Path to file on local filesystem. Conflicts with `contentBase64`.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
 	// Routable URL of the workspace file
@@ -243,8 +243,8 @@ func (o WorkspaceFileOutput) Path() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o WorkspaceFileOutput) ProviderConfig() WorkspaceFileProviderConfigPtrOutput {
-	return o.ApplyT(func(v *WorkspaceFile) WorkspaceFileProviderConfigPtrOutput { return v.ProviderConfig }).(WorkspaceFileProviderConfigPtrOutput)
+func (o WorkspaceFileOutput) ProviderConfig() WorkspaceFileProviderConfigOutput {
+	return o.ApplyT(func(v *WorkspaceFile) WorkspaceFileProviderConfigOutput { return v.ProviderConfig }).(WorkspaceFileProviderConfigOutput)
 }
 
 // Path to file on local filesystem. Conflicts with `contentBase64`.

@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AutomaticClusterUpdateWorkspaceSettingProviderConfig
     {
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private AutomaticClusterUpdateWorkspaceSettingProviderConfig(string workspaceId)
+        private AutomaticClusterUpdateWorkspaceSettingProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

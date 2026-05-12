@@ -57,7 +57,7 @@ class GetStorageCredentialResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetStorageCredentialProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetStorageCredentialProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

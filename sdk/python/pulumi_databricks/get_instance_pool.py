@@ -65,7 +65,7 @@ class GetInstancePoolResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetInstancePoolProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetInstancePoolProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
 

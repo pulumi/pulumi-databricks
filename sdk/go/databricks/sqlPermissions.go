@@ -140,7 +140,7 @@ type SqlPermissions struct {
 	// Name of the database. Has a default value of `default`.
 	Database             pulumi.StringPtrOutput                       `pulumi:"database"`
 	PrivilegeAssignments SqlPermissionsPrivilegeAssignmentArrayOutput `pulumi:"privilegeAssignments"`
-	ProviderConfig       SqlPermissionsProviderConfigPtrOutput        `pulumi:"providerConfig"`
+	ProviderConfig       SqlPermissionsProviderConfigOutput           `pulumi:"providerConfig"`
 	// Name of the table. Can be combined with the `database`.
 	Table pulumi.StringPtrOutput `pulumi:"table"`
 	// Name of the view. Can be combined with the `database`.
@@ -491,8 +491,8 @@ func (o SqlPermissionsOutput) PrivilegeAssignments() SqlPermissionsPrivilegeAssi
 	return o.ApplyT(func(v *SqlPermissions) SqlPermissionsPrivilegeAssignmentArrayOutput { return v.PrivilegeAssignments }).(SqlPermissionsPrivilegeAssignmentArrayOutput)
 }
 
-func (o SqlPermissionsOutput) ProviderConfig() SqlPermissionsProviderConfigPtrOutput {
-	return o.ApplyT(func(v *SqlPermissions) SqlPermissionsProviderConfigPtrOutput { return v.ProviderConfig }).(SqlPermissionsProviderConfigPtrOutput)
+func (o SqlPermissionsOutput) ProviderConfig() SqlPermissionsProviderConfigOutput {
+	return o.ApplyT(func(v *SqlPermissions) SqlPermissionsProviderConfigOutput { return v.ProviderConfig }).(SqlPermissionsProviderConfigOutput)
 }
 
 // Name of the table. Can be combined with the `database`.

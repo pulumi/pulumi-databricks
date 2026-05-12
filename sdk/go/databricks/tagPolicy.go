@@ -69,8 +69,8 @@ type TagPolicy struct {
 	CreateTime  pulumi.StringOutput    `pulumi:"createTime"`
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Configure the provider for management through account provider.
-	ProviderConfig TagPolicyProviderConfigPtrOutput `pulumi:"providerConfig"`
-	TagKey         pulumi.StringOutput              `pulumi:"tagKey"`
+	ProviderConfig TagPolicyProviderConfigOutput `pulumi:"providerConfig"`
+	TagKey         pulumi.StringOutput           `pulumi:"tagKey"`
 	// (string) - Timestamp when the tag policy was last updated
 	UpdateTime pulumi.StringOutput       `pulumi:"updateTime"`
 	Values     TagPolicyValueArrayOutput `pulumi:"values"`
@@ -250,8 +250,8 @@ func (o TagPolicyOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o TagPolicyOutput) ProviderConfig() TagPolicyProviderConfigPtrOutput {
-	return o.ApplyT(func(v *TagPolicy) TagPolicyProviderConfigPtrOutput { return v.ProviderConfig }).(TagPolicyProviderConfigPtrOutput)
+func (o TagPolicyOutput) ProviderConfig() TagPolicyProviderConfigOutput {
+	return o.ApplyT(func(v *TagPolicy) TagPolicyProviderConfigOutput { return v.ProviderConfig }).(TagPolicyProviderConfigOutput)
 }
 
 func (o TagPolicyOutput) TagKey() pulumi.StringOutput {

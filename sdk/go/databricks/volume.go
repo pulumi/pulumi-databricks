@@ -120,7 +120,7 @@ type Volume struct {
 	// Name of the volume owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig VolumeProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig VolumeProviderConfigOutput `pulumi:"providerConfig"`
 	// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.
 	SchemaName pulumi.StringOutput `pulumi:"schemaName"`
 	// URL for the volume (should be inside of an existing External Location). Only used for `EXTERNAL` Volumes.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). Change forces creation of a new resource.
@@ -362,8 +362,8 @@ func (o VolumeOutput) Owner() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o VolumeOutput) ProviderConfig() VolumeProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Volume) VolumeProviderConfigPtrOutput { return v.ProviderConfig }).(VolumeProviderConfigPtrOutput)
+func (o VolumeOutput) ProviderConfig() VolumeProviderConfigOutput {
+	return o.ApplyT(func(v *Volume) VolumeProviderConfigOutput { return v.ProviderConfig }).(VolumeProviderConfigOutput)
 }
 
 // Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.

@@ -167,9 +167,9 @@ type Group struct {
 	// ID of the group in an external identity provider.
 	ExternalId pulumi.StringPtrOutput `pulumi:"externalId"`
 	// Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
-	Force          pulumi.BoolPtrOutput         `pulumi:"force"`
-	ProviderConfig GroupProviderConfigPtrOutput `pulumi:"providerConfig"`
-	Url            pulumi.StringOutput          `pulumi:"url"`
+	Force          pulumi.BoolPtrOutput      `pulumi:"force"`
+	ProviderConfig GroupProviderConfigOutput `pulumi:"providerConfig"`
+	Url            pulumi.StringOutput       `pulumi:"url"`
 	// This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).
 	WorkspaceAccess pulumi.BoolPtrOutput `pulumi:"workspaceAccess"`
 	// This is a field to allow the group to have access only to [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).  Couldn't be used with `workspaceAccess` or `databricksSqlAccess`.
@@ -437,8 +437,8 @@ func (o GroupOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
-func (o GroupOutput) ProviderConfig() GroupProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Group) GroupProviderConfigPtrOutput { return v.ProviderConfig }).(GroupProviderConfigPtrOutput)
+func (o GroupOutput) ProviderConfig() GroupProviderConfigOutput {
+	return o.ApplyT(func(v *Group) GroupProviderConfigOutput { return v.ProviderConfig }).(GroupProviderConfigOutput)
 }
 
 func (o GroupOutput) Url() pulumi.StringOutput {

@@ -215,7 +215,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.ClusterProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.ClusterProviderConfig>;
     declare public readonly remoteDiskThroughput: pulumi.Output<number | undefined>;
     /**
      * The type of runtime engine to use. If not specified, the runtime engine type is inferred based on the sparkVersion value. Allowed values include: `PHOTON`, `STANDARD`.

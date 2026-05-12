@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetAccountNetworkPolicyIngressPrivateAccess;
 import com.pulumi.databricks.outputs.GetAccountNetworkPolicyIngressPublicAccess;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,14 +13,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountNetworkPolicyIngress {
     /**
-     * @return (CustomerFacingIngressNetworkPolicyPublicAccess)
+     * @return (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
+     * Configures how registered private endpoints are allowed or denied access
+     * 
+     */
+    private @Nullable GetAccountNetworkPolicyIngressPrivateAccess privateAccess;
+    /**
+     * @return (CustomerFacingIngressNetworkPolicyPublicAccess) - The network policy restrictions for public access to the workspace.
+     * Configures how public internet traffic is allowed or denied access
      * 
      */
     private @Nullable GetAccountNetworkPolicyIngressPublicAccess publicAccess;
 
     private GetAccountNetworkPolicyIngress() {}
     /**
-     * @return (CustomerFacingIngressNetworkPolicyPublicAccess)
+     * @return (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
+     * Configures how registered private endpoints are allowed or denied access
+     * 
+     */
+    public Optional<GetAccountNetworkPolicyIngressPrivateAccess> privateAccess() {
+        return Optional.ofNullable(this.privateAccess);
+    }
+    /**
+     * @return (CustomerFacingIngressNetworkPolicyPublicAccess) - The network policy restrictions for public access to the workspace.
+     * Configures how public internet traffic is allowed or denied access
      * 
      */
     public Optional<GetAccountNetworkPolicyIngressPublicAccess> publicAccess() {
@@ -35,13 +52,21 @@ public final class GetAccountNetworkPolicyIngress {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetAccountNetworkPolicyIngressPrivateAccess privateAccess;
         private @Nullable GetAccountNetworkPolicyIngressPublicAccess publicAccess;
         public Builder() {}
         public Builder(GetAccountNetworkPolicyIngress defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.privateAccess = defaults.privateAccess;
     	      this.publicAccess = defaults.publicAccess;
         }
 
+        @CustomType.Setter
+        public Builder privateAccess(@Nullable GetAccountNetworkPolicyIngressPrivateAccess privateAccess) {
+
+            this.privateAccess = privateAccess;
+            return this;
+        }
         @CustomType.Setter
         public Builder publicAccess(@Nullable GetAccountNetworkPolicyIngressPublicAccess publicAccess) {
 
@@ -50,6 +75,7 @@ public final class GetAccountNetworkPolicyIngress {
         }
         public GetAccountNetworkPolicyIngress build() {
             final var _resultValue = new GetAccountNetworkPolicyIngress();
+            _resultValue.privateAccess = privateAccess;
             _resultValue.publicAccess = publicAccess;
             return _resultValue;
         }

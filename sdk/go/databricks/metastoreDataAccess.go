@@ -130,9 +130,9 @@ type MetastoreDataAccess struct {
 	Name          pulumi.StringOutput  `pulumi:"name"`
 	Owner         pulumi.StringOutput  `pulumi:"owner"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig MetastoreDataAccessProviderConfigPtrOutput `pulumi:"providerConfig"`
-	ReadOnly       pulumi.BoolPtrOutput                       `pulumi:"readOnly"`
-	SkipValidation pulumi.BoolPtrOutput                       `pulumi:"skipValidation"`
+	ProviderConfig MetastoreDataAccessProviderConfigOutput `pulumi:"providerConfig"`
+	ReadOnly       pulumi.BoolPtrOutput                    `pulumi:"readOnly"`
+	SkipValidation pulumi.BoolPtrOutput                    `pulumi:"skipValidation"`
 }
 
 // NewMetastoreDataAccess registers a new resource with the given unique name, arguments, and options.
@@ -425,8 +425,8 @@ func (o MetastoreDataAccessOutput) Owner() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o MetastoreDataAccessOutput) ProviderConfig() MetastoreDataAccessProviderConfigPtrOutput {
-	return o.ApplyT(func(v *MetastoreDataAccess) MetastoreDataAccessProviderConfigPtrOutput { return v.ProviderConfig }).(MetastoreDataAccessProviderConfigPtrOutput)
+func (o MetastoreDataAccessOutput) ProviderConfig() MetastoreDataAccessProviderConfigOutput {
+	return o.ApplyT(func(v *MetastoreDataAccess) MetastoreDataAccessProviderConfigOutput { return v.ProviderConfig }).(MetastoreDataAccessProviderConfigOutput)
 }
 
 func (o MetastoreDataAccessOutput) ReadOnly() pulumi.BoolPtrOutput {

@@ -178,7 +178,7 @@ namespace Pulumi.Databricks
         public Output<string?> Parent { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.SqlQueryProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.SqlQueryProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// The text of the query to be run.

@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMlflowModelsResult {
@@ -24,7 +22,7 @@ public final class GetMlflowModelsResult {
      * 
      */
     private List<String> names;
-    private @Nullable GetMlflowModelsProviderConfig providerConfig;
+    private GetMlflowModelsProviderConfig providerConfig;
 
     private GetMlflowModelsResult() {}
     /**
@@ -41,8 +39,8 @@ public final class GetMlflowModelsResult {
     public List<String> names() {
         return this.names;
     }
-    public Optional<GetMlflowModelsProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetMlflowModelsProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -56,7 +54,7 @@ public final class GetMlflowModelsResult {
     public static final class Builder {
         private String id;
         private List<String> names;
-        private @Nullable GetMlflowModelsProviderConfig providerConfig;
+        private GetMlflowModelsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetMlflowModelsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -85,8 +83,10 @@ public final class GetMlflowModelsResult {
             return names(List.of(names));
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetMlflowModelsProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetMlflowModelsProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetMlflowModelsResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

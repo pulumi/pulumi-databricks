@@ -148,7 +148,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// This data source is account-only and has no workspace context, so `ProviderConfig` has no effect and will be removed in a future major release. The block consists of the following field:
         /// </summary>
         [Input("providerConfig")]
         public Inputs.GetMwsCredentialsProviderConfigArgs? ProviderConfig { get; set; }
@@ -174,7 +174,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Configure the provider for management through account provider. This block consists of the following fields:
+        /// This data source is account-only and has no workspace context, so `ProviderConfig` has no effect and will be removed in a future major release. The block consists of the following field:
         /// </summary>
         [Input("providerConfig")]
         public Input<Inputs.GetMwsCredentialsProviderConfigInputArgs>? ProviderConfig { get; set; }
@@ -197,7 +197,7 @@ namespace Pulumi.Databricks
         /// name-to-id map for all of the credentials in the account
         /// </summary>
         public readonly ImmutableDictionary<string, string> Ids;
-        public readonly Outputs.GetMwsCredentialsProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetMwsCredentialsProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetMwsCredentialsResult(
@@ -205,7 +205,7 @@ namespace Pulumi.Databricks
 
             ImmutableDictionary<string, string> ids,
 
-            Outputs.GetMwsCredentialsProviderConfigResult? providerConfig)
+            Outputs.GetMwsCredentialsProviderConfigResult providerConfig)
         {
             Id = id;
             Ids = ids;

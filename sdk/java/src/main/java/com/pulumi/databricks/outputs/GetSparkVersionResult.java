@@ -39,7 +39,7 @@ public final class GetSparkVersionResult {
      */
     @Deprecated /* Specify runtime_engine=""PHOTON"" in the cluster configuration */
     private @Nullable Boolean photon;
-    private @Nullable GetSparkVersionProviderConfig providerConfig;
+    private GetSparkVersionProviderConfig providerConfig;
     private @Nullable String scala;
     private @Nullable String sparkVersion;
 
@@ -87,8 +87,8 @@ public final class GetSparkVersionResult {
     public Optional<Boolean> photon() {
         return Optional.ofNullable(this.photon);
     }
-    public Optional<GetSparkVersionProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetSparkVersionProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     public Optional<String> scala() {
         return Optional.ofNullable(this.scala);
@@ -115,7 +115,7 @@ public final class GetSparkVersionResult {
         private @Nullable Boolean longTermSupport;
         private @Nullable Boolean ml;
         private @Nullable Boolean photon;
-        private @Nullable GetSparkVersionProviderConfig providerConfig;
+        private GetSparkVersionProviderConfig providerConfig;
         private @Nullable String scala;
         private @Nullable String sparkVersion;
         public Builder() {}
@@ -192,8 +192,10 @@ public final class GetSparkVersionResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetSparkVersionProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetSparkVersionProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetSparkVersionResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

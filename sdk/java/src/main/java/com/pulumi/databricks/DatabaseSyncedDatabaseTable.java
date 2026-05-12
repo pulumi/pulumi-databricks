@@ -395,14 +395,14 @@ public class DatabaseSyncedDatabaseTable extends com.pulumi.resources.CustomReso
      * 
      */
     @Export(name="providerConfig", refs={DatabaseSyncedDatabaseTableProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ DatabaseSyncedDatabaseTableProviderConfig> providerConfig;
+    private Output<DatabaseSyncedDatabaseTableProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<DatabaseSyncedDatabaseTableProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<DatabaseSyncedDatabaseTableProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="spec", refs={DatabaseSyncedDatabaseTableSpec.class}, tree="[0]")
     private Output</* @Nullable */ DatabaseSyncedDatabaseTableSpec> spec;

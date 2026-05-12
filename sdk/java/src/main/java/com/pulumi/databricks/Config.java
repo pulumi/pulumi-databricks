@@ -83,9 +83,6 @@ public final class Config {
     public Optional<String> discoveryUrl() {
         return Codegen.stringProp("discoveryUrl").config(config).get();
     }
-    public Optional<Boolean> experimentalIsUnifiedHost() {
-        return Codegen.booleanProp("experimentalIsUnifiedHost").config(config).get();
-    }
     public Optional<String> googleCredentials() {
         return Codegen.stringProp("googleCredentials").config(config).get();
     }

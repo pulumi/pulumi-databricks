@@ -65,7 +65,7 @@ export interface GetStorageCredentialsResult {
      * List of names of databricks.StorageCredential in the metastore
      */
     readonly names: string[];
-    readonly providerConfig?: outputs.GetStorageCredentialsProviderConfig;
+    readonly providerConfig: outputs.GetStorageCredentialsProviderConfig;
 }
 /**
  * Retrieves a list of databricks.StorageCredential objects, that were created by Pulumi or manually, so that special handling could be applied.

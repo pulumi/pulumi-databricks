@@ -51,7 +51,7 @@ public final class GetUserResult {
      * 
      */
     private String id;
-    private @Nullable GetUserProviderConfig providerConfig;
+    private GetUserProviderConfig providerConfig;
     /**
      * @return Personal Repos location of the user, e.g. `/Repos/mr.foo{@literal @}example.com`.
      * 
@@ -120,8 +120,8 @@ public final class GetUserResult {
     public String id() {
         return this.id;
     }
-    public Optional<GetUserProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetUserProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     /**
      * @return Personal Repos location of the user, e.g. `/Repos/mr.foo{@literal @}example.com`.
@@ -159,7 +159,7 @@ public final class GetUserResult {
         private String externalId;
         private String home;
         private String id;
-        private @Nullable GetUserProviderConfig providerConfig;
+        private GetUserProviderConfig providerConfig;
         private String repos;
         private @Nullable String userId;
         private @Nullable String userName;
@@ -252,8 +252,10 @@ public final class GetUserResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetUserProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetUserProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

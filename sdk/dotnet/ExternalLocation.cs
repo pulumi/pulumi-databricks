@@ -278,7 +278,7 @@ namespace Pulumi.Databricks
         public Output<string> Owner { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.ExternalLocationProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.ExternalLocationProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether the external location is read-only.

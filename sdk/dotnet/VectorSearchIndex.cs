@@ -99,7 +99,7 @@ namespace Pulumi.Databricks
         public Output<string> PrimaryKey { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.VectorSearchIndexProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.VectorSearchIndexProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Object describing the current status of the index consisting of the following fields:

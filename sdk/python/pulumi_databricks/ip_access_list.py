@@ -410,7 +410,7 @@ class IpAccessList(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.IpAccessListProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.IpAccessListProviderConfig']:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """

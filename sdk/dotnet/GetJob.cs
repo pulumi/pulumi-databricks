@@ -224,7 +224,7 @@ namespace Pulumi.Databricks
         /// the job name of databricks.Job if the resource was matched by id.
         /// </summary>
         public readonly string Name;
-        public readonly Outputs.GetJobProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetJobProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetJobResult(
@@ -238,7 +238,7 @@ namespace Pulumi.Databricks
 
             string name,
 
-            Outputs.GetJobProviderConfigResult? providerConfig)
+            Outputs.GetJobProviderConfigResult providerConfig)
         {
             Id = id;
             JobId = jobId;

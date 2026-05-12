@@ -43,6 +43,7 @@ func GetServicePrincipals(ctx *pulumi.Context, args *GetServicePrincipalsArgs, o
 
 // A collection of arguments for invoking getServicePrincipals.
 type GetServicePrincipalsArgs struct {
+	Api *string `pulumi:"api"`
 	// List of `applicationIds` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source or from `servicePrincipals` attribute.
 	ApplicationIds []string `pulumi:"applicationIds"`
 	// Only return ServicePrincipal display name that match the given name string
@@ -55,12 +56,13 @@ type GetServicePrincipalsArgs struct {
 
 // A collection of values returned by getServicePrincipals.
 type GetServicePrincipalsResult struct {
+	Api *string `pulumi:"api"`
 	// List of `applicationIds` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source or from `servicePrincipals` attribute.
 	ApplicationIds      []string `pulumi:"applicationIds"`
 	DisplayNameContains string   `pulumi:"displayNameContains"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string                              `pulumi:"id"`
-	ProviderConfig *GetServicePrincipalsProviderConfig `pulumi:"providerConfig"`
+	Id             string                             `pulumi:"id"`
+	ProviderConfig GetServicePrincipalsProviderConfig `pulumi:"providerConfig"`
 	// List of objects describing individual service principals. Each object has the following attributes:
 	ServicePrincipals []GetServicePrincipalsServicePrincipal `pulumi:"servicePrincipals"`
 }
@@ -76,6 +78,7 @@ func GetServicePrincipalsOutput(ctx *pulumi.Context, args GetServicePrincipalsOu
 
 // A collection of arguments for invoking getServicePrincipals.
 type GetServicePrincipalsOutputArgs struct {
+	Api pulumi.StringPtrInput `pulumi:"api"`
 	// List of `applicationIds` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source or from `servicePrincipals` attribute.
 	ApplicationIds pulumi.StringArrayInput `pulumi:"applicationIds"`
 	// Only return ServicePrincipal display name that match the given name string
@@ -105,6 +108,10 @@ func (o GetServicePrincipalsResultOutput) ToGetServicePrincipalsResultOutputWith
 	return o
 }
 
+func (o GetServicePrincipalsResultOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePrincipalsResult) *string { return v.Api }).(pulumi.StringPtrOutput)
+}
+
 // List of `applicationIds` of service principals.  Individual service principal can be retrieved using ServicePrincipal data source or from `servicePrincipals` attribute.
 func (o GetServicePrincipalsResultOutput) ApplicationIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServicePrincipalsResult) []string { return v.ApplicationIds }).(pulumi.StringArrayOutput)
@@ -119,8 +126,8 @@ func (o GetServicePrincipalsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetServicePrincipalsResultOutput) ProviderConfig() GetServicePrincipalsProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetServicePrincipalsResult) *GetServicePrincipalsProviderConfig { return v.ProviderConfig }).(GetServicePrincipalsProviderConfigPtrOutput)
+func (o GetServicePrincipalsResultOutput) ProviderConfig() GetServicePrincipalsProviderConfigOutput {
+	return o.ApplyT(func(v GetServicePrincipalsResult) GetServicePrincipalsProviderConfig { return v.ProviderConfig }).(GetServicePrincipalsProviderConfigOutput)
 }
 
 // List of objects describing individual service principals. Each object has the following attributes:

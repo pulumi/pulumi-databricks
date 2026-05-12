@@ -599,7 +599,7 @@ class AppSpace(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.AppSpaceProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.AppSpaceProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

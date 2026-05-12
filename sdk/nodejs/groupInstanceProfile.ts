@@ -83,7 +83,7 @@ export class GroupInstanceProfile extends pulumi.CustomResource {
      * This is the id of the instance profile resource.
      */
     declare public readonly instanceProfileId: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.GroupInstanceProfileProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.GroupInstanceProfileProviderConfig>;
 
     /**
      * Create a GroupInstanceProfile resource with the given unique name, arguments, and options.

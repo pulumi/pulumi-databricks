@@ -71,7 +71,7 @@ export class DisableLegacyDbfsSetting extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.DisableLegacyDbfsSettingProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.DisableLegacyDbfsSettingProviderConfig>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**

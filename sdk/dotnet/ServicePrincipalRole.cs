@@ -96,7 +96,7 @@ namespace Pulumi.Databricks
         public Output<string?> Api { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.ServicePrincipalRoleProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.ServicePrincipalRoleProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// This is the role name, role id, or instance profile resource.

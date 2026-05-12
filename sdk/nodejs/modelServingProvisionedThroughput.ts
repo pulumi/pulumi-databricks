@@ -105,7 +105,7 @@ export class ModelServingProvisionedThroughput extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.ModelServingProvisionedThroughputProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.ModelServingProvisionedThroughputProviderConfig>;
     /**
      * Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
      */

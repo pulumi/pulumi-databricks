@@ -162,7 +162,7 @@ export class PostgresRole extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.PostgresRoleProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.PostgresRoleProviderConfig>;
     /**
      * The ID to use for the Role, which will become the final component of
      * the role's resource name.

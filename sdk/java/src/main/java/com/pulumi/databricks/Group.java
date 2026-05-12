@@ -300,10 +300,10 @@ public class Group extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.force);
     }
     @Export(name="providerConfig", refs={GroupProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ GroupProviderConfig> providerConfig;
+    private Output<GroupProviderConfig> providerConfig;
 
-    public Output<Optional<GroupProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<GroupProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;

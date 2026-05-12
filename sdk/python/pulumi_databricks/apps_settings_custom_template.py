@@ -636,7 +636,7 @@ class AppsSettingsCustomTemplate(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.AppsSettingsCustomTemplateProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.AppsSettingsCustomTemplateProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

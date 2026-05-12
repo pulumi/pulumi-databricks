@@ -125,7 +125,7 @@ export class File extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.FileProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.FileProviderConfig>;
     declare public readonly remoteFileModified: pulumi.Output<boolean | undefined>;
     /**
      * The full absolute path to the file. Conflicts with `contentBase64`.

@@ -87,7 +87,7 @@ export class WarehousesDefaultWarehouseOverride extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.WarehousesDefaultWarehouseOverrideProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.WarehousesDefaultWarehouseOverrideProviderConfig>;
     /**
      * The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`
      */

@@ -78,7 +78,7 @@ type Dashboard struct {
 	ParentPath pulumi.StringOutput `pulumi:"parentPath"`
 	Path       pulumi.StringOutput `pulumi:"path"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig DashboardProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig DashboardProviderConfigOutput `pulumi:"providerConfig"`
 	// The contents of the dashboard in serialized string form. Conflicts with `filePath`.
 	SerializedDashboard pulumi.StringPtrOutput `pulumi:"serializedDashboard"`
 	UpdateTime          pulumi.StringOutput    `pulumi:"updateTime"`
@@ -391,8 +391,8 @@ func (o DashboardOutput) Path() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o DashboardOutput) ProviderConfig() DashboardProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Dashboard) DashboardProviderConfigPtrOutput { return v.ProviderConfig }).(DashboardProviderConfigPtrOutput)
+func (o DashboardOutput) ProviderConfig() DashboardProviderConfigOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardProviderConfigOutput { return v.ProviderConfig }).(DashboardProviderConfigOutput)
 }
 
 // The contents of the dashboard in serialized string form. Conflicts with `filePath`.

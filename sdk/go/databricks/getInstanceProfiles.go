@@ -65,7 +65,7 @@ type GetInstanceProfilesResult struct {
 	Id string `pulumi:"id"`
 	// Set of objects for a databricks_instance_profile. This contains the following attributes:
 	InstanceProfiles []GetInstanceProfilesInstanceProfile `pulumi:"instanceProfiles"`
-	ProviderConfig   *GetInstanceProfilesProviderConfig   `pulumi:"providerConfig"`
+	ProviderConfig   GetInstanceProfilesProviderConfig    `pulumi:"providerConfig"`
 }
 
 func GetInstanceProfilesOutput(ctx *pulumi.Context, args GetInstanceProfilesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceProfilesResultOutput {
@@ -114,8 +114,8 @@ func (o GetInstanceProfilesResultOutput) InstanceProfiles() GetInstanceProfilesI
 	return o.ApplyT(func(v GetInstanceProfilesResult) []GetInstanceProfilesInstanceProfile { return v.InstanceProfiles }).(GetInstanceProfilesInstanceProfileArrayOutput)
 }
 
-func (o GetInstanceProfilesResultOutput) ProviderConfig() GetInstanceProfilesProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetInstanceProfilesResult) *GetInstanceProfilesProviderConfig { return v.ProviderConfig }).(GetInstanceProfilesProviderConfigPtrOutput)
+func (o GetInstanceProfilesResultOutput) ProviderConfig() GetInstanceProfilesProviderConfigOutput {
+	return o.ApplyT(func(v GetInstanceProfilesResult) GetInstanceProfilesProviderConfig { return v.ProviderConfig }).(GetInstanceProfilesProviderConfigOutput)
 }
 
 func init() {

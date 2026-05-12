@@ -95,7 +95,7 @@ namespace Pulumi.Databricks
         public Output<string?> Parent { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.SqlAlertProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.SqlAlertProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// ID of the query evaluated by the alert.

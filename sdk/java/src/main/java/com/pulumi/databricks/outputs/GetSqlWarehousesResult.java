@@ -24,7 +24,7 @@ public final class GetSqlWarehousesResult {
      * 
      */
     private List<String> ids;
-    private @Nullable GetSqlWarehousesProviderConfig providerConfig;
+    private GetSqlWarehousesProviderConfig providerConfig;
     private @Nullable String warehouseNameContains;
 
     private GetSqlWarehousesResult() {}
@@ -42,8 +42,8 @@ public final class GetSqlWarehousesResult {
     public List<String> ids() {
         return this.ids;
     }
-    public Optional<GetSqlWarehousesProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetSqlWarehousesProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     public Optional<String> warehouseNameContains() {
         return Optional.ofNullable(this.warehouseNameContains);
@@ -60,7 +60,7 @@ public final class GetSqlWarehousesResult {
     public static final class Builder {
         private String id;
         private List<String> ids;
-        private @Nullable GetSqlWarehousesProviderConfig providerConfig;
+        private GetSqlWarehousesProviderConfig providerConfig;
         private @Nullable String warehouseNameContains;
         public Builder() {}
         public Builder(GetSqlWarehousesResult defaults) {
@@ -91,8 +91,10 @@ public final class GetSqlWarehousesResult {
             return ids(List.of(ids));
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetSqlWarehousesProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetSqlWarehousesProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetSqlWarehousesResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

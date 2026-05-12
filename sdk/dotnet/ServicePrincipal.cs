@@ -230,7 +230,7 @@ namespace Pulumi.Databricks
         public Output<string> Home { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.ServicePrincipalProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.ServicePrincipalProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.

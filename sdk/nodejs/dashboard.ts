@@ -95,7 +95,7 @@ export class Dashboard extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.DashboardProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.DashboardProviderConfig>;
     /**
      * The contents of the dashboard in serialized string form. Conflicts with `filePath`.
      */

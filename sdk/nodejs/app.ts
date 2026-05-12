@@ -153,6 +153,7 @@ export class App extends pulumi.CustomResource {
     declare public /*out*/ readonly servicePrincipalName: pulumi.Output<string>;
     declare public readonly space: pulumi.Output<string | undefined>;
     declare public readonly telemetryExportDestinations: pulumi.Output<outputs.AppTelemetryExportDestination[] | undefined>;
+    declare public /*out*/ readonly thumbnailUrl: pulumi.Output<string>;
     /**
      * The update time of the app.
      */
@@ -209,6 +210,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["servicePrincipalName"] = state?.servicePrincipalName;
             resourceInputs["space"] = state?.space;
             resourceInputs["telemetryExportDestinations"] = state?.telemetryExportDestinations;
+            resourceInputs["thumbnailUrl"] = state?.thumbnailUrl;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["updater"] = state?.updater;
             resourceInputs["url"] = state?.url;
@@ -243,6 +245,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["servicePrincipalClientId"] = undefined /*out*/;
             resourceInputs["servicePrincipalId"] = undefined /*out*/;
             resourceInputs["servicePrincipalName"] = undefined /*out*/;
+            resourceInputs["thumbnailUrl"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["updater"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
@@ -326,6 +329,7 @@ export interface AppState {
     servicePrincipalName?: pulumi.Input<string | undefined>;
     space?: pulumi.Input<string | undefined>;
     telemetryExportDestinations?: pulumi.Input<pulumi.Input<inputs.AppTelemetryExportDestination>[] | undefined>;
+    thumbnailUrl?: pulumi.Input<string | undefined>;
     /**
      * The update time of the app.
      */

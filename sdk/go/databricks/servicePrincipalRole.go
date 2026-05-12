@@ -110,8 +110,8 @@ type ServicePrincipalRole struct {
 	pulumi.CustomResourceState
 
 	// Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
-	Api            pulumi.StringPtrOutput                      `pulumi:"api"`
-	ProviderConfig ServicePrincipalRoleProviderConfigPtrOutput `pulumi:"providerConfig"`
+	Api            pulumi.StringPtrOutput                   `pulumi:"api"`
+	ProviderConfig ServicePrincipalRoleProviderConfigOutput `pulumi:"providerConfig"`
 	// This is the role name, role id, or instance profile resource.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// This is the id of the service principal resource.
@@ -290,8 +290,8 @@ func (o ServicePrincipalRoleOutput) Api() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipalRole) pulumi.StringPtrOutput { return v.Api }).(pulumi.StringPtrOutput)
 }
 
-func (o ServicePrincipalRoleOutput) ProviderConfig() ServicePrincipalRoleProviderConfigPtrOutput {
-	return o.ApplyT(func(v *ServicePrincipalRole) ServicePrincipalRoleProviderConfigPtrOutput { return v.ProviderConfig }).(ServicePrincipalRoleProviderConfigPtrOutput)
+func (o ServicePrincipalRoleOutput) ProviderConfig() ServicePrincipalRoleProviderConfigOutput {
+	return o.ApplyT(func(v *ServicePrincipalRole) ServicePrincipalRoleProviderConfigOutput { return v.ProviderConfig }).(ServicePrincipalRoleProviderConfigOutput)
 }
 
 // This is the role name, role id, or instance profile resource.

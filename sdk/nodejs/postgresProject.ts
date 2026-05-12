@@ -41,7 +41,7 @@ import * as utilities from "./utilities";
  *         defaultEndpointSettings: {
  *             autoscalingLimitMinCu: 1,
  *             autoscalingLimitMaxCu: 8,
- *             suspendTimeoutDuration: "300s",
+ *             suspendTimeoutDuration: "86400s",
  *         },
  *     },
  * });
@@ -173,7 +173,7 @@ export class PostgresProject extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.PostgresProjectProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.PostgresProjectProviderConfig>;
     /**
      * If true, permanently deletes the project (hard delete).
      * If false or unset, performs a soft delete

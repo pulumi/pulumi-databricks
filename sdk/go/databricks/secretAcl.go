@@ -84,7 +84,7 @@ type SecretAcl struct {
 	// principal's identifier. It can be:
 	Principal pulumi.StringOutput `pulumi:"principal"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig SecretAclProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig SecretAclProviderConfigOutput `pulumi:"providerConfig"`
 	// name of the scope
 	Scope pulumi.StringOutput `pulumi:"scope"`
 }
@@ -274,8 +274,8 @@ func (o SecretAclOutput) Principal() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o SecretAclOutput) ProviderConfig() SecretAclProviderConfigPtrOutput {
-	return o.ApplyT(func(v *SecretAcl) SecretAclProviderConfigPtrOutput { return v.ProviderConfig }).(SecretAclProviderConfigPtrOutput)
+func (o SecretAclOutput) ProviderConfig() SecretAclProviderConfigOutput {
+	return o.ApplyT(func(v *SecretAcl) SecretAclProviderConfigOutput { return v.ProviderConfig }).(SecretAclProviderConfigOutput)
 }
 
 // name of the scope

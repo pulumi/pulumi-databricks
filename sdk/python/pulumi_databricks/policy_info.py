@@ -996,7 +996,7 @@ class PolicyInfo(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.PolicyInfoProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.PolicyInfoProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

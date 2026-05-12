@@ -9,8 +9,6 @@ import com.pulumi.databricks.outputs.GetInstancePoolProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstancePoolResult {
@@ -25,7 +23,7 @@ public final class GetInstancePoolResult {
      * 
      */
     private GetInstancePoolPoolInfo poolInfo;
-    private @Nullable GetInstancePoolProviderConfig providerConfig;
+    private GetInstancePoolProviderConfig providerConfig;
 
     private GetInstancePoolResult() {}
     /**
@@ -45,8 +43,8 @@ public final class GetInstancePoolResult {
     public GetInstancePoolPoolInfo poolInfo() {
         return this.poolInfo;
     }
-    public Optional<GetInstancePoolProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetInstancePoolProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -61,7 +59,7 @@ public final class GetInstancePoolResult {
         private String id;
         private String name;
         private GetInstancePoolPoolInfo poolInfo;
-        private @Nullable GetInstancePoolProviderConfig providerConfig;
+        private GetInstancePoolProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetInstancePoolResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -96,8 +94,10 @@ public final class GetInstancePoolResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetInstancePoolProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetInstancePoolProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetInstancePoolResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

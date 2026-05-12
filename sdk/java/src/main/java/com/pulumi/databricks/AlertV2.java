@@ -227,24 +227,24 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={AlertV2ProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ AlertV2ProviderConfig> providerConfig;
+    private Output<AlertV2ProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<AlertV2ProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<AlertV2ProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
-     * Purge the resource on delete
+     * Whether to permanently delete the alert. If not set, the alert will only be soft deleted
      * 
      */
     @Export(name="purgeOnDelete", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> purgeOnDelete;
 
     /**
-     * @return Purge the resource on delete
+     * @return Whether to permanently delete the alert. If not set, the alert will only be soft deleted
      * 
      */
     public Output<Optional<Boolean>> purgeOnDelete() {

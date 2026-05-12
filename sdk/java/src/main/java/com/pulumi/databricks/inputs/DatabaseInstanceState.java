@@ -370,14 +370,16 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Purge the resource on delete
+     * Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+     * of false will throw a bad request
      * 
      */
     @Import(name="purgeOnDelete")
     private @Nullable Output<Boolean> purgeOnDelete;
 
     /**
-     * @return Purge the resource on delete
+     * @return Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+     * of false will throw a bad request
      * 
      */
     public Optional<Output<Boolean>> purgeOnDelete() {
@@ -1046,7 +1048,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param purgeOnDelete Purge the resource on delete
+         * @param purgeOnDelete Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+         * of false will throw a bad request
          * 
          * @return builder
          * 
@@ -1057,7 +1060,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param purgeOnDelete Purge the resource on delete
+         * @param purgeOnDelete Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+         * of false will throw a bad request
          * 
          * @return builder
          * 

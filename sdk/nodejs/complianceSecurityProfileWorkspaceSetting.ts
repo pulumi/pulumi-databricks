@@ -36,7 +36,7 @@ export class ComplianceSecurityProfileWorkspaceSetting extends pulumi.CustomReso
 
     declare public readonly complianceSecurityProfileWorkspace: pulumi.Output<outputs.ComplianceSecurityProfileWorkspaceSettingComplianceSecurityProfileWorkspace>;
     declare public readonly etag: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.ComplianceSecurityProfileWorkspaceSettingProviderConfig>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**

@@ -63,10 +63,10 @@ public class Table extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.properties);
     }
     @Export(name="providerConfig", refs={TableProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ TableProviderConfig> providerConfig;
+    private Output<TableProviderConfig> providerConfig;
 
-    public Output<Optional<TableProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<TableProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="schemaName", refs={String.class}, tree="[0]")
     private Output<String> schemaName;

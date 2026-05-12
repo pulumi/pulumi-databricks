@@ -90,7 +90,7 @@ export interface GetSchemaResult {
      * Name of schema, relative to parent catalog.
      */
     readonly name: string;
-    readonly providerConfig?: outputs.GetSchemaProviderConfig;
+    readonly providerConfig: outputs.GetSchemaProviderConfig;
     /**
      * `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
      */

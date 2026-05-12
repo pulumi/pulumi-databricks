@@ -524,7 +524,7 @@ class File(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.FileProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.FileProviderConfig']:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """

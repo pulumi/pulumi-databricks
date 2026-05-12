@@ -619,7 +619,7 @@ class Entitlements(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.EntitlementsProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.EntitlementsProviderConfig']:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """

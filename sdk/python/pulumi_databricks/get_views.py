@@ -68,7 +68,7 @@ class GetViewsResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetViewsProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetViewsProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

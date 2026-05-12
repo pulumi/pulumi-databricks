@@ -624,7 +624,7 @@ class PostgresRole(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.PostgresRoleProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.PostgresRoleProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

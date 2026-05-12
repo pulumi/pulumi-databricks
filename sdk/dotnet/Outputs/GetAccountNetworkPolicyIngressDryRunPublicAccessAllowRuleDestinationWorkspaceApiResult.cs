@@ -14,13 +14,21 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApiResult
     {
         /// <summary>
+        /// (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+        /// </summary>
+        public readonly string? ScopeQualifier;
+        /// <summary>
         /// (list of string)
         /// </summary>
         public readonly ImmutableArray<string> Scopes;
 
         [OutputConstructor]
-        private GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApiResult(ImmutableArray<string> scopes)
+        private GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApiResult(
+            string? scopeQualifier,
+
+            ImmutableArray<string> scopes)
         {
+            ScopeQualifier = scopeQualifier;
             Scopes = scopes;
         }
     }

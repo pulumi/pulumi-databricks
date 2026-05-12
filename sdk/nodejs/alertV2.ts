@@ -121,9 +121,9 @@ export class AlertV2 extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.AlertV2ProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.AlertV2ProviderConfig>;
     /**
-     * Purge the resource on delete
+     * Whether to permanently delete the alert. If not set, the alert will only be soft deleted
      */
     declare public readonly purgeOnDelete: pulumi.Output<boolean | undefined>;
     /**
@@ -268,7 +268,7 @@ export interface AlertV2State {
      */
     providerConfig?: pulumi.Input<inputs.AlertV2ProviderConfig | undefined>;
     /**
-     * Purge the resource on delete
+     * Whether to permanently delete the alert. If not set, the alert will only be soft deleted
      */
     purgeOnDelete?: pulumi.Input<boolean | undefined>;
     /**
@@ -326,7 +326,7 @@ export interface AlertV2Args {
      */
     providerConfig?: pulumi.Input<inputs.AlertV2ProviderConfig | undefined>;
     /**
-     * Purge the resource on delete
+     * Whether to permanently delete the alert. If not set, the alert will only be soft deleted
      */
     purgeOnDelete?: pulumi.Input<boolean | undefined>;
     /**

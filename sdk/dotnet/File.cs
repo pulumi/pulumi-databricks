@@ -137,7 +137,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.FileProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.FileProviderConfig> ProviderConfig { get; private set; } = null!;
 
         [Output("remoteFileModified")]
         public Output<bool?> RemoteFileModified { get; private set; } = null!;

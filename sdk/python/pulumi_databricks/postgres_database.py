@@ -619,7 +619,7 @@ class PostgresDatabase(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.PostgresDatabaseProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.PostgresDatabaseProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

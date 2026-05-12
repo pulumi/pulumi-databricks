@@ -18,9 +18,9 @@ import (
 //
 // ### Managing Implicitly Created Root Branch
 //
-// A root branch named `production` is implicitly created for every project. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi take ownership of the implicitly created branch and immediately apply the provided configuration to it. Support for providing a custom `branchId` will be available in later versions.
+// A root branch named `production` is implicitly created for every project. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi represent the implicitly created branch in Pulumi state and immediately apply the provided configuration to it. Support for providing a custom `branchId` will be available in later versions.
 //
-// This resource is only required if you want to apply configuration changes to the implicitly created branch.
+// Pulumi uses this resource exclusively for managing updates. It does not control creation or deletion of the branch itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual branch is unaffected, because its lifecycle is currently controlled by the parent project. The only way to remove the actual branch is to delete the project it belongs to.
 //
 // ```go
 // package main
@@ -172,7 +172,7 @@ type PostgresBranch struct {
 	// For point-in-time branching from another branch, see `status.source_branch`
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
-	ProviderConfig PostgresBranchProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig PostgresBranchProviderConfigOutput `pulumi:"providerConfig"`
 	// If true, update the branch if it already exists instead of returning an error
 	ReplaceExisting pulumi.BoolPtrOutput `pulumi:"replaceExisting"`
 	// The spec contains the branch configuration
@@ -438,8 +438,8 @@ func (o PostgresBranchOutput) Parent() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o PostgresBranchOutput) ProviderConfig() PostgresBranchProviderConfigPtrOutput {
-	return o.ApplyT(func(v *PostgresBranch) PostgresBranchProviderConfigPtrOutput { return v.ProviderConfig }).(PostgresBranchProviderConfigPtrOutput)
+func (o PostgresBranchOutput) ProviderConfig() PostgresBranchProviderConfigOutput {
+	return o.ApplyT(func(v *PostgresBranch) PostgresBranchProviderConfigOutput { return v.ProviderConfig }).(PostgresBranchProviderConfigOutput)
 }
 
 // If true, update the branch if it already exists instead of returning an error

@@ -26,7 +26,7 @@ public final class GetCurrentConfigResult {
      */
     private String id;
     private Boolean isAccount;
-    private @Nullable GetCurrentConfigProviderConfig providerConfig;
+    private GetCurrentConfigProviderConfig providerConfig;
 
     private GetCurrentConfigResult() {}
     public String accountId() {
@@ -57,8 +57,8 @@ public final class GetCurrentConfigResult {
     public Boolean isAccount() {
         return this.isAccount;
     }
-    public Optional<GetCurrentConfigProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetCurrentConfigProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -78,7 +78,7 @@ public final class GetCurrentConfigResult {
         private String host;
         private String id;
         private Boolean isAccount;
-        private @Nullable GetCurrentConfigProviderConfig providerConfig;
+        private GetCurrentConfigProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetCurrentConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -154,8 +154,10 @@ public final class GetCurrentConfigResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetCurrentConfigProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetCurrentConfigProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetCurrentConfigResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

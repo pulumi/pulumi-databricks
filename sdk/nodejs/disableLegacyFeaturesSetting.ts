@@ -76,7 +76,10 @@ export class DisableLegacyFeaturesSetting extends pulumi.CustomResource {
      */
     declare public readonly disableLegacyFeatures: pulumi.Output<outputs.DisableLegacyFeaturesSettingDisableLegacyFeatures>;
     declare public readonly etag: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.DisableLegacyFeaturesSettingProviderConfig | undefined>;
+    /**
+     * @deprecated provider_config has no effect on this account-only resource and will be removed in a future major release.
+     */
+    declare public readonly providerConfig: pulumi.Output<outputs.DisableLegacyFeaturesSettingProviderConfig>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**
@@ -120,6 +123,9 @@ export interface DisableLegacyFeaturesSettingState {
      */
     disableLegacyFeatures?: pulumi.Input<inputs.DisableLegacyFeaturesSettingDisableLegacyFeatures | undefined>;
     etag?: pulumi.Input<string | undefined>;
+    /**
+     * @deprecated provider_config has no effect on this account-only resource and will be removed in a future major release.
+     */
     providerConfig?: pulumi.Input<inputs.DisableLegacyFeaturesSettingProviderConfig | undefined>;
     settingName?: pulumi.Input<string | undefined>;
 }
@@ -133,6 +139,9 @@ export interface DisableLegacyFeaturesSettingArgs {
      */
     disableLegacyFeatures: pulumi.Input<inputs.DisableLegacyFeaturesSettingDisableLegacyFeatures>;
     etag?: pulumi.Input<string | undefined>;
+    /**
+     * @deprecated provider_config has no effect on this account-only resource and will be removed in a future major release.
+     */
     providerConfig?: pulumi.Input<inputs.DisableLegacyFeaturesSettingProviderConfig | undefined>;
     settingName?: pulumi.Input<string | undefined>;
 }

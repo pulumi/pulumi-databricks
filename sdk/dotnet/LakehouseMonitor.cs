@@ -225,7 +225,7 @@ namespace Pulumi.Databricks
         public Output<string> ProfileMetricsTableName { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.LakehouseMonitorProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.LakehouseMonitorProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:

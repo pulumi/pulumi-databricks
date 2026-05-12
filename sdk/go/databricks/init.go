@@ -95,6 +95,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DisableLegacyDbfsSetting{}
 	case "databricks:index/disableLegacyFeaturesSetting:DisableLegacyFeaturesSetting":
 		r = &DisableLegacyFeaturesSetting{}
+	case "databricks:index/disasterRecoveryFailoverGroup:DisasterRecoveryFailoverGroup":
+		r = &DisasterRecoveryFailoverGroup{}
+	case "databricks:index/disasterRecoveryStableUrl:DisasterRecoveryStableUrl":
+		r = &DisasterRecoveryStableUrl{}
 	case "databricks:index/endpoint:Endpoint":
 		r = &Endpoint{}
 	case "databricks:index/enhancedSecurityMonitoringWorkspaceSetting:EnhancedSecurityMonitoringWorkspaceSetting":
@@ -253,6 +257,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SecretAcl{}
 	case "databricks:index/secretScope:SecretScope":
 		r = &SecretScope{}
+	case "databricks:index/secretUc:SecretUc":
+		r = &SecretUc{}
 	case "databricks:index/servicePrincipal:ServicePrincipal":
 		r = &ServicePrincipal{}
 	case "databricks:index/servicePrincipalFederationPolicy:ServicePrincipalFederationPolicy":
@@ -283,6 +289,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SqlWidget{}
 	case "databricks:index/storageCredential:StorageCredential":
 		r = &StorageCredential{}
+	case "databricks:index/supervisorAgent:SupervisorAgent":
+		r = &SupervisorAgent{}
+	case "databricks:index/supervisorAgentTool:SupervisorAgentTool":
+		r = &SupervisorAgentTool{}
 	case "databricks:index/systemSchema:SystemSchema":
 		r = &SystemSchema{}
 	case "databricks:index/table:Table":
@@ -531,6 +541,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/disableLegacyFeaturesSetting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/disasterRecoveryFailoverGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/disasterRecoveryStableUrl",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -930,6 +950,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"databricks",
+		"index/secretUc",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
 		"index/servicePrincipal",
 		&module{version},
 	)
@@ -1001,6 +1026,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/storageCredential",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/supervisorAgent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/supervisorAgentTool",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

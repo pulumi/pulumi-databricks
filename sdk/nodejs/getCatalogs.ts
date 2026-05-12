@@ -65,7 +65,7 @@ export interface GetCatalogsResult {
      * set of databricks.Catalog names
      */
     readonly ids: string[];
-    readonly providerConfig?: outputs.GetCatalogsProviderConfig;
+    readonly providerConfig: outputs.GetCatalogsProviderConfig;
 }
 /**
  * Retrieves a list of databricks.Catalog ids, that were created by Pulumi or manually, so that special handling could be applied.

@@ -127,14 +127,14 @@ public class FeatureEngineeringMaterializedFeature extends com.pulumi.resources.
      * 
      */
     @Export(name="providerConfig", refs={FeatureEngineeringMaterializedFeatureProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ FeatureEngineeringMaterializedFeatureProviderConfig> providerConfig;
+    private Output<FeatureEngineeringMaterializedFeatureProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<FeatureEngineeringMaterializedFeatureProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<FeatureEngineeringMaterializedFeatureProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only

@@ -113,10 +113,10 @@ public class UserInstanceProfile extends com.pulumi.resources.CustomResource {
         return this.instanceProfileId;
     }
     @Export(name="providerConfig", refs={UserInstanceProfileProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ UserInstanceProfileProviderConfig> providerConfig;
+    private Output<UserInstanceProfileProviderConfig> providerConfig;
 
-    public Output<Optional<UserInstanceProfileProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<UserInstanceProfileProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * This is the id of the user resource.

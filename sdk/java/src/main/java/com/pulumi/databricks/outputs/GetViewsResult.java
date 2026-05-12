@@ -9,8 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetViewsResult {
@@ -25,7 +23,7 @@ public final class GetViewsResult {
      * 
      */
     private List<String> ids;
-    private @Nullable GetViewsProviderConfig providerConfig;
+    private GetViewsProviderConfig providerConfig;
     private String schemaName;
 
     private GetViewsResult() {}
@@ -46,8 +44,8 @@ public final class GetViewsResult {
     public List<String> ids() {
         return this.ids;
     }
-    public Optional<GetViewsProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetViewsProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     public String schemaName() {
         return this.schemaName;
@@ -65,7 +63,7 @@ public final class GetViewsResult {
         private String catalogName;
         private String id;
         private List<String> ids;
-        private @Nullable GetViewsProviderConfig providerConfig;
+        private GetViewsProviderConfig providerConfig;
         private String schemaName;
         public Builder() {}
         public Builder(GetViewsResult defaults) {
@@ -105,8 +103,10 @@ public final class GetViewsResult {
             return ids(List.of(ids));
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetViewsProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetViewsProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetViewsResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

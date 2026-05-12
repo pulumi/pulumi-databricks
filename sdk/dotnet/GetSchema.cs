@@ -257,7 +257,7 @@ namespace Pulumi.Databricks
         /// Name of schema, relative to parent catalog.
         /// </summary>
         public readonly string Name;
-        public readonly Outputs.GetSchemaProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetSchemaProviderConfigResult ProviderConfig;
         /// <summary>
         /// `SchemaInfo` object for a Unity Catalog schema. This contains the following attributes:
         /// </summary>
@@ -269,7 +269,7 @@ namespace Pulumi.Databricks
 
             string name,
 
-            Outputs.GetSchemaProviderConfigResult? providerConfig,
+            Outputs.GetSchemaProviderConfigResult providerConfig,
 
             Outputs.GetSchemaSchemaInfoResult schemaInfo)
         {

@@ -69,7 +69,7 @@ type Directory struct {
 	// The absolute path of the directory, beginning with "/", e.g. "/Demo".
 	Path pulumi.StringOutput `pulumi:"path"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig DirectoryProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig DirectoryProviderConfigOutput `pulumi:"providerConfig"`
 	// path on Workspace File System (WSFS) in form of `/Workspace` + `path`
 	WorkspacePath pulumi.StringOutput `pulumi:"workspacePath"`
 }
@@ -262,8 +262,8 @@ func (o DirectoryOutput) Path() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o DirectoryOutput) ProviderConfig() DirectoryProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Directory) DirectoryProviderConfigPtrOutput { return v.ProviderConfig }).(DirectoryProviderConfigPtrOutput)
+func (o DirectoryOutput) ProviderConfig() DirectoryProviderConfigOutput {
+	return o.ApplyT(func(v *Directory) DirectoryProviderConfigOutput { return v.ProviderConfig }).(DirectoryProviderConfigOutput)
 }
 
 // path on Workspace File System (WSFS) in form of `/Workspace` + `path`

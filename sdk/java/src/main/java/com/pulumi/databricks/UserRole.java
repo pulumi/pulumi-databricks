@@ -141,10 +141,10 @@ public class UserRole extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.api);
     }
     @Export(name="providerConfig", refs={UserRoleProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ UserRoleProviderConfig> providerConfig;
+    private Output<UserRoleProviderConfig> providerConfig;
 
-    public Output<Optional<UserRoleProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<UserRoleProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Either a role name or the ARN/ID of the instance profile resource.

@@ -8,6 +8,22 @@ import * as utilities from "./utilities";
 
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source retrieves a single Postgres catalog.
+ *
+ * ## Example Usage
+ *
+ * ### Retrieve Catalog by Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getPostgresCatalog({
+ *     name: "catalogs/my_catalog",
+ * });
+ * export const catalogPostgresDatabase = _this.then(_this => _this.status?.postgresDatabase);
+ * ```
  */
 export function getPostgresCatalog(args: GetPostgresCatalogArgs, opts?: pulumi.InvokeOptions): Promise<GetPostgresCatalogResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -69,6 +85,22 @@ export interface GetPostgresCatalogResult {
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * This data source retrieves a single Postgres catalog.
+ *
+ * ## Example Usage
+ *
+ * ### Retrieve Catalog by Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getPostgresCatalog({
+ *     name: "catalogs/my_catalog",
+ * });
+ * export const catalogPostgresDatabase = _this.then(_this => _this.status?.postgresDatabase);
+ * ```
  */
 export function getPostgresCatalogOutput(args: GetPostgresCatalogOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPostgresCatalogResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

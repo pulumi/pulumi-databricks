@@ -34,6 +34,9 @@ class DisableLegacyFeaturesSettingArgs:
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if provider_config is not None:
+            warnings.warn("""provider_config has no effect on this account-only resource and will be removed in a future major release.""", DeprecationWarning)
+            pulumi.log.warn("""provider_config is deprecated: provider_config has no effect on this account-only resource and will be removed in a future major release.""")
+        if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
         if setting_name is not None:
             pulumi.set(__self__, "setting_name", setting_name)
@@ -61,6 +64,7 @@ class DisableLegacyFeaturesSettingArgs:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
+    @_utilities.deprecated("""provider_config has no effect on this account-only resource and will be removed in a future major release.""")
     def provider_config(self) -> pulumi.Input[Optional['DisableLegacyFeaturesSettingProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
@@ -95,6 +99,9 @@ class _DisableLegacyFeaturesSettingState:
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if provider_config is not None:
+            warnings.warn("""provider_config has no effect on this account-only resource and will be removed in a future major release.""", DeprecationWarning)
+            pulumi.log.warn("""provider_config is deprecated: provider_config has no effect on this account-only resource and will be removed in a future major release.""")
+        if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
         if setting_name is not None:
             pulumi.set(__self__, "setting_name", setting_name)
@@ -122,6 +129,7 @@ class _DisableLegacyFeaturesSettingState:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
+    @_utilities.deprecated("""provider_config has no effect on this account-only resource and will be removed in a future major release.""")
     def provider_config(self) -> pulumi.Input[Optional['DisableLegacyFeaturesSettingProviderConfigArgs']]:
         return pulumi.get(self, "provider_config")
 
@@ -318,7 +326,8 @@ class DisableLegacyFeaturesSetting(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.DisableLegacyFeaturesSettingProviderConfig']]:
+    @_utilities.deprecated("""provider_config has no effect on this account-only resource and will be removed in a future major release.""")
+    def provider_config(self) -> pulumi.Output['outputs.DisableLegacyFeaturesSettingProviderConfig']:
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

@@ -116,14 +116,14 @@ public class AppSpace extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={AppSpaceProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ AppSpaceProviderConfig> providerConfig;
+    private Output<AppSpaceProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<AppSpaceProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<AppSpaceProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Resources for the app space. Resources configured at the space level are available to all apps in the space

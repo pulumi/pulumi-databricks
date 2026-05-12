@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressPrivateAccessArgs;
 import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressPublicAccessArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,9 +16,36 @@ public final class AccountNetworkPolicyIngressArgs extends com.pulumi.resources.
 
     public static final AccountNetworkPolicyIngressArgs Empty = new AccountNetworkPolicyIngressArgs();
 
+    /**
+     * The network policy restrictions for private access to the workspace.
+     * Configures how registered private endpoints are allowed or denied access
+     * 
+     */
+    @Import(name="privateAccess")
+    private @Nullable Output<AccountNetworkPolicyIngressPrivateAccessArgs> privateAccess;
+
+    /**
+     * @return The network policy restrictions for private access to the workspace.
+     * Configures how registered private endpoints are allowed or denied access
+     * 
+     */
+    public Optional<Output<AccountNetworkPolicyIngressPrivateAccessArgs>> privateAccess() {
+        return Optional.ofNullable(this.privateAccess);
+    }
+
+    /**
+     * The network policy restrictions for public access to the workspace.
+     * Configures how public internet traffic is allowed or denied access
+     * 
+     */
     @Import(name="publicAccess")
     private @Nullable Output<AccountNetworkPolicyIngressPublicAccessArgs> publicAccess;
 
+    /**
+     * @return The network policy restrictions for public access to the workspace.
+     * Configures how public internet traffic is allowed or denied access
+     * 
+     */
     public Optional<Output<AccountNetworkPolicyIngressPublicAccessArgs>> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
@@ -25,6 +53,7 @@ public final class AccountNetworkPolicyIngressArgs extends com.pulumi.resources.
     private AccountNetworkPolicyIngressArgs() {}
 
     private AccountNetworkPolicyIngressArgs(AccountNetworkPolicyIngressArgs $) {
+        this.privateAccess = $.privateAccess;
         this.publicAccess = $.publicAccess;
     }
 
@@ -46,11 +75,48 @@ public final class AccountNetworkPolicyIngressArgs extends com.pulumi.resources.
             $ = new AccountNetworkPolicyIngressArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param privateAccess The network policy restrictions for private access to the workspace.
+         * Configures how registered private endpoints are allowed or denied access
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateAccess(@Nullable Output<AccountNetworkPolicyIngressPrivateAccessArgs> privateAccess) {
+            $.privateAccess = privateAccess;
+            return this;
+        }
+
+        /**
+         * @param privateAccess The network policy restrictions for private access to the workspace.
+         * Configures how registered private endpoints are allowed or denied access
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateAccess(AccountNetworkPolicyIngressPrivateAccessArgs privateAccess) {
+            return privateAccess(Output.of(privateAccess));
+        }
+
+        /**
+         * @param publicAccess The network policy restrictions for public access to the workspace.
+         * Configures how public internet traffic is allowed or denied access
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(@Nullable Output<AccountNetworkPolicyIngressPublicAccessArgs> publicAccess) {
             $.publicAccess = publicAccess;
             return this;
         }
 
+        /**
+         * @param publicAccess The network policy restrictions for public access to the workspace.
+         * Configures how public internet traffic is allowed or denied access
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(AccountNetworkPolicyIngressPublicAccessArgs publicAccess) {
             return publicAccess(Output.of(publicAccess));
         }

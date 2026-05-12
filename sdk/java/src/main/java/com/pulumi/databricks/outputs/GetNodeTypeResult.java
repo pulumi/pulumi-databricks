@@ -39,7 +39,7 @@ public final class GetNodeTypeResult {
     private @Nullable Integer minMemoryGb;
     private @Nullable Boolean photonDriverCapable;
     private @Nullable Boolean photonWorkerCapable;
-    private @Nullable GetNodeTypeProviderConfig providerConfig;
+    private GetNodeTypeProviderConfig providerConfig;
     private @Nullable Boolean supportPortForwarding;
 
     private GetNodeTypeResult() {}
@@ -95,8 +95,8 @@ public final class GetNodeTypeResult {
     public Optional<Boolean> photonWorkerCapable() {
         return Optional.ofNullable(this.photonWorkerCapable);
     }
-    public Optional<GetNodeTypeProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetNodeTypeProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     public Optional<Boolean> supportPortForwarding() {
         return Optional.ofNullable(this.supportPortForwarding);
@@ -125,7 +125,7 @@ public final class GetNodeTypeResult {
         private @Nullable Integer minMemoryGb;
         private @Nullable Boolean photonDriverCapable;
         private @Nullable Boolean photonWorkerCapable;
-        private @Nullable GetNodeTypeProviderConfig providerConfig;
+        private GetNodeTypeProviderConfig providerConfig;
         private @Nullable Boolean supportPortForwarding;
         public Builder() {}
         public Builder(GetNodeTypeResult defaults) {
@@ -235,8 +235,10 @@ public final class GetNodeTypeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetNodeTypeProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetNodeTypeProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetNodeTypeResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

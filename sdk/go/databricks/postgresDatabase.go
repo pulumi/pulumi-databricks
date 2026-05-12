@@ -187,7 +187,7 @@ type PostgresDatabase struct {
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
-	ProviderConfig PostgresDatabaseProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig PostgresDatabaseProviderConfigOutput `pulumi:"providerConfig"`
 	// The desired state of the Database
 	Spec PostgresDatabaseSpecOutput `pulumi:"spec"`
 	// (DatabaseDatabaseStatus) - The observed state of the Database
@@ -444,8 +444,8 @@ func (o PostgresDatabaseOutput) Parent() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o PostgresDatabaseOutput) ProviderConfig() PostgresDatabaseProviderConfigPtrOutput {
-	return o.ApplyT(func(v *PostgresDatabase) PostgresDatabaseProviderConfigPtrOutput { return v.ProviderConfig }).(PostgresDatabaseProviderConfigPtrOutput)
+func (o PostgresDatabaseOutput) ProviderConfig() PostgresDatabaseProviderConfigOutput {
+	return o.ApplyT(func(v *PostgresDatabase) PostgresDatabaseProviderConfigOutput { return v.ProviderConfig }).(PostgresDatabaseProviderConfigOutput)
 }
 
 // The desired state of the Database

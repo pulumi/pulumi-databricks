@@ -205,7 +205,7 @@ namespace Pulumi.Databricks
         /// Path to experiment.
         /// </summary>
         public readonly string Name;
-        public readonly Outputs.GetMlflowExperimentProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetMlflowExperimentProviderConfigResult ProviderConfig;
         /// <summary>
         /// Additional metadata key-value pairs.
         /// </summary>
@@ -227,7 +227,7 @@ namespace Pulumi.Databricks
 
             string name,
 
-            Outputs.GetMlflowExperimentProviderConfigResult? providerConfig,
+            Outputs.GetMlflowExperimentProviderConfigResult providerConfig,
 
             ImmutableArray<Outputs.GetMlflowExperimentTagResult> tags)
         {

@@ -368,7 +368,7 @@ class GroupRole(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.GroupRoleProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.GroupRoleProviderConfig']:
         return pulumi.get(self, "provider_config")
 
     @_builtins.property

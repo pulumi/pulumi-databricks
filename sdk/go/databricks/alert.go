@@ -263,7 +263,7 @@ type Alert struct {
 	// The path to a workspace folder containing the alert. The default is the user's home folder.  If changed, the alert will be recreated.
 	ParentPath pulumi.StringPtrOutput `pulumi:"parentPath"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig AlertProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig AlertProviderConfigOutput `pulumi:"providerConfig"`
 	// ID of the query evaluated by the alert.
 	QueryId pulumi.StringOutput `pulumi:"queryId"`
 	// Number of seconds an alert must wait after being triggered to rearm itself. After rearming, it can be triggered again. If 0 or not specified, the alert will not be triggered again.
@@ -564,8 +564,8 @@ func (o AlertOutput) ParentPath() pulumi.StringPtrOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o AlertOutput) ProviderConfig() AlertProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Alert) AlertProviderConfigPtrOutput { return v.ProviderConfig }).(AlertProviderConfigPtrOutput)
+func (o AlertOutput) ProviderConfig() AlertProviderConfigOutput {
+	return o.ApplyT(func(v *Alert) AlertProviderConfigOutput { return v.ProviderConfig }).(AlertProviderConfigOutput)
 }
 
 // ID of the query evaluated by the alert.

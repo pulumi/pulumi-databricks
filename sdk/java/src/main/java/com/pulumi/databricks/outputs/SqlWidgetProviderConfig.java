@@ -4,9 +4,10 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SqlWidgetProviderConfig {
@@ -14,15 +15,15 @@ public final class SqlWidgetProviderConfig {
      * @return Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      * 
      */
-    private String workspaceId;
+    private @Nullable String workspaceId;
 
     private SqlWidgetProviderConfig() {}
     /**
      * @return Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      * 
      */
-    public String workspaceId() {
-        return this.workspaceId;
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -34,7 +35,7 @@ public final class SqlWidgetProviderConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String workspaceId;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(SqlWidgetProviderConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -42,10 +43,8 @@ public final class SqlWidgetProviderConfig {
         }
 
         @CustomType.Setter
-        public Builder workspaceId(String workspaceId) {
-            if (workspaceId == null) {
-              throw new MissingRequiredPropertyException("SqlWidgetProviderConfig", "workspaceId");
-            }
+        public Builder workspaceId(@Nullable String workspaceId) {
+
             this.workspaceId = workspaceId;
             return this;
         }

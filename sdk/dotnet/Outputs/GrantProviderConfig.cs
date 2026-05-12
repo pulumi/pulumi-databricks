@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GrantProviderConfig
     {
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private GrantProviderConfig(string workspaceId)
+        private GrantProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

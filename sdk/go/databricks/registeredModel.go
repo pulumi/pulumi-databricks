@@ -73,7 +73,7 @@ type RegisteredModel struct {
 	// Name of the registered model owner.
 	Owner pulumi.StringOutput `pulumi:"owner"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig RegisteredModelProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig RegisteredModelProviderConfigOutput `pulumi:"providerConfig"`
 	// The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
 	SchemaName pulumi.StringPtrOutput `pulumi:"schemaName"`
 	// The storage location under which model version data files are stored.  If the URL contains special characters, such as space, `&`, etc., they should be percent-encoded (space > `%20`, etc.). *Change of this parameter forces recreation of the resource.*
@@ -348,8 +348,8 @@ func (o RegisteredModelOutput) Owner() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o RegisteredModelOutput) ProviderConfig() RegisteredModelProviderConfigPtrOutput {
-	return o.ApplyT(func(v *RegisteredModel) RegisteredModelProviderConfigPtrOutput { return v.ProviderConfig }).(RegisteredModelProviderConfigPtrOutput)
+func (o RegisteredModelOutput) ProviderConfig() RegisteredModelProviderConfigOutput {
+	return o.ApplyT(func(v *RegisteredModel) RegisteredModelProviderConfigOutput { return v.ProviderConfig }).(RegisteredModelProviderConfigOutput)
 }
 
 // The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*

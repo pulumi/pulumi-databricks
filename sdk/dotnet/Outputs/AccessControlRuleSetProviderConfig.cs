@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AccessControlRuleSetProviderConfig
     {
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private AccessControlRuleSetProviderConfig(string workspaceId)
+        private AccessControlRuleSetProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

@@ -1846,10 +1846,10 @@ public class Permissions extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.pipelineId);
     }
     @Export(name="providerConfig", refs={PermissionsProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ PermissionsProviderConfig> providerConfig;
+    private Output<PermissionsProviderConfig> providerConfig;
 
-    public Output<Optional<PermissionsProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<PermissionsProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="registeredModelId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> registeredModelId;

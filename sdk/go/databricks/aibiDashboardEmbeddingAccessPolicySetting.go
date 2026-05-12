@@ -56,8 +56,8 @@ type AibiDashboardEmbeddingAccessPolicySetting struct {
 	AibiDashboardEmbeddingAccessPolicy AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicyOutput `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
 	Etag                               pulumi.StringOutput                                                               `pulumi:"etag"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig AibiDashboardEmbeddingAccessPolicySettingProviderConfigPtrOutput `pulumi:"providerConfig"`
-	SettingName    pulumi.StringOutput                                              `pulumi:"settingName"`
+	ProviderConfig AibiDashboardEmbeddingAccessPolicySettingProviderConfigOutput `pulumi:"providerConfig"`
+	SettingName    pulumi.StringOutput                                           `pulumi:"settingName"`
 }
 
 // NewAibiDashboardEmbeddingAccessPolicySetting registers a new resource with the given unique name, arguments, and options.
@@ -232,10 +232,10 @@ func (o AibiDashboardEmbeddingAccessPolicySettingOutput) Etag() pulumi.StringOut
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o AibiDashboardEmbeddingAccessPolicySettingOutput) ProviderConfig() AibiDashboardEmbeddingAccessPolicySettingProviderConfigPtrOutput {
-	return o.ApplyT(func(v *AibiDashboardEmbeddingAccessPolicySetting) AibiDashboardEmbeddingAccessPolicySettingProviderConfigPtrOutput {
+func (o AibiDashboardEmbeddingAccessPolicySettingOutput) ProviderConfig() AibiDashboardEmbeddingAccessPolicySettingProviderConfigOutput {
+	return o.ApplyT(func(v *AibiDashboardEmbeddingAccessPolicySetting) AibiDashboardEmbeddingAccessPolicySettingProviderConfigOutput {
 		return v.ProviderConfig
-	}).(AibiDashboardEmbeddingAccessPolicySettingProviderConfigPtrOutput)
+	}).(AibiDashboardEmbeddingAccessPolicySettingProviderConfigOutput)
 }
 
 func (o AibiDashboardEmbeddingAccessPolicySettingOutput) SettingName() pulumi.StringOutput {

@@ -90,7 +90,7 @@ export class RegisteredModel extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.RegisteredModelProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.RegisteredModelProviderConfig>;
     /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*
      */

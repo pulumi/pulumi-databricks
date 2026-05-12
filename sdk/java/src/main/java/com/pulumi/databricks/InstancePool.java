@@ -273,14 +273,14 @@ public class InstancePool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={InstancePoolProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ InstancePoolProviderConfig> providerConfig;
+    private Output<InstancePoolProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<InstancePoolProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<InstancePoolProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
 
     /**

@@ -541,7 +541,7 @@ class DataQualityRefresh(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.DataQualityRefreshProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.DataQualityRefreshProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

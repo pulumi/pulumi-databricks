@@ -28,7 +28,10 @@ class GetServicePrincipalsResult:
     """
     A collection of values returned by getServicePrincipals.
     """
-    def __init__(__self__, application_ids=None, display_name_contains=None, id=None, provider_config=None, service_principals=None):
+    def __init__(__self__, api=None, application_ids=None, display_name_contains=None, id=None, provider_config=None, service_principals=None):
+        if api and not isinstance(api, str):
+            raise TypeError("Expected argument 'api' to be a str")
+        pulumi.set(__self__, "api", api)
         if application_ids and not isinstance(application_ids, list):
             raise TypeError("Expected argument 'application_ids' to be a list")
         pulumi.set(__self__, "application_ids", application_ids)
@@ -44,6 +47,11 @@ class GetServicePrincipalsResult:
         if service_principals and not isinstance(service_principals, list):
             raise TypeError("Expected argument 'service_principals' to be a list")
         pulumi.set(__self__, "service_principals", service_principals)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "api")
 
     @_builtins.property
     @pulumi.getter(name="applicationIds")
@@ -68,7 +76,7 @@ class GetServicePrincipalsResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetServicePrincipalsProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetServicePrincipalsProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
     @_builtins.property
@@ -86,6 +94,7 @@ class AwaitableGetServicePrincipalsResult(GetServicePrincipalsResult):
         if False:
             yield self
         return GetServicePrincipalsResult(
+            api=self.api,
             application_ids=self.application_ids,
             display_name_contains=self.display_name_contains,
             id=self.id,
@@ -93,7 +102,8 @@ class AwaitableGetServicePrincipalsResult(GetServicePrincipalsResult):
             service_principals=self.service_principals)
 
 
-def get_service_principals(application_ids: Optional[Sequence[_builtins.str]] = None,
+def get_service_principals(api: Optional[_builtins.str] = None,
+                           application_ids: Optional[Sequence[_builtins.str]] = None,
                            display_name_contains: Optional[_builtins.str] = None,
                            provider_config: Optional[Union['GetServicePrincipalsProviderConfigArgs', 'GetServicePrincipalsProviderConfigArgsDict']] = None,
                            service_principals: Optional[Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict']]] = None,
@@ -143,6 +153,7 @@ def get_service_principals(application_ids: Optional[Sequence[_builtins.str]] = 
     :param Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict']] service_principals: List of objects describing individual service principals. Each object has the following attributes:
     """
     __args__ = dict()
+    __args__['api'] = api
     __args__['applicationIds'] = application_ids
     __args__['displayNameContains'] = display_name_contains
     __args__['providerConfig'] = provider_config
@@ -151,12 +162,14 @@ def get_service_principals(application_ids: Optional[Sequence[_builtins.str]] = 
     __ret__ = pulumi.runtime.invoke('databricks:index/getServicePrincipals:getServicePrincipals', __args__, opts=opts, typ=GetServicePrincipalsResult).value
 
     return AwaitableGetServicePrincipalsResult(
+        api=pulumi.get(__ret__, 'api'),
         application_ids=pulumi.get(__ret__, 'application_ids'),
         display_name_contains=pulumi.get(__ret__, 'display_name_contains'),
         id=pulumi.get(__ret__, 'id'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         service_principals=pulumi.get(__ret__, 'service_principals'))
-def get_service_principals_output(application_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+def get_service_principals_output(api: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  application_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                   display_name_contains: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   provider_config: pulumi.Input[Optional[Optional[Union['GetServicePrincipalsProviderConfigArgs', 'GetServicePrincipalsProviderConfigArgsDict']]]] = None,
                                   service_principals: pulumi.Input[Optional[Optional[Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict']]]]] = None,
@@ -206,6 +219,7 @@ def get_service_principals_output(application_ids: pulumi.Input[Optional[Optiona
     :param Sequence[Union['GetServicePrincipalsServicePrincipalArgs', 'GetServicePrincipalsServicePrincipalArgsDict']] service_principals: List of objects describing individual service principals. Each object has the following attributes:
     """
     __args__ = dict()
+    __args__['api'] = api
     __args__['applicationIds'] = application_ids
     __args__['displayNameContains'] = display_name_contains
     __args__['providerConfig'] = provider_config
@@ -213,6 +227,7 @@ def get_service_principals_output(application_ids: pulumi.Input[Optional[Optiona
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getServicePrincipals:getServicePrincipals', __args__, opts=opts, typ=GetServicePrincipalsResult)
     return __ret__.apply(lambda __response__: GetServicePrincipalsResult(
+        api=pulumi.get(__response__, 'api'),
         application_ids=pulumi.get(__response__, 'application_ids'),
         display_name_contains=pulumi.get(__response__, 'display_name_contains'),
         id=pulumi.get(__response__, 'id'),

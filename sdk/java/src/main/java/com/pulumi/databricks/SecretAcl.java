@@ -12,7 +12,6 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.SecretAclState;
 import com.pulumi.databricks.outputs.SecretAclProviderConfig;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -124,14 +123,14 @@ public class SecretAcl extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={SecretAclProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ SecretAclProviderConfig> providerConfig;
+    private Output<SecretAclProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<SecretAclProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<SecretAclProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * name of the scope

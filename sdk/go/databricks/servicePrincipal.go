@@ -214,8 +214,8 @@ type ServicePrincipal struct {
 	// This flag determines whether the service principal's repo directory is deleted when the user is deleted. It will have no impact when in the accounts SCIM API. False by default.
 	ForceDeleteRepos pulumi.BoolPtrOutput `pulumi:"forceDeleteRepos"`
 	// Home folder of the service principal, e.g. `/Users/00000000-0000-0000-0000-000000000000`.
-	Home           pulumi.StringOutput                     `pulumi:"home"`
-	ProviderConfig ServicePrincipalProviderConfigPtrOutput `pulumi:"providerConfig"`
+	Home           pulumi.StringOutput                  `pulumi:"home"`
+	ProviderConfig ServicePrincipalProviderConfigOutput `pulumi:"providerConfig"`
 	// Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.
 	Repos pulumi.StringOutput `pulumi:"repos"`
 	// This is a field to allow the service principal to have access to a Databricks Workspace.
@@ -567,8 +567,8 @@ func (o ServicePrincipalOutput) Home() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.Home }).(pulumi.StringOutput)
 }
 
-func (o ServicePrincipalOutput) ProviderConfig() ServicePrincipalProviderConfigPtrOutput {
-	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipalProviderConfigPtrOutput { return v.ProviderConfig }).(ServicePrincipalProviderConfigPtrOutput)
+func (o ServicePrincipalOutput) ProviderConfig() ServicePrincipalProviderConfigOutput {
+	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipalProviderConfigOutput { return v.ProviderConfig }).(ServicePrincipalProviderConfigOutput)
 }
 
 // Personal Repos location of the service principal, e.g. `/Repos/00000000-0000-0000-0000-000000000000`.

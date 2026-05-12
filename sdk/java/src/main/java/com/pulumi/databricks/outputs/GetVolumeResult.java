@@ -9,8 +9,6 @@ import com.pulumi.databricks.outputs.GetVolumeVolumeInfo;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVolumeResult {
@@ -24,7 +22,7 @@ public final class GetVolumeResult {
      * 
      */
     private String name;
-    private @Nullable GetVolumeProviderConfig providerConfig;
+    private GetVolumeProviderConfig providerConfig;
     /**
      * @return `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
      * 
@@ -46,8 +44,8 @@ public final class GetVolumeResult {
     public String name() {
         return this.name;
     }
-    public Optional<GetVolumeProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetVolumeProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     /**
      * @return `VolumeInfo` object for a Unity Catalog volume. This contains the following attributes:
@@ -68,7 +66,7 @@ public final class GetVolumeResult {
     public static final class Builder {
         private String id;
         private String name;
-        private @Nullable GetVolumeProviderConfig providerConfig;
+        private GetVolumeProviderConfig providerConfig;
         private GetVolumeVolumeInfo volumeInfo;
         public Builder() {}
         public Builder(GetVolumeResult defaults) {
@@ -96,8 +94,10 @@ public final class GetVolumeResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetVolumeProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetVolumeProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetVolumeResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

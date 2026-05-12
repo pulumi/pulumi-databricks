@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ComplianceSecurityProfileWorkspaceSettingProviderConfig
     {
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private ComplianceSecurityProfileWorkspaceSettingProviderConfig(string workspaceId)
+        private ComplianceSecurityProfileWorkspaceSettingProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

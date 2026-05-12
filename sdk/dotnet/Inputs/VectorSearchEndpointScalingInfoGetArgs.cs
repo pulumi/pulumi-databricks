@@ -12,8 +12,8 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class VectorSearchEndpointScalingInfoGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("requestedMinQps")]
-        public Input<int>? RequestedMinQps { get; set; }
+        [Input("requestedTargetQps")]
+        public Input<int>? RequestedTargetQps { get; set; }
 
         /// <summary>
         /// Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.

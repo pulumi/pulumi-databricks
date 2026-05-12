@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// The Default Workspace Base Environment is a singleton resource that configures which workspace base environments are applied by default to new notebooks in the workspace. Defaults can be set separately for CPU and GPU compute.
     /// 
@@ -111,7 +111,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig> ProviderConfig { get; private set; } = null!;
 
 
         /// <summary>

@@ -59,7 +59,7 @@ export class GlobalInitScript extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.GlobalInitScriptProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.GlobalInitScriptProviderConfig>;
     /**
      * Path to script's source code on local filesystem. Conflicts with `contentBase64`
      */

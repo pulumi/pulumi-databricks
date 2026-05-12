@@ -12,15 +12,27 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accountApi")]
+        public Input<Inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountApiArgs>? AccountApi { get; set; }
+
+        [Input("accountDatabricksOne")]
+        public Input<Inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOneArgs>? AccountDatabricksOne { get; set; }
+
+        [Input("accountUi")]
+        public Input<Inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountUiArgs>? AccountUi { get; set; }
+
         [Input("allDestinations")]
         public Input<bool>? AllDestinations { get; set; }
+
+        [Input("appsRuntime")]
+        public Input<Inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAppsRuntimeArgs>? AppsRuntime { get; set; }
+
+        [Input("lakebaseRuntime")]
+        public Input<Inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationLakebaseRuntimeArgs>? LakebaseRuntime { get; set; }
 
         [Input("workspaceApi")]
         public Input<Inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApiArgs>? WorkspaceApi { get; set; }
 
-        /// <summary>
-        /// Workspace destinations
-        /// </summary>
         [Input("workspaceUi")]
         public Input<Inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceUiArgs>? WorkspaceUi { get; set; }
 

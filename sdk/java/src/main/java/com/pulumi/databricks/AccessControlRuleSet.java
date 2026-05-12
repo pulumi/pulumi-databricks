@@ -583,10 +583,10 @@ public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     @Export(name="providerConfig", refs={AccessControlRuleSetProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ AccessControlRuleSetProviderConfig> providerConfig;
+    private Output<AccessControlRuleSetProviderConfig> providerConfig;
 
-    public Output<Optional<AccessControlRuleSetProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<AccessControlRuleSetProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
 
     /**

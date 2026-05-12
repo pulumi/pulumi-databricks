@@ -339,7 +339,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? PipelineName;
-        public readonly Outputs.GetPipelinesProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetPipelinesProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetPipelinesResult(
@@ -349,7 +349,7 @@ namespace Pulumi.Databricks
 
             string? pipelineName,
 
-            Outputs.GetPipelinesProviderConfigResult? providerConfig)
+            Outputs.GetPipelinesProviderConfigResult providerConfig)
         {
             Id = id;
             Ids = ids;

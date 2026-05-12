@@ -194,7 +194,7 @@ type PostgresRole struct {
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
-	ProviderConfig PostgresRoleProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig PostgresRoleProviderConfigOutput `pulumi:"providerConfig"`
 	// The ID to use for the Role, which will become the final component of
 	// the role's resource name.
 	// This ID becomes the role in Postgres.
@@ -448,8 +448,8 @@ func (o PostgresRoleOutput) Parent() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o PostgresRoleOutput) ProviderConfig() PostgresRoleProviderConfigPtrOutput {
-	return o.ApplyT(func(v *PostgresRole) PostgresRoleProviderConfigPtrOutput { return v.ProviderConfig }).(PostgresRoleProviderConfigPtrOutput)
+func (o PostgresRoleOutput) ProviderConfig() PostgresRoleProviderConfigOutput {
+	return o.ApplyT(func(v *PostgresRole) PostgresRoleProviderConfigOutput { return v.ProviderConfig }).(PostgresRoleProviderConfigOutput)
 }
 
 // The ID to use for the Role, which will become the final component of

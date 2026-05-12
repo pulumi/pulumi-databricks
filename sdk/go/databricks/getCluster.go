@@ -101,8 +101,8 @@ type LookupClusterResult struct {
 	// Cluster name, which doesn’t have to be unique.
 	ClusterName string `pulumi:"clusterName"`
 	// cluster ID
-	Id             string                    `pulumi:"id"`
-	ProviderConfig *GetClusterProviderConfig `pulumi:"providerConfig"`
+	Id             string                   `pulumi:"id"`
+	ProviderConfig GetClusterProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
@@ -166,8 +166,8 @@ func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupClusterResultOutput) ProviderConfig() GetClusterProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupClusterResult) *GetClusterProviderConfig { return v.ProviderConfig }).(GetClusterProviderConfigPtrOutput)
+func (o LookupClusterResultOutput) ProviderConfig() GetClusterProviderConfigOutput {
+	return o.ApplyT(func(v LookupClusterResult) GetClusterProviderConfig { return v.ProviderConfig }).(GetClusterProviderConfigOutput)
 }
 
 func init() {

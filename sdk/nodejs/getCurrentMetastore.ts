@@ -72,7 +72,7 @@ export interface GetCurrentMetastoreResult {
      * summary about a metastore attached to the current workspace returned by [Get a metastore summary API](https://docs.databricks.com/api/workspace/metastores/summary). This contains the following attributes (check the API page for up-to-date details):
      */
     readonly metastoreInfo: outputs.GetCurrentMetastoreMetastoreInfo;
-    readonly providerConfig?: outputs.GetCurrentMetastoreProviderConfig;
+    readonly providerConfig: outputs.GetCurrentMetastoreProviderConfig;
 }
 /**
  * Retrieves information about metastore attached to a given workspace.

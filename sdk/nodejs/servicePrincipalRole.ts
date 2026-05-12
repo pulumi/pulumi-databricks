@@ -89,7 +89,7 @@ export class ServicePrincipalRole extends pulumi.CustomResource {
      * Specifies whether to use account-level or workspace-level API. Valid values are `account` and `workspace`. When not set, the API level is inferred from the provider host.
      */
     declare public readonly api: pulumi.Output<string | undefined>;
-    declare public readonly providerConfig: pulumi.Output<outputs.ServicePrincipalRoleProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.ServicePrincipalRoleProviderConfig>;
     /**
      * This is the role name, role id, or instance profile resource.
      */

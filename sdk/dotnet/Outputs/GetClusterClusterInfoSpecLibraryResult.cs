@@ -20,7 +20,7 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
-        public readonly Outputs.GetClusterClusterInfoSpecLibraryProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetClusterClusterInfoSpecLibraryProviderConfigResult ProviderConfig;
         public readonly Outputs.GetClusterClusterInfoSpecLibraryPypiResult? Pypi;
         public readonly string? Requirements;
         public readonly string? Whl;
@@ -35,7 +35,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetClusterClusterInfoSpecLibraryMavenResult? maven,
 
-            Outputs.GetClusterClusterInfoSpecLibraryProviderConfigResult? providerConfig,
+            Outputs.GetClusterClusterInfoSpecLibraryProviderConfigResult providerConfig,
 
             Outputs.GetClusterClusterInfoSpecLibraryPypiResult? pypi,
 

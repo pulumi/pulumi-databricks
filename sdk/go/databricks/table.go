@@ -15,19 +15,19 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
-	CatalogName           pulumi.StringOutput          `pulumi:"catalogName"`
-	Columns               TableColumnArrayOutput       `pulumi:"columns"`
-	Comment               pulumi.StringPtrOutput       `pulumi:"comment"`
-	DataSourceFormat      pulumi.StringOutput          `pulumi:"dataSourceFormat"`
-	Name                  pulumi.StringOutput          `pulumi:"name"`
-	Owner                 pulumi.StringOutput          `pulumi:"owner"`
-	Properties            pulumi.StringMapOutput       `pulumi:"properties"`
-	ProviderConfig        TableProviderConfigPtrOutput `pulumi:"providerConfig"`
-	SchemaName            pulumi.StringOutput          `pulumi:"schemaName"`
-	StorageCredentialName pulumi.StringPtrOutput       `pulumi:"storageCredentialName"`
-	StorageLocation       pulumi.StringPtrOutput       `pulumi:"storageLocation"`
-	TableType             pulumi.StringOutput          `pulumi:"tableType"`
-	ViewDefinition        pulumi.StringPtrOutput       `pulumi:"viewDefinition"`
+	CatalogName           pulumi.StringOutput       `pulumi:"catalogName"`
+	Columns               TableColumnArrayOutput    `pulumi:"columns"`
+	Comment               pulumi.StringPtrOutput    `pulumi:"comment"`
+	DataSourceFormat      pulumi.StringOutput       `pulumi:"dataSourceFormat"`
+	Name                  pulumi.StringOutput       `pulumi:"name"`
+	Owner                 pulumi.StringOutput       `pulumi:"owner"`
+	Properties            pulumi.StringMapOutput    `pulumi:"properties"`
+	ProviderConfig        TableProviderConfigOutput `pulumi:"providerConfig"`
+	SchemaName            pulumi.StringOutput       `pulumi:"schemaName"`
+	StorageCredentialName pulumi.StringPtrOutput    `pulumi:"storageCredentialName"`
+	StorageLocation       pulumi.StringPtrOutput    `pulumi:"storageLocation"`
+	TableType             pulumi.StringOutput       `pulumi:"tableType"`
+	ViewDefinition        pulumi.StringPtrOutput    `pulumi:"viewDefinition"`
 }
 
 // NewTable registers a new resource with the given unique name, arguments, and options.
@@ -258,8 +258,8 @@ func (o TableOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
 }
 
-func (o TableOutput) ProviderConfig() TableProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Table) TableProviderConfigPtrOutput { return v.ProviderConfig }).(TableProviderConfigPtrOutput)
+func (o TableOutput) ProviderConfig() TableProviderConfigOutput {
+	return o.ApplyT(func(v *Table) TableProviderConfigOutput { return v.ProviderConfig }).(TableProviderConfigOutput)
 }
 
 func (o TableOutput) SchemaName() pulumi.StringOutput {

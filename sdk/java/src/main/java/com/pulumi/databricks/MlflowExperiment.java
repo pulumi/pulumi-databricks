@@ -160,14 +160,14 @@ public class MlflowExperiment extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={MlflowExperimentProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ MlflowExperimentProviderConfig> providerConfig;
+    private Output<MlflowExperimentProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<MlflowExperimentProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<MlflowExperimentProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Tags for the MLflow experiment.

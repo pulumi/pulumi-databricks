@@ -356,7 +356,7 @@ class TagPolicy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.TagPolicyProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.TagPolicyProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

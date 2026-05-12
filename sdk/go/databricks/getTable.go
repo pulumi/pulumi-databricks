@@ -89,8 +89,8 @@ type LookupTableArgs struct {
 type LookupTableResult struct {
 	Id string `pulumi:"id"`
 	// Name of table, relative to parent schema.
-	Name           string                  `pulumi:"name"`
-	ProviderConfig *GetTableProviderConfig `pulumi:"providerConfig"`
+	Name           string                 `pulumi:"name"`
+	ProviderConfig GetTableProviderConfig `pulumi:"providerConfig"`
 	// TableInfo object for a Unity Catalog table. This contains the following attributes:
 	TableInfo GetTableTableInfo `pulumi:"tableInfo"`
 }
@@ -143,8 +143,8 @@ func (o LookupTableResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupTableResultOutput) ProviderConfig() GetTableProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupTableResult) *GetTableProviderConfig { return v.ProviderConfig }).(GetTableProviderConfigPtrOutput)
+func (o LookupTableResultOutput) ProviderConfig() GetTableProviderConfigOutput {
+	return o.ApplyT(func(v LookupTableResult) GetTableProviderConfig { return v.ProviderConfig }).(GetTableProviderConfigOutput)
 }
 
 // TableInfo object for a Unity Catalog table. This contains the following attributes:

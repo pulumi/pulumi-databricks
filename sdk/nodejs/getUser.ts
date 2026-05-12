@@ -109,7 +109,7 @@ export interface GetUserResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly providerConfig?: outputs.GetUserProviderConfig;
+    readonly providerConfig: outputs.GetUserProviderConfig;
     /**
      * Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
      */

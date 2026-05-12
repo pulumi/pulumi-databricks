@@ -484,14 +484,14 @@ public class Job extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={JobProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ JobProviderConfig> providerConfig;
+    private Output<JobProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<JobProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<JobProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * @deprecated

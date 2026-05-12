@@ -590,7 +590,7 @@ class KnowledgeAssistantKnowledgeSource(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.KnowledgeAssistantKnowledgeSourceProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.KnowledgeAssistantKnowledgeSourceProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("availability")]
         public Input<string>? Availability { get; set; }
 
+        [Input("confidentialComputeType")]
+        public Input<string>? ConfidentialComputeType { get; set; }
+
         [Input("firstOnDemand")]
         public Input<int>? FirstOnDemand { get; set; }
 

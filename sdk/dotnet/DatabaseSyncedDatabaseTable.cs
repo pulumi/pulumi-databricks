@@ -279,7 +279,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.DatabaseSyncedDatabaseTableProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.DatabaseSyncedDatabaseTableProviderConfig> ProviderConfig { get; private set; } = null!;
 
         [Output("spec")]
         public Output<Outputs.DatabaseSyncedDatabaseTableSpec?> Spec { get; private set; } = null!;

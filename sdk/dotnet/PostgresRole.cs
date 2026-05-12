@@ -193,7 +193,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.PostgresRoleProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.PostgresRoleProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// The ID to use for the Role, which will become the final component of

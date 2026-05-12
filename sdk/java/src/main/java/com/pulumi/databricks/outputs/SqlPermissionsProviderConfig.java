@@ -4,17 +4,18 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SqlPermissionsProviderConfig {
-    private String workspaceId;
+    private @Nullable String workspaceId;
 
     private SqlPermissionsProviderConfig() {}
-    public String workspaceId() {
-        return this.workspaceId;
+    public Optional<String> workspaceId() {
+        return Optional.ofNullable(this.workspaceId);
     }
 
     public static Builder builder() {
@@ -26,7 +27,7 @@ public final class SqlPermissionsProviderConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String workspaceId;
+        private @Nullable String workspaceId;
         public Builder() {}
         public Builder(SqlPermissionsProviderConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -34,10 +35,8 @@ public final class SqlPermissionsProviderConfig {
         }
 
         @CustomType.Setter
-        public Builder workspaceId(String workspaceId) {
-            if (workspaceId == null) {
-              throw new MissingRequiredPropertyException("SqlPermissionsProviderConfig", "workspaceId");
-            }
+        public Builder workspaceId(@Nullable String workspaceId) {
+
             this.workspaceId = workspaceId;
             return this;
         }

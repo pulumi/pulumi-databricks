@@ -353,14 +353,14 @@ public class Recipient extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={RecipientProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ RecipientProviderConfig> providerConfig;
+    private Output<RecipientProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<RecipientProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<RecipientProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Unique ID of the recipient token.

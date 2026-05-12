@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServicePrincipalsResult {
+    private @Nullable String api;
     /**
      * @return List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
      * 
@@ -26,7 +27,7 @@ public final class GetServicePrincipalsResult {
      * 
      */
     private String id;
-    private @Nullable GetServicePrincipalsProviderConfig providerConfig;
+    private GetServicePrincipalsProviderConfig providerConfig;
     /**
      * @return List of objects describing individual service principals. Each object has the following attributes:
      * 
@@ -34,6 +35,9 @@ public final class GetServicePrincipalsResult {
     private List<GetServicePrincipalsServicePrincipal> servicePrincipals;
 
     private GetServicePrincipalsResult() {}
+    public Optional<String> api() {
+        return Optional.ofNullable(this.api);
+    }
     /**
      * @return List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
      * 
@@ -51,8 +55,8 @@ public final class GetServicePrincipalsResult {
     public String id() {
         return this.id;
     }
-    public Optional<GetServicePrincipalsProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetServicePrincipalsProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     /**
      * @return List of objects describing individual service principals. Each object has the following attributes:
@@ -71,14 +75,16 @@ public final class GetServicePrincipalsResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String api;
         private List<String> applicationIds;
         private String displayNameContains;
         private String id;
-        private @Nullable GetServicePrincipalsProviderConfig providerConfig;
+        private GetServicePrincipalsProviderConfig providerConfig;
         private List<GetServicePrincipalsServicePrincipal> servicePrincipals;
         public Builder() {}
         public Builder(GetServicePrincipalsResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.api = defaults.api;
     	      this.applicationIds = defaults.applicationIds;
     	      this.displayNameContains = defaults.displayNameContains;
     	      this.id = defaults.id;
@@ -86,6 +92,12 @@ public final class GetServicePrincipalsResult {
     	      this.servicePrincipals = defaults.servicePrincipals;
         }
 
+        @CustomType.Setter
+        public Builder api(@Nullable String api) {
+
+            this.api = api;
+            return this;
+        }
         @CustomType.Setter
         public Builder applicationIds(List<String> applicationIds) {
             if (applicationIds == null) {
@@ -114,8 +126,10 @@ public final class GetServicePrincipalsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetServicePrincipalsProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetServicePrincipalsProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetServicePrincipalsResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }
@@ -132,6 +146,7 @@ public final class GetServicePrincipalsResult {
         }
         public GetServicePrincipalsResult build() {
             final var _resultValue = new GetServicePrincipalsResult();
+            _resultValue.api = api;
             _resultValue.applicationIds = applicationIds;
             _resultValue.displayNameContains = displayNameContains;
             _resultValue.id = id;

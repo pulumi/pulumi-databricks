@@ -78,7 +78,7 @@ type MetastoreProvider struct {
 	// Name of provider. Change forces creation of a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig MetastoreProviderProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig MetastoreProviderProviderConfigOutput `pulumi:"providerConfig"`
 	// This is the json file that is created from a recipient url.
 	RecipientProfileStr pulumi.StringOutput `pulumi:"recipientProfileStr"`
 }
@@ -285,8 +285,8 @@ func (o MetastoreProviderOutput) Name() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o MetastoreProviderOutput) ProviderConfig() MetastoreProviderProviderConfigPtrOutput {
-	return o.ApplyT(func(v *MetastoreProvider) MetastoreProviderProviderConfigPtrOutput { return v.ProviderConfig }).(MetastoreProviderProviderConfigPtrOutput)
+func (o MetastoreProviderOutput) ProviderConfig() MetastoreProviderProviderConfigOutput {
+	return o.ApplyT(func(v *MetastoreProvider) MetastoreProviderProviderConfigOutput { return v.ProviderConfig }).(MetastoreProviderProviderConfigOutput)
 }
 
 // This is the json file that is created from a recipient url.

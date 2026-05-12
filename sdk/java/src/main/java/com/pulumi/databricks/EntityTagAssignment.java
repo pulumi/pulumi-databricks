@@ -122,14 +122,14 @@ public class EntityTagAssignment extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={EntityTagAssignmentProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ EntityTagAssignmentProviderConfig> providerConfig;
+    private Output<EntityTagAssignmentProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<EntityTagAssignmentProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<EntityTagAssignmentProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * (string) - The source type of the tag assignment, e.g., user-assigned or system-assigned. Possible values are: `TAG_ASSIGNMENT_SOURCE_TYPE_SYSTEM_DATA_CLASSIFICATION`

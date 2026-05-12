@@ -130,10 +130,10 @@ type GetSparkVersionResult struct {
 	LongTermSupport *bool  `pulumi:"longTermSupport"`
 	Ml              *bool  `pulumi:"ml"`
 	// Deprecated: Specify runtime_engine="PHOTON" in the cluster configuration
-	Photon         *bool                          `pulumi:"photon"`
-	ProviderConfig *GetSparkVersionProviderConfig `pulumi:"providerConfig"`
-	Scala          *string                        `pulumi:"scala"`
-	SparkVersion   *string                        `pulumi:"sparkVersion"`
+	Photon         *bool                         `pulumi:"photon"`
+	ProviderConfig GetSparkVersionProviderConfig `pulumi:"providerConfig"`
+	Scala          *string                       `pulumi:"scala"`
+	SparkVersion   *string                       `pulumi:"sparkVersion"`
 }
 
 func GetSparkVersionOutput(ctx *pulumi.Context, args GetSparkVersionOutputArgs, opts ...pulumi.InvokeOption) GetSparkVersionResultOutput {
@@ -235,8 +235,8 @@ func (o GetSparkVersionResultOutput) Photon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetSparkVersionResult) *bool { return v.Photon }).(pulumi.BoolPtrOutput)
 }
 
-func (o GetSparkVersionResultOutput) ProviderConfig() GetSparkVersionProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetSparkVersionResult) *GetSparkVersionProviderConfig { return v.ProviderConfig }).(GetSparkVersionProviderConfigPtrOutput)
+func (o GetSparkVersionResultOutput) ProviderConfig() GetSparkVersionProviderConfigOutput {
+	return o.ApplyT(func(v GetSparkVersionResult) GetSparkVersionProviderConfig { return v.ProviderConfig }).(GetSparkVersionProviderConfigOutput)
 }
 
 func (o GetSparkVersionResultOutput) Scala() pulumi.StringPtrOutput {

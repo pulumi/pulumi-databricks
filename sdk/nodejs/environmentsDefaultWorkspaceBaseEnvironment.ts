@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * The Default Workspace Base Environment is a singleton resource that configures which workspace base environments are applied by default to new notebooks in the workspace. Defaults can be set separately for CPU and GPU compute.
  *
@@ -100,7 +100,7 @@ export class EnvironmentsDefaultWorkspaceBaseEnvironment extends pulumi.CustomRe
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.EnvironmentsDefaultWorkspaceBaseEnvironmentProviderConfig>;
 
     /**
      * Create a EnvironmentsDefaultWorkspaceBaseEnvironment resource with the given unique name, arguments, and options.

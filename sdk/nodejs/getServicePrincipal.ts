@@ -50,6 +50,7 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
     return pulumi.runtime.invoke("databricks:index/getServicePrincipal:getServicePrincipal", {
         "aclPrincipalId": args.aclPrincipalId,
         "active": args.active,
+        "api": args.api,
         "applicationId": args.applicationId,
         "displayName": args.displayName,
         "externalId": args.externalId,
@@ -74,6 +75,7 @@ export interface GetServicePrincipalArgs {
      * Whether service principal is active or not.
      */
     active?: boolean;
+    api?: string;
     /**
      * Application ID of the service principal. The service principal must exist before this resource can be retrieved.
      */
@@ -121,6 +123,7 @@ export interface GetServicePrincipalResult {
      * Whether service principal is active or not.
      */
     readonly active: boolean;
+    readonly api?: string;
     /**
      * Application ID of the service principal.
      */
@@ -141,7 +144,7 @@ export interface GetServicePrincipalResult {
      * The id of the service principal (SCIM ID).
      */
     readonly id: string;
-    readonly providerConfig?: outputs.GetServicePrincipalProviderConfig;
+    readonly providerConfig: outputs.GetServicePrincipalProviderConfig;
     /**
      * Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
      */
@@ -196,6 +199,7 @@ export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, 
     return pulumi.runtime.invokeOutput("databricks:index/getServicePrincipal:getServicePrincipal", {
         "aclPrincipalId": args.aclPrincipalId,
         "active": args.active,
+        "api": args.api,
         "applicationId": args.applicationId,
         "displayName": args.displayName,
         "externalId": args.externalId,
@@ -220,6 +224,7 @@ export interface GetServicePrincipalOutputArgs {
      * Whether service principal is active or not.
      */
     active?: pulumi.Input<boolean | undefined>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * Application ID of the service principal. The service principal must exist before this resource can be retrieved.
      */

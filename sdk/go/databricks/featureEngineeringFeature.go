@@ -37,7 +37,7 @@ type FeatureEngineeringFeature struct {
 	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
 	LineageContext FeatureEngineeringFeatureLineageContextPtrOutput `pulumi:"lineageContext"`
 	// Configure the provider for management through account provider.
-	ProviderConfig FeatureEngineeringFeatureProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig FeatureEngineeringFeatureProviderConfigOutput `pulumi:"providerConfig"`
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourceOutput `pulumi:"source"`
 	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
@@ -349,10 +349,10 @@ func (o FeatureEngineeringFeatureOutput) LineageContext() FeatureEngineeringFeat
 }
 
 // Configure the provider for management through account provider.
-func (o FeatureEngineeringFeatureOutput) ProviderConfig() FeatureEngineeringFeatureProviderConfigPtrOutput {
-	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureProviderConfigPtrOutput {
+func (o FeatureEngineeringFeatureOutput) ProviderConfig() FeatureEngineeringFeatureProviderConfigOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureProviderConfigOutput {
 		return v.ProviderConfig
-	}).(FeatureEngineeringFeatureProviderConfigPtrOutput)
+	}).(FeatureEngineeringFeatureProviderConfigOutput)
 }
 
 // The data source of the feature

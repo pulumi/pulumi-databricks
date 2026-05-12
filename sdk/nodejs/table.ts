@@ -41,7 +41,7 @@ export class Table extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     declare public readonly owner: pulumi.Output<string>;
     declare public readonly properties: pulumi.Output<{[key: string]: string} | undefined>;
-    declare public readonly providerConfig: pulumi.Output<outputs.TableProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.TableProviderConfig>;
     declare public readonly schemaName: pulumi.Output<string>;
     declare public readonly storageCredentialName: pulumi.Output<string | undefined>;
     declare public readonly storageLocation: pulumi.Output<string | undefined>;

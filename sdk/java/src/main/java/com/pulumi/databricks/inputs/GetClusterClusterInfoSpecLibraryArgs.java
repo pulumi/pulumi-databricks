@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibraryCranArgs;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibraryMavenArgs;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibraryProviderConfigArgs;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibraryPypiArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -63,15 +64,15 @@ public final class GetClusterClusterInfoSpecLibraryArgs extends com.pulumi.resou
      * Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    @Import(name="providerConfig")
-    private @Nullable Output<GetClusterClusterInfoSpecLibraryProviderConfigArgs> providerConfig;
+    @Import(name="providerConfig", required=true)
+    private Output<GetClusterClusterInfoSpecLibraryProviderConfigArgs> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Optional<Output<GetClusterClusterInfoSpecLibraryProviderConfigArgs>> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public Output<GetClusterClusterInfoSpecLibraryProviderConfigArgs> providerConfig() {
+        return this.providerConfig;
     }
 
     @Import(name="pypi")
@@ -184,7 +185,7 @@ public final class GetClusterClusterInfoSpecLibraryArgs extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder providerConfig(@Nullable Output<GetClusterClusterInfoSpecLibraryProviderConfigArgs> providerConfig) {
+        public Builder providerConfig(Output<GetClusterClusterInfoSpecLibraryProviderConfigArgs> providerConfig) {
             $.providerConfig = providerConfig;
             return this;
         }
@@ -227,6 +228,9 @@ public final class GetClusterClusterInfoSpecLibraryArgs extends com.pulumi.resou
         }
 
         public GetClusterClusterInfoSpecLibraryArgs build() {
+            if ($.providerConfig == null) {
+                throw new MissingRequiredPropertyException("GetClusterClusterInfoSpecLibraryArgs", "providerConfig");
+            }
             return $;
         }
     }

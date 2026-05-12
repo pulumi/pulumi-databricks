@@ -85,7 +85,7 @@ type MlflowExperiment struct {
 	// Name of MLflow experiment. It must be an absolute path within the Databricks workspace, e.g. `/Users/<some-username>/my-experiment`. For more information about changes to experiment naming conventions, see [mlflow docs](https://docs.databricks.com/applications/mlflow/experiments.html#experiment-migration).
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig MlflowExperimentProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig MlflowExperimentProviderConfigOutput `pulumi:"providerConfig"`
 	// Tags for the MLflow experiment.
 	Tags MlflowExperimentTagArrayOutput `pulumi:"tags"`
 }
@@ -311,8 +311,8 @@ func (o MlflowExperimentOutput) Name() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o MlflowExperimentOutput) ProviderConfig() MlflowExperimentProviderConfigPtrOutput {
-	return o.ApplyT(func(v *MlflowExperiment) MlflowExperimentProviderConfigPtrOutput { return v.ProviderConfig }).(MlflowExperimentProviderConfigPtrOutput)
+func (o MlflowExperimentOutput) ProviderConfig() MlflowExperimentProviderConfigOutput {
+	return o.ApplyT(func(v *MlflowExperiment) MlflowExperimentProviderConfigOutput { return v.ProviderConfig }).(MlflowExperimentProviderConfigOutput)
 }
 
 // Tags for the MLflow experiment.

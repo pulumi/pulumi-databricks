@@ -143,10 +143,10 @@ public class ServicePrincipalRole extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.api);
     }
     @Export(name="providerConfig", refs={ServicePrincipalRoleProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ServicePrincipalRoleProviderConfig> providerConfig;
+    private Output<ServicePrincipalRoleProviderConfig> providerConfig;
 
-    public Output<Optional<ServicePrincipalRoleProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<ServicePrincipalRoleProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * This is the role name, role id, or instance profile resource.

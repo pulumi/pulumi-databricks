@@ -172,14 +172,14 @@ public class RegisteredModel extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={RegisteredModelProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ RegisteredModelProviderConfig> providerConfig;
+    private Output<RegisteredModelProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<RegisteredModelProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<RegisteredModelProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * The name of the schema where the registered model resides. *Change of this parameter forces recreation of the resource.*

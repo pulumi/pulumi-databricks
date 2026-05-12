@@ -165,8 +165,8 @@ type GetClustersResult struct {
 	FilterBy            *GetClustersFilterBy `pulumi:"filterBy"`
 	Id                  string               `pulumi:"id"`
 	// list of Cluster ids
-	Ids            []string                   `pulumi:"ids"`
-	ProviderConfig *GetClustersProviderConfig `pulumi:"providerConfig"`
+	Ids            []string                  `pulumi:"ids"`
+	ProviderConfig GetClustersProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...pulumi.InvokeOption) GetClustersResultOutput {
@@ -227,8 +227,8 @@ func (o GetClustersResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-func (o GetClustersResultOutput) ProviderConfig() GetClustersProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetClustersResult) *GetClustersProviderConfig { return v.ProviderConfig }).(GetClustersProviderConfigPtrOutput)
+func (o GetClustersResultOutput) ProviderConfig() GetClustersProviderConfigOutput {
+	return o.ApplyT(func(v GetClustersResult) GetClustersProviderConfig { return v.ProviderConfig }).(GetClustersProviderConfigOutput)
 }
 
 func init() {

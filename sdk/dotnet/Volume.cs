@@ -129,7 +129,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.VolumeProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.VolumeProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Name of parent Schema relative to parent Catalog. Change forces creation of a new resource.

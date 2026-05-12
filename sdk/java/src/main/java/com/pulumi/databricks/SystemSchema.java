@@ -13,7 +13,6 @@ import com.pulumi.databricks.inputs.SystemSchemaState;
 import com.pulumi.databricks.outputs.SystemSchemaProviderConfig;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -92,14 +91,14 @@ public class SystemSchema extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={SystemSchemaProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ SystemSchemaProviderConfig> providerConfig;
+    private Output<SystemSchemaProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<SystemSchemaProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<SystemSchemaProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * name of the system schema.

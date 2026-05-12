@@ -107,8 +107,8 @@ type LookupUserResult struct {
 	// Home folder of the user, e.g. `/Users/mr.foo@example.com`.
 	Home string `pulumi:"home"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string                 `pulumi:"id"`
-	ProviderConfig *GetUserProviderConfig `pulumi:"providerConfig"`
+	Id             string                `pulumi:"id"`
+	ProviderConfig GetUserProviderConfig `pulumi:"providerConfig"`
 	// Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.
 	Repos  string  `pulumi:"repos"`
 	UserId *string `pulumi:"userId"`
@@ -198,8 +198,8 @@ func (o LookupUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupUserResultOutput) ProviderConfig() GetUserProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupUserResult) *GetUserProviderConfig { return v.ProviderConfig }).(GetUserProviderConfigPtrOutput)
+func (o LookupUserResultOutput) ProviderConfig() GetUserProviderConfigOutput {
+	return o.ApplyT(func(v LookupUserResult) GetUserProviderConfig { return v.ProviderConfig }).(GetUserProviderConfigOutput)
 }
 
 // Personal Repos location of the user, e.g. `/Repos/mr.foo@example.com`.

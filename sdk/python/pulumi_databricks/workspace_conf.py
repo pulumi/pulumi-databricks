@@ -254,7 +254,7 @@ class WorkspaceConf(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.WorkspaceConfProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.WorkspaceConfProviderConfig']:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """

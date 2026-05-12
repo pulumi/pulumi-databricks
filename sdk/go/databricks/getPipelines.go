@@ -130,9 +130,9 @@ type GetPipelinesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// List of ids for [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt) pipelines matching the provided search criteria.
-	Ids            []string                    `pulumi:"ids"`
-	PipelineName   *string                     `pulumi:"pipelineName"`
-	ProviderConfig *GetPipelinesProviderConfig `pulumi:"providerConfig"`
+	Ids            []string                   `pulumi:"ids"`
+	PipelineName   *string                    `pulumi:"pipelineName"`
+	ProviderConfig GetPipelinesProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetPipelinesOutput(ctx *pulumi.Context, args GetPipelinesOutputArgs, opts ...pulumi.InvokeOption) GetPipelinesResultOutput {
@@ -187,8 +187,8 @@ func (o GetPipelinesResultOutput) PipelineName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPipelinesResult) *string { return v.PipelineName }).(pulumi.StringPtrOutput)
 }
 
-func (o GetPipelinesResultOutput) ProviderConfig() GetPipelinesProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetPipelinesResult) *GetPipelinesProviderConfig { return v.ProviderConfig }).(GetPipelinesProviderConfigPtrOutput)
+func (o GetPipelinesResultOutput) ProviderConfig() GetPipelinesProviderConfigOutput {
+	return o.ApplyT(func(v GetPipelinesResult) GetPipelinesProviderConfig { return v.ProviderConfig }).(GetPipelinesProviderConfigOutput)
 }
 
 func init() {

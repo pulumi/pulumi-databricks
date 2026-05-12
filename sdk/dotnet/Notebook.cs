@@ -54,7 +54,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.NotebookProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.NotebookProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Path to notebook in source code format on local filesystem. Conflicts with `ContentBase64`.

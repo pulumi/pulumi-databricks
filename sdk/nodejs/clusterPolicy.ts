@@ -196,7 +196,7 @@ export class ClusterPolicy extends pulumi.CustomResource {
      * Canonical unique identifier for the cluster policy.
      */
     declare public /*out*/ readonly policyId: pulumi.Output<string>;
-    declare public readonly providerConfig: pulumi.Output<outputs.ClusterPolicyProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.ClusterPolicyProviderConfig>;
 
     /**
      * Create a ClusterPolicy resource with the given unique name, arguments, and options.

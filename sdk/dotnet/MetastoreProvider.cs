@@ -79,7 +79,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.MetastoreProviderProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.MetastoreProviderProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// This is the json file that is created from a recipient url.

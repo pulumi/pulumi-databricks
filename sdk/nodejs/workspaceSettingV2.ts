@@ -121,7 +121,7 @@ export class WorkspaceSettingV2 extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceSettingV2ProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceSettingV2ProviderConfig>;
     /**
      * Setting value for restrictWorkspaceAdmins setting. This is the setting value set by consumers, check effectiveRestrictWorkspaceAdmins for final setting value
      */

@@ -26,7 +26,7 @@ public final class GetJobsResult {
     private Map<String,String> ids;
     private @Nullable String jobNameContains;
     private @Nullable String key;
-    private @Nullable GetJobsProviderConfig providerConfig;
+    private GetJobsProviderConfig providerConfig;
 
     private GetJobsResult() {}
     /**
@@ -49,8 +49,8 @@ public final class GetJobsResult {
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
-    public Optional<GetJobsProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetJobsProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -66,7 +66,7 @@ public final class GetJobsResult {
         private Map<String,String> ids;
         private @Nullable String jobNameContains;
         private @Nullable String key;
-        private @Nullable GetJobsProviderConfig providerConfig;
+        private GetJobsProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetJobsResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -106,8 +106,10 @@ public final class GetJobsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetJobsProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetJobsProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetJobsResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

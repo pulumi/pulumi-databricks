@@ -77,7 +77,7 @@ export interface GetExternalLocationResult {
      */
     readonly id: string;
     readonly name: string;
-    readonly providerConfig?: outputs.GetExternalLocationProviderConfig;
+    readonly providerConfig: outputs.GetExternalLocationProviderConfig;
 }
 /**
  * Retrieves details about a databricks.ExternalLocation that were created by Pulumi or manually.

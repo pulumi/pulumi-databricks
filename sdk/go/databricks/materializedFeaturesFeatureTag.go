@@ -18,8 +18,8 @@ type MaterializedFeaturesFeatureTag struct {
 
 	Key pulumi.StringOutput `pulumi:"key"`
 	// Configure the provider for management through account provider.
-	ProviderConfig MaterializedFeaturesFeatureTagProviderConfigPtrOutput `pulumi:"providerConfig"`
-	Value          pulumi.StringPtrOutput                                `pulumi:"value"`
+	ProviderConfig MaterializedFeaturesFeatureTagProviderConfigOutput `pulumi:"providerConfig"`
+	Value          pulumi.StringPtrOutput                             `pulumi:"value"`
 }
 
 // NewMaterializedFeaturesFeatureTag registers a new resource with the given unique name, arguments, and options.
@@ -179,10 +179,10 @@ func (o MaterializedFeaturesFeatureTagOutput) Key() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o MaterializedFeaturesFeatureTagOutput) ProviderConfig() MaterializedFeaturesFeatureTagProviderConfigPtrOutput {
-	return o.ApplyT(func(v *MaterializedFeaturesFeatureTag) MaterializedFeaturesFeatureTagProviderConfigPtrOutput {
+func (o MaterializedFeaturesFeatureTagOutput) ProviderConfig() MaterializedFeaturesFeatureTagProviderConfigOutput {
+	return o.ApplyT(func(v *MaterializedFeaturesFeatureTag) MaterializedFeaturesFeatureTagProviderConfigOutput {
 		return v.ProviderConfig
-	}).(MaterializedFeaturesFeatureTagProviderConfigPtrOutput)
+	}).(MaterializedFeaturesFeatureTagProviderConfigOutput)
 }
 
 func (o MaterializedFeaturesFeatureTagOutput) Value() pulumi.StringPtrOutput {

@@ -215,9 +215,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.DatabaseInstanceProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.DatabaseInstanceProviderConfig>;
     /**
-     * Purge the resource on delete
+     * Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+     * of false will throw a bad request
      */
     declare public readonly purgeOnDelete: pulumi.Output<boolean | undefined>;
     /**
@@ -437,7 +438,8 @@ export interface DatabaseInstanceState {
      */
     providerConfig?: pulumi.Input<inputs.DatabaseInstanceProviderConfig | undefined>;
     /**
-     * Purge the resource on delete
+     * Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+     * of false will throw a bad request
      */
     purgeOnDelete?: pulumi.Input<boolean | undefined>;
     /**
@@ -514,7 +516,8 @@ export interface DatabaseInstanceArgs {
      */
     providerConfig?: pulumi.Input<inputs.DatabaseInstanceProviderConfig | undefined>;
     /**
-     * Purge the resource on delete
+     * Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+     * of false will throw a bad request
      */
     purgeOnDelete?: pulumi.Input<boolean | undefined>;
     /**

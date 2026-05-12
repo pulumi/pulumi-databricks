@@ -559,14 +559,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={ClusterProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ClusterProviderConfig> providerConfig;
+    private Output<ClusterProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<ClusterProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<ClusterProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="remoteDiskThroughput", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> remoteDiskThroughput;

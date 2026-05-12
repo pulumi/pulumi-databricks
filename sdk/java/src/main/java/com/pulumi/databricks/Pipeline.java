@@ -438,10 +438,10 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
         return this.pipelineId;
     }
     @Export(name="providerConfig", refs={PipelineProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ PipelineProviderConfig> providerConfig;
+    private Output<PipelineProviderConfig> providerConfig;
 
-    public Output<Optional<PipelineProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<PipelineProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="restartWindow", refs={PipelineRestartWindow.class}, tree="[0]")
     private Output</* @Nullable */ PipelineRestartWindow> restartWindow;

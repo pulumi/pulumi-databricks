@@ -86,7 +86,7 @@ export class KnowledgeAssistant extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.KnowledgeAssistantProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.KnowledgeAssistantProviderConfig>;
     /**
      * (string) - State of the Knowledge Assistant. Not returned in List responses. Possible values are: `ACTIVE`, `CREATING`, `FAILED`
      */

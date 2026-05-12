@@ -170,14 +170,14 @@ public class ServicePrincipalSecret extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="providerConfig", refs={ServicePrincipalSecretProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ServicePrincipalSecretProviderConfig> providerConfig;
+    private Output<ServicePrincipalSecretProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<ServicePrincipalSecretProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<ServicePrincipalSecretProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * **Sensitive** Generated secret for the service principal.

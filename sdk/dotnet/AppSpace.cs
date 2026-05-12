@@ -56,7 +56,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.AppSpaceProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.AppSpaceProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Resources for the app space. Resources configured at the space level are available to all apps in the space

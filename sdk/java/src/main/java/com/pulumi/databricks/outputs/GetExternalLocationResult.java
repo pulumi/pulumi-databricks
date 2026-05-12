@@ -9,8 +9,6 @@ import com.pulumi.databricks.outputs.GetExternalLocationProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetExternalLocationResult {
@@ -25,7 +23,7 @@ public final class GetExternalLocationResult {
      */
     private String id;
     private String name;
-    private @Nullable GetExternalLocationProviderConfig providerConfig;
+    private GetExternalLocationProviderConfig providerConfig;
 
     private GetExternalLocationResult() {}
     /**
@@ -45,8 +43,8 @@ public final class GetExternalLocationResult {
     public String name() {
         return this.name;
     }
-    public Optional<GetExternalLocationProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetExternalLocationProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     public static Builder builder() {
@@ -61,7 +59,7 @@ public final class GetExternalLocationResult {
         private GetExternalLocationExternalLocationInfo externalLocationInfo;
         private String id;
         private String name;
-        private @Nullable GetExternalLocationProviderConfig providerConfig;
+        private GetExternalLocationProviderConfig providerConfig;
         public Builder() {}
         public Builder(GetExternalLocationResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -96,8 +94,10 @@ public final class GetExternalLocationResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetExternalLocationProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetExternalLocationProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetExternalLocationResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

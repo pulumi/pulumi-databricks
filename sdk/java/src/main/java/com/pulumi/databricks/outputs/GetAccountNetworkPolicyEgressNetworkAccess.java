@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination;
 import com.pulumi.databricks.outputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination;
+import com.pulumi.databricks.outputs.GetAccountNetworkPolicyEgressNetworkAccessBlockedInternetDestination;
 import com.pulumi.databricks.outputs.GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -26,6 +27,13 @@ public final class GetAccountNetworkPolicyEgressNetworkAccess {
      * 
      */
     private @Nullable List<GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination> allowedStorageDestinations;
+    /**
+     * @return (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are blocked from accessing.
+     * These destinations are enforced when restriction mode is RESTRICTED_ACCESS or DRY_RUN.
+     * Currently supports DNS_NAME type only; IP_RANGE support is planned
+     * 
+     */
+    private @Nullable List<GetAccountNetworkPolicyEgressNetworkAccessBlockedInternetDestination> blockedInternetDestinations;
     /**
      * @return (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
      * 
@@ -53,6 +61,15 @@ public final class GetAccountNetworkPolicyEgressNetworkAccess {
         return this.allowedStorageDestinations == null ? List.of() : this.allowedStorageDestinations;
     }
     /**
+     * @return (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are blocked from accessing.
+     * These destinations are enforced when restriction mode is RESTRICTED_ACCESS or DRY_RUN.
+     * Currently supports DNS_NAME type only; IP_RANGE support is planned
+     * 
+     */
+    public List<GetAccountNetworkPolicyEgressNetworkAccessBlockedInternetDestination> blockedInternetDestinations() {
+        return this.blockedInternetDestinations == null ? List.of() : this.blockedInternetDestinations;
+    }
+    /**
      * @return (EgressNetworkPolicyNetworkAccessPolicyPolicyEnforcement) - Optional. When policyEnforcement is not provided, we default to ENFORCE_MODE_ALL_SERVICES
      * 
      */
@@ -78,6 +95,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccess {
     public static final class Builder {
         private @Nullable List<GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination> allowedInternetDestinations;
         private @Nullable List<GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination> allowedStorageDestinations;
+        private @Nullable List<GetAccountNetworkPolicyEgressNetworkAccessBlockedInternetDestination> blockedInternetDestinations;
         private @Nullable GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement policyEnforcement;
         private String restrictionMode;
         public Builder() {}
@@ -85,6 +103,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccess {
     	      Objects.requireNonNull(defaults);
     	      this.allowedInternetDestinations = defaults.allowedInternetDestinations;
     	      this.allowedStorageDestinations = defaults.allowedStorageDestinations;
+    	      this.blockedInternetDestinations = defaults.blockedInternetDestinations;
     	      this.policyEnforcement = defaults.policyEnforcement;
     	      this.restrictionMode = defaults.restrictionMode;
         }
@@ -108,6 +127,15 @@ public final class GetAccountNetworkPolicyEgressNetworkAccess {
             return allowedStorageDestinations(List.of(allowedStorageDestinations));
         }
         @CustomType.Setter
+        public Builder blockedInternetDestinations(@Nullable List<GetAccountNetworkPolicyEgressNetworkAccessBlockedInternetDestination> blockedInternetDestinations) {
+
+            this.blockedInternetDestinations = blockedInternetDestinations;
+            return this;
+        }
+        public Builder blockedInternetDestinations(GetAccountNetworkPolicyEgressNetworkAccessBlockedInternetDestination... blockedInternetDestinations) {
+            return blockedInternetDestinations(List.of(blockedInternetDestinations));
+        }
+        @CustomType.Setter
         public Builder policyEnforcement(@Nullable GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement policyEnforcement) {
 
             this.policyEnforcement = policyEnforcement;
@@ -125,6 +153,7 @@ public final class GetAccountNetworkPolicyEgressNetworkAccess {
             final var _resultValue = new GetAccountNetworkPolicyEgressNetworkAccess();
             _resultValue.allowedInternetDestinations = allowedInternetDestinations;
             _resultValue.allowedStorageDestinations = allowedStorageDestinations;
+            _resultValue.blockedInternetDestinations = blockedInternetDestinations;
             _resultValue.policyEnforcement = policyEnforcement;
             _resultValue.restrictionMode = restrictionMode;
             return _resultValue;

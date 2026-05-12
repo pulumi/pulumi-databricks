@@ -882,7 +882,7 @@ class ModelServing(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.ModelServingProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.ModelServingProviderConfig']:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """

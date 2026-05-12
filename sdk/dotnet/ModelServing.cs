@@ -261,7 +261,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.ModelServingProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.ModelServingProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// A list of rate limit blocks to be applied to the serving endpoint. *Note: only external and foundation model endpoints are supported as of now.*

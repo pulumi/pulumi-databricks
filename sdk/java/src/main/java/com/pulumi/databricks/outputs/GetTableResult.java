@@ -9,8 +9,6 @@ import com.pulumi.databricks.outputs.GetTableTableInfo;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTableResult {
@@ -20,7 +18,7 @@ public final class GetTableResult {
      * 
      */
     private String name;
-    private @Nullable GetTableProviderConfig providerConfig;
+    private GetTableProviderConfig providerConfig;
     /**
      * @return TableInfo object for a Unity Catalog table. This contains the following attributes:
      * 
@@ -38,8 +36,8 @@ public final class GetTableResult {
     public String name() {
         return this.name;
     }
-    public Optional<GetTableProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetTableProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     /**
      * @return TableInfo object for a Unity Catalog table. This contains the following attributes:
@@ -60,7 +58,7 @@ public final class GetTableResult {
     public static final class Builder {
         private String id;
         private String name;
-        private @Nullable GetTableProviderConfig providerConfig;
+        private GetTableProviderConfig providerConfig;
         private GetTableTableInfo tableInfo;
         public Builder() {}
         public Builder(GetTableResult defaults) {
@@ -88,8 +86,10 @@ public final class GetTableResult {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetTableProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetTableProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetTableResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

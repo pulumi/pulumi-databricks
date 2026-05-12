@@ -11,8 +11,6 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDbfsFilePathsResult {
@@ -27,7 +25,7 @@ public final class GetDbfsFilePathsResult {
      * 
      */
     private List<GetDbfsFilePathsPathList> pathLists;
-    private @Nullable GetDbfsFilePathsProviderConfig providerConfig;
+    private GetDbfsFilePathsProviderConfig providerConfig;
     private Boolean recursive;
 
     private GetDbfsFilePathsResult() {}
@@ -48,8 +46,8 @@ public final class GetDbfsFilePathsResult {
     public List<GetDbfsFilePathsPathList> pathLists() {
         return this.pathLists;
     }
-    public Optional<GetDbfsFilePathsProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetDbfsFilePathsProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     public Boolean recursive() {
         return this.recursive;
@@ -67,7 +65,7 @@ public final class GetDbfsFilePathsResult {
         private String id;
         private String path;
         private List<GetDbfsFilePathsPathList> pathLists;
-        private @Nullable GetDbfsFilePathsProviderConfig providerConfig;
+        private GetDbfsFilePathsProviderConfig providerConfig;
         private Boolean recursive;
         public Builder() {}
         public Builder(GetDbfsFilePathsResult defaults) {
@@ -107,8 +105,10 @@ public final class GetDbfsFilePathsResult {
             return pathLists(List.of(pathLists));
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetDbfsFilePathsProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetDbfsFilePathsProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetDbfsFilePathsResult", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

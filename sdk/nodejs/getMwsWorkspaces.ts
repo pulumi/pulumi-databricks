@@ -43,7 +43,9 @@ export function getMwsWorkspaces(args?: GetMwsWorkspacesArgs, opts?: pulumi.Invo
  */
 export interface GetMwsWorkspacesArgs {
     /**
-     * Configure the provider for management through account provider. This block consists of the following fields:
+     * This data source is account-only and has no workspace context, so `providerConfig` has no effect and will be removed in a future major release. The block consists of the following field:
+     *
+     * @deprecated provider_config has no effect on this account-only resource and will be removed in a future major release.
      */
     providerConfig?: inputs.GetMwsWorkspacesProviderConfig;
 }
@@ -60,7 +62,10 @@ export interface GetMwsWorkspacesResult {
      * name-to-id map for all of the workspaces in the account
      */
     readonly ids: {[key: string]: string};
-    readonly providerConfig?: outputs.GetMwsWorkspacesProviderConfig;
+    /**
+     * @deprecated provider_config has no effect on this account-only resource and will be removed in a future major release.
+     */
+    readonly providerConfig: outputs.GetMwsWorkspacesProviderConfig;
 }
 /**
  * Lists all databricks.MwsWorkspaces in Databricks Account.
@@ -99,7 +104,9 @@ export function getMwsWorkspacesOutput(args?: GetMwsWorkspacesOutputArgs, opts?:
  */
 export interface GetMwsWorkspacesOutputArgs {
     /**
-     * Configure the provider for management through account provider. This block consists of the following fields:
+     * This data source is account-only and has no workspace context, so `providerConfig` has no effect and will be removed in a future major release. The block consists of the following field:
+     *
+     * @deprecated provider_config has no effect on this account-only resource and will be removed in a future major release.
      */
     providerConfig?: pulumi.Input<inputs.GetMwsWorkspacesProviderConfigArgs | undefined>;
 }

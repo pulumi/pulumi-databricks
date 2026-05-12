@@ -307,9 +307,9 @@ class PostgresEndpoint(pulumi.CustomResource):
 
         ### Managing Implicitly Created Read-Write Endpoint
 
-        A read-write endpoint named `primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `replace_existing = true`: it lets Pulumi take ownership of the implicitly created endpoint and immediately apply the provided configuration to it. Support for providing a custom `endpoint_id` will be available in later versions.
+        A read-write endpoint named `primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `replace_existing = true`: it lets Pulumi represent the implicitly created endpoint in Pulumi state and immediately apply the provided configuration to it. Support for providing a custom `endpoint_id` will be available in later versions.
 
-        This resource is only required if you want to apply configuration changes to the implicitly created endpoint.
+        Pulumi uses this resource exclusively for managing updates. It does not control creation or deletion of the endpoint itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual endpoint is unaffected, because its lifecycle is controlled by the parent branch. The only way to remove the actual endpoint is to delete the branch it belongs to. If you don't want to delete the parent branch and are concerned about the cost, use the `disabled` or `suspend_timeout_duration` fields in `spec`.
 
         ```python
         import pulumi
@@ -473,7 +473,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                 "default_endpoint_settings": {
                     "autoscaling_limit_min_cu": float(1),
                     "autoscaling_limit_max_cu": float(8),
-                    "suspend_timeout_duration": "300s",
+                    "suspend_timeout_duration": "86400s",
                 },
             })
         main = databricks.PostgresBranch("main",
@@ -533,9 +533,9 @@ class PostgresEndpoint(pulumi.CustomResource):
 
         ### Managing Implicitly Created Read-Write Endpoint
 
-        A read-write endpoint named `primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `replace_existing = true`: it lets Pulumi take ownership of the implicitly created endpoint and immediately apply the provided configuration to it. Support for providing a custom `endpoint_id` will be available in later versions.
+        A read-write endpoint named `primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `replace_existing = true`: it lets Pulumi represent the implicitly created endpoint in Pulumi state and immediately apply the provided configuration to it. Support for providing a custom `endpoint_id` will be available in later versions.
 
-        This resource is only required if you want to apply configuration changes to the implicitly created endpoint.
+        Pulumi uses this resource exclusively for managing updates. It does not control creation or deletion of the endpoint itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual endpoint is unaffected, because its lifecycle is controlled by the parent branch. The only way to remove the actual endpoint is to delete the branch it belongs to. If you don't want to delete the parent branch and are concerned about the cost, use the `disabled` or `suspend_timeout_duration` fields in `spec`.
 
         ```python
         import pulumi
@@ -699,7 +699,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                 "default_endpoint_settings": {
                     "autoscaling_limit_min_cu": float(1),
                     "autoscaling_limit_max_cu": float(8),
-                    "suspend_timeout_duration": "300s",
+                    "suspend_timeout_duration": "86400s",
                 },
             })
         main = databricks.PostgresBranch("main",
@@ -874,7 +874,7 @@ class PostgresEndpoint(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.PostgresEndpointProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.PostgresEndpointProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

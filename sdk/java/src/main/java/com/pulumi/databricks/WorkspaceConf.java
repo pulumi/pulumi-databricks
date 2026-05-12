@@ -92,14 +92,14 @@ public class WorkspaceConf extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={WorkspaceConfProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ WorkspaceConfProviderConfig> providerConfig;
+    private Output<WorkspaceConfProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<WorkspaceConfProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<WorkspaceConfProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
 
     /**

@@ -76,7 +76,7 @@ export class QualityMonitorV2 extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.QualityMonitorV2ProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.QualityMonitorV2ProviderConfig>;
     /**
      * Validity check configurations for anomaly detection
      */

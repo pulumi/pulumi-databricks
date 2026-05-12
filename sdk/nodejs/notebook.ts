@@ -64,7 +64,7 @@ export class Notebook extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.NotebookProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.NotebookProviderConfig>;
     /**
      * Path to notebook in source code format on local filesystem. Conflicts with `contentBase64`.
      */

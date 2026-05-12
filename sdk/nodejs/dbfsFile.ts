@@ -61,7 +61,7 @@ export class DbfsFile extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.DbfsFileProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.DbfsFileProviderConfig>;
     /**
      * The full absolute path to the file. Conflicts with `contentBase64`.
      */

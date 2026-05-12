@@ -116,6 +116,7 @@ type App struct {
 	ServicePrincipalName        pulumi.StringOutput                      `pulumi:"servicePrincipalName"`
 	Space                       pulumi.StringPtrOutput                   `pulumi:"space"`
 	TelemetryExportDestinations AppTelemetryExportDestinationArrayOutput `pulumi:"telemetryExportDestinations"`
+	ThumbnailUrl                pulumi.StringOutput                      `pulumi:"thumbnailUrl"`
 	// The update time of the app.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// The email of the user that last updated the app.
@@ -197,6 +198,7 @@ type appState struct {
 	ServicePrincipalName        *string                         `pulumi:"servicePrincipalName"`
 	Space                       *string                         `pulumi:"space"`
 	TelemetryExportDestinations []AppTelemetryExportDestination `pulumi:"telemetryExportDestinations"`
+	ThumbnailUrl                *string                         `pulumi:"thumbnailUrl"`
 	// The update time of the app.
 	UpdateTime *string `pulumi:"updateTime"`
 	// The email of the user that last updated the app.
@@ -249,6 +251,7 @@ type AppState struct {
 	ServicePrincipalName        pulumi.StringPtrInput
 	Space                       pulumi.StringPtrInput
 	TelemetryExportDestinations AppTelemetryExportDestinationArrayInput
+	ThumbnailUrl                pulumi.StringPtrInput
 	// The update time of the app.
 	UpdateTime pulumi.StringPtrInput
 	// The email of the user that last updated the app.
@@ -507,6 +510,10 @@ func (o AppOutput) Space() pulumi.StringPtrOutput {
 
 func (o AppOutput) TelemetryExportDestinations() AppTelemetryExportDestinationArrayOutput {
 	return o.ApplyT(func(v *App) AppTelemetryExportDestinationArrayOutput { return v.TelemetryExportDestinations }).(AppTelemetryExportDestinationArrayOutput)
+}
+
+func (o AppOutput) ThumbnailUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ThumbnailUrl }).(pulumi.StringOutput)
 }
 
 // The update time of the app.

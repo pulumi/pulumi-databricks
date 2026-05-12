@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressDryRunPrivateAccess;
 import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressDryRunPublicAccess;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,9 +12,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccountNetworkPolicyIngressDryRun {
+    /**
+     * @return The network policy restrictions for private access to the workspace.
+     * Configures how registered private endpoints are allowed or denied access
+     * 
+     */
+    private @Nullable AccountNetworkPolicyIngressDryRunPrivateAccess privateAccess;
+    /**
+     * @return The network policy restrictions for public access to the workspace.
+     * Configures how public internet traffic is allowed or denied access
+     * 
+     */
     private @Nullable AccountNetworkPolicyIngressDryRunPublicAccess publicAccess;
 
     private AccountNetworkPolicyIngressDryRun() {}
+    /**
+     * @return The network policy restrictions for private access to the workspace.
+     * Configures how registered private endpoints are allowed or denied access
+     * 
+     */
+    public Optional<AccountNetworkPolicyIngressDryRunPrivateAccess> privateAccess() {
+        return Optional.ofNullable(this.privateAccess);
+    }
+    /**
+     * @return The network policy restrictions for public access to the workspace.
+     * Configures how public internet traffic is allowed or denied access
+     * 
+     */
     public Optional<AccountNetworkPolicyIngressDryRunPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
@@ -27,13 +52,21 @@ public final class AccountNetworkPolicyIngressDryRun {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AccountNetworkPolicyIngressDryRunPrivateAccess privateAccess;
         private @Nullable AccountNetworkPolicyIngressDryRunPublicAccess publicAccess;
         public Builder() {}
         public Builder(AccountNetworkPolicyIngressDryRun defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.privateAccess = defaults.privateAccess;
     	      this.publicAccess = defaults.publicAccess;
         }
 
+        @CustomType.Setter
+        public Builder privateAccess(@Nullable AccountNetworkPolicyIngressDryRunPrivateAccess privateAccess) {
+
+            this.privateAccess = privateAccess;
+            return this;
+        }
         @CustomType.Setter
         public Builder publicAccess(@Nullable AccountNetworkPolicyIngressDryRunPublicAccess publicAccess) {
 
@@ -42,6 +75,7 @@ public final class AccountNetworkPolicyIngressDryRun {
         }
         public AccountNetworkPolicyIngressDryRun build() {
             final var _resultValue = new AccountNetworkPolicyIngressDryRun();
+            _resultValue.privateAccess = privateAccess;
             _resultValue.publicAccess = publicAccess;
             return _resultValue;
         }

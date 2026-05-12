@@ -91,7 +91,7 @@ export class SqlDashboard extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.SqlDashboardProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.SqlDashboardProviderConfig>;
     declare public readonly runAsRole: pulumi.Output<string | undefined>;
     declare public readonly tags: pulumi.Output<string[] | undefined>;
     declare public readonly updatedAt: pulumi.Output<string>;

@@ -93,7 +93,7 @@ export class IpAccessList extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.IpAccessListProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.IpAccessListProviderConfig>;
 
     /**
      * Create a IpAccessList resource with the given unique name, arguments, and options.

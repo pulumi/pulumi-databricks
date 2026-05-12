@@ -7,13 +7,18 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi {
+    private @Nullable String scopeQualifier;
     private @Nullable List<String> scopes;
 
     private AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi() {}
+    public Optional<String> scopeQualifier() {
+        return Optional.ofNullable(this.scopeQualifier);
+    }
     public List<String> scopes() {
         return this.scopes == null ? List.of() : this.scopes;
     }
@@ -27,13 +32,21 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestina
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String scopeQualifier;
         private @Nullable List<String> scopes;
         public Builder() {}
         public Builder(AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.scopeQualifier = defaults.scopeQualifier;
     	      this.scopes = defaults.scopes;
         }
 
+        @CustomType.Setter
+        public Builder scopeQualifier(@Nullable String scopeQualifier) {
+
+            this.scopeQualifier = scopeQualifier;
+            return this;
+        }
         @CustomType.Setter
         public Builder scopes(@Nullable List<String> scopes) {
 
@@ -45,6 +58,7 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestina
         }
         public AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi build() {
             final var _resultValue = new AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationWorkspaceApi();
+            _resultValue.scopeQualifier = scopeQualifier;
             _resultValue.scopes = scopes;
             return _resultValue;
         }

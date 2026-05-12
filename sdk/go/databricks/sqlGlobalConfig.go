@@ -106,7 +106,7 @@ type SqlGlobalConfig struct {
 	// databricks_instance_profile used to access storage from databricks_sql_endpoint. Please note that this parameter is only for AWS, and will generate an error if used on other clouds.
 	InstanceProfileArn pulumi.StringPtrOutput `pulumi:"instanceProfileArn"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig SqlGlobalConfigProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig SqlGlobalConfigProviderConfigOutput `pulumi:"providerConfig"`
 	// The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values
 	SecurityPolicy pulumi.StringPtrOutput `pulumi:"securityPolicy"`
 	// SQL Configuration Parameters let you override the default behavior for all sessions with all endpoints.
@@ -323,8 +323,8 @@ func (o SqlGlobalConfigOutput) InstanceProfileArn() pulumi.StringPtrOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o SqlGlobalConfigOutput) ProviderConfig() SqlGlobalConfigProviderConfigPtrOutput {
-	return o.ApplyT(func(v *SqlGlobalConfig) SqlGlobalConfigProviderConfigPtrOutput { return v.ProviderConfig }).(SqlGlobalConfigProviderConfigPtrOutput)
+func (o SqlGlobalConfigOutput) ProviderConfig() SqlGlobalConfigProviderConfigOutput {
+	return o.ApplyT(func(v *SqlGlobalConfig) SqlGlobalConfigProviderConfigOutput { return v.ProviderConfig }).(SqlGlobalConfigProviderConfigOutput)
 }
 
 // The policy for controlling access to datasets. Default value: `DATA_ACCESS_CONTROL`, consult documentation for list of possible values

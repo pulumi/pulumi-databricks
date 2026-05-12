@@ -57,7 +57,8 @@ class GetMwsWorkspacesResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetMwsWorkspacesProviderConfigResult']:
+    @_utilities.deprecated("""provider_config has no effect on this account-only resource and will be removed in a future major release.""")
+    def provider_config(self) -> 'outputs.GetMwsWorkspacesProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
 
@@ -99,7 +100,7 @@ def get_mws_workspaces(provider_config: Optional[Union['GetMwsWorkspacesProvider
     * MetastoreAssignment to assign Metastore to MwsWorkspaces or azurerm_databricks_workspace
 
 
-    :param Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict'] provider_config: This data source is account-only and has no workspace context, so `provider_config` has no effect and will be removed in a future major release. The block consists of the following field:
     """
     __args__ = dict()
     __args__['providerConfig'] = provider_config
@@ -137,7 +138,7 @@ def get_mws_workspaces_output(provider_config: pulumi.Input[Optional[Optional[Un
     * MetastoreAssignment to assign Metastore to MwsWorkspaces or azurerm_databricks_workspace
 
 
-    :param Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
+    :param Union['GetMwsWorkspacesProviderConfigArgs', 'GetMwsWorkspacesProviderConfigArgsDict'] provider_config: This data source is account-only and has no workspace context, so `provider_config` has no effect and will be removed in a future major release. The block consists of the following field:
     """
     __args__ = dict()
     __args__['providerConfig'] = provider_config

@@ -737,6 +737,6 @@ class ClusterPolicy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.ClusterPolicyProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.ClusterPolicyProviderConfig']:
         return pulumi.get(self, "provider_config")
 

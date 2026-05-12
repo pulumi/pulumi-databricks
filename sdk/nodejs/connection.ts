@@ -227,7 +227,7 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.ConnectionProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.ConnectionProviderConfig>;
     /**
      * Object with the status of an asynchronously provisioned resource.
      */

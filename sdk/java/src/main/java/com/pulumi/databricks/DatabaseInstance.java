@@ -510,24 +510,26 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={DatabaseInstanceProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ DatabaseInstanceProviderConfig> providerConfig;
+    private Output<DatabaseInstanceProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<DatabaseInstanceProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<DatabaseInstanceProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
-     * Purge the resource on delete
+     * Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+     * of false will throw a bad request
      * 
      */
     @Export(name="purgeOnDelete", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> purgeOnDelete;
 
     /**
-     * @return Purge the resource on delete
+     * @return Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
+     * of false will throw a bad request
      * 
      */
     public Output<Optional<Boolean>> purgeOnDelete() {

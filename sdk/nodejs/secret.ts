@@ -82,7 +82,7 @@ export class Secret extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.SecretProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.SecretProviderConfig>;
     /**
      * (String) name of databricks secret scope. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
      */

@@ -1003,7 +1003,7 @@ class Recipient(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.RecipientProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.RecipientProviderConfig']:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """

@@ -156,7 +156,7 @@ export class PolicyInfo extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.PolicyInfoProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.PolicyInfoProviderConfig>;
     /**
      * Options for row filter policies. Valid only if `policyType` is `POLICY_TYPE_ROW_FILTER`.
      * Required on create and optional on update. When specified on update,

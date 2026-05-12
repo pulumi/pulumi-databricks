@@ -319,7 +319,7 @@ namespace Pulumi.Databricks
         /// cluster ID
         /// </summary>
         public readonly string Id;
-        public readonly Outputs.GetClusterProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetClusterProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetClusterResult(
@@ -331,7 +331,7 @@ namespace Pulumi.Databricks
 
             string id,
 
-            Outputs.GetClusterProviderConfigResult? providerConfig)
+            Outputs.GetClusterProviderConfigResult providerConfig)
         {
             ClusterId = clusterId;
             ClusterInfo = clusterInfo;

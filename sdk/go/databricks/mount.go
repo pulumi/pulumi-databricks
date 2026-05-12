@@ -499,16 +499,16 @@ import (
 type Mount struct {
 	pulumi.CustomResourceState
 
-	Abfs           MountAbfsPtrOutput           `pulumi:"abfs"`
-	Adl            MountAdlPtrOutput            `pulumi:"adl"`
-	ClusterId      pulumi.StringOutput          `pulumi:"clusterId"`
-	EncryptionType pulumi.StringPtrOutput       `pulumi:"encryptionType"`
-	ExtraConfigs   pulumi.StringMapOutput       `pulumi:"extraConfigs"`
-	Gs             MountGsPtrOutput             `pulumi:"gs"`
-	Name           pulumi.StringOutput          `pulumi:"name"`
-	ProviderConfig MountProviderConfigPtrOutput `pulumi:"providerConfig"`
-	ResourceId     pulumi.StringPtrOutput       `pulumi:"resourceId"`
-	S3             MountS3PtrOutput             `pulumi:"s3"`
+	Abfs           MountAbfsPtrOutput        `pulumi:"abfs"`
+	Adl            MountAdlPtrOutput         `pulumi:"adl"`
+	ClusterId      pulumi.StringOutput       `pulumi:"clusterId"`
+	EncryptionType pulumi.StringPtrOutput    `pulumi:"encryptionType"`
+	ExtraConfigs   pulumi.StringMapOutput    `pulumi:"extraConfigs"`
+	Gs             MountGsPtrOutput          `pulumi:"gs"`
+	Name           pulumi.StringOutput       `pulumi:"name"`
+	ProviderConfig MountProviderConfigOutput `pulumi:"providerConfig"`
+	ResourceId     pulumi.StringPtrOutput    `pulumi:"resourceId"`
+	S3             MountS3PtrOutput          `pulumi:"s3"`
 	// (String) HDFS-compatible url
 	Source pulumi.StringOutput    `pulumi:"source"`
 	Uri    pulumi.StringPtrOutput `pulumi:"uri"`
@@ -728,8 +728,8 @@ func (o MountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mount) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o MountOutput) ProviderConfig() MountProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Mount) MountProviderConfigPtrOutput { return v.ProviderConfig }).(MountProviderConfigPtrOutput)
+func (o MountOutput) ProviderConfig() MountProviderConfigOutput {
+	return o.ApplyT(func(v *Mount) MountProviderConfigOutput { return v.ProviderConfig }).(MountProviderConfigOutput)
 }
 
 func (o MountOutput) ResourceId() pulumi.StringPtrOutput {

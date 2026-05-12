@@ -150,7 +150,7 @@ export interface GetSparkVersionResult {
      * @deprecated Specify runtime_engine="PHOTON" in the cluster configuration
      */
     readonly photon?: boolean;
-    readonly providerConfig?: outputs.GetSparkVersionProviderConfig;
+    readonly providerConfig: outputs.GetSparkVersionProviderConfig;
     readonly scala?: string;
     readonly sparkVersion?: string;
 }

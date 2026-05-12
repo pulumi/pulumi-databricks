@@ -805,7 +805,7 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.DatabaseSyncedDatabaseTableProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.DatabaseSyncedDatabaseTableProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

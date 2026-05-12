@@ -202,14 +202,14 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={DashboardProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ DashboardProviderConfig> providerConfig;
+    private Output<DashboardProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<DashboardProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<DashboardProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * The contents of the dashboard in serialized string form. Conflicts with `filePath`.

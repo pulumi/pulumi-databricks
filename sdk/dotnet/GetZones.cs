@@ -170,7 +170,7 @@ namespace Pulumi.Databricks
         /// The id for the zone object.
         /// </summary>
         public readonly string Id;
-        public readonly Outputs.GetZonesProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetZonesProviderConfigResult ProviderConfig;
         /// <summary>
         /// This is a list of all the zones available for your subnets in your Databricks workspace.
         /// </summary>
@@ -182,7 +182,7 @@ namespace Pulumi.Databricks
 
             string id,
 
-            Outputs.GetZonesProviderConfigResult? providerConfig,
+            Outputs.GetZonesProviderConfigResult providerConfig,
 
             ImmutableArray<string> zones)
         {

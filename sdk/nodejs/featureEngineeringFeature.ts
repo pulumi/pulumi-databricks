@@ -74,7 +74,7 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.FeatureEngineeringFeatureProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.FeatureEngineeringFeatureProviderConfig>;
     /**
      * The data source of the feature
      */

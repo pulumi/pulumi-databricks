@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * This data source retrieves the list of all Workspace Base Environments in the workspace.
  * The list can be accessed via the data object's `workspaceBaseEnvironments` field.
@@ -59,7 +59,7 @@ export interface GetEnvironmentsWorkspaceBaseEnvironmentsResult {
     readonly workspaceBaseEnvironments: outputs.GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironment[];
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * This data source retrieves the list of all Workspace Base Environments in the workspace.
  * The list can be accessed via the data object's `workspaceBaseEnvironments` field.

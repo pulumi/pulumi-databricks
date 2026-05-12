@@ -56,7 +56,7 @@ export class OnlineStore extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.OnlineStoreProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.OnlineStoreProviderConfig>;
     /**
      * The number of read replicas for the online store. Defaults to 0
      */

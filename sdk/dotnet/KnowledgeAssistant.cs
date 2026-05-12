@@ -83,7 +83,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.KnowledgeAssistantProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.KnowledgeAssistantProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// (string) - State of the Knowledge Assistant. Not returned in List responses. Possible values are: `ACTIVE`, `CREATING`, `FAILED`

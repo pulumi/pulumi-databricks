@@ -118,7 +118,6 @@ type providerArgs struct {
 	DebugTruncateBytes         *int     `pulumi:"debugTruncateBytes"`
 	DisableOauthRefreshToken   *bool    `pulumi:"disableOauthRefreshToken"`
 	DiscoveryUrl               *string  `pulumi:"discoveryUrl"`
-	ExperimentalIsUnifiedHost  *bool    `pulumi:"experimentalIsUnifiedHost"`
 	GoogleCredentials          *string  `pulumi:"googleCredentials"`
 	GoogleServiceAccount       *string  `pulumi:"googleServiceAccount"`
 	Host                       *string  `pulumi:"host"`
@@ -164,7 +163,6 @@ type ProviderArgs struct {
 	DebugTruncateBytes         pulumi.IntPtrInput
 	DisableOauthRefreshToken   pulumi.BoolPtrInput
 	DiscoveryUrl               pulumi.StringPtrInput
-	ExperimentalIsUnifiedHost  pulumi.BoolPtrInput
 	GoogleCredentials          pulumi.StringPtrInput
 	GoogleServiceAccount       pulumi.StringPtrInput
 	Host                       pulumi.StringPtrInput

@@ -208,7 +208,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string ObjectType;
         public readonly string Path;
-        public readonly Outputs.GetNotebookProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetNotebookProviderConfigResult ProviderConfig;
         /// <summary>
         /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`
         /// </summary>
@@ -230,7 +230,7 @@ namespace Pulumi.Databricks
 
             string path,
 
-            Outputs.GetNotebookProviderConfigResult? providerConfig,
+            Outputs.GetNotebookProviderConfigResult providerConfig,
 
             string workspacePath)
         {

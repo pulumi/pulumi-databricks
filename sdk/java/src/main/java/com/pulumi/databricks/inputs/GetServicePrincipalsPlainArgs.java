@@ -17,6 +17,13 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
 
     public static final GetServicePrincipalsPlainArgs Empty = new GetServicePrincipalsPlainArgs();
 
+    @Import(name="api")
+    private @Nullable String api;
+
+    public Optional<String> api() {
+        return Optional.ofNullable(this.api);
+    }
+
     /**
      * List of `applicationIds` of service principals.  Individual service principal can be retrieved using databricks.ServicePrincipal data source or from `servicePrincipals` attribute.
      * 
@@ -80,6 +87,7 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
     private GetServicePrincipalsPlainArgs() {}
 
     private GetServicePrincipalsPlainArgs(GetServicePrincipalsPlainArgs $) {
+        this.api = $.api;
         this.applicationIds = $.applicationIds;
         this.displayNameContains = $.displayNameContains;
         this.providerConfig = $.providerConfig;
@@ -102,6 +110,11 @@ public final class GetServicePrincipalsPlainArgs extends com.pulumi.resources.In
 
         public Builder(GetServicePrincipalsPlainArgs defaults) {
             $ = new GetServicePrincipalsPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder api(@Nullable String api) {
+            $.api = api;
+            return this;
         }
 
         /**

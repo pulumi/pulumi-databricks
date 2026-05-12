@@ -92,8 +92,8 @@ type LookupCatalogResult struct {
 	// same as the `name`
 	Id string `pulumi:"id"`
 	// Name of the catalog
-	Name           string                    `pulumi:"name"`
-	ProviderConfig *GetCatalogProviderConfig `pulumi:"providerConfig"`
+	Name           string                   `pulumi:"name"`
+	ProviderConfig GetCatalogProviderConfig `pulumi:"providerConfig"`
 }
 
 func LookupCatalogOutput(ctx *pulumi.Context, args LookupCatalogOutputArgs, opts ...pulumi.InvokeOption) LookupCatalogResultOutput {
@@ -151,8 +151,8 @@ func (o LookupCatalogResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCatalogResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupCatalogResultOutput) ProviderConfig() GetCatalogProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupCatalogResult) *GetCatalogProviderConfig { return v.ProviderConfig }).(GetCatalogProviderConfigPtrOutput)
+func (o LookupCatalogResultOutput) ProviderConfig() GetCatalogProviderConfigOutput {
+	return o.ApplyT(func(v LookupCatalogResult) GetCatalogProviderConfig { return v.ProviderConfig }).(GetCatalogProviderConfigOutput)
 }
 
 func init() {

@@ -118,14 +118,14 @@ public class SqlVisualization extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={SqlVisualizationProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ SqlVisualizationProviderConfig> providerConfig;
+    private Output<SqlVisualizationProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<SqlVisualizationProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<SqlVisualizationProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     @Export(name="queryId", refs={String.class}, tree="[0]")
     private Output<String> queryId;

@@ -121,7 +121,7 @@ export interface GetClustersResult {
      * list of databricks.Cluster ids
      */
     readonly ids: string[];
-    readonly providerConfig?: outputs.GetClustersProviderConfig;
+    readonly providerConfig: outputs.GetClustersProviderConfig;
 }
 /**
  * Retrieves a list of databricks.Cluster ids, that were created by Pulumi or manually, with or without databricks_cluster_policy.

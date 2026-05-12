@@ -263,7 +263,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         public readonly bool IsAccount;
-        public readonly Outputs.GetCurrentConfigProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetCurrentConfigProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetCurrentConfigResult(
@@ -283,7 +283,7 @@ namespace Pulumi.Databricks
 
             bool isAccount,
 
-            Outputs.GetCurrentConfigProviderConfigResult? providerConfig)
+            Outputs.GetCurrentConfigProviderConfigResult providerConfig)
         {
             AccountId = accountId;
             Api = api;

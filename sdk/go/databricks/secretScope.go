@@ -61,7 +61,7 @@ type SecretScope struct {
 	// Scope name requested by the user. Must be unique within a workspace. Must consist of alphanumeric characters, dashes, underscores, and periods, and may not exceed 128 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig SecretScopeProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig SecretScopeProviderConfigOutput `pulumi:"providerConfig"`
 }
 
 // NewSecretScope registers a new resource with the given unique name, arguments, and options.
@@ -253,8 +253,8 @@ func (o SecretScopeOutput) Name() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o SecretScopeOutput) ProviderConfig() SecretScopeProviderConfigPtrOutput {
-	return o.ApplyT(func(v *SecretScope) SecretScopeProviderConfigPtrOutput { return v.ProviderConfig }).(SecretScopeProviderConfigPtrOutput)
+func (o SecretScopeOutput) ProviderConfig() SecretScopeProviderConfigOutput {
+	return o.ApplyT(func(v *SecretScope) SecretScopeProviderConfigOutput { return v.ProviderConfig }).(SecretScopeProviderConfigOutput)
 }
 
 type SecretScopeArrayOutput struct{ *pulumi.OutputState }

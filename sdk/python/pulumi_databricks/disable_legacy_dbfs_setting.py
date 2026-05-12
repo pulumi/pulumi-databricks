@@ -312,7 +312,7 @@ class DisableLegacyDbfsSetting(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.DisableLegacyDbfsSettingProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.DisableLegacyDbfsSettingProviderConfig']:
         """
         Configure the provider for management through account provider. This block consists of the following fields:
         """

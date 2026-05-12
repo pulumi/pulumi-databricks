@@ -68,7 +68,7 @@ class GetCatalogResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetCatalogProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetCatalogProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
 

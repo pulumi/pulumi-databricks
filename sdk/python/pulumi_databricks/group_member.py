@@ -356,6 +356,6 @@ class GroupMember(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.GroupMemberProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.GroupMemberProviderConfig']:
         return pulumi.get(self, "provider_config")
 

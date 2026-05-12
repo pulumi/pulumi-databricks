@@ -77,7 +77,7 @@ export interface GetDbfsFileResult {
     readonly id: string;
     readonly limitFileSize: boolean;
     readonly path: string;
-    readonly providerConfig?: outputs.GetDbfsFileProviderConfig;
+    readonly providerConfig: outputs.GetDbfsFileProviderConfig;
 }
 /**
  * This data source allows to get file content from [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html).

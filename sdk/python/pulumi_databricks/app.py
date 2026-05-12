@@ -223,6 +223,7 @@ class _AppState:
                  service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
                  space: pulumi.Input[Optional[_builtins.str]] = None,
                  telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]] = None,
+                 thumbnail_url: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None,
                  updater: pulumi.Input[Optional[_builtins.str]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -301,6 +302,8 @@ class _AppState:
             pulumi.set(__self__, "space", space)
         if telemetry_export_destinations is not None:
             pulumi.set(__self__, "telemetry_export_destinations", telemetry_export_destinations)
+        if thumbnail_url is not None:
+            pulumi.set(__self__, "thumbnail_url", thumbnail_url)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
         if updater is not None:
@@ -583,6 +586,15 @@ class _AppState:
         pulumi.set(self, "telemetry_export_destinations", value)
 
     @_builtins.property
+    @pulumi.getter(name="thumbnailUrl")
+    def thumbnail_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "thumbnail_url")
+
+    @thumbnail_url.setter
+    def thumbnail_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "thumbnail_url", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -835,6 +847,7 @@ class App(pulumi.CustomResource):
             __props__.__dict__["service_principal_client_id"] = None
             __props__.__dict__["service_principal_id"] = None
             __props__.__dict__["service_principal_name"] = None
+            __props__.__dict__["thumbnail_url"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["updater"] = None
             __props__.__dict__["url"] = None
@@ -873,6 +886,7 @@ class App(pulumi.CustomResource):
             service_principal_name: pulumi.Input[Optional[_builtins.str]] = None,
             space: pulumi.Input[Optional[_builtins.str]] = None,
             telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]]] = None,
+            thumbnail_url: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             updater: pulumi.Input[Optional[_builtins.str]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -934,6 +948,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["service_principal_name"] = service_principal_name
         __props__.__dict__["space"] = space
         __props__.__dict__["telemetry_export_destinations"] = telemetry_export_destinations
+        __props__.__dict__["thumbnail_url"] = thumbnail_url
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["updater"] = updater
         __props__.__dict__["url"] = url
@@ -1110,6 +1125,11 @@ class App(pulumi.CustomResource):
     @pulumi.getter(name="telemetryExportDestinations")
     def telemetry_export_destinations(self) -> pulumi.Output[Optional[Sequence['outputs.AppTelemetryExportDestination']]]:
         return pulumi.get(self, "telemetry_export_destinations")
+
+    @_builtins.property
+    @pulumi.getter(name="thumbnailUrl")
+    def thumbnail_url(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "thumbnail_url")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

@@ -164,9 +164,9 @@ type Pipeline struct {
 	// A flag indicating whether to use Photon engine. The default value is `false`.
 	Photon pulumi.BoolPtrOutput `pulumi:"photon"`
 	// Canonical unique identifier of the Lakeflow Declarative Pipeline.
-	PipelineId     pulumi.StringOutput             `pulumi:"pipelineId"`
-	ProviderConfig PipelineProviderConfigPtrOutput `pulumi:"providerConfig"`
-	RestartWindow  PipelineRestartWindowPtrOutput  `pulumi:"restartWindow"`
+	PipelineId     pulumi.StringOutput            `pulumi:"pipelineId"`
+	ProviderConfig PipelineProviderConfigOutput   `pulumi:"providerConfig"`
+	RestartWindow  PipelineRestartWindowPtrOutput `pulumi:"restartWindow"`
 	// An optional string specifying the root path for this pipeline. This is used as the root directory when editing the pipeline in the Databricks user interface and it is added to `sys.path` when executing Python sources during pipeline execution.
 	RootPath pulumi.StringPtrOutput `pulumi:"rootPath"`
 	// The user or the service principal the pipeline runs as. See runAs Configuration Block below.
@@ -711,8 +711,8 @@ func (o PipelineOutput) PipelineId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.PipelineId }).(pulumi.StringOutput)
 }
 
-func (o PipelineOutput) ProviderConfig() PipelineProviderConfigPtrOutput {
-	return o.ApplyT(func(v *Pipeline) PipelineProviderConfigPtrOutput { return v.ProviderConfig }).(PipelineProviderConfigPtrOutput)
+func (o PipelineOutput) ProviderConfig() PipelineProviderConfigOutput {
+	return o.ApplyT(func(v *Pipeline) PipelineProviderConfigOutput { return v.ProviderConfig }).(PipelineProviderConfigOutput)
 }
 
 func (o PipelineOutput) RestartWindow() PipelineRestartWindowPtrOutput {

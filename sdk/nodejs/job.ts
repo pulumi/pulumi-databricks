@@ -206,7 +206,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.JobProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.JobProviderConfig>;
     /**
      * @deprecated should be used inside a task block and not inside a job block
      */

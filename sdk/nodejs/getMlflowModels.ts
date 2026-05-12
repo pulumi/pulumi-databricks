@@ -56,7 +56,7 @@ export interface GetMlflowModelsResult {
      * List of names of databricks_mlflow_model
      */
     readonly names: string[];
-    readonly providerConfig?: outputs.GetMlflowModelsProviderConfig;
+    readonly providerConfig: outputs.GetMlflowModelsProviderConfig;
 }
 /**
  * Retrieves a list of databricks.MlflowModel objects, that were created by Pulumi or manually, so that special handling could be applied.

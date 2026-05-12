@@ -285,14 +285,14 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={CatalogProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ CatalogProviderConfig> providerConfig;
+    private Output<CatalogProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<CatalogProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<CatalogProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * For Delta Sharing Catalogs: the name of the delta sharing provider. Change forces creation of a new resource.

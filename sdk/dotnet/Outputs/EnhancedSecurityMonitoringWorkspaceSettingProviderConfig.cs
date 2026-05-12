@@ -13,10 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class EnhancedSecurityMonitoringWorkspaceSettingProviderConfig
     {
-        public readonly string WorkspaceId;
+        public readonly string? WorkspaceId;
 
         [OutputConstructor]
-        private EnhancedSecurityMonitoringWorkspaceSettingProviderConfig(string workspaceId)
+        private EnhancedSecurityMonitoringWorkspaceSettingProviderConfig(string? workspaceId)
         {
             WorkspaceId = workspaceId;
         }

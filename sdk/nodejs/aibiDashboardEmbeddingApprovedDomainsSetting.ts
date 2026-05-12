@@ -69,7 +69,7 @@ export class AibiDashboardEmbeddingApprovedDomainsSetting extends pulumi.CustomR
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.AibiDashboardEmbeddingApprovedDomainsSettingProviderConfig>;
     declare public readonly settingName: pulumi.Output<string>;
 
     /**

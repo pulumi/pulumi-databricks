@@ -164,10 +164,10 @@ type GetJobsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// map of Job names to ids
-	Ids             map[string]string      `pulumi:"ids"`
-	JobNameContains *string                `pulumi:"jobNameContains"`
-	Key             *string                `pulumi:"key"`
-	ProviderConfig  *GetJobsProviderConfig `pulumi:"providerConfig"`
+	Ids             map[string]string     `pulumi:"ids"`
+	JobNameContains *string               `pulumi:"jobNameContains"`
+	Key             *string               `pulumi:"key"`
+	ProviderConfig  GetJobsProviderConfig `pulumi:"providerConfig"`
 }
 
 func GetJobsOutput(ctx *pulumi.Context, args GetJobsOutputArgs, opts ...pulumi.InvokeOption) GetJobsResultOutput {
@@ -228,8 +228,8 @@ func (o GetJobsResultOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetJobsResult) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-func (o GetJobsResultOutput) ProviderConfig() GetJobsProviderConfigPtrOutput {
-	return o.ApplyT(func(v GetJobsResult) *GetJobsProviderConfig { return v.ProviderConfig }).(GetJobsProviderConfigPtrOutput)
+func (o GetJobsResultOutput) ProviderConfig() GetJobsProviderConfigOutput {
+	return o.ApplyT(func(v GetJobsResult) GetJobsProviderConfig { return v.ProviderConfig }).(GetJobsProviderConfigOutput)
 }
 
 func init() {

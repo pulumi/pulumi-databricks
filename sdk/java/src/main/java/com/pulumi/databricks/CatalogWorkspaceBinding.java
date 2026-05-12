@@ -97,10 +97,10 @@ public class CatalogWorkspaceBinding extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.catalogName);
     }
     @Export(name="providerConfig", refs={CatalogWorkspaceBindingProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ CatalogWorkspaceBindingProviderConfig> providerConfig;
+    private Output<CatalogWorkspaceBindingProviderConfig> providerConfig;
 
-    public Output<Optional<CatalogWorkspaceBindingProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<CatalogWorkspaceBindingProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Name of securable. Change forces creation of a new resource.

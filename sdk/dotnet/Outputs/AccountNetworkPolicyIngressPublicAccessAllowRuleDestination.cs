@@ -13,22 +13,39 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AccountNetworkPolicyIngressPublicAccessAllowRuleDestination
     {
+        public readonly Outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountApi? AccountApi;
+        public readonly Outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountDatabricksOne? AccountDatabricksOne;
+        public readonly Outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountUi? AccountUi;
         public readonly bool? AllDestinations;
+        public readonly Outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAppsRuntime? AppsRuntime;
+        public readonly Outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationLakebaseRuntime? LakebaseRuntime;
         public readonly Outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi? WorkspaceApi;
-        /// <summary>
-        /// Workspace destinations
-        /// </summary>
         public readonly Outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceUi? WorkspaceUi;
 
         [OutputConstructor]
         private AccountNetworkPolicyIngressPublicAccessAllowRuleDestination(
+            Outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountApi? accountApi,
+
+            Outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountDatabricksOne? accountDatabricksOne,
+
+            Outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountUi? accountUi,
+
             bool? allDestinations,
+
+            Outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAppsRuntime? appsRuntime,
+
+            Outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationLakebaseRuntime? lakebaseRuntime,
 
             Outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceApi? workspaceApi,
 
             Outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationWorkspaceUi? workspaceUi)
         {
+            AccountApi = accountApi;
+            AccountDatabricksOne = accountDatabricksOne;
+            AccountUi = accountUi;
             AllDestinations = allDestinations;
+            AppsRuntime = appsRuntime;
+            LakebaseRuntime = lakebaseRuntime;
             WorkspaceApi = workspaceApi;
             WorkspaceUi = workspaceUi;
         }

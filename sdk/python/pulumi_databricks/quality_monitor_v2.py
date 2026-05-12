@@ -356,7 +356,7 @@ class QualityMonitorV2(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> pulumi.Output[Optional['outputs.QualityMonitorV2ProviderConfig']]:
+    def provider_config(self) -> pulumi.Output['outputs.QualityMonitorV2ProviderConfig']:
         """
         Configure the provider for management through account provider.
         """

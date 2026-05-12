@@ -124,7 +124,7 @@ export interface GetJobsResult {
     readonly ids: {[key: string]: string};
     readonly jobNameContains?: string;
     readonly key?: string;
-    readonly providerConfig?: outputs.GetJobsProviderConfig;
+    readonly providerConfig: outputs.GetJobsProviderConfig;
 }
 /**
  * Retrieves a list of databricks.Job ids, that were created by Pulumi or manually, so that special handling could be applied.

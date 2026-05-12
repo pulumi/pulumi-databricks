@@ -17,8 +17,8 @@ namespace Pulumi.Databricks.Inputs
         /// 
         /// &gt; **NOTE** If the type of notification destination is changed, the existing notification destination will be deleted and a new notification destination will be created with the new type.
         /// </summary>
-        [Input("workspaceId", required: true)]
-        public Input<string> WorkspaceId { get; set; } = null!;
+        [Input("workspaceId")]
+        public Input<string>? WorkspaceId { get; set; }
 
         public NotificationDestinationProviderConfigArgs()
         {

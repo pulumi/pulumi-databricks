@@ -162,7 +162,7 @@ export class PostgresDatabase extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider.
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.PostgresDatabaseProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.PostgresDatabaseProviderConfig>;
     /**
      * The desired state of the Database
      */

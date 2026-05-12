@@ -366,10 +366,10 @@ public class LakehouseMonitor extends com.pulumi.resources.CustomResource {
         return this.profileMetricsTableName;
     }
     @Export(name="providerConfig", refs={LakehouseMonitorProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ LakehouseMonitorProviderConfig> providerConfig;
+    private Output<LakehouseMonitorProviderConfig> providerConfig;
 
-    public Output<Optional<LakehouseMonitorProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<LakehouseMonitorProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * The schedule for automatically updating and refreshing metric tables.  This block consists of following fields:

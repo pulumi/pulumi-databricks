@@ -321,6 +321,13 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.telemetryExportDestinations);
     }
 
+    @Import(name="thumbnailUrl")
+    private @Nullable Output<String> thumbnailUrl;
+
+    public Optional<Output<String>> thumbnailUrl() {
+        return Optional.ofNullable(this.thumbnailUrl);
+    }
+
     /**
      * The update time of the app.
      * 
@@ -416,6 +423,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.servicePrincipalName = $.servicePrincipalName;
         this.space = $.space;
         this.telemetryExportDestinations = $.telemetryExportDestinations;
+        this.thumbnailUrl = $.thumbnailUrl;
         this.updateTime = $.updateTime;
         this.updater = $.updater;
         this.url = $.url;
@@ -868,6 +876,15 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
 
         public Builder telemetryExportDestinations(AppTelemetryExportDestinationArgs... telemetryExportDestinations) {
             return telemetryExportDestinations(List.of(telemetryExportDestinations));
+        }
+
+        public Builder thumbnailUrl(@Nullable Output<String> thumbnailUrl) {
+            $.thumbnailUrl = thumbnailUrl;
+            return this;
+        }
+
+        public Builder thumbnailUrl(String thumbnailUrl) {
+            return thumbnailUrl(Output.of(thumbnailUrl));
         }
 
         /**

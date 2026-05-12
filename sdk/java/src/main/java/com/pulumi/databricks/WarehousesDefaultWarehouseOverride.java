@@ -138,14 +138,14 @@ public class WarehousesDefaultWarehouseOverride extends com.pulumi.resources.Cus
      * 
      */
     @Export(name="providerConfig", refs={WarehousesDefaultWarehouseOverrideProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ WarehousesDefaultWarehouseOverrideProviderConfig> providerConfig;
+    private Output<WarehousesDefaultWarehouseOverrideProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider.
      * 
      */
-    public Output<Optional<WarehousesDefaultWarehouseOverrideProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<WarehousesDefaultWarehouseOverrideProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * The type of override behavior. Possible values are: `CUSTOM`, `LAST_SELECTED`

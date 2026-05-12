@@ -465,14 +465,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={ConnectionProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ConnectionProviderConfig> providerConfig;
+    private Output<ConnectionProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<ConnectionProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<ConnectionProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Object with the status of an asynchronously provisioned resource.

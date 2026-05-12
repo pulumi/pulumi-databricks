@@ -339,14 +339,14 @@ public class StorageCredential extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={StorageCredentialProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ StorageCredentialProviderConfig> providerConfig;
+    private Output<StorageCredentialProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<StorageCredentialProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<StorageCredentialProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * Indicates whether the storage credential is only usable for read operations.

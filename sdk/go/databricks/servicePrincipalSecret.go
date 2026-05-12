@@ -103,7 +103,7 @@ type ServicePrincipalSecret struct {
 	// The lifetime of the secret in seconds formatted as `NNNNs`. If this parameter is not provided, the secret will have a default lifetime of 730 days (`63072000s`).  Expiration of secret will lead to generation of new secret.
 	Lifetime pulumi.StringOutput `pulumi:"lifetime"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig ServicePrincipalSecretProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig ServicePrincipalSecretProviderConfigOutput `pulumi:"providerConfig"`
 	// **Sensitive** Generated secret for the service principal.
 	Secret pulumi.StringOutput `pulumi:"secret"`
 	// Secret Hash.
@@ -380,8 +380,8 @@ func (o ServicePrincipalSecretOutput) Lifetime() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o ServicePrincipalSecretOutput) ProviderConfig() ServicePrincipalSecretProviderConfigPtrOutput {
-	return o.ApplyT(func(v *ServicePrincipalSecret) ServicePrincipalSecretProviderConfigPtrOutput { return v.ProviderConfig }).(ServicePrincipalSecretProviderConfigPtrOutput)
+func (o ServicePrincipalSecretOutput) ProviderConfig() ServicePrincipalSecretProviderConfigOutput {
+	return o.ApplyT(func(v *ServicePrincipalSecret) ServicePrincipalSecretProviderConfigOutput { return v.ProviderConfig }).(ServicePrincipalSecretProviderConfigOutput)
 }
 
 // **Sensitive** Generated secret for the service principal.

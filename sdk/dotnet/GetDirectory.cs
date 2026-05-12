@@ -171,7 +171,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly int ObjectId;
         public readonly string Path;
-        public readonly Outputs.GetDirectoryProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetDirectoryProviderConfigResult ProviderConfig;
         /// <summary>
         /// path on Workspace File System (WSFS) in form of `/Workspace` + `Path`
         /// </summary>
@@ -185,7 +185,7 @@ namespace Pulumi.Databricks
 
             string path,
 
-            Outputs.GetDirectoryProviderConfigResult? providerConfig,
+            Outputs.GetDirectoryProviderConfigResult providerConfig,
 
             string workspacePath)
         {

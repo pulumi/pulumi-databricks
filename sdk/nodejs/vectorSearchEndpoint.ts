@@ -98,7 +98,7 @@ export class VectorSearchEndpoint extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.VectorSearchEndpointProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.VectorSearchEndpointProviderConfig>;
     declare public readonly scalingInfo: pulumi.Output<outputs.VectorSearchEndpointScalingInfo | undefined>;
 
     /**

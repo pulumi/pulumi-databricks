@@ -52,7 +52,9 @@ export interface GetMwsCredentialsArgs {
      */
     ids?: {[key: string]: string};
     /**
-     * Configure the provider for management through account provider. This block consists of the following fields:
+     * This data source is account-only and has no workspace context, so `providerConfig` has no effect and will be removed in a future major release. The block consists of the following field:
+     *
+     * @deprecated provider_config has no effect on this account-only resource and will be removed in a future major release.
      */
     providerConfig?: inputs.GetMwsCredentialsProviderConfig;
 }
@@ -69,7 +71,10 @@ export interface GetMwsCredentialsResult {
      * name-to-id map for all of the credentials in the account
      */
     readonly ids: {[key: string]: string};
-    readonly providerConfig?: outputs.GetMwsCredentialsProviderConfig;
+    /**
+     * @deprecated provider_config has no effect on this account-only resource and will be removed in a future major release.
+     */
+    readonly providerConfig: outputs.GetMwsCredentialsProviderConfig;
 }
 /**
  * Lists all databricks.MwsCredentials in Databricks Account.
@@ -117,7 +122,9 @@ export interface GetMwsCredentialsOutputArgs {
      */
     ids?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * Configure the provider for management through account provider. This block consists of the following fields:
+     * This data source is account-only and has no workspace context, so `providerConfig` has no effect and will be removed in a future major release. The block consists of the following field:
+     *
+     * @deprecated provider_config has no effect on this account-only resource and will be removed in a future major release.
      */
     providerConfig?: pulumi.Input<inputs.GetMwsCredentialsProviderConfigArgs | undefined>;
 }

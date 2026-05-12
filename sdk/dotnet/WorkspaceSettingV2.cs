@@ -138,7 +138,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.WorkspaceSettingV2ProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.WorkspaceSettingV2ProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Setting value for RestrictWorkspaceAdmins setting. This is the setting value set by consumers, check EffectiveRestrictWorkspaceAdmins for final setting value

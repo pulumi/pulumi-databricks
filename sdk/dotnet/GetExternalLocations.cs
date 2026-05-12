@@ -185,7 +185,7 @@ namespace Pulumi.Databricks
         /// List of names of databricks.ExternalLocation in the metastore
         /// </summary>
         public readonly ImmutableArray<string> Names;
-        public readonly Outputs.GetExternalLocationsProviderConfigResult? ProviderConfig;
+        public readonly Outputs.GetExternalLocationsProviderConfigResult ProviderConfig;
 
         [OutputConstructor]
         private GetExternalLocationsResult(
@@ -193,7 +193,7 @@ namespace Pulumi.Databricks
 
             ImmutableArray<string> names,
 
-            Outputs.GetExternalLocationsProviderConfigResult? providerConfig)
+            Outputs.GetExternalLocationsProviderConfigResult providerConfig)
         {
             Id = id;
             Names = names;

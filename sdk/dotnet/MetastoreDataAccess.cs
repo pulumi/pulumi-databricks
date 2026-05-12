@@ -149,7 +149,7 @@ namespace Pulumi.Databricks
         /// Configure the provider for management through account provider. This block consists of the following fields:
         /// </summary>
         [Output("providerConfig")]
-        public Output<Outputs.MetastoreDataAccessProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.MetastoreDataAccessProviderConfig> ProviderConfig { get; private set; } = null!;
 
         [Output("readOnly")]
         public Output<bool?> ReadOnly { get; private set; } = null!;

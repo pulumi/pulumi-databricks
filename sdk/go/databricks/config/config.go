@@ -80,9 +80,6 @@ func GetDisableOauthRefreshToken(ctx *pulumi.Context) bool {
 func GetDiscoveryUrl(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:discoveryUrl")
 }
-func GetExperimentalIsUnifiedHost(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "databricks:experimentalIsUnifiedHost")
-}
 func GetGoogleCredentials(ctx *pulumi.Context) string {
 	return config.Get(ctx, "databricks:googleCredentials")
 }

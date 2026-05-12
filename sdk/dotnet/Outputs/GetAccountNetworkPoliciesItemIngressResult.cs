@@ -14,13 +14,23 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAccountNetworkPoliciesItemIngressResult
     {
         /// <summary>
-        /// (CustomerFacingIngressNetworkPolicyPublicAccess)
+        /// (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
+        /// Configures how registered private endpoints are allowed or denied access
+        /// </summary>
+        public readonly Outputs.GetAccountNetworkPoliciesItemIngressPrivateAccessResult? PrivateAccess;
+        /// <summary>
+        /// (CustomerFacingIngressNetworkPolicyPublicAccess) - The network policy restrictions for public access to the workspace.
+        /// Configures how public internet traffic is allowed or denied access
         /// </summary>
         public readonly Outputs.GetAccountNetworkPoliciesItemIngressPublicAccessResult? PublicAccess;
 
         [OutputConstructor]
-        private GetAccountNetworkPoliciesItemIngressResult(Outputs.GetAccountNetworkPoliciesItemIngressPublicAccessResult? publicAccess)
+        private GetAccountNetworkPoliciesItemIngressResult(
+            Outputs.GetAccountNetworkPoliciesItemIngressPrivateAccessResult? privateAccess,
+
+            Outputs.GetAccountNetworkPoliciesItemIngressPublicAccessResult? publicAccess)
         {
+            PrivateAccess = privateAccess;
             PublicAccess = publicAccess;
         }
     }

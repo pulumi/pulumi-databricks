@@ -84,7 +84,7 @@ class GetJobResult:
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
-    def provider_config(self) -> Optional['outputs.GetJobProviderConfigResult']:
+    def provider_config(self) -> 'outputs.GetJobProviderConfigResult':
         return pulumi.get(self, "provider_config")
 
 

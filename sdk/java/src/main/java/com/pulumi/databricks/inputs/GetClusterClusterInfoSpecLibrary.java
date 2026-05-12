@@ -8,6 +8,7 @@ import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibraryCran;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibraryMaven;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibraryProviderConfig;
 import com.pulumi.databricks.inputs.GetClusterClusterInfoSpecLibraryPypi;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -62,15 +63,15 @@ public final class GetClusterClusterInfoSpecLibrary extends com.pulumi.resources
      * Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    @Import(name="providerConfig")
-    private @Nullable GetClusterClusterInfoSpecLibraryProviderConfig providerConfig;
+    @Import(name="providerConfig", required=true)
+    private GetClusterClusterInfoSpecLibraryProviderConfig providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Optional<GetClusterClusterInfoSpecLibraryProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetClusterClusterInfoSpecLibraryProviderConfig providerConfig() {
+        return this.providerConfig;
     }
 
     @Import(name="pypi")
@@ -159,7 +160,7 @@ public final class GetClusterClusterInfoSpecLibrary extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder providerConfig(@Nullable GetClusterClusterInfoSpecLibraryProviderConfig providerConfig) {
+        public Builder providerConfig(GetClusterClusterInfoSpecLibraryProviderConfig providerConfig) {
             $.providerConfig = providerConfig;
             return this;
         }
@@ -180,6 +181,9 @@ public final class GetClusterClusterInfoSpecLibrary extends com.pulumi.resources
         }
 
         public GetClusterClusterInfoSpecLibrary build() {
+            if ($.providerConfig == null) {
+                throw new MissingRequiredPropertyException("GetClusterClusterInfoSpecLibrary", "providerConfig");
+            }
             return $;
         }
     }

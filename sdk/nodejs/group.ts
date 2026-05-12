@@ -134,7 +134,7 @@ export class Group extends pulumi.CustomResource {
      * Ignore `cannot create group: Group with name X already exists.` errors and implicitly import the specific group into Pulumi state, enforcing entitlements defined in the instance of resource. _This functionality is experimental_ and is designed to simplify corner cases, like Azure Active Directory synchronisation.
      */
     declare public readonly force: pulumi.Output<boolean | undefined>;
-    declare public readonly providerConfig: pulumi.Output<outputs.GroupProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.GroupProviderConfig>;
     declare public readonly url: pulumi.Output<string>;
     /**
      * This is a field to allow the group to have access to a Databricks Workspace UI and [Databricks One](https://docs.databricks.com/aws/en/workspace/databricks-one#who-can-access-databricks-one).

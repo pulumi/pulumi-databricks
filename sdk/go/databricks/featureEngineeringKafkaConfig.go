@@ -32,7 +32,7 @@ type FeatureEngineeringKafkaConfig struct {
 	// Can be distinct from topic name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
-	ProviderConfig FeatureEngineeringKafkaConfigProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig FeatureEngineeringKafkaConfigProviderConfigOutput `pulumi:"providerConfig"`
 	// Options to configure which Kafka topics to pull data from
 	SubscriptionMode FeatureEngineeringKafkaConfigSubscriptionModeOutput `pulumi:"subscriptionMode"`
 	// Schema configuration for extracting message values from topics. At least one of keySchema and valueSchema must be provided
@@ -299,10 +299,10 @@ func (o FeatureEngineeringKafkaConfigOutput) Name() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o FeatureEngineeringKafkaConfigOutput) ProviderConfig() FeatureEngineeringKafkaConfigProviderConfigPtrOutput {
-	return o.ApplyT(func(v *FeatureEngineeringKafkaConfig) FeatureEngineeringKafkaConfigProviderConfigPtrOutput {
+func (o FeatureEngineeringKafkaConfigOutput) ProviderConfig() FeatureEngineeringKafkaConfigProviderConfigOutput {
+	return o.ApplyT(func(v *FeatureEngineeringKafkaConfig) FeatureEngineeringKafkaConfigProviderConfigOutput {
 		return v.ProviderConfig
-	}).(FeatureEngineeringKafkaConfigProviderConfigPtrOutput)
+	}).(FeatureEngineeringKafkaConfigProviderConfigOutput)
 }
 
 // Options to configure which Kafka topics to pull data from

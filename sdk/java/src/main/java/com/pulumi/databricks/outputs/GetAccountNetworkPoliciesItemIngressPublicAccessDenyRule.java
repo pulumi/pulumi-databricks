@@ -25,8 +25,7 @@ public final class GetAccountNetworkPoliciesItemIngressPublicAccessDenyRule {
      */
     private @Nullable GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleDestination destination;
     /**
-     * @return (string) - User-provided name for this ingress rule. Helps identify which rule
-     * caused a request to be denied or dry-run denied
+     * @return (string) - The label for this ingress rule
      * 
      */
     private @Nullable String label;
@@ -52,8 +51,7 @@ public final class GetAccountNetworkPoliciesItemIngressPublicAccessDenyRule {
         return Optional.ofNullable(this.destination);
     }
     /**
-     * @return (string) - User-provided name for this ingress rule. Helps identify which rule
-     * caused a request to be denied or dry-run denied
+     * @return (string) - The label for this ingress rule
      * 
      */
     public Optional<String> label() {

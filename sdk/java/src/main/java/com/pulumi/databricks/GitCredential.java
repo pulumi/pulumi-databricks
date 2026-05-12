@@ -214,14 +214,14 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={GitCredentialProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ GitCredentialProviderConfig> providerConfig;
+    private Output<GitCredentialProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<GitCredentialProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<GitCredentialProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
 
     /**

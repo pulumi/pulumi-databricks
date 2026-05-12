@@ -13,6 +13,160 @@ import (
 )
 
 // [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// ## Example Usage
+//
+// ### Basic Synced Table with Snapshot Policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			this, err := databricks.NewPostgresProject(ctx, "this", &databricks.PostgresProjectArgs{
+//				ProjectId: pulumi.String("my-project"),
+//				Spec: &databricks.PostgresProjectSpecArgs{
+//					PgVersion:   pulumi.Int(17),
+//					DisplayName: pulumi.String("My Project"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			main, err := databricks.NewPostgresBranch(ctx, "main", &databricks.PostgresBranchArgs{
+//				BranchId: pulumi.String("main"),
+//				Parent:   this.Name,
+//				Spec: &databricks.PostgresBranchSpecArgs{
+//					NoExpiry: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPostgresCatalog(ctx, "this", &databricks.PostgresCatalogArgs{
+//				CatalogId: pulumi.String("app_catalog"),
+//				Spec: &databricks.PostgresCatalogSpecArgs{
+//					PostgresDatabase:        pulumi.String("app_db"),
+//					CreateDatabaseIfMissing: pulumi.Bool(true),
+//					Branch:                  main.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPostgresSyncedTable(ctx, "this", &databricks.PostgresSyncedTableArgs{
+//				SyncedTableId: pulumi.String("app_catalog.default.users_synced"),
+//				Spec: &databricks.PostgresSyncedTableSpecArgs{
+//					SourceTableFullName: pulumi.String("main.default.users"),
+//					PrimaryKeyColumns: pulumi.StringArray{
+//						pulumi.String("user_id"),
+//					},
+//					SchedulingPolicy:               pulumi.String("SNAPSHOT"),
+//					PostgresDatabase:               pulumi.String("app_db"),
+//					Branch:                         main.Name,
+//					CreateDatabaseObjectsIfMissing: pulumi.Bool(true),
+//					NewPipelineSpec: &databricks.PostgresSyncedTableSpecNewPipelineSpecArgs{
+//						StorageCatalog: pulumi.String("main"),
+//						StorageSchema:  pulumi.String("default"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Synced Table with Triggered Policy
+//
+// Use `TRIGGERED` for on-demand updates. Requires Change Data Feed (CDF) enabled on the source table.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPostgresSyncedTable(ctx, "triggered", &databricks.PostgresSyncedTableArgs{
+//				SyncedTableId: pulumi.String("app_catalog.default.orders_synced"),
+//				Spec: &databricks.PostgresSyncedTableSpecArgs{
+//					SourceTableFullName: pulumi.String("main.default.orders"),
+//					PrimaryKeyColumns: pulumi.StringArray{
+//						pulumi.String("order_id"),
+//					},
+//					SchedulingPolicy:               pulumi.String("TRIGGERED"),
+//					PostgresDatabase:               pulumi.String("app_db"),
+//					Branch:                         pulumi.Any(main.Name),
+//					CreateDatabaseObjectsIfMissing: pulumi.Bool(true),
+//					NewPipelineSpec: &databricks.PostgresSyncedTableSpecNewPipelineSpecArgs{
+//						StorageCatalog: pulumi.String("main"),
+//						StorageSchema:  pulumi.String("default"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Synced Table with Existing Pipeline
+//
+// Bin-pack into an existing pipeline instead of creating a new one:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewPostgresSyncedTable(ctx, "this", &databricks.PostgresSyncedTableArgs{
+//				SyncedTableId: pulumi.String("app_catalog.default.products_synced"),
+//				Spec: &databricks.PostgresSyncedTableSpecArgs{
+//					SourceTableFullName: pulumi.String("main.default.products"),
+//					PrimaryKeyColumns: pulumi.StringArray{
+//						pulumi.String("product_id"),
+//					},
+//					SchedulingPolicy:               pulumi.String("SNAPSHOT"),
+//					PostgresDatabase:               pulumi.String("app_db"),
+//					Branch:                         pulumi.Any(main.Name),
+//					CreateDatabaseObjectsIfMissing: pulumi.Bool(true),
+//					ExistingPipelineId:             pulumi.String("abc123-def456"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type PostgresSyncedTable struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +176,7 @@ type PostgresSyncedTable struct {
 	// where (catalog, schema, table) are the UC entity names.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
-	ProviderConfig PostgresSyncedTableProviderConfigPtrOutput `pulumi:"providerConfig"`
+	ProviderConfig PostgresSyncedTableProviderConfigOutput `pulumi:"providerConfig"`
 	// Configuration details of the synced table, such as the source table, scheduling policy, etc.
 	// This attribute is specified at creation time and most fields are returned as is on subsequent queries
 	Spec PostgresSyncedTableSpecOutput `pulumi:"spec"`
@@ -273,8 +427,8 @@ func (o PostgresSyncedTableOutput) Name() pulumi.StringOutput {
 }
 
 // Configure the provider for management through account provider.
-func (o PostgresSyncedTableOutput) ProviderConfig() PostgresSyncedTableProviderConfigPtrOutput {
-	return o.ApplyT(func(v *PostgresSyncedTable) PostgresSyncedTableProviderConfigPtrOutput { return v.ProviderConfig }).(PostgresSyncedTableProviderConfigPtrOutput)
+func (o PostgresSyncedTableOutput) ProviderConfig() PostgresSyncedTableProviderConfigOutput {
+	return o.ApplyT(func(v *PostgresSyncedTable) PostgresSyncedTableProviderConfigOutput { return v.ProviderConfig }).(PostgresSyncedTableProviderConfigOutput)
 }
 
 // Configuration details of the synced table, such as the source table, scheduling policy, etc.

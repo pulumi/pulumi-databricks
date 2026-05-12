@@ -58,7 +58,7 @@ namespace Pulumi.Databricks
         public Output<string?> CatalogName { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.CatalogWorkspaceBindingProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.CatalogWorkspaceBindingProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
         /// Name of securable. Change forces creation of a new resource.

@@ -107,7 +107,7 @@ public final class GetClusterClusterInfoSpec {
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    private @Nullable GetClusterClusterInfoSpecProviderConfig providerConfig;
+    private GetClusterClusterInfoSpecProviderConfig providerConfig;
     private @Nullable Integer remoteDiskThroughput;
     /**
      * @return The type of runtime of the cluster
@@ -275,8 +275,8 @@ public final class GetClusterClusterInfoSpec {
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Optional<GetClusterClusterInfoSpecProviderConfig> providerConfig() {
-        return Optional.ofNullable(this.providerConfig);
+    public GetClusterClusterInfoSpecProviderConfig providerConfig() {
+        return this.providerConfig;
     }
     public Optional<Integer> remoteDiskThroughput() {
         return Optional.ofNullable(this.remoteDiskThroughput);
@@ -371,7 +371,7 @@ public final class GetClusterClusterInfoSpec {
         private String nodeTypeId;
         private @Nullable Integer numWorkers;
         private @Nullable String policyId;
-        private @Nullable GetClusterClusterInfoSpecProviderConfig providerConfig;
+        private GetClusterClusterInfoSpecProviderConfig providerConfig;
         private @Nullable Integer remoteDiskThroughput;
         private @Nullable String runtimeEngine;
         private @Nullable String singleUserName;
@@ -604,8 +604,10 @@ public final class GetClusterClusterInfoSpec {
             return this;
         }
         @CustomType.Setter
-        public Builder providerConfig(@Nullable GetClusterClusterInfoSpecProviderConfig providerConfig) {
-
+        public Builder providerConfig(GetClusterClusterInfoSpecProviderConfig providerConfig) {
+            if (providerConfig == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterInfoSpec", "providerConfig");
+            }
             this.providerConfig = providerConfig;
             return this;
         }

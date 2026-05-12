@@ -18,7 +18,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string AutoTaggingMode;
         /// <summary>
-        /// The Classification Tag (e.g., "class.name", "class.location")
+        /// The Classification Tag. For built-in classes this is a system tag (e.g., "class.name",
+        /// "class.location"); for custom classes it is a user-defined governance tag key
         /// </summary>
         public readonly string ClassificationTag;
 

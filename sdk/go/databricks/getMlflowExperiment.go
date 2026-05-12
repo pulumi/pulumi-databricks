@@ -61,8 +61,8 @@ type LookupMlflowExperimentResult struct {
 	// Current life cycle stage of the experiment: `active` or `deleted`.
 	LifecycleStage string `pulumi:"lifecycleStage"`
 	// Path to experiment.
-	Name           string                             `pulumi:"name"`
-	ProviderConfig *GetMlflowExperimentProviderConfig `pulumi:"providerConfig"`
+	Name           string                            `pulumi:"name"`
+	ProviderConfig GetMlflowExperimentProviderConfig `pulumi:"providerConfig"`
 	// Additional metadata key-value pairs.
 	Tags []GetMlflowExperimentTag `pulumi:"tags"`
 }
@@ -152,8 +152,8 @@ func (o LookupMlflowExperimentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMlflowExperimentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupMlflowExperimentResultOutput) ProviderConfig() GetMlflowExperimentProviderConfigPtrOutput {
-	return o.ApplyT(func(v LookupMlflowExperimentResult) *GetMlflowExperimentProviderConfig { return v.ProviderConfig }).(GetMlflowExperimentProviderConfigPtrOutput)
+func (o LookupMlflowExperimentResultOutput) ProviderConfig() GetMlflowExperimentProviderConfigOutput {
+	return o.ApplyT(func(v LookupMlflowExperimentResult) GetMlflowExperimentProviderConfig { return v.ProviderConfig }).(GetMlflowExperimentProviderConfigOutput)
 }
 
 // Additional metadata key-value pairs.

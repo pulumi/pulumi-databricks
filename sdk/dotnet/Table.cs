@@ -34,7 +34,7 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
 
         [Output("providerConfig")]
-        public Output<Outputs.TableProviderConfig?> ProviderConfig { get; private set; } = null!;
+        public Output<Outputs.TableProviderConfig> ProviderConfig { get; private set; } = null!;
 
         [Output("schemaName")]
         public Output<string> SchemaName { get; private set; } = null!;

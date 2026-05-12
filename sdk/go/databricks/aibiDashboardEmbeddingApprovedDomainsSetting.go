@@ -68,8 +68,8 @@ type AibiDashboardEmbeddingApprovedDomainsSetting struct {
 	AibiDashboardEmbeddingApprovedDomains AibiDashboardEmbeddingApprovedDomainsSettingAibiDashboardEmbeddingApprovedDomainsOutput `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
 	Etag                                  pulumi.StringOutput                                                                     `pulumi:"etag"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
-	ProviderConfig AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigPtrOutput `pulumi:"providerConfig"`
-	SettingName    pulumi.StringOutput                                                 `pulumi:"settingName"`
+	ProviderConfig AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigOutput `pulumi:"providerConfig"`
+	SettingName    pulumi.StringOutput                                              `pulumi:"settingName"`
 }
 
 // NewAibiDashboardEmbeddingApprovedDomainsSetting registers a new resource with the given unique name, arguments, and options.
@@ -244,10 +244,10 @@ func (o AibiDashboardEmbeddingApprovedDomainsSettingOutput) Etag() pulumi.String
 }
 
 // Configure the provider for management through account provider. This block consists of the following fields:
-func (o AibiDashboardEmbeddingApprovedDomainsSettingOutput) ProviderConfig() AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigPtrOutput {
-	return o.ApplyT(func(v *AibiDashboardEmbeddingApprovedDomainsSetting) AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigPtrOutput {
+func (o AibiDashboardEmbeddingApprovedDomainsSettingOutput) ProviderConfig() AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigOutput {
+	return o.ApplyT(func(v *AibiDashboardEmbeddingApprovedDomainsSetting) AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigOutput {
 		return v.ProviderConfig
-	}).(AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigPtrOutput)
+	}).(AibiDashboardEmbeddingApprovedDomainsSettingProviderConfigOutput)
 }
 
 func (o AibiDashboardEmbeddingApprovedDomainsSettingOutput) SettingName() pulumi.StringOutput {

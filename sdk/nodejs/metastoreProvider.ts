@@ -85,7 +85,7 @@ export class MetastoreProvider extends pulumi.CustomResource {
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
      */
-    declare public readonly providerConfig: pulumi.Output<outputs.MetastoreProviderProviderConfig | undefined>;
+    declare public readonly providerConfig: pulumi.Output<outputs.MetastoreProviderProviderConfig>;
     /**
      * This is the json file that is created from a recipient url.
      */

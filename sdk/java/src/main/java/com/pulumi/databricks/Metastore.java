@@ -385,14 +385,14 @@ public class Metastore extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="providerConfig", refs={MetastoreProviderConfig.class}, tree="[0]")
-    private Output</* @Nullable */ MetastoreProviderConfig> providerConfig;
+    private Output<MetastoreProviderConfig> providerConfig;
 
     /**
      * @return Configure the provider for management through account provider. This block consists of the following fields:
      * 
      */
-    public Output<Optional<MetastoreProviderConfig>> providerConfig() {
-        return Codegen.optional(this.providerConfig);
+    public Output<MetastoreProviderConfig> providerConfig() {
+        return this.providerConfig;
     }
     /**
      * The region of the metastore
