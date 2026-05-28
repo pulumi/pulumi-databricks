@@ -142,7 +142,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// !&gt; Importing this resource is not currently supported.
+    /// &gt; Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/mlflowWebhook:MlflowWebhook")]
     public partial class MlflowWebhook : global::Pulumi.CustomResource

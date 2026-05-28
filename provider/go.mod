@@ -10,7 +10,7 @@ require (
 	github.com/databricks/databricks-sdk-go v0.132.0
 	github.com/databricks/terraform-provider-databricks v1.58.0
 	github.com/pulumi/providertest v0.6.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.130.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.131.0
 	github.com/pulumi/pulumi/sdk/v3 v3.242.0
 	github.com/stretchr/testify v1.11.1
 )

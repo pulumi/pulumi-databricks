@@ -462,7 +462,7 @@ The provider supports additional configuration parameters not related to authent
 * `debugHeaders` - (optional, environment variable `DATABRICKS_DEBUG_HEADERS`) Applicable only when `TF_LOG=DEBUG` is set. Debug HTTP headers of requests made by the provider. Default is *false*. We recommend turning this flag on only under exceptional circumstances, when troubleshooting authentication issues. Turning this flag on will log first `debugTruncateBytes` of any HTTP header value in cleartext.
 * `skipVerify` - skips SSL certificate verification for HTTP calls. *Use at your own risk.* Default is *false* (don't skip verification).
 
-!> **Warning** Sensitive credentials are printed to the log when `debugHeaders` is `true`. Use it for troubleshooting purposes only.
+> **Warning** Sensitive credentials are printed to the log when `debugHeaders` is `true`. Use it for troubleshooting purposes only.
 ### `host` argument
 
 The `host` argument configures the endpoint that the Pulumi Provider for Databricks interacts with. This must be configured according to the following table:

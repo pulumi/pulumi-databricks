@@ -1132,7 +1132,7 @@ import javax.annotation.Nullable;
  * 
  * It is required to have at least 1 personal access token in the workspace before you can manage tokens permissions.
  * 
- * !&gt; **Warning** There can be only one `authorization = &#34;tokens&#34;` permissions resource per workspace, otherwise there&#39;ll be a permanent configuration drift. After applying changes, users who previously had either `CAN_USE` or `CAN_MANAGE` permission but no longer have either permission have their access to token-based authentication revoked. Their active tokens are immediately deleted (revoked).
+ * &gt; **Warning** There can be only one `authorization = &#34;tokens&#34;` permissions resource per workspace, otherwise there&#39;ll be a permanent configuration drift. After applying changes, users who previously had either `CAN_USE` or `CAN_MANAGE` permission but no longer have either permission have their access to token-based authentication revoked. Their active tokens are immediately deleted (revoked).
  * 
  * Only [possible permission](https://docs.databricks.com/administration-guide/access-control/tokens.html) to assign to non-admin group is `CAN_USE`, where _admins_ `CAN_MANAGE` all tokens:
  * 

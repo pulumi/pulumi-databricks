@@ -71,7 +71,7 @@ import (
 //
 // ## Import
 //
-// !> Importing this resource is not currently supported.
+// > Importing this resource is not currently supported.
 type GroupInstanceProfile struct {
 	pulumi.CustomResourceState
 

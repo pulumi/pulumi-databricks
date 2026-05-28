@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; Currently, we only support managing access rules on specific object resources (service principal, group, budget policies and account) through `databricks.AccessControlRuleSet`.
  * 
- * !&gt; `databricks.AccessControlRuleSet` cannot be used to manage access rules for resources supported by databricks_permissions. Refer to its documentation for more information.
+ * &gt; `databricks.AccessControlRuleSet` cannot be used to manage access rules for resources supported by databricks_permissions. Refer to its documentation for more information.
  * 
  * &gt; This resource is _authoritative_ for permissions on objects. Configuring this resource for an object will **OVERWRITE** any existing permissions of the same type unless imported, and changes made outside of Pulumi will be reset.
  * 
@@ -543,7 +543,7 @@ public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
     /**
      * The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
      * 
-     * !&gt; Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+     * &gt; Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
      * 
      */
     @Export(name="grantRules", refs={List.class,AccessControlRuleSetGrantRule.class}, tree="[0,1]")
@@ -552,7 +552,7 @@ public class AccessControlRuleSet extends com.pulumi.resources.CustomResource {
     /**
      * @return The access control rules to be granted by this rule set, consisting of a set of principals and roles to be granted to them.
      * 
-     * !&gt; Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
+     * &gt; Name uniquely identifies a rule set resource. Ensure all the grantRules blocks for a rule set name are present in one `databricks.AccessControlRuleSet` resource block. Otherwise, after applying changes, users might lose their role assignment even if that was not intended.
      * 
      */
     public Output<Optional<List<AccessControlRuleSetGrantRule>>> grantRules() {

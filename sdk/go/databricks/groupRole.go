@@ -106,7 +106,7 @@ import (
 //
 // ## Import
 //
-// !> Importing this resource is not currently supported.
+// > Importing this resource is not currently supported.
 type GroupRole struct {
 	pulumi.CustomResourceState
 

@@ -252,7 +252,7 @@ class SqlDashboard(pulumi.CustomResource):
                  updated_at: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        !> This resource is deprecated! Please switch to Dashboard to author new AI/BI dashboards using the latest tooling.
+        > This resource is deprecated! Please switch to Dashboard to author new AI/BI dashboards using the latest tooling.
 
         This resource is used to manage [Legacy dashboards](https://docs.databricks.com/sql/user/dashboards/index.html). To manage [SQL resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
 
@@ -311,7 +311,7 @@ class SqlDashboard(pulumi.CustomResource):
                  args: Optional[SqlDashboardArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        !> This resource is deprecated! Please switch to Dashboard to author new AI/BI dashboards using the latest tooling.
+        > This resource is deprecated! Please switch to Dashboard to author new AI/BI dashboards using the latest tooling.
 
         This resource is used to manage [Legacy dashboards](https://docs.databricks.com/sql/user/dashboards/index.html). To manage [SQL resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
 

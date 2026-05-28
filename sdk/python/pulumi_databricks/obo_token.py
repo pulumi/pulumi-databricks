@@ -253,7 +253,7 @@ class OboToken(pulumi.CustomResource):
 
         ## Import
 
-        !> Importing this resource is not currently supported.
+        > Importing this resource is not currently supported.
 
 
         :param str resource_name: The name of the resource.
@@ -332,7 +332,7 @@ class OboToken(pulumi.CustomResource):
 
         ## Import
 
-        !> Importing this resource is not currently supported.
+        > Importing this resource is not currently supported.
 
 
         :param str resource_name: The name of the resource.
