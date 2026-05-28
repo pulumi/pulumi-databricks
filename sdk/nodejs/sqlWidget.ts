@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * !> This resource is deprecated and will be removed in future.
+ * > This resource is deprecated and will be removed in future.
  *
  * > Please switch to databricks.Dashboard to author new AI/BI dashboards using the latest tooling
  *

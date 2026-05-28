@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// !> This resource is deprecated and will be removed in future.
+// > This resource is deprecated and will be removed in future.
 //
 // > Please switch to Dashboard to author new AI/BI dashboards using the latest tooling
 //

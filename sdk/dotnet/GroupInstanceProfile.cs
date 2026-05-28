@@ -59,7 +59,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// !&gt; Importing this resource is not currently supported.
+    /// &gt; Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/groupInstanceProfile:GroupInstanceProfile")]
     public partial class GroupInstanceProfile : global::Pulumi.CustomResource

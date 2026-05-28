@@ -38,7 +38,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * !> Importing this resource is not currently supported.
+ * > Importing this resource is not currently supported.
  */
 export class UserInstanceProfile extends pulumi.CustomResource {
     /**

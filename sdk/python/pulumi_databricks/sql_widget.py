@@ -276,7 +276,7 @@ class SqlWidget(pulumi.CustomResource):
                  widget_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        !> This resource is deprecated and will be removed in future.
+        > This resource is deprecated and will be removed in future.
 
         > Please switch to Dashboard to author new AI/BI dashboards using the latest tooling
 
@@ -334,7 +334,7 @@ class SqlWidget(pulumi.CustomResource):
                  args: SqlWidgetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        !> This resource is deprecated and will be removed in future.
+        > This resource is deprecated and will be removed in future.
 
         > Please switch to Dashboard to author new AI/BI dashboards using the latest tooling
 

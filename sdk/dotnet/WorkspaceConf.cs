@@ -49,7 +49,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// !&gt; Importing this resource is not currently supported.
+    /// &gt; Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/workspaceConf:WorkspaceConf")]
     public partial class WorkspaceConf : global::Pulumi.CustomResource

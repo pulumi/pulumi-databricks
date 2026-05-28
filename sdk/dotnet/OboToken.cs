@@ -123,7 +123,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// !&gt; Importing this resource is not currently supported.
+    /// &gt; Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/oboToken:OboToken")]
     public partial class OboToken : global::Pulumi.CustomResource

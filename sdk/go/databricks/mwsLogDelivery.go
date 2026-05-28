@@ -247,7 +247,7 @@ import (
 //
 // ## Import
 //
-// !> Importing this resource is not currently supported.
+// > Importing this resource is not currently supported.
 type MwsLogDelivery struct {
 	pulumi.CustomResourceState
 

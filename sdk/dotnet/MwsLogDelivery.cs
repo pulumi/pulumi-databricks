@@ -219,7 +219,7 @@ namespace Pulumi.Databricks
     /// 
     /// ## Import
     /// 
-    /// !&gt; Importing this resource is not currently supported.
+    /// &gt; Importing this resource is not currently supported.
     /// </summary>
     [DatabricksResourceType("databricks:index/mwsLogDelivery:MwsLogDelivery")]
     public partial class MwsLogDelivery : global::Pulumi.CustomResource

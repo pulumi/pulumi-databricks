@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// !&gt; This resource is deprecated! Please switch to databricks_alert.
+    /// &gt; This resource is deprecated! Please switch to databricks_alert.
     /// 
     /// This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).
     /// 
