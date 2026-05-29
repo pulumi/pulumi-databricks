@@ -11,6 +11,16 @@ import java.util.Objects;
 @CustomType
 public final class GetDisasterRecoveryStableUrlResult {
     /**
+     * @return (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+     * currently linked to, in the format
+     * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+     * the stable URL is not attached to any failover group. Server-controlled:
+     * written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+     * DeleteFailoverGroup / UpdateFailoverGroup on unlink
+     * 
+     */
+    private String failoverGroupName;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -38,6 +48,18 @@ public final class GetDisasterRecoveryStableUrlResult {
     private String url;
 
     private GetDisasterRecoveryStableUrlResult() {}
+    /**
+     * @return (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+     * currently linked to, in the format
+     * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+     * the stable URL is not attached to any failover group. Server-controlled:
+     * written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+     * DeleteFailoverGroup / UpdateFailoverGroup on unlink
+     * 
+     */
+    public String failoverGroupName() {
+        return this.failoverGroupName;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -82,6 +104,7 @@ public final class GetDisasterRecoveryStableUrlResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String failoverGroupName;
         private String id;
         private String initialWorkspaceId;
         private String name;
@@ -89,12 +112,21 @@ public final class GetDisasterRecoveryStableUrlResult {
         public Builder() {}
         public Builder(GetDisasterRecoveryStableUrlResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.failoverGroupName = defaults.failoverGroupName;
     	      this.id = defaults.id;
     	      this.initialWorkspaceId = defaults.initialWorkspaceId;
     	      this.name = defaults.name;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
+        public Builder failoverGroupName(String failoverGroupName) {
+            if (failoverGroupName == null) {
+              throw new MissingRequiredPropertyException("GetDisasterRecoveryStableUrlResult", "failoverGroupName");
+            }
+            this.failoverGroupName = failoverGroupName;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -129,6 +161,7 @@ public final class GetDisasterRecoveryStableUrlResult {
         }
         public GetDisasterRecoveryStableUrlResult build() {
             final var _resultValue = new GetDisasterRecoveryStableUrlResult();
+            _resultValue.failoverGroupName = failoverGroupName;
             _resultValue.id = id;
             _resultValue.initialWorkspaceId = initialWorkspaceId;
             _resultValue.name = name;

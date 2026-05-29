@@ -14,9 +14,17 @@ public final class FeatureEngineeringFeatureEntityArgs extends com.pulumi.resour
 
     public static final FeatureEngineeringFeatureEntityArgs Empty = new FeatureEngineeringFeatureEntityArgs();
 
+    /**
+     * (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -45,11 +53,23 @@ public final class FeatureEngineeringFeatureEntityArgs extends com.pulumi.resour
             $ = new FeatureEngineeringFeatureEntityArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

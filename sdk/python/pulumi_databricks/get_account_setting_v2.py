@@ -27,13 +27,16 @@ class GetAccountSettingV2Result:
     """
     A collection of values returned by getAccountSettingV2.
     """
-    def __init__(__self__, aibi_dashboard_embedding_access_policy=None, aibi_dashboard_embedding_approved_domains=None, automatic_cluster_update_workspace=None, boolean_val=None, effective_aibi_dashboard_embedding_access_policy=None, effective_aibi_dashboard_embedding_approved_domains=None, effective_automatic_cluster_update_workspace=None, effective_boolean_val=None, effective_integer_val=None, effective_personal_compute=None, effective_restrict_workspace_admins=None, effective_string_val=None, id=None, integer_val=None, name=None, personal_compute=None, restrict_workspace_admins=None, string_val=None):
+    def __init__(__self__, aibi_dashboard_embedding_access_policy=None, aibi_dashboard_embedding_approved_domains=None, allowed_apps_user_api_scopes=None, automatic_cluster_update_workspace=None, boolean_val=None, effective_aibi_dashboard_embedding_access_policy=None, effective_aibi_dashboard_embedding_approved_domains=None, effective_allowed_apps_user_api_scopes=None, effective_automatic_cluster_update_workspace=None, effective_boolean_val=None, effective_integer_val=None, effective_operational_email_custom_recipient=None, effective_personal_compute=None, effective_restrict_workspace_admins=None, effective_string_val=None, id=None, integer_val=None, name=None, operational_email_custom_recipient=None, personal_compute=None, restrict_workspace_admins=None, string_val=None):
         if aibi_dashboard_embedding_access_policy and not isinstance(aibi_dashboard_embedding_access_policy, dict):
             raise TypeError("Expected argument 'aibi_dashboard_embedding_access_policy' to be a dict")
         pulumi.set(__self__, "aibi_dashboard_embedding_access_policy", aibi_dashboard_embedding_access_policy)
         if aibi_dashboard_embedding_approved_domains and not isinstance(aibi_dashboard_embedding_approved_domains, dict):
             raise TypeError("Expected argument 'aibi_dashboard_embedding_approved_domains' to be a dict")
         pulumi.set(__self__, "aibi_dashboard_embedding_approved_domains", aibi_dashboard_embedding_approved_domains)
+        if allowed_apps_user_api_scopes and not isinstance(allowed_apps_user_api_scopes, dict):
+            raise TypeError("Expected argument 'allowed_apps_user_api_scopes' to be a dict")
+        pulumi.set(__self__, "allowed_apps_user_api_scopes", allowed_apps_user_api_scopes)
         if automatic_cluster_update_workspace and not isinstance(automatic_cluster_update_workspace, dict):
             raise TypeError("Expected argument 'automatic_cluster_update_workspace' to be a dict")
         pulumi.set(__self__, "automatic_cluster_update_workspace", automatic_cluster_update_workspace)
@@ -46,6 +49,9 @@ class GetAccountSettingV2Result:
         if effective_aibi_dashboard_embedding_approved_domains and not isinstance(effective_aibi_dashboard_embedding_approved_domains, dict):
             raise TypeError("Expected argument 'effective_aibi_dashboard_embedding_approved_domains' to be a dict")
         pulumi.set(__self__, "effective_aibi_dashboard_embedding_approved_domains", effective_aibi_dashboard_embedding_approved_domains)
+        if effective_allowed_apps_user_api_scopes and not isinstance(effective_allowed_apps_user_api_scopes, dict):
+            raise TypeError("Expected argument 'effective_allowed_apps_user_api_scopes' to be a dict")
+        pulumi.set(__self__, "effective_allowed_apps_user_api_scopes", effective_allowed_apps_user_api_scopes)
         if effective_automatic_cluster_update_workspace and not isinstance(effective_automatic_cluster_update_workspace, dict):
             raise TypeError("Expected argument 'effective_automatic_cluster_update_workspace' to be a dict")
         pulumi.set(__self__, "effective_automatic_cluster_update_workspace", effective_automatic_cluster_update_workspace)
@@ -55,6 +61,9 @@ class GetAccountSettingV2Result:
         if effective_integer_val and not isinstance(effective_integer_val, dict):
             raise TypeError("Expected argument 'effective_integer_val' to be a dict")
         pulumi.set(__self__, "effective_integer_val", effective_integer_val)
+        if effective_operational_email_custom_recipient and not isinstance(effective_operational_email_custom_recipient, dict):
+            raise TypeError("Expected argument 'effective_operational_email_custom_recipient' to be a dict")
+        pulumi.set(__self__, "effective_operational_email_custom_recipient", effective_operational_email_custom_recipient)
         if effective_personal_compute and not isinstance(effective_personal_compute, dict):
             raise TypeError("Expected argument 'effective_personal_compute' to be a dict")
         pulumi.set(__self__, "effective_personal_compute", effective_personal_compute)
@@ -73,6 +82,9 @@ class GetAccountSettingV2Result:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if operational_email_custom_recipient and not isinstance(operational_email_custom_recipient, dict):
+            raise TypeError("Expected argument 'operational_email_custom_recipient' to be a dict")
+        pulumi.set(__self__, "operational_email_custom_recipient", operational_email_custom_recipient)
         if personal_compute and not isinstance(personal_compute, dict):
             raise TypeError("Expected argument 'personal_compute' to be a dict")
         pulumi.set(__self__, "personal_compute", personal_compute)
@@ -98,6 +110,14 @@ class GetAccountSettingV2Result:
         (AibiDashboardEmbeddingApprovedDomains) - Setting value for aibi_dashboard_embedding_approved_domains setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_approved_domains for final setting value
         """
         return pulumi.get(self, "aibi_dashboard_embedding_approved_domains")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedAppsUserApiScopes")
+    def allowed_apps_user_api_scopes(self) -> 'outputs.GetAccountSettingV2AllowedAppsUserApiScopesResult':
+        """
+        (AllowedAppsUserApiScopesMessage) - Setting value for allowed_apps_user_api_scopes setting. This is the setting value set by consumers, check effective_allowed_apps_user_api_scopes for final setting value
+        """
+        return pulumi.get(self, "allowed_apps_user_api_scopes")
 
     @_builtins.property
     @pulumi.getter(name="automaticClusterUpdateWorkspace")
@@ -132,6 +152,14 @@ class GetAccountSettingV2Result:
         return pulumi.get(self, "effective_aibi_dashboard_embedding_approved_domains")
 
     @_builtins.property
+    @pulumi.getter(name="effectiveAllowedAppsUserApiScopes")
+    def effective_allowed_apps_user_api_scopes(self) -> 'outputs.GetAccountSettingV2EffectiveAllowedAppsUserApiScopesResult':
+        """
+        (AllowedAppsUserApiScopesMessage) - Effective setting value for allowed_apps_user_api_scopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+        """
+        return pulumi.get(self, "effective_allowed_apps_user_api_scopes")
+
+    @_builtins.property
     @pulumi.getter(name="effectiveAutomaticClusterUpdateWorkspace")
     def effective_automatic_cluster_update_workspace(self) -> 'outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceResult':
         """
@@ -154,6 +182,14 @@ class GetAccountSettingV2Result:
         (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
         """
         return pulumi.get(self, "effective_integer_val")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveOperationalEmailCustomRecipient")
+    def effective_operational_email_custom_recipient(self) -> 'outputs.GetAccountSettingV2EffectiveOperationalEmailCustomRecipientResult':
+        """
+        (OperationalEmailCustomRecipientMessage) - Effective setting value for operational_email_custom_recipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+        """
+        return pulumi.get(self, "effective_operational_email_custom_recipient")
 
     @_builtins.property
     @pulumi.getter(name="effectivePersonalCompute")
@@ -204,6 +240,14 @@ class GetAccountSettingV2Result:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="operationalEmailCustomRecipient")
+    def operational_email_custom_recipient(self) -> 'outputs.GetAccountSettingV2OperationalEmailCustomRecipientResult':
+        """
+        (OperationalEmailCustomRecipientMessage) - Setting value for operational_email_custom_recipient setting. This is the setting value set by consumers, check effective_operational_email_custom_recipient for final setting value
+        """
+        return pulumi.get(self, "operational_email_custom_recipient")
+
+    @_builtins.property
     @pulumi.getter(name="personalCompute")
     def personal_compute(self) -> 'outputs.GetAccountSettingV2PersonalComputeResult':
         """
@@ -236,19 +280,23 @@ class AwaitableGetAccountSettingV2Result(GetAccountSettingV2Result):
         return GetAccountSettingV2Result(
             aibi_dashboard_embedding_access_policy=self.aibi_dashboard_embedding_access_policy,
             aibi_dashboard_embedding_approved_domains=self.aibi_dashboard_embedding_approved_domains,
+            allowed_apps_user_api_scopes=self.allowed_apps_user_api_scopes,
             automatic_cluster_update_workspace=self.automatic_cluster_update_workspace,
             boolean_val=self.boolean_val,
             effective_aibi_dashboard_embedding_access_policy=self.effective_aibi_dashboard_embedding_access_policy,
             effective_aibi_dashboard_embedding_approved_domains=self.effective_aibi_dashboard_embedding_approved_domains,
+            effective_allowed_apps_user_api_scopes=self.effective_allowed_apps_user_api_scopes,
             effective_automatic_cluster_update_workspace=self.effective_automatic_cluster_update_workspace,
             effective_boolean_val=self.effective_boolean_val,
             effective_integer_val=self.effective_integer_val,
+            effective_operational_email_custom_recipient=self.effective_operational_email_custom_recipient,
             effective_personal_compute=self.effective_personal_compute,
             effective_restrict_workspace_admins=self.effective_restrict_workspace_admins,
             effective_string_val=self.effective_string_val,
             id=self.id,
             integer_val=self.integer_val,
             name=self.name,
+            operational_email_custom_recipient=self.operational_email_custom_recipient,
             personal_compute=self.personal_compute,
             restrict_workspace_admins=self.restrict_workspace_admins,
             string_val=self.string_val)
@@ -276,19 +324,23 @@ def get_account_setting_v2(name: Optional[_builtins.str] = None,
     return AwaitableGetAccountSettingV2Result(
         aibi_dashboard_embedding_access_policy=pulumi.get(__ret__, 'aibi_dashboard_embedding_access_policy'),
         aibi_dashboard_embedding_approved_domains=pulumi.get(__ret__, 'aibi_dashboard_embedding_approved_domains'),
+        allowed_apps_user_api_scopes=pulumi.get(__ret__, 'allowed_apps_user_api_scopes'),
         automatic_cluster_update_workspace=pulumi.get(__ret__, 'automatic_cluster_update_workspace'),
         boolean_val=pulumi.get(__ret__, 'boolean_val'),
         effective_aibi_dashboard_embedding_access_policy=pulumi.get(__ret__, 'effective_aibi_dashboard_embedding_access_policy'),
         effective_aibi_dashboard_embedding_approved_domains=pulumi.get(__ret__, 'effective_aibi_dashboard_embedding_approved_domains'),
+        effective_allowed_apps_user_api_scopes=pulumi.get(__ret__, 'effective_allowed_apps_user_api_scopes'),
         effective_automatic_cluster_update_workspace=pulumi.get(__ret__, 'effective_automatic_cluster_update_workspace'),
         effective_boolean_val=pulumi.get(__ret__, 'effective_boolean_val'),
         effective_integer_val=pulumi.get(__ret__, 'effective_integer_val'),
+        effective_operational_email_custom_recipient=pulumi.get(__ret__, 'effective_operational_email_custom_recipient'),
         effective_personal_compute=pulumi.get(__ret__, 'effective_personal_compute'),
         effective_restrict_workspace_admins=pulumi.get(__ret__, 'effective_restrict_workspace_admins'),
         effective_string_val=pulumi.get(__ret__, 'effective_string_val'),
         id=pulumi.get(__ret__, 'id'),
         integer_val=pulumi.get(__ret__, 'integer_val'),
         name=pulumi.get(__ret__, 'name'),
+        operational_email_custom_recipient=pulumi.get(__ret__, 'operational_email_custom_recipient'),
         personal_compute=pulumi.get(__ret__, 'personal_compute'),
         restrict_workspace_admins=pulumi.get(__ret__, 'restrict_workspace_admins'),
         string_val=pulumi.get(__ret__, 'string_val'))
@@ -313,19 +365,23 @@ def get_account_setting_v2_output(name: pulumi.Input[Optional[_builtins.str]] = 
     return __ret__.apply(lambda __response__: GetAccountSettingV2Result(
         aibi_dashboard_embedding_access_policy=pulumi.get(__response__, 'aibi_dashboard_embedding_access_policy'),
         aibi_dashboard_embedding_approved_domains=pulumi.get(__response__, 'aibi_dashboard_embedding_approved_domains'),
+        allowed_apps_user_api_scopes=pulumi.get(__response__, 'allowed_apps_user_api_scopes'),
         automatic_cluster_update_workspace=pulumi.get(__response__, 'automatic_cluster_update_workspace'),
         boolean_val=pulumi.get(__response__, 'boolean_val'),
         effective_aibi_dashboard_embedding_access_policy=pulumi.get(__response__, 'effective_aibi_dashboard_embedding_access_policy'),
         effective_aibi_dashboard_embedding_approved_domains=pulumi.get(__response__, 'effective_aibi_dashboard_embedding_approved_domains'),
+        effective_allowed_apps_user_api_scopes=pulumi.get(__response__, 'effective_allowed_apps_user_api_scopes'),
         effective_automatic_cluster_update_workspace=pulumi.get(__response__, 'effective_automatic_cluster_update_workspace'),
         effective_boolean_val=pulumi.get(__response__, 'effective_boolean_val'),
         effective_integer_val=pulumi.get(__response__, 'effective_integer_val'),
+        effective_operational_email_custom_recipient=pulumi.get(__response__, 'effective_operational_email_custom_recipient'),
         effective_personal_compute=pulumi.get(__response__, 'effective_personal_compute'),
         effective_restrict_workspace_admins=pulumi.get(__response__, 'effective_restrict_workspace_admins'),
         effective_string_val=pulumi.get(__response__, 'effective_string_val'),
         id=pulumi.get(__response__, 'id'),
         integer_val=pulumi.get(__response__, 'integer_val'),
         name=pulumi.get(__response__, 'name'),
+        operational_email_custom_recipient=pulumi.get(__response__, 'operational_email_custom_recipient'),
         personal_compute=pulumi.get(__response__, 'personal_compute'),
         restrict_workspace_admins=pulumi.get(__response__, 'restrict_workspace_admins'),
         string_val=pulumi.get(__response__, 'string_val')))

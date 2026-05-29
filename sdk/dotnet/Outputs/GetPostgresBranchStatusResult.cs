@@ -14,18 +14,22 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetPostgresBranchStatusResult
     {
         /// <summary>
-        /// (string) - The short identifier of the branch, suitable for showing to the users.
-        /// For a branch with name `projects/my-project/branches/my-branch`, the BranchId is `my-branch`.
+        /// (string) - Part of the resource name
         /// </summary>
         public readonly string BranchId;
         /// <summary>
-        /// (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+        /// (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
         /// </summary>
         public readonly string CurrentState;
         /// <summary>
         /// (boolean) - Whether the branch is the project's default branch
         /// </summary>
         public readonly bool Default;
+        /// <summary>
+        /// (string) - A timestamp indicating when the branch was deleted.
+        /// Empty if the branch is not deleted
+        /// </summary>
+        public readonly string DeleteTime;
         /// <summary>
         /// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
         /// </summary>
@@ -39,9 +43,14 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int LogicalSizeBytes;
         /// <summary>
-        /// (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+        /// (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
         /// </summary>
         public readonly string PendingState;
+        /// <summary>
+        /// (string) - A timestamp indicating when the branch is scheduled to be purged.
+        /// Empty if the branch is not deleted, otherwise set to a timestamp in the future
+        /// </summary>
+        public readonly string PurgeTime;
         /// <summary>
         /// (string) - The name of the source branch from which this branch was created.
         /// Format: projects/{project_id}/branches/{branch_id}
@@ -68,6 +77,8 @@ namespace Pulumi.Databricks.Outputs
 
             bool @default,
 
+            string deleteTime,
+
             string expireTime,
 
             bool isProtected,
@@ -75,6 +86,8 @@ namespace Pulumi.Databricks.Outputs
             int logicalSizeBytes,
 
             string pendingState,
+
+            string purgeTime,
 
             string sourceBranch,
 
@@ -87,10 +100,12 @@ namespace Pulumi.Databricks.Outputs
             BranchId = branchId;
             CurrentState = currentState;
             Default = @default;
+            DeleteTime = deleteTime;
             ExpireTime = expireTime;
             IsProtected = isProtected;
             LogicalSizeBytes = logicalSizeBytes;
             PendingState = pendingState;
+            PurgeTime = purgeTime;
             SourceBranch = sourceBranch;
             SourceBranchLsn = sourceBranchLsn;
             SourceBranchTime = sourceBranchTime;

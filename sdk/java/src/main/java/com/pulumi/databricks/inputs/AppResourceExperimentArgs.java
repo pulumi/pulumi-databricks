@@ -14,16 +14,32 @@ public final class AppResourceExperimentArgs extends com.pulumi.resources.Resour
 
     public static final AppResourceExperimentArgs Empty = new AppResourceExperimentArgs();
 
+    /**
+     * The ID of the MLflow experiment to grant permission on.
+     * 
+     */
     @Import(name="experimentId", required=true)
     private Output<String> experimentId;
 
+    /**
+     * @return The ID of the MLflow experiment to grant permission on.
+     * 
+     */
     public Output<String> experimentId() {
         return this.experimentId;
     }
 
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     * 
+     */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
+    /**
+     * @return Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     * 
+     */
     public Output<String> permission() {
         return this.permission;
     }
@@ -53,20 +69,44 @@ public final class AppResourceExperimentArgs extends com.pulumi.resources.Resour
             $ = new AppResourceExperimentArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param experimentId The ID of the MLflow experiment to grant permission on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder experimentId(Output<String> experimentId) {
             $.experimentId = experimentId;
             return this;
         }
 
+        /**
+         * @param experimentId The ID of the MLflow experiment to grant permission on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder experimentId(String experimentId) {
             return experimentId(Output.of(experimentId));
         }
 
+        /**
+         * @param permission Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(Output<String> permission) {
             $.permission = permission;
             return this;
         }
 
+        /**
+         * @param permission Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(String permission) {
             return permission(Output.of(permission));
         }

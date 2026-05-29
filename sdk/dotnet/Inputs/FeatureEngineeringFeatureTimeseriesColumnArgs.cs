@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class FeatureEngineeringFeatureTimeseriesColumnArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

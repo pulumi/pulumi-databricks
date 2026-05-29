@@ -18,6 +18,8 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; On Azure you need to use AzurermDatabricksWorkspace resource to create Azure Databricks workspaces.
     /// 
+    /// &gt; On GCP, the provider must be authenticated with a Google-issued OIDC token (not a Databricks OAuth token), because creating or updating this resource triggers operations against your GCP project. See Authenticate with Databricks account API for setup instructions.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Creating a serverless workspace in AWS and GCP

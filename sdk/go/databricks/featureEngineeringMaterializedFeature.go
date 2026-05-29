@@ -18,6 +18,8 @@ type FeatureEngineeringMaterializedFeature struct {
 
 	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
 	CronSchedule pulumi.StringPtrOutput `pulumi:"cronSchedule"`
+	// A cron-based schedule trigger for the materialization pipeline
+	CronScheduleTrigger FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput `pulumi:"cronScheduleTrigger"`
 	// The full name of the feature in Unity Catalog
 	FeatureName pulumi.StringOutput `pulumi:"featureName"`
 	// (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
@@ -25,16 +27,24 @@ type FeatureEngineeringMaterializedFeature struct {
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 	// If the pipeline has not run yet, this field will be null
 	LastMaterializationTime pulumi.StringOutput `pulumi:"lastMaterializationTime"`
-	// Unique identifier for the materialized feature
-	MaterializedFeatureId pulumi.StringPtrOutput                                        `pulumi:"materializedFeatureId"`
-	OfflineStoreConfig    FeatureEngineeringMaterializedFeatureOfflineStoreConfigOutput `pulumi:"offlineStoreConfig"`
-	OnlineStoreConfig     FeatureEngineeringMaterializedFeatureOnlineStoreConfigOutput  `pulumi:"onlineStoreConfig"`
+	// (string) - Server-assigned unique identifier for the materialized feature
+	MaterializedFeatureId pulumi.StringOutput `pulumi:"materializedFeatureId"`
+	// Destination for writing feature values to an offline Delta table
+	OfflineStoreConfig FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrOutput `pulumi:"offlineStoreConfig"`
+	// Destination for writing feature values to an online Lakebase table
+	OnlineStoreConfig FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrOutput `pulumi:"onlineStoreConfig"`
 	// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState pulumi.StringPtrOutput `pulumi:"pipelineScheduleState"`
 	// Configure the provider for management through account provider.
 	ProviderConfig FeatureEngineeringMaterializedFeatureProviderConfigOutput `pulumi:"providerConfig"`
+	// The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+	// sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+	// for ETL and analytics workloads
+	StreamingMode FeatureEngineeringMaterializedFeatureStreamingModePtrOutput `pulumi:"streamingMode"`
 	// (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
 	TableName pulumi.StringOutput `pulumi:"tableName"`
+	// A trigger that fires when the upstream source table changes
+	TableTrigger FeatureEngineeringMaterializedFeatureTableTriggerPtrOutput `pulumi:"tableTrigger"`
 }
 
 // NewFeatureEngineeringMaterializedFeature registers a new resource with the given unique name, arguments, and options.
@@ -72,6 +82,8 @@ func GetFeatureEngineeringMaterializedFeature(ctx *pulumi.Context,
 type featureEngineeringMaterializedFeatureState struct {
 	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
 	CronSchedule *string `pulumi:"cronSchedule"`
+	// A cron-based schedule trigger for the materialization pipeline
+	CronScheduleTrigger *FeatureEngineeringMaterializedFeatureCronScheduleTrigger `pulumi:"cronScheduleTrigger"`
 	// The full name of the feature in Unity Catalog
 	FeatureName *string `pulumi:"featureName"`
 	// (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
@@ -79,21 +91,31 @@ type featureEngineeringMaterializedFeatureState struct {
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 	// If the pipeline has not run yet, this field will be null
 	LastMaterializationTime *string `pulumi:"lastMaterializationTime"`
-	// Unique identifier for the materialized feature
-	MaterializedFeatureId *string                                                  `pulumi:"materializedFeatureId"`
-	OfflineStoreConfig    *FeatureEngineeringMaterializedFeatureOfflineStoreConfig `pulumi:"offlineStoreConfig"`
-	OnlineStoreConfig     *FeatureEngineeringMaterializedFeatureOnlineStoreConfig  `pulumi:"onlineStoreConfig"`
+	// (string) - Server-assigned unique identifier for the materialized feature
+	MaterializedFeatureId *string `pulumi:"materializedFeatureId"`
+	// Destination for writing feature values to an offline Delta table
+	OfflineStoreConfig *FeatureEngineeringMaterializedFeatureOfflineStoreConfig `pulumi:"offlineStoreConfig"`
+	// Destination for writing feature values to an online Lakebase table
+	OnlineStoreConfig *FeatureEngineeringMaterializedFeatureOnlineStoreConfig `pulumi:"onlineStoreConfig"`
 	// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState *string `pulumi:"pipelineScheduleState"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *FeatureEngineeringMaterializedFeatureProviderConfig `pulumi:"providerConfig"`
+	// The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+	// sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+	// for ETL and analytics workloads
+	StreamingMode *FeatureEngineeringMaterializedFeatureStreamingMode `pulumi:"streamingMode"`
 	// (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
 	TableName *string `pulumi:"tableName"`
+	// A trigger that fires when the upstream source table changes
+	TableTrigger *FeatureEngineeringMaterializedFeatureTableTrigger `pulumi:"tableTrigger"`
 }
 
 type FeatureEngineeringMaterializedFeatureState struct {
 	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
 	CronSchedule pulumi.StringPtrInput
+	// A cron-based schedule trigger for the materialization pipeline
+	CronScheduleTrigger FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrInput
 	// The full name of the feature in Unity Catalog
 	FeatureName pulumi.StringPtrInput
 	// (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
@@ -101,16 +123,24 @@ type FeatureEngineeringMaterializedFeatureState struct {
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 	// If the pipeline has not run yet, this field will be null
 	LastMaterializationTime pulumi.StringPtrInput
-	// Unique identifier for the materialized feature
+	// (string) - Server-assigned unique identifier for the materialized feature
 	MaterializedFeatureId pulumi.StringPtrInput
-	OfflineStoreConfig    FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrInput
-	OnlineStoreConfig     FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrInput
+	// Destination for writing feature values to an offline Delta table
+	OfflineStoreConfig FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrInput
+	// Destination for writing feature values to an online Lakebase table
+	OnlineStoreConfig FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrInput
 	// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig FeatureEngineeringMaterializedFeatureProviderConfigPtrInput
+	// The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+	// sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+	// for ETL and analytics workloads
+	StreamingMode FeatureEngineeringMaterializedFeatureStreamingModePtrInput
 	// (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
 	TableName pulumi.StringPtrInput
+	// A trigger that fires when the upstream source table changes
+	TableTrigger FeatureEngineeringMaterializedFeatureTableTriggerPtrInput
 }
 
 func (FeatureEngineeringMaterializedFeatureState) ElementType() reflect.Type {
@@ -120,32 +150,48 @@ func (FeatureEngineeringMaterializedFeatureState) ElementType() reflect.Type {
 type featureEngineeringMaterializedFeatureArgs struct {
 	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
 	CronSchedule *string `pulumi:"cronSchedule"`
+	// A cron-based schedule trigger for the materialization pipeline
+	CronScheduleTrigger *FeatureEngineeringMaterializedFeatureCronScheduleTrigger `pulumi:"cronScheduleTrigger"`
 	// The full name of the feature in Unity Catalog
 	FeatureName string `pulumi:"featureName"`
-	// Unique identifier for the materialized feature
-	MaterializedFeatureId *string                                                  `pulumi:"materializedFeatureId"`
-	OfflineStoreConfig    *FeatureEngineeringMaterializedFeatureOfflineStoreConfig `pulumi:"offlineStoreConfig"`
-	OnlineStoreConfig     *FeatureEngineeringMaterializedFeatureOnlineStoreConfig  `pulumi:"onlineStoreConfig"`
+	// Destination for writing feature values to an offline Delta table
+	OfflineStoreConfig *FeatureEngineeringMaterializedFeatureOfflineStoreConfig `pulumi:"offlineStoreConfig"`
+	// Destination for writing feature values to an online Lakebase table
+	OnlineStoreConfig *FeatureEngineeringMaterializedFeatureOnlineStoreConfig `pulumi:"onlineStoreConfig"`
 	// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState *string `pulumi:"pipelineScheduleState"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *FeatureEngineeringMaterializedFeatureProviderConfig `pulumi:"providerConfig"`
+	// The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+	// sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+	// for ETL and analytics workloads
+	StreamingMode *FeatureEngineeringMaterializedFeatureStreamingMode `pulumi:"streamingMode"`
+	// A trigger that fires when the upstream source table changes
+	TableTrigger *FeatureEngineeringMaterializedFeatureTableTrigger `pulumi:"tableTrigger"`
 }
 
 // The set of arguments for constructing a FeatureEngineeringMaterializedFeature resource.
 type FeatureEngineeringMaterializedFeatureArgs struct {
 	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
 	CronSchedule pulumi.StringPtrInput
+	// A cron-based schedule trigger for the materialization pipeline
+	CronScheduleTrigger FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrInput
 	// The full name of the feature in Unity Catalog
 	FeatureName pulumi.StringInput
-	// Unique identifier for the materialized feature
-	MaterializedFeatureId pulumi.StringPtrInput
-	OfflineStoreConfig    FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrInput
-	OnlineStoreConfig     FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrInput
+	// Destination for writing feature values to an offline Delta table
+	OfflineStoreConfig FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrInput
+	// Destination for writing feature values to an online Lakebase table
+	OnlineStoreConfig FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrInput
 	// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig FeatureEngineeringMaterializedFeatureProviderConfigPtrInput
+	// The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+	// sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+	// for ETL and analytics workloads
+	StreamingMode FeatureEngineeringMaterializedFeatureStreamingModePtrInput
+	// A trigger that fires when the upstream source table changes
+	TableTrigger FeatureEngineeringMaterializedFeatureTableTriggerPtrInput
 }
 
 func (FeatureEngineeringMaterializedFeatureArgs) ElementType() reflect.Type {
@@ -240,6 +286,13 @@ func (o FeatureEngineeringMaterializedFeatureOutput) CronSchedule() pulumi.Strin
 	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringPtrOutput { return v.CronSchedule }).(pulumi.StringPtrOutput)
 }
 
+// A cron-based schedule trigger for the materialization pipeline
+func (o FeatureEngineeringMaterializedFeatureOutput) CronScheduleTrigger() FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput {
+		return v.CronScheduleTrigger
+	}).(FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput)
+}
+
 // The full name of the feature in Unity Catalog
 func (o FeatureEngineeringMaterializedFeatureOutput) FeatureName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringOutput { return v.FeatureName }).(pulumi.StringOutput)
@@ -256,21 +309,23 @@ func (o FeatureEngineeringMaterializedFeatureOutput) LastMaterializationTime() p
 	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringOutput { return v.LastMaterializationTime }).(pulumi.StringOutput)
 }
 
-// Unique identifier for the materialized feature
-func (o FeatureEngineeringMaterializedFeatureOutput) MaterializedFeatureId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringPtrOutput { return v.MaterializedFeatureId }).(pulumi.StringPtrOutput)
+// (string) - Server-assigned unique identifier for the materialized feature
+func (o FeatureEngineeringMaterializedFeatureOutput) MaterializedFeatureId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringOutput { return v.MaterializedFeatureId }).(pulumi.StringOutput)
 }
 
-func (o FeatureEngineeringMaterializedFeatureOutput) OfflineStoreConfig() FeatureEngineeringMaterializedFeatureOfflineStoreConfigOutput {
-	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) FeatureEngineeringMaterializedFeatureOfflineStoreConfigOutput {
+// Destination for writing feature values to an offline Delta table
+func (o FeatureEngineeringMaterializedFeatureOutput) OfflineStoreConfig() FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrOutput {
 		return v.OfflineStoreConfig
-	}).(FeatureEngineeringMaterializedFeatureOfflineStoreConfigOutput)
+	}).(FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrOutput)
 }
 
-func (o FeatureEngineeringMaterializedFeatureOutput) OnlineStoreConfig() FeatureEngineeringMaterializedFeatureOnlineStoreConfigOutput {
-	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) FeatureEngineeringMaterializedFeatureOnlineStoreConfigOutput {
+// Destination for writing feature values to an online Lakebase table
+func (o FeatureEngineeringMaterializedFeatureOutput) OnlineStoreConfig() FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrOutput {
 		return v.OnlineStoreConfig
-	}).(FeatureEngineeringMaterializedFeatureOnlineStoreConfigOutput)
+	}).(FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrOutput)
 }
 
 // The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
@@ -285,9 +340,25 @@ func (o FeatureEngineeringMaterializedFeatureOutput) ProviderConfig() FeatureEng
 	}).(FeatureEngineeringMaterializedFeatureProviderConfigOutput)
 }
 
+// The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+// sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+// for ETL and analytics workloads
+func (o FeatureEngineeringMaterializedFeatureOutput) StreamingMode() FeatureEngineeringMaterializedFeatureStreamingModePtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) FeatureEngineeringMaterializedFeatureStreamingModePtrOutput {
+		return v.StreamingMode
+	}).(FeatureEngineeringMaterializedFeatureStreamingModePtrOutput)
+}
+
 // (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
 func (o FeatureEngineeringMaterializedFeatureOutput) TableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringOutput { return v.TableName }).(pulumi.StringOutput)
+}
+
+// A trigger that fires when the upstream source table changes
+func (o FeatureEngineeringMaterializedFeatureOutput) TableTrigger() FeatureEngineeringMaterializedFeatureTableTriggerPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) FeatureEngineeringMaterializedFeatureTableTriggerPtrOutput {
+		return v.TableTrigger
+	}).(FeatureEngineeringMaterializedFeatureTableTriggerPtrOutput)
 }
 
 type FeatureEngineeringMaterializedFeatureArrayOutput struct{ *pulumi.OutputState }

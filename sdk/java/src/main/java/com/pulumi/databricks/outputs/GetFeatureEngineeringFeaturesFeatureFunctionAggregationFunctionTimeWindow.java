@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuous;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRolling;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSliding;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowTumbling;
 import java.util.Objects;
@@ -14,10 +15,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindow {
     /**
-     * @return (ContinuousWindow)
+     * @return (ContinuousWindow, deprecated)
      * 
      */
     private @Nullable GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuous continuous;
+    /**
+     * @return (RollingWindow)
+     * 
+     */
+    private @Nullable GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRolling rolling;
     /**
      * @return (SlidingWindow)
      * 
@@ -31,11 +37,18 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
 
     private GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindow() {}
     /**
-     * @return (ContinuousWindow)
+     * @return (ContinuousWindow, deprecated)
      * 
      */
     public Optional<GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuous> continuous() {
         return Optional.ofNullable(this.continuous);
+    }
+    /**
+     * @return (RollingWindow)
+     * 
+     */
+    public Optional<GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRolling> rolling() {
+        return Optional.ofNullable(this.rolling);
     }
     /**
      * @return (SlidingWindow)
@@ -62,12 +75,14 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuous continuous;
+        private @Nullable GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRolling rolling;
         private @Nullable GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowSliding sliding;
         private @Nullable GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowTumbling tumbling;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.continuous = defaults.continuous;
+    	      this.rolling = defaults.rolling;
     	      this.sliding = defaults.sliding;
     	      this.tumbling = defaults.tumbling;
         }
@@ -76,6 +91,12 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
         public Builder continuous(@Nullable GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuous continuous) {
 
             this.continuous = continuous;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rolling(@Nullable GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRolling rolling) {
+
+            this.rolling = rolling;
             return this;
         }
         @CustomType.Setter
@@ -93,6 +114,7 @@ public final class GetFeatureEngineeringFeaturesFeatureFunctionAggregationFuncti
         public GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindow build() {
             final var _resultValue = new GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindow();
             _resultValue.continuous = continuous;
+            _resultValue.rolling = rolling;
             _resultValue.sliding = sliding;
             _resultValue.tumbling = tumbling;
             return _resultValue;

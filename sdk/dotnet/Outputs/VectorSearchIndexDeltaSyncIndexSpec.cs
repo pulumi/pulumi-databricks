@@ -14,9 +14,6 @@ namespace Pulumi.Databricks.Outputs
     public sealed class VectorSearchIndexDeltaSyncIndexSpec
     {
         public readonly ImmutableArray<string> ColumnsToIndices;
-        /// <summary>
-        /// list of columns to sync. If not specified, all columns are syncronized.
-        /// </summary>
         public readonly ImmutableArray<string> ColumnsToSyncs;
         /// <summary>
         /// array of objects representing columns that contain the embedding source.  Each entry consists of:

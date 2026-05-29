@@ -142,6 +142,14 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Inputs.GetPostgresBranchesProviderConfigArgs? ProviderConfig { get; set; }
 
+        /// <summary>
+        /// Whether to include soft-deleted branches in the response.
+        /// When true, deleted branches are included alongside active branches.
+        /// Purged branches are never returned
+        /// </summary>
+        [Input("showDeleted")]
+        public bool? ShowDeleted { get; set; }
+
         public GetPostgresBranchesArgs()
         {
         }
@@ -169,6 +177,14 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Input<Inputs.GetPostgresBranchesProviderConfigInputArgs>? ProviderConfig { get; set; }
 
+        /// <summary>
+        /// Whether to include soft-deleted branches in the response.
+        /// When true, deleted branches are included alongside active branches.
+        /// Purged branches are never returned
+        /// </summary>
+        [Input("showDeleted")]
+        public Input<bool>? ShowDeleted { get; set; }
+
         public GetPostgresBranchesInvokeArgs()
         {
         }
@@ -191,6 +207,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Parent;
         public readonly Outputs.GetPostgresBranchesProviderConfigResult? ProviderConfig;
+        public readonly bool? ShowDeleted;
 
         [OutputConstructor]
         private GetPostgresBranchesResult(
@@ -202,13 +219,16 @@ namespace Pulumi.Databricks
 
             string parent,
 
-            Outputs.GetPostgresBranchesProviderConfigResult? providerConfig)
+            Outputs.GetPostgresBranchesProviderConfigResult? providerConfig,
+
+            bool? showDeleted)
         {
             Branches = branches;
             Id = id;
             PageSize = pageSize;
             Parent = parent;
             ProviderConfig = providerConfig;
+            ShowDeleted = showDeleted;
         }
     }
 }

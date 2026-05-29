@@ -12,17 +12,21 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.AccountSettingV2State;
 import com.pulumi.databricks.outputs.AccountSettingV2AibiDashboardEmbeddingAccessPolicy;
 import com.pulumi.databricks.outputs.AccountSettingV2AibiDashboardEmbeddingApprovedDomains;
+import com.pulumi.databricks.outputs.AccountSettingV2AllowedAppsUserApiScopes;
 import com.pulumi.databricks.outputs.AccountSettingV2AutomaticClusterUpdateWorkspace;
 import com.pulumi.databricks.outputs.AccountSettingV2BooleanVal;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains;
+import com.pulumi.databricks.outputs.AccountSettingV2EffectiveAllowedAppsUserApiScopes;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspace;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectiveBooleanVal;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectiveIntegerVal;
+import com.pulumi.databricks.outputs.AccountSettingV2EffectiveOperationalEmailCustomRecipient;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectivePersonalCompute;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectiveRestrictWorkspaceAdmins;
 import com.pulumi.databricks.outputs.AccountSettingV2EffectiveStringVal;
 import com.pulumi.databricks.outputs.AccountSettingV2IntegerVal;
+import com.pulumi.databricks.outputs.AccountSettingV2OperationalEmailCustomRecipient;
 import com.pulumi.databricks.outputs.AccountSettingV2PersonalCompute;
 import com.pulumi.databricks.outputs.AccountSettingV2RestrictWorkspaceAdmins;
 import com.pulumi.databricks.outputs.AccountSettingV2StringVal;
@@ -109,6 +113,20 @@ public class AccountSettingV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.aibiDashboardEmbeddingApprovedDomains);
     }
     /**
+     * Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+     * 
+     */
+    @Export(name="allowedAppsUserApiScopes", refs={AccountSettingV2AllowedAppsUserApiScopes.class}, tree="[0]")
+    private Output</* @Nullable */ AccountSettingV2AllowedAppsUserApiScopes> allowedAppsUserApiScopes;
+
+    /**
+     * @return Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+     * 
+     */
+    public Output<Optional<AccountSettingV2AllowedAppsUserApiScopes>> allowedAppsUserApiScopes() {
+        return Codegen.optional(this.allowedAppsUserApiScopes);
+    }
+    /**
      * Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
      * 
      */
@@ -165,6 +183,20 @@ public class AccountSettingV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.effectiveAibiDashboardEmbeddingApprovedDomains);
     }
     /**
+     * (AllowedAppsUserApiScopesMessage) - Effective setting value for allowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+     * 
+     */
+    @Export(name="effectiveAllowedAppsUserApiScopes", refs={AccountSettingV2EffectiveAllowedAppsUserApiScopes.class}, tree="[0]")
+    private Output<AccountSettingV2EffectiveAllowedAppsUserApiScopes> effectiveAllowedAppsUserApiScopes;
+
+    /**
+     * @return (AllowedAppsUserApiScopesMessage) - Effective setting value for allowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+     * 
+     */
+    public Output<AccountSettingV2EffectiveAllowedAppsUserApiScopes> effectiveAllowedAppsUserApiScopes() {
+        return this.effectiveAllowedAppsUserApiScopes;
+    }
+    /**
      * Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
      * 
      */
@@ -205,6 +237,20 @@ public class AccountSettingV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<AccountSettingV2EffectiveIntegerVal> effectiveIntegerVal() {
         return this.effectiveIntegerVal;
+    }
+    /**
+     * (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+     * 
+     */
+    @Export(name="effectiveOperationalEmailCustomRecipient", refs={AccountSettingV2EffectiveOperationalEmailCustomRecipient.class}, tree="[0]")
+    private Output<AccountSettingV2EffectiveOperationalEmailCustomRecipient> effectiveOperationalEmailCustomRecipient;
+
+    /**
+     * @return (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+     * 
+     */
+    public Output<AccountSettingV2EffectiveOperationalEmailCustomRecipient> effectiveOperationalEmailCustomRecipient() {
+        return this.effectiveOperationalEmailCustomRecipient;
     }
     /**
      * Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
@@ -275,6 +321,20 @@ public class AccountSettingV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+     * 
+     */
+    @Export(name="operationalEmailCustomRecipient", refs={AccountSettingV2OperationalEmailCustomRecipient.class}, tree="[0]")
+    private Output</* @Nullable */ AccountSettingV2OperationalEmailCustomRecipient> operationalEmailCustomRecipient;
+
+    /**
+     * @return Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+     * 
+     */
+    public Output<Optional<AccountSettingV2OperationalEmailCustomRecipient>> operationalEmailCustomRecipient() {
+        return Codegen.optional(this.operationalEmailCustomRecipient);
     }
     /**
      * Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value

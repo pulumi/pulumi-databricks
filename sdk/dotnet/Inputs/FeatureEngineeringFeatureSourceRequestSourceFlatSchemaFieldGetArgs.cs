@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("dataType", required: true)]
         public Input<string> DataType { get; set; } = null!;
 
+        /// <summary>
+        /// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

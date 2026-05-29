@@ -14,13 +14,13 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// </summary>
-        public static Task<GetFeatureEngineeringFeaturesResult> InvokeAsync(GetFeatureEngineeringFeaturesArgs? args = null, InvokeOptions? options = null)
+        public static Task<GetFeatureEngineeringFeaturesResult> InvokeAsync(GetFeatureEngineeringFeaturesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFeatureEngineeringFeaturesResult>("databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures", args ?? new GetFeatureEngineeringFeaturesArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// </summary>
-        public static Output<GetFeatureEngineeringFeaturesResult> Invoke(GetFeatureEngineeringFeaturesInvokeArgs? args = null, InvokeOptions? options = null)
+        public static Output<GetFeatureEngineeringFeaturesResult> Invoke(GetFeatureEngineeringFeaturesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFeatureEngineeringFeaturesResult>("databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures", args ?? new GetFeatureEngineeringFeaturesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -34,6 +34,12 @@ namespace Pulumi.Databricks
     public sealed class GetFeatureEngineeringFeaturesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Name of parent catalog for features of interest
+        /// </summary>
+        [Input("catalogName", required: true)]
+        public string CatalogName { get; set; } = null!;
+
+        /// <summary>
         /// The maximum number of results to return
         /// </summary>
         [Input("pageSize")]
@@ -45,6 +51,12 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Inputs.GetFeatureEngineeringFeaturesProviderConfigArgs? ProviderConfig { get; set; }
 
+        /// <summary>
+        /// Name of parent schema relative to its parent catalog
+        /// </summary>
+        [Input("schemaName", required: true)]
+        public string SchemaName { get; set; } = null!;
+
         public GetFeatureEngineeringFeaturesArgs()
         {
         }
@@ -53,6 +65,12 @@ namespace Pulumi.Databricks
 
     public sealed class GetFeatureEngineeringFeaturesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Name of parent catalog for features of interest
+        /// </summary>
+        [Input("catalogName", required: true)]
+        public Input<string> CatalogName { get; set; } = null!;
+
         /// <summary>
         /// The maximum number of results to return
         /// </summary>
@@ -65,6 +83,12 @@ namespace Pulumi.Databricks
         [Input("providerConfig")]
         public Input<Inputs.GetFeatureEngineeringFeaturesProviderConfigInputArgs>? ProviderConfig { get; set; }
 
+        /// <summary>
+        /// Name of parent schema relative to its parent catalog
+        /// </summary>
+        [Input("schemaName", required: true)]
+        public Input<string> SchemaName { get; set; } = null!;
+
         public GetFeatureEngineeringFeaturesInvokeArgs()
         {
         }
@@ -75,6 +99,10 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetFeatureEngineeringFeaturesResult
     {
+        /// <summary>
+        /// (string) - Name of parent catalog
+        /// </summary>
+        public readonly string CatalogName;
         public readonly ImmutableArray<Outputs.GetFeatureEngineeringFeaturesFeatureResult> Features;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -82,21 +110,31 @@ namespace Pulumi.Databricks
         public readonly string Id;
         public readonly int? PageSize;
         public readonly Outputs.GetFeatureEngineeringFeaturesProviderConfigResult? ProviderConfig;
+        /// <summary>
+        /// (string) - Name of parent schema relative to its parent catalog
+        /// </summary>
+        public readonly string SchemaName;
 
         [OutputConstructor]
         private GetFeatureEngineeringFeaturesResult(
+            string catalogName,
+
             ImmutableArray<Outputs.GetFeatureEngineeringFeaturesFeatureResult> features,
 
             string id,
 
             int? pageSize,
 
-            Outputs.GetFeatureEngineeringFeaturesProviderConfigResult? providerConfig)
+            Outputs.GetFeatureEngineeringFeaturesProviderConfigResult? providerConfig,
+
+            string schemaName)
         {
+            CatalogName = catalogName;
             Features = features;
             Id = id;
             PageSize = pageSize;
             ProviderConfig = providerConfig;
+            SchemaName = schemaName;
         }
     }
 }

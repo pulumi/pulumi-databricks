@@ -31,6 +31,7 @@ export function getPostgresBranches(args: GetPostgresBranchesArgs, opts?: pulumi
         "pageSize": args.pageSize,
         "parent": args.parent,
         "providerConfig": args.providerConfig,
+        "showDeleted": args.showDeleted,
     }, opts);
 }
 
@@ -51,6 +52,12 @@ export interface GetPostgresBranchesArgs {
      * Configure the provider for management through account provider.
      */
     providerConfig?: inputs.GetPostgresBranchesProviderConfig;
+    /**
+     * Whether to include soft-deleted branches in the response.
+     * When true, deleted branches are included alongside active branches.
+     * Purged branches are never returned
+     */
+    showDeleted?: boolean;
 }
 
 /**
@@ -69,6 +76,7 @@ export interface GetPostgresBranchesResult {
      */
     readonly parent: string;
     readonly providerConfig?: outputs.GetPostgresBranchesProviderConfig;
+    readonly showDeleted?: boolean;
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -95,6 +103,7 @@ export function getPostgresBranchesOutput(args: GetPostgresBranchesOutputArgs, o
         "pageSize": args.pageSize,
         "parent": args.parent,
         "providerConfig": args.providerConfig,
+        "showDeleted": args.showDeleted,
     }, opts);
 }
 
@@ -115,4 +124,10 @@ export interface GetPostgresBranchesOutputArgs {
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.GetPostgresBranchesProviderConfigArgs | undefined>;
+    /**
+     * Whether to include soft-deleted branches in the response.
+     * When true, deleted branches are included alongside active branches.
+     * Purged branches are never returned
+     */
+    showDeleted?: pulumi.Input<boolean | undefined>;
 }

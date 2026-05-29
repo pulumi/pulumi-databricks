@@ -66,8 +66,7 @@ public final class GetPostgresProjectStatus {
      */
     private Integer pgVersion;
     /**
-     * @return (string) - The short identifier of the project, suitable for showing to the users.
-     * For a project with name `projects/my-project`, the projectId is `my-project`.
+     * @return (string) - Part of the resource name
      * 
      */
     private String projectId;
@@ -149,8 +148,7 @@ public final class GetPostgresProjectStatus {
         return this.pgVersion;
     }
     /**
-     * @return (string) - The short identifier of the project, suitable for showing to the users.
-     * For a project with name `projects/my-project`, the projectId is `my-project`.
+     * @return (string) - Part of the resource name
      * 
      */
     public String projectId() {

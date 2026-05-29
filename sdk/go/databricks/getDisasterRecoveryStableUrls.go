@@ -24,7 +24,12 @@ func GetDisasterRecoveryStableUrls(ctx *pulumi.Context, args *GetDisasterRecover
 
 // A collection of arguments for invoking getDisasterRecoveryStableUrls.
 type GetDisasterRecoveryStableUrlsArgs struct {
-	// Maximum number of stable URLs to return per page. Default: 50, maximum: 100
+	// Maximum number of stable URLs to return per page:
+	// - when set to a value greater than 0, the page length is the minimum of this value
+	//   and a server configured value;
+	// - when set to 0 or unset, the page length is set to a server configured value
+	//   (recommended);
+	// - when set to a value less than 0, an invalid parameter error is returned
 	PageSize *int `pulumi:"pageSize"`
 	// The parent resource. Format: accounts/{account_id}
 	Parent string `pulumi:"parent"`
@@ -50,7 +55,12 @@ func GetDisasterRecoveryStableUrlsOutput(ctx *pulumi.Context, args GetDisasterRe
 
 // A collection of arguments for invoking getDisasterRecoveryStableUrls.
 type GetDisasterRecoveryStableUrlsOutputArgs struct {
-	// Maximum number of stable URLs to return per page. Default: 50, maximum: 100
+	// Maximum number of stable URLs to return per page:
+	// - when set to a value greater than 0, the page length is the minimum of this value
+	//   and a server configured value;
+	// - when set to 0 or unset, the page length is set to a server configured value
+	//   (recommended);
+	// - when set to a value less than 0, an invalid parameter error is returned
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// The parent resource. Format: accounts/{account_id}
 	Parent pulumi.StringInput `pulumi:"parent"`

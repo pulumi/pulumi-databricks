@@ -34,7 +34,7 @@ namespace Pulumi.Databricks
     public sealed class GetFeatureEngineeringMaterializedFeatureArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Unique identifier for the materialized feature
+        /// Server-assigned unique identifier for the materialized feature
         /// </summary>
         [Input("materializedFeatureId", required: true)]
         public string MaterializedFeatureId { get; set; } = null!;
@@ -54,7 +54,7 @@ namespace Pulumi.Databricks
     public sealed class GetFeatureEngineeringMaterializedFeatureInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Unique identifier for the materialized feature
+        /// Server-assigned unique identifier for the materialized feature
         /// </summary>
         [Input("materializedFeatureId", required: true)]
         public Input<string> MaterializedFeatureId { get; set; } = null!;
@@ -80,6 +80,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CronSchedule;
         /// <summary>
+        /// (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringMaterializedFeatureCronScheduleTriggerResult CronScheduleTrigger;
+        /// <summary>
         /// (string) - The full name of the feature in Unity Catalog
         /// </summary>
         public readonly string FeatureName;
@@ -97,15 +101,15 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string LastMaterializationTime;
         /// <summary>
-        /// (string) - Unique identifier for the materialized feature
+        /// (string) - Server-assigned unique identifier for the materialized feature
         /// </summary>
         public readonly string MaterializedFeatureId;
         /// <summary>
-        /// (OfflineStoreConfig)
+        /// (OfflineStoreConfig) - Destination for writing feature values to an offline Delta table
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringMaterializedFeatureOfflineStoreConfigResult OfflineStoreConfig;
         /// <summary>
-        /// (OnlineStoreConfig)
+        /// (OnlineStoreConfig) - Destination for writing feature values to an online Lakebase table
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringMaterializedFeatureOnlineStoreConfigResult OnlineStoreConfig;
         /// <summary>
@@ -114,13 +118,25 @@ namespace Pulumi.Databricks
         public readonly string PipelineScheduleState;
         public readonly Outputs.GetFeatureEngineeringMaterializedFeatureProviderConfigResult? ProviderConfig;
         /// <summary>
+        /// (StreamingMode) - The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+        /// sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+        /// for ETL and analytics workloads
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringMaterializedFeatureStreamingModeResult StreamingMode;
+        /// <summary>
         /// (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
         /// </summary>
         public readonly string TableName;
+        /// <summary>
+        /// (TableTrigger) - A trigger that fires when the upstream source table changes
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringMaterializedFeatureTableTriggerResult TableTrigger;
 
         [OutputConstructor]
         private GetFeatureEngineeringMaterializedFeatureResult(
             string cronSchedule,
+
+            Outputs.GetFeatureEngineeringMaterializedFeatureCronScheduleTriggerResult cronScheduleTrigger,
 
             string featureName,
 
@@ -140,9 +156,14 @@ namespace Pulumi.Databricks
 
             Outputs.GetFeatureEngineeringMaterializedFeatureProviderConfigResult? providerConfig,
 
-            string tableName)
+            Outputs.GetFeatureEngineeringMaterializedFeatureStreamingModeResult streamingMode,
+
+            string tableName,
+
+            Outputs.GetFeatureEngineeringMaterializedFeatureTableTriggerResult tableTrigger)
         {
             CronSchedule = cronSchedule;
+            CronScheduleTrigger = cronScheduleTrigger;
             FeatureName = featureName;
             Id = id;
             IsOnline = isOnline;
@@ -152,7 +173,9 @@ namespace Pulumi.Databricks
             OnlineStoreConfig = onlineStoreConfig;
             PipelineScheduleState = pipelineScheduleState;
             ProviderConfig = providerConfig;
+            StreamingMode = streamingMode;
             TableName = tableName;
+            TableTrigger = tableTrigger;
         }
     }
 }

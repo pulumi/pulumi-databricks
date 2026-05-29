@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppTelemetryExportDestination {
+    /**
+     * @return attribute - export telemetry to Unity Catalog tables (must already exist and be writable by the app&#39;s service principal).
+     * 
+     */
     private @Nullable AppTelemetryExportDestinationUnityCatalog unityCatalog;
 
     private AppTelemetryExportDestination() {}
+    /**
+     * @return attribute - export telemetry to Unity Catalog tables (must already exist and be writable by the app&#39;s service principal).
+     * 
+     */
     public Optional<AppTelemetryExportDestinationUnityCatalog> unityCatalog() {
         return Optional.ofNullable(this.unityCatalog);
     }

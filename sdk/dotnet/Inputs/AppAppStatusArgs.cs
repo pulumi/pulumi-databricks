@@ -13,13 +13,13 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AppAppStatusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Application status message
+        /// The status message of the deployment.
         /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 
         /// <summary>
-        /// State of the application.
+        /// The state of the deployment.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

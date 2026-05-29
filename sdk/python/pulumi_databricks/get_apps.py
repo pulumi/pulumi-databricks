@@ -42,6 +42,9 @@ class GetAppsResult:
     @_builtins.property
     @pulumi.getter
     def apps(self) -> Sequence['outputs.GetAppsAppResult']:
+        """
+        attribute - reference to another Databricks App.
+        """
         return pulumi.get(self, "apps")
 
     @_builtins.property

@@ -76,6 +76,37 @@ import (
 //
 // ```
 //
+// ### Git credential for a service principal
+//
+// You can manage Git credentials on behalf of a service principal by specifying `principalId`:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewGitCredential(ctx, "spn", &databricks.GitCredentialArgs{
+//				GitProvider:         pulumi.String("gitHub"),
+//				GitUsername:         pulumi.String("my-service-principal"),
+//				PersonalAccessToken: pulumi.Any(githubPat),
+//				PrincipalId:         pulumi.Any(databricksSpnId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Related Resources
 //
 // The following resources are often used in the same context:
@@ -98,7 +129,8 @@ type GitCredential struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken pulumi.StringPtrOutput `pulumi:"personalAccessToken"`
-	PrincipalId         pulumi.StringPtrOutput `pulumi:"principalId"`
+	// The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+	PrincipalId pulumi.StringPtrOutput `pulumi:"principalId"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig GitCredentialProviderConfigOutput `pulumi:"providerConfig"`
 }
@@ -157,7 +189,8 @@ type gitCredentialState struct {
 	Name *string `pulumi:"name"`
 	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken *string `pulumi:"personalAccessToken"`
-	PrincipalId         *string `pulumi:"principalId"`
+	// The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+	PrincipalId *string `pulumi:"principalId"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *GitCredentialProviderConfig `pulumi:"providerConfig"`
 }
@@ -177,7 +210,8 @@ type GitCredentialState struct {
 	Name pulumi.StringPtrInput
 	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken pulumi.StringPtrInput
-	PrincipalId         pulumi.StringPtrInput
+	// The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+	PrincipalId pulumi.StringPtrInput
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig GitCredentialProviderConfigPtrInput
 }
@@ -201,7 +235,8 @@ type gitCredentialArgs struct {
 	Name *string `pulumi:"name"`
 	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken *string `pulumi:"personalAccessToken"`
-	PrincipalId         *string `pulumi:"principalId"`
+	// The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+	PrincipalId *string `pulumi:"principalId"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *GitCredentialProviderConfig `pulumi:"providerConfig"`
 }
@@ -222,7 +257,8 @@ type GitCredentialArgs struct {
 	Name pulumi.StringPtrInput
 	// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
 	PersonalAccessToken pulumi.StringPtrInput
-	PrincipalId         pulumi.StringPtrInput
+	// The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+	PrincipalId pulumi.StringPtrInput
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig GitCredentialProviderConfigPtrInput
 }
@@ -349,6 +385,7 @@ func (o GitCredentialOutput) PersonalAccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.StringPtrOutput { return v.PersonalAccessToken }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
 func (o GitCredentialOutput) PrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitCredential) pulumi.StringPtrOutput { return v.PrincipalId }).(pulumi.StringPtrOutput)
 }

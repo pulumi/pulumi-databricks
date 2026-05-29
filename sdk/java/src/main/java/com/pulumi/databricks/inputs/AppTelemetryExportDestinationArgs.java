@@ -15,9 +15,17 @@ public final class AppTelemetryExportDestinationArgs extends com.pulumi.resource
 
     public static final AppTelemetryExportDestinationArgs Empty = new AppTelemetryExportDestinationArgs();
 
+    /**
+     * attribute - export telemetry to Unity Catalog tables (must already exist and be writable by the app&#39;s service principal).
+     * 
+     */
     @Import(name="unityCatalog")
     private @Nullable Output<AppTelemetryExportDestinationUnityCatalogArgs> unityCatalog;
 
+    /**
+     * @return attribute - export telemetry to Unity Catalog tables (must already exist and be writable by the app&#39;s service principal).
+     * 
+     */
     public Optional<Output<AppTelemetryExportDestinationUnityCatalogArgs>> unityCatalog() {
         return Optional.ofNullable(this.unityCatalog);
     }
@@ -46,11 +54,23 @@ public final class AppTelemetryExportDestinationArgs extends com.pulumi.resource
             $ = new AppTelemetryExportDestinationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param unityCatalog attribute - export telemetry to Unity Catalog tables (must already exist and be writable by the app&#39;s service principal).
+         * 
+         * @return builder
+         * 
+         */
         public Builder unityCatalog(@Nullable Output<AppTelemetryExportDestinationUnityCatalogArgs> unityCatalog) {
             $.unityCatalog = unityCatalog;
             return this;
         }
 
+        /**
+         * @param unityCatalog attribute - export telemetry to Unity Catalog tables (must already exist and be writable by the app&#39;s service principal).
+         * 
+         * @return builder
+         * 
+         */
         public Builder unityCatalog(AppTelemetryExportDestinationUnityCatalogArgs unityCatalog) {
             return unityCatalog(Output.of(unityCatalog));
         }

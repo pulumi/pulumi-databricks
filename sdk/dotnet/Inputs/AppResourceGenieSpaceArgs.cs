@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Permission to grant on Genie Space. Supported permissions are `CAN_MANAGE`, `CAN_EDIT`, `CAN_RUN`, `CAN_VIEW`.
+        /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 

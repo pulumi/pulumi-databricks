@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowContinuousArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowRollingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowSlidingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureTimeWindowTumblingArgs;
 import java.util.Objects;
@@ -22,6 +23,13 @@ public final class FeatureEngineeringFeatureTimeWindowArgs extends com.pulumi.re
 
     public Optional<Output<FeatureEngineeringFeatureTimeWindowContinuousArgs>> continuous() {
         return Optional.ofNullable(this.continuous);
+    }
+
+    @Import(name="rolling")
+    private @Nullable Output<FeatureEngineeringFeatureTimeWindowRollingArgs> rolling;
+
+    public Optional<Output<FeatureEngineeringFeatureTimeWindowRollingArgs>> rolling() {
+        return Optional.ofNullable(this.rolling);
     }
 
     @Import(name="sliding")
@@ -42,6 +50,7 @@ public final class FeatureEngineeringFeatureTimeWindowArgs extends com.pulumi.re
 
     private FeatureEngineeringFeatureTimeWindowArgs(FeatureEngineeringFeatureTimeWindowArgs $) {
         this.continuous = $.continuous;
+        this.rolling = $.rolling;
         this.sliding = $.sliding;
         this.tumbling = $.tumbling;
     }
@@ -71,6 +80,15 @@ public final class FeatureEngineeringFeatureTimeWindowArgs extends com.pulumi.re
 
         public Builder continuous(FeatureEngineeringFeatureTimeWindowContinuousArgs continuous) {
             return continuous(Output.of(continuous));
+        }
+
+        public Builder rolling(@Nullable Output<FeatureEngineeringFeatureTimeWindowRollingArgs> rolling) {
+            $.rolling = rolling;
+            return this;
+        }
+
+        public Builder rolling(FeatureEngineeringFeatureTimeWindowRollingArgs rolling) {
+            return rolling(Output.of(rolling));
         }
 
         public Builder sliding(@Nullable Output<FeatureEngineeringFeatureTimeWindowSlidingArgs> sliding) {

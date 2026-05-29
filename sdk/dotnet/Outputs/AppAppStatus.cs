@@ -14,11 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class AppAppStatus
     {
         /// <summary>
-        /// Application status message
+        /// The status message of the deployment.
         /// </summary>
         public readonly string? Message;
         /// <summary>
-        /// State of the application.
+        /// The state of the deployment.
         /// </summary>
         public readonly string? State;
 

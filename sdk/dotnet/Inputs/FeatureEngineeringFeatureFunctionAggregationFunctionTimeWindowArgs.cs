@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("continuous")]
         public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs>? Continuous { get; set; }
 
+        [Input("rolling")]
+        public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs>? Rolling { get; set; }
+
         [Input("sliding")]
         public Input<Inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs>? Sliding { get; set; }
 

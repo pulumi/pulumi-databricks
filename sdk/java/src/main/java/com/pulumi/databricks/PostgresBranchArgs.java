@@ -77,6 +77,21 @@ public final class PostgresBranchArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * If true, permanently delete the branch; if false, soft delete
+     * 
+     */
+    @Import(name="purgeOnDelete")
+    private @Nullable Output<Boolean> purgeOnDelete;
+
+    /**
+     * @return If true, permanently delete the branch; if false, soft delete
+     * 
+     */
+    public Optional<Output<Boolean>> purgeOnDelete() {
+        return Optional.ofNullable(this.purgeOnDelete);
+    }
+
+    /**
      * If true, update the branch if it already exists instead of returning an error
      * 
      */
@@ -112,6 +127,7 @@ public final class PostgresBranchArgs extends com.pulumi.resources.ResourceArgs 
         this.branchId = $.branchId;
         this.parent = $.parent;
         this.providerConfig = $.providerConfig;
+        this.purgeOnDelete = $.purgeOnDelete;
         this.replaceExisting = $.replaceExisting;
         this.spec = $.spec;
     }
@@ -207,6 +223,27 @@ public final class PostgresBranchArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder providerConfig(PostgresBranchProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
+        }
+
+        /**
+         * @param purgeOnDelete If true, permanently delete the branch; if false, soft delete
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeOnDelete(@Nullable Output<Boolean> purgeOnDelete) {
+            $.purgeOnDelete = purgeOnDelete;
+            return this;
+        }
+
+        /**
+         * @param purgeOnDelete If true, permanently delete the branch; if false, soft delete
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeOnDelete(Boolean purgeOnDelete) {
+            return purgeOnDelete(Output.of(purgeOnDelete));
         }
 
         /**

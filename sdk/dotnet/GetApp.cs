@@ -166,7 +166,7 @@ namespace Pulumi.Databricks
     public sealed class GetAppResult
     {
         /// <summary>
-        /// attribute
+        /// attribute - reference to another Databricks App.
         /// </summary>
         public readonly Outputs.GetAppAppResult App;
         /// <summary>
@@ -174,7 +174,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of Genie Space.
+        /// The name of the app to grant permission on.
         /// </summary>
         public readonly string Name;
         public readonly Outputs.GetAppProviderConfigResult? ProviderConfig;

@@ -90,6 +90,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsResult AibiDashboardEmbeddingApprovedDomains;
         /// <summary>
+        /// (AllowedAppsUserApiScopesMessage) - Setting value for AllowedAppsUserApiScopes setting. This is the setting value set by consumers, check EffectiveAllowedAppsUserApiScopes for final setting value
+        /// </summary>
+        public readonly Outputs.GetAccountSettingV2AllowedAppsUserApiScopesResult AllowedAppsUserApiScopes;
+        /// <summary>
         /// (ClusterAutoRestartMessage) - Setting value for AutomaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check EffectiveAutomaticClusterUpdateWorkspace for final setting value
         /// </summary>
         public readonly Outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceResult AutomaticClusterUpdateWorkspace;
@@ -106,6 +110,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsResult EffectiveAibiDashboardEmbeddingApprovedDomains;
         /// <summary>
+        /// (AllowedAppsUserApiScopesMessage) - Effective setting value for AllowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+        /// </summary>
+        public readonly Outputs.GetAccountSettingV2EffectiveAllowedAppsUserApiScopesResult EffectiveAllowedAppsUserApiScopes;
+        /// <summary>
         /// (ClusterAutoRestartMessage) - Effective setting value for AutomaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
         /// </summary>
         public readonly Outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceResult EffectiveAutomaticClusterUpdateWorkspace;
@@ -117,6 +125,10 @@ namespace Pulumi.Databricks
         /// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
         /// </summary>
         public readonly Outputs.GetAccountSettingV2EffectiveIntegerValResult EffectiveIntegerVal;
+        /// <summary>
+        /// (OperationalEmailCustomRecipientMessage) - Effective setting value for OperationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+        /// </summary>
+        public readonly Outputs.GetAccountSettingV2EffectiveOperationalEmailCustomRecipientResult EffectiveOperationalEmailCustomRecipient;
         /// <summary>
         /// (PersonalComputeMessage) - Effective setting value for PersonalCompute setting. This is the final effective value of setting. To set a value use personal_compute
         /// </summary>
@@ -142,6 +154,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// (OperationalEmailCustomRecipientMessage) - Setting value for OperationalEmailCustomRecipient setting. This is the setting value set by consumers, check EffectiveOperationalEmailCustomRecipient for final setting value
+        /// </summary>
+        public readonly Outputs.GetAccountSettingV2OperationalEmailCustomRecipientResult OperationalEmailCustomRecipient;
+        /// <summary>
         /// (PersonalComputeMessage) - Setting value for PersonalCompute setting. This is the setting value set by consumers, check EffectivePersonalCompute for final setting value
         /// </summary>
         public readonly Outputs.GetAccountSettingV2PersonalComputeResult PersonalCompute;
@@ -160,6 +176,8 @@ namespace Pulumi.Databricks
 
             Outputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomainsResult aibiDashboardEmbeddingApprovedDomains,
 
+            Outputs.GetAccountSettingV2AllowedAppsUserApiScopesResult allowedAppsUserApiScopes,
+
             Outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceResult automaticClusterUpdateWorkspace,
 
             Outputs.GetAccountSettingV2BooleanValResult booleanVal,
@@ -168,11 +186,15 @@ namespace Pulumi.Databricks
 
             Outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsResult effectiveAibiDashboardEmbeddingApprovedDomains,
 
+            Outputs.GetAccountSettingV2EffectiveAllowedAppsUserApiScopesResult effectiveAllowedAppsUserApiScopes,
+
             Outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceResult effectiveAutomaticClusterUpdateWorkspace,
 
             Outputs.GetAccountSettingV2EffectiveBooleanValResult effectiveBooleanVal,
 
             Outputs.GetAccountSettingV2EffectiveIntegerValResult effectiveIntegerVal,
+
+            Outputs.GetAccountSettingV2EffectiveOperationalEmailCustomRecipientResult effectiveOperationalEmailCustomRecipient,
 
             Outputs.GetAccountSettingV2EffectivePersonalComputeResult effectivePersonalCompute,
 
@@ -186,6 +208,8 @@ namespace Pulumi.Databricks
 
             string name,
 
+            Outputs.GetAccountSettingV2OperationalEmailCustomRecipientResult operationalEmailCustomRecipient,
+
             Outputs.GetAccountSettingV2PersonalComputeResult personalCompute,
 
             Outputs.GetAccountSettingV2RestrictWorkspaceAdminsResult restrictWorkspaceAdmins,
@@ -194,19 +218,23 @@ namespace Pulumi.Databricks
         {
             AibiDashboardEmbeddingAccessPolicy = aibiDashboardEmbeddingAccessPolicy;
             AibiDashboardEmbeddingApprovedDomains = aibiDashboardEmbeddingApprovedDomains;
+            AllowedAppsUserApiScopes = allowedAppsUserApiScopes;
             AutomaticClusterUpdateWorkspace = automaticClusterUpdateWorkspace;
             BooleanVal = booleanVal;
             EffectiveAibiDashboardEmbeddingAccessPolicy = effectiveAibiDashboardEmbeddingAccessPolicy;
             EffectiveAibiDashboardEmbeddingApprovedDomains = effectiveAibiDashboardEmbeddingApprovedDomains;
+            EffectiveAllowedAppsUserApiScopes = effectiveAllowedAppsUserApiScopes;
             EffectiveAutomaticClusterUpdateWorkspace = effectiveAutomaticClusterUpdateWorkspace;
             EffectiveBooleanVal = effectiveBooleanVal;
             EffectiveIntegerVal = effectiveIntegerVal;
+            EffectiveOperationalEmailCustomRecipient = effectiveOperationalEmailCustomRecipient;
             EffectivePersonalCompute = effectivePersonalCompute;
             EffectiveRestrictWorkspaceAdmins = effectiveRestrictWorkspaceAdmins;
             EffectiveStringVal = effectiveStringVal;
             Id = id;
             IntegerVal = integerVal;
             Name = name;
+            OperationalEmailCustomRecipient = operationalEmailCustomRecipient;
             PersonalCompute = personalCompute;
             RestrictWorkspaceAdmins = restrictWorkspaceAdmins;
             StringVal = stringVal;

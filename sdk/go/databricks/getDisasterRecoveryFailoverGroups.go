@@ -24,8 +24,12 @@ func GetDisasterRecoveryFailoverGroups(ctx *pulumi.Context, args *GetDisasterRec
 
 // A collection of arguments for invoking getDisasterRecoveryFailoverGroups.
 type GetDisasterRecoveryFailoverGroupsArgs struct {
-	// Maximum number of failover groups to return per page.
-	// Default: 50, maximum: 100
+	// Maximum number of failover groups to return per page:
+	// - when set to a value greater than 0, the page length is the minimum of this value
+	//   and a server configured value;
+	// - when set to 0 or unset, the page length is set to a server configured value
+	//   (recommended);
+	// - when set to a value less than 0, an invalid parameter error is returned
 	PageSize *int `pulumi:"pageSize"`
 	// The parent resource. Format: accounts/{account_id}
 	Parent string `pulumi:"parent"`
@@ -51,8 +55,12 @@ func GetDisasterRecoveryFailoverGroupsOutput(ctx *pulumi.Context, args GetDisast
 
 // A collection of arguments for invoking getDisasterRecoveryFailoverGroups.
 type GetDisasterRecoveryFailoverGroupsOutputArgs struct {
-	// Maximum number of failover groups to return per page.
-	// Default: 50, maximum: 100
+	// Maximum number of failover groups to return per page:
+	// - when set to a value greater than 0, the page length is the minimum of this value
+	//   and a server configured value;
+	// - when set to 0 or unset, the page length is set to a server configured value
+	//   (recommended);
+	// - when set to a value less than 0, an invalid parameter error is returned
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// The parent resource. Format: accounts/{account_id}
 	Parent pulumi.StringInput `pulumi:"parent"`

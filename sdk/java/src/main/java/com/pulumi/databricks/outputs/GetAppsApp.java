@@ -21,6 +21,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsApp {
+    /**
+     * @return attribute - the active deployment of the app.
+     * 
+     */
     private GetAppsAppActiveDeployment activeDeployment;
     /**
      * @return attribute
@@ -32,8 +36,10 @@ public final class GetAppsApp {
      * 
      */
     private @Nullable String budgetPolicyId;
+    private @Nullable Integer computeMaxInstances;
+    private @Nullable Integer computeMinInstances;
     /**
-     * @return (Optional) A string specifying compute size for the App.
+     * @return A string specifying compute size for the App.
      * 
      */
     private @Nullable String computeSize;
@@ -43,12 +49,12 @@ public final class GetAppsApp {
      */
     private GetAppsAppComputeStatus computeStatus;
     /**
-     * @return The creation time of the app.
+     * @return The creation time of the deployment.
      * 
      */
     private String createTime;
     /**
-     * @return The email of the user that created the app.
+     * @return The email of the user that created the deployment.
      * 
      */
     private String creator;
@@ -67,12 +73,20 @@ public final class GetAppsApp {
      * 
      */
     private String effectiveBudgetPolicyId;
+    /**
+     * @return The effective usage policy ID.
+     * 
+     */
     private String effectiveUsagePolicyId;
     /**
      * @return A list of effective api scopes granted to the user access token.
      * 
      */
     private List<String> effectiveUserApiScopes;
+    /**
+     * @return attribute - Git repository configuration for app deployments.
+     * 
+     */
     private @Nullable GetAppsAppGitRepository gitRepository;
     /**
      * @return Id of the job to grant permission on.
@@ -80,12 +94,24 @@ public final class GetAppsApp {
      */
     private String id;
     /**
-     * @return The name of Genie Space.
+     * @return The name of the app to grant permission on.
      * 
      */
     private String name;
+    /**
+     * @return The OAuth2 client ID of the app&#39;s integration, set when the app uses user authorization.
+     * 
+     */
     private String oauth2AppClientId;
+    /**
+     * @return The unique ID of the OAuth2 integration associated with the app.
+     * 
+     */
     private String oauth2AppIntegrationId;
+    /**
+     * @return attribute - the pending deployment of the app. Schema is identical to `activeDeployment`.
+     * 
+     */
     private GetAppsAppPendingDeployment pendingDeployment;
     /**
      * @return A list of resources that the app have access to.
@@ -107,11 +133,23 @@ public final class GetAppsApp {
      * 
      */
     private String servicePrincipalName;
+    /**
+     * @return Name of the app space this app belongs to.
+     * 
+     */
     private @Nullable String space;
+    /**
+     * @return A list of telemetry export destinations.
+     * 
+     */
     private @Nullable List<GetAppsAppTelemetryExportDestination> telemetryExportDestinations;
+    /**
+     * @return The URL of the thumbnail image for the app.
+     * 
+     */
     private String thumbnailUrl;
     /**
-     * @return The update time of the app.
+     * @return The update time of the deployment.
      * 
      */
     private String updateTime;
@@ -121,14 +159,26 @@ public final class GetAppsApp {
      */
     private String updater;
     /**
-     * @return The URL of the app once it is deployed.
+     * @return URL of the Git repository.
      * 
      */
     private String url;
+    /**
+     * @return The Usage Policy ID set for this resource.
+     * 
+     */
     private @Nullable String usagePolicyId;
+    /**
+     * @return A list of api scopes granted to the user access token.
+     * 
+     */
     private @Nullable List<String> userApiScopes;
 
     private GetAppsApp() {}
+    /**
+     * @return attribute - the active deployment of the app.
+     * 
+     */
     public GetAppsAppActiveDeployment activeDeployment() {
         return this.activeDeployment;
     }
@@ -146,8 +196,14 @@ public final class GetAppsApp {
     public Optional<String> budgetPolicyId() {
         return Optional.ofNullable(this.budgetPolicyId);
     }
+    public Optional<Integer> computeMaxInstances() {
+        return Optional.ofNullable(this.computeMaxInstances);
+    }
+    public Optional<Integer> computeMinInstances() {
+        return Optional.ofNullable(this.computeMinInstances);
+    }
     /**
-     * @return (Optional) A string specifying compute size for the App.
+     * @return A string specifying compute size for the App.
      * 
      */
     public Optional<String> computeSize() {
@@ -161,14 +217,14 @@ public final class GetAppsApp {
         return this.computeStatus;
     }
     /**
-     * @return The creation time of the app.
+     * @return The creation time of the deployment.
      * 
      */
     public String createTime() {
         return this.createTime;
     }
     /**
-     * @return The email of the user that created the app.
+     * @return The email of the user that created the deployment.
      * 
      */
     public String creator() {
@@ -195,6 +251,10 @@ public final class GetAppsApp {
     public String effectiveBudgetPolicyId() {
         return this.effectiveBudgetPolicyId;
     }
+    /**
+     * @return The effective usage policy ID.
+     * 
+     */
     public String effectiveUsagePolicyId() {
         return this.effectiveUsagePolicyId;
     }
@@ -205,6 +265,10 @@ public final class GetAppsApp {
     public List<String> effectiveUserApiScopes() {
         return this.effectiveUserApiScopes;
     }
+    /**
+     * @return attribute - Git repository configuration for app deployments.
+     * 
+     */
     public Optional<GetAppsAppGitRepository> gitRepository() {
         return Optional.ofNullable(this.gitRepository);
     }
@@ -216,18 +280,30 @@ public final class GetAppsApp {
         return this.id;
     }
     /**
-     * @return The name of Genie Space.
+     * @return The name of the app to grant permission on.
      * 
      */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The OAuth2 client ID of the app&#39;s integration, set when the app uses user authorization.
+     * 
+     */
     public String oauth2AppClientId() {
         return this.oauth2AppClientId;
     }
+    /**
+     * @return The unique ID of the OAuth2 integration associated with the app.
+     * 
+     */
     public String oauth2AppIntegrationId() {
         return this.oauth2AppIntegrationId;
     }
+    /**
+     * @return attribute - the pending deployment of the app. Schema is identical to `activeDeployment`.
+     * 
+     */
     public GetAppsAppPendingDeployment pendingDeployment() {
         return this.pendingDeployment;
     }
@@ -259,17 +335,29 @@ public final class GetAppsApp {
     public String servicePrincipalName() {
         return this.servicePrincipalName;
     }
+    /**
+     * @return Name of the app space this app belongs to.
+     * 
+     */
     public Optional<String> space() {
         return Optional.ofNullable(this.space);
     }
+    /**
+     * @return A list of telemetry export destinations.
+     * 
+     */
     public List<GetAppsAppTelemetryExportDestination> telemetryExportDestinations() {
         return this.telemetryExportDestinations == null ? List.of() : this.telemetryExportDestinations;
     }
+    /**
+     * @return The URL of the thumbnail image for the app.
+     * 
+     */
     public String thumbnailUrl() {
         return this.thumbnailUrl;
     }
     /**
-     * @return The update time of the app.
+     * @return The update time of the deployment.
      * 
      */
     public String updateTime() {
@@ -283,15 +371,23 @@ public final class GetAppsApp {
         return this.updater;
     }
     /**
-     * @return The URL of the app once it is deployed.
+     * @return URL of the Git repository.
      * 
      */
     public String url() {
         return this.url;
     }
+    /**
+     * @return The Usage Policy ID set for this resource.
+     * 
+     */
     public Optional<String> usagePolicyId() {
         return Optional.ofNullable(this.usagePolicyId);
     }
+    /**
+     * @return A list of api scopes granted to the user access token.
+     * 
+     */
     public List<String> userApiScopes() {
         return this.userApiScopes == null ? List.of() : this.userApiScopes;
     }
@@ -308,6 +404,8 @@ public final class GetAppsApp {
         private GetAppsAppActiveDeployment activeDeployment;
         private GetAppsAppAppStatus appStatus;
         private @Nullable String budgetPolicyId;
+        private @Nullable Integer computeMaxInstances;
+        private @Nullable Integer computeMinInstances;
         private @Nullable String computeSize;
         private GetAppsAppComputeStatus computeStatus;
         private String createTime;
@@ -341,6 +439,8 @@ public final class GetAppsApp {
     	      this.activeDeployment = defaults.activeDeployment;
     	      this.appStatus = defaults.appStatus;
     	      this.budgetPolicyId = defaults.budgetPolicyId;
+    	      this.computeMaxInstances = defaults.computeMaxInstances;
+    	      this.computeMinInstances = defaults.computeMinInstances;
     	      this.computeSize = defaults.computeSize;
     	      this.computeStatus = defaults.computeStatus;
     	      this.createTime = defaults.createTime;
@@ -390,6 +490,18 @@ public final class GetAppsApp {
         public Builder budgetPolicyId(@Nullable String budgetPolicyId) {
 
             this.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder computeMaxInstances(@Nullable Integer computeMaxInstances) {
+
+            this.computeMaxInstances = computeMaxInstances;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder computeMinInstances(@Nullable Integer computeMinInstances) {
+
+            this.computeMinInstances = computeMinInstances;
             return this;
         }
         @CustomType.Setter
@@ -609,6 +721,8 @@ public final class GetAppsApp {
             _resultValue.activeDeployment = activeDeployment;
             _resultValue.appStatus = appStatus;
             _resultValue.budgetPolicyId = budgetPolicyId;
+            _resultValue.computeMaxInstances = computeMaxInstances;
+            _resultValue.computeMinInstances = computeMinInstances;
             _resultValue.computeSize = computeSize;
             _resultValue.computeStatus = computeStatus;
             _resultValue.createTime = createTime;

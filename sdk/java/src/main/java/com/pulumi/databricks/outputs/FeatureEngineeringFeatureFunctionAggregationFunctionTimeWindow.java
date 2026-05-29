@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
+import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding;
 import com.pulumi.databricks.outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling;
 import java.util.Objects;
@@ -14,12 +15,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous continuous;
+    private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling rolling;
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding sliding;
     private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling tumbling;
 
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow() {}
     public Optional<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous> continuous() {
         return Optional.ofNullable(this.continuous);
+    }
+    public Optional<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling> rolling() {
+        return Optional.ofNullable(this.rolling);
     }
     public Optional<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding> sliding() {
         return Optional.ofNullable(this.sliding);
@@ -38,12 +43,14 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
     @CustomType.Builder
     public static final class Builder {
         private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous continuous;
+        private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling rolling;
         private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding sliding;
         private @Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling tumbling;
         public Builder() {}
         public Builder(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.continuous = defaults.continuous;
+    	      this.rolling = defaults.rolling;
     	      this.sliding = defaults.sliding;
     	      this.tumbling = defaults.tumbling;
         }
@@ -52,6 +59,12 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
         public Builder continuous(@Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous continuous) {
 
             this.continuous = continuous;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rolling(@Nullable FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling rolling) {
+
+            this.rolling = rolling;
             return this;
         }
         @CustomType.Setter
@@ -69,6 +82,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
         public FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow build() {
             final var _resultValue = new FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow();
             _resultValue.continuous = continuous;
+            _resultValue.rolling = rolling;
             _resultValue.sliding = sliding;
             _resultValue.tumbling = tumbling;
             return _resultValue;

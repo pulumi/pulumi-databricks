@@ -39,7 +39,8 @@ type LookupSupervisorAgentToolResult struct {
 	Description string `pulumi:"description"`
 	// (GenieSpace)
 	GenieSpace GetSupervisorAgentToolGenieSpace `pulumi:"genieSpace"`
-	// (string) - The ID of the genie space
+	// (string, deprecated) - Deprecated: use spaceId instead. Still REQUIRED for backward compatibility
+	// until a future API version removes it
 	Id string `pulumi:"id"`
 	// (KnowledgeAssistant)
 	KnowledgeAssistant GetSupervisorAgentToolKnowledgeAssistant `pulumi:"knowledgeAssistant"`
@@ -48,7 +49,7 @@ type LookupSupervisorAgentToolResult struct {
 	ProviderConfig *GetSupervisorAgentToolProviderConfig `pulumi:"providerConfig"`
 	// (string) - User specified id of the Tool
 	ToolId string `pulumi:"toolId"`
-	// (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "app", "volume", "lakeviewDashboard", "servingEndpoint", "ucTable", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "webSearch"
+	// (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "webSearch", "skill". The legacy values "lakeviewDashboard" and "ucTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
 	ToolType string `pulumi:"toolType"`
 	// (UcConnection)
 	UcConnection GetSupervisorAgentToolUcConnection `pulumi:"ucConnection"`
@@ -110,7 +111,8 @@ func (o LookupSupervisorAgentToolResultOutput) GenieSpace() GetSupervisorAgentTo
 	return o.ApplyT(func(v LookupSupervisorAgentToolResult) GetSupervisorAgentToolGenieSpace { return v.GenieSpace }).(GetSupervisorAgentToolGenieSpaceOutput)
 }
 
-// (string) - The ID of the genie space
+// (string, deprecated) - Deprecated: use spaceId instead. Still REQUIRED for backward compatibility
+// until a future API version removes it
 func (o LookupSupervisorAgentToolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSupervisorAgentToolResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -136,7 +138,7 @@ func (o LookupSupervisorAgentToolResultOutput) ToolId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSupervisorAgentToolResult) string { return v.ToolId }).(pulumi.StringOutput)
 }
 
-// (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "app", "volume", "lakeviewDashboard", "servingEndpoint", "ucTable", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "webSearch"
+// (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "webSearch", "skill". The legacy values "lakeviewDashboard" and "ucTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
 func (o LookupSupervisorAgentToolResultOutput) ToolType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSupervisorAgentToolResult) string { return v.ToolType }).(pulumi.StringOutput)
 }

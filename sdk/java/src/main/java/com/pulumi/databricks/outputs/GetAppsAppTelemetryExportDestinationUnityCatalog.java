@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAppsAppTelemetryExportDestinationUnityCatalog {
+    /**
+     * @return Full name of the Unity Catalog table for OpenTelemetry logs.
+     * 
+     */
     private String logsTable;
+    /**
+     * @return Full name of the Unity Catalog table for OpenTelemetry metrics.
+     * 
+     */
     private String metricsTable;
+    /**
+     * @return Full name of the Unity Catalog table for OpenTelemetry traces (spans).
+     * 
+     */
     private String tracesTable;
 
     private GetAppsAppTelemetryExportDestinationUnityCatalog() {}
+    /**
+     * @return Full name of the Unity Catalog table for OpenTelemetry logs.
+     * 
+     */
     public String logsTable() {
         return this.logsTable;
     }
+    /**
+     * @return Full name of the Unity Catalog table for OpenTelemetry metrics.
+     * 
+     */
     public String metricsTable() {
         return this.metricsTable;
     }
+    /**
+     * @return Full name of the Unity Catalog table for OpenTelemetry traces (spans).
+     * 
+     */
     public String tracesTable() {
         return this.tracesTable;
     }

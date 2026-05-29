@@ -13,9 +13,12 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAppAppGitRepositoryResult
     {
+        /// <summary>
+        /// Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+        /// </summary>
         public readonly string Provider;
         /// <summary>
-        /// The URL of the app once it is deployed.
+        /// URL of the Git repository.
         /// </summary>
         public readonly string Url;
 

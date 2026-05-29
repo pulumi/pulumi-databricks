@@ -34,7 +34,9 @@ namespace Pulumi.Databricks
     public sealed class GetFeatureEngineeringFeatureArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The full three-part name (catalog, schema, name) of the feature
+        /// The full three-part name (catalog, schema, name) of the feature. This is the
+        /// feature's resource identifier; the catalog_name, schema_name, and name fields
+        /// below are OUTPUT_ONLY decomposed views of this value
         /// </summary>
         [Input("fullName", required: true)]
         public string FullName { get; set; } = null!;
@@ -54,7 +56,9 @@ namespace Pulumi.Databricks
     public sealed class GetFeatureEngineeringFeatureInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The full three-part name (catalog, schema, name) of the feature
+        /// The full three-part name (catalog, schema, name) of the feature. This is the
+        /// feature's resource identifier; the catalog_name, schema_name, and name fields
+        /// below are OUTPUT_ONLY decomposed views of this value
         /// </summary>
         [Input("fullName", required: true)]
         public Input<string> FullName { get; set; } = null!;
@@ -75,6 +79,18 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetFeatureEngineeringFeatureResult
     {
+        /// <summary>
+        /// (string) - Name of parent catalog
+        /// </summary>
+        public readonly string CatalogName;
+        /// <summary>
+        /// (string) - Time at which this feature was created
+        /// </summary>
+        public readonly string CreatedAt;
+        /// <summary>
+        /// (string) - Username of the feature creator
+        /// </summary>
+        public readonly string CreatedBy;
         /// <summary>
         /// (string) - The description of the feature
         /// </summary>
@@ -112,7 +128,20 @@ namespace Pulumi.Databricks
         /// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureLineageContextResult LineageContext;
+        /// <summary>
+        /// (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+        /// reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
+        /// fields, the leaf node name (e.g., "EventTimestamp" from "value.event_details.event_timestamp")
+        /// is what will be present in materialized tables and expected to match at query time.
+        /// TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+        /// backwards compatibility but is deprecated; migrate to dot notation
+        /// </summary>
+        public readonly string Name;
         public readonly Outputs.GetFeatureEngineeringFeatureProviderConfigResult? ProviderConfig;
+        /// <summary>
+        /// (string) - Name of parent schema relative to its parent catalog
+        /// </summary>
+        public readonly string SchemaName;
         /// <summary>
         /// (DataSource) - The data source of the feature
         /// </summary>
@@ -129,6 +158,12 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetFeatureEngineeringFeatureResult(
+            string catalogName,
+
+            string createdAt,
+
+            string createdBy,
+
             string description,
 
             ImmutableArray<Outputs.GetFeatureEngineeringFeatureEntityResult> entities,
@@ -145,7 +180,11 @@ namespace Pulumi.Databricks
 
             Outputs.GetFeatureEngineeringFeatureLineageContextResult lineageContext,
 
+            string name,
+
             Outputs.GetFeatureEngineeringFeatureProviderConfigResult? providerConfig,
+
+            string schemaName,
 
             Outputs.GetFeatureEngineeringFeatureSourceResult source,
 
@@ -153,6 +192,9 @@ namespace Pulumi.Databricks
 
             Outputs.GetFeatureEngineeringFeatureTimeseriesColumnResult timeseriesColumn)
         {
+            CatalogName = catalogName;
+            CreatedAt = createdAt;
+            CreatedBy = createdBy;
             Description = description;
             Entities = entities;
             FilterCondition = filterCondition;
@@ -161,7 +203,9 @@ namespace Pulumi.Databricks
             Id = id;
             Inputs = inputs;
             LineageContext = lineageContext;
+            Name = name;
             ProviderConfig = providerConfig;
+            SchemaName = schemaName;
             Source = source;
             TimeWindow = timeWindow;
             TimeseriesColumn = timeseriesColumn;

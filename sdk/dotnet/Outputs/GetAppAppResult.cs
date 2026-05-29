@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAppAppResult
     {
+        /// <summary>
+        /// attribute - the active deployment of the app.
+        /// </summary>
         public readonly Outputs.GetAppAppActiveDeploymentResult ActiveDeployment;
         /// <summary>
         /// attribute
@@ -22,8 +25,10 @@ namespace Pulumi.Databricks.Outputs
         /// The Budget Policy ID set for this resource.
         /// </summary>
         public readonly string? BudgetPolicyId;
+        public readonly int? ComputeMaxInstances;
+        public readonly int? ComputeMinInstances;
         /// <summary>
-        /// (Optional) A string specifying compute size for the App.
+        /// A string specifying compute size for the App.
         /// </summary>
         public readonly string? ComputeSize;
         /// <summary>
@@ -31,11 +36,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetAppAppComputeStatusResult ComputeStatus;
         /// <summary>
-        /// The creation time of the app.
+        /// The creation time of the deployment.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The email of the user that created the app.
+        /// The email of the user that created the deployment.
         /// </summary>
         public readonly string Creator;
         /// <summary>
@@ -50,11 +55,17 @@ namespace Pulumi.Databricks.Outputs
         /// The effective budget policy ID.
         /// </summary>
         public readonly string EffectiveBudgetPolicyId;
+        /// <summary>
+        /// The effective usage policy ID.
+        /// </summary>
         public readonly string EffectiveUsagePolicyId;
         /// <summary>
         /// A list of effective api scopes granted to the user access token.
         /// </summary>
         public readonly ImmutableArray<string> EffectiveUserApiScopes;
+        /// <summary>
+        /// attribute - Git repository configuration for app deployments.
+        /// </summary>
         public readonly Outputs.GetAppAppGitRepositoryResult? GitRepository;
         /// <summary>
         /// Id of the job to grant permission on.
@@ -64,8 +75,17 @@ namespace Pulumi.Databricks.Outputs
         /// The name of the app.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The OAuth2 client ID of the app's integration, set when the app uses user authorization.
+        /// </summary>
         public readonly string Oauth2AppClientId;
+        /// <summary>
+        /// The unique ID of the OAuth2 integration associated with the app.
+        /// </summary>
         public readonly string Oauth2AppIntegrationId;
+        /// <summary>
+        /// attribute - the pending deployment of the app. Schema is identical to `ActiveDeployment`.
+        /// </summary>
         public readonly Outputs.GetAppAppPendingDeploymentResult PendingDeployment;
         /// <summary>
         /// A list of resources that the app have access to.
@@ -83,11 +103,20 @@ namespace Pulumi.Databricks.Outputs
         /// name of the app service principal
         /// </summary>
         public readonly string ServicePrincipalName;
+        /// <summary>
+        /// Name of the app space this app belongs to.
+        /// </summary>
         public readonly string? Space;
+        /// <summary>
+        /// A list of telemetry export destinations.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAppAppTelemetryExportDestinationResult> TelemetryExportDestinations;
+        /// <summary>
+        /// The URL of the thumbnail image for the app.
+        /// </summary>
         public readonly string ThumbnailUrl;
         /// <summary>
-        /// The update time of the app.
+        /// The update time of the deployment.
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
@@ -95,10 +124,16 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Updater;
         /// <summary>
-        /// The URL of the app once it is deployed.
+        /// URL of the Git repository.
         /// </summary>
         public readonly string Url;
+        /// <summary>
+        /// The Usage Policy ID set for this resource.
+        /// </summary>
         public readonly string? UsagePolicyId;
+        /// <summary>
+        /// A list of api scopes granted to the user access token.
+        /// </summary>
         public readonly ImmutableArray<string> UserApiScopes;
 
         [OutputConstructor]
@@ -108,6 +143,10 @@ namespace Pulumi.Databricks.Outputs
             Outputs.GetAppAppAppStatusResult appStatus,
 
             string? budgetPolicyId,
+
+            int? computeMaxInstances,
+
+            int? computeMinInstances,
 
             string? computeSize,
 
@@ -166,6 +205,8 @@ namespace Pulumi.Databricks.Outputs
             ActiveDeployment = activeDeployment;
             AppStatus = appStatus;
             BudgetPolicyId = budgetPolicyId;
+            ComputeMaxInstances = computeMaxInstances;
+            ComputeMinInstances = computeMinInstances;
             ComputeSize = computeSize;
             ComputeStatus = computeStatus;
             CreateTime = createTime;

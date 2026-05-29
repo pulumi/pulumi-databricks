@@ -14,22 +14,30 @@ public final class AppActiveDeploymentGitSourceGitRepositoryArgs extends com.pul
 
     public static final AppActiveDeploymentGitSourceGitRepositoryArgs Empty = new AppActiveDeploymentGitSourceGitRepositoryArgs();
 
+    /**
+     * Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     * 
+     */
     @Import(name="provider", required=true)
     private Output<String> provider;
 
+    /**
+     * @return Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     * 
+     */
     public Output<String> provider() {
         return this.provider;
     }
 
     /**
-     * The URL of the app once it is deployed.
+     * URL of the Git repository.
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return The URL of the app once it is deployed.
+     * @return URL of the Git repository.
      * 
      */
     public Output<String> url() {
@@ -61,17 +69,29 @@ public final class AppActiveDeploymentGitSourceGitRepositoryArgs extends com.pul
             $ = new AppActiveDeploymentGitSourceGitRepositoryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param provider Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provider(Output<String> provider) {
             $.provider = provider;
             return this;
         }
 
+        /**
+         * @param provider Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provider(String provider) {
             return provider(Output.of(provider));
         }
 
         /**
-         * @param url The URL of the app once it is deployed.
+         * @param url URL of the Git repository.
          * 
          * @return builder
          * 
@@ -82,7 +102,7 @@ public final class AppActiveDeploymentGitSourceGitRepositoryArgs extends com.pul
         }
 
         /**
-         * @param url The URL of the app once it is deployed.
+         * @param url URL of the Git repository.
          * 
          * @return builder
          * 

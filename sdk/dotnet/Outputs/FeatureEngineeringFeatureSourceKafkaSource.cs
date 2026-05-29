@@ -23,6 +23,9 @@ namespace Pulumi.Databricks.Outputs
         /// The filter condition applied to the source data before aggregation
         /// </summary>
         public readonly string? FilterCondition;
+        /// <summary>
+        /// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+        /// </summary>
         public readonly string Name;
         /// <summary>
         /// Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.

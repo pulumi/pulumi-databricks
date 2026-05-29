@@ -13,6 +13,12 @@ namespace Pulumi.Databricks.Inputs
     public sealed class FeatureEngineeringKafkaConfigAuthConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Mutual-TLS authentication. See MtlsConfig
+        /// </summary>
+        [Input("mtlsConfig")]
+        public Input<Inputs.FeatureEngineeringKafkaConfigAuthConfigMtlsConfigGetArgs>? MtlsConfig { get; set; }
+
+        /// <summary>
         /// Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
         /// </summary>
         [Input("ucServiceCredentialName")]

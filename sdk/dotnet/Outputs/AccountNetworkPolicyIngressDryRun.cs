@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AccountNetworkPolicyIngressDryRun
     {
+        public readonly Outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccess? CrossWorkspaceAccess;
         /// <summary>
         /// The network policy restrictions for private access to the workspace.
         /// Configures how registered private endpoints are allowed or denied access
@@ -26,10 +27,13 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private AccountNetworkPolicyIngressDryRun(
+            Outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccess? crossWorkspaceAccess,
+
             Outputs.AccountNetworkPolicyIngressDryRunPrivateAccess? privateAccess,
 
             Outputs.AccountNetworkPolicyIngressDryRunPublicAccess? publicAccess)
         {
+            CrossWorkspaceAccess = crossWorkspaceAccess;
             PrivateAccess = privateAccess;
             PublicAccess = publicAccess;
         }

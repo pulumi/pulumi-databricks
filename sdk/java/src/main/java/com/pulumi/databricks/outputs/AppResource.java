@@ -22,6 +22,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppResource {
+    /**
+     * @return attribute - reference to another Databricks App.
+     * 
+     */
     private @Nullable AppResourceApp app;
     /**
      * @return attribute
@@ -35,6 +39,10 @@ public final class AppResource {
      * 
      */
     private @Nullable String description;
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable AppResourceExperiment experiment;
     /**
      * @return attribute
@@ -51,6 +59,10 @@ public final class AppResource {
      * 
      */
     private String name;
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable AppResourcePostgres postgres;
     /**
      * @return attribute
@@ -74,6 +86,10 @@ public final class AppResource {
     private @Nullable AppResourceUcSecurable ucSecurable;
 
     private AppResource() {}
+    /**
+     * @return attribute - reference to another Databricks App.
+     * 
+     */
     public Optional<AppResourceApp> app() {
         return Optional.ofNullable(this.app);
     }
@@ -93,6 +109,10 @@ public final class AppResource {
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<AppResourceExperiment> experiment() {
         return Optional.ofNullable(this.experiment);
     }
@@ -117,6 +137,10 @@ public final class AppResource {
     public String name() {
         return this.name;
     }
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<AppResourcePostgres> postgres() {
         return Optional.ofNullable(this.postgres);
     }

@@ -11,6 +11,16 @@ import java.util.Objects;
 @CustomType
 public final class GetDisasterRecoveryStableUrlsStableUrl {
     /**
+     * @return (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+     * currently linked to, in the format
+     * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+     * the stable URL is not attached to any failover group. Server-controlled:
+     * written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+     * DeleteFailoverGroup / UpdateFailoverGroup on unlink
+     * 
+     */
+    private String failoverGroupName;
+    /**
      * @return (string) - The workspace this stable URL is initially bound to. Used only in Create
      * requests to associate the stable URL with a workspace. Not returned in
      * responses. Mirrors FailoverGroup.initial_primary_region semantics
@@ -33,6 +43,18 @@ public final class GetDisasterRecoveryStableUrlsStableUrl {
     private String url;
 
     private GetDisasterRecoveryStableUrlsStableUrl() {}
+    /**
+     * @return (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+     * currently linked to, in the format
+     * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+     * the stable URL is not attached to any failover group. Server-controlled:
+     * written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+     * DeleteFailoverGroup / UpdateFailoverGroup on unlink
+     * 
+     */
+    public String failoverGroupName() {
+        return this.failoverGroupName;
+    }
     /**
      * @return (string) - The workspace this stable URL is initially bound to. Used only in Create
      * requests to associate the stable URL with a workspace. Not returned in
@@ -70,17 +92,27 @@ public final class GetDisasterRecoveryStableUrlsStableUrl {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String failoverGroupName;
         private String initialWorkspaceId;
         private String name;
         private String url;
         public Builder() {}
         public Builder(GetDisasterRecoveryStableUrlsStableUrl defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.failoverGroupName = defaults.failoverGroupName;
     	      this.initialWorkspaceId = defaults.initialWorkspaceId;
     	      this.name = defaults.name;
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
+        public Builder failoverGroupName(String failoverGroupName) {
+            if (failoverGroupName == null) {
+              throw new MissingRequiredPropertyException("GetDisasterRecoveryStableUrlsStableUrl", "failoverGroupName");
+            }
+            this.failoverGroupName = failoverGroupName;
+            return this;
+        }
         @CustomType.Setter
         public Builder initialWorkspaceId(String initialWorkspaceId) {
             if (initialWorkspaceId == null) {
@@ -107,6 +139,7 @@ public final class GetDisasterRecoveryStableUrlsStableUrl {
         }
         public GetDisasterRecoveryStableUrlsStableUrl build() {
             final var _resultValue = new GetDisasterRecoveryStableUrlsStableUrl();
+            _resultValue.failoverGroupName = failoverGroupName;
             _resultValue.initialWorkspaceId = initialWorkspaceId;
             _resultValue.name = name;
             _resultValue.url = url;

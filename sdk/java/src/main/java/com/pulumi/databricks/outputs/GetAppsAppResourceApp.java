@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAppsAppResourceApp {
     /**
-     * @return The name of Genie Space.
+     * @return The name of the app to grant permission on.
      * 
      */
     private @Nullable String name;
     /**
-     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * @return Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      * 
      */
     private @Nullable String permission;
 
     private GetAppsAppResourceApp() {}
     /**
-     * @return The name of Genie Space.
+     * @return The name of the app to grant permission on.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * @return Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      * 
      */
     public Optional<String> permission() {

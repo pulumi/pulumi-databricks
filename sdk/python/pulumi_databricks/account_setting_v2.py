@@ -23,6 +23,7 @@ class AccountSettingV2Args:
     def __init__(__self__, *,
                  aibi_dashboard_embedding_access_policy: pulumi.Input[Optional['AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs']] = None,
                  aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional['AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']] = None,
+                 allowed_apps_user_api_scopes: pulumi.Input[Optional['AccountSettingV2AllowedAppsUserApiScopesArgs']] = None,
                  automatic_cluster_update_workspace: pulumi.Input[Optional['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs']] = None,
                  boolean_val: pulumi.Input[Optional['AccountSettingV2BooleanValArgs']] = None,
                  effective_aibi_dashboard_embedding_access_policy: pulumi.Input[Optional['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']] = None,
@@ -32,6 +33,7 @@ class AccountSettingV2Args:
                  effective_restrict_workspace_admins: pulumi.Input[Optional['AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs']] = None,
                  integer_val: pulumi.Input[Optional['AccountSettingV2IntegerValArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 operational_email_custom_recipient: pulumi.Input[Optional['AccountSettingV2OperationalEmailCustomRecipientArgs']] = None,
                  personal_compute: pulumi.Input[Optional['AccountSettingV2PersonalComputeArgs']] = None,
                  restrict_workspace_admins: pulumi.Input[Optional['AccountSettingV2RestrictWorkspaceAdminsArgs']] = None,
                  string_val: pulumi.Input[Optional['AccountSettingV2StringValArgs']] = None):
@@ -40,6 +42,7 @@ class AccountSettingV2Args:
 
         :param pulumi.Input['AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs'] aibi_dashboard_embedding_access_policy: Setting value for aibi_dashboard_embedding_access_policy setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_access_policy for final setting value
         :param pulumi.Input['AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs'] aibi_dashboard_embedding_approved_domains: Setting value for aibi_dashboard_embedding_approved_domains setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_approved_domains for final setting value
+        :param pulumi.Input['AccountSettingV2AllowedAppsUserApiScopesArgs'] allowed_apps_user_api_scopes: Setting value for allowed_apps_user_api_scopes setting. This is the setting value set by consumers, check effective_allowed_apps_user_api_scopes for final setting value
         :param pulumi.Input['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs'] automatic_cluster_update_workspace: Setting value for automatic_cluster_update_workspace setting. This is the setting value set by consumers, check effective_automatic_cluster_update_workspace for final setting value
         :param pulumi.Input['AccountSettingV2BooleanValArgs'] boolean_val: Setting value for boolean type setting. This is the setting value set by consumers, check effective_boolean_val for final setting value
         :param pulumi.Input['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs'] effective_aibi_dashboard_embedding_access_policy: Effective setting value for aibi_dashboard_embedding_access_policy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
@@ -49,6 +52,7 @@ class AccountSettingV2Args:
         :param pulumi.Input['AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs'] effective_restrict_workspace_admins: Effective setting value for restrict_workspace_admins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
         :param pulumi.Input['AccountSettingV2IntegerValArgs'] integer_val: Setting value for integer type setting. This is the setting value set by consumers, check effective_integer_val for final setting value
         :param pulumi.Input[_builtins.str] name: Name of the setting
+        :param pulumi.Input['AccountSettingV2OperationalEmailCustomRecipientArgs'] operational_email_custom_recipient: Setting value for operational_email_custom_recipient setting. This is the setting value set by consumers, check effective_operational_email_custom_recipient for final setting value
         :param pulumi.Input['AccountSettingV2PersonalComputeArgs'] personal_compute: Setting value for personal_compute setting. This is the setting value set by consumers, check effective_personal_compute for final setting value
         :param pulumi.Input['AccountSettingV2RestrictWorkspaceAdminsArgs'] restrict_workspace_admins: Setting value for restrict_workspace_admins setting. This is the setting value set by consumers, check effective_restrict_workspace_admins for final setting value
         :param pulumi.Input['AccountSettingV2StringValArgs'] string_val: Setting value for string type setting. This is the setting value set by consumers, check effective_string_val for final setting value
@@ -57,6 +61,8 @@ class AccountSettingV2Args:
             pulumi.set(__self__, "aibi_dashboard_embedding_access_policy", aibi_dashboard_embedding_access_policy)
         if aibi_dashboard_embedding_approved_domains is not None:
             pulumi.set(__self__, "aibi_dashboard_embedding_approved_domains", aibi_dashboard_embedding_approved_domains)
+        if allowed_apps_user_api_scopes is not None:
+            pulumi.set(__self__, "allowed_apps_user_api_scopes", allowed_apps_user_api_scopes)
         if automatic_cluster_update_workspace is not None:
             pulumi.set(__self__, "automatic_cluster_update_workspace", automatic_cluster_update_workspace)
         if boolean_val is not None:
@@ -75,6 +81,8 @@ class AccountSettingV2Args:
             pulumi.set(__self__, "integer_val", integer_val)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if operational_email_custom_recipient is not None:
+            pulumi.set(__self__, "operational_email_custom_recipient", operational_email_custom_recipient)
         if personal_compute is not None:
             pulumi.set(__self__, "personal_compute", personal_compute)
         if restrict_workspace_admins is not None:
@@ -105,6 +113,18 @@ class AccountSettingV2Args:
     @aibi_dashboard_embedding_approved_domains.setter
     def aibi_dashboard_embedding_approved_domains(self, value: pulumi.Input[Optional['AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']]):
         pulumi.set(self, "aibi_dashboard_embedding_approved_domains", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedAppsUserApiScopes")
+    def allowed_apps_user_api_scopes(self) -> pulumi.Input[Optional['AccountSettingV2AllowedAppsUserApiScopesArgs']]:
+        """
+        Setting value for allowed_apps_user_api_scopes setting. This is the setting value set by consumers, check effective_allowed_apps_user_api_scopes for final setting value
+        """
+        return pulumi.get(self, "allowed_apps_user_api_scopes")
+
+    @allowed_apps_user_api_scopes.setter
+    def allowed_apps_user_api_scopes(self, value: pulumi.Input[Optional['AccountSettingV2AllowedAppsUserApiScopesArgs']]):
+        pulumi.set(self, "allowed_apps_user_api_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="automaticClusterUpdateWorkspace")
@@ -215,6 +235,18 @@ class AccountSettingV2Args:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="operationalEmailCustomRecipient")
+    def operational_email_custom_recipient(self) -> pulumi.Input[Optional['AccountSettingV2OperationalEmailCustomRecipientArgs']]:
+        """
+        Setting value for operational_email_custom_recipient setting. This is the setting value set by consumers, check effective_operational_email_custom_recipient for final setting value
+        """
+        return pulumi.get(self, "operational_email_custom_recipient")
+
+    @operational_email_custom_recipient.setter
+    def operational_email_custom_recipient(self, value: pulumi.Input[Optional['AccountSettingV2OperationalEmailCustomRecipientArgs']]):
+        pulumi.set(self, "operational_email_custom_recipient", value)
+
+    @_builtins.property
     @pulumi.getter(name="personalCompute")
     def personal_compute(self) -> pulumi.Input[Optional['AccountSettingV2PersonalComputeArgs']]:
         """
@@ -256,18 +288,22 @@ class _AccountSettingV2State:
     def __init__(__self__, *,
                  aibi_dashboard_embedding_access_policy: pulumi.Input[Optional['AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs']] = None,
                  aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional['AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']] = None,
+                 allowed_apps_user_api_scopes: pulumi.Input[Optional['AccountSettingV2AllowedAppsUserApiScopesArgs']] = None,
                  automatic_cluster_update_workspace: pulumi.Input[Optional['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs']] = None,
                  boolean_val: pulumi.Input[Optional['AccountSettingV2BooleanValArgs']] = None,
                  effective_aibi_dashboard_embedding_access_policy: pulumi.Input[Optional['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']] = None,
                  effective_aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional['AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs']] = None,
+                 effective_allowed_apps_user_api_scopes: pulumi.Input[Optional['AccountSettingV2EffectiveAllowedAppsUserApiScopesArgs']] = None,
                  effective_automatic_cluster_update_workspace: pulumi.Input[Optional['AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']] = None,
                  effective_boolean_val: pulumi.Input[Optional['AccountSettingV2EffectiveBooleanValArgs']] = None,
                  effective_integer_val: pulumi.Input[Optional['AccountSettingV2EffectiveIntegerValArgs']] = None,
+                 effective_operational_email_custom_recipient: pulumi.Input[Optional['AccountSettingV2EffectiveOperationalEmailCustomRecipientArgs']] = None,
                  effective_personal_compute: pulumi.Input[Optional['AccountSettingV2EffectivePersonalComputeArgs']] = None,
                  effective_restrict_workspace_admins: pulumi.Input[Optional['AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs']] = None,
                  effective_string_val: pulumi.Input[Optional['AccountSettingV2EffectiveStringValArgs']] = None,
                  integer_val: pulumi.Input[Optional['AccountSettingV2IntegerValArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 operational_email_custom_recipient: pulumi.Input[Optional['AccountSettingV2OperationalEmailCustomRecipientArgs']] = None,
                  personal_compute: pulumi.Input[Optional['AccountSettingV2PersonalComputeArgs']] = None,
                  restrict_workspace_admins: pulumi.Input[Optional['AccountSettingV2RestrictWorkspaceAdminsArgs']] = None,
                  string_val: pulumi.Input[Optional['AccountSettingV2StringValArgs']] = None):
@@ -276,18 +312,22 @@ class _AccountSettingV2State:
 
         :param pulumi.Input['AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs'] aibi_dashboard_embedding_access_policy: Setting value for aibi_dashboard_embedding_access_policy setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_access_policy for final setting value
         :param pulumi.Input['AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs'] aibi_dashboard_embedding_approved_domains: Setting value for aibi_dashboard_embedding_approved_domains setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_approved_domains for final setting value
+        :param pulumi.Input['AccountSettingV2AllowedAppsUserApiScopesArgs'] allowed_apps_user_api_scopes: Setting value for allowed_apps_user_api_scopes setting. This is the setting value set by consumers, check effective_allowed_apps_user_api_scopes for final setting value
         :param pulumi.Input['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs'] automatic_cluster_update_workspace: Setting value for automatic_cluster_update_workspace setting. This is the setting value set by consumers, check effective_automatic_cluster_update_workspace for final setting value
         :param pulumi.Input['AccountSettingV2BooleanValArgs'] boolean_val: Setting value for boolean type setting. This is the setting value set by consumers, check effective_boolean_val for final setting value
         :param pulumi.Input['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs'] effective_aibi_dashboard_embedding_access_policy: Effective setting value for aibi_dashboard_embedding_access_policy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
         :param pulumi.Input['AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs'] effective_aibi_dashboard_embedding_approved_domains: Effective setting value for aibi_dashboard_embedding_approved_domains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
+        :param pulumi.Input['AccountSettingV2EffectiveAllowedAppsUserApiScopesArgs'] effective_allowed_apps_user_api_scopes: (AllowedAppsUserApiScopesMessage) - Effective setting value for allowed_apps_user_api_scopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
         :param pulumi.Input['AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs'] effective_automatic_cluster_update_workspace: Effective setting value for automatic_cluster_update_workspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
         :param pulumi.Input['AccountSettingV2EffectiveBooleanValArgs'] effective_boolean_val: (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
         :param pulumi.Input['AccountSettingV2EffectiveIntegerValArgs'] effective_integer_val: (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
+        :param pulumi.Input['AccountSettingV2EffectiveOperationalEmailCustomRecipientArgs'] effective_operational_email_custom_recipient: (OperationalEmailCustomRecipientMessage) - Effective setting value for operational_email_custom_recipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
         :param pulumi.Input['AccountSettingV2EffectivePersonalComputeArgs'] effective_personal_compute: Effective setting value for personal_compute setting. This is the final effective value of setting. To set a value use personal_compute
         :param pulumi.Input['AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs'] effective_restrict_workspace_admins: Effective setting value for restrict_workspace_admins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
         :param pulumi.Input['AccountSettingV2EffectiveStringValArgs'] effective_string_val: (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
         :param pulumi.Input['AccountSettingV2IntegerValArgs'] integer_val: Setting value for integer type setting. This is the setting value set by consumers, check effective_integer_val for final setting value
         :param pulumi.Input[_builtins.str] name: Name of the setting
+        :param pulumi.Input['AccountSettingV2OperationalEmailCustomRecipientArgs'] operational_email_custom_recipient: Setting value for operational_email_custom_recipient setting. This is the setting value set by consumers, check effective_operational_email_custom_recipient for final setting value
         :param pulumi.Input['AccountSettingV2PersonalComputeArgs'] personal_compute: Setting value for personal_compute setting. This is the setting value set by consumers, check effective_personal_compute for final setting value
         :param pulumi.Input['AccountSettingV2RestrictWorkspaceAdminsArgs'] restrict_workspace_admins: Setting value for restrict_workspace_admins setting. This is the setting value set by consumers, check effective_restrict_workspace_admins for final setting value
         :param pulumi.Input['AccountSettingV2StringValArgs'] string_val: Setting value for string type setting. This is the setting value set by consumers, check effective_string_val for final setting value
@@ -296,6 +336,8 @@ class _AccountSettingV2State:
             pulumi.set(__self__, "aibi_dashboard_embedding_access_policy", aibi_dashboard_embedding_access_policy)
         if aibi_dashboard_embedding_approved_domains is not None:
             pulumi.set(__self__, "aibi_dashboard_embedding_approved_domains", aibi_dashboard_embedding_approved_domains)
+        if allowed_apps_user_api_scopes is not None:
+            pulumi.set(__self__, "allowed_apps_user_api_scopes", allowed_apps_user_api_scopes)
         if automatic_cluster_update_workspace is not None:
             pulumi.set(__self__, "automatic_cluster_update_workspace", automatic_cluster_update_workspace)
         if boolean_val is not None:
@@ -304,12 +346,16 @@ class _AccountSettingV2State:
             pulumi.set(__self__, "effective_aibi_dashboard_embedding_access_policy", effective_aibi_dashboard_embedding_access_policy)
         if effective_aibi_dashboard_embedding_approved_domains is not None:
             pulumi.set(__self__, "effective_aibi_dashboard_embedding_approved_domains", effective_aibi_dashboard_embedding_approved_domains)
+        if effective_allowed_apps_user_api_scopes is not None:
+            pulumi.set(__self__, "effective_allowed_apps_user_api_scopes", effective_allowed_apps_user_api_scopes)
         if effective_automatic_cluster_update_workspace is not None:
             pulumi.set(__self__, "effective_automatic_cluster_update_workspace", effective_automatic_cluster_update_workspace)
         if effective_boolean_val is not None:
             pulumi.set(__self__, "effective_boolean_val", effective_boolean_val)
         if effective_integer_val is not None:
             pulumi.set(__self__, "effective_integer_val", effective_integer_val)
+        if effective_operational_email_custom_recipient is not None:
+            pulumi.set(__self__, "effective_operational_email_custom_recipient", effective_operational_email_custom_recipient)
         if effective_personal_compute is not None:
             pulumi.set(__self__, "effective_personal_compute", effective_personal_compute)
         if effective_restrict_workspace_admins is not None:
@@ -320,6 +366,8 @@ class _AccountSettingV2State:
             pulumi.set(__self__, "integer_val", integer_val)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if operational_email_custom_recipient is not None:
+            pulumi.set(__self__, "operational_email_custom_recipient", operational_email_custom_recipient)
         if personal_compute is not None:
             pulumi.set(__self__, "personal_compute", personal_compute)
         if restrict_workspace_admins is not None:
@@ -350,6 +398,18 @@ class _AccountSettingV2State:
     @aibi_dashboard_embedding_approved_domains.setter
     def aibi_dashboard_embedding_approved_domains(self, value: pulumi.Input[Optional['AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs']]):
         pulumi.set(self, "aibi_dashboard_embedding_approved_domains", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedAppsUserApiScopes")
+    def allowed_apps_user_api_scopes(self) -> pulumi.Input[Optional['AccountSettingV2AllowedAppsUserApiScopesArgs']]:
+        """
+        Setting value for allowed_apps_user_api_scopes setting. This is the setting value set by consumers, check effective_allowed_apps_user_api_scopes for final setting value
+        """
+        return pulumi.get(self, "allowed_apps_user_api_scopes")
+
+    @allowed_apps_user_api_scopes.setter
+    def allowed_apps_user_api_scopes(self, value: pulumi.Input[Optional['AccountSettingV2AllowedAppsUserApiScopesArgs']]):
+        pulumi.set(self, "allowed_apps_user_api_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="automaticClusterUpdateWorkspace")
@@ -400,6 +460,18 @@ class _AccountSettingV2State:
         pulumi.set(self, "effective_aibi_dashboard_embedding_approved_domains", value)
 
     @_builtins.property
+    @pulumi.getter(name="effectiveAllowedAppsUserApiScopes")
+    def effective_allowed_apps_user_api_scopes(self) -> pulumi.Input[Optional['AccountSettingV2EffectiveAllowedAppsUserApiScopesArgs']]:
+        """
+        (AllowedAppsUserApiScopesMessage) - Effective setting value for allowed_apps_user_api_scopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+        """
+        return pulumi.get(self, "effective_allowed_apps_user_api_scopes")
+
+    @effective_allowed_apps_user_api_scopes.setter
+    def effective_allowed_apps_user_api_scopes(self, value: pulumi.Input[Optional['AccountSettingV2EffectiveAllowedAppsUserApiScopesArgs']]):
+        pulumi.set(self, "effective_allowed_apps_user_api_scopes", value)
+
+    @_builtins.property
     @pulumi.getter(name="effectiveAutomaticClusterUpdateWorkspace")
     def effective_automatic_cluster_update_workspace(self) -> pulumi.Input[Optional['AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']]:
         """
@@ -434,6 +506,18 @@ class _AccountSettingV2State:
     @effective_integer_val.setter
     def effective_integer_val(self, value: pulumi.Input[Optional['AccountSettingV2EffectiveIntegerValArgs']]):
         pulumi.set(self, "effective_integer_val", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveOperationalEmailCustomRecipient")
+    def effective_operational_email_custom_recipient(self) -> pulumi.Input[Optional['AccountSettingV2EffectiveOperationalEmailCustomRecipientArgs']]:
+        """
+        (OperationalEmailCustomRecipientMessage) - Effective setting value for operational_email_custom_recipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+        """
+        return pulumi.get(self, "effective_operational_email_custom_recipient")
+
+    @effective_operational_email_custom_recipient.setter
+    def effective_operational_email_custom_recipient(self, value: pulumi.Input[Optional['AccountSettingV2EffectiveOperationalEmailCustomRecipientArgs']]):
+        pulumi.set(self, "effective_operational_email_custom_recipient", value)
 
     @_builtins.property
     @pulumi.getter(name="effectivePersonalCompute")
@@ -496,6 +580,18 @@ class _AccountSettingV2State:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="operationalEmailCustomRecipient")
+    def operational_email_custom_recipient(self) -> pulumi.Input[Optional['AccountSettingV2OperationalEmailCustomRecipientArgs']]:
+        """
+        Setting value for operational_email_custom_recipient setting. This is the setting value set by consumers, check effective_operational_email_custom_recipient for final setting value
+        """
+        return pulumi.get(self, "operational_email_custom_recipient")
+
+    @operational_email_custom_recipient.setter
+    def operational_email_custom_recipient(self, value: pulumi.Input[Optional['AccountSettingV2OperationalEmailCustomRecipientArgs']]):
+        pulumi.set(self, "operational_email_custom_recipient", value)
+
+    @_builtins.property
     @pulumi.getter(name="personalCompute")
     def personal_compute(self) -> pulumi.Input[Optional['AccountSettingV2PersonalComputeArgs']]:
         """
@@ -540,6 +636,7 @@ class AccountSettingV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aibi_dashboard_embedding_access_policy: pulumi.Input[Optional[Union['AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs', 'AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
                  aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
+                 allowed_apps_user_api_scopes: pulumi.Input[Optional[Union['AccountSettingV2AllowedAppsUserApiScopesArgs', 'AccountSettingV2AllowedAppsUserApiScopesArgsDict']]] = None,
                  automatic_cluster_update_workspace: pulumi.Input[Optional[Union['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs', 'AccountSettingV2AutomaticClusterUpdateWorkspaceArgsDict']]] = None,
                  boolean_val: pulumi.Input[Optional[Union['AccountSettingV2BooleanValArgs', 'AccountSettingV2BooleanValArgsDict']]] = None,
                  effective_aibi_dashboard_embedding_access_policy: pulumi.Input[Optional[Union['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
@@ -549,6 +646,7 @@ class AccountSettingV2(pulumi.CustomResource):
                  effective_restrict_workspace_admins: pulumi.Input[Optional[Union['AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'AccountSettingV2EffectiveRestrictWorkspaceAdminsArgsDict']]] = None,
                  integer_val: pulumi.Input[Optional[Union['AccountSettingV2IntegerValArgs', 'AccountSettingV2IntegerValArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 operational_email_custom_recipient: pulumi.Input[Optional[Union['AccountSettingV2OperationalEmailCustomRecipientArgs', 'AccountSettingV2OperationalEmailCustomRecipientArgsDict']]] = None,
                  personal_compute: pulumi.Input[Optional[Union['AccountSettingV2PersonalComputeArgs', 'AccountSettingV2PersonalComputeArgsDict']]] = None,
                  restrict_workspace_admins: pulumi.Input[Optional[Union['AccountSettingV2RestrictWorkspaceAdminsArgs', 'AccountSettingV2RestrictWorkspaceAdminsArgsDict']]] = None,
                  string_val: pulumi.Input[Optional[Union['AccountSettingV2StringValArgs', 'AccountSettingV2StringValArgsDict']]] = None,
@@ -581,6 +679,7 @@ class AccountSettingV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs', 'AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict']] aibi_dashboard_embedding_access_policy: Setting value for aibi_dashboard_embedding_access_policy setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_access_policy for final setting value
         :param pulumi.Input[Union['AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict']] aibi_dashboard_embedding_approved_domains: Setting value for aibi_dashboard_embedding_approved_domains setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_approved_domains for final setting value
+        :param pulumi.Input[Union['AccountSettingV2AllowedAppsUserApiScopesArgs', 'AccountSettingV2AllowedAppsUserApiScopesArgsDict']] allowed_apps_user_api_scopes: Setting value for allowed_apps_user_api_scopes setting. This is the setting value set by consumers, check effective_allowed_apps_user_api_scopes for final setting value
         :param pulumi.Input[Union['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs', 'AccountSettingV2AutomaticClusterUpdateWorkspaceArgsDict']] automatic_cluster_update_workspace: Setting value for automatic_cluster_update_workspace setting. This is the setting value set by consumers, check effective_automatic_cluster_update_workspace for final setting value
         :param pulumi.Input[Union['AccountSettingV2BooleanValArgs', 'AccountSettingV2BooleanValArgsDict']] boolean_val: Setting value for boolean type setting. This is the setting value set by consumers, check effective_boolean_val for final setting value
         :param pulumi.Input[Union['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']] effective_aibi_dashboard_embedding_access_policy: Effective setting value for aibi_dashboard_embedding_access_policy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
@@ -590,6 +689,7 @@ class AccountSettingV2(pulumi.CustomResource):
         :param pulumi.Input[Union['AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'AccountSettingV2EffectiveRestrictWorkspaceAdminsArgsDict']] effective_restrict_workspace_admins: Effective setting value for restrict_workspace_admins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
         :param pulumi.Input[Union['AccountSettingV2IntegerValArgs', 'AccountSettingV2IntegerValArgsDict']] integer_val: Setting value for integer type setting. This is the setting value set by consumers, check effective_integer_val for final setting value
         :param pulumi.Input[_builtins.str] name: Name of the setting
+        :param pulumi.Input[Union['AccountSettingV2OperationalEmailCustomRecipientArgs', 'AccountSettingV2OperationalEmailCustomRecipientArgsDict']] operational_email_custom_recipient: Setting value for operational_email_custom_recipient setting. This is the setting value set by consumers, check effective_operational_email_custom_recipient for final setting value
         :param pulumi.Input[Union['AccountSettingV2PersonalComputeArgs', 'AccountSettingV2PersonalComputeArgsDict']] personal_compute: Setting value for personal_compute setting. This is the setting value set by consumers, check effective_personal_compute for final setting value
         :param pulumi.Input[Union['AccountSettingV2RestrictWorkspaceAdminsArgs', 'AccountSettingV2RestrictWorkspaceAdminsArgsDict']] restrict_workspace_admins: Setting value for restrict_workspace_admins setting. This is the setting value set by consumers, check effective_restrict_workspace_admins for final setting value
         :param pulumi.Input[Union['AccountSettingV2StringValArgs', 'AccountSettingV2StringValArgsDict']] string_val: Setting value for string type setting. This is the setting value set by consumers, check effective_string_val for final setting value
@@ -641,6 +741,7 @@ class AccountSettingV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aibi_dashboard_embedding_access_policy: pulumi.Input[Optional[Union['AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs', 'AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
                  aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
+                 allowed_apps_user_api_scopes: pulumi.Input[Optional[Union['AccountSettingV2AllowedAppsUserApiScopesArgs', 'AccountSettingV2AllowedAppsUserApiScopesArgsDict']]] = None,
                  automatic_cluster_update_workspace: pulumi.Input[Optional[Union['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs', 'AccountSettingV2AutomaticClusterUpdateWorkspaceArgsDict']]] = None,
                  boolean_val: pulumi.Input[Optional[Union['AccountSettingV2BooleanValArgs', 'AccountSettingV2BooleanValArgsDict']]] = None,
                  effective_aibi_dashboard_embedding_access_policy: pulumi.Input[Optional[Union['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
@@ -650,6 +751,7 @@ class AccountSettingV2(pulumi.CustomResource):
                  effective_restrict_workspace_admins: pulumi.Input[Optional[Union['AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'AccountSettingV2EffectiveRestrictWorkspaceAdminsArgsDict']]] = None,
                  integer_val: pulumi.Input[Optional[Union['AccountSettingV2IntegerValArgs', 'AccountSettingV2IntegerValArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 operational_email_custom_recipient: pulumi.Input[Optional[Union['AccountSettingV2OperationalEmailCustomRecipientArgs', 'AccountSettingV2OperationalEmailCustomRecipientArgsDict']]] = None,
                  personal_compute: pulumi.Input[Optional[Union['AccountSettingV2PersonalComputeArgs', 'AccountSettingV2PersonalComputeArgsDict']]] = None,
                  restrict_workspace_admins: pulumi.Input[Optional[Union['AccountSettingV2RestrictWorkspaceAdminsArgs', 'AccountSettingV2RestrictWorkspaceAdminsArgsDict']]] = None,
                  string_val: pulumi.Input[Optional[Union['AccountSettingV2StringValArgs', 'AccountSettingV2StringValArgsDict']]] = None,
@@ -664,6 +766,7 @@ class AccountSettingV2(pulumi.CustomResource):
 
             __props__.__dict__["aibi_dashboard_embedding_access_policy"] = aibi_dashboard_embedding_access_policy
             __props__.__dict__["aibi_dashboard_embedding_approved_domains"] = aibi_dashboard_embedding_approved_domains
+            __props__.__dict__["allowed_apps_user_api_scopes"] = allowed_apps_user_api_scopes
             __props__.__dict__["automatic_cluster_update_workspace"] = automatic_cluster_update_workspace
             __props__.__dict__["boolean_val"] = boolean_val
             __props__.__dict__["effective_aibi_dashboard_embedding_access_policy"] = effective_aibi_dashboard_embedding_access_policy
@@ -673,11 +776,14 @@ class AccountSettingV2(pulumi.CustomResource):
             __props__.__dict__["effective_restrict_workspace_admins"] = effective_restrict_workspace_admins
             __props__.__dict__["integer_val"] = integer_val
             __props__.__dict__["name"] = name
+            __props__.__dict__["operational_email_custom_recipient"] = operational_email_custom_recipient
             __props__.__dict__["personal_compute"] = personal_compute
             __props__.__dict__["restrict_workspace_admins"] = restrict_workspace_admins
             __props__.__dict__["string_val"] = string_val
+            __props__.__dict__["effective_allowed_apps_user_api_scopes"] = None
             __props__.__dict__["effective_boolean_val"] = None
             __props__.__dict__["effective_integer_val"] = None
+            __props__.__dict__["effective_operational_email_custom_recipient"] = None
             __props__.__dict__["effective_string_val"] = None
         super(AccountSettingV2, __self__).__init__(
             'databricks:index/accountSettingV2:AccountSettingV2',
@@ -691,18 +797,22 @@ class AccountSettingV2(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             aibi_dashboard_embedding_access_policy: pulumi.Input[Optional[Union['AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs', 'AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
             aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
+            allowed_apps_user_api_scopes: pulumi.Input[Optional[Union['AccountSettingV2AllowedAppsUserApiScopesArgs', 'AccountSettingV2AllowedAppsUserApiScopesArgsDict']]] = None,
             automatic_cluster_update_workspace: pulumi.Input[Optional[Union['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs', 'AccountSettingV2AutomaticClusterUpdateWorkspaceArgsDict']]] = None,
             boolean_val: pulumi.Input[Optional[Union['AccountSettingV2BooleanValArgs', 'AccountSettingV2BooleanValArgsDict']]] = None,
             effective_aibi_dashboard_embedding_access_policy: pulumi.Input[Optional[Union['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
             effective_aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
+            effective_allowed_apps_user_api_scopes: pulumi.Input[Optional[Union['AccountSettingV2EffectiveAllowedAppsUserApiScopesArgs', 'AccountSettingV2EffectiveAllowedAppsUserApiScopesArgsDict']]] = None,
             effective_automatic_cluster_update_workspace: pulumi.Input[Optional[Union['AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
             effective_boolean_val: pulumi.Input[Optional[Union['AccountSettingV2EffectiveBooleanValArgs', 'AccountSettingV2EffectiveBooleanValArgsDict']]] = None,
             effective_integer_val: pulumi.Input[Optional[Union['AccountSettingV2EffectiveIntegerValArgs', 'AccountSettingV2EffectiveIntegerValArgsDict']]] = None,
+            effective_operational_email_custom_recipient: pulumi.Input[Optional[Union['AccountSettingV2EffectiveOperationalEmailCustomRecipientArgs', 'AccountSettingV2EffectiveOperationalEmailCustomRecipientArgsDict']]] = None,
             effective_personal_compute: pulumi.Input[Optional[Union['AccountSettingV2EffectivePersonalComputeArgs', 'AccountSettingV2EffectivePersonalComputeArgsDict']]] = None,
             effective_restrict_workspace_admins: pulumi.Input[Optional[Union['AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'AccountSettingV2EffectiveRestrictWorkspaceAdminsArgsDict']]] = None,
             effective_string_val: pulumi.Input[Optional[Union['AccountSettingV2EffectiveStringValArgs', 'AccountSettingV2EffectiveStringValArgsDict']]] = None,
             integer_val: pulumi.Input[Optional[Union['AccountSettingV2IntegerValArgs', 'AccountSettingV2IntegerValArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            operational_email_custom_recipient: pulumi.Input[Optional[Union['AccountSettingV2OperationalEmailCustomRecipientArgs', 'AccountSettingV2OperationalEmailCustomRecipientArgsDict']]] = None,
             personal_compute: pulumi.Input[Optional[Union['AccountSettingV2PersonalComputeArgs', 'AccountSettingV2PersonalComputeArgsDict']]] = None,
             restrict_workspace_admins: pulumi.Input[Optional[Union['AccountSettingV2RestrictWorkspaceAdminsArgs', 'AccountSettingV2RestrictWorkspaceAdminsArgsDict']]] = None,
             string_val: pulumi.Input[Optional[Union['AccountSettingV2StringValArgs', 'AccountSettingV2StringValArgsDict']]] = None) -> 'AccountSettingV2':
@@ -715,18 +825,22 @@ class AccountSettingV2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgs', 'AccountSettingV2AibiDashboardEmbeddingAccessPolicyArgsDict']] aibi_dashboard_embedding_access_policy: Setting value for aibi_dashboard_embedding_access_policy setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_access_policy for final setting value
         :param pulumi.Input[Union['AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgs', 'AccountSettingV2AibiDashboardEmbeddingApprovedDomainsArgsDict']] aibi_dashboard_embedding_approved_domains: Setting value for aibi_dashboard_embedding_approved_domains setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_approved_domains for final setting value
+        :param pulumi.Input[Union['AccountSettingV2AllowedAppsUserApiScopesArgs', 'AccountSettingV2AllowedAppsUserApiScopesArgsDict']] allowed_apps_user_api_scopes: Setting value for allowed_apps_user_api_scopes setting. This is the setting value set by consumers, check effective_allowed_apps_user_api_scopes for final setting value
         :param pulumi.Input[Union['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs', 'AccountSettingV2AutomaticClusterUpdateWorkspaceArgsDict']] automatic_cluster_update_workspace: Setting value for automatic_cluster_update_workspace setting. This is the setting value set by consumers, check effective_automatic_cluster_update_workspace for final setting value
         :param pulumi.Input[Union['AccountSettingV2BooleanValArgs', 'AccountSettingV2BooleanValArgsDict']] boolean_val: Setting value for boolean type setting. This is the setting value set by consumers, check effective_boolean_val for final setting value
         :param pulumi.Input[Union['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']] effective_aibi_dashboard_embedding_access_policy: Effective setting value for aibi_dashboard_embedding_access_policy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
         :param pulumi.Input[Union['AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']] effective_aibi_dashboard_embedding_approved_domains: Effective setting value for aibi_dashboard_embedding_approved_domains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
+        :param pulumi.Input[Union['AccountSettingV2EffectiveAllowedAppsUserApiScopesArgs', 'AccountSettingV2EffectiveAllowedAppsUserApiScopesArgsDict']] effective_allowed_apps_user_api_scopes: (AllowedAppsUserApiScopesMessage) - Effective setting value for allowed_apps_user_api_scopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
         :param pulumi.Input[Union['AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']] effective_automatic_cluster_update_workspace: Effective setting value for automatic_cluster_update_workspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
         :param pulumi.Input[Union['AccountSettingV2EffectiveBooleanValArgs', 'AccountSettingV2EffectiveBooleanValArgsDict']] effective_boolean_val: (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
         :param pulumi.Input[Union['AccountSettingV2EffectiveIntegerValArgs', 'AccountSettingV2EffectiveIntegerValArgsDict']] effective_integer_val: (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
+        :param pulumi.Input[Union['AccountSettingV2EffectiveOperationalEmailCustomRecipientArgs', 'AccountSettingV2EffectiveOperationalEmailCustomRecipientArgsDict']] effective_operational_email_custom_recipient: (OperationalEmailCustomRecipientMessage) - Effective setting value for operational_email_custom_recipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
         :param pulumi.Input[Union['AccountSettingV2EffectivePersonalComputeArgs', 'AccountSettingV2EffectivePersonalComputeArgsDict']] effective_personal_compute: Effective setting value for personal_compute setting. This is the final effective value of setting. To set a value use personal_compute
         :param pulumi.Input[Union['AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'AccountSettingV2EffectiveRestrictWorkspaceAdminsArgsDict']] effective_restrict_workspace_admins: Effective setting value for restrict_workspace_admins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
         :param pulumi.Input[Union['AccountSettingV2EffectiveStringValArgs', 'AccountSettingV2EffectiveStringValArgsDict']] effective_string_val: (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
         :param pulumi.Input[Union['AccountSettingV2IntegerValArgs', 'AccountSettingV2IntegerValArgsDict']] integer_val: Setting value for integer type setting. This is the setting value set by consumers, check effective_integer_val for final setting value
         :param pulumi.Input[_builtins.str] name: Name of the setting
+        :param pulumi.Input[Union['AccountSettingV2OperationalEmailCustomRecipientArgs', 'AccountSettingV2OperationalEmailCustomRecipientArgsDict']] operational_email_custom_recipient: Setting value for operational_email_custom_recipient setting. This is the setting value set by consumers, check effective_operational_email_custom_recipient for final setting value
         :param pulumi.Input[Union['AccountSettingV2PersonalComputeArgs', 'AccountSettingV2PersonalComputeArgsDict']] personal_compute: Setting value for personal_compute setting. This is the setting value set by consumers, check effective_personal_compute for final setting value
         :param pulumi.Input[Union['AccountSettingV2RestrictWorkspaceAdminsArgs', 'AccountSettingV2RestrictWorkspaceAdminsArgsDict']] restrict_workspace_admins: Setting value for restrict_workspace_admins setting. This is the setting value set by consumers, check effective_restrict_workspace_admins for final setting value
         :param pulumi.Input[Union['AccountSettingV2StringValArgs', 'AccountSettingV2StringValArgsDict']] string_val: Setting value for string type setting. This is the setting value set by consumers, check effective_string_val for final setting value
@@ -737,18 +851,22 @@ class AccountSettingV2(pulumi.CustomResource):
 
         __props__.__dict__["aibi_dashboard_embedding_access_policy"] = aibi_dashboard_embedding_access_policy
         __props__.__dict__["aibi_dashboard_embedding_approved_domains"] = aibi_dashboard_embedding_approved_domains
+        __props__.__dict__["allowed_apps_user_api_scopes"] = allowed_apps_user_api_scopes
         __props__.__dict__["automatic_cluster_update_workspace"] = automatic_cluster_update_workspace
         __props__.__dict__["boolean_val"] = boolean_val
         __props__.__dict__["effective_aibi_dashboard_embedding_access_policy"] = effective_aibi_dashboard_embedding_access_policy
         __props__.__dict__["effective_aibi_dashboard_embedding_approved_domains"] = effective_aibi_dashboard_embedding_approved_domains
+        __props__.__dict__["effective_allowed_apps_user_api_scopes"] = effective_allowed_apps_user_api_scopes
         __props__.__dict__["effective_automatic_cluster_update_workspace"] = effective_automatic_cluster_update_workspace
         __props__.__dict__["effective_boolean_val"] = effective_boolean_val
         __props__.__dict__["effective_integer_val"] = effective_integer_val
+        __props__.__dict__["effective_operational_email_custom_recipient"] = effective_operational_email_custom_recipient
         __props__.__dict__["effective_personal_compute"] = effective_personal_compute
         __props__.__dict__["effective_restrict_workspace_admins"] = effective_restrict_workspace_admins
         __props__.__dict__["effective_string_val"] = effective_string_val
         __props__.__dict__["integer_val"] = integer_val
         __props__.__dict__["name"] = name
+        __props__.__dict__["operational_email_custom_recipient"] = operational_email_custom_recipient
         __props__.__dict__["personal_compute"] = personal_compute
         __props__.__dict__["restrict_workspace_admins"] = restrict_workspace_admins
         __props__.__dict__["string_val"] = string_val
@@ -769,6 +887,14 @@ class AccountSettingV2(pulumi.CustomResource):
         Setting value for aibi_dashboard_embedding_approved_domains setting. This is the setting value set by consumers, check effective_aibi_dashboard_embedding_approved_domains for final setting value
         """
         return pulumi.get(self, "aibi_dashboard_embedding_approved_domains")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedAppsUserApiScopes")
+    def allowed_apps_user_api_scopes(self) -> pulumi.Output[Optional['outputs.AccountSettingV2AllowedAppsUserApiScopes']]:
+        """
+        Setting value for allowed_apps_user_api_scopes setting. This is the setting value set by consumers, check effective_allowed_apps_user_api_scopes for final setting value
+        """
+        return pulumi.get(self, "allowed_apps_user_api_scopes")
 
     @_builtins.property
     @pulumi.getter(name="automaticClusterUpdateWorkspace")
@@ -803,6 +929,14 @@ class AccountSettingV2(pulumi.CustomResource):
         return pulumi.get(self, "effective_aibi_dashboard_embedding_approved_domains")
 
     @_builtins.property
+    @pulumi.getter(name="effectiveAllowedAppsUserApiScopes")
+    def effective_allowed_apps_user_api_scopes(self) -> pulumi.Output['outputs.AccountSettingV2EffectiveAllowedAppsUserApiScopes']:
+        """
+        (AllowedAppsUserApiScopesMessage) - Effective setting value for allowed_apps_user_api_scopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+        """
+        return pulumi.get(self, "effective_allowed_apps_user_api_scopes")
+
+    @_builtins.property
     @pulumi.getter(name="effectiveAutomaticClusterUpdateWorkspace")
     def effective_automatic_cluster_update_workspace(self) -> pulumi.Output[Optional['outputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspace']]:
         """
@@ -825,6 +959,14 @@ class AccountSettingV2(pulumi.CustomResource):
         (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
         """
         return pulumi.get(self, "effective_integer_val")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveOperationalEmailCustomRecipient")
+    def effective_operational_email_custom_recipient(self) -> pulumi.Output['outputs.AccountSettingV2EffectiveOperationalEmailCustomRecipient']:
+        """
+        (OperationalEmailCustomRecipientMessage) - Effective setting value for operational_email_custom_recipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+        """
+        return pulumi.get(self, "effective_operational_email_custom_recipient")
 
     @_builtins.property
     @pulumi.getter(name="effectivePersonalCompute")
@@ -865,6 +1007,14 @@ class AccountSettingV2(pulumi.CustomResource):
         Name of the setting
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operationalEmailCustomRecipient")
+    def operational_email_custom_recipient(self) -> pulumi.Output[Optional['outputs.AccountSettingV2OperationalEmailCustomRecipient']]:
+        """
+        Setting value for operational_email_custom_recipient setting. This is the setting value set by consumers, check effective_operational_email_custom_recipient for final setting value
+        """
+        return pulumi.get(self, "operational_email_custom_recipient")
 
     @_builtins.property
     @pulumi.getter(name="personalCompute")

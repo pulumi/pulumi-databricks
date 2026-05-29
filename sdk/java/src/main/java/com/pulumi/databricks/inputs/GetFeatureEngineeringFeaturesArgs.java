@@ -6,7 +6,9 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetFeatureEngineeringFeaturesProviderConfigArgs;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +17,21 @@ import javax.annotation.Nullable;
 public final class GetFeatureEngineeringFeaturesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetFeatureEngineeringFeaturesArgs Empty = new GetFeatureEngineeringFeaturesArgs();
+
+    /**
+     * Name of parent catalog for features of interest
+     * 
+     */
+    @Import(name="catalogName", required=true)
+    private Output<String> catalogName;
+
+    /**
+     * @return Name of parent catalog for features of interest
+     * 
+     */
+    public Output<String> catalogName() {
+        return this.catalogName;
+    }
 
     /**
      * The maximum number of results to return
@@ -46,11 +63,28 @@ public final class GetFeatureEngineeringFeaturesArgs extends com.pulumi.resource
         return Optional.ofNullable(this.providerConfig);
     }
 
+    /**
+     * Name of parent schema relative to its parent catalog
+     * 
+     */
+    @Import(name="schemaName", required=true)
+    private Output<String> schemaName;
+
+    /**
+     * @return Name of parent schema relative to its parent catalog
+     * 
+     */
+    public Output<String> schemaName() {
+        return this.schemaName;
+    }
+
     private GetFeatureEngineeringFeaturesArgs() {}
 
     private GetFeatureEngineeringFeaturesArgs(GetFeatureEngineeringFeaturesArgs $) {
+        this.catalogName = $.catalogName;
         this.pageSize = $.pageSize;
         this.providerConfig = $.providerConfig;
+        this.schemaName = $.schemaName;
     }
 
     public static Builder builder() {
@@ -69,6 +103,27 @@ public final class GetFeatureEngineeringFeaturesArgs extends com.pulumi.resource
 
         public Builder(GetFeatureEngineeringFeaturesArgs defaults) {
             $ = new GetFeatureEngineeringFeaturesArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param catalogName Name of parent catalog for features of interest
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalogName(Output<String> catalogName) {
+            $.catalogName = catalogName;
+            return this;
+        }
+
+        /**
+         * @param catalogName Name of parent catalog for features of interest
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalogName(String catalogName) {
+            return catalogName(Output.of(catalogName));
         }
 
         /**
@@ -113,7 +168,34 @@ public final class GetFeatureEngineeringFeaturesArgs extends com.pulumi.resource
             return providerConfig(Output.of(providerConfig));
         }
 
+        /**
+         * @param schemaName Name of parent schema relative to its parent catalog
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaName(Output<String> schemaName) {
+            $.schemaName = schemaName;
+            return this;
+        }
+
+        /**
+         * @param schemaName Name of parent schema relative to its parent catalog
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaName(String schemaName) {
+            return schemaName(Output.of(schemaName));
+        }
+
         public GetFeatureEngineeringFeaturesArgs build() {
+            if ($.catalogName == null) {
+                throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesArgs", "catalogName");
+            }
+            if ($.schemaName == null) {
+                throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesArgs", "schemaName");
+            }
             return $;
         }
     }

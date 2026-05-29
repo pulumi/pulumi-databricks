@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess;
 import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesItemIngressDryRunPrivateAccess;
 import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccess;
 import java.util.Objects;
@@ -12,6 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountNetworkPoliciesItemIngressDryRun {
+    /**
+     * @return (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+     * 
+     */
+    private @Nullable GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess crossWorkspaceAccess;
     /**
      * @return (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
      * Configures how registered private endpoints are allowed or denied access
@@ -26,6 +32,13 @@ public final class GetAccountNetworkPoliciesItemIngressDryRun {
     private @Nullable GetAccountNetworkPoliciesItemIngressDryRunPublicAccess publicAccess;
 
     private GetAccountNetworkPoliciesItemIngressDryRun() {}
+    /**
+     * @return (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+     * 
+     */
+    public Optional<GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess> crossWorkspaceAccess() {
+        return Optional.ofNullable(this.crossWorkspaceAccess);
+    }
     /**
      * @return (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
      * Configures how registered private endpoints are allowed or denied access
@@ -52,15 +65,23 @@ public final class GetAccountNetworkPoliciesItemIngressDryRun {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess crossWorkspaceAccess;
         private @Nullable GetAccountNetworkPoliciesItemIngressDryRunPrivateAccess privateAccess;
         private @Nullable GetAccountNetworkPoliciesItemIngressDryRunPublicAccess publicAccess;
         public Builder() {}
         public Builder(GetAccountNetworkPoliciesItemIngressDryRun defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.crossWorkspaceAccess = defaults.crossWorkspaceAccess;
     	      this.privateAccess = defaults.privateAccess;
     	      this.publicAccess = defaults.publicAccess;
         }
 
+        @CustomType.Setter
+        public Builder crossWorkspaceAccess(@Nullable GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess crossWorkspaceAccess) {
+
+            this.crossWorkspaceAccess = crossWorkspaceAccess;
+            return this;
+        }
         @CustomType.Setter
         public Builder privateAccess(@Nullable GetAccountNetworkPoliciesItemIngressDryRunPrivateAccess privateAccess) {
 
@@ -75,6 +96,7 @@ public final class GetAccountNetworkPoliciesItemIngressDryRun {
         }
         public GetAccountNetworkPoliciesItemIngressDryRun build() {
             final var _resultValue = new GetAccountNetworkPoliciesItemIngressDryRun();
+            _resultValue.crossWorkspaceAccess = crossWorkspaceAccess;
             _resultValue.privateAccess = privateAccess;
             _resultValue.publicAccess = publicAccess;
             return _resultValue;

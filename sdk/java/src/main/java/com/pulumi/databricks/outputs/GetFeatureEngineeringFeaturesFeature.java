@@ -21,6 +21,21 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFeatureEngineeringFeaturesFeature {
     /**
+     * @return Name of parent catalog for features of interest
+     * 
+     */
+    private String catalogName;
+    /**
+     * @return (string) - Time at which this feature was created
+     * 
+     */
+    private String createdAt;
+    /**
+     * @return (string) - Username of the feature creator
+     * 
+     */
+    private String createdBy;
+    /**
      * @return (string) - The description of the feature
      * 
      */
@@ -61,10 +76,25 @@ public final class GetFeatureEngineeringFeaturesFeature {
      */
     private GetFeatureEngineeringFeaturesFeatureLineageContext lineageContext;
     /**
+     * @return (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+     * reference fields within the key or value schema (e.g., &#34;value.event_timestamp&#34;). For nested
+     * fields, the leaf node name (e.g., &#34;eventTimestamp&#34; from &#34;value.event_details.event_timestamp&#34;)
+     * is what will be present in materialized tables and expected to match at query time.
+     * TODO(FS-939): Colon-prefixed notation (e.g., &#34;value:event_timestamp&#34;) is supported for
+     * backwards compatibility but is deprecated; migrate to dot notation
+     * 
+     */
+    private String name;
+    /**
      * @return Configure the provider for management through account provider.
      * 
      */
     private @Nullable GetFeatureEngineeringFeaturesFeatureProviderConfig providerConfig;
+    /**
+     * @return Name of parent schema relative to its parent catalog
+     * 
+     */
+    private String schemaName;
     /**
      * @return (DataSource) - The data source of the feature
      * 
@@ -83,6 +113,27 @@ public final class GetFeatureEngineeringFeaturesFeature {
     private GetFeatureEngineeringFeaturesFeatureTimeseriesColumn timeseriesColumn;
 
     private GetFeatureEngineeringFeaturesFeature() {}
+    /**
+     * @return Name of parent catalog for features of interest
+     * 
+     */
+    public String catalogName() {
+        return this.catalogName;
+    }
+    /**
+     * @return (string) - Time at which this feature was created
+     * 
+     */
+    public String createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * @return (string) - Username of the feature creator
+     * 
+     */
+    public String createdBy() {
+        return this.createdBy;
+    }
     /**
      * @return (string) - The description of the feature
      * 
@@ -138,11 +189,30 @@ public final class GetFeatureEngineeringFeaturesFeature {
         return this.lineageContext;
     }
     /**
+     * @return (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+     * reference fields within the key or value schema (e.g., &#34;value.event_timestamp&#34;). For nested
+     * fields, the leaf node name (e.g., &#34;eventTimestamp&#34; from &#34;value.event_details.event_timestamp&#34;)
+     * is what will be present in materialized tables and expected to match at query time.
+     * TODO(FS-939): Colon-prefixed notation (e.g., &#34;value:event_timestamp&#34;) is supported for
+     * backwards compatibility but is deprecated; migrate to dot notation
+     * 
+     */
+    public String name() {
+        return this.name;
+    }
+    /**
      * @return Configure the provider for management through account provider.
      * 
      */
     public Optional<GetFeatureEngineeringFeaturesFeatureProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
+    }
+    /**
+     * @return Name of parent schema relative to its parent catalog
+     * 
+     */
+    public String schemaName() {
+        return this.schemaName;
     }
     /**
      * @return (DataSource) - The data source of the feature
@@ -176,6 +246,9 @@ public final class GetFeatureEngineeringFeaturesFeature {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String catalogName;
+        private String createdAt;
+        private String createdBy;
         private String description;
         private List<GetFeatureEngineeringFeaturesFeatureEntity> entities;
         private String filterCondition;
@@ -183,13 +256,18 @@ public final class GetFeatureEngineeringFeaturesFeature {
         private GetFeatureEngineeringFeaturesFeatureFunction function;
         private List<String> inputs;
         private GetFeatureEngineeringFeaturesFeatureLineageContext lineageContext;
+        private String name;
         private @Nullable GetFeatureEngineeringFeaturesFeatureProviderConfig providerConfig;
+        private String schemaName;
         private GetFeatureEngineeringFeaturesFeatureSource source;
         private GetFeatureEngineeringFeaturesFeatureTimeWindow timeWindow;
         private GetFeatureEngineeringFeaturesFeatureTimeseriesColumn timeseriesColumn;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeaturesFeature defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.catalogName = defaults.catalogName;
+    	      this.createdAt = defaults.createdAt;
+    	      this.createdBy = defaults.createdBy;
     	      this.description = defaults.description;
     	      this.entities = defaults.entities;
     	      this.filterCondition = defaults.filterCondition;
@@ -197,12 +275,38 @@ public final class GetFeatureEngineeringFeaturesFeature {
     	      this.function = defaults.function;
     	      this.inputs = defaults.inputs;
     	      this.lineageContext = defaults.lineageContext;
+    	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
+    	      this.schemaName = defaults.schemaName;
     	      this.source = defaults.source;
     	      this.timeWindow = defaults.timeWindow;
     	      this.timeseriesColumn = defaults.timeseriesColumn;
         }
 
+        @CustomType.Setter
+        public Builder catalogName(String catalogName) {
+            if (catalogName == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesFeature", "catalogName");
+            }
+            this.catalogName = catalogName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createdAt(String createdAt) {
+            if (createdAt == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesFeature", "createdAt");
+            }
+            this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createdBy(String createdBy) {
+            if (createdBy == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesFeature", "createdBy");
+            }
+            this.createdBy = createdBy;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
@@ -266,9 +370,25 @@ public final class GetFeatureEngineeringFeaturesFeature {
             return this;
         }
         @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesFeature", "name");
+            }
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
         public Builder providerConfig(@Nullable GetFeatureEngineeringFeaturesFeatureProviderConfig providerConfig) {
 
             this.providerConfig = providerConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder schemaName(String schemaName) {
+            if (schemaName == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesFeature", "schemaName");
+            }
+            this.schemaName = schemaName;
             return this;
         }
         @CustomType.Setter
@@ -297,6 +417,9 @@ public final class GetFeatureEngineeringFeaturesFeature {
         }
         public GetFeatureEngineeringFeaturesFeature build() {
             final var _resultValue = new GetFeatureEngineeringFeaturesFeature();
+            _resultValue.catalogName = catalogName;
+            _resultValue.createdAt = createdAt;
+            _resultValue.createdBy = createdBy;
             _resultValue.description = description;
             _resultValue.entities = entities;
             _resultValue.filterCondition = filterCondition;
@@ -304,7 +427,9 @@ public final class GetFeatureEngineeringFeaturesFeature {
             _resultValue.function = function;
             _resultValue.inputs = inputs;
             _resultValue.lineageContext = lineageContext;
+            _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;
+            _resultValue.schemaName = schemaName;
             _resultValue.source = source;
             _resultValue.timeWindow = timeWindow;
             _resultValue.timeseriesColumn = timeseriesColumn;

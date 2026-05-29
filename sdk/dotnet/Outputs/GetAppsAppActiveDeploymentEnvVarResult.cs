@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAppsAppActiveDeploymentEnvVarResult
     {
         /// <summary>
-        /// The name of Genie Space.
+        /// The name of the app to grant permission on.
         /// </summary>
         public readonly string? Name;
         public readonly string? Value;

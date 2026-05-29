@@ -24,7 +24,7 @@ func LookupFeatureEngineeringMaterializedFeature(ctx *pulumi.Context, args *Look
 
 // A collection of arguments for invoking getFeatureEngineeringMaterializedFeature.
 type LookupFeatureEngineeringMaterializedFeatureArgs struct {
-	// Unique identifier for the materialized feature
+	// Server-assigned unique identifier for the materialized feature
 	MaterializedFeatureId string `pulumi:"materializedFeatureId"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetFeatureEngineeringMaterializedFeatureProviderConfig `pulumi:"providerConfig"`
@@ -34,6 +34,8 @@ type LookupFeatureEngineeringMaterializedFeatureArgs struct {
 type LookupFeatureEngineeringMaterializedFeatureResult struct {
 	// (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
 	CronSchedule string `pulumi:"cronSchedule"`
+	// (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
+	CronScheduleTrigger GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger `pulumi:"cronScheduleTrigger"`
 	// (string) - The full name of the feature in Unity Catalog
 	FeatureName string `pulumi:"featureName"`
 	// The provider-assigned unique ID for this managed resource.
@@ -43,17 +45,23 @@ type LookupFeatureEngineeringMaterializedFeatureResult struct {
 	// (string) - The timestamp when the pipeline last ran and updated the materialized feature values.
 	// If the pipeline has not run yet, this field will be null
 	LastMaterializationTime string `pulumi:"lastMaterializationTime"`
-	// (string) - Unique identifier for the materialized feature
+	// (string) - Server-assigned unique identifier for the materialized feature
 	MaterializedFeatureId string `pulumi:"materializedFeatureId"`
-	// (OfflineStoreConfig)
+	// (OfflineStoreConfig) - Destination for writing feature values to an offline Delta table
 	OfflineStoreConfig GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig `pulumi:"offlineStoreConfig"`
-	// (OnlineStoreConfig)
+	// (OnlineStoreConfig) - Destination for writing feature values to an online Lakebase table
 	OnlineStoreConfig GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig `pulumi:"onlineStoreConfig"`
 	// (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState string                                                  `pulumi:"pipelineScheduleState"`
 	ProviderConfig        *GetFeatureEngineeringMaterializedFeatureProviderConfig `pulumi:"providerConfig"`
+	// (StreamingMode) - The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+	// sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+	// for ETL and analytics workloads
+	StreamingMode GetFeatureEngineeringMaterializedFeatureStreamingMode `pulumi:"streamingMode"`
 	// (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
 	TableName string `pulumi:"tableName"`
+	// (TableTrigger) - A trigger that fires when the upstream source table changes
+	TableTrigger GetFeatureEngineeringMaterializedFeatureTableTrigger `pulumi:"tableTrigger"`
 }
 
 func LookupFeatureEngineeringMaterializedFeatureOutput(ctx *pulumi.Context, args LookupFeatureEngineeringMaterializedFeatureOutputArgs, opts ...pulumi.InvokeOption) LookupFeatureEngineeringMaterializedFeatureResultOutput {
@@ -67,7 +75,7 @@ func LookupFeatureEngineeringMaterializedFeatureOutput(ctx *pulumi.Context, args
 
 // A collection of arguments for invoking getFeatureEngineeringMaterializedFeature.
 type LookupFeatureEngineeringMaterializedFeatureOutputArgs struct {
-	// Unique identifier for the materialized feature
+	// Server-assigned unique identifier for the materialized feature
 	MaterializedFeatureId pulumi.StringInput `pulumi:"materializedFeatureId"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetFeatureEngineeringMaterializedFeatureProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -97,6 +105,13 @@ func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) CronSchedule() 
 	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) string { return v.CronSchedule }).(pulumi.StringOutput)
 }
 
+// (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
+func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) CronScheduleTrigger() GetFeatureEngineeringMaterializedFeatureCronScheduleTriggerOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger {
+		return v.CronScheduleTrigger
+	}).(GetFeatureEngineeringMaterializedFeatureCronScheduleTriggerOutput)
+}
+
 // (string) - The full name of the feature in Unity Catalog
 func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) FeatureName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) string { return v.FeatureName }).(pulumi.StringOutput)
@@ -118,19 +133,19 @@ func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) LastMaterializa
 	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) string { return v.LastMaterializationTime }).(pulumi.StringOutput)
 }
 
-// (string) - Unique identifier for the materialized feature
+// (string) - Server-assigned unique identifier for the materialized feature
 func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) MaterializedFeatureId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) string { return v.MaterializedFeatureId }).(pulumi.StringOutput)
 }
 
-// (OfflineStoreConfig)
+// (OfflineStoreConfig) - Destination for writing feature values to an offline Delta table
 func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) OfflineStoreConfig() GetFeatureEngineeringMaterializedFeatureOfflineStoreConfigOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig {
 		return v.OfflineStoreConfig
 	}).(GetFeatureEngineeringMaterializedFeatureOfflineStoreConfigOutput)
 }
 
-// (OnlineStoreConfig)
+// (OnlineStoreConfig) - Destination for writing feature values to an online Lakebase table
 func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) OnlineStoreConfig() GetFeatureEngineeringMaterializedFeatureOnlineStoreConfigOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig {
 		return v.OnlineStoreConfig
@@ -148,9 +163,25 @@ func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) ProviderConfig(
 	}).(GetFeatureEngineeringMaterializedFeatureProviderConfigPtrOutput)
 }
 
+// (StreamingMode) - The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+// sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+// for ETL and analytics workloads
+func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) StreamingMode() GetFeatureEngineeringMaterializedFeatureStreamingModeOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) GetFeatureEngineeringMaterializedFeatureStreamingMode {
+		return v.StreamingMode
+	}).(GetFeatureEngineeringMaterializedFeatureStreamingModeOutput)
+}
+
 // (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
 func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) TableName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) string { return v.TableName }).(pulumi.StringOutput)
+}
+
+// (TableTrigger) - A trigger that fires when the upstream source table changes
+func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) TableTrigger() GetFeatureEngineeringMaterializedFeatureTableTriggerOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) GetFeatureEngineeringMaterializedFeatureTableTrigger {
+		return v.TableTrigger
+	}).(GetFeatureEngineeringMaterializedFeatureTableTriggerOutput)
 }
 
 func init() {

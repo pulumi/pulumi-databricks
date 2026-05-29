@@ -14,13 +14,21 @@ namespace Pulumi.Databricks.Outputs
     public sealed class FeatureEngineeringKafkaConfigAuthConfig
     {
         /// <summary>
+        /// Mutual-TLS authentication. See MtlsConfig
+        /// </summary>
+        public readonly Outputs.FeatureEngineeringKafkaConfigAuthConfigMtlsConfig? MtlsConfig;
+        /// <summary>
         /// Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
         /// </summary>
         public readonly string? UcServiceCredentialName;
 
         [OutputConstructor]
-        private FeatureEngineeringKafkaConfigAuthConfig(string? ucServiceCredentialName)
+        private FeatureEngineeringKafkaConfigAuthConfig(
+            Outputs.FeatureEngineeringKafkaConfigAuthConfigMtlsConfig? mtlsConfig,
+
+            string? ucServiceCredentialName)
         {
+            MtlsConfig = mtlsConfig;
             UcServiceCredentialName = ucServiceCredentialName;
         }
     }

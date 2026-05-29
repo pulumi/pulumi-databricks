@@ -6,17 +6,21 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetAccountSettingV2AibiDashboardEmbeddingAccessPolicy;
 import com.pulumi.databricks.outputs.GetAccountSettingV2AibiDashboardEmbeddingApprovedDomains;
+import com.pulumi.databricks.outputs.GetAccountSettingV2AllowedAppsUserApiScopes;
 import com.pulumi.databricks.outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspace;
 import com.pulumi.databricks.outputs.GetAccountSettingV2BooleanVal;
 import com.pulumi.databricks.outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy;
 import com.pulumi.databricks.outputs.GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains;
+import com.pulumi.databricks.outputs.GetAccountSettingV2EffectiveAllowedAppsUserApiScopes;
 import com.pulumi.databricks.outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspace;
 import com.pulumi.databricks.outputs.GetAccountSettingV2EffectiveBooleanVal;
 import com.pulumi.databricks.outputs.GetAccountSettingV2EffectiveIntegerVal;
+import com.pulumi.databricks.outputs.GetAccountSettingV2EffectiveOperationalEmailCustomRecipient;
 import com.pulumi.databricks.outputs.GetAccountSettingV2EffectivePersonalCompute;
 import com.pulumi.databricks.outputs.GetAccountSettingV2EffectiveRestrictWorkspaceAdmins;
 import com.pulumi.databricks.outputs.GetAccountSettingV2EffectiveStringVal;
 import com.pulumi.databricks.outputs.GetAccountSettingV2IntegerVal;
+import com.pulumi.databricks.outputs.GetAccountSettingV2OperationalEmailCustomRecipient;
 import com.pulumi.databricks.outputs.GetAccountSettingV2PersonalCompute;
 import com.pulumi.databricks.outputs.GetAccountSettingV2RestrictWorkspaceAdmins;
 import com.pulumi.databricks.outputs.GetAccountSettingV2StringVal;
@@ -36,6 +40,11 @@ public final class GetAccountSettingV2Result {
      * 
      */
     private GetAccountSettingV2AibiDashboardEmbeddingApprovedDomains aibiDashboardEmbeddingApprovedDomains;
+    /**
+     * @return (AllowedAppsUserApiScopesMessage) - Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+     * 
+     */
+    private GetAccountSettingV2AllowedAppsUserApiScopes allowedAppsUserApiScopes;
     /**
      * @return (ClusterAutoRestartMessage) - Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
      * 
@@ -57,6 +66,11 @@ public final class GetAccountSettingV2Result {
      */
     private GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains effectiveAibiDashboardEmbeddingApprovedDomains;
     /**
+     * @return (AllowedAppsUserApiScopesMessage) - Effective setting value for allowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+     * 
+     */
+    private GetAccountSettingV2EffectiveAllowedAppsUserApiScopes effectiveAllowedAppsUserApiScopes;
+    /**
      * @return (ClusterAutoRestartMessage) - Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
      * 
      */
@@ -71,6 +85,11 @@ public final class GetAccountSettingV2Result {
      * 
      */
     private GetAccountSettingV2EffectiveIntegerVal effectiveIntegerVal;
+    /**
+     * @return (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+     * 
+     */
+    private GetAccountSettingV2EffectiveOperationalEmailCustomRecipient effectiveOperationalEmailCustomRecipient;
     /**
      * @return (PersonalComputeMessage) - Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
      * 
@@ -101,6 +120,11 @@ public final class GetAccountSettingV2Result {
      * 
      */
     private String name;
+    /**
+     * @return (OperationalEmailCustomRecipientMessage) - Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+     * 
+     */
+    private GetAccountSettingV2OperationalEmailCustomRecipient operationalEmailCustomRecipient;
     /**
      * @return (PersonalComputeMessage) - Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
      * 
@@ -133,6 +157,13 @@ public final class GetAccountSettingV2Result {
         return this.aibiDashboardEmbeddingApprovedDomains;
     }
     /**
+     * @return (AllowedAppsUserApiScopesMessage) - Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+     * 
+     */
+    public GetAccountSettingV2AllowedAppsUserApiScopes allowedAppsUserApiScopes() {
+        return this.allowedAppsUserApiScopes;
+    }
+    /**
      * @return (ClusterAutoRestartMessage) - Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
      * 
      */
@@ -161,6 +192,13 @@ public final class GetAccountSettingV2Result {
         return this.effectiveAibiDashboardEmbeddingApprovedDomains;
     }
     /**
+     * @return (AllowedAppsUserApiScopesMessage) - Effective setting value for allowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+     * 
+     */
+    public GetAccountSettingV2EffectiveAllowedAppsUserApiScopes effectiveAllowedAppsUserApiScopes() {
+        return this.effectiveAllowedAppsUserApiScopes;
+    }
+    /**
      * @return (ClusterAutoRestartMessage) - Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
      * 
      */
@@ -180,6 +218,13 @@ public final class GetAccountSettingV2Result {
      */
     public GetAccountSettingV2EffectiveIntegerVal effectiveIntegerVal() {
         return this.effectiveIntegerVal;
+    }
+    /**
+     * @return (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+     * 
+     */
+    public GetAccountSettingV2EffectiveOperationalEmailCustomRecipient effectiveOperationalEmailCustomRecipient() {
+        return this.effectiveOperationalEmailCustomRecipient;
     }
     /**
      * @return (PersonalComputeMessage) - Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
@@ -224,6 +269,13 @@ public final class GetAccountSettingV2Result {
         return this.name;
     }
     /**
+     * @return (OperationalEmailCustomRecipientMessage) - Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+     * 
+     */
+    public GetAccountSettingV2OperationalEmailCustomRecipient operationalEmailCustomRecipient() {
+        return this.operationalEmailCustomRecipient;
+    }
+    /**
      * @return (PersonalComputeMessage) - Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
      * 
      */
@@ -256,19 +308,23 @@ public final class GetAccountSettingV2Result {
     public static final class Builder {
         private GetAccountSettingV2AibiDashboardEmbeddingAccessPolicy aibiDashboardEmbeddingAccessPolicy;
         private GetAccountSettingV2AibiDashboardEmbeddingApprovedDomains aibiDashboardEmbeddingApprovedDomains;
+        private GetAccountSettingV2AllowedAppsUserApiScopes allowedAppsUserApiScopes;
         private GetAccountSettingV2AutomaticClusterUpdateWorkspace automaticClusterUpdateWorkspace;
         private GetAccountSettingV2BooleanVal booleanVal;
         private GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy effectiveAibiDashboardEmbeddingAccessPolicy;
         private GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains effectiveAibiDashboardEmbeddingApprovedDomains;
+        private GetAccountSettingV2EffectiveAllowedAppsUserApiScopes effectiveAllowedAppsUserApiScopes;
         private GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspace effectiveAutomaticClusterUpdateWorkspace;
         private GetAccountSettingV2EffectiveBooleanVal effectiveBooleanVal;
         private GetAccountSettingV2EffectiveIntegerVal effectiveIntegerVal;
+        private GetAccountSettingV2EffectiveOperationalEmailCustomRecipient effectiveOperationalEmailCustomRecipient;
         private GetAccountSettingV2EffectivePersonalCompute effectivePersonalCompute;
         private GetAccountSettingV2EffectiveRestrictWorkspaceAdmins effectiveRestrictWorkspaceAdmins;
         private GetAccountSettingV2EffectiveStringVal effectiveStringVal;
         private String id;
         private GetAccountSettingV2IntegerVal integerVal;
         private String name;
+        private GetAccountSettingV2OperationalEmailCustomRecipient operationalEmailCustomRecipient;
         private GetAccountSettingV2PersonalCompute personalCompute;
         private GetAccountSettingV2RestrictWorkspaceAdmins restrictWorkspaceAdmins;
         private GetAccountSettingV2StringVal stringVal;
@@ -277,19 +333,23 @@ public final class GetAccountSettingV2Result {
     	      Objects.requireNonNull(defaults);
     	      this.aibiDashboardEmbeddingAccessPolicy = defaults.aibiDashboardEmbeddingAccessPolicy;
     	      this.aibiDashboardEmbeddingApprovedDomains = defaults.aibiDashboardEmbeddingApprovedDomains;
+    	      this.allowedAppsUserApiScopes = defaults.allowedAppsUserApiScopes;
     	      this.automaticClusterUpdateWorkspace = defaults.automaticClusterUpdateWorkspace;
     	      this.booleanVal = defaults.booleanVal;
     	      this.effectiveAibiDashboardEmbeddingAccessPolicy = defaults.effectiveAibiDashboardEmbeddingAccessPolicy;
     	      this.effectiveAibiDashboardEmbeddingApprovedDomains = defaults.effectiveAibiDashboardEmbeddingApprovedDomains;
+    	      this.effectiveAllowedAppsUserApiScopes = defaults.effectiveAllowedAppsUserApiScopes;
     	      this.effectiveAutomaticClusterUpdateWorkspace = defaults.effectiveAutomaticClusterUpdateWorkspace;
     	      this.effectiveBooleanVal = defaults.effectiveBooleanVal;
     	      this.effectiveIntegerVal = defaults.effectiveIntegerVal;
+    	      this.effectiveOperationalEmailCustomRecipient = defaults.effectiveOperationalEmailCustomRecipient;
     	      this.effectivePersonalCompute = defaults.effectivePersonalCompute;
     	      this.effectiveRestrictWorkspaceAdmins = defaults.effectiveRestrictWorkspaceAdmins;
     	      this.effectiveStringVal = defaults.effectiveStringVal;
     	      this.id = defaults.id;
     	      this.integerVal = defaults.integerVal;
     	      this.name = defaults.name;
+    	      this.operationalEmailCustomRecipient = defaults.operationalEmailCustomRecipient;
     	      this.personalCompute = defaults.personalCompute;
     	      this.restrictWorkspaceAdmins = defaults.restrictWorkspaceAdmins;
     	      this.stringVal = defaults.stringVal;
@@ -309,6 +369,14 @@ public final class GetAccountSettingV2Result {
               throw new MissingRequiredPropertyException("GetAccountSettingV2Result", "aibiDashboardEmbeddingApprovedDomains");
             }
             this.aibiDashboardEmbeddingApprovedDomains = aibiDashboardEmbeddingApprovedDomains;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder allowedAppsUserApiScopes(GetAccountSettingV2AllowedAppsUserApiScopes allowedAppsUserApiScopes) {
+            if (allowedAppsUserApiScopes == null) {
+              throw new MissingRequiredPropertyException("GetAccountSettingV2Result", "allowedAppsUserApiScopes");
+            }
+            this.allowedAppsUserApiScopes = allowedAppsUserApiScopes;
             return this;
         }
         @CustomType.Setter
@@ -344,6 +412,14 @@ public final class GetAccountSettingV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder effectiveAllowedAppsUserApiScopes(GetAccountSettingV2EffectiveAllowedAppsUserApiScopes effectiveAllowedAppsUserApiScopes) {
+            if (effectiveAllowedAppsUserApiScopes == null) {
+              throw new MissingRequiredPropertyException("GetAccountSettingV2Result", "effectiveAllowedAppsUserApiScopes");
+            }
+            this.effectiveAllowedAppsUserApiScopes = effectiveAllowedAppsUserApiScopes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder effectiveAutomaticClusterUpdateWorkspace(GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspace effectiveAutomaticClusterUpdateWorkspace) {
             if (effectiveAutomaticClusterUpdateWorkspace == null) {
               throw new MissingRequiredPropertyException("GetAccountSettingV2Result", "effectiveAutomaticClusterUpdateWorkspace");
@@ -365,6 +441,14 @@ public final class GetAccountSettingV2Result {
               throw new MissingRequiredPropertyException("GetAccountSettingV2Result", "effectiveIntegerVal");
             }
             this.effectiveIntegerVal = effectiveIntegerVal;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveOperationalEmailCustomRecipient(GetAccountSettingV2EffectiveOperationalEmailCustomRecipient effectiveOperationalEmailCustomRecipient) {
+            if (effectiveOperationalEmailCustomRecipient == null) {
+              throw new MissingRequiredPropertyException("GetAccountSettingV2Result", "effectiveOperationalEmailCustomRecipient");
+            }
+            this.effectiveOperationalEmailCustomRecipient = effectiveOperationalEmailCustomRecipient;
             return this;
         }
         @CustomType.Setter
@@ -416,6 +500,14 @@ public final class GetAccountSettingV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder operationalEmailCustomRecipient(GetAccountSettingV2OperationalEmailCustomRecipient operationalEmailCustomRecipient) {
+            if (operationalEmailCustomRecipient == null) {
+              throw new MissingRequiredPropertyException("GetAccountSettingV2Result", "operationalEmailCustomRecipient");
+            }
+            this.operationalEmailCustomRecipient = operationalEmailCustomRecipient;
+            return this;
+        }
+        @CustomType.Setter
         public Builder personalCompute(GetAccountSettingV2PersonalCompute personalCompute) {
             if (personalCompute == null) {
               throw new MissingRequiredPropertyException("GetAccountSettingV2Result", "personalCompute");
@@ -443,19 +535,23 @@ public final class GetAccountSettingV2Result {
             final var _resultValue = new GetAccountSettingV2Result();
             _resultValue.aibiDashboardEmbeddingAccessPolicy = aibiDashboardEmbeddingAccessPolicy;
             _resultValue.aibiDashboardEmbeddingApprovedDomains = aibiDashboardEmbeddingApprovedDomains;
+            _resultValue.allowedAppsUserApiScopes = allowedAppsUserApiScopes;
             _resultValue.automaticClusterUpdateWorkspace = automaticClusterUpdateWorkspace;
             _resultValue.booleanVal = booleanVal;
             _resultValue.effectiveAibiDashboardEmbeddingAccessPolicy = effectiveAibiDashboardEmbeddingAccessPolicy;
             _resultValue.effectiveAibiDashboardEmbeddingApprovedDomains = effectiveAibiDashboardEmbeddingApprovedDomains;
+            _resultValue.effectiveAllowedAppsUserApiScopes = effectiveAllowedAppsUserApiScopes;
             _resultValue.effectiveAutomaticClusterUpdateWorkspace = effectiveAutomaticClusterUpdateWorkspace;
             _resultValue.effectiveBooleanVal = effectiveBooleanVal;
             _resultValue.effectiveIntegerVal = effectiveIntegerVal;
+            _resultValue.effectiveOperationalEmailCustomRecipient = effectiveOperationalEmailCustomRecipient;
             _resultValue.effectivePersonalCompute = effectivePersonalCompute;
             _resultValue.effectiveRestrictWorkspaceAdmins = effectiveRestrictWorkspaceAdmins;
             _resultValue.effectiveStringVal = effectiveStringVal;
             _resultValue.id = id;
             _resultValue.integerVal = integerVal;
             _resultValue.name = name;
+            _resultValue.operationalEmailCustomRecipient = operationalEmailCustomRecipient;
             _resultValue.personalCompute = personalCompute;
             _resultValue.restrictWorkspaceAdmins = restrictWorkspaceAdmins;
             _resultValue.stringVal = stringVal;

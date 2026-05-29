@@ -24,7 +24,9 @@ func LookupFeatureEngineeringFeature(ctx *pulumi.Context, args *LookupFeatureEng
 
 // A collection of arguments for invoking getFeatureEngineeringFeature.
 type LookupFeatureEngineeringFeatureArgs struct {
-	// The full three-part name (catalog, schema, name) of the feature
+	// The full three-part name (catalog, schema, name) of the feature. This is the
+	// feature's resource identifier; the catalog_name, schema_name, and name fields
+	// below are OUTPUT_ONLY decomposed views of this value
 	FullName string `pulumi:"fullName"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetFeatureEngineeringFeatureProviderConfig `pulumi:"providerConfig"`
@@ -32,6 +34,12 @@ type LookupFeatureEngineeringFeatureArgs struct {
 
 // A collection of values returned by getFeatureEngineeringFeature.
 type LookupFeatureEngineeringFeatureResult struct {
+	// (string) - Name of parent catalog
+	CatalogName string `pulumi:"catalogName"`
+	// (string) - Time at which this feature was created
+	CreatedAt string `pulumi:"createdAt"`
+	// (string) - Username of the feature creator
+	CreatedBy string `pulumi:"createdBy"`
 	// (string) - The description of the feature
 	Description string `pulumi:"description"`
 	// (list of EntityColumn) - The entity columns for the feature, used as aggregation keys and for query-time lookup
@@ -52,8 +60,17 @@ type LookupFeatureEngineeringFeatureResult struct {
 	// is automatically populated when features are created through Databricks notebooks or jobs.
 	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
 	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
-	LineageContext GetFeatureEngineeringFeatureLineageContext  `pulumi:"lineageContext"`
+	LineageContext GetFeatureEngineeringFeatureLineageContext `pulumi:"lineageContext"`
+	// (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+	// reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
+	// fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
+	// is what will be present in materialized tables and expected to match at query time.
+	// TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+	// backwards compatibility but is deprecated; migrate to dot notation
+	Name           string                                      `pulumi:"name"`
 	ProviderConfig *GetFeatureEngineeringFeatureProviderConfig `pulumi:"providerConfig"`
+	// (string) - Name of parent schema relative to its parent catalog
+	SchemaName string `pulumi:"schemaName"`
 	// (DataSource) - The data source of the feature
 	Source GetFeatureEngineeringFeatureSource `pulumi:"source"`
 	// (TimeWindow) - The time window over which the aggregation is computed
@@ -74,7 +91,9 @@ func LookupFeatureEngineeringFeatureOutput(ctx *pulumi.Context, args LookupFeatu
 
 // A collection of arguments for invoking getFeatureEngineeringFeature.
 type LookupFeatureEngineeringFeatureOutputArgs struct {
-	// The full three-part name (catalog, schema, name) of the feature
+	// The full three-part name (catalog, schema, name) of the feature. This is the
+	// feature's resource identifier; the catalog_name, schema_name, and name fields
+	// below are OUTPUT_ONLY decomposed views of this value
 	FullName pulumi.StringInput `pulumi:"fullName"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetFeatureEngineeringFeatureProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -97,6 +116,21 @@ func (o LookupFeatureEngineeringFeatureResultOutput) ToLookupFeatureEngineeringF
 
 func (o LookupFeatureEngineeringFeatureResultOutput) ToLookupFeatureEngineeringFeatureResultOutputWithContext(ctx context.Context) LookupFeatureEngineeringFeatureResultOutput {
 	return o
+}
+
+// (string) - Name of parent catalog
+func (o LookupFeatureEngineeringFeatureResultOutput) CatalogName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.CatalogName }).(pulumi.StringOutput)
+}
+
+// (string) - Time at which this feature was created
+func (o LookupFeatureEngineeringFeatureResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// (string) - Username of the feature creator
+func (o LookupFeatureEngineeringFeatureResultOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
 // (string) - The description of the feature
@@ -146,10 +180,25 @@ func (o LookupFeatureEngineeringFeatureResultOutput) LineageContext() GetFeature
 	}).(GetFeatureEngineeringFeatureLineageContextOutput)
 }
 
+// (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+// reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
+// fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
+// is what will be present in materialized tables and expected to match at query time.
+// TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+// backwards compatibility but is deprecated; migrate to dot notation
+func (o LookupFeatureEngineeringFeatureResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
 func (o LookupFeatureEngineeringFeatureResultOutput) ProviderConfig() GetFeatureEngineeringFeatureProviderConfigPtrOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) *GetFeatureEngineeringFeatureProviderConfig {
 		return v.ProviderConfig
 	}).(GetFeatureEngineeringFeatureProviderConfigPtrOutput)
+}
+
+// (string) - Name of parent schema relative to its parent catalog
+func (o LookupFeatureEngineeringFeatureResultOutput) SchemaName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.SchemaName }).(pulumi.StringOutput)
 }
 
 // (DataSource) - The data source of the feature

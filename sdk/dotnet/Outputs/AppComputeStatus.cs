@@ -15,11 +15,11 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly int? ActiveInstances;
         /// <summary>
-        /// Application status message
+        /// The status message of the deployment.
         /// </summary>
         public readonly string? Message;
         /// <summary>
-        /// State of the application.
+        /// The state of the deployment.
         /// </summary>
         public readonly string? State;
 

@@ -14,16 +14,16 @@ namespace Pulumi.Databricks.Outputs
     public sealed class AppResourceUcSecurable
     {
         /// <summary>
-        /// Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        /// Permission to grant on UC securable. Supported values depend on `SecurableType`: `READ_VOLUME` and `WRITE_VOLUME` for `VOLUME`, `SELECT` and `MODIFY` for `TABLE`, `EXECUTE` for `FUNCTION`, `USE_CONNECTION` for `CONNECTION`.
         /// </summary>
         public readonly string Permission;
         /// <summary>
-        /// the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+        /// The full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
         /// </summary>
         public readonly string SecurableFullName;
         public readonly string? SecurableKind;
         /// <summary>
-        /// the type of UC securable, i.e. `VOLUME`.
+        /// The type of UC securable. Supported values are `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`.
         /// </summary>
         public readonly string SecurableType;
 

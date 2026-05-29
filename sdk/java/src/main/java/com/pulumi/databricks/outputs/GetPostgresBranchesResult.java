@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetPostgresBranchesBranch;
 import com.pulumi.databricks.outputs.GetPostgresBranchesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -30,6 +31,7 @@ public final class GetPostgresBranchesResult {
      */
     private String parent;
     private @Nullable GetPostgresBranchesProviderConfig providerConfig;
+    private @Nullable Boolean showDeleted;
 
     private GetPostgresBranchesResult() {}
     public List<GetPostgresBranchesBranch> branches() {
@@ -56,6 +58,9 @@ public final class GetPostgresBranchesResult {
     public Optional<GetPostgresBranchesProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }
+    public Optional<Boolean> showDeleted() {
+        return Optional.ofNullable(this.showDeleted);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -71,6 +76,7 @@ public final class GetPostgresBranchesResult {
         private @Nullable Integer pageSize;
         private String parent;
         private @Nullable GetPostgresBranchesProviderConfig providerConfig;
+        private @Nullable Boolean showDeleted;
         public Builder() {}
         public Builder(GetPostgresBranchesResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -79,6 +85,7 @@ public final class GetPostgresBranchesResult {
     	      this.pageSize = defaults.pageSize;
     	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
+    	      this.showDeleted = defaults.showDeleted;
         }
 
         @CustomType.Setter
@@ -120,6 +127,12 @@ public final class GetPostgresBranchesResult {
             this.providerConfig = providerConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder showDeleted(@Nullable Boolean showDeleted) {
+
+            this.showDeleted = showDeleted;
+            return this;
+        }
         public GetPostgresBranchesResult build() {
             final var _resultValue = new GetPostgresBranchesResult();
             _resultValue.branches = branches;
@@ -127,6 +140,7 @@ public final class GetPostgresBranchesResult {
             _resultValue.pageSize = pageSize;
             _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;
+            _resultValue.showDeleted = showDeleted;
             return _resultValue;
         }
     }

@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 public final class AppComputeStatus {
     private @Nullable Integer activeInstances;
     /**
-     * @return Application status message
+     * @return The status message of the deployment.
      * 
      */
     private @Nullable String message;
     /**
-     * @return State of the application.
+     * @return The state of the deployment.
      * 
      */
     private @Nullable String state;
@@ -29,14 +29,14 @@ public final class AppComputeStatus {
         return Optional.ofNullable(this.activeInstances);
     }
     /**
-     * @return Application status message
+     * @return The status message of the deployment.
      * 
      */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
     /**
-     * @return State of the application.
+     * @return The state of the deployment.
      * 
      */
     public Optional<String> state() {

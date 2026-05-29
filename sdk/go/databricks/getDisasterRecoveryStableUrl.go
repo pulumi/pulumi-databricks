@@ -31,6 +31,13 @@ type LookupDisasterRecoveryStableUrlArgs struct {
 
 // A collection of values returned by getDisasterRecoveryStableUrl.
 type LookupDisasterRecoveryStableUrlResult struct {
+	// (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+	// currently linked to, in the format
+	// `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+	// the stable URL is not attached to any failover group. Server-controlled:
+	// written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+	// DeleteFailoverGroup / UpdateFailoverGroup on unlink
+	FailoverGroupName string `pulumi:"failoverGroupName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (string) - The workspace this stable URL is initially bound to. Used only in Create
@@ -80,6 +87,16 @@ func (o LookupDisasterRecoveryStableUrlResultOutput) ToLookupDisasterRecoverySta
 
 func (o LookupDisasterRecoveryStableUrlResultOutput) ToLookupDisasterRecoveryStableUrlResultOutputWithContext(ctx context.Context) LookupDisasterRecoveryStableUrlResultOutput {
 	return o
+}
+
+// (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+// currently linked to, in the format
+// `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+// the stable URL is not attached to any failover group. Server-controlled:
+// written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+// DeleteFailoverGroup / UpdateFailoverGroup on unlink
+func (o LookupDisasterRecoveryStableUrlResultOutput) FailoverGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDisasterRecoveryStableUrlResult) string { return v.FailoverGroupName }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

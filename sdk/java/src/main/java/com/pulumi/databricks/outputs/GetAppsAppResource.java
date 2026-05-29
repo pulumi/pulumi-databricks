@@ -22,9 +22,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsAppResource {
+    /**
+     * @return attribute - reference to another Databricks App.
+     * 
+     */
     private @Nullable GetAppsAppResourceApp app;
     /**
-     * @return attribute
+     * @return The resource path of a specific database within the branch (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`).
      * 
      */
     private @Nullable GetAppsAppResourceDatabase database;
@@ -33,6 +37,10 @@ public final class GetAppsAppResource {
      * 
      */
     private @Nullable String description;
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable GetAppsAppResourceExperiment experiment;
     /**
      * @return attribute
@@ -45,10 +53,14 @@ public final class GetAppsAppResource {
      */
     private @Nullable GetAppsAppResourceJob job;
     /**
-     * @return The name of Genie Space.
+     * @return The name of the app to grant permission on.
      * 
      */
     private String name;
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable GetAppsAppResourcePostgres postgres;
     /**
      * @return attribute
@@ -66,17 +78,21 @@ public final class GetAppsAppResource {
      */
     private @Nullable GetAppsAppResourceSqlWarehouse sqlWarehouse;
     /**
-     * @return attribute
+     * @return attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
      * 
      */
     private @Nullable GetAppsAppResourceUcSecurable ucSecurable;
 
     private GetAppsAppResource() {}
+    /**
+     * @return attribute - reference to another Databricks App.
+     * 
+     */
     public Optional<GetAppsAppResourceApp> app() {
         return Optional.ofNullable(this.app);
     }
     /**
-     * @return attribute
+     * @return The resource path of a specific database within the branch (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`).
      * 
      */
     public Optional<GetAppsAppResourceDatabase> database() {
@@ -89,6 +105,10 @@ public final class GetAppsAppResource {
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<GetAppsAppResourceExperiment> experiment() {
         return Optional.ofNullable(this.experiment);
     }
@@ -107,12 +127,16 @@ public final class GetAppsAppResource {
         return Optional.ofNullable(this.job);
     }
     /**
-     * @return The name of Genie Space.
+     * @return The name of the app to grant permission on.
      * 
      */
     public String name() {
         return this.name;
     }
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<GetAppsAppResourcePostgres> postgres() {
         return Optional.ofNullable(this.postgres);
     }
@@ -138,7 +162,7 @@ public final class GetAppsAppResource {
         return Optional.ofNullable(this.sqlWarehouse);
     }
     /**
-     * @return attribute
+     * @return attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
      * 
      */
     public Optional<GetAppsAppResourceUcSecurable> ucSecurable() {

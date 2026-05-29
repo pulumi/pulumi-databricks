@@ -1633,7 +1633,7 @@ import javax.annotation.Nullable;
  *             .displayName("Engineering")
  *             .build());
  * 
- *         var appUsage = new Permissions("appUsage", PermissionsArgs.builder()
+ *         var dbInstanceUsage = new Permissions("dbInstanceUsage", PermissionsArgs.builder()
  *             .databaseInstanceName("my_database")
  *             .accessControls(            
  *                 PermissionsAccessControlArgs.builder()
@@ -1690,6 +1690,108 @@ import javax.annotation.Nullable;
  *                 PermissionsAccessControlArgs.builder()
  *                     .groupName("users")
  *                     .permissionLevel("CAN_USE")
+ *                     .build(),
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName(eng.displayName())
+ *                     .permissionLevel("CAN_MANAGE")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Knowledge Assistant usage
+ * 
+ * Knowledge Assistants have two possible permissions: `CAN_QUERY` and `CAN_MANAGE`:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
+ * import com.pulumi.databricks.Permissions;
+ * import com.pulumi.databricks.PermissionsArgs;
+ * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var eng = new Group("eng", GroupArgs.builder()
+ *             .displayName("Engineering")
+ *             .build());
+ * 
+ *         var knowledgeAssistantUsage = new Permissions("knowledgeAssistantUsage", PermissionsArgs.builder()
+ *             .knowledgeAssistantId(this_.id())
+ *             .accessControls(            
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName("users")
+ *                     .permissionLevel("CAN_QUERY")
+ *                     .build(),
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName(eng.displayName())
+ *                     .permissionLevel("CAN_MANAGE")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Supervisor Agent usage
+ * 
+ * Supervisor Agents have two possible permissions: `CAN_QUERY` and `CAN_MANAGE`:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.Group;
+ * import com.pulumi.databricks.GroupArgs;
+ * import com.pulumi.databricks.Permissions;
+ * import com.pulumi.databricks.PermissionsArgs;
+ * import com.pulumi.databricks.inputs.PermissionsAccessControlArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var eng = new Group("eng", GroupArgs.builder()
+ *             .displayName("Engineering")
+ *             .build());
+ * 
+ *         var supervisorAgentUsage = new Permissions("supervisorAgentUsage", PermissionsArgs.builder()
+ *             .supervisorAgentId(this_.supervisorAgentId())
+ *             .accessControls(            
+ *                 PermissionsAccessControlArgs.builder()
+ *                     .groupName("users")
+ *                     .permissionLevel("CAN_QUERY")
  *                     .build(),
  *                 PermissionsAccessControlArgs.builder()
  *                     .groupName(eng.displayName())
@@ -1813,6 +1915,12 @@ public class Permissions extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> jobId() {
         return Codegen.optional(this.jobId);
     }
+    @Export(name="knowledgeAssistantId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> knowledgeAssistantId;
+
+    public Output<Optional<String>> knowledgeAssistantId() {
+        return Codegen.optional(this.knowledgeAssistantId);
+    }
     @Export(name="notebookId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notebookId;
 
@@ -1898,6 +2006,12 @@ public class Permissions extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> sqlQueryId() {
         return Codegen.optional(this.sqlQueryId);
+    }
+    @Export(name="supervisorAgentId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> supervisorAgentId;
+
+    public Output<Optional<String>> supervisorAgentId() {
+        return Codegen.optional(this.supervisorAgentId);
     }
     @Export(name="vectorSearchEndpointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vectorSearchEndpointId;

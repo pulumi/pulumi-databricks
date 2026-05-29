@@ -7,17 +7,21 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs;
+import com.pulumi.databricks.inputs.WorkspaceSettingV2AllowedAppsUserApiScopesArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2BooleanValArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs;
+import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveAllowedAppsUserApiScopesArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveBooleanValArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveIntegerValArgs;
+import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveOperationalEmailCustomRecipientArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectivePersonalComputeArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveStringValArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2IntegerValArgs;
+import com.pulumi.databricks.inputs.WorkspaceSettingV2OperationalEmailCustomRecipientArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2PersonalComputeArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2ProviderConfigArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2RestrictWorkspaceAdminsArgs;
@@ -60,6 +64,21 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
      */
     public Optional<Output<WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs>> aibiDashboardEmbeddingApprovedDomains() {
         return Optional.ofNullable(this.aibiDashboardEmbeddingApprovedDomains);
+    }
+
+    /**
+     * Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+     * 
+     */
+    @Import(name="allowedAppsUserApiScopes")
+    private @Nullable Output<WorkspaceSettingV2AllowedAppsUserApiScopesArgs> allowedAppsUserApiScopes;
+
+    /**
+     * @return Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+     * 
+     */
+    public Optional<Output<WorkspaceSettingV2AllowedAppsUserApiScopesArgs>> allowedAppsUserApiScopes() {
+        return Optional.ofNullable(this.allowedAppsUserApiScopes);
     }
 
     /**
@@ -123,6 +142,21 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
     }
 
     /**
+     * (AllowedAppsUserApiScopesMessage) - Effective setting value for allowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+     * 
+     */
+    @Import(name="effectiveAllowedAppsUserApiScopes")
+    private @Nullable Output<WorkspaceSettingV2EffectiveAllowedAppsUserApiScopesArgs> effectiveAllowedAppsUserApiScopes;
+
+    /**
+     * @return (AllowedAppsUserApiScopesMessage) - Effective setting value for allowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+     * 
+     */
+    public Optional<Output<WorkspaceSettingV2EffectiveAllowedAppsUserApiScopesArgs>> effectiveAllowedAppsUserApiScopes() {
+        return Optional.ofNullable(this.effectiveAllowedAppsUserApiScopes);
+    }
+
+    /**
      * Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
      * 
      */
@@ -165,6 +199,21 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
      */
     public Optional<Output<WorkspaceSettingV2EffectiveIntegerValArgs>> effectiveIntegerVal() {
         return Optional.ofNullable(this.effectiveIntegerVal);
+    }
+
+    /**
+     * (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+     * 
+     */
+    @Import(name="effectiveOperationalEmailCustomRecipient")
+    private @Nullable Output<WorkspaceSettingV2EffectiveOperationalEmailCustomRecipientArgs> effectiveOperationalEmailCustomRecipient;
+
+    /**
+     * @return (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+     * 
+     */
+    public Optional<Output<WorkspaceSettingV2EffectiveOperationalEmailCustomRecipientArgs>> effectiveOperationalEmailCustomRecipient() {
+        return Optional.ofNullable(this.effectiveOperationalEmailCustomRecipient);
     }
 
     /**
@@ -243,6 +292,21 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
     }
 
     /**
+     * Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+     * 
+     */
+    @Import(name="operationalEmailCustomRecipient")
+    private @Nullable Output<WorkspaceSettingV2OperationalEmailCustomRecipientArgs> operationalEmailCustomRecipient;
+
+    /**
+     * @return Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+     * 
+     */
+    public Optional<Output<WorkspaceSettingV2OperationalEmailCustomRecipientArgs>> operationalEmailCustomRecipient() {
+        return Optional.ofNullable(this.operationalEmailCustomRecipient);
+    }
+
+    /**
      * Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
      * 
      */
@@ -307,18 +371,22 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
     private WorkspaceSettingV2State(WorkspaceSettingV2State $) {
         this.aibiDashboardEmbeddingAccessPolicy = $.aibiDashboardEmbeddingAccessPolicy;
         this.aibiDashboardEmbeddingApprovedDomains = $.aibiDashboardEmbeddingApprovedDomains;
+        this.allowedAppsUserApiScopes = $.allowedAppsUserApiScopes;
         this.automaticClusterUpdateWorkspace = $.automaticClusterUpdateWorkspace;
         this.booleanVal = $.booleanVal;
         this.effectiveAibiDashboardEmbeddingAccessPolicy = $.effectiveAibiDashboardEmbeddingAccessPolicy;
         this.effectiveAibiDashboardEmbeddingApprovedDomains = $.effectiveAibiDashboardEmbeddingApprovedDomains;
+        this.effectiveAllowedAppsUserApiScopes = $.effectiveAllowedAppsUserApiScopes;
         this.effectiveAutomaticClusterUpdateWorkspace = $.effectiveAutomaticClusterUpdateWorkspace;
         this.effectiveBooleanVal = $.effectiveBooleanVal;
         this.effectiveIntegerVal = $.effectiveIntegerVal;
+        this.effectiveOperationalEmailCustomRecipient = $.effectiveOperationalEmailCustomRecipient;
         this.effectivePersonalCompute = $.effectivePersonalCompute;
         this.effectiveRestrictWorkspaceAdmins = $.effectiveRestrictWorkspaceAdmins;
         this.effectiveStringVal = $.effectiveStringVal;
         this.integerVal = $.integerVal;
         this.name = $.name;
+        this.operationalEmailCustomRecipient = $.operationalEmailCustomRecipient;
         this.personalCompute = $.personalCompute;
         this.providerConfig = $.providerConfig;
         this.restrictWorkspaceAdmins = $.restrictWorkspaceAdmins;
@@ -383,6 +451,27 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
          */
         public Builder aibiDashboardEmbeddingApprovedDomains(WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs aibiDashboardEmbeddingApprovedDomains) {
             return aibiDashboardEmbeddingApprovedDomains(Output.of(aibiDashboardEmbeddingApprovedDomains));
+        }
+
+        /**
+         * @param allowedAppsUserApiScopes Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedAppsUserApiScopes(@Nullable Output<WorkspaceSettingV2AllowedAppsUserApiScopesArgs> allowedAppsUserApiScopes) {
+            $.allowedAppsUserApiScopes = allowedAppsUserApiScopes;
+            return this;
+        }
+
+        /**
+         * @param allowedAppsUserApiScopes Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedAppsUserApiScopes(WorkspaceSettingV2AllowedAppsUserApiScopesArgs allowedAppsUserApiScopes) {
+            return allowedAppsUserApiScopes(Output.of(allowedAppsUserApiScopes));
         }
 
         /**
@@ -470,6 +559,27 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param effectiveAllowedAppsUserApiScopes (AllowedAppsUserApiScopesMessage) - Effective setting value for allowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAllowedAppsUserApiScopes(@Nullable Output<WorkspaceSettingV2EffectiveAllowedAppsUserApiScopesArgs> effectiveAllowedAppsUserApiScopes) {
+            $.effectiveAllowedAppsUserApiScopes = effectiveAllowedAppsUserApiScopes;
+            return this;
+        }
+
+        /**
+         * @param effectiveAllowedAppsUserApiScopes (AllowedAppsUserApiScopesMessage) - Effective setting value for allowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveAllowedAppsUserApiScopes(WorkspaceSettingV2EffectiveAllowedAppsUserApiScopesArgs effectiveAllowedAppsUserApiScopes) {
+            return effectiveAllowedAppsUserApiScopes(Output.of(effectiveAllowedAppsUserApiScopes));
+        }
+
+        /**
          * @param effectiveAutomaticClusterUpdateWorkspace Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
          * 
          * @return builder
@@ -530,6 +640,27 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
          */
         public Builder effectiveIntegerVal(WorkspaceSettingV2EffectiveIntegerValArgs effectiveIntegerVal) {
             return effectiveIntegerVal(Output.of(effectiveIntegerVal));
+        }
+
+        /**
+         * @param effectiveOperationalEmailCustomRecipient (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveOperationalEmailCustomRecipient(@Nullable Output<WorkspaceSettingV2EffectiveOperationalEmailCustomRecipientArgs> effectiveOperationalEmailCustomRecipient) {
+            $.effectiveOperationalEmailCustomRecipient = effectiveOperationalEmailCustomRecipient;
+            return this;
+        }
+
+        /**
+         * @param effectiveOperationalEmailCustomRecipient (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveOperationalEmailCustomRecipient(WorkspaceSettingV2EffectiveOperationalEmailCustomRecipientArgs effectiveOperationalEmailCustomRecipient) {
+            return effectiveOperationalEmailCustomRecipient(Output.of(effectiveOperationalEmailCustomRecipient));
         }
 
         /**
@@ -635,6 +766,27 @@ public final class WorkspaceSettingV2State extends com.pulumi.resources.Resource
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param operationalEmailCustomRecipient Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operationalEmailCustomRecipient(@Nullable Output<WorkspaceSettingV2OperationalEmailCustomRecipientArgs> operationalEmailCustomRecipient) {
+            $.operationalEmailCustomRecipient = operationalEmailCustomRecipient;
+            return this;
+        }
+
+        /**
+         * @param operationalEmailCustomRecipient Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operationalEmailCustomRecipient(WorkspaceSettingV2OperationalEmailCustomRecipientArgs operationalEmailCustomRecipient) {
+            return operationalEmailCustomRecipient(Output.of(operationalEmailCustomRecipient));
         }
 
         /**

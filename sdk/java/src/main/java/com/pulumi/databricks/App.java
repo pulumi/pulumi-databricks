@@ -102,9 +102,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/app:App")
 public class App extends com.pulumi.resources.CustomResource {
+    /**
+     * attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
+     * 
+     */
     @Export(name="activeDeployment", refs={AppActiveDeployment.class}, tree="[0]")
     private Output<AppActiveDeployment> activeDeployment;
 
+    /**
+     * @return attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
+     * 
+     */
     public Output<AppActiveDeployment> activeDeployment() {
         return this.activeDeployment;
     }
@@ -136,6 +144,18 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> budgetPolicyId() {
         return Codegen.optional(this.budgetPolicyId);
     }
+    @Export(name="computeMaxInstances", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> computeMaxInstances;
+
+    public Output<Optional<Integer>> computeMaxInstances() {
+        return Codegen.optional(this.computeMaxInstances);
+    }
+    @Export(name="computeMinInstances", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> computeMinInstances;
+
+    public Output<Optional<Integer>> computeMinInstances() {
+        return Codegen.optional(this.computeMinInstances);
+    }
     /**
      * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
      * 
@@ -165,28 +185,28 @@ public class App extends com.pulumi.resources.CustomResource {
         return this.computeStatus;
     }
     /**
-     * The creation time of the app.
+     * The creation time of the deployment.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the app.
+     * @return The creation time of the deployment.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The email of the user that created the app.
+     * The email of the user that created the deployment.
      * 
      */
     @Export(name="creator", refs={String.class}, tree="[0]")
     private Output<String> creator;
 
     /**
-     * @return The email of the user that created the app.
+     * @return The email of the user that created the deployment.
      * 
      */
     public Output<String> creator() {
@@ -234,9 +254,17 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<String> effectiveBudgetPolicyId() {
         return this.effectiveBudgetPolicyId;
     }
+    /**
+     * The effective usage policy ID.
+     * 
+     */
     @Export(name="effectiveUsagePolicyId", refs={String.class}, tree="[0]")
     private Output<String> effectiveUsagePolicyId;
 
+    /**
+     * @return The effective usage policy ID.
+     * 
+     */
     public Output<String> effectiveUsagePolicyId() {
         return this.effectiveUsagePolicyId;
     }
@@ -254,9 +282,17 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<List<String>> effectiveUserApiScopes() {
         return this.effectiveUserApiScopes;
     }
+    /**
+     * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     * 
+     */
     @Export(name="gitRepository", refs={AppGitRepository.class}, tree="[0]")
     private Output</* @Nullable */ AppGitRepository> gitRepository;
 
+    /**
+     * @return Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     * 
+     */
     public Output<Optional<AppGitRepository>> gitRepository() {
         return Codegen.optional(this.gitRepository);
     }
@@ -280,21 +316,45 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> noCompute() {
         return Codegen.optional(this.noCompute);
     }
+    /**
+     * The OAuth2 client ID of the app&#39;s integration, set when the app uses user authorization.
+     * 
+     */
     @Export(name="oauth2AppClientId", refs={String.class}, tree="[0]")
     private Output<String> oauth2AppClientId;
 
+    /**
+     * @return The OAuth2 client ID of the app&#39;s integration, set when the app uses user authorization.
+     * 
+     */
     public Output<String> oauth2AppClientId() {
         return this.oauth2AppClientId;
     }
+    /**
+     * The unique ID of the OAuth2 integration associated with the app.
+     * 
+     */
     @Export(name="oauth2AppIntegrationId", refs={String.class}, tree="[0]")
     private Output<String> oauth2AppIntegrationId;
 
+    /**
+     * @return The unique ID of the OAuth2 integration associated with the app.
+     * 
+     */
     public Output<String> oauth2AppIntegrationId() {
         return this.oauth2AppIntegrationId;
     }
+    /**
+     * attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `activeDeployment`.
+     * 
+     */
     @Export(name="pendingDeployment", refs={AppPendingDeployment.class}, tree="[0]")
     private Output<AppPendingDeployment> pendingDeployment;
 
+    /**
+     * @return attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `activeDeployment`.
+     * 
+     */
     public Output<AppPendingDeployment> pendingDeployment() {
         return this.pendingDeployment;
     }
@@ -366,27 +426,43 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> space() {
         return Codegen.optional(this.space);
     }
+    /**
+     * A list of destinations to which the app&#39;s telemetry (logs, metrics, traces) is exported (see below).
+     * 
+     */
     @Export(name="telemetryExportDestinations", refs={List.class,AppTelemetryExportDestination.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AppTelemetryExportDestination>> telemetryExportDestinations;
 
+    /**
+     * @return A list of destinations to which the app&#39;s telemetry (logs, metrics, traces) is exported (see below).
+     * 
+     */
     public Output<Optional<List<AppTelemetryExportDestination>>> telemetryExportDestinations() {
         return Codegen.optional(this.telemetryExportDestinations);
     }
+    /**
+     * The URL of the thumbnail image for the app.
+     * 
+     */
     @Export(name="thumbnailUrl", refs={String.class}, tree="[0]")
     private Output<String> thumbnailUrl;
 
+    /**
+     * @return The URL of the thumbnail image for the app.
+     * 
+     */
     public Output<String> thumbnailUrl() {
         return this.thumbnailUrl;
     }
     /**
-     * The update time of the app.
+     * The update time of the deployment.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return The update time of the app.
+     * @return The update time of the deployment.
      * 
      */
     public Output<String> updateTime() {
@@ -420,21 +496,29 @@ public class App extends com.pulumi.resources.CustomResource {
     public Output<String> url() {
         return this.url;
     }
+    /**
+     * The Usage Policy ID set for this resource.
+     * 
+     */
     @Export(name="usagePolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> usagePolicyId;
 
+    /**
+     * @return The Usage Policy ID set for this resource.
+     * 
+     */
     public Output<Optional<String>> usagePolicyId() {
         return Codegen.optional(this.usagePolicyId);
     }
     /**
-     * A list of api scopes granted to the user access token.
+     * A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
      * 
      */
     @Export(name="userApiScopes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> userApiScopes;
 
     /**
-     * @return A list of api scopes granted to the user access token.
+     * @return A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
      * 
      */
     public Output<Optional<List<String>>> userApiScopes() {

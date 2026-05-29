@@ -26,9 +26,17 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
 
     public static final AppState Empty = new AppState();
 
+    /**
+     * attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
+     * 
+     */
     @Import(name="activeDeployment")
     private @Nullable Output<AppActiveDeploymentArgs> activeDeployment;
 
+    /**
+     * @return attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
+     * 
+     */
     public Optional<Output<AppActiveDeploymentArgs>> activeDeployment() {
         return Optional.ofNullable(this.activeDeployment);
     }
@@ -63,6 +71,20 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.budgetPolicyId);
     }
 
+    @Import(name="computeMaxInstances")
+    private @Nullable Output<Integer> computeMaxInstances;
+
+    public Optional<Output<Integer>> computeMaxInstances() {
+        return Optional.ofNullable(this.computeMaxInstances);
+    }
+
+    @Import(name="computeMinInstances")
+    private @Nullable Output<Integer> computeMinInstances;
+
+    public Optional<Output<Integer>> computeMinInstances() {
+        return Optional.ofNullable(this.computeMinInstances);
+    }
+
     /**
      * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
      * 
@@ -94,14 +116,14 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The creation time of the app.
+     * The creation time of the deployment.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the app.
+     * @return The creation time of the deployment.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -109,14 +131,14 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The email of the user that created the app.
+     * The email of the user that created the deployment.
      * 
      */
     @Import(name="creator")
     private @Nullable Output<String> creator;
 
     /**
-     * @return The email of the user that created the app.
+     * @return The email of the user that created the deployment.
      * 
      */
     public Optional<Output<String>> creator() {
@@ -168,9 +190,17 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.effectiveBudgetPolicyId);
     }
 
+    /**
+     * The effective usage policy ID.
+     * 
+     */
     @Import(name="effectiveUsagePolicyId")
     private @Nullable Output<String> effectiveUsagePolicyId;
 
+    /**
+     * @return The effective usage policy ID.
+     * 
+     */
     public Optional<Output<String>> effectiveUsagePolicyId() {
         return Optional.ofNullable(this.effectiveUsagePolicyId);
     }
@@ -190,9 +220,17 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.effectiveUserApiScopes);
     }
 
+    /**
+     * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     * 
+     */
     @Import(name="gitRepository")
     private @Nullable Output<AppGitRepositoryArgs> gitRepository;
 
+    /**
+     * @return Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     * 
+     */
     public Optional<Output<AppGitRepositoryArgs>> gitRepository() {
         return Optional.ofNullable(this.gitRepository);
     }
@@ -219,23 +257,47 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.noCompute);
     }
 
+    /**
+     * The OAuth2 client ID of the app&#39;s integration, set when the app uses user authorization.
+     * 
+     */
     @Import(name="oauth2AppClientId")
     private @Nullable Output<String> oauth2AppClientId;
 
+    /**
+     * @return The OAuth2 client ID of the app&#39;s integration, set when the app uses user authorization.
+     * 
+     */
     public Optional<Output<String>> oauth2AppClientId() {
         return Optional.ofNullable(this.oauth2AppClientId);
     }
 
+    /**
+     * The unique ID of the OAuth2 integration associated with the app.
+     * 
+     */
     @Import(name="oauth2AppIntegrationId")
     private @Nullable Output<String> oauth2AppIntegrationId;
 
+    /**
+     * @return The unique ID of the OAuth2 integration associated with the app.
+     * 
+     */
     public Optional<Output<String>> oauth2AppIntegrationId() {
         return Optional.ofNullable(this.oauth2AppIntegrationId);
     }
 
+    /**
+     * attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `activeDeployment`.
+     * 
+     */
     @Import(name="pendingDeployment")
     private @Nullable Output<AppPendingDeploymentArgs> pendingDeployment;
 
+    /**
+     * @return attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `activeDeployment`.
+     * 
+     */
     public Optional<Output<AppPendingDeploymentArgs>> pendingDeployment() {
         return Optional.ofNullable(this.pendingDeployment);
     }
@@ -314,29 +376,45 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.space);
     }
 
+    /**
+     * A list of destinations to which the app&#39;s telemetry (logs, metrics, traces) is exported (see below).
+     * 
+     */
     @Import(name="telemetryExportDestinations")
     private @Nullable Output<List<AppTelemetryExportDestinationArgs>> telemetryExportDestinations;
 
+    /**
+     * @return A list of destinations to which the app&#39;s telemetry (logs, metrics, traces) is exported (see below).
+     * 
+     */
     public Optional<Output<List<AppTelemetryExportDestinationArgs>>> telemetryExportDestinations() {
         return Optional.ofNullable(this.telemetryExportDestinations);
     }
 
+    /**
+     * The URL of the thumbnail image for the app.
+     * 
+     */
     @Import(name="thumbnailUrl")
     private @Nullable Output<String> thumbnailUrl;
 
+    /**
+     * @return The URL of the thumbnail image for the app.
+     * 
+     */
     public Optional<Output<String>> thumbnailUrl() {
         return Optional.ofNullable(this.thumbnailUrl);
     }
 
     /**
-     * The update time of the app.
+     * The update time of the deployment.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return The update time of the app.
+     * @return The update time of the deployment.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -373,22 +451,30 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.url);
     }
 
+    /**
+     * The Usage Policy ID set for this resource.
+     * 
+     */
     @Import(name="usagePolicyId")
     private @Nullable Output<String> usagePolicyId;
 
+    /**
+     * @return The Usage Policy ID set for this resource.
+     * 
+     */
     public Optional<Output<String>> usagePolicyId() {
         return Optional.ofNullable(this.usagePolicyId);
     }
 
     /**
-     * A list of api scopes granted to the user access token.
+     * A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
      * 
      */
     @Import(name="userApiScopes")
     private @Nullable Output<List<String>> userApiScopes;
 
     /**
-     * @return A list of api scopes granted to the user access token.
+     * @return A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
      * 
      */
     public Optional<Output<List<String>>> userApiScopes() {
@@ -401,6 +487,8 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.activeDeployment = $.activeDeployment;
         this.appStatus = $.appStatus;
         this.budgetPolicyId = $.budgetPolicyId;
+        this.computeMaxInstances = $.computeMaxInstances;
+        this.computeMinInstances = $.computeMinInstances;
         this.computeSize = $.computeSize;
         this.computeStatus = $.computeStatus;
         this.createTime = $.createTime;
@@ -449,11 +537,23 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
             $ = new AppState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param activeDeployment attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder activeDeployment(@Nullable Output<AppActiveDeploymentArgs> activeDeployment) {
             $.activeDeployment = activeDeployment;
             return this;
         }
 
+        /**
+         * @param activeDeployment attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder activeDeployment(AppActiveDeploymentArgs activeDeployment) {
             return activeDeployment(Output.of(activeDeployment));
         }
@@ -500,6 +600,24 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
             return budgetPolicyId(Output.of(budgetPolicyId));
         }
 
+        public Builder computeMaxInstances(@Nullable Output<Integer> computeMaxInstances) {
+            $.computeMaxInstances = computeMaxInstances;
+            return this;
+        }
+
+        public Builder computeMaxInstances(Integer computeMaxInstances) {
+            return computeMaxInstances(Output.of(computeMaxInstances));
+        }
+
+        public Builder computeMinInstances(@Nullable Output<Integer> computeMinInstances) {
+            $.computeMinInstances = computeMinInstances;
+            return this;
+        }
+
+        public Builder computeMinInstances(Integer computeMinInstances) {
+            return computeMinInstances(Output.of(computeMinInstances));
+        }
+
         /**
          * @param computeSize A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
          * 
@@ -543,7 +661,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The creation time of the app.
+         * @param createTime The creation time of the deployment.
          * 
          * @return builder
          * 
@@ -554,7 +672,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The creation time of the app.
+         * @param createTime The creation time of the deployment.
          * 
          * @return builder
          * 
@@ -564,7 +682,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param creator The email of the user that created the app.
+         * @param creator The email of the user that created the deployment.
          * 
          * @return builder
          * 
@@ -575,7 +693,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param creator The email of the user that created the app.
+         * @param creator The email of the user that created the deployment.
          * 
          * @return builder
          * 
@@ -647,11 +765,23 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
             return effectiveBudgetPolicyId(Output.of(effectiveBudgetPolicyId));
         }
 
+        /**
+         * @param effectiveUsagePolicyId The effective usage policy ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveUsagePolicyId(@Nullable Output<String> effectiveUsagePolicyId) {
             $.effectiveUsagePolicyId = effectiveUsagePolicyId;
             return this;
         }
 
+        /**
+         * @param effectiveUsagePolicyId The effective usage policy ID.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveUsagePolicyId(String effectiveUsagePolicyId) {
             return effectiveUsagePolicyId(Output.of(effectiveUsagePolicyId));
         }
@@ -687,11 +817,23 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
             return effectiveUserApiScopes(List.of(effectiveUserApiScopes));
         }
 
+        /**
+         * @param gitRepository Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitRepository(@Nullable Output<AppGitRepositoryArgs> gitRepository) {
             $.gitRepository = gitRepository;
             return this;
         }
 
+        /**
+         * @param gitRepository Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitRepository(AppGitRepositoryArgs gitRepository) {
             return gitRepository(Output.of(gitRepository));
         }
@@ -726,29 +868,65 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
             return noCompute(Output.of(noCompute));
         }
 
+        /**
+         * @param oauth2AppClientId The OAuth2 client ID of the app&#39;s integration, set when the app uses user authorization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder oauth2AppClientId(@Nullable Output<String> oauth2AppClientId) {
             $.oauth2AppClientId = oauth2AppClientId;
             return this;
         }
 
+        /**
+         * @param oauth2AppClientId The OAuth2 client ID of the app&#39;s integration, set when the app uses user authorization.
+         * 
+         * @return builder
+         * 
+         */
         public Builder oauth2AppClientId(String oauth2AppClientId) {
             return oauth2AppClientId(Output.of(oauth2AppClientId));
         }
 
+        /**
+         * @param oauth2AppIntegrationId The unique ID of the OAuth2 integration associated with the app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder oauth2AppIntegrationId(@Nullable Output<String> oauth2AppIntegrationId) {
             $.oauth2AppIntegrationId = oauth2AppIntegrationId;
             return this;
         }
 
+        /**
+         * @param oauth2AppIntegrationId The unique ID of the OAuth2 integration associated with the app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder oauth2AppIntegrationId(String oauth2AppIntegrationId) {
             return oauth2AppIntegrationId(Output.of(oauth2AppIntegrationId));
         }
 
+        /**
+         * @param pendingDeployment attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `activeDeployment`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pendingDeployment(@Nullable Output<AppPendingDeploymentArgs> pendingDeployment) {
             $.pendingDeployment = pendingDeployment;
             return this;
         }
 
+        /**
+         * @param pendingDeployment attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `activeDeployment`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pendingDeployment(AppPendingDeploymentArgs pendingDeployment) {
             return pendingDeployment(Output.of(pendingDeployment));
         }
@@ -865,30 +1043,60 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
             return space(Output.of(space));
         }
 
+        /**
+         * @param telemetryExportDestinations A list of destinations to which the app&#39;s telemetry (logs, metrics, traces) is exported (see below).
+         * 
+         * @return builder
+         * 
+         */
         public Builder telemetryExportDestinations(@Nullable Output<List<AppTelemetryExportDestinationArgs>> telemetryExportDestinations) {
             $.telemetryExportDestinations = telemetryExportDestinations;
             return this;
         }
 
+        /**
+         * @param telemetryExportDestinations A list of destinations to which the app&#39;s telemetry (logs, metrics, traces) is exported (see below).
+         * 
+         * @return builder
+         * 
+         */
         public Builder telemetryExportDestinations(List<AppTelemetryExportDestinationArgs> telemetryExportDestinations) {
             return telemetryExportDestinations(Output.of(telemetryExportDestinations));
         }
 
+        /**
+         * @param telemetryExportDestinations A list of destinations to which the app&#39;s telemetry (logs, metrics, traces) is exported (see below).
+         * 
+         * @return builder
+         * 
+         */
         public Builder telemetryExportDestinations(AppTelemetryExportDestinationArgs... telemetryExportDestinations) {
             return telemetryExportDestinations(List.of(telemetryExportDestinations));
         }
 
+        /**
+         * @param thumbnailUrl The URL of the thumbnail image for the app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder thumbnailUrl(@Nullable Output<String> thumbnailUrl) {
             $.thumbnailUrl = thumbnailUrl;
             return this;
         }
 
+        /**
+         * @param thumbnailUrl The URL of the thumbnail image for the app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder thumbnailUrl(String thumbnailUrl) {
             return thumbnailUrl(Output.of(thumbnailUrl));
         }
 
         /**
-         * @param updateTime The update time of the app.
+         * @param updateTime The update time of the deployment.
          * 
          * @return builder
          * 
@@ -899,7 +1107,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime The update time of the app.
+         * @param updateTime The update time of the deployment.
          * 
          * @return builder
          * 
@@ -950,17 +1158,29 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
             return url(Output.of(url));
         }
 
+        /**
+         * @param usagePolicyId The Usage Policy ID set for this resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder usagePolicyId(@Nullable Output<String> usagePolicyId) {
             $.usagePolicyId = usagePolicyId;
             return this;
         }
 
+        /**
+         * @param usagePolicyId The Usage Policy ID set for this resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder usagePolicyId(String usagePolicyId) {
             return usagePolicyId(Output.of(usagePolicyId));
         }
 
         /**
-         * @param userApiScopes A list of api scopes granted to the user access token.
+         * @param userApiScopes A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
          * 
          * @return builder
          * 
@@ -971,7 +1191,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userApiScopes A list of api scopes granted to the user access token.
+         * @param userApiScopes A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
          * 
          * @return builder
          * 
@@ -981,7 +1201,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userApiScopes A list of api scopes granted to the user access token.
+         * @param userApiScopes A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
          * 
          * @return builder
          * 

@@ -4,9 +4,12 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeatureProviderConfig;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeatureStreamingMode;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringMaterializedFeatureTableTrigger;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -21,6 +24,11 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
      * 
      */
     private String cronSchedule;
+    /**
+     * @return (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
+     * 
+     */
+    private GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger cronScheduleTrigger;
     /**
      * @return (string) - The full name of the feature in Unity Catalog
      * 
@@ -43,17 +51,17 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
      */
     private String lastMaterializationTime;
     /**
-     * @return (string) - Unique identifier for the materialized feature
+     * @return (string) - Server-assigned unique identifier for the materialized feature
      * 
      */
     private String materializedFeatureId;
     /**
-     * @return (OfflineStoreConfig)
+     * @return (OfflineStoreConfig) - Destination for writing feature values to an offline Delta table
      * 
      */
     private GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig offlineStoreConfig;
     /**
-     * @return (OnlineStoreConfig)
+     * @return (OnlineStoreConfig) - Destination for writing feature values to an online Lakebase table
      * 
      */
     private GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig onlineStoreConfig;
@@ -64,10 +72,22 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
     private String pipelineScheduleState;
     private @Nullable GetFeatureEngineeringMaterializedFeatureProviderConfig providerConfig;
     /**
+     * @return (StreamingMode) - The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+     * sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+     * for ETL and analytics workloads
+     * 
+     */
+    private GetFeatureEngineeringMaterializedFeatureStreamingMode streamingMode;
+    /**
      * @return (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
      * 
      */
     private String tableName;
+    /**
+     * @return (TableTrigger) - A trigger that fires when the upstream source table changes
+     * 
+     */
+    private GetFeatureEngineeringMaterializedFeatureTableTrigger tableTrigger;
 
     private GetFeatureEngineeringMaterializedFeatureResult() {}
     /**
@@ -76,6 +96,13 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
      */
     public String cronSchedule() {
         return this.cronSchedule;
+    }
+    /**
+     * @return (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
+     * 
+     */
+    public GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger cronScheduleTrigger() {
+        return this.cronScheduleTrigger;
     }
     /**
      * @return (string) - The full name of the feature in Unity Catalog
@@ -107,21 +134,21 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
         return this.lastMaterializationTime;
     }
     /**
-     * @return (string) - Unique identifier for the materialized feature
+     * @return (string) - Server-assigned unique identifier for the materialized feature
      * 
      */
     public String materializedFeatureId() {
         return this.materializedFeatureId;
     }
     /**
-     * @return (OfflineStoreConfig)
+     * @return (OfflineStoreConfig) - Destination for writing feature values to an offline Delta table
      * 
      */
     public GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig offlineStoreConfig() {
         return this.offlineStoreConfig;
     }
     /**
-     * @return (OnlineStoreConfig)
+     * @return (OnlineStoreConfig) - Destination for writing feature values to an online Lakebase table
      * 
      */
     public GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig onlineStoreConfig() {
@@ -138,11 +165,27 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
+     * @return (StreamingMode) - The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+     * sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+     * for ETL and analytics workloads
+     * 
+     */
+    public GetFeatureEngineeringMaterializedFeatureStreamingMode streamingMode() {
+        return this.streamingMode;
+    }
+    /**
      * @return (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
      * 
      */
     public String tableName() {
         return this.tableName;
+    }
+    /**
+     * @return (TableTrigger) - A trigger that fires when the upstream source table changes
+     * 
+     */
+    public GetFeatureEngineeringMaterializedFeatureTableTrigger tableTrigger() {
+        return this.tableTrigger;
     }
 
     public static Builder builder() {
@@ -155,6 +198,7 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
     @CustomType.Builder
     public static final class Builder {
         private String cronSchedule;
+        private GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger cronScheduleTrigger;
         private String featureName;
         private String id;
         private Boolean isOnline;
@@ -164,11 +208,14 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
         private GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig onlineStoreConfig;
         private String pipelineScheduleState;
         private @Nullable GetFeatureEngineeringMaterializedFeatureProviderConfig providerConfig;
+        private GetFeatureEngineeringMaterializedFeatureStreamingMode streamingMode;
         private String tableName;
+        private GetFeatureEngineeringMaterializedFeatureTableTrigger tableTrigger;
         public Builder() {}
         public Builder(GetFeatureEngineeringMaterializedFeatureResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cronSchedule = defaults.cronSchedule;
+    	      this.cronScheduleTrigger = defaults.cronScheduleTrigger;
     	      this.featureName = defaults.featureName;
     	      this.id = defaults.id;
     	      this.isOnline = defaults.isOnline;
@@ -178,7 +225,9 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
     	      this.onlineStoreConfig = defaults.onlineStoreConfig;
     	      this.pipelineScheduleState = defaults.pipelineScheduleState;
     	      this.providerConfig = defaults.providerConfig;
+    	      this.streamingMode = defaults.streamingMode;
     	      this.tableName = defaults.tableName;
+    	      this.tableTrigger = defaults.tableTrigger;
         }
 
         @CustomType.Setter
@@ -187,6 +236,14 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "cronSchedule");
             }
             this.cronSchedule = cronSchedule;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cronScheduleTrigger(GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger cronScheduleTrigger) {
+            if (cronScheduleTrigger == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "cronScheduleTrigger");
+            }
+            this.cronScheduleTrigger = cronScheduleTrigger;
             return this;
         }
         @CustomType.Setter
@@ -260,6 +317,14 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
             return this;
         }
         @CustomType.Setter
+        public Builder streamingMode(GetFeatureEngineeringMaterializedFeatureStreamingMode streamingMode) {
+            if (streamingMode == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "streamingMode");
+            }
+            this.streamingMode = streamingMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tableName(String tableName) {
             if (tableName == null) {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "tableName");
@@ -267,9 +332,18 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
             this.tableName = tableName;
             return this;
         }
+        @CustomType.Setter
+        public Builder tableTrigger(GetFeatureEngineeringMaterializedFeatureTableTrigger tableTrigger) {
+            if (tableTrigger == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringMaterializedFeatureResult", "tableTrigger");
+            }
+            this.tableTrigger = tableTrigger;
+            return this;
+        }
         public GetFeatureEngineeringMaterializedFeatureResult build() {
             final var _resultValue = new GetFeatureEngineeringMaterializedFeatureResult();
             _resultValue.cronSchedule = cronSchedule;
+            _resultValue.cronScheduleTrigger = cronScheduleTrigger;
             _resultValue.featureName = featureName;
             _resultValue.id = id;
             _resultValue.isOnline = isOnline;
@@ -279,7 +353,9 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
             _resultValue.onlineStoreConfig = onlineStoreConfig;
             _resultValue.pipelineScheduleState = pipelineScheduleState;
             _resultValue.providerConfig = providerConfig;
+            _resultValue.streamingMode = streamingMode;
             _resultValue.tableName = tableName;
+            _resultValue.tableTrigger = tableTrigger;
             return _resultValue;
         }
     }

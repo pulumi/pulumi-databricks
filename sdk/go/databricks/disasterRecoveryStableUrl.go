@@ -16,6 +16,13 @@ import (
 type DisasterRecoveryStableUrl struct {
 	pulumi.CustomResourceState
 
+	// (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+	// currently linked to, in the format
+	// `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+	// the stable URL is not attached to any failover group. Server-controlled:
+	// written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+	// DeleteFailoverGroup / UpdateFailoverGroup on unlink
+	FailoverGroupName pulumi.StringOutput `pulumi:"failoverGroupName"`
 	// The workspace this stable URL is initially bound to. Used only in Create
 	// requests to associate the stable URL with a workspace. Not returned in
 	// responses. Mirrors FailoverGroup.initial_primary_region semantics
@@ -74,6 +81,13 @@ func GetDisasterRecoveryStableUrl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DisasterRecoveryStableUrl resources.
 type disasterRecoveryStableUrlState struct {
+	// (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+	// currently linked to, in the format
+	// `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+	// the stable URL is not attached to any failover group. Server-controlled:
+	// written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+	// DeleteFailoverGroup / UpdateFailoverGroup on unlink
+	FailoverGroupName *string `pulumi:"failoverGroupName"`
 	// The workspace this stable URL is initially bound to. Used only in Create
 	// requests to associate the stable URL with a workspace. Not returned in
 	// responses. Mirrors FailoverGroup.initial_primary_region semantics
@@ -94,6 +108,13 @@ type disasterRecoveryStableUrlState struct {
 }
 
 type DisasterRecoveryStableUrlState struct {
+	// (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+	// currently linked to, in the format
+	// `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+	// the stable URL is not attached to any failover group. Server-controlled:
+	// written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+	// DeleteFailoverGroup / UpdateFailoverGroup on unlink
+	FailoverGroupName pulumi.StringPtrInput
 	// The workspace this stable URL is initially bound to. Used only in Create
 	// requests to associate the stable URL with a workspace. Not returned in
 	// responses. Mirrors FailoverGroup.initial_primary_region semantics
@@ -227,6 +248,16 @@ func (o DisasterRecoveryStableUrlOutput) ToDisasterRecoveryStableUrlOutput() Dis
 
 func (o DisasterRecoveryStableUrlOutput) ToDisasterRecoveryStableUrlOutputWithContext(ctx context.Context) DisasterRecoveryStableUrlOutput {
 	return o
+}
+
+// (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+// currently linked to, in the format
+// `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+// the stable URL is not attached to any failover group. Server-controlled:
+// written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+// DeleteFailoverGroup / UpdateFailoverGroup on unlink
+func (o DisasterRecoveryStableUrlOutput) FailoverGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DisasterRecoveryStableUrl) pulumi.StringOutput { return v.FailoverGroupName }).(pulumi.StringOutput)
 }
 
 // The workspace this stable URL is initially bound to. Used only in Create

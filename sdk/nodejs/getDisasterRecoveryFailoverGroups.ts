@@ -22,8 +22,12 @@ export function getDisasterRecoveryFailoverGroups(args: GetDisasterRecoveryFailo
  */
 export interface GetDisasterRecoveryFailoverGroupsArgs {
     /**
-     * Maximum number of failover groups to return per page.
-     * Default: 50, maximum: 100
+     * Maximum number of failover groups to return per page:
+     * - when set to a value greater than 0, the page length is the minimum of this value
+     * and a server configured value;
+     * - when set to 0 or unset, the page length is set to a server configured value
+     * (recommended);
+     * - when set to a value less than 0, an invalid parameter error is returned
      */
     pageSize?: number;
     /**
@@ -60,8 +64,12 @@ export function getDisasterRecoveryFailoverGroupsOutput(args: GetDisasterRecover
  */
 export interface GetDisasterRecoveryFailoverGroupsOutputArgs {
     /**
-     * Maximum number of failover groups to return per page.
-     * Default: 50, maximum: 100
+     * Maximum number of failover groups to return per page:
+     * - when set to a value greater than 0, the page length is the minimum of this value
+     * and a server configured value;
+     * - when set to 0 or unset, the page length is set to a server configured value
+     * (recommended);
+     * - when set to a value less than 0, an invalid parameter error is returned
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**

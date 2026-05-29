@@ -66,6 +66,15 @@ namespace Pulumi.Databricks
     public sealed class GetDisasterRecoveryStableUrlResult
     {
         /// <summary>
+        /// (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+        /// currently linked to, in the format
+        /// `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+        /// the stable URL is not attached to any failover group. Server-controlled:
+        /// written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+        /// DeleteFailoverGroup / UpdateFailoverGroup on unlink
+        /// </summary>
+        public readonly string FailoverGroupName;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -90,6 +99,8 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetDisasterRecoveryStableUrlResult(
+            string failoverGroupName,
+
             string id,
 
             string initialWorkspaceId,
@@ -98,6 +109,7 @@ namespace Pulumi.Databricks
 
             string url)
         {
+            FailoverGroupName = failoverGroupName;
             Id = id;
             InitialWorkspaceId = initialWorkspaceId;
             Name = name;

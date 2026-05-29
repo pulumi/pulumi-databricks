@@ -76,18 +76,21 @@ import (
 type App struct {
 	pulumi.CustomResourceState
 
+	// attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
 	ActiveDeployment AppActiveDeploymentOutput `pulumi:"activeDeployment"`
 	// attribute
 	AppStatus AppAppStatusOutput `pulumi:"appStatus"`
 	// The Budget Policy ID set for this resource.
-	BudgetPolicyId pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
+	BudgetPolicyId      pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
+	ComputeMaxInstances pulumi.IntPtrOutput    `pulumi:"computeMaxInstances"`
+	ComputeMinInstances pulumi.IntPtrOutput    `pulumi:"computeMinInstances"`
 	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
 	ComputeSize pulumi.StringOutput `pulumi:"computeSize"`
 	// attribute
 	ComputeStatus AppComputeStatusOutput `pulumi:"computeStatus"`
-	// The creation time of the app.
+	// The creation time of the deployment.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The email of the user that created the app.
+	// The email of the user that created the deployment.
 	Creator pulumi.StringOutput `pulumi:"creator"`
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath pulumi.StringOutput `pulumi:"defaultSourceCodePath"`
@@ -95,17 +98,22 @@ type App struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The effective budget policy ID.
 	EffectiveBudgetPolicyId pulumi.StringOutput `pulumi:"effectiveBudgetPolicyId"`
-	EffectiveUsagePolicyId  pulumi.StringOutput `pulumi:"effectiveUsagePolicyId"`
+	// The effective usage policy ID.
+	EffectiveUsagePolicyId pulumi.StringOutput `pulumi:"effectiveUsagePolicyId"`
 	// A list of effective api scopes granted to the user access token.
-	EffectiveUserApiScopes pulumi.StringArrayOutput  `pulumi:"effectiveUserApiScopes"`
-	GitRepository          AppGitRepositoryPtrOutput `pulumi:"gitRepository"`
+	EffectiveUserApiScopes pulumi.StringArrayOutput `pulumi:"effectiveUserApiScopes"`
+	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+	GitRepository AppGitRepositoryPtrOutput `pulumi:"gitRepository"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
-	Name                   pulumi.StringOutput        `pulumi:"name"`
-	NoCompute              pulumi.BoolPtrOutput       `pulumi:"noCompute"`
-	Oauth2AppClientId      pulumi.StringOutput        `pulumi:"oauth2AppClientId"`
-	Oauth2AppIntegrationId pulumi.StringOutput        `pulumi:"oauth2AppIntegrationId"`
-	PendingDeployment      AppPendingDeploymentOutput `pulumi:"pendingDeployment"`
-	ProviderConfig         AppProviderConfigOutput    `pulumi:"providerConfig"`
+	Name      pulumi.StringOutput  `pulumi:"name"`
+	NoCompute pulumi.BoolPtrOutput `pulumi:"noCompute"`
+	// The OAuth2 client ID of the app's integration, set when the app uses user authorization.
+	Oauth2AppClientId pulumi.StringOutput `pulumi:"oauth2AppClientId"`
+	// The unique ID of the OAuth2 integration associated with the app.
+	Oauth2AppIntegrationId pulumi.StringOutput `pulumi:"oauth2AppIntegrationId"`
+	// attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `activeDeployment`.
+	PendingDeployment AppPendingDeploymentOutput `pulumi:"pendingDeployment"`
+	ProviderConfig    AppProviderConfigOutput    `pulumi:"providerConfig"`
 	// A list of resources that the app have access to.
 	Resources AppResourceArrayOutput `pulumi:"resources"`
 	// client_id (application_id) of the app service principal
@@ -113,18 +121,21 @@ type App struct {
 	// id of the app service principal
 	ServicePrincipalId pulumi.IntOutput `pulumi:"servicePrincipalId"`
 	// name of the app service principal
-	ServicePrincipalName        pulumi.StringOutput                      `pulumi:"servicePrincipalName"`
-	Space                       pulumi.StringPtrOutput                   `pulumi:"space"`
+	ServicePrincipalName pulumi.StringOutput    `pulumi:"servicePrincipalName"`
+	Space                pulumi.StringPtrOutput `pulumi:"space"`
+	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
 	TelemetryExportDestinations AppTelemetryExportDestinationArrayOutput `pulumi:"telemetryExportDestinations"`
-	ThumbnailUrl                pulumi.StringOutput                      `pulumi:"thumbnailUrl"`
-	// The update time of the app.
+	// The URL of the thumbnail image for the app.
+	ThumbnailUrl pulumi.StringOutput `pulumi:"thumbnailUrl"`
+	// The update time of the deployment.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// The email of the user that last updated the app.
 	Updater pulumi.StringOutput `pulumi:"updater"`
 	// The URL of the app once it is deployed.
-	Url           pulumi.StringOutput    `pulumi:"url"`
+	Url pulumi.StringOutput `pulumi:"url"`
+	// The Usage Policy ID set for this resource.
 	UsagePolicyId pulumi.StringPtrOutput `pulumi:"usagePolicyId"`
-	// A list of api scopes granted to the user access token.
+	// A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
 	UserApiScopes pulumi.StringArrayOutput `pulumi:"userApiScopes"`
 }
 
@@ -158,18 +169,21 @@ func GetApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering App resources.
 type appState struct {
+	// attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
 	ActiveDeployment *AppActiveDeployment `pulumi:"activeDeployment"`
 	// attribute
 	AppStatus *AppAppStatus `pulumi:"appStatus"`
 	// The Budget Policy ID set for this resource.
-	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
+	BudgetPolicyId      *string `pulumi:"budgetPolicyId"`
+	ComputeMaxInstances *int    `pulumi:"computeMaxInstances"`
+	ComputeMinInstances *int    `pulumi:"computeMinInstances"`
 	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
 	ComputeSize *string `pulumi:"computeSize"`
 	// attribute
 	ComputeStatus *AppComputeStatus `pulumi:"computeStatus"`
-	// The creation time of the app.
+	// The creation time of the deployment.
 	CreateTime *string `pulumi:"createTime"`
-	// The email of the user that created the app.
+	// The email of the user that created the deployment.
 	Creator *string `pulumi:"creator"`
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath *string `pulumi:"defaultSourceCodePath"`
@@ -177,17 +191,22 @@ type appState struct {
 	Description *string `pulumi:"description"`
 	// The effective budget policy ID.
 	EffectiveBudgetPolicyId *string `pulumi:"effectiveBudgetPolicyId"`
-	EffectiveUsagePolicyId  *string `pulumi:"effectiveUsagePolicyId"`
+	// The effective usage policy ID.
+	EffectiveUsagePolicyId *string `pulumi:"effectiveUsagePolicyId"`
 	// A list of effective api scopes granted to the user access token.
-	EffectiveUserApiScopes []string          `pulumi:"effectiveUserApiScopes"`
-	GitRepository          *AppGitRepository `pulumi:"gitRepository"`
+	EffectiveUserApiScopes []string `pulumi:"effectiveUserApiScopes"`
+	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+	GitRepository *AppGitRepository `pulumi:"gitRepository"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
-	Name                   *string               `pulumi:"name"`
-	NoCompute              *bool                 `pulumi:"noCompute"`
-	Oauth2AppClientId      *string               `pulumi:"oauth2AppClientId"`
-	Oauth2AppIntegrationId *string               `pulumi:"oauth2AppIntegrationId"`
-	PendingDeployment      *AppPendingDeployment `pulumi:"pendingDeployment"`
-	ProviderConfig         *AppProviderConfig    `pulumi:"providerConfig"`
+	Name      *string `pulumi:"name"`
+	NoCompute *bool   `pulumi:"noCompute"`
+	// The OAuth2 client ID of the app's integration, set when the app uses user authorization.
+	Oauth2AppClientId *string `pulumi:"oauth2AppClientId"`
+	// The unique ID of the OAuth2 integration associated with the app.
+	Oauth2AppIntegrationId *string `pulumi:"oauth2AppIntegrationId"`
+	// attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `activeDeployment`.
+	PendingDeployment *AppPendingDeployment `pulumi:"pendingDeployment"`
+	ProviderConfig    *AppProviderConfig    `pulumi:"providerConfig"`
 	// A list of resources that the app have access to.
 	Resources []AppResource `pulumi:"resources"`
 	// client_id (application_id) of the app service principal
@@ -195,34 +214,40 @@ type appState struct {
 	// id of the app service principal
 	ServicePrincipalId *int `pulumi:"servicePrincipalId"`
 	// name of the app service principal
-	ServicePrincipalName        *string                         `pulumi:"servicePrincipalName"`
-	Space                       *string                         `pulumi:"space"`
+	ServicePrincipalName *string `pulumi:"servicePrincipalName"`
+	Space                *string `pulumi:"space"`
+	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
 	TelemetryExportDestinations []AppTelemetryExportDestination `pulumi:"telemetryExportDestinations"`
-	ThumbnailUrl                *string                         `pulumi:"thumbnailUrl"`
-	// The update time of the app.
+	// The URL of the thumbnail image for the app.
+	ThumbnailUrl *string `pulumi:"thumbnailUrl"`
+	// The update time of the deployment.
 	UpdateTime *string `pulumi:"updateTime"`
 	// The email of the user that last updated the app.
 	Updater *string `pulumi:"updater"`
 	// The URL of the app once it is deployed.
-	Url           *string `pulumi:"url"`
+	Url *string `pulumi:"url"`
+	// The Usage Policy ID set for this resource.
 	UsagePolicyId *string `pulumi:"usagePolicyId"`
-	// A list of api scopes granted to the user access token.
+	// A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
 	UserApiScopes []string `pulumi:"userApiScopes"`
 }
 
 type AppState struct {
+	// attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
 	ActiveDeployment AppActiveDeploymentPtrInput
 	// attribute
 	AppStatus AppAppStatusPtrInput
 	// The Budget Policy ID set for this resource.
-	BudgetPolicyId pulumi.StringPtrInput
+	BudgetPolicyId      pulumi.StringPtrInput
+	ComputeMaxInstances pulumi.IntPtrInput
+	ComputeMinInstances pulumi.IntPtrInput
 	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
 	ComputeSize pulumi.StringPtrInput
 	// attribute
 	ComputeStatus AppComputeStatusPtrInput
-	// The creation time of the app.
+	// The creation time of the deployment.
 	CreateTime pulumi.StringPtrInput
-	// The email of the user that created the app.
+	// The email of the user that created the deployment.
 	Creator pulumi.StringPtrInput
 	// The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
 	DefaultSourceCodePath pulumi.StringPtrInput
@@ -230,17 +255,22 @@ type AppState struct {
 	Description pulumi.StringPtrInput
 	// The effective budget policy ID.
 	EffectiveBudgetPolicyId pulumi.StringPtrInput
-	EffectiveUsagePolicyId  pulumi.StringPtrInput
+	// The effective usage policy ID.
+	EffectiveUsagePolicyId pulumi.StringPtrInput
 	// A list of effective api scopes granted to the user access token.
 	EffectiveUserApiScopes pulumi.StringArrayInput
-	GitRepository          AppGitRepositoryPtrInput
+	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+	GitRepository AppGitRepositoryPtrInput
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
-	Name                   pulumi.StringPtrInput
-	NoCompute              pulumi.BoolPtrInput
-	Oauth2AppClientId      pulumi.StringPtrInput
+	Name      pulumi.StringPtrInput
+	NoCompute pulumi.BoolPtrInput
+	// The OAuth2 client ID of the app's integration, set when the app uses user authorization.
+	Oauth2AppClientId pulumi.StringPtrInput
+	// The unique ID of the OAuth2 integration associated with the app.
 	Oauth2AppIntegrationId pulumi.StringPtrInput
-	PendingDeployment      AppPendingDeploymentPtrInput
-	ProviderConfig         AppProviderConfigPtrInput
+	// attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `activeDeployment`.
+	PendingDeployment AppPendingDeploymentPtrInput
+	ProviderConfig    AppProviderConfigPtrInput
 	// A list of resources that the app have access to.
 	Resources AppResourceArrayInput
 	// client_id (application_id) of the app service principal
@@ -248,18 +278,21 @@ type AppState struct {
 	// id of the app service principal
 	ServicePrincipalId pulumi.IntPtrInput
 	// name of the app service principal
-	ServicePrincipalName        pulumi.StringPtrInput
-	Space                       pulumi.StringPtrInput
+	ServicePrincipalName pulumi.StringPtrInput
+	Space                pulumi.StringPtrInput
+	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
 	TelemetryExportDestinations AppTelemetryExportDestinationArrayInput
-	ThumbnailUrl                pulumi.StringPtrInput
-	// The update time of the app.
+	// The URL of the thumbnail image for the app.
+	ThumbnailUrl pulumi.StringPtrInput
+	// The update time of the deployment.
 	UpdateTime pulumi.StringPtrInput
 	// The email of the user that last updated the app.
 	Updater pulumi.StringPtrInput
 	// The URL of the app once it is deployed.
-	Url           pulumi.StringPtrInput
+	Url pulumi.StringPtrInput
+	// The Usage Policy ID set for this resource.
 	UsagePolicyId pulumi.StringPtrInput
-	// A list of api scopes granted to the user access token.
+	// A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
 	UserApiScopes pulumi.StringArrayInput
 }
 
@@ -269,44 +302,54 @@ func (AppState) ElementType() reflect.Type {
 
 type appArgs struct {
 	// The Budget Policy ID set for this resource.
-	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
+	BudgetPolicyId      *string `pulumi:"budgetPolicyId"`
+	ComputeMaxInstances *int    `pulumi:"computeMaxInstances"`
+	ComputeMinInstances *int    `pulumi:"computeMinInstances"`
 	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
 	ComputeSize *string `pulumi:"computeSize"`
 	// The description of the app.
-	Description   *string           `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository *AppGitRepository `pulumi:"gitRepository"`
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name           *string            `pulumi:"name"`
 	NoCompute      *bool              `pulumi:"noCompute"`
 	ProviderConfig *AppProviderConfig `pulumi:"providerConfig"`
 	// A list of resources that the app have access to.
-	Resources                   []AppResource                   `pulumi:"resources"`
-	Space                       *string                         `pulumi:"space"`
+	Resources []AppResource `pulumi:"resources"`
+	Space     *string       `pulumi:"space"`
+	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
 	TelemetryExportDestinations []AppTelemetryExportDestination `pulumi:"telemetryExportDestinations"`
-	UsagePolicyId               *string                         `pulumi:"usagePolicyId"`
-	// A list of api scopes granted to the user access token.
+	// The Usage Policy ID set for this resource.
+	UsagePolicyId *string `pulumi:"usagePolicyId"`
+	// A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
 	UserApiScopes []string `pulumi:"userApiScopes"`
 }
 
 // The set of arguments for constructing a App resource.
 type AppArgs struct {
 	// The Budget Policy ID set for this resource.
-	BudgetPolicyId pulumi.StringPtrInput
+	BudgetPolicyId      pulumi.StringPtrInput
+	ComputeMaxInstances pulumi.IntPtrInput
+	ComputeMinInstances pulumi.IntPtrInput
 	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
 	ComputeSize pulumi.StringPtrInput
 	// The description of the app.
-	Description   pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 	GitRepository AppGitRepositoryPtrInput
 	// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
 	Name           pulumi.StringPtrInput
 	NoCompute      pulumi.BoolPtrInput
 	ProviderConfig AppProviderConfigPtrInput
 	// A list of resources that the app have access to.
-	Resources                   AppResourceArrayInput
-	Space                       pulumi.StringPtrInput
+	Resources AppResourceArrayInput
+	Space     pulumi.StringPtrInput
+	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
 	TelemetryExportDestinations AppTelemetryExportDestinationArrayInput
-	UsagePolicyId               pulumi.StringPtrInput
-	// A list of api scopes granted to the user access token.
+	// The Usage Policy ID set for this resource.
+	UsagePolicyId pulumi.StringPtrInput
+	// A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
 	UserApiScopes pulumi.StringArrayInput
 }
 
@@ -397,6 +440,7 @@ func (o AppOutput) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return o
 }
 
+// attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
 func (o AppOutput) ActiveDeployment() AppActiveDeploymentOutput {
 	return o.ApplyT(func(v *App) AppActiveDeploymentOutput { return v.ActiveDeployment }).(AppActiveDeploymentOutput)
 }
@@ -411,6 +455,14 @@ func (o AppOutput) BudgetPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
 }
 
+func (o AppOutput) ComputeMaxInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.IntPtrOutput { return v.ComputeMaxInstances }).(pulumi.IntPtrOutput)
+}
+
+func (o AppOutput) ComputeMinInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.IntPtrOutput { return v.ComputeMinInstances }).(pulumi.IntPtrOutput)
+}
+
 // A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
 func (o AppOutput) ComputeSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ComputeSize }).(pulumi.StringOutput)
@@ -421,12 +473,12 @@ func (o AppOutput) ComputeStatus() AppComputeStatusOutput {
 	return o.ApplyT(func(v *App) AppComputeStatusOutput { return v.ComputeStatus }).(AppComputeStatusOutput)
 }
 
-// The creation time of the app.
+// The creation time of the deployment.
 func (o AppOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The email of the user that created the app.
+// The email of the user that created the deployment.
 func (o AppOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
 }
@@ -446,6 +498,7 @@ func (o AppOutput) EffectiveBudgetPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.EffectiveBudgetPolicyId }).(pulumi.StringOutput)
 }
 
+// The effective usage policy ID.
 func (o AppOutput) EffectiveUsagePolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.EffectiveUsagePolicyId }).(pulumi.StringOutput)
 }
@@ -455,6 +508,7 @@ func (o AppOutput) EffectiveUserApiScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *App) pulumi.StringArrayOutput { return v.EffectiveUserApiScopes }).(pulumi.StringArrayOutput)
 }
 
+// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
 func (o AppOutput) GitRepository() AppGitRepositoryPtrOutput {
 	return o.ApplyT(func(v *App) AppGitRepositoryPtrOutput { return v.GitRepository }).(AppGitRepositoryPtrOutput)
 }
@@ -468,14 +522,17 @@ func (o AppOutput) NoCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.BoolPtrOutput { return v.NoCompute }).(pulumi.BoolPtrOutput)
 }
 
+// The OAuth2 client ID of the app's integration, set when the app uses user authorization.
 func (o AppOutput) Oauth2AppClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Oauth2AppClientId }).(pulumi.StringOutput)
 }
 
+// The unique ID of the OAuth2 integration associated with the app.
 func (o AppOutput) Oauth2AppIntegrationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Oauth2AppIntegrationId }).(pulumi.StringOutput)
 }
 
+// attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `activeDeployment`.
 func (o AppOutput) PendingDeployment() AppPendingDeploymentOutput {
 	return o.ApplyT(func(v *App) AppPendingDeploymentOutput { return v.PendingDeployment }).(AppPendingDeploymentOutput)
 }
@@ -508,15 +565,17 @@ func (o AppOutput) Space() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.Space }).(pulumi.StringPtrOutput)
 }
 
+// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
 func (o AppOutput) TelemetryExportDestinations() AppTelemetryExportDestinationArrayOutput {
 	return o.ApplyT(func(v *App) AppTelemetryExportDestinationArrayOutput { return v.TelemetryExportDestinations }).(AppTelemetryExportDestinationArrayOutput)
 }
 
+// The URL of the thumbnail image for the app.
 func (o AppOutput) ThumbnailUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ThumbnailUrl }).(pulumi.StringOutput)
 }
 
-// The update time of the app.
+// The update time of the deployment.
 func (o AppOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
@@ -531,11 +590,12 @@ func (o AppOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
+// The Usage Policy ID set for this resource.
 func (o AppOutput) UsagePolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.UsagePolicyId }).(pulumi.StringPtrOutput)
 }
 
-// A list of api scopes granted to the user access token.
+// A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
 func (o AppOutput) UserApiScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *App) pulumi.StringArrayOutput { return v.UserApiScopes }).(pulumi.StringArrayOutput)
 }

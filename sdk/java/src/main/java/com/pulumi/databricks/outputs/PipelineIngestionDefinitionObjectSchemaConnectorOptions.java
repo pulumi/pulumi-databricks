@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConn
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptions;
+import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions;
 import com.pulumi.databricks.outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions;
@@ -24,6 +25,7 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptions {
     private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptions gdriveOptions;
     private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions googleAdsOptions;
     private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptions jiraOptions;
+    private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptions kafkaOptions;
     private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions metaAdsOptions;
     private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions outlookOptions;
     private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions sharepointOptions;
@@ -43,6 +45,9 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptions {
     }
     public Optional<PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptions> jiraOptions() {
         return Optional.ofNullable(this.jiraOptions);
+    }
+    public Optional<PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptions> kafkaOptions() {
+        return Optional.ofNullable(this.kafkaOptions);
     }
     public Optional<PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions> metaAdsOptions() {
         return Optional.ofNullable(this.metaAdsOptions);
@@ -76,6 +81,7 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptions {
         private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptions gdriveOptions;
         private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions googleAdsOptions;
         private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptions jiraOptions;
+        private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptions kafkaOptions;
         private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions metaAdsOptions;
         private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions outlookOptions;
         private @Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions sharepointOptions;
@@ -89,6 +95,7 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptions {
     	      this.gdriveOptions = defaults.gdriveOptions;
     	      this.googleAdsOptions = defaults.googleAdsOptions;
     	      this.jiraOptions = defaults.jiraOptions;
+    	      this.kafkaOptions = defaults.kafkaOptions;
     	      this.metaAdsOptions = defaults.metaAdsOptions;
     	      this.outlookOptions = defaults.outlookOptions;
     	      this.sharepointOptions = defaults.sharepointOptions;
@@ -119,6 +126,12 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptions {
         public Builder jiraOptions(@Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptions jiraOptions) {
 
             this.jiraOptions = jiraOptions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kafkaOptions(@Nullable PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptions kafkaOptions) {
+
+            this.kafkaOptions = kafkaOptions;
             return this;
         }
         @CustomType.Setter
@@ -163,6 +176,7 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptions {
             _resultValue.gdriveOptions = gdriveOptions;
             _resultValue.googleAdsOptions = googleAdsOptions;
             _resultValue.jiraOptions = jiraOptions;
+            _resultValue.kafkaOptions = kafkaOptions;
             _resultValue.metaAdsOptions = metaAdsOptions;
             _resultValue.outlookOptions = outlookOptions;
             _resultValue.sharepointOptions = sharepointOptions;

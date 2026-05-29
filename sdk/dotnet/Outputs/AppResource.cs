@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppResource
     {
+        /// <summary>
+        /// attribute - reference to another Databricks App.
+        /// </summary>
         public readonly Outputs.AppResourceApp? App;
         /// <summary>
         /// attribute
@@ -24,6 +27,9 @@ namespace Pulumi.Databricks.Outputs
         /// Exactly one of the following attributes must be provided:
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.AppResourceExperiment? Experiment;
         /// <summary>
         /// attribute
@@ -37,6 +43,9 @@ namespace Pulumi.Databricks.Outputs
         /// The name of the resource.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.AppResourcePostgres? Postgres;
         /// <summary>
         /// attribute

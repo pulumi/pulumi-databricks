@@ -33,6 +33,8 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; Initialize provider with `alias = "mws"`, `host  = "https://accounts.gcp.databricks.com"` and use `provider = databricks.mws`
     /// 
+    /// &gt; On GCP, the provider must be authenticated with a Google-issued OIDC token (not a Databricks OAuth token), because creating or updating this resource triggers operations against your GCP project. See Authenticate with Databricks account API for setup instructions.
+    /// 
     /// Use this resource to [configure VPC](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/customer-managed-vpc.html) &amp; subnet for new workspaces within GCP. It is essential to understand that this will require you to configure your provider separately for the multiple workspaces resources.
     /// 
     /// * Databricks must have access to a subnet in the same region as the workspace, of which IP range will be used to allocate your workspace's GCE cluster nodes.

@@ -32,6 +32,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("filterCondition")]
         public Input<string>? FilterCondition { get; set; }
 
+        /// <summary>
+        /// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

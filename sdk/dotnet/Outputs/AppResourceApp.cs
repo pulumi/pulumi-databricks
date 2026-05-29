@@ -14,9 +14,12 @@ namespace Pulumi.Databricks.Outputs
     public sealed class AppResourceApp
     {
         /// <summary>
-        /// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+        /// The name of the app to grant permission on.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Permission to grant on the app. Supported permissions are: `CAN_USE`.
+        /// </summary>
         public readonly string? Permission;
 
         [OutputConstructor]

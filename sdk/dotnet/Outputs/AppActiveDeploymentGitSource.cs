@@ -13,10 +13,19 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppActiveDeploymentGitSource
     {
+        /// <summary>
+        /// The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+        /// </summary>
         public readonly string? Branch;
         public readonly string? Commit;
+        /// <summary>
+        /// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+        /// </summary>
         public readonly Outputs.AppActiveDeploymentGitSourceGitRepository? GitRepository;
         public readonly string? ResolvedCommit;
+        /// <summary>
+        /// The snapshotted workspace file system path of the source code loaded by the deployed app.
+        /// </summary>
         public readonly string? SourceCodePath;
         public readonly string? Tag;
 

@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.AppProviderConfigArgs;
 import com.pulumi.databricks.inputs.AppResourceArgs;
 import com.pulumi.databricks.inputs.AppTelemetryExportDestinationArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -34,6 +35,20 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> budgetPolicyId() {
         return Optional.ofNullable(this.budgetPolicyId);
+    }
+
+    @Import(name="computeMaxInstances")
+    private @Nullable Output<Integer> computeMaxInstances;
+
+    public Optional<Output<Integer>> computeMaxInstances() {
+        return Optional.ofNullable(this.computeMaxInstances);
+    }
+
+    @Import(name="computeMinInstances")
+    private @Nullable Output<Integer> computeMinInstances;
+
+    public Optional<Output<Integer>> computeMinInstances() {
+        return Optional.ofNullable(this.computeMinInstances);
     }
 
     /**
@@ -66,9 +81,17 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     * 
+     */
     @Import(name="gitRepository")
     private @Nullable Output<AppGitRepositoryArgs> gitRepository;
 
+    /**
+     * @return Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     * 
+     */
     public Optional<Output<AppGitRepositoryArgs>> gitRepository() {
         return Optional.ofNullable(this.gitRepository);
     }
@@ -124,29 +147,45 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.space);
     }
 
+    /**
+     * A list of destinations to which the app&#39;s telemetry (logs, metrics, traces) is exported (see below).
+     * 
+     */
     @Import(name="telemetryExportDestinations")
     private @Nullable Output<List<AppTelemetryExportDestinationArgs>> telemetryExportDestinations;
 
+    /**
+     * @return A list of destinations to which the app&#39;s telemetry (logs, metrics, traces) is exported (see below).
+     * 
+     */
     public Optional<Output<List<AppTelemetryExportDestinationArgs>>> telemetryExportDestinations() {
         return Optional.ofNullable(this.telemetryExportDestinations);
     }
 
+    /**
+     * The Usage Policy ID set for this resource.
+     * 
+     */
     @Import(name="usagePolicyId")
     private @Nullable Output<String> usagePolicyId;
 
+    /**
+     * @return The Usage Policy ID set for this resource.
+     * 
+     */
     public Optional<Output<String>> usagePolicyId() {
         return Optional.ofNullable(this.usagePolicyId);
     }
 
     /**
-     * A list of api scopes granted to the user access token.
+     * A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
      * 
      */
     @Import(name="userApiScopes")
     private @Nullable Output<List<String>> userApiScopes;
 
     /**
-     * @return A list of api scopes granted to the user access token.
+     * @return A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
      * 
      */
     public Optional<Output<List<String>>> userApiScopes() {
@@ -157,6 +196,8 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
 
     private AppArgs(AppArgs $) {
         this.budgetPolicyId = $.budgetPolicyId;
+        this.computeMaxInstances = $.computeMaxInstances;
+        this.computeMinInstances = $.computeMinInstances;
         this.computeSize = $.computeSize;
         this.description = $.description;
         this.gitRepository = $.gitRepository;
@@ -209,6 +250,24 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
             return budgetPolicyId(Output.of(budgetPolicyId));
         }
 
+        public Builder computeMaxInstances(@Nullable Output<Integer> computeMaxInstances) {
+            $.computeMaxInstances = computeMaxInstances;
+            return this;
+        }
+
+        public Builder computeMaxInstances(Integer computeMaxInstances) {
+            return computeMaxInstances(Output.of(computeMaxInstances));
+        }
+
+        public Builder computeMinInstances(@Nullable Output<Integer> computeMinInstances) {
+            $.computeMinInstances = computeMinInstances;
+            return this;
+        }
+
+        public Builder computeMinInstances(Integer computeMinInstances) {
+            return computeMinInstances(Output.of(computeMinInstances));
+        }
+
         /**
          * @param computeSize A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
          * 
@@ -251,11 +310,23 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        /**
+         * @param gitRepository Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitRepository(@Nullable Output<AppGitRepositoryArgs> gitRepository) {
             $.gitRepository = gitRepository;
             return this;
         }
 
+        /**
+         * @param gitRepository Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitRepository(AppGitRepositoryArgs gitRepository) {
             return gitRepository(Output.of(gitRepository));
         }
@@ -339,30 +410,60 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
             return space(Output.of(space));
         }
 
+        /**
+         * @param telemetryExportDestinations A list of destinations to which the app&#39;s telemetry (logs, metrics, traces) is exported (see below).
+         * 
+         * @return builder
+         * 
+         */
         public Builder telemetryExportDestinations(@Nullable Output<List<AppTelemetryExportDestinationArgs>> telemetryExportDestinations) {
             $.telemetryExportDestinations = telemetryExportDestinations;
             return this;
         }
 
+        /**
+         * @param telemetryExportDestinations A list of destinations to which the app&#39;s telemetry (logs, metrics, traces) is exported (see below).
+         * 
+         * @return builder
+         * 
+         */
         public Builder telemetryExportDestinations(List<AppTelemetryExportDestinationArgs> telemetryExportDestinations) {
             return telemetryExportDestinations(Output.of(telemetryExportDestinations));
         }
 
+        /**
+         * @param telemetryExportDestinations A list of destinations to which the app&#39;s telemetry (logs, metrics, traces) is exported (see below).
+         * 
+         * @return builder
+         * 
+         */
         public Builder telemetryExportDestinations(AppTelemetryExportDestinationArgs... telemetryExportDestinations) {
             return telemetryExportDestinations(List.of(telemetryExportDestinations));
         }
 
+        /**
+         * @param usagePolicyId The Usage Policy ID set for this resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder usagePolicyId(@Nullable Output<String> usagePolicyId) {
             $.usagePolicyId = usagePolicyId;
             return this;
         }
 
+        /**
+         * @param usagePolicyId The Usage Policy ID set for this resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder usagePolicyId(String usagePolicyId) {
             return usagePolicyId(Output.of(usagePolicyId));
         }
 
         /**
-         * @param userApiScopes A list of api scopes granted to the user access token.
+         * @param userApiScopes A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
          * 
          * @return builder
          * 
@@ -373,7 +474,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userApiScopes A list of api scopes granted to the user access token.
+         * @param userApiScopes A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
          * 
          * @return builder
          * 
@@ -383,7 +484,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userApiScopes A list of api scopes granted to the user access token.
+         * @param userApiScopes A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
          * 
          * @return builder
          * 

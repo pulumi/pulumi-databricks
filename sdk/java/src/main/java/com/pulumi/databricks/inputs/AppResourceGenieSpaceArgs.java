@@ -29,9 +29,17 @@ public final class AppResourceGenieSpaceArgs extends com.pulumi.resources.Resour
         return this.name;
     }
 
+    /**
+     * Permission to grant on Genie Space. Supported permissions are `CAN_MANAGE`, `CAN_EDIT`, `CAN_RUN`, `CAN_VIEW`.
+     * 
+     */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
+    /**
+     * @return Permission to grant on Genie Space. Supported permissions are `CAN_MANAGE`, `CAN_EDIT`, `CAN_RUN`, `CAN_VIEW`.
+     * 
+     */
     public Output<String> permission() {
         return this.permission;
     }
@@ -98,11 +106,23 @@ public final class AppResourceGenieSpaceArgs extends com.pulumi.resources.Resour
             return name(Output.of(name));
         }
 
+        /**
+         * @param permission Permission to grant on Genie Space. Supported permissions are `CAN_MANAGE`, `CAN_EDIT`, `CAN_RUN`, `CAN_VIEW`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(Output<String> permission) {
             $.permission = permission;
             return this;
         }
 
+        /**
+         * @param permission Permission to grant on Genie Space. Supported permissions are `CAN_MANAGE`, `CAN_EDIT`, `CAN_RUN`, `CAN_VIEW`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(String permission) {
             return permission(Output.of(permission));
         }

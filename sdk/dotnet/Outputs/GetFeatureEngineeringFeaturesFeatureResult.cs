@@ -14,6 +14,18 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringFeaturesFeatureResult
     {
         /// <summary>
+        /// Name of parent catalog for features of interest
+        /// </summary>
+        public readonly string CatalogName;
+        /// <summary>
+        /// (string) - Time at which this feature was created
+        /// </summary>
+        public readonly string CreatedAt;
+        /// <summary>
+        /// (string) - Username of the feature creator
+        /// </summary>
+        public readonly string CreatedBy;
+        /// <summary>
         /// (string) - The description of the feature
         /// </summary>
         public readonly string Description;
@@ -47,9 +59,22 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeaturesFeatureLineageContextResult LineageContext;
         /// <summary>
+        /// (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+        /// reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
+        /// fields, the leaf node name (e.g., "EventTimestamp" from "value.event_details.event_timestamp")
+        /// is what will be present in materialized tables and expected to match at query time.
+        /// TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+        /// backwards compatibility but is deprecated; migrate to dot notation
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeaturesFeatureProviderConfigResult? ProviderConfig;
+        /// <summary>
+        /// Name of parent schema relative to its parent catalog
+        /// </summary>
+        public readonly string SchemaName;
         /// <summary>
         /// (DataSource) - The data source of the feature
         /// </summary>
@@ -66,6 +91,12 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetFeatureEngineeringFeaturesFeatureResult(
+            string catalogName,
+
+            string createdAt,
+
+            string createdBy,
+
             string description,
 
             ImmutableArray<Outputs.GetFeatureEngineeringFeaturesFeatureEntityResult> entities,
@@ -80,7 +111,11 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetFeatureEngineeringFeaturesFeatureLineageContextResult lineageContext,
 
+            string name,
+
             Outputs.GetFeatureEngineeringFeaturesFeatureProviderConfigResult? providerConfig,
+
+            string schemaName,
 
             Outputs.GetFeatureEngineeringFeaturesFeatureSourceResult source,
 
@@ -88,6 +123,9 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetFeatureEngineeringFeaturesFeatureTimeseriesColumnResult timeseriesColumn)
         {
+            CatalogName = catalogName;
+            CreatedAt = createdAt;
+            CreatedBy = createdBy;
             Description = description;
             Entities = entities;
             FilterCondition = filterCondition;
@@ -95,7 +133,9 @@ namespace Pulumi.Databricks.Outputs
             Function = function;
             Inputs = inputs;
             LineageContext = lineageContext;
+            Name = name;
             ProviderConfig = providerConfig;
+            SchemaName = schemaName;
             Source = source;
             TimeWindow = timeWindow;
             TimeseriesColumn = timeseriesColumn;

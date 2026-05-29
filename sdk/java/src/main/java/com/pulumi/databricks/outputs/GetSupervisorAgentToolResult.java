@@ -35,7 +35,8 @@ public final class GetSupervisorAgentToolResult {
      */
     private GetSupervisorAgentToolGenieSpace genieSpace;
     /**
-     * @return (string) - The ID of the genie space
+     * @return (string, deprecated) - Deprecated: use spaceId instead. Still REQUIRED for backward compatibility
+     * until a future API version removes it
      * 
      */
     private String id;
@@ -56,7 +57,7 @@ public final class GetSupervisorAgentToolResult {
      */
     private String toolId;
     /**
-     * @return (string) - Tool type. Must be one of: &#34;genieSpace&#34;, &#34;knowledgeAssistant&#34;, &#34;ucFunction&#34;, &#34;ucConnection&#34;, &#34;app&#34;, &#34;volume&#34;, &#34;lakeviewDashboard&#34;, &#34;servingEndpoint&#34;, &#34;ucTable&#34;, &#34;vectorSearchIndex&#34;, &#34;catalog&#34;, &#34;schema&#34;, &#34;supervisorAgent&#34;, &#34;webSearch&#34;
+     * @return (string) - Tool type. Must be one of: &#34;genieSpace&#34;, &#34;knowledgeAssistant&#34;, &#34;ucFunction&#34;, &#34;ucConnection&#34;, &#34;ucMcp&#34;, &#34;app&#34;, &#34;volume&#34;, &#34;dashboard&#34;, &#34;servingEndpoint&#34;, &#34;table&#34;, &#34;vectorSearchIndex&#34;, &#34;catalog&#34;, &#34;schema&#34;, &#34;supervisorAgent&#34;, &#34;webSearch&#34;, &#34;skill&#34;. The legacy values &#34;lakeviewDashboard&#34; and &#34;ucTable&#34; are also accepted and remain equivalent to &#34;dashboard&#34; and &#34;table&#34; respectively
      * 
      */
     private String toolType;
@@ -99,7 +100,8 @@ public final class GetSupervisorAgentToolResult {
         return this.genieSpace;
     }
     /**
-     * @return (string) - The ID of the genie space
+     * @return (string, deprecated) - Deprecated: use spaceId instead. Still REQUIRED for backward compatibility
+     * until a future API version removes it
      * 
      */
     public String id() {
@@ -130,7 +132,7 @@ public final class GetSupervisorAgentToolResult {
         return this.toolId;
     }
     /**
-     * @return (string) - Tool type. Must be one of: &#34;genieSpace&#34;, &#34;knowledgeAssistant&#34;, &#34;ucFunction&#34;, &#34;ucConnection&#34;, &#34;app&#34;, &#34;volume&#34;, &#34;lakeviewDashboard&#34;, &#34;servingEndpoint&#34;, &#34;ucTable&#34;, &#34;vectorSearchIndex&#34;, &#34;catalog&#34;, &#34;schema&#34;, &#34;supervisorAgent&#34;, &#34;webSearch&#34;
+     * @return (string) - Tool type. Must be one of: &#34;genieSpace&#34;, &#34;knowledgeAssistant&#34;, &#34;ucFunction&#34;, &#34;ucConnection&#34;, &#34;ucMcp&#34;, &#34;app&#34;, &#34;volume&#34;, &#34;dashboard&#34;, &#34;servingEndpoint&#34;, &#34;table&#34;, &#34;vectorSearchIndex&#34;, &#34;catalog&#34;, &#34;schema&#34;, &#34;supervisorAgent&#34;, &#34;webSearch&#34;, &#34;skill&#34;. The legacy values &#34;lakeviewDashboard&#34; and &#34;ucTable&#34; are also accepted and remain equivalent to &#34;dashboard&#34; and &#34;table&#34; respectively
      * 
      */
     public String toolType() {

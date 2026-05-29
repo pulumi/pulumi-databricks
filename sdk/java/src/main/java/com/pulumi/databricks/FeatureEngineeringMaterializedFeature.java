@@ -10,9 +10,12 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.FeatureEngineeringMaterializedFeatureArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureState;
+import com.pulumi.databricks.outputs.FeatureEngineeringMaterializedFeatureCronScheduleTrigger;
 import com.pulumi.databricks.outputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfig;
 import com.pulumi.databricks.outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig;
 import com.pulumi.databricks.outputs.FeatureEngineeringMaterializedFeatureProviderConfig;
+import com.pulumi.databricks.outputs.FeatureEngineeringMaterializedFeatureStreamingMode;
+import com.pulumi.databricks.outputs.FeatureEngineeringMaterializedFeatureTableTrigger;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -37,6 +40,20 @@ public class FeatureEngineeringMaterializedFeature extends com.pulumi.resources.
      */
     public Output<Optional<String>> cronSchedule() {
         return Codegen.optional(this.cronSchedule);
+    }
+    /**
+     * A cron-based schedule trigger for the materialization pipeline
+     * 
+     */
+    @Export(name="cronScheduleTrigger", refs={FeatureEngineeringMaterializedFeatureCronScheduleTrigger.class}, tree="[0]")
+    private Output</* @Nullable */ FeatureEngineeringMaterializedFeatureCronScheduleTrigger> cronScheduleTrigger;
+
+    /**
+     * @return A cron-based schedule trigger for the materialization pipeline
+     * 
+     */
+    public Output<Optional<FeatureEngineeringMaterializedFeatureCronScheduleTrigger>> cronScheduleTrigger() {
+        return Codegen.optional(this.cronScheduleTrigger);
     }
     /**
      * The full name of the feature in Unity Catalog
@@ -83,30 +100,46 @@ public class FeatureEngineeringMaterializedFeature extends com.pulumi.resources.
         return this.lastMaterializationTime;
     }
     /**
-     * Unique identifier for the materialized feature
+     * (string) - Server-assigned unique identifier for the materialized feature
      * 
      */
     @Export(name="materializedFeatureId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> materializedFeatureId;
+    private Output<String> materializedFeatureId;
 
     /**
-     * @return Unique identifier for the materialized feature
+     * @return (string) - Server-assigned unique identifier for the materialized feature
      * 
      */
-    public Output<Optional<String>> materializedFeatureId() {
-        return Codegen.optional(this.materializedFeatureId);
+    public Output<String> materializedFeatureId() {
+        return this.materializedFeatureId;
     }
+    /**
+     * Destination for writing feature values to an offline Delta table
+     * 
+     */
     @Export(name="offlineStoreConfig", refs={FeatureEngineeringMaterializedFeatureOfflineStoreConfig.class}, tree="[0]")
-    private Output<FeatureEngineeringMaterializedFeatureOfflineStoreConfig> offlineStoreConfig;
+    private Output</* @Nullable */ FeatureEngineeringMaterializedFeatureOfflineStoreConfig> offlineStoreConfig;
 
-    public Output<FeatureEngineeringMaterializedFeatureOfflineStoreConfig> offlineStoreConfig() {
-        return this.offlineStoreConfig;
+    /**
+     * @return Destination for writing feature values to an offline Delta table
+     * 
+     */
+    public Output<Optional<FeatureEngineeringMaterializedFeatureOfflineStoreConfig>> offlineStoreConfig() {
+        return Codegen.optional(this.offlineStoreConfig);
     }
+    /**
+     * Destination for writing feature values to an online Lakebase table
+     * 
+     */
     @Export(name="onlineStoreConfig", refs={FeatureEngineeringMaterializedFeatureOnlineStoreConfig.class}, tree="[0]")
-    private Output<FeatureEngineeringMaterializedFeatureOnlineStoreConfig> onlineStoreConfig;
+    private Output</* @Nullable */ FeatureEngineeringMaterializedFeatureOnlineStoreConfig> onlineStoreConfig;
 
-    public Output<FeatureEngineeringMaterializedFeatureOnlineStoreConfig> onlineStoreConfig() {
-        return this.onlineStoreConfig;
+    /**
+     * @return Destination for writing feature values to an online Lakebase table
+     * 
+     */
+    public Output<Optional<FeatureEngineeringMaterializedFeatureOnlineStoreConfig>> onlineStoreConfig() {
+        return Codegen.optional(this.onlineStoreConfig);
     }
     /**
      * The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
@@ -137,6 +170,24 @@ public class FeatureEngineeringMaterializedFeature extends com.pulumi.resources.
         return this.providerConfig;
     }
     /**
+     * The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+     * sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+     * for ETL and analytics workloads
+     * 
+     */
+    @Export(name="streamingMode", refs={FeatureEngineeringMaterializedFeatureStreamingMode.class}, tree="[0]")
+    private Output</* @Nullable */ FeatureEngineeringMaterializedFeatureStreamingMode> streamingMode;
+
+    /**
+     * @return The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+     * sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+     * for ETL and analytics workloads
+     * 
+     */
+    public Output<Optional<FeatureEngineeringMaterializedFeatureStreamingMode>> streamingMode() {
+        return Codegen.optional(this.streamingMode);
+    }
+    /**
      * (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
      * 
      */
@@ -149,6 +200,20 @@ public class FeatureEngineeringMaterializedFeature extends com.pulumi.resources.
      */
     public Output<String> tableName() {
         return this.tableName;
+    }
+    /**
+     * A trigger that fires when the upstream source table changes
+     * 
+     */
+    @Export(name="tableTrigger", refs={FeatureEngineeringMaterializedFeatureTableTrigger.class}, tree="[0]")
+    private Output</* @Nullable */ FeatureEngineeringMaterializedFeatureTableTrigger> tableTrigger;
+
+    /**
+     * @return A trigger that fires when the upstream source table changes
+     * 
+     */
+    public Output<Optional<FeatureEngineeringMaterializedFeatureTableTrigger>> tableTrigger() {
+        return Codegen.optional(this.tableTrigger);
     }
 
     /**

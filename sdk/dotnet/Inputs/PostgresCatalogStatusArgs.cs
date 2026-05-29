@@ -19,13 +19,6 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Branch { get; set; }
 
         /// <summary>
-        /// The ID in the Unity Catalog.
-        /// It becomes the full resource name, for example "MyCatalog" becomes "catalogs/my_catalog"
-        /// </summary>
-        [Input("catalogId")]
-        public Input<string>? CatalogId { get; set; }
-
-        /// <summary>
         /// (string) - The name of the Postgres database associated with the catalog
         /// </summary>
         [Input("postgresDatabase")]

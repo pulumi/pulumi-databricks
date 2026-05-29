@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppAppActiveDeploymentDeploymentArtifacts {
+    /**
+     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
     private @Nullable String sourceCodePath;
 
     private GetAppAppActiveDeploymentDeploymentArtifacts() {}
+    /**
+     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
     public Optional<String> sourceCodePath() {
         return Optional.ofNullable(this.sourceCodePath);
     }

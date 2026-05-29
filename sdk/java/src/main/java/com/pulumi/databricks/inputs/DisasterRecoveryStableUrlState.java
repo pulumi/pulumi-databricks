@@ -16,6 +16,31 @@ public final class DisasterRecoveryStableUrlState extends com.pulumi.resources.R
     public static final DisasterRecoveryStableUrlState Empty = new DisasterRecoveryStableUrlState();
 
     /**
+     * (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+     * currently linked to, in the format
+     * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+     * the stable URL is not attached to any failover group. Server-controlled:
+     * written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+     * DeleteFailoverGroup / UpdateFailoverGroup on unlink
+     * 
+     */
+    @Import(name="failoverGroupName")
+    private @Nullable Output<String> failoverGroupName;
+
+    /**
+     * @return (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+     * currently linked to, in the format
+     * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+     * the stable URL is not attached to any failover group. Server-controlled:
+     * written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+     * DeleteFailoverGroup / UpdateFailoverGroup on unlink
+     * 
+     */
+    public Optional<Output<String>> failoverGroupName() {
+        return Optional.ofNullable(this.failoverGroupName);
+    }
+
+    /**
      * The workspace this stable URL is initially bound to. Used only in Create
      * requests to associate the stable URL with a workspace. Not returned in
      * responses. Mirrors FailoverGroup.initial_primary_region semantics
@@ -107,6 +132,7 @@ public final class DisasterRecoveryStableUrlState extends com.pulumi.resources.R
     private DisasterRecoveryStableUrlState() {}
 
     private DisasterRecoveryStableUrlState(DisasterRecoveryStableUrlState $) {
+        this.failoverGroupName = $.failoverGroupName;
         this.initialWorkspaceId = $.initialWorkspaceId;
         this.name = $.name;
         this.parent = $.parent;
@@ -130,6 +156,37 @@ public final class DisasterRecoveryStableUrlState extends com.pulumi.resources.R
 
         public Builder(DisasterRecoveryStableUrlState defaults) {
             $ = new DisasterRecoveryStableUrlState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param failoverGroupName (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+         * currently linked to, in the format
+         * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+         * the stable URL is not attached to any failover group. Server-controlled:
+         * written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+         * DeleteFailoverGroup / UpdateFailoverGroup on unlink
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failoverGroupName(@Nullable Output<String> failoverGroupName) {
+            $.failoverGroupName = failoverGroupName;
+            return this;
+        }
+
+        /**
+         * @param failoverGroupName (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+         * currently linked to, in the format
+         * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+         * the stable URL is not attached to any failover group. Server-controlled:
+         * written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+         * DeleteFailoverGroup / UpdateFailoverGroup on unlink
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failoverGroupName(String failoverGroupName) {
+            return failoverGroupName(Output.of(failoverGroupName));
         }
 
         /**

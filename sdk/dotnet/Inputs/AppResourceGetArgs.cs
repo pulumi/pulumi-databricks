@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppResourceGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// attribute - reference to another Databricks App.
+        /// </summary>
         [Input("app")]
         public Input<Inputs.AppResourceAppGetArgs>? App { get; set; }
 
@@ -29,6 +32,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// attribute
+        /// </summary>
         [Input("experiment")]
         public Input<Inputs.AppResourceExperimentGetArgs>? Experiment { get; set; }
 
@@ -50,6 +56,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// attribute
+        /// </summary>
         [Input("postgres")]
         public Input<Inputs.AppResourcePostgresGetArgs>? Postgres { get; set; }
 

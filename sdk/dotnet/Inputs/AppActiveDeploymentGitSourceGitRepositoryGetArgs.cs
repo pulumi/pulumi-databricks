@@ -12,11 +12,14 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppActiveDeploymentGitSourceGitRepositoryGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+        /// </summary>
         [Input("provider", required: true)]
         public Input<string> Provider { get; set; } = null!;
 
         /// <summary>
-        /// The URL of the app once it is deployed.
+        /// URL of the Git repository.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;

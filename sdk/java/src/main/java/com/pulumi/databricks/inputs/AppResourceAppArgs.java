@@ -16,23 +16,31 @@ public final class AppResourceAppArgs extends com.pulumi.resources.ResourceArgs 
     public static final AppResourceAppArgs Empty = new AppResourceAppArgs();
 
     /**
-     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     * The name of the app to grant permission on.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     * @return The name of the app to grant permission on.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Permission to grant on the app. Supported permissions are: `CAN_USE`.
+     * 
+     */
     @Import(name="permission")
     private @Nullable Output<String> permission;
 
+    /**
+     * @return Permission to grant on the app. Supported permissions are: `CAN_USE`.
+     * 
+     */
     public Optional<Output<String>> permission() {
         return Optional.ofNullable(this.permission);
     }
@@ -63,7 +71,7 @@ public final class AppResourceAppArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+         * @param name The name of the app to grant permission on.
          * 
          * @return builder
          * 
@@ -74,7 +82,7 @@ public final class AppResourceAppArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+         * @param name The name of the app to grant permission on.
          * 
          * @return builder
          * 
@@ -83,11 +91,23 @@ public final class AppResourceAppArgs extends com.pulumi.resources.ResourceArgs 
             return name(Output.of(name));
         }
 
+        /**
+         * @param permission Permission to grant on the app. Supported permissions are: `CAN_USE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(@Nullable Output<String> permission) {
             $.permission = permission;
             return this;
         }
 
+        /**
+         * @param permission Permission to grant on the app. Supported permissions are: `CAN_USE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(String permission) {
             return permission(Output.of(permission));
         }

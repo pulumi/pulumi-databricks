@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppActiveDeploymentDeploymentArtifacts
     {
+        /// <summary>
+        /// The snapshotted workspace file system path of the source code loaded by the deployed app.
+        /// </summary>
         public readonly string? SourceCodePath;
 
         [OutputConstructor]

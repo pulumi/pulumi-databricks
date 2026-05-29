@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetAppsAppPendingDeploymentStatus {
     /**
-     * @return Application status message
+     * @return The status message of the deployment.
      * 
      */
     private String message;
     /**
-     * @return State of the application.
+     * @return The state of the deployment.
      * 
      */
     private String state;
 
     private GetAppsAppPendingDeploymentStatus() {}
     /**
-     * @return Application status message
+     * @return The status message of the deployment.
      * 
      */
     public String message() {
         return this.message;
     }
     /**
-     * @return State of the application.
+     * @return The state of the deployment.
      * 
      */
     public String state() {

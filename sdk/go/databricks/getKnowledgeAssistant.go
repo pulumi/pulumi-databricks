@@ -53,7 +53,7 @@ type LookupKnowledgeAssistantResult struct {
 	ErrorInfo string `pulumi:"errorInfo"`
 	// (string) - The MLflow experiment ID
 	ExperimentId string `pulumi:"experimentId"`
-	// (string) - The universally unique identifier (UUID) of the Knowledge Assistant
+	// (string, deprecated) - Deprecated: use knowledgeAssistantId instead
 	Id string `pulumi:"id"`
 	// (string) - Additional global instructions on how the agent should generate answers.
 	// Optional on create and update.
@@ -146,7 +146,7 @@ func (o LookupKnowledgeAssistantResultOutput) ExperimentId() pulumi.StringOutput
 	return o.ApplyT(func(v LookupKnowledgeAssistantResult) string { return v.ExperimentId }).(pulumi.StringOutput)
 }
 
-// (string) - The universally unique identifier (UUID) of the Knowledge Assistant
+// (string, deprecated) - Deprecated: use knowledgeAssistantId instead
 func (o LookupKnowledgeAssistantResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKnowledgeAssistantResult) string { return v.Id }).(pulumi.StringOutput)
 }

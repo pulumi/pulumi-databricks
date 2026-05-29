@@ -55,7 +55,7 @@ public final class GetKnowledgeAssistantsKnowledgeAssistant {
      */
     private String experimentId;
     /**
-     * @return (string) - The universally unique identifier (UUID) of the Knowledge Assistant
+     * @return (string, deprecated) - Deprecated: use knowledgeAssistantId instead
      * 
      */
     private String id;
@@ -141,7 +141,7 @@ public final class GetKnowledgeAssistantsKnowledgeAssistant {
         return this.experimentId;
     }
     /**
-     * @return (string) - The universally unique identifier (UUID) of the Knowledge Assistant
+     * @return (string, deprecated) - Deprecated: use knowledgeAssistantId instead
      * 
      */
     public String id() {

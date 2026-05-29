@@ -13,11 +13,14 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AppResourceAppGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+        /// The name of the app to grant permission on.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Permission to grant on the app. Supported permissions are: `CAN_USE`.
+        /// </summary>
         [Input("permission")]
         public Input<string>? Permission { get; set; }
 

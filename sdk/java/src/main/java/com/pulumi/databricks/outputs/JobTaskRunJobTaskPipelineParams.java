@@ -5,6 +5,8 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,6 +20,10 @@ public final class JobTaskRunJobTaskPipelineParams {
      * 
      */
     private @Nullable Boolean fullRefresh;
+    private @Nullable List<String> fullRefreshSelections;
+    private @Nullable List<String> refreshFlowSelections;
+    private @Nullable List<String> refreshSelections;
+    private @Nullable List<String> resetCheckpointSelections;
 
     private JobTaskRunJobTaskPipelineParams() {}
     /**
@@ -28,6 +34,18 @@ public final class JobTaskRunJobTaskPipelineParams {
      */
     public Optional<Boolean> fullRefresh() {
         return Optional.ofNullable(this.fullRefresh);
+    }
+    public List<String> fullRefreshSelections() {
+        return this.fullRefreshSelections == null ? List.of() : this.fullRefreshSelections;
+    }
+    public List<String> refreshFlowSelections() {
+        return this.refreshFlowSelections == null ? List.of() : this.refreshFlowSelections;
+    }
+    public List<String> refreshSelections() {
+        return this.refreshSelections == null ? List.of() : this.refreshSelections;
+    }
+    public List<String> resetCheckpointSelections() {
+        return this.resetCheckpointSelections == null ? List.of() : this.resetCheckpointSelections;
     }
 
     public static Builder builder() {
@@ -40,10 +58,18 @@ public final class JobTaskRunJobTaskPipelineParams {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean fullRefresh;
+        private @Nullable List<String> fullRefreshSelections;
+        private @Nullable List<String> refreshFlowSelections;
+        private @Nullable List<String> refreshSelections;
+        private @Nullable List<String> resetCheckpointSelections;
         public Builder() {}
         public Builder(JobTaskRunJobTaskPipelineParams defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.fullRefresh = defaults.fullRefresh;
+    	      this.fullRefreshSelections = defaults.fullRefreshSelections;
+    	      this.refreshFlowSelections = defaults.refreshFlowSelections;
+    	      this.refreshSelections = defaults.refreshSelections;
+    	      this.resetCheckpointSelections = defaults.resetCheckpointSelections;
         }
 
         @CustomType.Setter
@@ -52,9 +78,49 @@ public final class JobTaskRunJobTaskPipelineParams {
             this.fullRefresh = fullRefresh;
             return this;
         }
+        @CustomType.Setter
+        public Builder fullRefreshSelections(@Nullable List<String> fullRefreshSelections) {
+
+            this.fullRefreshSelections = fullRefreshSelections;
+            return this;
+        }
+        public Builder fullRefreshSelections(String... fullRefreshSelections) {
+            return fullRefreshSelections(List.of(fullRefreshSelections));
+        }
+        @CustomType.Setter
+        public Builder refreshFlowSelections(@Nullable List<String> refreshFlowSelections) {
+
+            this.refreshFlowSelections = refreshFlowSelections;
+            return this;
+        }
+        public Builder refreshFlowSelections(String... refreshFlowSelections) {
+            return refreshFlowSelections(List.of(refreshFlowSelections));
+        }
+        @CustomType.Setter
+        public Builder refreshSelections(@Nullable List<String> refreshSelections) {
+
+            this.refreshSelections = refreshSelections;
+            return this;
+        }
+        public Builder refreshSelections(String... refreshSelections) {
+            return refreshSelections(List.of(refreshSelections));
+        }
+        @CustomType.Setter
+        public Builder resetCheckpointSelections(@Nullable List<String> resetCheckpointSelections) {
+
+            this.resetCheckpointSelections = resetCheckpointSelections;
+            return this;
+        }
+        public Builder resetCheckpointSelections(String... resetCheckpointSelections) {
+            return resetCheckpointSelections(List.of(resetCheckpointSelections));
+        }
         public JobTaskRunJobTaskPipelineParams build() {
             final var _resultValue = new JobTaskRunJobTaskPipelineParams();
             _resultValue.fullRefresh = fullRefresh;
+            _resultValue.fullRefreshSelections = fullRefreshSelections;
+            _resultValue.refreshFlowSelections = refreshFlowSelections;
+            _resultValue.refreshSelections = refreshSelections;
+            _resultValue.resetCheckpointSelections = resetCheckpointSelections;
             return _resultValue;
         }
     }

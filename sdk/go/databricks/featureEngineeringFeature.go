@@ -16,6 +16,12 @@ import (
 type FeatureEngineeringFeature struct {
 	pulumi.CustomResourceState
 
+	// (string) - Name of parent catalog
+	CatalogName pulumi.StringOutput `pulumi:"catalogName"`
+	// (string) - Time at which this feature was created
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// (string) - Username of the feature creator
+	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// The description of the feature
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The entity columns for the feature, used as aggregation keys and for query-time lookup
@@ -23,7 +29,9 @@ type FeatureEngineeringFeature struct {
 	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
 	// The filter condition applied to the source data before aggregation
 	FilterCondition pulumi.StringPtrOutput `pulumi:"filterCondition"`
-	// The full three-part name (catalog, schema, name) of the feature
+	// The full three-part name (catalog, schema, name) of the feature. This is the
+	// feature's resource identifier; the catalog_name, schema_name, and name fields
+	// below are OUTPUT_ONLY decomposed views of this value
 	FullName pulumi.StringOutput `pulumi:"fullName"`
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunctionOutput `pulumi:"function"`
@@ -36,8 +44,12 @@ type FeatureEngineeringFeature struct {
 	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
 	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
 	LineageContext FeatureEngineeringFeatureLineageContextPtrOutput `pulumi:"lineageContext"`
+	// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig FeatureEngineeringFeatureProviderConfigOutput `pulumi:"providerConfig"`
+	// (string) - Name of parent schema relative to its parent catalog
+	SchemaName pulumi.StringOutput `pulumi:"schemaName"`
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourceOutput `pulumi:"source"`
 	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
@@ -86,6 +98,12 @@ func GetFeatureEngineeringFeature(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FeatureEngineeringFeature resources.
 type featureEngineeringFeatureState struct {
+	// (string) - Name of parent catalog
+	CatalogName *string `pulumi:"catalogName"`
+	// (string) - Time at which this feature was created
+	CreatedAt *string `pulumi:"createdAt"`
+	// (string) - Username of the feature creator
+	CreatedBy *string `pulumi:"createdBy"`
 	// The description of the feature
 	Description *string `pulumi:"description"`
 	// The entity columns for the feature, used as aggregation keys and for query-time lookup
@@ -93,7 +111,9 @@ type featureEngineeringFeatureState struct {
 	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
 	// The filter condition applied to the source data before aggregation
 	FilterCondition *string `pulumi:"filterCondition"`
-	// The full three-part name (catalog, schema, name) of the feature
+	// The full three-part name (catalog, schema, name) of the feature. This is the
+	// feature's resource identifier; the catalog_name, schema_name, and name fields
+	// below are OUTPUT_ONLY decomposed views of this value
 	FullName *string `pulumi:"fullName"`
 	// The function by which the feature is computed
 	Function *FeatureEngineeringFeatureFunction `pulumi:"function"`
@@ -106,8 +126,12 @@ type featureEngineeringFeatureState struct {
 	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
 	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
 	LineageContext *FeatureEngineeringFeatureLineageContext `pulumi:"lineageContext"`
+	// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+	Name *string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *FeatureEngineeringFeatureProviderConfig `pulumi:"providerConfig"`
+	// (string) - Name of parent schema relative to its parent catalog
+	SchemaName *string `pulumi:"schemaName"`
 	// The data source of the feature
 	Source *FeatureEngineeringFeatureSource `pulumi:"source"`
 	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
@@ -118,6 +142,12 @@ type featureEngineeringFeatureState struct {
 }
 
 type FeatureEngineeringFeatureState struct {
+	// (string) - Name of parent catalog
+	CatalogName pulumi.StringPtrInput
+	// (string) - Time at which this feature was created
+	CreatedAt pulumi.StringPtrInput
+	// (string) - Username of the feature creator
+	CreatedBy pulumi.StringPtrInput
 	// The description of the feature
 	Description pulumi.StringPtrInput
 	// The entity columns for the feature, used as aggregation keys and for query-time lookup
@@ -125,7 +155,9 @@ type FeatureEngineeringFeatureState struct {
 	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
 	// The filter condition applied to the source data before aggregation
 	FilterCondition pulumi.StringPtrInput
-	// The full three-part name (catalog, schema, name) of the feature
+	// The full three-part name (catalog, schema, name) of the feature. This is the
+	// feature's resource identifier; the catalog_name, schema_name, and name fields
+	// below are OUTPUT_ONLY decomposed views of this value
 	FullName pulumi.StringPtrInput
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunctionPtrInput
@@ -138,8 +170,12 @@ type FeatureEngineeringFeatureState struct {
 	// Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
 	// This field will be set by feature-engineering client and should be left unset by SDK and terraform users
 	LineageContext FeatureEngineeringFeatureLineageContextPtrInput
+	// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+	Name pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig FeatureEngineeringFeatureProviderConfigPtrInput
+	// (string) - Name of parent schema relative to its parent catalog
+	SchemaName pulumi.StringPtrInput
 	// The data source of the feature
 	Source FeatureEngineeringFeatureSourcePtrInput
 	// Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
@@ -161,7 +197,9 @@ type featureEngineeringFeatureArgs struct {
 	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
 	// The filter condition applied to the source data before aggregation
 	FilterCondition *string `pulumi:"filterCondition"`
-	// The full three-part name (catalog, schema, name) of the feature
+	// The full three-part name (catalog, schema, name) of the feature. This is the
+	// feature's resource identifier; the catalog_name, schema_name, and name fields
+	// below are OUTPUT_ONLY decomposed views of this value
 	FullName string `pulumi:"fullName"`
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunction `pulumi:"function"`
@@ -194,7 +232,9 @@ type FeatureEngineeringFeatureArgs struct {
 	// Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
 	// The filter condition applied to the source data before aggregation
 	FilterCondition pulumi.StringPtrInput
-	// The full three-part name (catalog, schema, name) of the feature
+	// The full three-part name (catalog, schema, name) of the feature. This is the
+	// feature's resource identifier; the catalog_name, schema_name, and name fields
+	// below are OUTPUT_ONLY decomposed views of this value
 	FullName pulumi.StringInput
 	// The function by which the feature is computed
 	Function FeatureEngineeringFeatureFunctionInput
@@ -305,6 +345,21 @@ func (o FeatureEngineeringFeatureOutput) ToFeatureEngineeringFeatureOutputWithCo
 	return o
 }
 
+// (string) - Name of parent catalog
+func (o FeatureEngineeringFeatureOutput) CatalogName() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringOutput { return v.CatalogName }).(pulumi.StringOutput)
+}
+
+// (string) - Time at which this feature was created
+func (o FeatureEngineeringFeatureOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// (string) - Username of the feature creator
+func (o FeatureEngineeringFeatureOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
 // The description of the feature
 func (o FeatureEngineeringFeatureOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -321,7 +376,9 @@ func (o FeatureEngineeringFeatureOutput) FilterCondition() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringPtrOutput { return v.FilterCondition }).(pulumi.StringPtrOutput)
 }
 
-// The full three-part name (catalog, schema, name) of the feature
+// The full three-part name (catalog, schema, name) of the feature. This is the
+// feature's resource identifier; the catalog_name, schema_name, and name fields
+// below are OUTPUT_ONLY decomposed views of this value
 func (o FeatureEngineeringFeatureOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringOutput { return v.FullName }).(pulumi.StringOutput)
 }
@@ -348,11 +405,21 @@ func (o FeatureEngineeringFeatureOutput) LineageContext() FeatureEngineeringFeat
 	}).(FeatureEngineeringFeatureLineageContextPtrOutput)
 }
 
+// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+func (o FeatureEngineeringFeatureOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 // Configure the provider for management through account provider.
 func (o FeatureEngineeringFeatureOutput) ProviderConfig() FeatureEngineeringFeatureProviderConfigOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeature) FeatureEngineeringFeatureProviderConfigOutput {
 		return v.ProviderConfig
 	}).(FeatureEngineeringFeatureProviderConfigOutput)
+}
+
+// (string) - Name of parent schema relative to its parent catalog
+func (o FeatureEngineeringFeatureOutput) SchemaName() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringOutput { return v.SchemaName }).(pulumi.StringOutput)
 }
 
 // The data source of the feature

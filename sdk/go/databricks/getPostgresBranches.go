@@ -37,6 +37,10 @@ type GetPostgresBranchesArgs struct {
 	Parent string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetPostgresBranchesProviderConfig `pulumi:"providerConfig"`
+	// Whether to include soft-deleted branches in the response.
+	// When true, deleted branches are included alongside active branches.
+	// Purged branches are never returned
+	ShowDeleted *bool `pulumi:"showDeleted"`
 }
 
 // A collection of values returned by getPostgresBranches.
@@ -49,6 +53,7 @@ type GetPostgresBranchesResult struct {
 	// Format: projects/{project_id}
 	Parent         string                             `pulumi:"parent"`
 	ProviderConfig *GetPostgresBranchesProviderConfig `pulumi:"providerConfig"`
+	ShowDeleted    *bool                              `pulumi:"showDeleted"`
 }
 
 func GetPostgresBranchesOutput(ctx *pulumi.Context, args GetPostgresBranchesOutputArgs, opts ...pulumi.InvokeOption) GetPostgresBranchesResultOutput {
@@ -69,6 +74,10 @@ type GetPostgresBranchesOutputArgs struct {
 	Parent pulumi.StringInput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetPostgresBranchesProviderConfigPtrInput `pulumi:"providerConfig"`
+	// Whether to include soft-deleted branches in the response.
+	// When true, deleted branches are included alongside active branches.
+	// Purged branches are never returned
+	ShowDeleted pulumi.BoolPtrInput `pulumi:"showDeleted"`
 }
 
 func (GetPostgresBranchesOutputArgs) ElementType() reflect.Type {
@@ -111,6 +120,10 @@ func (o GetPostgresBranchesResultOutput) Parent() pulumi.StringOutput {
 
 func (o GetPostgresBranchesResultOutput) ProviderConfig() GetPostgresBranchesProviderConfigPtrOutput {
 	return o.ApplyT(func(v GetPostgresBranchesResult) *GetPostgresBranchesProviderConfig { return v.ProviderConfig }).(GetPostgresBranchesProviderConfigPtrOutput)
+}
+
+func (o GetPostgresBranchesResultOutput) ShowDeleted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresBranchesResult) *bool { return v.ShowDeleted }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

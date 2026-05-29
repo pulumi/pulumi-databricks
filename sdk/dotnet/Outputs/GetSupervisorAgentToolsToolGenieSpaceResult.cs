@@ -14,7 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetSupervisorAgentToolsToolGenieSpaceResult
     {
         /// <summary>
-        /// (string) - The ID of the genie space
+        /// (string, deprecated) - Deprecated: use SpaceId instead. Still REQUIRED for backward compatibility
+        /// until a future API version removes it
         /// </summary>
         public readonly string Id;
 

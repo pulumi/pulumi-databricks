@@ -149,6 +149,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("powerBiTask")]
         public Input<Inputs.JobTaskPowerBiTaskArgs>? PowerBiTask { get; set; }
 
+        [Input("pythonOperatorTask")]
+        public Input<Inputs.JobTaskPythonOperatorTaskArgs>? PythonOperatorTask { get; set; }
+
         [Input("pythonWheelTask")]
         public Input<Inputs.JobTaskPythonWheelTaskArgs>? PythonWheelTask { get; set; }
 

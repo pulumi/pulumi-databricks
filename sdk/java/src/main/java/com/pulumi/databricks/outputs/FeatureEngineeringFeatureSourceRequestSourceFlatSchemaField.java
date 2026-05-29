@@ -15,6 +15,10 @@ public final class FeatureEngineeringFeatureSourceRequestSourceFlatSchemaField {
      * 
      */
     private String dataType;
+    /**
+     * @return (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     * 
+     */
     private String name;
 
     private FeatureEngineeringFeatureSourceRequestSourceFlatSchemaField() {}
@@ -25,6 +29,10 @@ public final class FeatureEngineeringFeatureSourceRequestSourceFlatSchemaField {
     public String dataType() {
         return this.dataType;
     }
+    /**
+     * @return (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     * 
+     */
     public String name() {
         return this.name;
     }

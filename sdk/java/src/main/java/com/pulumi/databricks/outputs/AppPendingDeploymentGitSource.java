@@ -12,26 +12,50 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppPendingDeploymentGitSource {
+    /**
+     * @return The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     * 
+     */
     private @Nullable String branch;
     private @Nullable String commit;
+    /**
+     * @return Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     * 
+     */
     private @Nullable AppPendingDeploymentGitSourceGitRepository gitRepository;
     private @Nullable String resolvedCommit;
+    /**
+     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
     private @Nullable String sourceCodePath;
     private @Nullable String tag;
 
     private AppPendingDeploymentGitSource() {}
+    /**
+     * @return The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     * 
+     */
     public Optional<String> branch() {
         return Optional.ofNullable(this.branch);
     }
     public Optional<String> commit() {
         return Optional.ofNullable(this.commit);
     }
+    /**
+     * @return Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     * 
+     */
     public Optional<AppPendingDeploymentGitSourceGitRepository> gitRepository() {
         return Optional.ofNullable(this.gitRepository);
     }
     public Optional<String> resolvedCommit() {
         return Optional.ofNullable(this.resolvedCommit);
     }
+    /**
+     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
     public Optional<String> sourceCodePath() {
         return Optional.ofNullable(this.sourceCodePath);
     }

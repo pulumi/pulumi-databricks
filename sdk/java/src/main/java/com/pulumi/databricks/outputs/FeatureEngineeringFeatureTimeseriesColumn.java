@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class FeatureEngineeringFeatureTimeseriesColumn {
+    /**
+     * @return (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     * 
+     */
     private String name;
 
     private FeatureEngineeringFeatureTimeseriesColumn() {}
+    /**
+     * @return (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     * 
+     */
     public String name() {
         return this.name;
     }

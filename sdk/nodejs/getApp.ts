@@ -58,7 +58,7 @@ export interface GetAppArgs {
  */
 export interface GetAppResult {
     /**
-     * attribute
+     * attribute - reference to another Databricks App.
      */
     readonly app: outputs.GetAppApp;
     /**
@@ -66,7 +66,7 @@ export interface GetAppResult {
      */
     readonly id: string;
     /**
-     * The name of Genie Space.
+     * The name of the app to grant permission on.
      */
     readonly name: string;
     readonly providerConfig?: outputs.GetAppProviderConfig;

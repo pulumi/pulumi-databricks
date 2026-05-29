@@ -96,6 +96,44 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Git credential for a service principal
+ * 
+ * You can manage Git credentials on behalf of a service principal by specifying `principalId`:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.GitCredential;
+ * import com.pulumi.databricks.GitCredentialArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var spn = new GitCredential("spn", GitCredentialArgs.builder()
+ *             .gitProvider("gitHub")
+ *             .gitUsername("my-service-principal")
+ *             .personalAccessToken(githubPat)
+ *             .principalId(databricksSpnId)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Related Resources
  * 
  * The following resources are often used in the same context:
@@ -203,9 +241,17 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> personalAccessToken() {
         return Codegen.optional(this.personalAccessToken);
     }
+    /**
+     * The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+     * 
+     */
     @Export(name="principalId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> principalId;
 
+    /**
+     * @return The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+     * 
+     */
     public Output<Optional<String>> principalId() {
         return Codegen.optional(this.principalId);
     }

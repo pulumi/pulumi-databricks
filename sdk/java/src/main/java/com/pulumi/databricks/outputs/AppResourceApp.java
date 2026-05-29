@@ -12,20 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppResourceApp {
     /**
-     * @return The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     * @return The name of the app to grant permission on.
      * 
      */
     private @Nullable String name;
+    /**
+     * @return Permission to grant on the app. Supported permissions are: `CAN_USE`.
+     * 
+     */
     private @Nullable String permission;
 
     private AppResourceApp() {}
     /**
-     * @return The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     * @return The name of the app to grant permission on.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Permission to grant on the app. Supported permissions are: `CAN_USE`.
+     * 
+     */
     public Optional<String> permission() {
         return Optional.ofNullable(this.permission);
     }

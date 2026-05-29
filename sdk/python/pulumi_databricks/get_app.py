@@ -46,7 +46,7 @@ class GetAppResult:
     @pulumi.getter
     def app(self) -> 'outputs.GetAppAppResult':
         """
-        attribute
+        attribute - reference to another Databricks App.
         """
         return pulumi.get(self, "app")
 
@@ -62,7 +62,7 @@ class GetAppResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of Genie Space.
+        The name of the app to grant permission on.
         """
         return pulumi.get(self, "name")
 

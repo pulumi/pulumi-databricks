@@ -11,32 +11,32 @@ import java.util.Objects;
 @CustomType
 public final class GetAppAppResourceUcSecurable {
     /**
-     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * @return Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      * 
      */
     private String permission;
     /**
-     * @return the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     * @return The full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
      * 
      */
     private String securableFullName;
     private String securableKind;
     /**
-     * @return the type of UC securable, i.e. `VOLUME`.
+     * @return The type of UC securable. Supported values are `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`.
      * 
      */
     private String securableType;
 
     private GetAppAppResourceUcSecurable() {}
     /**
-     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * @return Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      * 
      */
     public String permission() {
         return this.permission;
     }
     /**
-     * @return the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     * @return The full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
      * 
      */
     public String securableFullName() {
@@ -46,7 +46,7 @@ public final class GetAppAppResourceUcSecurable {
         return this.securableKind;
     }
     /**
-     * @return the type of UC securable, i.e. `VOLUME`.
+     * @return The type of UC securable. Supported values are `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`.
      * 
      */
     public String securableType() {

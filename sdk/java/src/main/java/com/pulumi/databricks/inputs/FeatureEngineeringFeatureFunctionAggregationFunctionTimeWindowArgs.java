@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumblingArgs;
 import java.util.Objects;
@@ -22,6 +23,13 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
 
     public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs>> continuous() {
         return Optional.ofNullable(this.continuous);
+    }
+
+    @Import(name="rolling")
+    private @Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs> rolling;
+
+    public Optional<Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs>> rolling() {
+        return Optional.ofNullable(this.rolling);
     }
 
     @Import(name="sliding")
@@ -42,6 +50,7 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
 
     private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowArgs $) {
         this.continuous = $.continuous;
+        this.rolling = $.rolling;
         this.sliding = $.sliding;
         this.tumbling = $.tumbling;
     }
@@ -71,6 +80,15 @@ public final class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindo
 
         public Builder continuous(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuousArgs continuous) {
             return continuous(Output.of(continuous));
+        }
+
+        public Builder rolling(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs> rolling) {
+            $.rolling = rolling;
+            return this;
+        }
+
+        public Builder rolling(FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRollingArgs rolling) {
+            return rolling(Output.of(rolling));
         }
 
         public Builder sliding(@Nullable Output<FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSlidingArgs> sliding) {

@@ -144,6 +144,9 @@ namespace Pulumi.Databricks
     [OutputType]
     public sealed class GetAppsResult
     {
+        /// <summary>
+        /// attribute - reference to another Databricks App.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAppsAppResult> Apps;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

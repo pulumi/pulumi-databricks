@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetPostgresBranchesProviderConfig;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -64,12 +65,32 @@ public final class GetPostgresBranchesPlainArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.providerConfig);
     }
 
+    /**
+     * Whether to include soft-deleted branches in the response.
+     * When true, deleted branches are included alongside active branches.
+     * Purged branches are never returned
+     * 
+     */
+    @Import(name="showDeleted")
+    private @Nullable Boolean showDeleted;
+
+    /**
+     * @return Whether to include soft-deleted branches in the response.
+     * When true, deleted branches are included alongside active branches.
+     * Purged branches are never returned
+     * 
+     */
+    public Optional<Boolean> showDeleted() {
+        return Optional.ofNullable(this.showDeleted);
+    }
+
     private GetPostgresBranchesPlainArgs() {}
 
     private GetPostgresBranchesPlainArgs(GetPostgresBranchesPlainArgs $) {
         this.pageSize = $.pageSize;
         this.parent = $.parent;
         this.providerConfig = $.providerConfig;
+        this.showDeleted = $.showDeleted;
     }
 
     public static Builder builder() {
@@ -121,6 +142,19 @@ public final class GetPostgresBranchesPlainArgs extends com.pulumi.resources.Inv
          */
         public Builder providerConfig(@Nullable GetPostgresBranchesProviderConfig providerConfig) {
             $.providerConfig = providerConfig;
+            return this;
+        }
+
+        /**
+         * @param showDeleted Whether to include soft-deleted branches in the response.
+         * When true, deleted branches are included alongside active branches.
+         * Purged branches are never returned
+         * 
+         * @return builder
+         * 
+         */
+        public Builder showDeleted(@Nullable Boolean showDeleted) {
+            $.showDeleted = showDeleted;
             return this;
         }
 

@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppTelemetryExportDestinationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// attribute - export telemetry to Unity Catalog tables (must already exist and be writable by the app's service principal).
+        /// </summary>
         [Input("unityCatalog")]
         public Input<Inputs.AppTelemetryExportDestinationUnityCatalogArgs>? UnityCatalog { get; set; }
 

@@ -17,6 +17,9 @@ namespace Pulumi.Databricks.Outputs
         /// The scalar data type of the field. Possible values are: `BINARY`, `BOOLEAN`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `INTEGER`, `LONG`, `SHORT`, `STRING`, `TIMESTAMP`
         /// </summary>
         public readonly string DataType;
+        /// <summary>
+        /// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

@@ -142,6 +142,10 @@ export class PostgresBranch extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.PostgresBranchProviderConfig>;
     /**
+     * If true, permanently delete the branch; if false, soft delete
+     */
+    declare public readonly purgeOnDelete: pulumi.Output<boolean | undefined>;
+    /**
      * If true, update the branch if it already exists instead of returning an error
      */
     declare public readonly replaceExisting: pulumi.Output<boolean | undefined>;
@@ -180,6 +184,7 @@ export class PostgresBranch extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
             resourceInputs["providerConfig"] = state?.providerConfig;
+            resourceInputs["purgeOnDelete"] = state?.purgeOnDelete;
             resourceInputs["replaceExisting"] = state?.replaceExisting;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["status"] = state?.status;
@@ -196,6 +201,7 @@ export class PostgresBranch extends pulumi.CustomResource {
             resourceInputs["branchId"] = args?.branchId;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["providerConfig"] = args?.providerConfig;
+            resourceInputs["purgeOnDelete"] = args?.purgeOnDelete;
             resourceInputs["replaceExisting"] = args?.replaceExisting;
             resourceInputs["spec"] = args?.spec;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -241,6 +247,10 @@ export interface PostgresBranchState {
      */
     providerConfig?: pulumi.Input<inputs.PostgresBranchProviderConfig | undefined>;
     /**
+     * If true, permanently delete the branch; if false, soft delete
+     */
+    purgeOnDelete?: pulumi.Input<boolean | undefined>;
+    /**
      * If true, update the branch if it already exists instead of returning an error
      */
     replaceExisting?: pulumi.Input<boolean | undefined>;
@@ -284,6 +294,10 @@ export interface PostgresBranchArgs {
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.PostgresBranchProviderConfig | undefined>;
+    /**
+     * If true, permanently delete the branch; if false, soft delete
+     */
+    purgeOnDelete?: pulumi.Input<boolean | undefined>;
     /**
      * If true, update the branch if it already exists instead of returning an error
      */

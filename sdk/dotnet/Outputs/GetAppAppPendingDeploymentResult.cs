@@ -15,22 +15,37 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly ImmutableArray<string> Commands;
         /// <summary>
-        /// The creation time of the app.
+        /// The creation time of the deployment.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The email of the user that created the app.
+        /// The email of the user that created the deployment.
         /// </summary>
         public readonly string Creator;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.GetAppAppPendingDeploymentDeploymentArtifactsResult DeploymentArtifacts;
+        /// <summary>
+        /// The unique ID of the deployment.
+        /// </summary>
         public readonly string? DeploymentId;
         public readonly ImmutableArray<Outputs.GetAppAppPendingDeploymentEnvVarResult> EnvVars;
         public readonly Outputs.GetAppAppPendingDeploymentGitSourceResult? GitSource;
+        /// <summary>
+        /// The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
+        /// </summary>
         public readonly string? Mode;
+        /// <summary>
+        /// The snapshotted workspace file system path of the source code loaded by the deployed app.
+        /// </summary>
         public readonly string? SourceCodePath;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.GetAppAppPendingDeploymentStatusResult Status;
         /// <summary>
-        /// The update time of the app.
+        /// The update time of the deployment.
         /// </summary>
         public readonly string UpdateTime;
 

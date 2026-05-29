@@ -81,7 +81,7 @@ def get_endpoints(page_size: Optional[_builtins.int] = None,
                   parent: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEndpointsResult:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
 
@@ -117,7 +117,7 @@ def get_endpoints_output(page_size: pulumi.Input[Optional[Optional[_builtins.int
                          parent: pulumi.Input[Optional[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEndpointsResult]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
 

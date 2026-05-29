@@ -123,9 +123,17 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.personalAccessToken);
     }
 
+    /**
+     * The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+     * 
+     */
     @Import(name="principalId")
     private @Nullable Output<String> principalId;
 
+    /**
+     * @return The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+     * 
+     */
     public Optional<Output<String>> principalId() {
         return Optional.ofNullable(this.principalId);
     }
@@ -324,11 +332,23 @@ public final class GitCredentialArgs extends com.pulumi.resources.ResourceArgs {
             return personalAccessToken(Output.of(personalAccessToken));
         }
 
+        /**
+         * @param principalId The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder principalId(@Nullable Output<String> principalId) {
             $.principalId = principalId;
             return this;
         }
 
+        /**
+         * @param principalId The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+         * 
+         * @return builder
+         * 
+         */
         public Builder principalId(String principalId) {
             return principalId(Output.of(principalId));
         }

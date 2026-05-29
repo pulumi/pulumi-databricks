@@ -1529,7 +1529,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databricks.NewPermissions(ctx, "app_usage", &databricks.PermissionsArgs{
+//			_, err = databricks.NewPermissions(ctx, "db_instance_usage", &databricks.PermissionsArgs{
 //				DatabaseInstanceName: pulumi.String("my_database"),
 //				AccessControls: databricks.PermissionsAccessControlArray{
 //					&databricks.PermissionsAccessControlArgs{
@@ -1595,6 +1595,94 @@ import (
 //
 // ```
 //
+// ## Knowledge Assistant usage
+//
+// Knowledge Assistants have two possible permissions: `CAN_QUERY` and `CAN_MANAGE`:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("Engineering"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPermissions(ctx, "knowledge_assistant_usage", &databricks.PermissionsArgs{
+//				KnowledgeAssistantId: pulumi.Any(this.Id),
+//				AccessControls: databricks.PermissionsAccessControlArray{
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       pulumi.String("users"),
+//						PermissionLevel: pulumi.String("CAN_QUERY"),
+//					},
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       eng.DisplayName,
+//						PermissionLevel: pulumi.String("CAN_MANAGE"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Supervisor Agent usage
+//
+// Supervisor Agents have two possible permissions: `CAN_QUERY` and `CAN_MANAGE`:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			eng, err := databricks.NewGroup(ctx, "eng", &databricks.GroupArgs{
+//				DisplayName: pulumi.String("Engineering"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = databricks.NewPermissions(ctx, "supervisor_agent_usage", &databricks.PermissionsArgs{
+//				SupervisorAgentId: pulumi.Any(this.SupervisorAgentId),
+//				AccessControls: databricks.PermissionsAccessControlArray{
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       pulumi.String("users"),
+//						PermissionLevel: pulumi.String("CAN_QUERY"),
+//					},
+//					&databricks.PermissionsAccessControlArgs{
+//						GroupName:       eng.DisplayName,
+//						PermissionLevel: pulumi.String("CAN_MANAGE"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Instance Profiles
 //
 // Instance Profiles are not managed by General Permissions API and therefore GroupInstanceProfile and UserInstanceProfile should be used to allow usage of specific AWS EC2 IAM roles to users or groups.
@@ -1635,6 +1723,7 @@ type Permissions struct {
 	ExperimentId         pulumi.StringPtrOutput              `pulumi:"experimentId"`
 	InstancePoolId       pulumi.StringPtrOutput              `pulumi:"instancePoolId"`
 	JobId                pulumi.StringPtrOutput              `pulumi:"jobId"`
+	KnowledgeAssistantId pulumi.StringPtrOutput              `pulumi:"knowledgeAssistantId"`
 	NotebookId           pulumi.StringPtrOutput              `pulumi:"notebookId"`
 	NotebookPath         pulumi.StringPtrOutput              `pulumi:"notebookPath"`
 	// type of permissions.
@@ -1649,6 +1738,7 @@ type Permissions struct {
 	SqlDashboardId         pulumi.StringPtrOutput          `pulumi:"sqlDashboardId"`
 	SqlEndpointId          pulumi.StringPtrOutput          `pulumi:"sqlEndpointId"`
 	SqlQueryId             pulumi.StringPtrOutput          `pulumi:"sqlQueryId"`
+	SupervisorAgentId      pulumi.StringPtrOutput          `pulumi:"supervisorAgentId"`
 	VectorSearchEndpointId pulumi.StringPtrOutput          `pulumi:"vectorSearchEndpointId"`
 	WorkspaceFileId        pulumi.StringPtrOutput          `pulumi:"workspaceFileId"`
 	WorkspaceFilePath      pulumi.StringPtrOutput          `pulumi:"workspaceFilePath"`
@@ -1701,6 +1791,7 @@ type permissionsState struct {
 	ExperimentId         *string                    `pulumi:"experimentId"`
 	InstancePoolId       *string                    `pulumi:"instancePoolId"`
 	JobId                *string                    `pulumi:"jobId"`
+	KnowledgeAssistantId *string                    `pulumi:"knowledgeAssistantId"`
 	NotebookId           *string                    `pulumi:"notebookId"`
 	NotebookPath         *string                    `pulumi:"notebookPath"`
 	// type of permissions.
@@ -1715,6 +1806,7 @@ type permissionsState struct {
 	SqlDashboardId         *string                    `pulumi:"sqlDashboardId"`
 	SqlEndpointId          *string                    `pulumi:"sqlEndpointId"`
 	SqlQueryId             *string                    `pulumi:"sqlQueryId"`
+	SupervisorAgentId      *string                    `pulumi:"supervisorAgentId"`
 	VectorSearchEndpointId *string                    `pulumi:"vectorSearchEndpointId"`
 	WorkspaceFileId        *string                    `pulumi:"workspaceFileId"`
 	WorkspaceFilePath      *string                    `pulumi:"workspaceFilePath"`
@@ -1735,6 +1827,7 @@ type PermissionsState struct {
 	ExperimentId         pulumi.StringPtrInput
 	InstancePoolId       pulumi.StringPtrInput
 	JobId                pulumi.StringPtrInput
+	KnowledgeAssistantId pulumi.StringPtrInput
 	NotebookId           pulumi.StringPtrInput
 	NotebookPath         pulumi.StringPtrInput
 	// type of permissions.
@@ -1749,6 +1842,7 @@ type PermissionsState struct {
 	SqlDashboardId         pulumi.StringPtrInput
 	SqlEndpointId          pulumi.StringPtrInput
 	SqlQueryId             pulumi.StringPtrInput
+	SupervisorAgentId      pulumi.StringPtrInput
 	VectorSearchEndpointId pulumi.StringPtrInput
 	WorkspaceFileId        pulumi.StringPtrInput
 	WorkspaceFilePath      pulumi.StringPtrInput
@@ -1773,6 +1867,7 @@ type permissionsArgs struct {
 	ExperimentId         *string                    `pulumi:"experimentId"`
 	InstancePoolId       *string                    `pulumi:"instancePoolId"`
 	JobId                *string                    `pulumi:"jobId"`
+	KnowledgeAssistantId *string                    `pulumi:"knowledgeAssistantId"`
 	NotebookId           *string                    `pulumi:"notebookId"`
 	NotebookPath         *string                    `pulumi:"notebookPath"`
 	// type of permissions.
@@ -1787,6 +1882,7 @@ type permissionsArgs struct {
 	SqlDashboardId         *string                    `pulumi:"sqlDashboardId"`
 	SqlEndpointId          *string                    `pulumi:"sqlEndpointId"`
 	SqlQueryId             *string                    `pulumi:"sqlQueryId"`
+	SupervisorAgentId      *string                    `pulumi:"supervisorAgentId"`
 	VectorSearchEndpointId *string                    `pulumi:"vectorSearchEndpointId"`
 	WorkspaceFileId        *string                    `pulumi:"workspaceFileId"`
 	WorkspaceFilePath      *string                    `pulumi:"workspaceFilePath"`
@@ -1808,6 +1904,7 @@ type PermissionsArgs struct {
 	ExperimentId         pulumi.StringPtrInput
 	InstancePoolId       pulumi.StringPtrInput
 	JobId                pulumi.StringPtrInput
+	KnowledgeAssistantId pulumi.StringPtrInput
 	NotebookId           pulumi.StringPtrInput
 	NotebookPath         pulumi.StringPtrInput
 	// type of permissions.
@@ -1822,6 +1919,7 @@ type PermissionsArgs struct {
 	SqlDashboardId         pulumi.StringPtrInput
 	SqlEndpointId          pulumi.StringPtrInput
 	SqlQueryId             pulumi.StringPtrInput
+	SupervisorAgentId      pulumi.StringPtrInput
 	VectorSearchEndpointId pulumi.StringPtrInput
 	WorkspaceFileId        pulumi.StringPtrInput
 	WorkspaceFilePath      pulumi.StringPtrInput
@@ -1970,6 +2068,10 @@ func (o PermissionsOutput) JobId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.JobId }).(pulumi.StringPtrOutput)
 }
 
+func (o PermissionsOutput) KnowledgeAssistantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.KnowledgeAssistantId }).(pulumi.StringPtrOutput)
+}
+
 func (o PermissionsOutput) NotebookId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.NotebookId }).(pulumi.StringPtrOutput)
 }
@@ -2021,6 +2123,10 @@ func (o PermissionsOutput) SqlEndpointId() pulumi.StringPtrOutput {
 
 func (o PermissionsOutput) SqlQueryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.SqlQueryId }).(pulumi.StringPtrOutput)
+}
+
+func (o PermissionsOutput) SupervisorAgentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Permissions) pulumi.StringPtrOutput { return v.SupervisorAgentId }).(pulumi.StringPtrOutput)
 }
 
 func (o PermissionsOutput) VectorSearchEndpointId() pulumi.StringPtrOutput {

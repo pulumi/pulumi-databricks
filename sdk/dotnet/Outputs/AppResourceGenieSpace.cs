@@ -17,6 +17,9 @@ namespace Pulumi.Databricks.Outputs
         /// The name of Genie Space.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Permission to grant on Genie Space. Supported permissions are `CAN_MANAGE`, `CAN_EDIT`, `CAN_RUN`, `CAN_VIEW`.
+        /// </summary>
         public readonly string Permission;
         /// <summary>
         /// The unique ID of Genie Space.

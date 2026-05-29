@@ -17,14 +17,14 @@ public final class GetFeatureEngineeringMaterializedFeaturePlainArgs extends com
     public static final GetFeatureEngineeringMaterializedFeaturePlainArgs Empty = new GetFeatureEngineeringMaterializedFeaturePlainArgs();
 
     /**
-     * Unique identifier for the materialized feature
+     * Server-assigned unique identifier for the materialized feature
      * 
      */
     @Import(name="materializedFeatureId", required=true)
     private String materializedFeatureId;
 
     /**
-     * @return Unique identifier for the materialized feature
+     * @return Server-assigned unique identifier for the materialized feature
      * 
      */
     public String materializedFeatureId() {
@@ -72,7 +72,7 @@ public final class GetFeatureEngineeringMaterializedFeaturePlainArgs extends com
         }
 
         /**
-         * @param materializedFeatureId Unique identifier for the materialized feature
+         * @param materializedFeatureId Server-assigned unique identifier for the materialized feature
          * 
          * @return builder
          * 

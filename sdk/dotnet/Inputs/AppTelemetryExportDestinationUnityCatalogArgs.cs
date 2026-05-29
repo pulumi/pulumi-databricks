@@ -12,12 +12,21 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppTelemetryExportDestinationUnityCatalogArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Full name of the Unity Catalog table for OpenTelemetry logs.
+        /// </summary>
         [Input("logsTable", required: true)]
         public Input<string> LogsTable { get; set; } = null!;
 
+        /// <summary>
+        /// Full name of the Unity Catalog table for OpenTelemetry metrics.
+        /// </summary>
         [Input("metricsTable", required: true)]
         public Input<string> MetricsTable { get; set; } = null!;
 
+        /// <summary>
+        /// Full name of the Unity Catalog table for OpenTelemetry traces (spans).
+        /// </summary>
         [Input("tracesTable", required: true)]
         public Input<string> TracesTable { get; set; } = null!;
 

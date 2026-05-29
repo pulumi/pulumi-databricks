@@ -24,6 +24,7 @@ class PostgresBranchArgs:
                  branch_id: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
                  provider_config: pulumi.Input[Optional['PostgresBranchProviderConfigArgs']] = None,
+                 purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
                  spec: pulumi.Input[Optional['PostgresBranchSpecArgs']] = None):
         """
@@ -38,6 +39,7 @@ class PostgresBranchArgs:
                Note: This field indicates where the branch exists in the resource hierarchy.
                For point-in-time branching from another branch, see `status.source_branch`
         :param pulumi.Input['PostgresBranchProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently delete the branch; if false, soft delete
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the branch if it already exists instead of returning an error
         :param pulumi.Input['PostgresBranchSpecArgs'] spec: The spec contains the branch configuration
         """
@@ -45,6 +47,8 @@ class PostgresBranchArgs:
         pulumi.set(__self__, "parent", parent)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if purge_on_delete is not None:
+            pulumi.set(__self__, "purge_on_delete", purge_on_delete)
         if replace_existing is not None:
             pulumi.set(__self__, "replace_existing", replace_existing)
         if spec is not None:
@@ -93,6 +97,18 @@ class PostgresBranchArgs:
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="purgeOnDelete")
+    def purge_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, permanently delete the branch; if false, soft delete
+        """
+        return pulumi.get(self, "purge_on_delete")
+
+    @purge_on_delete.setter
+    def purge_on_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "purge_on_delete", value)
+
+    @_builtins.property
     @pulumi.getter(name="replaceExisting")
     def replace_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -125,6 +141,7 @@ class _PostgresBranchState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['PostgresBranchProviderConfigArgs']] = None,
+                 purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
                  spec: pulumi.Input[Optional['PostgresBranchSpecArgs']] = None,
                  status: pulumi.Input[Optional['PostgresBranchStatusArgs']] = None,
@@ -145,6 +162,7 @@ class _PostgresBranchState:
                Note: This field indicates where the branch exists in the resource hierarchy.
                For point-in-time branching from another branch, see `status.source_branch`
         :param pulumi.Input['PostgresBranchProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently delete the branch; if false, soft delete
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the branch if it already exists instead of returning an error
         :param pulumi.Input['PostgresBranchSpecArgs'] spec: The spec contains the branch configuration
         :param pulumi.Input['PostgresBranchStatusArgs'] status: (BranchStatus) - The current status of a Branch
@@ -161,6 +179,8 @@ class _PostgresBranchState:
             pulumi.set(__self__, "parent", parent)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if purge_on_delete is not None:
+            pulumi.set(__self__, "purge_on_delete", purge_on_delete)
         if replace_existing is not None:
             pulumi.set(__self__, "replace_existing", replace_existing)
         if spec is not None:
@@ -240,6 +260,18 @@ class _PostgresBranchState:
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="purgeOnDelete")
+    def purge_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, permanently delete the branch; if false, soft delete
+        """
+        return pulumi.get(self, "purge_on_delete")
+
+    @purge_on_delete.setter
+    def purge_on_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "purge_on_delete", value)
+
+    @_builtins.property
     @pulumi.getter(name="replaceExisting")
     def replace_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -309,6 +341,7 @@ class PostgresBranch(pulumi.CustomResource):
                  branch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']]] = None,
+                 purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
                  spec: pulumi.Input[Optional[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']]] = None,
                  __props__=None):
@@ -399,6 +432,7 @@ class PostgresBranch(pulumi.CustomResource):
                Note: This field indicates where the branch exists in the resource hierarchy.
                For point-in-time branching from another branch, see `status.source_branch`
         :param pulumi.Input[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently delete the branch; if false, soft delete
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the branch if it already exists instead of returning an error
         :param pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']] spec: The spec contains the branch configuration
         """
@@ -502,6 +536,7 @@ class PostgresBranch(pulumi.CustomResource):
                  branch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']]] = None,
+                 purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
                  spec: pulumi.Input[Optional[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']]] = None,
                  __props__=None):
@@ -520,6 +555,7 @@ class PostgresBranch(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
             __props__.__dict__["provider_config"] = provider_config
+            __props__.__dict__["purge_on_delete"] = purge_on_delete
             __props__.__dict__["replace_existing"] = replace_existing
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None
@@ -542,6 +578,7 @@ class PostgresBranch(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']]] = None,
+            purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
             replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
             spec: pulumi.Input[Optional[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']]] = None,
             status: pulumi.Input[Optional[Union['PostgresBranchStatusArgs', 'PostgresBranchStatusArgsDict']]] = None,
@@ -566,6 +603,7 @@ class PostgresBranch(pulumi.CustomResource):
                Note: This field indicates where the branch exists in the resource hierarchy.
                For point-in-time branching from another branch, see `status.source_branch`
         :param pulumi.Input[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently delete the branch; if false, soft delete
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the branch if it already exists instead of returning an error
         :param pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict']] spec: The spec contains the branch configuration
         :param pulumi.Input[Union['PostgresBranchStatusArgs', 'PostgresBranchStatusArgsDict']] status: (BranchStatus) - The current status of a Branch
@@ -581,6 +619,7 @@ class PostgresBranch(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
         __props__.__dict__["provider_config"] = provider_config
+        __props__.__dict__["purge_on_delete"] = purge_on_delete
         __props__.__dict__["replace_existing"] = replace_existing
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
@@ -634,6 +673,14 @@ class PostgresBranch(pulumi.CustomResource):
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
+
+    @_builtins.property
+    @pulumi.getter(name="purgeOnDelete")
+    def purge_on_delete(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true, permanently delete the branch; if false, soft delete
+        """
+        return pulumi.get(self, "purge_on_delete")
 
     @_builtins.property
     @pulumi.getter(name="replaceExisting")

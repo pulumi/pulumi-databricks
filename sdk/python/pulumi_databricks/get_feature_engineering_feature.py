@@ -28,7 +28,16 @@ class GetFeatureEngineeringFeatureResult:
     """
     A collection of values returned by getFeatureEngineeringFeature.
     """
-    def __init__(__self__, description=None, entities=None, filter_condition=None, full_name=None, function=None, id=None, inputs=None, lineage_context=None, provider_config=None, source=None, time_window=None, timeseries_column=None):
+    def __init__(__self__, catalog_name=None, created_at=None, created_by=None, description=None, entities=None, filter_condition=None, full_name=None, function=None, id=None, inputs=None, lineage_context=None, name=None, provider_config=None, schema_name=None, source=None, time_window=None, timeseries_column=None):
+        if catalog_name and not isinstance(catalog_name, str):
+            raise TypeError("Expected argument 'catalog_name' to be a str")
+        pulumi.set(__self__, "catalog_name", catalog_name)
+        if created_at and not isinstance(created_at, str):
+            raise TypeError("Expected argument 'created_at' to be a str")
+        pulumi.set(__self__, "created_at", created_at)
+        if created_by and not isinstance(created_by, str):
+            raise TypeError("Expected argument 'created_by' to be a str")
+        pulumi.set(__self__, "created_by", created_by)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -53,9 +62,15 @@ class GetFeatureEngineeringFeatureResult:
         if lineage_context and not isinstance(lineage_context, dict):
             raise TypeError("Expected argument 'lineage_context' to be a dict")
         pulumi.set(__self__, "lineage_context", lineage_context)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
+        if schema_name and not isinstance(schema_name, str):
+            raise TypeError("Expected argument 'schema_name' to be a str")
+        pulumi.set(__self__, "schema_name", schema_name)
         if source and not isinstance(source, dict):
             raise TypeError("Expected argument 'source' to be a dict")
         pulumi.set(__self__, "source", source)
@@ -65,6 +80,30 @@ class GetFeatureEngineeringFeatureResult:
         if timeseries_column and not isinstance(timeseries_column, dict):
             raise TypeError("Expected argument 'timeseries_column' to be a dict")
         pulumi.set(__self__, "timeseries_column", timeseries_column)
+
+    @_builtins.property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> _builtins.str:
+        """
+        (string) - Name of parent catalog
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        (string) - Time at which this feature was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> _builtins.str:
+        """
+        (string) - Username of the feature creator
+        """
+        return pulumi.get(self, "created_by")
 
     @_builtins.property
     @pulumi.getter
@@ -136,9 +175,30 @@ class GetFeatureEngineeringFeatureResult:
         return pulumi.get(self, "lineage_context")
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+        reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
+        fields, the leaf node name (e.g., "event_timestamp" from "value.event_details.event_timestamp")
+        is what will be present in materialized tables and expected to match at query time.
+        TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+        backwards compatibility but is deprecated; migrate to dot notation
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> Optional['outputs.GetFeatureEngineeringFeatureProviderConfigResult']:
         return pulumi.get(self, "provider_config")
+
+    @_builtins.property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> _builtins.str:
+        """
+        (string) - Name of parent schema relative to its parent catalog
+        """
+        return pulumi.get(self, "schema_name")
 
     @_builtins.property
     @pulumi.getter
@@ -172,6 +232,9 @@ class AwaitableGetFeatureEngineeringFeatureResult(GetFeatureEngineeringFeatureRe
         if False:
             yield self
         return GetFeatureEngineeringFeatureResult(
+            catalog_name=self.catalog_name,
+            created_at=self.created_at,
+            created_by=self.created_by,
             description=self.description,
             entities=self.entities,
             filter_condition=self.filter_condition,
@@ -180,7 +243,9 @@ class AwaitableGetFeatureEngineeringFeatureResult(GetFeatureEngineeringFeatureRe
             id=self.id,
             inputs=self.inputs,
             lineage_context=self.lineage_context,
+            name=self.name,
             provider_config=self.provider_config,
+            schema_name=self.schema_name,
             source=self.source,
             time_window=self.time_window,
             timeseries_column=self.timeseries_column)
@@ -193,7 +258,9 @@ def get_feature_engineering_feature(full_name: Optional[_builtins.str] = None,
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
-    :param _builtins.str full_name: The full three-part name (catalog, schema, name) of the feature
+    :param _builtins.str full_name: The full three-part name (catalog, schema, name) of the feature. This is the
+           feature's resource identifier; the catalog_name, schema_name, and name fields
+           below are OUTPUT_ONLY decomposed views of this value
     :param Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -203,6 +270,9 @@ def get_feature_engineering_feature(full_name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature', __args__, opts=opts, typ=GetFeatureEngineeringFeatureResult).value
 
     return AwaitableGetFeatureEngineeringFeatureResult(
+        catalog_name=pulumi.get(__ret__, 'catalog_name'),
+        created_at=pulumi.get(__ret__, 'created_at'),
+        created_by=pulumi.get(__ret__, 'created_by'),
         description=pulumi.get(__ret__, 'description'),
         entities=pulumi.get(__ret__, 'entities'),
         filter_condition=pulumi.get(__ret__, 'filter_condition'),
@@ -211,7 +281,9 @@ def get_feature_engineering_feature(full_name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         inputs=pulumi.get(__ret__, 'inputs'),
         lineage_context=pulumi.get(__ret__, 'lineage_context'),
+        name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
+        schema_name=pulumi.get(__ret__, 'schema_name'),
         source=pulumi.get(__ret__, 'source'),
         time_window=pulumi.get(__ret__, 'time_window'),
         timeseries_column=pulumi.get(__ret__, 'timeseries_column'))
@@ -222,7 +294,9 @@ def get_feature_engineering_feature_output(full_name: pulumi.Input[Optional[_bui
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
-    :param _builtins.str full_name: The full three-part name (catalog, schema, name) of the feature
+    :param _builtins.str full_name: The full three-part name (catalog, schema, name) of the feature. This is the
+           feature's resource identifier; the catalog_name, schema_name, and name fields
+           below are OUTPUT_ONLY decomposed views of this value
     :param Union['GetFeatureEngineeringFeatureProviderConfigArgs', 'GetFeatureEngineeringFeatureProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -231,6 +305,9 @@ def get_feature_engineering_feature_output(full_name: pulumi.Input[Optional[_bui
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature', __args__, opts=opts, typ=GetFeatureEngineeringFeatureResult)
     return __ret__.apply(lambda __response__: GetFeatureEngineeringFeatureResult(
+        catalog_name=pulumi.get(__response__, 'catalog_name'),
+        created_at=pulumi.get(__response__, 'created_at'),
+        created_by=pulumi.get(__response__, 'created_by'),
         description=pulumi.get(__response__, 'description'),
         entities=pulumi.get(__response__, 'entities'),
         filter_condition=pulumi.get(__response__, 'filter_condition'),
@@ -239,7 +316,9 @@ def get_feature_engineering_feature_output(full_name: pulumi.Input[Optional[_bui
         id=pulumi.get(__response__, 'id'),
         inputs=pulumi.get(__response__, 'inputs'),
         lineage_context=pulumi.get(__response__, 'lineage_context'),
+        name=pulumi.get(__response__, 'name'),
         provider_config=pulumi.get(__response__, 'provider_config'),
+        schema_name=pulumi.get(__response__, 'schema_name'),
         source=pulumi.get(__response__, 'source'),
         time_window=pulumi.get(__response__, 'time_window'),
         timeseries_column=pulumi.get(__response__, 'timeseries_column')))

@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppActiveDeploymentDeploymentArtifactsGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The snapshotted workspace file system path of the source code loaded by the deployed app.
+        /// </summary>
         [Input("sourceCodePath")]
         public Input<string>? SourceCodePath { get; set; }
 

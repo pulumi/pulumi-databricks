@@ -24,6 +24,51 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
     public static final FeatureEngineeringFeatureState Empty = new FeatureEngineeringFeatureState();
 
     /**
+     * (string) - Name of parent catalog
+     * 
+     */
+    @Import(name="catalogName")
+    private @Nullable Output<String> catalogName;
+
+    /**
+     * @return (string) - Name of parent catalog
+     * 
+     */
+    public Optional<Output<String>> catalogName() {
+        return Optional.ofNullable(this.catalogName);
+    }
+
+    /**
+     * (string) - Time at which this feature was created
+     * 
+     */
+    @Import(name="createdAt")
+    private @Nullable Output<String> createdAt;
+
+    /**
+     * @return (string) - Time at which this feature was created
+     * 
+     */
+    public Optional<Output<String>> createdAt() {
+        return Optional.ofNullable(this.createdAt);
+    }
+
+    /**
+     * (string) - Username of the feature creator
+     * 
+     */
+    @Import(name="createdBy")
+    private @Nullable Output<String> createdBy;
+
+    /**
+     * @return (string) - Username of the feature creator
+     * 
+     */
+    public Optional<Output<String>> createdBy() {
+        return Optional.ofNullable(this.createdBy);
+    }
+
+    /**
      * The description of the feature
      * 
      */
@@ -71,14 +116,18 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
     }
 
     /**
-     * The full three-part name (catalog, schema, name) of the feature
+     * The full three-part name (catalog, schema, name) of the feature. This is the
+     * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
+     * below are OUTPUT_ONLY decomposed views of this value
      * 
      */
     @Import(name="fullName")
     private @Nullable Output<String> fullName;
 
     /**
-     * @return The full three-part name (catalog, schema, name) of the feature
+     * @return The full three-part name (catalog, schema, name) of the feature. This is the
+     * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
+     * below are OUTPUT_ONLY decomposed views of this value
      * 
      */
     public Optional<Output<String>> fullName() {
@@ -141,6 +190,21 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
     }
 
     /**
+     * (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * Configure the provider for management through account provider.
      * 
      */
@@ -153,6 +217,21 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
      */
     public Optional<Output<FeatureEngineeringFeatureProviderConfigArgs>> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
+    }
+
+    /**
+     * (string) - Name of parent schema relative to its parent catalog
+     * 
+     */
+    @Import(name="schemaName")
+    private @Nullable Output<String> schemaName;
+
+    /**
+     * @return (string) - Name of parent schema relative to its parent catalog
+     * 
+     */
+    public Optional<Output<String>> schemaName() {
+        return Optional.ofNullable(this.schemaName);
     }
 
     /**
@@ -205,6 +284,9 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
     private FeatureEngineeringFeatureState() {}
 
     private FeatureEngineeringFeatureState(FeatureEngineeringFeatureState $) {
+        this.catalogName = $.catalogName;
+        this.createdAt = $.createdAt;
+        this.createdBy = $.createdBy;
         this.description = $.description;
         this.entities = $.entities;
         this.filterCondition = $.filterCondition;
@@ -212,7 +294,9 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         this.function = $.function;
         this.inputs = $.inputs;
         this.lineageContext = $.lineageContext;
+        this.name = $.name;
         this.providerConfig = $.providerConfig;
+        this.schemaName = $.schemaName;
         this.source = $.source;
         this.timeWindow = $.timeWindow;
         this.timeseriesColumn = $.timeseriesColumn;
@@ -234,6 +318,69 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
 
         public Builder(FeatureEngineeringFeatureState defaults) {
             $ = new FeatureEngineeringFeatureState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param catalogName (string) - Name of parent catalog
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalogName(@Nullable Output<String> catalogName) {
+            $.catalogName = catalogName;
+            return this;
+        }
+
+        /**
+         * @param catalogName (string) - Name of parent catalog
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalogName(String catalogName) {
+            return catalogName(Output.of(catalogName));
+        }
+
+        /**
+         * @param createdAt (string) - Time at which this feature was created
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(@Nullable Output<String> createdAt) {
+            $.createdAt = createdAt;
+            return this;
+        }
+
+        /**
+         * @param createdAt (string) - Time at which this feature was created
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdAt(String createdAt) {
+            return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param createdBy (string) - Username of the feature creator
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdBy(@Nullable Output<String> createdBy) {
+            $.createdBy = createdBy;
+            return this;
+        }
+
+        /**
+         * @param createdBy (string) - Username of the feature creator
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createdBy(String createdBy) {
+            return createdBy(Output.of(createdBy));
         }
 
         /**
@@ -312,7 +459,9 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         }
 
         /**
-         * @param fullName The full three-part name (catalog, schema, name) of the feature
+         * @param fullName The full three-part name (catalog, schema, name) of the feature. This is the
+         * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
+         * below are OUTPUT_ONLY decomposed views of this value
          * 
          * @return builder
          * 
@@ -323,7 +472,9 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         }
 
         /**
-         * @param fullName The full three-part name (catalog, schema, name) of the feature
+         * @param fullName The full three-part name (catalog, schema, name) of the feature. This is the
+         * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
+         * below are OUTPUT_ONLY decomposed views of this value
          * 
          * @return builder
          * 
@@ -417,6 +568,27 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         }
 
         /**
+         * @param name (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
          * @param providerConfig Configure the provider for management through account provider.
          * 
          * @return builder
@@ -435,6 +607,27 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
          */
         public Builder providerConfig(FeatureEngineeringFeatureProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
+        }
+
+        /**
+         * @param schemaName (string) - Name of parent schema relative to its parent catalog
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaName(@Nullable Output<String> schemaName) {
+            $.schemaName = schemaName;
+            return this;
+        }
+
+        /**
+         * @param schemaName (string) - Name of parent schema relative to its parent catalog
+         * 
+         * @return builder
+         * 
+         */
+        public Builder schemaName(String schemaName) {
+            return schemaName(Output.of(schemaName));
         }
 
         /**

@@ -54,8 +54,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int PgVersion;
         /// <summary>
-        /// (string) - The short identifier of the project, suitable for showing to the users.
-        /// For a project with name `projects/my-project`, the ProjectId is `my-project`.
+        /// (string) - Part of the resource name
         /// </summary>
         public readonly string ProjectId;
         /// <summary>

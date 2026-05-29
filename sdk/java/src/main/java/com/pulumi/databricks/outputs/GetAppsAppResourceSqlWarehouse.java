@@ -16,7 +16,7 @@ public final class GetAppsAppResourceSqlWarehouse {
      */
     private String id;
     /**
-     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * @return Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      * 
      */
     private String permission;
@@ -30,7 +30,7 @@ public final class GetAppsAppResourceSqlWarehouse {
         return this.id;
     }
     /**
-     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * @return Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      * 
      */
     public String permission() {

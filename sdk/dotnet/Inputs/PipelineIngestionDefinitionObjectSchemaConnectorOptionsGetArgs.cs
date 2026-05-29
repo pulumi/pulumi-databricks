@@ -24,6 +24,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("jiraOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptionsGetArgs>? JiraOptions { get; set; }
 
+        [Input("kafkaOptions")]
+        public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsGetArgs>? KafkaOptions { get; set; }
+
         [Input("metaAdsOptions")]
         public Input<Inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsGetArgs>? MetaAdsOptions { get; set; }
 

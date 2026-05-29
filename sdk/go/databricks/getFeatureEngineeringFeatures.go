@@ -24,19 +24,27 @@ func GetFeatureEngineeringFeatures(ctx *pulumi.Context, args *GetFeatureEngineer
 
 // A collection of arguments for invoking getFeatureEngineeringFeatures.
 type GetFeatureEngineeringFeaturesArgs struct {
+	// Name of parent catalog for features of interest
+	CatalogName string `pulumi:"catalogName"`
 	// The maximum number of results to return
 	PageSize *int `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetFeatureEngineeringFeaturesProviderConfig `pulumi:"providerConfig"`
+	// Name of parent schema relative to its parent catalog
+	SchemaName string `pulumi:"schemaName"`
 }
 
 // A collection of values returned by getFeatureEngineeringFeatures.
 type GetFeatureEngineeringFeaturesResult struct {
-	Features []GetFeatureEngineeringFeaturesFeature `pulumi:"features"`
+	// (string) - Name of parent catalog
+	CatalogName string                                 `pulumi:"catalogName"`
+	Features    []GetFeatureEngineeringFeaturesFeature `pulumi:"features"`
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                                       `pulumi:"id"`
 	PageSize       *int                                         `pulumi:"pageSize"`
 	ProviderConfig *GetFeatureEngineeringFeaturesProviderConfig `pulumi:"providerConfig"`
+	// (string) - Name of parent schema relative to its parent catalog
+	SchemaName string `pulumi:"schemaName"`
 }
 
 func GetFeatureEngineeringFeaturesOutput(ctx *pulumi.Context, args GetFeatureEngineeringFeaturesOutputArgs, opts ...pulumi.InvokeOption) GetFeatureEngineeringFeaturesResultOutput {
@@ -50,10 +58,14 @@ func GetFeatureEngineeringFeaturesOutput(ctx *pulumi.Context, args GetFeatureEng
 
 // A collection of arguments for invoking getFeatureEngineeringFeatures.
 type GetFeatureEngineeringFeaturesOutputArgs struct {
+	// Name of parent catalog for features of interest
+	CatalogName pulumi.StringInput `pulumi:"catalogName"`
 	// The maximum number of results to return
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetFeatureEngineeringFeaturesProviderConfigPtrInput `pulumi:"providerConfig"`
+	// Name of parent schema relative to its parent catalog
+	SchemaName pulumi.StringInput `pulumi:"schemaName"`
 }
 
 func (GetFeatureEngineeringFeaturesOutputArgs) ElementType() reflect.Type {
@@ -75,6 +87,11 @@ func (o GetFeatureEngineeringFeaturesResultOutput) ToGetFeatureEngineeringFeatur
 	return o
 }
 
+// (string) - Name of parent catalog
+func (o GetFeatureEngineeringFeaturesResultOutput) CatalogName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureEngineeringFeaturesResult) string { return v.CatalogName }).(pulumi.StringOutput)
+}
+
 func (o GetFeatureEngineeringFeaturesResultOutput) Features() GetFeatureEngineeringFeaturesFeatureArrayOutput {
 	return o.ApplyT(func(v GetFeatureEngineeringFeaturesResult) []GetFeatureEngineeringFeaturesFeature { return v.Features }).(GetFeatureEngineeringFeaturesFeatureArrayOutput)
 }
@@ -92,6 +109,11 @@ func (o GetFeatureEngineeringFeaturesResultOutput) ProviderConfig() GetFeatureEn
 	return o.ApplyT(func(v GetFeatureEngineeringFeaturesResult) *GetFeatureEngineeringFeaturesProviderConfig {
 		return v.ProviderConfig
 	}).(GetFeatureEngineeringFeaturesProviderConfigPtrOutput)
+}
+
+// (string) - Name of parent schema relative to its parent catalog
+func (o GetFeatureEngineeringFeaturesResultOutput) SchemaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureEngineeringFeaturesResult) string { return v.SchemaName }).(pulumi.StringOutput)
 }
 
 func init() {

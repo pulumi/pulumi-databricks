@@ -71,7 +71,7 @@ export interface GetKnowledgeAssistantResult {
      */
     readonly experimentId: string;
     /**
-     * (string) - The universally unique identifier (UUID) of the Knowledge Assistant
+     * (string, deprecated) - Deprecated: use knowledgeAssistantId instead
      */
     readonly id: string;
     /**

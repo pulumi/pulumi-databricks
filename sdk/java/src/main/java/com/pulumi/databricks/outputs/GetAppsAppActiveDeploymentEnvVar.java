@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAppsAppActiveDeploymentEnvVar {
     /**
-     * @return The name of Genie Space.
+     * @return The name of the app to grant permission on.
      * 
      */
     private @Nullable String name;
@@ -21,7 +21,7 @@ public final class GetAppsAppActiveDeploymentEnvVar {
 
     private GetAppsAppActiveDeploymentEnvVar() {}
     /**
-     * @return The name of Genie Space.
+     * @return The name of the app to grant permission on.
      * 
      */
     public Optional<String> name() {

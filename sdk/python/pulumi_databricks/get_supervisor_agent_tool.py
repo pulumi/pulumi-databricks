@@ -94,7 +94,8 @@ class GetSupervisorAgentToolResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        (string) - The ID of the genie space
+        (string, deprecated) - Deprecated: use space_id instead. Still REQUIRED for backward compatibility
+        until a future API version removes it
         """
         return pulumi.get(self, "id")
 
@@ -131,7 +132,7 @@ class GetSupervisorAgentToolResult:
     @pulumi.getter(name="toolType")
     def tool_type(self) -> _builtins.str:
         """
-        (string) - Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "app", "volume", "lakeview_dashboard", "serving_endpoint", "uc_table", "vector_search_index", "catalog", "schema", "supervisor_agent", "web_search"
+        (string) - Tool type. Must be one of: "genie_space", "knowledge_assistant", "uc_function", "uc_connection", "uc_mcp", "app", "volume", "dashboard", "serving_endpoint", "table", "vector_search_index", "catalog", "schema", "supervisor_agent", "web_search", "skill". The legacy values "lakeview_dashboard" and "uc_table" are also accepted and remain equivalent to "dashboard" and "table" respectively
         """
         return pulumi.get(self, "tool_type")
 

@@ -35,6 +35,7 @@ class PermissionsArgs:
                  experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 knowledge_assistant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  notebook_id: pulumi.Input[Optional[_builtins.str]] = None,
                  notebook_path: pulumi.Input[Optional[_builtins.str]] = None,
                  object_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -48,6 +49,7 @@ class PermissionsArgs:
                  sql_dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sql_query_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 supervisor_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vector_search_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace_file_id: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace_file_path: pulumi.Input[Optional[_builtins.str]] = None):
@@ -83,6 +85,8 @@ class PermissionsArgs:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
         if job_id is not None:
             pulumi.set(__self__, "job_id", job_id)
+        if knowledge_assistant_id is not None:
+            pulumi.set(__self__, "knowledge_assistant_id", knowledge_assistant_id)
         if notebook_id is not None:
             pulumi.set(__self__, "notebook_id", notebook_id)
         if notebook_path is not None:
@@ -109,6 +113,8 @@ class PermissionsArgs:
             pulumi.set(__self__, "sql_endpoint_id", sql_endpoint_id)
         if sql_query_id is not None:
             pulumi.set(__self__, "sql_query_id", sql_query_id)
+        if supervisor_agent_id is not None:
+            pulumi.set(__self__, "supervisor_agent_id", supervisor_agent_id)
         if vector_search_endpoint_id is not None:
             pulumi.set(__self__, "vector_search_endpoint_id", vector_search_endpoint_id)
         if workspace_file_id is not None:
@@ -243,6 +249,15 @@ class PermissionsArgs:
         pulumi.set(self, "job_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="knowledgeAssistantId")
+    def knowledge_assistant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "knowledge_assistant_id")
+
+    @knowledge_assistant_id.setter
+    def knowledge_assistant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "knowledge_assistant_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="notebookId")
     def notebook_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "notebook_id")
@@ -363,6 +378,15 @@ class PermissionsArgs:
         pulumi.set(self, "sql_query_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="supervisorAgentId")
+    def supervisor_agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "supervisor_agent_id")
+
+    @supervisor_agent_id.setter
+    def supervisor_agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "supervisor_agent_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="vectorSearchEndpointId")
     def vector_search_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vector_search_endpoint_id")
@@ -407,6 +431,7 @@ class _PermissionsState:
                  experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 knowledge_assistant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  notebook_id: pulumi.Input[Optional[_builtins.str]] = None,
                  notebook_path: pulumi.Input[Optional[_builtins.str]] = None,
                  object_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -420,6 +445,7 @@ class _PermissionsState:
                  sql_dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sql_query_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 supervisor_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vector_search_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace_file_id: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace_file_path: pulumi.Input[Optional[_builtins.str]] = None):
@@ -456,6 +482,8 @@ class _PermissionsState:
             pulumi.set(__self__, "instance_pool_id", instance_pool_id)
         if job_id is not None:
             pulumi.set(__self__, "job_id", job_id)
+        if knowledge_assistant_id is not None:
+            pulumi.set(__self__, "knowledge_assistant_id", knowledge_assistant_id)
         if notebook_id is not None:
             pulumi.set(__self__, "notebook_id", notebook_id)
         if notebook_path is not None:
@@ -482,6 +510,8 @@ class _PermissionsState:
             pulumi.set(__self__, "sql_endpoint_id", sql_endpoint_id)
         if sql_query_id is not None:
             pulumi.set(__self__, "sql_query_id", sql_query_id)
+        if supervisor_agent_id is not None:
+            pulumi.set(__self__, "supervisor_agent_id", supervisor_agent_id)
         if vector_search_endpoint_id is not None:
             pulumi.set(__self__, "vector_search_endpoint_id", vector_search_endpoint_id)
         if workspace_file_id is not None:
@@ -616,6 +646,15 @@ class _PermissionsState:
         pulumi.set(self, "job_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="knowledgeAssistantId")
+    def knowledge_assistant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "knowledge_assistant_id")
+
+    @knowledge_assistant_id.setter
+    def knowledge_assistant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "knowledge_assistant_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="notebookId")
     def notebook_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "notebook_id")
@@ -736,6 +775,15 @@ class _PermissionsState:
         pulumi.set(self, "sql_query_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="supervisorAgentId")
+    def supervisor_agent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "supervisor_agent_id")
+
+    @supervisor_agent_id.setter
+    def supervisor_agent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "supervisor_agent_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="vectorSearchEndpointId")
     def vector_search_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vector_search_endpoint_id")
@@ -783,6 +831,7 @@ class Permissions(pulumi.CustomResource):
                  experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 knowledge_assistant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  notebook_id: pulumi.Input[Optional[_builtins.str]] = None,
                  notebook_path: pulumi.Input[Optional[_builtins.str]] = None,
                  object_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -796,6 +845,7 @@ class Permissions(pulumi.CustomResource):
                  sql_dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sql_query_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 supervisor_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vector_search_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace_file_id: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace_file_path: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1589,7 +1639,7 @@ class Permissions(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         eng = databricks.Group("eng", display_name="Engineering")
-        app_usage = databricks.Permissions("app_usage",
+        db_instance_usage = databricks.Permissions("db_instance_usage",
             database_instance_name="my_database",
             access_controls=[
                 {
@@ -1618,6 +1668,52 @@ class Permissions(pulumi.CustomResource):
                 {
                     "group_name": "users",
                     "permission_level": "CAN_USE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
+            ])
+        ```
+
+        ## Knowledge Assistant usage
+
+        Knowledge Assistants have two possible permissions: `CAN_QUERY` and `CAN_MANAGE`:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        eng = databricks.Group("eng", display_name="Engineering")
+        knowledge_assistant_usage = databricks.Permissions("knowledge_assistant_usage",
+            knowledge_assistant_id=this["id"],
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_QUERY",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
+            ])
+        ```
+
+        ## Supervisor Agent usage
+
+        Supervisor Agents have two possible permissions: `CAN_QUERY` and `CAN_MANAGE`:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        eng = databricks.Group("eng", display_name="Engineering")
+        supervisor_agent_usage = databricks.Permissions("supervisor_agent_usage",
+            supervisor_agent_id=this["supervisorAgentId"],
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_QUERY",
                 },
                 {
                     "group_name": eng.display_name,
@@ -2450,7 +2546,7 @@ class Permissions(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         eng = databricks.Group("eng", display_name="Engineering")
-        app_usage = databricks.Permissions("app_usage",
+        db_instance_usage = databricks.Permissions("db_instance_usage",
             database_instance_name="my_database",
             access_controls=[
                 {
@@ -2479,6 +2575,52 @@ class Permissions(pulumi.CustomResource):
                 {
                     "group_name": "users",
                     "permission_level": "CAN_USE",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
+            ])
+        ```
+
+        ## Knowledge Assistant usage
+
+        Knowledge Assistants have two possible permissions: `CAN_QUERY` and `CAN_MANAGE`:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        eng = databricks.Group("eng", display_name="Engineering")
+        knowledge_assistant_usage = databricks.Permissions("knowledge_assistant_usage",
+            knowledge_assistant_id=this["id"],
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_QUERY",
+                },
+                {
+                    "group_name": eng.display_name,
+                    "permission_level": "CAN_MANAGE",
+                },
+            ])
+        ```
+
+        ## Supervisor Agent usage
+
+        Supervisor Agents have two possible permissions: `CAN_QUERY` and `CAN_MANAGE`:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        eng = databricks.Group("eng", display_name="Engineering")
+        supervisor_agent_usage = databricks.Permissions("supervisor_agent_usage",
+            supervisor_agent_id=this["supervisorAgentId"],
+            access_controls=[
+                {
+                    "group_name": "users",
+                    "permission_level": "CAN_QUERY",
                 },
                 {
                     "group_name": eng.display_name,
@@ -2541,6 +2683,7 @@ class Permissions(pulumi.CustomResource):
                  experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 knowledge_assistant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  notebook_id: pulumi.Input[Optional[_builtins.str]] = None,
                  notebook_path: pulumi.Input[Optional[_builtins.str]] = None,
                  object_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2554,6 +2697,7 @@ class Permissions(pulumi.CustomResource):
                  sql_dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  sql_query_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 supervisor_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  vector_search_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace_file_id: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace_file_path: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2582,6 +2726,7 @@ class Permissions(pulumi.CustomResource):
             __props__.__dict__["experiment_id"] = experiment_id
             __props__.__dict__["instance_pool_id"] = instance_pool_id
             __props__.__dict__["job_id"] = job_id
+            __props__.__dict__["knowledge_assistant_id"] = knowledge_assistant_id
             __props__.__dict__["notebook_id"] = notebook_id
             __props__.__dict__["notebook_path"] = notebook_path
             __props__.__dict__["object_type"] = object_type
@@ -2595,6 +2740,7 @@ class Permissions(pulumi.CustomResource):
             __props__.__dict__["sql_dashboard_id"] = sql_dashboard_id
             __props__.__dict__["sql_endpoint_id"] = sql_endpoint_id
             __props__.__dict__["sql_query_id"] = sql_query_id
+            __props__.__dict__["supervisor_agent_id"] = supervisor_agent_id
             __props__.__dict__["vector_search_endpoint_id"] = vector_search_endpoint_id
             __props__.__dict__["workspace_file_id"] = workspace_file_id
             __props__.__dict__["workspace_file_path"] = workspace_file_path
@@ -2622,6 +2768,7 @@ class Permissions(pulumi.CustomResource):
             experiment_id: pulumi.Input[Optional[_builtins.str]] = None,
             instance_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
             job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            knowledge_assistant_id: pulumi.Input[Optional[_builtins.str]] = None,
             notebook_id: pulumi.Input[Optional[_builtins.str]] = None,
             notebook_path: pulumi.Input[Optional[_builtins.str]] = None,
             object_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2635,6 +2782,7 @@ class Permissions(pulumi.CustomResource):
             sql_dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
             sql_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
             sql_query_id: pulumi.Input[Optional[_builtins.str]] = None,
+            supervisor_agent_id: pulumi.Input[Optional[_builtins.str]] = None,
             vector_search_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
             workspace_file_id: pulumi.Input[Optional[_builtins.str]] = None,
             workspace_file_path: pulumi.Input[Optional[_builtins.str]] = None) -> 'Permissions':
@@ -2665,6 +2813,7 @@ class Permissions(pulumi.CustomResource):
         __props__.__dict__["experiment_id"] = experiment_id
         __props__.__dict__["instance_pool_id"] = instance_pool_id
         __props__.__dict__["job_id"] = job_id
+        __props__.__dict__["knowledge_assistant_id"] = knowledge_assistant_id
         __props__.__dict__["notebook_id"] = notebook_id
         __props__.__dict__["notebook_path"] = notebook_path
         __props__.__dict__["object_type"] = object_type
@@ -2678,6 +2827,7 @@ class Permissions(pulumi.CustomResource):
         __props__.__dict__["sql_dashboard_id"] = sql_dashboard_id
         __props__.__dict__["sql_endpoint_id"] = sql_endpoint_id
         __props__.__dict__["sql_query_id"] = sql_query_id
+        __props__.__dict__["supervisor_agent_id"] = supervisor_agent_id
         __props__.__dict__["vector_search_endpoint_id"] = vector_search_endpoint_id
         __props__.__dict__["workspace_file_id"] = workspace_file_id
         __props__.__dict__["workspace_file_path"] = workspace_file_path
@@ -2754,6 +2904,11 @@ class Permissions(pulumi.CustomResource):
         return pulumi.get(self, "job_id")
 
     @_builtins.property
+    @pulumi.getter(name="knowledgeAssistantId")
+    def knowledge_assistant_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "knowledge_assistant_id")
+
+    @_builtins.property
     @pulumi.getter(name="notebookId")
     def notebook_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "notebook_id")
@@ -2820,6 +2975,11 @@ class Permissions(pulumi.CustomResource):
     @pulumi.getter(name="sqlQueryId")
     def sql_query_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "sql_query_id")
+
+    @_builtins.property
+    @pulumi.getter(name="supervisorAgentId")
+    def supervisor_agent_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "supervisor_agent_id")
 
     @_builtins.property
     @pulumi.getter(name="vectorSearchEndpointId")

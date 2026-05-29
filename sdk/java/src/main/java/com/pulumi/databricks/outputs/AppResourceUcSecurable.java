@@ -13,32 +13,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppResourceUcSecurable {
     /**
-     * @return Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * @return Permission to grant on UC securable. Supported values depend on `securableType`: `READ_VOLUME` and `WRITE_VOLUME` for `VOLUME`, `SELECT` and `MODIFY` for `TABLE`, `EXECUTE` for `FUNCTION`, `USE_CONNECTION` for `CONNECTION`.
      * 
      */
     private String permission;
     /**
-     * @return the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     * @return The full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
      * 
      */
     private String securableFullName;
     private @Nullable String securableKind;
     /**
-     * @return the type of UC securable, i.e. `VOLUME`.
+     * @return The type of UC securable. Supported values are `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`.
      * 
      */
     private String securableType;
 
     private AppResourceUcSecurable() {}
     /**
-     * @return Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * @return Permission to grant on UC securable. Supported values depend on `securableType`: `READ_VOLUME` and `WRITE_VOLUME` for `VOLUME`, `SELECT` and `MODIFY` for `TABLE`, `EXECUTE` for `FUNCTION`, `USE_CONNECTION` for `CONNECTION`.
      * 
      */
     public String permission() {
         return this.permission;
     }
     /**
-     * @return the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     * @return The full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
      * 
      */
     public String securableFullName() {
@@ -48,7 +48,7 @@ public final class AppResourceUcSecurable {
         return Optional.ofNullable(this.securableKind);
     }
     /**
-     * @return the type of UC securable, i.e. `VOLUME`.
+     * @return The type of UC securable. Supported values are `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`.
      * 
      */
     public String securableType() {

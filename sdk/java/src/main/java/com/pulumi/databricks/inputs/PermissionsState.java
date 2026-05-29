@@ -116,6 +116,13 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.jobId);
     }
 
+    @Import(name="knowledgeAssistantId")
+    private @Nullable Output<String> knowledgeAssistantId;
+
+    public Optional<Output<String>> knowledgeAssistantId() {
+        return Optional.ofNullable(this.knowledgeAssistantId);
+    }
+
     @Import(name="notebookId")
     private @Nullable Output<String> notebookId;
 
@@ -215,6 +222,13 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sqlQueryId);
     }
 
+    @Import(name="supervisorAgentId")
+    private @Nullable Output<String> supervisorAgentId;
+
+    public Optional<Output<String>> supervisorAgentId() {
+        return Optional.ofNullable(this.supervisorAgentId);
+    }
+
     @Import(name="vectorSearchEndpointId")
     private @Nullable Output<String> vectorSearchEndpointId;
 
@@ -253,6 +267,7 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
         this.experimentId = $.experimentId;
         this.instancePoolId = $.instancePoolId;
         this.jobId = $.jobId;
+        this.knowledgeAssistantId = $.knowledgeAssistantId;
         this.notebookId = $.notebookId;
         this.notebookPath = $.notebookPath;
         this.objectType = $.objectType;
@@ -266,6 +281,7 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
         this.sqlDashboardId = $.sqlDashboardId;
         this.sqlEndpointId = $.sqlEndpointId;
         this.sqlQueryId = $.sqlQueryId;
+        this.supervisorAgentId = $.supervisorAgentId;
         this.vectorSearchEndpointId = $.vectorSearchEndpointId;
         this.workspaceFileId = $.workspaceFileId;
         this.workspaceFilePath = $.workspaceFilePath;
@@ -419,6 +435,15 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
             return jobId(Output.of(jobId));
         }
 
+        public Builder knowledgeAssistantId(@Nullable Output<String> knowledgeAssistantId) {
+            $.knowledgeAssistantId = knowledgeAssistantId;
+            return this;
+        }
+
+        public Builder knowledgeAssistantId(String knowledgeAssistantId) {
+            return knowledgeAssistantId(Output.of(knowledgeAssistantId));
+        }
+
         public Builder notebookId(@Nullable Output<String> notebookId) {
             $.notebookId = notebookId;
             return this;
@@ -546,6 +571,15 @@ public final class PermissionsState extends com.pulumi.resources.ResourceArgs {
 
         public Builder sqlQueryId(String sqlQueryId) {
             return sqlQueryId(Output.of(sqlQueryId));
+        }
+
+        public Builder supervisorAgentId(@Nullable Output<String> supervisorAgentId) {
+            $.supervisorAgentId = supervisorAgentId;
+            return this;
+        }
+
+        public Builder supervisorAgentId(String supervisorAgentId) {
+            return supervisorAgentId(Output.of(supervisorAgentId));
         }
 
         public Builder vectorSearchEndpointId(@Nullable Output<String> vectorSearchEndpointId) {

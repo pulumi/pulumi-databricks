@@ -20,6 +20,30 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/disasterRecoveryStableUrl:DisasterRecoveryStableUrl")
 public class DisasterRecoveryStableUrl extends com.pulumi.resources.CustomResource {
     /**
+     * (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+     * currently linked to, in the format
+     * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+     * the stable URL is not attached to any failover group. Server-controlled:
+     * written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+     * DeleteFailoverGroup / UpdateFailoverGroup on unlink
+     * 
+     */
+    @Export(name="failoverGroupName", refs={String.class}, tree="[0]")
+    private Output<String> failoverGroupName;
+
+    /**
+     * @return (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+     * currently linked to, in the format
+     * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+     * the stable URL is not attached to any failover group. Server-controlled:
+     * written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+     * DeleteFailoverGroup / UpdateFailoverGroup on unlink
+     * 
+     */
+    public Output<String> failoverGroupName() {
+        return this.failoverGroupName;
+    }
+    /**
      * The workspace this stable URL is initially bound to. Used only in Create
      * requests to associate the stable URL with a workspace. Not returned in
      * responses. Mirrors FailoverGroup.initial_primary_region semantics

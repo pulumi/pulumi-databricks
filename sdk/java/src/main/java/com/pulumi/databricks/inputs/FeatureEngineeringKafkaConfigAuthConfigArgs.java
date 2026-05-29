@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigAuthConfigMtlsConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class FeatureEngineeringKafkaConfigAuthConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureEngineeringKafkaConfigAuthConfigArgs Empty = new FeatureEngineeringKafkaConfigAuthConfigArgs();
+
+    /**
+     * Mutual-TLS authentication. See MtlsConfig
+     * 
+     */
+    @Import(name="mtlsConfig")
+    private @Nullable Output<FeatureEngineeringKafkaConfigAuthConfigMtlsConfigArgs> mtlsConfig;
+
+    /**
+     * @return Mutual-TLS authentication. See MtlsConfig
+     * 
+     */
+    public Optional<Output<FeatureEngineeringKafkaConfigAuthConfigMtlsConfigArgs>> mtlsConfig() {
+        return Optional.ofNullable(this.mtlsConfig);
+    }
 
     /**
      * Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
@@ -33,6 +49,7 @@ public final class FeatureEngineeringKafkaConfigAuthConfigArgs extends com.pulum
     private FeatureEngineeringKafkaConfigAuthConfigArgs() {}
 
     private FeatureEngineeringKafkaConfigAuthConfigArgs(FeatureEngineeringKafkaConfigAuthConfigArgs $) {
+        this.mtlsConfig = $.mtlsConfig;
         this.ucServiceCredentialName = $.ucServiceCredentialName;
     }
 
@@ -52,6 +69,27 @@ public final class FeatureEngineeringKafkaConfigAuthConfigArgs extends com.pulum
 
         public Builder(FeatureEngineeringKafkaConfigAuthConfigArgs defaults) {
             $ = new FeatureEngineeringKafkaConfigAuthConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param mtlsConfig Mutual-TLS authentication. See MtlsConfig
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mtlsConfig(@Nullable Output<FeatureEngineeringKafkaConfigAuthConfigMtlsConfigArgs> mtlsConfig) {
+            $.mtlsConfig = mtlsConfig;
+            return this;
+        }
+
+        /**
+         * @param mtlsConfig Mutual-TLS authentication. See MtlsConfig
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mtlsConfig(FeatureEngineeringKafkaConfigAuthConfigMtlsConfigArgs mtlsConfig) {
+            return mtlsConfig(Output.of(mtlsConfig));
         }
 
         /**
