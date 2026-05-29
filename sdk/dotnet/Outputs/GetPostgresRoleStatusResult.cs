@@ -34,9 +34,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? PostgresRole;
         /// <summary>
-        /// (string) - The short identifier of the role, suitable for showing to the users.
-        /// For a role with name `projects/my-project/branches/my-branch/roles/my-role`,
-        /// the RoleId is `my-role`.
+        /// (string) - Part of the resource name
         /// </summary>
         public readonly string RoleId;
 

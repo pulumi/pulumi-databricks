@@ -11,31 +11,39 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppAppResourcePostgres {
+    /**
+     * @return The resource path of the Lakebase Autoscaling branch (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     * 
+     */
     private @Nullable String branch;
     /**
-     * @return attribute
+     * @return The resource path of a specific database within the branch (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`).
      * 
      */
     private @Nullable String database;
     /**
-     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * @return Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      * 
      */
     private @Nullable String permission;
 
     private GetAppAppResourcePostgres() {}
+    /**
+     * @return The resource path of the Lakebase Autoscaling branch (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     * 
+     */
     public Optional<String> branch() {
         return Optional.ofNullable(this.branch);
     }
     /**
-     * @return attribute
+     * @return The resource path of a specific database within the branch (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`).
      * 
      */
     public Optional<String> database() {
         return Optional.ofNullable(this.database);
     }
     /**
-     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * @return Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      * 
      */
     public Optional<String> permission() {

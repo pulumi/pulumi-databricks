@@ -23,6 +23,7 @@ import com.pulumi.databricks.outputs.JobTaskNotebookTask;
 import com.pulumi.databricks.outputs.JobTaskNotificationSettings;
 import com.pulumi.databricks.outputs.JobTaskPipelineTask;
 import com.pulumi.databricks.outputs.JobTaskPowerBiTask;
+import com.pulumi.databricks.outputs.JobTaskPythonOperatorTask;
 import com.pulumi.databricks.outputs.JobTaskPythonWheelTask;
 import com.pulumi.databricks.outputs.JobTaskRunJobTask;
 import com.pulumi.databricks.outputs.JobTaskSparkJarTask;
@@ -126,6 +127,7 @@ public final class JobTask {
     private @Nullable JobTaskNotificationSettings notificationSettings;
     private @Nullable JobTaskPipelineTask pipelineTask;
     private @Nullable JobTaskPowerBiTask powerBiTask;
+    private @Nullable JobTaskPythonOperatorTask pythonOperatorTask;
     private @Nullable JobTaskPythonWheelTask pythonWheelTask;
     /**
      * @return (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
@@ -299,6 +301,9 @@ public final class JobTask {
     public Optional<JobTaskPowerBiTask> powerBiTask() {
         return Optional.ofNullable(this.powerBiTask);
     }
+    public Optional<JobTaskPythonOperatorTask> pythonOperatorTask() {
+        return Optional.ofNullable(this.pythonOperatorTask);
+    }
     public Optional<JobTaskPythonWheelTask> pythonWheelTask() {
         return Optional.ofNullable(this.pythonWheelTask);
     }
@@ -390,6 +395,7 @@ public final class JobTask {
         private @Nullable JobTaskNotificationSettings notificationSettings;
         private @Nullable JobTaskPipelineTask pipelineTask;
         private @Nullable JobTaskPowerBiTask powerBiTask;
+        private @Nullable JobTaskPythonOperatorTask pythonOperatorTask;
         private @Nullable JobTaskPythonWheelTask pythonWheelTask;
         private @Nullable Boolean retryOnTimeout;
         private @Nullable String runIf;
@@ -431,6 +437,7 @@ public final class JobTask {
     	      this.notificationSettings = defaults.notificationSettings;
     	      this.pipelineTask = defaults.pipelineTask;
     	      this.powerBiTask = defaults.powerBiTask;
+    	      this.pythonOperatorTask = defaults.pythonOperatorTask;
     	      this.pythonWheelTask = defaults.pythonWheelTask;
     	      this.retryOnTimeout = defaults.retryOnTimeout;
     	      this.runIf = defaults.runIf;
@@ -613,6 +620,12 @@ public final class JobTask {
             return this;
         }
         @CustomType.Setter
+        public Builder pythonOperatorTask(@Nullable JobTaskPythonOperatorTask pythonOperatorTask) {
+
+            this.pythonOperatorTask = pythonOperatorTask;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pythonWheelTask(@Nullable JobTaskPythonWheelTask pythonWheelTask) {
 
             this.pythonWheelTask = pythonWheelTask;
@@ -709,6 +722,7 @@ public final class JobTask {
             _resultValue.notificationSettings = notificationSettings;
             _resultValue.pipelineTask = pipelineTask;
             _resultValue.powerBiTask = powerBiTask;
+            _resultValue.pythonOperatorTask = pythonOperatorTask;
             _resultValue.pythonWheelTask = pythonWheelTask;
             _resultValue.retryOnTimeout = retryOnTimeout;
             _resultValue.runIf = runIf;

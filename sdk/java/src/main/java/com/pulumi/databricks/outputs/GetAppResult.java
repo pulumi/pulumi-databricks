@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAppResult {
     /**
-     * @return attribute
+     * @return attribute - reference to another Databricks App.
      * 
      */
     private GetAppApp app;
@@ -25,7 +25,7 @@ public final class GetAppResult {
      */
     private String id;
     /**
-     * @return The name of Genie Space.
+     * @return The name of the app to grant permission on.
      * 
      */
     private String name;
@@ -33,7 +33,7 @@ public final class GetAppResult {
 
     private GetAppResult() {}
     /**
-     * @return attribute
+     * @return attribute - reference to another Databricks App.
      * 
      */
     public GetAppApp app() {
@@ -47,7 +47,7 @@ public final class GetAppResult {
         return this.id;
     }
     /**
-     * @return The name of Genie Space.
+     * @return The name of the app to grant permission on.
      * 
      */
     public String name() {

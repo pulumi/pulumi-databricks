@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetPostgresDatabase
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves a single Postgres database.
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresDatabaseResult>("databricks:index/getPostgresDatabase:getPostgresDatabase", args ?? new GetPostgresDatabaseArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves a single Postgres database.
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresDatabaseResult>("databricks:index/getPostgresDatabase:getPostgresDatabase", args ?? new GetPostgresDatabaseInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// This data source retrieves a single Postgres database.
         /// 

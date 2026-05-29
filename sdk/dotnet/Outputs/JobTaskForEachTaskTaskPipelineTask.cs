@@ -19,19 +19,39 @@ namespace Pulumi.Databricks.Outputs
         /// &gt; The following configuration blocks are only supported inside a `Task` block
         /// </summary>
         public readonly bool? FullRefresh;
+        public readonly ImmutableArray<string> FullRefreshSelections;
+        public readonly ImmutableDictionary<string, string>? Parameters;
         /// <summary>
         /// The pipeline's unique ID.
         /// </summary>
         public readonly string PipelineId;
+        public readonly ImmutableArray<string> RefreshFlowSelections;
+        public readonly ImmutableArray<string> RefreshSelections;
+        public readonly ImmutableArray<string> ResetCheckpointSelections;
 
         [OutputConstructor]
         private JobTaskForEachTaskTaskPipelineTask(
             bool? fullRefresh,
 
-            string pipelineId)
+            ImmutableArray<string> fullRefreshSelections,
+
+            ImmutableDictionary<string, string>? parameters,
+
+            string pipelineId,
+
+            ImmutableArray<string> refreshFlowSelections,
+
+            ImmutableArray<string> refreshSelections,
+
+            ImmutableArray<string> resetCheckpointSelections)
         {
             FullRefresh = fullRefresh;
+            FullRefreshSelections = fullRefreshSelections;
+            Parameters = parameters;
             PipelineId = pipelineId;
+            RefreshFlowSelections = refreshFlowSelections;
+            RefreshSelections = refreshSelections;
+            ResetCheckpointSelections = resetCheckpointSelections;
         }
     }
 }

@@ -75,6 +75,9 @@ namespace Pulumi.Databricks
     [DatabricksResourceType("databricks:index/app:App")]
     public partial class App : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
+        /// </summary>
         [Output("activeDeployment")]
         public Output<Outputs.AppActiveDeployment> ActiveDeployment { get; private set; } = null!;
 
@@ -90,6 +93,12 @@ namespace Pulumi.Databricks
         [Output("budgetPolicyId")]
         public Output<string?> BudgetPolicyId { get; private set; } = null!;
 
+        [Output("computeMaxInstances")]
+        public Output<int?> ComputeMaxInstances { get; private set; } = null!;
+
+        [Output("computeMinInstances")]
+        public Output<int?> ComputeMinInstances { get; private set; } = null!;
+
         /// <summary>
         /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         /// </summary>
@@ -103,13 +112,13 @@ namespace Pulumi.Databricks
         public Output<Outputs.AppComputeStatus> ComputeStatus { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the app.
+        /// The creation time of the deployment.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The email of the user that created the app.
+        /// The email of the user that created the deployment.
         /// </summary>
         [Output("creator")]
         public Output<string> Creator { get; private set; } = null!;
@@ -132,6 +141,9 @@ namespace Pulumi.Databricks
         [Output("effectiveBudgetPolicyId")]
         public Output<string> EffectiveBudgetPolicyId { get; private set; } = null!;
 
+        /// <summary>
+        /// The effective usage policy ID.
+        /// </summary>
         [Output("effectiveUsagePolicyId")]
         public Output<string> EffectiveUsagePolicyId { get; private set; } = null!;
 
@@ -141,6 +153,9 @@ namespace Pulumi.Databricks
         [Output("effectiveUserApiScopes")]
         public Output<ImmutableArray<string>> EffectiveUserApiScopes { get; private set; } = null!;
 
+        /// <summary>
+        /// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+        /// </summary>
         [Output("gitRepository")]
         public Output<Outputs.AppGitRepository?> GitRepository { get; private set; } = null!;
 
@@ -153,12 +168,21 @@ namespace Pulumi.Databricks
         [Output("noCompute")]
         public Output<bool?> NoCompute { get; private set; } = null!;
 
+        /// <summary>
+        /// The OAuth2 client ID of the app's integration, set when the app uses user authorization.
+        /// </summary>
         [Output("oauth2AppClientId")]
         public Output<string> Oauth2AppClientId { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique ID of the OAuth2 integration associated with the app.
+        /// </summary>
         [Output("oauth2AppIntegrationId")]
         public Output<string> Oauth2AppIntegrationId { get; private set; } = null!;
 
+        /// <summary>
+        /// attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `ActiveDeployment`.
+        /// </summary>
         [Output("pendingDeployment")]
         public Output<Outputs.AppPendingDeployment> PendingDeployment { get; private set; } = null!;
 
@@ -192,14 +216,20 @@ namespace Pulumi.Databricks
         [Output("space")]
         public Output<string?> Space { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+        /// </summary>
         [Output("telemetryExportDestinations")]
         public Output<ImmutableArray<Outputs.AppTelemetryExportDestination>> TelemetryExportDestinations { get; private set; } = null!;
 
+        /// <summary>
+        /// The URL of the thumbnail image for the app.
+        /// </summary>
         [Output("thumbnailUrl")]
         public Output<string> ThumbnailUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The update time of the app.
+        /// The update time of the deployment.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -216,11 +246,14 @@ namespace Pulumi.Databricks
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
+        /// <summary>
+        /// The Usage Policy ID set for this resource.
+        /// </summary>
         [Output("usagePolicyId")]
         public Output<string?> UsagePolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// A list of api scopes granted to the user access token.
+        /// A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
         /// </summary>
         [Output("userApiScopes")]
         public Output<ImmutableArray<string>> UserApiScopes { get; private set; } = null!;
@@ -277,6 +310,12 @@ namespace Pulumi.Databricks
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
 
+        [Input("computeMaxInstances")]
+        public Input<int>? ComputeMaxInstances { get; set; }
+
+        [Input("computeMinInstances")]
+        public Input<int>? ComputeMinInstances { get; set; }
+
         /// <summary>
         /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         /// </summary>
@@ -289,6 +328,9 @@ namespace Pulumi.Databricks
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+        /// </summary>
         [Input("gitRepository")]
         public Input<Inputs.AppGitRepositoryArgs>? GitRepository { get; set; }
 
@@ -321,12 +363,19 @@ namespace Pulumi.Databricks
 
         [Input("telemetryExportDestinations")]
         private InputList<Inputs.AppTelemetryExportDestinationArgs>? _telemetryExportDestinations;
+
+        /// <summary>
+        /// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+        /// </summary>
         public InputList<Inputs.AppTelemetryExportDestinationArgs> TelemetryExportDestinations
         {
             get => _telemetryExportDestinations ?? (_telemetryExportDestinations = new InputList<Inputs.AppTelemetryExportDestinationArgs>());
             set => _telemetryExportDestinations = value;
         }
 
+        /// <summary>
+        /// The Usage Policy ID set for this resource.
+        /// </summary>
         [Input("usagePolicyId")]
         public Input<string>? UsagePolicyId { get; set; }
 
@@ -334,7 +383,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _userApiScopes;
 
         /// <summary>
-        /// A list of api scopes granted to the user access token.
+        /// A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
         /// </summary>
         public InputList<string> UserApiScopes
         {
@@ -350,6 +399,9 @@ namespace Pulumi.Databricks
 
     public sealed class AppState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
+        /// </summary>
         [Input("activeDeployment")]
         public Input<Inputs.AppActiveDeploymentGetArgs>? ActiveDeployment { get; set; }
 
@@ -365,6 +417,12 @@ namespace Pulumi.Databricks
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
 
+        [Input("computeMaxInstances")]
+        public Input<int>? ComputeMaxInstances { get; set; }
+
+        [Input("computeMinInstances")]
+        public Input<int>? ComputeMinInstances { get; set; }
+
         /// <summary>
         /// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         /// </summary>
@@ -378,13 +436,13 @@ namespace Pulumi.Databricks
         public Input<Inputs.AppComputeStatusGetArgs>? ComputeStatus { get; set; }
 
         /// <summary>
-        /// The creation time of the app.
+        /// The creation time of the deployment.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The email of the user that created the app.
+        /// The email of the user that created the deployment.
         /// </summary>
         [Input("creator")]
         public Input<string>? Creator { get; set; }
@@ -407,6 +465,9 @@ namespace Pulumi.Databricks
         [Input("effectiveBudgetPolicyId")]
         public Input<string>? EffectiveBudgetPolicyId { get; set; }
 
+        /// <summary>
+        /// The effective usage policy ID.
+        /// </summary>
         [Input("effectiveUsagePolicyId")]
         public Input<string>? EffectiveUsagePolicyId { get; set; }
 
@@ -422,6 +483,9 @@ namespace Pulumi.Databricks
             set => _effectiveUserApiScopes = value;
         }
 
+        /// <summary>
+        /// Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+        /// </summary>
         [Input("gitRepository")]
         public Input<Inputs.AppGitRepositoryGetArgs>? GitRepository { get; set; }
 
@@ -434,12 +498,21 @@ namespace Pulumi.Databricks
         [Input("noCompute")]
         public Input<bool>? NoCompute { get; set; }
 
+        /// <summary>
+        /// The OAuth2 client ID of the app's integration, set when the app uses user authorization.
+        /// </summary>
         [Input("oauth2AppClientId")]
         public Input<string>? Oauth2AppClientId { get; set; }
 
+        /// <summary>
+        /// The unique ID of the OAuth2 integration associated with the app.
+        /// </summary>
         [Input("oauth2AppIntegrationId")]
         public Input<string>? Oauth2AppIntegrationId { get; set; }
 
+        /// <summary>
+        /// attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `ActiveDeployment`.
+        /// </summary>
         [Input("pendingDeployment")]
         public Input<Inputs.AppPendingDeploymentGetArgs>? PendingDeployment { get; set; }
 
@@ -481,17 +554,24 @@ namespace Pulumi.Databricks
 
         [Input("telemetryExportDestinations")]
         private InputList<Inputs.AppTelemetryExportDestinationGetArgs>? _telemetryExportDestinations;
+
+        /// <summary>
+        /// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+        /// </summary>
         public InputList<Inputs.AppTelemetryExportDestinationGetArgs> TelemetryExportDestinations
         {
             get => _telemetryExportDestinations ?? (_telemetryExportDestinations = new InputList<Inputs.AppTelemetryExportDestinationGetArgs>());
             set => _telemetryExportDestinations = value;
         }
 
+        /// <summary>
+        /// The URL of the thumbnail image for the app.
+        /// </summary>
         [Input("thumbnailUrl")]
         public Input<string>? ThumbnailUrl { get; set; }
 
         /// <summary>
-        /// The update time of the app.
+        /// The update time of the deployment.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
@@ -508,6 +588,9 @@ namespace Pulumi.Databricks
         [Input("url")]
         public Input<string>? Url { get; set; }
 
+        /// <summary>
+        /// The Usage Policy ID set for this resource.
+        /// </summary>
         [Input("usagePolicyId")]
         public Input<string>? UsagePolicyId { get; set; }
 
@@ -515,7 +598,7 @@ namespace Pulumi.Databricks
         private InputList<string>? _userApiScopes;
 
         /// <summary>
-        /// A list of api scopes granted to the user access token.
+        /// A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
         /// </summary>
         public InputList<string> UserApiScopes
         {

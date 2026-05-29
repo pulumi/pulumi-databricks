@@ -22,7 +22,9 @@ export function getFeatureEngineeringFeature(args: GetFeatureEngineeringFeatureA
  */
 export interface GetFeatureEngineeringFeatureArgs {
     /**
-     * The full three-part name (catalog, schema, name) of the feature
+     * The full three-part name (catalog, schema, name) of the feature. This is the
+     * feature's resource identifier; the catalog_name, schema_name, and name fields
+     * below are OUTPUT_ONLY decomposed views of this value
      */
     fullName: string;
     /**
@@ -35,6 +37,18 @@ export interface GetFeatureEngineeringFeatureArgs {
  * A collection of values returned by getFeatureEngineeringFeature.
  */
 export interface GetFeatureEngineeringFeatureResult {
+    /**
+     * (string) - Name of parent catalog
+     */
+    readonly catalogName: string;
+    /**
+     * (string) - Time at which this feature was created
+     */
+    readonly createdAt: string;
+    /**
+     * (string) - Username of the feature creator
+     */
+    readonly createdBy: string;
     /**
      * (string) - The description of the feature
      */
@@ -72,7 +86,20 @@ export interface GetFeatureEngineeringFeatureResult {
      * This field will be set by feature-engineering client and should be left unset by SDK and terraform users
      */
     readonly lineageContext: outputs.GetFeatureEngineeringFeatureLineageContext;
+    /**
+     * (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+     * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
+     * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
+     * is what will be present in materialized tables and expected to match at query time.
+     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * backwards compatibility but is deprecated; migrate to dot notation
+     */
+    readonly name: string;
     readonly providerConfig?: outputs.GetFeatureEngineeringFeatureProviderConfig;
+    /**
+     * (string) - Name of parent schema relative to its parent catalog
+     */
+    readonly schemaName: string;
     /**
      * (DataSource) - The data source of the feature
      */
@@ -103,7 +130,9 @@ export function getFeatureEngineeringFeatureOutput(args: GetFeatureEngineeringFe
  */
 export interface GetFeatureEngineeringFeatureOutputArgs {
     /**
-     * The full three-part name (catalog, schema, name) of the feature
+     * The full three-part name (catalog, schema, name) of the feature. This is the
+     * feature's resource identifier; the catalog_name, schema_name, and name fields
+     * below are OUTPUT_ONLY decomposed views of this value
      */
     fullName: pulumi.Input<string>;
     /**

@@ -24,14 +24,14 @@ public final class AppComputeStatusArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Application status message
+     * The status message of the deployment.
      * 
      */
     @Import(name="message")
     private @Nullable Output<String> message;
 
     /**
-     * @return Application status message
+     * @return The status message of the deployment.
      * 
      */
     public Optional<Output<String>> message() {
@@ -39,14 +39,14 @@ public final class AppComputeStatusArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * State of the application.
+     * The state of the deployment.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return State of the application.
+     * @return The state of the deployment.
      * 
      */
     public Optional<Output<String>> state() {
@@ -89,7 +89,7 @@ public final class AppComputeStatusArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param message Application status message
+         * @param message The status message of the deployment.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class AppComputeStatusArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param message Application status message
+         * @param message The status message of the deployment.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class AppComputeStatusArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param state State of the application.
+         * @param state The state of the deployment.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class AppComputeStatusArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param state State of the application.
+         * @param state The state of the deployment.
          * 
          * @return builder
          * 

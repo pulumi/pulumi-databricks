@@ -22,7 +22,7 @@ export function getFeatureEngineeringMaterializedFeature(args: GetFeatureEnginee
  */
 export interface GetFeatureEngineeringMaterializedFeatureArgs {
     /**
-     * Unique identifier for the materialized feature
+     * Server-assigned unique identifier for the materialized feature
      */
     materializedFeatureId: string;
     /**
@@ -39,6 +39,10 @@ export interface GetFeatureEngineeringMaterializedFeatureResult {
      * (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
      */
     readonly cronSchedule: string;
+    /**
+     * (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
+     */
+    readonly cronScheduleTrigger: outputs.GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger;
     /**
      * (string) - The full name of the feature in Unity Catalog
      */
@@ -57,15 +61,15 @@ export interface GetFeatureEngineeringMaterializedFeatureResult {
      */
     readonly lastMaterializationTime: string;
     /**
-     * (string) - Unique identifier for the materialized feature
+     * (string) - Server-assigned unique identifier for the materialized feature
      */
     readonly materializedFeatureId: string;
     /**
-     * (OfflineStoreConfig)
+     * (OfflineStoreConfig) - Destination for writing feature values to an offline Delta table
      */
     readonly offlineStoreConfig: outputs.GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig;
     /**
-     * (OnlineStoreConfig)
+     * (OnlineStoreConfig) - Destination for writing feature values to an online Lakebase table
      */
     readonly onlineStoreConfig: outputs.GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig;
     /**
@@ -74,9 +78,19 @@ export interface GetFeatureEngineeringMaterializedFeatureResult {
     readonly pipelineScheduleState: string;
     readonly providerConfig?: outputs.GetFeatureEngineeringMaterializedFeatureProviderConfig;
     /**
+     * (StreamingMode) - The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+     * sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+     * for ETL and analytics workloads
+     */
+    readonly streamingMode: outputs.GetFeatureEngineeringMaterializedFeatureStreamingMode;
+    /**
      * (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
      */
     readonly tableName: string;
+    /**
+     * (TableTrigger) - A trigger that fires when the upstream source table changes
+     */
+    readonly tableTrigger: outputs.GetFeatureEngineeringMaterializedFeatureTableTrigger;
 }
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -94,7 +108,7 @@ export function getFeatureEngineeringMaterializedFeatureOutput(args: GetFeatureE
  */
 export interface GetFeatureEngineeringMaterializedFeatureOutputArgs {
     /**
-     * Unique identifier for the materialized feature
+     * Server-assigned unique identifier for the materialized feature
      */
     materializedFeatureId: pulumi.Input<string>;
     /**

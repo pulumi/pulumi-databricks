@@ -13,9 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPostgresDatabaseStatus {
     /**
-     * @return (string) - The short identifier of the database, suitable for showing to the users.
-     * For a database with name `projects/my-project/branches/my-branch/databases/my-db`,
-     * the databaseId is `my-db`.
+     * @return (string) - Part of the resource name
      * 
      */
     private String databaseId;
@@ -33,9 +31,7 @@ public final class GetPostgresDatabaseStatus {
 
     private GetPostgresDatabaseStatus() {}
     /**
-     * @return (string) - The short identifier of the database, suitable for showing to the users.
-     * For a database with name `projects/my-project/branches/my-branch/databases/my-db`,
-     * the databaseId is `my-db`.
+     * @return (string) - Part of the resource name
      * 
      */
     public String databaseId() {

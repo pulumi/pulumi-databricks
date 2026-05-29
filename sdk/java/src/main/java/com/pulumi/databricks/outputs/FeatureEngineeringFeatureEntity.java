@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class FeatureEngineeringFeatureEntity {
+    /**
+     * @return (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     * 
+     */
     private String name;
 
     private FeatureEngineeringFeatureEntity() {}
+    /**
+     * @return (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     * 
+     */
     public String name() {
         return this.name;
     }

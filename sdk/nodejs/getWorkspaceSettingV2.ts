@@ -50,6 +50,10 @@ export interface GetWorkspaceSettingV2Result {
      */
     readonly aibiDashboardEmbeddingApprovedDomains: outputs.GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains;
     /**
+     * (AllowedAppsUserApiScopesMessage) - Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+     */
+    readonly allowedAppsUserApiScopes: outputs.GetWorkspaceSettingV2AllowedAppsUserApiScopes;
+    /**
      * (ClusterAutoRestartMessage) - Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
      */
     readonly automaticClusterUpdateWorkspace: outputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace;
@@ -66,6 +70,10 @@ export interface GetWorkspaceSettingV2Result {
      */
     readonly effectiveAibiDashboardEmbeddingApprovedDomains: outputs.GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains;
     /**
+     * (AllowedAppsUserApiScopesMessage) - Effective setting value for allowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+     */
+    readonly effectiveAllowedAppsUserApiScopes: outputs.GetWorkspaceSettingV2EffectiveAllowedAppsUserApiScopes;
+    /**
      * (ClusterAutoRestartMessage) - Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
      */
     readonly effectiveAutomaticClusterUpdateWorkspace: outputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace;
@@ -77,6 +85,10 @@ export interface GetWorkspaceSettingV2Result {
      * (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
      */
     readonly effectiveIntegerVal: outputs.GetWorkspaceSettingV2EffectiveIntegerVal;
+    /**
+     * (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+     */
+    readonly effectiveOperationalEmailCustomRecipient: outputs.GetWorkspaceSettingV2EffectiveOperationalEmailCustomRecipient;
     /**
      * (PersonalComputeMessage) - Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
      */
@@ -101,6 +113,10 @@ export interface GetWorkspaceSettingV2Result {
      * (string) - Name of the setting
      */
     readonly name: string;
+    /**
+     * (OperationalEmailCustomRecipientMessage) - Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+     */
+    readonly operationalEmailCustomRecipient: outputs.GetWorkspaceSettingV2OperationalEmailCustomRecipient;
     /**
      * (PersonalComputeMessage) - Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
      */

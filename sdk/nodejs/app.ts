@@ -83,6 +83,9 @@ export class App extends pulumi.CustomResource {
         return obj['__pulumiType'] === App.__pulumiType;
     }
 
+    /**
+     * attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
+     */
     declare public /*out*/ readonly activeDeployment: pulumi.Output<outputs.AppActiveDeployment>;
     /**
      * attribute
@@ -92,6 +95,8 @@ export class App extends pulumi.CustomResource {
      * The Budget Policy ID set for this resource.
      */
     declare public readonly budgetPolicyId: pulumi.Output<string | undefined>;
+    declare public readonly computeMaxInstances: pulumi.Output<number | undefined>;
+    declare public readonly computeMinInstances: pulumi.Output<number | undefined>;
     /**
      * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
      */
@@ -101,11 +106,11 @@ export class App extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly computeStatus: pulumi.Output<outputs.AppComputeStatus>;
     /**
-     * The creation time of the app.
+     * The creation time of the deployment.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The email of the user that created the app.
+     * The email of the user that created the deployment.
      */
     declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
@@ -120,19 +125,34 @@ export class App extends pulumi.CustomResource {
      * The effective budget policy ID.
      */
     declare public /*out*/ readonly effectiveBudgetPolicyId: pulumi.Output<string>;
+    /**
+     * The effective usage policy ID.
+     */
     declare public /*out*/ readonly effectiveUsagePolicyId: pulumi.Output<string>;
     /**
      * A list of effective api scopes granted to the user access token.
      */
     declare public /*out*/ readonly effectiveUserApiScopes: pulumi.Output<string[]>;
+    /**
+     * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     */
     declare public readonly gitRepository: pulumi.Output<outputs.AppGitRepository | undefined>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
     declare public readonly name: pulumi.Output<string>;
     declare public readonly noCompute: pulumi.Output<boolean | undefined>;
+    /**
+     * The OAuth2 client ID of the app's integration, set when the app uses user authorization.
+     */
     declare public /*out*/ readonly oauth2AppClientId: pulumi.Output<string>;
+    /**
+     * The unique ID of the OAuth2 integration associated with the app.
+     */
     declare public /*out*/ readonly oauth2AppIntegrationId: pulumi.Output<string>;
+    /**
+     * attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `activeDeployment`.
+     */
     declare public /*out*/ readonly pendingDeployment: pulumi.Output<outputs.AppPendingDeployment>;
     declare public readonly providerConfig: pulumi.Output<outputs.AppProviderConfig>;
     /**
@@ -152,10 +172,16 @@ export class App extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly servicePrincipalName: pulumi.Output<string>;
     declare public readonly space: pulumi.Output<string | undefined>;
+    /**
+     * A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+     */
     declare public readonly telemetryExportDestinations: pulumi.Output<outputs.AppTelemetryExportDestination[] | undefined>;
+    /**
+     * The URL of the thumbnail image for the app.
+     */
     declare public /*out*/ readonly thumbnailUrl: pulumi.Output<string>;
     /**
-     * The update time of the app.
+     * The update time of the deployment.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
@@ -166,9 +192,12 @@ export class App extends pulumi.CustomResource {
      * The URL of the app once it is deployed.
      */
     declare public /*out*/ readonly url: pulumi.Output<string>;
+    /**
+     * The Usage Policy ID set for this resource.
+     */
     declare public readonly usagePolicyId: pulumi.Output<string | undefined>;
     /**
-     * A list of api scopes granted to the user access token.
+     * A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
      */
     declare public readonly userApiScopes: pulumi.Output<string[] | undefined>;
 
@@ -188,6 +217,8 @@ export class App extends pulumi.CustomResource {
             resourceInputs["activeDeployment"] = state?.activeDeployment;
             resourceInputs["appStatus"] = state?.appStatus;
             resourceInputs["budgetPolicyId"] = state?.budgetPolicyId;
+            resourceInputs["computeMaxInstances"] = state?.computeMaxInstances;
+            resourceInputs["computeMinInstances"] = state?.computeMinInstances;
             resourceInputs["computeSize"] = state?.computeSize;
             resourceInputs["computeStatus"] = state?.computeStatus;
             resourceInputs["createTime"] = state?.createTime;
@@ -219,6 +250,8 @@ export class App extends pulumi.CustomResource {
         } else {
             const args = argsOrState as AppArgs | undefined;
             resourceInputs["budgetPolicyId"] = args?.budgetPolicyId;
+            resourceInputs["computeMaxInstances"] = args?.computeMaxInstances;
+            resourceInputs["computeMinInstances"] = args?.computeMinInstances;
             resourceInputs["computeSize"] = args?.computeSize;
             resourceInputs["description"] = args?.description;
             resourceInputs["gitRepository"] = args?.gitRepository;
@@ -259,6 +292,9 @@ export class App extends pulumi.CustomResource {
  * Input properties used for looking up and filtering App resources.
  */
 export interface AppState {
+    /**
+     * attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
+     */
     activeDeployment?: pulumi.Input<inputs.AppActiveDeployment | undefined>;
     /**
      * attribute
@@ -268,6 +304,8 @@ export interface AppState {
      * The Budget Policy ID set for this resource.
      */
     budgetPolicyId?: pulumi.Input<string | undefined>;
+    computeMaxInstances?: pulumi.Input<number | undefined>;
+    computeMinInstances?: pulumi.Input<number | undefined>;
     /**
      * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
      */
@@ -277,11 +315,11 @@ export interface AppState {
      */
     computeStatus?: pulumi.Input<inputs.AppComputeStatus | undefined>;
     /**
-     * The creation time of the app.
+     * The creation time of the deployment.
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * The email of the user that created the app.
+     * The email of the user that created the deployment.
      */
     creator?: pulumi.Input<string | undefined>;
     /**
@@ -296,19 +334,34 @@ export interface AppState {
      * The effective budget policy ID.
      */
     effectiveBudgetPolicyId?: pulumi.Input<string | undefined>;
+    /**
+     * The effective usage policy ID.
+     */
     effectiveUsagePolicyId?: pulumi.Input<string | undefined>;
     /**
      * A list of effective api scopes granted to the user access token.
      */
     effectiveUserApiScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     */
     gitRepository?: pulumi.Input<inputs.AppGitRepository | undefined>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
      */
     name?: pulumi.Input<string | undefined>;
     noCompute?: pulumi.Input<boolean | undefined>;
+    /**
+     * The OAuth2 client ID of the app's integration, set when the app uses user authorization.
+     */
     oauth2AppClientId?: pulumi.Input<string | undefined>;
+    /**
+     * The unique ID of the OAuth2 integration associated with the app.
+     */
     oauth2AppIntegrationId?: pulumi.Input<string | undefined>;
+    /**
+     * attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `activeDeployment`.
+     */
     pendingDeployment?: pulumi.Input<inputs.AppPendingDeployment | undefined>;
     providerConfig?: pulumi.Input<inputs.AppProviderConfig | undefined>;
     /**
@@ -328,10 +381,16 @@ export interface AppState {
      */
     servicePrincipalName?: pulumi.Input<string | undefined>;
     space?: pulumi.Input<string | undefined>;
+    /**
+     * A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+     */
     telemetryExportDestinations?: pulumi.Input<pulumi.Input<inputs.AppTelemetryExportDestination>[] | undefined>;
+    /**
+     * The URL of the thumbnail image for the app.
+     */
     thumbnailUrl?: pulumi.Input<string | undefined>;
     /**
-     * The update time of the app.
+     * The update time of the deployment.
      */
     updateTime?: pulumi.Input<string | undefined>;
     /**
@@ -342,9 +401,12 @@ export interface AppState {
      * The URL of the app once it is deployed.
      */
     url?: pulumi.Input<string | undefined>;
+    /**
+     * The Usage Policy ID set for this resource.
+     */
     usagePolicyId?: pulumi.Input<string | undefined>;
     /**
-     * A list of api scopes granted to the user access token.
+     * A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
      */
     userApiScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -357,6 +419,8 @@ export interface AppArgs {
      * The Budget Policy ID set for this resource.
      */
     budgetPolicyId?: pulumi.Input<string | undefined>;
+    computeMaxInstances?: pulumi.Input<number | undefined>;
+    computeMinInstances?: pulumi.Input<number | undefined>;
     /**
      * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
      */
@@ -365,6 +429,9 @@ export interface AppArgs {
      * The description of the app.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     */
     gitRepository?: pulumi.Input<inputs.AppGitRepository | undefined>;
     /**
      * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
@@ -377,10 +444,16 @@ export interface AppArgs {
      */
     resources?: pulumi.Input<pulumi.Input<inputs.AppResource>[] | undefined>;
     space?: pulumi.Input<string | undefined>;
+    /**
+     * A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+     */
     telemetryExportDestinations?: pulumi.Input<pulumi.Input<inputs.AppTelemetryExportDestination>[] | undefined>;
+    /**
+     * The Usage Policy ID set for this resource.
+     */
     usagePolicyId?: pulumi.Input<string | undefined>;
     /**
-     * A list of api scopes granted to the user access token.
+     * A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
      */
     userApiScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

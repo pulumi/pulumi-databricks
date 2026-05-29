@@ -38,6 +38,18 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
     }
 
     /**
+     * (string) - Name of parent catalog
+     */
+    declare public /*out*/ readonly catalogName: pulumi.Output<string>;
+    /**
+     * (string) - Time at which this feature was created
+     */
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    /**
+     * (string) - Username of the feature creator
+     */
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
+    /**
      * The description of the feature
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -51,7 +63,9 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
      */
     declare public readonly filterCondition: pulumi.Output<string | undefined>;
     /**
-     * The full three-part name (catalog, schema, name) of the feature
+     * The full three-part name (catalog, schema, name) of the feature. This is the
+     * feature's resource identifier; the catalog_name, schema_name, and name fields
+     * below are OUTPUT_ONLY decomposed views of this value
      */
     declare public readonly fullName: pulumi.Output<string>;
     /**
@@ -72,9 +86,17 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
      */
     declare public readonly lineageContext: pulumi.Output<outputs.FeatureEngineeringFeatureLineageContext | undefined>;
     /**
+     * (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     */
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
      * Configure the provider for management through account provider.
      */
     declare public readonly providerConfig: pulumi.Output<outputs.FeatureEngineeringFeatureProviderConfig>;
+    /**
+     * (string) - Name of parent schema relative to its parent catalog
+     */
+    declare public /*out*/ readonly schemaName: pulumi.Output<string>;
     /**
      * The data source of the feature
      */
@@ -102,6 +124,9 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FeatureEngineeringFeatureState | undefined;
+            resourceInputs["catalogName"] = state?.catalogName;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
             resourceInputs["description"] = state?.description;
             resourceInputs["entities"] = state?.entities;
             resourceInputs["filterCondition"] = state?.filterCondition;
@@ -109,7 +134,9 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
             resourceInputs["function"] = state?.function;
             resourceInputs["inputs"] = state?.inputs;
             resourceInputs["lineageContext"] = state?.lineageContext;
+            resourceInputs["name"] = state?.name;
             resourceInputs["providerConfig"] = state?.providerConfig;
+            resourceInputs["schemaName"] = state?.schemaName;
             resourceInputs["source"] = state?.source;
             resourceInputs["timeWindow"] = state?.timeWindow;
             resourceInputs["timeseriesColumn"] = state?.timeseriesColumn;
@@ -135,6 +162,11 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
             resourceInputs["source"] = args?.source;
             resourceInputs["timeWindow"] = args?.timeWindow;
             resourceInputs["timeseriesColumn"] = args?.timeseriesColumn;
+            resourceInputs["catalogName"] = undefined /*out*/;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["createdBy"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["schemaName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FeatureEngineeringFeature.__pulumiType, name, resourceInputs, opts);
@@ -145,6 +177,18 @@ export class FeatureEngineeringFeature extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FeatureEngineeringFeature resources.
  */
 export interface FeatureEngineeringFeatureState {
+    /**
+     * (string) - Name of parent catalog
+     */
+    catalogName?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Time at which this feature was created
+     */
+    createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Username of the feature creator
+     */
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * The description of the feature
      */
@@ -159,7 +203,9 @@ export interface FeatureEngineeringFeatureState {
      */
     filterCondition?: pulumi.Input<string | undefined>;
     /**
-     * The full three-part name (catalog, schema, name) of the feature
+     * The full three-part name (catalog, schema, name) of the feature. This is the
+     * feature's resource identifier; the catalog_name, schema_name, and name fields
+     * below are OUTPUT_ONLY decomposed views of this value
      */
     fullName?: pulumi.Input<string | undefined>;
     /**
@@ -180,9 +226,17 @@ export interface FeatureEngineeringFeatureState {
      */
     lineageContext?: pulumi.Input<inputs.FeatureEngineeringFeatureLineageContext | undefined>;
     /**
+     * (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.FeatureEngineeringFeatureProviderConfig | undefined>;
+    /**
+     * (string) - Name of parent schema relative to its parent catalog
+     */
+    schemaName?: pulumi.Input<string | undefined>;
     /**
      * The data source of the feature
      */
@@ -216,7 +270,9 @@ export interface FeatureEngineeringFeatureArgs {
      */
     filterCondition?: pulumi.Input<string | undefined>;
     /**
-     * The full three-part name (catalog, schema, name) of the feature
+     * The full three-part name (catalog, schema, name) of the feature. This is the
+     * feature's resource identifier; the catalog_name, schema_name, and name fields
+     * below are OUTPUT_ONLY decomposed views of this value
      */
     fullName: pulumi.Input<string>;
     /**

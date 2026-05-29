@@ -36,6 +36,15 @@ export class DisasterRecoveryStableUrl extends pulumi.CustomResource {
     }
 
     /**
+     * (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+     * currently linked to, in the format
+     * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+     * the stable URL is not attached to any failover group. Server-controlled:
+     * written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+     * DeleteFailoverGroup / UpdateFailoverGroup on unlink
+     */
+    declare public /*out*/ readonly failoverGroupName: pulumi.Output<string>;
+    /**
      * The workspace this stable URL is initially bound to. Used only in Create
      * requests to associate the stable URL with a workspace. Not returned in
      * responses. Mirrors FailoverGroup.initial_primary_region semantics
@@ -76,6 +85,7 @@ export class DisasterRecoveryStableUrl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DisasterRecoveryStableUrlState | undefined;
+            resourceInputs["failoverGroupName"] = state?.failoverGroupName;
             resourceInputs["initialWorkspaceId"] = state?.initialWorkspaceId;
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
@@ -95,6 +105,7 @@ export class DisasterRecoveryStableUrl extends pulumi.CustomResource {
             resourceInputs["initialWorkspaceId"] = args?.initialWorkspaceId;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["stableUrlId"] = args?.stableUrlId;
+            resourceInputs["failoverGroupName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
         }
@@ -107,6 +118,15 @@ export class DisasterRecoveryStableUrl extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DisasterRecoveryStableUrl resources.
  */
 export interface DisasterRecoveryStableUrlState {
+    /**
+     * (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+     * currently linked to, in the format
+     * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+     * the stable URL is not attached to any failover group. Server-controlled:
+     * written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+     * DeleteFailoverGroup / UpdateFailoverGroup on unlink
+     */
+    failoverGroupName?: pulumi.Input<string | undefined>;
     /**
      * The workspace this stable URL is initially bound to. Used only in Create
      * requests to associate the stable URL with a workspace. Not returned in

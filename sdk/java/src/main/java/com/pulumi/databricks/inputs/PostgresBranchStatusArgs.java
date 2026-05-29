@@ -37,14 +37,14 @@ public final class PostgresBranchStatusArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (string) - The branch&#39;s state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     * (string) - The branch&#39;s state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      * 
      */
     @Import(name="currentState")
     private @Nullable Output<String> currentState;
 
     /**
-     * @return (string) - The branch&#39;s state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     * @return (string) - The branch&#39;s state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      * 
      */
     public Optional<Output<String>> currentState() {
@@ -64,6 +64,23 @@ public final class PostgresBranchStatusArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<Boolean>> default_() {
         return Optional.ofNullable(this.default_);
+    }
+
+    /**
+     * (string) - A timestamp indicating when the branch was deleted.
+     * Empty if the branch is not deleted
+     * 
+     */
+    @Import(name="deleteTime")
+    private @Nullable Output<String> deleteTime;
+
+    /**
+     * @return (string) - A timestamp indicating when the branch was deleted.
+     * Empty if the branch is not deleted
+     * 
+     */
+    public Optional<Output<String>> deleteTime() {
+        return Optional.ofNullable(this.deleteTime);
     }
 
     /**
@@ -112,18 +129,35 @@ public final class PostgresBranchStatusArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     * (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      * 
      */
     @Import(name="pendingState")
     private @Nullable Output<String> pendingState;
 
     /**
-     * @return (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     * @return (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      * 
      */
     public Optional<Output<String>> pendingState() {
         return Optional.ofNullable(this.pendingState);
+    }
+
+    /**
+     * (string) - A timestamp indicating when the branch is scheduled to be purged.
+     * Empty if the branch is not deleted, otherwise set to a timestamp in the future
+     * 
+     */
+    @Import(name="purgeTime")
+    private @Nullable Output<String> purgeTime;
+
+    /**
+     * @return (string) - A timestamp indicating when the branch is scheduled to be purged.
+     * Empty if the branch is not deleted, otherwise set to a timestamp in the future
+     * 
+     */
+    public Optional<Output<String>> purgeTime() {
+        return Optional.ofNullable(this.purgeTime);
     }
 
     /**
@@ -194,10 +228,12 @@ public final class PostgresBranchStatusArgs extends com.pulumi.resources.Resourc
         this.branchId = $.branchId;
         this.currentState = $.currentState;
         this.default_ = $.default_;
+        this.deleteTime = $.deleteTime;
         this.expireTime = $.expireTime;
         this.isProtected = $.isProtected;
         this.logicalSizeBytes = $.logicalSizeBytes;
         this.pendingState = $.pendingState;
+        this.purgeTime = $.purgeTime;
         this.sourceBranch = $.sourceBranch;
         this.sourceBranchLsn = $.sourceBranchLsn;
         this.sourceBranchTime = $.sourceBranchTime;
@@ -248,7 +284,7 @@ public final class PostgresBranchStatusArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param currentState (string) - The branch&#39;s state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+         * @param currentState (string) - The branch&#39;s state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
          * 
          * @return builder
          * 
@@ -259,7 +295,7 @@ public final class PostgresBranchStatusArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param currentState (string) - The branch&#39;s state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+         * @param currentState (string) - The branch&#39;s state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
          * 
          * @return builder
          * 
@@ -287,6 +323,29 @@ public final class PostgresBranchStatusArgs extends com.pulumi.resources.Resourc
          */
         public Builder default_(Boolean default_) {
             return default_(Output.of(default_));
+        }
+
+        /**
+         * @param deleteTime (string) - A timestamp indicating when the branch was deleted.
+         * Empty if the branch is not deleted
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteTime(@Nullable Output<String> deleteTime) {
+            $.deleteTime = deleteTime;
+            return this;
+        }
+
+        /**
+         * @param deleteTime (string) - A timestamp indicating when the branch was deleted.
+         * Empty if the branch is not deleted
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteTime(String deleteTime) {
+            return deleteTime(Output.of(deleteTime));
         }
 
         /**
@@ -353,7 +412,7 @@ public final class PostgresBranchStatusArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pendingState (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+         * @param pendingState (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
          * 
          * @return builder
          * 
@@ -364,13 +423,36 @@ public final class PostgresBranchStatusArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param pendingState (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+         * @param pendingState (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
          * 
          * @return builder
          * 
          */
         public Builder pendingState(String pendingState) {
             return pendingState(Output.of(pendingState));
+        }
+
+        /**
+         * @param purgeTime (string) - A timestamp indicating when the branch is scheduled to be purged.
+         * Empty if the branch is not deleted, otherwise set to a timestamp in the future
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeTime(@Nullable Output<String> purgeTime) {
+            $.purgeTime = purgeTime;
+            return this;
+        }
+
+        /**
+         * @param purgeTime (string) - A timestamp indicating when the branch is scheduled to be purged.
+         * Empty if the branch is not deleted, otherwise set to a timestamp in the future
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeTime(String purgeTime) {
+            return purgeTime(Output.of(purgeTime));
         }
 
         /**

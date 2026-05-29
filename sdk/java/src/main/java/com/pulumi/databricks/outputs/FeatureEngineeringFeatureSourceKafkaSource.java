@@ -27,6 +27,10 @@ public final class FeatureEngineeringFeatureSourceKafkaSource {
      * 
      */
     private @Nullable String filterCondition;
+    /**
+     * @return (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     * 
+     */
     private String name;
     /**
      * @return Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
@@ -52,6 +56,10 @@ public final class FeatureEngineeringFeatureSourceKafkaSource {
     public Optional<String> filterCondition() {
         return Optional.ofNullable(this.filterCondition);
     }
+    /**
+     * @return (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     * 
+     */
     public String name() {
         return this.name;
     }

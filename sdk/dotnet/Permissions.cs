@@ -1359,7 +1359,7 @@ namespace Pulumi.Databricks
     ///         DisplayName = "Engineering",
     ///     });
     /// 
-    ///     var appUsage = new Databricks.Permissions("app_usage", new()
+    ///     var dbInstanceUsage = new Databricks.Permissions("db_instance_usage", new()
     ///     {
     ///         DatabaseInstanceName = "my_database",
     ///         AccessControls = new[]
@@ -1406,6 +1406,82 @@ namespace Pulumi.Databricks
     ///             {
     ///                 GroupName = "users",
     ///                 PermissionLevel = "CAN_USE",
+    ///             },
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
+    ///             {
+    ///                 GroupName = eng.DisplayName,
+    ///                 PermissionLevel = "CAN_MANAGE",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Knowledge Assistant usage
+    /// 
+    /// Knowledge Assistants have two possible permissions: `CAN_QUERY` and `CAN_MANAGE`:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var eng = new Databricks.Group("eng", new()
+    ///     {
+    ///         DisplayName = "Engineering",
+    ///     });
+    /// 
+    ///     var knowledgeAssistantUsage = new Databricks.Permissions("knowledge_assistant_usage", new()
+    ///     {
+    ///         KnowledgeAssistantId = @this.Id,
+    ///         AccessControls = new[]
+    ///         {
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
+    ///             {
+    ///                 GroupName = "users",
+    ///                 PermissionLevel = "CAN_QUERY",
+    ///             },
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
+    ///             {
+    ///                 GroupName = eng.DisplayName,
+    ///                 PermissionLevel = "CAN_MANAGE",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Supervisor Agent usage
+    /// 
+    /// Supervisor Agents have two possible permissions: `CAN_QUERY` and `CAN_MANAGE`:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var eng = new Databricks.Group("eng", new()
+    ///     {
+    ///         DisplayName = "Engineering",
+    ///     });
+    /// 
+    ///     var supervisorAgentUsage = new Databricks.Permissions("supervisor_agent_usage", new()
+    ///     {
+    ///         SupervisorAgentId = @this.SupervisorAgentId,
+    ///         AccessControls = new[]
+    ///         {
+    ///             new Databricks.Inputs.PermissionsAccessControlArgs
+    ///             {
+    ///                 GroupName = "users",
+    ///                 PermissionLevel = "CAN_QUERY",
     ///             },
     ///             new Databricks.Inputs.PermissionsAccessControlArgs
     ///             {
@@ -1487,6 +1563,9 @@ namespace Pulumi.Databricks
         [Output("jobId")]
         public Output<string?> JobId { get; private set; } = null!;
 
+        [Output("knowledgeAssistantId")]
+        public Output<string?> KnowledgeAssistantId { get; private set; } = null!;
+
         [Output("notebookId")]
         public Output<string?> NotebookId { get; private set; } = null!;
 
@@ -1528,6 +1607,9 @@ namespace Pulumi.Databricks
 
         [Output("sqlQueryId")]
         public Output<string?> SqlQueryId { get; private set; } = null!;
+
+        [Output("supervisorAgentId")]
+        public Output<string?> SupervisorAgentId { get; private set; } = null!;
 
         [Output("vectorSearchEndpointId")]
         public Output<string?> VectorSearchEndpointId { get; private set; } = null!;
@@ -1631,6 +1713,9 @@ namespace Pulumi.Databricks
         [Input("jobId")]
         public Input<string>? JobId { get; set; }
 
+        [Input("knowledgeAssistantId")]
+        public Input<string>? KnowledgeAssistantId { get; set; }
+
         [Input("notebookId")]
         public Input<string>? NotebookId { get; set; }
 
@@ -1672,6 +1757,9 @@ namespace Pulumi.Databricks
 
         [Input("sqlQueryId")]
         public Input<string>? SqlQueryId { get; set; }
+
+        [Input("supervisorAgentId")]
+        public Input<string>? SupervisorAgentId { get; set; }
 
         [Input("vectorSearchEndpointId")]
         public Input<string>? VectorSearchEndpointId { get; set; }
@@ -1737,6 +1825,9 @@ namespace Pulumi.Databricks
         [Input("jobId")]
         public Input<string>? JobId { get; set; }
 
+        [Input("knowledgeAssistantId")]
+        public Input<string>? KnowledgeAssistantId { get; set; }
+
         [Input("notebookId")]
         public Input<string>? NotebookId { get; set; }
 
@@ -1778,6 +1869,9 @@ namespace Pulumi.Databricks
 
         [Input("sqlQueryId")]
         public Input<string>? SqlQueryId { get; set; }
+
+        [Input("supervisorAgentId")]
+        public Input<string>? SupervisorAgentId { get; set; }
 
         [Input("vectorSearchEndpointId")]
         public Input<string>? VectorSearchEndpointId { get; set; }

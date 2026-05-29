@@ -18,11 +18,6 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Branch;
         /// <summary>
-        /// (string) - The short identifier of the catalog, suitable for showing to the users.
-        /// For a catalog with name `catalogs/my-catalog`, the CatalogId is `my-catalog`.
-        /// </summary>
-        public readonly string CatalogId;
-        /// <summary>
         /// (string) - The name of the Postgres database associated with the catalog
         /// </summary>
         public readonly string PostgresDatabase;
@@ -35,14 +30,11 @@ namespace Pulumi.Databricks.Outputs
         private GetPostgresCatalogStatusResult(
             string branch,
 
-            string catalogId,
-
             string postgresDatabase,
 
             string project)
         {
             Branch = branch;
-            CatalogId = catalogId;
             PostgresDatabase = postgresDatabase;
             Project = project;
         }

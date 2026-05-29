@@ -40,9 +40,7 @@ public final class GetPostgresRolesRoleStatus {
      */
     private @Nullable String postgresRole;
     /**
-     * @return (string) - The short identifier of the role, suitable for showing to the users.
-     * For a role with name `projects/my-project/branches/my-branch/roles/my-role`,
-     * the roleId is `my-role`.
+     * @return (string) - Part of the resource name
      * 
      */
     private String roleId;
@@ -84,9 +82,7 @@ public final class GetPostgresRolesRoleStatus {
         return Optional.ofNullable(this.postgresRole);
     }
     /**
-     * @return (string) - The short identifier of the role, suitable for showing to the users.
-     * For a role with name `projects/my-project/branches/my-branch/roles/my-role`,
-     * the roleId is `my-role`.
+     * @return (string) - Part of the resource name
      * 
      */
     public String roleId() {

@@ -23,12 +23,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAppAppResource {
     /**
-     * @return attribute
+     * @return attribute - reference to another Databricks App.
      * 
      */
     private @Nullable GetAppAppResourceApp app;
     /**
-     * @return attribute
+     * @return The resource path of a specific database within the branch (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`).
      * 
      */
     private @Nullable GetAppAppResourceDatabase database;
@@ -37,6 +37,10 @@ public final class GetAppAppResource {
      * 
      */
     private @Nullable String description;
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable GetAppAppResourceExperiment experiment;
     /**
      * @return attribute
@@ -53,6 +57,10 @@ public final class GetAppAppResource {
      * 
      */
     private String name;
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable GetAppAppResourcePostgres postgres;
     /**
      * @return attribute
@@ -70,21 +78,21 @@ public final class GetAppAppResource {
      */
     private @Nullable GetAppAppResourceSqlWarehouse sqlWarehouse;
     /**
-     * @return attribute
+     * @return attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
      * 
      */
     private @Nullable GetAppAppResourceUcSecurable ucSecurable;
 
     private GetAppAppResource() {}
     /**
-     * @return attribute
+     * @return attribute - reference to another Databricks App.
      * 
      */
     public Optional<GetAppAppResourceApp> app() {
         return Optional.ofNullable(this.app);
     }
     /**
-     * @return attribute
+     * @return The resource path of a specific database within the branch (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`).
      * 
      */
     public Optional<GetAppAppResourceDatabase> database() {
@@ -97,6 +105,10 @@ public final class GetAppAppResource {
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<GetAppAppResourceExperiment> experiment() {
         return Optional.ofNullable(this.experiment);
     }
@@ -121,6 +133,10 @@ public final class GetAppAppResource {
     public String name() {
         return this.name;
     }
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<GetAppAppResourcePostgres> postgres() {
         return Optional.ofNullable(this.postgres);
     }
@@ -146,7 +162,7 @@ public final class GetAppAppResource {
         return Optional.ofNullable(this.sqlWarehouse);
     }
     /**
-     * @return attribute
+     * @return attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
      * 
      */
     public Optional<GetAppAppResourceUcSecurable> ucSecurable() {

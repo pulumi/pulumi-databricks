@@ -15,9 +15,17 @@ public final class AppPendingDeploymentDeploymentArtifactsArgs extends com.pulum
 
     public static final AppPendingDeploymentDeploymentArtifactsArgs Empty = new AppPendingDeploymentDeploymentArtifactsArgs();
 
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
     @Import(name="sourceCodePath")
     private @Nullable Output<String> sourceCodePath;
 
+    /**
+     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
     public Optional<Output<String>> sourceCodePath() {
         return Optional.ofNullable(this.sourceCodePath);
     }
@@ -46,11 +54,23 @@ public final class AppPendingDeploymentDeploymentArtifactsArgs extends com.pulum
             $ = new AppPendingDeploymentDeploymentArtifactsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param sourceCodePath The snapshotted workspace file system path of the source code loaded by the deployed app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceCodePath(@Nullable Output<String> sourceCodePath) {
             $.sourceCodePath = sourceCodePath;
             return this;
         }
 
+        /**
+         * @param sourceCodePath The snapshotted workspace file system path of the source code loaded by the deployed app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceCodePath(String sourceCodePath) {
             return sourceCodePath(Output.of(sourceCodePath));
         }

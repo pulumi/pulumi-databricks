@@ -29,6 +29,48 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/featureEngineeringFeature:FeatureEngineeringFeature")
 public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResource {
     /**
+     * (string) - Name of parent catalog
+     * 
+     */
+    @Export(name="catalogName", refs={String.class}, tree="[0]")
+    private Output<String> catalogName;
+
+    /**
+     * @return (string) - Name of parent catalog
+     * 
+     */
+    public Output<String> catalogName() {
+        return this.catalogName;
+    }
+    /**
+     * (string) - Time at which this feature was created
+     * 
+     */
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    private Output<String> createdAt;
+
+    /**
+     * @return (string) - Time at which this feature was created
+     * 
+     */
+    public Output<String> createdAt() {
+        return this.createdAt;
+    }
+    /**
+     * (string) - Username of the feature creator
+     * 
+     */
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
+    private Output<String> createdBy;
+
+    /**
+     * @return (string) - Username of the feature creator
+     * 
+     */
+    public Output<String> createdBy() {
+        return this.createdBy;
+    }
+    /**
      * The description of the feature
      * 
      */
@@ -73,14 +115,18 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.filterCondition);
     }
     /**
-     * The full three-part name (catalog, schema, name) of the feature
+     * The full three-part name (catalog, schema, name) of the feature. This is the
+     * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
+     * below are OUTPUT_ONLY decomposed views of this value
      * 
      */
     @Export(name="fullName", refs={String.class}, tree="[0]")
     private Output<String> fullName;
 
     /**
-     * @return The full three-part name (catalog, schema, name) of the feature
+     * @return The full three-part name (catalog, schema, name) of the feature. This is the
+     * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
+     * below are OUTPUT_ONLY decomposed views of this value
      * 
      */
     public Output<String> fullName() {
@@ -139,6 +185,20 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.lineageContext);
     }
     /**
+     * (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
+    }
+    /**
      * Configure the provider for management through account provider.
      * 
      */
@@ -151,6 +211,20 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
      */
     public Output<FeatureEngineeringFeatureProviderConfig> providerConfig() {
         return this.providerConfig;
+    }
+    /**
+     * (string) - Name of parent schema relative to its parent catalog
+     * 
+     */
+    @Export(name="schemaName", refs={String.class}, tree="[0]")
+    private Output<String> schemaName;
+
+    /**
+     * @return (string) - Name of parent schema relative to its parent catalog
+     * 
+     */
+    public Output<String> schemaName() {
+        return this.schemaName;
     }
     /**
      * The data source of the feature

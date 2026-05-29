@@ -11,14 +11,16 @@ import java.util.Objects;
 @CustomType
 public final class GetSupervisorAgentToolsToolGenieSpace {
     /**
-     * @return (string) - The ID of the genie space
+     * @return (string, deprecated) - Deprecated: use spaceId instead. Still REQUIRED for backward compatibility
+     * until a future API version removes it
      * 
      */
     private String id;
 
     private GetSupervisorAgentToolsToolGenieSpace() {}
     /**
-     * @return (string) - The ID of the genie space
+     * @return (string, deprecated) - Deprecated: use spaceId instead. Still REQUIRED for backward compatibility
+     * until a future API version removes it
      * 
      */
     public String id() {

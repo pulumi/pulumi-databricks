@@ -48,7 +48,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string ExperimentId;
         /// <summary>
-        /// (string) - The universally unique identifier (UUID) of the Knowledge Assistant
+        /// (string, deprecated) - Deprecated: use KnowledgeAssistantId instead
         /// </summary>
         public readonly string Id;
         /// <summary>

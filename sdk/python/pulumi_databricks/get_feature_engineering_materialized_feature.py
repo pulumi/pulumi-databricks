@@ -28,10 +28,13 @@ class GetFeatureEngineeringMaterializedFeatureResult:
     """
     A collection of values returned by getFeatureEngineeringMaterializedFeature.
     """
-    def __init__(__self__, cron_schedule=None, feature_name=None, id=None, is_online=None, last_materialization_time=None, materialized_feature_id=None, offline_store_config=None, online_store_config=None, pipeline_schedule_state=None, provider_config=None, table_name=None):
+    def __init__(__self__, cron_schedule=None, cron_schedule_trigger=None, feature_name=None, id=None, is_online=None, last_materialization_time=None, materialized_feature_id=None, offline_store_config=None, online_store_config=None, pipeline_schedule_state=None, provider_config=None, streaming_mode=None, table_name=None, table_trigger=None):
         if cron_schedule and not isinstance(cron_schedule, str):
             raise TypeError("Expected argument 'cron_schedule' to be a str")
         pulumi.set(__self__, "cron_schedule", cron_schedule)
+        if cron_schedule_trigger and not isinstance(cron_schedule_trigger, dict):
+            raise TypeError("Expected argument 'cron_schedule_trigger' to be a dict")
+        pulumi.set(__self__, "cron_schedule_trigger", cron_schedule_trigger)
         if feature_name and not isinstance(feature_name, str):
             raise TypeError("Expected argument 'feature_name' to be a str")
         pulumi.set(__self__, "feature_name", feature_name)
@@ -59,9 +62,15 @@ class GetFeatureEngineeringMaterializedFeatureResult:
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
+        if streaming_mode and not isinstance(streaming_mode, dict):
+            raise TypeError("Expected argument 'streaming_mode' to be a dict")
+        pulumi.set(__self__, "streaming_mode", streaming_mode)
         if table_name and not isinstance(table_name, str):
             raise TypeError("Expected argument 'table_name' to be a str")
         pulumi.set(__self__, "table_name", table_name)
+        if table_trigger and not isinstance(table_trigger, dict):
+            raise TypeError("Expected argument 'table_trigger' to be a dict")
+        pulumi.set(__self__, "table_trigger", table_trigger)
 
     @_builtins.property
     @pulumi.getter(name="cronSchedule")
@@ -70,6 +79,14 @@ class GetFeatureEngineeringMaterializedFeatureResult:
         (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
         """
         return pulumi.get(self, "cron_schedule")
+
+    @_builtins.property
+    @pulumi.getter(name="cronScheduleTrigger")
+    def cron_schedule_trigger(self) -> 'outputs.GetFeatureEngineeringMaterializedFeatureCronScheduleTriggerResult':
+        """
+        (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
+        """
+        return pulumi.get(self, "cron_schedule_trigger")
 
     @_builtins.property
     @pulumi.getter(name="featureName")
@@ -108,7 +125,7 @@ class GetFeatureEngineeringMaterializedFeatureResult:
     @pulumi.getter(name="materializedFeatureId")
     def materialized_feature_id(self) -> _builtins.str:
         """
-        (string) - Unique identifier for the materialized feature
+        (string) - Server-assigned unique identifier for the materialized feature
         """
         return pulumi.get(self, "materialized_feature_id")
 
@@ -116,7 +133,7 @@ class GetFeatureEngineeringMaterializedFeatureResult:
     @pulumi.getter(name="offlineStoreConfig")
     def offline_store_config(self) -> 'outputs.GetFeatureEngineeringMaterializedFeatureOfflineStoreConfigResult':
         """
-        (OfflineStoreConfig)
+        (OfflineStoreConfig) - Destination for writing feature values to an offline Delta table
         """
         return pulumi.get(self, "offline_store_config")
 
@@ -124,7 +141,7 @@ class GetFeatureEngineeringMaterializedFeatureResult:
     @pulumi.getter(name="onlineStoreConfig")
     def online_store_config(self) -> 'outputs.GetFeatureEngineeringMaterializedFeatureOnlineStoreConfigResult':
         """
-        (OnlineStoreConfig)
+        (OnlineStoreConfig) - Destination for writing feature values to an online Lakebase table
         """
         return pulumi.get(self, "online_store_config")
 
@@ -142,12 +159,30 @@ class GetFeatureEngineeringMaterializedFeatureResult:
         return pulumi.get(self, "provider_config")
 
     @_builtins.property
+    @pulumi.getter(name="streamingMode")
+    def streaming_mode(self) -> 'outputs.GetFeatureEngineeringMaterializedFeatureStreamingModeResult':
+        """
+        (StreamingMode) - The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+        sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+        for ETL and analytics workloads
+        """
+        return pulumi.get(self, "streaming_mode")
+
+    @_builtins.property
     @pulumi.getter(name="tableName")
     def table_name(self) -> _builtins.str:
         """
         (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
         """
         return pulumi.get(self, "table_name")
+
+    @_builtins.property
+    @pulumi.getter(name="tableTrigger")
+    def table_trigger(self) -> 'outputs.GetFeatureEngineeringMaterializedFeatureTableTriggerResult':
+        """
+        (TableTrigger) - A trigger that fires when the upstream source table changes
+        """
+        return pulumi.get(self, "table_trigger")
 
 
 class AwaitableGetFeatureEngineeringMaterializedFeatureResult(GetFeatureEngineeringMaterializedFeatureResult):
@@ -157,6 +192,7 @@ class AwaitableGetFeatureEngineeringMaterializedFeatureResult(GetFeatureEngineer
             yield self
         return GetFeatureEngineeringMaterializedFeatureResult(
             cron_schedule=self.cron_schedule,
+            cron_schedule_trigger=self.cron_schedule_trigger,
             feature_name=self.feature_name,
             id=self.id,
             is_online=self.is_online,
@@ -166,7 +202,9 @@ class AwaitableGetFeatureEngineeringMaterializedFeatureResult(GetFeatureEngineer
             online_store_config=self.online_store_config,
             pipeline_schedule_state=self.pipeline_schedule_state,
             provider_config=self.provider_config,
-            table_name=self.table_name)
+            streaming_mode=self.streaming_mode,
+            table_name=self.table_name,
+            table_trigger=self.table_trigger)
 
 
 def get_feature_engineering_materialized_feature(materialized_feature_id: Optional[_builtins.str] = None,
@@ -176,7 +214,7 @@ def get_feature_engineering_materialized_feature(materialized_feature_id: Option
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
-    :param _builtins.str materialized_feature_id: Unique identifier for the materialized feature
+    :param _builtins.str materialized_feature_id: Server-assigned unique identifier for the materialized feature
     :param Union['GetFeatureEngineeringMaterializedFeatureProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeatureProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -187,6 +225,7 @@ def get_feature_engineering_materialized_feature(materialized_feature_id: Option
 
     return AwaitableGetFeatureEngineeringMaterializedFeatureResult(
         cron_schedule=pulumi.get(__ret__, 'cron_schedule'),
+        cron_schedule_trigger=pulumi.get(__ret__, 'cron_schedule_trigger'),
         feature_name=pulumi.get(__ret__, 'feature_name'),
         id=pulumi.get(__ret__, 'id'),
         is_online=pulumi.get(__ret__, 'is_online'),
@@ -196,7 +235,9 @@ def get_feature_engineering_materialized_feature(materialized_feature_id: Option
         online_store_config=pulumi.get(__ret__, 'online_store_config'),
         pipeline_schedule_state=pulumi.get(__ret__, 'pipeline_schedule_state'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
-        table_name=pulumi.get(__ret__, 'table_name'))
+        streaming_mode=pulumi.get(__ret__, 'streaming_mode'),
+        table_name=pulumi.get(__ret__, 'table_name'),
+        table_trigger=pulumi.get(__ret__, 'table_trigger'))
 def get_feature_engineering_materialized_feature_output(materialized_feature_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                         provider_config: pulumi.Input[Optional[Optional[Union['GetFeatureEngineeringMaterializedFeatureProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeatureProviderConfigArgsDict']]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureEngineeringMaterializedFeatureResult]:
@@ -204,7 +245,7 @@ def get_feature_engineering_materialized_feature_output(materialized_feature_id:
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
-    :param _builtins.str materialized_feature_id: Unique identifier for the materialized feature
+    :param _builtins.str materialized_feature_id: Server-assigned unique identifier for the materialized feature
     :param Union['GetFeatureEngineeringMaterializedFeatureProviderConfigArgs', 'GetFeatureEngineeringMaterializedFeatureProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -214,6 +255,7 @@ def get_feature_engineering_materialized_feature_output(materialized_feature_id:
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getFeatureEngineeringMaterializedFeature:getFeatureEngineeringMaterializedFeature', __args__, opts=opts, typ=GetFeatureEngineeringMaterializedFeatureResult)
     return __ret__.apply(lambda __response__: GetFeatureEngineeringMaterializedFeatureResult(
         cron_schedule=pulumi.get(__response__, 'cron_schedule'),
+        cron_schedule_trigger=pulumi.get(__response__, 'cron_schedule_trigger'),
         feature_name=pulumi.get(__response__, 'feature_name'),
         id=pulumi.get(__response__, 'id'),
         is_online=pulumi.get(__response__, 'is_online'),
@@ -223,4 +265,6 @@ def get_feature_engineering_materialized_feature_output(materialized_feature_id:
         online_store_config=pulumi.get(__response__, 'online_store_config'),
         pipeline_schedule_state=pulumi.get(__response__, 'pipeline_schedule_state'),
         provider_config=pulumi.get(__response__, 'provider_config'),
-        table_name=pulumi.get(__response__, 'table_name')))
+        streaming_mode=pulumi.get(__response__, 'streaming_mode'),
+        table_name=pulumi.get(__response__, 'table_name'),
+        table_trigger=pulumi.get(__response__, 'table_trigger')))

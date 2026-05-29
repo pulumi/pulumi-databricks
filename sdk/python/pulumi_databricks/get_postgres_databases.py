@@ -96,7 +96,7 @@ def get_postgres_databases(page_size: Optional[_builtins.int] = None,
                            provider_config: Optional[Union['GetPostgresDatabasesProviderConfigArgs', 'GetPostgresDatabasesProviderConfigArgsDict']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresDatabasesResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     This data source lists all Postgres databases in a branch.
 
@@ -137,7 +137,7 @@ def get_postgres_databases_output(page_size: pulumi.Input[Optional[Optional[_bui
                                   provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresDatabasesProviderConfigArgs', 'GetPostgresDatabasesProviderConfigArgsDict']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresDatabasesResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     This data source lists all Postgres databases in a branch.
 

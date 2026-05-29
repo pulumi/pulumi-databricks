@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressCrossWorkspaceAccess;
 import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressPrivateAccess;
 import com.pulumi.databricks.outputs.AccountNetworkPolicyIngressPublicAccess;
 import java.util.Objects;
@@ -12,6 +13,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccountNetworkPolicyIngress {
+    private @Nullable AccountNetworkPolicyIngressCrossWorkspaceAccess crossWorkspaceAccess;
     /**
      * @return The network policy restrictions for private access to the workspace.
      * Configures how registered private endpoints are allowed or denied access
@@ -26,6 +28,9 @@ public final class AccountNetworkPolicyIngress {
     private @Nullable AccountNetworkPolicyIngressPublicAccess publicAccess;
 
     private AccountNetworkPolicyIngress() {}
+    public Optional<AccountNetworkPolicyIngressCrossWorkspaceAccess> crossWorkspaceAccess() {
+        return Optional.ofNullable(this.crossWorkspaceAccess);
+    }
     /**
      * @return The network policy restrictions for private access to the workspace.
      * Configures how registered private endpoints are allowed or denied access
@@ -52,15 +57,23 @@ public final class AccountNetworkPolicyIngress {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AccountNetworkPolicyIngressCrossWorkspaceAccess crossWorkspaceAccess;
         private @Nullable AccountNetworkPolicyIngressPrivateAccess privateAccess;
         private @Nullable AccountNetworkPolicyIngressPublicAccess publicAccess;
         public Builder() {}
         public Builder(AccountNetworkPolicyIngress defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.crossWorkspaceAccess = defaults.crossWorkspaceAccess;
     	      this.privateAccess = defaults.privateAccess;
     	      this.publicAccess = defaults.publicAccess;
         }
 
+        @CustomType.Setter
+        public Builder crossWorkspaceAccess(@Nullable AccountNetworkPolicyIngressCrossWorkspaceAccess crossWorkspaceAccess) {
+
+            this.crossWorkspaceAccess = crossWorkspaceAccess;
+            return this;
+        }
         @CustomType.Setter
         public Builder privateAccess(@Nullable AccountNetworkPolicyIngressPrivateAccess privateAccess) {
 
@@ -75,6 +88,7 @@ public final class AccountNetworkPolicyIngress {
         }
         public AccountNetworkPolicyIngress build() {
             final var _resultValue = new AccountNetworkPolicyIngress();
+            _resultValue.crossWorkspaceAccess = crossWorkspaceAccess;
             _resultValue.privateAccess = privateAccess;
             _resultValue.publicAccess = publicAccess;
             return _resultValue;

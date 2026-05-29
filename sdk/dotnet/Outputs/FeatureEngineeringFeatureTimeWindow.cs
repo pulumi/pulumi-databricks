@@ -14,6 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class FeatureEngineeringFeatureTimeWindow
     {
         public readonly Outputs.FeatureEngineeringFeatureTimeWindowContinuous? Continuous;
+        public readonly Outputs.FeatureEngineeringFeatureTimeWindowRolling? Rolling;
         public readonly Outputs.FeatureEngineeringFeatureTimeWindowSliding? Sliding;
         public readonly Outputs.FeatureEngineeringFeatureTimeWindowTumbling? Tumbling;
 
@@ -21,11 +22,14 @@ namespace Pulumi.Databricks.Outputs
         private FeatureEngineeringFeatureTimeWindow(
             Outputs.FeatureEngineeringFeatureTimeWindowContinuous? continuous,
 
+            Outputs.FeatureEngineeringFeatureTimeWindowRolling? rolling,
+
             Outputs.FeatureEngineeringFeatureTimeWindowSliding? sliding,
 
             Outputs.FeatureEngineeringFeatureTimeWindowTumbling? tumbling)
         {
             Continuous = continuous;
+            Rolling = rolling;
             Sliding = sliding;
             Tumbling = tumbling;
         }

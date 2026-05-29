@@ -283,7 +283,7 @@ class Endpoint(pulumi.CustomResource):
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         Endpoint resource manages network connectivity endpoints for private access to Databricks workspaces.
 
@@ -325,7 +325,7 @@ class Endpoint(pulumi.CustomResource):
                  args: EndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         Endpoint resource manages network connectivity endpoints for private access to Databricks workspaces.
 

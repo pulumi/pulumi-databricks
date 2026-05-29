@@ -16,6 +16,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFeatureEngineeringFeaturesResult {
+    /**
+     * @return (string) - Name of parent catalog
+     * 
+     */
+    private String catalogName;
     private List<GetFeatureEngineeringFeaturesFeature> features;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,8 +29,20 @@ public final class GetFeatureEngineeringFeaturesResult {
     private String id;
     private @Nullable Integer pageSize;
     private @Nullable GetFeatureEngineeringFeaturesProviderConfig providerConfig;
+    /**
+     * @return (string) - Name of parent schema relative to its parent catalog
+     * 
+     */
+    private String schemaName;
 
     private GetFeatureEngineeringFeaturesResult() {}
+    /**
+     * @return (string) - Name of parent catalog
+     * 
+     */
+    public String catalogName() {
+        return this.catalogName;
+    }
     public List<GetFeatureEngineeringFeaturesFeature> features() {
         return this.features;
     }
@@ -42,6 +59,13 @@ public final class GetFeatureEngineeringFeaturesResult {
     public Optional<GetFeatureEngineeringFeaturesProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }
+    /**
+     * @return (string) - Name of parent schema relative to its parent catalog
+     * 
+     */
+    public String schemaName() {
+        return this.schemaName;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -52,19 +76,31 @@ public final class GetFeatureEngineeringFeaturesResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String catalogName;
         private List<GetFeatureEngineeringFeaturesFeature> features;
         private String id;
         private @Nullable Integer pageSize;
         private @Nullable GetFeatureEngineeringFeaturesProviderConfig providerConfig;
+        private String schemaName;
         public Builder() {}
         public Builder(GetFeatureEngineeringFeaturesResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.catalogName = defaults.catalogName;
     	      this.features = defaults.features;
     	      this.id = defaults.id;
     	      this.pageSize = defaults.pageSize;
     	      this.providerConfig = defaults.providerConfig;
+    	      this.schemaName = defaults.schemaName;
         }
 
+        @CustomType.Setter
+        public Builder catalogName(String catalogName) {
+            if (catalogName == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesResult", "catalogName");
+            }
+            this.catalogName = catalogName;
+            return this;
+        }
         @CustomType.Setter
         public Builder features(List<GetFeatureEngineeringFeaturesFeature> features) {
             if (features == null) {
@@ -96,12 +132,22 @@ public final class GetFeatureEngineeringFeaturesResult {
             this.providerConfig = providerConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder schemaName(String schemaName) {
+            if (schemaName == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesResult", "schemaName");
+            }
+            this.schemaName = schemaName;
+            return this;
+        }
         public GetFeatureEngineeringFeaturesResult build() {
             final var _resultValue = new GetFeatureEngineeringFeaturesResult();
+            _resultValue.catalogName = catalogName;
             _resultValue.features = features;
             _resultValue.id = id;
             _resultValue.pageSize = pageSize;
             _resultValue.providerConfig = providerConfig;
+            _resultValue.schemaName = schemaName;
             return _resultValue;
         }
     }

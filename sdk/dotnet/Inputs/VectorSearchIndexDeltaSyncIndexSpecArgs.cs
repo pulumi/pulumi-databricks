@@ -22,10 +22,6 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("columnsToSyncs")]
         private InputList<string>? _columnsToSyncs;
-
-        /// <summary>
-        /// list of columns to sync. If not specified, all columns are syncronized.
-        /// </summary>
         public InputList<string> ColumnsToSyncs
         {
             get => _columnsToSyncs ?? (_columnsToSyncs = new InputList<string>());

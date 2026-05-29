@@ -21,7 +21,7 @@ public final class GetAppsAppResourceDatabase {
      */
     private String instanceName;
     /**
-     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * @return Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      * 
      */
     private String permission;
@@ -42,7 +42,7 @@ public final class GetAppsAppResourceDatabase {
         return this.instanceName;
     }
     /**
-     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * @return Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      * 
      */
     public String permission() {

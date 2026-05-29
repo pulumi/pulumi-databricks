@@ -16,12 +16,6 @@ public final class GetPostgresCatalogStatus {
      */
     private String branch;
     /**
-     * @return (string) - The short identifier of the catalog, suitable for showing to the users.
-     * For a catalog with name `catalogs/my-catalog`, the catalogId is `my-catalog`.
-     * 
-     */
-    private String catalogId;
-    /**
      * @return (string) - The name of the Postgres database associated with the catalog
      * 
      */
@@ -39,14 +33,6 @@ public final class GetPostgresCatalogStatus {
      */
     public String branch() {
         return this.branch;
-    }
-    /**
-     * @return (string) - The short identifier of the catalog, suitable for showing to the users.
-     * For a catalog with name `catalogs/my-catalog`, the catalogId is `my-catalog`.
-     * 
-     */
-    public String catalogId() {
-        return this.catalogId;
     }
     /**
      * @return (string) - The name of the Postgres database associated with the catalog
@@ -73,14 +59,12 @@ public final class GetPostgresCatalogStatus {
     @CustomType.Builder
     public static final class Builder {
         private String branch;
-        private String catalogId;
         private String postgresDatabase;
         private String project;
         public Builder() {}
         public Builder(GetPostgresCatalogStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.branch = defaults.branch;
-    	      this.catalogId = defaults.catalogId;
     	      this.postgresDatabase = defaults.postgresDatabase;
     	      this.project = defaults.project;
         }
@@ -91,14 +75,6 @@ public final class GetPostgresCatalogStatus {
               throw new MissingRequiredPropertyException("GetPostgresCatalogStatus", "branch");
             }
             this.branch = branch;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder catalogId(String catalogId) {
-            if (catalogId == null) {
-              throw new MissingRequiredPropertyException("GetPostgresCatalogStatus", "catalogId");
-            }
-            this.catalogId = catalogId;
             return this;
         }
         @CustomType.Setter
@@ -120,7 +96,6 @@ public final class GetPostgresCatalogStatus {
         public GetPostgresCatalogStatus build() {
             final var _resultValue = new GetPostgresCatalogStatus();
             _resultValue.branch = branch;
-            _resultValue.catalogId = catalogId;
             _resultValue.postgresDatabase = postgresDatabase;
             _resultValue.project = project;
             return _resultValue;

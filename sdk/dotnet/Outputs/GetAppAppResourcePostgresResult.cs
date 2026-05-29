@@ -13,13 +13,16 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAppAppResourcePostgresResult
     {
+        /// <summary>
+        /// The resource path of the Lakebase Autoscaling branch (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+        /// </summary>
         public readonly string? Branch;
         /// <summary>
-        /// attribute
+        /// The resource path of a specific database within the branch (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`).
         /// </summary>
         public readonly string? Database;
         /// <summary>
-        /// Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        /// Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
         /// </summary>
         public readonly string? Permission;
 

@@ -21,7 +21,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? BranchId { get; set; }
 
         /// <summary>
-        /// (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+        /// (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
         /// </summary>
         [Input("currentState")]
         public Input<string>? CurrentState { get; set; }
@@ -31,6 +31,13 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("default")]
         public Input<bool>? Default { get; set; }
+
+        /// <summary>
+        /// (string) - A timestamp indicating when the branch was deleted.
+        /// Empty if the branch is not deleted
+        /// </summary>
+        [Input("deleteTime")]
+        public Input<string>? DeleteTime { get; set; }
 
         /// <summary>
         /// (string) - Absolute expiration time for the branch. Empty if expiration is disabled
@@ -51,10 +58,17 @@ namespace Pulumi.Databricks.Inputs
         public Input<int>? LogicalSizeBytes { get; set; }
 
         /// <summary>
-        /// (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+        /// (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
         /// </summary>
         [Input("pendingState")]
         public Input<string>? PendingState { get; set; }
+
+        /// <summary>
+        /// (string) - A timestamp indicating when the branch is scheduled to be purged.
+        /// Empty if the branch is not deleted, otherwise set to a timestamp in the future
+        /// </summary>
+        [Input("purgeTime")]
+        public Input<string>? PurgeTime { get; set; }
 
         /// <summary>
         /// (string) - The name of the source branch from which this branch was created.

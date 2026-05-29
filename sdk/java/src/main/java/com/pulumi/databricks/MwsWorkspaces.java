@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; On Azure you need to use azurermDatabricksWorkspace resource to create Azure Databricks workspaces.
  * 
+ * &gt; On GCP, the provider must be authenticated with a Google-issued OIDC token (not a Databricks OAuth token), because creating or updating this resource triggers operations against your GCP project. See Authenticate with Databricks account API for setup instructions.
+ * 
  * ## Example Usage
  * 
  * ### Creating a serverless workspace in AWS and GCP
@@ -672,10 +674,10 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
     }
     /**
      * @deprecated
-     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.115.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.116.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
-    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.115.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
+    @Deprecated /* gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.116.0/docs/guides/gcp-workspace#creating-a-databricks-workspace */
     @Export(name="gkeConfig", refs={MwsWorkspacesGkeConfig.class}, tree="[0]")
     private Output</* @Nullable */ MwsWorkspacesGkeConfig> gkeConfig;
 

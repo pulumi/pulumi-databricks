@@ -22,6 +22,8 @@ __all__ = ['AppArgs', 'App']
 class AppArgs:
     def __init__(__self__, *,
                  budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_max_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 compute_min_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  compute_size: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  git_repository: pulumi.Input[Optional['AppGitRepositoryArgs']] = None,
@@ -39,12 +41,19 @@ class AppArgs:
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
         :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         :param pulumi.Input[_builtins.str] description: The description of the app.
+        :param pulumi.Input['AppGitRepositoryArgs'] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
         :param pulumi.Input[_builtins.str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         :param pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]] resources: A list of resources that the app have access to.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: A list of api scopes granted to the user access token.
+        :param pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+        :param pulumi.Input[_builtins.str] usage_policy_id: The Usage Policy ID set for this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
         """
         if budget_policy_id is not None:
             pulumi.set(__self__, "budget_policy_id", budget_policy_id)
+        if compute_max_instances is not None:
+            pulumi.set(__self__, "compute_max_instances", compute_max_instances)
+        if compute_min_instances is not None:
+            pulumi.set(__self__, "compute_min_instances", compute_min_instances)
         if compute_size is not None:
             pulumi.set(__self__, "compute_size", compute_size)
         if description is not None:
@@ -81,6 +90,24 @@ class AppArgs:
         pulumi.set(self, "budget_policy_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="computeMaxInstances")
+    def compute_max_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "compute_max_instances")
+
+    @compute_max_instances.setter
+    def compute_max_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "compute_max_instances", value)
+
+    @_builtins.property
+    @pulumi.getter(name="computeMinInstances")
+    def compute_min_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "compute_min_instances")
+
+    @compute_min_instances.setter
+    def compute_min_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "compute_min_instances", value)
+
+    @_builtins.property
     @pulumi.getter(name="computeSize")
     def compute_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -107,6 +134,9 @@ class AppArgs:
     @_builtins.property
     @pulumi.getter(name="gitRepository")
     def git_repository(self) -> pulumi.Input[Optional['AppGitRepositoryArgs']]:
+        """
+        Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+        """
         return pulumi.get(self, "git_repository")
 
     @git_repository.setter
@@ -167,6 +197,9 @@ class AppArgs:
     @_builtins.property
     @pulumi.getter(name="telemetryExportDestinations")
     def telemetry_export_destinations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]]:
+        """
+        A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+        """
         return pulumi.get(self, "telemetry_export_destinations")
 
     @telemetry_export_destinations.setter
@@ -176,6 +209,9 @@ class AppArgs:
     @_builtins.property
     @pulumi.getter(name="usagePolicyId")
     def usage_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Usage Policy ID set for this resource.
+        """
         return pulumi.get(self, "usage_policy_id")
 
     @usage_policy_id.setter
@@ -186,7 +222,7 @@ class AppArgs:
     @pulumi.getter(name="userApiScopes")
     def user_api_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of api scopes granted to the user access token.
+        A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
         """
         return pulumi.get(self, "user_api_scopes")
 
@@ -201,6 +237,8 @@ class _AppState:
                  active_deployment: pulumi.Input[Optional['AppActiveDeploymentArgs']] = None,
                  app_status: pulumi.Input[Optional['AppAppStatusArgs']] = None,
                  budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_max_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 compute_min_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  compute_size: pulumi.Input[Optional[_builtins.str]] = None,
                  compute_status: pulumi.Input[Optional['AppComputeStatusArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -232,25 +270,34 @@ class _AppState:
         """
         Input properties used for looking up and filtering App resources.
 
+        :param pulumi.Input['AppActiveDeploymentArgs'] active_deployment: attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
         :param pulumi.Input['AppAppStatusArgs'] app_status: attribute
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
         :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         :param pulumi.Input['AppComputeStatusArgs'] compute_status: attribute
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the app.
-        :param pulumi.Input[_builtins.str] creator: The email of the user that created the app.
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the deployment.
+        :param pulumi.Input[_builtins.str] creator: The email of the user that created the deployment.
         :param pulumi.Input[_builtins.str] default_source_code_path: The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
         :param pulumi.Input[_builtins.str] description: The description of the app.
         :param pulumi.Input[_builtins.str] effective_budget_policy_id: The effective budget policy ID.
+        :param pulumi.Input[_builtins.str] effective_usage_policy_id: The effective usage policy ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] effective_user_api_scopes: A list of effective api scopes granted to the user access token.
+        :param pulumi.Input['AppGitRepositoryArgs'] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
         :param pulumi.Input[_builtins.str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+        :param pulumi.Input[_builtins.str] oauth2_app_client_id: The OAuth2 client ID of the app's integration, set when the app uses user authorization.
+        :param pulumi.Input[_builtins.str] oauth2_app_integration_id: The unique ID of the OAuth2 integration associated with the app.
+        :param pulumi.Input['AppPendingDeploymentArgs'] pending_deployment: attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `active_deployment`.
         :param pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]] resources: A list of resources that the app have access to.
         :param pulumi.Input[_builtins.str] service_principal_client_id: client_id (application_id) of the app service principal
         :param pulumi.Input[_builtins.int] service_principal_id: id of the app service principal
         :param pulumi.Input[_builtins.str] service_principal_name: name of the app service principal
-        :param pulumi.Input[_builtins.str] update_time: The update time of the app.
+        :param pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+        :param pulumi.Input[_builtins.str] thumbnail_url: The URL of the thumbnail image for the app.
+        :param pulumi.Input[_builtins.str] update_time: The update time of the deployment.
         :param pulumi.Input[_builtins.str] updater: The email of the user that last updated the app.
         :param pulumi.Input[_builtins.str] url: The URL of the app once it is deployed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: A list of api scopes granted to the user access token.
+        :param pulumi.Input[_builtins.str] usage_policy_id: The Usage Policy ID set for this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
         """
         if active_deployment is not None:
             pulumi.set(__self__, "active_deployment", active_deployment)
@@ -258,6 +305,10 @@ class _AppState:
             pulumi.set(__self__, "app_status", app_status)
         if budget_policy_id is not None:
             pulumi.set(__self__, "budget_policy_id", budget_policy_id)
+        if compute_max_instances is not None:
+            pulumi.set(__self__, "compute_max_instances", compute_max_instances)
+        if compute_min_instances is not None:
+            pulumi.set(__self__, "compute_min_instances", compute_min_instances)
         if compute_size is not None:
             pulumi.set(__self__, "compute_size", compute_size)
         if compute_status is not None:
@@ -318,6 +369,9 @@ class _AppState:
     @_builtins.property
     @pulumi.getter(name="activeDeployment")
     def active_deployment(self) -> pulumi.Input[Optional['AppActiveDeploymentArgs']]:
+        """
+        attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
+        """
         return pulumi.get(self, "active_deployment")
 
     @active_deployment.setter
@@ -349,6 +403,24 @@ class _AppState:
         pulumi.set(self, "budget_policy_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="computeMaxInstances")
+    def compute_max_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "compute_max_instances")
+
+    @compute_max_instances.setter
+    def compute_max_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "compute_max_instances", value)
+
+    @_builtins.property
+    @pulumi.getter(name="computeMinInstances")
+    def compute_min_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "compute_min_instances")
+
+    @compute_min_instances.setter
+    def compute_min_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "compute_min_instances", value)
+
+    @_builtins.property
     @pulumi.getter(name="computeSize")
     def compute_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -376,7 +448,7 @@ class _AppState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The creation time of the app.
+        The creation time of the deployment.
         """
         return pulumi.get(self, "create_time")
 
@@ -388,7 +460,7 @@ class _AppState:
     @pulumi.getter
     def creator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The email of the user that created the app.
+        The email of the user that created the deployment.
         """
         return pulumi.get(self, "creator")
 
@@ -435,6 +507,9 @@ class _AppState:
     @_builtins.property
     @pulumi.getter(name="effectiveUsagePolicyId")
     def effective_usage_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The effective usage policy ID.
+        """
         return pulumi.get(self, "effective_usage_policy_id")
 
     @effective_usage_policy_id.setter
@@ -456,6 +531,9 @@ class _AppState:
     @_builtins.property
     @pulumi.getter(name="gitRepository")
     def git_repository(self) -> pulumi.Input[Optional['AppGitRepositoryArgs']]:
+        """
+        Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+        """
         return pulumi.get(self, "git_repository")
 
     @git_repository.setter
@@ -486,6 +564,9 @@ class _AppState:
     @_builtins.property
     @pulumi.getter(name="oauth2AppClientId")
     def oauth2_app_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The OAuth2 client ID of the app's integration, set when the app uses user authorization.
+        """
         return pulumi.get(self, "oauth2_app_client_id")
 
     @oauth2_app_client_id.setter
@@ -495,6 +576,9 @@ class _AppState:
     @_builtins.property
     @pulumi.getter(name="oauth2AppIntegrationId")
     def oauth2_app_integration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The unique ID of the OAuth2 integration associated with the app.
+        """
         return pulumi.get(self, "oauth2_app_integration_id")
 
     @oauth2_app_integration_id.setter
@@ -504,6 +588,9 @@ class _AppState:
     @_builtins.property
     @pulumi.getter(name="pendingDeployment")
     def pending_deployment(self) -> pulumi.Input[Optional['AppPendingDeploymentArgs']]:
+        """
+        attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `active_deployment`.
+        """
         return pulumi.get(self, "pending_deployment")
 
     @pending_deployment.setter
@@ -579,6 +666,9 @@ class _AppState:
     @_builtins.property
     @pulumi.getter(name="telemetryExportDestinations")
     def telemetry_export_destinations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]]:
+        """
+        A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+        """
         return pulumi.get(self, "telemetry_export_destinations")
 
     @telemetry_export_destinations.setter
@@ -588,6 +678,9 @@ class _AppState:
     @_builtins.property
     @pulumi.getter(name="thumbnailUrl")
     def thumbnail_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The URL of the thumbnail image for the app.
+        """
         return pulumi.get(self, "thumbnail_url")
 
     @thumbnail_url.setter
@@ -598,7 +691,7 @@ class _AppState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The update time of the app.
+        The update time of the deployment.
         """
         return pulumi.get(self, "update_time")
 
@@ -633,6 +726,9 @@ class _AppState:
     @_builtins.property
     @pulumi.getter(name="usagePolicyId")
     def usage_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Usage Policy ID set for this resource.
+        """
         return pulumi.get(self, "usage_policy_id")
 
     @usage_policy_id.setter
@@ -643,7 +739,7 @@ class _AppState:
     @pulumi.getter(name="userApiScopes")
     def user_api_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of api scopes granted to the user access token.
+        A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
         """
         return pulumi.get(self, "user_api_scopes")
 
@@ -659,6 +755,8 @@ class App(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_max_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 compute_min_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  compute_size: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  git_repository: pulumi.Input[Optional[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']]] = None,
@@ -725,9 +823,12 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
         :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         :param pulumi.Input[_builtins.str] description: The description of the app.
+        :param pulumi.Input[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
         :param pulumi.Input[_builtins.str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]] resources: A list of resources that the app have access to.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: A list of api scopes granted to the user access token.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+        :param pulumi.Input[_builtins.str] usage_policy_id: The Usage Policy ID set for this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
         """
         ...
     @overload
@@ -800,6 +901,8 @@ class App(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_max_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 compute_min_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  compute_size: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  git_repository: pulumi.Input[Optional[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']]] = None,
@@ -821,6 +924,8 @@ class App(pulumi.CustomResource):
             __props__ = AppArgs.__new__(AppArgs)
 
             __props__.__dict__["budget_policy_id"] = budget_policy_id
+            __props__.__dict__["compute_max_instances"] = compute_max_instances
+            __props__.__dict__["compute_min_instances"] = compute_min_instances
             __props__.__dict__["compute_size"] = compute_size
             __props__.__dict__["description"] = description
             __props__.__dict__["git_repository"] = git_repository
@@ -864,6 +969,8 @@ class App(pulumi.CustomResource):
             active_deployment: pulumi.Input[Optional[Union['AppActiveDeploymentArgs', 'AppActiveDeploymentArgsDict']]] = None,
             app_status: pulumi.Input[Optional[Union['AppAppStatusArgs', 'AppAppStatusArgsDict']]] = None,
             budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_max_instances: pulumi.Input[Optional[_builtins.int]] = None,
+            compute_min_instances: pulumi.Input[Optional[_builtins.int]] = None,
             compute_size: pulumi.Input[Optional[_builtins.str]] = None,
             compute_status: pulumi.Input[Optional[Union['AppComputeStatusArgs', 'AppComputeStatusArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -899,25 +1006,34 @@ class App(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['AppActiveDeploymentArgs', 'AppActiveDeploymentArgsDict']] active_deployment: attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
         :param pulumi.Input[Union['AppAppStatusArgs', 'AppAppStatusArgsDict']] app_status: attribute
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
         :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
         :param pulumi.Input[Union['AppComputeStatusArgs', 'AppComputeStatusArgsDict']] compute_status: attribute
-        :param pulumi.Input[_builtins.str] create_time: The creation time of the app.
-        :param pulumi.Input[_builtins.str] creator: The email of the user that created the app.
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the deployment.
+        :param pulumi.Input[_builtins.str] creator: The email of the user that created the deployment.
         :param pulumi.Input[_builtins.str] default_source_code_path: The default workspace file system path of the source code from which app deployment are created. This field tracks the workspace source code path of the last active deployment.
         :param pulumi.Input[_builtins.str] description: The description of the app.
         :param pulumi.Input[_builtins.str] effective_budget_policy_id: The effective budget policy ID.
+        :param pulumi.Input[_builtins.str] effective_usage_policy_id: The effective usage policy ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] effective_user_api_scopes: A list of effective api scopes granted to the user access token.
+        :param pulumi.Input[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict']] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
         :param pulumi.Input[_builtins.str] name: The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+        :param pulumi.Input[_builtins.str] oauth2_app_client_id: The OAuth2 client ID of the app's integration, set when the app uses user authorization.
+        :param pulumi.Input[_builtins.str] oauth2_app_integration_id: The unique ID of the OAuth2 integration associated with the app.
+        :param pulumi.Input[Union['AppPendingDeploymentArgs', 'AppPendingDeploymentArgsDict']] pending_deployment: attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `active_deployment`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict']]]] resources: A list of resources that the app have access to.
         :param pulumi.Input[_builtins.str] service_principal_client_id: client_id (application_id) of the app service principal
         :param pulumi.Input[_builtins.int] service_principal_id: id of the app service principal
         :param pulumi.Input[_builtins.str] service_principal_name: name of the app service principal
-        :param pulumi.Input[_builtins.str] update_time: The update time of the app.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict']]]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+        :param pulumi.Input[_builtins.str] thumbnail_url: The URL of the thumbnail image for the app.
+        :param pulumi.Input[_builtins.str] update_time: The update time of the deployment.
         :param pulumi.Input[_builtins.str] updater: The email of the user that last updated the app.
         :param pulumi.Input[_builtins.str] url: The URL of the app once it is deployed.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: A list of api scopes granted to the user access token.
+        :param pulumi.Input[_builtins.str] usage_policy_id: The Usage Policy ID set for this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -926,6 +1042,8 @@ class App(pulumi.CustomResource):
         __props__.__dict__["active_deployment"] = active_deployment
         __props__.__dict__["app_status"] = app_status
         __props__.__dict__["budget_policy_id"] = budget_policy_id
+        __props__.__dict__["compute_max_instances"] = compute_max_instances
+        __props__.__dict__["compute_min_instances"] = compute_min_instances
         __props__.__dict__["compute_size"] = compute_size
         __props__.__dict__["compute_status"] = compute_status
         __props__.__dict__["create_time"] = create_time
@@ -959,6 +1077,9 @@ class App(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="activeDeployment")
     def active_deployment(self) -> pulumi.Output['outputs.AppActiveDeployment']:
+        """
+        attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
+        """
         return pulumi.get(self, "active_deployment")
 
     @_builtins.property
@@ -976,6 +1097,16 @@ class App(pulumi.CustomResource):
         The Budget Policy ID set for this resource.
         """
         return pulumi.get(self, "budget_policy_id")
+
+    @_builtins.property
+    @pulumi.getter(name="computeMaxInstances")
+    def compute_max_instances(self) -> pulumi.Output[Optional[_builtins.int]]:
+        return pulumi.get(self, "compute_max_instances")
+
+    @_builtins.property
+    @pulumi.getter(name="computeMinInstances")
+    def compute_min_instances(self) -> pulumi.Output[Optional[_builtins.int]]:
+        return pulumi.get(self, "compute_min_instances")
 
     @_builtins.property
     @pulumi.getter(name="computeSize")
@@ -997,7 +1128,7 @@ class App(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The creation time of the app.
+        The creation time of the deployment.
         """
         return pulumi.get(self, "create_time")
 
@@ -1005,7 +1136,7 @@ class App(pulumi.CustomResource):
     @pulumi.getter
     def creator(self) -> pulumi.Output[_builtins.str]:
         """
-        The email of the user that created the app.
+        The email of the user that created the deployment.
         """
         return pulumi.get(self, "creator")
 
@@ -1036,6 +1167,9 @@ class App(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="effectiveUsagePolicyId")
     def effective_usage_policy_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The effective usage policy ID.
+        """
         return pulumi.get(self, "effective_usage_policy_id")
 
     @_builtins.property
@@ -1049,6 +1183,9 @@ class App(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="gitRepository")
     def git_repository(self) -> pulumi.Output[Optional['outputs.AppGitRepository']]:
+        """
+        Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+        """
         return pulumi.get(self, "git_repository")
 
     @_builtins.property
@@ -1067,16 +1204,25 @@ class App(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="oauth2AppClientId")
     def oauth2_app_client_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The OAuth2 client ID of the app's integration, set when the app uses user authorization.
+        """
         return pulumi.get(self, "oauth2_app_client_id")
 
     @_builtins.property
     @pulumi.getter(name="oauth2AppIntegrationId")
     def oauth2_app_integration_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The unique ID of the OAuth2 integration associated with the app.
+        """
         return pulumi.get(self, "oauth2_app_integration_id")
 
     @_builtins.property
     @pulumi.getter(name="pendingDeployment")
     def pending_deployment(self) -> pulumi.Output['outputs.AppPendingDeployment']:
+        """
+        attribute - the pending deployment of the app. A deployment is considered pending when it is being prepared for deployment to the app compute. Schema is identical to `active_deployment`.
+        """
         return pulumi.get(self, "pending_deployment")
 
     @_builtins.property
@@ -1124,18 +1270,24 @@ class App(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="telemetryExportDestinations")
     def telemetry_export_destinations(self) -> pulumi.Output[Optional[Sequence['outputs.AppTelemetryExportDestination']]]:
+        """
+        A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+        """
         return pulumi.get(self, "telemetry_export_destinations")
 
     @_builtins.property
     @pulumi.getter(name="thumbnailUrl")
     def thumbnail_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        The URL of the thumbnail image for the app.
+        """
         return pulumi.get(self, "thumbnail_url")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[_builtins.str]:
         """
-        The update time of the app.
+        The update time of the deployment.
         """
         return pulumi.get(self, "update_time")
 
@@ -1158,13 +1310,16 @@ class App(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="usagePolicyId")
     def usage_policy_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The Usage Policy ID set for this resource.
+        """
         return pulumi.get(self, "usage_policy_id")
 
     @_builtins.property
     @pulumi.getter(name="userApiScopes")
     def user_api_scopes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        A list of api scopes granted to the user access token.
+        A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
         """
         return pulumi.get(self, "user_api_scopes")
 

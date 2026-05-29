@@ -57,7 +57,7 @@ namespace Pulumi.Databricks
         public Output<string> ToolId { get; private set; } = null!;
 
         /// <summary>
-        /// Tool type. Must be one of: "GenieSpace", "KnowledgeAssistant", "UcFunction", "UcConnection", "app", "volume", "LakeviewDashboard", "ServingEndpoint", "UcTable", "VectorSearchIndex", "catalog", "schema", "SupervisorAgent", "WebSearch"
+        /// Tool type. Must be one of: "GenieSpace", "KnowledgeAssistant", "UcFunction", "UcConnection", "UcMcp", "app", "volume", "dashboard", "ServingEndpoint", "table", "VectorSearchIndex", "catalog", "schema", "SupervisorAgent", "WebSearch", "skill". The legacy values "LakeviewDashboard" and "UcTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
         /// </summary>
         [Output("toolType")]
         public Output<string> ToolType { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.Databricks
         public Input<string> ToolId { get; set; } = null!;
 
         /// <summary>
-        /// Tool type. Must be one of: "GenieSpace", "KnowledgeAssistant", "UcFunction", "UcConnection", "app", "volume", "LakeviewDashboard", "ServingEndpoint", "UcTable", "VectorSearchIndex", "catalog", "schema", "SupervisorAgent", "WebSearch"
+        /// Tool type. Must be one of: "GenieSpace", "KnowledgeAssistant", "UcFunction", "UcConnection", "UcMcp", "app", "volume", "dashboard", "ServingEndpoint", "table", "VectorSearchIndex", "catalog", "schema", "SupervisorAgent", "WebSearch", "skill". The legacy values "LakeviewDashboard" and "UcTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
         /// </summary>
         [Input("toolType", required: true)]
         public Input<string> ToolType { get; set; } = null!;
@@ -216,7 +216,7 @@ namespace Pulumi.Databricks
         public Input<string>? ToolId { get; set; }
 
         /// <summary>
-        /// Tool type. Must be one of: "GenieSpace", "KnowledgeAssistant", "UcFunction", "UcConnection", "app", "volume", "LakeviewDashboard", "ServingEndpoint", "UcTable", "VectorSearchIndex", "catalog", "schema", "SupervisorAgent", "WebSearch"
+        /// Tool type. Must be one of: "GenieSpace", "KnowledgeAssistant", "UcFunction", "UcConnection", "UcMcp", "app", "volume", "dashboard", "ServingEndpoint", "table", "VectorSearchIndex", "catalog", "schema", "SupervisorAgent", "WebSearch", "skill". The legacy values "LakeviewDashboard" and "UcTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
         /// </summary>
         [Input("toolType")]
         public Input<string>? ToolType { get; set; }

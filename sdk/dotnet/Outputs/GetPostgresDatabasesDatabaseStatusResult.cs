@@ -14,9 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetPostgresDatabasesDatabaseStatusResult
     {
         /// <summary>
-        /// (string) - The short identifier of the database, suitable for showing to the users.
-        /// For a database with name `projects/my-project/branches/my-branch/databases/my-db`,
-        /// the DatabaseId is `my-db`.
+        /// (string) - Part of the resource name
         /// </summary>
         public readonly string DatabaseId;
         /// <summary>

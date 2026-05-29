@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsAppTelemetryExportDestination {
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable GetAppsAppTelemetryExportDestinationUnityCatalog unityCatalog;
 
     private GetAppsAppTelemetryExportDestination() {}
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<GetAppsAppTelemetryExportDestinationUnityCatalog> unityCatalog() {
         return Optional.ofNullable(this.unityCatalog);
     }

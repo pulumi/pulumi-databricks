@@ -160,6 +160,7 @@ export interface AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
 }
 
 export interface AccountNetworkPolicyIngress {
+    crossWorkspaceAccess?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccess;
     /**
      * The network policy restrictions for private access to the workspace.
      * Configures how registered private endpoints are allowed or denied access
@@ -172,7 +173,178 @@ export interface AccountNetworkPolicyIngress {
     publicAccess?: outputs.AccountNetworkPolicyIngressPublicAccess;
 }
 
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccess {
+    allowRules?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRule[];
+    denyRules?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRule[];
+    restrictionMode: string;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRule {
+    authentication?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleAuthentication;
+    destination?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestination;
+    label?: string;
+    origin?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleOrigin;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleAuthentication {
+    /**
+     * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity[];
+    /**
+     * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity {
+    principalId?: string;
+    /**
+     * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestination {
+    accountApi?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi;
+    accountDatabricksOne?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
+    accountUi?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi;
+    allDestinations?: boolean;
+    appsRuntime?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime;
+    lakebaseRuntime?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime;
+    workspaceApi?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi;
+    workspaceUi?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi {
+    scopeQualifier?: string;
+    scopes?: string[];
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
+    scopeQualifier?: string;
+    scopes?: string[];
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleOrigin {
+    /**
+     * Matches all source workspaces
+     */
+    allSourceWorkspaces?: boolean;
+    /**
+     * Specific source workspace IDs to match
+     */
+    selectedWorkspaces?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces {
+    workspaceIds?: number[];
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRule {
+    authentication?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleAuthentication;
+    destination?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestination;
+    label?: string;
+    origin?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleOrigin;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleAuthentication {
+    /**
+     * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity[];
+    /**
+     * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity {
+    principalId?: string;
+    /**
+     * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestination {
+    accountApi?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi;
+    accountDatabricksOne?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
+    accountUi?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi;
+    allDestinations?: boolean;
+    appsRuntime?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime;
+    lakebaseRuntime?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime;
+    workspaceApi?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi;
+    workspaceUi?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi {
+    scopeQualifier?: string;
+    scopes?: string[];
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
+    scopeQualifier?: string;
+    scopes?: string[];
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleOrigin {
+    /**
+     * Matches all source workspaces
+     */
+    allSourceWorkspaces?: boolean;
+    /**
+     * Specific source workspace IDs to match
+     */
+    selectedWorkspaces?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces;
+}
+
+export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces {
+    workspaceIds?: number[];
+}
+
 export interface AccountNetworkPolicyIngressDryRun {
+    crossWorkspaceAccess?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccess;
     /**
      * The network policy restrictions for private access to the workspace.
      * Configures how registered private endpoints are allowed or denied access
@@ -183,6 +355,176 @@ export interface AccountNetworkPolicyIngressDryRun {
      * Configures how public internet traffic is allowed or denied access
      */
     publicAccess?: outputs.AccountNetworkPolicyIngressDryRunPublicAccess;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccess {
+    allowRules?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRule[];
+    denyRules?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRule[];
+    restrictionMode: string;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRule {
+    authentication?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleAuthentication;
+    destination?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestination;
+    label?: string;
+    origin?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleOrigin;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleAuthentication {
+    /**
+     * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleAuthenticationIdentity[];
+    /**
+     * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleAuthenticationIdentity {
+    principalId?: string;
+    /**
+     * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestination {
+    accountApi?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountApi;
+    accountDatabricksOne?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
+    accountUi?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountUi;
+    allDestinations?: boolean;
+    appsRuntime?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAppsRuntime;
+    lakebaseRuntime?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime;
+    workspaceApi?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi;
+    workspaceUi?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountApi {
+    scopeQualifier?: string;
+    scopes?: string[];
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountUi {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAppsRuntime {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
+    scopeQualifier?: string;
+    scopes?: string[];
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleOrigin {
+    /**
+     * Matches all source workspaces
+     */
+    allSourceWorkspaces?: boolean;
+    /**
+     * Specific source workspace IDs to match
+     */
+    selectedWorkspaces?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces {
+    workspaceIds?: number[];
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRule {
+    authentication?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleAuthentication;
+    destination?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestination;
+    label?: string;
+    origin?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleOrigin;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleAuthentication {
+    /**
+     * Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleAuthenticationIdentity[];
+    /**
+     * Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleAuthenticationIdentity {
+    principalId?: string;
+    /**
+     * Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestination {
+    accountApi?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountApi;
+    accountDatabricksOne?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
+    accountUi?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountUi;
+    allDestinations?: boolean;
+    appsRuntime?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAppsRuntime;
+    lakebaseRuntime?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime;
+    workspaceApi?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi;
+    workspaceUi?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountApi {
+    scopeQualifier?: string;
+    scopes?: string[];
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountUi {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAppsRuntime {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
+    scopeQualifier?: string;
+    scopes?: string[];
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi {
+    allDestinations?: boolean;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleOrigin {
+    /**
+     * Matches all source workspaces
+     */
+    allSourceWorkspaces?: boolean;
+    /**
+     * Specific source workspace IDs to match
+     */
+    selectedWorkspaces?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces;
+}
+
+export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces {
+    workspaceIds?: number[];
 }
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccess {
@@ -932,6 +1274,10 @@ export interface AccountSettingV2AibiDashboardEmbeddingApprovedDomains {
     approvedDomains?: string[];
 }
 
+export interface AccountSettingV2AllowedAppsUserApiScopes {
+    allowedScopes?: string[];
+}
+
 export interface AccountSettingV2AutomaticClusterUpdateWorkspace {
     canToggle?: boolean;
     enabled?: boolean;
@@ -991,6 +1337,10 @@ export interface AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains 
     approvedDomains?: string[];
 }
 
+export interface AccountSettingV2EffectiveAllowedAppsUserApiScopes {
+    allowedScopes?: string[];
+}
+
 export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspace {
     canToggle?: boolean;
     enabled?: boolean;
@@ -1043,6 +1393,10 @@ export interface AccountSettingV2EffectiveIntegerVal {
     value?: number;
 }
 
+export interface AccountSettingV2EffectiveOperationalEmailCustomRecipient {
+    email?: string;
+}
+
 export interface AccountSettingV2EffectivePersonalCompute {
     value?: string;
 }
@@ -1065,6 +1419,10 @@ export interface AccountSettingV2EffectiveStringVal {
 
 export interface AccountSettingV2IntegerVal {
     value?: number;
+}
+
+export interface AccountSettingV2OperationalEmailCustomRecipient {
+    email?: string;
 }
 
 export interface AccountSettingV2PersonalCompute {
@@ -1308,27 +1666,45 @@ export interface AlertV2Schedule {
 export interface AppActiveDeployment {
     commands?: string[];
     /**
-     * The creation time of the app.
+     * The creation time of the deployment.
      */
     createTime: string;
     /**
-     * The email of the user that created the app.
+     * The email of the user that created the deployment.
      */
     creator: string;
+    /**
+     * attribute
+     */
     deploymentArtifacts: outputs.AppActiveDeploymentDeploymentArtifacts;
+    /**
+     * The unique ID of the deployment.
+     */
     deploymentId?: string;
     envVars?: outputs.AppActiveDeploymentEnvVar[];
     gitSource?: outputs.AppActiveDeploymentGitSource;
+    /**
+     * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
+     */
     mode?: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
+    /**
+     * attribute
+     */
     status: outputs.AppActiveDeploymentStatus;
     /**
-     * The update time of the app.
+     * The update time of the deployment.
      */
     updateTime: string;
 }
 
 export interface AppActiveDeploymentDeploymentArtifacts {
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
 }
 
@@ -1342,40 +1718,52 @@ export interface AppActiveDeploymentEnvVar {
 }
 
 export interface AppActiveDeploymentGitSource {
+    /**
+     * The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
     branch?: string;
     commit?: string;
+    /**
+     * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     */
     gitRepository: outputs.AppActiveDeploymentGitSourceGitRepository;
     resolvedCommit: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
     tag?: string;
 }
 
 export interface AppActiveDeploymentGitSourceGitRepository {
+    /**
+     * Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     */
     provider: string;
     /**
-     * The URL of the app once it is deployed.
+     * URL of the Git repository.
      */
     url: string;
 }
 
 export interface AppActiveDeploymentStatus {
     /**
-     * Application status message
+     * The status message of the deployment.
      */
     message: string;
     /**
-     * State of the application.
+     * The state of the deployment.
      */
     state: string;
 }
 
 export interface AppAppStatus {
     /**
-     * Application status message
+     * The status message of the deployment.
      */
     message: string;
     /**
-     * State of the application.
+     * The state of the deployment.
      */
     state: string;
 }
@@ -1383,19 +1771,22 @@ export interface AppAppStatus {
 export interface AppComputeStatus {
     activeInstances: number;
     /**
-     * Application status message
+     * The status message of the deployment.
      */
     message: string;
     /**
-     * State of the application.
+     * The state of the deployment.
      */
     state: string;
 }
 
 export interface AppGitRepository {
+    /**
+     * Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     */
     provider: string;
     /**
-     * The URL of the app once it is deployed.
+     * URL of the Git repository.
      */
     url: string;
 }
@@ -1403,27 +1794,45 @@ export interface AppGitRepository {
 export interface AppPendingDeployment {
     commands?: string[];
     /**
-     * The creation time of the app.
+     * The creation time of the deployment.
      */
     createTime: string;
     /**
-     * The email of the user that created the app.
+     * The email of the user that created the deployment.
      */
     creator: string;
+    /**
+     * attribute
+     */
     deploymentArtifacts: outputs.AppPendingDeploymentDeploymentArtifacts;
+    /**
+     * The unique ID of the deployment.
+     */
     deploymentId?: string;
     envVars?: outputs.AppPendingDeploymentEnvVar[];
     gitSource?: outputs.AppPendingDeploymentGitSource;
+    /**
+     * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
+     */
     mode?: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
+    /**
+     * attribute
+     */
     status: outputs.AppPendingDeploymentStatus;
     /**
-     * The update time of the app.
+     * The update time of the deployment.
      */
     updateTime: string;
 }
 
 export interface AppPendingDeploymentDeploymentArtifacts {
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
 }
 
@@ -1437,29 +1846,41 @@ export interface AppPendingDeploymentEnvVar {
 }
 
 export interface AppPendingDeploymentGitSource {
+    /**
+     * The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
     branch?: string;
     commit?: string;
+    /**
+     * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     */
     gitRepository: outputs.AppPendingDeploymentGitSourceGitRepository;
     resolvedCommit: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
     tag?: string;
 }
 
 export interface AppPendingDeploymentGitSourceGitRepository {
+    /**
+     * Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     */
     provider: string;
     /**
-     * The URL of the app once it is deployed.
+     * URL of the Git repository.
      */
     url: string;
 }
 
 export interface AppPendingDeploymentStatus {
     /**
-     * Application status message
+     * The status message of the deployment.
      */
     message: string;
     /**
-     * State of the application.
+     * The state of the deployment.
      */
     state: string;
 }
@@ -1469,6 +1890,9 @@ export interface AppProviderConfig {
 }
 
 export interface AppResource {
+    /**
+     * attribute - reference to another Databricks App.
+     */
     app?: outputs.AppResourceApp;
     /**
      * attribute
@@ -1480,6 +1904,9 @@ export interface AppResource {
      * Exactly one of the following attributes must be provided:
      */
     description?: string;
+    /**
+     * attribute
+     */
     experiment?: outputs.AppResourceExperiment;
     /**
      * attribute
@@ -1493,6 +1920,9 @@ export interface AppResource {
      * The name of the resource.
      */
     name: string;
+    /**
+     * attribute
+     */
     postgres?: outputs.AppResourcePostgres;
     /**
      * attribute
@@ -1514,9 +1944,12 @@ export interface AppResource {
 
 export interface AppResourceApp {
     /**
-     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     * The name of the app to grant permission on.
      */
     name?: string;
+    /**
+     * Permission to grant on the app. Supported permissions are: `CAN_USE`.
+     */
     permission?: string;
 }
 
@@ -1536,7 +1969,13 @@ export interface AppResourceDatabase {
 }
 
 export interface AppResourceExperiment {
+    /**
+     * The ID of the MLflow experiment to grant permission on.
+     */
     experimentId: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
     permission: string;
 }
 
@@ -1545,6 +1984,9 @@ export interface AppResourceGenieSpace {
      * The name of Genie Space.
      */
     name: string;
+    /**
+     * Permission to grant on Genie Space. Supported permissions are `CAN_MANAGE`, `CAN_EDIT`, `CAN_RUN`, `CAN_VIEW`.
+     */
     permission: string;
     /**
      * The unique ID of Genie Space.
@@ -1564,11 +2006,17 @@ export interface AppResourceJob {
 }
 
 export interface AppResourcePostgres {
+    /**
+     * The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
     branch?: string;
     /**
-     * attribute
+     * The resource path of a specific database within the branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`). If omitted, permission applies to the branch.
      */
     database?: string;
+    /**
+     * Permission to grant on the Lakebase Autoscaling branch or database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     */
     permission?: string;
 }
 
@@ -1611,16 +2059,16 @@ export interface AppResourceSqlWarehouse {
 
 export interface AppResourceUcSecurable {
     /**
-     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * Permission to grant on UC securable. Supported values depend on `securableType`: `READ_VOLUME` and `WRITE_VOLUME` for `VOLUME`, `SELECT` and `MODIFY` for `TABLE`, `EXECUTE` for `FUNCTION`, `USE_CONNECTION` for `CONNECTION`.
      */
     permission: string;
     /**
-     * the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     * The full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
      */
     securableFullName: string;
     securableKind: string;
     /**
-     * the type of UC securable, i.e. `VOLUME`.
+     * The type of UC securable. Supported values are `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`.
      */
     securableType: string;
 }
@@ -1753,12 +2201,24 @@ export interface AppSpaceStatus {
 }
 
 export interface AppTelemetryExportDestination {
+    /**
+     * attribute - export telemetry to Unity Catalog tables (must already exist and be writable by the app's service principal).
+     */
     unityCatalog?: outputs.AppTelemetryExportDestinationUnityCatalog;
 }
 
 export interface AppTelemetryExportDestinationUnityCatalog {
+    /**
+     * Full name of the Unity Catalog table for OpenTelemetry logs.
+     */
     logsTable: string;
+    /**
+     * Full name of the Unity Catalog table for OpenTelemetry metrics.
+     */
     metricsTable: string;
+    /**
+     * Full name of the Unity Catalog table for OpenTelemetry traces (spans).
+     */
     tracesTable: string;
 }
 
@@ -3586,6 +4046,9 @@ export interface ExternalMetadataProviderConfig {
 }
 
 export interface FeatureEngineeringFeatureEntity {
+    /**
+     * (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     */
     name: string;
 }
 
@@ -3689,6 +4152,7 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionSum {
 
 export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
     continuous?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
+    rolling?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling;
     sliding?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding;
     tumbling?: outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling;
 }
@@ -3698,6 +4162,15 @@ export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowC
      * The offset of the continuous window (must be non-positive)
      */
     offset?: string;
+    windowDuration: string;
+}
+
+export interface FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling {
+    /**
+     * The delay applied to the end of the rolling window (must be non-negative).
+     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     */
+    delay?: string;
     windowDuration: string;
 }
 
@@ -3801,7 +4274,9 @@ export interface FeatureEngineeringFeatureSourceDeltaTableSource {
      */
     filterCondition?: string;
     /**
-     * The full three-part name (catalog, schema, name) of the feature
+     * The full three-part name (catalog, schema, name) of the feature. This is the
+     * feature's resource identifier; the catalog_name, schema_name, and name fields
+     * below are OUTPUT_ONLY decomposed views of this value
      */
     fullName: string;
     /**
@@ -3827,6 +4302,9 @@ export interface FeatureEngineeringFeatureSourceKafkaSource {
      * The filter condition applied to the source data before aggregation
      */
     filterCondition?: string;
+    /**
+     * (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     */
     name: string;
     /**
      * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
@@ -3870,11 +4348,15 @@ export interface FeatureEngineeringFeatureSourceRequestSourceFlatSchemaField {
      * The scalar data type of the field. Possible values are: `BINARY`, `BOOLEAN`, `DATE`, `DECIMAL`, `DOUBLE`, `FLOAT`, `INTEGER`, `LONG`, `SHORT`, `STRING`, `TIMESTAMP`
      */
     dataType: string;
+    /**
+     * (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     */
     name: string;
 }
 
 export interface FeatureEngineeringFeatureTimeWindow {
     continuous?: outputs.FeatureEngineeringFeatureTimeWindowContinuous;
+    rolling?: outputs.FeatureEngineeringFeatureTimeWindowRolling;
     sliding?: outputs.FeatureEngineeringFeatureTimeWindowSliding;
     tumbling?: outputs.FeatureEngineeringFeatureTimeWindowTumbling;
 }
@@ -3884,6 +4366,15 @@ export interface FeatureEngineeringFeatureTimeWindowContinuous {
      * The offset of the continuous window (must be non-positive)
      */
     offset?: string;
+    windowDuration: string;
+}
+
+export interface FeatureEngineeringFeatureTimeWindowRolling {
+    /**
+     * The delay applied to the end of the rolling window (must be non-negative).
+     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     */
+    delay?: string;
     windowDuration: string;
 }
 
@@ -3900,14 +4391,94 @@ export interface FeatureEngineeringFeatureTimeWindowTumbling {
 }
 
 export interface FeatureEngineeringFeatureTimeseriesColumn {
+    /**
+     * (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     */
     name: string;
 }
 
 export interface FeatureEngineeringKafkaConfigAuthConfig {
     /**
+     * Mutual-TLS authentication. See MtlsConfig
+     */
+    mtlsConfig?: outputs.FeatureEngineeringKafkaConfigAuthConfigMtlsConfig;
+    /**
      * Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
      */
     ucServiceCredentialName?: string;
+}
+
+export interface FeatureEngineeringKafkaConfigAuthConfigMtlsConfig {
+    /**
+     * Set to true only when the broker certificate's SAN intentionally does not match
+     * the connection endpoint — for example when reaching the cluster through a
+     * PrivateLink endpoint whose DNS name is not in the broker certificate. Skipping
+     * the hostname check removes a defense against man-in-the-middle attacks; do not
+     * enable casually. mTLS client authentication is unaffected by this option.
+     *
+     * See the Apache Kafka SSL security guide for background on this check:
+     * https://kafka.apache.org/42/security/encryption-and-authentication-using-ssl/#host-name-verification
+     */
+    disableHostnameVerification?: boolean;
+    /**
+     * Secret-scope reference for the private key password. Often the same value as the
+     * keystore password (keytool's default), but provided as a separate field because
+     * Apache Kafka requires it as a distinct option (kafka.ssl.key.password)
+     */
+    keyPasswordRef: outputs.FeatureEngineeringKafkaConfigAuthConfigMtlsConfigKeyPasswordRef;
+    /**
+     * Unity Catalog volume path to the JKS keystore file containing the client certificate
+     * and private key. e.g. "/Volumes/<catalog>/<schema>/<volume>/client.jks". The
+     * materialization compute must have read permission on this volume
+     */
+    keystoreLocation: string;
+    /**
+     * Secret-scope reference for the JKS keystore password
+     */
+    keystorePasswordRef: outputs.FeatureEngineeringKafkaConfigAuthConfigMtlsConfigKeystorePasswordRef;
+    /**
+     * Unity Catalog volume path to the JKS truststore file containing the CA certificate(s)
+     * trusted to verify the Kafka broker's server certificate.
+     * e.g. "/Volumes/<catalog>/<schema>/<volume>/truststore.jks"
+     */
+    truststoreLocation: string;
+    /**
+     * Secret-scope reference for the JKS truststore password
+     */
+    truststorePasswordRef: outputs.FeatureEngineeringKafkaConfigAuthConfigMtlsConfigTruststorePasswordRef;
+}
+
+export interface FeatureEngineeringKafkaConfigAuthConfigMtlsConfigKeyPasswordRef {
+    /**
+     * The key within the scope
+     */
+    key: string;
+    /**
+     * The Databricks secret scope name
+     */
+    scope: string;
+}
+
+export interface FeatureEngineeringKafkaConfigAuthConfigMtlsConfigKeystorePasswordRef {
+    /**
+     * The key within the scope
+     */
+    key: string;
+    /**
+     * The Databricks secret scope name
+     */
+    scope: string;
+}
+
+export interface FeatureEngineeringKafkaConfigAuthConfigMtlsConfigTruststorePasswordRef {
+    /**
+     * The key within the scope
+     */
+    key: string;
+    /**
+     * The Databricks secret scope name
+     */
+    scope: string;
 }
 
 export interface FeatureEngineeringKafkaConfigBackfillSource {
@@ -3993,6 +4564,13 @@ export interface FeatureEngineeringKafkaConfigValueSchema {
     jsonSchema?: string;
 }
 
+export interface FeatureEngineeringMaterializedFeatureCronScheduleTrigger {
+    /**
+     * The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight)
+     */
+    cronExpression?: string;
+}
+
 export interface FeatureEngineeringMaterializedFeatureOfflineStoreConfig {
     catalogName: string;
     schemaName: string;
@@ -4014,6 +4592,16 @@ export interface FeatureEngineeringMaterializedFeatureProviderConfig {
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: string;
+}
+
+export interface FeatureEngineeringMaterializedFeatureStreamingMode {
+    /**
+     * The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
+     */
+    mode?: string;
+}
+
+export interface FeatureEngineeringMaterializedFeatureTableTrigger {
 }
 
 export interface FileProviderConfig {
@@ -4267,6 +4855,10 @@ export interface GetAccountNetworkPoliciesItemEgressNetworkAccessPolicyEnforceme
 
 export interface GetAccountNetworkPoliciesItemIngress {
     /**
+     * (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+     */
+    crossWorkspaceAccess?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccess;
+    /**
      * (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
      * Configures how registered private endpoints are allowed or denied access
      */
@@ -4278,7 +4870,328 @@ export interface GetAccountNetworkPoliciesItemIngress {
     publicAccess?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccess;
 }
 
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccess {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
+     */
+    allowRules?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRule[];
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
+     */
+    denyRules?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRule[];
+    /**
+     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
+     */
+    restrictionMode: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRule {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAuthentication)
+     */
+    authentication?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthentication;
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination;
+    /**
+     * (string) - The label for this ingress rule
+     */
+    label?: string;
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
+     */
+    origin?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOrigin;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthentication {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity[];
+    /**
+     * (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity {
+    /**
+     * (integer)
+     */
+    principalId?: number;
+    /**
+     * (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestination {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     */
+    accountApi?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     */
+    accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     */
+    accountUi?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi;
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAppsRuntimeDestination)
+     */
+    appsRuntime?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime;
+    /**
+     * (CustomerFacingIngressNetworkPolicyLakebaseRuntimeDestination)
+     */
+    lakebaseRuntime?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
+     */
+    workspaceApi?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination)
+     */
+    workspaceUi?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi {
+    /**
+     * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     */
+    scopeQualifier?: string;
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     */
+    scopeQualifier?: string;
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOrigin {
+    /**
+     * (boolean) - Matches all source workspaces
+     */
+    allSourceWorkspaces?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceIdList) - Specific source workspace IDs to match
+     */
+    selectedWorkspaces?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces {
+    /**
+     * (list of integer)
+     */
+    workspaceIds?: number[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRule {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAuthentication)
+     */
+    authentication?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication;
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination;
+    /**
+     * (string) - The label for this ingress rule
+     */
+    label?: string;
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
+     */
+    origin?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthentication {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity[];
+    /**
+     * (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity {
+    /**
+     * (integer)
+     */
+    principalId?: number;
+    /**
+     * (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestination {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     */
+    accountApi?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     */
+    accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     */
+    accountUi?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi;
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAppsRuntimeDestination)
+     */
+    appsRuntime?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime;
+    /**
+     * (CustomerFacingIngressNetworkPolicyLakebaseRuntimeDestination)
+     */
+    lakebaseRuntime?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
+     */
+    workspaceApi?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination)
+     */
+    workspaceUi?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi {
+    /**
+     * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     */
+    scopeQualifier?: string;
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     */
+    scopeQualifier?: string;
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOrigin {
+    /**
+     * (boolean) - Matches all source workspaces
+     */
+    allSourceWorkspaces?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceIdList) - Specific source workspace IDs to match
+     */
+    selectedWorkspaces?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces {
+    /**
+     * (list of integer)
+     */
+    workspaceIds?: number[];
+}
+
 export interface GetAccountNetworkPoliciesItemIngressDryRun {
+    /**
+     * (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+     */
+    crossWorkspaceAccess?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess;
     /**
      * (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
      * Configures how registered private endpoints are allowed or denied access
@@ -4289,6 +5202,323 @@ export interface GetAccountNetworkPoliciesItemIngressDryRun {
      * Configures how public internet traffic is allowed or denied access
      */
     publicAccess?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccess;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccess {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
+     */
+    allowRules?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRule[];
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
+     */
+    denyRules?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRule[];
+    /**
+     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
+     */
+    restrictionMode: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRule {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAuthentication)
+     */
+    authentication?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleAuthentication;
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestination;
+    /**
+     * (string) - The label for this ingress rule
+     */
+    label?: string;
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
+     */
+    origin?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleOrigin;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleAuthentication {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleAuthenticationIdentity[];
+    /**
+     * (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleAuthenticationIdentity {
+    /**
+     * (integer)
+     */
+    principalId?: number;
+    /**
+     * (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestination {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     */
+    accountApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     */
+    accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     */
+    accountUi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountUi;
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAppsRuntimeDestination)
+     */
+    appsRuntime?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAppsRuntime;
+    /**
+     * (CustomerFacingIngressNetworkPolicyLakebaseRuntimeDestination)
+     */
+    lakebaseRuntime?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
+     */
+    workspaceApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination)
+     */
+    workspaceUi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountApi {
+    /**
+     * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     */
+    scopeQualifier?: string;
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAppsRuntime {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     */
+    scopeQualifier?: string;
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleOrigin {
+    /**
+     * (boolean) - Matches all source workspaces
+     */
+    allSourceWorkspaces?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceIdList) - Specific source workspace IDs to match
+     */
+    selectedWorkspaces?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces {
+    /**
+     * (list of integer)
+     */
+    workspaceIds?: number[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRule {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAuthentication)
+     */
+    authentication?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleAuthentication;
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestination;
+    /**
+     * (string) - The label for this ingress rule
+     */
+    label?: string;
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
+     */
+    origin?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleOrigin;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleAuthentication {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleAuthenticationIdentity[];
+    /**
+     * (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleAuthenticationIdentity {
+    /**
+     * (integer)
+     */
+    principalId?: number;
+    /**
+     * (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestination {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     */
+    accountApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     */
+    accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     */
+    accountUi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountUi;
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAppsRuntimeDestination)
+     */
+    appsRuntime?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAppsRuntime;
+    /**
+     * (CustomerFacingIngressNetworkPolicyLakebaseRuntimeDestination)
+     */
+    lakebaseRuntime?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
+     */
+    workspaceApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination)
+     */
+    workspaceUi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountApi {
+    /**
+     * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     */
+    scopeQualifier?: string;
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAppsRuntime {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     */
+    scopeQualifier?: string;
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleOrigin {
+    /**
+     * (boolean) - Matches all source workspaces
+     */
+    allSourceWorkspaces?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceIdList) - Specific source workspace IDs to match
+     */
+    selectedWorkspaces?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces;
+}
+
+export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces {
+    /**
+     * (list of integer)
+     */
+    workspaceIds?: number[];
 }
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunPrivateAccess {
@@ -5728,6 +6958,10 @@ export interface GetAccountNetworkPolicyEgressNetworkAccessPolicyEnforcement {
 
 export interface GetAccountNetworkPolicyIngress {
     /**
+     * (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+     */
+    crossWorkspaceAccess?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccess;
+    /**
      * (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
      * Configures how registered private endpoints are allowed or denied access
      */
@@ -5739,7 +6973,328 @@ export interface GetAccountNetworkPolicyIngress {
     publicAccess?: outputs.GetAccountNetworkPolicyIngressPublicAccess;
 }
 
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccess {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
+     */
+    allowRules?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRule[];
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
+     */
+    denyRules?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRule[];
+    /**
+     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
+     */
+    restrictionMode: string;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRule {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAuthentication)
+     */
+    authentication?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleAuthentication;
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestination;
+    /**
+     * (string) - The label for this ingress rule
+     */
+    label?: string;
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
+     */
+    origin?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleOrigin;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleAuthentication {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity[];
+    /**
+     * (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleAuthenticationIdentity {
+    /**
+     * (integer)
+     */
+    principalId?: number;
+    /**
+     * (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestination {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     */
+    accountApi?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     */
+    accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     */
+    accountUi?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi;
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAppsRuntimeDestination)
+     */
+    appsRuntime?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime;
+    /**
+     * (CustomerFacingIngressNetworkPolicyLakebaseRuntimeDestination)
+     */
+    lakebaseRuntime?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
+     */
+    workspaceApi?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination)
+     */
+    workspaceUi?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi {
+    /**
+     * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     */
+    scopeQualifier?: string;
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAppsRuntime {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     */
+    scopeQualifier?: string;
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleOrigin {
+    /**
+     * (boolean) - Matches all source workspaces
+     */
+    allSourceWorkspaces?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceIdList) - Specific source workspace IDs to match
+     */
+    selectedWorkspaces?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces {
+    /**
+     * (list of integer)
+     */
+    workspaceIds?: number[];
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRule {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAuthentication)
+     */
+    authentication?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleAuthentication;
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestination;
+    /**
+     * (string) - The label for this ingress rule
+     */
+    label?: string;
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
+     */
+    origin?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleOrigin;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleAuthentication {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity[];
+    /**
+     * (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleAuthenticationIdentity {
+    /**
+     * (integer)
+     */
+    principalId?: number;
+    /**
+     * (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestination {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     */
+    accountApi?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     */
+    accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     */
+    accountUi?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi;
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAppsRuntimeDestination)
+     */
+    appsRuntime?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime;
+    /**
+     * (CustomerFacingIngressNetworkPolicyLakebaseRuntimeDestination)
+     */
+    lakebaseRuntime?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
+     */
+    workspaceApi?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination)
+     */
+    workspaceUi?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi {
+    /**
+     * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     */
+    scopeQualifier?: string;
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAppsRuntime {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     */
+    scopeQualifier?: string;
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleOrigin {
+    /**
+     * (boolean) - Matches all source workspaces
+     */
+    allSourceWorkspaces?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceIdList) - Specific source workspace IDs to match
+     */
+    selectedWorkspaces?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces;
+}
+
+export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces {
+    /**
+     * (list of integer)
+     */
+    workspaceIds?: number[];
+}
+
 export interface GetAccountNetworkPolicyIngressDryRun {
+    /**
+     * (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+     */
+    crossWorkspaceAccess?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccess;
     /**
      * (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
      * Configures how registered private endpoints are allowed or denied access
@@ -5750,6 +7305,323 @@ export interface GetAccountNetworkPolicyIngressDryRun {
      * Configures how public internet traffic is allowed or denied access
      */
     publicAccess?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccess;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccess {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
+     */
+    allowRules?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRule[];
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyPublicIngressRule)
+     */
+    denyRules?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRule[];
+    /**
+     * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
+     */
+    restrictionMode: string;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRule {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAuthentication)
+     */
+    authentication?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleAuthentication;
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestination;
+    /**
+     * (string) - The label for this ingress rule
+     */
+    label?: string;
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
+     */
+    origin?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleOrigin;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleAuthentication {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleAuthenticationIdentity[];
+    /**
+     * (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleAuthenticationIdentity {
+    /**
+     * (integer)
+     */
+    principalId?: number;
+    /**
+     * (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestination {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     */
+    accountApi?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     */
+    accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     */
+    accountUi?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountUi;
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAppsRuntimeDestination)
+     */
+    appsRuntime?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAppsRuntime;
+    /**
+     * (CustomerFacingIngressNetworkPolicyLakebaseRuntimeDestination)
+     */
+    lakebaseRuntime?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
+     */
+    workspaceApi?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination)
+     */
+    workspaceUi?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountApi {
+    /**
+     * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     */
+    scopeQualifier?: string;
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAppsRuntime {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationLakebaseRuntime {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceApi {
+    /**
+     * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     */
+    scopeQualifier?: string;
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationWorkspaceUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleOrigin {
+    /**
+     * (boolean) - Matches all source workspaces
+     */
+    allSourceWorkspaces?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceIdList) - Specific source workspace IDs to match
+     */
+    selectedWorkspaces?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces {
+    /**
+     * (list of integer)
+     */
+    workspaceIds?: number[];
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRule {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAuthentication)
+     */
+    authentication?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleAuthentication;
+    /**
+     * (string) - The internet destination to which access will be allowed. Format dependent on the destination type
+     */
+    destination?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestination;
+    /**
+     * (string) - The label for this ingress rule
+     */
+    label?: string;
+    /**
+     * (CustomerFacingIngressNetworkPolicyPublicRequestOrigin)
+     */
+    origin?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleOrigin;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleAuthentication {
+    /**
+     * (list of CustomerFacingIngressNetworkPolicyAuthenticationIdentity) - Valid only when IdentityType is IDENTITY_TYPE_SELECTED_IDENTITIES
+     */
+    identities?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleAuthenticationIdentity[];
+    /**
+     * (string) - Possible values are: `IDENTITY_TYPE_ALL_SERVICE_PRINCIPALS`, `IDENTITY_TYPE_ALL_USERS`, `IDENTITY_TYPE_SELECTED_IDENTITIES`
+     */
+    identityType?: string;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleAuthenticationIdentity {
+    /**
+     * (integer)
+     */
+    principalId?: number;
+    /**
+     * (string) - Possible values are: `PRINCIPAL_TYPE_SERVICE_PRINCIPAL`, `PRINCIPAL_TYPE_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestination {
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountApiDestination)
+     */
+    accountApi?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     */
+    accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAccountUiDestination)
+     */
+    accountUi?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountUi;
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyAppsRuntimeDestination)
+     */
+    appsRuntime?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAppsRuntime;
+    /**
+     * (CustomerFacingIngressNetworkPolicyLakebaseRuntimeDestination)
+     */
+    lakebaseRuntime?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceApiDestination)
+     */
+    workspaceApi?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceUiDestination)
+     */
+    workspaceUi?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountApi {
+    /**
+     * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     */
+    scopeQualifier?: string;
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAppsRuntime {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationLakebaseRuntime {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceApi {
+    /**
+     * (string) - Qualifies the breadth of API access for the listed scopes. See ApiScopeQualifier. Possible values are: `API_SCOPE_QUALIFIER_ALL`, `API_SCOPE_QUALIFIER_READ`
+     */
+    scopeQualifier?: string;
+    /**
+     * (list of string)
+     */
+    scopes?: string[];
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationWorkspaceUi {
+    /**
+     * (boolean) - Must be set to true
+     */
+    allDestinations?: boolean;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleOrigin {
+    /**
+     * (boolean) - Matches all source workspaces
+     */
+    allSourceWorkspaces?: boolean;
+    /**
+     * (CustomerFacingIngressNetworkPolicyWorkspaceIdList) - Specific source workspace IDs to match
+     */
+    selectedWorkspaces?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces;
+}
+
+export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces {
+    /**
+     * (list of integer)
+     */
+    workspaceIds?: number[];
 }
 
 export interface GetAccountNetworkPolicyIngressDryRunPrivateAccess {
@@ -7138,6 +9010,13 @@ export interface GetAccountSettingV2AibiDashboardEmbeddingApprovedDomains {
     approvedDomains?: string[];
 }
 
+export interface GetAccountSettingV2AllowedAppsUserApiScopes {
+    /**
+     * (list of string)
+     */
+    allowedScopes?: string[];
+}
+
 export interface GetAccountSettingV2AutomaticClusterUpdateWorkspace {
     /**
      * (boolean)
@@ -7230,6 +9109,13 @@ export interface GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomai
     approvedDomains?: string[];
 }
 
+export interface GetAccountSettingV2EffectiveAllowedAppsUserApiScopes {
+    /**
+     * (list of string)
+     */
+    allowedScopes?: string[];
+}
+
 export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspace {
     /**
      * (boolean)
@@ -7315,6 +9201,13 @@ export interface GetAccountSettingV2EffectiveIntegerVal {
     value?: number;
 }
 
+export interface GetAccountSettingV2EffectiveOperationalEmailCustomRecipient {
+    /**
+     * (string)
+     */
+    email?: string;
+}
+
 export interface GetAccountSettingV2EffectivePersonalCompute {
     /**
      * (string) - Represents a generic string value
@@ -7346,6 +9239,13 @@ export interface GetAccountSettingV2IntegerVal {
      * (string) - Represents a generic string value
      */
     value?: number;
+}
+
+export interface GetAccountSettingV2OperationalEmailCustomRecipient {
+    /**
+     * (string)
+     */
+    email?: string;
 }
 
 export interface GetAccountSettingV2PersonalCompute {
@@ -7789,6 +9689,9 @@ export interface GetAlertsV2ProviderConfig {
 }
 
 export interface GetAppApp {
+    /**
+     * attribute - the active deployment of the app.
+     */
     activeDeployment: outputs.GetAppAppActiveDeployment;
     /**
      * attribute
@@ -7798,8 +9701,10 @@ export interface GetAppApp {
      * The Budget Policy ID set for this resource.
      */
     budgetPolicyId?: string;
+    computeMaxInstances?: number;
+    computeMinInstances?: number;
     /**
-     * (Optional) A string specifying compute size for the App.
+     * A string specifying compute size for the App.
      */
     computeSize?: string;
     /**
@@ -7807,11 +9712,11 @@ export interface GetAppApp {
      */
     computeStatus: outputs.GetAppAppComputeStatus;
     /**
-     * The creation time of the app.
+     * The creation time of the deployment.
      */
     createTime: string;
     /**
-     * The email of the user that created the app.
+     * The email of the user that created the deployment.
      */
     creator: string;
     /**
@@ -7826,11 +9731,17 @@ export interface GetAppApp {
      * The effective budget policy ID.
      */
     effectiveBudgetPolicyId: string;
+    /**
+     * The effective usage policy ID.
+     */
     effectiveUsagePolicyId: string;
     /**
      * A list of effective api scopes granted to the user access token.
      */
     effectiveUserApiScopes: string[];
+    /**
+     * attribute - Git repository configuration for app deployments.
+     */
     gitRepository?: outputs.GetAppAppGitRepository;
     /**
      * Id of the job to grant permission on.
@@ -7840,8 +9751,17 @@ export interface GetAppApp {
      * The name of the app.
      */
     name: string;
+    /**
+     * The OAuth2 client ID of the app's integration, set when the app uses user authorization.
+     */
     oauth2AppClientId: string;
+    /**
+     * The unique ID of the OAuth2 integration associated with the app.
+     */
     oauth2AppIntegrationId: string;
+    /**
+     * attribute - the pending deployment of the app. Schema is identical to `activeDeployment`.
+     */
     pendingDeployment: outputs.GetAppAppPendingDeployment;
     /**
      * A list of resources that the app have access to.
@@ -7859,11 +9779,20 @@ export interface GetAppApp {
      * name of the app service principal
      */
     servicePrincipalName: string;
+    /**
+     * Name of the app space this app belongs to.
+     */
     space?: string;
+    /**
+     * A list of telemetry export destinations.
+     */
     telemetryExportDestinations?: outputs.GetAppAppTelemetryExportDestination[];
+    /**
+     * The URL of the thumbnail image for the app.
+     */
     thumbnailUrl: string;
     /**
-     * The update time of the app.
+     * The update time of the deployment.
      */
     updateTime: string;
     /**
@@ -7871,37 +9800,61 @@ export interface GetAppApp {
      */
     updater: string;
     /**
-     * The URL of the app once it is deployed.
+     * URL of the Git repository.
      */
     url: string;
+    /**
+     * The Usage Policy ID set for this resource.
+     */
     usagePolicyId?: string;
+    /**
+     * A list of api scopes granted to the user access token.
+     */
     userApiScopes?: string[];
 }
 
 export interface GetAppAppActiveDeployment {
     commands?: string[];
     /**
-     * The creation time of the app.
+     * The creation time of the deployment.
      */
     createTime: string;
     /**
-     * The email of the user that created the app.
+     * The email of the user that created the deployment.
      */
     creator: string;
+    /**
+     * attribute
+     */
     deploymentArtifacts: outputs.GetAppAppActiveDeploymentDeploymentArtifacts;
+    /**
+     * The unique ID of the deployment.
+     */
     deploymentId?: string;
     envVars?: outputs.GetAppAppActiveDeploymentEnvVar[];
     gitSource?: outputs.GetAppAppActiveDeploymentGitSource;
+    /**
+     * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
+     */
     mode?: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
+    /**
+     * attribute
+     */
     status: outputs.GetAppAppActiveDeploymentStatus;
     /**
-     * The update time of the app.
+     * The update time of the deployment.
      */
     updateTime: string;
 }
 
 export interface GetAppAppActiveDeploymentDeploymentArtifacts {
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
 }
 
@@ -7915,40 +9868,52 @@ export interface GetAppAppActiveDeploymentEnvVar {
 }
 
 export interface GetAppAppActiveDeploymentGitSource {
+    /**
+     * The resource path of the Lakebase Autoscaling branch (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
     branch?: string;
     commit?: string;
+    /**
+     * attribute - Git repository configuration for app deployments.
+     */
     gitRepository: outputs.GetAppAppActiveDeploymentGitSourceGitRepository;
     resolvedCommit: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
     tag?: string;
 }
 
 export interface GetAppAppActiveDeploymentGitSourceGitRepository {
+    /**
+     * Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     */
     provider: string;
     /**
-     * The URL of the app once it is deployed.
+     * URL of the Git repository.
      */
     url: string;
 }
 
 export interface GetAppAppActiveDeploymentStatus {
     /**
-     * Application status message
+     * The status message of the deployment.
      */
     message: string;
     /**
-     * State of the application.
+     * The state of the deployment.
      */
     state: string;
 }
 
 export interface GetAppAppAppStatus {
     /**
-     * Application status message
+     * The status message of the deployment.
      */
     message: string;
     /**
-     * State of the application.
+     * The state of the deployment.
      */
     state: string;
 }
@@ -7956,19 +9921,22 @@ export interface GetAppAppAppStatus {
 export interface GetAppAppComputeStatus {
     activeInstances: number;
     /**
-     * Application status message
+     * The status message of the deployment.
      */
     message: string;
     /**
-     * State of the application.
+     * The state of the deployment.
      */
     state: string;
 }
 
 export interface GetAppAppGitRepository {
+    /**
+     * Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     */
     provider: string;
     /**
-     * The URL of the app once it is deployed.
+     * URL of the Git repository.
      */
     url: string;
 }
@@ -7976,27 +9944,45 @@ export interface GetAppAppGitRepository {
 export interface GetAppAppPendingDeployment {
     commands?: string[];
     /**
-     * The creation time of the app.
+     * The creation time of the deployment.
      */
     createTime: string;
     /**
-     * The email of the user that created the app.
+     * The email of the user that created the deployment.
      */
     creator: string;
+    /**
+     * attribute
+     */
     deploymentArtifacts: outputs.GetAppAppPendingDeploymentDeploymentArtifacts;
+    /**
+     * The unique ID of the deployment.
+     */
     deploymentId?: string;
     envVars?: outputs.GetAppAppPendingDeploymentEnvVar[];
     gitSource?: outputs.GetAppAppPendingDeploymentGitSource;
+    /**
+     * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
+     */
     mode?: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
+    /**
+     * attribute
+     */
     status: outputs.GetAppAppPendingDeploymentStatus;
     /**
-     * The update time of the app.
+     * The update time of the deployment.
      */
     updateTime: string;
 }
 
 export interface GetAppAppPendingDeploymentDeploymentArtifacts {
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
 }
 
@@ -8010,46 +9996,61 @@ export interface GetAppAppPendingDeploymentEnvVar {
 }
 
 export interface GetAppAppPendingDeploymentGitSource {
+    /**
+     * The resource path of the Lakebase Autoscaling branch (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
     branch?: string;
     commit?: string;
+    /**
+     * attribute - Git repository configuration for app deployments.
+     */
     gitRepository: outputs.GetAppAppPendingDeploymentGitSourceGitRepository;
     resolvedCommit: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
     tag?: string;
 }
 
 export interface GetAppAppPendingDeploymentGitSourceGitRepository {
+    /**
+     * Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     */
     provider: string;
     /**
-     * The URL of the app once it is deployed.
+     * URL of the Git repository.
      */
     url: string;
 }
 
 export interface GetAppAppPendingDeploymentStatus {
     /**
-     * Application status message
+     * The status message of the deployment.
      */
     message: string;
     /**
-     * State of the application.
+     * The state of the deployment.
      */
     state: string;
 }
 
 export interface GetAppAppResource {
     /**
-     * attribute
+     * attribute - reference to another Databricks App.
      */
     app?: outputs.GetAppAppResourceApp;
     /**
-     * attribute
+     * The resource path of a specific database within the branch (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`).
      */
     database?: outputs.GetAppAppResourceDatabase;
     /**
      * The description of the resource.
      */
     description?: string;
+    /**
+     * attribute
+     */
     experiment?: outputs.GetAppAppResourceExperiment;
     /**
      * attribute
@@ -8063,6 +10064,9 @@ export interface GetAppAppResource {
      * The name of the app.
      */
     name: string;
+    /**
+     * attribute
+     */
     postgres?: outputs.GetAppAppResourcePostgres;
     /**
      * attribute
@@ -8077,7 +10081,7 @@ export interface GetAppAppResource {
      */
     sqlWarehouse?: outputs.GetAppAppResourceSqlWarehouse;
     /**
-     * attribute
+     * attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
      */
     ucSecurable?: outputs.GetAppAppResourceUcSecurable;
 }
@@ -8088,7 +10092,7 @@ export interface GetAppAppResourceApp {
      */
     name?: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission?: string;
 }
@@ -8103,15 +10107,18 @@ export interface GetAppAppResourceDatabase {
      */
     instanceName: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission: string;
 }
 
 export interface GetAppAppResourceExperiment {
+    /**
+     * The ID of the MLflow experiment to grant permission on.
+     */
     experimentId: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission: string;
 }
@@ -8122,7 +10129,7 @@ export interface GetAppAppResourceGenieSpace {
      */
     name: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission: string;
     /**
@@ -8137,19 +10144,22 @@ export interface GetAppAppResourceJob {
      */
     id: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission: string;
 }
 
 export interface GetAppAppResourcePostgres {
+    /**
+     * The resource path of the Lakebase Autoscaling branch (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
     branch?: string;
     /**
-     * attribute
+     * The resource path of a specific database within the branch (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`).
      */
     database?: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission?: string;
 }
@@ -8160,7 +10170,7 @@ export interface GetAppAppResourceSecret {
      */
     key: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission: string;
     /**
@@ -8175,7 +10185,7 @@ export interface GetAppAppResourceServingEndpoint {
      */
     name: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission: string;
 }
@@ -8186,34 +10196,46 @@ export interface GetAppAppResourceSqlWarehouse {
      */
     id: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission: string;
 }
 
 export interface GetAppAppResourceUcSecurable {
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission: string;
     /**
-     * the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     * The full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
      */
     securableFullName: string;
     securableKind: string;
     /**
-     * the type of UC securable, i.e. `VOLUME`.
+     * The type of UC securable. Supported values are `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`.
      */
     securableType: string;
 }
 
 export interface GetAppAppTelemetryExportDestination {
+    /**
+     * attribute
+     */
     unityCatalog?: outputs.GetAppAppTelemetryExportDestinationUnityCatalog;
 }
 
 export interface GetAppAppTelemetryExportDestinationUnityCatalog {
+    /**
+     * Full name of the Unity Catalog table for OpenTelemetry logs.
+     */
     logsTable: string;
+    /**
+     * Full name of the Unity Catalog table for OpenTelemetry metrics.
+     */
     metricsTable: string;
+    /**
+     * Full name of the Unity Catalog table for OpenTelemetry traces (spans).
+     */
     tracesTable: string;
 }
 
@@ -8712,6 +10734,9 @@ export interface GetAppSpacesSpaceStatus {
 }
 
 export interface GetAppsApp {
+    /**
+     * attribute - the active deployment of the app.
+     */
     activeDeployment: outputs.GetAppsAppActiveDeployment;
     /**
      * attribute
@@ -8721,8 +10746,10 @@ export interface GetAppsApp {
      * The Budget Policy ID set for this resource.
      */
     budgetPolicyId?: string;
+    computeMaxInstances?: number;
+    computeMinInstances?: number;
     /**
-     * (Optional) A string specifying compute size for the App.
+     * A string specifying compute size for the App.
      */
     computeSize?: string;
     /**
@@ -8730,11 +10757,11 @@ export interface GetAppsApp {
      */
     computeStatus: outputs.GetAppsAppComputeStatus;
     /**
-     * The creation time of the app.
+     * The creation time of the deployment.
      */
     createTime: string;
     /**
-     * The email of the user that created the app.
+     * The email of the user that created the deployment.
      */
     creator: string;
     /**
@@ -8749,22 +10776,37 @@ export interface GetAppsApp {
      * The effective budget policy ID.
      */
     effectiveBudgetPolicyId: string;
+    /**
+     * The effective usage policy ID.
+     */
     effectiveUsagePolicyId: string;
     /**
      * A list of effective api scopes granted to the user access token.
      */
     effectiveUserApiScopes: string[];
+    /**
+     * attribute - Git repository configuration for app deployments.
+     */
     gitRepository?: outputs.GetAppsAppGitRepository;
     /**
      * Id of the job to grant permission on.
      */
     id: string;
     /**
-     * The name of Genie Space.
+     * The name of the app to grant permission on.
      */
     name: string;
+    /**
+     * The OAuth2 client ID of the app's integration, set when the app uses user authorization.
+     */
     oauth2AppClientId: string;
+    /**
+     * The unique ID of the OAuth2 integration associated with the app.
+     */
     oauth2AppIntegrationId: string;
+    /**
+     * attribute - the pending deployment of the app. Schema is identical to `activeDeployment`.
+     */
     pendingDeployment: outputs.GetAppsAppPendingDeployment;
     /**
      * A list of resources that the app have access to.
@@ -8782,11 +10824,20 @@ export interface GetAppsApp {
      * name of the app service principal
      */
     servicePrincipalName: string;
+    /**
+     * Name of the app space this app belongs to.
+     */
     space?: string;
+    /**
+     * A list of telemetry export destinations.
+     */
     telemetryExportDestinations?: outputs.GetAppsAppTelemetryExportDestination[];
+    /**
+     * The URL of the thumbnail image for the app.
+     */
     thumbnailUrl: string;
     /**
-     * The update time of the app.
+     * The update time of the deployment.
      */
     updateTime: string;
     /**
@@ -8794,43 +10845,67 @@ export interface GetAppsApp {
      */
     updater: string;
     /**
-     * The URL of the app once it is deployed.
+     * URL of the Git repository.
      */
     url: string;
+    /**
+     * The Usage Policy ID set for this resource.
+     */
     usagePolicyId?: string;
+    /**
+     * A list of api scopes granted to the user access token.
+     */
     userApiScopes?: string[];
 }
 
 export interface GetAppsAppActiveDeployment {
     commands?: string[];
     /**
-     * The creation time of the app.
+     * The creation time of the deployment.
      */
     createTime: string;
     /**
-     * The email of the user that created the app.
+     * The email of the user that created the deployment.
      */
     creator: string;
+    /**
+     * attribute
+     */
     deploymentArtifacts: outputs.GetAppsAppActiveDeploymentDeploymentArtifacts;
+    /**
+     * The unique ID of the deployment.
+     */
     deploymentId?: string;
     envVars?: outputs.GetAppsAppActiveDeploymentEnvVar[];
     gitSource?: outputs.GetAppsAppActiveDeploymentGitSource;
+    /**
+     * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
+     */
     mode?: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
+    /**
+     * attribute
+     */
     status: outputs.GetAppsAppActiveDeploymentStatus;
     /**
-     * The update time of the app.
+     * The update time of the deployment.
      */
     updateTime: string;
 }
 
 export interface GetAppsAppActiveDeploymentDeploymentArtifacts {
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
 }
 
 export interface GetAppsAppActiveDeploymentEnvVar {
     /**
-     * The name of Genie Space.
+     * The name of the app to grant permission on.
      */
     name?: string;
     value?: string;
@@ -8838,40 +10913,52 @@ export interface GetAppsAppActiveDeploymentEnvVar {
 }
 
 export interface GetAppsAppActiveDeploymentGitSource {
+    /**
+     * The resource path of the Lakebase Autoscaling branch (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
     branch?: string;
     commit?: string;
+    /**
+     * attribute - Git repository configuration for app deployments.
+     */
     gitRepository: outputs.GetAppsAppActiveDeploymentGitSourceGitRepository;
     resolvedCommit: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
     tag?: string;
 }
 
 export interface GetAppsAppActiveDeploymentGitSourceGitRepository {
+    /**
+     * Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     */
     provider: string;
     /**
-     * The URL of the app once it is deployed.
+     * URL of the Git repository.
      */
     url: string;
 }
 
 export interface GetAppsAppActiveDeploymentStatus {
     /**
-     * Application status message
+     * The status message of the deployment.
      */
     message: string;
     /**
-     * State of the application.
+     * The state of the deployment.
      */
     state: string;
 }
 
 export interface GetAppsAppAppStatus {
     /**
-     * Application status message
+     * The status message of the deployment.
      */
     message: string;
     /**
-     * State of the application.
+     * The state of the deployment.
      */
     state: string;
 }
@@ -8879,19 +10966,22 @@ export interface GetAppsAppAppStatus {
 export interface GetAppsAppComputeStatus {
     activeInstances: number;
     /**
-     * Application status message
+     * The status message of the deployment.
      */
     message: string;
     /**
-     * State of the application.
+     * The state of the deployment.
      */
     state: string;
 }
 
 export interface GetAppsAppGitRepository {
+    /**
+     * Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     */
     provider: string;
     /**
-     * The URL of the app once it is deployed.
+     * URL of the Git repository.
      */
     url: string;
 }
@@ -8899,33 +10989,51 @@ export interface GetAppsAppGitRepository {
 export interface GetAppsAppPendingDeployment {
     commands?: string[];
     /**
-     * The creation time of the app.
+     * The creation time of the deployment.
      */
     createTime: string;
     /**
-     * The email of the user that created the app.
+     * The email of the user that created the deployment.
      */
     creator: string;
+    /**
+     * attribute
+     */
     deploymentArtifacts: outputs.GetAppsAppPendingDeploymentDeploymentArtifacts;
+    /**
+     * The unique ID of the deployment.
+     */
     deploymentId?: string;
     envVars?: outputs.GetAppsAppPendingDeploymentEnvVar[];
     gitSource?: outputs.GetAppsAppPendingDeploymentGitSource;
+    /**
+     * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
+     */
     mode?: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
+    /**
+     * attribute
+     */
     status: outputs.GetAppsAppPendingDeploymentStatus;
     /**
-     * The update time of the app.
+     * The update time of the deployment.
      */
     updateTime: string;
 }
 
 export interface GetAppsAppPendingDeploymentDeploymentArtifacts {
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
 }
 
 export interface GetAppsAppPendingDeploymentEnvVar {
     /**
-     * The name of Genie Space.
+     * The name of the app to grant permission on.
      */
     name?: string;
     value?: string;
@@ -8933,43 +11041,61 @@ export interface GetAppsAppPendingDeploymentEnvVar {
 }
 
 export interface GetAppsAppPendingDeploymentGitSource {
+    /**
+     * The resource path of the Lakebase Autoscaling branch (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
     branch?: string;
     commit?: string;
+    /**
+     * attribute - Git repository configuration for app deployments.
+     */
     gitRepository: outputs.GetAppsAppPendingDeploymentGitSourceGitRepository;
     resolvedCommit: string;
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     */
     sourceCodePath?: string;
     tag?: string;
 }
 
 export interface GetAppsAppPendingDeploymentGitSourceGitRepository {
+    /**
+     * Git provider (case insensitive). Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     */
     provider: string;
     /**
-     * The URL of the app once it is deployed.
+     * URL of the Git repository.
      */
     url: string;
 }
 
 export interface GetAppsAppPendingDeploymentStatus {
     /**
-     * Application status message
+     * The status message of the deployment.
      */
     message: string;
     /**
-     * State of the application.
+     * The state of the deployment.
      */
     state: string;
 }
 
 export interface GetAppsAppResource {
+    /**
+     * attribute - reference to another Databricks App.
+     */
     app?: outputs.GetAppsAppResourceApp;
     /**
-     * attribute
+     * The resource path of a specific database within the branch (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`).
      */
     database?: outputs.GetAppsAppResourceDatabase;
     /**
      * The description of the resource.
      */
     description?: string;
+    /**
+     * attribute
+     */
     experiment?: outputs.GetAppsAppResourceExperiment;
     /**
      * attribute
@@ -8980,9 +11106,12 @@ export interface GetAppsAppResource {
      */
     job?: outputs.GetAppsAppResourceJob;
     /**
-     * The name of Genie Space.
+     * The name of the app to grant permission on.
      */
     name: string;
+    /**
+     * attribute
+     */
     postgres?: outputs.GetAppsAppResourcePostgres;
     /**
      * attribute
@@ -8997,18 +11126,18 @@ export interface GetAppsAppResource {
      */
     sqlWarehouse?: outputs.GetAppsAppResourceSqlWarehouse;
     /**
-     * attribute
+     * attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
      */
     ucSecurable?: outputs.GetAppsAppResourceUcSecurable;
 }
 
 export interface GetAppsAppResourceApp {
     /**
-     * The name of Genie Space.
+     * The name of the app to grant permission on.
      */
     name?: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission?: string;
 }
@@ -9023,26 +11152,29 @@ export interface GetAppsAppResourceDatabase {
      */
     instanceName: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission: string;
 }
 
 export interface GetAppsAppResourceExperiment {
+    /**
+     * The ID of the MLflow experiment to grant permission on.
+     */
     experimentId: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission: string;
 }
 
 export interface GetAppsAppResourceGenieSpace {
     /**
-     * The name of Genie Space.
+     * The name of the app to grant permission on.
      */
     name: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission: string;
     /**
@@ -9057,19 +11189,22 @@ export interface GetAppsAppResourceJob {
      */
     id: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission: string;
 }
 
 export interface GetAppsAppResourcePostgres {
+    /**
+     * The resource path of the Lakebase Autoscaling branch (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
     branch?: string;
     /**
-     * attribute
+     * The resource path of a specific database within the branch (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`).
      */
     database?: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission?: string;
 }
@@ -9080,7 +11215,7 @@ export interface GetAppsAppResourceSecret {
      */
     key: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission: string;
     /**
@@ -9091,11 +11226,11 @@ export interface GetAppsAppResourceSecret {
 
 export interface GetAppsAppResourceServingEndpoint {
     /**
-     * The name of Genie Space.
+     * The name of the app to grant permission on.
      */
     name: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission: string;
 }
@@ -9106,34 +11241,46 @@ export interface GetAppsAppResourceSqlWarehouse {
      */
     id: string;
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission: string;
 }
 
 export interface GetAppsAppResourceUcSecurable {
     /**
-     * Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      */
     permission: string;
     /**
-     * the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     * The full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
      */
     securableFullName: string;
     securableKind: string;
     /**
-     * the type of UC securable, i.e. `VOLUME`.
+     * The type of UC securable. Supported values are `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`.
      */
     securableType: string;
 }
 
 export interface GetAppsAppTelemetryExportDestination {
+    /**
+     * attribute
+     */
     unityCatalog?: outputs.GetAppsAppTelemetryExportDestinationUnityCatalog;
 }
 
 export interface GetAppsAppTelemetryExportDestinationUnityCatalog {
+    /**
+     * Full name of the Unity Catalog table for OpenTelemetry logs.
+     */
     logsTable: string;
+    /**
+     * Full name of the Unity Catalog table for OpenTelemetry metrics.
+     */
     metricsTable: string;
+    /**
+     * Full name of the Unity Catalog table for OpenTelemetry traces (spans).
+     */
     tracesTable: string;
 }
 
@@ -12059,6 +14206,15 @@ export interface GetDisasterRecoveryFailoverGroupsFailoverGroupWorkspaceSet {
 
 export interface GetDisasterRecoveryStableUrlsStableUrl {
     /**
+     * (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+     * currently linked to, in the format
+     * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+     * the stable URL is not attached to any failover group. Server-controlled:
+     * written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+     * DeleteFailoverGroup / UpdateFailoverGroup on unlink
+     */
+    failoverGroupName: string;
+    /**
      * (string) - The workspace this stable URL is initially bound to. Used only in Create
      * requests to associate the stable URL with a workspace. Not returned in
      * responses. Mirrors FailoverGroup.initial_primary_region semantics
@@ -12744,9 +14900,13 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionSum {
 
 export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow {
     /**
-     * (ContinuousWindow)
+     * (ContinuousWindow, deprecated)
      */
     continuous?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous;
+    /**
+     * (RollingWindow)
+     */
+    rolling?: outputs.GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling;
     /**
      * (SlidingWindow)
      */
@@ -12762,6 +14922,18 @@ export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWind
      * (string) - The offset of the continuous window (must be non-positive)
      */
     offset?: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling {
+    /**
+     * (string) - The delay applied to the end of the rolling window (must be non-negative).
+     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     */
+    delay?: string;
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
@@ -12879,7 +15051,9 @@ export interface GetFeatureEngineeringFeatureSourceDeltaTableSource {
      */
     filterCondition?: string;
     /**
-     * The full three-part name (catalog, schema, name) of the feature
+     * The full three-part name (catalog, schema, name) of the feature. This is the
+     * feature's resource identifier; the catalog_name, schema_name, and name fields
+     * below are OUTPUT_ONLY decomposed views of this value
      */
     fullName: string;
     /**
@@ -12969,9 +15143,13 @@ export interface GetFeatureEngineeringFeatureSourceRequestSourceFlatSchemaField 
 
 export interface GetFeatureEngineeringFeatureTimeWindow {
     /**
-     * (ContinuousWindow)
+     * (ContinuousWindow, deprecated)
      */
     continuous?: outputs.GetFeatureEngineeringFeatureTimeWindowContinuous;
+    /**
+     * (RollingWindow)
+     */
+    rolling?: outputs.GetFeatureEngineeringFeatureTimeWindowRolling;
     /**
      * (SlidingWindow)
      */
@@ -12987,6 +15165,18 @@ export interface GetFeatureEngineeringFeatureTimeWindowContinuous {
      * (string) - The offset of the continuous window (must be non-positive)
      */
     offset?: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeatureTimeWindowRolling {
+    /**
+     * (string) - The delay applied to the end of the rolling window (must be non-negative).
+     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     */
+    delay?: string;
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
@@ -13025,6 +15215,18 @@ export interface GetFeatureEngineeringFeatureTimeseriesColumn {
 
 export interface GetFeatureEngineeringFeaturesFeature {
     /**
+     * Name of parent catalog for features of interest
+     */
+    catalogName: string;
+    /**
+     * (string) - Time at which this feature was created
+     */
+    createdAt: string;
+    /**
+     * (string) - Username of the feature creator
+     */
+    createdBy: string;
+    /**
      * (string) - The description of the feature
      */
     description: string;
@@ -13058,9 +15260,22 @@ export interface GetFeatureEngineeringFeaturesFeature {
      */
     lineageContext: outputs.GetFeatureEngineeringFeaturesFeatureLineageContext;
     /**
+     * (string) - The name of the timeseries column. For Kafka sources, use dot-prefixed path notation to
+     * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
+     * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
+     * is what will be present in materialized tables and expected to match at query time.
+     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * backwards compatibility but is deprecated; migrate to dot notation
+     */
+    name: string;
+    /**
      * Configure the provider for management through account provider.
      */
     providerConfig?: outputs.GetFeatureEngineeringFeaturesFeatureProviderConfig;
+    /**
+     * Name of parent schema relative to its parent catalog
+     */
+    schemaName: string;
     /**
      * (DataSource) - The data source of the feature
      */
@@ -13259,9 +15474,13 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
 
 export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindow {
     /**
-     * (ContinuousWindow)
+     * (ContinuousWindow, deprecated)
      */
     continuous?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowContinuous;
+    /**
+     * (RollingWindow)
+     */
+    rolling?: outputs.GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRolling;
     /**
      * (SlidingWindow)
      */
@@ -13277,6 +15496,18 @@ export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunction
      * (string) - The offset of the continuous window (must be non-positive)
      */
     offset?: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureFunctionAggregationFunctionTimeWindowRolling {
+    /**
+     * (string) - The delay applied to the end of the rolling window (must be non-negative).
+     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     */
+    delay?: string;
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
@@ -13484,9 +15715,13 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceRequestSourceFlatSche
 
 export interface GetFeatureEngineeringFeaturesFeatureTimeWindow {
     /**
-     * (ContinuousWindow)
+     * (ContinuousWindow, deprecated)
      */
     continuous?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowContinuous;
+    /**
+     * (RollingWindow)
+     */
+    rolling?: outputs.GetFeatureEngineeringFeaturesFeatureTimeWindowRolling;
     /**
      * (SlidingWindow)
      */
@@ -13502,6 +15737,18 @@ export interface GetFeatureEngineeringFeaturesFeatureTimeWindowContinuous {
      * (string) - The offset of the continuous window (must be non-positive)
      */
     offset?: string;
+    /**
+     * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
+     */
+    windowDuration: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureTimeWindowRolling {
+    /**
+     * (string) - The delay applied to the end of the rolling window (must be non-negative).
+     * For example, delay=1d shifts the window end 1 day before the evaluation time
+     */
+    delay?: string;
     /**
      * (string) - The duration of each tumbling window (non-overlapping, fixed-duration windows)
      */
@@ -13547,9 +15794,83 @@ export interface GetFeatureEngineeringFeaturesProviderConfig {
 
 export interface GetFeatureEngineeringKafkaConfigAuthConfig {
     /**
+     * (MtlsConfig) - Mutual-TLS authentication. See MtlsConfig
+     */
+    mtlsConfig?: outputs.GetFeatureEngineeringKafkaConfigAuthConfigMtlsConfig;
+    /**
      * (string) - Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
      */
     ucServiceCredentialName?: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigAuthConfigMtlsConfig {
+    /**
+     * (boolean) - Set to true only when the broker certificate's SAN intentionally does not match
+     * the connection endpoint — for example when reaching the cluster through a
+     * PrivateLink endpoint whose DNS name is not in the broker certificate. Skipping
+     * the hostname check removes a defense against man-in-the-middle attacks; do not
+     * enable casually. mTLS client authentication is unaffected by this option.
+     */
+    disableHostnameVerification?: boolean;
+    /**
+     * (SecretScopeReference) - Secret-scope reference for the private key password. Often the same value as the
+     * keystore password (keytool's default), but provided as a separate field because
+     * Apache Kafka requires it as a distinct option (kafka.ssl.key.password)
+     */
+    keyPasswordRef: outputs.GetFeatureEngineeringKafkaConfigAuthConfigMtlsConfigKeyPasswordRef;
+    /**
+     * (string) - Unity Catalog volume path to the JKS keystore file containing the client certificate
+     * and private key. e.g. "/Volumes/<catalog>/<schema>/<volume>/client.jks". The
+     * materialization compute must have read permission on this volume
+     */
+    keystoreLocation: string;
+    /**
+     * (SecretScopeReference) - Secret-scope reference for the JKS keystore password
+     */
+    keystorePasswordRef: outputs.GetFeatureEngineeringKafkaConfigAuthConfigMtlsConfigKeystorePasswordRef;
+    /**
+     * (string) - Unity Catalog volume path to the JKS truststore file containing the CA certificate(s)
+     * trusted to verify the Kafka broker's server certificate.
+     * e.g. "/Volumes/<catalog>/<schema>/<volume>/truststore.jks"
+     */
+    truststoreLocation: string;
+    /**
+     * (SecretScopeReference) - Secret-scope reference for the JKS truststore password
+     */
+    truststorePasswordRef: outputs.GetFeatureEngineeringKafkaConfigAuthConfigMtlsConfigTruststorePasswordRef;
+}
+
+export interface GetFeatureEngineeringKafkaConfigAuthConfigMtlsConfigKeyPasswordRef {
+    /**
+     * (string) - The key within the scope
+     */
+    key: string;
+    /**
+     * (string) - The Databricks secret scope name
+     */
+    scope: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigAuthConfigMtlsConfigKeystorePasswordRef {
+    /**
+     * (string) - The key within the scope
+     */
+    key: string;
+    /**
+     * (string) - The Databricks secret scope name
+     */
+    scope: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigAuthConfigMtlsConfigTruststorePasswordRef {
+    /**
+     * (string) - The key within the scope
+     */
+    key: string;
+    /**
+     * (string) - The Databricks secret scope name
+     */
+    scope: string;
 }
 
 export interface GetFeatureEngineeringKafkaConfigBackfillSource {
@@ -13679,9 +16000,83 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfig {
 
 export interface GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfig {
     /**
+     * (MtlsConfig) - Mutual-TLS authentication. See MtlsConfig
+     */
+    mtlsConfig?: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfigMtlsConfig;
+    /**
      * (string) - Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
      */
     ucServiceCredentialName?: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfigMtlsConfig {
+    /**
+     * (boolean) - Set to true only when the broker certificate's SAN intentionally does not match
+     * the connection endpoint — for example when reaching the cluster through a
+     * PrivateLink endpoint whose DNS name is not in the broker certificate. Skipping
+     * the hostname check removes a defense against man-in-the-middle attacks; do not
+     * enable casually. mTLS client authentication is unaffected by this option.
+     */
+    disableHostnameVerification?: boolean;
+    /**
+     * (SecretScopeReference) - Secret-scope reference for the private key password. Often the same value as the
+     * keystore password (keytool's default), but provided as a separate field because
+     * Apache Kafka requires it as a distinct option (kafka.ssl.key.password)
+     */
+    keyPasswordRef: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfigMtlsConfigKeyPasswordRef;
+    /**
+     * (string) - Unity Catalog volume path to the JKS keystore file containing the client certificate
+     * and private key. e.g. "/Volumes/<catalog>/<schema>/<volume>/client.jks". The
+     * materialization compute must have read permission on this volume
+     */
+    keystoreLocation: string;
+    /**
+     * (SecretScopeReference) - Secret-scope reference for the JKS keystore password
+     */
+    keystorePasswordRef: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfigMtlsConfigKeystorePasswordRef;
+    /**
+     * (string) - Unity Catalog volume path to the JKS truststore file containing the CA certificate(s)
+     * trusted to verify the Kafka broker's server certificate.
+     * e.g. "/Volumes/<catalog>/<schema>/<volume>/truststore.jks"
+     */
+    truststoreLocation: string;
+    /**
+     * (SecretScopeReference) - Secret-scope reference for the JKS truststore password
+     */
+    truststorePasswordRef: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfigMtlsConfigTruststorePasswordRef;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfigMtlsConfigKeyPasswordRef {
+    /**
+     * (string) - The key within the scope
+     */
+    key: string;
+    /**
+     * (string) - The Databricks secret scope name
+     */
+    scope: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfigMtlsConfigKeystorePasswordRef {
+    /**
+     * (string) - The key within the scope
+     */
+    key: string;
+    /**
+     * (string) - The Databricks secret scope name
+     */
+    scope: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfigMtlsConfigTruststorePasswordRef {
+    /**
+     * (string) - The key within the scope
+     */
+    key: string;
+    /**
+     * (string) - The Databricks secret scope name
+     */
+    scope: string;
 }
 
 export interface GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSource {
@@ -13774,6 +16169,13 @@ export interface GetFeatureEngineeringKafkaConfigsProviderConfig {
     workspaceId: string;
 }
 
+export interface GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger {
+    /**
+     * (string) - The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight)
+     */
+    cronExpression?: string;
+}
+
 export interface GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig {
     /**
      * (string) - The Unity Catalog catalog name. This name is also used as the Lakebase logical database name.
@@ -13821,11 +16223,25 @@ export interface GetFeatureEngineeringMaterializedFeatureProviderConfig {
     workspaceId: string;
 }
 
+export interface GetFeatureEngineeringMaterializedFeatureStreamingMode {
+    /**
+     * (string) - The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
+     */
+    mode?: string;
+}
+
+export interface GetFeatureEngineeringMaterializedFeatureTableTrigger {
+}
+
 export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
     /**
      * (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
      */
     cronSchedule: string;
+    /**
+     * (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
+     */
+    cronScheduleTrigger: outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureCronScheduleTrigger;
     /**
      * Filter by feature name. If specified, only materialized features materialized from this feature will be returned
      */
@@ -13840,15 +16256,15 @@ export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
      */
     lastMaterializationTime: string;
     /**
-     * (string) - Unique identifier for the materialized feature
+     * (string) - Server-assigned unique identifier for the materialized feature
      */
     materializedFeatureId: string;
     /**
-     * (OfflineStoreConfig)
+     * (OfflineStoreConfig) - Destination for writing feature values to an offline Delta table
      */
     offlineStoreConfig: outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig;
     /**
-     * (OnlineStoreConfig)
+     * (OnlineStoreConfig) - Destination for writing feature values to an online Lakebase table
      */
     onlineStoreConfig: outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfig;
     /**
@@ -13860,9 +16276,26 @@ export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
      */
     providerConfig?: outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureProviderConfig;
     /**
+     * (StreamingMode) - The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+     * sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+     * for ETL and analytics workloads
+     */
+    streamingMode: outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureStreamingMode;
+    /**
      * (string) - The fully qualified Unity Catalog path to the table containing the materialized feature (Delta table or Lakebase table). Output only
      */
     tableName: string;
+    /**
+     * (TableTrigger) - A trigger that fires when the upstream source table changes
+     */
+    tableTrigger: outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureTableTrigger;
+}
+
+export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureCronScheduleTrigger {
+    /**
+     * (string) - The cron expression defining the schedule (e.g., "0 0 * * *" for daily at midnight)
+     */
+    cronExpression?: string;
 }
 
 export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOfflineStoreConfig {
@@ -13910,6 +16343,16 @@ export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeaturePro
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: string;
+}
+
+export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureStreamingMode {
+    /**
+     * (string) - The type of streaming mode used by the materialization pipeline. Possible values are: `STREAMING_MODE_TYPE_MBM`, `STREAMING_MODE_TYPE_RTM`
+     */
+    mode?: string;
+}
+
+export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureTableTrigger {
 }
 
 export interface GetFeatureEngineeringMaterializedFeaturesProviderConfig {
@@ -16028,7 +18471,7 @@ export interface GetKnowledgeAssistantsKnowledgeAssistant {
      */
     experimentId: string;
     /**
-     * (string) - The universally unique identifier (UUID) of the Knowledge Assistant
+     * (string, deprecated) - Deprecated: use knowledgeAssistantId instead
      */
     id: string;
     /**
@@ -16801,18 +19244,22 @@ export interface GetPostgresBranchSpec {
 
 export interface GetPostgresBranchStatus {
     /**
-     * (string) - The short identifier of the branch, suitable for showing to the users.
-     * For a branch with name `projects/my-project/branches/my-branch`, the branchId is `my-branch`.
+     * (string) - Part of the resource name
      */
     branchId: string;
     /**
-     * (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     * (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      */
     currentState: string;
     /**
      * (boolean) - Whether the branch is the project's default branch
      */
     default: boolean;
+    /**
+     * (string) - A timestamp indicating when the branch was deleted.
+     * Empty if the branch is not deleted
+     */
+    deleteTime: string;
     /**
      * (string) - Absolute expiration time for the branch. Empty if expiration is disabled
      */
@@ -16826,9 +19273,14 @@ export interface GetPostgresBranchStatus {
      */
     logicalSizeBytes: number;
     /**
-     * (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     * (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      */
     pendingState: string;
+    /**
+     * (string) - A timestamp indicating when the branch is scheduled to be purged.
+     * Empty if the branch is not deleted, otherwise set to a timestamp in the future
+     */
+    purgeTime: string;
     /**
      * (string) - The name of the source branch from which this branch was created.
      * Format: projects/{project_id}/branches/{branch_id}
@@ -16929,18 +19381,22 @@ export interface GetPostgresBranchesBranchSpec {
 
 export interface GetPostgresBranchesBranchStatus {
     /**
-     * (string) - The short identifier of the branch, suitable for showing to the users.
-     * For a branch with name `projects/my-project/branches/my-branch`, the branchId is `my-branch`.
+     * (string) - Part of the resource name
      */
     branchId: string;
     /**
-     * (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     * (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      */
     currentState: string;
     /**
      * (boolean) - Whether the branch is the project's default branch
      */
     default: boolean;
+    /**
+     * (string) - A timestamp indicating when the branch was deleted.
+     * Empty if the branch is not deleted
+     */
+    deleteTime: string;
     /**
      * (string) - Absolute expiration time for the branch. Empty if expiration is disabled
      */
@@ -16954,9 +19410,14 @@ export interface GetPostgresBranchesBranchStatus {
      */
     logicalSizeBytes: number;
     /**
-     * (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     * (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      */
     pendingState: string;
+    /**
+     * (string) - A timestamp indicating when the branch is scheduled to be purged.
+     * Empty if the branch is not deleted, otherwise set to a timestamp in the future
+     */
+    purgeTime: string;
     /**
      * (string) - The name of the source branch from which this branch was created.
      * Format: projects/{project_id}/branches/{branch_id}
@@ -17013,11 +19474,6 @@ export interface GetPostgresCatalogStatus {
      */
     branch: string;
     /**
-     * (string) - The short identifier of the catalog, suitable for showing to the users.
-     * For a catalog with name `catalogs/my-catalog`, the catalogId is `my-catalog`.
-     */
-    catalogId: string;
-    /**
      * (string) - The name of the Postgres database associated with the catalog
      */
     postgresDatabase: string;
@@ -17048,9 +19504,7 @@ export interface GetPostgresDatabaseSpec {
 
 export interface GetPostgresDatabaseStatus {
     /**
-     * (string) - The short identifier of the database, suitable for showing to the users.
-     * For a database with name `projects/my-project/branches/my-branch/databases/my-db`,
-     * the databaseId is `my-db`.
+     * (string) - Part of the resource name
      */
     databaseId: string;
     /**
@@ -17118,9 +19572,7 @@ export interface GetPostgresDatabasesDatabaseSpec {
 
 export interface GetPostgresDatabasesDatabaseStatus {
     /**
-     * (string) - The short identifier of the database, suitable for showing to the users.
-     * For a database with name `projects/my-project/branches/my-branch/databases/my-db`,
-     * the databaseId is `my-db`.
+     * (string) - Part of the resource name
      */
     databaseId: string;
     /**
@@ -17237,9 +19689,7 @@ export interface GetPostgresEndpointStatus {
      */
     disabled: boolean;
     /**
-     * (string) - The short identifier of the endpoint, suitable for showing to the users.
-     * For an endpoint with name `projects/my-project/branches/my-branch/endpoints/my-endpoint`,
-     * the endpointId is `my-endpoint`.
+     * (string) - Part of the resource name
      */
     endpointId: string;
     /**
@@ -17441,9 +19891,7 @@ export interface GetPostgresEndpointsEndpointStatus {
      */
     disabled: boolean;
     /**
-     * (string) - The short identifier of the endpoint, suitable for showing to the users.
-     * For an endpoint with name `projects/my-project/branches/my-branch/endpoints/my-endpoint`,
-     * the endpointId is `my-endpoint`.
+     * (string) - Part of the resource name
      */
     endpointId: string;
     /**
@@ -17667,8 +20115,7 @@ export interface GetPostgresProjectStatus {
      */
     pgVersion: number;
     /**
-     * (string) - The short identifier of the project, suitable for showing to the users.
-     * For a project with name `projects/my-project`, the projectId is `my-project`.
+     * (string) - Part of the resource name
      */
     projectId: string;
     /**
@@ -17912,8 +20359,7 @@ export interface GetPostgresProjectsProjectStatus {
      */
     pgVersion: number;
     /**
-     * (string) - The short identifier of the project, suitable for showing to the users.
-     * For a project with name `projects/my-project`, the projectId is `my-project`.
+     * (string) - Part of the resource name
      */
     projectId: string;
     /**
@@ -18034,9 +20480,7 @@ export interface GetPostgresRoleStatus {
      */
     postgresRole?: string;
     /**
-     * (string) - The short identifier of the role, suitable for showing to the users.
-     * For a role with name `projects/my-project/branches/my-branch/roles/my-role`,
-     * the roleId is `my-role`.
+     * (string) - Part of the resource name
      */
     roleId: string;
 }
@@ -18163,9 +20607,7 @@ export interface GetPostgresRolesRoleStatus {
      */
     postgresRole?: string;
     /**
-     * (string) - The short identifier of the role, suitable for showing to the users.
-     * For a role with name `projects/my-project/branches/my-branch/roles/my-role`,
-     * the roleId is `my-role`.
+     * (string) - Part of the resource name
      */
     roleId: string;
 }
@@ -19683,7 +22125,8 @@ export interface GetSupervisorAgentToolApp {
 
 export interface GetSupervisorAgentToolGenieSpace {
     /**
-     * (string) - The ID of the genie space
+     * (string, deprecated) - Deprecated: use spaceId instead. Still REQUIRED for backward compatibility
+     * until a future API version removes it
      */
     id: string;
 }
@@ -19751,7 +22194,8 @@ export interface GetSupervisorAgentToolsTool {
      */
     genieSpace: outputs.GetSupervisorAgentToolsToolGenieSpace;
     /**
-     * (string) - The ID of the genie space
+     * (string, deprecated) - Deprecated: use spaceId instead. Still REQUIRED for backward compatibility
+     * until a future API version removes it
      */
     id: string;
     /**
@@ -19771,7 +22215,7 @@ export interface GetSupervisorAgentToolsTool {
      */
     toolId: string;
     /**
-     * (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "app", "volume", "lakeviewDashboard", "servingEndpoint", "ucTable", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "webSearch"
+     * (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "webSearch", "skill". The legacy values "lakeviewDashboard" and "ucTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
      */
     toolType: string;
     /**
@@ -19797,7 +22241,8 @@ export interface GetSupervisorAgentToolsToolApp {
 
 export interface GetSupervisorAgentToolsToolGenieSpace {
     /**
-     * (string) - The ID of the genie space
+     * (string, deprecated) - Deprecated: use spaceId instead. Still REQUIRED for backward compatibility
+     * until a future API version removes it
      */
     id: string;
 }
@@ -20501,6 +22946,13 @@ export interface GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains {
     approvedDomains?: string[];
 }
 
+export interface GetWorkspaceSettingV2AllowedAppsUserApiScopes {
+    /**
+     * (list of string)
+     */
+    allowedScopes?: string[];
+}
+
 export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace {
     /**
      * (boolean)
@@ -20593,6 +23045,13 @@ export interface GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDom
     approvedDomains?: string[];
 }
 
+export interface GetWorkspaceSettingV2EffectiveAllowedAppsUserApiScopes {
+    /**
+     * (list of string)
+     */
+    allowedScopes?: string[];
+}
+
 export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace {
     /**
      * (boolean)
@@ -20678,6 +23137,13 @@ export interface GetWorkspaceSettingV2EffectiveIntegerVal {
     value?: number;
 }
 
+export interface GetWorkspaceSettingV2EffectiveOperationalEmailCustomRecipient {
+    /**
+     * (string)
+     */
+    email?: string;
+}
+
 export interface GetWorkspaceSettingV2EffectivePersonalCompute {
     /**
      * (string) - Represents a generic string value
@@ -20709,6 +23175,13 @@ export interface GetWorkspaceSettingV2IntegerVal {
      * (string) - Represents a generic string value
      */
     value?: number;
+}
+
+export interface GetWorkspaceSettingV2OperationalEmailCustomRecipient {
+    /**
+     * (string)
+     */
+    email?: string;
 }
 
 export interface GetWorkspaceSettingV2PersonalCompute {
@@ -21916,6 +24389,7 @@ export interface JobTask {
     notificationSettings?: outputs.JobTaskNotificationSettings;
     pipelineTask?: outputs.JobTaskPipelineTask;
     powerBiTask?: outputs.JobTaskPowerBiTask;
+    pythonOperatorTask?: outputs.JobTaskPythonOperatorTask;
     pythonWheelTask?: outputs.JobTaskPythonWheelTask;
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
@@ -22232,6 +24706,7 @@ export interface JobTaskForEachTaskTask {
     notificationSettings?: outputs.JobTaskForEachTaskTaskNotificationSettings;
     pipelineTask?: outputs.JobTaskForEachTaskTaskPipelineTask;
     powerBiTask?: outputs.JobTaskForEachTaskTaskPowerBiTask;
+    pythonOperatorTask?: outputs.JobTaskForEachTaskTaskPythonOperatorTask;
     pythonWheelTask?: outputs.JobTaskForEachTaskTaskPythonWheelTask;
     /**
      * (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
@@ -22842,10 +25317,15 @@ export interface JobTaskForEachTaskTaskPipelineTask {
      * > The following configuration blocks are only supported inside a `task` block
      */
     fullRefresh?: boolean;
+    fullRefreshSelections?: string[];
+    parameters?: {[key: string]: string};
     /**
      * The pipeline's unique ID.
      */
     pipelineId: string;
+    refreshFlowSelections?: string[];
+    refreshSelections?: string[];
+    resetCheckpointSelections?: string[];
 }
 
 export interface JobTaskForEachTaskTaskPowerBiTask {
@@ -22913,6 +25393,22 @@ export interface JobTaskForEachTaskTaskPowerBiTaskTable {
     storageMode?: string;
 }
 
+export interface JobTaskForEachTaskTaskPythonOperatorTask {
+    main?: string;
+    parameters?: outputs.JobTaskForEachTaskTaskPythonOperatorTaskParameter[];
+}
+
+export interface JobTaskForEachTaskTaskPythonOperatorTaskParameter {
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
+    name?: string;
+    /**
+     * integer value used to compare to the given metric.
+     */
+    value?: string;
+}
+
 export interface JobTaskForEachTaskTaskPythonWheelTask {
     /**
      * Python function as entry point for the task
@@ -22958,6 +25454,10 @@ export interface JobTaskForEachTaskTaskRunJobTaskPipelineParams {
      * > The following configuration blocks are only supported inside a `task` block
      */
     fullRefresh?: boolean;
+    fullRefreshSelections?: string[];
+    refreshFlowSelections?: string[];
+    refreshSelections?: string[];
+    resetCheckpointSelections?: string[];
 }
 
 export interface JobTaskForEachTaskTaskSparkJarTask {
@@ -23578,10 +26078,15 @@ export interface JobTaskPipelineTask {
      * > The following configuration blocks are only supported inside a `task` block
      */
     fullRefresh?: boolean;
+    fullRefreshSelections?: string[];
+    parameters?: {[key: string]: string};
     /**
      * The pipeline's unique ID.
      */
     pipelineId: string;
+    refreshFlowSelections?: string[];
+    refreshSelections?: string[];
+    resetCheckpointSelections?: string[];
 }
 
 export interface JobTaskPowerBiTask {
@@ -23649,6 +26154,22 @@ export interface JobTaskPowerBiTaskTable {
     storageMode?: string;
 }
 
+export interface JobTaskPythonOperatorTask {
+    main?: string;
+    parameters?: outputs.JobTaskPythonOperatorTaskParameter[];
+}
+
+export interface JobTaskPythonOperatorTaskParameter {
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
+    name?: string;
+    /**
+     * integer value used to compare to the given metric.
+     */
+    value?: string;
+}
+
 export interface JobTaskPythonWheelTask {
     /**
      * Python function as entry point for the task
@@ -23694,6 +26215,10 @@ export interface JobTaskRunJobTaskPipelineParams {
      * > The following configuration blocks are only supported inside a `task` block
      */
     fullRefresh?: boolean;
+    fullRefreshSelections?: string[];
+    refreshFlowSelections?: string[];
+    refreshSelections?: string[];
+    resetCheckpointSelections?: string[];
 }
 
 export interface JobTaskSparkJarTask {
@@ -25391,11 +27916,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.115.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.116.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.115.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.116.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -25462,11 +27987,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.115.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.116.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.115.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.116.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -26083,6 +28608,7 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptions {
     gdriveOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptions;
     googleAdsOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptions;
     jiraOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptions;
+    kafkaOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptions;
     metaAdsOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions;
     outlookOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptions;
     sharepointOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptions;
@@ -26132,6 +28658,48 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAd
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptions {
     includeJiraSpaces?: string[];
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptions {
+    clientConfig?: {[key: string]: string};
+    keyTransformer?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformer;
+    maxOffsetsPerTrigger?: number;
+    startingOffset?: string;
+    topicPattern?: string;
+    topics?: string[];
+    valueTransformer?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformer;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformer {
+    format?: string;
+    jsonOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptions;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsKeyTransformerJsonOptions {
+    asVariant?: boolean;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: string;
+    schemaEvolutionMode?: string;
+    schemaFilePath?: string;
+    schemaHints?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformer {
+    format?: string;
+    jsonOptions?: outputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerJsonOptions;
+}
+
+export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsValueTransformerJsonOptions {
+    asVariant?: boolean;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: string;
+    schemaEvolutionMode?: string;
+    schemaFilePath?: string;
+    schemaHints?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptions {
@@ -26256,6 +28824,7 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptions {
     gdriveOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions;
     googleAdsOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions;
     jiraOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsJiraOptions;
+    kafkaOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptions;
     metaAdsOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions;
     outlookOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions;
     sharepointOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions;
@@ -26305,6 +28874,48 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAds
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsJiraOptions {
     includeJiraSpaces?: string[];
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptions {
+    clientConfig?: {[key: string]: string};
+    keyTransformer?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformer;
+    maxOffsetsPerTrigger?: number;
+    startingOffset?: string;
+    topicPattern?: string;
+    topics?: string[];
+    valueTransformer?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformer;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformer {
+    format?: string;
+    jsonOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptions;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsKeyTransformerJsonOptions {
+    asVariant?: boolean;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: string;
+    schemaEvolutionMode?: string;
+    schemaFilePath?: string;
+    schemaHints?: string;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformer {
+    format?: string;
+    jsonOptions?: outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerJsonOptions;
+}
+
+export interface PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptionsValueTransformerJsonOptions {
+    asVariant?: boolean;
+    /**
+     * The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
+     */
+    schema?: string;
+    schemaEvolutionMode?: string;
+    schemaFilePath?: string;
+    schemaHints?: string;
 }
 
 export interface PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions {
@@ -26679,13 +29290,18 @@ export interface PostgresBranchStatus {
      */
     branchId: string;
     /**
-     * (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     * (string) - The branch's state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      */
     currentState: string;
     /**
      * (boolean) - Whether the branch is the project's default branch
      */
     default: boolean;
+    /**
+     * (string) - A timestamp indicating when the branch was deleted.
+     * Empty if the branch is not deleted
+     */
+    deleteTime: string;
     /**
      * (string) - Absolute expiration time for the branch. Empty if expiration is disabled
      */
@@ -26699,9 +29315,14 @@ export interface PostgresBranchStatus {
      */
     logicalSizeBytes: number;
     /**
-     * (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     * (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      */
     pendingState: string;
+    /**
+     * (string) - A timestamp indicating when the branch is scheduled to be purged.
+     * Empty if the branch is not deleted, otherwise set to a timestamp in the future
+     */
+    purgeTime: string;
     /**
      * (string) - The name of the source branch from which this branch was created.
      * Format: projects/{project_id}/branches/{branch_id}
@@ -26752,11 +29373,6 @@ export interface PostgresCatalogStatus {
      * (string) - The resource path of the branch associated with the catalog.
      */
     branch: string;
-    /**
-     * The ID in the Unity Catalog.
-     * It becomes the full resource name, for example "myCatalog" becomes "catalogs/my_catalog"
-     */
-    catalogId: string;
     /**
      * (string) - The name of the Postgres database associated with the catalog
      */
@@ -28648,9 +31264,6 @@ export interface VectorSearchEndpointScalingInfo {
 
 export interface VectorSearchIndexDeltaSyncIndexSpec {
     columnsToIndices?: string[];
-    /**
-     * list of columns to sync. If not specified, all columns are syncronized.
-     */
     columnsToSyncs?: string[];
     /**
      * array of objects representing columns that contain the embedding source.  Each entry consists of:
@@ -28826,6 +31439,10 @@ export interface WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains {
     approvedDomains?: string[];
 }
 
+export interface WorkspaceSettingV2AllowedAppsUserApiScopes {
+    allowedScopes?: string[];
+}
+
 export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspace {
     canToggle?: boolean;
     enabled?: boolean;
@@ -28885,6 +31502,10 @@ export interface WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomain
     approvedDomains?: string[];
 }
 
+export interface WorkspaceSettingV2EffectiveAllowedAppsUserApiScopes {
+    allowedScopes?: string[];
+}
+
 export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace {
     canToggle?: boolean;
     enabled?: boolean;
@@ -28937,6 +31558,10 @@ export interface WorkspaceSettingV2EffectiveIntegerVal {
     value?: number;
 }
 
+export interface WorkspaceSettingV2EffectiveOperationalEmailCustomRecipient {
+    email?: string;
+}
+
 export interface WorkspaceSettingV2EffectivePersonalCompute {
     value?: string;
 }
@@ -28959,6 +31584,10 @@ export interface WorkspaceSettingV2EffectiveStringVal {
 
 export interface WorkspaceSettingV2IntegerVal {
     value?: number;
+}
+
+export interface WorkspaceSettingV2OperationalEmailCustomRecipient {
+    email?: string;
 }
 
 export interface WorkspaceSettingV2PersonalCompute {

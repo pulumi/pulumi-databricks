@@ -15,31 +15,47 @@ public final class AppResourcePostgresArgs extends com.pulumi.resources.Resource
 
     public static final AppResourcePostgresArgs Empty = new AppResourcePostgresArgs();
 
+    /**
+     * The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     * 
+     */
     @Import(name="branch")
     private @Nullable Output<String> branch;
 
+    /**
+     * @return The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     * 
+     */
     public Optional<Output<String>> branch() {
         return Optional.ofNullable(this.branch);
     }
 
     /**
-     * attribute
+     * The resource path of a specific database within the branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`). If omitted, permission applies to the branch.
      * 
      */
     @Import(name="database")
     private @Nullable Output<String> database;
 
     /**
-     * @return attribute
+     * @return The resource path of a specific database within the branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`). If omitted, permission applies to the branch.
      * 
      */
     public Optional<Output<String>> database() {
         return Optional.ofNullable(this.database);
     }
 
+    /**
+     * Permission to grant on the Lakebase Autoscaling branch or database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * 
+     */
     @Import(name="permission")
     private @Nullable Output<String> permission;
 
+    /**
+     * @return Permission to grant on the Lakebase Autoscaling branch or database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * 
+     */
     public Optional<Output<String>> permission() {
         return Optional.ofNullable(this.permission);
     }
@@ -70,17 +86,29 @@ public final class AppResourcePostgresArgs extends com.pulumi.resources.Resource
             $ = new AppResourcePostgresArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param branch The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder branch(@Nullable Output<String> branch) {
             $.branch = branch;
             return this;
         }
 
+        /**
+         * @param branch The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder branch(String branch) {
             return branch(Output.of(branch));
         }
 
         /**
-         * @param database attribute
+         * @param database The resource path of a specific database within the branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`). If omitted, permission applies to the branch.
          * 
          * @return builder
          * 
@@ -91,7 +119,7 @@ public final class AppResourcePostgresArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param database attribute
+         * @param database The resource path of a specific database within the branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`). If omitted, permission applies to the branch.
          * 
          * @return builder
          * 
@@ -100,11 +128,23 @@ public final class AppResourcePostgresArgs extends com.pulumi.resources.Resource
             return database(Output.of(database));
         }
 
+        /**
+         * @param permission Permission to grant on the Lakebase Autoscaling branch or database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(@Nullable Output<String> permission) {
             $.permission = permission;
             return this;
         }
 
+        /**
+         * @param permission Permission to grant on the Lakebase Autoscaling branch or database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permission(String permission) {
             return permission(Output.of(permission));
         }

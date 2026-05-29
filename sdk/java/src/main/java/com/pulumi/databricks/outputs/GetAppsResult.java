@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsResult {
+    /**
+     * @return attribute - reference to another Databricks App.
+     * 
+     */
     private List<GetAppsApp> apps;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,6 +28,10 @@ public final class GetAppsResult {
     private @Nullable GetAppsProviderConfig providerConfig;
 
     private GetAppsResult() {}
+    /**
+     * @return attribute - reference to another Databricks App.
+     * 
+     */
     public List<GetAppsApp> apps() {
         return this.apps;
     }

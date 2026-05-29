@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppResourceExperimentArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the MLflow experiment to grant permission on.
+        /// </summary>
         [Input("experimentId", required: true)]
         public Input<string> ExperimentId { get; set; } = null!;
 
+        /// <summary>
+        /// Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+        /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 

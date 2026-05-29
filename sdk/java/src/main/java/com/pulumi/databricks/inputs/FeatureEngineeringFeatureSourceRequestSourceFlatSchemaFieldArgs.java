@@ -29,9 +29,17 @@ public final class FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldAr
         return this.dataType;
     }
 
+    /**
+     * (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -82,11 +90,23 @@ public final class FeatureEngineeringFeatureSourceRequestSourceFlatSchemaFieldAr
             return dataType(Output.of(dataType));
         }
 
+        /**
+         * @param name (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

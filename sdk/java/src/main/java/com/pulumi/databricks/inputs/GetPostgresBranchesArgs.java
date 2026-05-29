@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.GetPostgresBranchesProviderConfigArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -65,12 +66,32 @@ public final class GetPostgresBranchesArgs extends com.pulumi.resources.InvokeAr
         return Optional.ofNullable(this.providerConfig);
     }
 
+    /**
+     * Whether to include soft-deleted branches in the response.
+     * When true, deleted branches are included alongside active branches.
+     * Purged branches are never returned
+     * 
+     */
+    @Import(name="showDeleted")
+    private @Nullable Output<Boolean> showDeleted;
+
+    /**
+     * @return Whether to include soft-deleted branches in the response.
+     * When true, deleted branches are included alongside active branches.
+     * Purged branches are never returned
+     * 
+     */
+    public Optional<Output<Boolean>> showDeleted() {
+        return Optional.ofNullable(this.showDeleted);
+    }
+
     private GetPostgresBranchesArgs() {}
 
     private GetPostgresBranchesArgs(GetPostgresBranchesArgs $) {
         this.pageSize = $.pageSize;
         this.parent = $.parent;
         this.providerConfig = $.providerConfig;
+        this.showDeleted = $.showDeleted;
     }
 
     public static Builder builder() {
@@ -154,6 +175,31 @@ public final class GetPostgresBranchesArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder providerConfig(GetPostgresBranchesProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
+        }
+
+        /**
+         * @param showDeleted Whether to include soft-deleted branches in the response.
+         * When true, deleted branches are included alongside active branches.
+         * Purged branches are never returned
+         * 
+         * @return builder
+         * 
+         */
+        public Builder showDeleted(@Nullable Output<Boolean> showDeleted) {
+            $.showDeleted = showDeleted;
+            return this;
+        }
+
+        /**
+         * @param showDeleted Whether to include soft-deleted branches in the response.
+         * When true, deleted branches are included alongside active branches.
+         * Purged branches are never returned
+         * 
+         * @return builder
+         * 
+         */
+        public Builder showDeleted(Boolean showDeleted) {
+            return showDeleted(Output.of(showDeleted));
         }
 
         public GetPostgresBranchesArgs build() {

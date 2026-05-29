@@ -29,7 +29,9 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? FilterCondition;
         /// <summary>
-        /// The full three-part name (catalog, schema, name) of the feature
+        /// The full three-part name (catalog, schema, name) of the feature. This is the
+        /// feature's resource identifier; the catalog_name, schema_name, and name fields
+        /// below are OUTPUT_ONLY decomposed views of this value
         /// </summary>
         public readonly string FullName;
         /// <summary>

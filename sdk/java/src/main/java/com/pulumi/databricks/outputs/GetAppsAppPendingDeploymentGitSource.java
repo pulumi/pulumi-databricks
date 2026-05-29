@@ -13,26 +13,50 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppsAppPendingDeploymentGitSource {
+    /**
+     * @return The resource path of the Lakebase Autoscaling branch (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     * 
+     */
     private @Nullable String branch;
     private @Nullable String commit;
+    /**
+     * @return attribute - Git repository configuration for app deployments.
+     * 
+     */
     private GetAppsAppPendingDeploymentGitSourceGitRepository gitRepository;
     private String resolvedCommit;
+    /**
+     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
     private @Nullable String sourceCodePath;
     private @Nullable String tag;
 
     private GetAppsAppPendingDeploymentGitSource() {}
+    /**
+     * @return The resource path of the Lakebase Autoscaling branch (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     * 
+     */
     public Optional<String> branch() {
         return Optional.ofNullable(this.branch);
     }
     public Optional<String> commit() {
         return Optional.ofNullable(this.commit);
     }
+    /**
+     * @return attribute - Git repository configuration for app deployments.
+     * 
+     */
     public GetAppsAppPendingDeploymentGitSourceGitRepository gitRepository() {
         return this.gitRepository;
     }
     public String resolvedCommit() {
         return this.resolvedCommit;
     }
+    /**
+     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
     public Optional<String> sourceCodePath() {
         return Optional.ofNullable(this.sourceCodePath);
     }

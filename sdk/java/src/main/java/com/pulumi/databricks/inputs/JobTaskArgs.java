@@ -24,6 +24,7 @@ import com.pulumi.databricks.inputs.JobTaskNotebookTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskNotificationSettingsArgs;
 import com.pulumi.databricks.inputs.JobTaskPipelineTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskPowerBiTaskArgs;
+import com.pulumi.databricks.inputs.JobTaskPythonOperatorTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskPythonWheelTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskRunJobTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskSparkJarTaskArgs;
@@ -350,6 +351,13 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.powerBiTask);
     }
 
+    @Import(name="pythonOperatorTask")
+    private @Nullable Output<JobTaskPythonOperatorTaskArgs> pythonOperatorTask;
+
+    public Optional<Output<JobTaskPythonOperatorTaskArgs>> pythonOperatorTask() {
+        return Optional.ofNullable(this.pythonOperatorTask);
+    }
+
     @Import(name="pythonWheelTask")
     private @Nullable Output<JobTaskPythonWheelTaskArgs> pythonWheelTask;
 
@@ -499,6 +507,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         this.notificationSettings = $.notificationSettings;
         this.pipelineTask = $.pipelineTask;
         this.powerBiTask = $.powerBiTask;
+        this.pythonOperatorTask = $.pythonOperatorTask;
         this.pythonWheelTask = $.pythonWheelTask;
         this.retryOnTimeout = $.retryOnTimeout;
         this.runIf = $.runIf;
@@ -963,6 +972,15 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder powerBiTask(JobTaskPowerBiTaskArgs powerBiTask) {
             return powerBiTask(Output.of(powerBiTask));
+        }
+
+        public Builder pythonOperatorTask(@Nullable Output<JobTaskPythonOperatorTaskArgs> pythonOperatorTask) {
+            $.pythonOperatorTask = pythonOperatorTask;
+            return this;
+        }
+
+        public Builder pythonOperatorTask(JobTaskPythonOperatorTaskArgs pythonOperatorTask) {
+            return pythonOperatorTask(Output.of(pythonOperatorTask));
         }
 
         public Builder pythonWheelTask(@Nullable Output<JobTaskPythonWheelTaskArgs> pythonWheelTask) {

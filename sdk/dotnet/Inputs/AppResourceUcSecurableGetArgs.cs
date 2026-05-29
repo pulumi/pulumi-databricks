@@ -13,13 +13,13 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AppResourceUcSecurableGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+        /// Permission to grant on UC securable. Supported values depend on `SecurableType`: `READ_VOLUME` and `WRITE_VOLUME` for `VOLUME`, `SELECT` and `MODIFY` for `TABLE`, `EXECUTE` for `FUNCTION`, `USE_CONNECTION` for `CONNECTION`.
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 
         /// <summary>
-        /// the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+        /// The full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
         /// </summary>
         [Input("securableFullName", required: true)]
         public Input<string> SecurableFullName { get; set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? SecurableKind { get; set; }
 
         /// <summary>
-        /// the type of UC securable, i.e. `VOLUME`.
+        /// The type of UC securable. Supported values are `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`.
         /// </summary>
         [Input("securableType", required: true)]
         public Input<string> SecurableType { get; set; } = null!;

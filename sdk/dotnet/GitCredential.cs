@@ -58,6 +58,29 @@ namespace Pulumi.Databricks
     /// });
     /// ```
     /// 
+    /// ### Git credential for a service principal
+    /// 
+    /// You can manage Git credentials on behalf of a service principal by specifying `PrincipalId`:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var spn = new Databricks.GitCredential("spn", new()
+    ///     {
+    ///         GitProvider = "gitHub",
+    ///         GitUsername = "my-service-principal",
+    ///         PersonalAccessToken = githubPat,
+    ///         PrincipalId = databricksSpnId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Related Resources
     /// 
     /// The following resources are often used in the same context:
@@ -109,6 +132,9 @@ namespace Pulumi.Databricks
         [Output("personalAccessToken")]
         public Output<string?> PersonalAccessToken { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+        /// </summary>
         [Output("principalId")]
         public Output<string?> PrincipalId { get; private set; } = null!;
 
@@ -220,6 +246,9 @@ namespace Pulumi.Databricks
             }
         }
 
+        /// <summary>
+        /// The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+        /// </summary>
         [Input("principalId")]
         public Input<string>? PrincipalId { get; set; }
 
@@ -289,6 +318,9 @@ namespace Pulumi.Databricks
             }
         }
 
+        /// <summary>
+        /// The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+        /// </summary>
         [Input("principalId")]
         public Input<string>? PrincipalId { get; set; }
 

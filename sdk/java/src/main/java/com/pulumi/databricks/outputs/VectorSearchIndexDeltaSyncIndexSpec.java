@@ -15,10 +15,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VectorSearchIndexDeltaSyncIndexSpec {
     private @Nullable List<String> columnsToIndices;
-    /**
-     * @return list of columns to sync. If not specified, all columns are syncronized.
-     * 
-     */
     private @Nullable List<String> columnsToSyncs;
     /**
      * @return array of objects representing columns that contain the embedding source.  Each entry consists of:
@@ -57,10 +53,6 @@ public final class VectorSearchIndexDeltaSyncIndexSpec {
     public List<String> columnsToIndices() {
         return this.columnsToIndices == null ? List.of() : this.columnsToIndices;
     }
-    /**
-     * @return list of columns to sync. If not specified, all columns are syncronized.
-     * 
-     */
     public List<String> columnsToSyncs() {
         return this.columnsToSyncs == null ? List.of() : this.columnsToSyncs;
     }

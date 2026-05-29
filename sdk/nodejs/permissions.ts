@@ -843,7 +843,7 @@ import * as utilities from "./utilities";
  * import * as databricks from "@pulumi/databricks";
  *
  * const eng = new databricks.Group("eng", {displayName: "Engineering"});
- * const appUsage = new databricks.Permissions("app_usage", {
+ * const dbInstanceUsage = new databricks.Permissions("db_instance_usage", {
  *     databaseInstanceName: "my_database",
  *     accessControls: [
  *         {
@@ -873,6 +873,54 @@ import * as utilities from "./utilities";
  *         {
  *             groupName: "users",
  *             permissionLevel: "CAN_USE",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_MANAGE",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Knowledge Assistant usage
+ *
+ * Knowledge Assistants have two possible permissions: `CAN_QUERY` and `CAN_MANAGE`:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const knowledgeAssistantUsage = new databricks.Permissions("knowledge_assistant_usage", {
+ *     knowledgeAssistantId: _this.id,
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_QUERY",
+ *         },
+ *         {
+ *             groupName: eng.displayName,
+ *             permissionLevel: "CAN_MANAGE",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Supervisor Agent usage
+ *
+ * Supervisor Agents have two possible permissions: `CAN_QUERY` and `CAN_MANAGE`:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const eng = new databricks.Group("eng", {displayName: "Engineering"});
+ * const supervisorAgentUsage = new databricks.Permissions("supervisor_agent_usage", {
+ *     supervisorAgentId: _this.supervisorAgentId,
+ *     accessControls: [
+ *         {
+ *             groupName: "users",
+ *             permissionLevel: "CAN_QUERY",
  *         },
  *         {
  *             groupName: eng.displayName,
@@ -948,6 +996,7 @@ export class Permissions extends pulumi.CustomResource {
     declare public readonly experimentId: pulumi.Output<string | undefined>;
     declare public readonly instancePoolId: pulumi.Output<string | undefined>;
     declare public readonly jobId: pulumi.Output<string | undefined>;
+    declare public readonly knowledgeAssistantId: pulumi.Output<string | undefined>;
     declare public readonly notebookId: pulumi.Output<string | undefined>;
     declare public readonly notebookPath: pulumi.Output<string | undefined>;
     /**
@@ -964,6 +1013,7 @@ export class Permissions extends pulumi.CustomResource {
     declare public readonly sqlDashboardId: pulumi.Output<string | undefined>;
     declare public readonly sqlEndpointId: pulumi.Output<string | undefined>;
     declare public readonly sqlQueryId: pulumi.Output<string | undefined>;
+    declare public readonly supervisorAgentId: pulumi.Output<string | undefined>;
     declare public readonly vectorSearchEndpointId: pulumi.Output<string | undefined>;
     declare public readonly workspaceFileId: pulumi.Output<string | undefined>;
     declare public readonly workspaceFilePath: pulumi.Output<string | undefined>;
@@ -995,6 +1045,7 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["experimentId"] = state?.experimentId;
             resourceInputs["instancePoolId"] = state?.instancePoolId;
             resourceInputs["jobId"] = state?.jobId;
+            resourceInputs["knowledgeAssistantId"] = state?.knowledgeAssistantId;
             resourceInputs["notebookId"] = state?.notebookId;
             resourceInputs["notebookPath"] = state?.notebookPath;
             resourceInputs["objectType"] = state?.objectType;
@@ -1008,6 +1059,7 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["sqlDashboardId"] = state?.sqlDashboardId;
             resourceInputs["sqlEndpointId"] = state?.sqlEndpointId;
             resourceInputs["sqlQueryId"] = state?.sqlQueryId;
+            resourceInputs["supervisorAgentId"] = state?.supervisorAgentId;
             resourceInputs["vectorSearchEndpointId"] = state?.vectorSearchEndpointId;
             resourceInputs["workspaceFileId"] = state?.workspaceFileId;
             resourceInputs["workspaceFilePath"] = state?.workspaceFilePath;
@@ -1030,6 +1082,7 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["experimentId"] = args?.experimentId;
             resourceInputs["instancePoolId"] = args?.instancePoolId;
             resourceInputs["jobId"] = args?.jobId;
+            resourceInputs["knowledgeAssistantId"] = args?.knowledgeAssistantId;
             resourceInputs["notebookId"] = args?.notebookId;
             resourceInputs["notebookPath"] = args?.notebookPath;
             resourceInputs["objectType"] = args?.objectType;
@@ -1043,6 +1096,7 @@ export class Permissions extends pulumi.CustomResource {
             resourceInputs["sqlDashboardId"] = args?.sqlDashboardId;
             resourceInputs["sqlEndpointId"] = args?.sqlEndpointId;
             resourceInputs["sqlQueryId"] = args?.sqlQueryId;
+            resourceInputs["supervisorAgentId"] = args?.supervisorAgentId;
             resourceInputs["vectorSearchEndpointId"] = args?.vectorSearchEndpointId;
             resourceInputs["workspaceFileId"] = args?.workspaceFileId;
             resourceInputs["workspaceFilePath"] = args?.workspaceFilePath;
@@ -1070,6 +1124,7 @@ export interface PermissionsState {
     experimentId?: pulumi.Input<string | undefined>;
     instancePoolId?: pulumi.Input<string | undefined>;
     jobId?: pulumi.Input<string | undefined>;
+    knowledgeAssistantId?: pulumi.Input<string | undefined>;
     notebookId?: pulumi.Input<string | undefined>;
     notebookPath?: pulumi.Input<string | undefined>;
     /**
@@ -1086,6 +1141,7 @@ export interface PermissionsState {
     sqlDashboardId?: pulumi.Input<string | undefined>;
     sqlEndpointId?: pulumi.Input<string | undefined>;
     sqlQueryId?: pulumi.Input<string | undefined>;
+    supervisorAgentId?: pulumi.Input<string | undefined>;
     vectorSearchEndpointId?: pulumi.Input<string | undefined>;
     workspaceFileId?: pulumi.Input<string | undefined>;
     workspaceFilePath?: pulumi.Input<string | undefined>;
@@ -1109,6 +1165,7 @@ export interface PermissionsArgs {
     experimentId?: pulumi.Input<string | undefined>;
     instancePoolId?: pulumi.Input<string | undefined>;
     jobId?: pulumi.Input<string | undefined>;
+    knowledgeAssistantId?: pulumi.Input<string | undefined>;
     notebookId?: pulumi.Input<string | undefined>;
     notebookPath?: pulumi.Input<string | undefined>;
     /**
@@ -1125,6 +1182,7 @@ export interface PermissionsArgs {
     sqlDashboardId?: pulumi.Input<string | undefined>;
     sqlEndpointId?: pulumi.Input<string | undefined>;
     sqlQueryId?: pulumi.Input<string | undefined>;
+    supervisorAgentId?: pulumi.Input<string | undefined>;
     vectorSearchEndpointId?: pulumi.Input<string | undefined>;
     workspaceFileId?: pulumi.Input<string | undefined>;
     workspaceFilePath?: pulumi.Input<string | undefined>;

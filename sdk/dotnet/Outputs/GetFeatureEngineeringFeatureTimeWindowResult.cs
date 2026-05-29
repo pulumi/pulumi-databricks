@@ -14,9 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringFeatureTimeWindowResult
     {
         /// <summary>
-        /// (ContinuousWindow)
+        /// (ContinuousWindow, deprecated)
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringFeatureTimeWindowContinuousResult? Continuous;
+        /// <summary>
+        /// (RollingWindow)
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringFeatureTimeWindowRollingResult? Rolling;
         /// <summary>
         /// (SlidingWindow)
         /// </summary>
@@ -30,11 +34,14 @@ namespace Pulumi.Databricks.Outputs
         private GetFeatureEngineeringFeatureTimeWindowResult(
             Outputs.GetFeatureEngineeringFeatureTimeWindowContinuousResult? continuous,
 
+            Outputs.GetFeatureEngineeringFeatureTimeWindowRollingResult? rolling,
+
             Outputs.GetFeatureEngineeringFeatureTimeWindowSlidingResult? sliding,
 
             Outputs.GetFeatureEngineeringFeatureTimeWindowTumblingResult? tumbling)
         {
             Continuous = continuous;
+            Rolling = rolling;
             Sliding = sliding;
             Tumbling = tumbling;
         }

@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class FeatureEngineeringFeatureTimeseriesColumn
     {
+        /// <summary>
+        /// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

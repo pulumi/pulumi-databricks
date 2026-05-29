@@ -40,6 +40,7 @@ class GitCredentialArgs:
         :param pulumi.Input[_builtins.bool] is_default_for_provider: boolean flag specifying if the credential is the default for the given provider type.
         :param pulumi.Input[_builtins.str] name: the name of the git credential, used for identification and ease of lookup.
         :param pulumi.Input[_builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        :param pulumi.Input[_builtins.str] principal_id: The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
         :param pulumi.Input['GitCredentialProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         pulumi.set(__self__, "git_provider", git_provider)
@@ -147,6 +148,9 @@ class GitCredentialArgs:
     @_builtins.property
     @pulumi.getter(name="principalId")
     def principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+        """
         return pulumi.get(self, "principal_id")
 
     @principal_id.setter
@@ -188,6 +192,7 @@ class _GitCredentialState:
         :param pulumi.Input[_builtins.bool] is_default_for_provider: boolean flag specifying if the credential is the default for the given provider type.
         :param pulumi.Input[_builtins.str] name: the name of the git credential, used for identification and ease of lookup.
         :param pulumi.Input[_builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        :param pulumi.Input[_builtins.str] principal_id: The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
         :param pulumi.Input['GitCredentialProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         if force is not None:
@@ -296,6 +301,9 @@ class _GitCredentialState:
     @_builtins.property
     @pulumi.getter(name="principalId")
     def principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+        """
         return pulumi.get(self, "principal_id")
 
     @principal_id.setter
@@ -363,6 +371,21 @@ class GitCredential(pulumi.CustomResource):
         ado = databricks.GitCredential("ado", git_provider="azureDevOpsServicesAad")
         ```
 
+        ### Git credential for a service principal
+
+        You can manage Git credentials on behalf of a service principal by specifying `principal_id`:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        spn = databricks.GitCredential("spn",
+            git_provider="gitHub",
+            git_username="my-service-principal",
+            personal_access_token=github_pat,
+            principal_id=databricks_spn_id)
+        ```
+
         ## Related Resources
 
         The following resources are often used in the same context:
@@ -379,6 +402,7 @@ class GitCredential(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_default_for_provider: boolean flag specifying if the credential is the default for the given provider type.
         :param pulumi.Input[_builtins.str] name: the name of the git credential, used for identification and ease of lookup.
         :param pulumi.Input[_builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        :param pulumi.Input[_builtins.str] principal_id: The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
         :param pulumi.Input[Union['GitCredentialProviderConfigArgs', 'GitCredentialProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         ...
@@ -417,6 +441,21 @@ class GitCredential(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         ado = databricks.GitCredential("ado", git_provider="azureDevOpsServicesAad")
+        ```
+
+        ### Git credential for a service principal
+
+        You can manage Git credentials on behalf of a service principal by specifying `principal_id`:
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        spn = databricks.GitCredential("spn",
+            git_provider="gitHub",
+            git_username="my-service-principal",
+            personal_access_token=github_pat,
+            principal_id=databricks_spn_id)
         ```
 
         ## Related Resources
@@ -505,6 +544,7 @@ class GitCredential(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] is_default_for_provider: boolean flag specifying if the credential is the default for the given provider type.
         :param pulumi.Input[_builtins.str] name: the name of the git credential, used for identification and ease of lookup.
         :param pulumi.Input[_builtins.str] personal_access_token: The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        :param pulumi.Input[_builtins.str] principal_id: The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
         :param pulumi.Input[Union['GitCredentialProviderConfigArgs', 'GitCredentialProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -581,6 +621,9 @@ class GitCredential(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="principalId")
     def principal_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+        """
         return pulumi.get(self, "principal_id")
 
     @_builtins.property

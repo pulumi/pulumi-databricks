@@ -79,6 +79,7 @@ class DisasterRecoveryStableUrlArgs:
 @pulumi.input_type
 class _DisasterRecoveryStableUrlState:
     def __init__(__self__, *,
+                 failover_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -87,6 +88,12 @@ class _DisasterRecoveryStableUrlState:
         """
         Input properties used for looking up and filtering DisasterRecoveryStableUrl resources.
 
+        :param pulumi.Input[_builtins.str] failover_group_name: (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+               currently linked to, in the format
+               `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+               the stable URL is not attached to any failover group. Server-controlled:
+               written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+               DeleteFailoverGroup / UpdateFailoverGroup on unlink
         :param pulumi.Input[_builtins.str] initial_workspace_id: The workspace this stable URL is initially bound to. Used only in Create
                requests to associate the stable URL with a workspace. Not returned in
                responses. Mirrors FailoverGroup.initial_primary_region semantics
@@ -100,6 +107,8 @@ class _DisasterRecoveryStableUrlState:
                `https://<spog_host>/?c=<connection_id>`. For Private-Link workspaces
                this is the per-connection hostname
         """
+        if failover_group_name is not None:
+            pulumi.set(__self__, "failover_group_name", failover_group_name)
         if initial_workspace_id is not None:
             pulumi.set(__self__, "initial_workspace_id", initial_workspace_id)
         if name is not None:
@@ -110,6 +119,23 @@ class _DisasterRecoveryStableUrlState:
             pulumi.set(__self__, "stable_url_id", stable_url_id)
         if url is not None:
             pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter(name="failoverGroupName")
+    def failover_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+        currently linked to, in the format
+        `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+        the stable URL is not attached to any failover group. Server-controlled:
+        written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+        DeleteFailoverGroup / UpdateFailoverGroup on unlink
+        """
+        return pulumi.get(self, "failover_group_name")
+
+    @failover_group_name.setter
+    def failover_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "failover_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="initialWorkspaceId")
@@ -248,6 +274,7 @@ class DisasterRecoveryStableUrl(pulumi.CustomResource):
             if stable_url_id is None and not opts.urn:
                 raise TypeError("Missing required property 'stable_url_id'")
             __props__.__dict__["stable_url_id"] = stable_url_id
+            __props__.__dict__["failover_group_name"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["url"] = None
         super(DisasterRecoveryStableUrl, __self__).__init__(
@@ -260,6 +287,7 @@ class DisasterRecoveryStableUrl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            failover_group_name: pulumi.Input[Optional[_builtins.str]] = None,
             initial_workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -272,6 +300,12 @@ class DisasterRecoveryStableUrl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] failover_group_name: (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+               currently linked to, in the format
+               `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+               the stable URL is not attached to any failover group. Server-controlled:
+               written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+               DeleteFailoverGroup / UpdateFailoverGroup on unlink
         :param pulumi.Input[_builtins.str] initial_workspace_id: The workspace this stable URL is initially bound to. Used only in Create
                requests to associate the stable URL with a workspace. Not returned in
                responses. Mirrors FailoverGroup.initial_primary_region semantics
@@ -289,12 +323,26 @@ class DisasterRecoveryStableUrl(pulumi.CustomResource):
 
         __props__ = _DisasterRecoveryStableUrlState.__new__(_DisasterRecoveryStableUrlState)
 
+        __props__.__dict__["failover_group_name"] = failover_group_name
         __props__.__dict__["initial_workspace_id"] = initial_workspace_id
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
         __props__.__dict__["stable_url_id"] = stable_url_id
         __props__.__dict__["url"] = url
         return DisasterRecoveryStableUrl(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="failoverGroupName")
+    def failover_group_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+        currently linked to, in the format
+        `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+        the stable URL is not attached to any failover group. Server-controlled:
+        written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+        DeleteFailoverGroup / UpdateFailoverGroup on unlink
+        """
+        return pulumi.get(self, "failover_group_name")
 
     @_builtins.property
     @pulumi.getter(name="initialWorkspaceId")

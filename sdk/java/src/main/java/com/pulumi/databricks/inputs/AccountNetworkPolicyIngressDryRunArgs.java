@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessArgs;
 import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressDryRunPrivateAccessArgs;
 import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressDryRunPublicAccessArgs;
 import java.util.Objects;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 public final class AccountNetworkPolicyIngressDryRunArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AccountNetworkPolicyIngressDryRunArgs Empty = new AccountNetworkPolicyIngressDryRunArgs();
+
+    @Import(name="crossWorkspaceAccess")
+    private @Nullable Output<AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessArgs> crossWorkspaceAccess;
+
+    public Optional<Output<AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessArgs>> crossWorkspaceAccess() {
+        return Optional.ofNullable(this.crossWorkspaceAccess);
+    }
 
     /**
      * The network policy restrictions for private access to the workspace.
@@ -53,6 +61,7 @@ public final class AccountNetworkPolicyIngressDryRunArgs extends com.pulumi.reso
     private AccountNetworkPolicyIngressDryRunArgs() {}
 
     private AccountNetworkPolicyIngressDryRunArgs(AccountNetworkPolicyIngressDryRunArgs $) {
+        this.crossWorkspaceAccess = $.crossWorkspaceAccess;
         this.privateAccess = $.privateAccess;
         this.publicAccess = $.publicAccess;
     }
@@ -73,6 +82,15 @@ public final class AccountNetworkPolicyIngressDryRunArgs extends com.pulumi.reso
 
         public Builder(AccountNetworkPolicyIngressDryRunArgs defaults) {
             $ = new AccountNetworkPolicyIngressDryRunArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder crossWorkspaceAccess(@Nullable Output<AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessArgs> crossWorkspaceAccess) {
+            $.crossWorkspaceAccess = crossWorkspaceAccess;
+            return this;
+        }
+
+        public Builder crossWorkspaceAccess(AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessArgs crossWorkspaceAccess) {
+            return crossWorkspaceAccess(Output.of(crossWorkspaceAccess));
         }
 
         /**

@@ -165,6 +165,12 @@ namespace Pulumi.Databricks
         public Output<Outputs.PostgresBranchProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
+        /// If true, permanently delete the branch; if false, soft delete
+        /// </summary>
+        [Output("purgeOnDelete")]
+        public Output<bool?> PurgeOnDelete { get; private set; } = null!;
+
+        /// <summary>
         /// If true, update the branch if it already exists instead of returning an error
         /// </summary>
         [Output("replaceExisting")]
@@ -265,6 +271,12 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresBranchProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
+        /// If true, permanently delete the branch; if false, soft delete
+        /// </summary>
+        [Input("purgeOnDelete")]
+        public Input<bool>? PurgeOnDelete { get; set; }
+
+        /// <summary>
         /// If true, update the branch if it already exists instead of returning an error
         /// </summary>
         [Input("replaceExisting")]
@@ -320,6 +332,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("providerConfig")]
         public Input<Inputs.PostgresBranchProviderConfigGetArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
+        /// If true, permanently delete the branch; if false, soft delete
+        /// </summary>
+        [Input("purgeOnDelete")]
+        public Input<bool>? PurgeOnDelete { get; set; }
 
         /// <summary>
         /// If true, update the branch if it already exists instead of returning an error

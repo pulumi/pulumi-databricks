@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AccountNetworkPolicyIngressGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("crossWorkspaceAccess")]
+        public Input<Inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessGetArgs>? CrossWorkspaceAccess { get; set; }
+
         /// <summary>
         /// The network policy restrictions for private access to the workspace.
         /// Configures how registered private endpoints are allowed or denied access

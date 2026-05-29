@@ -13,8 +13,17 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppTelemetryExportDestinationUnityCatalog
     {
+        /// <summary>
+        /// Full name of the Unity Catalog table for OpenTelemetry logs.
+        /// </summary>
         public readonly string LogsTable;
+        /// <summary>
+        /// Full name of the Unity Catalog table for OpenTelemetry metrics.
+        /// </summary>
         public readonly string MetricsTable;
+        /// <summary>
+        /// Full name of the Unity Catalog table for OpenTelemetry traces (spans).
+        /// </summary>
         public readonly string TracesTable;
 
         [OutputConstructor]

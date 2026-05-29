@@ -17,16 +17,24 @@ public final class GetDisasterRecoveryFailoverGroupsPlainArgs extends com.pulumi
     public static final GetDisasterRecoveryFailoverGroupsPlainArgs Empty = new GetDisasterRecoveryFailoverGroupsPlainArgs();
 
     /**
-     * Maximum number of failover groups to return per page.
-     * Default: 50, maximum: 100
+     * Maximum number of failover groups to return per page:
+     * - when set to a value greater than 0, the page length is the minimum of this value
+     *   and a server configured value;
+     * - when set to 0 or unset, the page length is set to a server configured value
+     *   (recommended);
+     * - when set to a value less than 0, an invalid parameter error is returned
      * 
      */
     @Import(name="pageSize")
     private @Nullable Integer pageSize;
 
     /**
-     * @return Maximum number of failover groups to return per page.
-     * Default: 50, maximum: 100
+     * @return Maximum number of failover groups to return per page:
+     * - when set to a value greater than 0, the page length is the minimum of this value
+     *   and a server configured value;
+     * - when set to 0 or unset, the page length is set to a server configured value
+     *   (recommended);
+     * - when set to a value less than 0, an invalid parameter error is returned
      * 
      */
     public Optional<Integer> pageSize() {
@@ -74,8 +82,12 @@ public final class GetDisasterRecoveryFailoverGroupsPlainArgs extends com.pulumi
         }
 
         /**
-         * @param pageSize Maximum number of failover groups to return per page.
-         * Default: 50, maximum: 100
+         * @param pageSize Maximum number of failover groups to return per page:
+         * - when set to a value greater than 0, the page length is the minimum of this value
+         *   and a server configured value;
+         * - when set to 0 or unset, the page length is set to a server configured value
+         *   (recommended);
+         * - when set to a value less than 0, an invalid parameter error is returned
          * 
          * @return builder
          * 

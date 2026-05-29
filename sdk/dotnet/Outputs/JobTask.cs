@@ -84,6 +84,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.JobTaskNotificationSettings? NotificationSettings;
         public readonly Outputs.JobTaskPipelineTask? PipelineTask;
         public readonly Outputs.JobTaskPowerBiTask? PowerBiTask;
+        public readonly Outputs.JobTaskPythonOperatorTask? PythonOperatorTask;
         public readonly Outputs.JobTaskPythonWheelTask? PythonWheelTask;
         /// <summary>
         /// (Bool) An optional policy to specify whether to retry a job when it times out. The default behavior is to not retry on timeout.
@@ -168,6 +169,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskPowerBiTask? powerBiTask,
 
+            Outputs.JobTaskPythonOperatorTask? pythonOperatorTask,
+
             Outputs.JobTaskPythonWheelTask? pythonWheelTask,
 
             bool? retryOnTimeout,
@@ -217,6 +220,7 @@ namespace Pulumi.Databricks.Outputs
             NotificationSettings = notificationSettings;
             PipelineTask = pipelineTask;
             PowerBiTask = powerBiTask;
+            PythonOperatorTask = pythonOperatorTask;
             PythonWheelTask = pythonWheelTask;
             RetryOnTimeout = retryOnTimeout;
             RunIf = runIf;

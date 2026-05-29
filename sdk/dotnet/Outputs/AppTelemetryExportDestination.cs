@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppTelemetryExportDestination
     {
+        /// <summary>
+        /// attribute - export telemetry to Unity Catalog tables (must already exist and be writable by the app's service principal).
+        /// </summary>
         public readonly Outputs.AppTelemetryExportDestinationUnityCatalog? UnityCatalog;
 
         [OutputConstructor]

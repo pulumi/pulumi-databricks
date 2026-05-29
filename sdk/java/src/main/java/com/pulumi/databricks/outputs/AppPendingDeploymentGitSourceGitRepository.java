@@ -10,19 +10,27 @@ import java.util.Objects;
 
 @CustomType
 public final class AppPendingDeploymentGitSourceGitRepository {
+    /**
+     * @return Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     * 
+     */
     private String provider;
     /**
-     * @return The URL of the app once it is deployed.
+     * @return URL of the Git repository.
      * 
      */
     private String url;
 
     private AppPendingDeploymentGitSourceGitRepository() {}
+    /**
+     * @return Git provider. Case insensitive. Supported values: `gitHub`, `gitHubEnterprise`, `bitbucketCloud`, `bitbucketServer`, `azureDevOpsServices`, `gitLab`, `gitLabEnterpriseEdition`, `awsCodeCommit`.
+     * 
+     */
     public String provider() {
         return this.provider;
     }
     /**
-     * @return The URL of the app once it is deployed.
+     * @return URL of the Git repository.
      * 
      */
     public String url() {

@@ -282,6 +282,20 @@ public class PostgresBranch extends com.pulumi.resources.CustomResource {
         return this.providerConfig;
     }
     /**
+     * If true, permanently delete the branch; if false, soft delete
+     * 
+     */
+    @Export(name="purgeOnDelete", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> purgeOnDelete;
+
+    /**
+     * @return If true, permanently delete the branch; if false, soft delete
+     * 
+     */
+    public Output<Optional<Boolean>> purgeOnDelete() {
+        return Codegen.optional(this.purgeOnDelete);
+    }
+    /**
      * If true, update the branch if it already exists instead of returning an error
      * 
      */

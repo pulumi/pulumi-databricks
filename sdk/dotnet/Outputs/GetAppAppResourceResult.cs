@@ -14,17 +14,20 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAppAppResourceResult
     {
         /// <summary>
-        /// attribute
+        /// attribute - reference to another Databricks App.
         /// </summary>
         public readonly Outputs.GetAppAppResourceAppResult? App;
         /// <summary>
-        /// attribute
+        /// The resource path of a specific database within the branch (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`).
         /// </summary>
         public readonly Outputs.GetAppAppResourceDatabaseResult? Database;
         /// <summary>
         /// The description of the resource.
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.GetAppAppResourceExperimentResult? Experiment;
         /// <summary>
         /// attribute
@@ -38,6 +41,9 @@ namespace Pulumi.Databricks.Outputs
         /// The name of the app.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.GetAppAppResourcePostgresResult? Postgres;
         /// <summary>
         /// attribute
@@ -52,7 +58,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetAppAppResourceSqlWarehouseResult? SqlWarehouse;
         /// <summary>
-        /// attribute
+        /// attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
         /// </summary>
         public readonly Outputs.GetAppAppResourceUcSecurableResult? UcSecurable;
 

@@ -13,15 +13,21 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAppsAppResourceResult
     {
+        /// <summary>
+        /// attribute - reference to another Databricks App.
+        /// </summary>
         public readonly Outputs.GetAppsAppResourceAppResult? App;
         /// <summary>
-        /// attribute
+        /// The resource path of a specific database within the branch (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`).
         /// </summary>
         public readonly Outputs.GetAppsAppResourceDatabaseResult? Database;
         /// <summary>
         /// The description of the resource.
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.GetAppsAppResourceExperimentResult? Experiment;
         /// <summary>
         /// attribute
@@ -32,9 +38,12 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetAppsAppResourceJobResult? Job;
         /// <summary>
-        /// The name of Genie Space.
+        /// The name of the app to grant permission on.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.GetAppsAppResourcePostgresResult? Postgres;
         /// <summary>
         /// attribute
@@ -49,7 +58,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetAppsAppResourceSqlWarehouseResult? SqlWarehouse;
         /// <summary>
-        /// attribute
+        /// attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
         /// </summary>
         public readonly Outputs.GetAppsAppResourceUcSecurableResult? UcSecurable;
 

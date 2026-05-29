@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigAuthConfigMtlsConfig;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,12 +13,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFeatureEngineeringKafkaConfigAuthConfig {
     /**
+     * @return (MtlsConfig) - Mutual-TLS authentication. See MtlsConfig
+     * 
+     */
+    private @Nullable GetFeatureEngineeringKafkaConfigAuthConfigMtlsConfig mtlsConfig;
+    /**
      * @return (string) - Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
      * 
      */
     private @Nullable String ucServiceCredentialName;
 
     private GetFeatureEngineeringKafkaConfigAuthConfig() {}
+    /**
+     * @return (MtlsConfig) - Mutual-TLS authentication. See MtlsConfig
+     * 
+     */
+    public Optional<GetFeatureEngineeringKafkaConfigAuthConfigMtlsConfig> mtlsConfig() {
+        return Optional.ofNullable(this.mtlsConfig);
+    }
     /**
      * @return (string) - Name of the Unity Catalog service credential. This value will be set under the option databricks.serviceCredential
      * 
@@ -35,13 +48,21 @@ public final class GetFeatureEngineeringKafkaConfigAuthConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetFeatureEngineeringKafkaConfigAuthConfigMtlsConfig mtlsConfig;
         private @Nullable String ucServiceCredentialName;
         public Builder() {}
         public Builder(GetFeatureEngineeringKafkaConfigAuthConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.mtlsConfig = defaults.mtlsConfig;
     	      this.ucServiceCredentialName = defaults.ucServiceCredentialName;
         }
 
+        @CustomType.Setter
+        public Builder mtlsConfig(@Nullable GetFeatureEngineeringKafkaConfigAuthConfigMtlsConfig mtlsConfig) {
+
+            this.mtlsConfig = mtlsConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder ucServiceCredentialName(@Nullable String ucServiceCredentialName) {
 
@@ -50,6 +71,7 @@ public final class GetFeatureEngineeringKafkaConfigAuthConfig {
         }
         public GetFeatureEngineeringKafkaConfigAuthConfig build() {
             final var _resultValue = new GetFeatureEngineeringKafkaConfigAuthConfig();
+            _resultValue.mtlsConfig = mtlsConfig;
             _resultValue.ucServiceCredentialName = ucServiceCredentialName;
             return _resultValue;
         }

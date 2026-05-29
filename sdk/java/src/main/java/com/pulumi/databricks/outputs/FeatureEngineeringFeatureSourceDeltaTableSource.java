@@ -33,7 +33,9 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSource {
      */
     private @Nullable String filterCondition;
     /**
-     * @return The full three-part name (catalog, schema, name) of the feature
+     * @return The full three-part name (catalog, schema, name) of the feature. This is the
+     * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
+     * below are OUTPUT_ONLY decomposed views of this value
      * 
      */
     private String fullName;
@@ -77,7 +79,9 @@ public final class FeatureEngineeringFeatureSourceDeltaTableSource {
         return Optional.ofNullable(this.filterCondition);
     }
     /**
-     * @return The full three-part name (catalog, schema, name) of the feature
+     * @return The full three-part name (catalog, schema, name) of the feature. This is the
+     * feature&#39;s resource identifier; the catalog_name, schema_name, and name fields
+     * below are OUTPUT_ONLY decomposed views of this value
      * 
      */
     public String fullName() {

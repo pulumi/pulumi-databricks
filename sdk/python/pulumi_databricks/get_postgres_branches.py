@@ -28,7 +28,7 @@ class GetPostgresBranchesResult:
     """
     A collection of values returned by getPostgresBranches.
     """
-    def __init__(__self__, branches=None, id=None, page_size=None, parent=None, provider_config=None):
+    def __init__(__self__, branches=None, id=None, page_size=None, parent=None, provider_config=None, show_deleted=None):
         if branches and not isinstance(branches, list):
             raise TypeError("Expected argument 'branches' to be a list")
         pulumi.set(__self__, "branches", branches)
@@ -44,6 +44,9 @@ class GetPostgresBranchesResult:
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
+        if show_deleted and not isinstance(show_deleted, bool):
+            raise TypeError("Expected argument 'show_deleted' to be a bool")
+        pulumi.set(__self__, "show_deleted", show_deleted)
 
     @_builtins.property
     @pulumi.getter
@@ -77,6 +80,11 @@ class GetPostgresBranchesResult:
     def provider_config(self) -> Optional['outputs.GetPostgresBranchesProviderConfigResult']:
         return pulumi.get(self, "provider_config")
 
+    @_builtins.property
+    @pulumi.getter(name="showDeleted")
+    def show_deleted(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "show_deleted")
+
 
 class AwaitableGetPostgresBranchesResult(GetPostgresBranchesResult):
     # pylint: disable=using-constant-test
@@ -88,12 +96,14 @@ class AwaitableGetPostgresBranchesResult(GetPostgresBranchesResult):
             id=self.id,
             page_size=self.page_size,
             parent=self.parent,
-            provider_config=self.provider_config)
+            provider_config=self.provider_config,
+            show_deleted=self.show_deleted)
 
 
 def get_postgres_branches(page_size: Optional[_builtins.int] = None,
                           parent: Optional[_builtins.str] = None,
                           provider_config: Optional[Union['GetPostgresBranchesProviderConfigArgs', 'GetPostgresBranchesProviderConfigArgsDict']] = None,
+                          show_deleted: Optional[_builtins.bool] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresBranchesResult:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -117,11 +127,15 @@ def get_postgres_branches(page_size: Optional[_builtins.int] = None,
     :param _builtins.str parent: The Project that owns this collection of branches.
            Format: projects/{project_id}
     :param Union['GetPostgresBranchesProviderConfigArgs', 'GetPostgresBranchesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param _builtins.bool show_deleted: Whether to include soft-deleted branches in the response.
+           When true, deleted branches are included alongside active branches.
+           Purged branches are never returned
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
     __args__['parent'] = parent
     __args__['providerConfig'] = provider_config
+    __args__['showDeleted'] = show_deleted
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('databricks:index/getPostgresBranches:getPostgresBranches', __args__, opts=opts, typ=GetPostgresBranchesResult).value
 
@@ -130,10 +144,12 @@ def get_postgres_branches(page_size: Optional[_builtins.int] = None,
         id=pulumi.get(__ret__, 'id'),
         page_size=pulumi.get(__ret__, 'page_size'),
         parent=pulumi.get(__ret__, 'parent'),
-        provider_config=pulumi.get(__ret__, 'provider_config'))
+        provider_config=pulumi.get(__ret__, 'provider_config'),
+        show_deleted=pulumi.get(__ret__, 'show_deleted'))
 def get_postgres_branches_output(page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                                  provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresBranchesProviderConfigArgs', 'GetPostgresBranchesProviderConfigArgsDict']]]] = None,
+                                 show_deleted: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresBranchesResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -157,11 +173,15 @@ def get_postgres_branches_output(page_size: pulumi.Input[Optional[Optional[_buil
     :param _builtins.str parent: The Project that owns this collection of branches.
            Format: projects/{project_id}
     :param Union['GetPostgresBranchesProviderConfigArgs', 'GetPostgresBranchesProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
+    :param _builtins.bool show_deleted: Whether to include soft-deleted branches in the response.
+           When true, deleted branches are included alongside active branches.
+           Purged branches are never returned
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
     __args__['parent'] = parent
     __args__['providerConfig'] = provider_config
+    __args__['showDeleted'] = show_deleted
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPostgresBranches:getPostgresBranches', __args__, opts=opts, typ=GetPostgresBranchesResult)
     return __ret__.apply(lambda __response__: GetPostgresBranchesResult(
@@ -169,4 +189,5 @@ def get_postgres_branches_output(page_size: pulumi.Input[Optional[Optional[_buil
         id=pulumi.get(__response__, 'id'),
         page_size=pulumi.get(__response__, 'page_size'),
         parent=pulumi.get(__response__, 'parent'),
-        provider_config=pulumi.get(__response__, 'provider_config')))
+        provider_config=pulumi.get(__response__, 'provider_config'),
+        show_deleted=pulumi.get(__response__, 'show_deleted')))

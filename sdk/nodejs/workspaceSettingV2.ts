@@ -67,6 +67,10 @@ export class WorkspaceSettingV2 extends pulumi.CustomResource {
      */
     declare public readonly aibiDashboardEmbeddingApprovedDomains: pulumi.Output<outputs.WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains | undefined>;
     /**
+     * Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+     */
+    declare public readonly allowedAppsUserApiScopes: pulumi.Output<outputs.WorkspaceSettingV2AllowedAppsUserApiScopes | undefined>;
+    /**
      * Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
      */
     declare public readonly automaticClusterUpdateWorkspace: pulumi.Output<outputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspace | undefined>;
@@ -83,6 +87,10 @@ export class WorkspaceSettingV2 extends pulumi.CustomResource {
      */
     declare public readonly effectiveAibiDashboardEmbeddingApprovedDomains: pulumi.Output<outputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains | undefined>;
     /**
+     * (AllowedAppsUserApiScopesMessage) - Effective setting value for allowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+     */
+    declare public /*out*/ readonly effectiveAllowedAppsUserApiScopes: pulumi.Output<outputs.WorkspaceSettingV2EffectiveAllowedAppsUserApiScopes>;
+    /**
      * Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
      */
     declare public readonly effectiveAutomaticClusterUpdateWorkspace: pulumi.Output<outputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace | undefined>;
@@ -94,6 +102,10 @@ export class WorkspaceSettingV2 extends pulumi.CustomResource {
      * (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
      */
     declare public /*out*/ readonly effectiveIntegerVal: pulumi.Output<outputs.WorkspaceSettingV2EffectiveIntegerVal>;
+    /**
+     * (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+     */
+    declare public /*out*/ readonly effectiveOperationalEmailCustomRecipient: pulumi.Output<outputs.WorkspaceSettingV2EffectiveOperationalEmailCustomRecipient>;
     /**
      * Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
      */
@@ -114,6 +126,10 @@ export class WorkspaceSettingV2 extends pulumi.CustomResource {
      * Name of the setting
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+     */
+    declare public readonly operationalEmailCustomRecipient: pulumi.Output<outputs.WorkspaceSettingV2OperationalEmailCustomRecipient | undefined>;
     /**
      * Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
      */
@@ -146,18 +162,22 @@ export class WorkspaceSettingV2 extends pulumi.CustomResource {
             const state = argsOrState as WorkspaceSettingV2State | undefined;
             resourceInputs["aibiDashboardEmbeddingAccessPolicy"] = state?.aibiDashboardEmbeddingAccessPolicy;
             resourceInputs["aibiDashboardEmbeddingApprovedDomains"] = state?.aibiDashboardEmbeddingApprovedDomains;
+            resourceInputs["allowedAppsUserApiScopes"] = state?.allowedAppsUserApiScopes;
             resourceInputs["automaticClusterUpdateWorkspace"] = state?.automaticClusterUpdateWorkspace;
             resourceInputs["booleanVal"] = state?.booleanVal;
             resourceInputs["effectiveAibiDashboardEmbeddingAccessPolicy"] = state?.effectiveAibiDashboardEmbeddingAccessPolicy;
             resourceInputs["effectiveAibiDashboardEmbeddingApprovedDomains"] = state?.effectiveAibiDashboardEmbeddingApprovedDomains;
+            resourceInputs["effectiveAllowedAppsUserApiScopes"] = state?.effectiveAllowedAppsUserApiScopes;
             resourceInputs["effectiveAutomaticClusterUpdateWorkspace"] = state?.effectiveAutomaticClusterUpdateWorkspace;
             resourceInputs["effectiveBooleanVal"] = state?.effectiveBooleanVal;
             resourceInputs["effectiveIntegerVal"] = state?.effectiveIntegerVal;
+            resourceInputs["effectiveOperationalEmailCustomRecipient"] = state?.effectiveOperationalEmailCustomRecipient;
             resourceInputs["effectivePersonalCompute"] = state?.effectivePersonalCompute;
             resourceInputs["effectiveRestrictWorkspaceAdmins"] = state?.effectiveRestrictWorkspaceAdmins;
             resourceInputs["effectiveStringVal"] = state?.effectiveStringVal;
             resourceInputs["integerVal"] = state?.integerVal;
             resourceInputs["name"] = state?.name;
+            resourceInputs["operationalEmailCustomRecipient"] = state?.operationalEmailCustomRecipient;
             resourceInputs["personalCompute"] = state?.personalCompute;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["restrictWorkspaceAdmins"] = state?.restrictWorkspaceAdmins;
@@ -166,6 +186,7 @@ export class WorkspaceSettingV2 extends pulumi.CustomResource {
             const args = argsOrState as WorkspaceSettingV2Args | undefined;
             resourceInputs["aibiDashboardEmbeddingAccessPolicy"] = args?.aibiDashboardEmbeddingAccessPolicy;
             resourceInputs["aibiDashboardEmbeddingApprovedDomains"] = args?.aibiDashboardEmbeddingApprovedDomains;
+            resourceInputs["allowedAppsUserApiScopes"] = args?.allowedAppsUserApiScopes;
             resourceInputs["automaticClusterUpdateWorkspace"] = args?.automaticClusterUpdateWorkspace;
             resourceInputs["booleanVal"] = args?.booleanVal;
             resourceInputs["effectiveAibiDashboardEmbeddingAccessPolicy"] = args?.effectiveAibiDashboardEmbeddingAccessPolicy;
@@ -175,12 +196,15 @@ export class WorkspaceSettingV2 extends pulumi.CustomResource {
             resourceInputs["effectiveRestrictWorkspaceAdmins"] = args?.effectiveRestrictWorkspaceAdmins;
             resourceInputs["integerVal"] = args?.integerVal;
             resourceInputs["name"] = args?.name;
+            resourceInputs["operationalEmailCustomRecipient"] = args?.operationalEmailCustomRecipient;
             resourceInputs["personalCompute"] = args?.personalCompute;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["restrictWorkspaceAdmins"] = args?.restrictWorkspaceAdmins;
             resourceInputs["stringVal"] = args?.stringVal;
+            resourceInputs["effectiveAllowedAppsUserApiScopes"] = undefined /*out*/;
             resourceInputs["effectiveBooleanVal"] = undefined /*out*/;
             resourceInputs["effectiveIntegerVal"] = undefined /*out*/;
+            resourceInputs["effectiveOperationalEmailCustomRecipient"] = undefined /*out*/;
             resourceInputs["effectiveStringVal"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -201,6 +225,10 @@ export interface WorkspaceSettingV2State {
      */
     aibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains | undefined>;
     /**
+     * Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+     */
+    allowedAppsUserApiScopes?: pulumi.Input<inputs.WorkspaceSettingV2AllowedAppsUserApiScopes | undefined>;
+    /**
      * Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
      */
     automaticClusterUpdateWorkspace?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspace | undefined>;
@@ -217,6 +245,10 @@ export interface WorkspaceSettingV2State {
      */
     effectiveAibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains | undefined>;
     /**
+     * (AllowedAppsUserApiScopesMessage) - Effective setting value for allowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+     */
+    effectiveAllowedAppsUserApiScopes?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAllowedAppsUserApiScopes | undefined>;
+    /**
      * Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
      */
     effectiveAutomaticClusterUpdateWorkspace?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace | undefined>;
@@ -228,6 +260,10 @@ export interface WorkspaceSettingV2State {
      * (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
      */
     effectiveIntegerVal?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveIntegerVal | undefined>;
+    /**
+     * (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+     */
+    effectiveOperationalEmailCustomRecipient?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveOperationalEmailCustomRecipient | undefined>;
     /**
      * Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
      */
@@ -248,6 +284,10 @@ export interface WorkspaceSettingV2State {
      * Name of the setting
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+     */
+    operationalEmailCustomRecipient?: pulumi.Input<inputs.WorkspaceSettingV2OperationalEmailCustomRecipient | undefined>;
     /**
      * Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
      */
@@ -279,6 +319,10 @@ export interface WorkspaceSettingV2Args {
      */
     aibiDashboardEmbeddingApprovedDomains?: pulumi.Input<inputs.WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains | undefined>;
     /**
+     * Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+     */
+    allowedAppsUserApiScopes?: pulumi.Input<inputs.WorkspaceSettingV2AllowedAppsUserApiScopes | undefined>;
+    /**
      * Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
      */
     automaticClusterUpdateWorkspace?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspace | undefined>;
@@ -314,6 +358,10 @@ export interface WorkspaceSettingV2Args {
      * Name of the setting
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+     */
+    operationalEmailCustomRecipient?: pulumi.Input<inputs.WorkspaceSettingV2OperationalEmailCustomRecipient | undefined>;
     /**
      * Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
      */

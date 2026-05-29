@@ -14,6 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow
     {
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous? Continuous;
+        public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling? Rolling;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding? Sliding;
         public readonly Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling? Tumbling;
 
@@ -21,11 +22,14 @@ namespace Pulumi.Databricks.Outputs
         private FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindow(
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowContinuous? continuous,
 
+            Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowRolling? rolling,
+
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowSliding? sliding,
 
             Outputs.FeatureEngineeringFeatureFunctionAggregationFunctionTimeWindowTumbling? tumbling)
         {
             Continuous = continuous;
+            Rolling = rolling;
             Sliding = sliding;
             Tumbling = tumbling;
         }

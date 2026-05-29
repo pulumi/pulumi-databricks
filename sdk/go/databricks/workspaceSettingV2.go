@@ -55,6 +55,8 @@ type WorkspaceSettingV2 struct {
 	AibiDashboardEmbeddingAccessPolicy WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrOutput `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
 	// Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
 	AibiDashboardEmbeddingApprovedDomains WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrOutput `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
+	// Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+	AllowedAppsUserApiScopes WorkspaceSettingV2AllowedAppsUserApiScopesPtrOutput `pulumi:"allowedAppsUserApiScopes"`
 	// Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
 	AutomaticClusterUpdateWorkspace WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrOutput `pulumi:"automaticClusterUpdateWorkspace"`
 	// Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
@@ -63,12 +65,16 @@ type WorkspaceSettingV2 struct {
 	EffectiveAibiDashboardEmbeddingAccessPolicy WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrOutput `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
 	// Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
 	EffectiveAibiDashboardEmbeddingApprovedDomains WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrOutput `pulumi:"effectiveAibiDashboardEmbeddingApprovedDomains"`
+	// (AllowedAppsUserApiScopesMessage) - Effective setting value for allowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+	EffectiveAllowedAppsUserApiScopes WorkspaceSettingV2EffectiveAllowedAppsUserApiScopesOutput `pulumi:"effectiveAllowedAppsUserApiScopes"`
 	// Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
 	EffectiveAutomaticClusterUpdateWorkspace WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrOutput `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
 	// (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
 	EffectiveBooleanVal WorkspaceSettingV2EffectiveBooleanValOutput `pulumi:"effectiveBooleanVal"`
 	// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
 	EffectiveIntegerVal WorkspaceSettingV2EffectiveIntegerValOutput `pulumi:"effectiveIntegerVal"`
+	// (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+	EffectiveOperationalEmailCustomRecipient WorkspaceSettingV2EffectiveOperationalEmailCustomRecipientOutput `pulumi:"effectiveOperationalEmailCustomRecipient"`
 	// Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
 	EffectivePersonalCompute WorkspaceSettingV2EffectivePersonalComputePtrOutput `pulumi:"effectivePersonalCompute"`
 	// Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
@@ -79,6 +85,8 @@ type WorkspaceSettingV2 struct {
 	IntegerVal WorkspaceSettingV2IntegerValPtrOutput `pulumi:"integerVal"`
 	// Name of the setting
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+	OperationalEmailCustomRecipient WorkspaceSettingV2OperationalEmailCustomRecipientPtrOutput `pulumi:"operationalEmailCustomRecipient"`
 	// Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
 	PersonalCompute WorkspaceSettingV2PersonalComputePtrOutput `pulumi:"personalCompute"`
 	// Configure the provider for management through account provider.
@@ -123,6 +131,8 @@ type workspaceSettingV2State struct {
 	AibiDashboardEmbeddingAccessPolicy *WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
 	// Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
 	AibiDashboardEmbeddingApprovedDomains *WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
+	// Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+	AllowedAppsUserApiScopes *WorkspaceSettingV2AllowedAppsUserApiScopes `pulumi:"allowedAppsUserApiScopes"`
 	// Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
 	AutomaticClusterUpdateWorkspace *WorkspaceSettingV2AutomaticClusterUpdateWorkspace `pulumi:"automaticClusterUpdateWorkspace"`
 	// Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
@@ -131,12 +141,16 @@ type workspaceSettingV2State struct {
 	EffectiveAibiDashboardEmbeddingAccessPolicy *WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
 	// Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
 	EffectiveAibiDashboardEmbeddingApprovedDomains *WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains `pulumi:"effectiveAibiDashboardEmbeddingApprovedDomains"`
+	// (AllowedAppsUserApiScopesMessage) - Effective setting value for allowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+	EffectiveAllowedAppsUserApiScopes *WorkspaceSettingV2EffectiveAllowedAppsUserApiScopes `pulumi:"effectiveAllowedAppsUserApiScopes"`
 	// Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
 	EffectiveAutomaticClusterUpdateWorkspace *WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
 	// (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
 	EffectiveBooleanVal *WorkspaceSettingV2EffectiveBooleanVal `pulumi:"effectiveBooleanVal"`
 	// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
 	EffectiveIntegerVal *WorkspaceSettingV2EffectiveIntegerVal `pulumi:"effectiveIntegerVal"`
+	// (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+	EffectiveOperationalEmailCustomRecipient *WorkspaceSettingV2EffectiveOperationalEmailCustomRecipient `pulumi:"effectiveOperationalEmailCustomRecipient"`
 	// Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
 	EffectivePersonalCompute *WorkspaceSettingV2EffectivePersonalCompute `pulumi:"effectivePersonalCompute"`
 	// Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
@@ -147,6 +161,8 @@ type workspaceSettingV2State struct {
 	IntegerVal *WorkspaceSettingV2IntegerVal `pulumi:"integerVal"`
 	// Name of the setting
 	Name *string `pulumi:"name"`
+	// Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+	OperationalEmailCustomRecipient *WorkspaceSettingV2OperationalEmailCustomRecipient `pulumi:"operationalEmailCustomRecipient"`
 	// Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
 	PersonalCompute *WorkspaceSettingV2PersonalCompute `pulumi:"personalCompute"`
 	// Configure the provider for management through account provider.
@@ -162,6 +178,8 @@ type WorkspaceSettingV2State struct {
 	AibiDashboardEmbeddingAccessPolicy WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrInput
 	// Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
 	AibiDashboardEmbeddingApprovedDomains WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrInput
+	// Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+	AllowedAppsUserApiScopes WorkspaceSettingV2AllowedAppsUserApiScopesPtrInput
 	// Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
 	AutomaticClusterUpdateWorkspace WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrInput
 	// Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
@@ -170,12 +188,16 @@ type WorkspaceSettingV2State struct {
 	EffectiveAibiDashboardEmbeddingAccessPolicy WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrInput
 	// Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
 	EffectiveAibiDashboardEmbeddingApprovedDomains WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrInput
+	// (AllowedAppsUserApiScopesMessage) - Effective setting value for allowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+	EffectiveAllowedAppsUserApiScopes WorkspaceSettingV2EffectiveAllowedAppsUserApiScopesPtrInput
 	// Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
 	EffectiveAutomaticClusterUpdateWorkspace WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrInput
 	// (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
 	EffectiveBooleanVal WorkspaceSettingV2EffectiveBooleanValPtrInput
 	// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
 	EffectiveIntegerVal WorkspaceSettingV2EffectiveIntegerValPtrInput
+	// (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+	EffectiveOperationalEmailCustomRecipient WorkspaceSettingV2EffectiveOperationalEmailCustomRecipientPtrInput
 	// Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
 	EffectivePersonalCompute WorkspaceSettingV2EffectivePersonalComputePtrInput
 	// Effective setting value for restrictWorkspaceAdmins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
@@ -186,6 +208,8 @@ type WorkspaceSettingV2State struct {
 	IntegerVal WorkspaceSettingV2IntegerValPtrInput
 	// Name of the setting
 	Name pulumi.StringPtrInput
+	// Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+	OperationalEmailCustomRecipient WorkspaceSettingV2OperationalEmailCustomRecipientPtrInput
 	// Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
 	PersonalCompute WorkspaceSettingV2PersonalComputePtrInput
 	// Configure the provider for management through account provider.
@@ -205,6 +229,8 @@ type workspaceSettingV2Args struct {
 	AibiDashboardEmbeddingAccessPolicy *WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy `pulumi:"aibiDashboardEmbeddingAccessPolicy"`
 	// Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
 	AibiDashboardEmbeddingApprovedDomains *WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains `pulumi:"aibiDashboardEmbeddingApprovedDomains"`
+	// Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+	AllowedAppsUserApiScopes *WorkspaceSettingV2AllowedAppsUserApiScopes `pulumi:"allowedAppsUserApiScopes"`
 	// Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
 	AutomaticClusterUpdateWorkspace *WorkspaceSettingV2AutomaticClusterUpdateWorkspace `pulumi:"automaticClusterUpdateWorkspace"`
 	// Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
@@ -223,6 +249,8 @@ type workspaceSettingV2Args struct {
 	IntegerVal *WorkspaceSettingV2IntegerVal `pulumi:"integerVal"`
 	// Name of the setting
 	Name *string `pulumi:"name"`
+	// Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+	OperationalEmailCustomRecipient *WorkspaceSettingV2OperationalEmailCustomRecipient `pulumi:"operationalEmailCustomRecipient"`
 	// Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
 	PersonalCompute *WorkspaceSettingV2PersonalCompute `pulumi:"personalCompute"`
 	// Configure the provider for management through account provider.
@@ -239,6 +267,8 @@ type WorkspaceSettingV2Args struct {
 	AibiDashboardEmbeddingAccessPolicy WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicyPtrInput
 	// Setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the setting value set by consumers, check effectiveAibiDashboardEmbeddingApprovedDomains for final setting value
 	AibiDashboardEmbeddingApprovedDomains WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrInput
+	// Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+	AllowedAppsUserApiScopes WorkspaceSettingV2AllowedAppsUserApiScopesPtrInput
 	// Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
 	AutomaticClusterUpdateWorkspace WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrInput
 	// Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
@@ -257,6 +287,8 @@ type WorkspaceSettingV2Args struct {
 	IntegerVal WorkspaceSettingV2IntegerValPtrInput
 	// Name of the setting
 	Name pulumi.StringPtrInput
+	// Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+	OperationalEmailCustomRecipient WorkspaceSettingV2OperationalEmailCustomRecipientPtrInput
 	// Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value
 	PersonalCompute WorkspaceSettingV2PersonalComputePtrInput
 	// Configure the provider for management through account provider.
@@ -368,6 +400,13 @@ func (o WorkspaceSettingV2Output) AibiDashboardEmbeddingApprovedDomains() Worksp
 	}).(WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsPtrOutput)
 }
 
+// Setting value for allowedAppsUserApiScopes setting. This is the setting value set by consumers, check effectiveAllowedAppsUserApiScopes for final setting value
+func (o WorkspaceSettingV2Output) AllowedAppsUserApiScopes() WorkspaceSettingV2AllowedAppsUserApiScopesPtrOutput {
+	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2AllowedAppsUserApiScopesPtrOutput {
+		return v.AllowedAppsUserApiScopes
+	}).(WorkspaceSettingV2AllowedAppsUserApiScopesPtrOutput)
+}
+
 // Setting value for automaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check effectiveAutomaticClusterUpdateWorkspace for final setting value
 func (o WorkspaceSettingV2Output) AutomaticClusterUpdateWorkspace() WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrOutput {
@@ -394,6 +433,13 @@ func (o WorkspaceSettingV2Output) EffectiveAibiDashboardEmbeddingApprovedDomains
 	}).(WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsPtrOutput)
 }
 
+// (AllowedAppsUserApiScopesMessage) - Effective setting value for allowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+func (o WorkspaceSettingV2Output) EffectiveAllowedAppsUserApiScopes() WorkspaceSettingV2EffectiveAllowedAppsUserApiScopesOutput {
+	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveAllowedAppsUserApiScopesOutput {
+		return v.EffectiveAllowedAppsUserApiScopes
+	}).(WorkspaceSettingV2EffectiveAllowedAppsUserApiScopesOutput)
+}
+
 // Effective setting value for automaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
 func (o WorkspaceSettingV2Output) EffectiveAutomaticClusterUpdateWorkspace() WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrOutput {
@@ -409,6 +455,13 @@ func (o WorkspaceSettingV2Output) EffectiveBooleanVal() WorkspaceSettingV2Effect
 // (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
 func (o WorkspaceSettingV2Output) EffectiveIntegerVal() WorkspaceSettingV2EffectiveIntegerValOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveIntegerValOutput { return v.EffectiveIntegerVal }).(WorkspaceSettingV2EffectiveIntegerValOutput)
+}
+
+// (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+func (o WorkspaceSettingV2Output) EffectiveOperationalEmailCustomRecipient() WorkspaceSettingV2EffectiveOperationalEmailCustomRecipientOutput {
+	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveOperationalEmailCustomRecipientOutput {
+		return v.EffectiveOperationalEmailCustomRecipient
+	}).(WorkspaceSettingV2EffectiveOperationalEmailCustomRecipientOutput)
 }
 
 // Effective setting value for personalCompute setting. This is the final effective value of setting. To set a value use personal_compute
@@ -438,6 +491,13 @@ func (o WorkspaceSettingV2Output) IntegerVal() WorkspaceSettingV2IntegerValPtrOu
 // Name of the setting
 func (o WorkspaceSettingV2Output) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
+func (o WorkspaceSettingV2Output) OperationalEmailCustomRecipient() WorkspaceSettingV2OperationalEmailCustomRecipientPtrOutput {
+	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2OperationalEmailCustomRecipientPtrOutput {
+		return v.OperationalEmailCustomRecipient
+	}).(WorkspaceSettingV2OperationalEmailCustomRecipientPtrOutput)
 }
 
 // Setting value for personalCompute setting. This is the setting value set by consumers, check effectivePersonalCompute for final setting value

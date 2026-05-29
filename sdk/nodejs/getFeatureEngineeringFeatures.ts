@@ -9,12 +9,13 @@ import * as utilities from "./utilities";
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
  */
-export function getFeatureEngineeringFeatures(args?: GetFeatureEngineeringFeaturesArgs, opts?: pulumi.InvokeOptions): Promise<GetFeatureEngineeringFeaturesResult> {
-    args = args || {};
+export function getFeatureEngineeringFeatures(args: GetFeatureEngineeringFeaturesArgs, opts?: pulumi.InvokeOptions): Promise<GetFeatureEngineeringFeaturesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures", {
+        "catalogName": args.catalogName,
         "pageSize": args.pageSize,
         "providerConfig": args.providerConfig,
+        "schemaName": args.schemaName,
     }, opts);
 }
 
@@ -23,6 +24,10 @@ export function getFeatureEngineeringFeatures(args?: GetFeatureEngineeringFeatur
  */
 export interface GetFeatureEngineeringFeaturesArgs {
     /**
+     * Name of parent catalog for features of interest
+     */
+    catalogName: string;
+    /**
      * The maximum number of results to return
      */
     pageSize?: number;
@@ -30,12 +35,20 @@ export interface GetFeatureEngineeringFeaturesArgs {
      * Configure the provider for management through account provider.
      */
     providerConfig?: inputs.GetFeatureEngineeringFeaturesProviderConfig;
+    /**
+     * Name of parent schema relative to its parent catalog
+     */
+    schemaName: string;
 }
 
 /**
  * A collection of values returned by getFeatureEngineeringFeatures.
  */
 export interface GetFeatureEngineeringFeaturesResult {
+    /**
+     * (string) - Name of parent catalog
+     */
+    readonly catalogName: string;
     readonly features: outputs.GetFeatureEngineeringFeaturesFeature[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -43,16 +56,21 @@ export interface GetFeatureEngineeringFeaturesResult {
     readonly id: string;
     readonly pageSize?: number;
     readonly providerConfig?: outputs.GetFeatureEngineeringFeaturesProviderConfig;
+    /**
+     * (string) - Name of parent schema relative to its parent catalog
+     */
+    readonly schemaName: string;
 }
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
  */
-export function getFeatureEngineeringFeaturesOutput(args?: GetFeatureEngineeringFeaturesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFeatureEngineeringFeaturesResult> {
-    args = args || {};
+export function getFeatureEngineeringFeaturesOutput(args: GetFeatureEngineeringFeaturesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFeatureEngineeringFeaturesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("databricks:index/getFeatureEngineeringFeatures:getFeatureEngineeringFeatures", {
+        "catalogName": args.catalogName,
         "pageSize": args.pageSize,
         "providerConfig": args.providerConfig,
+        "schemaName": args.schemaName,
     }, opts);
 }
 
@@ -61,6 +79,10 @@ export function getFeatureEngineeringFeaturesOutput(args?: GetFeatureEngineering
  */
 export interface GetFeatureEngineeringFeaturesOutputArgs {
     /**
+     * Name of parent catalog for features of interest
+     */
+    catalogName: pulumi.Input<string>;
+    /**
      * The maximum number of results to return
      */
     pageSize?: pulumi.Input<number | undefined>;
@@ -68,4 +90,8 @@ export interface GetFeatureEngineeringFeaturesOutputArgs {
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.GetFeatureEngineeringFeaturesProviderConfigArgs | undefined>;
+    /**
+     * Name of parent schema relative to its parent catalog
+     */
+    schemaName: pulumi.Input<string>;
 }

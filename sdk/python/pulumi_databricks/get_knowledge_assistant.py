@@ -132,7 +132,7 @@ class GetKnowledgeAssistantResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        (string) - The universally unique identifier (UUID) of the Knowledge Assistant
+        (string, deprecated) - Deprecated: use knowledge_assistant_id instead
         """
         return pulumi.get(self, "id")
 

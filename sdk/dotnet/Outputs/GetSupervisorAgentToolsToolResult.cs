@@ -26,7 +26,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetSupervisorAgentToolsToolGenieSpaceResult GenieSpace;
         /// <summary>
-        /// (string) - The ID of the genie space
+        /// (string, deprecated) - Deprecated: use SpaceId instead. Still REQUIRED for backward compatibility
+        /// until a future API version removes it
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -46,7 +47,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string ToolId;
         /// <summary>
-        /// (string) - Tool type. Must be one of: "GenieSpace", "KnowledgeAssistant", "UcFunction", "UcConnection", "app", "volume", "LakeviewDashboard", "ServingEndpoint", "UcTable", "VectorSearchIndex", "catalog", "schema", "SupervisorAgent", "WebSearch"
+        /// (string) - Tool type. Must be one of: "GenieSpace", "KnowledgeAssistant", "UcFunction", "UcConnection", "UcMcp", "app", "volume", "dashboard", "ServingEndpoint", "table", "VectorSearchIndex", "catalog", "schema", "SupervisorAgent", "WebSearch", "skill". The legacy values "LakeviewDashboard" and "UcTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
         /// </summary>
         public readonly string ToolType;
         /// <summary>

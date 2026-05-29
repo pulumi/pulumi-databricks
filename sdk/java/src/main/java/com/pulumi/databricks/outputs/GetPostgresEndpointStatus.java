@@ -40,9 +40,7 @@ public final class GetPostgresEndpointStatus {
      */
     private Boolean disabled;
     /**
-     * @return (string) - The short identifier of the endpoint, suitable for showing to the users.
-     * For an endpoint with name `projects/my-project/branches/my-branch/endpoints/my-endpoint`,
-     * the endpointId is `my-endpoint`.
+     * @return (string) - Part of the resource name
      * 
      */
     private String endpointId;
@@ -111,9 +109,7 @@ public final class GetPostgresEndpointStatus {
         return this.disabled;
     }
     /**
-     * @return (string) - The short identifier of the endpoint, suitable for showing to the users.
-     * For an endpoint with name `projects/my-project/branches/my-branch/endpoints/my-endpoint`,
-     * the endpointId is `my-endpoint`.
+     * @return (string) - Part of the resource name
      * 
      */
     public String endpointId() {

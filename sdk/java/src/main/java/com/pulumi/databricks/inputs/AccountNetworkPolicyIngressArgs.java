@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessArgs;
 import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressPrivateAccessArgs;
 import com.pulumi.databricks.inputs.AccountNetworkPolicyIngressPublicAccessArgs;
 import java.util.Objects;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 public final class AccountNetworkPolicyIngressArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AccountNetworkPolicyIngressArgs Empty = new AccountNetworkPolicyIngressArgs();
+
+    @Import(name="crossWorkspaceAccess")
+    private @Nullable Output<AccountNetworkPolicyIngressCrossWorkspaceAccessArgs> crossWorkspaceAccess;
+
+    public Optional<Output<AccountNetworkPolicyIngressCrossWorkspaceAccessArgs>> crossWorkspaceAccess() {
+        return Optional.ofNullable(this.crossWorkspaceAccess);
+    }
 
     /**
      * The network policy restrictions for private access to the workspace.
@@ -53,6 +61,7 @@ public final class AccountNetworkPolicyIngressArgs extends com.pulumi.resources.
     private AccountNetworkPolicyIngressArgs() {}
 
     private AccountNetworkPolicyIngressArgs(AccountNetworkPolicyIngressArgs $) {
+        this.crossWorkspaceAccess = $.crossWorkspaceAccess;
         this.privateAccess = $.privateAccess;
         this.publicAccess = $.publicAccess;
     }
@@ -73,6 +82,15 @@ public final class AccountNetworkPolicyIngressArgs extends com.pulumi.resources.
 
         public Builder(AccountNetworkPolicyIngressArgs defaults) {
             $ = new AccountNetworkPolicyIngressArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder crossWorkspaceAccess(@Nullable Output<AccountNetworkPolicyIngressCrossWorkspaceAccessArgs> crossWorkspaceAccess) {
+            $.crossWorkspaceAccess = crossWorkspaceAccess;
+            return this;
+        }
+
+        public Builder crossWorkspaceAccess(AccountNetworkPolicyIngressCrossWorkspaceAccessArgs crossWorkspaceAccess) {
+            return crossWorkspaceAccess(Output.of(crossWorkspaceAccess));
         }
 
         /**

@@ -28,14 +28,14 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The creation time of the app.
+     * The creation time of the deployment.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the app.
+     * @return The creation time of the deployment.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -43,30 +43,46 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The email of the user that created the app.
+     * The email of the user that created the deployment.
      * 
      */
     @Import(name="creator")
     private @Nullable Output<String> creator;
 
     /**
-     * @return The email of the user that created the app.
+     * @return The email of the user that created the deployment.
      * 
      */
     public Optional<Output<String>> creator() {
         return Optional.ofNullable(this.creator);
     }
 
+    /**
+     * attribute
+     * 
+     */
     @Import(name="deploymentArtifacts")
     private @Nullable Output<AppActiveDeploymentDeploymentArtifactsArgs> deploymentArtifacts;
 
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<Output<AppActiveDeploymentDeploymentArtifactsArgs>> deploymentArtifacts() {
         return Optional.ofNullable(this.deploymentArtifacts);
     }
 
+    /**
+     * The unique ID of the deployment.
+     * 
+     */
     @Import(name="deploymentId")
     private @Nullable Output<String> deploymentId;
 
+    /**
+     * @return The unique ID of the deployment.
+     * 
+     */
     public Optional<Output<String>> deploymentId() {
         return Optional.ofNullable(this.deploymentId);
     }
@@ -85,36 +101,60 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.gitSource);
     }
 
+    /**
+     * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
+     * 
+     */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
+    /**
+     * @return The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
+     * 
+     */
     public Optional<Output<String>> mode() {
         return Optional.ofNullable(this.mode);
     }
 
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
     @Import(name="sourceCodePath")
     private @Nullable Output<String> sourceCodePath;
 
+    /**
+     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
     public Optional<Output<String>> sourceCodePath() {
         return Optional.ofNullable(this.sourceCodePath);
     }
 
+    /**
+     * attribute
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<AppActiveDeploymentStatusArgs> status;
 
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<Output<AppActiveDeploymentStatusArgs>> status() {
         return Optional.ofNullable(this.status);
     }
 
     /**
-     * The update time of the app.
+     * The update time of the deployment.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return The update time of the app.
+     * @return The update time of the deployment.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -169,7 +209,7 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param createTime The creation time of the app.
+         * @param createTime The creation time of the deployment.
          * 
          * @return builder
          * 
@@ -180,7 +220,7 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param createTime The creation time of the app.
+         * @param createTime The creation time of the deployment.
          * 
          * @return builder
          * 
@@ -190,7 +230,7 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param creator The email of the user that created the app.
+         * @param creator The email of the user that created the deployment.
          * 
          * @return builder
          * 
@@ -201,7 +241,7 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param creator The email of the user that created the app.
+         * @param creator The email of the user that created the deployment.
          * 
          * @return builder
          * 
@@ -210,20 +250,44 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
             return creator(Output.of(creator));
         }
 
+        /**
+         * @param deploymentArtifacts attribute
+         * 
+         * @return builder
+         * 
+         */
         public Builder deploymentArtifacts(@Nullable Output<AppActiveDeploymentDeploymentArtifactsArgs> deploymentArtifacts) {
             $.deploymentArtifacts = deploymentArtifacts;
             return this;
         }
 
+        /**
+         * @param deploymentArtifacts attribute
+         * 
+         * @return builder
+         * 
+         */
         public Builder deploymentArtifacts(AppActiveDeploymentDeploymentArtifactsArgs deploymentArtifacts) {
             return deploymentArtifacts(Output.of(deploymentArtifacts));
         }
 
+        /**
+         * @param deploymentId The unique ID of the deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deploymentId(@Nullable Output<String> deploymentId) {
             $.deploymentId = deploymentId;
             return this;
         }
 
+        /**
+         * @param deploymentId The unique ID of the deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deploymentId(String deploymentId) {
             return deploymentId(Output.of(deploymentId));
         }
@@ -250,35 +314,71 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
             return gitSource(Output.of(gitSource));
         }
 
+        /**
+         * @param mode The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(@Nullable Output<String> mode) {
             $.mode = mode;
             return this;
         }
 
+        /**
+         * @param mode The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(String mode) {
             return mode(Output.of(mode));
         }
 
+        /**
+         * @param sourceCodePath The snapshotted workspace file system path of the source code loaded by the deployed app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceCodePath(@Nullable Output<String> sourceCodePath) {
             $.sourceCodePath = sourceCodePath;
             return this;
         }
 
+        /**
+         * @param sourceCodePath The snapshotted workspace file system path of the source code loaded by the deployed app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceCodePath(String sourceCodePath) {
             return sourceCodePath(Output.of(sourceCodePath));
         }
 
+        /**
+         * @param status attribute
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<AppActiveDeploymentStatusArgs> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status attribute
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(AppActiveDeploymentStatusArgs status) {
             return status(Output.of(status));
         }
 
         /**
-         * @param updateTime The update time of the app.
+         * @param updateTime The update time of the deployment.
          * 
          * @return builder
          * 
@@ -289,7 +389,7 @@ public final class AppActiveDeploymentArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param updateTime The update time of the app.
+         * @param updateTime The update time of the deployment.
          * 
          * @return builder
          * 

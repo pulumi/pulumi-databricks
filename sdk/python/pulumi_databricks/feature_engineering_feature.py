@@ -35,7 +35,9 @@ class FeatureEngineeringFeatureArgs:
         """
         The set of arguments for constructing a FeatureEngineeringFeature resource.
 
-        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
+        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature. This is the
+               feature's resource identifier; the catalog_name, schema_name, and name fields
+               below are OUTPUT_ONLY decomposed views of this value
         :param pulumi.Input['FeatureEngineeringFeatureFunctionArgs'] function: The function by which the feature is computed
         :param pulumi.Input['FeatureEngineeringFeatureSourceArgs'] source: The data source of the feature
         :param pulumi.Input[_builtins.str] description: The description of the feature
@@ -78,7 +80,9 @@ class FeatureEngineeringFeatureArgs:
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The full three-part name (catalog, schema, name) of the feature
+        The full three-part name (catalog, schema, name) of the feature. This is the
+        feature's resource identifier; the catalog_name, schema_name, and name fields
+        below are OUTPUT_ONLY decomposed views of this value
         """
         return pulumi.get(self, "full_name")
 
@@ -217,6 +221,9 @@ class FeatureEngineeringFeatureArgs:
 @pulumi.input_type
 class _FeatureEngineeringFeatureState:
     def __init__(__self__, *,
+                 catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  entities: pulumi.Input[Optional[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]]] = None,
                  filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
@@ -224,18 +231,25 @@ class _FeatureEngineeringFeatureState:
                  function: pulumi.Input[Optional['FeatureEngineeringFeatureFunctionArgs']] = None,
                  inputs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  lineage_context: pulumi.Input[Optional['FeatureEngineeringFeatureLineageContextArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['FeatureEngineeringFeatureProviderConfigArgs']] = None,
+                 schema_name: pulumi.Input[Optional[_builtins.str]] = None,
                  source: pulumi.Input[Optional['FeatureEngineeringFeatureSourceArgs']] = None,
                  time_window: pulumi.Input[Optional['FeatureEngineeringFeatureTimeWindowArgs']] = None,
                  timeseries_column: pulumi.Input[Optional['FeatureEngineeringFeatureTimeseriesColumnArgs']] = None):
         """
         Input properties used for looking up and filtering FeatureEngineeringFeature resources.
 
+        :param pulumi.Input[_builtins.str] catalog_name: (string) - Name of parent catalog
+        :param pulumi.Input[_builtins.str] created_at: (string) - Time at which this feature was created
+        :param pulumi.Input[_builtins.str] created_by: (string) - Username of the feature creator
         :param pulumi.Input[_builtins.str] description: The description of the feature
         :param pulumi.Input[Sequence[pulumi.Input['FeatureEngineeringFeatureEntityArgs']]] entities: The entity columns for the feature, used as aggregation keys and for query-time lookup
         :param pulumi.Input[_builtins.str] filter_condition: Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
                The filter condition applied to the source data before aggregation
-        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
+        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature. This is the
+               feature's resource identifier; the catalog_name, schema_name, and name fields
+               below are OUTPUT_ONLY decomposed views of this value
         :param pulumi.Input['FeatureEngineeringFeatureFunctionArgs'] function: The function by which the feature is computed
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
                The input columns from which the feature is computed
@@ -244,12 +258,20 @@ class _FeatureEngineeringFeatureState:
                is automatically populated when features are created through Databricks notebooks or jobs.
                Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
                This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+        :param pulumi.Input[_builtins.str] name: (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
         :param pulumi.Input['FeatureEngineeringFeatureProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.str] schema_name: (string) - Name of parent schema relative to its parent catalog
         :param pulumi.Input['FeatureEngineeringFeatureSourceArgs'] source: The data source of the feature
         :param pulumi.Input['FeatureEngineeringFeatureTimeWindowArgs'] time_window: Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
                The time window in which the feature is computed
         :param pulumi.Input['FeatureEngineeringFeatureTimeseriesColumnArgs'] timeseries_column: Column recording time, used for point-in-time joins, backfills, and aggregations
         """
+        if catalog_name is not None:
+            pulumi.set(__self__, "catalog_name", catalog_name)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if entities is not None:
@@ -264,14 +286,54 @@ class _FeatureEngineeringFeatureState:
             pulumi.set(__self__, "inputs", inputs)
         if lineage_context is not None:
             pulumi.set(__self__, "lineage_context", lineage_context)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if schema_name is not None:
+            pulumi.set(__self__, "schema_name", schema_name)
         if source is not None:
             pulumi.set(__self__, "source", source)
         if time_window is not None:
             pulumi.set(__self__, "time_window", time_window)
         if timeseries_column is not None:
             pulumi.set(__self__, "timeseries_column", timeseries_column)
+
+    @_builtins.property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - Name of parent catalog
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "catalog_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - Time at which this feature was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - Username of the feature creator
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter
@@ -314,7 +376,9 @@ class _FeatureEngineeringFeatureState:
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The full three-part name (catalog, schema, name) of the feature
+        The full three-part name (catalog, schema, name) of the feature. This is the
+        feature's resource identifier; the catalog_name, schema_name, and name fields
+        below are OUTPUT_ONLY decomposed views of this value
         """
         return pulumi.get(self, "full_name")
 
@@ -364,6 +428,18 @@ class _FeatureEngineeringFeatureState:
         pulumi.set(self, "lineage_context", value)
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> pulumi.Input[Optional['FeatureEngineeringFeatureProviderConfigArgs']]:
         """
@@ -374,6 +450,18 @@ class _FeatureEngineeringFeatureState:
     @provider_config.setter
     def provider_config(self, value: pulumi.Input[Optional['FeatureEngineeringFeatureProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - Name of parent schema relative to its parent catalog
+        """
+        return pulumi.get(self, "schema_name")
+
+    @schema_name.setter
+    def schema_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "schema_name", value)
 
     @_builtins.property
     @pulumi.getter
@@ -441,7 +529,9 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict']]]] entities: The entity columns for the feature, used as aggregation keys and for query-time lookup
         :param pulumi.Input[_builtins.str] filter_condition: Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
                The filter condition applied to the source data before aggregation
-        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
+        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature. This is the
+               feature's resource identifier; the catalog_name, schema_name, and name fields
+               below are OUTPUT_ONLY decomposed views of this value
         :param pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']] function: The function by which the feature is computed
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
                The input columns from which the feature is computed
@@ -518,6 +608,11 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
             __props__.__dict__["source"] = source
             __props__.__dict__["time_window"] = time_window
             __props__.__dict__["timeseries_column"] = timeseries_column
+            __props__.__dict__["catalog_name"] = None
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["created_by"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["schema_name"] = None
         super(FeatureEngineeringFeature, __self__).__init__(
             'databricks:index/featureEngineeringFeature:FeatureEngineeringFeature',
             resource_name,
@@ -528,6 +623,9 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            catalog_name: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict']]]]] = None,
             filter_condition: pulumi.Input[Optional[_builtins.str]] = None,
@@ -535,7 +633,9 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
             function: pulumi.Input[Optional[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']]] = None,
             inputs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             lineage_context: pulumi.Input[Optional[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict']]] = None,
+            schema_name: pulumi.Input[Optional[_builtins.str]] = None,
             source: pulumi.Input[Optional[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']]] = None,
             time_window: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']]] = None,
             timeseries_column: pulumi.Input[Optional[Union['FeatureEngineeringFeatureTimeseriesColumnArgs', 'FeatureEngineeringFeatureTimeseriesColumnArgsDict']]] = None) -> 'FeatureEngineeringFeature':
@@ -546,11 +646,16 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] catalog_name: (string) - Name of parent catalog
+        :param pulumi.Input[_builtins.str] created_at: (string) - Time at which this feature was created
+        :param pulumi.Input[_builtins.str] created_by: (string) - Username of the feature creator
         :param pulumi.Input[_builtins.str] description: The description of the feature
         :param pulumi.Input[Sequence[pulumi.Input[Union['FeatureEngineeringFeatureEntityArgs', 'FeatureEngineeringFeatureEntityArgsDict']]]] entities: The entity columns for the feature, used as aggregation keys and for query-time lookup
         :param pulumi.Input[_builtins.str] filter_condition: Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
                The filter condition applied to the source data before aggregation
-        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature
+        :param pulumi.Input[_builtins.str] full_name: The full three-part name (catalog, schema, name) of the feature. This is the
+               feature's resource identifier; the catalog_name, schema_name, and name fields
+               below are OUTPUT_ONLY decomposed views of this value
         :param pulumi.Input[Union['FeatureEngineeringFeatureFunctionArgs', 'FeatureEngineeringFeatureFunctionArgsDict']] function: The function by which the feature is computed
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inputs: Deprecated: Use AggregationFunction.inputs instead. Kept for backwards compatibility.
                The input columns from which the feature is computed
@@ -559,7 +664,9 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
                is automatically populated when features are created through Databricks notebooks or jobs.
                Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
                This field will be set by feature-engineering client and should be left unset by SDK and terraform users
+        :param pulumi.Input[_builtins.str] name: (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
         :param pulumi.Input[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.str] schema_name: (string) - Name of parent schema relative to its parent catalog
         :param pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict']] source: The data source of the feature
         :param pulumi.Input[Union['FeatureEngineeringFeatureTimeWindowArgs', 'FeatureEngineeringFeatureTimeWindowArgsDict']] time_window: Deprecated: Use Function.aggregation_function.time_window instead. Kept for backwards compatibility.
                The time window in which the feature is computed
@@ -569,6 +676,9 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
 
         __props__ = _FeatureEngineeringFeatureState.__new__(_FeatureEngineeringFeatureState)
 
+        __props__.__dict__["catalog_name"] = catalog_name
+        __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["created_by"] = created_by
         __props__.__dict__["description"] = description
         __props__.__dict__["entities"] = entities
         __props__.__dict__["filter_condition"] = filter_condition
@@ -576,11 +686,37 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         __props__.__dict__["function"] = function
         __props__.__dict__["inputs"] = inputs
         __props__.__dict__["lineage_context"] = lineage_context
+        __props__.__dict__["name"] = name
         __props__.__dict__["provider_config"] = provider_config
+        __props__.__dict__["schema_name"] = schema_name
         __props__.__dict__["source"] = source
         __props__.__dict__["time_window"] = time_window
         __props__.__dict__["timeseries_column"] = timeseries_column
         return FeatureEngineeringFeature(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - Name of parent catalog
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - Time at which this feature was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - Username of the feature creator
+        """
+        return pulumi.get(self, "created_by")
 
     @_builtins.property
     @pulumi.getter
@@ -611,7 +747,9 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The full three-part name (catalog, schema, name) of the feature
+        The full three-part name (catalog, schema, name) of the feature. This is the
+        feature's resource identifier; the catalog_name, schema_name, and name fields
+        below are OUTPUT_ONLY decomposed views of this value
         """
         return pulumi.get(self, "full_name")
 
@@ -645,12 +783,28 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         return pulumi.get(self, "lineage_context")
 
     @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> pulumi.Output['outputs.FeatureEngineeringFeatureProviderConfig']:
         """
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
+
+    @_builtins.property
+    @pulumi.getter(name="schemaName")
+    def schema_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - Name of parent schema relative to its parent catalog
+        """
+        return pulumi.get(self, "schema_name")
 
     @_builtins.property
     @pulumi.getter

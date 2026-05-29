@@ -20,11 +20,51 @@ namespace Pulumi.Databricks.Inputs
         [Input("fullRefresh")]
         public Input<bool>? FullRefresh { get; set; }
 
+        [Input("fullRefreshSelections")]
+        private InputList<string>? _fullRefreshSelections;
+        public InputList<string> FullRefreshSelections
+        {
+            get => _fullRefreshSelections ?? (_fullRefreshSelections = new InputList<string>());
+            set => _fullRefreshSelections = value;
+        }
+
+        [Input("parameters")]
+        private InputMap<string>? _parameters;
+        public InputMap<string> Parameters
+        {
+            get => _parameters ?? (_parameters = new InputMap<string>());
+            set => _parameters = value;
+        }
+
         /// <summary>
         /// The pipeline's unique ID.
         /// </summary>
         [Input("pipelineId", required: true)]
         public Input<string> PipelineId { get; set; } = null!;
+
+        [Input("refreshFlowSelections")]
+        private InputList<string>? _refreshFlowSelections;
+        public InputList<string> RefreshFlowSelections
+        {
+            get => _refreshFlowSelections ?? (_refreshFlowSelections = new InputList<string>());
+            set => _refreshFlowSelections = value;
+        }
+
+        [Input("refreshSelections")]
+        private InputList<string>? _refreshSelections;
+        public InputList<string> RefreshSelections
+        {
+            get => _refreshSelections ?? (_refreshSelections = new InputList<string>());
+            set => _refreshSelections = value;
+        }
+
+        [Input("resetCheckpointSelections")]
+        private InputList<string>? _resetCheckpointSelections;
+        public InputList<string> ResetCheckpointSelections
+        {
+            get => _resetCheckpointSelections ?? (_resetCheckpointSelections = new InputList<string>());
+            set => _resetCheckpointSelections = value;
+        }
 
         public JobTaskPipelineTaskArgs()
         {

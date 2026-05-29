@@ -11,12 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class GetAppsAppResourceGenieSpace {
     /**
-     * @return The name of Genie Space.
+     * @return The name of the app to grant permission on.
      * 
      */
     private String name;
     /**
-     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * @return Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      * 
      */
     private String permission;
@@ -28,14 +28,14 @@ public final class GetAppsAppResourceGenieSpace {
 
     private GetAppsAppResourceGenieSpace() {}
     /**
-     * @return The name of Genie Space.
+     * @return The name of the app to grant permission on.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+     * @return Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
      * 
      */
     public String permission() {

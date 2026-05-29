@@ -13,13 +13,12 @@ import java.util.Objects;
 @CustomType
 public final class GetPostgresBranchStatus {
     /**
-     * @return (string) - The short identifier of the branch, suitable for showing to the users.
-     * For a branch with name `projects/my-project/branches/my-branch`, the branchId is `my-branch`.
+     * @return (string) - Part of the resource name
      * 
      */
     private String branchId;
     /**
-     * @return (string) - The branch&#39;s state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     * @return (string) - The branch&#39;s state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      * 
      */
     private String currentState;
@@ -28,6 +27,12 @@ public final class GetPostgresBranchStatus {
      * 
      */
     private Boolean default_;
+    /**
+     * @return (string) - A timestamp indicating when the branch was deleted.
+     * Empty if the branch is not deleted
+     * 
+     */
+    private String deleteTime;
     /**
      * @return (string) - Absolute expiration time for the branch. Empty if expiration is disabled
      * 
@@ -44,10 +49,16 @@ public final class GetPostgresBranchStatus {
      */
     private Integer logicalSizeBytes;
     /**
-     * @return (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     * @return (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      * 
      */
     private String pendingState;
+    /**
+     * @return (string) - A timestamp indicating when the branch is scheduled to be purged.
+     * Empty if the branch is not deleted, otherwise set to a timestamp in the future
+     * 
+     */
+    private String purgeTime;
     /**
      * @return (string) - The name of the source branch from which this branch was created.
      * Format: projects/{project_id}/branches/{branch_id}
@@ -72,15 +83,14 @@ public final class GetPostgresBranchStatus {
 
     private GetPostgresBranchStatus() {}
     /**
-     * @return (string) - The short identifier of the branch, suitable for showing to the users.
-     * For a branch with name `projects/my-project/branches/my-branch`, the branchId is `my-branch`.
+     * @return (string) - Part of the resource name
      * 
      */
     public String branchId() {
         return this.branchId;
     }
     /**
-     * @return (string) - The branch&#39;s state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     * @return (string) - The branch&#39;s state, indicating if it is initializing, ready for use, or archived. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      * 
      */
     public String currentState() {
@@ -92,6 +102,14 @@ public final class GetPostgresBranchStatus {
      */
     public Boolean default_() {
         return this.default_;
+    }
+    /**
+     * @return (string) - A timestamp indicating when the branch was deleted.
+     * Empty if the branch is not deleted
+     * 
+     */
+    public String deleteTime() {
+        return this.deleteTime;
     }
     /**
      * @return (string) - Absolute expiration time for the branch. Empty if expiration is disabled
@@ -115,11 +133,19 @@ public final class GetPostgresBranchStatus {
         return this.logicalSizeBytes;
     }
     /**
-     * @return (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
+     * @return (string) - The pending state of the branch, if a state transition is in progress. Possible values are: `ARCHIVED`, `DELETED`, `IMPORTING`, `INIT`, `READY`, `RESETTING`
      * 
      */
     public String pendingState() {
         return this.pendingState;
+    }
+    /**
+     * @return (string) - A timestamp indicating when the branch is scheduled to be purged.
+     * Empty if the branch is not deleted, otherwise set to a timestamp in the future
+     * 
+     */
+    public String purgeTime() {
+        return this.purgeTime;
     }
     /**
      * @return (string) - The name of the source branch from which this branch was created.
@@ -163,10 +189,12 @@ public final class GetPostgresBranchStatus {
         private String branchId;
         private String currentState;
         private Boolean default_;
+        private String deleteTime;
         private String expireTime;
         private Boolean isProtected;
         private Integer logicalSizeBytes;
         private String pendingState;
+        private String purgeTime;
         private String sourceBranch;
         private String sourceBranchLsn;
         private String sourceBranchTime;
@@ -177,10 +205,12 @@ public final class GetPostgresBranchStatus {
     	      this.branchId = defaults.branchId;
     	      this.currentState = defaults.currentState;
     	      this.default_ = defaults.default_;
+    	      this.deleteTime = defaults.deleteTime;
     	      this.expireTime = defaults.expireTime;
     	      this.isProtected = defaults.isProtected;
     	      this.logicalSizeBytes = defaults.logicalSizeBytes;
     	      this.pendingState = defaults.pendingState;
+    	      this.purgeTime = defaults.purgeTime;
     	      this.sourceBranch = defaults.sourceBranch;
     	      this.sourceBranchLsn = defaults.sourceBranchLsn;
     	      this.sourceBranchTime = defaults.sourceBranchTime;
@@ -209,6 +239,14 @@ public final class GetPostgresBranchStatus {
               throw new MissingRequiredPropertyException("GetPostgresBranchStatus", "default_");
             }
             this.default_ = default_;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deleteTime(String deleteTime) {
+            if (deleteTime == null) {
+              throw new MissingRequiredPropertyException("GetPostgresBranchStatus", "deleteTime");
+            }
+            this.deleteTime = deleteTime;
             return this;
         }
         @CustomType.Setter
@@ -241,6 +279,14 @@ public final class GetPostgresBranchStatus {
               throw new MissingRequiredPropertyException("GetPostgresBranchStatus", "pendingState");
             }
             this.pendingState = pendingState;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder purgeTime(String purgeTime) {
+            if (purgeTime == null) {
+              throw new MissingRequiredPropertyException("GetPostgresBranchStatus", "purgeTime");
+            }
+            this.purgeTime = purgeTime;
             return this;
         }
         @CustomType.Setter
@@ -280,10 +326,12 @@ public final class GetPostgresBranchStatus {
             _resultValue.branchId = branchId;
             _resultValue.currentState = currentState;
             _resultValue.default_ = default_;
+            _resultValue.deleteTime = deleteTime;
             _resultValue.expireTime = expireTime;
             _resultValue.isProtected = isProtected;
             _resultValue.logicalSizeBytes = logicalSizeBytes;
             _resultValue.pendingState = pendingState;
+            _resultValue.purgeTime = purgeTime;
             _resultValue.sourceBranch = sourceBranch;
             _resultValue.sourceBranchLsn = sourceBranchLsn;
             _resultValue.sourceBranchTime = sourceBranchTime;

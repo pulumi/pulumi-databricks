@@ -57,6 +57,12 @@ namespace Pulumi.Databricks
         public Output<Outputs.WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains?> AibiDashboardEmbeddingApprovedDomains { get; private set; } = null!;
 
         /// <summary>
+        /// Setting value for AllowedAppsUserApiScopes setting. This is the setting value set by consumers, check EffectiveAllowedAppsUserApiScopes for final setting value
+        /// </summary>
+        [Output("allowedAppsUserApiScopes")]
+        public Output<Outputs.WorkspaceSettingV2AllowedAppsUserApiScopes?> AllowedAppsUserApiScopes { get; private set; } = null!;
+
+        /// <summary>
         /// Setting value for AutomaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check EffectiveAutomaticClusterUpdateWorkspace for final setting value
         /// </summary>
         [Output("automaticClusterUpdateWorkspace")]
@@ -81,6 +87,12 @@ namespace Pulumi.Databricks
         public Output<Outputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains?> EffectiveAibiDashboardEmbeddingApprovedDomains { get; private set; } = null!;
 
         /// <summary>
+        /// (AllowedAppsUserApiScopesMessage) - Effective setting value for AllowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+        /// </summary>
+        [Output("effectiveAllowedAppsUserApiScopes")]
+        public Output<Outputs.WorkspaceSettingV2EffectiveAllowedAppsUserApiScopes> EffectiveAllowedAppsUserApiScopes { get; private set; } = null!;
+
+        /// <summary>
         /// Effective setting value for AutomaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
         /// </summary>
         [Output("effectiveAutomaticClusterUpdateWorkspace")]
@@ -97,6 +109,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("effectiveIntegerVal")]
         public Output<Outputs.WorkspaceSettingV2EffectiveIntegerVal> EffectiveIntegerVal { get; private set; } = null!;
+
+        /// <summary>
+        /// (OperationalEmailCustomRecipientMessage) - Effective setting value for OperationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+        /// </summary>
+        [Output("effectiveOperationalEmailCustomRecipient")]
+        public Output<Outputs.WorkspaceSettingV2EffectiveOperationalEmailCustomRecipient> EffectiveOperationalEmailCustomRecipient { get; private set; } = null!;
 
         /// <summary>
         /// Effective setting value for PersonalCompute setting. This is the final effective value of setting. To set a value use personal_compute
@@ -127,6 +145,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Setting value for OperationalEmailCustomRecipient setting. This is the setting value set by consumers, check EffectiveOperationalEmailCustomRecipient for final setting value
+        /// </summary>
+        [Output("operationalEmailCustomRecipient")]
+        public Output<Outputs.WorkspaceSettingV2OperationalEmailCustomRecipient?> OperationalEmailCustomRecipient { get; private set; } = null!;
 
         /// <summary>
         /// Setting value for PersonalCompute setting. This is the setting value set by consumers, check EffectivePersonalCompute for final setting value
@@ -211,6 +235,12 @@ namespace Pulumi.Databricks
         public Input<Inputs.WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsArgs>? AibiDashboardEmbeddingApprovedDomains { get; set; }
 
         /// <summary>
+        /// Setting value for AllowedAppsUserApiScopes setting. This is the setting value set by consumers, check EffectiveAllowedAppsUserApiScopes for final setting value
+        /// </summary>
+        [Input("allowedAppsUserApiScopes")]
+        public Input<Inputs.WorkspaceSettingV2AllowedAppsUserApiScopesArgs>? AllowedAppsUserApiScopes { get; set; }
+
+        /// <summary>
         /// Setting value for AutomaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check EffectiveAutomaticClusterUpdateWorkspace for final setting value
         /// </summary>
         [Input("automaticClusterUpdateWorkspace")]
@@ -265,6 +295,12 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Setting value for OperationalEmailCustomRecipient setting. This is the setting value set by consumers, check EffectiveOperationalEmailCustomRecipient for final setting value
+        /// </summary>
+        [Input("operationalEmailCustomRecipient")]
+        public Input<Inputs.WorkspaceSettingV2OperationalEmailCustomRecipientArgs>? OperationalEmailCustomRecipient { get; set; }
+
+        /// <summary>
         /// Setting value for PersonalCompute setting. This is the setting value set by consumers, check EffectivePersonalCompute for final setting value
         /// </summary>
         [Input("personalCompute")]
@@ -309,6 +345,12 @@ namespace Pulumi.Databricks
         public Input<Inputs.WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomainsGetArgs>? AibiDashboardEmbeddingApprovedDomains { get; set; }
 
         /// <summary>
+        /// Setting value for AllowedAppsUserApiScopes setting. This is the setting value set by consumers, check EffectiveAllowedAppsUserApiScopes for final setting value
+        /// </summary>
+        [Input("allowedAppsUserApiScopes")]
+        public Input<Inputs.WorkspaceSettingV2AllowedAppsUserApiScopesGetArgs>? AllowedAppsUserApiScopes { get; set; }
+
+        /// <summary>
         /// Setting value for AutomaticClusterUpdateWorkspace setting. This is the setting value set by consumers, check EffectiveAutomaticClusterUpdateWorkspace for final setting value
         /// </summary>
         [Input("automaticClusterUpdateWorkspace")]
@@ -333,6 +375,12 @@ namespace Pulumi.Databricks
         public Input<Inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsGetArgs>? EffectiveAibiDashboardEmbeddingApprovedDomains { get; set; }
 
         /// <summary>
+        /// (AllowedAppsUserApiScopesMessage) - Effective setting value for AllowedAppsUserApiScopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
+        /// </summary>
+        [Input("effectiveAllowedAppsUserApiScopes")]
+        public Input<Inputs.WorkspaceSettingV2EffectiveAllowedAppsUserApiScopesGetArgs>? EffectiveAllowedAppsUserApiScopes { get; set; }
+
+        /// <summary>
         /// Effective setting value for AutomaticClusterUpdateWorkspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
         /// </summary>
         [Input("effectiveAutomaticClusterUpdateWorkspace")]
@@ -349,6 +397,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("effectiveIntegerVal")]
         public Input<Inputs.WorkspaceSettingV2EffectiveIntegerValGetArgs>? EffectiveIntegerVal { get; set; }
+
+        /// <summary>
+        /// (OperationalEmailCustomRecipientMessage) - Effective setting value for OperationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
+        /// </summary>
+        [Input("effectiveOperationalEmailCustomRecipient")]
+        public Input<Inputs.WorkspaceSettingV2EffectiveOperationalEmailCustomRecipientGetArgs>? EffectiveOperationalEmailCustomRecipient { get; set; }
 
         /// <summary>
         /// Effective setting value for PersonalCompute setting. This is the final effective value of setting. To set a value use personal_compute
@@ -379,6 +433,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Setting value for OperationalEmailCustomRecipient setting. This is the setting value set by consumers, check EffectiveOperationalEmailCustomRecipient for final setting value
+        /// </summary>
+        [Input("operationalEmailCustomRecipient")]
+        public Input<Inputs.WorkspaceSettingV2OperationalEmailCustomRecipientGetArgs>? OperationalEmailCustomRecipient { get; set; }
 
         /// <summary>
         /// Setting value for PersonalCompute setting. This is the setting value set by consumers, check EffectivePersonalCompute for final setting value

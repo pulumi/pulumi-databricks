@@ -17,14 +17,14 @@ public final class AppResourceUcSecurableArgs extends com.pulumi.resources.Resou
     public static final AppResourceUcSecurableArgs Empty = new AppResourceUcSecurableArgs();
 
     /**
-     * Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * Permission to grant on UC securable. Supported values depend on `securableType`: `READ_VOLUME` and `WRITE_VOLUME` for `VOLUME`, `SELECT` and `MODIFY` for `TABLE`, `EXECUTE` for `FUNCTION`, `USE_CONNECTION` for `CONNECTION`.
      * 
      */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
     /**
-     * @return Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+     * @return Permission to grant on UC securable. Supported values depend on `securableType`: `READ_VOLUME` and `WRITE_VOLUME` for `VOLUME`, `SELECT` and `MODIFY` for `TABLE`, `EXECUTE` for `FUNCTION`, `USE_CONNECTION` for `CONNECTION`.
      * 
      */
     public Output<String> permission() {
@@ -32,14 +32,14 @@ public final class AppResourceUcSecurableArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     * The full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
      * 
      */
     @Import(name="securableFullName", required=true)
     private Output<String> securableFullName;
 
     /**
-     * @return the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     * @return The full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
      * 
      */
     public Output<String> securableFullName() {
@@ -54,14 +54,14 @@ public final class AppResourceUcSecurableArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * the type of UC securable, i.e. `VOLUME`.
+     * The type of UC securable. Supported values are `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`.
      * 
      */
     @Import(name="securableType", required=true)
     private Output<String> securableType;
 
     /**
-     * @return the type of UC securable, i.e. `VOLUME`.
+     * @return The type of UC securable. Supported values are `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`.
      * 
      */
     public Output<String> securableType() {
@@ -96,7 +96,7 @@ public final class AppResourceUcSecurableArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param permission Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+         * @param permission Permission to grant on UC securable. Supported values depend on `securableType`: `READ_VOLUME` and `WRITE_VOLUME` for `VOLUME`, `SELECT` and `MODIFY` for `TABLE`, `EXECUTE` for `FUNCTION`, `USE_CONNECTION` for `CONNECTION`.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class AppResourceUcSecurableArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param permission Permissions to grant on UC securable, i.e. `READ_VOLUME`, `WRITE_VOLUME`.
+         * @param permission Permission to grant on UC securable. Supported values depend on `securableType`: `READ_VOLUME` and `WRITE_VOLUME` for `VOLUME`, `SELECT` and `MODIFY` for `TABLE`, `EXECUTE` for `FUNCTION`, `USE_CONNECTION` for `CONNECTION`.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class AppResourceUcSecurableArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param securableFullName the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+         * @param securableFullName The full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class AppResourceUcSecurableArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param securableFullName the full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+         * @param securableFullName The full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class AppResourceUcSecurableArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param securableType the type of UC securable, i.e. `VOLUME`.
+         * @param securableType The type of UC securable. Supported values are `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class AppResourceUcSecurableArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param securableType the type of UC securable, i.e. `VOLUME`.
+         * @param securableType The type of UC securable. Supported values are `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`.
          * 
          * @return builder
          * 

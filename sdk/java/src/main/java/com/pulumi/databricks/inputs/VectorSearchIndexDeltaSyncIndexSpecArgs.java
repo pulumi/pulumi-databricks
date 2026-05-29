@@ -25,17 +25,9 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
         return Optional.ofNullable(this.columnsToIndices);
     }
 
-    /**
-     * list of columns to sync. If not specified, all columns are syncronized.
-     * 
-     */
     @Import(name="columnsToSyncs")
     private @Nullable Output<List<String>> columnsToSyncs;
 
-    /**
-     * @return list of columns to sync. If not specified, all columns are syncronized.
-     * 
-     */
     public Optional<Output<List<String>>> columnsToSyncs() {
         return Optional.ofNullable(this.columnsToSyncs);
     }
@@ -178,33 +170,15 @@ public final class VectorSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.re
             return columnsToIndices(List.of(columnsToIndices));
         }
 
-        /**
-         * @param columnsToSyncs list of columns to sync. If not specified, all columns are syncronized.
-         * 
-         * @return builder
-         * 
-         */
         public Builder columnsToSyncs(@Nullable Output<List<String>> columnsToSyncs) {
             $.columnsToSyncs = columnsToSyncs;
             return this;
         }
 
-        /**
-         * @param columnsToSyncs list of columns to sync. If not specified, all columns are syncronized.
-         * 
-         * @return builder
-         * 
-         */
         public Builder columnsToSyncs(List<String> columnsToSyncs) {
             return columnsToSyncs(Output.of(columnsToSyncs));
         }
 
-        /**
-         * @param columnsToSyncs list of columns to sync. If not specified, all columns are syncronized.
-         * 
-         * @return builder
-         * 
-         */
         public Builder columnsToSyncs(String... columnsToSyncs) {
             return columnsToSyncs(List.of(columnsToSyncs));
         }

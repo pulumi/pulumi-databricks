@@ -5,9 +5,12 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureProviderConfigArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureStreamingModeArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringMaterializedFeatureTableTriggerArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
@@ -35,6 +38,21 @@ public final class FeatureEngineeringMaterializedFeatureArgs extends com.pulumi.
     }
 
     /**
+     * A cron-based schedule trigger for the materialization pipeline
+     * 
+     */
+    @Import(name="cronScheduleTrigger")
+    private @Nullable Output<FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs> cronScheduleTrigger;
+
+    /**
+     * @return A cron-based schedule trigger for the materialization pipeline
+     * 
+     */
+    public Optional<Output<FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs>> cronScheduleTrigger() {
+        return Optional.ofNullable(this.cronScheduleTrigger);
+    }
+
+    /**
      * The full name of the feature in Unity Catalog
      * 
      */
@@ -50,30 +68,31 @@ public final class FeatureEngineeringMaterializedFeatureArgs extends com.pulumi.
     }
 
     /**
-     * Unique identifier for the materialized feature
+     * Destination for writing feature values to an offline Delta table
      * 
      */
-    @Import(name="materializedFeatureId")
-    private @Nullable Output<String> materializedFeatureId;
-
-    /**
-     * @return Unique identifier for the materialized feature
-     * 
-     */
-    public Optional<Output<String>> materializedFeatureId() {
-        return Optional.ofNullable(this.materializedFeatureId);
-    }
-
     @Import(name="offlineStoreConfig")
     private @Nullable Output<FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs> offlineStoreConfig;
 
+    /**
+     * @return Destination for writing feature values to an offline Delta table
+     * 
+     */
     public Optional<Output<FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs>> offlineStoreConfig() {
         return Optional.ofNullable(this.offlineStoreConfig);
     }
 
+    /**
+     * Destination for writing feature values to an online Lakebase table
+     * 
+     */
     @Import(name="onlineStoreConfig")
     private @Nullable Output<FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs> onlineStoreConfig;
 
+    /**
+     * @return Destination for writing feature values to an online Lakebase table
+     * 
+     */
     public Optional<Output<FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs>> onlineStoreConfig() {
         return Optional.ofNullable(this.onlineStoreConfig);
     }
@@ -108,16 +127,52 @@ public final class FeatureEngineeringMaterializedFeatureArgs extends com.pulumi.
         return Optional.ofNullable(this.providerConfig);
     }
 
+    /**
+     * The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+     * sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+     * for ETL and analytics workloads
+     * 
+     */
+    @Import(name="streamingMode")
+    private @Nullable Output<FeatureEngineeringMaterializedFeatureStreamingModeArgs> streamingMode;
+
+    /**
+     * @return The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+     * sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+     * for ETL and analytics workloads
+     * 
+     */
+    public Optional<Output<FeatureEngineeringMaterializedFeatureStreamingModeArgs>> streamingMode() {
+        return Optional.ofNullable(this.streamingMode);
+    }
+
+    /**
+     * A trigger that fires when the upstream source table changes
+     * 
+     */
+    @Import(name="tableTrigger")
+    private @Nullable Output<FeatureEngineeringMaterializedFeatureTableTriggerArgs> tableTrigger;
+
+    /**
+     * @return A trigger that fires when the upstream source table changes
+     * 
+     */
+    public Optional<Output<FeatureEngineeringMaterializedFeatureTableTriggerArgs>> tableTrigger() {
+        return Optional.ofNullable(this.tableTrigger);
+    }
+
     private FeatureEngineeringMaterializedFeatureArgs() {}
 
     private FeatureEngineeringMaterializedFeatureArgs(FeatureEngineeringMaterializedFeatureArgs $) {
         this.cronSchedule = $.cronSchedule;
+        this.cronScheduleTrigger = $.cronScheduleTrigger;
         this.featureName = $.featureName;
-        this.materializedFeatureId = $.materializedFeatureId;
         this.offlineStoreConfig = $.offlineStoreConfig;
         this.onlineStoreConfig = $.onlineStoreConfig;
         this.pipelineScheduleState = $.pipelineScheduleState;
         this.providerConfig = $.providerConfig;
+        this.streamingMode = $.streamingMode;
+        this.tableTrigger = $.tableTrigger;
     }
 
     public static Builder builder() {
@@ -160,6 +215,27 @@ public final class FeatureEngineeringMaterializedFeatureArgs extends com.pulumi.
         }
 
         /**
+         * @param cronScheduleTrigger A cron-based schedule trigger for the materialization pipeline
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cronScheduleTrigger(@Nullable Output<FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs> cronScheduleTrigger) {
+            $.cronScheduleTrigger = cronScheduleTrigger;
+            return this;
+        }
+
+        /**
+         * @param cronScheduleTrigger A cron-based schedule trigger for the materialization pipeline
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cronScheduleTrigger(FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs cronScheduleTrigger) {
+            return cronScheduleTrigger(Output.of(cronScheduleTrigger));
+        }
+
+        /**
          * @param featureName The full name of the feature in Unity Catalog
          * 
          * @return builder
@@ -181,40 +257,43 @@ public final class FeatureEngineeringMaterializedFeatureArgs extends com.pulumi.
         }
 
         /**
-         * @param materializedFeatureId Unique identifier for the materialized feature
+         * @param offlineStoreConfig Destination for writing feature values to an offline Delta table
          * 
          * @return builder
          * 
          */
-        public Builder materializedFeatureId(@Nullable Output<String> materializedFeatureId) {
-            $.materializedFeatureId = materializedFeatureId;
-            return this;
-        }
-
-        /**
-         * @param materializedFeatureId Unique identifier for the materialized feature
-         * 
-         * @return builder
-         * 
-         */
-        public Builder materializedFeatureId(String materializedFeatureId) {
-            return materializedFeatureId(Output.of(materializedFeatureId));
-        }
-
         public Builder offlineStoreConfig(@Nullable Output<FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs> offlineStoreConfig) {
             $.offlineStoreConfig = offlineStoreConfig;
             return this;
         }
 
+        /**
+         * @param offlineStoreConfig Destination for writing feature values to an offline Delta table
+         * 
+         * @return builder
+         * 
+         */
         public Builder offlineStoreConfig(FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs offlineStoreConfig) {
             return offlineStoreConfig(Output.of(offlineStoreConfig));
         }
 
+        /**
+         * @param onlineStoreConfig Destination for writing feature values to an online Lakebase table
+         * 
+         * @return builder
+         * 
+         */
         public Builder onlineStoreConfig(@Nullable Output<FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs> onlineStoreConfig) {
             $.onlineStoreConfig = onlineStoreConfig;
             return this;
         }
 
+        /**
+         * @param onlineStoreConfig Destination for writing feature values to an online Lakebase table
+         * 
+         * @return builder
+         * 
+         */
         public Builder onlineStoreConfig(FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs onlineStoreConfig) {
             return onlineStoreConfig(Output.of(onlineStoreConfig));
         }
@@ -259,6 +338,52 @@ public final class FeatureEngineeringMaterializedFeatureArgs extends com.pulumi.
          */
         public Builder providerConfig(FeatureEngineeringMaterializedFeatureProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
+        }
+
+        /**
+         * @param streamingMode The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+         * sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+         * for ETL and analytics workloads
+         * 
+         * @return builder
+         * 
+         */
+        public Builder streamingMode(@Nullable Output<FeatureEngineeringMaterializedFeatureStreamingModeArgs> streamingMode) {
+            $.streamingMode = streamingMode;
+            return this;
+        }
+
+        /**
+         * @param streamingMode The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
+         * sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
+         * for ETL and analytics workloads
+         * 
+         * @return builder
+         * 
+         */
+        public Builder streamingMode(FeatureEngineeringMaterializedFeatureStreamingModeArgs streamingMode) {
+            return streamingMode(Output.of(streamingMode));
+        }
+
+        /**
+         * @param tableTrigger A trigger that fires when the upstream source table changes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tableTrigger(@Nullable Output<FeatureEngineeringMaterializedFeatureTableTriggerArgs> tableTrigger) {
+            $.tableTrigger = tableTrigger;
+            return this;
+        }
+
+        /**
+         * @param tableTrigger A trigger that fires when the upstream source table changes
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tableTrigger(FeatureEngineeringMaterializedFeatureTableTriggerArgs tableTrigger) {
+            return tableTrigger(Output.of(tableTrigger));
         }
 
         public FeatureEngineeringMaterializedFeatureArgs build() {

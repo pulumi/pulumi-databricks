@@ -16,14 +16,14 @@ public final class AppPendingDeploymentStatusArgs extends com.pulumi.resources.R
     public static final AppPendingDeploymentStatusArgs Empty = new AppPendingDeploymentStatusArgs();
 
     /**
-     * Application status message
+     * The status message of the deployment.
      * 
      */
     @Import(name="message")
     private @Nullable Output<String> message;
 
     /**
-     * @return Application status message
+     * @return The status message of the deployment.
      * 
      */
     public Optional<Output<String>> message() {
@@ -31,14 +31,14 @@ public final class AppPendingDeploymentStatusArgs extends com.pulumi.resources.R
     }
 
     /**
-     * State of the application.
+     * The state of the deployment.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return State of the application.
+     * @return The state of the deployment.
      * 
      */
     public Optional<Output<String>> state() {
@@ -71,7 +71,7 @@ public final class AppPendingDeploymentStatusArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param message Application status message
+         * @param message The status message of the deployment.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class AppPendingDeploymentStatusArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param message Application status message
+         * @param message The status message of the deployment.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class AppPendingDeploymentStatusArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param state State of the application.
+         * @param state The state of the deployment.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class AppPendingDeploymentStatusArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param state State of the application.
+         * @param state The state of the deployment.
          * 
          * @return builder
          * 

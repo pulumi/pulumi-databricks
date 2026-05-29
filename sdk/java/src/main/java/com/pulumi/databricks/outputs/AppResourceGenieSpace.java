@@ -15,6 +15,10 @@ public final class AppResourceGenieSpace {
      * 
      */
     private String name;
+    /**
+     * @return Permission to grant on Genie Space. Supported permissions are `CAN_MANAGE`, `CAN_EDIT`, `CAN_RUN`, `CAN_VIEW`.
+     * 
+     */
     private String permission;
     /**
      * @return The unique ID of Genie Space.
@@ -30,6 +34,10 @@ public final class AppResourceGenieSpace {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Permission to grant on Genie Space. Supported permissions are `CAN_MANAGE`, `CAN_EDIT`, `CAN_RUN`, `CAN_VIEW`.
+     * 
+     */
     public String permission() {
         return this.permission;
     }

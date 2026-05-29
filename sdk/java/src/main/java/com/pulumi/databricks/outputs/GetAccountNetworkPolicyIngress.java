@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccess;
 import com.pulumi.databricks.outputs.GetAccountNetworkPolicyIngressPrivateAccess;
 import com.pulumi.databricks.outputs.GetAccountNetworkPolicyIngressPublicAccess;
 import java.util.Objects;
@@ -12,6 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountNetworkPolicyIngress {
+    /**
+     * @return (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+     * 
+     */
+    private @Nullable GetAccountNetworkPolicyIngressCrossWorkspaceAccess crossWorkspaceAccess;
     /**
      * @return (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
      * Configures how registered private endpoints are allowed or denied access
@@ -26,6 +32,13 @@ public final class GetAccountNetworkPolicyIngress {
     private @Nullable GetAccountNetworkPolicyIngressPublicAccess publicAccess;
 
     private GetAccountNetworkPolicyIngress() {}
+    /**
+     * @return (CustomerFacingIngressNetworkPolicyCrossWorkspaceAccess)
+     * 
+     */
+    public Optional<GetAccountNetworkPolicyIngressCrossWorkspaceAccess> crossWorkspaceAccess() {
+        return Optional.ofNullable(this.crossWorkspaceAccess);
+    }
     /**
      * @return (CustomerFacingIngressNetworkPolicyPrivateAccess) - The network policy restrictions for private access to the workspace.
      * Configures how registered private endpoints are allowed or denied access
@@ -52,15 +65,23 @@ public final class GetAccountNetworkPolicyIngress {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetAccountNetworkPolicyIngressCrossWorkspaceAccess crossWorkspaceAccess;
         private @Nullable GetAccountNetworkPolicyIngressPrivateAccess privateAccess;
         private @Nullable GetAccountNetworkPolicyIngressPublicAccess publicAccess;
         public Builder() {}
         public Builder(GetAccountNetworkPolicyIngress defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.crossWorkspaceAccess = defaults.crossWorkspaceAccess;
     	      this.privateAccess = defaults.privateAccess;
     	      this.publicAccess = defaults.publicAccess;
         }
 
+        @CustomType.Setter
+        public Builder crossWorkspaceAccess(@Nullable GetAccountNetworkPolicyIngressCrossWorkspaceAccess crossWorkspaceAccess) {
+
+            this.crossWorkspaceAccess = crossWorkspaceAccess;
+            return this;
+        }
         @CustomType.Setter
         public Builder privateAccess(@Nullable GetAccountNetworkPolicyIngressPrivateAccess privateAccess) {
 
@@ -75,6 +96,7 @@ public final class GetAccountNetworkPolicyIngress {
         }
         public GetAccountNetworkPolicyIngress build() {
             final var _resultValue = new GetAccountNetworkPolicyIngress();
+            _resultValue.crossWorkspaceAccess = crossWorkspaceAccess;
             _resultValue.privateAccess = privateAccess;
             _resultValue.publicAccess = publicAccess;
             return _resultValue;

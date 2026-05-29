@@ -18,14 +18,14 @@ public final class GetFeatureEngineeringMaterializedFeatureArgs extends com.pulu
     public static final GetFeatureEngineeringMaterializedFeatureArgs Empty = new GetFeatureEngineeringMaterializedFeatureArgs();
 
     /**
-     * Unique identifier for the materialized feature
+     * Server-assigned unique identifier for the materialized feature
      * 
      */
     @Import(name="materializedFeatureId", required=true)
     private Output<String> materializedFeatureId;
 
     /**
-     * @return Unique identifier for the materialized feature
+     * @return Server-assigned unique identifier for the materialized feature
      * 
      */
     public Output<String> materializedFeatureId() {
@@ -73,7 +73,7 @@ public final class GetFeatureEngineeringMaterializedFeatureArgs extends com.pulu
         }
 
         /**
-         * @param materializedFeatureId Unique identifier for the materialized feature
+         * @param materializedFeatureId Server-assigned unique identifier for the materialized feature
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class GetFeatureEngineeringMaterializedFeatureArgs extends com.pulu
         }
 
         /**
-         * @param materializedFeatureId Unique identifier for the materialized feature
+         * @param materializedFeatureId Server-assigned unique identifier for the materialized feature
          * 
          * @return builder
          * 

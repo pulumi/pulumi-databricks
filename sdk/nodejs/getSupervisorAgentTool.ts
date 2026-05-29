@@ -49,7 +49,8 @@ export interface GetSupervisorAgentToolResult {
      */
     readonly genieSpace: outputs.GetSupervisorAgentToolGenieSpace;
     /**
-     * (string) - The ID of the genie space
+     * (string, deprecated) - Deprecated: use spaceId instead. Still REQUIRED for backward compatibility
+     * until a future API version removes it
      */
     readonly id: string;
     /**
@@ -66,7 +67,7 @@ export interface GetSupervisorAgentToolResult {
      */
     readonly toolId: string;
     /**
-     * (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "app", "volume", "lakeviewDashboard", "servingEndpoint", "ucTable", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "webSearch"
+     * (string) - Tool type. Must be one of: "genieSpace", "knowledgeAssistant", "ucFunction", "ucConnection", "ucMcp", "app", "volume", "dashboard", "servingEndpoint", "table", "vectorSearchIndex", "catalog", "schema", "supervisorAgent", "webSearch", "skill". The legacy values "lakeviewDashboard" and "ucTable" are also accepted and remain equivalent to "dashboard" and "table" respectively
      */
     readonly toolType: string;
     /**

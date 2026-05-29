@@ -67,6 +67,7 @@ type GetAppsArgs struct {
 
 // A collection of values returned by getApps.
 type GetAppsResult struct {
+	// attribute - reference to another Databricks App.
 	Apps []GetAppsApp `pulumi:"apps"`
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                 `pulumi:"id"`
@@ -106,6 +107,7 @@ func (o GetAppsResultOutput) ToGetAppsResultOutputWithContext(ctx context.Contex
 	return o
 }
 
+// attribute - reference to another Databricks App.
 func (o GetAppsResultOutput) Apps() GetAppsAppArrayOutput {
 	return o.ApplyT(func(v GetAppsResult) []GetAppsApp { return v.Apps }).(GetAppsAppArrayOutput)
 }

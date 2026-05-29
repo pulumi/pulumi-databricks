@@ -14,23 +14,47 @@ public final class AppTelemetryExportDestinationUnityCatalogArgs extends com.pul
 
     public static final AppTelemetryExportDestinationUnityCatalogArgs Empty = new AppTelemetryExportDestinationUnityCatalogArgs();
 
+    /**
+     * Full name of the Unity Catalog table for OpenTelemetry logs.
+     * 
+     */
     @Import(name="logsTable", required=true)
     private Output<String> logsTable;
 
+    /**
+     * @return Full name of the Unity Catalog table for OpenTelemetry logs.
+     * 
+     */
     public Output<String> logsTable() {
         return this.logsTable;
     }
 
+    /**
+     * Full name of the Unity Catalog table for OpenTelemetry metrics.
+     * 
+     */
     @Import(name="metricsTable", required=true)
     private Output<String> metricsTable;
 
+    /**
+     * @return Full name of the Unity Catalog table for OpenTelemetry metrics.
+     * 
+     */
     public Output<String> metricsTable() {
         return this.metricsTable;
     }
 
+    /**
+     * Full name of the Unity Catalog table for OpenTelemetry traces (spans).
+     * 
+     */
     @Import(name="tracesTable", required=true)
     private Output<String> tracesTable;
 
+    /**
+     * @return Full name of the Unity Catalog table for OpenTelemetry traces (spans).
+     * 
+     */
     public Output<String> tracesTable() {
         return this.tracesTable;
     }
@@ -61,29 +85,65 @@ public final class AppTelemetryExportDestinationUnityCatalogArgs extends com.pul
             $ = new AppTelemetryExportDestinationUnityCatalogArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param logsTable Full name of the Unity Catalog table for OpenTelemetry logs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logsTable(Output<String> logsTable) {
             $.logsTable = logsTable;
             return this;
         }
 
+        /**
+         * @param logsTable Full name of the Unity Catalog table for OpenTelemetry logs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logsTable(String logsTable) {
             return logsTable(Output.of(logsTable));
         }
 
+        /**
+         * @param metricsTable Full name of the Unity Catalog table for OpenTelemetry metrics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricsTable(Output<String> metricsTable) {
             $.metricsTable = metricsTable;
             return this;
         }
 
+        /**
+         * @param metricsTable Full name of the Unity Catalog table for OpenTelemetry metrics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder metricsTable(String metricsTable) {
             return metricsTable(Output.of(metricsTable));
         }
 
+        /**
+         * @param tracesTable Full name of the Unity Catalog table for OpenTelemetry traces (spans).
+         * 
+         * @return builder
+         * 
+         */
         public Builder tracesTable(Output<String> tracesTable) {
             $.tracesTable = tracesTable;
             return this;
         }
 
+        /**
+         * @param tracesTable Full name of the Unity Catalog table for OpenTelemetry traces (spans).
+         * 
+         * @return builder
+         * 
+         */
         public Builder tracesTable(String tracesTable) {
             return tracesTable(Output.of(tracesTable));
         }

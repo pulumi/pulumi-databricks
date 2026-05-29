@@ -17,6 +17,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGdriveOptions? GdriveOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsGoogleAdsOptions? GoogleAdsOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsJiraOptions? JiraOptions;
+        public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptions? KafkaOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions? MetaAdsOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions? OutlookOptions;
         public readonly Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsSharepointOptions? SharepointOptions;
@@ -34,6 +35,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsJiraOptions? jiraOptions,
 
+            Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsKafkaOptions? kafkaOptions,
+
             Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsMetaAdsOptions? metaAdsOptions,
 
             Outputs.PipelineIngestionDefinitionObjectTableConnectorOptionsOutlookOptions? outlookOptions,
@@ -50,6 +53,7 @@ namespace Pulumi.Databricks.Outputs
             GdriveOptions = gdriveOptions;
             GoogleAdsOptions = googleAdsOptions;
             JiraOptions = jiraOptions;
+            KafkaOptions = kafkaOptions;
             MetaAdsOptions = metaAdsOptions;
             OutlookOptions = outlookOptions;
             SharepointOptions = sharepointOptions;

@@ -34,9 +34,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool Disabled;
         /// <summary>
-        /// (string) - The short identifier of the endpoint, suitable for showing to the users.
-        /// For an endpoint with name `projects/my-project/branches/my-branch/endpoints/my-endpoint`,
-        /// the EndpointId is `my-endpoint`.
+        /// (string) - Part of the resource name
         /// </summary>
         public readonly string EndpointId;
         /// <summary>

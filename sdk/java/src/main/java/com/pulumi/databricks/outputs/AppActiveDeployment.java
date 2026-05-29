@@ -18,24 +18,44 @@ import javax.annotation.Nullable;
 public final class AppActiveDeployment {
     private @Nullable List<String> commands;
     /**
-     * @return The creation time of the app.
+     * @return The creation time of the deployment.
      * 
      */
     private @Nullable String createTime;
     /**
-     * @return The email of the user that created the app.
+     * @return The email of the user that created the deployment.
      * 
      */
     private @Nullable String creator;
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable AppActiveDeploymentDeploymentArtifacts deploymentArtifacts;
+    /**
+     * @return The unique ID of the deployment.
+     * 
+     */
     private @Nullable String deploymentId;
     private @Nullable List<AppActiveDeploymentEnvVar> envVars;
     private @Nullable AppActiveDeploymentGitSource gitSource;
+    /**
+     * @return The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
+     * 
+     */
     private @Nullable String mode;
+    /**
+     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
     private @Nullable String sourceCodePath;
+    /**
+     * @return attribute
+     * 
+     */
     private @Nullable AppActiveDeploymentStatus status;
     /**
-     * @return The update time of the app.
+     * @return The update time of the deployment.
      * 
      */
     private @Nullable String updateTime;
@@ -45,22 +65,30 @@ public final class AppActiveDeployment {
         return this.commands == null ? List.of() : this.commands;
     }
     /**
-     * @return The creation time of the app.
+     * @return The creation time of the deployment.
      * 
      */
     public Optional<String> createTime() {
         return Optional.ofNullable(this.createTime);
     }
     /**
-     * @return The email of the user that created the app.
+     * @return The email of the user that created the deployment.
      * 
      */
     public Optional<String> creator() {
         return Optional.ofNullable(this.creator);
     }
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<AppActiveDeploymentDeploymentArtifacts> deploymentArtifacts() {
         return Optional.ofNullable(this.deploymentArtifacts);
     }
+    /**
+     * @return The unique ID of the deployment.
+     * 
+     */
     public Optional<String> deploymentId() {
         return Optional.ofNullable(this.deploymentId);
     }
@@ -70,17 +98,29 @@ public final class AppActiveDeployment {
     public Optional<AppActiveDeploymentGitSource> gitSource() {
         return Optional.ofNullable(this.gitSource);
     }
+    /**
+     * @return The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
+     * 
+     */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
+    /**
+     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
     public Optional<String> sourceCodePath() {
         return Optional.ofNullable(this.sourceCodePath);
     }
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<AppActiveDeploymentStatus> status() {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return The update time of the app.
+     * @return The update time of the deployment.
      * 
      */
     public Optional<String> updateTime() {

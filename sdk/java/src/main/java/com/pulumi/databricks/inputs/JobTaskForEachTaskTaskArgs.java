@@ -23,6 +23,7 @@ import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNotebookTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskNotificationSettingsArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskPipelineTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskPowerBiTaskArgs;
+import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskPythonOperatorTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskPythonWheelTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskRunJobTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskForEachTaskTaskSparkJarTaskArgs;
@@ -342,6 +343,13 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.powerBiTask);
     }
 
+    @Import(name="pythonOperatorTask")
+    private @Nullable Output<JobTaskForEachTaskTaskPythonOperatorTaskArgs> pythonOperatorTask;
+
+    public Optional<Output<JobTaskForEachTaskTaskPythonOperatorTaskArgs>> pythonOperatorTask() {
+        return Optional.ofNullable(this.pythonOperatorTask);
+    }
+
     @Import(name="pythonWheelTask")
     private @Nullable Output<JobTaskForEachTaskTaskPythonWheelTaskArgs> pythonWheelTask;
 
@@ -490,6 +498,7 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
         this.notificationSettings = $.notificationSettings;
         this.pipelineTask = $.pipelineTask;
         this.powerBiTask = $.powerBiTask;
+        this.pythonOperatorTask = $.pythonOperatorTask;
         this.pythonWheelTask = $.pythonWheelTask;
         this.retryOnTimeout = $.retryOnTimeout;
         this.runIf = $.runIf;
@@ -945,6 +954,15 @@ public final class JobTaskForEachTaskTaskArgs extends com.pulumi.resources.Resou
 
         public Builder powerBiTask(JobTaskForEachTaskTaskPowerBiTaskArgs powerBiTask) {
             return powerBiTask(Output.of(powerBiTask));
+        }
+
+        public Builder pythonOperatorTask(@Nullable Output<JobTaskForEachTaskTaskPythonOperatorTaskArgs> pythonOperatorTask) {
+            $.pythonOperatorTask = pythonOperatorTask;
+            return this;
+        }
+
+        public Builder pythonOperatorTask(JobTaskForEachTaskTaskPythonOperatorTaskArgs pythonOperatorTask) {
+            return pythonOperatorTask(Output.of(pythonOperatorTask));
         }
 
         public Builder pythonWheelTask(@Nullable Output<JobTaskForEachTaskTaskPythonWheelTaskArgs> pythonWheelTask) {

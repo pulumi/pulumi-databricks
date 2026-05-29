@@ -84,7 +84,12 @@ def get_disaster_recovery_stable_urls(page_size: Optional[_builtins.int] = None,
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
-    :param _builtins.int page_size: Maximum number of stable URLs to return per page. Default: 50, maximum: 100
+    :param _builtins.int page_size: Maximum number of stable URLs to return per page:
+           - when set to a value greater than 0, the page length is the minimum of this value
+           and a server configured value;
+           - when set to 0 or unset, the page length is set to a server configured value
+           (recommended);
+           - when set to a value less than 0, an invalid parameter error is returned
     :param _builtins.str parent: The parent resource. Format: accounts/{account_id}
     """
     __args__ = dict()
@@ -105,7 +110,12 @@ def get_disaster_recovery_stable_urls_output(page_size: pulumi.Input[Optional[Op
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
 
-    :param _builtins.int page_size: Maximum number of stable URLs to return per page. Default: 50, maximum: 100
+    :param _builtins.int page_size: Maximum number of stable URLs to return per page:
+           - when set to a value greater than 0, the page length is the minimum of this value
+           and a server configured value;
+           - when set to 0 or unset, the page length is set to a server configured value
+           (recommended);
+           - when set to a value less than 0, an invalid parameter error is returned
     :param _builtins.str parent: The parent resource. Format: accounts/{account_id}
     """
     __args__ = dict()

@@ -16,9 +16,17 @@ public final class AppActiveDeploymentGitSourceArgs extends com.pulumi.resources
 
     public static final AppActiveDeploymentGitSourceArgs Empty = new AppActiveDeploymentGitSourceArgs();
 
+    /**
+     * The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     * 
+     */
     @Import(name="branch")
     private @Nullable Output<String> branch;
 
+    /**
+     * @return The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     * 
+     */
     public Optional<Output<String>> branch() {
         return Optional.ofNullable(this.branch);
     }
@@ -30,9 +38,17 @@ public final class AppActiveDeploymentGitSourceArgs extends com.pulumi.resources
         return Optional.ofNullable(this.commit);
     }
 
+    /**
+     * Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     * 
+     */
     @Import(name="gitRepository")
     private @Nullable Output<AppActiveDeploymentGitSourceGitRepositoryArgs> gitRepository;
 
+    /**
+     * @return Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+     * 
+     */
     public Optional<Output<AppActiveDeploymentGitSourceGitRepositoryArgs>> gitRepository() {
         return Optional.ofNullable(this.gitRepository);
     }
@@ -44,9 +60,17 @@ public final class AppActiveDeploymentGitSourceArgs extends com.pulumi.resources
         return Optional.ofNullable(this.resolvedCommit);
     }
 
+    /**
+     * The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
     @Import(name="sourceCodePath")
     private @Nullable Output<String> sourceCodePath;
 
+    /**
+     * @return The snapshotted workspace file system path of the source code loaded by the deployed app.
+     * 
+     */
     public Optional<Output<String>> sourceCodePath() {
         return Optional.ofNullable(this.sourceCodePath);
     }
@@ -87,11 +111,23 @@ public final class AppActiveDeploymentGitSourceArgs extends com.pulumi.resources
             $ = new AppActiveDeploymentGitSourceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param branch The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder branch(@Nullable Output<String> branch) {
             $.branch = branch;
             return this;
         }
 
+        /**
+         * @param branch The resource path of the Lakebase Autoscaling branch to grant permission on (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder branch(String branch) {
             return branch(Output.of(branch));
         }
@@ -105,11 +141,23 @@ public final class AppActiveDeploymentGitSourceArgs extends com.pulumi.resources
             return commit(Output.of(commit));
         }
 
+        /**
+         * @param gitRepository Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitRepository(@Nullable Output<AppActiveDeploymentGitSourceGitRepositoryArgs> gitRepository) {
             $.gitRepository = gitRepository;
             return this;
         }
 
+        /**
+         * @param gitRepository Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
+         * 
+         * @return builder
+         * 
+         */
         public Builder gitRepository(AppActiveDeploymentGitSourceGitRepositoryArgs gitRepository) {
             return gitRepository(Output.of(gitRepository));
         }
@@ -123,11 +171,23 @@ public final class AppActiveDeploymentGitSourceArgs extends com.pulumi.resources
             return resolvedCommit(Output.of(resolvedCommit));
         }
 
+        /**
+         * @param sourceCodePath The snapshotted workspace file system path of the source code loaded by the deployed app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceCodePath(@Nullable Output<String> sourceCodePath) {
             $.sourceCodePath = sourceCodePath;
             return this;
         }
 
+        /**
+         * @param sourceCodePath The snapshotted workspace file system path of the source code loaded by the deployed app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceCodePath(String sourceCodePath) {
             return sourceCodePath(Output.of(sourceCodePath));
         }

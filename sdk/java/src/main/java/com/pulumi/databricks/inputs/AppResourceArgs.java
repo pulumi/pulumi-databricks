@@ -26,9 +26,17 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppResourceArgs Empty = new AppResourceArgs();
 
+    /**
+     * attribute - reference to another Databricks App.
+     * 
+     */
     @Import(name="app")
     private @Nullable Output<AppResourceAppArgs> app;
 
+    /**
+     * @return attribute - reference to another Databricks App.
+     * 
+     */
     public Optional<Output<AppResourceAppArgs>> app() {
         return Optional.ofNullable(this.app);
     }
@@ -67,9 +75,17 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * attribute
+     * 
+     */
     @Import(name="experiment")
     private @Nullable Output<AppResourceExperimentArgs> experiment;
 
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<Output<AppResourceExperimentArgs>> experiment() {
         return Optional.ofNullable(this.experiment);
     }
@@ -119,9 +135,17 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
         return this.name;
     }
 
+    /**
+     * attribute
+     * 
+     */
     @Import(name="postgres")
     private @Nullable Output<AppResourcePostgresArgs> postgres;
 
+    /**
+     * @return attribute
+     * 
+     */
     public Optional<Output<AppResourcePostgresArgs>> postgres() {
         return Optional.ofNullable(this.postgres);
     }
@@ -221,11 +245,23 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
             $ = new AppResourceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param app attribute - reference to another Databricks App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder app(@Nullable Output<AppResourceAppArgs> app) {
             $.app = app;
             return this;
         }
 
+        /**
+         * @param app attribute - reference to another Databricks App.
+         * 
+         * @return builder
+         * 
+         */
         public Builder app(AppResourceAppArgs app) {
             return app(Output.of(app));
         }
@@ -276,11 +312,23 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
             return description(Output.of(description));
         }
 
+        /**
+         * @param experiment attribute
+         * 
+         * @return builder
+         * 
+         */
         public Builder experiment(@Nullable Output<AppResourceExperimentArgs> experiment) {
             $.experiment = experiment;
             return this;
         }
 
+        /**
+         * @param experiment attribute
+         * 
+         * @return builder
+         * 
+         */
         public Builder experiment(AppResourceExperimentArgs experiment) {
             return experiment(Output.of(experiment));
         }
@@ -348,11 +396,23 @@ public final class AppResourceArgs extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param postgres attribute
+         * 
+         * @return builder
+         * 
+         */
         public Builder postgres(@Nullable Output<AppResourcePostgresArgs> postgres) {
             $.postgres = postgres;
             return this;
         }
 
+        /**
+         * @param postgres attribute
+         * 
+         * @return builder
+         * 
+         */
         public Builder postgres(AppResourcePostgresArgs postgres) {
             return postgres(Output.of(postgres));
         }

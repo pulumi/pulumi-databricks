@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConne
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGdriveOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsGoogleAdsOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptionsArgs;
+import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsOutlookOptionsArgs;
 import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaConnectorOptionsSharepointOptionsArgs;
@@ -50,6 +51,13 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs e
 
     public Optional<Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptionsArgs>> jiraOptions() {
         return Optional.ofNullable(this.jiraOptions);
+    }
+
+    @Import(name="kafkaOptions")
+    private @Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsArgs> kafkaOptions;
+
+    public Optional<Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsArgs>> kafkaOptions() {
+        return Optional.ofNullable(this.kafkaOptions);
     }
 
     @Import(name="metaAdsOptions")
@@ -101,6 +109,7 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs e
         this.gdriveOptions = $.gdriveOptions;
         this.googleAdsOptions = $.googleAdsOptions;
         this.jiraOptions = $.jiraOptions;
+        this.kafkaOptions = $.kafkaOptions;
         this.metaAdsOptions = $.metaAdsOptions;
         this.outlookOptions = $.outlookOptions;
         this.sharepointOptions = $.sharepointOptions;
@@ -161,6 +170,15 @@ public final class PipelineIngestionDefinitionObjectSchemaConnectorOptionsArgs e
 
         public Builder jiraOptions(PipelineIngestionDefinitionObjectSchemaConnectorOptionsJiraOptionsArgs jiraOptions) {
             return jiraOptions(Output.of(jiraOptions));
+        }
+
+        public Builder kafkaOptions(@Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsArgs> kafkaOptions) {
+            $.kafkaOptions = kafkaOptions;
+            return this;
+        }
+
+        public Builder kafkaOptions(PipelineIngestionDefinitionObjectSchemaConnectorOptionsKafkaOptionsArgs kafkaOptions) {
+            return kafkaOptions(Output.of(kafkaOptions));
         }
 
         public Builder metaAdsOptions(@Nullable Output<PipelineIngestionDefinitionObjectSchemaConnectorOptionsMetaAdsOptionsArgs> metaAdsOptions) {

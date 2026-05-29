@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAppAppTelemetryExportDestinationResult
     {
+        /// <summary>
+        /// attribute
+        /// </summary>
         public readonly Outputs.GetAppAppTelemetryExportDestinationUnityCatalogResult? UnityCatalog;
 
         [OutputConstructor]

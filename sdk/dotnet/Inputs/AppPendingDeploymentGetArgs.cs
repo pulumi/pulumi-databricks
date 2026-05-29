@@ -21,20 +21,26 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// The creation time of the app.
+        /// The creation time of the deployment.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The email of the user that created the app.
+        /// The email of the user that created the deployment.
         /// </summary>
         [Input("creator")]
         public Input<string>? Creator { get; set; }
 
+        /// <summary>
+        /// attribute
+        /// </summary>
         [Input("deploymentArtifacts")]
         public Input<Inputs.AppPendingDeploymentDeploymentArtifactsGetArgs>? DeploymentArtifacts { get; set; }
 
+        /// <summary>
+        /// The unique ID of the deployment.
+        /// </summary>
         [Input("deploymentId")]
         public Input<string>? DeploymentId { get; set; }
 
@@ -49,17 +55,26 @@ namespace Pulumi.Databricks.Inputs
         [Input("gitSource")]
         public Input<Inputs.AppPendingDeploymentGitSourceGetArgs>? GitSource { get; set; }
 
+        /// <summary>
+        /// The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
+        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
+        /// <summary>
+        /// The snapshotted workspace file system path of the source code loaded by the deployed app.
+        /// </summary>
         [Input("sourceCodePath")]
         public Input<string>? SourceCodePath { get; set; }
 
+        /// <summary>
+        /// attribute
+        /// </summary>
         [Input("status")]
         public Input<Inputs.AppPendingDeploymentStatusGetArgs>? Status { get; set; }
 
         /// <summary>
-        /// The update time of the app.
+        /// The update time of the deployment.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

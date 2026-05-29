@@ -12601,7 +12601,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDisasterRecoveryStableUrls:getDisasterRecoveryStableUrls", TypeShape.of(GetDisasterRecoveryStableUrlsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
      * 
@@ -12617,7 +12617,7 @@ public final class DatabricksFunctions {
         return getEndpoint(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
      * 
@@ -12633,7 +12633,7 @@ public final class DatabricksFunctions {
         return getEndpointPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
      * 
@@ -12649,7 +12649,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEndpoint:getEndpoint", TypeShape.of(GetEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
      * 
@@ -12665,7 +12665,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEndpoint:getEndpoint", TypeShape.of(GetEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
      * 
@@ -12681,7 +12681,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getEndpoint:getEndpoint", TypeShape.of(GetEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
      * 
@@ -12727,7 +12727,7 @@ public final class DatabricksFunctions {
         return getEndpoints(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
      * 
@@ -12773,7 +12773,7 @@ public final class DatabricksFunctions {
         return getEndpointsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
      * 
@@ -12819,7 +12819,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEndpoints:getEndpoints", TypeShape.of(GetEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
      * 
@@ -12865,7 +12865,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEndpoints:getEndpoints", TypeShape.of(GetEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
      * 
@@ -15507,20 +15507,6 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetFeatureEngineeringFeatureResult> getFeatureEngineeringFeaturePlain(GetFeatureEngineeringFeaturePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getFeatureEngineeringFeature:getFeatureEngineeringFeature", TypeShape.of(GetFeatureEngineeringFeatureResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     */
-    public static Output<GetFeatureEngineeringFeaturesResult> getFeatureEngineeringFeatures() {
-        return getFeatureEngineeringFeatures(GetFeatureEngineeringFeaturesArgs.Empty, InvokeOptions.Empty);
-    }
-    /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
-     * 
-     */
-    public static CompletableFuture<GetFeatureEngineeringFeaturesResult> getFeatureEngineeringFeaturesPlain() {
-        return getFeatureEngineeringFeaturesPlain(GetFeatureEngineeringFeaturesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -25336,7 +25322,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresCatalog:getPostgresCatalog", TypeShape.of(GetPostgresCatalogResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves a single Postgres database.
      * 
@@ -25382,7 +25368,7 @@ public final class DatabricksFunctions {
         return getPostgresDatabase(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves a single Postgres database.
      * 
@@ -25428,7 +25414,7 @@ public final class DatabricksFunctions {
         return getPostgresDatabasePlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves a single Postgres database.
      * 
@@ -25474,7 +25460,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresDatabase:getPostgresDatabase", TypeShape.of(GetPostgresDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves a single Postgres database.
      * 
@@ -25520,7 +25506,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresDatabase:getPostgresDatabase", TypeShape.of(GetPostgresDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source retrieves a single Postgres database.
      * 
@@ -25566,7 +25552,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresDatabase:getPostgresDatabase", TypeShape.of(GetPostgresDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source lists all Postgres databases in a branch.
      * 
@@ -25579,7 +25565,7 @@ public final class DatabricksFunctions {
         return getPostgresDatabases(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source lists all Postgres databases in a branch.
      * 
@@ -25592,7 +25578,7 @@ public final class DatabricksFunctions {
         return getPostgresDatabasesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source lists all Postgres databases in a branch.
      * 
@@ -25605,7 +25591,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresDatabases:getPostgresDatabases", TypeShape.of(GetPostgresDatabasesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source lists all Postgres databases in a branch.
      * 
@@ -25618,7 +25604,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresDatabases:getPostgresDatabases", TypeShape.of(GetPostgresDatabasesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * This data source lists all Postgres databases in a branch.
      * 

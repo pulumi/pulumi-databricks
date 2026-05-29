@@ -16,6 +16,17 @@ namespace Pulumi.Databricks
     public partial class DisasterRecoveryStableUrl : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+        /// currently linked to, in the format
+        /// `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+        /// the stable URL is not attached to any failover group. Server-controlled:
+        /// written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+        /// DeleteFailoverGroup / UpdateFailoverGroup on unlink
+        /// </summary>
+        [Output("failoverGroupName")]
+        public Output<string> FailoverGroupName { get; private set; } = null!;
+
+        /// <summary>
         /// The workspace this stable URL is initially bound to. Used only in Create
         /// requests to associate the stable URL with a workspace. Not returned in
         /// responses. Mirrors FailoverGroup.initial_primary_region semantics
@@ -127,6 +138,17 @@ namespace Pulumi.Databricks
 
     public sealed class DisasterRecoveryStableUrlState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+        /// currently linked to, in the format
+        /// `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+        /// the stable URL is not attached to any failover group. Server-controlled:
+        /// written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+        /// DeleteFailoverGroup / UpdateFailoverGroup on unlink
+        /// </summary>
+        [Input("failoverGroupName")]
+        public Input<string>? FailoverGroupName { get; set; }
+
         /// <summary>
         /// The workspace this stable URL is initially bound to. Used only in Create
         /// requests to associate the stable URL with a workspace. Not returned in

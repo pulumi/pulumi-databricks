@@ -138,7 +138,7 @@ def get_postgres_database(name: Optional[_builtins.str] = None,
                           provider_config: Optional[Union['GetPostgresDatabaseProviderConfigArgs', 'GetPostgresDatabaseProviderConfigArgsDict']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresDatabaseResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     This data source retrieves a single Postgres database.
 
@@ -179,7 +179,7 @@ def get_postgres_database_output(name: pulumi.Input[Optional[_builtins.str]] = N
                                  provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresDatabaseProviderConfigArgs', 'GetPostgresDatabaseProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresDatabaseResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     This data source retrieves a single Postgres database.
 

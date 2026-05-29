@@ -30,6 +30,15 @@ export interface GetDisasterRecoveryStableUrlArgs {
  */
 export interface GetDisasterRecoveryStableUrlResult {
     /**
+     * (string) - Fully qualified resource name of the FailoverGroup this stable URL is
+     * currently linked to, in the format
+     * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
+     * the stable URL is not attached to any failover group. Server-controlled:
+     * written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
+     * DeleteFailoverGroup / UpdateFailoverGroup on unlink
+     */
+    readonly failoverGroupName: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

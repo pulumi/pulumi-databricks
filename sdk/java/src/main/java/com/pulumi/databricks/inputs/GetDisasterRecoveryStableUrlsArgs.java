@@ -18,14 +18,24 @@ public final class GetDisasterRecoveryStableUrlsArgs extends com.pulumi.resource
     public static final GetDisasterRecoveryStableUrlsArgs Empty = new GetDisasterRecoveryStableUrlsArgs();
 
     /**
-     * Maximum number of stable URLs to return per page. Default: 50, maximum: 100
+     * Maximum number of stable URLs to return per page:
+     * - when set to a value greater than 0, the page length is the minimum of this value
+     *   and a server configured value;
+     * - when set to 0 or unset, the page length is set to a server configured value
+     *   (recommended);
+     * - when set to a value less than 0, an invalid parameter error is returned
      * 
      */
     @Import(name="pageSize")
     private @Nullable Output<Integer> pageSize;
 
     /**
-     * @return Maximum number of stable URLs to return per page. Default: 50, maximum: 100
+     * @return Maximum number of stable URLs to return per page:
+     * - when set to a value greater than 0, the page length is the minimum of this value
+     *   and a server configured value;
+     * - when set to 0 or unset, the page length is set to a server configured value
+     *   (recommended);
+     * - when set to a value less than 0, an invalid parameter error is returned
      * 
      */
     public Optional<Output<Integer>> pageSize() {
@@ -73,7 +83,12 @@ public final class GetDisasterRecoveryStableUrlsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param pageSize Maximum number of stable URLs to return per page. Default: 50, maximum: 100
+         * @param pageSize Maximum number of stable URLs to return per page:
+         * - when set to a value greater than 0, the page length is the minimum of this value
+         *   and a server configured value;
+         * - when set to 0 or unset, the page length is set to a server configured value
+         *   (recommended);
+         * - when set to a value less than 0, an invalid parameter error is returned
          * 
          * @return builder
          * 
@@ -84,7 +99,12 @@ public final class GetDisasterRecoveryStableUrlsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param pageSize Maximum number of stable URLs to return per page. Default: 50, maximum: 100
+         * @param pageSize Maximum number of stable URLs to return per page:
+         * - when set to a value greater than 0, the page length is the minimum of this value
+         *   and a server configured value;
+         * - when set to 0 or unset, the page length is set to a server configured value
+         *   (recommended);
+         * - when set to a value less than 0, an invalid parameter error is returned
          * 
          * @return builder
          * 

@@ -39,6 +39,22 @@ import * as utilities from "./utilities";
  * const ado = new databricks.GitCredential("ado", {gitProvider: "azureDevOpsServicesAad"});
  * ```
  *
+ * ### Git credential for a service principal
+ *
+ * You can manage Git credentials on behalf of a service principal by specifying `principalId`:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const spn = new databricks.GitCredential("spn", {
+ *     gitProvider: "gitHub",
+ *     gitUsername: "my-service-principal",
+ *     personalAccessToken: githubPat,
+ *     principalId: databricksSpnId,
+ * });
+ * ```
+ *
  * ## Related Resources
  *
  * The following resources are often used in the same context:
@@ -101,6 +117,9 @@ export class GitCredential extends pulumi.CustomResource {
      * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      */
     declare public readonly personalAccessToken: pulumi.Output<string | undefined>;
+    /**
+     * The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+     */
     declare public readonly principalId: pulumi.Output<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
@@ -183,6 +202,9 @@ export interface GitCredentialState {
      * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      */
     personalAccessToken?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+     */
     principalId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:
@@ -222,6 +244,9 @@ export interface GitCredentialArgs {
      * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
      */
     personalAccessToken?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
+     */
     principalId?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider. This block consists of the following fields:

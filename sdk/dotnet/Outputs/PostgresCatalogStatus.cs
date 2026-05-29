@@ -18,11 +18,6 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Branch;
         /// <summary>
-        /// The ID in the Unity Catalog.
-        /// It becomes the full resource name, for example "MyCatalog" becomes "catalogs/my_catalog"
-        /// </summary>
-        public readonly string? CatalogId;
-        /// <summary>
         /// (string) - The name of the Postgres database associated with the catalog
         /// </summary>
         public readonly string? PostgresDatabase;
@@ -35,14 +30,11 @@ namespace Pulumi.Databricks.Outputs
         private PostgresCatalogStatus(
             string? branch,
 
-            string? catalogId,
-
             string? postgresDatabase,
 
             string? project)
         {
             Branch = branch;
-            CatalogId = catalogId;
             PostgresDatabase = postgresDatabase;
             Project = project;
         }

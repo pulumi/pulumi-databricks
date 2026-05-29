@@ -13,9 +13,12 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class GetAppAppResourceExperimentResult
     {
+        /// <summary>
+        /// The ID of the MLflow experiment to grant permission on.
+        /// </summary>
         public readonly string ExperimentId;
         /// <summary>
-        /// Permission to grant on database. Supported permissions are: `CAN_CONNECT_AND_CREATE`.
+        /// Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
         /// </summary>
         public readonly string Permission;
 

@@ -16,6 +16,24 @@ namespace Pulumi.Databricks
     public partial class FeatureEngineeringFeature : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// (string) - Name of parent catalog
+        /// </summary>
+        [Output("catalogName")]
+        public Output<string> CatalogName { get; private set; } = null!;
+
+        /// <summary>
+        /// (string) - Time at which this feature was created
+        /// </summary>
+        [Output("createdAt")]
+        public Output<string> CreatedAt { get; private set; } = null!;
+
+        /// <summary>
+        /// (string) - Username of the feature creator
+        /// </summary>
+        [Output("createdBy")]
+        public Output<string> CreatedBy { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the feature
         /// </summary>
         [Output("description")]
@@ -35,7 +53,9 @@ namespace Pulumi.Databricks
         public Output<string?> FilterCondition { get; private set; } = null!;
 
         /// <summary>
-        /// The full three-part name (catalog, schema, name) of the feature
+        /// The full three-part name (catalog, schema, name) of the feature. This is the
+        /// feature's resource identifier; the catalog_name, schema_name, and name fields
+        /// below are OUTPUT_ONLY decomposed views of this value
         /// </summary>
         [Output("fullName")]
         public Output<string> FullName { get; private set; } = null!;
@@ -64,10 +84,22 @@ namespace Pulumi.Databricks
         public Output<Outputs.FeatureEngineeringFeatureLineageContext?> LineageContext { get; private set; } = null!;
 
         /// <summary>
+        /// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
         public Output<Outputs.FeatureEngineeringFeatureProviderConfig> ProviderConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// (string) - Name of parent schema relative to its parent catalog
+        /// </summary>
+        [Output("schemaName")]
+        public Output<string> SchemaName { get; private set; } = null!;
 
         /// <summary>
         /// The data source of the feature
@@ -160,7 +192,9 @@ namespace Pulumi.Databricks
         public Input<string>? FilterCondition { get; set; }
 
         /// <summary>
-        /// The full three-part name (catalog, schema, name) of the feature
+        /// The full three-part name (catalog, schema, name) of the feature. This is the
+        /// feature's resource identifier; the catalog_name, schema_name, and name fields
+        /// below are OUTPUT_ONLY decomposed views of this value
         /// </summary>
         [Input("fullName", required: true)]
         public Input<string> FullName { get; set; } = null!;
@@ -228,6 +262,24 @@ namespace Pulumi.Databricks
     public sealed class FeatureEngineeringFeatureState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (string) - Name of parent catalog
+        /// </summary>
+        [Input("catalogName")]
+        public Input<string>? CatalogName { get; set; }
+
+        /// <summary>
+        /// (string) - Time at which this feature was created
+        /// </summary>
+        [Input("createdAt")]
+        public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// (string) - Username of the feature creator
+        /// </summary>
+        [Input("createdBy")]
+        public Input<string>? CreatedBy { get; set; }
+
+        /// <summary>
         /// The description of the feature
         /// </summary>
         [Input("description")]
@@ -253,7 +305,9 @@ namespace Pulumi.Databricks
         public Input<string>? FilterCondition { get; set; }
 
         /// <summary>
-        /// The full three-part name (catalog, schema, name) of the feature
+        /// The full three-part name (catalog, schema, name) of the feature. This is the
+        /// feature's resource identifier; the catalog_name, schema_name, and name fields
+        /// below are OUTPUT_ONLY decomposed views of this value
         /// </summary>
         [Input("fullName")]
         public Input<string>? FullName { get; set; }
@@ -288,10 +342,22 @@ namespace Pulumi.Databricks
         public Input<Inputs.FeatureEngineeringFeatureLineageContextGetArgs>? LineageContext { get; set; }
 
         /// <summary>
+        /// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         [Input("providerConfig")]
         public Input<Inputs.FeatureEngineeringFeatureProviderConfigGetArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
+        /// (string) - Name of parent schema relative to its parent catalog
+        /// </summary>
+        [Input("schemaName")]
+        public Input<string>? SchemaName { get; set; }
 
         /// <summary>
         /// The data source of the feature

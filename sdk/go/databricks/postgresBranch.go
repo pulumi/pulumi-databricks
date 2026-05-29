@@ -173,6 +173,8 @@ type PostgresBranch struct {
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresBranchProviderConfigOutput `pulumi:"providerConfig"`
+	// If true, permanently delete the branch; if false, soft delete
+	PurgeOnDelete pulumi.BoolPtrOutput `pulumi:"purgeOnDelete"`
 	// If true, update the branch if it already exists instead of returning an error
 	ReplaceExisting pulumi.BoolPtrOutput `pulumi:"replaceExisting"`
 	// The spec contains the branch configuration
@@ -238,6 +240,8 @@ type postgresBranchState struct {
 	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresBranchProviderConfig `pulumi:"providerConfig"`
+	// If true, permanently delete the branch; if false, soft delete
+	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
 	// If true, update the branch if it already exists instead of returning an error
 	ReplaceExisting *bool `pulumi:"replaceExisting"`
 	// The spec contains the branch configuration
@@ -268,6 +272,8 @@ type PostgresBranchState struct {
 	Parent pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresBranchProviderConfigPtrInput
+	// If true, permanently delete the branch; if false, soft delete
+	PurgeOnDelete pulumi.BoolPtrInput
 	// If true, update the branch if it already exists instead of returning an error
 	ReplaceExisting pulumi.BoolPtrInput
 	// The spec contains the branch configuration
@@ -297,6 +303,8 @@ type postgresBranchArgs struct {
 	Parent string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresBranchProviderConfig `pulumi:"providerConfig"`
+	// If true, permanently delete the branch; if false, soft delete
+	PurgeOnDelete *bool `pulumi:"purgeOnDelete"`
 	// If true, update the branch if it already exists instead of returning an error
 	ReplaceExisting *bool `pulumi:"replaceExisting"`
 	// The spec contains the branch configuration
@@ -317,6 +325,8 @@ type PostgresBranchArgs struct {
 	Parent pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresBranchProviderConfigPtrInput
+	// If true, permanently delete the branch; if false, soft delete
+	PurgeOnDelete pulumi.BoolPtrInput
 	// If true, update the branch if it already exists instead of returning an error
 	ReplaceExisting pulumi.BoolPtrInput
 	// The spec contains the branch configuration
@@ -440,6 +450,11 @@ func (o PostgresBranchOutput) Parent() pulumi.StringOutput {
 // Configure the provider for management through account provider.
 func (o PostgresBranchOutput) ProviderConfig() PostgresBranchProviderConfigOutput {
 	return o.ApplyT(func(v *PostgresBranch) PostgresBranchProviderConfigOutput { return v.ProviderConfig }).(PostgresBranchProviderConfigOutput)
+}
+
+// If true, permanently delete the branch; if false, soft delete
+func (o PostgresBranchOutput) PurgeOnDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PostgresBranch) pulumi.BoolPtrOutput { return v.PurgeOnDelete }).(pulumi.BoolPtrOutput)
 }
 
 // If true, update the branch if it already exists instead of returning an error

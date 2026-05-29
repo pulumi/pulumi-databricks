@@ -120,14 +120,14 @@ public class SupervisorAgentTool extends com.pulumi.resources.CustomResource {
         return this.toolId;
     }
     /**
-     * Tool type. Must be one of: &#34;genieSpace&#34;, &#34;knowledgeAssistant&#34;, &#34;ucFunction&#34;, &#34;ucConnection&#34;, &#34;app&#34;, &#34;volume&#34;, &#34;lakeviewDashboard&#34;, &#34;servingEndpoint&#34;, &#34;ucTable&#34;, &#34;vectorSearchIndex&#34;, &#34;catalog&#34;, &#34;schema&#34;, &#34;supervisorAgent&#34;, &#34;webSearch&#34;
+     * Tool type. Must be one of: &#34;genieSpace&#34;, &#34;knowledgeAssistant&#34;, &#34;ucFunction&#34;, &#34;ucConnection&#34;, &#34;ucMcp&#34;, &#34;app&#34;, &#34;volume&#34;, &#34;dashboard&#34;, &#34;servingEndpoint&#34;, &#34;table&#34;, &#34;vectorSearchIndex&#34;, &#34;catalog&#34;, &#34;schema&#34;, &#34;supervisorAgent&#34;, &#34;webSearch&#34;, &#34;skill&#34;. The legacy values &#34;lakeviewDashboard&#34; and &#34;ucTable&#34; are also accepted and remain equivalent to &#34;dashboard&#34; and &#34;table&#34; respectively
      * 
      */
     @Export(name="toolType", refs={String.class}, tree="[0]")
     private Output<String> toolType;
 
     /**
-     * @return Tool type. Must be one of: &#34;genieSpace&#34;, &#34;knowledgeAssistant&#34;, &#34;ucFunction&#34;, &#34;ucConnection&#34;, &#34;app&#34;, &#34;volume&#34;, &#34;lakeviewDashboard&#34;, &#34;servingEndpoint&#34;, &#34;ucTable&#34;, &#34;vectorSearchIndex&#34;, &#34;catalog&#34;, &#34;schema&#34;, &#34;supervisorAgent&#34;, &#34;webSearch&#34;
+     * @return Tool type. Must be one of: &#34;genieSpace&#34;, &#34;knowledgeAssistant&#34;, &#34;ucFunction&#34;, &#34;ucConnection&#34;, &#34;ucMcp&#34;, &#34;app&#34;, &#34;volume&#34;, &#34;dashboard&#34;, &#34;servingEndpoint&#34;, &#34;table&#34;, &#34;vectorSearchIndex&#34;, &#34;catalog&#34;, &#34;schema&#34;, &#34;supervisorAgent&#34;, &#34;webSearch&#34;, &#34;skill&#34;. The legacy values &#34;lakeviewDashboard&#34; and &#34;ucTable&#34; are also accepted and remain equivalent to &#34;dashboard&#34; and &#34;table&#34; respectively
      * 
      */
     public Output<String> toolType() {
