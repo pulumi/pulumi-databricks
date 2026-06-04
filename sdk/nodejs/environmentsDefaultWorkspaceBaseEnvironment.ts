@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * [API Documentation](https://docs.databricks.com/api/workspace/environments)
+ *
  * The Default Workspace Base Environment is a singleton resource that configures which workspace base environments are applied by default to new notebooks in the workspace. Defaults can be set separately for CPU and GPU compute.
  *
  * Without a default configured, new notebooks do not use a workspace base environment by default.

@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
+ *
  * This data source can be used to fetch a data quality monitor.
  *
  * For the `table` `objectType`, the caller must either:
@@ -102,6 +104,8 @@ export interface GetDataQualityMonitorResult {
 }
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
  *
  * This data source can be used to fetch a data quality monitor.
  *

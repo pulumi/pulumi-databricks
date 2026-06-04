@@ -156,6 +156,8 @@ def get_account_federation_policy(policy_id: Optional[_builtins.str] = None,
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
+
     This data source can be used to get a single account federation policy.
 
     > **Note** This data source can only be used with an account-level provider!
@@ -186,6 +188,8 @@ def get_account_federation_policy_output(policy_id: pulumi.Input[Optional[_built
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountFederationPolicyResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
 
     This data source can be used to get a single account federation policy.
 

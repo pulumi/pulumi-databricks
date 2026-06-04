@@ -194,6 +194,8 @@ class BudgetPolicy(pulumi.CustomResource):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+        [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
+
         Administrators can use budget policies to ensure that the correct tags appear automatically on serverless resources without depending on users to attach tags manually, allowing for customized cost reporting and chargebacks.
 
         Budget policies consist of tags that are applied to any serverless compute activity incurred by a user assigned to the policy.
@@ -236,6 +238,8 @@ class BudgetPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
 
         Administrators can use budget policies to ensure that the correct tags appear automatically on serverless resources without depending on users to attach tags manually, allowing for customized cost reporting and chargebacks.
 

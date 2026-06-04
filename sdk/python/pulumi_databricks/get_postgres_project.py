@@ -180,6 +180,8 @@ def get_postgres_project(name: Optional[_builtins.str] = None,
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+
     This data source retrieves a single Postgres project.
 
     ## Example Usage
@@ -224,6 +226,8 @@ def get_postgres_project_output(name: pulumi.Input[Optional[_builtins.str]] = No
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresProjectResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
     This data source retrieves a single Postgres project.
 

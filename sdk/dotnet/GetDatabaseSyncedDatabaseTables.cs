@@ -13,18 +13,24 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/database)
         /// </summary>
         public static Task<GetDatabaseSyncedDatabaseTablesResult> InvokeAsync(GetDatabaseSyncedDatabaseTablesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseSyncedDatabaseTablesResult>("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", args ?? new GetDatabaseSyncedDatabaseTablesArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/database)
         /// </summary>
         public static Output<GetDatabaseSyncedDatabaseTablesResult> Invoke(GetDatabaseSyncedDatabaseTablesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseSyncedDatabaseTablesResult>("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", args ?? new GetDatabaseSyncedDatabaseTablesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/database)
         /// </summary>
         public static Output<GetDatabaseSyncedDatabaseTablesResult> Invoke(GetDatabaseSyncedDatabaseTablesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseSyncedDatabaseTablesResult>("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", args ?? new GetDatabaseSyncedDatabaseTablesInvokeArgs(), options.WithDefaults());

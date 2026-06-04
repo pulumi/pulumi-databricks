@@ -12,6 +12,8 @@ import (
 )
 
 // [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// [API Documentation](https://docs.databricks.com/api/workspace/apps)
 func GetAppSpaces(ctx *pulumi.Context, args *GetAppSpacesArgs, opts ...pulumi.InvokeOption) (*GetAppSpacesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAppSpacesResult

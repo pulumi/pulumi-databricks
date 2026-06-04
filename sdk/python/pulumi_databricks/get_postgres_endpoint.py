@@ -152,6 +152,8 @@ def get_postgres_endpoint(name: Optional[_builtins.str] = None,
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+
     This data source retrieves a single Postgres endpoint.
 
     ## Example Usage
@@ -192,6 +194,8 @@ def get_postgres_endpoint_output(name: pulumi.Input[Optional[_builtins.str]] = N
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresEndpointResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
     This data source retrieves a single Postgres endpoint.
 

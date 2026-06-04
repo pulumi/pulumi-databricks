@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     /// <summary>
     /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
+    /// [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
+    /// 
     /// Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
     /// 
     /// [//]: # (todo: add public link to metadata api after production doc link available)
@@ -75,6 +77,12 @@ namespace Pulumi.Databricks
         public Output<Outputs.WorkspaceSettingV2BooleanVal?> BooleanVal { get; private set; } = null!;
 
         /// <summary>
+        /// Setting value for CollaborationPlatformConnectivity setting. This is the setting value set by consumers, check EffectiveCollaborationPlatformConnectivity for final setting value
+        /// </summary>
+        [Output("collaborationPlatformConnectivity")]
+        public Output<Outputs.WorkspaceSettingV2CollaborationPlatformConnectivity?> CollaborationPlatformConnectivity { get; private set; } = null!;
+
+        /// <summary>
         /// Effective setting value for AibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
         /// </summary>
         [Output("effectiveAibiDashboardEmbeddingAccessPolicy")]
@@ -103,6 +111,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("effectiveBooleanVal")]
         public Output<Outputs.WorkspaceSettingV2EffectiveBooleanVal> EffectiveBooleanVal { get; private set; } = null!;
+
+        /// <summary>
+        /// (CollaborationPlatformConnectivityMessage) - Effective setting value for CollaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+        /// </summary>
+        [Output("effectiveCollaborationPlatformConnectivity")]
+        public Output<Outputs.WorkspaceSettingV2EffectiveCollaborationPlatformConnectivity> EffectiveCollaborationPlatformConnectivity { get; private set; } = null!;
 
         /// <summary>
         /// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
@@ -253,6 +267,12 @@ namespace Pulumi.Databricks
         public Input<Inputs.WorkspaceSettingV2BooleanValArgs>? BooleanVal { get; set; }
 
         /// <summary>
+        /// Setting value for CollaborationPlatformConnectivity setting. This is the setting value set by consumers, check EffectiveCollaborationPlatformConnectivity for final setting value
+        /// </summary>
+        [Input("collaborationPlatformConnectivity")]
+        public Input<Inputs.WorkspaceSettingV2CollaborationPlatformConnectivityArgs>? CollaborationPlatformConnectivity { get; set; }
+
+        /// <summary>
         /// Effective setting value for AibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
         /// </summary>
         [Input("effectiveAibiDashboardEmbeddingAccessPolicy")]
@@ -363,6 +383,12 @@ namespace Pulumi.Databricks
         public Input<Inputs.WorkspaceSettingV2BooleanValGetArgs>? BooleanVal { get; set; }
 
         /// <summary>
+        /// Setting value for CollaborationPlatformConnectivity setting. This is the setting value set by consumers, check EffectiveCollaborationPlatformConnectivity for final setting value
+        /// </summary>
+        [Input("collaborationPlatformConnectivity")]
+        public Input<Inputs.WorkspaceSettingV2CollaborationPlatformConnectivityGetArgs>? CollaborationPlatformConnectivity { get; set; }
+
+        /// <summary>
         /// Effective setting value for AibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
         /// </summary>
         [Input("effectiveAibiDashboardEmbeddingAccessPolicy")]
@@ -391,6 +417,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("effectiveBooleanVal")]
         public Input<Inputs.WorkspaceSettingV2EffectiveBooleanValGetArgs>? EffectiveBooleanVal { get; set; }
+
+        /// <summary>
+        /// (CollaborationPlatformConnectivityMessage) - Effective setting value for CollaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+        /// </summary>
+        [Input("effectiveCollaborationPlatformConnectivity")]
+        public Input<Inputs.WorkspaceSettingV2EffectiveCollaborationPlatformConnectivityGetArgs>? EffectiveCollaborationPlatformConnectivity { get; set; }
 
         /// <summary>
         /// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val

@@ -94,6 +94,8 @@ def get_database_database_catalogs(instance_name: Optional[_builtins.str] = None
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/database)
+
 
     :param _builtins.str instance_name: Name of the instance to get database catalogs for
     :param _builtins.int page_size: Upper bound for items returned
@@ -118,6 +120,8 @@ def get_database_database_catalogs_output(instance_name: pulumi.Input[Optional[_
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseDatabaseCatalogsResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/database)
 
 
     :param _builtins.str instance_name: Name of the instance to get database catalogs for

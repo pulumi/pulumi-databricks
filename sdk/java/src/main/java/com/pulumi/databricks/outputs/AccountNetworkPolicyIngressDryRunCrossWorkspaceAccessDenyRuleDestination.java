@@ -19,6 +19,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestination {
     private @Nullable AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountApi accountApi;
+    /**
+     * @return Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * 
+     */
     private @Nullable AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne accountDatabricksOne;
     private @Nullable AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountUi accountUi;
     private @Nullable Boolean allDestinations;
@@ -31,6 +36,11 @@ public final class AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRule
     public Optional<AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountApi> accountApi() {
         return Optional.ofNullable(this.accountApi);
     }
+    /**
+     * @return Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * 
+     */
     public Optional<AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne> accountDatabricksOne() {
         return Optional.ofNullable(this.accountDatabricksOne);
     }

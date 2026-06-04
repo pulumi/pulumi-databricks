@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * [API Documentation](https://docs.databricks.com/api/workspace/externalmetadata)
+ *
  * This data source can be used to get a single external metadata object.
  *
  * > **Note** This resource can only be used with an workspace-level provider!
@@ -112,6 +114,8 @@ export interface GetExternalMetadataResult {
 }
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/externalmetadata)
  *
  * This data source can be used to get a single external metadata object.
  *

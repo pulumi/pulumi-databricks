@@ -84,6 +84,8 @@ def get_knowledge_assistants(page_size: Optional[_builtins.int] = None,
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
+
 
     :param _builtins.int page_size: The maximum number of knowledge assistants to return.
            If unspecified, at most 100 knowledge assistants will be returned.
@@ -106,6 +108,8 @@ def get_knowledge_assistants_output(page_size: pulumi.Input[Optional[Optional[_b
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKnowledgeAssistantsResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
 
 
     :param _builtins.int page_size: The maximum number of knowledge assistants to return.

@@ -84,6 +84,8 @@ def get_warehouses_default_warehouse_overrides(page_size: Optional[_builtins.int
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
+
     This data source can be used to list all default warehouse overrides in the workspace.
 
     > **Note** This data source requires workspace admin permissions.
@@ -123,6 +125,8 @@ def get_warehouses_default_warehouse_overrides_output(page_size: pulumi.Input[Op
                                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWarehousesDefaultWarehouseOverridesResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
 
     This data source can be used to list all default warehouse overrides in the workspace.
 

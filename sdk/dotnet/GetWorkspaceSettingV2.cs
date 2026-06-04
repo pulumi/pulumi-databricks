@@ -14,6 +14,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
+        /// 
         /// This data source can be used to get a single account setting. 
         /// 
         /// ## Example Usage
@@ -26,6 +28,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
+        /// 
         /// This data source can be used to get a single account setting. 
         /// 
         /// ## Example Usage
@@ -37,6 +41,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
         /// 
         /// This data source can be used to get a single account setting. 
         /// 
@@ -114,6 +120,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetWorkspaceSettingV2BooleanValResult BooleanVal;
         /// <summary>
+        /// (CollaborationPlatformConnectivityMessage) - Setting value for CollaborationPlatformConnectivity setting. This is the setting value set by consumers, check EffectiveCollaborationPlatformConnectivity for final setting value
+        /// </summary>
+        public readonly Outputs.GetWorkspaceSettingV2CollaborationPlatformConnectivityResult CollaborationPlatformConnectivity;
+        /// <summary>
         /// (AibiDashboardEmbeddingAccessPolicy) - Effective setting value for AibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
         /// </summary>
         public readonly Outputs.GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyResult EffectiveAibiDashboardEmbeddingAccessPolicy;
@@ -133,6 +143,10 @@ namespace Pulumi.Databricks
         /// (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
         /// </summary>
         public readonly Outputs.GetWorkspaceSettingV2EffectiveBooleanValResult EffectiveBooleanVal;
+        /// <summary>
+        /// (CollaborationPlatformConnectivityMessage) - Effective setting value for CollaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+        /// </summary>
+        public readonly Outputs.GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityResult EffectiveCollaborationPlatformConnectivity;
         /// <summary>
         /// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
         /// </summary>
@@ -195,6 +209,8 @@ namespace Pulumi.Databricks
 
             Outputs.GetWorkspaceSettingV2BooleanValResult booleanVal,
 
+            Outputs.GetWorkspaceSettingV2CollaborationPlatformConnectivityResult collaborationPlatformConnectivity,
+
             Outputs.GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyResult effectiveAibiDashboardEmbeddingAccessPolicy,
 
             Outputs.GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsResult effectiveAibiDashboardEmbeddingApprovedDomains,
@@ -204,6 +220,8 @@ namespace Pulumi.Databricks
             Outputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceResult effectiveAutomaticClusterUpdateWorkspace,
 
             Outputs.GetWorkspaceSettingV2EffectiveBooleanValResult effectiveBooleanVal,
+
+            Outputs.GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityResult effectiveCollaborationPlatformConnectivity,
 
             Outputs.GetWorkspaceSettingV2EffectiveIntegerValResult effectiveIntegerVal,
 
@@ -236,11 +254,13 @@ namespace Pulumi.Databricks
             AllowedAppsUserApiScopes = allowedAppsUserApiScopes;
             AutomaticClusterUpdateWorkspace = automaticClusterUpdateWorkspace;
             BooleanVal = booleanVal;
+            CollaborationPlatformConnectivity = collaborationPlatformConnectivity;
             EffectiveAibiDashboardEmbeddingAccessPolicy = effectiveAibiDashboardEmbeddingAccessPolicy;
             EffectiveAibiDashboardEmbeddingApprovedDomains = effectiveAibiDashboardEmbeddingApprovedDomains;
             EffectiveAllowedAppsUserApiScopes = effectiveAllowedAppsUserApiScopes;
             EffectiveAutomaticClusterUpdateWorkspace = effectiveAutomaticClusterUpdateWorkspace;
             EffectiveBooleanVal = effectiveBooleanVal;
+            EffectiveCollaborationPlatformConnectivity = effectiveCollaborationPlatformConnectivity;
             EffectiveIntegerVal = effectiveIntegerVal;
             EffectiveOperationalEmailCustomRecipient = effectiveOperationalEmailCustomRecipient;
             EffectivePersonalCompute = effectivePersonalCompute;

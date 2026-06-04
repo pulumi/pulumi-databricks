@@ -11,6 +11,8 @@ namespace Pulumi.Databricks
 {
     /// <summary>
     /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
+    /// [API Documentation](https://docs.databricks.com/api/workspace/apps)
     /// </summary>
     [DatabricksResourceType("databricks:index/appSpace:AppSpace")]
     public partial class AppSpace : global::Pulumi.CustomResource

@@ -14,6 +14,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/environments)
+        /// 
         /// This data source retrieves the list of all Workspace Base Environments in the workspace.
         /// The list can be accessed via the data object's `WorkspaceBaseEnvironments` field.
         /// 
@@ -43,6 +45,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/environments)
+        /// 
         /// This data source retrieves the list of all Workspace Base Environments in the workspace.
         /// The list can be accessed via the data object's `WorkspaceBaseEnvironments` field.
         /// 
@@ -71,6 +75,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/environments)
         /// 
         /// This data source retrieves the list of all Workspace Base Environments in the workspace.
         /// The list can be accessed via the data object's `WorkspaceBaseEnvironments` field.

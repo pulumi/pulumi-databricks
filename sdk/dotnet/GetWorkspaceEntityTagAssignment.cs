@@ -14,6 +14,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
+        /// 
         /// This data source allows you to get information about a tag assignment for a specific workspace scoped entity using the entity type, entity id, and tag key.
         /// 
         /// ## Example Usage
@@ -63,6 +65,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
+        /// 
         /// This data source allows you to get information about a tag assignment for a specific workspace scoped entity using the entity type, entity id, and tag key.
         /// 
         /// ## Example Usage
@@ -111,6 +115,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
         /// 
         /// This data source allows you to get information about a tag assignment for a specific workspace scoped entity using the entity type, entity id, and tag key.
         /// 

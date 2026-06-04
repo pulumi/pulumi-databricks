@@ -458,6 +458,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
+     * 
      * This data source can be used to fetch the list of account federation policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -502,6 +504,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
      * 
      * This data source can be used to fetch the list of account federation policies.
      * 
@@ -548,6 +552,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
+     * 
      * This data source can be used to fetch the list of account federation policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -592,6 +598,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
      * 
      * This data source can be used to fetch the list of account federation policies.
      * 
@@ -638,6 +646,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
+     * 
      * This data source can be used to fetch the list of account federation policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -682,6 +692,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
      * 
      * This data source can be used to fetch the list of account federation policies.
      * 
@@ -728,6 +740,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
+     * 
      * This data source can be used to fetch the list of account federation policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -773,6 +787,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
+     * 
      * This data source can be used to get a single account federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -787,6 +803,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
      * 
      * This data source can be used to get a single account federation policy.
      * 
@@ -803,6 +821,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
+     * 
      * This data source can be used to get a single account federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -817,6 +837,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
      * 
      * This data source can be used to get a single account federation policy.
      * 
@@ -833,6 +855,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
+     * 
      * This data source can be used to get a single account federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -847,6 +871,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/networkpolicies)
      * 
      * This data source can be used to fetch the list of network policies.
      * 
@@ -891,6 +917,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/networkpolicies)
+     * 
      * This data source can be used to fetch the list of network policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -933,6 +961,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/networkpolicies)
      * 
      * This data source can be used to fetch the list of network policies.
      * 
@@ -977,6 +1007,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/networkpolicies)
+     * 
      * This data source can be used to fetch the list of network policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -1019,6 +1051,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/networkpolicies)
      * 
      * This data source can be used to fetch the list of network policies.
      * 
@@ -1063,6 +1097,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/networkpolicies)
+     * 
      * This data source can be used to fetch the list of network policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -1105,6 +1141,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/networkpolicies)
      * 
      * This data source can be used to fetch the list of network policies.
      * 
@@ -1149,6 +1187,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/networkpolicies)
+     * 
      * This data source can be used to get a single network policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -1163,6 +1203,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/networkpolicies)
      * 
      * This data source can be used to get a single network policy.
      * 
@@ -1179,6 +1221,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/networkpolicies)
+     * 
      * This data source can be used to get a single network policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -1193,6 +1237,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/networkpolicies)
      * 
      * This data source can be used to get a single network policy.
      * 
@@ -1209,6 +1255,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/networkpolicies)
+     * 
      * This data source can be used to get a single network policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -1224,6 +1272,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/settingsv2)
+     * 
      * This data source can be used to get a single account user preference setting.
      * 
      */
@@ -1232,6 +1282,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/settingsv2)
      * 
      * This data source can be used to get a single account user preference setting.
      * 
@@ -1242,6 +1294,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/settingsv2)
+     * 
      * This data source can be used to get a single account user preference setting.
      * 
      */
@@ -1250,6 +1304,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/settingsv2)
      * 
      * This data source can be used to get a single account user preference setting.
      * 
@@ -1260,6 +1316,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/settingsv2)
+     * 
      * This data source can be used to get a single account user preference setting.
      * 
      */
@@ -1268,6 +1326,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/settingsv2)
      * 
      * This data source can be used to get a single account setting.
      * 
@@ -1282,6 +1342,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/settingsv2)
+     * 
      * This data source can be used to get a single account setting.
      * 
      * ## Example Usage
@@ -1294,6 +1356,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/settingsv2)
      * 
      * This data source can be used to get a single account setting.
      * 
@@ -1308,6 +1372,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/settingsv2)
+     * 
      * This data source can be used to get a single account setting.
      * 
      * ## Example Usage
@@ -1321,6 +1387,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/settingsv2)
+     * 
      * This data source can be used to get a single account setting.
      * 
      * ## Example Usage
@@ -1333,6 +1401,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
      * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
      * 
@@ -1385,6 +1455,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
+     * 
      * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
      * 
      * You can use this data source to:
@@ -1435,6 +1507,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
      * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
      * 
@@ -1487,6 +1561,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
+     * 
      * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
      * 
      * You can use this data source to:
@@ -1537,6 +1613,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
      * The SQL Alert v2 data source allows you to retrieve detailed information about a specific alert in Databricks SQL. This data source provides access to all alert properties, including its configuration, evaluation criteria, notification settings, and schedule.
      * 
@@ -1589,6 +1667,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
+     * 
      * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
      * 
      * You can use this data source to:
@@ -1636,6 +1716,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
      * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
      * 
@@ -1685,6 +1767,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
+     * 
      * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
      * 
      * You can use this data source to:
@@ -1732,6 +1816,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
      * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
      * 
@@ -1781,6 +1867,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
+     * 
      * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
      * 
      * You can use this data source to:
@@ -1829,6 +1917,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
+     * 
      * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
      * 
      * You can use this data source to:
@@ -1876,6 +1966,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/alertsv2)
      * 
      * The SQL Alerts v2 data source allows you to retrieve a list of alerts in Databricks SQL that are accessible to the current user. This data source returns alerts ordered by their creation time.
      * 
@@ -2195,12 +2287,16 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
      */
     public static Output<GetAppSpaceResult> getAppSpace(GetAppSpaceArgs args) {
         return getAppSpace(args, InvokeOptions.Empty);
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/apps)
      * 
      */
     public static CompletableFuture<GetAppSpaceResult> getAppSpacePlain(GetAppSpacePlainArgs args) {
@@ -2209,12 +2305,16 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
      */
     public static Output<GetAppSpaceResult> getAppSpace(GetAppSpaceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAppSpace:getAppSpace", TypeShape.of(GetAppSpaceResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/apps)
      * 
      */
     public static Output<GetAppSpaceResult> getAppSpace(GetAppSpaceArgs args, InvokeOutputOptions options) {
@@ -2223,12 +2323,16 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
      */
     public static CompletableFuture<GetAppSpaceResult> getAppSpacePlain(GetAppSpacePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAppSpace:getAppSpace", TypeShape.of(GetAppSpaceResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/apps)
      * 
      */
     public static Output<GetAppSpacesResult> getAppSpaces() {
@@ -2237,12 +2341,16 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
      */
     public static CompletableFuture<GetAppSpacesResult> getAppSpacesPlain() {
         return getAppSpacesPlain(GetAppSpacesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/apps)
      * 
      */
     public static Output<GetAppSpacesResult> getAppSpaces(GetAppSpacesArgs args) {
@@ -2251,12 +2359,16 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
      */
     public static CompletableFuture<GetAppSpacesResult> getAppSpacesPlain(GetAppSpacesPlainArgs args) {
         return getAppSpacesPlain(args, InvokeOptions.Empty);
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/apps)
      * 
      */
     public static Output<GetAppSpacesResult> getAppSpaces(GetAppSpacesArgs args, InvokeOptions options) {
@@ -2265,12 +2377,16 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+     * 
      */
     public static Output<GetAppSpacesResult> getAppSpaces(GetAppSpacesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAppSpaces:getAppSpaces", TypeShape.of(GetAppSpacesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/apps)
      * 
      */
     public static CompletableFuture<GetAppSpacesResult> getAppSpacesPlain(GetAppSpacesPlainArgs args, InvokeOptions options) {
@@ -5034,6 +5150,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
+     * 
      * This data source can be used to fetch the list of budget policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -5078,6 +5196,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
      * 
      * This data source can be used to fetch the list of budget policies.
      * 
@@ -5124,6 +5244,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
+     * 
      * This data source can be used to fetch the list of budget policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -5168,6 +5290,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
      * 
      * This data source can be used to fetch the list of budget policies.
      * 
@@ -5214,6 +5338,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
+     * 
      * This data source can be used to fetch the list of budget policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -5258,6 +5384,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
      * 
      * This data source can be used to fetch the list of budget policies.
      * 
@@ -5304,6 +5432,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
+     * 
      * This data source can be used to fetch the list of budget policies.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -5348,6 +5478,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
      * 
      * This data source can be used to get a single budget policy.
      * 
@@ -5395,6 +5527,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
+     * 
      * This data source can be used to get a single budget policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -5440,6 +5574,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
      * 
      * This data source can be used to get a single budget policy.
      * 
@@ -5487,6 +5623,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
+     * 
      * This data source can be used to get a single budget policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -5532,6 +5670,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
      * 
      * This data source can be used to get a single budget policy.
      * 
@@ -9137,6 +9277,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
+     * 
      * This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
      * 
      * To read the Data Classification configuration, you must have browse permissions on the catalog.
@@ -9190,6 +9332,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
      * 
      * This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
      * 
@@ -9245,6 +9389,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
+     * 
      * This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
      * 
      * To read the Data Classification configuration, you must have browse permissions on the catalog.
@@ -9298,6 +9444,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
      * 
      * This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
      * 
@@ -9353,6 +9501,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
+     * 
      * This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
      * 
      * To read the Data Classification configuration, you must have browse permissions on the catalog.
@@ -9406,6 +9556,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
      * This data source can be used to fetch a data quality monitor.
      * 
@@ -9467,6 +9619,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
+     * 
      * This data source can be used to fetch a data quality monitor.
      * 
      * For the `table` `objectType`, the caller must either:
@@ -9526,6 +9680,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
      * This data source can be used to fetch a data quality monitor.
      * 
@@ -9587,6 +9743,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
+     * 
      * This data source can be used to fetch a data quality monitor.
      * 
      * For the `table` `objectType`, the caller must either:
@@ -9646,6 +9804,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
      * This data source can be used to fetch a data quality monitor.
      * 
@@ -9707,6 +9867,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
+     * 
      * This data source can be used to fetch the list of data quality monitors.
      * 
      * For the `table` `objectType`, the caller must either:
@@ -9759,6 +9921,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
      * This data source can be used to fetch the list of data quality monitors.
      * 
@@ -9813,6 +9977,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
+     * 
      * This data source can be used to fetch the list of data quality monitors.
      * 
      * For the `table` `objectType`, the caller must either:
@@ -9865,6 +10031,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
      * This data source can be used to fetch the list of data quality monitors.
      * 
@@ -9919,6 +10087,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
+     * 
      * This data source can be used to fetch the list of data quality monitors.
      * 
      * For the `table` `objectType`, the caller must either:
@@ -9971,6 +10141,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
      * This data source can be used to fetch the list of data quality monitors.
      * 
@@ -10025,6 +10197,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
+     * 
      * This data source can be used to fetch the list of data quality monitors.
      * 
      * For the `table` `objectType`, the caller must either:
@@ -10077,6 +10251,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
      * This data source can be used to fetch a data quality refresh on a Unity Catalog table.
      * 
@@ -10138,6 +10314,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
+     * 
      * This data source can be used to fetch a data quality refresh on a Unity Catalog table.
      * 
      * The caller must either:
@@ -10197,6 +10375,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
      * This data source can be used to fetch a data quality refresh on a Unity Catalog table.
      * 
@@ -10258,6 +10438,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
+     * 
      * This data source can be used to fetch a data quality refresh on a Unity Catalog table.
      * 
      * The caller must either:
@@ -10317,6 +10499,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
      * This data source can be used to fetch a data quality refresh on a Unity Catalog table.
      * 
@@ -10378,6 +10562,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
+     * 
      * This data source can be used to fetch the list of data quality refreshes on a Unity Catalog table.
      * 
      * The caller must either:
@@ -10437,6 +10623,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
      * This data source can be used to fetch the list of data quality refreshes on a Unity Catalog table.
      * 
@@ -10498,6 +10686,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
+     * 
      * This data source can be used to fetch the list of data quality refreshes on a Unity Catalog table.
      * 
      * The caller must either:
@@ -10557,6 +10747,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
      * 
      * This data source can be used to fetch the list of data quality refreshes on a Unity Catalog table.
      * 
@@ -10618,6 +10810,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
+     * 
      * This data source can be used to fetch the list of data quality refreshes on a Unity Catalog table.
      * 
      * The caller must either:
@@ -10678,6 +10872,8 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      * This data source can be used to get a single Database Catalog.
      * 
      * ## Example Usage
@@ -10721,6 +10917,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      * This data source can be used to get a single Database Catalog.
      * 
@@ -10766,6 +10964,8 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      * This data source can be used to get a single Database Catalog.
      * 
      * ## Example Usage
@@ -10809,6 +11009,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      * This data source can be used to get a single Database Catalog.
      * 
@@ -10854,6 +11056,8 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      * This data source can be used to get a single Database Catalog.
      * 
      * ## Example Usage
@@ -10898,12 +11102,16 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      */
     public static Output<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogs(GetDatabaseDatabaseCatalogsArgs args) {
         return getDatabaseDatabaseCatalogs(args, InvokeOptions.Empty);
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      */
     public static CompletableFuture<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogsPlain(GetDatabaseDatabaseCatalogsPlainArgs args) {
@@ -10912,12 +11120,16 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      */
     public static Output<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogs(GetDatabaseDatabaseCatalogsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", TypeShape.of(GetDatabaseDatabaseCatalogsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      */
     public static Output<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogs(GetDatabaseDatabaseCatalogsArgs args, InvokeOutputOptions options) {
@@ -10926,12 +11138,16 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      */
     public static CompletableFuture<GetDatabaseDatabaseCatalogsResult> getDatabaseDatabaseCatalogsPlain(GetDatabaseDatabaseCatalogsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", TypeShape.of(GetDatabaseDatabaseCatalogsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      * This data source can be used to get a single Database Instance.
      * 
@@ -10977,6 +11193,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      * This data source can be used to get a single Database Instance.
      * 
      * ## Example Usage
@@ -11020,6 +11238,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      * This data source can be used to get a single Database Instance.
      * 
@@ -11065,6 +11285,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      * This data source can be used to get a single Database Instance.
      * 
      * ## Example Usage
@@ -11109,6 +11331,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      * This data source can be used to get a single Database Instance.
      * 
      * ## Example Usage
@@ -11152,6 +11376,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
@@ -11198,6 +11424,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
@@ -11242,6 +11470,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
@@ -11288,6 +11518,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
@@ -11332,6 +11564,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
@@ -11378,6 +11612,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
      * 
@@ -11422,6 +11658,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      * This data source can be used to fetch the list of Database Instances within the workspace.
      * The list can then be accessed via the data object&#39;s `databaseInstances` field.
@@ -11468,6 +11706,8 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      * This data source can be used to get a single Synced Database Table.
      * 
      * ## Example Usage
@@ -11511,6 +11751,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      * This data source can be used to get a single Synced Database Table.
      * 
@@ -11556,6 +11798,8 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      * This data source can be used to get a single Synced Database Table.
      * 
      * ## Example Usage
@@ -11599,6 +11843,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      * This data source can be used to get a single Synced Database Table.
      * 
@@ -11644,6 +11890,8 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      * This data source can be used to get a single Synced Database Table.
      * 
      * ## Example Usage
@@ -11688,12 +11936,16 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      */
     public static Output<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTables(GetDatabaseSyncedDatabaseTablesArgs args) {
         return getDatabaseSyncedDatabaseTables(args, InvokeOptions.Empty);
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      */
     public static CompletableFuture<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTablesPlain(GetDatabaseSyncedDatabaseTablesPlainArgs args) {
@@ -11702,6 +11954,8 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      */
     public static Output<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTables(GetDatabaseSyncedDatabaseTablesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", TypeShape.of(GetDatabaseSyncedDatabaseTablesResult.class), args, Utilities.withVersion(options));
@@ -11709,12 +11963,16 @@ public final class DatabricksFunctions {
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
+     * 
      */
     public static Output<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTables(GetDatabaseSyncedDatabaseTablesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDatabaseSyncedDatabaseTables:getDatabaseSyncedDatabaseTables", TypeShape.of(GetDatabaseSyncedDatabaseTablesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/database)
      * 
      */
     public static CompletableFuture<GetDatabaseSyncedDatabaseTablesResult> getDatabaseSyncedDatabaseTablesPlain(GetDatabaseSyncedDatabaseTablesPlainArgs args, InvokeOptions options) {
@@ -12603,6 +12861,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/endpoints)
+     * 
      * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
      * 
      * &gt; **Note** This resource can only be used with an account-level provider!
@@ -12618,6 +12878,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/endpoints)
      * 
      * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
      * 
@@ -12635,6 +12897,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/endpoints)
+     * 
      * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
      * 
      * &gt; **Note** This resource can only be used with an account-level provider!
@@ -12650,6 +12914,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/endpoints)
      * 
      * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
      * 
@@ -12667,6 +12933,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/endpoints)
+     * 
      * Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
      * 
      * &gt; **Note** This resource can only be used with an account-level provider!
@@ -12682,6 +12950,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/endpoints)
      * 
      * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
      * 
@@ -12729,6 +12999,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/endpoints)
+     * 
      * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
      * 
      * &gt; **Note** This resource can only be used with an account-level provider!
@@ -12774,6 +13046,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/endpoints)
      * 
      * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
      * 
@@ -12821,6 +13095,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/endpoints)
+     * 
      * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
      * 
      * &gt; **Note** This resource can only be used with an account-level provider!
@@ -12867,6 +13143,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/endpoints)
+     * 
      * Endpoints datasource retrieves a list of all network connectivity endpoints for private access to Databricks workspaces.
      * 
      * &gt; **Note** This resource can only be used with an account-level provider!
@@ -12912,6 +13190,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/entitytagassignments)
      * 
      * This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
      * 
@@ -12983,6 +13263,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/entitytagassignments)
+     * 
      * This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
      * 
      * ## Example Usage
@@ -13052,6 +13334,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/entitytagassignments)
      * 
      * This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
      * 
@@ -13123,6 +13407,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/entitytagassignments)
+     * 
      * This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
      * 
      * ## Example Usage
@@ -13192,6 +13478,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/entitytagassignments)
      * 
      * This data source allows you to get information about a tag assignment for a specific entity using the entity type, entity name, and tag key.
      * 
@@ -13263,6 +13551,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/entitytagassignments)
+     * 
      * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
      * 
      * ## Example Usage
@@ -13327,6 +13617,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/entitytagassignments)
      * 
      * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
      * 
@@ -13393,6 +13685,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/entitytagassignments)
+     * 
      * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
      * 
      * ## Example Usage
@@ -13457,6 +13751,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/entitytagassignments)
      * 
      * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
      * 
@@ -13523,6 +13819,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/entitytagassignments)
+     * 
      * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
      * 
      * ## Example Usage
@@ -13588,6 +13886,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/environments)
+     * 
      * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
      * 
      * ## Example Usage
@@ -13630,6 +13930,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/environments)
      * 
      * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
      * 
@@ -13674,6 +13976,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/environments)
+     * 
      * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
      * 
      * ## Example Usage
@@ -13716,6 +14020,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/environments)
      * 
      * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
      * 
@@ -13760,6 +14066,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/environments)
+     * 
      * This data source retrieves the current default Workspace Base Environment configuration for the workspace.
      * 
      * ## Example Usage
@@ -13803,6 +14111,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/environments)
+     * 
      * This data source retrieves a single Workspace Base Environment by its resource name.
      * 
      * ## Example Usage
@@ -13844,6 +14154,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/environments)
      * 
      * This data source retrieves a single Workspace Base Environment by its resource name.
      * 
@@ -13887,6 +14199,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/environments)
+     * 
      * This data source retrieves a single Workspace Base Environment by its resource name.
      * 
      * ## Example Usage
@@ -13928,6 +14242,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/environments)
      * 
      * This data source retrieves a single Workspace Base Environment by its resource name.
      * 
@@ -13971,6 +14287,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/environments)
+     * 
      * This data source retrieves a single Workspace Base Environment by its resource name.
      * 
      * ## Example Usage
@@ -14012,6 +14330,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/environments)
      * 
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
@@ -14056,6 +14376,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/environments)
+     * 
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
      * 
@@ -14098,6 +14420,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/environments)
      * 
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
@@ -14142,6 +14466,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/environments)
+     * 
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
      * 
@@ -14184,6 +14510,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/environments)
      * 
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
@@ -14228,6 +14556,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/environments)
+     * 
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
      * 
@@ -14270,6 +14600,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/environments)
      * 
      * This data source retrieves the list of all Workspace Base Environments in the workspace.
      * The list can be accessed via the data object&#39;s `workspaceBaseEnvironments` field.
@@ -14931,6 +15263,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/externalmetadata)
+     * 
      * This data source can be used to get a single external metadata object.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -14976,6 +15310,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/externalmetadata)
      * 
      * This data source can be used to get a single external metadata object.
      * 
@@ -15023,6 +15359,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/externalmetadata)
+     * 
      * This data source can be used to get a single external metadata object.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -15068,6 +15406,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/externalmetadata)
      * 
      * This data source can be used to get a single external metadata object.
      * 
@@ -15115,6 +15455,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/externalmetadata)
+     * 
      * This data source can be used to get a single external metadata object.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -15161,6 +15503,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/externalmetadata)
+     * 
      * This data source can be used to fetch the list of external metadata objects.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -15205,6 +15549,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/externalmetadata)
      * 
      * This data source can be used to fetch the list of external metadata objects.
      * 
@@ -15251,6 +15597,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/externalmetadata)
+     * 
      * This data source can be used to fetch the list of external metadata objects.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -15295,6 +15643,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/externalmetadata)
      * 
      * This data source can be used to fetch the list of external metadata objects.
      * 
@@ -15341,6 +15691,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/externalmetadata)
+     * 
      * This data source can be used to fetch the list of external metadata objects.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -15386,6 +15738,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/externalmetadata)
+     * 
      * This data source can be used to fetch the list of external metadata objects.
      * 
      * &gt; **Note** This resource can only be used with an workspace-level provider!
@@ -15430,6 +15784,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/externalmetadata)
      * 
      * This data source can be used to fetch the list of external metadata objects.
      * 
@@ -18356,12 +18712,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
+     * 
      */
     public static Output<GetKnowledgeAssistantResult> getKnowledgeAssistant(GetKnowledgeAssistantArgs args) {
         return getKnowledgeAssistant(args, InvokeOptions.Empty);
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
      * 
      */
     public static CompletableFuture<GetKnowledgeAssistantResult> getKnowledgeAssistantPlain(GetKnowledgeAssistantPlainArgs args) {
@@ -18370,12 +18730,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
+     * 
      */
     public static Output<GetKnowledgeAssistantResult> getKnowledgeAssistant(GetKnowledgeAssistantArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getKnowledgeAssistant:getKnowledgeAssistant", TypeShape.of(GetKnowledgeAssistantResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
      * 
      */
     public static Output<GetKnowledgeAssistantResult> getKnowledgeAssistant(GetKnowledgeAssistantArgs args, InvokeOutputOptions options) {
@@ -18384,12 +18748,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
+     * 
      */
     public static CompletableFuture<GetKnowledgeAssistantResult> getKnowledgeAssistantPlain(GetKnowledgeAssistantPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getKnowledgeAssistant:getKnowledgeAssistant", TypeShape.of(GetKnowledgeAssistantResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
      * 
      */
     public static Output<GetKnowledgeAssistantKnowledgeSourceResult> getKnowledgeAssistantKnowledgeSource(GetKnowledgeAssistantKnowledgeSourceArgs args) {
@@ -18398,12 +18766,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
+     * 
      */
     public static CompletableFuture<GetKnowledgeAssistantKnowledgeSourceResult> getKnowledgeAssistantKnowledgeSourcePlain(GetKnowledgeAssistantKnowledgeSourcePlainArgs args) {
         return getKnowledgeAssistantKnowledgeSourcePlain(args, InvokeOptions.Empty);
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
      * 
      */
     public static Output<GetKnowledgeAssistantKnowledgeSourceResult> getKnowledgeAssistantKnowledgeSource(GetKnowledgeAssistantKnowledgeSourceArgs args, InvokeOptions options) {
@@ -18412,12 +18784,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
+     * 
      */
     public static Output<GetKnowledgeAssistantKnowledgeSourceResult> getKnowledgeAssistantKnowledgeSource(GetKnowledgeAssistantKnowledgeSourceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getKnowledgeAssistantKnowledgeSource:getKnowledgeAssistantKnowledgeSource", TypeShape.of(GetKnowledgeAssistantKnowledgeSourceResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
      * 
      */
     public static CompletableFuture<GetKnowledgeAssistantKnowledgeSourceResult> getKnowledgeAssistantKnowledgeSourcePlain(GetKnowledgeAssistantKnowledgeSourcePlainArgs args, InvokeOptions options) {
@@ -18426,12 +18802,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
+     * 
      */
     public static Output<GetKnowledgeAssistantKnowledgeSourcesResult> getKnowledgeAssistantKnowledgeSources(GetKnowledgeAssistantKnowledgeSourcesArgs args) {
         return getKnowledgeAssistantKnowledgeSources(args, InvokeOptions.Empty);
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
      * 
      */
     public static CompletableFuture<GetKnowledgeAssistantKnowledgeSourcesResult> getKnowledgeAssistantKnowledgeSourcesPlain(GetKnowledgeAssistantKnowledgeSourcesPlainArgs args) {
@@ -18440,12 +18820,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
+     * 
      */
     public static Output<GetKnowledgeAssistantKnowledgeSourcesResult> getKnowledgeAssistantKnowledgeSources(GetKnowledgeAssistantKnowledgeSourcesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getKnowledgeAssistantKnowledgeSources:getKnowledgeAssistantKnowledgeSources", TypeShape.of(GetKnowledgeAssistantKnowledgeSourcesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
      * 
      */
     public static Output<GetKnowledgeAssistantKnowledgeSourcesResult> getKnowledgeAssistantKnowledgeSources(GetKnowledgeAssistantKnowledgeSourcesArgs args, InvokeOutputOptions options) {
@@ -18454,12 +18838,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
+     * 
      */
     public static CompletableFuture<GetKnowledgeAssistantKnowledgeSourcesResult> getKnowledgeAssistantKnowledgeSourcesPlain(GetKnowledgeAssistantKnowledgeSourcesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getKnowledgeAssistantKnowledgeSources:getKnowledgeAssistantKnowledgeSources", TypeShape.of(GetKnowledgeAssistantKnowledgeSourcesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
      * 
      */
     public static Output<GetKnowledgeAssistantsResult> getKnowledgeAssistants() {
@@ -18468,12 +18856,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
+     * 
      */
     public static CompletableFuture<GetKnowledgeAssistantsResult> getKnowledgeAssistantsPlain() {
         return getKnowledgeAssistantsPlain(GetKnowledgeAssistantsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
      * 
      */
     public static Output<GetKnowledgeAssistantsResult> getKnowledgeAssistants(GetKnowledgeAssistantsArgs args) {
@@ -18482,12 +18874,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
+     * 
      */
     public static CompletableFuture<GetKnowledgeAssistantsResult> getKnowledgeAssistantsPlain(GetKnowledgeAssistantsPlainArgs args) {
         return getKnowledgeAssistantsPlain(args, InvokeOptions.Empty);
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
      * 
      */
     public static Output<GetKnowledgeAssistantsResult> getKnowledgeAssistants(GetKnowledgeAssistantsArgs args, InvokeOptions options) {
@@ -18496,12 +18892,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
+     * 
      */
     public static Output<GetKnowledgeAssistantsResult> getKnowledgeAssistants(GetKnowledgeAssistantsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getKnowledgeAssistants:getKnowledgeAssistants", TypeShape.of(GetKnowledgeAssistantsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
      * 
      */
     public static CompletableFuture<GetKnowledgeAssistantsResult> getKnowledgeAssistantsPlain(GetKnowledgeAssistantsPlainArgs args, InvokeOptions options) {
@@ -24332,7 +24732,9 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPipelines:getPipelines", TypeShape.of(GetPipelinesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/policies)
      * 
      * Retrieves information about a specific ABAC (Attribute-Based Access Control) policy in Unity Catalog. Use this data source to query details of an existing policy by its securable type, securable name, and policy name.
      * 
@@ -24380,7 +24782,9 @@ public final class DatabricksFunctions {
         return getPolicyInfo(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/policies)
      * 
      * Retrieves information about a specific ABAC (Attribute-Based Access Control) policy in Unity Catalog. Use this data source to query details of an existing policy by its securable type, securable name, and policy name.
      * 
@@ -24428,7 +24832,9 @@ public final class DatabricksFunctions {
         return getPolicyInfoPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/policies)
      * 
      * Retrieves information about a specific ABAC (Attribute-Based Access Control) policy in Unity Catalog. Use this data source to query details of an existing policy by its securable type, securable name, and policy name.
      * 
@@ -24476,7 +24882,9 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPolicyInfo:getPolicyInfo", TypeShape.of(GetPolicyInfoResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/policies)
      * 
      * Retrieves information about a specific ABAC (Attribute-Based Access Control) policy in Unity Catalog. Use this data source to query details of an existing policy by its securable type, securable name, and policy name.
      * 
@@ -24524,7 +24932,9 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPolicyInfo:getPolicyInfo", TypeShape.of(GetPolicyInfoResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/policies)
      * 
      * Retrieves information about a specific ABAC (Attribute-Based Access Control) policy in Unity Catalog. Use this data source to query details of an existing policy by its securable type, securable name, and policy name.
      * 
@@ -24572,7 +24982,9 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPolicyInfo:getPolicyInfo", TypeShape.of(GetPolicyInfoResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/policies)
      * 
      * Retrieves a list of all ABAC (Attribute-Based Access Control) policies defined on a specific securable in Unity Catalog. Use this data source to query all policies for a given securable type and name.
      * 
@@ -24619,7 +25031,9 @@ public final class DatabricksFunctions {
         return getPolicyInfos(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/policies)
      * 
      * Retrieves a list of all ABAC (Attribute-Based Access Control) policies defined on a specific securable in Unity Catalog. Use this data source to query all policies for a given securable type and name.
      * 
@@ -24666,7 +25080,9 @@ public final class DatabricksFunctions {
         return getPolicyInfosPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/policies)
      * 
      * Retrieves a list of all ABAC (Attribute-Based Access Control) policies defined on a specific securable in Unity Catalog. Use this data source to query all policies for a given securable type and name.
      * 
@@ -24713,7 +25129,9 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPolicyInfos:getPolicyInfos", TypeShape.of(GetPolicyInfosResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/policies)
      * 
      * Retrieves a list of all ABAC (Attribute-Based Access Control) policies defined on a specific securable in Unity Catalog. Use this data source to query all policies for a given securable type and name.
      * 
@@ -24760,7 +25178,9 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPolicyInfos:getPolicyInfos", TypeShape.of(GetPolicyInfosResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/policies)
      * 
      * Retrieves a list of all ABAC (Attribute-Based Access Control) policies defined on a specific securable in Unity Catalog. Use this data source to query all policies for a given securable type and name.
      * 
@@ -24809,6 +25229,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres branch.
      * 
      * ## Example Usage
@@ -24853,6 +25275,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres branch.
      * 
@@ -24899,6 +25323,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres branch.
      * 
      * ## Example Usage
@@ -24943,6 +25369,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres branch.
      * 
@@ -24989,6 +25417,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres branch.
      * 
      * ## Example Usage
@@ -25034,6 +25464,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source lists all Postgres branches in a project.
      * 
      * ## Example Usage
@@ -25046,6 +25478,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source lists all Postgres branches in a project.
      * 
@@ -25060,6 +25494,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source lists all Postgres branches in a project.
      * 
      * ## Example Usage
@@ -25072,6 +25508,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source lists all Postgres branches in a project.
      * 
@@ -25086,6 +25524,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source lists all Postgres branches in a project.
      * 
      * ## Example Usage
@@ -25098,6 +25538,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres catalog.
      * 
@@ -25144,6 +25586,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres catalog.
      * 
      * ## Example Usage
@@ -25188,6 +25632,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres catalog.
      * 
@@ -25234,6 +25680,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres catalog.
      * 
      * ## Example Usage
@@ -25279,6 +25727,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres catalog.
      * 
      * ## Example Usage
@@ -25323,6 +25773,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres database.
      * 
@@ -25370,6 +25822,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres database.
      * 
      * ## Example Usage
@@ -25415,6 +25869,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres database.
      * 
@@ -25462,6 +25918,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres database.
      * 
      * ## Example Usage
@@ -25507,6 +25965,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres database.
      * 
@@ -25554,6 +26014,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source lists all Postgres databases in a branch.
      * 
      * ## Example Usage
@@ -25566,6 +26028,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source lists all Postgres databases in a branch.
      * 
@@ -25580,6 +26044,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source lists all Postgres databases in a branch.
      * 
      * ## Example Usage
@@ -25592,6 +26058,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source lists all Postgres databases in a branch.
      * 
@@ -25606,6 +26074,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source lists all Postgres databases in a branch.
      * 
      * ## Example Usage
@@ -25618,6 +26088,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres endpoint.
      * 
@@ -25664,6 +26136,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres endpoint.
      * 
      * ## Example Usage
@@ -25708,6 +26182,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres endpoint.
      * 
@@ -25754,6 +26230,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres endpoint.
      * 
      * ## Example Usage
@@ -25798,6 +26276,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres endpoint.
      * 
@@ -25844,6 +26324,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source lists all Postgres endpoints in a branch.
      * 
      * ## Example Usage
@@ -25856,6 +26338,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source lists all Postgres endpoints in a branch.
      * 
@@ -25870,6 +26354,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source lists all Postgres endpoints in a branch.
      * 
      * ## Example Usage
@@ -25882,6 +26368,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source lists all Postgres endpoints in a branch.
      * 
@@ -25896,6 +26384,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source lists all Postgres endpoints in a branch.
      * 
      * ## Example Usage
@@ -25908,6 +26398,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres project.
      * 
@@ -25956,6 +26448,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres project.
      * 
      * ## Example Usage
@@ -26002,6 +26496,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres project.
      * 
@@ -26050,6 +26546,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres project.
      * 
      * ## Example Usage
@@ -26096,6 +26594,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres project.
      * 
@@ -26144,6 +26644,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source lists all Postgres projects in the workspace.
      * 
      * ## Example Usage
@@ -26156,6 +26658,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source lists all Postgres projects in the workspace.
      * 
@@ -26170,6 +26674,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source lists all Postgres projects in the workspace.
      * 
      * ## Example Usage
@@ -26182,6 +26688,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source lists all Postgres projects in the workspace.
      * 
@@ -26196,6 +26704,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source lists all Postgres projects in the workspace.
      * 
      * ## Example Usage
@@ -26208,6 +26718,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source lists all Postgres projects in the workspace.
      * 
@@ -26222,6 +26734,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source lists all Postgres projects in the workspace.
      * 
      * ## Example Usage
@@ -26234,6 +26748,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres role.
      * 
@@ -26282,6 +26798,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres role.
      * 
      * ## Example Usage
@@ -26328,6 +26846,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres role.
      * 
@@ -26376,6 +26896,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres role.
      * 
      * ## Example Usage
@@ -26422,6 +26944,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres role.
      * 
@@ -26470,6 +26994,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source lists all Postgres roles in a branch.
      * 
      * ## Example Usage
@@ -26482,6 +27008,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source lists all Postgres roles in a branch.
      * 
@@ -26496,6 +27024,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source lists all Postgres roles in a branch.
      * 
      * ## Example Usage
@@ -26508,6 +27038,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source lists all Postgres roles in a branch.
      * 
@@ -26522,6 +27054,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source lists all Postgres roles in a branch.
      * 
      * ## Example Usage
@@ -26534,6 +27068,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres synced table.
      * 
@@ -26580,6 +27116,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres synced table.
      * 
      * ## Example Usage
@@ -26624,6 +27162,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
      * This data source retrieves a single Postgres synced table.
      * 
@@ -26670,6 +27210,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres synced table.
      * 
      * ## Example Usage
@@ -26715,6 +27257,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
      * This data source retrieves a single Postgres synced table.
      * 
      * ## Example Usage
@@ -26759,6 +27303,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
      * 
      * &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
      * 
@@ -26816,6 +27362,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
+     * 
      * &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
      * 
      * This data source can be used to fetch a quality monitors v2.
@@ -26871,6 +27419,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
      * 
      * &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
      * 
@@ -26928,6 +27478,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
+     * 
      * &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
      * 
      * This data source can be used to fetch a quality monitors v2.
@@ -26983,6 +27535,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
      * 
      * &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
      * 
@@ -27040,6 +27594,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
+     * 
      * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
      * 
      * This data source can be used to fetch the list of quality monitors v2.
@@ -27088,6 +27644,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
      * 
      * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
      * 
@@ -27138,6 +27696,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
+     * 
      * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
      * 
      * This data source can be used to fetch the list of quality monitors v2.
@@ -27186,6 +27746,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
      * 
      * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
      * 
@@ -27236,6 +27798,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
+     * 
      * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
      * 
      * This data source can be used to fetch the list of quality monitors v2.
@@ -27285,6 +27849,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
+     * 
      * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
      * 
      * This data source can be used to fetch the list of quality monitors v2.
@@ -27333,6 +27899,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
      * 
      * &gt; **Deprecated** This data source is deprecated. Please use `databricks.getDataQualityMonitors` instead.
      * 
@@ -27888,6 +28456,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/rfa)
+     * 
      * This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
      * 
      * ## Example Usage
@@ -27932,6 +28502,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/rfa)
      * 
      * This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
      * 
@@ -27978,6 +28550,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/rfa)
+     * 
      * This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
      * 
      * ## Example Usage
@@ -28023,6 +28597,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/rfa)
+     * 
      * This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
      * 
      * ## Example Usage
@@ -28067,6 +28643,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/rfa)
      * 
      * This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
      * 
@@ -29210,6 +29788,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/serviceprincipalfederationpolicy)
+     * 
      * This data source can be used to fetch the list of federation policies for a service principal.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -29255,6 +29835,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/serviceprincipalfederationpolicy)
      * 
      * This data source can be used to fetch the list of federation policies for a service principal.
      * 
@@ -29302,6 +29884,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/serviceprincipalfederationpolicy)
+     * 
      * This data source can be used to fetch the list of federation policies for a service principal.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -29347,6 +29931,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/serviceprincipalfederationpolicy)
      * 
      * This data source can be used to fetch the list of federation policies for a service principal.
      * 
@@ -29394,6 +29980,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/serviceprincipalfederationpolicy)
+     * 
      * This data source can be used to fetch the list of federation policies for a service principal.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -29440,6 +30028,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/serviceprincipalfederationpolicy)
+     * 
      * This data source can be used to get a single service principal federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -29454,6 +30044,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/serviceprincipalfederationpolicy)
      * 
      * This data source can be used to get a single service principal federation policy.
      * 
@@ -29470,6 +30062,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/serviceprincipalfederationpolicy)
+     * 
      * This data source can be used to get a single service principal federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -29485,6 +30079,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/serviceprincipalfederationpolicy)
+     * 
      * This data source can be used to get a single service principal federation policy.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -29499,6 +30095,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/serviceprincipalfederationpolicy)
      * 
      * This data source can be used to get a single service principal federation policy.
      * 
@@ -33079,12 +33677,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
+     * 
      */
     public static Output<GetSupervisorAgentResult> getSupervisorAgent(GetSupervisorAgentArgs args) {
         return getSupervisorAgent(args, InvokeOptions.Empty);
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
      * 
      */
     public static CompletableFuture<GetSupervisorAgentResult> getSupervisorAgentPlain(GetSupervisorAgentPlainArgs args) {
@@ -33093,12 +33695,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
+     * 
      */
     public static Output<GetSupervisorAgentResult> getSupervisorAgent(GetSupervisorAgentArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getSupervisorAgent:getSupervisorAgent", TypeShape.of(GetSupervisorAgentResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
      * 
      */
     public static Output<GetSupervisorAgentResult> getSupervisorAgent(GetSupervisorAgentArgs args, InvokeOutputOptions options) {
@@ -33107,12 +33713,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
+     * 
      */
     public static CompletableFuture<GetSupervisorAgentResult> getSupervisorAgentPlain(GetSupervisorAgentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getSupervisorAgent:getSupervisorAgent", TypeShape.of(GetSupervisorAgentResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
      * 
      */
     public static Output<GetSupervisorAgentToolResult> getSupervisorAgentTool(GetSupervisorAgentToolArgs args) {
@@ -33121,12 +33731,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
+     * 
      */
     public static CompletableFuture<GetSupervisorAgentToolResult> getSupervisorAgentToolPlain(GetSupervisorAgentToolPlainArgs args) {
         return getSupervisorAgentToolPlain(args, InvokeOptions.Empty);
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
      * 
      */
     public static Output<GetSupervisorAgentToolResult> getSupervisorAgentTool(GetSupervisorAgentToolArgs args, InvokeOptions options) {
@@ -33135,12 +33749,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
+     * 
      */
     public static Output<GetSupervisorAgentToolResult> getSupervisorAgentTool(GetSupervisorAgentToolArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getSupervisorAgentTool:getSupervisorAgentTool", TypeShape.of(GetSupervisorAgentToolResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
      * 
      */
     public static CompletableFuture<GetSupervisorAgentToolResult> getSupervisorAgentToolPlain(GetSupervisorAgentToolPlainArgs args, InvokeOptions options) {
@@ -33149,12 +33767,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
+     * 
      */
     public static Output<GetSupervisorAgentToolsResult> getSupervisorAgentTools(GetSupervisorAgentToolsArgs args) {
         return getSupervisorAgentTools(args, InvokeOptions.Empty);
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
      * 
      */
     public static CompletableFuture<GetSupervisorAgentToolsResult> getSupervisorAgentToolsPlain(GetSupervisorAgentToolsPlainArgs args) {
@@ -33163,12 +33785,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
+     * 
      */
     public static Output<GetSupervisorAgentToolsResult> getSupervisorAgentTools(GetSupervisorAgentToolsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getSupervisorAgentTools:getSupervisorAgentTools", TypeShape.of(GetSupervisorAgentToolsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
      * 
      */
     public static Output<GetSupervisorAgentToolsResult> getSupervisorAgentTools(GetSupervisorAgentToolsArgs args, InvokeOutputOptions options) {
@@ -33177,12 +33803,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
+     * 
      */
     public static CompletableFuture<GetSupervisorAgentToolsResult> getSupervisorAgentToolsPlain(GetSupervisorAgentToolsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getSupervisorAgentTools:getSupervisorAgentTools", TypeShape.of(GetSupervisorAgentToolsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
      * 
      */
     public static Output<GetSupervisorAgentsResult> getSupervisorAgents() {
@@ -33191,12 +33821,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
+     * 
      */
     public static CompletableFuture<GetSupervisorAgentsResult> getSupervisorAgentsPlain() {
         return getSupervisorAgentsPlain(GetSupervisorAgentsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
      * 
      */
     public static Output<GetSupervisorAgentsResult> getSupervisorAgents(GetSupervisorAgentsArgs args) {
@@ -33205,12 +33839,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
+     * 
      */
     public static CompletableFuture<GetSupervisorAgentsResult> getSupervisorAgentsPlain(GetSupervisorAgentsPlainArgs args) {
         return getSupervisorAgentsPlain(args, InvokeOptions.Empty);
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
      * 
      */
     public static Output<GetSupervisorAgentsResult> getSupervisorAgents(GetSupervisorAgentsArgs args, InvokeOptions options) {
@@ -33219,12 +33857,16 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
+     * 
      */
     public static Output<GetSupervisorAgentsResult> getSupervisorAgents(GetSupervisorAgentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getSupervisorAgents:getSupervisorAgents", TypeShape.of(GetSupervisorAgentsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
      * 
      */
     public static CompletableFuture<GetSupervisorAgentsResult> getSupervisorAgentsPlain(GetSupervisorAgentsPlainArgs args, InvokeOptions options) {
@@ -33928,6 +34570,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/tagpolicies)
+     * 
      * This data source can be used to list all tag policies in the account.
      * 
      * The following resources are often used in the same context:
@@ -33980,6 +34624,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/tagpolicies)
      * 
      * This data source can be used to list all tag policies in the account.
      * 
@@ -34034,6 +34680,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/tagpolicies)
+     * 
      * This data source can be used to list all tag policies in the account.
      * 
      * The following resources are often used in the same context:
@@ -34086,6 +34734,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/tagpolicies)
      * 
      * This data source can be used to list all tag policies in the account.
      * 
@@ -34140,6 +34790,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/tagpolicies)
+     * 
      * This data source can be used to list all tag policies in the account.
      * 
      * The following resources are often used in the same context:
@@ -34192,6 +34844,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/tagpolicies)
      * 
      * This data source can be used to list all tag policies in the account.
      * 
@@ -34246,6 +34900,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/tagpolicies)
+     * 
      * This data source can be used to list all tag policies in the account.
      * 
      * The following resources are often used in the same context:
@@ -34298,6 +34954,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/tagpolicies)
      * 
      * This data source can be used to get a single tag policy by its tag key.
      * 
@@ -34352,6 +35010,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/tagpolicies)
+     * 
      * This data source can be used to get a single tag policy by its tag key.
      * 
      * The following resources are often used in the same context:
@@ -34404,6 +35064,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/tagpolicies)
      * 
      * This data source can be used to get a single tag policy by its tag key.
      * 
@@ -34458,6 +35120,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/tagpolicies)
+     * 
      * This data source can be used to get a single tag policy by its tag key.
      * 
      * The following resources are often used in the same context:
@@ -34510,6 +35174,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/tagpolicies)
      * 
      * This data source can be used to get a single tag policy by its tag key.
      * 
@@ -36155,6 +36821,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
+     * 
      * The Default Warehouse Override data source allows you to retrieve information about a user&#39;s default warehouse selection configuration in Databricks SQL.
      * 
      * You can use this data source to:
@@ -36207,6 +36875,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
      * 
      * The Default Warehouse Override data source allows you to retrieve information about a user&#39;s default warehouse selection configuration in Databricks SQL.
      * 
@@ -36261,6 +36931,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
+     * 
      * The Default Warehouse Override data source allows you to retrieve information about a user&#39;s default warehouse selection configuration in Databricks SQL.
      * 
      * You can use this data source to:
@@ -36313,6 +36985,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
      * 
      * The Default Warehouse Override data source allows you to retrieve information about a user&#39;s default warehouse selection configuration in Databricks SQL.
      * 
@@ -36367,6 +37041,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
+     * 
      * The Default Warehouse Override data source allows you to retrieve information about a user&#39;s default warehouse selection configuration in Databricks SQL.
      * 
      * You can use this data source to:
@@ -36420,6 +37096,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
+     * 
      * This data source can be used to list all default warehouse overrides in the workspace.
      * 
      * &gt; **Note** This data source requires workspace admin permissions.
@@ -36465,6 +37143,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
      * 
      * This data source can be used to list all default warehouse overrides in the workspace.
      * 
@@ -36512,6 +37192,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
+     * 
      * This data source can be used to list all default warehouse overrides in the workspace.
      * 
      * &gt; **Note** This data source requires workspace admin permissions.
@@ -36557,6 +37239,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
      * 
      * This data source can be used to list all default warehouse overrides in the workspace.
      * 
@@ -36604,6 +37288,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
+     * 
      * This data source can be used to list all default warehouse overrides in the workspace.
      * 
      * &gt; **Note** This data source requires workspace admin permissions.
@@ -36649,6 +37335,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
      * 
      * This data source can be used to list all default warehouse overrides in the workspace.
      * 
@@ -36696,6 +37384,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
+     * 
      * This data source can be used to list all default warehouse overrides in the workspace.
      * 
      * &gt; **Note** This data source requires workspace admin permissions.
@@ -36741,6 +37431,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
      * 
      * This data source allows you to get information about a tag assignment for a specific workspace scoped entity using the entity type, entity id, and tag key.
      * 
@@ -36804,6 +37496,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
+     * 
      * This data source allows you to get information about a tag assignment for a specific workspace scoped entity using the entity type, entity id, and tag key.
      * 
      * ## Example Usage
@@ -36865,6 +37559,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
      * 
      * This data source allows you to get information about a tag assignment for a specific workspace scoped entity using the entity type, entity id, and tag key.
      * 
@@ -36928,6 +37624,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
+     * 
      * This data source allows you to get information about a tag assignment for a specific workspace scoped entity using the entity type, entity id, and tag key.
      * 
      * ## Example Usage
@@ -36989,6 +37687,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
      * 
      * This data source allows you to get information about a tag assignment for a specific workspace scoped entity using the entity type, entity id, and tag key.
      * 
@@ -37052,6 +37752,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
+     * 
      * This data source allows you to retrieve tag assignments that have been applied to a particular workspace scoped entity.
      * 
      * ## Example Usage
@@ -37109,6 +37811,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
      * 
      * This data source allows you to retrieve tag assignments that have been applied to a particular workspace scoped entity.
      * 
@@ -37168,6 +37872,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
+     * 
      * This data source allows you to retrieve tag assignments that have been applied to a particular workspace scoped entity.
      * 
      * ## Example Usage
@@ -37225,6 +37931,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
      * 
      * This data source allows you to retrieve tag assignments that have been applied to a particular workspace scoped entity.
      * 
@@ -37284,6 +37992,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
+     * 
      * This data source allows you to retrieve tag assignments that have been applied to a particular workspace scoped entity.
      * 
      * ## Example Usage
@@ -37342,6 +38052,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/workspacenetworkconfiguration)
+     * 
      * This data source can be used to get a single workspace network option.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -37387,6 +38099,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/workspacenetworkconfiguration)
      * 
      * This data source can be used to get a single workspace network option.
      * 
@@ -37434,6 +38148,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/workspacenetworkconfiguration)
+     * 
      * This data source can be used to get a single workspace network option.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -37479,6 +38195,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/workspacenetworkconfiguration)
      * 
      * This data source can be used to get a single workspace network option.
      * 
@@ -37526,6 +38244,8 @@ public final class DatabricksFunctions {
     /**
      * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/account/workspacenetworkconfiguration)
+     * 
      * This data source can be used to get a single workspace network option.
      * 
      * &gt; **Note** This data source can only be used with an account-level provider!
@@ -37572,6 +38292,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
+     * 
      * This data source can be used to get a single account setting.
      * 
      * ## Example Usage
@@ -37584,6 +38306,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
      * 
      * This data source can be used to get a single account setting.
      * 
@@ -37598,6 +38322,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
+     * 
      * This data source can be used to get a single account setting.
      * 
      * ## Example Usage
@@ -37611,6 +38337,8 @@ public final class DatabricksFunctions {
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
+     * 
      * This data source can be used to get a single account setting.
      * 
      * ## Example Usage
@@ -37623,6 +38351,8 @@ public final class DatabricksFunctions {
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
      * 
      * This data source can be used to get a single account setting.
      * 

@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// [API Documentation](https://docs.databricks.com/api/workspace/policies)
 //
 // Retrieves a list of all ABAC (Attribute-Based Access Control) policies defined on a specific securable in Unity Catalog. Use this data source to query all policies for a given securable type and name.
 //

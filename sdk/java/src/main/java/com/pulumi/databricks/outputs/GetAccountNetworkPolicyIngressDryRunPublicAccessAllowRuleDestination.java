@@ -24,7 +24,8 @@ public final class GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDest
      */
     private @Nullable GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountApi accountApi;
     /**
-     * @return (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * @return (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      * 
      */
     private @Nullable GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOne accountDatabricksOne;
@@ -68,7 +69,8 @@ public final class GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDest
         return Optional.ofNullable(this.accountApi);
     }
     /**
-     * @return (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * @return (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      * 
      */
     public Optional<GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOne> accountDatabricksOne() {

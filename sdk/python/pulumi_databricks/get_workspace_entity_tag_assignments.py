@@ -110,6 +110,8 @@ def get_workspace_entity_tag_assignments(entity_id: Optional[_builtins.str] = No
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
+
     This data source allows you to retrieve tag assignments that have been applied to a particular workspace scoped entity.
 
     ## Example Usage
@@ -156,6 +158,8 @@ def get_workspace_entity_tag_assignments_output(entity_id: pulumi.Input[Optional
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceEntityTagAssignmentsResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
 
     This data source allows you to retrieve tag assignments that have been applied to a particular workspace scoped entity.
 

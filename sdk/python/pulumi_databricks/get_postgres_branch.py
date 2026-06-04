@@ -152,6 +152,8 @@ def get_postgres_branch(name: Optional[_builtins.str] = None,
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+
     This data source retrieves a single Postgres branch.
 
     ## Example Usage
@@ -192,6 +194,8 @@ def get_postgres_branch_output(name: pulumi.Input[Optional[_builtins.str]] = Non
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresBranchResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
     This data source retrieves a single Postgres branch.
 

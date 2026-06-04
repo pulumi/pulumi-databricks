@@ -14,6 +14,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
+        /// 
         /// This data source can be used to get a single budget policy.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
@@ -44,6 +46,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
+        /// 
         /// This data source can be used to get a single budget policy.
         /// 
         /// &gt; **Note** This data source can only be used with an account-level provider!
@@ -73,6 +77,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
         /// 
         /// This data source can be used to get a single budget policy.
         /// 

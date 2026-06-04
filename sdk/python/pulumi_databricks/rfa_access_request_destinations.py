@@ -212,6 +212,8 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+        [API Documentation](https://docs.databricks.com/api/workspace/rfa)
+
         Request for Access (RFA) access request destinations allow you to configure where notifications are sent when users request access to securable objects in Unity Catalog. This resource enables you to manage access request destinations for specific securable objects, such as tables, catalogs, or schemas.
 
         When a user requests access to a securable object, notifications can be sent to various destinations including email addresses, Slack channels, or Microsoft Teams channels. This resource allows you to configure these destinations to ensure that the appropriate stakeholders are notified of access requests.
@@ -267,6 +269,8 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        [API Documentation](https://docs.databricks.com/api/workspace/rfa)
 
         Request for Access (RFA) access request destinations allow you to configure where notifications are sent when users request access to securable objects in Unity Catalog. This resource enables you to manage access request destinations for specific securable objects, such as tables, catalogs, or schemas.
 

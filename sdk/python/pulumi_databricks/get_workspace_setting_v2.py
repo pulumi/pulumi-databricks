@@ -28,7 +28,7 @@ class GetWorkspaceSettingV2Result:
     """
     A collection of values returned by getWorkspaceSettingV2.
     """
-    def __init__(__self__, aibi_dashboard_embedding_access_policy=None, aibi_dashboard_embedding_approved_domains=None, allowed_apps_user_api_scopes=None, automatic_cluster_update_workspace=None, boolean_val=None, effective_aibi_dashboard_embedding_access_policy=None, effective_aibi_dashboard_embedding_approved_domains=None, effective_allowed_apps_user_api_scopes=None, effective_automatic_cluster_update_workspace=None, effective_boolean_val=None, effective_integer_val=None, effective_operational_email_custom_recipient=None, effective_personal_compute=None, effective_restrict_workspace_admins=None, effective_string_val=None, id=None, integer_val=None, name=None, operational_email_custom_recipient=None, personal_compute=None, provider_config=None, restrict_workspace_admins=None, string_val=None):
+    def __init__(__self__, aibi_dashboard_embedding_access_policy=None, aibi_dashboard_embedding_approved_domains=None, allowed_apps_user_api_scopes=None, automatic_cluster_update_workspace=None, boolean_val=None, collaboration_platform_connectivity=None, effective_aibi_dashboard_embedding_access_policy=None, effective_aibi_dashboard_embedding_approved_domains=None, effective_allowed_apps_user_api_scopes=None, effective_automatic_cluster_update_workspace=None, effective_boolean_val=None, effective_collaboration_platform_connectivity=None, effective_integer_val=None, effective_operational_email_custom_recipient=None, effective_personal_compute=None, effective_restrict_workspace_admins=None, effective_string_val=None, id=None, integer_val=None, name=None, operational_email_custom_recipient=None, personal_compute=None, provider_config=None, restrict_workspace_admins=None, string_val=None):
         if aibi_dashboard_embedding_access_policy and not isinstance(aibi_dashboard_embedding_access_policy, dict):
             raise TypeError("Expected argument 'aibi_dashboard_embedding_access_policy' to be a dict")
         pulumi.set(__self__, "aibi_dashboard_embedding_access_policy", aibi_dashboard_embedding_access_policy)
@@ -44,6 +44,9 @@ class GetWorkspaceSettingV2Result:
         if boolean_val and not isinstance(boolean_val, dict):
             raise TypeError("Expected argument 'boolean_val' to be a dict")
         pulumi.set(__self__, "boolean_val", boolean_val)
+        if collaboration_platform_connectivity and not isinstance(collaboration_platform_connectivity, dict):
+            raise TypeError("Expected argument 'collaboration_platform_connectivity' to be a dict")
+        pulumi.set(__self__, "collaboration_platform_connectivity", collaboration_platform_connectivity)
         if effective_aibi_dashboard_embedding_access_policy and not isinstance(effective_aibi_dashboard_embedding_access_policy, dict):
             raise TypeError("Expected argument 'effective_aibi_dashboard_embedding_access_policy' to be a dict")
         pulumi.set(__self__, "effective_aibi_dashboard_embedding_access_policy", effective_aibi_dashboard_embedding_access_policy)
@@ -59,6 +62,9 @@ class GetWorkspaceSettingV2Result:
         if effective_boolean_val and not isinstance(effective_boolean_val, dict):
             raise TypeError("Expected argument 'effective_boolean_val' to be a dict")
         pulumi.set(__self__, "effective_boolean_val", effective_boolean_val)
+        if effective_collaboration_platform_connectivity and not isinstance(effective_collaboration_platform_connectivity, dict):
+            raise TypeError("Expected argument 'effective_collaboration_platform_connectivity' to be a dict")
+        pulumi.set(__self__, "effective_collaboration_platform_connectivity", effective_collaboration_platform_connectivity)
         if effective_integer_val and not isinstance(effective_integer_val, dict):
             raise TypeError("Expected argument 'effective_integer_val' to be a dict")
         pulumi.set(__self__, "effective_integer_val", effective_integer_val)
@@ -140,6 +146,14 @@ class GetWorkspaceSettingV2Result:
         return pulumi.get(self, "boolean_val")
 
     @_builtins.property
+    @pulumi.getter(name="collaborationPlatformConnectivity")
+    def collaboration_platform_connectivity(self) -> 'outputs.GetWorkspaceSettingV2CollaborationPlatformConnectivityResult':
+        """
+        (CollaborationPlatformConnectivityMessage) - Setting value for collaboration_platform_connectivity setting. This is the setting value set by consumers, check effective_collaboration_platform_connectivity for final setting value
+        """
+        return pulumi.get(self, "collaboration_platform_connectivity")
+
+    @_builtins.property
     @pulumi.getter(name="effectiveAibiDashboardEmbeddingAccessPolicy")
     def effective_aibi_dashboard_embedding_access_policy(self) -> 'outputs.GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyResult':
         """
@@ -178,6 +192,14 @@ class GetWorkspaceSettingV2Result:
         (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
         """
         return pulumi.get(self, "effective_boolean_val")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveCollaborationPlatformConnectivity")
+    def effective_collaboration_platform_connectivity(self) -> 'outputs.GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityResult':
+        """
+        (CollaborationPlatformConnectivityMessage) - Effective setting value for collaboration_platform_connectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+        """
+        return pulumi.get(self, "effective_collaboration_platform_connectivity")
 
     @_builtins.property
     @pulumi.getter(name="effectiveIntegerVal")
@@ -292,11 +314,13 @@ class AwaitableGetWorkspaceSettingV2Result(GetWorkspaceSettingV2Result):
             allowed_apps_user_api_scopes=self.allowed_apps_user_api_scopes,
             automatic_cluster_update_workspace=self.automatic_cluster_update_workspace,
             boolean_val=self.boolean_val,
+            collaboration_platform_connectivity=self.collaboration_platform_connectivity,
             effective_aibi_dashboard_embedding_access_policy=self.effective_aibi_dashboard_embedding_access_policy,
             effective_aibi_dashboard_embedding_approved_domains=self.effective_aibi_dashboard_embedding_approved_domains,
             effective_allowed_apps_user_api_scopes=self.effective_allowed_apps_user_api_scopes,
             effective_automatic_cluster_update_workspace=self.effective_automatic_cluster_update_workspace,
             effective_boolean_val=self.effective_boolean_val,
+            effective_collaboration_platform_connectivity=self.effective_collaboration_platform_connectivity,
             effective_integer_val=self.effective_integer_val,
             effective_operational_email_custom_recipient=self.effective_operational_email_custom_recipient,
             effective_personal_compute=self.effective_personal_compute,
@@ -317,6 +341,8 @@ def get_workspace_setting_v2(name: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceSettingV2Result:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
 
     This data source can be used to get a single account setting.
 
@@ -340,11 +366,13 @@ def get_workspace_setting_v2(name: Optional[_builtins.str] = None,
         allowed_apps_user_api_scopes=pulumi.get(__ret__, 'allowed_apps_user_api_scopes'),
         automatic_cluster_update_workspace=pulumi.get(__ret__, 'automatic_cluster_update_workspace'),
         boolean_val=pulumi.get(__ret__, 'boolean_val'),
+        collaboration_platform_connectivity=pulumi.get(__ret__, 'collaboration_platform_connectivity'),
         effective_aibi_dashboard_embedding_access_policy=pulumi.get(__ret__, 'effective_aibi_dashboard_embedding_access_policy'),
         effective_aibi_dashboard_embedding_approved_domains=pulumi.get(__ret__, 'effective_aibi_dashboard_embedding_approved_domains'),
         effective_allowed_apps_user_api_scopes=pulumi.get(__ret__, 'effective_allowed_apps_user_api_scopes'),
         effective_automatic_cluster_update_workspace=pulumi.get(__ret__, 'effective_automatic_cluster_update_workspace'),
         effective_boolean_val=pulumi.get(__ret__, 'effective_boolean_val'),
+        effective_collaboration_platform_connectivity=pulumi.get(__ret__, 'effective_collaboration_platform_connectivity'),
         effective_integer_val=pulumi.get(__ret__, 'effective_integer_val'),
         effective_operational_email_custom_recipient=pulumi.get(__ret__, 'effective_operational_email_custom_recipient'),
         effective_personal_compute=pulumi.get(__ret__, 'effective_personal_compute'),
@@ -363,6 +391,8 @@ def get_workspace_setting_v2_output(name: pulumi.Input[Optional[_builtins.str]] 
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceSettingV2Result]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
 
     This data source can be used to get a single account setting.
 
@@ -385,11 +415,13 @@ def get_workspace_setting_v2_output(name: pulumi.Input[Optional[_builtins.str]] 
         allowed_apps_user_api_scopes=pulumi.get(__response__, 'allowed_apps_user_api_scopes'),
         automatic_cluster_update_workspace=pulumi.get(__response__, 'automatic_cluster_update_workspace'),
         boolean_val=pulumi.get(__response__, 'boolean_val'),
+        collaboration_platform_connectivity=pulumi.get(__response__, 'collaboration_platform_connectivity'),
         effective_aibi_dashboard_embedding_access_policy=pulumi.get(__response__, 'effective_aibi_dashboard_embedding_access_policy'),
         effective_aibi_dashboard_embedding_approved_domains=pulumi.get(__response__, 'effective_aibi_dashboard_embedding_approved_domains'),
         effective_allowed_apps_user_api_scopes=pulumi.get(__response__, 'effective_allowed_apps_user_api_scopes'),
         effective_automatic_cluster_update_workspace=pulumi.get(__response__, 'effective_automatic_cluster_update_workspace'),
         effective_boolean_val=pulumi.get(__response__, 'effective_boolean_val'),
+        effective_collaboration_platform_connectivity=pulumi.get(__response__, 'effective_collaboration_platform_connectivity'),
         effective_integer_val=pulumi.get(__response__, 'effective_integer_val'),
         effective_operational_email_custom_recipient=pulumi.get(__response__, 'effective_operational_email_custom_recipient'),
         effective_personal_compute=pulumi.get(__response__, 'effective_personal_compute'),

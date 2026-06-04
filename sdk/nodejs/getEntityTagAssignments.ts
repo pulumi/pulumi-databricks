@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * [API Documentation](https://docs.databricks.com/api/workspace/entitytagassignments)
+ *
  * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
  *
  * ## Example Usage
@@ -95,6 +97,8 @@ export interface GetEntityTagAssignmentsResult {
 }
 /**
  * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/entitytagassignments)
  *
  * This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
  *

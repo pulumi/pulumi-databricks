@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
+ *
  * This resource allows you to set up data quality monitoring checks for Unity Catalog objects, currently schema and table.
  *
  * For the `table` `objectType`, you must either:

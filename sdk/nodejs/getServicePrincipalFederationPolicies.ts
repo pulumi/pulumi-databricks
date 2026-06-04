@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * [API Documentation](https://docs.databricks.com/api/account/serviceprincipalfederationpolicy)
+ *
  * This data source can be used to fetch the list of federation policies for a service principal.
  *
  * > **Note** This data source can only be used with an account-level provider!
@@ -62,6 +64,8 @@ export interface GetServicePrincipalFederationPoliciesResult {
 }
 /**
  * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/account/serviceprincipalfederationpolicy)
  *
  * This data source can be used to fetch the list of federation policies for a service principal.
  *

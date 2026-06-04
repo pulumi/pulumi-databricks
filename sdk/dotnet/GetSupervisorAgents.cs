@@ -13,18 +13,24 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
         /// </summary>
         public static Task<GetSupervisorAgentsResult> InvokeAsync(GetSupervisorAgentsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSupervisorAgentsResult>("databricks:index/getSupervisorAgents:getSupervisorAgents", args ?? new GetSupervisorAgentsArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
         /// </summary>
         public static Output<GetSupervisorAgentsResult> Invoke(GetSupervisorAgentsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSupervisorAgentsResult>("databricks:index/getSupervisorAgents:getSupervisorAgents", args ?? new GetSupervisorAgentsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
         /// </summary>
         public static Output<GetSupervisorAgentsResult> Invoke(GetSupervisorAgentsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSupervisorAgentsResult>("databricks:index/getSupervisorAgents:getSupervisorAgents", args ?? new GetSupervisorAgentsInvokeArgs(), options.WithDefaults());

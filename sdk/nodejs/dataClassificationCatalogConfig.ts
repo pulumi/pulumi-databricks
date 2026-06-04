@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
+ *
  * This resource allows you to manage the Data Classification configuration for Unity Catalog catalogs.
  *
  * Data Classification automatically identifies and tags sensitive data (personally identifiable information, or PII) in Unity Catalog tables. Creating this resource enables Data Classification for the specified catalog, while deleting it disables Data Classification.

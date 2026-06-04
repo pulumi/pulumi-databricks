@@ -117,6 +117,8 @@ def get_account_network_policy(network_policy_id: Optional[_builtins.str] = None
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/account/networkpolicies)
+
     This data source can be used to get a single network policy.
 
     > **Note** This data source can only be used with an account-level provider!
@@ -144,6 +146,8 @@ def get_account_network_policy_output(network_policy_id: pulumi.Input[Optional[_
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountNetworkPolicyResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/account/networkpolicies)
 
     This data source can be used to get a single network policy.
 

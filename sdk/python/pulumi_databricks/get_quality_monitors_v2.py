@@ -84,6 +84,8 @@ def get_quality_monitors_v2(page_size: Optional[_builtins.int] = None,
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
+
     > **Deprecated** This data source is deprecated. Please use `get_data_quality_monitors` instead.
 
     This data source can be used to fetch the list of quality monitors v2.
@@ -122,6 +124,8 @@ def get_quality_monitors_v2_output(page_size: pulumi.Input[Optional[Optional[_bu
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQualityMonitorsV2Result]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
 
     > **Deprecated** This data source is deprecated. Please use `get_data_quality_monitors` instead.
 

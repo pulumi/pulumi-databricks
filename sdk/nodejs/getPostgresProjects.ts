@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+ *
  * This data source lists all Postgres projects in the workspace.
  *
  * ## Example Usage
@@ -68,6 +70,8 @@ export interface GetPostgresProjectsResult {
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *
  * This data source lists all Postgres projects in the workspace.
  *

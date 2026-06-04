@@ -84,6 +84,8 @@ def get_data_quality_monitors(page_size: Optional[_builtins.int] = None,
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
+
     This data source can be used to fetch the list of data quality monitors.
 
     For the `table` `object_type`, the caller must either:
@@ -126,6 +128,8 @@ def get_data_quality_monitors_output(page_size: pulumi.Input[Optional[Optional[_
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataQualityMonitorsResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
 
     This data source can be used to fetch the list of data quality monitors.
 

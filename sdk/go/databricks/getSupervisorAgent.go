@@ -12,6 +12,8 @@ import (
 )
 
 // [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
 func LookupSupervisorAgent(ctx *pulumi.Context, args *LookupSupervisorAgentArgs, opts ...pulumi.InvokeOption) (*LookupSupervisorAgentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSupervisorAgentResult

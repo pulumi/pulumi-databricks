@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestination
     {
         public readonly Outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi? AccountApi;
+        /// <summary>
+        /// Account DatabricksOne destination is not supported.
+        /// DO NOT change the stage of this destination past PRIVATE_PREVIEW
+        /// </summary>
         public readonly Outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne? AccountDatabricksOne;
         public readonly Outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi? AccountUi;
         public readonly bool? AllDestinations;

@@ -10,11 +10,13 @@ import com.pulumi.databricks.inputs.AccountSettingV2AibiDashboardEmbeddingApprov
 import com.pulumi.databricks.inputs.AccountSettingV2AllowedAppsUserApiScopesArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2BooleanValArgs;
+import com.pulumi.databricks.inputs.AccountSettingV2CollaborationPlatformConnectivityArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveAllowedAppsUserApiScopesArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveBooleanValArgs;
+import com.pulumi.databricks.inputs.AccountSettingV2EffectiveCollaborationPlatformConnectivityArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveIntegerValArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveOperationalEmailCustomRecipientArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectivePersonalComputeArgs;
@@ -111,6 +113,21 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+     * 
+     */
+    @Import(name="collaborationPlatformConnectivity")
+    private @Nullable Output<AccountSettingV2CollaborationPlatformConnectivityArgs> collaborationPlatformConnectivity;
+
+    /**
+     * @return Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+     * 
+     */
+    public Optional<Output<AccountSettingV2CollaborationPlatformConnectivityArgs>> collaborationPlatformConnectivity() {
+        return Optional.ofNullable(this.collaborationPlatformConnectivity);
+    }
+
+    /**
      * Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
      * 
      */
@@ -183,6 +200,21 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<AccountSettingV2EffectiveBooleanValArgs>> effectiveBooleanVal() {
         return Optional.ofNullable(this.effectiveBooleanVal);
+    }
+
+    /**
+     * (CollaborationPlatformConnectivityMessage) - Effective setting value for collaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+     * 
+     */
+    @Import(name="effectiveCollaborationPlatformConnectivity")
+    private @Nullable Output<AccountSettingV2EffectiveCollaborationPlatformConnectivityArgs> effectiveCollaborationPlatformConnectivity;
+
+    /**
+     * @return (CollaborationPlatformConnectivityMessage) - Effective setting value for collaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+     * 
+     */
+    public Optional<Output<AccountSettingV2EffectiveCollaborationPlatformConnectivityArgs>> effectiveCollaborationPlatformConnectivity() {
+        return Optional.ofNullable(this.effectiveCollaborationPlatformConnectivity);
     }
 
     /**
@@ -358,11 +390,13 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
         this.allowedAppsUserApiScopes = $.allowedAppsUserApiScopes;
         this.automaticClusterUpdateWorkspace = $.automaticClusterUpdateWorkspace;
         this.booleanVal = $.booleanVal;
+        this.collaborationPlatformConnectivity = $.collaborationPlatformConnectivity;
         this.effectiveAibiDashboardEmbeddingAccessPolicy = $.effectiveAibiDashboardEmbeddingAccessPolicy;
         this.effectiveAibiDashboardEmbeddingApprovedDomains = $.effectiveAibiDashboardEmbeddingApprovedDomains;
         this.effectiveAllowedAppsUserApiScopes = $.effectiveAllowedAppsUserApiScopes;
         this.effectiveAutomaticClusterUpdateWorkspace = $.effectiveAutomaticClusterUpdateWorkspace;
         this.effectiveBooleanVal = $.effectiveBooleanVal;
+        this.effectiveCollaborationPlatformConnectivity = $.effectiveCollaborationPlatformConnectivity;
         this.effectiveIntegerVal = $.effectiveIntegerVal;
         this.effectiveOperationalEmailCustomRecipient = $.effectiveOperationalEmailCustomRecipient;
         this.effectivePersonalCompute = $.effectivePersonalCompute;
@@ -500,6 +534,27 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param collaborationPlatformConnectivity Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder collaborationPlatformConnectivity(@Nullable Output<AccountSettingV2CollaborationPlatformConnectivityArgs> collaborationPlatformConnectivity) {
+            $.collaborationPlatformConnectivity = collaborationPlatformConnectivity;
+            return this;
+        }
+
+        /**
+         * @param collaborationPlatformConnectivity Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder collaborationPlatformConnectivity(AccountSettingV2CollaborationPlatformConnectivityArgs collaborationPlatformConnectivity) {
+            return collaborationPlatformConnectivity(Output.of(collaborationPlatformConnectivity));
+        }
+
+        /**
          * @param effectiveAibiDashboardEmbeddingAccessPolicy Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
          * 
          * @return builder
@@ -602,6 +657,27 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
          */
         public Builder effectiveBooleanVal(AccountSettingV2EffectiveBooleanValArgs effectiveBooleanVal) {
             return effectiveBooleanVal(Output.of(effectiveBooleanVal));
+        }
+
+        /**
+         * @param effectiveCollaborationPlatformConnectivity (CollaborationPlatformConnectivityMessage) - Effective setting value for collaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveCollaborationPlatformConnectivity(@Nullable Output<AccountSettingV2EffectiveCollaborationPlatformConnectivityArgs> effectiveCollaborationPlatformConnectivity) {
+            $.effectiveCollaborationPlatformConnectivity = effectiveCollaborationPlatformConnectivity;
+            return this;
+        }
+
+        /**
+         * @param effectiveCollaborationPlatformConnectivity (CollaborationPlatformConnectivityMessage) - Effective setting value for collaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveCollaborationPlatformConnectivity(AccountSettingV2EffectiveCollaborationPlatformConnectivityArgs effectiveCollaborationPlatformConnectivity) {
+            return effectiveCollaborationPlatformConnectivity(Output.of(effectiveCollaborationPlatformConnectivity));
         }
 
         /**

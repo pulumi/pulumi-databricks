@@ -244,6 +244,8 @@ class AccountFederationPolicy(pulumi.CustomResource):
         """
         [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+        [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
+
         Account federation policies allow users and service principals in your Databricks account to securely access Databricks APIs using tokens from your trusted identity providers (IdPs).
 
         Token federation policies eliminate the need to manage Databricks secrets, and allow you to centralize management of token issuance policies in your IdP. Databricks token federation policies are typically used in combination with [SCIM](https://www.terraform.io/admin/users-groups/scim/index.html), so users in your IdP are synchronized into your Databricks account.
@@ -281,6 +283,8 @@ class AccountFederationPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
 
         Account federation policies allow users and service principals in your Databricks account to securely access Databricks APIs using tokens from your trusted identity providers (IdPs).
 

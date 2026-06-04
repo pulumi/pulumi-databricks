@@ -329,6 +329,8 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+        [API Documentation](https://docs.databricks.com/api/workspace/database)
+
         Lakebase Synced Database Tables are Postgres tables automatically synced from a source table inside Unity Catalog.
         They can be used to serve realtime queries without the operational overhead of managing ETL pipelines.
 
@@ -493,6 +495,8 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        [API Documentation](https://docs.databricks.com/api/workspace/database)
 
         Lakebase Synced Database Tables are Postgres tables automatically synced from a source table inside Unity Catalog.
         They can be used to serve realtime queries without the operational overhead of managing ETL pipelines.

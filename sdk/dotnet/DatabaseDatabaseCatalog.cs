@@ -12,6 +12,8 @@ namespace Pulumi.Databricks
     /// <summary>
     /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
+    /// [API Documentation](https://docs.databricks.com/api/workspace/database)
+    /// 
     /// Database Catalogs are databases inside a Lakebase Database Instance which are synced into a Postgres Catalog inside Unity Catalog.
     /// 
     /// ## Example Usage

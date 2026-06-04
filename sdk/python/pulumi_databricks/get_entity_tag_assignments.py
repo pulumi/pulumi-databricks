@@ -110,6 +110,8 @@ def get_entity_tag_assignments(entity_name: Optional[_builtins.str] = None,
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/entitytagassignments)
+
     This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
 
     ## Example Usage
@@ -160,6 +162,8 @@ def get_entity_tag_assignments_output(entity_name: pulumi.Input[Optional[_builti
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEntityTagAssignmentsResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/entitytagassignments)
 
     This data source allows you to retrieve tag assignments that have been applied to a particular entity in Unity Catalog.
 

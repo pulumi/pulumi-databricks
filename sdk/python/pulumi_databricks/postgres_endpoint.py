@@ -303,6 +303,8 @@ class PostgresEndpoint(pulumi.CustomResource):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+        [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+
         ## Example Usage
 
         ### Managing Implicitly Created Read-Write Endpoint
@@ -528,6 +530,8 @@ class PostgresEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
         ## Example Usage
 

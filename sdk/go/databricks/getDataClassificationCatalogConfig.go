@@ -13,6 +13,8 @@ import (
 
 // [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
+// [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
+//
 // This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
 //
 // To read the Data Classification configuration, you must have browse permissions on the catalog.

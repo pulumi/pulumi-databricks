@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
+ *
  * This data source can be used to get a single account federation policy.
  *
  * > **Note** This data source can only be used with an account-level provider!
@@ -82,6 +84,8 @@ export interface GetAccountFederationPolicyResult {
 }
 /**
  * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/account/accountfederationpolicy)
  *
  * This data source can be used to get a single account federation policy.
  *

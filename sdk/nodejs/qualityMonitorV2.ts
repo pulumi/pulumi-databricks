@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
+ *
  * > **Deprecated** This resource is deprecated. Please use `databricks.DataQualityMonitor` instead.
  *
  * Users with MANAGE Schema can use quality monitor v2 to set up data quality monitoring checks for UC objects, currently support schema.

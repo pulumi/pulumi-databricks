@@ -12,6 +12,8 @@ import (
 )
 
 // [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
 func GetKnowledgeAssistants(ctx *pulumi.Context, args *GetKnowledgeAssistantsArgs, opts ...pulumi.InvokeOption) (*GetKnowledgeAssistantsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKnowledgeAssistantsResult

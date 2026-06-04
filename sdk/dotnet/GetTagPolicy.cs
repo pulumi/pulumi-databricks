@@ -14,6 +14,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/tagpolicies)
+        /// 
         /// This data source can be used to get a single tag policy by its tag key.
         /// 
         /// The following resources are often used in the same context:
@@ -52,6 +54,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/tagpolicies)
+        /// 
         /// This data source can be used to get a single tag policy by its tag key.
         /// 
         /// The following resources are often used in the same context:
@@ -89,6 +93,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/tagpolicies)
         /// 
         /// This data source can be used to get a single tag policy by its tag key.
         /// 

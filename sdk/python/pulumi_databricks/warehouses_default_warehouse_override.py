@@ -198,6 +198,8 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+        [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
+
         The Default Warehouse Override resource allows you to configure a user's default warehouse selection behavior in Databricks SQL. This resource enables customization of how a user's default warehouse is selected for SQL operations.
 
         Users can configure their default warehouse to either:
@@ -251,6 +253,8 @@ class WarehousesDefaultWarehouseOverride(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
 
         The Default Warehouse Override resource allows you to configure a user's default warehouse selection behavior in Databricks SQL. This resource enables customization of how a user's default warehouse is selected for SQL operations.
 

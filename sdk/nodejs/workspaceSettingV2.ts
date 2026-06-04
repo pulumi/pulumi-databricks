@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
+ *
  * Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
  *
  * [//]: # (todo: add public link to metadata api after production doc link available)
@@ -79,6 +81,10 @@ export class WorkspaceSettingV2 extends pulumi.CustomResource {
      */
     declare public readonly booleanVal: pulumi.Output<outputs.WorkspaceSettingV2BooleanVal | undefined>;
     /**
+     * Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+     */
+    declare public readonly collaborationPlatformConnectivity: pulumi.Output<outputs.WorkspaceSettingV2CollaborationPlatformConnectivity | undefined>;
+    /**
      * Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
      */
     declare public readonly effectiveAibiDashboardEmbeddingAccessPolicy: pulumi.Output<outputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy | undefined>;
@@ -98,6 +104,10 @@ export class WorkspaceSettingV2 extends pulumi.CustomResource {
      * (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
      */
     declare public /*out*/ readonly effectiveBooleanVal: pulumi.Output<outputs.WorkspaceSettingV2EffectiveBooleanVal>;
+    /**
+     * (CollaborationPlatformConnectivityMessage) - Effective setting value for collaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+     */
+    declare public /*out*/ readonly effectiveCollaborationPlatformConnectivity: pulumi.Output<outputs.WorkspaceSettingV2EffectiveCollaborationPlatformConnectivity>;
     /**
      * (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
      */
@@ -165,11 +175,13 @@ export class WorkspaceSettingV2 extends pulumi.CustomResource {
             resourceInputs["allowedAppsUserApiScopes"] = state?.allowedAppsUserApiScopes;
             resourceInputs["automaticClusterUpdateWorkspace"] = state?.automaticClusterUpdateWorkspace;
             resourceInputs["booleanVal"] = state?.booleanVal;
+            resourceInputs["collaborationPlatformConnectivity"] = state?.collaborationPlatformConnectivity;
             resourceInputs["effectiveAibiDashboardEmbeddingAccessPolicy"] = state?.effectiveAibiDashboardEmbeddingAccessPolicy;
             resourceInputs["effectiveAibiDashboardEmbeddingApprovedDomains"] = state?.effectiveAibiDashboardEmbeddingApprovedDomains;
             resourceInputs["effectiveAllowedAppsUserApiScopes"] = state?.effectiveAllowedAppsUserApiScopes;
             resourceInputs["effectiveAutomaticClusterUpdateWorkspace"] = state?.effectiveAutomaticClusterUpdateWorkspace;
             resourceInputs["effectiveBooleanVal"] = state?.effectiveBooleanVal;
+            resourceInputs["effectiveCollaborationPlatformConnectivity"] = state?.effectiveCollaborationPlatformConnectivity;
             resourceInputs["effectiveIntegerVal"] = state?.effectiveIntegerVal;
             resourceInputs["effectiveOperationalEmailCustomRecipient"] = state?.effectiveOperationalEmailCustomRecipient;
             resourceInputs["effectivePersonalCompute"] = state?.effectivePersonalCompute;
@@ -189,6 +201,7 @@ export class WorkspaceSettingV2 extends pulumi.CustomResource {
             resourceInputs["allowedAppsUserApiScopes"] = args?.allowedAppsUserApiScopes;
             resourceInputs["automaticClusterUpdateWorkspace"] = args?.automaticClusterUpdateWorkspace;
             resourceInputs["booleanVal"] = args?.booleanVal;
+            resourceInputs["collaborationPlatformConnectivity"] = args?.collaborationPlatformConnectivity;
             resourceInputs["effectiveAibiDashboardEmbeddingAccessPolicy"] = args?.effectiveAibiDashboardEmbeddingAccessPolicy;
             resourceInputs["effectiveAibiDashboardEmbeddingApprovedDomains"] = args?.effectiveAibiDashboardEmbeddingApprovedDomains;
             resourceInputs["effectiveAutomaticClusterUpdateWorkspace"] = args?.effectiveAutomaticClusterUpdateWorkspace;
@@ -203,6 +216,7 @@ export class WorkspaceSettingV2 extends pulumi.CustomResource {
             resourceInputs["stringVal"] = args?.stringVal;
             resourceInputs["effectiveAllowedAppsUserApiScopes"] = undefined /*out*/;
             resourceInputs["effectiveBooleanVal"] = undefined /*out*/;
+            resourceInputs["effectiveCollaborationPlatformConnectivity"] = undefined /*out*/;
             resourceInputs["effectiveIntegerVal"] = undefined /*out*/;
             resourceInputs["effectiveOperationalEmailCustomRecipient"] = undefined /*out*/;
             resourceInputs["effectiveStringVal"] = undefined /*out*/;
@@ -237,6 +251,10 @@ export interface WorkspaceSettingV2State {
      */
     booleanVal?: pulumi.Input<inputs.WorkspaceSettingV2BooleanVal | undefined>;
     /**
+     * Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+     */
+    collaborationPlatformConnectivity?: pulumi.Input<inputs.WorkspaceSettingV2CollaborationPlatformConnectivity | undefined>;
+    /**
      * Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
      */
     effectiveAibiDashboardEmbeddingAccessPolicy?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy | undefined>;
@@ -256,6 +274,10 @@ export interface WorkspaceSettingV2State {
      * (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
      */
     effectiveBooleanVal?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveBooleanVal | undefined>;
+    /**
+     * (CollaborationPlatformConnectivityMessage) - Effective setting value for collaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+     */
+    effectiveCollaborationPlatformConnectivity?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveCollaborationPlatformConnectivity | undefined>;
     /**
      * (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
      */
@@ -330,6 +352,10 @@ export interface WorkspaceSettingV2Args {
      * Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
      */
     booleanVal?: pulumi.Input<inputs.WorkspaceSettingV2BooleanVal | undefined>;
+    /**
+     * Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+     */
+    collaborationPlatformConnectivity?: pulumi.Input<inputs.WorkspaceSettingV2CollaborationPlatformConnectivity | undefined>;
     /**
      * Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
      */

@@ -15,6 +15,13 @@ public final class GetJobJobSettingsSettingsDeployment extends com.pulumi.resour
 
     public static final GetJobJobSettingsSettingsDeployment Empty = new GetJobJobSettingsSettingsDeployment();
 
+    @Import(name="deploymentId")
+    private @Nullable String deploymentId;
+
+    public Optional<String> deploymentId() {
+        return Optional.ofNullable(this.deploymentId);
+    }
+
     @Import(name="kind", required=true)
     private String kind;
 
@@ -29,11 +36,20 @@ public final class GetJobJobSettingsSettingsDeployment extends com.pulumi.resour
         return Optional.ofNullable(this.metadataFilePath);
     }
 
+    @Import(name="versionId")
+    private @Nullable String versionId;
+
+    public Optional<String> versionId() {
+        return Optional.ofNullable(this.versionId);
+    }
+
     private GetJobJobSettingsSettingsDeployment() {}
 
     private GetJobJobSettingsSettingsDeployment(GetJobJobSettingsSettingsDeployment $) {
+        this.deploymentId = $.deploymentId;
         this.kind = $.kind;
         this.metadataFilePath = $.metadataFilePath;
+        this.versionId = $.versionId;
     }
 
     public static Builder builder() {
@@ -54,6 +70,11 @@ public final class GetJobJobSettingsSettingsDeployment extends com.pulumi.resour
             $ = new GetJobJobSettingsSettingsDeployment(Objects.requireNonNull(defaults));
         }
 
+        public Builder deploymentId(@Nullable String deploymentId) {
+            $.deploymentId = deploymentId;
+            return this;
+        }
+
         public Builder kind(String kind) {
             $.kind = kind;
             return this;
@@ -61,6 +82,11 @@ public final class GetJobJobSettingsSettingsDeployment extends com.pulumi.resour
 
         public Builder metadataFilePath(@Nullable String metadataFilePath) {
             $.metadataFilePath = metadataFilePath;
+            return this;
+        }
+
+        public Builder versionId(@Nullable String versionId) {
+            $.versionId = versionId;
             return this;
         }
 

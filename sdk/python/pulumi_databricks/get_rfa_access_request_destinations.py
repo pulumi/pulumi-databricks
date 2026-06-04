@@ -142,6 +142,8 @@ def get_rfa_access_request_destinations(full_name: Optional[_builtins.str] = Non
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/rfa)
+
     This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
 
     ## Example Usage
@@ -183,6 +185,8 @@ def get_rfa_access_request_destinations_output(full_name: pulumi.Input[Optional[
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRfaAccessRequestDestinationsResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/rfa)
 
     This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
 

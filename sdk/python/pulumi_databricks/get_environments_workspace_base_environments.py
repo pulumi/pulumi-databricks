@@ -84,6 +84,8 @@ def get_environments_workspace_base_environments(page_size: Optional[_builtins.i
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/environments)
+
     This data source retrieves the list of all Workspace Base Environments in the workspace.
     The list can be accessed via the data object's `workspace_base_environments` field.
 
@@ -118,6 +120,8 @@ def get_environments_workspace_base_environments_output(page_size: pulumi.Input[
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnvironmentsWorkspaceBaseEnvironmentsResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/environments)
 
     This data source retrieves the list of all Workspace Base Environments in the workspace.
     The list can be accessed via the data object's `workspace_base_environments` field.

@@ -14,6 +14,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/environments)
+        /// 
         /// This data source retrieves the current default Workspace Base Environment configuration for the workspace.
         /// 
         /// 
@@ -45,6 +47,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/environments)
+        /// 
         /// This data source retrieves the current default Workspace Base Environment configuration for the workspace.
         /// 
         /// 
@@ -75,6 +79,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/environments)
         /// 
         /// This data source retrieves the current default Workspace Base Environment configuration for the workspace.
         /// 

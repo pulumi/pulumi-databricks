@@ -29,9 +29,19 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinat
         return Optional.ofNullable(this.accountApi);
     }
 
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * 
+     */
     @Import(name="accountDatabricksOne")
     private @Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOneArgs> accountDatabricksOne;
 
+    /**
+     * @return Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * 
+     */
     public Optional<Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOneArgs>> accountDatabricksOne() {
         return Optional.ofNullable(this.accountDatabricksOne);
     }
@@ -118,11 +128,25 @@ public final class AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinat
             return accountApi(Output.of(accountApi));
         }
 
+        /**
+         * @param accountDatabricksOne Account DatabricksOne destination is not supported.
+         * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountDatabricksOne(@Nullable Output<AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOneArgs> accountDatabricksOne) {
             $.accountDatabricksOne = accountDatabricksOne;
             return this;
         }
 
+        /**
+         * @param accountDatabricksOne Account DatabricksOne destination is not supported.
+         * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountDatabricksOne(AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOneArgs accountDatabricksOne) {
             return accountDatabricksOne(Output.of(accountDatabricksOne));
         }

@@ -13,17 +13,25 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobDeployment
     {
+        public readonly string? DeploymentId;
         public readonly string Kind;
         public readonly string? MetadataFilePath;
+        public readonly string? VersionId;
 
         [OutputConstructor]
         private JobDeployment(
+            string? deploymentId,
+
             string kind,
 
-            string? metadataFilePath)
+            string? metadataFilePath,
+
+            string? versionId)
         {
+            DeploymentId = deploymentId;
             Kind = kind;
             MetadataFilePath = metadataFilePath;
+            VersionId = versionId;
         }
     }
 }

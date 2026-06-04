@@ -29,9 +29,19 @@ public final class AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationArg
         return Optional.ofNullable(this.accountApi);
     }
 
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * 
+     */
     @Import(name="accountDatabricksOne")
     private @Nullable Output<AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOneArgs> accountDatabricksOne;
 
+    /**
+     * @return Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * 
+     */
     public Optional<Output<AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOneArgs>> accountDatabricksOne() {
         return Optional.ofNullable(this.accountDatabricksOne);
     }
@@ -118,11 +128,25 @@ public final class AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationArg
             return accountApi(Output.of(accountApi));
         }
 
+        /**
+         * @param accountDatabricksOne Account DatabricksOne destination is not supported.
+         * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountDatabricksOne(@Nullable Output<AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOneArgs> accountDatabricksOne) {
             $.accountDatabricksOne = accountDatabricksOne;
             return this;
         }
 
+        /**
+         * @param accountDatabricksOne Account DatabricksOne destination is not supported.
+         * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountDatabricksOne(AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOneArgs accountDatabricksOne) {
             return accountDatabricksOne(Output.of(accountDatabricksOne));
         }

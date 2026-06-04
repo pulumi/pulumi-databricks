@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
+ *
  * This data source can be used to get a single account setting.
  *
  * ## Example Usage
@@ -62,6 +64,10 @@ export interface GetWorkspaceSettingV2Result {
      */
     readonly booleanVal: outputs.GetWorkspaceSettingV2BooleanVal;
     /**
+     * (CollaborationPlatformConnectivityMessage) - Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+     */
+    readonly collaborationPlatformConnectivity: outputs.GetWorkspaceSettingV2CollaborationPlatformConnectivity;
+    /**
      * (AibiDashboardEmbeddingAccessPolicy) - Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
      */
     readonly effectiveAibiDashboardEmbeddingAccessPolicy: outputs.GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy;
@@ -81,6 +87,10 @@ export interface GetWorkspaceSettingV2Result {
      * (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
      */
     readonly effectiveBooleanVal: outputs.GetWorkspaceSettingV2EffectiveBooleanVal;
+    /**
+     * (CollaborationPlatformConnectivityMessage) - Effective setting value for collaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+     */
+    readonly effectiveCollaborationPlatformConnectivity: outputs.GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivity;
     /**
      * (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
      */
@@ -133,6 +143,8 @@ export interface GetWorkspaceSettingV2Result {
 }
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
  *
  * This data source can be used to get a single account setting.
  *

@@ -13,6 +13,657 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetServingEndpointsEndpointAiGateway struct {
+	FallbackConfigs       []GetServingEndpointsEndpointAiGatewayFallbackConfig       `pulumi:"fallbackConfigs"`
+	Guardrails            []GetServingEndpointsEndpointAiGatewayGuardrail            `pulumi:"guardrails"`
+	InferenceTableConfigs []GetServingEndpointsEndpointAiGatewayInferenceTableConfig `pulumi:"inferenceTableConfigs"`
+	// A list of rate limit blocks to be applied to the serving endpoint.
+	RateLimits           []GetServingEndpointsEndpointAiGatewayRateLimit           `pulumi:"rateLimits"`
+	UsageTrackingConfigs []GetServingEndpointsEndpointAiGatewayUsageTrackingConfig `pulumi:"usageTrackingConfigs"`
+}
+
+// GetServingEndpointsEndpointAiGatewayInput is an input type that accepts GetServingEndpointsEndpointAiGatewayArgs and GetServingEndpointsEndpointAiGatewayOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointAiGatewayInput` via:
+//
+//	GetServingEndpointsEndpointAiGatewayArgs{...}
+type GetServingEndpointsEndpointAiGatewayInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointAiGatewayOutput() GetServingEndpointsEndpointAiGatewayOutput
+	ToGetServingEndpointsEndpointAiGatewayOutputWithContext(context.Context) GetServingEndpointsEndpointAiGatewayOutput
+}
+
+type GetServingEndpointsEndpointAiGatewayArgs struct {
+	FallbackConfigs       GetServingEndpointsEndpointAiGatewayFallbackConfigArrayInput       `pulumi:"fallbackConfigs"`
+	Guardrails            GetServingEndpointsEndpointAiGatewayGuardrailArrayInput            `pulumi:"guardrails"`
+	InferenceTableConfigs GetServingEndpointsEndpointAiGatewayInferenceTableConfigArrayInput `pulumi:"inferenceTableConfigs"`
+	// A list of rate limit blocks to be applied to the serving endpoint.
+	RateLimits           GetServingEndpointsEndpointAiGatewayRateLimitArrayInput           `pulumi:"rateLimits"`
+	UsageTrackingConfigs GetServingEndpointsEndpointAiGatewayUsageTrackingConfigArrayInput `pulumi:"usageTrackingConfigs"`
+}
+
+func (GetServingEndpointsEndpointAiGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointAiGateway)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointAiGatewayArgs) ToGetServingEndpointsEndpointAiGatewayOutput() GetServingEndpointsEndpointAiGatewayOutput {
+	return i.ToGetServingEndpointsEndpointAiGatewayOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointAiGatewayArgs) ToGetServingEndpointsEndpointAiGatewayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointAiGatewayOutput)
+}
+
+// GetServingEndpointsEndpointAiGatewayArrayInput is an input type that accepts GetServingEndpointsEndpointAiGatewayArray and GetServingEndpointsEndpointAiGatewayArrayOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointAiGatewayArrayInput` via:
+//
+//	GetServingEndpointsEndpointAiGatewayArray{ GetServingEndpointsEndpointAiGatewayArgs{...} }
+type GetServingEndpointsEndpointAiGatewayArrayInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointAiGatewayArrayOutput() GetServingEndpointsEndpointAiGatewayArrayOutput
+	ToGetServingEndpointsEndpointAiGatewayArrayOutputWithContext(context.Context) GetServingEndpointsEndpointAiGatewayArrayOutput
+}
+
+type GetServingEndpointsEndpointAiGatewayArray []GetServingEndpointsEndpointAiGatewayInput
+
+func (GetServingEndpointsEndpointAiGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointAiGateway)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointAiGatewayArray) ToGetServingEndpointsEndpointAiGatewayArrayOutput() GetServingEndpointsEndpointAiGatewayArrayOutput {
+	return i.ToGetServingEndpointsEndpointAiGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointAiGatewayArray) ToGetServingEndpointsEndpointAiGatewayArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointAiGatewayArrayOutput)
+}
+
+type GetServingEndpointsEndpointAiGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointAiGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointAiGateway)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointAiGatewayOutput) ToGetServingEndpointsEndpointAiGatewayOutput() GetServingEndpointsEndpointAiGatewayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayOutput) ToGetServingEndpointsEndpointAiGatewayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayOutput) FallbackConfigs() GetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGateway) []GetServingEndpointsEndpointAiGatewayFallbackConfig {
+		return v.FallbackConfigs
+	}).(GetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput)
+}
+
+func (o GetServingEndpointsEndpointAiGatewayOutput) Guardrails() GetServingEndpointsEndpointAiGatewayGuardrailArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGateway) []GetServingEndpointsEndpointAiGatewayGuardrail {
+		return v.Guardrails
+	}).(GetServingEndpointsEndpointAiGatewayGuardrailArrayOutput)
+}
+
+func (o GetServingEndpointsEndpointAiGatewayOutput) InferenceTableConfigs() GetServingEndpointsEndpointAiGatewayInferenceTableConfigArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGateway) []GetServingEndpointsEndpointAiGatewayInferenceTableConfig {
+		return v.InferenceTableConfigs
+	}).(GetServingEndpointsEndpointAiGatewayInferenceTableConfigArrayOutput)
+}
+
+// A list of rate limit blocks to be applied to the serving endpoint.
+func (o GetServingEndpointsEndpointAiGatewayOutput) RateLimits() GetServingEndpointsEndpointAiGatewayRateLimitArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGateway) []GetServingEndpointsEndpointAiGatewayRateLimit {
+		return v.RateLimits
+	}).(GetServingEndpointsEndpointAiGatewayRateLimitArrayOutput)
+}
+
+func (o GetServingEndpointsEndpointAiGatewayOutput) UsageTrackingConfigs() GetServingEndpointsEndpointAiGatewayUsageTrackingConfigArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGateway) []GetServingEndpointsEndpointAiGatewayUsageTrackingConfig {
+		return v.UsageTrackingConfigs
+	}).(GetServingEndpointsEndpointAiGatewayUsageTrackingConfigArrayOutput)
+}
+
+type GetServingEndpointsEndpointAiGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointAiGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointAiGateway)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointAiGatewayArrayOutput) ToGetServingEndpointsEndpointAiGatewayArrayOutput() GetServingEndpointsEndpointAiGatewayArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayArrayOutput) ToGetServingEndpointsEndpointAiGatewayArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayArrayOutput) Index(i pulumi.IntInput) GetServingEndpointsEndpointAiGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServingEndpointsEndpointAiGateway {
+		return vs[0].([]GetServingEndpointsEndpointAiGateway)[vs[1].(int)]
+	}).(GetServingEndpointsEndpointAiGatewayOutput)
+}
+
+type GetServingEndpointsEndpointAiGatewayFallbackConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetServingEndpointsEndpointAiGatewayFallbackConfigInput is an input type that accepts GetServingEndpointsEndpointAiGatewayFallbackConfigArgs and GetServingEndpointsEndpointAiGatewayFallbackConfigOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointAiGatewayFallbackConfigInput` via:
+//
+//	GetServingEndpointsEndpointAiGatewayFallbackConfigArgs{...}
+type GetServingEndpointsEndpointAiGatewayFallbackConfigInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointAiGatewayFallbackConfigOutput() GetServingEndpointsEndpointAiGatewayFallbackConfigOutput
+	ToGetServingEndpointsEndpointAiGatewayFallbackConfigOutputWithContext(context.Context) GetServingEndpointsEndpointAiGatewayFallbackConfigOutput
+}
+
+type GetServingEndpointsEndpointAiGatewayFallbackConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetServingEndpointsEndpointAiGatewayFallbackConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayFallbackConfig)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointAiGatewayFallbackConfigArgs) ToGetServingEndpointsEndpointAiGatewayFallbackConfigOutput() GetServingEndpointsEndpointAiGatewayFallbackConfigOutput {
+	return i.ToGetServingEndpointsEndpointAiGatewayFallbackConfigOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointAiGatewayFallbackConfigArgs) ToGetServingEndpointsEndpointAiGatewayFallbackConfigOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayFallbackConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointAiGatewayFallbackConfigOutput)
+}
+
+// GetServingEndpointsEndpointAiGatewayFallbackConfigArrayInput is an input type that accepts GetServingEndpointsEndpointAiGatewayFallbackConfigArray and GetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointAiGatewayFallbackConfigArrayInput` via:
+//
+//	GetServingEndpointsEndpointAiGatewayFallbackConfigArray{ GetServingEndpointsEndpointAiGatewayFallbackConfigArgs{...} }
+type GetServingEndpointsEndpointAiGatewayFallbackConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput() GetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput
+	ToGetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutputWithContext(context.Context) GetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput
+}
+
+type GetServingEndpointsEndpointAiGatewayFallbackConfigArray []GetServingEndpointsEndpointAiGatewayFallbackConfigInput
+
+func (GetServingEndpointsEndpointAiGatewayFallbackConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointAiGatewayFallbackConfig)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointAiGatewayFallbackConfigArray) ToGetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput() GetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput {
+	return i.ToGetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointAiGatewayFallbackConfigArray) ToGetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput)
+}
+
+type GetServingEndpointsEndpointAiGatewayFallbackConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointAiGatewayFallbackConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayFallbackConfig)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointAiGatewayFallbackConfigOutput) ToGetServingEndpointsEndpointAiGatewayFallbackConfigOutput() GetServingEndpointsEndpointAiGatewayFallbackConfigOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayFallbackConfigOutput) ToGetServingEndpointsEndpointAiGatewayFallbackConfigOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayFallbackConfigOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayFallbackConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGatewayFallbackConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointAiGatewayFallbackConfig)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput) ToGetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput() GetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput) ToGetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput) Index(i pulumi.IntInput) GetServingEndpointsEndpointAiGatewayFallbackConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServingEndpointsEndpointAiGatewayFallbackConfig {
+		return vs[0].([]GetServingEndpointsEndpointAiGatewayFallbackConfig)[vs[1].(int)]
+	}).(GetServingEndpointsEndpointAiGatewayFallbackConfigOutput)
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrail struct {
+	InputProperties []GetServingEndpointsEndpointAiGatewayGuardrailInputProperty `pulumi:"inputProperties"`
+	Outputs         []GetServingEndpointsEndpointAiGatewayGuardrailOutputType    `pulumi:"outputs"`
+}
+
+// GetServingEndpointsEndpointAiGatewayGuardrailInput is an input type that accepts GetServingEndpointsEndpointAiGatewayGuardrailArgs and GetServingEndpointsEndpointAiGatewayGuardrailOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointAiGatewayGuardrailInput` via:
+//
+//	GetServingEndpointsEndpointAiGatewayGuardrailArgs{...}
+type GetServingEndpointsEndpointAiGatewayGuardrailInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointAiGatewayGuardrailOutput() GetServingEndpointsEndpointAiGatewayGuardrailOutput
+	ToGetServingEndpointsEndpointAiGatewayGuardrailOutputWithContext(context.Context) GetServingEndpointsEndpointAiGatewayGuardrailOutput
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailArgs struct {
+	InputProperties GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayInput `pulumi:"inputProperties"`
+	Outputs         GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayInput    `pulumi:"outputs"`
+}
+
+func (GetServingEndpointsEndpointAiGatewayGuardrailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrail)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointAiGatewayGuardrailArgs) ToGetServingEndpointsEndpointAiGatewayGuardrailOutput() GetServingEndpointsEndpointAiGatewayGuardrailOutput {
+	return i.ToGetServingEndpointsEndpointAiGatewayGuardrailOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointAiGatewayGuardrailArgs) ToGetServingEndpointsEndpointAiGatewayGuardrailOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayGuardrailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointAiGatewayGuardrailOutput)
+}
+
+// GetServingEndpointsEndpointAiGatewayGuardrailArrayInput is an input type that accepts GetServingEndpointsEndpointAiGatewayGuardrailArray and GetServingEndpointsEndpointAiGatewayGuardrailArrayOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointAiGatewayGuardrailArrayInput` via:
+//
+//	GetServingEndpointsEndpointAiGatewayGuardrailArray{ GetServingEndpointsEndpointAiGatewayGuardrailArgs{...} }
+type GetServingEndpointsEndpointAiGatewayGuardrailArrayInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointAiGatewayGuardrailArrayOutput() GetServingEndpointsEndpointAiGatewayGuardrailArrayOutput
+	ToGetServingEndpointsEndpointAiGatewayGuardrailArrayOutputWithContext(context.Context) GetServingEndpointsEndpointAiGatewayGuardrailArrayOutput
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailArray []GetServingEndpointsEndpointAiGatewayGuardrailInput
+
+func (GetServingEndpointsEndpointAiGatewayGuardrailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointAiGatewayGuardrail)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointAiGatewayGuardrailArray) ToGetServingEndpointsEndpointAiGatewayGuardrailArrayOutput() GetServingEndpointsEndpointAiGatewayGuardrailArrayOutput {
+	return i.ToGetServingEndpointsEndpointAiGatewayGuardrailArrayOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointAiGatewayGuardrailArray) ToGetServingEndpointsEndpointAiGatewayGuardrailArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayGuardrailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointAiGatewayGuardrailArrayOutput)
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointAiGatewayGuardrailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrail)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailOutput) ToGetServingEndpointsEndpointAiGatewayGuardrailOutput() GetServingEndpointsEndpointAiGatewayGuardrailOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailOutput) ToGetServingEndpointsEndpointAiGatewayGuardrailOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayGuardrailOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailOutput) InputProperties() GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGatewayGuardrail) []GetServingEndpointsEndpointAiGatewayGuardrailInputProperty {
+		return v.InputProperties
+	}).(GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput)
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailOutput) Outputs() GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGatewayGuardrail) []GetServingEndpointsEndpointAiGatewayGuardrailOutputType {
+		return v.Outputs
+	}).(GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput)
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointAiGatewayGuardrailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointAiGatewayGuardrail)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailArrayOutput) ToGetServingEndpointsEndpointAiGatewayGuardrailArrayOutput() GetServingEndpointsEndpointAiGatewayGuardrailArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailArrayOutput) ToGetServingEndpointsEndpointAiGatewayGuardrailArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayGuardrailArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailArrayOutput) Index(i pulumi.IntInput) GetServingEndpointsEndpointAiGatewayGuardrailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServingEndpointsEndpointAiGatewayGuardrail {
+		return vs[0].([]GetServingEndpointsEndpointAiGatewayGuardrail)[vs[1].(int)]
+	}).(GetServingEndpointsEndpointAiGatewayGuardrailOutput)
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailInputProperty struct {
+	InvalidKeywords []string                                                        `pulumi:"invalidKeywords"`
+	Piis            []GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii `pulumi:"piis"`
+	Safety          *bool                                                           `pulumi:"safety"`
+	ValidTopics     []string                                                        `pulumi:"validTopics"`
+}
+
+// GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyInput is an input type that accepts GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs and GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyInput` via:
+//
+//	GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs{...}
+type GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput() GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput
+	ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutputWithContext(context.Context) GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs struct {
+	InvalidKeywords pulumi.StringArrayInput                                                 `pulumi:"invalidKeywords"`
+	Piis            GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayInput `pulumi:"piis"`
+	Safety          pulumi.BoolPtrInput                                                     `pulumi:"safety"`
+	ValidTopics     pulumi.StringArrayInput                                                 `pulumi:"validTopics"`
+}
+
+func (GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrailInputProperty)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs) ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput() GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput {
+	return i.ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs) ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput)
+}
+
+// GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayInput is an input type that accepts GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArray and GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayInput` via:
+//
+//	GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArray{ GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs{...} }
+type GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput() GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput
+	ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutputWithContext(context.Context) GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArray []GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyInput
+
+func (GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointAiGatewayGuardrailInputProperty)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArray) ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput() GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput {
+	return i.ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArray) ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput)
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrailInputProperty)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput) ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput() GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput) ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput) InvalidKeywords() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGatewayGuardrailInputProperty) []string { return v.InvalidKeywords }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput) Piis() GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGatewayGuardrailInputProperty) []GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii {
+		return v.Piis
+	}).(GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput)
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput) Safety() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGatewayGuardrailInputProperty) *bool { return v.Safety }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput) ValidTopics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGatewayGuardrailInputProperty) []string { return v.ValidTopics }).(pulumi.StringArrayOutput)
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointAiGatewayGuardrailInputProperty)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput) ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput() GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput) ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput) Index(i pulumi.IntInput) GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServingEndpointsEndpointAiGatewayGuardrailInputProperty {
+		return vs[0].([]GetServingEndpointsEndpointAiGatewayGuardrailInputProperty)[vs[1].(int)]
+	}).(GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput)
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii struct {
+	Behavior *string `pulumi:"behavior"`
+}
+
+// GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiInput is an input type that accepts GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs and GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiInput` via:
+//
+//	GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs{...}
+type GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput() GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput
+	ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutputWithContext(context.Context) GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs struct {
+	Behavior pulumi.StringPtrInput `pulumi:"behavior"`
+}
+
+func (GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs) ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput() GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput {
+	return i.ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs) ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput)
+}
+
+// GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayInput is an input type that accepts GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArray and GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayInput` via:
+//
+//	GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArray{ GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs{...} }
+type GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput() GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput
+	ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutputWithContext(context.Context) GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArray []GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiInput
+
+func (GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArray) ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput() GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput {
+	return i.ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArray) ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput)
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput) ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput() GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput) ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput) Behavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii) *string { return v.Behavior }).(pulumi.StringPtrOutput)
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput) ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput() GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput) ToGetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput) Index(i pulumi.IntInput) GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii {
+		return vs[0].([]GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPii)[vs[1].(int)]
+	}).(GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput)
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailOutputType struct {
+	InvalidKeywords []string                                                 `pulumi:"invalidKeywords"`
+	Piis            []GetServingEndpointsEndpointAiGatewayGuardrailOutputPii `pulumi:"piis"`
+	Safety          *bool                                                    `pulumi:"safety"`
+	ValidTopics     []string                                                 `pulumi:"validTopics"`
+}
+
+// GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeInput is an input type that accepts GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArgs and GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeInput` via:
+//
+//	GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArgs{...}
+type GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput() GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput
+	ToGetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutputWithContext(context.Context) GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArgs struct {
+	InvalidKeywords pulumi.StringArrayInput                                          `pulumi:"invalidKeywords"`
+	Piis            GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArrayInput `pulumi:"piis"`
+	Safety          pulumi.BoolPtrInput                                              `pulumi:"safety"`
+	ValidTopics     pulumi.StringArrayInput                                          `pulumi:"validTopics"`
+}
+
+func (GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrailOutputType)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArgs) ToGetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput() GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput {
+	return i.ToGetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArgs) ToGetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput)
+}
+
+// GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayInput is an input type that accepts GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArray and GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayInput` via:
+//
+//	GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArray{ GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArgs{...} }
+type GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput() GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput
+	ToGetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutputWithContext(context.Context) GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArray []GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeInput
+
+func (GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointAiGatewayGuardrailOutputType)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArray) ToGetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput() GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput {
+	return i.ToGetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArray) ToGetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput)
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrailOutputType)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput) ToGetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput() GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput) ToGetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput) InvalidKeywords() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGatewayGuardrailOutputType) []string { return v.InvalidKeywords }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput) Piis() GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGatewayGuardrailOutputType) []GetServingEndpointsEndpointAiGatewayGuardrailOutputPii {
+		return v.Piis
+	}).(GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArrayOutput)
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput) Safety() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGatewayGuardrailOutputType) *bool { return v.Safety }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput) ValidTopics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointAiGatewayGuardrailOutputType) []string { return v.ValidTopics }).(pulumi.StringArrayOutput)
+}
+
+type GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointAiGatewayGuardrailOutputType)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput) ToGetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput() GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput) ToGetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput) Index(i pulumi.IntInput) GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServingEndpointsEndpointAiGatewayGuardrailOutputType {
+		return vs[0].([]GetServingEndpointsEndpointAiGatewayGuardrailOutputType)[vs[1].(int)]
+	}).(GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput)
+}
+
 type GetServingEndpointsEndpointAiGatewayGuardrailOutputPii struct {
 	Behavior *string `pulumi:"behavior"`
 }
@@ -17190,6 +17841,58 @@ func (o GetWorkspaceSettingV2BooleanValOutput) Value() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetWorkspaceSettingV2BooleanVal) *bool { return v.Value }).(pulumi.BoolPtrOutput)
 }
 
+type GetWorkspaceSettingV2CollaborationPlatformConnectivity struct {
+	// (string) - Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+	Connectivity string `pulumi:"connectivity"`
+}
+
+// GetWorkspaceSettingV2CollaborationPlatformConnectivityInput is an input type that accepts GetWorkspaceSettingV2CollaborationPlatformConnectivityArgs and GetWorkspaceSettingV2CollaborationPlatformConnectivityOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2CollaborationPlatformConnectivityInput` via:
+//
+//	GetWorkspaceSettingV2CollaborationPlatformConnectivityArgs{...}
+type GetWorkspaceSettingV2CollaborationPlatformConnectivityInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2CollaborationPlatformConnectivityOutput() GetWorkspaceSettingV2CollaborationPlatformConnectivityOutput
+	ToGetWorkspaceSettingV2CollaborationPlatformConnectivityOutputWithContext(context.Context) GetWorkspaceSettingV2CollaborationPlatformConnectivityOutput
+}
+
+type GetWorkspaceSettingV2CollaborationPlatformConnectivityArgs struct {
+	// (string) - Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+	Connectivity pulumi.StringInput `pulumi:"connectivity"`
+}
+
+func (GetWorkspaceSettingV2CollaborationPlatformConnectivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2CollaborationPlatformConnectivity)(nil)).Elem()
+}
+
+func (i GetWorkspaceSettingV2CollaborationPlatformConnectivityArgs) ToGetWorkspaceSettingV2CollaborationPlatformConnectivityOutput() GetWorkspaceSettingV2CollaborationPlatformConnectivityOutput {
+	return i.ToGetWorkspaceSettingV2CollaborationPlatformConnectivityOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2CollaborationPlatformConnectivityArgs) ToGetWorkspaceSettingV2CollaborationPlatformConnectivityOutputWithContext(ctx context.Context) GetWorkspaceSettingV2CollaborationPlatformConnectivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2CollaborationPlatformConnectivityOutput)
+}
+
+type GetWorkspaceSettingV2CollaborationPlatformConnectivityOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2CollaborationPlatformConnectivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2CollaborationPlatformConnectivity)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2CollaborationPlatformConnectivityOutput) ToGetWorkspaceSettingV2CollaborationPlatformConnectivityOutput() GetWorkspaceSettingV2CollaborationPlatformConnectivityOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2CollaborationPlatformConnectivityOutput) ToGetWorkspaceSettingV2CollaborationPlatformConnectivityOutputWithContext(ctx context.Context) GetWorkspaceSettingV2CollaborationPlatformConnectivityOutput {
+	return o
+}
+
+// (string) - Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+func (o GetWorkspaceSettingV2CollaborationPlatformConnectivityOutput) Connectivity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2CollaborationPlatformConnectivity) string { return v.Connectivity }).(pulumi.StringOutput)
+}
+
 type GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy struct {
 	// (string) - Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
 	AccessPolicyType string `pulumi:"accessPolicyType"`
@@ -18157,6 +18860,58 @@ func (o GetWorkspaceSettingV2EffectiveBooleanValOutput) Value() pulumi.BoolPtrOu
 	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveBooleanVal) *bool { return v.Value }).(pulumi.BoolPtrOutput)
 }
 
+type GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivity struct {
+	// (string) - Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+	Connectivity string `pulumi:"connectivity"`
+}
+
+// GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityInput is an input type that accepts GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityArgs and GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput values.
+// You can construct a concrete instance of `GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityInput` via:
+//
+//	GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityArgs{...}
+type GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityInput interface {
+	pulumi.Input
+
+	ToGetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput() GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput
+	ToGetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutputWithContext(context.Context) GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput
+}
+
+type GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityArgs struct {
+	// (string) - Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+	Connectivity pulumi.StringInput `pulumi:"connectivity"`
+}
+
+func (GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivity)(nil)).Elem()
+}
+
+func (i GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityArgs) ToGetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput() GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput {
+	return i.ToGetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutputWithContext(context.Background())
+}
+
+func (i GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityArgs) ToGetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput)
+}
+
+type GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput struct{ *pulumi.OutputState }
+
+func (GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivity)(nil)).Elem()
+}
+
+func (o GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput) ToGetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput() GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput {
+	return o
+}
+
+func (o GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput) ToGetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutputWithContext(ctx context.Context) GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput {
+	return o
+}
+
+// (string) - Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+func (o GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput) Connectivity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivity) string { return v.Connectivity }).(pulumi.StringOutput)
+}
+
 type GetWorkspaceSettingV2EffectiveIntegerVal struct {
 	// (string) - Represents a generic string value
 	Value *int `pulumi:"value"`
@@ -18976,6 +19731,18 @@ func (o GetZonesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayArrayInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayFallbackConfigInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayFallbackConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayFallbackConfigArrayInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayFallbackConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrailInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayGuardrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrailArrayInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayGuardrailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArrayInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayInferenceTableConfigInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayInferenceTableConfigArgs{})
@@ -19211,6 +19978,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeInput)(nil)).Elem(), GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrInput)(nil)).Elem(), GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2BooleanValInput)(nil)).Elem(), GetWorkspaceSettingV2BooleanValArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2CollaborationPlatformConnectivityInput)(nil)).Elem(), GetWorkspaceSettingV2CollaborationPlatformConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAllowedAppsUserApiScopesInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveAllowedAppsUserApiScopesArgs{})
@@ -19224,6 +19992,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveBooleanValInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveBooleanValArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveIntegerValInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveIntegerValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectiveOperationalEmailCustomRecipientInput)(nil)).Elem(), GetWorkspaceSettingV2EffectiveOperationalEmailCustomRecipientArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2EffectivePersonalComputeInput)(nil)).Elem(), GetWorkspaceSettingV2EffectivePersonalComputeArgs{})
@@ -19238,6 +20007,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2StringValInput)(nil)).Elem(), GetWorkspaceSettingV2StringValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigPtrInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayArrayOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayFallbackConfigOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayFallbackConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayGuardrailOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayGuardrailArrayOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyArrayOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayGuardrailInputPropertyPiiArrayOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayGuardrailOutputTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiOutput{})
 	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayGuardrailOutputPiiArrayOutput{})
 	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayInferenceTableConfigOutput{})
@@ -19473,6 +20254,7 @@ func init() {
 	pulumi.RegisterOutputType(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceSettingV2BooleanValOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2CollaborationPlatformConnectivityOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveAllowedAppsUserApiScopesOutput{})
@@ -19486,6 +20268,7 @@ func init() {
 	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimePtrOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveBooleanValOutput{})
+	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveIntegerValOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectiveOperationalEmailCustomRecipientOutput{})
 	pulumi.RegisterOutputType(GetWorkspaceSettingV2EffectivePersonalComputeOutput{})

@@ -166,6 +166,8 @@ def get_endpoint(name: Optional[_builtins.str] = None,
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/account/endpoints)
+
     Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
 
     > **Note** This resource can only be used with an account-level provider!
@@ -198,6 +200,8 @@ def get_endpoint_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEndpointResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/account/endpoints)
 
     Endpoint datasource retrieves information about a single network connectivity endpoint for private access to Databricks workspaces.
 

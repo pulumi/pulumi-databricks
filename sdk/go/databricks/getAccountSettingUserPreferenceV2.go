@@ -13,6 +13,8 @@ import (
 
 // [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
+// [API Documentation](https://docs.databricks.com/api/account/settingsv2)
+//
 // This data source can be used to get a single account user preference setting.
 func LookupAccountSettingUserPreferenceV2(ctx *pulumi.Context, args *LookupAccountSettingUserPreferenceV2Args, opts ...pulumi.InvokeOption) (*LookupAccountSettingUserPreferenceV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
