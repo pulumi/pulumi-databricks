@@ -84,6 +84,8 @@ def get_database_instances(page_size: Optional[_builtins.int] = None,
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/database)
+
     This data source can be used to fetch the list of Database Instances within the workspace.
     The list can then be accessed via the data object's `database_instances` field.
 
@@ -119,6 +121,8 @@ def get_database_instances_output(page_size: pulumi.Input[Optional[Optional[_bui
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstancesResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/database)
 
     This data source can be used to fetch the list of Database Instances within the workspace.
     The list can then be accessed via the data object's `database_instances` field.

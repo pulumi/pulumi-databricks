@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+ *
  * ## Example Usage
  *
  * ### Role Backed by a Databricks User Identity

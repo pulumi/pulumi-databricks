@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
+ * [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
+ * 
  * This resource allows you to refresh the data quality monitoring checks on Unity Catalog tables.
  * 
  * You must either:

@@ -126,6 +126,8 @@ def get_database_database_catalog(name: Optional[_builtins.str] = None,
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/database)
+
     This data source can be used to get a single Database Catalog.
 
     ## Example Usage
@@ -162,6 +164,8 @@ def get_database_database_catalog_output(name: pulumi.Input[Optional[_builtins.s
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseDatabaseCatalogResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/database)
 
     This data source can be used to get a single Database Catalog.
 

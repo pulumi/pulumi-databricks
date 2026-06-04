@@ -11,6 +11,8 @@ namespace Pulumi.Databricks
 {
     /// <summary>
     /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
+    /// [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
     /// </summary>
     [DatabricksResourceType("databricks:index/supervisorAgent:SupervisorAgent")]
     public partial class SupervisorAgent : global::Pulumi.CustomResource

@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
 
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
  */
 export function getKnowledgeAssistants(args?: GetKnowledgeAssistantsArgs, opts?: pulumi.InvokeOptions): Promise<GetKnowledgeAssistantsResult> {
     args = args || {};
@@ -48,6 +50,8 @@ export interface GetKnowledgeAssistantsResult {
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
  */
 export function getKnowledgeAssistantsOutput(args?: GetKnowledgeAssistantsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKnowledgeAssistantsResult> {
     args = args || {};

@@ -187,6 +187,8 @@ def get_supervisor_agent_tool(name: Optional[_builtins.str] = None,
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
+
 
     :param _builtins.str name: Full resource name:
            supervisor-agents/{supervisor_agent_id}/tools/{tool_id}
@@ -216,6 +218,8 @@ def get_supervisor_agent_tool_output(name: pulumi.Input[Optional[_builtins.str]]
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSupervisorAgentToolResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
 
 
     :param _builtins.str name: Full resource name:

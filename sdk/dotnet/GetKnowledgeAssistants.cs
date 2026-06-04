@@ -13,18 +13,24 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
         /// </summary>
         public static Task<GetKnowledgeAssistantsResult> InvokeAsync(GetKnowledgeAssistantsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKnowledgeAssistantsResult>("databricks:index/getKnowledgeAssistants:getKnowledgeAssistants", args ?? new GetKnowledgeAssistantsArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
         /// </summary>
         public static Output<GetKnowledgeAssistantsResult> Invoke(GetKnowledgeAssistantsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKnowledgeAssistantsResult>("databricks:index/getKnowledgeAssistants:getKnowledgeAssistants", args ?? new GetKnowledgeAssistantsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
         /// </summary>
         public static Output<GetKnowledgeAssistantsResult> Invoke(GetKnowledgeAssistantsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetKnowledgeAssistantsResult>("databricks:index/getKnowledgeAssistants:getKnowledgeAssistants", args ?? new GetKnowledgeAssistantsInvokeArgs(), options.WithDefaults());

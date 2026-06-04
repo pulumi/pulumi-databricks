@@ -13,6 +13,8 @@ import (
 
 // [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
+// [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
+//
 // > **Deprecated** This data source is deprecated. Please use `getDataQualityMonitors` instead.
 //
 // This data source can be used to fetch the list of quality monitors v2.

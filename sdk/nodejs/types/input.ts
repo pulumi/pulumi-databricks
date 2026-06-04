@@ -207,6 +207,10 @@ export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleAuthent
 
 export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestination {
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi | undefined>;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne | undefined>;
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
@@ -289,6 +293,10 @@ export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleAuthenti
 
 export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestination {
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi | undefined>;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne | undefined>;
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
@@ -391,6 +399,10 @@ export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleA
 
 export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestination {
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountApi | undefined>;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne | undefined>;
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
@@ -473,6 +485,10 @@ export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleAu
 
 export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestination {
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountApi | undefined>;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne | undefined>;
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
@@ -561,6 +577,10 @@ export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleAuthenti
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestination {
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountApi | undefined>;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountDatabricksOne | undefined>;
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
@@ -639,6 +659,10 @@ export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleAuthentic
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestination {
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountApi | undefined>;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountDatabricksOne | undefined>;
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
@@ -723,6 +747,10 @@ export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthentic
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination {
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountApi | undefined>;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOne | undefined>;
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
@@ -819,6 +847,10 @@ export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthentica
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination {
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountApi | undefined>;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOne | undefined>;
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
@@ -921,6 +953,10 @@ export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleAuthentication
 
 export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestination {
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountApi | undefined>;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountDatabricksOne | undefined>;
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
@@ -999,6 +1035,10 @@ export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleAuthenticationI
 
 export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestination {
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountApi | undefined>;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountDatabricksOne | undefined>;
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
@@ -1083,6 +1123,10 @@ export interface AccountNetworkPolicyIngressPublicAccessAllowRuleAuthenticationI
 
 export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestination {
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountApi | undefined>;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountDatabricksOne | undefined>;
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
@@ -1179,6 +1223,10 @@ export interface AccountNetworkPolicyIngressPublicAccessDenyRuleAuthenticationId
 
 export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestination {
     accountApi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountApi | undefined>;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOne | undefined>;
     accountUi?: pulumi.Input<inputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountUi | undefined>;
     allDestinations?: pulumi.Input<boolean | undefined>;
@@ -1326,6 +1374,13 @@ export interface AccountSettingV2BooleanVal {
     value?: pulumi.Input<boolean | undefined>;
 }
 
+export interface AccountSettingV2CollaborationPlatformConnectivity {
+    /**
+     * Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+     */
+    connectivity: pulumi.Input<string>;
+}
+
 export interface AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
      * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
@@ -1387,6 +1442,13 @@ export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMainten
 
 export interface AccountSettingV2EffectiveBooleanVal {
     value?: pulumi.Input<boolean | undefined>;
+}
+
+export interface AccountSettingV2EffectiveCollaborationPlatformConnectivity {
+    /**
+     * Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+     */
+    connectivity: pulumi.Input<string>;
 }
 
 export interface AccountSettingV2EffectiveIntegerVal {
@@ -8132,13 +8194,17 @@ export interface GetJobJobSettingsSettingsDbtTaskArgs {
 }
 
 export interface GetJobJobSettingsSettingsDeployment {
+    deploymentId?: string;
     kind: string;
     metadataFilePath?: string;
+    versionId?: string;
 }
 
 export interface GetJobJobSettingsSettingsDeploymentArgs {
+    deploymentId?: pulumi.Input<string | undefined>;
     kind: pulumi.Input<string>;
     metadataFilePath?: pulumi.Input<string | undefined>;
+    versionId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetJobJobSettingsSettingsEmailNotifications {
@@ -15030,8 +15096,10 @@ export interface JobDbtTask {
 }
 
 export interface JobDeployment {
+    deploymentId?: pulumi.Input<string | undefined>;
     kind: pulumi.Input<string>;
     metadataFilePath?: pulumi.Input<string | undefined>;
+    versionId?: pulumi.Input<string | undefined>;
 }
 
 export interface JobEmailNotifications {
@@ -19483,11 +19551,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.116.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.116.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string | undefined>;
     /**
@@ -19554,11 +19622,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.116.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.116.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string | undefined>;
     subnetCidr: pulumi.Input<string>;
@@ -19990,6 +20058,7 @@ export interface PipelineClusterInitScriptWorkspace {
 }
 
 export interface PipelineDeployment {
+    deploymentId?: pulumi.Input<string | undefined>;
     /**
      * The deployment method that manages the pipeline.
      */
@@ -19998,6 +20067,7 @@ export interface PipelineDeployment {
      * The path to the file containing metadata about the deployment.
      */
     metadataFilePath?: pulumi.Input<string | undefined>;
+    versionId?: pulumi.Input<string | undefined>;
 }
 
 export interface PipelineEnvironment {
@@ -23058,6 +23128,13 @@ export interface WorkspaceSettingV2BooleanVal {
     value?: pulumi.Input<boolean | undefined>;
 }
 
+export interface WorkspaceSettingV2CollaborationPlatformConnectivity {
+    /**
+     * Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+     */
+    connectivity: pulumi.Input<string>;
+}
+
 export interface WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
      * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
@@ -23119,6 +23196,13 @@ export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaint
 
 export interface WorkspaceSettingV2EffectiveBooleanVal {
     value?: pulumi.Input<boolean | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveCollaborationPlatformConnectivity {
+    /**
+     * Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+     */
+    connectivity: pulumi.Input<string>;
 }
 
 export interface WorkspaceSettingV2EffectiveIntegerVal {

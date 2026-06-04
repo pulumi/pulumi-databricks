@@ -18,7 +18,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleDestinationAccountApiResult? AccountApi;
         /// <summary>
-        /// (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+        /// (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+        /// DO NOT change the stage of this destination past PRIVATE_PREVIEW
         /// </summary>
         public readonly Outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOneResult? AccountDatabricksOne;
         /// <summary>

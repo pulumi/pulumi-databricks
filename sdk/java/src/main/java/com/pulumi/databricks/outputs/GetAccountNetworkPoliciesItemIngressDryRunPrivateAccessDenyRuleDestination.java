@@ -24,7 +24,8 @@ public final class GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRu
      */
     private @Nullable GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestinationAccountApi accountApi;
     /**
-     * @return (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * @return (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      * 
      */
     private @Nullable GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestinationAccountDatabricksOne accountDatabricksOne;
@@ -68,7 +69,8 @@ public final class GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRu
         return Optional.ofNullable(this.accountApi);
     }
     /**
-     * @return (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * @return (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      * 
      */
     public Optional<GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestinationAccountDatabricksOne> accountDatabricksOne() {

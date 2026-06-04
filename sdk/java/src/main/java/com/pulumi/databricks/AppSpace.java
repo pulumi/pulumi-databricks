@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
+ * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+ * 
  */
 @ResourceType(type="databricks:index/appSpace:AppSpace")
 public class AppSpace extends com.pulumi.resources.CustomResource {

@@ -84,6 +84,8 @@ def get_supervisor_agents(page_size: Optional[_builtins.int] = None,
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
+
 
     :param _builtins.int page_size: The maximum number of supervisor agents to return.
            If unspecified, at most 100 supervisor agents will be returned.
@@ -106,6 +108,8 @@ def get_supervisor_agents_output(page_size: pulumi.Input[Optional[Optional[_buil
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSupervisorAgentsResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
 
 
     :param _builtins.int page_size: The maximum number of supervisor agents to return.

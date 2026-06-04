@@ -15,11 +15,13 @@ import com.pulumi.databricks.outputs.WorkspaceSettingV2AibiDashboardEmbeddingApp
 import com.pulumi.databricks.outputs.WorkspaceSettingV2AllowedAppsUserApiScopes;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspace;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2BooleanVal;
+import com.pulumi.databricks.outputs.WorkspaceSettingV2CollaborationPlatformConnectivity;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveAllowedAppsUserApiScopes;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveBooleanVal;
+import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveCollaborationPlatformConnectivity;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveIntegerVal;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectiveOperationalEmailCustomRecipient;
 import com.pulumi.databricks.outputs.WorkspaceSettingV2EffectivePersonalCompute;
@@ -37,6 +39,8 @@ import javax.annotation.Nullable;
 
 /**
  * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
+ * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
  * 
  * Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
  * 
@@ -156,6 +160,20 @@ public class WorkspaceSettingV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.booleanVal);
     }
     /**
+     * Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+     * 
+     */
+    @Export(name="collaborationPlatformConnectivity", refs={WorkspaceSettingV2CollaborationPlatformConnectivity.class}, tree="[0]")
+    private Output</* @Nullable */ WorkspaceSettingV2CollaborationPlatformConnectivity> collaborationPlatformConnectivity;
+
+    /**
+     * @return Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+     * 
+     */
+    public Output<Optional<WorkspaceSettingV2CollaborationPlatformConnectivity>> collaborationPlatformConnectivity() {
+        return Codegen.optional(this.collaborationPlatformConnectivity);
+    }
+    /**
      * Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
      * 
      */
@@ -224,6 +242,20 @@ public class WorkspaceSettingV2 extends com.pulumi.resources.CustomResource {
      */
     public Output<WorkspaceSettingV2EffectiveBooleanVal> effectiveBooleanVal() {
         return this.effectiveBooleanVal;
+    }
+    /**
+     * (CollaborationPlatformConnectivityMessage) - Effective setting value for collaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+     * 
+     */
+    @Export(name="effectiveCollaborationPlatformConnectivity", refs={WorkspaceSettingV2EffectiveCollaborationPlatformConnectivity.class}, tree="[0]")
+    private Output<WorkspaceSettingV2EffectiveCollaborationPlatformConnectivity> effectiveCollaborationPlatformConnectivity;
+
+    /**
+     * @return (CollaborationPlatformConnectivityMessage) - Effective setting value for collaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+     * 
+     */
+    public Output<WorkspaceSettingV2EffectiveCollaborationPlatformConnectivity> effectiveCollaborationPlatformConnectivity() {
+        return this.effectiveCollaborationPlatformConnectivity;
     }
     /**
      * (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val

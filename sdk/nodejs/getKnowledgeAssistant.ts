@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
 
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
  */
 export function getKnowledgeAssistant(args: GetKnowledgeAssistantArgs, opts?: pulumi.InvokeOptions): Promise<GetKnowledgeAssistantResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -94,6 +96,8 @@ export interface GetKnowledgeAssistantResult {
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
  */
 export function getKnowledgeAssistantOutput(args: GetKnowledgeAssistantOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKnowledgeAssistantResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

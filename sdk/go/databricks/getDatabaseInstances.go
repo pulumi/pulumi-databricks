@@ -13,6 +13,8 @@ import (
 
 // [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
+// [API Documentation](https://docs.databricks.com/api/workspace/database)
+//
 // This data source can be used to fetch the list of Database Instances within the workspace.
 // The list can then be accessed via the data object's `databaseInstances` field.
 //

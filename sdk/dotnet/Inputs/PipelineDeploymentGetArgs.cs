@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PipelineDeploymentGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("deploymentId")]
+        public Input<string>? DeploymentId { get; set; }
+
         /// <summary>
         /// The deployment method that manages the pipeline.
         /// </summary>
@@ -23,6 +26,9 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("metadataFilePath")]
         public Input<string>? MetadataFilePath { get; set; }
+
+        [Input("versionId")]
+        public Input<string>? VersionId { get; set; }
 
         public PipelineDeploymentGetArgs()
         {

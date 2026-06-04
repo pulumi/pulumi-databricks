@@ -107,6 +107,8 @@ def get_budget_policy(policy_id: Optional[_builtins.str] = None,
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
+
     This data source can be used to get a single budget policy.
 
     > **Note** This data source can only be used with an account-level provider!
@@ -140,6 +142,8 @@ def get_budget_policy_output(policy_id: pulumi.Input[Optional[_builtins.str]] = 
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBudgetPolicyResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/account/budgetpolicy)
 
     This data source can be used to get a single budget policy.
 

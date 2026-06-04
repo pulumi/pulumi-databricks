@@ -12,6 +12,8 @@ import (
 )
 
 // [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// [API Documentation](https://docs.databricks.com/api/workspace/database)
 func GetDatabaseDatabaseCatalogs(ctx *pulumi.Context, args *GetDatabaseDatabaseCatalogsArgs, opts ...pulumi.InvokeOption) (*GetDatabaseDatabaseCatalogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseDatabaseCatalogsResult

@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
 /**
  * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
+ * [API Documentation](https://docs.databricks.com/api/workspace/entitytagassignments)
+ * 
  * This resource allows you to create, update, list, and delete tag assignments on Unity Catalog entities.
  * 
  * ## Example Usage

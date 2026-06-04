@@ -13,18 +13,24 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
         /// </summary>
         public static Task<GetKnowledgeAssistantResult> InvokeAsync(GetKnowledgeAssistantArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKnowledgeAssistantResult>("databricks:index/getKnowledgeAssistant:getKnowledgeAssistant", args ?? new GetKnowledgeAssistantArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
         /// </summary>
         public static Output<GetKnowledgeAssistantResult> Invoke(GetKnowledgeAssistantInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKnowledgeAssistantResult>("databricks:index/getKnowledgeAssistant:getKnowledgeAssistant", args ?? new GetKnowledgeAssistantInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
         /// </summary>
         public static Output<GetKnowledgeAssistantResult> Invoke(GetKnowledgeAssistantInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetKnowledgeAssistantResult>("databricks:index/getKnowledgeAssistant:getKnowledgeAssistant", args ?? new GetKnowledgeAssistantInvokeArgs(), options.WithDefaults());

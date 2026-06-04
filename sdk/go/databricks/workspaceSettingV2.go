@@ -13,6 +13,8 @@ import (
 
 // [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
+// [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
+//
 // Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
 //
 // [//]: # (todo: add public link to metadata api after production doc link available)
@@ -61,6 +63,8 @@ type WorkspaceSettingV2 struct {
 	AutomaticClusterUpdateWorkspace WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrOutput `pulumi:"automaticClusterUpdateWorkspace"`
 	// Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
 	BooleanVal WorkspaceSettingV2BooleanValPtrOutput `pulumi:"booleanVal"`
+	// Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+	CollaborationPlatformConnectivity WorkspaceSettingV2CollaborationPlatformConnectivityPtrOutput `pulumi:"collaborationPlatformConnectivity"`
 	// Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
 	EffectiveAibiDashboardEmbeddingAccessPolicy WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrOutput `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
 	// Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
@@ -71,6 +75,8 @@ type WorkspaceSettingV2 struct {
 	EffectiveAutomaticClusterUpdateWorkspace WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrOutput `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
 	// (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
 	EffectiveBooleanVal WorkspaceSettingV2EffectiveBooleanValOutput `pulumi:"effectiveBooleanVal"`
+	// (CollaborationPlatformConnectivityMessage) - Effective setting value for collaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+	EffectiveCollaborationPlatformConnectivity WorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput `pulumi:"effectiveCollaborationPlatformConnectivity"`
 	// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
 	EffectiveIntegerVal WorkspaceSettingV2EffectiveIntegerValOutput `pulumi:"effectiveIntegerVal"`
 	// (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
@@ -137,6 +143,8 @@ type workspaceSettingV2State struct {
 	AutomaticClusterUpdateWorkspace *WorkspaceSettingV2AutomaticClusterUpdateWorkspace `pulumi:"automaticClusterUpdateWorkspace"`
 	// Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
 	BooleanVal *WorkspaceSettingV2BooleanVal `pulumi:"booleanVal"`
+	// Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+	CollaborationPlatformConnectivity *WorkspaceSettingV2CollaborationPlatformConnectivity `pulumi:"collaborationPlatformConnectivity"`
 	// Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
 	EffectiveAibiDashboardEmbeddingAccessPolicy *WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
 	// Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
@@ -147,6 +155,8 @@ type workspaceSettingV2State struct {
 	EffectiveAutomaticClusterUpdateWorkspace *WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace `pulumi:"effectiveAutomaticClusterUpdateWorkspace"`
 	// (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
 	EffectiveBooleanVal *WorkspaceSettingV2EffectiveBooleanVal `pulumi:"effectiveBooleanVal"`
+	// (CollaborationPlatformConnectivityMessage) - Effective setting value for collaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+	EffectiveCollaborationPlatformConnectivity *WorkspaceSettingV2EffectiveCollaborationPlatformConnectivity `pulumi:"effectiveCollaborationPlatformConnectivity"`
 	// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
 	EffectiveIntegerVal *WorkspaceSettingV2EffectiveIntegerVal `pulumi:"effectiveIntegerVal"`
 	// (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
@@ -184,6 +194,8 @@ type WorkspaceSettingV2State struct {
 	AutomaticClusterUpdateWorkspace WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrInput
 	// Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
 	BooleanVal WorkspaceSettingV2BooleanValPtrInput
+	// Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+	CollaborationPlatformConnectivity WorkspaceSettingV2CollaborationPlatformConnectivityPtrInput
 	// Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
 	EffectiveAibiDashboardEmbeddingAccessPolicy WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrInput
 	// Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
@@ -194,6 +206,8 @@ type WorkspaceSettingV2State struct {
 	EffectiveAutomaticClusterUpdateWorkspace WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspacePtrInput
 	// (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
 	EffectiveBooleanVal WorkspaceSettingV2EffectiveBooleanValPtrInput
+	// (CollaborationPlatformConnectivityMessage) - Effective setting value for collaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+	EffectiveCollaborationPlatformConnectivity WorkspaceSettingV2EffectiveCollaborationPlatformConnectivityPtrInput
 	// (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
 	EffectiveIntegerVal WorkspaceSettingV2EffectiveIntegerValPtrInput
 	// (OperationalEmailCustomRecipientMessage) - Effective setting value for operationalEmailCustomRecipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
@@ -235,6 +249,8 @@ type workspaceSettingV2Args struct {
 	AutomaticClusterUpdateWorkspace *WorkspaceSettingV2AutomaticClusterUpdateWorkspace `pulumi:"automaticClusterUpdateWorkspace"`
 	// Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
 	BooleanVal *WorkspaceSettingV2BooleanVal `pulumi:"booleanVal"`
+	// Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+	CollaborationPlatformConnectivity *WorkspaceSettingV2CollaborationPlatformConnectivity `pulumi:"collaborationPlatformConnectivity"`
 	// Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
 	EffectiveAibiDashboardEmbeddingAccessPolicy *WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy `pulumi:"effectiveAibiDashboardEmbeddingAccessPolicy"`
 	// Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
@@ -273,6 +289,8 @@ type WorkspaceSettingV2Args struct {
 	AutomaticClusterUpdateWorkspace WorkspaceSettingV2AutomaticClusterUpdateWorkspacePtrInput
 	// Setting value for boolean type setting. This is the setting value set by consumers, check effectiveBooleanVal for final setting value
 	BooleanVal WorkspaceSettingV2BooleanValPtrInput
+	// Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+	CollaborationPlatformConnectivity WorkspaceSettingV2CollaborationPlatformConnectivityPtrInput
 	// Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
 	EffectiveAibiDashboardEmbeddingAccessPolicy WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrInput
 	// Effective setting value for aibiDashboardEmbeddingApprovedDomains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
@@ -419,6 +437,13 @@ func (o WorkspaceSettingV2Output) BooleanVal() WorkspaceSettingV2BooleanValPtrOu
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2BooleanValPtrOutput { return v.BooleanVal }).(WorkspaceSettingV2BooleanValPtrOutput)
 }
 
+// Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+func (o WorkspaceSettingV2Output) CollaborationPlatformConnectivity() WorkspaceSettingV2CollaborationPlatformConnectivityPtrOutput {
+	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2CollaborationPlatformConnectivityPtrOutput {
+		return v.CollaborationPlatformConnectivity
+	}).(WorkspaceSettingV2CollaborationPlatformConnectivityPtrOutput)
+}
+
 // Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
 func (o WorkspaceSettingV2Output) EffectiveAibiDashboardEmbeddingAccessPolicy() WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyPtrOutput {
@@ -450,6 +475,13 @@ func (o WorkspaceSettingV2Output) EffectiveAutomaticClusterUpdateWorkspace() Wor
 // (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
 func (o WorkspaceSettingV2Output) EffectiveBooleanVal() WorkspaceSettingV2EffectiveBooleanValOutput {
 	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveBooleanValOutput { return v.EffectiveBooleanVal }).(WorkspaceSettingV2EffectiveBooleanValOutput)
+}
+
+// (CollaborationPlatformConnectivityMessage) - Effective setting value for collaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+func (o WorkspaceSettingV2Output) EffectiveCollaborationPlatformConnectivity() WorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput {
+	return o.ApplyT(func(v *WorkspaceSettingV2) WorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput {
+		return v.EffectiveCollaborationPlatformConnectivity
+	}).(WorkspaceSettingV2EffectiveCollaborationPlatformConnectivityOutput)
 }
 
 // (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val

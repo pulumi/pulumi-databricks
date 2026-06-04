@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
+ * [API Documentation](https://docs.databricks.com/api/account/settingsv2)
+ *
  * This data source can be used to get a single account user preference setting.
  */
 export function getAccountSettingUserPreferenceV2(args: GetAccountSettingUserPreferenceV2Args, opts?: pulumi.InvokeOptions): Promise<GetAccountSettingUserPreferenceV2Result> {
@@ -68,6 +70,8 @@ export interface GetAccountSettingUserPreferenceV2Result {
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/account/settingsv2)
  *
  * This data source can be used to get a single account user preference setting.
  */

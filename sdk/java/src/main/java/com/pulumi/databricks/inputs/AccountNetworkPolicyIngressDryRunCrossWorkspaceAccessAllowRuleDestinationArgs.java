@@ -29,9 +29,19 @@ public final class AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRul
         return Optional.ofNullable(this.accountApi);
     }
 
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * 
+     */
     @Import(name="accountDatabricksOne")
     private @Nullable Output<AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs> accountDatabricksOne;
 
+    /**
+     * @return Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     * 
+     */
     public Optional<Output<AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs>> accountDatabricksOne() {
         return Optional.ofNullable(this.accountDatabricksOne);
     }
@@ -118,11 +128,25 @@ public final class AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRul
             return accountApi(Output.of(accountApi));
         }
 
+        /**
+         * @param accountDatabricksOne Account DatabricksOne destination is not supported.
+         * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountDatabricksOne(@Nullable Output<AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs> accountDatabricksOne) {
             $.accountDatabricksOne = accountDatabricksOne;
             return this;
         }
 
+        /**
+         * @param accountDatabricksOne Account DatabricksOne destination is not supported.
+         * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+         * 
+         * @return builder
+         * 
+         */
         public Builder accountDatabricksOne(AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs accountDatabricksOne) {
             return accountDatabricksOne(Output.of(accountDatabricksOne));
         }

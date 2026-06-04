@@ -14,6 +14,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
+        /// 
         /// &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
         /// 
         /// This data source can be used to fetch a quality monitors v2.
@@ -55,6 +57,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
+        /// 
         /// &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
         /// 
         /// This data source can be used to fetch a quality monitors v2.
@@ -95,6 +99,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitorv2)
         /// 
         /// &gt; **Deprecated** This data source is deprecated. Please use `databricks.DataQualityMonitor` instead.
         /// 

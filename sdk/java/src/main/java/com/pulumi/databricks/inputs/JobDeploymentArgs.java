@@ -16,6 +16,13 @@ public final class JobDeploymentArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobDeploymentArgs Empty = new JobDeploymentArgs();
 
+    @Import(name="deploymentId")
+    private @Nullable Output<String> deploymentId;
+
+    public Optional<Output<String>> deploymentId() {
+        return Optional.ofNullable(this.deploymentId);
+    }
+
     @Import(name="kind", required=true)
     private Output<String> kind;
 
@@ -30,11 +37,20 @@ public final class JobDeploymentArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.metadataFilePath);
     }
 
+    @Import(name="versionId")
+    private @Nullable Output<String> versionId;
+
+    public Optional<Output<String>> versionId() {
+        return Optional.ofNullable(this.versionId);
+    }
+
     private JobDeploymentArgs() {}
 
     private JobDeploymentArgs(JobDeploymentArgs $) {
+        this.deploymentId = $.deploymentId;
         this.kind = $.kind;
         this.metadataFilePath = $.metadataFilePath;
+        this.versionId = $.versionId;
     }
 
     public static Builder builder() {
@@ -55,6 +71,15 @@ public final class JobDeploymentArgs extends com.pulumi.resources.ResourceArgs {
             $ = new JobDeploymentArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder deploymentId(@Nullable Output<String> deploymentId) {
+            $.deploymentId = deploymentId;
+            return this;
+        }
+
+        public Builder deploymentId(String deploymentId) {
+            return deploymentId(Output.of(deploymentId));
+        }
+
         public Builder kind(Output<String> kind) {
             $.kind = kind;
             return this;
@@ -71,6 +96,15 @@ public final class JobDeploymentArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder metadataFilePath(String metadataFilePath) {
             return metadataFilePath(Output.of(metadataFilePath));
+        }
+
+        public Builder versionId(@Nullable Output<String> versionId) {
+            $.versionId = versionId;
+            return this;
+        }
+
+        public Builder versionId(String versionId) {
+            return versionId(Output.of(versionId));
         }
 
         public JobDeploymentArgs build() {

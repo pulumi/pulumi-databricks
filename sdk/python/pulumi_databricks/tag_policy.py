@@ -185,6 +185,8 @@ class TagPolicy(pulumi.CustomResource):
         """
         [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+        [API Documentation](https://docs.databricks.com/api/workspace/tagpolicies)
+
         Define tag policies to manage governed tags in your account.
 
         The following resources are often used in the same context:
@@ -231,6 +233,8 @@ class TagPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        [API Documentation](https://docs.databricks.com/api/workspace/tagpolicies)
 
         Define tag policies to manage governed tags in your account.
 

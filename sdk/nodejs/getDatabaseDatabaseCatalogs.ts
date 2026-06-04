@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
 
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/database)
  */
 export function getDatabaseDatabaseCatalogs(args: GetDatabaseDatabaseCatalogsArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseDatabaseCatalogsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -51,6 +53,8 @@ export interface GetDatabaseDatabaseCatalogsResult {
 }
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/database)
  */
 export function getDatabaseDatabaseCatalogsOutput(args: GetDatabaseDatabaseCatalogsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseDatabaseCatalogsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

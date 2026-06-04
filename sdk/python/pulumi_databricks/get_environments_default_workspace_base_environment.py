@@ -105,6 +105,8 @@ def get_environments_default_workspace_base_environment(name: Optional[_builtins
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/environments)
+
     This data source retrieves the current default Workspace Base Environment configuration for the workspace.
 
     ## Example Usage
@@ -139,6 +141,8 @@ def get_environments_default_workspace_base_environment_output(name: pulumi.Inpu
                                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/environments)
 
     This data source retrieves the current default Workspace Base Environment configuration for the workspace.
 

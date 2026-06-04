@@ -94,6 +94,8 @@ def get_knowledge_assistant_knowledge_sources(page_size: Optional[_builtins.int]
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
+
 
     :param _builtins.str parent: Parent resource to list from.
            Format: knowledge-assistants/{knowledge_assistant_id}
@@ -118,6 +120,8 @@ def get_knowledge_assistant_knowledge_sources_output(page_size: pulumi.Input[Opt
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKnowledgeAssistantKnowledgeSourcesResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
 
 
     :param _builtins.str parent: Parent resource to list from.

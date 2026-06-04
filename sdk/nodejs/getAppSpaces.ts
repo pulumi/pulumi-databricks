@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
 
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/apps)
  */
 export function getAppSpaces(args?: GetAppSpacesArgs, opts?: pulumi.InvokeOptions): Promise<GetAppSpacesResult> {
     args = args || {};
@@ -46,6 +48,8 @@ export interface GetAppSpacesResult {
 }
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/apps)
  */
 export function getAppSpacesOutput(args?: GetAppSpacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppSpacesResult> {
     args = args || {};

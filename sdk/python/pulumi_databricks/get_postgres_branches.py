@@ -108,6 +108,8 @@ def get_postgres_branches(page_size: Optional[_builtins.int] = None,
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+
     This data source lists all Postgres branches in a project.
 
     ## Example Usage
@@ -153,6 +155,8 @@ def get_postgres_branches_output(page_size: pulumi.Input[Optional[Optional[_buil
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresBranchesResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
     This data source lists all Postgres branches in a project.
 

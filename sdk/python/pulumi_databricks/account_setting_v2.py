@@ -26,6 +26,7 @@ class AccountSettingV2Args:
                  allowed_apps_user_api_scopes: pulumi.Input[Optional['AccountSettingV2AllowedAppsUserApiScopesArgs']] = None,
                  automatic_cluster_update_workspace: pulumi.Input[Optional['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs']] = None,
                  boolean_val: pulumi.Input[Optional['AccountSettingV2BooleanValArgs']] = None,
+                 collaboration_platform_connectivity: pulumi.Input[Optional['AccountSettingV2CollaborationPlatformConnectivityArgs']] = None,
                  effective_aibi_dashboard_embedding_access_policy: pulumi.Input[Optional['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']] = None,
                  effective_aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional['AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs']] = None,
                  effective_automatic_cluster_update_workspace: pulumi.Input[Optional['AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']] = None,
@@ -45,6 +46,7 @@ class AccountSettingV2Args:
         :param pulumi.Input['AccountSettingV2AllowedAppsUserApiScopesArgs'] allowed_apps_user_api_scopes: Setting value for allowed_apps_user_api_scopes setting. This is the setting value set by consumers, check effective_allowed_apps_user_api_scopes for final setting value
         :param pulumi.Input['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs'] automatic_cluster_update_workspace: Setting value for automatic_cluster_update_workspace setting. This is the setting value set by consumers, check effective_automatic_cluster_update_workspace for final setting value
         :param pulumi.Input['AccountSettingV2BooleanValArgs'] boolean_val: Setting value for boolean type setting. This is the setting value set by consumers, check effective_boolean_val for final setting value
+        :param pulumi.Input['AccountSettingV2CollaborationPlatformConnectivityArgs'] collaboration_platform_connectivity: Setting value for collaboration_platform_connectivity setting. This is the setting value set by consumers, check effective_collaboration_platform_connectivity for final setting value
         :param pulumi.Input['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs'] effective_aibi_dashboard_embedding_access_policy: Effective setting value for aibi_dashboard_embedding_access_policy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
         :param pulumi.Input['AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs'] effective_aibi_dashboard_embedding_approved_domains: Effective setting value for aibi_dashboard_embedding_approved_domains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
         :param pulumi.Input['AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs'] effective_automatic_cluster_update_workspace: Effective setting value for automatic_cluster_update_workspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
@@ -67,6 +69,8 @@ class AccountSettingV2Args:
             pulumi.set(__self__, "automatic_cluster_update_workspace", automatic_cluster_update_workspace)
         if boolean_val is not None:
             pulumi.set(__self__, "boolean_val", boolean_val)
+        if collaboration_platform_connectivity is not None:
+            pulumi.set(__self__, "collaboration_platform_connectivity", collaboration_platform_connectivity)
         if effective_aibi_dashboard_embedding_access_policy is not None:
             pulumi.set(__self__, "effective_aibi_dashboard_embedding_access_policy", effective_aibi_dashboard_embedding_access_policy)
         if effective_aibi_dashboard_embedding_approved_domains is not None:
@@ -149,6 +153,18 @@ class AccountSettingV2Args:
     @boolean_val.setter
     def boolean_val(self, value: pulumi.Input[Optional['AccountSettingV2BooleanValArgs']]):
         pulumi.set(self, "boolean_val", value)
+
+    @_builtins.property
+    @pulumi.getter(name="collaborationPlatformConnectivity")
+    def collaboration_platform_connectivity(self) -> pulumi.Input[Optional['AccountSettingV2CollaborationPlatformConnectivityArgs']]:
+        """
+        Setting value for collaboration_platform_connectivity setting. This is the setting value set by consumers, check effective_collaboration_platform_connectivity for final setting value
+        """
+        return pulumi.get(self, "collaboration_platform_connectivity")
+
+    @collaboration_platform_connectivity.setter
+    def collaboration_platform_connectivity(self, value: pulumi.Input[Optional['AccountSettingV2CollaborationPlatformConnectivityArgs']]):
+        pulumi.set(self, "collaboration_platform_connectivity", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAibiDashboardEmbeddingAccessPolicy")
@@ -291,11 +307,13 @@ class _AccountSettingV2State:
                  allowed_apps_user_api_scopes: pulumi.Input[Optional['AccountSettingV2AllowedAppsUserApiScopesArgs']] = None,
                  automatic_cluster_update_workspace: pulumi.Input[Optional['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs']] = None,
                  boolean_val: pulumi.Input[Optional['AccountSettingV2BooleanValArgs']] = None,
+                 collaboration_platform_connectivity: pulumi.Input[Optional['AccountSettingV2CollaborationPlatformConnectivityArgs']] = None,
                  effective_aibi_dashboard_embedding_access_policy: pulumi.Input[Optional['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']] = None,
                  effective_aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional['AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs']] = None,
                  effective_allowed_apps_user_api_scopes: pulumi.Input[Optional['AccountSettingV2EffectiveAllowedAppsUserApiScopesArgs']] = None,
                  effective_automatic_cluster_update_workspace: pulumi.Input[Optional['AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs']] = None,
                  effective_boolean_val: pulumi.Input[Optional['AccountSettingV2EffectiveBooleanValArgs']] = None,
+                 effective_collaboration_platform_connectivity: pulumi.Input[Optional['AccountSettingV2EffectiveCollaborationPlatformConnectivityArgs']] = None,
                  effective_integer_val: pulumi.Input[Optional['AccountSettingV2EffectiveIntegerValArgs']] = None,
                  effective_operational_email_custom_recipient: pulumi.Input[Optional['AccountSettingV2EffectiveOperationalEmailCustomRecipientArgs']] = None,
                  effective_personal_compute: pulumi.Input[Optional['AccountSettingV2EffectivePersonalComputeArgs']] = None,
@@ -315,11 +333,13 @@ class _AccountSettingV2State:
         :param pulumi.Input['AccountSettingV2AllowedAppsUserApiScopesArgs'] allowed_apps_user_api_scopes: Setting value for allowed_apps_user_api_scopes setting. This is the setting value set by consumers, check effective_allowed_apps_user_api_scopes for final setting value
         :param pulumi.Input['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs'] automatic_cluster_update_workspace: Setting value for automatic_cluster_update_workspace setting. This is the setting value set by consumers, check effective_automatic_cluster_update_workspace for final setting value
         :param pulumi.Input['AccountSettingV2BooleanValArgs'] boolean_val: Setting value for boolean type setting. This is the setting value set by consumers, check effective_boolean_val for final setting value
+        :param pulumi.Input['AccountSettingV2CollaborationPlatformConnectivityArgs'] collaboration_platform_connectivity: Setting value for collaboration_platform_connectivity setting. This is the setting value set by consumers, check effective_collaboration_platform_connectivity for final setting value
         :param pulumi.Input['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs'] effective_aibi_dashboard_embedding_access_policy: Effective setting value for aibi_dashboard_embedding_access_policy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
         :param pulumi.Input['AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs'] effective_aibi_dashboard_embedding_approved_domains: Effective setting value for aibi_dashboard_embedding_approved_domains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
         :param pulumi.Input['AccountSettingV2EffectiveAllowedAppsUserApiScopesArgs'] effective_allowed_apps_user_api_scopes: (AllowedAppsUserApiScopesMessage) - Effective setting value for allowed_apps_user_api_scopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
         :param pulumi.Input['AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs'] effective_automatic_cluster_update_workspace: Effective setting value for automatic_cluster_update_workspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
         :param pulumi.Input['AccountSettingV2EffectiveBooleanValArgs'] effective_boolean_val: (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
+        :param pulumi.Input['AccountSettingV2EffectiveCollaborationPlatformConnectivityArgs'] effective_collaboration_platform_connectivity: (CollaborationPlatformConnectivityMessage) - Effective setting value for collaboration_platform_connectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
         :param pulumi.Input['AccountSettingV2EffectiveIntegerValArgs'] effective_integer_val: (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
         :param pulumi.Input['AccountSettingV2EffectiveOperationalEmailCustomRecipientArgs'] effective_operational_email_custom_recipient: (OperationalEmailCustomRecipientMessage) - Effective setting value for operational_email_custom_recipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
         :param pulumi.Input['AccountSettingV2EffectivePersonalComputeArgs'] effective_personal_compute: Effective setting value for personal_compute setting. This is the final effective value of setting. To set a value use personal_compute
@@ -342,6 +362,8 @@ class _AccountSettingV2State:
             pulumi.set(__self__, "automatic_cluster_update_workspace", automatic_cluster_update_workspace)
         if boolean_val is not None:
             pulumi.set(__self__, "boolean_val", boolean_val)
+        if collaboration_platform_connectivity is not None:
+            pulumi.set(__self__, "collaboration_platform_connectivity", collaboration_platform_connectivity)
         if effective_aibi_dashboard_embedding_access_policy is not None:
             pulumi.set(__self__, "effective_aibi_dashboard_embedding_access_policy", effective_aibi_dashboard_embedding_access_policy)
         if effective_aibi_dashboard_embedding_approved_domains is not None:
@@ -352,6 +374,8 @@ class _AccountSettingV2State:
             pulumi.set(__self__, "effective_automatic_cluster_update_workspace", effective_automatic_cluster_update_workspace)
         if effective_boolean_val is not None:
             pulumi.set(__self__, "effective_boolean_val", effective_boolean_val)
+        if effective_collaboration_platform_connectivity is not None:
+            pulumi.set(__self__, "effective_collaboration_platform_connectivity", effective_collaboration_platform_connectivity)
         if effective_integer_val is not None:
             pulumi.set(__self__, "effective_integer_val", effective_integer_val)
         if effective_operational_email_custom_recipient is not None:
@@ -436,6 +460,18 @@ class _AccountSettingV2State:
         pulumi.set(self, "boolean_val", value)
 
     @_builtins.property
+    @pulumi.getter(name="collaborationPlatformConnectivity")
+    def collaboration_platform_connectivity(self) -> pulumi.Input[Optional['AccountSettingV2CollaborationPlatformConnectivityArgs']]:
+        """
+        Setting value for collaboration_platform_connectivity setting. This is the setting value set by consumers, check effective_collaboration_platform_connectivity for final setting value
+        """
+        return pulumi.get(self, "collaboration_platform_connectivity")
+
+    @collaboration_platform_connectivity.setter
+    def collaboration_platform_connectivity(self, value: pulumi.Input[Optional['AccountSettingV2CollaborationPlatformConnectivityArgs']]):
+        pulumi.set(self, "collaboration_platform_connectivity", value)
+
+    @_builtins.property
     @pulumi.getter(name="effectiveAibiDashboardEmbeddingAccessPolicy")
     def effective_aibi_dashboard_embedding_access_policy(self) -> pulumi.Input[Optional['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs']]:
         """
@@ -494,6 +530,18 @@ class _AccountSettingV2State:
     @effective_boolean_val.setter
     def effective_boolean_val(self, value: pulumi.Input[Optional['AccountSettingV2EffectiveBooleanValArgs']]):
         pulumi.set(self, "effective_boolean_val", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveCollaborationPlatformConnectivity")
+    def effective_collaboration_platform_connectivity(self) -> pulumi.Input[Optional['AccountSettingV2EffectiveCollaborationPlatformConnectivityArgs']]:
+        """
+        (CollaborationPlatformConnectivityMessage) - Effective setting value for collaboration_platform_connectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+        """
+        return pulumi.get(self, "effective_collaboration_platform_connectivity")
+
+    @effective_collaboration_platform_connectivity.setter
+    def effective_collaboration_platform_connectivity(self, value: pulumi.Input[Optional['AccountSettingV2EffectiveCollaborationPlatformConnectivityArgs']]):
+        pulumi.set(self, "effective_collaboration_platform_connectivity", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveIntegerVal")
@@ -639,6 +687,7 @@ class AccountSettingV2(pulumi.CustomResource):
                  allowed_apps_user_api_scopes: pulumi.Input[Optional[Union['AccountSettingV2AllowedAppsUserApiScopesArgs', 'AccountSettingV2AllowedAppsUserApiScopesArgsDict']]] = None,
                  automatic_cluster_update_workspace: pulumi.Input[Optional[Union['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs', 'AccountSettingV2AutomaticClusterUpdateWorkspaceArgsDict']]] = None,
                  boolean_val: pulumi.Input[Optional[Union['AccountSettingV2BooleanValArgs', 'AccountSettingV2BooleanValArgsDict']]] = None,
+                 collaboration_platform_connectivity: pulumi.Input[Optional[Union['AccountSettingV2CollaborationPlatformConnectivityArgs', 'AccountSettingV2CollaborationPlatformConnectivityArgsDict']]] = None,
                  effective_aibi_dashboard_embedding_access_policy: pulumi.Input[Optional[Union['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
                  effective_aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
                  effective_automatic_cluster_update_workspace: pulumi.Input[Optional[Union['AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
@@ -653,6 +702,8 @@ class AccountSettingV2(pulumi.CustomResource):
                  __props__=None):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        [API Documentation](https://docs.databricks.com/api/account/settingsv2)
 
         Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
 
@@ -682,6 +733,7 @@ class AccountSettingV2(pulumi.CustomResource):
         :param pulumi.Input[Union['AccountSettingV2AllowedAppsUserApiScopesArgs', 'AccountSettingV2AllowedAppsUserApiScopesArgsDict']] allowed_apps_user_api_scopes: Setting value for allowed_apps_user_api_scopes setting. This is the setting value set by consumers, check effective_allowed_apps_user_api_scopes for final setting value
         :param pulumi.Input[Union['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs', 'AccountSettingV2AutomaticClusterUpdateWorkspaceArgsDict']] automatic_cluster_update_workspace: Setting value for automatic_cluster_update_workspace setting. This is the setting value set by consumers, check effective_automatic_cluster_update_workspace for final setting value
         :param pulumi.Input[Union['AccountSettingV2BooleanValArgs', 'AccountSettingV2BooleanValArgsDict']] boolean_val: Setting value for boolean type setting. This is the setting value set by consumers, check effective_boolean_val for final setting value
+        :param pulumi.Input[Union['AccountSettingV2CollaborationPlatformConnectivityArgs', 'AccountSettingV2CollaborationPlatformConnectivityArgsDict']] collaboration_platform_connectivity: Setting value for collaboration_platform_connectivity setting. This is the setting value set by consumers, check effective_collaboration_platform_connectivity for final setting value
         :param pulumi.Input[Union['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']] effective_aibi_dashboard_embedding_access_policy: Effective setting value for aibi_dashboard_embedding_access_policy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
         :param pulumi.Input[Union['AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']] effective_aibi_dashboard_embedding_approved_domains: Effective setting value for aibi_dashboard_embedding_approved_domains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
         :param pulumi.Input[Union['AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']] effective_automatic_cluster_update_workspace: Effective setting value for automatic_cluster_update_workspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
@@ -702,6 +754,8 @@ class AccountSettingV2(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        [API Documentation](https://docs.databricks.com/api/account/settingsv2)
 
         Setting is a configurable value or control that determines how a feature or behavior works within the databricks platform.
 
@@ -744,6 +798,7 @@ class AccountSettingV2(pulumi.CustomResource):
                  allowed_apps_user_api_scopes: pulumi.Input[Optional[Union['AccountSettingV2AllowedAppsUserApiScopesArgs', 'AccountSettingV2AllowedAppsUserApiScopesArgsDict']]] = None,
                  automatic_cluster_update_workspace: pulumi.Input[Optional[Union['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs', 'AccountSettingV2AutomaticClusterUpdateWorkspaceArgsDict']]] = None,
                  boolean_val: pulumi.Input[Optional[Union['AccountSettingV2BooleanValArgs', 'AccountSettingV2BooleanValArgsDict']]] = None,
+                 collaboration_platform_connectivity: pulumi.Input[Optional[Union['AccountSettingV2CollaborationPlatformConnectivityArgs', 'AccountSettingV2CollaborationPlatformConnectivityArgsDict']]] = None,
                  effective_aibi_dashboard_embedding_access_policy: pulumi.Input[Optional[Union['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
                  effective_aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
                  effective_automatic_cluster_update_workspace: pulumi.Input[Optional[Union['AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
@@ -769,6 +824,7 @@ class AccountSettingV2(pulumi.CustomResource):
             __props__.__dict__["allowed_apps_user_api_scopes"] = allowed_apps_user_api_scopes
             __props__.__dict__["automatic_cluster_update_workspace"] = automatic_cluster_update_workspace
             __props__.__dict__["boolean_val"] = boolean_val
+            __props__.__dict__["collaboration_platform_connectivity"] = collaboration_platform_connectivity
             __props__.__dict__["effective_aibi_dashboard_embedding_access_policy"] = effective_aibi_dashboard_embedding_access_policy
             __props__.__dict__["effective_aibi_dashboard_embedding_approved_domains"] = effective_aibi_dashboard_embedding_approved_domains
             __props__.__dict__["effective_automatic_cluster_update_workspace"] = effective_automatic_cluster_update_workspace
@@ -782,6 +838,7 @@ class AccountSettingV2(pulumi.CustomResource):
             __props__.__dict__["string_val"] = string_val
             __props__.__dict__["effective_allowed_apps_user_api_scopes"] = None
             __props__.__dict__["effective_boolean_val"] = None
+            __props__.__dict__["effective_collaboration_platform_connectivity"] = None
             __props__.__dict__["effective_integer_val"] = None
             __props__.__dict__["effective_operational_email_custom_recipient"] = None
             __props__.__dict__["effective_string_val"] = None
@@ -800,11 +857,13 @@ class AccountSettingV2(pulumi.CustomResource):
             allowed_apps_user_api_scopes: pulumi.Input[Optional[Union['AccountSettingV2AllowedAppsUserApiScopesArgs', 'AccountSettingV2AllowedAppsUserApiScopesArgsDict']]] = None,
             automatic_cluster_update_workspace: pulumi.Input[Optional[Union['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs', 'AccountSettingV2AutomaticClusterUpdateWorkspaceArgsDict']]] = None,
             boolean_val: pulumi.Input[Optional[Union['AccountSettingV2BooleanValArgs', 'AccountSettingV2BooleanValArgsDict']]] = None,
+            collaboration_platform_connectivity: pulumi.Input[Optional[Union['AccountSettingV2CollaborationPlatformConnectivityArgs', 'AccountSettingV2CollaborationPlatformConnectivityArgsDict']]] = None,
             effective_aibi_dashboard_embedding_access_policy: pulumi.Input[Optional[Union['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']]] = None,
             effective_aibi_dashboard_embedding_approved_domains: pulumi.Input[Optional[Union['AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']]] = None,
             effective_allowed_apps_user_api_scopes: pulumi.Input[Optional[Union['AccountSettingV2EffectiveAllowedAppsUserApiScopesArgs', 'AccountSettingV2EffectiveAllowedAppsUserApiScopesArgsDict']]] = None,
             effective_automatic_cluster_update_workspace: pulumi.Input[Optional[Union['AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']]] = None,
             effective_boolean_val: pulumi.Input[Optional[Union['AccountSettingV2EffectiveBooleanValArgs', 'AccountSettingV2EffectiveBooleanValArgsDict']]] = None,
+            effective_collaboration_platform_connectivity: pulumi.Input[Optional[Union['AccountSettingV2EffectiveCollaborationPlatformConnectivityArgs', 'AccountSettingV2EffectiveCollaborationPlatformConnectivityArgsDict']]] = None,
             effective_integer_val: pulumi.Input[Optional[Union['AccountSettingV2EffectiveIntegerValArgs', 'AccountSettingV2EffectiveIntegerValArgsDict']]] = None,
             effective_operational_email_custom_recipient: pulumi.Input[Optional[Union['AccountSettingV2EffectiveOperationalEmailCustomRecipientArgs', 'AccountSettingV2EffectiveOperationalEmailCustomRecipientArgsDict']]] = None,
             effective_personal_compute: pulumi.Input[Optional[Union['AccountSettingV2EffectivePersonalComputeArgs', 'AccountSettingV2EffectivePersonalComputeArgsDict']]] = None,
@@ -828,11 +887,13 @@ class AccountSettingV2(pulumi.CustomResource):
         :param pulumi.Input[Union['AccountSettingV2AllowedAppsUserApiScopesArgs', 'AccountSettingV2AllowedAppsUserApiScopesArgsDict']] allowed_apps_user_api_scopes: Setting value for allowed_apps_user_api_scopes setting. This is the setting value set by consumers, check effective_allowed_apps_user_api_scopes for final setting value
         :param pulumi.Input[Union['AccountSettingV2AutomaticClusterUpdateWorkspaceArgs', 'AccountSettingV2AutomaticClusterUpdateWorkspaceArgsDict']] automatic_cluster_update_workspace: Setting value for automatic_cluster_update_workspace setting. This is the setting value set by consumers, check effective_automatic_cluster_update_workspace for final setting value
         :param pulumi.Input[Union['AccountSettingV2BooleanValArgs', 'AccountSettingV2BooleanValArgsDict']] boolean_val: Setting value for boolean type setting. This is the setting value set by consumers, check effective_boolean_val for final setting value
+        :param pulumi.Input[Union['AccountSettingV2CollaborationPlatformConnectivityArgs', 'AccountSettingV2CollaborationPlatformConnectivityArgsDict']] collaboration_platform_connectivity: Setting value for collaboration_platform_connectivity setting. This is the setting value set by consumers, check effective_collaboration_platform_connectivity for final setting value
         :param pulumi.Input[Union['AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs', 'AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgsDict']] effective_aibi_dashboard_embedding_access_policy: Effective setting value for aibi_dashboard_embedding_access_policy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
         :param pulumi.Input[Union['AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs', 'AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgsDict']] effective_aibi_dashboard_embedding_approved_domains: Effective setting value for aibi_dashboard_embedding_approved_domains setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_approved_domains
         :param pulumi.Input[Union['AccountSettingV2EffectiveAllowedAppsUserApiScopesArgs', 'AccountSettingV2EffectiveAllowedAppsUserApiScopesArgsDict']] effective_allowed_apps_user_api_scopes: (AllowedAppsUserApiScopesMessage) - Effective setting value for allowed_apps_user_api_scopes setting. This is the final effective value of setting. To set a value use allowed_apps_user_api_scopes
         :param pulumi.Input[Union['AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs', 'AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgsDict']] effective_automatic_cluster_update_workspace: Effective setting value for automatic_cluster_update_workspace setting. This is the final effective value of setting. To set a value use automatic_cluster_update_workspace
         :param pulumi.Input[Union['AccountSettingV2EffectiveBooleanValArgs', 'AccountSettingV2EffectiveBooleanValArgsDict']] effective_boolean_val: (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
+        :param pulumi.Input[Union['AccountSettingV2EffectiveCollaborationPlatformConnectivityArgs', 'AccountSettingV2EffectiveCollaborationPlatformConnectivityArgsDict']] effective_collaboration_platform_connectivity: (CollaborationPlatformConnectivityMessage) - Effective setting value for collaboration_platform_connectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
         :param pulumi.Input[Union['AccountSettingV2EffectiveIntegerValArgs', 'AccountSettingV2EffectiveIntegerValArgsDict']] effective_integer_val: (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
         :param pulumi.Input[Union['AccountSettingV2EffectiveOperationalEmailCustomRecipientArgs', 'AccountSettingV2EffectiveOperationalEmailCustomRecipientArgsDict']] effective_operational_email_custom_recipient: (OperationalEmailCustomRecipientMessage) - Effective setting value for operational_email_custom_recipient setting. This is the final effective value of setting. To set a value use operational_email_custom_recipient
         :param pulumi.Input[Union['AccountSettingV2EffectivePersonalComputeArgs', 'AccountSettingV2EffectivePersonalComputeArgsDict']] effective_personal_compute: Effective setting value for personal_compute setting. This is the final effective value of setting. To set a value use personal_compute
@@ -854,11 +915,13 @@ class AccountSettingV2(pulumi.CustomResource):
         __props__.__dict__["allowed_apps_user_api_scopes"] = allowed_apps_user_api_scopes
         __props__.__dict__["automatic_cluster_update_workspace"] = automatic_cluster_update_workspace
         __props__.__dict__["boolean_val"] = boolean_val
+        __props__.__dict__["collaboration_platform_connectivity"] = collaboration_platform_connectivity
         __props__.__dict__["effective_aibi_dashboard_embedding_access_policy"] = effective_aibi_dashboard_embedding_access_policy
         __props__.__dict__["effective_aibi_dashboard_embedding_approved_domains"] = effective_aibi_dashboard_embedding_approved_domains
         __props__.__dict__["effective_allowed_apps_user_api_scopes"] = effective_allowed_apps_user_api_scopes
         __props__.__dict__["effective_automatic_cluster_update_workspace"] = effective_automatic_cluster_update_workspace
         __props__.__dict__["effective_boolean_val"] = effective_boolean_val
+        __props__.__dict__["effective_collaboration_platform_connectivity"] = effective_collaboration_platform_connectivity
         __props__.__dict__["effective_integer_val"] = effective_integer_val
         __props__.__dict__["effective_operational_email_custom_recipient"] = effective_operational_email_custom_recipient
         __props__.__dict__["effective_personal_compute"] = effective_personal_compute
@@ -913,6 +976,14 @@ class AccountSettingV2(pulumi.CustomResource):
         return pulumi.get(self, "boolean_val")
 
     @_builtins.property
+    @pulumi.getter(name="collaborationPlatformConnectivity")
+    def collaboration_platform_connectivity(self) -> pulumi.Output[Optional['outputs.AccountSettingV2CollaborationPlatformConnectivity']]:
+        """
+        Setting value for collaboration_platform_connectivity setting. This is the setting value set by consumers, check effective_collaboration_platform_connectivity for final setting value
+        """
+        return pulumi.get(self, "collaboration_platform_connectivity")
+
+    @_builtins.property
     @pulumi.getter(name="effectiveAibiDashboardEmbeddingAccessPolicy")
     def effective_aibi_dashboard_embedding_access_policy(self) -> pulumi.Output[Optional['outputs.AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy']]:
         """
@@ -951,6 +1022,14 @@ class AccountSettingV2(pulumi.CustomResource):
         (BooleanMessage) - Effective setting value for boolean type setting. This is the final effective value of setting. To set a value use boolean_val
         """
         return pulumi.get(self, "effective_boolean_val")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveCollaborationPlatformConnectivity")
+    def effective_collaboration_platform_connectivity(self) -> pulumi.Output['outputs.AccountSettingV2EffectiveCollaborationPlatformConnectivity']:
+        """
+        (CollaborationPlatformConnectivityMessage) - Effective setting value for collaboration_platform_connectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+        """
+        return pulumi.get(self, "effective_collaboration_platform_connectivity")
 
     @_builtins.property
     @pulumi.getter(name="effectiveIntegerVal")

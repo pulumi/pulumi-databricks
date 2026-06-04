@@ -104,6 +104,8 @@ def get_data_classification_catalog_config(name: Optional[_builtins.str] = None,
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
+
     This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
 
     To read the Data Classification configuration, you must have browse permissions on the catalog.
@@ -144,6 +146,8 @@ def get_data_classification_catalog_config_output(name: pulumi.Input[Optional[_b
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataClassificationCatalogConfigResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/dataclassification)
 
     This data source can be used to fetch the Data Classification configuration for a Unity Catalog catalog.
 

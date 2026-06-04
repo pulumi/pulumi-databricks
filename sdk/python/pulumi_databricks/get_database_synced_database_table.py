@@ -172,6 +172,8 @@ def get_database_synced_database_table(name: Optional[_builtins.str] = None,
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/database)
+
     This data source can be used to get a single Synced Database Table.
 
     ## Example Usage
@@ -211,6 +213,8 @@ def get_database_synced_database_table_output(name: pulumi.Input[Optional[_built
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseSyncedDatabaseTableResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/database)
 
     This data source can be used to get a single Synced Database Table.
 

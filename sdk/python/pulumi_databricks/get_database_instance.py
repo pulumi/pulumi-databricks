@@ -404,6 +404,8 @@ def get_database_instance(name: Optional[_builtins.str] = None,
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/database)
+
     This data source can be used to get a single Database Instance.
 
     ## Example Usage
@@ -461,6 +463,8 @@ def get_database_instance_output(name: pulumi.Input[Optional[_builtins.str]] = N
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstanceResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/database)
 
     This data source can be used to get a single Database Instance.
 

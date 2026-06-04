@@ -196,6 +196,8 @@ def get_knowledge_assistant(name: Optional[_builtins.str] = None,
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
+
 
     :param _builtins.str name: The resource name of the Knowledge Assistant.
            Format: knowledge-assistants/{knowledge_assistant_id}
@@ -225,6 +227,8 @@ def get_knowledge_assistant_output(name: pulumi.Input[Optional[_builtins.str]] =
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKnowledgeAssistantResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
 
 
     :param _builtins.str name: The resource name of the Knowledge Assistant.

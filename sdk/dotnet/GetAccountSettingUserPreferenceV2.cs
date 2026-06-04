@@ -14,6 +14,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/account/settingsv2)
+        /// 
         /// This data source can be used to get a single account user preference setting.
         /// </summary>
         public static Task<GetAccountSettingUserPreferenceV2Result> InvokeAsync(GetAccountSettingUserPreferenceV2Args args, InvokeOptions? options = null)
@@ -22,6 +24,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/account/settingsv2)
+        /// 
         /// This data source can be used to get a single account user preference setting.
         /// </summary>
         public static Output<GetAccountSettingUserPreferenceV2Result> Invoke(GetAccountSettingUserPreferenceV2InvokeArgs args, InvokeOptions? options = null)
@@ -29,6 +33,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/account/settingsv2)
         /// 
         /// This data source can be used to get a single account user preference setting.
         /// </summary>

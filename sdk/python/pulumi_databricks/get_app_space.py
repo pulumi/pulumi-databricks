@@ -246,6 +246,8 @@ def get_app_space(name: Optional[_builtins.str] = None,
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/apps)
+
 
     :param _builtins.str name: The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
            It must be unique within the workspace
@@ -280,6 +282,8 @@ def get_app_space_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppSpaceResult]:
     """
     [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/apps)
 
 
     :param _builtins.str name: The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.

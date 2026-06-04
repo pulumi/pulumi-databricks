@@ -9,11 +9,13 @@ import com.pulumi.databricks.outputs.GetWorkspaceSettingV2AibiDashboardEmbedding
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2AllowedAppsUserApiScopes;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2BooleanVal;
+import com.pulumi.databricks.outputs.GetWorkspaceSettingV2CollaborationPlatformConnectivity;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveAllowedAppsUserApiScopes;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveBooleanVal;
+import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivity;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveIntegerVal;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectiveOperationalEmailCustomRecipient;
 import com.pulumi.databricks.outputs.GetWorkspaceSettingV2EffectivePersonalCompute;
@@ -59,6 +61,11 @@ public final class GetWorkspaceSettingV2Result {
      */
     private GetWorkspaceSettingV2BooleanVal booleanVal;
     /**
+     * @return (CollaborationPlatformConnectivityMessage) - Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+     * 
+     */
+    private GetWorkspaceSettingV2CollaborationPlatformConnectivity collaborationPlatformConnectivity;
+    /**
      * @return (AibiDashboardEmbeddingAccessPolicy) - Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
      * 
      */
@@ -83,6 +90,11 @@ public final class GetWorkspaceSettingV2Result {
      * 
      */
     private GetWorkspaceSettingV2EffectiveBooleanVal effectiveBooleanVal;
+    /**
+     * @return (CollaborationPlatformConnectivityMessage) - Effective setting value for collaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+     * 
+     */
+    private GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivity effectiveCollaborationPlatformConnectivity;
     /**
      * @return (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
      * 
@@ -182,6 +194,13 @@ public final class GetWorkspaceSettingV2Result {
         return this.booleanVal;
     }
     /**
+     * @return (CollaborationPlatformConnectivityMessage) - Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+     * 
+     */
+    public GetWorkspaceSettingV2CollaborationPlatformConnectivity collaborationPlatformConnectivity() {
+        return this.collaborationPlatformConnectivity;
+    }
+    /**
      * @return (AibiDashboardEmbeddingAccessPolicy) - Effective setting value for aibiDashboardEmbeddingAccessPolicy setting. This is the final effective value of setting. To set a value use aibi_dashboard_embedding_access_policy
      * 
      */
@@ -215,6 +234,13 @@ public final class GetWorkspaceSettingV2Result {
      */
     public GetWorkspaceSettingV2EffectiveBooleanVal effectiveBooleanVal() {
         return this.effectiveBooleanVal;
+    }
+    /**
+     * @return (CollaborationPlatformConnectivityMessage) - Effective setting value for collaborationPlatformConnectivity setting. This is the final effective value of setting. To set a value use collaboration_platform_connectivity
+     * 
+     */
+    public GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivity effectiveCollaborationPlatformConnectivity() {
+        return this.effectiveCollaborationPlatformConnectivity;
     }
     /**
      * @return (IntegerMessage) - Effective setting value for integer type setting. This is the final effective value of setting. To set a value use integer_val
@@ -318,11 +344,13 @@ public final class GetWorkspaceSettingV2Result {
         private GetWorkspaceSettingV2AllowedAppsUserApiScopes allowedAppsUserApiScopes;
         private GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace automaticClusterUpdateWorkspace;
         private GetWorkspaceSettingV2BooleanVal booleanVal;
+        private GetWorkspaceSettingV2CollaborationPlatformConnectivity collaborationPlatformConnectivity;
         private GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy effectiveAibiDashboardEmbeddingAccessPolicy;
         private GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains effectiveAibiDashboardEmbeddingApprovedDomains;
         private GetWorkspaceSettingV2EffectiveAllowedAppsUserApiScopes effectiveAllowedAppsUserApiScopes;
         private GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace effectiveAutomaticClusterUpdateWorkspace;
         private GetWorkspaceSettingV2EffectiveBooleanVal effectiveBooleanVal;
+        private GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivity effectiveCollaborationPlatformConnectivity;
         private GetWorkspaceSettingV2EffectiveIntegerVal effectiveIntegerVal;
         private GetWorkspaceSettingV2EffectiveOperationalEmailCustomRecipient effectiveOperationalEmailCustomRecipient;
         private GetWorkspaceSettingV2EffectivePersonalCompute effectivePersonalCompute;
@@ -344,11 +372,13 @@ public final class GetWorkspaceSettingV2Result {
     	      this.allowedAppsUserApiScopes = defaults.allowedAppsUserApiScopes;
     	      this.automaticClusterUpdateWorkspace = defaults.automaticClusterUpdateWorkspace;
     	      this.booleanVal = defaults.booleanVal;
+    	      this.collaborationPlatformConnectivity = defaults.collaborationPlatformConnectivity;
     	      this.effectiveAibiDashboardEmbeddingAccessPolicy = defaults.effectiveAibiDashboardEmbeddingAccessPolicy;
     	      this.effectiveAibiDashboardEmbeddingApprovedDomains = defaults.effectiveAibiDashboardEmbeddingApprovedDomains;
     	      this.effectiveAllowedAppsUserApiScopes = defaults.effectiveAllowedAppsUserApiScopes;
     	      this.effectiveAutomaticClusterUpdateWorkspace = defaults.effectiveAutomaticClusterUpdateWorkspace;
     	      this.effectiveBooleanVal = defaults.effectiveBooleanVal;
+    	      this.effectiveCollaborationPlatformConnectivity = defaults.effectiveCollaborationPlatformConnectivity;
     	      this.effectiveIntegerVal = defaults.effectiveIntegerVal;
     	      this.effectiveOperationalEmailCustomRecipient = defaults.effectiveOperationalEmailCustomRecipient;
     	      this.effectivePersonalCompute = defaults.effectivePersonalCompute;
@@ -405,6 +435,14 @@ public final class GetWorkspaceSettingV2Result {
             return this;
         }
         @CustomType.Setter
+        public Builder collaborationPlatformConnectivity(GetWorkspaceSettingV2CollaborationPlatformConnectivity collaborationPlatformConnectivity) {
+            if (collaborationPlatformConnectivity == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "collaborationPlatformConnectivity");
+            }
+            this.collaborationPlatformConnectivity = collaborationPlatformConnectivity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder effectiveAibiDashboardEmbeddingAccessPolicy(GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy effectiveAibiDashboardEmbeddingAccessPolicy) {
             if (effectiveAibiDashboardEmbeddingAccessPolicy == null) {
               throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "effectiveAibiDashboardEmbeddingAccessPolicy");
@@ -442,6 +480,14 @@ public final class GetWorkspaceSettingV2Result {
               throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "effectiveBooleanVal");
             }
             this.effectiveBooleanVal = effectiveBooleanVal;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder effectiveCollaborationPlatformConnectivity(GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivity effectiveCollaborationPlatformConnectivity) {
+            if (effectiveCollaborationPlatformConnectivity == null) {
+              throw new MissingRequiredPropertyException("GetWorkspaceSettingV2Result", "effectiveCollaborationPlatformConnectivity");
+            }
+            this.effectiveCollaborationPlatformConnectivity = effectiveCollaborationPlatformConnectivity;
             return this;
         }
         @CustomType.Setter
@@ -553,11 +599,13 @@ public final class GetWorkspaceSettingV2Result {
             _resultValue.allowedAppsUserApiScopes = allowedAppsUserApiScopes;
             _resultValue.automaticClusterUpdateWorkspace = automaticClusterUpdateWorkspace;
             _resultValue.booleanVal = booleanVal;
+            _resultValue.collaborationPlatformConnectivity = collaborationPlatformConnectivity;
             _resultValue.effectiveAibiDashboardEmbeddingAccessPolicy = effectiveAibiDashboardEmbeddingAccessPolicy;
             _resultValue.effectiveAibiDashboardEmbeddingApprovedDomains = effectiveAibiDashboardEmbeddingApprovedDomains;
             _resultValue.effectiveAllowedAppsUserApiScopes = effectiveAllowedAppsUserApiScopes;
             _resultValue.effectiveAutomaticClusterUpdateWorkspace = effectiveAutomaticClusterUpdateWorkspace;
             _resultValue.effectiveBooleanVal = effectiveBooleanVal;
+            _resultValue.effectiveCollaborationPlatformConnectivity = effectiveCollaborationPlatformConnectivity;
             _resultValue.effectiveIntegerVal = effectiveIntegerVal;
             _resultValue.effectiveOperationalEmailCustomRecipient = effectiveOperationalEmailCustomRecipient;
             _resultValue.effectivePersonalCompute = effectivePersonalCompute;

@@ -222,6 +222,8 @@ def get_external_metadata(name: Optional[_builtins.str] = None,
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/externalmetadata)
+
     This data source can be used to get a single external metadata object.
 
     > **Note** This resource can only be used with an workspace-level provider!
@@ -268,6 +270,8 @@ def get_external_metadata_output(name: pulumi.Input[Optional[_builtins.str]] = N
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalMetadataResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/externalmetadata)
 
     This data source can be used to get a single external metadata object.
 

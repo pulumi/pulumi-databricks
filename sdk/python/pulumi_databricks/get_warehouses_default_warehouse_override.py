@@ -116,6 +116,8 @@ def get_warehouses_default_warehouse_override(name: Optional[_builtins.str] = No
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
+
     The Default Warehouse Override data source allows you to retrieve information about a user's default warehouse selection configuration in Databricks SQL.
 
     You can use this data source to:
@@ -161,6 +163,8 @@ def get_warehouses_default_warehouse_override_output(name: pulumi.Input[Optional
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWarehousesDefaultWarehouseOverrideResult]:
     """
     [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/warehouses)
 
     The Default Warehouse Override data source allows you to retrieve information about a user's default warehouse selection configuration in Databricks SQL.
 

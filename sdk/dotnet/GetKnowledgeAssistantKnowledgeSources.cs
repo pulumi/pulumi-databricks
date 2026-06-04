@@ -13,18 +13,24 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
         /// </summary>
         public static Task<GetKnowledgeAssistantKnowledgeSourcesResult> InvokeAsync(GetKnowledgeAssistantKnowledgeSourcesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKnowledgeAssistantKnowledgeSourcesResult>("databricks:index/getKnowledgeAssistantKnowledgeSources:getKnowledgeAssistantKnowledgeSources", args ?? new GetKnowledgeAssistantKnowledgeSourcesArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
         /// </summary>
         public static Output<GetKnowledgeAssistantKnowledgeSourcesResult> Invoke(GetKnowledgeAssistantKnowledgeSourcesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKnowledgeAssistantKnowledgeSourcesResult>("databricks:index/getKnowledgeAssistantKnowledgeSources:getKnowledgeAssistantKnowledgeSources", args ?? new GetKnowledgeAssistantKnowledgeSourcesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/knowledgeassistants)
         /// </summary>
         public static Output<GetKnowledgeAssistantKnowledgeSourcesResult> Invoke(GetKnowledgeAssistantKnowledgeSourcesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetKnowledgeAssistantKnowledgeSourcesResult>("databricks:index/getKnowledgeAssistantKnowledgeSources:getKnowledgeAssistantKnowledgeSources", args ?? new GetKnowledgeAssistantKnowledgeSourcesInvokeArgs(), options.WithDefaults());

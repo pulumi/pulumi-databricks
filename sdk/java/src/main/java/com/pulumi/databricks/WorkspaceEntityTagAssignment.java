@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
+ * [API Documentation](https://docs.databricks.com/api/workspace/workspaceentitytagassignments)
+ * 
  * This resource allows you to create, update, list, and delete tag assignments for workspace scoped entities.
  * 
  * ## Example Usage

@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.WorkspaceSettingV2AibiDashboardEmbeddingAppr
 import com.pulumi.databricks.inputs.WorkspaceSettingV2AllowedAppsUserApiScopesArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2BooleanValArgs;
+import com.pulumi.databricks.inputs.WorkspaceSettingV2CollaborationPlatformConnectivityArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicyArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomainsArgs;
 import com.pulumi.databricks.inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceArgs;
@@ -104,6 +105,21 @@ public final class WorkspaceSettingV2Args extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<WorkspaceSettingV2BooleanValArgs>> booleanVal() {
         return Optional.ofNullable(this.booleanVal);
+    }
+
+    /**
+     * Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+     * 
+     */
+    @Import(name="collaborationPlatformConnectivity")
+    private @Nullable Output<WorkspaceSettingV2CollaborationPlatformConnectivityArgs> collaborationPlatformConnectivity;
+
+    /**
+     * @return Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+     * 
+     */
+    public Optional<Output<WorkspaceSettingV2CollaborationPlatformConnectivityArgs>> collaborationPlatformConnectivity() {
+        return Optional.ofNullable(this.collaborationPlatformConnectivity);
     }
 
     /**
@@ -294,6 +310,7 @@ public final class WorkspaceSettingV2Args extends com.pulumi.resources.ResourceA
         this.allowedAppsUserApiScopes = $.allowedAppsUserApiScopes;
         this.automaticClusterUpdateWorkspace = $.automaticClusterUpdateWorkspace;
         this.booleanVal = $.booleanVal;
+        this.collaborationPlatformConnectivity = $.collaborationPlatformConnectivity;
         this.effectiveAibiDashboardEmbeddingAccessPolicy = $.effectiveAibiDashboardEmbeddingAccessPolicy;
         this.effectiveAibiDashboardEmbeddingApprovedDomains = $.effectiveAibiDashboardEmbeddingApprovedDomains;
         this.effectiveAutomaticClusterUpdateWorkspace = $.effectiveAutomaticClusterUpdateWorkspace;
@@ -429,6 +446,27 @@ public final class WorkspaceSettingV2Args extends com.pulumi.resources.ResourceA
          */
         public Builder booleanVal(WorkspaceSettingV2BooleanValArgs booleanVal) {
             return booleanVal(Output.of(booleanVal));
+        }
+
+        /**
+         * @param collaborationPlatformConnectivity Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder collaborationPlatformConnectivity(@Nullable Output<WorkspaceSettingV2CollaborationPlatformConnectivityArgs> collaborationPlatformConnectivity) {
+            $.collaborationPlatformConnectivity = collaborationPlatformConnectivity;
+            return this;
+        }
+
+        /**
+         * @param collaborationPlatformConnectivity Setting value for collaborationPlatformConnectivity setting. This is the setting value set by consumers, check effectiveCollaborationPlatformConnectivity for final setting value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder collaborationPlatformConnectivity(WorkspaceSettingV2CollaborationPlatformConnectivityArgs collaborationPlatformConnectivity) {
+            return collaborationPlatformConnectivity(Output.of(collaborationPlatformConnectivity));
         }
 
         /**

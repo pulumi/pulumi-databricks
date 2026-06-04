@@ -13,18 +13,24 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/database)
         /// </summary>
         public static Task<GetDatabaseDatabaseCatalogsResult> InvokeAsync(GetDatabaseDatabaseCatalogsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseDatabaseCatalogsResult>("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", args ?? new GetDatabaseDatabaseCatalogsArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/database)
         /// </summary>
         public static Output<GetDatabaseDatabaseCatalogsResult> Invoke(GetDatabaseDatabaseCatalogsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseDatabaseCatalogsResult>("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", args ?? new GetDatabaseDatabaseCatalogsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/database)
         /// </summary>
         public static Output<GetDatabaseDatabaseCatalogsResult> Invoke(GetDatabaseDatabaseCatalogsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseDatabaseCatalogsResult>("databricks:index/getDatabaseDatabaseCatalogs:getDatabaseDatabaseCatalogs", args ?? new GetDatabaseDatabaseCatalogsInvokeArgs(), options.WithDefaults());

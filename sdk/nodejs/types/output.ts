@@ -207,6 +207,10 @@ export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleAuthent
 
 export interface AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestination {
     accountApi?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
     accountUi?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountUi;
     allDestinations?: boolean;
@@ -289,6 +293,10 @@ export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleAuthenti
 
 export interface AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestination {
     accountApi?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
     accountUi?: outputs.AccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountUi;
     allDestinations?: boolean;
@@ -391,6 +399,10 @@ export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleA
 
 export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestination {
     accountApi?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountApi;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
     accountUi?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountUi;
     allDestinations?: boolean;
@@ -473,6 +485,10 @@ export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleAu
 
 export interface AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestination {
     accountApi?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountApi;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
     accountUi?: outputs.AccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountUi;
     allDestinations?: boolean;
@@ -561,6 +577,10 @@ export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleAuthenti
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestination {
     accountApi?: outputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountApi;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountDatabricksOne;
     accountUi?: outputs.AccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountUi;
     allDestinations?: boolean;
@@ -639,6 +659,10 @@ export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleAuthentic
 
 export interface AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestination {
     accountApi?: outputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountApi;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountDatabricksOne;
     accountUi?: outputs.AccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountUi;
     allDestinations?: boolean;
@@ -723,6 +747,10 @@ export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleAuthentic
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestination {
     accountApi?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountApi;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOne;
     accountUi?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountUi;
     allDestinations?: boolean;
@@ -819,6 +847,10 @@ export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleAuthentica
 
 export interface AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestination {
     accountApi?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountApi;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOne;
     accountUi?: outputs.AccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountUi;
     allDestinations?: boolean;
@@ -921,6 +953,10 @@ export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleAuthentication
 
 export interface AccountNetworkPolicyIngressPrivateAccessAllowRuleDestination {
     accountApi?: outputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountApi;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountDatabricksOne;
     accountUi?: outputs.AccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountUi;
     allDestinations?: boolean;
@@ -999,6 +1035,10 @@ export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleAuthenticationI
 
 export interface AccountNetworkPolicyIngressPrivateAccessDenyRuleDestination {
     accountApi?: outputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountApi;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountDatabricksOne;
     accountUi?: outputs.AccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountUi;
     allDestinations?: boolean;
@@ -1083,6 +1123,10 @@ export interface AccountNetworkPolicyIngressPublicAccessAllowRuleAuthenticationI
 
 export interface AccountNetworkPolicyIngressPublicAccessAllowRuleDestination {
     accountApi?: outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountApi;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountDatabricksOne;
     accountUi?: outputs.AccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountUi;
     allDestinations?: boolean;
@@ -1179,6 +1223,10 @@ export interface AccountNetworkPolicyIngressPublicAccessDenyRuleAuthenticationId
 
 export interface AccountNetworkPolicyIngressPublicAccessDenyRuleDestination {
     accountApi?: outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountApi;
+    /**
+     * Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
+     */
     accountDatabricksOne?: outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOne;
     accountUi?: outputs.AccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountUi;
     allDestinations?: boolean;
@@ -1326,6 +1374,13 @@ export interface AccountSettingV2BooleanVal {
     value?: boolean;
 }
 
+export interface AccountSettingV2CollaborationPlatformConnectivity {
+    /**
+     * Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+     */
+    connectivity: string;
+}
+
 export interface AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
      * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
@@ -1387,6 +1442,13 @@ export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMainten
 
 export interface AccountSettingV2EffectiveBooleanVal {
     value?: boolean;
+}
+
+export interface AccountSettingV2EffectiveCollaborationPlatformConnectivity {
+    /**
+     * Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+     */
+    connectivity: string;
 }
 
 export interface AccountSettingV2EffectiveIntegerVal {
@@ -4932,7 +4994,8 @@ export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRu
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
     /**
@@ -5083,7 +5146,8 @@ export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRul
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
     /**
@@ -5266,7 +5330,8 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessA
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
     /**
@@ -5417,7 +5482,8 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessD
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
     /**
@@ -5583,7 +5649,8 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessAllowRul
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessAllowRuleDestinationAccountDatabricksOne;
     /**
@@ -5742,7 +5809,8 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRule
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPrivateAccessDenyRuleDestinationAccountDatabricksOne;
     /**
@@ -5916,7 +5984,8 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRule
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOne;
     /**
@@ -6078,7 +6147,8 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleD
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOne;
     /**
@@ -6255,7 +6325,8 @@ export interface GetAccountNetworkPoliciesItemIngressPrivateAccessAllowRuleDesti
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressPrivateAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressPrivateAccessAllowRuleDestinationAccountDatabricksOne;
     /**
@@ -6414,7 +6485,8 @@ export interface GetAccountNetworkPoliciesItemIngressPrivateAccessDenyRuleDestin
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressPrivateAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressPrivateAccessDenyRuleDestinationAccountDatabricksOne;
     /**
@@ -6588,7 +6660,8 @@ export interface GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestin
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessAllowRuleDestinationAccountDatabricksOne;
     /**
@@ -6750,7 +6823,8 @@ export interface GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleDestina
      */
     accountApi?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPoliciesItemIngressPublicAccessDenyRuleDestinationAccountDatabricksOne;
     /**
@@ -7035,7 +7109,8 @@ export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDest
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
     /**
@@ -7186,7 +7261,8 @@ export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDesti
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
     /**
@@ -7369,7 +7445,8 @@ export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRu
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOne;
     /**
@@ -7520,7 +7597,8 @@ export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRul
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleDestinationAccountDatabricksOne;
     /**
@@ -7686,7 +7764,8 @@ export interface GetAccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDesti
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressDryRunPrivateAccessAllowRuleDestinationAccountDatabricksOne;
     /**
@@ -7845,7 +7924,8 @@ export interface GetAccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestin
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressDryRunPrivateAccessDenyRuleDestinationAccountDatabricksOne;
     /**
@@ -8019,7 +8099,8 @@ export interface GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestin
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessAllowRuleDestinationAccountDatabricksOne;
     /**
@@ -8181,7 +8262,8 @@ export interface GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestina
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressDryRunPublicAccessDenyRuleDestinationAccountDatabricksOne;
     /**
@@ -8358,7 +8440,8 @@ export interface GetAccountNetworkPolicyIngressPrivateAccessAllowRuleDestination
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressPrivateAccessAllowRuleDestinationAccountDatabricksOne;
     /**
@@ -8517,7 +8600,8 @@ export interface GetAccountNetworkPolicyIngressPrivateAccessDenyRuleDestination 
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressPrivateAccessDenyRuleDestinationAccountDatabricksOne;
     /**
@@ -8691,7 +8775,8 @@ export interface GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestination 
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressPublicAccessAllowRuleDestinationAccountDatabricksOne;
     /**
@@ -8853,7 +8938,8 @@ export interface GetAccountNetworkPolicyIngressPublicAccessDenyRuleDestination {
      */
     accountApi?: outputs.GetAccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountApi;
     /**
-     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination)
+     * (CustomerFacingIngressNetworkPolicyAccountDatabricksOneDestination) - Account DatabricksOne destination is not supported.
+     * DO NOT change the stage of this destination past PRIVATE_PREVIEW
      */
     accountDatabricksOne?: outputs.GetAccountNetworkPolicyIngressPublicAccessDenyRuleDestinationAccountDatabricksOne;
     /**
@@ -9095,6 +9181,13 @@ export interface GetAccountSettingV2BooleanVal {
     value?: boolean;
 }
 
+export interface GetAccountSettingV2CollaborationPlatformConnectivity {
+    /**
+     * (string) - Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+     */
+    connectivity: string;
+}
+
 export interface GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
      * (string) - Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
@@ -9192,6 +9285,13 @@ export interface GetAccountSettingV2EffectiveBooleanVal {
      * (string) - Represents a generic string value
      */
     value?: boolean;
+}
+
+export interface GetAccountSettingV2EffectiveCollaborationPlatformConnectivity {
+    /**
+     * (string) - Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+     */
+    connectivity: string;
 }
 
 export interface GetAccountSettingV2EffectiveIntegerVal {
@@ -16830,8 +16930,10 @@ export interface GetJobJobSettingsSettingsDbtTask {
 }
 
 export interface GetJobJobSettingsSettingsDeployment {
+    deploymentId?: string;
     kind: string;
     metadataFilePath?: string;
+    versionId?: string;
 }
 
 export interface GetJobJobSettingsSettingsEmailNotifications {
@@ -23031,6 +23133,13 @@ export interface GetWorkspaceSettingV2BooleanVal {
     value?: boolean;
 }
 
+export interface GetWorkspaceSettingV2CollaborationPlatformConnectivity {
+    /**
+     * (string) - Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+     */
+    connectivity: string;
+}
+
 export interface GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
      * (string) - Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
@@ -23128,6 +23237,13 @@ export interface GetWorkspaceSettingV2EffectiveBooleanVal {
      * (string) - Represents a generic string value
      */
     value?: boolean;
+}
+
+export interface GetWorkspaceSettingV2EffectiveCollaborationPlatformConnectivity {
+    /**
+     * (string) - Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+     */
+    connectivity: string;
 }
 
 export interface GetWorkspaceSettingV2EffectiveIntegerVal {
@@ -23463,8 +23579,10 @@ export interface JobDbtTask {
 }
 
 export interface JobDeployment {
+    deploymentId?: string;
     kind: string;
     metadataFilePath?: string;
+    versionId?: string;
 }
 
 export interface JobEmailNotifications {
@@ -27916,11 +28034,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.116.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.116.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -27987,11 +28105,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.116.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.116.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -28423,6 +28541,7 @@ export interface PipelineClusterInitScriptWorkspace {
 }
 
 export interface PipelineDeployment {
+    deploymentId?: string;
     /**
      * The deployment method that manages the pipeline.
      */
@@ -28431,6 +28550,7 @@ export interface PipelineDeployment {
      * The path to the file containing metadata about the deployment.
      */
     metadataFilePath?: string;
+    versionId?: string;
 }
 
 export interface PipelineEnvironment {
@@ -31491,6 +31611,13 @@ export interface WorkspaceSettingV2BooleanVal {
     value?: boolean;
 }
 
+export interface WorkspaceSettingV2CollaborationPlatformConnectivity {
+    /**
+     * Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+     */
+    connectivity: string;
+}
+
 export interface WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
      * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
@@ -31552,6 +31679,13 @@ export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaint
 
 export interface WorkspaceSettingV2EffectiveBooleanVal {
     value?: boolean;
+}
+
+export interface WorkspaceSettingV2EffectiveCollaborationPlatformConnectivity {
+    /**
+     * Possible values are: `ALLOW_ALL`, `ALLOW_SLACK`, `ALLOW_TEAMS`, `DENY_ALL`
+     */
+    connectivity: string;
 }
 
 export interface WorkspaceSettingV2EffectiveIntegerVal {

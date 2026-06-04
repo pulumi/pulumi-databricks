@@ -13,18 +13,24 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/apps)
         /// </summary>
         public static Task<GetAppSpacesResult> InvokeAsync(GetAppSpacesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppSpacesResult>("databricks:index/getAppSpaces:getAppSpaces", args ?? new GetAppSpacesArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/apps)
         /// </summary>
         public static Output<GetAppSpacesResult> Invoke(GetAppSpacesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppSpacesResult>("databricks:index/getAppSpaces:getAppSpaces", args ?? new GetAppSpacesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/apps)
         /// </summary>
         public static Output<GetAppSpacesResult> Invoke(GetAppSpacesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppSpacesResult>("databricks:index/getAppSpaces:getAppSpaces", args ?? new GetAppSpacesInvokeArgs(), options.WithDefaults());

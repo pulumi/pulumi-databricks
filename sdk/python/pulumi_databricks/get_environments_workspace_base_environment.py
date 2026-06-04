@@ -208,6 +208,8 @@ def get_environments_workspace_base_environment(name: Optional[_builtins.str] = 
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/environments)
+
     This data source retrieves a single Workspace Base Environment by its resource name.
 
     ## Example Usage
@@ -250,6 +252,8 @@ def get_environments_workspace_base_environment_output(name: pulumi.Input[Option
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnvironmentsWorkspaceBaseEnvironmentResult]:
     """
     [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/environments)
 
     This data source retrieves a single Workspace Base Environment by its resource name.
 

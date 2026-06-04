@@ -110,6 +110,8 @@ def get_data_quality_refreshes(object_id: Optional[_builtins.str] = None,
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
+    [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
+
     This data source can be used to fetch the list of data quality refreshes on a Unity Catalog table.
 
     The caller must either:
@@ -170,6 +172,8 @@ def get_data_quality_refreshes_output(object_id: pulumi.Input[Optional[_builtins
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataQualityRefreshesResult]:
     """
     [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/dataquality)
 
     This data source can be used to fetch the list of data quality refreshes on a Unity Catalog table.
 

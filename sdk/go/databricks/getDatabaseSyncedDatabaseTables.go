@@ -12,6 +12,8 @@ import (
 )
 
 // [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// [API Documentation](https://docs.databricks.com/api/workspace/database)
 func GetDatabaseSyncedDatabaseTables(ctx *pulumi.Context, args *GetDatabaseSyncedDatabaseTablesArgs, opts ...pulumi.InvokeOption) (*GetDatabaseSyncedDatabaseTablesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDatabaseSyncedDatabaseTablesResult

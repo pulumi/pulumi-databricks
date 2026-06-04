@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PipelineDeployment
     {
+        public readonly string? DeploymentId;
         /// <summary>
         /// The deployment method that manages the pipeline.
         /// </summary>
@@ -21,15 +22,22 @@ namespace Pulumi.Databricks.Outputs
         /// The path to the file containing metadata about the deployment.
         /// </summary>
         public readonly string? MetadataFilePath;
+        public readonly string? VersionId;
 
         [OutputConstructor]
         private PipelineDeployment(
+            string? deploymentId,
+
             string kind,
 
-            string? metadataFilePath)
+            string? metadataFilePath,
+
+            string? versionId)
         {
+            DeploymentId = deploymentId;
             Kind = kind;
             MetadataFilePath = metadataFilePath;
+            VersionId = versionId;
         }
     }
 }

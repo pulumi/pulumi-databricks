@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
 
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/database)
  */
 export function getDatabaseSyncedDatabaseTables(args: GetDatabaseSyncedDatabaseTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseSyncedDatabaseTablesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -51,6 +53,8 @@ export interface GetDatabaseSyncedDatabaseTablesResult {
 }
 /**
  * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/database)
  */
 export function getDatabaseSyncedDatabaseTablesOutput(args: GetDatabaseSyncedDatabaseTablesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseSyncedDatabaseTablesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

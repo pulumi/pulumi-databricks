@@ -14,6 +14,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/rfa)
+        /// 
         /// This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
         /// 
         /// 
@@ -44,6 +46,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/rfa)
+        /// 
         /// This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
         /// 
         /// 
@@ -73,6 +77,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/rfa)
         /// 
         /// This data source can be used to get the Request for Access (RFA) access request destinations for a specific securable object.
         /// 

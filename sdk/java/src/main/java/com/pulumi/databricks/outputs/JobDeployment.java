@@ -12,15 +12,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class JobDeployment {
+    private @Nullable String deploymentId;
     private String kind;
     private @Nullable String metadataFilePath;
+    private @Nullable String versionId;
 
     private JobDeployment() {}
+    public Optional<String> deploymentId() {
+        return Optional.ofNullable(this.deploymentId);
+    }
     public String kind() {
         return this.kind;
     }
     public Optional<String> metadataFilePath() {
         return Optional.ofNullable(this.metadataFilePath);
+    }
+    public Optional<String> versionId() {
+        return Optional.ofNullable(this.versionId);
     }
 
     public static Builder builder() {
@@ -32,15 +40,25 @@ public final class JobDeployment {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String deploymentId;
         private String kind;
         private @Nullable String metadataFilePath;
+        private @Nullable String versionId;
         public Builder() {}
         public Builder(JobDeployment defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deploymentId = defaults.deploymentId;
     	      this.kind = defaults.kind;
     	      this.metadataFilePath = defaults.metadataFilePath;
+    	      this.versionId = defaults.versionId;
         }
 
+        @CustomType.Setter
+        public Builder deploymentId(@Nullable String deploymentId) {
+
+            this.deploymentId = deploymentId;
+            return this;
+        }
         @CustomType.Setter
         public Builder kind(String kind) {
             if (kind == null) {
@@ -55,10 +73,18 @@ public final class JobDeployment {
             this.metadataFilePath = metadataFilePath;
             return this;
         }
+        @CustomType.Setter
+        public Builder versionId(@Nullable String versionId) {
+
+            this.versionId = versionId;
+            return this;
+        }
         public JobDeployment build() {
             final var _resultValue = new JobDeployment();
+            _resultValue.deploymentId = deploymentId;
             _resultValue.kind = kind;
             _resultValue.metadataFilePath = metadataFilePath;
+            _resultValue.versionId = versionId;
             return _resultValue;
         }
     }

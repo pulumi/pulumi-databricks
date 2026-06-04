@@ -12,11 +12,17 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class GetJobJobSettingsSettingsDeploymentArgs : global::Pulumi.InvokeArgs
     {
+        [Input("deploymentId")]
+        public string? DeploymentId { get; set; }
+
         [Input("kind", required: true)]
         public string Kind { get; set; } = null!;
 
         [Input("metadataFilePath")]
         public string? MetadataFilePath { get; set; }
+
+        [Input("versionId")]
+        public string? VersionId { get; set; }
 
         public GetJobJobSettingsSettingsDeploymentArgs()
         {

@@ -15,6 +15,10 @@ namespace Pulumi.Databricks.Inputs
         [Input("accountApi")]
         public Input<Inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountApiArgs>? AccountApi { get; set; }
 
+        /// <summary>
+        /// Account DatabricksOne destination is not supported.
+        /// DO NOT change the stage of this destination past PRIVATE_PREVIEW
+        /// </summary>
         [Input("accountDatabricksOne")]
         public Input<Inputs.AccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleDestinationAccountDatabricksOneArgs>? AccountDatabricksOne { get; set; }
 

@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
 
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
  */
 export function getSupervisorAgentTools(args: GetSupervisorAgentToolsArgs, opts?: pulumi.InvokeOptions): Promise<GetSupervisorAgentToolsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -49,6 +51,8 @@ export interface GetSupervisorAgentToolsResult {
 }
 /**
  * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/supervisoragents)
  */
 export function getSupervisorAgentToolsOutput(args: GetSupervisorAgentToolsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSupervisorAgentToolsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
