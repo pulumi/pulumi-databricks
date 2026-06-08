@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.inputs.AlertV2EvaluationThresholdArgs;
  * import com.pulumi.databricks.inputs.AlertV2EvaluationThresholdValueArgs;
  * import com.pulumi.databricks.inputs.AlertV2EvaluationNotificationArgs;
+ * import com.pulumi.databricks.inputs.AlertV2EvaluationNotificationSubscriptionArgs;
  * import com.pulumi.databricks.inputs.AlertV2ScheduleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;

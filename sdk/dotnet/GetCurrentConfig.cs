@@ -32,9 +32,9 @@ namespace Pulumi.Databricks
         /// 
         ///     var external = new Databricks.StorageCredential("external", new()
         ///     {
-        ///         AwsIamRole = Enumerable.Single(),
-        ///         AzureManagedIdentity = Enumerable.Single(),
-        ///         DatabricksGcpServiceAccount = Enumerable.Single(),
+        ///         AwsIamRole = Enumerable.SingleOrDefault(),
+        ///         AzureManagedIdentity = Enumerable.SingleOrDefault(),
+        ///         DatabricksGcpServiceAccount = Enumerable.SingleOrDefault(),
         ///         Name = "storage_cred",
         ///         Comment = "Managed by TF",
         ///     });
@@ -85,9 +85,9 @@ namespace Pulumi.Databricks
         /// 
         ///     var external = new Databricks.StorageCredential("external", new()
         ///     {
-        ///         AwsIamRole = Enumerable.Single(),
-        ///         AzureManagedIdentity = Enumerable.Single(),
-        ///         DatabricksGcpServiceAccount = Enumerable.Single(),
+        ///         AwsIamRole = Enumerable.SingleOrDefault(),
+        ///         AzureManagedIdentity = Enumerable.SingleOrDefault(),
+        ///         DatabricksGcpServiceAccount = Enumerable.SingleOrDefault(),
         ///         Name = "storage_cred",
         ///         Comment = "Managed by TF",
         ///     });
@@ -138,9 +138,9 @@ namespace Pulumi.Databricks
         /// 
         ///     var external = new Databricks.StorageCredential("external", new()
         ///     {
-        ///         AwsIamRole = Enumerable.Single(),
-        ///         AzureManagedIdentity = Enumerable.Single(),
-        ///         DatabricksGcpServiceAccount = Enumerable.Single(),
+        ///         AwsIamRole = Enumerable.SingleOrDefault(),
+        ///         AzureManagedIdentity = Enumerable.SingleOrDefault(),
+        ///         DatabricksGcpServiceAccount = Enumerable.SingleOrDefault(),
         ///         Name = "storage_cred",
         ///         Comment = "Managed by TF",
         ///     });

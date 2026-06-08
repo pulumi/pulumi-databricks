@@ -36,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.VectorSearchIndex;
  * import com.pulumi.databricks.VectorSearchIndexArgs;
  * import com.pulumi.databricks.inputs.VectorSearchIndexDeltaSyncIndexSpecArgs;
+ * import com.pulumi.databricks.inputs.VectorSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumnArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

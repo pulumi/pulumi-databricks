@@ -19969,6 +19969,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.ModelServing;
      * import com.pulumi.databricks.ModelServingArgs;
      * import com.pulumi.databricks.inputs.ModelServingConfigArgs;
+     * import com.pulumi.databricks.inputs.ModelServingConfigServedModelArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20076,6 +20077,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.ModelServing;
      * import com.pulumi.databricks.ModelServingArgs;
      * import com.pulumi.databricks.inputs.ModelServingConfigArgs;
+     * import com.pulumi.databricks.inputs.ModelServingConfigServedModelArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20183,6 +20185,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.ModelServing;
      * import com.pulumi.databricks.ModelServingArgs;
      * import com.pulumi.databricks.inputs.ModelServingConfigArgs;
+     * import com.pulumi.databricks.inputs.ModelServingConfigServedModelArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20290,6 +20293,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.ModelServing;
      * import com.pulumi.databricks.ModelServingArgs;
      * import com.pulumi.databricks.inputs.ModelServingConfigArgs;
+     * import com.pulumi.databricks.inputs.ModelServingConfigServedModelArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -20397,6 +20401,7 @@ public final class DatabricksFunctions {
      * import com.pulumi.databricks.ModelServing;
      * import com.pulumi.databricks.ModelServingArgs;
      * import com.pulumi.databricks.inputs.ModelServingConfigArgs;
+     * import com.pulumi.databricks.inputs.ModelServingConfigServedModelArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
