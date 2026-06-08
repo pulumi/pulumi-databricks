@@ -30,7 +30,9 @@ public final class JobTaskForEachTaskTaskSqlTaskFile {
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardSubscriptionArgs;
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertSubscriptionArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -114,7 +116,9 @@ public final class JobTaskForEachTaskTaskSqlTaskFile {
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskArgs;
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskQueryArgs;
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskDashboardSubscriptionArgs;
      * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertArgs;
+     * import com.pulumi.databricks.inputs.JobTaskSqlTaskAlertSubscriptionArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;

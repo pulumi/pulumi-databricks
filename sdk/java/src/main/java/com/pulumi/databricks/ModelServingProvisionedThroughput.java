@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.inputs.ModelServingProvisionedThroughputAiGatewayArgs;
  * import com.pulumi.databricks.inputs.ModelServingProvisionedThroughputAiGatewayUsageTrackingConfigArgs;
  * import com.pulumi.databricks.inputs.ModelServingProvisionedThroughputConfigArgs;
+ * import com.pulumi.databricks.inputs.ModelServingProvisionedThroughputConfigServedEntityArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;

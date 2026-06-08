@@ -47,6 +47,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.AccountNetworkPolicyArgs;
  * import com.pulumi.databricks.inputs.AccountNetworkPolicyEgressArgs;
  * import com.pulumi.databricks.inputs.AccountNetworkPolicyEgressNetworkAccessArgs;
+ * import com.pulumi.databricks.inputs.AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationArgs;
+ * import com.pulumi.databricks.inputs.AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationArgs;
  * import com.pulumi.databricks.inputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcementArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;

@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.inputs.JobTaskArgs;
  * import com.pulumi.databricks.inputs.JobTaskNewClusterArgs;
  * import com.pulumi.databricks.inputs.JobTaskNotebookTaskArgs;
+ * import com.pulumi.databricks.inputs.JobTaskDependsOnArgs;
  * import com.pulumi.databricks.inputs.JobTaskSparkJarTaskArgs;
  * import com.pulumi.databricks.inputs.JobTaskPipelineTaskArgs;
  * import java.util.ArrayList;

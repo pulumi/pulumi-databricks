@@ -49,7 +49,7 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
      * 
      *     public static void stack(Context ctx) {
      *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
-     *             .build(RegistryImageBuildArgs.builder()
+     *             .build(com.pulumi.docker.inputs.RegistryImageBuildArgs.builder()
      *                 .build())
      *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
      *             .build());
@@ -105,7 +105,7 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
      * 
      *     public static void stack(Context ctx) {
      *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
-     *             .build(RegistryImageBuildArgs.builder()
+     *             .build(com.pulumi.docker.inputs.RegistryImageBuildArgs.builder()
      *                 .build())
      *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
      *             .build());
@@ -202,7 +202,7 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
          * 
          *     public static void stack(Context ctx) {
          *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
-         *             .build(RegistryImageBuildArgs.builder()
+         *             .build(com.pulumi.docker.inputs.RegistryImageBuildArgs.builder()
          *                 .build())
          *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
          *             .build());
@@ -262,7 +262,7 @@ public final class InstancePoolPreloadedDockerImageArgs extends com.pulumi.resou
          * 
          *     public static void stack(Context ctx) {
          *         var this_ = new RegistryImage("this", RegistryImageArgs.builder()
-         *             .build(RegistryImageBuildArgs.builder()
+         *             .build(com.pulumi.docker.inputs.RegistryImageBuildArgs.builder()
          *                 .build())
          *             .name(String.format("%s/sample:latest", thisAzurermContainerRegistry.loginServer()))
          *             .build());

@@ -134,6 +134,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.databricks.Share;
  * import com.pulumi.databricks.ShareArgs;
  * import com.pulumi.databricks.inputs.ShareObjectArgs;
+ * import com.pulumi.databricks.inputs.ShareObjectPartitionArgs;
+ * import com.pulumi.databricks.inputs.ShareObjectPartitionValueArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
