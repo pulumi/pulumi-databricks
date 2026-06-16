@@ -162,7 +162,7 @@ import (
 //					},
 //					CreateDatabaseObjectsIfMissing: pulumi.Bool(true),
 //					ExistingPipelineId: syncedTable1.DataSynchronizationStatus.ApplyT(func(dataSynchronizationStatus databricks.DatabaseSyncedDatabaseTableDataSynchronizationStatus) (*string, error) {
-//						return &dataSynchronizationStatus.PipelineId, nil
+//						return dataSynchronizationStatus.PipelineId, nil
 //					}).(pulumi.StringPtrOutput),
 //				},
 //			})
@@ -224,7 +224,7 @@ import (
 //						TaskKey: pulumi.String("synced-table-pipeline"),
 //						PipelineTask: &databricks.JobTaskPipelineTaskArgs{
 //							PipelineId: syncedTable.DataSynchronizationStatus.ApplyT(func(dataSynchronizationStatus databricks.DatabaseSyncedDatabaseTableDataSynchronizationStatus) (*string, error) {
-//								return &dataSynchronizationStatus.PipelineId, nil
+//								return dataSynchronizationStatus.PipelineId, nil
 //							}).(pulumi.StringPtrOutput),
 //						},
 //					},

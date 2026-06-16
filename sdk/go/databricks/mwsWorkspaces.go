@@ -305,7 +305,7 @@ import (
 //			}
 //			_, err = databricks.NewMwsWorkspaces(ctx, "this", &databricks.MwsWorkspacesArgs{
 //				AccountId:              pulumi.Any(databricksAccountId),
-//				WorkspaceName:          pulumi.String(pulumi.String(prefix)),
+//				WorkspaceName:          pulumi.String(prefix),
 //				AwsRegion:              pulumi.String("us-east-1"),
 //				CredentialsId:          thisMwsCredentials.CredentialsId,
 //				StorageConfigurationId: thisMwsStorageConfigurations.StorageConfigurationId,
