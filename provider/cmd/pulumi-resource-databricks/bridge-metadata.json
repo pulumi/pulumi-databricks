@@ -11112,6 +11112,165 @@
             }
         }
     },
+    "default-resource-schema-fixups": {
+        "resources": {
+            "databricks_account_federation_policy": {},
+            "databricks_account_network_policy": {},
+            "databricks_account_setting_user_preference_v2": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_account_setting_v2": {},
+            "databricks_alert_v2": {},
+            "databricks_app": {},
+            "databricks_app_space": {},
+            "databricks_apps_settings_custom_template": {},
+            "databricks_budget_policy": {},
+            "databricks_data_classification_catalog_config": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_data_quality_monitor": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_data_quality_refresh": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_database_database_catalog": {},
+            "databricks_database_instance": {},
+            "databricks_database_synced_database_table": {},
+            "databricks_disaster_recovery_failover_group": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_disaster_recovery_stable_url": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_endpoint": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_entity_tag_assignment": {},
+            "databricks_environments_default_workspace_base_environment": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_environments_workspace_base_environment": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_external_metadata": {},
+            "databricks_feature_engineering_feature": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_feature_engineering_kafka_config": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_feature_engineering_materialized_feature": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_knowledge_assistant": {},
+            "databricks_knowledge_assistant_knowledge_source": {},
+            "databricks_library": {
+                "fields": {
+                    "id": {
+                        "name": "libraryId"
+                    }
+                }
+            },
+            "databricks_materialized_features_feature_tag": {},
+            "databricks_online_store": {},
+            "databricks_policy_info": {},
+            "databricks_postgres_branch": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_postgres_catalog": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_postgres_database": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_postgres_endpoint": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_postgres_project": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_postgres_role": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_postgres_synced_table": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_quality_monitor": {
+                "fields": {
+                    "id": {
+                        "name": "monitorId"
+                    }
+                }
+            },
+            "databricks_quality_monitor_v2": {},
+            "databricks_rfa_access_request_destinations": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_secret_uc": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_service_principal_federation_policy": {},
+            "databricks_share": {},
+            "databricks_supervisor_agent": {},
+            "databricks_supervisor_agent_tool": {},
+            "databricks_tag_policy": {},
+            "databricks_warehouses_default_warehouse_override": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_workspace_entity_tag_assignment": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "databricks_workspace_network_option": {},
+            "databricks_workspace_setting_v2": {}
+        }
+    },
     "ids": {
         "resources": {
             "databricks_account_network_policy": [
