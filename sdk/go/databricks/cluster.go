@@ -44,8 +44,8 @@ import (
 //			}
 //			_, err = databricks.NewCluster(ctx, "shared_autoscaling", &databricks.ClusterArgs{
 //				ClusterName:            pulumi.String("Shared Autoscaling"),
-//				SparkVersion:           pulumi.String(pulumi.String(latestLts.Id)),
-//				NodeTypeId:             pulumi.String(pulumi.String(smallest.Id)),
+//				SparkVersion:           pulumi.String(latestLts.Id),
+//				NodeTypeId:             pulumi.String(smallest.Id),
 //				AutoterminationMinutes: pulumi.Int(20),
 //				Autoscale: &databricks.ClusterAutoscaleArgs{
 //					MinWorkers: pulumi.Int(1),

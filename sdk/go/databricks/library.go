@@ -49,7 +49,7 @@ import (
 //			var cli []*databricks.Library
 //			for key0, _ := range all.Ids {
 //				__res, err := databricks.NewLibrary(ctx, fmt.Sprintf("cli-%v", key0), &databricks.LibraryArgs{
-//					ClusterId: pulumi.String(pulumi.Int(key0)),
+//					ClusterId: pulumi.Int(key0),
 //					Pypi: &databricks.LibraryPypiArgs{
 //						Package: pulumi.String("databricks-cli"),
 //					},
