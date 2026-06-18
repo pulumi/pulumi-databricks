@@ -1423,6 +1423,8 @@ class Cluster(pulumi.CustomResource):
                  workload_type: pulumi.Input[Optional[Union['ClusterWorkloadTypeArgs', 'ClusterWorkloadTypeArgsDict']]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/clusters)
+
         This resource allows you to manage [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
 
         > This resource can only be used with a workspace-level provider!
@@ -1545,6 +1547,8 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/clusters)
+
         This resource allows you to manage [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
 
         > This resource can only be used with a workspace-level provider!

@@ -28,14 +28,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/featureEngineeringMaterializedFeature:FeatureEngineeringMaterializedFeature")
 public class FeatureEngineeringMaterializedFeature extends com.pulumi.resources.CustomResource {
     /**
-     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
      * 
      */
     @Export(name="cronSchedule", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cronSchedule;
 
     /**
-     * @return The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     * @return The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
      * 
      */
     public Output<Optional<String>> cronSchedule() {
@@ -142,14 +144,16 @@ public class FeatureEngineeringMaterializedFeature extends com.pulumi.resources.
         return Codegen.optional(this.onlineStoreConfig);
     }
     /**
-     * The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+     * The schedule state of the materialization pipeline.
+     * Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
      * 
      */
     @Export(name="pipelineScheduleState", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pipelineScheduleState;
 
     /**
-     * @return The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+     * @return The schedule state of the materialization pipeline.
+     * Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
      * 
      */
     public Output<Optional<String>> pipelineScheduleState() {

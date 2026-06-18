@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("message")]
         public Input<string>? Message { get; set; }
 
+        [Input("runningInstances")]
+        public Input<int>? RunningInstances { get; set; }
+
         /// <summary>
         /// The state of the deployment.
         /// </summary>

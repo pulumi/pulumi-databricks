@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/workspace/servingendpoints)
+//
 // This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks, including custom models, external models, and foundation models. For newer foundation models, including Llama 4, please use the ModelServingProvisionedThroughput resource.
 //
 // > This resource can only be used with a workspace-level provider!

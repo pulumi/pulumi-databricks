@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [API Documentation](https://docs.databricks.com/api/workspace/notificationdestinations)
+    /// 
     /// This resource allows you to manage [Notification Destinations](https://docs.databricks.com/api/workspace/notificationdestinations). Notification destinations are used to send notifications for query alerts and jobs to destinations outside of Databricks. Only workspace admins can create, update, and delete notification destinations.
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!

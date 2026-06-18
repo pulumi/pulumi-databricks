@@ -14,6 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class PipelineIngestionDefinitionObjectSchemaTableConfiguration
     {
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy? AutoFullRefreshPolicy;
+        public readonly ImmutableArray<string> ClusteringColumns;
+        public readonly bool? EnableAutoClustering;
         public readonly ImmutableArray<string> ExcludeColumns;
         public readonly ImmutableArray<string> IncludeColumns;
         public readonly ImmutableArray<string> PrimaryKeys;
@@ -22,11 +24,16 @@ namespace Pulumi.Databricks.Outputs
         public readonly bool? SalesforceIncludeFormulaFields;
         public readonly string? ScdType;
         public readonly ImmutableArray<string> SequenceBies;
+        public readonly ImmutableDictionary<string, string>? TableProperties;
         public readonly Outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters? WorkdayReportParameters;
 
         [OutputConstructor]
         private PipelineIngestionDefinitionObjectSchemaTableConfiguration(
             Outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy? autoFullRefreshPolicy,
+
+            ImmutableArray<string> clusteringColumns,
+
+            bool? enableAutoClustering,
 
             ImmutableArray<string> excludeColumns,
 
@@ -44,9 +51,13 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableArray<string> sequenceBies,
 
+            ImmutableDictionary<string, string>? tableProperties,
+
             Outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters? workdayReportParameters)
         {
             AutoFullRefreshPolicy = autoFullRefreshPolicy;
+            ClusteringColumns = clusteringColumns;
+            EnableAutoClustering = enableAutoClustering;
             ExcludeColumns = excludeColumns;
             IncludeColumns = includeColumns;
             PrimaryKeys = primaryKeys;
@@ -55,6 +66,7 @@ namespace Pulumi.Databricks.Outputs
             SalesforceIncludeFormulaFields = salesforceIncludeFormulaFields;
             ScdType = scdType;
             SequenceBies = sequenceBies;
+            TableProperties = tableProperties;
             WorkdayReportParameters = workdayReportParameters;
         }
     }

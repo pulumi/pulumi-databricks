@@ -31,14 +31,7 @@ class PostgresRoleArgs:
         :param pulumi.Input[_builtins.str] parent: The Branch where this Role exists.
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input['PostgresRoleProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] role_id: The ID to use for the Role, which will become the final component of
-               the role's resource name.
-               This ID becomes the role in Postgres.
-               
-               This value should be 4-63 characters, and valid characters
-               are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-               
-               If role_id is not specified in the request, it is generated automatically
+        :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
         :param pulumi.Input['PostgresRoleSpecArgs'] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
         """
         pulumi.set(__self__, "parent", parent)
@@ -78,14 +71,7 @@ class PostgresRoleArgs:
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID to use for the Role, which will become the final component of
-        the role's resource name.
-        This ID becomes the role in Postgres.
-
-        This value should be 4-63 characters, and valid characters
-        are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-
-        If role_id is not specified in the request, it is generated automatically
+        (string) - Part of the resource name
         """
         return pulumi.get(self, "role_id")
 
@@ -126,14 +112,7 @@ class _PostgresRoleState:
         :param pulumi.Input[_builtins.str] parent: The Branch where this Role exists.
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input['PostgresRoleProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] role_id: The ID to use for the Role, which will become the final component of
-               the role's resource name.
-               This ID becomes the role in Postgres.
-               
-               This value should be 4-63 characters, and valid characters
-               are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-               
-               If role_id is not specified in the request, it is generated automatically
+        :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
         :param pulumi.Input['PostgresRoleSpecArgs'] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
         :param pulumi.Input['PostgresRoleStatusArgs'] status: (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
         :param pulumi.Input[_builtins.str] update_time: (string)
@@ -209,14 +188,7 @@ class _PostgresRoleState:
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID to use for the Role, which will become the final component of
-        the role's resource name.
-        This ID becomes the role in Postgres.
-
-        This value should be 4-63 characters, and valid characters
-        are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-
-        If role_id is not specified in the request, it is generated automatically
+        (string) - Part of the resource name
         """
         return pulumi.get(self, "role_id")
 
@@ -383,14 +355,7 @@ class PostgresRole(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The Branch where this Role exists.
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] role_id: The ID to use for the Role, which will become the final component of
-               the role's resource name.
-               This ID becomes the role in Postgres.
-               
-               This value should be 4-63 characters, and valid characters
-               are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-               
-               If role_id is not specified in the request, it is generated automatically
+        :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
         :param pulumi.Input[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
         """
         ...
@@ -574,14 +539,7 @@ class PostgresRole(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The Branch where this Role exists.
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] role_id: The ID to use for the Role, which will become the final component of
-               the role's resource name.
-               This ID becomes the role in Postgres.
-               
-               This value should be 4-63 characters, and valid characters
-               are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-               
-               If role_id is not specified in the request, it is generated automatically
+        :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
         :param pulumi.Input[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
         :param pulumi.Input[Union['PostgresRoleStatusArgs', 'PostgresRoleStatusArgsDict']] status: (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
         :param pulumi.Input[_builtins.str] update_time: (string)
@@ -638,14 +596,7 @@ class PostgresRole(pulumi.CustomResource):
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID to use for the Role, which will become the final component of
-        the role's resource name.
-        This ID becomes the role in Postgres.
-
-        This value should be 4-63 characters, and valid characters
-        are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-
-        If role_id is not specified in the request, it is generated automatically
+        (string) - Part of the resource name
         """
         return pulumi.get(self, "role_id")
 

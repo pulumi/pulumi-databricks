@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFeatureEngineeringMaterializedFeatureResult {
     /**
-     * @return (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     * @return (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
      * 
      */
     private String cronSchedule;
@@ -66,7 +67,8 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
      */
     private GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig onlineStoreConfig;
     /**
-     * @return (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+     * @return (string) - The schedule state of the materialization pipeline.
+     * Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
      * 
      */
     private String pipelineScheduleState;
@@ -91,7 +93,8 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
 
     private GetFeatureEngineeringMaterializedFeatureResult() {}
     /**
-     * @return (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     * @return (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
      * 
      */
     public String cronSchedule() {
@@ -155,7 +158,8 @@ public final class GetFeatureEngineeringMaterializedFeatureResult {
         return this.onlineStoreConfig;
     }
     /**
-     * @return (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+     * @return (string) - The schedule state of the materialization pipeline.
+     * Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
      * 
      */
     public String pipelineScheduleState() {

@@ -21,6 +21,11 @@ public final class GetPostgresEndpointsEndpoint {
      */
     private String createTime;
     /**
+     * @return (string) - Part of the resource name
+     * 
+     */
+    private String endpointId;
+    /**
      * @return (string) - Output only. The full resource path of the endpoint.
      * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
      * 
@@ -65,6 +70,13 @@ public final class GetPostgresEndpointsEndpoint {
      */
     public String createTime() {
         return this.createTime;
+    }
+    /**
+     * @return (string) - Part of the resource name
+     * 
+     */
+    public String endpointId() {
+        return this.endpointId;
     }
     /**
      * @return (string) - Output only. The full resource path of the endpoint.
@@ -128,6 +140,7 @@ public final class GetPostgresEndpointsEndpoint {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private String endpointId;
         private String name;
         private String parent;
         private @Nullable GetPostgresEndpointsEndpointProviderConfig providerConfig;
@@ -139,6 +152,7 @@ public final class GetPostgresEndpointsEndpoint {
         public Builder(GetPostgresEndpointsEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.endpointId = defaults.endpointId;
     	      this.name = defaults.name;
     	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
@@ -154,6 +168,14 @@ public final class GetPostgresEndpointsEndpoint {
               throw new MissingRequiredPropertyException("GetPostgresEndpointsEndpoint", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder endpointId(String endpointId) {
+            if (endpointId == null) {
+              throw new MissingRequiredPropertyException("GetPostgresEndpointsEndpoint", "endpointId");
+            }
+            this.endpointId = endpointId;
             return this;
         }
         @CustomType.Setter
@@ -213,6 +235,7 @@ public final class GetPostgresEndpointsEndpoint {
         public GetPostgresEndpointsEndpoint build() {
             final var _resultValue = new GetPostgresEndpointsEndpoint();
             _resultValue.createTime = createTime;
+            _resultValue.endpointId = endpointId;
             _resultValue.name = name;
             _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;

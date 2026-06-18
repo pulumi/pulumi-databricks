@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/instanceprofiles)
+ *
  * This resource allows you to manage AWS EC2 instance profiles that users can launch databricks.Cluster and access data, like databricks_mount. The following example demonstrates how to create an instance profile and create a cluster with it. When creating a new `databricks.InstanceProfile`, Databricks validates that it has sufficient permissions to launch instances with the instance profile. This validation uses AWS dry-run mode for the [AWS EC2 RunInstances API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html).
  *
  * > This resource can only be used with a workspace-level provider!

@@ -29,7 +29,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? FilterCondition;
         /// <summary>
-        /// (string) - The full three-part (catalog, schema, table) name of the Delta table
+        /// (string) - Three-part full name of the Stream (catalog.schema.stream)
         /// </summary>
         public readonly string FullName;
         /// <summary>

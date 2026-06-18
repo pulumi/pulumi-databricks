@@ -188,6 +188,8 @@ class MlflowModel(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MlflowModelTagArgs', 'MlflowModelTagArgsDict']]]]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/modelregistry)
+
         This resource allows you to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
 
         > This resource can only be used with a workspace-level provider!
@@ -247,6 +249,8 @@ class MlflowModel(pulumi.CustomResource):
                  args: Optional[MlflowModelArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/modelregistry)
+
         This resource allows you to create [MLflow models](https://docs.databricks.com/applications/mlflow/models.html) in Databricks.
 
         > This resource can only be used with a workspace-level provider!

@@ -28,7 +28,7 @@ class GetPostgresProjectResult:
     """
     A collection of values returned by getPostgresProject.
     """
-    def __init__(__self__, create_time=None, delete_time=None, id=None, initial_endpoint_spec=None, name=None, provider_config=None, purge_time=None, spec=None, status=None, uid=None, update_time=None):
+    def __init__(__self__, create_time=None, delete_time=None, id=None, initial_endpoint_spec=None, name=None, project_id=None, provider_config=None, purge_time=None, spec=None, status=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -44,6 +44,9 @@ class GetPostgresProjectResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
@@ -109,6 +112,14 @@ class GetPostgresProjectResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        (string) - Part of the resource name
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> Optional['outputs.GetPostgresProjectProviderConfigResult']:
         return pulumi.get(self, "provider_config")
@@ -166,6 +177,7 @@ class AwaitableGetPostgresProjectResult(GetPostgresProjectResult):
             id=self.id,
             initial_endpoint_spec=self.initial_endpoint_spec,
             name=self.name,
+            project_id=self.project_id,
             provider_config=self.provider_config,
             purge_time=self.purge_time,
             spec=self.spec,
@@ -215,6 +227,7 @@ def get_postgres_project(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         initial_endpoint_spec=pulumi.get(__ret__, 'initial_endpoint_spec'),
         name=pulumi.get(__ret__, 'name'),
+        project_id=pulumi.get(__ret__, 'project_id'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         purge_time=pulumi.get(__ret__, 'purge_time'),
         spec=pulumi.get(__ret__, 'spec'),
@@ -261,6 +274,7 @@ def get_postgres_project_output(name: pulumi.Input[Optional[_builtins.str]] = No
         id=pulumi.get(__response__, 'id'),
         initial_endpoint_spec=pulumi.get(__response__, 'initial_endpoint_spec'),
         name=pulumi.get(__response__, 'name'),
+        project_id=pulumi.get(__response__, 'project_id'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         purge_time=pulumi.get(__response__, 'purge_time'),
         spec=pulumi.get(__response__, 'spec'),

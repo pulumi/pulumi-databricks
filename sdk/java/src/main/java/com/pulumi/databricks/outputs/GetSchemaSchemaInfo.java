@@ -45,6 +45,7 @@ public final class GetSchemaSchemaInfo {
      * 
      */
     private @Nullable String createdBy;
+    private @Nullable Integer customMaxRetentionHours;
     /**
      * @return information about actual state of predictive optimization.
      * 
@@ -149,6 +150,9 @@ public final class GetSchemaSchemaInfo {
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
     }
+    public Optional<Integer> customMaxRetentionHours() {
+        return Optional.ofNullable(this.customMaxRetentionHours);
+    }
     /**
      * @return information about actual state of predictive optimization.
      * 
@@ -249,6 +253,7 @@ public final class GetSchemaSchemaInfo {
         private @Nullable String comment;
         private @Nullable Integer createdAt;
         private @Nullable String createdBy;
+        private @Nullable Integer customMaxRetentionHours;
         private @Nullable GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag effectivePredictiveOptimizationFlag;
         private @Nullable String enablePredictiveOptimization;
         private @Nullable String fullName;
@@ -270,6 +275,7 @@ public final class GetSchemaSchemaInfo {
     	      this.comment = defaults.comment;
     	      this.createdAt = defaults.createdAt;
     	      this.createdBy = defaults.createdBy;
+    	      this.customMaxRetentionHours = defaults.customMaxRetentionHours;
     	      this.effectivePredictiveOptimizationFlag = defaults.effectivePredictiveOptimizationFlag;
     	      this.enablePredictiveOptimization = defaults.enablePredictiveOptimization;
     	      this.fullName = defaults.fullName;
@@ -318,6 +324,12 @@ public final class GetSchemaSchemaInfo {
         public Builder createdBy(@Nullable String createdBy) {
 
             this.createdBy = createdBy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customMaxRetentionHours(@Nullable Integer customMaxRetentionHours) {
+
+            this.customMaxRetentionHours = customMaxRetentionHours;
             return this;
         }
         @CustomType.Setter
@@ -400,6 +412,7 @@ public final class GetSchemaSchemaInfo {
             _resultValue.comment = comment;
             _resultValue.createdAt = createdAt;
             _resultValue.createdBy = createdBy;
+            _resultValue.customMaxRetentionHours = customMaxRetentionHours;
             _resultValue.effectivePredictiveOptimizationFlag = effectivePredictiveOptimizationFlag;
             _resultValue.enablePredictiveOptimization = enablePredictiveOptimization;
             _resultValue.fullName = fullName;

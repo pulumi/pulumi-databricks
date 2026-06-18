@@ -23,6 +23,7 @@ class ConnectionArgs:
     def __init__(__self__, *,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_settings: pulumi.Input[Optional['ConnectionEnvironmentSettingsArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
@@ -32,19 +33,22 @@ class ConnectionArgs:
         """
         The set of arguments for constructing a Connection resource.
 
-        :param pulumi.Input[_builtins.str] comment: Free-form text. Change forces creation of a new resource.
-        :param pulumi.Input[_builtins.str] connection_type: Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
-        :param pulumi.Input[_builtins.str] name: Name of the Connection.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-        :param pulumi.Input[_builtins.str] owner: Name of the connection owner.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Free-form connection properties. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] comment: User-provided free-form text description. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] connection_type: The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+        :param pulumi.Input['ConnectionEnvironmentSettingsArgs'] environment_settings: Connection environment settings. This block consists of the following fields:
+        :param pulumi.Input[_builtins.str] name: Name of the connection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
+        :param pulumi.Input[_builtins.str] owner: Username of current owner of the connection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the securable. Change forces creation of a new resource.
         :param pulumi.Input['ConnectionProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-        :param pulumi.Input[_builtins.bool] read_only: Indicates whether the connection is read-only. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.bool] read_only: If the connection is read only. Change forces creation of a new resource.
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if connection_type is not None:
             pulumi.set(__self__, "connection_type", connection_type)
+        if environment_settings is not None:
+            pulumi.set(__self__, "environment_settings", environment_settings)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if options is not None:
@@ -62,7 +66,7 @@ class ConnectionArgs:
     @pulumi.getter
     def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Free-form text. Change forces creation of a new resource.
+        User-provided free-form text description. Change forces creation of a new resource.
         """
         return pulumi.get(self, "comment")
 
@@ -74,7 +78,7 @@ class ConnectionArgs:
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+        The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
         """
         return pulumi.get(self, "connection_type")
 
@@ -83,10 +87,22 @@ class ConnectionArgs:
         pulumi.set(self, "connection_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="environmentSettings")
+    def environment_settings(self) -> pulumi.Input[Optional['ConnectionEnvironmentSettingsArgs']]:
+        """
+        Connection environment settings. This block consists of the following fields:
+        """
+        return pulumi.get(self, "environment_settings")
+
+    @environment_settings.setter
+    def environment_settings(self, value: pulumi.Input[Optional['ConnectionEnvironmentSettingsArgs']]):
+        pulumi.set(self, "environment_settings", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the Connection.
+        Name of the connection.
         """
         return pulumi.get(self, "name")
 
@@ -98,7 +114,7 @@ class ConnectionArgs:
     @pulumi.getter
     def options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+        A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
         """
         return pulumi.get(self, "options")
 
@@ -110,7 +126,7 @@ class ConnectionArgs:
     @pulumi.getter
     def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the connection owner.
+        Username of current owner of the connection.
         """
         return pulumi.get(self, "owner")
 
@@ -122,7 +138,7 @@ class ConnectionArgs:
     @pulumi.getter
     def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Free-form connection properties. Change forces creation of a new resource.
+        A map of key-value properties attached to the securable. Change forces creation of a new resource.
         """
         return pulumi.get(self, "properties")
 
@@ -146,7 +162,7 @@ class ConnectionArgs:
     @pulumi.getter(name="readOnly")
     def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Indicates whether the connection is read-only. Change forces creation of a new resource.
+        If the connection is read only. Change forces creation of a new resource.
         """
         return pulumi.get(self, "read_only")
 
@@ -164,6 +180,7 @@ class _ConnectionState:
                  created_at: pulumi.Input[Optional[_builtins.int]] = None,
                  created_by: pulumi.Input[Optional[_builtins.str]] = None,
                  credential_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_settings: pulumi.Input[Optional['ConnectionEnvironmentSettingsArgs']] = None,
                  full_name: pulumi.Input[Optional[_builtins.str]] = None,
                  metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -180,23 +197,25 @@ class _ConnectionState:
         """
         Input properties used for looking up and filtering Connection resources.
 
-        :param pulumi.Input[_builtins.str] comment: Free-form text. Change forces creation of a new resource.
-        :param pulumi.Input[_builtins.str] connection_id: Unique ID of the connection.
-        :param pulumi.Input[_builtins.str] connection_type: Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] comment: User-provided free-form text description. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] connection_id: Unique identifier of the Connection.
+        :param pulumi.Input[_builtins.str] connection_type: The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
         :param pulumi.Input[_builtins.int] created_at: Time at which this connection was created, in epoch milliseconds.
         :param pulumi.Input[_builtins.str] created_by: Username of connection creator.
-        :param pulumi.Input[_builtins.str] credential_type: The type of credential for this connection.
+        :param pulumi.Input[_builtins.str] credential_type: The type of credential.
+        :param pulumi.Input['ConnectionEnvironmentSettingsArgs'] environment_settings: Connection environment settings. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] full_name: Full name of connection.
-        :param pulumi.Input[_builtins.str] metastore_id: Unique ID of the UC metastore for this connection.
-        :param pulumi.Input[_builtins.str] name: Name of the Connection.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-        :param pulumi.Input[_builtins.str] owner: Name of the connection owner.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Free-form connection properties. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] metastore_id: Unique identifier of parent metastore.
+        :param pulumi.Input[_builtins.str] name: Name of the connection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
+        :param pulumi.Input[_builtins.str] owner: Username of current owner of the connection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the securable. Change forces creation of a new resource.
         :param pulumi.Input['ConnectionProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]] provisioning_infos: Object with the status of an asynchronously provisioned resource.
-        :param pulumi.Input[_builtins.bool] read_only: Indicates whether the connection is read-only. Change forces creation of a new resource.
-        :param pulumi.Input[_builtins.int] updated_at: Time at which connection this was last modified, in epoch milliseconds.
-        :param pulumi.Input[_builtins.str] updated_by: Username of user who last modified the connection.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]] provisioning_infos: Status of an asynchronously provisioned resource. This block consists of the following fields:
+        :param pulumi.Input[_builtins.bool] read_only: If the connection is read only. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] securable_type: Securable type.
+        :param pulumi.Input[_builtins.int] updated_at: Time at which this connection was updated, in epoch milliseconds.
+        :param pulumi.Input[_builtins.str] updated_by: Username of user who last modified connection.
         :param pulumi.Input[_builtins.str] url: URL of the remote data source, extracted from options.
         """
         if comment is not None:
@@ -211,6 +230,8 @@ class _ConnectionState:
             pulumi.set(__self__, "created_by", created_by)
         if credential_type is not None:
             pulumi.set(__self__, "credential_type", credential_type)
+        if environment_settings is not None:
+            pulumi.set(__self__, "environment_settings", environment_settings)
         if full_name is not None:
             pulumi.set(__self__, "full_name", full_name)
         if metastore_id is not None:
@@ -242,7 +263,7 @@ class _ConnectionState:
     @pulumi.getter
     def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Free-form text. Change forces creation of a new resource.
+        User-provided free-form text description. Change forces creation of a new resource.
         """
         return pulumi.get(self, "comment")
 
@@ -254,7 +275,7 @@ class _ConnectionState:
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Unique ID of the connection.
+        Unique identifier of the Connection.
         """
         return pulumi.get(self, "connection_id")
 
@@ -266,7 +287,7 @@ class _ConnectionState:
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+        The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
         """
         return pulumi.get(self, "connection_type")
 
@@ -302,13 +323,25 @@ class _ConnectionState:
     @pulumi.getter(name="credentialType")
     def credential_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of credential for this connection.
+        The type of credential.
         """
         return pulumi.get(self, "credential_type")
 
     @credential_type.setter
     def credential_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credential_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentSettings")
+    def environment_settings(self) -> pulumi.Input[Optional['ConnectionEnvironmentSettingsArgs']]:
+        """
+        Connection environment settings. This block consists of the following fields:
+        """
+        return pulumi.get(self, "environment_settings")
+
+    @environment_settings.setter
+    def environment_settings(self, value: pulumi.Input[Optional['ConnectionEnvironmentSettingsArgs']]):
+        pulumi.set(self, "environment_settings", value)
 
     @_builtins.property
     @pulumi.getter(name="fullName")
@@ -326,7 +359,7 @@ class _ConnectionState:
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Unique ID of the UC metastore for this connection.
+        Unique identifier of parent metastore.
         """
         return pulumi.get(self, "metastore_id")
 
@@ -338,7 +371,7 @@ class _ConnectionState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the Connection.
+        Name of the connection.
         """
         return pulumi.get(self, "name")
 
@@ -350,7 +383,7 @@ class _ConnectionState:
     @pulumi.getter
     def options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+        A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
         """
         return pulumi.get(self, "options")
 
@@ -362,7 +395,7 @@ class _ConnectionState:
     @pulumi.getter
     def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the connection owner.
+        Username of current owner of the connection.
         """
         return pulumi.get(self, "owner")
 
@@ -374,7 +407,7 @@ class _ConnectionState:
     @pulumi.getter
     def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Free-form connection properties. Change forces creation of a new resource.
+        A map of key-value properties attached to the securable. Change forces creation of a new resource.
         """
         return pulumi.get(self, "properties")
 
@@ -398,7 +431,7 @@ class _ConnectionState:
     @pulumi.getter(name="provisioningInfos")
     def provisioning_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionProvisioningInfoArgs']]]]:
         """
-        Object with the status of an asynchronously provisioned resource.
+        Status of an asynchronously provisioned resource. This block consists of the following fields:
         """
         return pulumi.get(self, "provisioning_infos")
 
@@ -410,7 +443,7 @@ class _ConnectionState:
     @pulumi.getter(name="readOnly")
     def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Indicates whether the connection is read-only. Change forces creation of a new resource.
+        If the connection is read only. Change forces creation of a new resource.
         """
         return pulumi.get(self, "read_only")
 
@@ -421,6 +454,9 @@ class _ConnectionState:
     @_builtins.property
     @pulumi.getter(name="securableType")
     def securable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Securable type.
+        """
         return pulumi.get(self, "securable_type")
 
     @securable_type.setter
@@ -431,7 +467,7 @@ class _ConnectionState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Time at which connection this was last modified, in epoch milliseconds.
+        Time at which this connection was updated, in epoch milliseconds.
         """
         return pulumi.get(self, "updated_at")
 
@@ -443,7 +479,7 @@ class _ConnectionState:
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Username of user who last modified the connection.
+        Username of user who last modified connection.
         """
         return pulumi.get(self, "updated_by")
 
@@ -472,6 +508,7 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_settings: pulumi.Input[Optional[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
@@ -480,6 +517,8 @@ class Connection(pulumi.CustomResource):
                  read_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/connections)
+
         > This resource can only be used with a workspace-level provider!
 
         Lakehouse Federation is the query federation platform for Databricks. Databricks uses Unity Catalog to manage query federation. To make a dataset available for read-only querying using Lakehouse Federation, you create the following:
@@ -619,14 +658,15 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] comment: Free-form text. Change forces creation of a new resource.
-        :param pulumi.Input[_builtins.str] connection_type: Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
-        :param pulumi.Input[_builtins.str] name: Name of the Connection.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-        :param pulumi.Input[_builtins.str] owner: Name of the connection owner.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Free-form connection properties. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] comment: User-provided free-form text description. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] connection_type: The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+        :param pulumi.Input[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict']] environment_settings: Connection environment settings. This block consists of the following fields:
+        :param pulumi.Input[_builtins.str] name: Name of the connection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
+        :param pulumi.Input[_builtins.str] owner: Username of current owner of the connection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the securable. Change forces creation of a new resource.
         :param pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-        :param pulumi.Input[_builtins.bool] read_only: Indicates whether the connection is read-only. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.bool] read_only: If the connection is read only. Change forces creation of a new resource.
         """
         ...
     @overload
@@ -635,6 +675,8 @@ class Connection(pulumi.CustomResource):
                  args: Optional[ConnectionArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/connections)
+
         > This resource can only be used with a workspace-level provider!
 
         Lakehouse Federation is the query federation platform for Databricks. Databricks uses Unity Catalog to manage query federation. To make a dataset available for read-only querying using Lakehouse Federation, you create the following:
@@ -789,6 +831,7 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_settings: pulumi.Input[Optional[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
@@ -806,6 +849,7 @@ class Connection(pulumi.CustomResource):
 
             __props__.__dict__["comment"] = comment
             __props__.__dict__["connection_type"] = connection_type
+            __props__.__dict__["environment_settings"] = environment_settings
             __props__.__dict__["name"] = name
             __props__.__dict__["options"] = None if options is None else pulumi.Output.secret(options)
             __props__.__dict__["owner"] = owner
@@ -841,6 +885,7 @@ class Connection(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.int]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             credential_type: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_settings: pulumi.Input[Optional[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict']]] = None,
             full_name: pulumi.Input[Optional[_builtins.str]] = None,
             metastore_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -861,23 +906,25 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] comment: Free-form text. Change forces creation of a new resource.
-        :param pulumi.Input[_builtins.str] connection_id: Unique ID of the connection.
-        :param pulumi.Input[_builtins.str] connection_type: Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] comment: User-provided free-form text description. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] connection_id: Unique identifier of the Connection.
+        :param pulumi.Input[_builtins.str] connection_type: The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
         :param pulumi.Input[_builtins.int] created_at: Time at which this connection was created, in epoch milliseconds.
         :param pulumi.Input[_builtins.str] created_by: Username of connection creator.
-        :param pulumi.Input[_builtins.str] credential_type: The type of credential for this connection.
+        :param pulumi.Input[_builtins.str] credential_type: The type of credential.
+        :param pulumi.Input[Union['ConnectionEnvironmentSettingsArgs', 'ConnectionEnvironmentSettingsArgsDict']] environment_settings: Connection environment settings. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] full_name: Full name of connection.
-        :param pulumi.Input[_builtins.str] metastore_id: Unique ID of the UC metastore for this connection.
-        :param pulumi.Input[_builtins.str] name: Name of the Connection.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
-        :param pulumi.Input[_builtins.str] owner: Name of the connection owner.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Free-form connection properties. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] metastore_id: Unique identifier of parent metastore.
+        :param pulumi.Input[_builtins.str] name: Name of the connection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] options: A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
+        :param pulumi.Input[_builtins.str] owner: Username of current owner of the connection.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the securable. Change forces creation of a new resource.
         :param pulumi.Input[Union['ConnectionProviderConfigArgs', 'ConnectionProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionProvisioningInfoArgs', 'ConnectionProvisioningInfoArgsDict']]]] provisioning_infos: Object with the status of an asynchronously provisioned resource.
-        :param pulumi.Input[_builtins.bool] read_only: Indicates whether the connection is read-only. Change forces creation of a new resource.
-        :param pulumi.Input[_builtins.int] updated_at: Time at which connection this was last modified, in epoch milliseconds.
-        :param pulumi.Input[_builtins.str] updated_by: Username of user who last modified the connection.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionProvisioningInfoArgs', 'ConnectionProvisioningInfoArgsDict']]]] provisioning_infos: Status of an asynchronously provisioned resource. This block consists of the following fields:
+        :param pulumi.Input[_builtins.bool] read_only: If the connection is read only. Change forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] securable_type: Securable type.
+        :param pulumi.Input[_builtins.int] updated_at: Time at which this connection was updated, in epoch milliseconds.
+        :param pulumi.Input[_builtins.str] updated_by: Username of user who last modified connection.
         :param pulumi.Input[_builtins.str] url: URL of the remote data source, extracted from options.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -890,6 +937,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["credential_type"] = credential_type
+        __props__.__dict__["environment_settings"] = environment_settings
         __props__.__dict__["full_name"] = full_name
         __props__.__dict__["metastore_id"] = metastore_id
         __props__.__dict__["name"] = name
@@ -909,7 +957,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Free-form text. Change forces creation of a new resource.
+        User-provided free-form text description. Change forces creation of a new resource.
         """
         return pulumi.get(self, "comment")
 
@@ -917,7 +965,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Unique ID of the connection.
+        Unique identifier of the Connection.
         """
         return pulumi.get(self, "connection_id")
 
@@ -925,7 +973,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+        The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
         """
         return pulumi.get(self, "connection_type")
 
@@ -949,9 +997,17 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="credentialType")
     def credential_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of credential for this connection.
+        The type of credential.
         """
         return pulumi.get(self, "credential_type")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentSettings")
+    def environment_settings(self) -> pulumi.Output[Optional['outputs.ConnectionEnvironmentSettings']]:
+        """
+        Connection environment settings. This block consists of the following fields:
+        """
+        return pulumi.get(self, "environment_settings")
 
     @_builtins.property
     @pulumi.getter(name="fullName")
@@ -965,7 +1021,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Unique ID of the UC metastore for this connection.
+        Unique identifier of parent metastore.
         """
         return pulumi.get(self, "metastore_id")
 
@@ -973,7 +1029,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the Connection.
+        Name of the connection.
         """
         return pulumi.get(self, "name")
 
@@ -981,7 +1037,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def options(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+        A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorization_endpoint`, `client_id`, `client_secret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
         """
         return pulumi.get(self, "options")
 
@@ -989,7 +1045,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def owner(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the connection owner.
+        Username of current owner of the connection.
         """
         return pulumi.get(self, "owner")
 
@@ -997,7 +1053,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def properties(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Free-form connection properties. Change forces creation of a new resource.
+        A map of key-value properties attached to the securable. Change forces creation of a new resource.
         """
         return pulumi.get(self, "properties")
 
@@ -1013,7 +1069,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="provisioningInfos")
     def provisioning_infos(self) -> pulumi.Output[Sequence['outputs.ConnectionProvisioningInfo']]:
         """
-        Object with the status of an asynchronously provisioned resource.
+        Status of an asynchronously provisioned resource. This block consists of the following fields:
         """
         return pulumi.get(self, "provisioning_infos")
 
@@ -1021,20 +1077,23 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="readOnly")
     def read_only(self) -> pulumi.Output[_builtins.bool]:
         """
-        Indicates whether the connection is read-only. Change forces creation of a new resource.
+        If the connection is read only. Change forces creation of a new resource.
         """
         return pulumi.get(self, "read_only")
 
     @_builtins.property
     @pulumi.getter(name="securableType")
     def securable_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        Securable type.
+        """
         return pulumi.get(self, "securable_type")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.int]:
         """
-        Time at which connection this was last modified, in epoch milliseconds.
+        Time at which this connection was updated, in epoch milliseconds.
         """
         return pulumi.get(self, "updated_at")
 
@@ -1042,7 +1101,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> pulumi.Output[_builtins.str]:
         """
-        Username of user who last modified the connection.
+        Username of user who last modified connection.
         """
         return pulumi.get(self, "updated_by")
 

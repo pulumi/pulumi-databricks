@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/permissions)
+ *
  * This resource is used to assign account-level users, service principals and groups to a Databricks workspace. To configure additional entitlements such as cluster creation, please use databricks.Entitlements
  *
  * > This resource can only be used with a workspace-level provider!

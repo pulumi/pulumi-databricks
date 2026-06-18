@@ -117,9 +117,7 @@ export class PostgresBranch extends pulumi.CustomResource {
     }
 
     /**
-     * The ID to use for the Branch. This becomes the final component of the branch's resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `development` becomes `projects/my-app/branches/development`
+     * The part of the name, chosen by the user when the resource was created
      */
     declare public readonly branchId: pulumi.Output<string>;
     /**
@@ -222,9 +220,7 @@ export class PostgresBranch extends pulumi.CustomResource {
  */
 export interface PostgresBranchState {
     /**
-     * The ID to use for the Branch. This becomes the final component of the branch's resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `development` becomes `projects/my-app/branches/development`
+     * The part of the name, chosen by the user when the resource was created
      */
     branchId?: pulumi.Input<string | undefined>;
     /**
@@ -279,9 +275,7 @@ export interface PostgresBranchState {
  */
 export interface PostgresBranchArgs {
     /**
-     * The ID to use for the Branch. This becomes the final component of the branch's resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `development` becomes `projects/my-app/branches/development`
+     * The part of the name, chosen by the user when the resource was created
      */
     branchId: pulumi.Input<string>;
     /**

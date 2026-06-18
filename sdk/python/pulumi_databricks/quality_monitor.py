@@ -678,6 +678,8 @@ class QualityMonitor(pulumi.CustomResource):
                  warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitors)
+
         This resource allows you to manage [Lakehouse Monitors](https://docs.databricks.com/en/lakehouse-monitoring/index.html) in Databricks.
 
         > This resource can only be used with a workspace-level provider!
@@ -804,6 +806,8 @@ class QualityMonitor(pulumi.CustomResource):
                  args: QualityMonitorArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/qualitymonitors)
+
         This resource allows you to manage [Lakehouse Monitors](https://docs.databricks.com/en/lakehouse-monitoring/index.html) in Databricks.
 
         > This resource can only be used with a workspace-level provider!

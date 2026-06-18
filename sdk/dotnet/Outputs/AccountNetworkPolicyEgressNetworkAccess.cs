@@ -14,6 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class AccountNetworkPolicyEgressNetworkAccess
     {
         /// <summary>
+        /// List of Databricks workspace destinations that serverless workloads are
+        /// allowed to access when in RESTRICTED_ACCESS mode
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AccountNetworkPolicyEgressNetworkAccessAllowedDatabricksDestination> AllowedDatabricksDestinations;
+        /// <summary>
         /// List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
         /// </summary>
         public readonly ImmutableArray<Outputs.AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination> AllowedInternetDestinations;
@@ -35,6 +40,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private AccountNetworkPolicyEgressNetworkAccess(
+            ImmutableArray<Outputs.AccountNetworkPolicyEgressNetworkAccessAllowedDatabricksDestination> allowedDatabricksDestinations,
+
             ImmutableArray<Outputs.AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination> allowedInternetDestinations,
 
             ImmutableArray<Outputs.AccountNetworkPolicyEgressNetworkAccessAllowedStorageDestination> allowedStorageDestinations,
@@ -45,6 +52,7 @@ namespace Pulumi.Databricks.Outputs
 
             string restrictionMode)
         {
+            AllowedDatabricksDestinations = allowedDatabricksDestinations;
             AllowedInternetDestinations = allowedInternetDestinations;
             AllowedStorageDestinations = allowedStorageDestinations;
             BlockedInternetDestinations = blockedInternetDestinations;

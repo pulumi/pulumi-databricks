@@ -10,7 +10,54 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// 
+    /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+    /// 
+    /// A failover group coordinates Databricks Managed Disaster Recovery across one or more workspace sets, replicating data and (optionally) workspace assets from a primary region to a secondary region so you can fail over with minimal disruption.
+    /// 
+    /// Each workspace set groups the workspaces that replicate to each other across regions. Unity Catalog catalogs and their underlying storage can additionally be replicated by configuring `UnityCatalogAssets`. After a successful failover, the group's effective primary region changes to the former secondary.
+    /// 
+    /// &gt; **Note** This resource can only be used with an account-level provider!
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Creating a failover group for a single workspace set replicating between two regions, with control plane (workspace asset) replication enabled:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @this = new Databricks.DisasterRecoveryFailoverGroup("this", new()
+    ///     {
+    ///         FailoverGroupId = "accounting-failover-group",
+    ///         InitialPrimaryRegion = "us-east-1",
+    ///         Regions = new[]
+    ///         {
+    ///             "us-east-1",
+    ///             "us-west-2",
+    ///         },
+    ///         WorkspaceSets = new[]
+    ///         {
+    ///             new Databricks.Inputs.DisasterRecoveryFailoverGroupWorkspaceSetArgs
+    ///             {
+    ///                 Name = "accounting",
+    ///                 WorkspaceIds = new[]
+    ///                 {
+    ///                     "1234567890123456",
+    ///                     "6543210987654321",
+    ///                 },
+    ///                 ReplicateWorkspaceAssets = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [DatabricksResourceType("databricks:index/disasterRecoveryFailoverGroup:DisasterRecoveryFailoverGroup")]
     public partial class DisasterRecoveryFailoverGroup : global::Pulumi.CustomResource

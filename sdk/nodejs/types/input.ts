@@ -92,6 +92,11 @@ export interface AccountNetworkPolicyEgress {
 
 export interface AccountNetworkPolicyEgressNetworkAccess {
     /**
+     * List of Databricks workspace destinations that serverless workloads are
+     * allowed to access when in RESTRICTED_ACCESS mode
+     */
+    allowedDatabricksDestinations?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccessAllowedDatabricksDestination>[] | undefined>;
+    /**
      * List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
      */
     allowedInternetDestinations?: pulumi.Input<pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination>[] | undefined>;
@@ -110,6 +115,10 @@ export interface AccountNetworkPolicyEgressNetworkAccess {
      */
     policyEnforcement?: pulumi.Input<inputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement | undefined>;
     restrictionMode: pulumi.Input<string>;
+}
+
+export interface AccountNetworkPolicyEgressNetworkAccessAllowedDatabricksDestination {
+    workspaceIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 export interface AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination {
@@ -1507,6 +1516,222 @@ export interface AccountSettingV2StringVal {
     value?: pulumi.Input<string | undefined>;
 }
 
+export interface AiSearchEndpointCustomTag {
+    /**
+     * Key field for an AI Search endpoint tag
+     */
+    key: pulumi.Input<string>;
+    /**
+     * [Optional] Value field for an AI Search endpoint tag
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface AiSearchEndpointEndpointStatus {
+    /**
+     * (string) - Human-readable detail about the endpoint's current state or the reason for a state transition
+     */
+    message?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     */
+    state?: pulumi.Input<string | undefined>;
+}
+
+export interface AiSearchEndpointProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface AiSearchEndpointScalingInfo {
+    /**
+     * The requested QPS target for the endpoint. Best-effort; the system does not
+     * guarantee this QPS will be achieved
+     */
+    requestedTargetQps?: pulumi.Input<number | undefined>;
+    /**
+     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     */
+    state?: pulumi.Input<string | undefined>;
+}
+
+export interface AiSearchEndpointThroughputInfo {
+    /**
+     * (string) - Additional information about the throughput change request
+     */
+    changeRequestMessage?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - The state of the most recent throughput change request. Possible values are: `CHANGE_ADJUSTED`, `CHANGE_FAILED`, `CHANGE_IN_PROGRESS`, `CHANGE_REACHED_MAXIMUM`, `CHANGE_REACHED_MINIMUM`, `CHANGE_SUCCESS`
+     */
+    changeRequestState?: pulumi.Input<string | undefined>;
+    /**
+     * (number) - The current concurrency (total CPU) allocated to the endpoint
+     */
+    currentConcurrency?: pulumi.Input<number | undefined>;
+    /**
+     * (number) - The current utilization of concurrency as a percentage (0-100)
+     */
+    currentConcurrencyUtilizationPercentage?: pulumi.Input<number | undefined>;
+    /**
+     * (integer) - The current number of replicas allocated to the endpoint
+     */
+    currentNumReplicas?: pulumi.Input<number | undefined>;
+    /**
+     * The maximum concurrency allowed for this endpoint
+     */
+    maximumConcurrencyAllowed?: pulumi.Input<number | undefined>;
+    /**
+     * The minimum concurrency allowed for this endpoint
+     */
+    minimalConcurrencyAllowed?: pulumi.Input<number | undefined>;
+    /**
+     * The requested concurrency (total CPU) for the endpoint
+     */
+    requestedConcurrency?: pulumi.Input<number | undefined>;
+    /**
+     * The requested number of replicas for the endpoint
+     */
+    requestedNumReplicas?: pulumi.Input<number | undefined>;
+}
+
+export interface AiSearchIndexDeltaSyncIndexSpec {
+    /**
+     * [Optional] Select the columns to sync with the index. If left blank, all columns
+     * from the source table are synced. The primary key column and embedding source or
+     * vector column are always synced
+     */
+    columnsToSyncs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    embeddingSourceColumns?: pulumi.Input<pulumi.Input<inputs.AiSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn>[] | undefined>;
+    embeddingVectorColumns?: pulumi.Input<pulumi.Input<inputs.AiSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn>[] | undefined>;
+    /**
+     * [Optional] Name of the Delta table to sync the index contents and computed embeddings to
+     */
+    embeddingWritebackTable?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - The ID of the pipeline that is used to sync the index
+     */
+    pipelineId?: pulumi.Input<string | undefined>;
+    /**
+     * Pipeline execution mode. Required on create — the backend rejects an unset value.
+     * Storage Optimized endpoints accept only `TRIGGERED`; Standard endpoints accept both.
+     * No explicit `stage` — a REQUIRED field staged below its service would be dropped from
+     * combined specs while remaining in `required`, tripping the OpenAPI required-vs-properties
+     * consistency check. The field inherits the service's launch stage. Possible values are: `CONTINUOUS`, `TRIGGERED`
+     */
+    pipelineType: pulumi.Input<string>;
+    /**
+     * The full name of the source Delta table
+     */
+    sourceTable?: pulumi.Input<string | undefined>;
+}
+
+export interface AiSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
+    /**
+     * Name of the embedding model endpoint, used by default for both ingestion and querying
+     */
+    embeddingModelEndpoint?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the embedding model endpoint which, if specified, is used for querying (not ingestion)
+     */
+    modelEndpointNameForQuery?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Name of the AI Search index. Server-assigned full resource path
+     * (`workspaces/{workspace}/endpoints/{endpoint}/indexes/{index}`) on output, where
+     * `{index}` is the index's Unity Catalog table name. On create, the user-supplied UC
+     * table name is conveyed via `CreateIndexRequest.index_id`; the server composes the
+     * full `name` and returns it on the response
+     */
+    name?: pulumi.Input<string | undefined>;
+}
+
+export interface AiSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
+    /**
+     * Dimension of the embedding vector
+     */
+    embeddingDimension?: pulumi.Input<number | undefined>;
+    /**
+     * (string) - Name of the AI Search index. Server-assigned full resource path
+     * (`workspaces/{workspace}/endpoints/{endpoint}/indexes/{index}`) on output, where
+     * `{index}` is the index's Unity Catalog table name. On create, the user-supplied UC
+     * table name is conveyed via `CreateIndexRequest.index_id`; the server composes the
+     * full `name` and returns it on the response
+     */
+    name?: pulumi.Input<string | undefined>;
+}
+
+export interface AiSearchIndexDirectAccessIndexSpec {
+    embeddingSourceColumns?: pulumi.Input<pulumi.Input<inputs.AiSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn>[] | undefined>;
+    embeddingVectorColumns?: pulumi.Input<pulumi.Input<inputs.AiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn>[] | undefined>;
+    /**
+     * The schema of the index in JSON format. Supported types are `integer`, `long`,
+     * `float`, `double`, `boolean`, `string`, `date`, `timestamp`. Supported types for
+     * vector columns: `array<float>`, `array<double>`
+     */
+    schemaJson?: pulumi.Input<string | undefined>;
+}
+
+export interface AiSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
+    /**
+     * Name of the embedding model endpoint, used by default for both ingestion and querying
+     */
+    embeddingModelEndpoint?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the embedding model endpoint which, if specified, is used for querying (not ingestion)
+     */
+    modelEndpointNameForQuery?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Name of the AI Search index. Server-assigned full resource path
+     * (`workspaces/{workspace}/endpoints/{endpoint}/indexes/{index}`) on output, where
+     * `{index}` is the index's Unity Catalog table name. On create, the user-supplied UC
+     * table name is conveyed via `CreateIndexRequest.index_id`; the server composes the
+     * full `name` and returns it on the response
+     */
+    name?: pulumi.Input<string | undefined>;
+}
+
+export interface AiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
+    /**
+     * Dimension of the embedding vector
+     */
+    embeddingDimension?: pulumi.Input<number | undefined>;
+    /**
+     * (string) - Name of the AI Search index. Server-assigned full resource path
+     * (`workspaces/{workspace}/endpoints/{endpoint}/indexes/{index}`) on output, where
+     * `{index}` is the index's Unity Catalog table name. On create, the user-supplied UC
+     * table name is conveyed via `CreateIndexRequest.index_id`; the server composes the
+     * full `name` and returns it on the response
+     */
+    name?: pulumi.Input<string | undefined>;
+}
+
+export interface AiSearchIndexProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface AiSearchIndexStatus {
+    /**
+     * (string) - Index API URL used to perform operations on the index
+     */
+    indexUrl?: pulumi.Input<string | undefined>;
+    /**
+     * (integer) - Number of rows indexed
+     */
+    indexedRowCount?: pulumi.Input<number | undefined>;
+    /**
+     * (string) - Human-readable detail about the index's current state
+     */
+    message?: pulumi.Input<string | undefined>;
+    /**
+     * (boolean) - Whether the index is ready for search
+     */
+    ready?: pulumi.Input<boolean | undefined>;
+}
+
 export interface AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy {
     /**
      * Configured embedding policy. Possible values are `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`.
@@ -1824,6 +2049,7 @@ export interface AppAppStatus {
      * The status message of the deployment.
      */
     message?: pulumi.Input<string | undefined>;
+    runningInstances?: pulumi.Input<number | undefined>;
     /**
      * The state of the deployment.
      */
@@ -3046,6 +3272,17 @@ export interface ComplianceSecurityProfileWorkspaceSettingProviderConfig {
     workspaceId?: pulumi.Input<string | undefined>;
 }
 
+export interface ConnectionEnvironmentSettings {
+    /**
+     * Environment version.
+     */
+    environmentVersion?: pulumi.Input<string | undefined>;
+    /**
+     * List of Java dependencies.
+     */
+    javaDependencies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
 export interface ConnectionProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -3054,6 +3291,9 @@ export interface ConnectionProviderConfig {
 }
 
 export interface ConnectionProvisioningInfo {
+    /**
+     * The provisioning state of the resource. Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, or `UPDATING`.
+     */
     state?: pulumi.Input<string | undefined>;
 }
 
@@ -3645,6 +3885,12 @@ export interface DatabaseSyncedDatabaseTableProviderConfig {
 
 export interface DatabaseSyncedDatabaseTableSpec {
     /**
+     * When true, enables accelerated sync mode for the initial data load.
+     * This significantly improves performance for large tables.
+     * Requires workspace-level enablement
+     */
+    acceleratedSync?: pulumi.Input<boolean | undefined>;
+    /**
      * If true, the synced table's logical database and schema resources in PG
      * will be created if they do not already exist
      */
@@ -3682,6 +3928,11 @@ export interface DatabaseSyncedDatabaseTableSpec {
      * Time series key to deduplicate (tie-break) rows with the same primary key
      */
     timeseriesKey?: pulumi.Input<string | undefined>;
+    /**
+     * Override the default Delta->PG type mapping for specific columns.
+     * A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+     */
+    typeOverrides?: pulumi.Input<pulumi.Input<inputs.DatabaseSyncedDatabaseTableSpecTypeOverride>[] | undefined>;
 }
 
 export interface DatabaseSyncedDatabaseTableSpecNewPipelineSpec {
@@ -3703,6 +3954,22 @@ export interface DatabaseSyncedDatabaseTableSpecNewPipelineSpec {
      * This needs to be in the standard catalog where the user has permissions to create Delta tables
      */
     storageSchema?: pulumi.Input<string | undefined>;
+}
+
+export interface DatabaseSyncedDatabaseTableSpecTypeOverride {
+    /**
+     * Name of the source column whose target PostgreSQL type should be overridden
+     */
+    columnName: pulumi.Input<string>;
+    /**
+     * PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     */
+    pgType: pulumi.Input<string>;
+    /**
+     * Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
+     * (specifies the vector dimension, e.g., 1024)
+     */
+    size?: pulumi.Input<number | undefined>;
 }
 
 export interface DbfsFileProviderConfig {
@@ -3829,8 +4096,7 @@ export interface DisasterRecoveryFailoverGroupWorkspaceSet {
      */
     name: pulumi.Input<string>;
     /**
-     * Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-     * Requires all workspaces in the set to be Mission Critical tier
+     * Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
      */
     replicateWorkspaceAssets: pulumi.Input<boolean>;
     /**
@@ -3841,7 +4107,7 @@ export interface DisasterRecoveryFailoverGroupWorkspaceSet {
     stableUrlNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Workspace IDs in this set. The system derives and validates regions.
-     * EA: exactly 2 workspaces (one per region)
+     * All workspaces must be in the Mission Critical tier
      */
     workspaceIds: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -4316,6 +4582,10 @@ export interface FeatureEngineeringFeatureSource {
      * A request-time data source
      */
     requestSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceRequestSource | undefined>;
+    /**
+     * A Stream data source
+     */
+    streamSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceStreamSource | undefined>;
 }
 
 export interface FeatureEngineeringFeatureSourceDeltaTableSource {
@@ -4414,6 +4684,20 @@ export interface FeatureEngineeringFeatureSourceRequestSourceFlatSchemaField {
      * (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
      */
     name: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureSourceStreamSource {
+    /**
+     * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+     * The filter condition applied to the source data before aggregation
+     */
+    filterCondition?: pulumi.Input<string | undefined>;
+    /**
+     * The full three-part name (catalog, schema, name) of the feature. This is the
+     * feature's resource identifier; the catalog_name, schema_name, and name fields
+     * below are OUTPUT_ONLY decomposed views of this value
+     */
+    fullName: pulumi.Input<string>;
 }
 
 export interface FeatureEngineeringFeatureTimeWindow {
@@ -4544,9 +4828,6 @@ export interface FeatureEngineeringKafkaConfigAuthConfigMtlsConfigTruststorePass
 }
 
 export interface FeatureEngineeringKafkaConfigBackfillSource {
-    /**
-     * The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
-     */
     deltaTableName?: pulumi.Input<string | undefined>;
     /**
      * Deprecated: Use deltaTableName instead. Kept for backwards compatibility.
@@ -4587,6 +4868,87 @@ export interface FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource {
      * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
      */
     transformationSql?: pulumi.Input<string | undefined>;
+}
+
+export interface FeatureEngineeringKafkaConfigIngestionConfig {
+    /**
+     * (integer) - The ID of the Databricks Job that performs the historical backfill of the ingestion Delta table
+     */
+    backfillJobId?: pulumi.Input<number | undefined>;
+    /**
+     * A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+     * In the future, a separate table will be maintained by Databricks for forward filling data.
+     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     */
+    backfillSource?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigIngestionConfigBackfillSource | undefined>;
+    /**
+     * Column paths used to identify duplicate rows during ingestion; only one row per
+     * distinct combination of these values is kept. Use dot notation for nested fields
+     * (e.g. `value.user_id`). Empty list means every column is compared
+     */
+    deduplicationColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Destination for the Databricks-managed Delta table that holds an offline copy of the streaming data for querying and training.
+     * This table contains both 1) forward-filled data from the Stream and 2) backfilled data from the BackfillSource (if provided).
+     * This table is created and managed by Databricks and is deleted when the Stream is deleted
+     */
+    ingestionDestination: pulumi.Input<inputs.FeatureEngineeringKafkaConfigIngestionConfigIngestionDestination>;
+    /**
+     * (integer) - The ID of the Databricks Job that performs the forward-fill ingestion
+     */
+    ingestionJobId?: pulumi.Input<number | undefined>;
+    /**
+     * (string) - The ID of the SDP pipeline that continuously copies new events from the streaming source
+     * into the ingestion Delta table
+     */
+    ingestionPipelineId?: pulumi.Input<string | undefined>;
+}
+
+export interface FeatureEngineeringKafkaConfigIngestionConfigBackfillSource {
+    deltaTableName?: pulumi.Input<string | undefined>;
+    /**
+     * Deprecated: Use deltaTableName instead. Kept for backwards compatibility.
+     * The Delta table source containing the historical data to backfill.
+     * Only the delta table name is used for backfill, other fields are ignored
+     */
+    deltaTableSource?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource | undefined>;
+}
+
+export interface FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource {
+    /**
+     * Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
+     * Required if transformationSql is specified.
+     * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
+     */
+    dataframeSchema?: pulumi.Input<string | undefined>;
+    /**
+     * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity columns of the Delta table
+     */
+    entityColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     */
+    filterCondition?: pulumi.Input<string | undefined>;
+    /**
+     * The full three-part (catalog, schema, table) name of the Delta table
+     */
+    fullName: pulumi.Input<string>;
+    /**
+     * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column of the Delta table
+     */
+    timeseriesColumn?: pulumi.Input<string | undefined>;
+    /**
+     * A single SQL SELECT expression applied after filter_condition.
+     * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
+     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     */
+    transformationSql?: pulumi.Input<string | undefined>;
+}
+
+export interface FeatureEngineeringKafkaConfigIngestionConfigIngestionDestination {
+    deltaTableName?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringKafkaConfigKeySchema {
@@ -4667,6 +5029,62 @@ export interface FeatureEngineeringMaterializedFeatureTableTrigger {
 }
 
 export interface FileProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAiSearchEndpointProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAiSearchEndpointProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAiSearchEndpointsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAiSearchEndpointsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAiSearchIndexProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAiSearchIndexProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAiSearchIndexesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAiSearchIndexesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -4857,6 +5275,7 @@ export interface GetCatalogCatalogInfo {
      * Username of catalog creator.
      */
     createdBy?: string;
+    customMaxRetentionHours?: number;
     /**
      * object describing applied predictive optimization flag.
      */
@@ -4947,6 +5366,7 @@ export interface GetCatalogCatalogInfoArgs {
      * Username of catalog creator.
      */
     createdBy?: pulumi.Input<string | undefined>;
+    customMaxRetentionHours?: pulumi.Input<number | undefined>;
     /**
      * object describing applied predictive optimization flag.
      */
@@ -12602,6 +13022,7 @@ export interface GetSchemaSchemaInfo {
      * username of schema creator.
      */
     createdBy?: string;
+    customMaxRetentionHours?: number;
     /**
      * information about actual state of predictive optimization.
      */
@@ -12677,6 +13098,7 @@ export interface GetSchemaSchemaInfoArgs {
      * username of schema creator.
      */
     createdBy?: pulumi.Input<string | undefined>;
+    customMaxRetentionHours?: pulumi.Input<number | undefined>;
     /**
      * information about actual state of predictive optimization.
      */
@@ -15978,6 +16400,9 @@ export interface JobTask {
      * A flag to disable auto optimization in serverless tasks.
      */
     disableAutoOptimization?: pulumi.Input<boolean | undefined>;
+    /**
+     * (Bool) An optional flag to disable the task. If set to `true`, the task will not run even if it is part of a job.
+     */
     disabled?: pulumi.Input<boolean | undefined>;
     /**
      * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
@@ -16296,6 +16721,9 @@ export interface JobTaskForEachTaskTask {
      * A flag to disable auto optimization in serverless tasks.
      */
     disableAutoOptimization?: pulumi.Input<boolean | undefined>;
+    /**
+     * (Bool) An optional flag to disable the task. If set to `true`, the task will not run even if it is part of a job.
+     */
     disabled?: pulumi.Input<boolean | undefined>;
     /**
      * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
@@ -19551,11 +19979,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string | undefined>;
     /**
@@ -19622,11 +20050,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string | undefined>;
     subnetCidr: pulumi.Input<string>;
@@ -20198,6 +20626,8 @@ export interface PipelineIngestionDefinitionObjectReport {
 
 export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
     autoFullRefreshPolicy?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy | undefined>;
+    clusteringColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    enableAutoClustering?: pulumi.Input<boolean | undefined>;
     excludeColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     includeColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     primaryKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -20206,6 +20636,7 @@ export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
     salesforceIncludeFormulaFields?: pulumi.Input<boolean | undefined>;
     scdType?: pulumi.Input<string | undefined>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    tableProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters | undefined>;
 }
 
@@ -20412,6 +20843,8 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsZendeskS
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
     autoFullRefreshPolicy?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy | undefined>;
+    clusteringColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    enableAutoClustering?: pulumi.Input<boolean | undefined>;
     excludeColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     includeColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     primaryKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -20420,6 +20853,7 @@ export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
     salesforceIncludeFormulaFields?: pulumi.Input<boolean | undefined>;
     scdType?: pulumi.Input<string | undefined>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    tableProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters | undefined>;
 }
 
@@ -20628,6 +21062,8 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsZendeskSu
 
 export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
     autoFullRefreshPolicy?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicy | undefined>;
+    clusteringColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    enableAutoClustering?: pulumi.Input<boolean | undefined>;
     excludeColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     includeColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     primaryKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -20636,6 +21072,7 @@ export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
     salesforceIncludeFormulaFields?: pulumi.Input<boolean | undefined>;
     scdType?: pulumi.Input<string | undefined>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    tableProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters | undefined>;
 }
 
@@ -20689,6 +21126,8 @@ export interface PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfig {
 
 export interface PipelineIngestionDefinitionTableConfiguration {
     autoFullRefreshPolicy?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy | undefined>;
+    clusteringColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    enableAutoClustering?: pulumi.Input<boolean | undefined>;
     excludeColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     includeColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     primaryKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -20697,6 +21136,7 @@ export interface PipelineIngestionDefinitionTableConfiguration {
     salesforceIncludeFormulaFields?: pulumi.Input<boolean | undefined>;
     scdType?: pulumi.Input<string | undefined>;
     sequenceBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    tableProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     workdayReportParameters?: pulumi.Input<inputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters | undefined>;
 }
 
@@ -20921,9 +21361,7 @@ export interface PostgresBranchSpec {
 
 export interface PostgresBranchStatus {
     /**
-     * The ID to use for the Branch. This becomes the final component of the branch's resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `development` becomes `projects/my-app/branches/development`
+     * The part of the name, chosen by the user when the resource was created
      */
     branchId?: pulumi.Input<string | undefined>;
     /**
@@ -21034,14 +21472,7 @@ export interface PostgresDatabaseSpec {
 
 export interface PostgresDatabaseStatus {
     /**
-     * The ID to use for the Database, which will become the final component of
-     * the database's resource name.
-     * This ID becomes the database name in postgres.
-     *
-     * This value should be 4-63 characters, and only use characters available in DNS names,
-     * as defined by RFC-1123
-     *
-     * If databaseId is not specified in the request, it is generated automatically
+     * (string) - Part of the resource name
      */
     databaseId?: pulumi.Input<string | undefined>;
     postgresDatabase?: pulumi.Input<string | undefined>;
@@ -21135,9 +21566,7 @@ export interface PostgresEndpointStatus {
      */
     disabled?: pulumi.Input<boolean | undefined>;
     /**
-     * The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+     * The part of the name, chosen by the user when the resource was created
      */
     endpointId?: pulumi.Input<string | undefined>;
     /**
@@ -21345,9 +21774,7 @@ export interface PostgresProjectStatus {
      */
     pgVersion?: pulumi.Input<number | undefined>;
     /**
-     * The ID to use for the Project. This becomes the final component of the project's resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `my-app` becomes `projects/my-app`
+     * The part of the name, chosen by the user when the resource was created
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
@@ -21422,14 +21849,7 @@ export interface PostgresRoleStatus {
     membershipRoles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     postgresRole?: pulumi.Input<string | undefined>;
     /**
-     * The ID to use for the Role, which will become the final component of
-     * the role's resource name.
-     * This ID becomes the role in Postgres.
-     *
-     * This value should be 4-63 characters, and valid characters
-     * are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-     *
-     * If roleId is not specified in the request, it is generated automatically
+     * (string) - Part of the resource name
      */
     roleId?: pulumi.Input<string | undefined>;
 }
@@ -21448,6 +21868,12 @@ export interface PostgresSyncedTableProviderConfig {
 }
 
 export interface PostgresSyncedTableSpec {
+    /**
+     * When true, enables accelerated sync mode for the initial data load.
+     * This significantly improves performance for large tables.
+     * Requires workspace-level enablement through Lakebase Accelerated Sync preview
+     */
+    acceleratedSync?: pulumi.Input<boolean | undefined>;
     /**
      * The full resource name the branch associated with the table.
      *
@@ -21506,6 +21932,11 @@ export interface PostgresSyncedTableSpec {
      * Time series key to deduplicate (tie-break) rows with the same primary key
      */
     timeseriesKey?: pulumi.Input<string | undefined>;
+    /**
+     * Override the default Delta->PG type mapping for specific columns.
+     * A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+     */
+    typeOverrides?: pulumi.Input<pulumi.Input<inputs.PostgresSyncedTableSpecTypeOverride>[] | undefined>;
 }
 
 export interface PostgresSyncedTableSpecNewPipelineSpec {
@@ -21523,6 +21954,22 @@ export interface PostgresSyncedTableSpecNewPipelineSpec {
      * This needs to be in the standard catalog where the user has permissions to create Delta tables
      */
     storageSchema?: pulumi.Input<string | undefined>;
+}
+
+export interface PostgresSyncedTableSpecTypeOverride {
+    /**
+     * Name of the source column whose target PostgreSQL type should be overridden
+     */
+    columnName: pulumi.Input<string>;
+    /**
+     * PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     */
+    pgType: pulumi.Input<string>;
+    /**
+     * Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
+     * (specifies the vector dimension, e.g., 1024)
+     */
+    size?: pulumi.Input<number | undefined>;
 }
 
 export interface PostgresSyncedTableStatus {

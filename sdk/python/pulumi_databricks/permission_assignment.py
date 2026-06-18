@@ -265,6 +265,8 @@ class PermissionAssignment(pulumi.CustomResource):
                  user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/permissions)
+
         This resource is used to assign account-level users, service principals and groups to a Databricks workspace. To configure additional entitlements such as cluster creation, please use Entitlements
 
         > This resource can only be used with a workspace-level provider!
@@ -378,6 +380,8 @@ class PermissionAssignment(pulumi.CustomResource):
                  args: PermissionAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/permissions)
+
         This resource is used to assign account-level users, service principals and groups to a Databricks workspace. To configure additional entitlements such as cluster creation, please use Entitlements
 
         > This resource can only be used with a workspace-level provider!

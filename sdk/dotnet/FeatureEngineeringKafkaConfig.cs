@@ -42,6 +42,13 @@ namespace Pulumi.Databricks
         public Output<ImmutableDictionary<string, string>?> ExtraOptions { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for ingesting Kafka data into a Databricks-managed
+        /// Delta table
+        /// </summary>
+        [Output("ingestionConfig")]
+        public Output<Outputs.FeatureEngineeringKafkaConfigIngestionConfig?> IngestionConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Schema configuration for extracting message keys from topics. At least one of KeySchema and ValueSchema must be provided
         /// </summary>
         [Output("keySchema")]
@@ -151,6 +158,13 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
+        /// Configuration for ingesting Kafka data into a Databricks-managed
+        /// Delta table
+        /// </summary>
+        [Input("ingestionConfig")]
+        public Input<Inputs.FeatureEngineeringKafkaConfigIngestionConfigArgs>? IngestionConfig { get; set; }
+
+        /// <summary>
         /// Schema configuration for extracting message keys from topics. At least one of KeySchema and ValueSchema must be provided
         /// </summary>
         [Input("keySchema")]
@@ -213,6 +227,13 @@ namespace Pulumi.Databricks
             get => _extraOptions ?? (_extraOptions = new InputMap<string>());
             set => _extraOptions = value;
         }
+
+        /// <summary>
+        /// Configuration for ingesting Kafka data into a Databricks-managed
+        /// Delta table
+        /// </summary>
+        [Input("ingestionConfig")]
+        public Input<Inputs.FeatureEngineeringKafkaConfigIngestionConfigGetArgs>? IngestionConfig { get; set; }
 
         /// <summary>
         /// Schema configuration for extracting message keys from topics. At least one of KeySchema and ValueSchema must be provided

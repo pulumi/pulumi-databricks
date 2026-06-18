@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/workspace/workspace)
+//
 // This resource allows you to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
 //
 // > This resource can only be used with a workspace-level provider!

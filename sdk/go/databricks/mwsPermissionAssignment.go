@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/account/workspaceassignment)
+//
 // This resource is used to assign account-level users, service principals and groups to a Databricks workspace. To configure additional entitlements such as cluster creation, please use databricks_entitlements.
 //
 // > This resource can only be used with an account-level provider!

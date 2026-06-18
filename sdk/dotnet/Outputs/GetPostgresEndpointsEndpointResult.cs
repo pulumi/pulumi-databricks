@@ -18,6 +18,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// (string) - Part of the resource name
+        /// </summary>
+        public readonly string EndpointId;
+        /// <summary>
         /// (string) - Output only. The full resource path of the endpoint.
         /// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         /// </summary>
@@ -52,6 +56,8 @@ namespace Pulumi.Databricks.Outputs
         private GetPostgresEndpointsEndpointResult(
             string createTime,
 
+            string endpointId,
+
             string name,
 
             string parent,
@@ -67,6 +73,7 @@ namespace Pulumi.Databricks.Outputs
             string updateTime)
         {
             CreateTime = createTime;
+            EndpointId = endpointId;
             Name = name;
             Parent = parent;
             ProviderConfig = providerConfig;

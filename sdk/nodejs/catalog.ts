@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/catalogs)
+ *
  * Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
  *
  * A `databricks.Catalog` is contained within databricks.Metastore and can contain databricks_schema. By default, Databricks creates `default` schema for every new catalog, but Pulumi plugin is removing this auto-created schema, so that resource destruction could be done in a clean way.
@@ -85,6 +87,7 @@ export class Catalog extends pulumi.CustomResource {
      * username of catalog creator.
      */
     declare public /*out*/ readonly createdBy: pulumi.Output<string>;
+    declare public readonly customMaxRetentionHours: pulumi.Output<number | undefined>;
     declare public readonly effectivePredictiveOptimizationFlag: pulumi.Output<outputs.CatalogEffectivePredictiveOptimizationFlag>;
     /**
      * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
@@ -173,6 +176,7 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["connectionName"] = state?.connectionName;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["customMaxRetentionHours"] = state?.customMaxRetentionHours;
             resourceInputs["effectivePredictiveOptimizationFlag"] = state?.effectivePredictiveOptimizationFlag;
             resourceInputs["enablePredictiveOptimization"] = state?.enablePredictiveOptimization;
             resourceInputs["forceDestroy"] = state?.forceDestroy;
@@ -198,6 +202,7 @@ export class Catalog extends pulumi.CustomResource {
             resourceInputs["browseOnly"] = args?.browseOnly;
             resourceInputs["comment"] = args?.comment;
             resourceInputs["connectionName"] = args?.connectionName;
+            resourceInputs["customMaxRetentionHours"] = args?.customMaxRetentionHours;
             resourceInputs["effectivePredictiveOptimizationFlag"] = args?.effectivePredictiveOptimizationFlag;
             resourceInputs["enablePredictiveOptimization"] = args?.enablePredictiveOptimization;
             resourceInputs["forceDestroy"] = args?.forceDestroy;
@@ -252,6 +257,7 @@ export interface CatalogState {
      * username of catalog creator.
      */
     createdBy?: pulumi.Input<string | undefined>;
+    customMaxRetentionHours?: pulumi.Input<number | undefined>;
     effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.CatalogEffectivePredictiveOptimizationFlag | undefined>;
     /**
      * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
@@ -335,6 +341,7 @@ export interface CatalogArgs {
      * For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
      */
     connectionName?: pulumi.Input<string | undefined>;
+    customMaxRetentionHours?: pulumi.Input<number | undefined>;
     effectivePredictiveOptimizationFlag?: pulumi.Input<inputs.CatalogEffectivePredictiveOptimizationFlag | undefined>;
     /**
      * Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`

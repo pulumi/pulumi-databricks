@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -15,6 +16,7 @@ public final class GetAppAppAppStatus {
      * 
      */
     private String message;
+    private Integer runningInstances;
     /**
      * @return The state of the deployment.
      * 
@@ -28,6 +30,9 @@ public final class GetAppAppAppStatus {
      */
     public String message() {
         return this.message;
+    }
+    public Integer runningInstances() {
+        return this.runningInstances;
     }
     /**
      * @return The state of the deployment.
@@ -47,11 +52,13 @@ public final class GetAppAppAppStatus {
     @CustomType.Builder
     public static final class Builder {
         private String message;
+        private Integer runningInstances;
         private String state;
         public Builder() {}
         public Builder(GetAppAppAppStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.message = defaults.message;
+    	      this.runningInstances = defaults.runningInstances;
     	      this.state = defaults.state;
         }
 
@@ -61,6 +68,14 @@ public final class GetAppAppAppStatus {
               throw new MissingRequiredPropertyException("GetAppAppAppStatus", "message");
             }
             this.message = message;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder runningInstances(Integer runningInstances) {
+            if (runningInstances == null) {
+              throw new MissingRequiredPropertyException("GetAppAppAppStatus", "runningInstances");
+            }
+            this.runningInstances = runningInstances;
             return this;
         }
         @CustomType.Setter
@@ -74,6 +89,7 @@ public final class GetAppAppAppStatus {
         public GetAppAppAppStatus build() {
             final var _resultValue = new GetAppAppAppStatus();
             _resultValue.message = message;
+            _resultValue.runningInstances = runningInstances;
             _resultValue.state = state;
             return _resultValue;
         }

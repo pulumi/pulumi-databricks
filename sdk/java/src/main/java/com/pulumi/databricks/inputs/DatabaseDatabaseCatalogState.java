@@ -40,14 +40,14 @@ public final class DatabaseDatabaseCatalogState extends com.pulumi.resources.Res
     }
 
     /**
-     * The name of the database (in a instance) associated with the catalog
+     * The name of the database (in an instance) associated with the catalog
      * 
      */
     @Import(name="databaseName")
     private @Nullable Output<String> databaseName;
 
     /**
-     * @return The name of the database (in a instance) associated with the catalog
+     * @return The name of the database (in an instance) associated with the catalog
      * 
      */
     public Optional<Output<String>> databaseName() {
@@ -159,7 +159,7 @@ public final class DatabaseDatabaseCatalogState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param databaseName The name of the database (in a instance) associated with the catalog
+         * @param databaseName The name of the database (in an instance) associated with the catalog
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class DatabaseDatabaseCatalogState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param databaseName The name of the database (in a instance) associated with the catalog
+         * @param databaseName The name of the database (in an instance) associated with the catalog
          * 
          * @return builder
          * 

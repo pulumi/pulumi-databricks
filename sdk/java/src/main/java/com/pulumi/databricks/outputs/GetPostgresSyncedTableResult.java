@@ -44,6 +44,11 @@ public final class GetPostgresSyncedTableResult {
      */
     private GetPostgresSyncedTableStatus status;
     /**
+     * @return (string) - The part of the name, chosen by the user when the resource was created
+     * 
+     */
+    private String syncedTableId;
+    /**
      * @return (string) - The Unity Catalog table ID for this synced table
      * 
      */
@@ -91,6 +96,13 @@ public final class GetPostgresSyncedTableResult {
         return this.status;
     }
     /**
+     * @return (string) - The part of the name, chosen by the user when the resource was created
+     * 
+     */
+    public String syncedTableId() {
+        return this.syncedTableId;
+    }
+    /**
      * @return (string) - The Unity Catalog table ID for this synced table
      * 
      */
@@ -113,6 +125,7 @@ public final class GetPostgresSyncedTableResult {
         private @Nullable GetPostgresSyncedTableProviderConfig providerConfig;
         private GetPostgresSyncedTableSpec spec;
         private GetPostgresSyncedTableStatus status;
+        private String syncedTableId;
         private String uid;
         public Builder() {}
         public Builder(GetPostgresSyncedTableResult defaults) {
@@ -123,6 +136,7 @@ public final class GetPostgresSyncedTableResult {
     	      this.providerConfig = defaults.providerConfig;
     	      this.spec = defaults.spec;
     	      this.status = defaults.status;
+    	      this.syncedTableId = defaults.syncedTableId;
     	      this.uid = defaults.uid;
         }
 
@@ -173,6 +187,14 @@ public final class GetPostgresSyncedTableResult {
             return this;
         }
         @CustomType.Setter
+        public Builder syncedTableId(String syncedTableId) {
+            if (syncedTableId == null) {
+              throw new MissingRequiredPropertyException("GetPostgresSyncedTableResult", "syncedTableId");
+            }
+            this.syncedTableId = syncedTableId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder uid(String uid) {
             if (uid == null) {
               throw new MissingRequiredPropertyException("GetPostgresSyncedTableResult", "uid");
@@ -188,6 +210,7 @@ public final class GetPostgresSyncedTableResult {
             _resultValue.providerConfig = providerConfig;
             _resultValue.spec = spec;
             _resultValue.status = status;
+            _resultValue.syncedTableId = syncedTableId;
             _resultValue.uid = uid;
             return _resultValue;
         }

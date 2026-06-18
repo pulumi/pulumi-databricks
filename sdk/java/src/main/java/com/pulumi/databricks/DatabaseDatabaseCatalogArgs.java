@@ -41,14 +41,14 @@ public final class DatabaseDatabaseCatalogArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The name of the database (in a instance) associated with the catalog
+     * The name of the database (in an instance) associated with the catalog
      * 
      */
     @Import(name="databaseName", required=true)
     private Output<String> databaseName;
 
     /**
-     * @return The name of the database (in a instance) associated with the catalog
+     * @return The name of the database (in an instance) associated with the catalog
      * 
      */
     public Output<String> databaseName() {
@@ -144,7 +144,7 @@ public final class DatabaseDatabaseCatalogArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param databaseName The name of the database (in a instance) associated with the catalog
+         * @param databaseName The name of the database (in an instance) associated with the catalog
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class DatabaseDatabaseCatalogArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param databaseName The name of the database (in a instance) associated with the catalog
+         * @param databaseName The name of the database (in an instance) associated with the catalog
          * 
          * @return builder
          * 

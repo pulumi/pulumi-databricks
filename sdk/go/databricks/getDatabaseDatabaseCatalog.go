@@ -68,7 +68,7 @@ type LookupDatabaseDatabaseCatalogResult struct {
 	CreateDatabaseIfNotExists bool `pulumi:"createDatabaseIfNotExists"`
 	// (string) - The name of the DatabaseInstance housing the database
 	DatabaseInstanceName string `pulumi:"databaseInstanceName"`
-	// (string) - The name of the database (in a instance) associated with the catalog
+	// (string) - The name of the database (in an instance) associated with the catalog
 	DatabaseName string `pulumi:"databaseName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -125,7 +125,7 @@ func (o LookupDatabaseDatabaseCatalogResultOutput) DatabaseInstanceName() pulumi
 	return o.ApplyT(func(v LookupDatabaseDatabaseCatalogResult) string { return v.DatabaseInstanceName }).(pulumi.StringOutput)
 }
 
-// (string) - The name of the database (in a instance) associated with the catalog
+// (string) - The name of the database (in an instance) associated with the catalog
 func (o LookupDatabaseDatabaseCatalogResultOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseDatabaseCatalogResult) string { return v.DatabaseName }).(pulumi.StringOutput)
 }

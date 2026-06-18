@@ -21,6 +21,11 @@ public final class GetPostgresEndpointResult {
      */
     private String createTime;
     /**
+     * @return (string) - Part of the resource name
+     * 
+     */
+    private String endpointId;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -66,6 +71,13 @@ public final class GetPostgresEndpointResult {
      */
     public String createTime() {
         return this.createTime;
+    }
+    /**
+     * @return (string) - Part of the resource name
+     * 
+     */
+    public String endpointId() {
+        return this.endpointId;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -132,6 +144,7 @@ public final class GetPostgresEndpointResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private String endpointId;
         private String id;
         private String name;
         private String parent;
@@ -144,6 +157,7 @@ public final class GetPostgresEndpointResult {
         public Builder(GetPostgresEndpointResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.endpointId = defaults.endpointId;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.parent = defaults.parent;
@@ -160,6 +174,14 @@ public final class GetPostgresEndpointResult {
               throw new MissingRequiredPropertyException("GetPostgresEndpointResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder endpointId(String endpointId) {
+            if (endpointId == null) {
+              throw new MissingRequiredPropertyException("GetPostgresEndpointResult", "endpointId");
+            }
+            this.endpointId = endpointId;
             return this;
         }
         @CustomType.Setter
@@ -227,6 +249,7 @@ public final class GetPostgresEndpointResult {
         public GetPostgresEndpointResult build() {
             final var _resultValue = new GetPostgresEndpointResult();
             _resultValue.createTime = createTime;
+            _resultValue.endpointId = endpointId;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.parent = parent;

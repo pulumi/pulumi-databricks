@@ -26,6 +26,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/apps)
+ * 
  * [Databricks Apps](https://docs.databricks.com/en/dev-tools/databricks-apps/index.html) run directly on a customer&#39;s Databricks instance, integrate with their data, use and extend Databricks services, and enable users to interact through single sign-on. This resource creates the application but does not handle app deployment, which should be handled separately as part of your CI/CD pipeline.
  * 
  * &gt; This resource can only be used with a workspace-level provider!

@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/account/serviceprincipalsecrets)
+ *
  * With this resource you can create a secret for a given [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html).
  *
  * > This resource can only be used with an account-level or workspace-level provider!

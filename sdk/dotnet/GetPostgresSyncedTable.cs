@@ -196,6 +196,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetPostgresSyncedTableStatusResult Status;
         /// <summary>
+        /// (string) - The part of the name, chosen by the user when the resource was created
+        /// </summary>
+        public readonly string SyncedTableId;
+        /// <summary>
         /// (string) - The Unity Catalog table ID for this synced table
         /// </summary>
         public readonly string Uid;
@@ -214,6 +218,8 @@ namespace Pulumi.Databricks
 
             Outputs.GetPostgresSyncedTableStatusResult status,
 
+            string syncedTableId,
+
             string uid)
         {
             CreateTime = createTime;
@@ -222,6 +228,7 @@ namespace Pulumi.Databricks
             ProviderConfig = providerConfig;
             Spec = spec;
             Status = status;
+            SyncedTableId = syncedTableId;
             Uid = uid;
         }
     }

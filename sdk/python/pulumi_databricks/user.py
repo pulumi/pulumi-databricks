@@ -629,6 +629,8 @@ class User(pulumi.CustomResource):
                  workspace_consume: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/users)
+
         This resource allows you to manage [users in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/users.html), [Databricks Account Console](https://accounts.cloud.databricks.com/) or [Azure Databricks Account Console](https://accounts.azuredatabricks.net). You can also associate Databricks users to databricks_group. Upon user creation the user will receive a welcome email. You can also get information about caller identity using get_current_user data source.
 
         > This resource can be used with an account or workspace-level provider.
@@ -739,6 +741,8 @@ class User(pulumi.CustomResource):
                  args: UserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/users)
+
         This resource allows you to manage [users in Databricks Workspace](https://docs.databricks.com/administration-guide/users-groups/users.html), [Databricks Account Console](https://accounts.cloud.databricks.com/) or [Azure Databricks Account Console](https://accounts.azuredatabricks.net). You can also associate Databricks users to databricks_group. Upon user creation the user will receive a welcome email. You can also get information about caller identity using get_current_user data source.
 
         > This resource can be used with an account or workspace-level provider.

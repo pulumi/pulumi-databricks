@@ -641,6 +641,8 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
                  vpc_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/networkconnectivity)
+
         Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
 
         > This resource can only be used with an account-level provider!
@@ -733,6 +735,8 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
                  args: MwsNccPrivateEndpointRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/networkconnectivity)
+
         Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
 
         > This resource can only be used with an account-level provider!
@@ -939,7 +943,7 @@ class MwsNccPrivateEndpointRule(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def account_id(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "account_id")
 
     @_builtins.property

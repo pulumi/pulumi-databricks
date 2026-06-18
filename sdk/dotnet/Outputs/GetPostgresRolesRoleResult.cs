@@ -32,6 +32,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetPostgresRolesRoleProviderConfigResult? ProviderConfig;
         /// <summary>
+        /// (string) - Part of the resource name
+        /// </summary>
+        public readonly string RoleId;
+        /// <summary>
         /// (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
         /// </summary>
         public readonly Outputs.GetPostgresRolesRoleSpecResult Spec;
@@ -54,6 +58,8 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.GetPostgresRolesRoleProviderConfigResult? providerConfig,
 
+            string roleId,
+
             Outputs.GetPostgresRolesRoleSpecResult spec,
 
             Outputs.GetPostgresRolesRoleStatusResult status,
@@ -64,6 +70,7 @@ namespace Pulumi.Databricks.Outputs
             Name = name;
             Parent = parent;
             ProviderConfig = providerConfig;
+            RoleId = roleId;
             Spec = spec;
             Status = status;
             UpdateTime = updateTime;

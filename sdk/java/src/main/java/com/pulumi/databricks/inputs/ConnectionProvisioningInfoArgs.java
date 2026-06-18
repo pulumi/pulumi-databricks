@@ -15,9 +15,17 @@ public final class ConnectionProvisioningInfoArgs extends com.pulumi.resources.R
 
     public static final ConnectionProvisioningInfoArgs Empty = new ConnectionProvisioningInfoArgs();
 
+    /**
+     * The provisioning state of the resource. Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, or `UPDATING`.
+     * 
+     */
     @Import(name="state")
     private @Nullable Output<String> state;
 
+    /**
+     * @return The provisioning state of the resource. Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, or `UPDATING`.
+     * 
+     */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
@@ -46,11 +54,23 @@ public final class ConnectionProvisioningInfoArgs extends com.pulumi.resources.R
             $ = new ConnectionProvisioningInfoArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param state The provisioning state of the resource. Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, or `UPDATING`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
         }
 
+        /**
+         * @param state The provisioning state of the resource. Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, or `UPDATING`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(String state) {
             return state(Output.of(state));
         }

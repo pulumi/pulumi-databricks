@@ -36,16 +36,14 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
     }
 
     /**
-     * Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-     * Requires all workspaces in the set to be Mission Critical tier
+     * Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
      * 
      */
     @Import(name="replicateWorkspaceAssets", required=true)
     private Output<Boolean> replicateWorkspaceAssets;
 
     /**
-     * @return Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-     * Requires all workspaces in the set to be Mission Critical tier
+     * @return Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
      * 
      */
     public Output<Boolean> replicateWorkspaceAssets() {
@@ -73,7 +71,7 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
 
     /**
      * Workspace IDs in this set. The system derives and validates regions.
-     * EA: exactly 2 workspaces (one per region)
+     * All workspaces must be in the Mission Critical tier
      * 
      */
     @Import(name="workspaceIds", required=true)
@@ -81,7 +79,7 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
 
     /**
      * @return Workspace IDs in this set. The system derives and validates regions.
-     * EA: exactly 2 workspaces (one per region)
+     * All workspaces must be in the Mission Critical tier
      * 
      */
     public Output<List<String>> workspaceIds() {
@@ -139,8 +137,7 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
         }
 
         /**
-         * @param replicateWorkspaceAssets Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-         * Requires all workspaces in the set to be Mission Critical tier
+         * @param replicateWorkspaceAssets Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
          * 
          * @return builder
          * 
@@ -151,8 +148,7 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
         }
 
         /**
-         * @param replicateWorkspaceAssets Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-         * Requires all workspaces in the set to be Mission Critical tier
+         * @param replicateWorkspaceAssets Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
          * 
          * @return builder
          * 
@@ -200,7 +196,7 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
 
         /**
          * @param workspaceIds Workspace IDs in this set. The system derives and validates regions.
-         * EA: exactly 2 workspaces (one per region)
+         * All workspaces must be in the Mission Critical tier
          * 
          * @return builder
          * 
@@ -212,7 +208,7 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
 
         /**
          * @param workspaceIds Workspace IDs in this set. The system derives and validates regions.
-         * EA: exactly 2 workspaces (one per region)
+         * All workspaces must be in the Mission Critical tier
          * 
          * @return builder
          * 
@@ -223,7 +219,7 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
 
         /**
          * @param workspaceIds Workspace IDs in this set. The system derives and validates regions.
-         * EA: exactly 2 workspaces (one per region)
+         * All workspaces must be in the Mission Critical tier
          * 
          * @return builder
          * 

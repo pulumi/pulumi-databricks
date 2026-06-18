@@ -61,7 +61,7 @@ export interface GetDatabaseDatabaseCatalogResult {
      */
     readonly databaseInstanceName: string;
     /**
-     * (string) - The name of the database (in a instance) associated with the catalog
+     * (string) - The name of the database (in an instance) associated with the catalog
      */
     readonly databaseName: string;
     /**

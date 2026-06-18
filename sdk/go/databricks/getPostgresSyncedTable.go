@@ -83,6 +83,8 @@ type LookupPostgresSyncedTableResult struct {
 	Spec GetPostgresSyncedTableSpec `pulumi:"spec"`
 	// (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
 	Status GetPostgresSyncedTableStatus `pulumi:"status"`
+	// (string) - The part of the name, chosen by the user when the resource was created
+	SyncedTableId string `pulumi:"syncedTableId"`
 	// (string) - The Unity Catalog table ID for this synced table
 	Uid string `pulumi:"uid"`
 }
@@ -157,6 +159,11 @@ func (o LookupPostgresSyncedTableResultOutput) Spec() GetPostgresSyncedTableSpec
 // (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
 func (o LookupPostgresSyncedTableResultOutput) Status() GetPostgresSyncedTableStatusOutput {
 	return o.ApplyT(func(v LookupPostgresSyncedTableResult) GetPostgresSyncedTableStatus { return v.Status }).(GetPostgresSyncedTableStatusOutput)
+}
+
+// (string) - The part of the name, chosen by the user when the resource was created
+func (o LookupPostgresSyncedTableResultOutput) SyncedTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPostgresSyncedTableResult) string { return v.SyncedTableId }).(pulumi.StringOutput)
 }
 
 // (string) - The Unity Catalog table ID for this synced table

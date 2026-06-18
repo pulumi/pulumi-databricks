@@ -191,6 +191,8 @@ class Directory(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['DirectoryProviderConfigArgs', 'DirectoryProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/workspace)
+
         This resource allows you to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
 
         > This resource can only be used with a workspace-level provider!
@@ -237,6 +239,8 @@ class Directory(pulumi.CustomResource):
                  args: DirectoryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/workspace)
+
         This resource allows you to manage directories in [Databricks Workpace](https://docs.databricks.com/workspace/workspace-objects.html).
 
         > This resource can only be used with a workspace-level provider!

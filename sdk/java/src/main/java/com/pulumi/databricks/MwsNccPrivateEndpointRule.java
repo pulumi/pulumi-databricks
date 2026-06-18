@@ -19,6 +19,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/account/networkconnectivity)
+ * 
  * Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
  * 
  * &gt; This resource can only be used with an account-level provider!
@@ -140,10 +142,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/mwsNccPrivateEndpointRule:MwsNccPrivateEndpointRule")
 public class MwsNccPrivateEndpointRule extends com.pulumi.resources.CustomResource {
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> accountId;
+    private Output<String> accountId;
 
-    public Output<Optional<String>> accountId() {
-        return Codegen.optional(this.accountId);
+    public Output<String> accountId() {
+        return this.accountId;
     }
     /**
      * The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.

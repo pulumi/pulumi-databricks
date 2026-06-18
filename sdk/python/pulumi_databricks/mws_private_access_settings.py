@@ -271,6 +271,8 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/privateaccess)
+
         Allows you to create a Private Access Setting resource that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html)
 
         > This resource can only be used with an account-level provider!
@@ -360,6 +362,8 @@ class MwsPrivateAccessSettings(pulumi.CustomResource):
                  args: MwsPrivateAccessSettingsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/privateaccess)
+
         Allows you to create a Private Access Setting resource that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages AWS PrivateLink](https://docs.databricks.com/administration-guide/cloud-configurations/aws/privatelink.html) or [GCP Private Service Connect](https://docs.gcp.databricks.com/administration-guide/cloud-configurations/gcp/private-service-connect.html)
 
         > This resource can only be used with an account-level provider!

@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [API Documentation](https://docs.databricks.com/api/workspace/querieslegacy)
+    /// 
     /// &gt; This resource is deprecated! Please switch to databricks_query.
     /// 
     /// To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `DatabricksSqlAccess` on your databricks.Group or databricks_user.

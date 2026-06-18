@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringKafkaConfigBackfillSourceResult
     {
         /// <summary>
-        /// (string) - The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
+        /// (string) - The full three-part name (catalog, schema, name) of the Delta table to be created for ingestion
         /// </summary>
         public readonly string? DeltaTableName;
         /// <summary>

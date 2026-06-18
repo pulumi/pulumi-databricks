@@ -198,14 +198,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.PostgresRoleProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The ID to use for the Role, which will become the final component of
-        /// the role's resource name.
-        /// This ID becomes the role in Postgres.
-        /// 
-        /// This value should be 4-63 characters, and valid characters
-        /// are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-        /// 
-        /// If RoleId is not specified in the request, it is generated automatically
+        /// (string) - Part of the resource name
         /// </summary>
         [Output("roleId")]
         public Output<string> RoleId { get; private set; } = null!;
@@ -288,14 +281,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresRoleProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// The ID to use for the Role, which will become the final component of
-        /// the role's resource name.
-        /// This ID becomes the role in Postgres.
-        /// 
-        /// This value should be 4-63 characters, and valid characters
-        /// are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-        /// 
-        /// If RoleId is not specified in the request, it is generated automatically
+        /// (string) - Part of the resource name
         /// </summary>
         [Input("roleId")]
         public Input<string>? RoleId { get; set; }
@@ -341,14 +327,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresRoleProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// The ID to use for the Role, which will become the final component of
-        /// the role's resource name.
-        /// This ID becomes the role in Postgres.
-        /// 
-        /// This value should be 4-63 characters, and valid characters
-        /// are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-        /// 
-        /// If RoleId is not specified in the request, it is generated automatically
+        /// (string) - Part of the resource name
         /// </summary>
         [Input("roleId")]
         public Input<string>? RoleId { get; set; }

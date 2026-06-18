@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [API Documentation](https://docs.databricks.com/api/account/customappintegration)
+    /// 
     /// This resource allows you to enable [custom OAuth applications](https://docs.databricks.com/en/integrations/enable-disable-oauth.html#enable-custom-oauth-applications-using-the-databricks-ui).
     /// 
     /// &gt; This resource can only be used with an account-level provider!

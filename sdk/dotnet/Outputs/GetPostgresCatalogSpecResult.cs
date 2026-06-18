@@ -22,7 +22,7 @@ namespace Pulumi.Databricks.Outputs
         /// if it does not already exist. In this case, the calling user has a role created for
         /// them in Postgres if they do not already have one.
         /// </summary>
-        public readonly bool CreateDatabaseIfMissing;
+        public readonly bool? CreateDatabaseIfMissing;
         /// <summary>
         /// (string) - The name of the Postgres database associated with the catalog
         /// </summary>
@@ -32,7 +32,7 @@ namespace Pulumi.Databricks.Outputs
         private GetPostgresCatalogSpecResult(
             string? branch,
 
-            bool createDatabaseIfMissing,
+            bool? createDatabaseIfMissing,
 
             string postgresDatabase)
         {

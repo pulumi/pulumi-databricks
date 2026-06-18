@@ -79,6 +79,8 @@ type LookupPostgresRoleResult struct {
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent         string                         `pulumi:"parent"`
 	ProviderConfig *GetPostgresRoleProviderConfig `pulumi:"providerConfig"`
+	// (string) - Part of the resource name
+	RoleId string `pulumi:"roleId"`
 	// (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
 	Spec GetPostgresRoleSpec `pulumi:"spec"`
 	// (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
@@ -148,6 +150,11 @@ func (o LookupPostgresRoleResultOutput) Parent() pulumi.StringOutput {
 
 func (o LookupPostgresRoleResultOutput) ProviderConfig() GetPostgresRoleProviderConfigPtrOutput {
 	return o.ApplyT(func(v LookupPostgresRoleResult) *GetPostgresRoleProviderConfig { return v.ProviderConfig }).(GetPostgresRoleProviderConfigPtrOutput)
+}
+
+// (string) - Part of the resource name
+func (o LookupPostgresRoleResultOutput) RoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPostgresRoleResult) string { return v.RoleId }).(pulumi.StringOutput)
 }
 
 // (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes

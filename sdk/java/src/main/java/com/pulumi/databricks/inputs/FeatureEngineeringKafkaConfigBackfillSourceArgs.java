@@ -16,17 +16,9 @@ public final class FeatureEngineeringKafkaConfigBackfillSourceArgs extends com.p
 
     public static final FeatureEngineeringKafkaConfigBackfillSourceArgs Empty = new FeatureEngineeringKafkaConfigBackfillSourceArgs();
 
-    /**
-     * The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
-     * 
-     */
     @Import(name="deltaTableName")
     private @Nullable Output<String> deltaTableName;
 
-    /**
-     * @return The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
-     * 
-     */
     public Optional<Output<String>> deltaTableName() {
         return Optional.ofNullable(this.deltaTableName);
     }
@@ -75,23 +67,11 @@ public final class FeatureEngineeringKafkaConfigBackfillSourceArgs extends com.p
             $ = new FeatureEngineeringKafkaConfigBackfillSourceArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param deltaTableName The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
-         * 
-         * @return builder
-         * 
-         */
         public Builder deltaTableName(@Nullable Output<String> deltaTableName) {
             $.deltaTableName = deltaTableName;
             return this;
         }
 
-        /**
-         * @param deltaTableName The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
-         * 
-         * @return builder
-         * 
-         */
         public Builder deltaTableName(String deltaTableName) {
             return deltaTableName(Output.of(deltaTableName));
         }

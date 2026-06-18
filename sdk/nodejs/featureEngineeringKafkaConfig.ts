@@ -56,6 +56,11 @@ export class FeatureEngineeringKafkaConfig extends pulumi.CustomResource {
      */
     declare public readonly extraOptions: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Configuration for ingesting Kafka data into a Databricks-managed
+     * Delta table
+     */
+    declare public readonly ingestionConfig: pulumi.Output<outputs.FeatureEngineeringKafkaConfigIngestionConfig | undefined>;
+    /**
      * Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
      */
     declare public readonly keySchema: pulumi.Output<outputs.FeatureEngineeringKafkaConfigKeySchema | undefined>;
@@ -94,6 +99,7 @@ export class FeatureEngineeringKafkaConfig extends pulumi.CustomResource {
             resourceInputs["backfillSource"] = state?.backfillSource;
             resourceInputs["bootstrapServers"] = state?.bootstrapServers;
             resourceInputs["extraOptions"] = state?.extraOptions;
+            resourceInputs["ingestionConfig"] = state?.ingestionConfig;
             resourceInputs["keySchema"] = state?.keySchema;
             resourceInputs["name"] = state?.name;
             resourceInputs["providerConfig"] = state?.providerConfig;
@@ -114,6 +120,7 @@ export class FeatureEngineeringKafkaConfig extends pulumi.CustomResource {
             resourceInputs["backfillSource"] = args?.backfillSource;
             resourceInputs["bootstrapServers"] = args?.bootstrapServers;
             resourceInputs["extraOptions"] = args?.extraOptions;
+            resourceInputs["ingestionConfig"] = args?.ingestionConfig;
             resourceInputs["keySchema"] = args?.keySchema;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["subscriptionMode"] = args?.subscriptionMode;
@@ -147,6 +154,11 @@ export interface FeatureEngineeringKafkaConfigState {
      * Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
      */
     extraOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Configuration for ingesting Kafka data into a Databricks-managed
+     * Delta table
+     */
+    ingestionConfig?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigIngestionConfig | undefined>;
     /**
      * Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
      */
@@ -192,6 +204,11 @@ export interface FeatureEngineeringKafkaConfigArgs {
      * Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
      */
     extraOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Configuration for ingesting Kafka data into a Databricks-managed
+     * Delta table
+     */
+    ingestionConfig?: pulumi.Input<inputs.FeatureEngineeringKafkaConfigIngestionConfig | undefined>;
     /**
      * Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
      */

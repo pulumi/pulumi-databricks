@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/users)
+ *
  * > **Deprecated** Please rewrite with databricks_user_role. This resource will be removed in v0.5.x
  *
  * This resource allows you to attach databricks.InstanceProfile (AWS) to databricks_user.

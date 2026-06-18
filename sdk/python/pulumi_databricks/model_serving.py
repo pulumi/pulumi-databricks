@@ -414,6 +414,8 @@ class ModelServing(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/servingendpoints)
+
         This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks, including custom models, external models, and foundation models. For newer foundation models, including Llama 4, please use the ModelServingProvisionedThroughput resource.
 
         > This resource can only be used with a workspace-level provider!
@@ -576,6 +578,8 @@ class ModelServing(pulumi.CustomResource):
                  args: Optional[ModelServingArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/servingendpoints)
+
         This resource allows you to manage [Model Serving](https://docs.databricks.com/machine-learning/model-serving/index.html) endpoints in Databricks, including custom models, external models, and foundation models. For newer foundation models, including Llama 4, please use the ModelServingProvisionedThroughput resource.
 
         > This resource can only be used with a workspace-level provider!

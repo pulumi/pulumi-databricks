@@ -159,6 +159,8 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
                  setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/restrictworkspaceadmins)
+
         The `RestrictWorkspaceAdminsSetting` resource lets you control the capabilities of workspace admins.
 
         > This resource can only be used with a workspace-level provider!
@@ -201,6 +203,8 @@ class RestrictWorkspaceAdminsSetting(pulumi.CustomResource):
                  args: RestrictWorkspaceAdminsSettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/restrictworkspaceadmins)
+
         The `RestrictWorkspaceAdminsSetting` resource lets you control the capabilities of workspace admins.
 
         > This resource can only be used with a workspace-level provider!

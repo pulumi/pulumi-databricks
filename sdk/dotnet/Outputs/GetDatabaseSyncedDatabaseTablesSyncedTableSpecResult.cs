@@ -14,6 +14,12 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetDatabaseSyncedDatabaseTablesSyncedTableSpecResult
     {
         /// <summary>
+        /// (boolean) - When true, enables accelerated sync mode for the initial data load.
+        /// This significantly improves performance for large tables.
+        /// Requires workspace-level enablement
+        /// </summary>
+        public readonly bool AcceleratedSync;
+        /// <summary>
         /// (boolean) - If true, the synced table's logical database and schema resources in PG
         /// will be created if they do not already exist
         /// </summary>
@@ -42,9 +48,16 @@ namespace Pulumi.Databricks.Outputs
         /// (string) - Time series key to deduplicate (tie-break) rows with the same primary key
         /// </summary>
         public readonly string? TimeseriesKey;
+        /// <summary>
+        /// (list of SyncedTableSpecTypeOverride) - Override the default Delta-&gt;PG type mapping for specific columns.
+        /// A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid PgType must be set
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpecTypeOverrideResult> TypeOverrides;
 
         [OutputConstructor]
         private GetDatabaseSyncedDatabaseTablesSyncedTableSpecResult(
+            bool acceleratedSync,
+
             bool createDatabaseObjectsIfMissing,
 
             string existingPipelineId,
@@ -57,8 +70,11 @@ namespace Pulumi.Databricks.Outputs
 
             string? sourceTableFullName,
 
-            string? timeseriesKey)
+            string? timeseriesKey,
+
+            ImmutableArray<Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpecTypeOverrideResult> typeOverrides)
         {
+            AcceleratedSync = acceleratedSync;
             CreateDatabaseObjectsIfMissing = createDatabaseObjectsIfMissing;
             ExistingPipelineId = existingPipelineId;
             NewPipelineSpec = newPipelineSpec;
@@ -66,6 +82,7 @@ namespace Pulumi.Databricks.Outputs
             SchedulingPolicy = schedulingPolicy;
             SourceTableFullName = sourceTableFullName;
             TimeseriesKey = timeseriesKey;
+            TypeOverrides = typeOverrides;
         }
     }
 }

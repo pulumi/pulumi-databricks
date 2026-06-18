@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigState;
 import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigAuthConfig;
 import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigBackfillSource;
+import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigIngestionConfig;
 import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigKeySchema;
 import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigProviderConfig;
 import com.pulumi.databricks.outputs.FeatureEngineeringKafkaConfigSubscriptionMode;
@@ -86,6 +87,22 @@ public class FeatureEngineeringKafkaConfig extends com.pulumi.resources.CustomRe
      */
     public Output<Optional<Map<String,String>>> extraOptions() {
         return Codegen.optional(this.extraOptions);
+    }
+    /**
+     * Configuration for ingesting Kafka data into a Databricks-managed
+     * Delta table
+     * 
+     */
+    @Export(name="ingestionConfig", refs={FeatureEngineeringKafkaConfigIngestionConfig.class}, tree="[0]")
+    private Output</* @Nullable */ FeatureEngineeringKafkaConfigIngestionConfig> ingestionConfig;
+
+    /**
+     * @return Configuration for ingesting Kafka data into a Databricks-managed
+     * Delta table
+     * 
+     */
+    public Output<Optional<FeatureEngineeringKafkaConfigIngestionConfig>> ingestionConfig() {
+        return Codegen.optional(this.ingestionConfig);
     }
     /**
      * Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided

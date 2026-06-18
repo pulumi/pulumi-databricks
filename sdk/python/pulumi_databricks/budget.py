@@ -243,6 +243,8 @@ class Budget(pulumi.CustomResource):
                  update_time: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/budgets)
+
         This resource allows you to manage [Databricks Budgets](https://docs.databricks.com/en/admin/account-settings/budgets.html).
 
         > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).
@@ -311,6 +313,8 @@ class Budget(pulumi.CustomResource):
                  args: Optional[BudgetArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/budgets)
+
         This resource allows you to manage [Databricks Budgets](https://docs.databricks.com/en/admin/account-settings/budgets.html).
 
         > This feature is in [Public Preview](https://docs.databricks.com/release-notes/release-types.html).

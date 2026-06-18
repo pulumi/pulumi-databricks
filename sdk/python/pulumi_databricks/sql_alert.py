@@ -282,6 +282,8 @@ class SqlAlert(pulumi.CustomResource):
                  updated_at: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/alertslegacy)
+
         > This resource is deprecated! Please switch to databricks_alert.
 
         This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).
@@ -342,6 +344,8 @@ class SqlAlert(pulumi.CustomResource):
                  args: SqlAlertArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/alertslegacy)
+
         > This resource is deprecated! Please switch to databricks_alert.
 
         This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/sql/user/queries/index.html).

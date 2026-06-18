@@ -28,10 +28,13 @@ class GetPostgresDatabaseResult:
     """
     A collection of values returned by getPostgresDatabase.
     """
-    def __init__(__self__, create_time=None, id=None, name=None, parent=None, provider_config=None, spec=None, status=None, update_time=None):
+    def __init__(__self__, create_time=None, database_id=None, id=None, name=None, parent=None, provider_config=None, spec=None, status=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if database_id and not isinstance(database_id, str):
+            raise TypeError("Expected argument 'database_id' to be a str")
+        pulumi.set(__self__, "database_id", database_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -61,6 +64,14 @@ class GetPostgresDatabaseResult:
         (string) - A timestamp indicating when the database was created
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> _builtins.str:
+        """
+        (string) - Part of the resource name
+        """
+        return pulumi.get(self, "database_id")
 
     @_builtins.property
     @pulumi.getter
@@ -125,6 +136,7 @@ class AwaitableGetPostgresDatabaseResult(GetPostgresDatabaseResult):
             yield self
         return GetPostgresDatabaseResult(
             create_time=self.create_time,
+            database_id=self.database_id,
             id=self.id,
             name=self.name,
             parent=self.parent,
@@ -170,6 +182,7 @@ def get_postgres_database(name: Optional[_builtins.str] = None,
 
     return AwaitableGetPostgresDatabaseResult(
         create_time=pulumi.get(__ret__, 'create_time'),
+        database_id=pulumi.get(__ret__, 'database_id'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         parent=pulumi.get(__ret__, 'parent'),
@@ -212,6 +225,7 @@ def get_postgres_database_output(name: pulumi.Input[Optional[_builtins.str]] = N
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPostgresDatabase:getPostgresDatabase', __args__, opts=opts, typ=GetPostgresDatabaseResult)
     return __ret__.apply(lambda __response__: GetPostgresDatabaseResult(
         create_time=pulumi.get(__response__, 'create_time'),
+        database_id=pulumi.get(__response__, 'database_id'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         parent=pulumi.get(__response__, 'parent'),

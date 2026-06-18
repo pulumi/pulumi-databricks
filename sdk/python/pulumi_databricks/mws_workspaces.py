@@ -107,8 +107,8 @@ class MwsWorkspacesArgs:
         if gcp_managed_network_config is not None:
             pulumi.set(__self__, "gcp_managed_network_config", gcp_managed_network_config)
         if gke_config is not None:
-            warnings.warn("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_config is deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_config is deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_config is not None:
             pulumi.set(__self__, "gke_config", gke_config)
         if is_no_public_ip_enabled is not None:
@@ -301,7 +301,7 @@ class MwsWorkspacesArgs:
 
     @_builtins.property
     @pulumi.getter(name="gkeConfig")
-    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_config(self) -> pulumi.Input[Optional['MwsWorkspacesGkeConfigArgs']]:
         return pulumi.get(self, "gke_config")
 
@@ -566,8 +566,8 @@ class _MwsWorkspacesState:
         if gcp_workspace_sa is not None:
             pulumi.set(__self__, "gcp_workspace_sa", gcp_workspace_sa)
         if gke_config is not None:
-            warnings.warn("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
-            pulumi.log.warn("""gke_config is deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+            warnings.warn("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""", DeprecationWarning)
+            pulumi.log.warn("""gke_config is deprecated: gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
         if gke_config is not None:
             pulumi.set(__self__, "gke_config", gke_config)
         if is_no_public_ip_enabled is not None:
@@ -774,7 +774,7 @@ class _MwsWorkspacesState:
 
     @_builtins.property
     @pulumi.getter(name="gkeConfig")
-    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_config(self) -> pulumi.Input[Optional['MwsWorkspacesGkeConfigArgs']]:
         return pulumi.get(self, "gke_config")
 
@@ -991,6 +991,8 @@ class MwsWorkspaces(pulumi.CustomResource):
                  workspace_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/workspaces)
+
         This resource allows you to set up [workspaces on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1) or [workspaces on GCP](https://docs.gcp.databricks.com/administration-guide/account-settings-gcp/workspaces.html). Please follow this complete runnable example on AWS or GCP with new VPC and new workspace setup.
 
         > This resource can only be used with an account-level provider!
@@ -1277,6 +1279,8 @@ class MwsWorkspaces(pulumi.CustomResource):
                  args: MwsWorkspacesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/workspaces)
+
         This resource allows you to set up [workspaces on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1) or [workspaces on GCP](https://docs.gcp.databricks.com/administration-guide/account-settings-gcp/workspaces.html). Please follow this complete runnable example on AWS or GCP with new VPC and new workspace setup.
 
         > This resource can only be used with an account-level provider!
@@ -1844,7 +1848,7 @@ class MwsWorkspaces(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="gkeConfig")
-    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
+    @_utilities.deprecated("""gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-databricks-workspace""")
     def gke_config(self) -> pulumi.Output[Optional['outputs.MwsWorkspacesGkeConfig']]:
         return pulumi.get(self, "gke_config")
 

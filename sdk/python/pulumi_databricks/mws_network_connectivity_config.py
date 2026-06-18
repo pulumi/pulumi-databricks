@@ -266,6 +266,8 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
                  updated_time: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/networkconnectivity)
+
         Allows you to create a Network Connectivity Config that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
 
         > This resource can only be used with an account-level provider!
@@ -312,6 +314,8 @@ class MwsNetworkConnectivityConfig(pulumi.CustomResource):
                  args: MwsNetworkConnectivityConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/networkconnectivity)
+
         Allows you to create a Network Connectivity Config that can be used as part of a MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-firewall).
 
         > This resource can only be used with an account-level provider!

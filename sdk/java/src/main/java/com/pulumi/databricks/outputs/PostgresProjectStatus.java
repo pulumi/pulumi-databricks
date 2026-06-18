@@ -67,9 +67,7 @@ public final class PostgresProjectStatus {
      */
     private @Nullable Integer pgVersion;
     /**
-     * @return The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `my-app` becomes `projects/my-app`
+     * @return The part of the name, chosen by the user when the resource was created
      * 
      */
     private @Nullable String projectId;
@@ -151,9 +149,7 @@ public final class PostgresProjectStatus {
         return Optional.ofNullable(this.pgVersion);
     }
     /**
-     * @return The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `my-app` becomes `projects/my-app`
+     * @return The part of the name, chosen by the user when the resource was created
      * 
      */
     public Optional<String> projectId() {

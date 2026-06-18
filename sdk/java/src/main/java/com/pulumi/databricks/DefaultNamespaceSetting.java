@@ -16,6 +16,8 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/defaultnamespace)
+ * 
  * The `databricks.DefaultNamespaceSetting` resource allows you to operate the setting configuration for the default namespace in the Databricks workspace.
  * 
  * &gt; This resource can only be used with a workspace-level provider!

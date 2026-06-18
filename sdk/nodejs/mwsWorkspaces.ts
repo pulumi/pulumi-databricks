@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/account/workspaces)
+ *
  * This resource allows you to set up [workspaces on AWS](https://docs.databricks.com/getting-started/overview.html#e2-architecture-1) or [workspaces on GCP](https://docs.gcp.databricks.com/administration-guide/account-settings-gcp/workspaces.html). Please follow this complete runnable example on AWS or GCP with new VPC and new workspace setup.
  *
  * > This resource can only be used with an account-level provider!
@@ -367,7 +369,7 @@ export class MwsWorkspaces extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly gcpWorkspaceSa: pulumi.Output<string>;
     /**
-     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     declare public readonly gkeConfig: pulumi.Output<outputs.MwsWorkspacesGkeConfig | undefined>;
     declare public readonly isNoPublicIpEnabled: pulumi.Output<boolean | undefined>;
@@ -571,7 +573,7 @@ export interface MwsWorkspacesState {
      */
     gcpWorkspaceSa?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig | undefined>;
     isNoPublicIpEnabled?: pulumi.Input<boolean | undefined>;
@@ -677,7 +679,7 @@ export interface MwsWorkspacesArgs {
     externalCustomerInfo?: pulumi.Input<inputs.MwsWorkspacesExternalCustomerInfo | undefined>;
     gcpManagedNetworkConfig?: pulumi.Input<inputs.MwsWorkspacesGcpManagedNetworkConfig | undefined>;
     /**
-     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeConfig?: pulumi.Input<inputs.MwsWorkspacesGkeConfig | undefined>;
     isNoPublicIpEnabled?: pulumi.Input<boolean | undefined>;

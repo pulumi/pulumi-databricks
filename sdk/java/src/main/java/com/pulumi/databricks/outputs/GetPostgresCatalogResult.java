@@ -16,6 +16,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPostgresCatalogResult {
     /**
+     * @return (string) - The part of the name, chosen by the user when the resource was created
+     * 
+     */
+    private String catalogId;
+    /**
      * @return (string) - A timestamp indicating when the catalog was created
      * 
      */
@@ -53,6 +58,13 @@ public final class GetPostgresCatalogResult {
     private String updateTime;
 
     private GetPostgresCatalogResult() {}
+    /**
+     * @return (string) - The part of the name, chosen by the user when the resource was created
+     * 
+     */
+    public String catalogId() {
+        return this.catalogId;
+    }
     /**
      * @return (string) - A timestamp indicating when the catalog was created
      * 
@@ -115,6 +127,7 @@ public final class GetPostgresCatalogResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String catalogId;
         private String createTime;
         private String id;
         private String name;
@@ -126,6 +139,7 @@ public final class GetPostgresCatalogResult {
         public Builder() {}
         public Builder(GetPostgresCatalogResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.catalogId = defaults.catalogId;
     	      this.createTime = defaults.createTime;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -136,6 +150,14 @@ public final class GetPostgresCatalogResult {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
+        public Builder catalogId(String catalogId) {
+            if (catalogId == null) {
+              throw new MissingRequiredPropertyException("GetPostgresCatalogResult", "catalogId");
+            }
+            this.catalogId = catalogId;
+            return this;
+        }
         @CustomType.Setter
         public Builder createTime(String createTime) {
             if (createTime == null) {
@@ -200,6 +222,7 @@ public final class GetPostgresCatalogResult {
         }
         public GetPostgresCatalogResult build() {
             final var _resultValue = new GetPostgresCatalogResult();
+            _resultValue.catalogId = catalogId;
             _resultValue.createTime = createTime;
             _resultValue.id = id;
             _resultValue.name = name;

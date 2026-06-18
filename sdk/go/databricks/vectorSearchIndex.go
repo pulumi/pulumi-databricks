@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes)
+//
 // This resource allows you to create [Mosaic AI Vector Search Index](https://docs.databricks.com/en/generative-ai/create-query-vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Index provides the ability to search data in the linked Delta Table.
 //
 // > This resource can only be used with a workspace-level provider!
@@ -63,6 +65,7 @@ type VectorSearchIndex struct {
 	DeltaSyncIndexSpec VectorSearchIndexDeltaSyncIndexSpecPtrOutput `pulumi:"deltaSyncIndexSpec"`
 	// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
 	DirectAccessIndexSpec VectorSearchIndexDirectAccessIndexSpecPtrOutput `pulumi:"directAccessIndexSpec"`
+	EndpointId            pulumi.StringPtrOutput                          `pulumi:"endpointId"`
 	// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
 	EndpointName pulumi.StringOutput    `pulumi:"endpointName"`
 	IndexSubtype pulumi.StringPtrOutput `pulumi:"indexSubtype"`
@@ -124,6 +127,7 @@ type vectorSearchIndexState struct {
 	DeltaSyncIndexSpec *VectorSearchIndexDeltaSyncIndexSpec `pulumi:"deltaSyncIndexSpec"`
 	// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
 	DirectAccessIndexSpec *VectorSearchIndexDirectAccessIndexSpec `pulumi:"directAccessIndexSpec"`
+	EndpointId            *string                                 `pulumi:"endpointId"`
 	// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
 	EndpointName *string `pulumi:"endpointName"`
 	IndexSubtype *string `pulumi:"indexSubtype"`
@@ -147,6 +151,7 @@ type VectorSearchIndexState struct {
 	DeltaSyncIndexSpec VectorSearchIndexDeltaSyncIndexSpecPtrInput
 	// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
 	DirectAccessIndexSpec VectorSearchIndexDirectAccessIndexSpecPtrInput
+	EndpointId            pulumi.StringPtrInput
 	// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
 	EndpointName pulumi.StringPtrInput
 	IndexSubtype pulumi.StringPtrInput
@@ -172,6 +177,7 @@ type vectorSearchIndexArgs struct {
 	DeltaSyncIndexSpec *VectorSearchIndexDeltaSyncIndexSpec `pulumi:"deltaSyncIndexSpec"`
 	// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
 	DirectAccessIndexSpec *VectorSearchIndexDirectAccessIndexSpec `pulumi:"directAccessIndexSpec"`
+	EndpointId            *string                                 `pulumi:"endpointId"`
 	// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
 	EndpointName string  `pulumi:"endpointName"`
 	IndexSubtype *string `pulumi:"indexSubtype"`
@@ -192,6 +198,7 @@ type VectorSearchIndexArgs struct {
 	DeltaSyncIndexSpec VectorSearchIndexDeltaSyncIndexSpecPtrInput
 	// Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
 	DirectAccessIndexSpec VectorSearchIndexDirectAccessIndexSpecPtrInput
+	EndpointId            pulumi.StringPtrInput
 	// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
 	EndpointName pulumi.StringInput
 	IndexSubtype pulumi.StringPtrInput
@@ -308,6 +315,10 @@ func (o VectorSearchIndexOutput) DirectAccessIndexSpec() VectorSearchIndexDirect
 	return o.ApplyT(func(v *VectorSearchIndex) VectorSearchIndexDirectAccessIndexSpecPtrOutput {
 		return v.DirectAccessIndexSpec
 	}).(VectorSearchIndexDirectAccessIndexSpecPtrOutput)
+}
+
+func (o VectorSearchIndexOutput) EndpointId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VectorSearchIndex) pulumi.StringPtrOutput { return v.EndpointId }).(pulumi.StringPtrOutput)
 }
 
 // The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.

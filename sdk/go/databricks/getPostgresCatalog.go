@@ -67,6 +67,8 @@ type LookupPostgresCatalogArgs struct {
 
 // A collection of values returned by getPostgresCatalog.
 type LookupPostgresCatalogResult struct {
+	// (string) - The part of the name, chosen by the user when the resource was created
+	CatalogId string `pulumi:"catalogId"`
 	// (string) - A timestamp indicating when the catalog was created
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
@@ -120,6 +122,11 @@ func (o LookupPostgresCatalogResultOutput) ToLookupPostgresCatalogResultOutput()
 
 func (o LookupPostgresCatalogResultOutput) ToLookupPostgresCatalogResultOutputWithContext(ctx context.Context) LookupPostgresCatalogResultOutput {
 	return o
+}
+
+// (string) - The part of the name, chosen by the user when the resource was created
+func (o LookupPostgresCatalogResultOutput) CatalogId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPostgresCatalogResult) string { return v.CatalogId }).(pulumi.StringOutput)
 }
 
 // (string) - A timestamp indicating when the catalog was created

@@ -400,6 +400,8 @@ class CustomAppIntegration(pulumi.CustomResource):
                  user_authorized_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/customappintegration)
+
         This resource allows you to enable [custom OAuth applications](https://docs.databricks.com/en/integrations/enable-disable-oauth.html#enable-custom-oauth-applications-using-the-databricks-ui).
 
         > This resource can only be used with an account-level provider!
@@ -444,6 +446,8 @@ class CustomAppIntegration(pulumi.CustomResource):
                  args: Optional[CustomAppIntegrationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/customappintegration)
+
         This resource allows you to enable [custom OAuth applications](https://docs.databricks.com/en/integrations/enable-disable-oauth.html#enable-custom-oauth-applications-using-the-databricks-ui).
 
         > This resource can only be used with an account-level provider!

@@ -38,6 +38,9 @@ namespace Pulumi.Databricks.Outputs
         /// A flag to disable auto optimization in serverless tasks.
         /// </summary>
         public readonly bool? DisableAutoOptimization;
+        /// <summary>
+        /// (Bool) An optional flag to disable the task. If set to `True`, the task will not run even if it is part of a job.
+        /// </summary>
         public readonly bool? Disabled;
         /// <summary>
         /// An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.

@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/workspace/restrictworkspaceadmins)
+//
 // The `RestrictWorkspaceAdminsSetting` resource lets you control the capabilities of workspace admins.
 //
 // > This resource can only be used with a workspace-level provider!

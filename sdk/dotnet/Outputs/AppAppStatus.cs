@@ -17,6 +17,7 @@ namespace Pulumi.Databricks.Outputs
         /// The status message of the deployment.
         /// </summary>
         public readonly string? Message;
+        public readonly int? RunningInstances;
         /// <summary>
         /// The state of the deployment.
         /// </summary>
@@ -26,9 +27,12 @@ namespace Pulumi.Databricks.Outputs
         private AppAppStatus(
             string? message,
 
+            int? runningInstances,
+
             string? state)
         {
             Message = message;
+            RunningInstances = runningInstances;
             State = state;
         }
     }

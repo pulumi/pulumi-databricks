@@ -55,6 +55,10 @@ export interface GetPostgresBranchArgs {
  */
 export interface GetPostgresBranchResult {
     /**
+     * (string) - Part of the resource name
+     */
+    readonly branchId: string;
+    /**
      * (string) - A timestamp indicating when the branch was created
      */
     readonly createTime: string;

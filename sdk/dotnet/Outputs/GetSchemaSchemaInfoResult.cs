@@ -37,6 +37,7 @@ namespace Pulumi.Databricks.Outputs
         /// username of schema creator.
         /// </summary>
         public readonly string? CreatedBy;
+        public readonly int? CustomMaxRetentionHours;
         /// <summary>
         /// information about actual state of predictive optimization.
         /// </summary>
@@ -100,6 +101,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? createdBy,
 
+            int? customMaxRetentionHours,
+
             Outputs.GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagResult? effectivePredictiveOptimizationFlag,
 
             string? enablePredictiveOptimization,
@@ -130,6 +133,7 @@ namespace Pulumi.Databricks.Outputs
             Comment = comment;
             CreatedAt = createdAt;
             CreatedBy = createdBy;
+            CustomMaxRetentionHours = customMaxRetentionHours;
             EffectivePredictiveOptimizationFlag = effectivePredictiveOptimizationFlag;
             EnablePredictiveOptimization = enablePredictiveOptimization;
             FullName = fullName;

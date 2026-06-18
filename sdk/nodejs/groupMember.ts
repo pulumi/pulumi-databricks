@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/groups)
+ *
  * This resource allows you to attach users, service_principal, and groups as group members.
  *
  * > This resource can be used with an account or workspace-level provider.

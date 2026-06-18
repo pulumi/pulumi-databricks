@@ -233,6 +233,8 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
                  workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/workspacebindings)
+
         > This resource has been deprecated and will be removed soon. Please use the WorkspaceBinding resource instead.
 
         If you use workspaces to isolate user data access, you may want to limit catalog access to specific workspaces in your account, also known as workspace-catalog binding
@@ -272,6 +274,8 @@ class CatalogWorkspaceBinding(pulumi.CustomResource):
                  args: CatalogWorkspaceBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/workspacebindings)
+
         > This resource has been deprecated and will be removed soon. Please use the WorkspaceBinding resource instead.
 
         If you use workspaces to isolate user data access, you may want to limit catalog access to specific workspaces in your account, also known as workspace-catalog binding

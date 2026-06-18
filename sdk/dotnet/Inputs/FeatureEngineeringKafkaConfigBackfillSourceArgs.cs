@@ -12,9 +12,6 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class FeatureEngineeringKafkaConfigBackfillSourceArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
-        /// </summary>
         [Input("deltaTableName")]
         public Input<string>? DeltaTableName { get; set; }
 

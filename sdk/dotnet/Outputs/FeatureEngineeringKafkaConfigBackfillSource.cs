@@ -13,9 +13,6 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class FeatureEngineeringKafkaConfigBackfillSource
     {
-        /// <summary>
-        /// The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
-        /// </summary>
         public readonly string? DeltaTableName;
         /// <summary>
         /// Deprecated: Use DeltaTableName instead. Kept for backwards compatibility.

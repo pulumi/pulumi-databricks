@@ -356,6 +356,8 @@ class Notebook(pulumi.CustomResource):
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/workspace)
+
         This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with Notebook and get_notebook_paths data sources.
 
         > This resource can only be used with a workspace-level provider!
@@ -377,6 +379,8 @@ class Notebook(pulumi.CustomResource):
                  args: NotebookArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/workspace)
+
         This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with Notebook and get_notebook_paths data sources.
 
         > This resource can only be used with a workspace-level provider!

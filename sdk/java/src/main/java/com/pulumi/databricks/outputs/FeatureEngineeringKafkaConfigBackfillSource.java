@@ -12,10 +12,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureEngineeringKafkaConfigBackfillSource {
-    /**
-     * @return The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
-     * 
-     */
     private @Nullable String deltaTableName;
     /**
      * @return Deprecated: Use deltaTableName instead. Kept for backwards compatibility.
@@ -26,10 +22,6 @@ public final class FeatureEngineeringKafkaConfigBackfillSource {
     private @Nullable FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource deltaTableSource;
 
     private FeatureEngineeringKafkaConfigBackfillSource() {}
-    /**
-     * @return The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
-     * 
-     */
     public Optional<String> deltaTableName() {
         return Optional.ofNullable(this.deltaTableName);
     }

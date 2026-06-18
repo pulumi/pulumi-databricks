@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/workspace)
+ *
  * This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with databricks.Notebook and databricks.getNotebookPaths data sources.
  *
  * > This resource can only be used with a workspace-level provider!

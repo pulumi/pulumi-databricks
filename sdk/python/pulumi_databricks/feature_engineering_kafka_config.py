@@ -26,6 +26,7 @@ class FeatureEngineeringKafkaConfigArgs:
                  subscription_mode: pulumi.Input['FeatureEngineeringKafkaConfigSubscriptionModeArgs'],
                  backfill_source: pulumi.Input[Optional['FeatureEngineeringKafkaConfigBackfillSourceArgs']] = None,
                  extra_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ingestion_config: pulumi.Input[Optional['FeatureEngineeringKafkaConfigIngestionConfigArgs']] = None,
                  key_schema: pulumi.Input[Optional['FeatureEngineeringKafkaConfigKeySchemaArgs']] = None,
                  provider_config: pulumi.Input[Optional['FeatureEngineeringKafkaConfigProviderConfigArgs']] = None,
                  value_schema: pulumi.Input[Optional['FeatureEngineeringKafkaConfigValueSchemaArgs']] = None):
@@ -39,6 +40,8 @@ class FeatureEngineeringKafkaConfigArgs:
                In the future, a separate table will be maintained by Databricks for forward filling data.
                The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_options: Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
+        :param pulumi.Input['FeatureEngineeringKafkaConfigIngestionConfigArgs'] ingestion_config: Configuration for ingesting Kafka data into a Databricks-managed
+               Delta table
         :param pulumi.Input['FeatureEngineeringKafkaConfigKeySchemaArgs'] key_schema: Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
         :param pulumi.Input['FeatureEngineeringKafkaConfigProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['FeatureEngineeringKafkaConfigValueSchemaArgs'] value_schema: Schema configuration for extracting message values from topics. At least one of key_schema and value_schema must be provided
@@ -50,6 +53,8 @@ class FeatureEngineeringKafkaConfigArgs:
             pulumi.set(__self__, "backfill_source", backfill_source)
         if extra_options is not None:
             pulumi.set(__self__, "extra_options", extra_options)
+        if ingestion_config is not None:
+            pulumi.set(__self__, "ingestion_config", ingestion_config)
         if key_schema is not None:
             pulumi.set(__self__, "key_schema", key_schema)
         if provider_config is not None:
@@ -120,6 +125,19 @@ class FeatureEngineeringKafkaConfigArgs:
         pulumi.set(self, "extra_options", value)
 
     @_builtins.property
+    @pulumi.getter(name="ingestionConfig")
+    def ingestion_config(self) -> pulumi.Input[Optional['FeatureEngineeringKafkaConfigIngestionConfigArgs']]:
+        """
+        Configuration for ingesting Kafka data into a Databricks-managed
+        Delta table
+        """
+        return pulumi.get(self, "ingestion_config")
+
+    @ingestion_config.setter
+    def ingestion_config(self, value: pulumi.Input[Optional['FeatureEngineeringKafkaConfigIngestionConfigArgs']]):
+        pulumi.set(self, "ingestion_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="keySchema")
     def key_schema(self) -> pulumi.Input[Optional['FeatureEngineeringKafkaConfigKeySchemaArgs']]:
         """
@@ -163,6 +181,7 @@ class _FeatureEngineeringKafkaConfigState:
                  backfill_source: pulumi.Input[Optional['FeatureEngineeringKafkaConfigBackfillSourceArgs']] = None,
                  bootstrap_servers: pulumi.Input[Optional[_builtins.str]] = None,
                  extra_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ingestion_config: pulumi.Input[Optional['FeatureEngineeringKafkaConfigIngestionConfigArgs']] = None,
                  key_schema: pulumi.Input[Optional['FeatureEngineeringKafkaConfigKeySchemaArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['FeatureEngineeringKafkaConfigProviderConfigArgs']] = None,
@@ -177,6 +196,8 @@ class _FeatureEngineeringKafkaConfigState:
                The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
         :param pulumi.Input[_builtins.str] bootstrap_servers: A comma-separated list of host/port pairs pointing to Kafka cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_options: Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
+        :param pulumi.Input['FeatureEngineeringKafkaConfigIngestionConfigArgs'] ingestion_config: Configuration for ingesting Kafka data into a Databricks-managed
+               Delta table
         :param pulumi.Input['FeatureEngineeringKafkaConfigKeySchemaArgs'] key_schema: Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
         :param pulumi.Input[_builtins.str] name: (string) - Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
                Can be distinct from topic name
@@ -192,6 +213,8 @@ class _FeatureEngineeringKafkaConfigState:
             pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
         if extra_options is not None:
             pulumi.set(__self__, "extra_options", extra_options)
+        if ingestion_config is not None:
+            pulumi.set(__self__, "ingestion_config", ingestion_config)
         if key_schema is not None:
             pulumi.set(__self__, "key_schema", key_schema)
         if name is not None:
@@ -252,6 +275,19 @@ class _FeatureEngineeringKafkaConfigState:
     @extra_options.setter
     def extra_options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "extra_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ingestionConfig")
+    def ingestion_config(self) -> pulumi.Input[Optional['FeatureEngineeringKafkaConfigIngestionConfigArgs']]:
+        """
+        Configuration for ingesting Kafka data into a Databricks-managed
+        Delta table
+        """
+        return pulumi.get(self, "ingestion_config")
+
+    @ingestion_config.setter
+    def ingestion_config(self, value: pulumi.Input[Optional['FeatureEngineeringKafkaConfigIngestionConfigArgs']]):
+        pulumi.set(self, "ingestion_config", value)
 
     @_builtins.property
     @pulumi.getter(name="keySchema")
@@ -325,6 +361,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
                  backfill_source: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict']]] = None,
                  bootstrap_servers: pulumi.Input[Optional[_builtins.str]] = None,
                  extra_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ingestion_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigIngestionConfigArgs', 'FeatureEngineeringKafkaConfigIngestionConfigArgsDict']]] = None,
                  key_schema: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']]] = None,
                  provider_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict']]] = None,
                  subscription_mode: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict']]] = None,
@@ -342,6 +379,8 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
                The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
         :param pulumi.Input[_builtins.str] bootstrap_servers: A comma-separated list of host/port pairs pointing to Kafka cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_options: Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigIngestionConfigArgs', 'FeatureEngineeringKafkaConfigIngestionConfigArgsDict']] ingestion_config: Configuration for ingesting Kafka data into a Databricks-managed
+               Delta table
         :param pulumi.Input[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']] key_schema: Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
         :param pulumi.Input[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict']] subscription_mode: Options to configure which Kafka topics to pull data from
@@ -376,6 +415,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
                  backfill_source: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict']]] = None,
                  bootstrap_servers: pulumi.Input[Optional[_builtins.str]] = None,
                  extra_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ingestion_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigIngestionConfigArgs', 'FeatureEngineeringKafkaConfigIngestionConfigArgsDict']]] = None,
                  key_schema: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']]] = None,
                  provider_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict']]] = None,
                  subscription_mode: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigSubscriptionModeArgs', 'FeatureEngineeringKafkaConfigSubscriptionModeArgsDict']]] = None,
@@ -397,6 +437,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'bootstrap_servers'")
             __props__.__dict__["bootstrap_servers"] = bootstrap_servers
             __props__.__dict__["extra_options"] = extra_options
+            __props__.__dict__["ingestion_config"] = ingestion_config
             __props__.__dict__["key_schema"] = key_schema
             __props__.__dict__["provider_config"] = provider_config
             if subscription_mode is None and not opts.urn:
@@ -418,6 +459,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
             backfill_source: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigBackfillSourceArgs', 'FeatureEngineeringKafkaConfigBackfillSourceArgsDict']]] = None,
             bootstrap_servers: pulumi.Input[Optional[_builtins.str]] = None,
             extra_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ingestion_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigIngestionConfigArgs', 'FeatureEngineeringKafkaConfigIngestionConfigArgsDict']]] = None,
             key_schema: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['FeatureEngineeringKafkaConfigProviderConfigArgs', 'FeatureEngineeringKafkaConfigProviderConfigArgsDict']]] = None,
@@ -436,6 +478,8 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
                The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
         :param pulumi.Input[_builtins.str] bootstrap_servers: A comma-separated list of host/port pairs pointing to Kafka cluster
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extra_options: Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
+        :param pulumi.Input[Union['FeatureEngineeringKafkaConfigIngestionConfigArgs', 'FeatureEngineeringKafkaConfigIngestionConfigArgsDict']] ingestion_config: Configuration for ingesting Kafka data into a Databricks-managed
+               Delta table
         :param pulumi.Input[Union['FeatureEngineeringKafkaConfigKeySchemaArgs', 'FeatureEngineeringKafkaConfigKeySchemaArgsDict']] key_schema: Schema configuration for extracting message keys from topics. At least one of key_schema and value_schema must be provided
         :param pulumi.Input[_builtins.str] name: (string) - Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
                Can be distinct from topic name
@@ -451,6 +495,7 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
         __props__.__dict__["backfill_source"] = backfill_source
         __props__.__dict__["bootstrap_servers"] = bootstrap_servers
         __props__.__dict__["extra_options"] = extra_options
+        __props__.__dict__["ingestion_config"] = ingestion_config
         __props__.__dict__["key_schema"] = key_schema
         __props__.__dict__["name"] = name
         __props__.__dict__["provider_config"] = provider_config
@@ -491,6 +536,15 @@ class FeatureEngineeringKafkaConfig(pulumi.CustomResource):
         Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
         """
         return pulumi.get(self, "extra_options")
+
+    @_builtins.property
+    @pulumi.getter(name="ingestionConfig")
+    def ingestion_config(self) -> pulumi.Output[Optional['outputs.FeatureEngineeringKafkaConfigIngestionConfig']]:
+        """
+        Configuration for ingesting Kafka data into a Databricks-managed
+        Delta table
+        """
+        return pulumi.get(self, "ingestion_config")
 
     @_builtins.property
     @pulumi.getter(name="keySchema")

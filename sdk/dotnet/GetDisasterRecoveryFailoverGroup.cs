@@ -12,19 +12,100 @@ namespace Pulumi.Databricks
     public static class GetDisasterRecoveryFailoverGroup
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+        /// 
+        /// This data source can be used to get a single failover group by its fully qualified resource name.
+        /// 
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a failover group by its resource name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetDisasterRecoveryFailoverGroup.Invoke(new()
+        ///     {
+        ///         Name = $"accounts/{accountId}/failover-groups/accounting-failover-group",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetDisasterRecoveryFailoverGroupResult> InvokeAsync(GetDisasterRecoveryFailoverGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDisasterRecoveryFailoverGroupResult>("databricks:index/getDisasterRecoveryFailoverGroup:getDisasterRecoveryFailoverGroup", args ?? new GetDisasterRecoveryFailoverGroupArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+        /// 
+        /// This data source can be used to get a single failover group by its fully qualified resource name.
+        /// 
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a failover group by its resource name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetDisasterRecoveryFailoverGroup.Invoke(new()
+        ///     {
+        ///         Name = $"accounts/{accountId}/failover-groups/accounting-failover-group",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDisasterRecoveryFailoverGroupResult> Invoke(GetDisasterRecoveryFailoverGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDisasterRecoveryFailoverGroupResult>("databricks:index/getDisasterRecoveryFailoverGroup:getDisasterRecoveryFailoverGroup", args ?? new GetDisasterRecoveryFailoverGroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+        /// 
+        /// This data source can be used to get a single failover group by its fully qualified resource name.
+        /// 
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a failover group by its resource name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetDisasterRecoveryFailoverGroup.Invoke(new()
+        ///     {
+        ///         Name = $"accounts/{accountId}/failover-groups/accounting-failover-group",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDisasterRecoveryFailoverGroupResult> Invoke(GetDisasterRecoveryFailoverGroupInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDisasterRecoveryFailoverGroupResult>("databricks:index/getDisasterRecoveryFailoverGroup:getDisasterRecoveryFailoverGroup", args ?? new GetDisasterRecoveryFailoverGroupInvokeArgs(), options.WithDefaults());

@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [API Documentation](https://docs.databricks.com/api/workspace/workspace)
+    /// 
     /// This resource allows you to manage [Databricks Notebooks](https://docs.databricks.com/notebooks/index.html). You can also work with databricks.Notebook and databricks.getNotebookPaths data sources.
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!

@@ -23,14 +23,16 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
     public static final FeatureEngineeringMaterializedFeatureState Empty = new FeatureEngineeringMaterializedFeatureState();
 
     /**
-     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
      * 
      */
     @Import(name="cronSchedule")
     private @Nullable Output<String> cronSchedule;
 
     /**
-     * @return The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     * @return The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
      * 
      */
     public Optional<Output<String>> cronSchedule() {
@@ -145,14 +147,16 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
     }
 
     /**
-     * The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+     * The schedule state of the materialization pipeline.
+     * Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
      * 
      */
     @Import(name="pipelineScheduleState")
     private @Nullable Output<String> pipelineScheduleState;
 
     /**
-     * @return The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+     * @return The schedule state of the materialization pipeline.
+     * Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
      * 
      */
     public Optional<Output<String>> pipelineScheduleState() {
@@ -260,7 +264,8 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
         }
 
         /**
-         * @param cronSchedule The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+         * @param cronSchedule The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+         * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
          * 
          * @return builder
          * 
@@ -271,7 +276,8 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
         }
 
         /**
-         * @param cronSchedule The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+         * @param cronSchedule The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+         * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
          * 
          * @return builder
          * 
@@ -430,7 +436,8 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
         }
 
         /**
-         * @param pipelineScheduleState The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+         * @param pipelineScheduleState The schedule state of the materialization pipeline.
+         * Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
          * 
          * @return builder
          * 
@@ -441,7 +448,8 @@ public final class FeatureEngineeringMaterializedFeatureState extends com.pulumi
         }
 
         /**
-         * @param pipelineScheduleState The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+         * @param pipelineScheduleState The schedule state of the materialization pipeline.
+         * Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
          * 
          * @return builder
          * 

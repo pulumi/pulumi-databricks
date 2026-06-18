@@ -16,6 +16,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/account/credentials)
+ * 
  * This resource to configure the cross-account role for creation of new workspaces within AWS.
  * 
  * &gt; This resource can only be used with an account-level provider!

@@ -208,6 +208,8 @@ class AccessControlRuleSet(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['AccessControlRuleSetProviderConfigArgs', 'AccessControlRuleSetProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/accountaccesscontrolproxy)
+
         This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
 
         > This resource can be used with an account or workspace-level provider.
@@ -444,6 +446,8 @@ class AccessControlRuleSet(pulumi.CustomResource):
                  args: Optional[AccessControlRuleSetArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/accountaccesscontrolproxy)
+
         This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
 
         > This resource can be used with an account or workspace-level provider.

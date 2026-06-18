@@ -28,7 +28,7 @@ class GetPostgresRoleResult:
     """
     A collection of values returned by getPostgresRole.
     """
-    def __init__(__self__, create_time=None, id=None, name=None, parent=None, provider_config=None, spec=None, status=None, update_time=None):
+    def __init__(__self__, create_time=None, id=None, name=None, parent=None, provider_config=None, role_id=None, spec=None, status=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -44,6 +44,9 @@ class GetPostgresRoleResult:
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
+        if role_id and not isinstance(role_id, str):
+            raise TypeError("Expected argument 'role_id' to be a str")
+        pulumi.set(__self__, "role_id", role_id)
         if spec and not isinstance(spec, dict):
             raise TypeError("Expected argument 'spec' to be a dict")
         pulumi.set(__self__, "spec", spec)
@@ -94,6 +97,14 @@ class GetPostgresRoleResult:
         return pulumi.get(self, "provider_config")
 
     @_builtins.property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> _builtins.str:
+        """
+        (string) - Part of the resource name
+        """
+        return pulumi.get(self, "role_id")
+
+    @_builtins.property
     @pulumi.getter
     def spec(self) -> 'outputs.GetPostgresRoleSpecResult':
         """
@@ -129,6 +140,7 @@ class AwaitableGetPostgresRoleResult(GetPostgresRoleResult):
             name=self.name,
             parent=self.parent,
             provider_config=self.provider_config,
+            role_id=self.role_id,
             spec=self.spec,
             status=self.status,
             update_time=self.update_time)
@@ -175,6 +187,7 @@ def get_postgres_role(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         parent=pulumi.get(__ret__, 'parent'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
+        role_id=pulumi.get(__ret__, 'role_id'),
         spec=pulumi.get(__ret__, 'spec'),
         status=pulumi.get(__ret__, 'status'),
         update_time=pulumi.get(__ret__, 'update_time'))
@@ -218,6 +231,7 @@ def get_postgres_role_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         name=pulumi.get(__response__, 'name'),
         parent=pulumi.get(__response__, 'parent'),
         provider_config=pulumi.get(__response__, 'provider_config'),
+        role_id=pulumi.get(__response__, 'role_id'),
         spec=pulumi.get(__response__, 'spec'),
         status=pulumi.get(__response__, 'status'),
         update_time=pulumi.get(__response__, 'update_time')))

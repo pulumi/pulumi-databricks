@@ -89,18 +89,14 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+     * The part of the name, chosen by the user when the resource was created
      * 
      */
     @Import(name="endpointId")
     private @Nullable Output<String> endpointId;
 
     /**
-     * @return The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+     * @return The part of the name, chosen by the user when the resource was created
      * 
      */
     public Optional<Output<String>> endpointId() {
@@ -324,9 +320,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param endpointId The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
-         * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-         * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+         * @param endpointId The part of the name, chosen by the user when the resource was created
          * 
          * @return builder
          * 
@@ -337,9 +331,7 @@ public final class PostgresEndpointStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param endpointId The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
-         * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-         * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+         * @param endpointId The part of the name, chosen by the user when the resource was created
          * 
          * @return builder
          * 

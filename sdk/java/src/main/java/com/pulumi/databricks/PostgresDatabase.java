@@ -215,28 +215,14 @@ public class PostgresDatabase extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The ID to use for the Database, which will become the final component of
-     * the database&#39;s resource name.
-     * This ID becomes the database name in postgres.
-     * 
-     * This value should be 4-63 characters, and only use characters available in DNS names,
-     * as defined by RFC-1123
-     * 
-     * If databaseId is not specified in the request, it is generated automatically
+     * (string) - Part of the resource name
      * 
      */
     @Export(name="databaseId", refs={String.class}, tree="[0]")
     private Output<String> databaseId;
 
     /**
-     * @return The ID to use for the Database, which will become the final component of
-     * the database&#39;s resource name.
-     * This ID becomes the database name in postgres.
-     * 
-     * This value should be 4-63 characters, and only use characters available in DNS names,
-     * as defined by RFC-1123
-     * 
-     * If databaseId is not specified in the request, it is generated automatically
+     * @return (string) - Part of the resource name
      * 
      */
     public Output<String> databaseId() {

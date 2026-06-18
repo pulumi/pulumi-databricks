@@ -359,6 +359,8 @@ class Mount(pulumi.CustomResource):
                  wasb: pulumi.Input[Optional[Union['MountWasbArgs', 'MountWasbArgsDict']]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/dbfs)
+
         > Please switch to databricks_volume. DBFS mounts are deprecated.
 
         > This resource can only be used with a workspace-level provider!
@@ -685,6 +687,8 @@ class Mount(pulumi.CustomResource):
                  args: Optional[MountArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/dbfs)
+
         > Please switch to databricks_volume. DBFS mounts are deprecated.
 
         > This resource can only be used with a workspace-level provider!

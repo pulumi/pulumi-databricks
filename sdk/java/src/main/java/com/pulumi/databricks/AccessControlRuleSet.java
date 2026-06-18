@@ -18,6 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/accountaccesscontrolproxy)
+ * 
  * This resource allows you to manage access rules on Databricks account level resources. For convenience we allow accessing this resource through the Databricks account and workspace.
  * 
  * &gt; This resource can be used with an account or workspace-level provider.

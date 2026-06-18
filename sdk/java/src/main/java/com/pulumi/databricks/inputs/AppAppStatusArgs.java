@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,6 +31,13 @@ public final class AppAppStatusArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.message);
     }
 
+    @Import(name="runningInstances")
+    private @Nullable Output<Integer> runningInstances;
+
+    public Optional<Output<Integer>> runningInstances() {
+        return Optional.ofNullable(this.runningInstances);
+    }
+
     /**
      * The state of the deployment.
      * 
@@ -49,6 +57,7 @@ public final class AppAppStatusArgs extends com.pulumi.resources.ResourceArgs {
 
     private AppAppStatusArgs(AppAppStatusArgs $) {
         this.message = $.message;
+        this.runningInstances = $.runningInstances;
         this.state = $.state;
     }
 
@@ -89,6 +98,15 @@ public final class AppAppStatusArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder message(String message) {
             return message(Output.of(message));
+        }
+
+        public Builder runningInstances(@Nullable Output<Integer> runningInstances) {
+            $.runningInstances = runningInstances;
+            return this;
+        }
+
+        public Builder runningInstances(Integer runningInstances) {
+            return runningInstances(Output.of(runningInstances));
         }
 
         /**

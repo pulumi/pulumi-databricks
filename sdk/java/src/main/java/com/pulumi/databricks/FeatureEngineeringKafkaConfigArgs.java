@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigAuthConfigArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigBackfillSourceArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigIngestionConfigArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigKeySchemaArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigProviderConfigArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringKafkaConfigSubscriptionModeArgs;
@@ -88,6 +89,23 @@ public final class FeatureEngineeringKafkaConfigArgs extends com.pulumi.resource
     }
 
     /**
+     * Configuration for ingesting Kafka data into a Databricks-managed
+     * Delta table
+     * 
+     */
+    @Import(name="ingestionConfig")
+    private @Nullable Output<FeatureEngineeringKafkaConfigIngestionConfigArgs> ingestionConfig;
+
+    /**
+     * @return Configuration for ingesting Kafka data into a Databricks-managed
+     * Delta table
+     * 
+     */
+    public Optional<Output<FeatureEngineeringKafkaConfigIngestionConfigArgs>> ingestionConfig() {
+        return Optional.ofNullable(this.ingestionConfig);
+    }
+
+    /**
      * Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
      * 
      */
@@ -154,6 +172,7 @@ public final class FeatureEngineeringKafkaConfigArgs extends com.pulumi.resource
         this.backfillSource = $.backfillSource;
         this.bootstrapServers = $.bootstrapServers;
         this.extraOptions = $.extraOptions;
+        this.ingestionConfig = $.ingestionConfig;
         this.keySchema = $.keySchema;
         this.providerConfig = $.providerConfig;
         this.subscriptionMode = $.subscriptionMode;
@@ -264,6 +283,29 @@ public final class FeatureEngineeringKafkaConfigArgs extends com.pulumi.resource
          */
         public Builder extraOptions(Map<String,String> extraOptions) {
             return extraOptions(Output.of(extraOptions));
+        }
+
+        /**
+         * @param ingestionConfig Configuration for ingesting Kafka data into a Databricks-managed
+         * Delta table
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingestionConfig(@Nullable Output<FeatureEngineeringKafkaConfigIngestionConfigArgs> ingestionConfig) {
+            $.ingestionConfig = ingestionConfig;
+            return this;
+        }
+
+        /**
+         * @param ingestionConfig Configuration for ingesting Kafka data into a Databricks-managed
+         * Delta table
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ingestionConfig(FeatureEngineeringKafkaConfigIngestionConfigArgs ingestionConfig) {
+            return ingestionConfig(Output.of(ingestionConfig));
         }
 
         /**

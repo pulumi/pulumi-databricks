@@ -28,7 +28,10 @@ class GetPostgresBranchResult:
     """
     A collection of values returned by getPostgresBranch.
     """
-    def __init__(__self__, create_time=None, id=None, name=None, parent=None, provider_config=None, spec=None, status=None, uid=None, update_time=None):
+    def __init__(__self__, branch_id=None, create_time=None, id=None, name=None, parent=None, provider_config=None, spec=None, status=None, uid=None, update_time=None):
+        if branch_id and not isinstance(branch_id, str):
+            raise TypeError("Expected argument 'branch_id' to be a str")
+        pulumi.set(__self__, "branch_id", branch_id)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -56,6 +59,14 @@ class GetPostgresBranchResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="branchId")
+    def branch_id(self) -> _builtins.str:
+        """
+        (string) - Part of the resource name
+        """
+        return pulumi.get(self, "branch_id")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -135,6 +146,7 @@ class AwaitableGetPostgresBranchResult(GetPostgresBranchResult):
         if False:
             yield self
         return GetPostgresBranchResult(
+            branch_id=self.branch_id,
             create_time=self.create_time,
             id=self.id,
             name=self.name,
@@ -180,6 +192,7 @@ def get_postgres_branch(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getPostgresBranch:getPostgresBranch', __args__, opts=opts, typ=GetPostgresBranchResult).value
 
     return AwaitableGetPostgresBranchResult(
+        branch_id=pulumi.get(__ret__, 'branch_id'),
         create_time=pulumi.get(__ret__, 'create_time'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
@@ -222,6 +235,7 @@ def get_postgres_branch_output(name: pulumi.Input[Optional[_builtins.str]] = Non
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPostgresBranch:getPostgresBranch', __args__, opts=opts, typ=GetPostgresBranchResult)
     return __ret__.apply(lambda __response__: GetPostgresBranchResult(
+        branch_id=pulumi.get(__response__, 'branch_id'),
         create_time=pulumi.get(__response__, 'create_time'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),

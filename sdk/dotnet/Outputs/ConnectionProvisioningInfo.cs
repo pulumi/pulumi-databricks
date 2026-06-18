@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class ConnectionProvisioningInfo
     {
+        /// <summary>
+        /// The provisioning state of the resource. Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, or `UPDATING`.
+        /// </summary>
         public readonly string? State;
 
         [OutputConstructor]

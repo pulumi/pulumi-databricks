@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.PostgresSyncedTableSpecNewPipelineSpec;
+import com.pulumi.databricks.outputs.PostgresSyncedTableSpecTypeOverride;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -14,6 +15,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PostgresSyncedTableSpec {
+    /**
+     * @return When true, enables accelerated sync mode for the initial data load.
+     * This significantly improves performance for large tables.
+     * Requires workspace-level enablement through Lakebase Accelerated Sync preview
+     * 
+     */
+    private @Nullable Boolean acceleratedSync;
     /**
      * @return The full resource name the branch associated with the table.
      * 
@@ -81,8 +89,23 @@ public final class PostgresSyncedTableSpec {
      * 
      */
     private @Nullable String timeseriesKey;
+    /**
+     * @return Override the default Delta-&gt;PG type mapping for specific columns.
+     * A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+     * 
+     */
+    private @Nullable List<PostgresSyncedTableSpecTypeOverride> typeOverrides;
 
     private PostgresSyncedTableSpec() {}
+    /**
+     * @return When true, enables accelerated sync mode for the initial data load.
+     * This significantly improves performance for large tables.
+     * Requires workspace-level enablement through Lakebase Accelerated Sync preview
+     * 
+     */
+    public Optional<Boolean> acceleratedSync() {
+        return Optional.ofNullable(this.acceleratedSync);
+    }
     /**
      * @return The full resource name the branch associated with the table.
      * 
@@ -168,6 +191,14 @@ public final class PostgresSyncedTableSpec {
     public Optional<String> timeseriesKey() {
         return Optional.ofNullable(this.timeseriesKey);
     }
+    /**
+     * @return Override the default Delta-&gt;PG type mapping for specific columns.
+     * A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+     * 
+     */
+    public List<PostgresSyncedTableSpecTypeOverride> typeOverrides() {
+        return this.typeOverrides == null ? List.of() : this.typeOverrides;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -178,6 +209,7 @@ public final class PostgresSyncedTableSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean acceleratedSync;
         private @Nullable String branch;
         private @Nullable Boolean createDatabaseObjectsIfMissing;
         private @Nullable String existingPipelineId;
@@ -187,9 +219,11 @@ public final class PostgresSyncedTableSpec {
         private @Nullable String schedulingPolicy;
         private @Nullable String sourceTableFullName;
         private @Nullable String timeseriesKey;
+        private @Nullable List<PostgresSyncedTableSpecTypeOverride> typeOverrides;
         public Builder() {}
         public Builder(PostgresSyncedTableSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.acceleratedSync = defaults.acceleratedSync;
     	      this.branch = defaults.branch;
     	      this.createDatabaseObjectsIfMissing = defaults.createDatabaseObjectsIfMissing;
     	      this.existingPipelineId = defaults.existingPipelineId;
@@ -199,8 +233,15 @@ public final class PostgresSyncedTableSpec {
     	      this.schedulingPolicy = defaults.schedulingPolicy;
     	      this.sourceTableFullName = defaults.sourceTableFullName;
     	      this.timeseriesKey = defaults.timeseriesKey;
+    	      this.typeOverrides = defaults.typeOverrides;
         }
 
+        @CustomType.Setter
+        public Builder acceleratedSync(@Nullable Boolean acceleratedSync) {
+
+            this.acceleratedSync = acceleratedSync;
+            return this;
+        }
         @CustomType.Setter
         public Builder branch(@Nullable String branch) {
 
@@ -258,8 +299,18 @@ public final class PostgresSyncedTableSpec {
             this.timeseriesKey = timeseriesKey;
             return this;
         }
+        @CustomType.Setter
+        public Builder typeOverrides(@Nullable List<PostgresSyncedTableSpecTypeOverride> typeOverrides) {
+
+            this.typeOverrides = typeOverrides;
+            return this;
+        }
+        public Builder typeOverrides(PostgresSyncedTableSpecTypeOverride... typeOverrides) {
+            return typeOverrides(List.of(typeOverrides));
+        }
         public PostgresSyncedTableSpec build() {
             final var _resultValue = new PostgresSyncedTableSpec();
+            _resultValue.acceleratedSync = acceleratedSync;
             _resultValue.branch = branch;
             _resultValue.createDatabaseObjectsIfMissing = createDatabaseObjectsIfMissing;
             _resultValue.existingPipelineId = existingPipelineId;
@@ -269,6 +320,7 @@ public final class PostgresSyncedTableSpec {
             _resultValue.schedulingPolicy = schedulingPolicy;
             _resultValue.sourceTableFullName = sourceTableFullName;
             _resultValue.timeseriesKey = timeseriesKey;
+            _resultValue.typeOverrides = typeOverrides;
             return _resultValue;
         }
     }

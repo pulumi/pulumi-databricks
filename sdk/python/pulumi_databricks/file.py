@@ -257,6 +257,8 @@ class File(pulumi.CustomResource):
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/files)
+
         This resource allows uploading and downloading files in databricks_volume.
 
         > This resource can only be used with a workspace-level provider!
@@ -335,6 +337,8 @@ class File(pulumi.CustomResource):
                  args: FileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/files)
+
         This resource allows uploading and downloading files in databricks_volume.
 
         > This resource can only be used with a workspace-level provider!

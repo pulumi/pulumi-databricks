@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [API Documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes)
+    /// 
     /// This resource allows you to create [Mosaic AI Vector Search Index](https://docs.databricks.com/en/generative-ai/create-query-vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Index provides the ability to search data in the linked Delta Table.
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
@@ -68,6 +70,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("directAccessIndexSpec")]
         public Output<Outputs.VectorSearchIndexDirectAccessIndexSpec?> DirectAccessIndexSpec { get; private set; } = null!;
+
+        [Output("endpointId")]
+        public Output<string?> EndpointId { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
@@ -165,6 +170,9 @@ namespace Pulumi.Databricks
         [Input("directAccessIndexSpec")]
         public Input<Inputs.VectorSearchIndexDirectAccessIndexSpecArgs>? DirectAccessIndexSpec { get; set; }
 
+        [Input("endpointId")]
+        public Input<string>? EndpointId { get; set; }
+
         /// <summary>
         /// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
         /// </summary>
@@ -222,6 +230,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("directAccessIndexSpec")]
         public Input<Inputs.VectorSearchIndexDirectAccessIndexSpecGetArgs>? DirectAccessIndexSpec { get; set; }
+
+        [Input("endpointId")]
+        public Input<string>? EndpointId { get; set; }
 
         /// <summary>
         /// The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.

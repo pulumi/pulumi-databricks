@@ -109,6 +109,13 @@ public final class GetSchemaSchemaInfoArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.createdBy);
     }
 
+    @Import(name="customMaxRetentionHours")
+    private @Nullable Output<Integer> customMaxRetentionHours;
+
+    public Optional<Output<Integer>> customMaxRetentionHours() {
+        return Optional.ofNullable(this.customMaxRetentionHours);
+    }
+
     /**
      * information about actual state of predictive optimization.
      * 
@@ -298,6 +305,7 @@ public final class GetSchemaSchemaInfoArgs extends com.pulumi.resources.Resource
         this.comment = $.comment;
         this.createdAt = $.createdAt;
         this.createdBy = $.createdBy;
+        this.customMaxRetentionHours = $.customMaxRetentionHours;
         this.effectivePredictiveOptimizationFlag = $.effectivePredictiveOptimizationFlag;
         this.enablePredictiveOptimization = $.enablePredictiveOptimization;
         this.fullName = $.fullName;
@@ -454,6 +462,15 @@ public final class GetSchemaSchemaInfoArgs extends com.pulumi.resources.Resource
          */
         public Builder createdBy(String createdBy) {
             return createdBy(Output.of(createdBy));
+        }
+
+        public Builder customMaxRetentionHours(@Nullable Output<Integer> customMaxRetentionHours) {
+            $.customMaxRetentionHours = customMaxRetentionHours;
+            return this;
+        }
+
+        public Builder customMaxRetentionHours(Integer customMaxRetentionHours) {
+            return customMaxRetentionHours(Output.of(customMaxRetentionHours));
         }
 
         /**

@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/dbfs)
+ *
  * > Please switch to databricks_volume. DBFS mounts are deprecated.
  *
  * > This resource can only be used with a workspace-level provider!

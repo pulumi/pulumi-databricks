@@ -373,9 +373,7 @@ type PostgresEndpoint struct {
 
 	// (string) - A timestamp indicating when the compute endpoint was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-	// For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+	// The part of the name, chosen by the user when the resource was created
 	EndpointId pulumi.StringOutput `pulumi:"endpointId"`
 	// (string) - Output only. The full resource path of the endpoint.
 	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
@@ -435,9 +433,7 @@ func GetPostgresEndpoint(ctx *pulumi.Context,
 type postgresEndpointState struct {
 	// (string) - A timestamp indicating when the compute endpoint was created
 	CreateTime *string `pulumi:"createTime"`
-	// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-	// For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+	// The part of the name, chosen by the user when the resource was created
 	EndpointId *string `pulumi:"endpointId"`
 	// (string) - Output only. The full resource path of the endpoint.
 	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
@@ -462,9 +458,7 @@ type postgresEndpointState struct {
 type PostgresEndpointState struct {
 	// (string) - A timestamp indicating when the compute endpoint was created
 	CreateTime pulumi.StringPtrInput
-	// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-	// For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+	// The part of the name, chosen by the user when the resource was created
 	EndpointId pulumi.StringPtrInput
 	// (string) - Output only. The full resource path of the endpoint.
 	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
@@ -491,9 +485,7 @@ func (PostgresEndpointState) ElementType() reflect.Type {
 }
 
 type postgresEndpointArgs struct {
-	// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-	// For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+	// The part of the name, chosen by the user when the resource was created
 	EndpointId string `pulumi:"endpointId"`
 	// The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
@@ -508,9 +500,7 @@ type postgresEndpointArgs struct {
 
 // The set of arguments for constructing a PostgresEndpoint resource.
 type PostgresEndpointArgs struct {
-	// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-	// For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+	// The part of the name, chosen by the user when the resource was created
 	EndpointId pulumi.StringInput
 	// The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
@@ -615,9 +605,7 @@ func (o PostgresEndpointOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresEndpoint) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-// For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+// The part of the name, chosen by the user when the resource was created
 func (o PostgresEndpointOutput) EndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresEndpoint) pulumi.StringOutput { return v.EndpointId }).(pulumi.StringOutput)
 }

@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [API Documentation](https://docs.databricks.com/api/account/credentials)
+    /// 
     /// This resource to configure the cross-account role for creation of new workspaces within AWS.
     /// 
     /// &gt; This resource can only be used with an account-level provider!

@@ -41,9 +41,7 @@ public final class PostgresEndpointStatus {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+     * @return The part of the name, chosen by the user when the resource was created
      * 
      */
     private @Nullable String endpointId;
@@ -112,9 +110,7 @@ public final class PostgresEndpointStatus {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return The ID to use for the Endpoint. This becomes the final component of the endpoint&#39;s resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+     * @return The part of the name, chosen by the user when the resource was created
      * 
      */
     public Optional<String> endpointId() {

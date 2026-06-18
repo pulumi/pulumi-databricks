@@ -159,9 +159,17 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.disableAutoOptimization);
     }
 
+    /**
+     * (Bool) An optional flag to disable the task. If set to `true`, the task will not run even if it is part of a job.
+     * 
+     */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
+    /**
+     * @return (Bool) An optional flag to disable the task. If set to `true`, the task will not run even if it is part of a job.
+     * 
+     */
     public Optional<Output<Boolean>> disabled() {
         return Optional.ofNullable(this.disabled);
     }
@@ -700,11 +708,23 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
             return disableAutoOptimization(Output.of(disableAutoOptimization));
         }
 
+        /**
+         * @param disabled (Bool) An optional flag to disable the task. If set to `true`, the task will not run even if it is part of a job.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(@Nullable Output<Boolean> disabled) {
             $.disabled = disabled;
             return this;
         }
 
+        /**
+         * @param disabled (Bool) An optional flag to disable the task. If set to `true`, the task will not run even if it is part of a job.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
         }

@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [API Documentation](https://docs.databricks.com/api/workspace/users)
+    /// 
     /// This resource allows you to set entitlements to existing databricks_users, databricks.Group or databricks_service_principal.
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!

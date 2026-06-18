@@ -16,7 +16,8 @@ namespace Pulumi.Databricks
     public partial class FeatureEngineeringMaterializedFeature : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        /// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+        /// Hidden from GraphQL: superseded by the `Trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
         /// </summary>
         [Output("cronSchedule")]
         public Output<string?> CronSchedule { get; private set; } = null!;
@@ -65,7 +66,8 @@ namespace Pulumi.Databricks
         public Output<Outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig?> OnlineStoreConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+        /// The schedule state of the materialization pipeline.
+        /// Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         /// </summary>
         [Output("pipelineScheduleState")]
         public Output<string?> PipelineScheduleState { get; private set; } = null!;
@@ -143,7 +145,8 @@ namespace Pulumi.Databricks
     public sealed class FeatureEngineeringMaterializedFeatureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        /// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+        /// Hidden from GraphQL: superseded by the `Trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
         /// </summary>
         [Input("cronSchedule")]
         public Input<string>? CronSchedule { get; set; }
@@ -173,7 +176,8 @@ namespace Pulumi.Databricks
         public Input<Inputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs>? OnlineStoreConfig { get; set; }
 
         /// <summary>
-        /// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+        /// The schedule state of the materialization pipeline.
+        /// Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         /// </summary>
         [Input("pipelineScheduleState")]
         public Input<string>? PipelineScheduleState { get; set; }
@@ -207,7 +211,8 @@ namespace Pulumi.Databricks
     public sealed class FeatureEngineeringMaterializedFeatureState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        /// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+        /// Hidden from GraphQL: superseded by the `Trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
         /// </summary>
         [Input("cronSchedule")]
         public Input<string>? CronSchedule { get; set; }
@@ -256,7 +261,8 @@ namespace Pulumi.Databricks
         public Input<Inputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfigGetArgs>? OnlineStoreConfig { get; set; }
 
         /// <summary>
-        /// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+        /// The schedule state of the materialization pipeline.
+        /// Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         /// </summary>
         [Input("pipelineScheduleState")]
         public Input<string>? PipelineScheduleState { get; set; }

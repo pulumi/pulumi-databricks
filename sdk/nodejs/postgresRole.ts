@@ -166,14 +166,7 @@ export class PostgresRole extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.PostgresRoleProviderConfig>;
     /**
-     * The ID to use for the Role, which will become the final component of
-     * the role's resource name.
-     * This ID becomes the role in Postgres.
-     *
-     * This value should be 4-63 characters, and valid characters
-     * are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-     *
-     * If roleId is not specified in the request, it is generated automatically
+     * (string) - Part of the resource name
      */
     declare public readonly roleId: pulumi.Output<string>;
     /**
@@ -252,14 +245,7 @@ export interface PostgresRoleState {
      */
     providerConfig?: pulumi.Input<inputs.PostgresRoleProviderConfig | undefined>;
     /**
-     * The ID to use for the Role, which will become the final component of
-     * the role's resource name.
-     * This ID becomes the role in Postgres.
-     *
-     * This value should be 4-63 characters, and valid characters
-     * are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-     *
-     * If roleId is not specified in the request, it is generated automatically
+     * (string) - Part of the resource name
      */
     roleId?: pulumi.Input<string | undefined>;
     /**
@@ -290,14 +276,7 @@ export interface PostgresRoleArgs {
      */
     providerConfig?: pulumi.Input<inputs.PostgresRoleProviderConfig | undefined>;
     /**
-     * The ID to use for the Role, which will become the final component of
-     * the role's resource name.
-     * This ID becomes the role in Postgres.
-     *
-     * This value should be 4-63 characters, and valid characters
-     * are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-     *
-     * If roleId is not specified in the request, it is generated automatically
+     * (string) - Part of the resource name
      */
     roleId?: pulumi.Input<string | undefined>;
     /**

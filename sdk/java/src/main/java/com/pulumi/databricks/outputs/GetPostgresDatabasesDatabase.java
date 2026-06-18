@@ -21,6 +21,11 @@ public final class GetPostgresDatabasesDatabase {
      */
     private String createTime;
     /**
+     * @return (string) - Part of the resource name
+     * 
+     */
+    private String databaseId;
+    /**
      * @return (string) - The resource name of the database.
      * Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
      * 
@@ -60,6 +65,13 @@ public final class GetPostgresDatabasesDatabase {
      */
     public String createTime() {
         return this.createTime;
+    }
+    /**
+     * @return (string) - Part of the resource name
+     * 
+     */
+    public String databaseId() {
+        return this.databaseId;
     }
     /**
      * @return (string) - The resource name of the database.
@@ -116,6 +128,7 @@ public final class GetPostgresDatabasesDatabase {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private String databaseId;
         private String name;
         private String parent;
         private @Nullable GetPostgresDatabasesDatabaseProviderConfig providerConfig;
@@ -126,6 +139,7 @@ public final class GetPostgresDatabasesDatabase {
         public Builder(GetPostgresDatabasesDatabase defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.databaseId = defaults.databaseId;
     	      this.name = defaults.name;
     	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
@@ -140,6 +154,14 @@ public final class GetPostgresDatabasesDatabase {
               throw new MissingRequiredPropertyException("GetPostgresDatabasesDatabase", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder databaseId(String databaseId) {
+            if (databaseId == null) {
+              throw new MissingRequiredPropertyException("GetPostgresDatabasesDatabase", "databaseId");
+            }
+            this.databaseId = databaseId;
             return this;
         }
         @CustomType.Setter
@@ -191,6 +213,7 @@ public final class GetPostgresDatabasesDatabase {
         public GetPostgresDatabasesDatabase build() {
             final var _resultValue = new GetPostgresDatabasesDatabase();
             _resultValue.createTime = createTime;
+            _resultValue.databaseId = databaseId;
             _resultValue.name = name;
             _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;

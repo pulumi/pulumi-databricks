@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/alerts)
+ *
  * This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/en/sql/user/alerts/index.html).  It supersedes databricks.SqlAlert resource - see migration guide below for more details.
  *
  * > This resource can only be used with a workspace-level provider!

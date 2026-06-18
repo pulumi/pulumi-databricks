@@ -30,6 +30,16 @@ export type AccountSettingV2 = import("./accountSettingV2").AccountSettingV2;
 export const AccountSettingV2: typeof import("./accountSettingV2").AccountSettingV2 = null as any;
 utilities.lazyLoad(exports, ["AccountSettingV2"], () => require("./accountSettingV2"));
 
+export { AiSearchEndpointArgs, AiSearchEndpointState } from "./aiSearchEndpoint";
+export type AiSearchEndpoint = import("./aiSearchEndpoint").AiSearchEndpoint;
+export const AiSearchEndpoint: typeof import("./aiSearchEndpoint").AiSearchEndpoint = null as any;
+utilities.lazyLoad(exports, ["AiSearchEndpoint"], () => require("./aiSearchEndpoint"));
+
+export { AiSearchIndexArgs, AiSearchIndexState } from "./aiSearchIndex";
+export type AiSearchIndex = import("./aiSearchIndex").AiSearchIndex;
+export const AiSearchIndex: typeof import("./aiSearchIndex").AiSearchIndex = null as any;
+utilities.lazyLoad(exports, ["AiSearchIndex"], () => require("./aiSearchIndex"));
+
 export { AibiDashboardEmbeddingAccessPolicySettingArgs, AibiDashboardEmbeddingAccessPolicySettingState } from "./aibiDashboardEmbeddingAccessPolicySetting";
 export type AibiDashboardEmbeddingAccessPolicySetting = import("./aibiDashboardEmbeddingAccessPolicySetting").AibiDashboardEmbeddingAccessPolicySetting;
 export const AibiDashboardEmbeddingAccessPolicySetting: typeof import("./aibiDashboardEmbeddingAccessPolicySetting").AibiDashboardEmbeddingAccessPolicySetting = null as any;
@@ -289,6 +299,26 @@ export { GetAccountSettingV2Args, GetAccountSettingV2Result, GetAccountSettingV2
 export const getAccountSettingV2: typeof import("./getAccountSettingV2").getAccountSettingV2 = null as any;
 export const getAccountSettingV2Output: typeof import("./getAccountSettingV2").getAccountSettingV2Output = null as any;
 utilities.lazyLoad(exports, ["getAccountSettingV2","getAccountSettingV2Output"], () => require("./getAccountSettingV2"));
+
+export { GetAiSearchEndpointArgs, GetAiSearchEndpointResult, GetAiSearchEndpointOutputArgs } from "./getAiSearchEndpoint";
+export const getAiSearchEndpoint: typeof import("./getAiSearchEndpoint").getAiSearchEndpoint = null as any;
+export const getAiSearchEndpointOutput: typeof import("./getAiSearchEndpoint").getAiSearchEndpointOutput = null as any;
+utilities.lazyLoad(exports, ["getAiSearchEndpoint","getAiSearchEndpointOutput"], () => require("./getAiSearchEndpoint"));
+
+export { GetAiSearchEndpointsArgs, GetAiSearchEndpointsResult, GetAiSearchEndpointsOutputArgs } from "./getAiSearchEndpoints";
+export const getAiSearchEndpoints: typeof import("./getAiSearchEndpoints").getAiSearchEndpoints = null as any;
+export const getAiSearchEndpointsOutput: typeof import("./getAiSearchEndpoints").getAiSearchEndpointsOutput = null as any;
+utilities.lazyLoad(exports, ["getAiSearchEndpoints","getAiSearchEndpointsOutput"], () => require("./getAiSearchEndpoints"));
+
+export { GetAiSearchIndexArgs, GetAiSearchIndexResult, GetAiSearchIndexOutputArgs } from "./getAiSearchIndex";
+export const getAiSearchIndex: typeof import("./getAiSearchIndex").getAiSearchIndex = null as any;
+export const getAiSearchIndexOutput: typeof import("./getAiSearchIndex").getAiSearchIndexOutput = null as any;
+utilities.lazyLoad(exports, ["getAiSearchIndex","getAiSearchIndexOutput"], () => require("./getAiSearchIndex"));
+
+export { GetAiSearchIndexesArgs, GetAiSearchIndexesResult, GetAiSearchIndexesOutputArgs } from "./getAiSearchIndexes";
+export const getAiSearchIndexes: typeof import("./getAiSearchIndexes").getAiSearchIndexes = null as any;
+export const getAiSearchIndexesOutput: typeof import("./getAiSearchIndexes").getAiSearchIndexesOutput = null as any;
+utilities.lazyLoad(exports, ["getAiSearchIndexes","getAiSearchIndexesOutput"], () => require("./getAiSearchIndexes"));
 
 export { GetAlertV2Args, GetAlertV2Result, GetAlertV2OutputArgs } from "./getAlertV2";
 export const getAlertV2: typeof import("./getAlertV2").getAlertV2 = null as any;
@@ -1537,6 +1567,10 @@ const _module = {
                 return new AccountSettingUserPreferenceV2(name, <any>undefined, { urn })
             case "databricks:index/accountSettingV2:AccountSettingV2":
                 return new AccountSettingV2(name, <any>undefined, { urn })
+            case "databricks:index/aiSearchEndpoint:AiSearchEndpoint":
+                return new AiSearchEndpoint(name, <any>undefined, { urn })
+            case "databricks:index/aiSearchIndex:AiSearchIndex":
+                return new AiSearchIndex(name, <any>undefined, { urn })
             case "databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting":
                 return new AibiDashboardEmbeddingAccessPolicySetting(name, <any>undefined, { urn })
             case "databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting":
@@ -1843,6 +1877,8 @@ pulumi.runtime.registerResourceModule("databricks", "index/accountFederationPoli
 pulumi.runtime.registerResourceModule("databricks", "index/accountNetworkPolicy", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/accountSettingUserPreferenceV2", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/accountSettingV2", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/aiSearchEndpoint", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/aiSearchIndex", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/aibiDashboardEmbeddingAccessPolicySetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/aibiDashboardEmbeddingApprovedDomainsSetting", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/alert", _module)

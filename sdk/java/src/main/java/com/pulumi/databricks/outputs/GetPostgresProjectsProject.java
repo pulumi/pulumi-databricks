@@ -42,6 +42,11 @@ public final class GetPostgresProjectsProject {
      */
     private String name;
     /**
+     * @return (string) - Part of the resource name
+     * 
+     */
+    private String projectId;
+    /**
      * @return Configure the provider for management through account provider.
      * 
      */
@@ -108,6 +113,13 @@ public final class GetPostgresProjectsProject {
         return this.name;
     }
     /**
+     * @return (string) - Part of the resource name
+     * 
+     */
+    public String projectId() {
+        return this.projectId;
+    }
+    /**
      * @return Configure the provider for management through account provider.
      * 
      */
@@ -164,6 +176,7 @@ public final class GetPostgresProjectsProject {
         private String deleteTime;
         private GetPostgresProjectsProjectInitialEndpointSpec initialEndpointSpec;
         private String name;
+        private String projectId;
         private @Nullable GetPostgresProjectsProjectProviderConfig providerConfig;
         private String purgeTime;
         private GetPostgresProjectsProjectSpec spec;
@@ -177,6 +190,7 @@ public final class GetPostgresProjectsProject {
     	      this.deleteTime = defaults.deleteTime;
     	      this.initialEndpointSpec = defaults.initialEndpointSpec;
     	      this.name = defaults.name;
+    	      this.projectId = defaults.projectId;
     	      this.providerConfig = defaults.providerConfig;
     	      this.purgeTime = defaults.purgeTime;
     	      this.spec = defaults.spec;
@@ -215,6 +229,14 @@ public final class GetPostgresProjectsProject {
               throw new MissingRequiredPropertyException("GetPostgresProjectsProject", "name");
             }
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder projectId(String projectId) {
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetPostgresProjectsProject", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
@@ -269,6 +291,7 @@ public final class GetPostgresProjectsProject {
             _resultValue.deleteTime = deleteTime;
             _resultValue.initialEndpointSpec = initialEndpointSpec;
             _resultValue.name = name;
+            _resultValue.projectId = projectId;
             _resultValue.providerConfig = providerConfig;
             _resultValue.purgeTime = purgeTime;
             _resultValue.spec = spec;

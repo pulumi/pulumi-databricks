@@ -16,28 +16,14 @@ public final class PostgresDatabaseStatusArgs extends com.pulumi.resources.Resou
     public static final PostgresDatabaseStatusArgs Empty = new PostgresDatabaseStatusArgs();
 
     /**
-     * The ID to use for the Database, which will become the final component of
-     * the database&#39;s resource name.
-     * This ID becomes the database name in postgres.
-     * 
-     * This value should be 4-63 characters, and only use characters available in DNS names,
-     * as defined by RFC-1123
-     * 
-     * If databaseId is not specified in the request, it is generated automatically
+     * (string) - Part of the resource name
      * 
      */
     @Import(name="databaseId")
     private @Nullable Output<String> databaseId;
 
     /**
-     * @return The ID to use for the Database, which will become the final component of
-     * the database&#39;s resource name.
-     * This ID becomes the database name in postgres.
-     * 
-     * This value should be 4-63 characters, and only use characters available in DNS names,
-     * as defined by RFC-1123
-     * 
-     * If databaseId is not specified in the request, it is generated automatically
+     * @return (string) - Part of the resource name
      * 
      */
     public Optional<Output<String>> databaseId() {
@@ -85,14 +71,7 @@ public final class PostgresDatabaseStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param databaseId The ID to use for the Database, which will become the final component of
-         * the database&#39;s resource name.
-         * This ID becomes the database name in postgres.
-         * 
-         * This value should be 4-63 characters, and only use characters available in DNS names,
-         * as defined by RFC-1123
-         * 
-         * If databaseId is not specified in the request, it is generated automatically
+         * @param databaseId (string) - Part of the resource name
          * 
          * @return builder
          * 
@@ -103,14 +82,7 @@ public final class PostgresDatabaseStatusArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param databaseId The ID to use for the Database, which will become the final component of
-         * the database&#39;s resource name.
-         * This ID becomes the database name in postgres.
-         * 
-         * This value should be 4-63 characters, and only use characters available in DNS names,
-         * as defined by RFC-1123
-         * 
-         * If databaseId is not specified in the request, it is generated automatically
+         * @param databaseId (string) - Part of the resource name
          * 
          * @return builder
          * 

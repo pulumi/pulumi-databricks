@@ -36,7 +36,8 @@ export interface GetFeatureEngineeringMaterializedFeatureArgs {
  */
 export interface GetFeatureEngineeringMaterializedFeatureResult {
     /**
-     * (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     * (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
      */
     readonly cronSchedule: string;
     /**
@@ -73,7 +74,8 @@ export interface GetFeatureEngineeringMaterializedFeatureResult {
      */
     readonly onlineStoreConfig: outputs.GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig;
     /**
-     * (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+     * (string) - The schedule state of the materialization pipeline.
+     * Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
      */
     readonly pipelineScheduleState: string;
     readonly providerConfig?: outputs.GetFeatureEngineeringMaterializedFeatureProviderConfig;

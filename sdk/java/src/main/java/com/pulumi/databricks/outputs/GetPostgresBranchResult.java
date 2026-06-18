@@ -16,6 +16,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPostgresBranchResult {
     /**
+     * @return (string) - Part of the resource name
+     * 
+     */
+    private String branchId;
+    /**
      * @return (string) - A timestamp indicating when the branch was created
      * 
      */
@@ -60,6 +65,13 @@ public final class GetPostgresBranchResult {
     private String updateTime;
 
     private GetPostgresBranchResult() {}
+    /**
+     * @return (string) - Part of the resource name
+     * 
+     */
+    public String branchId() {
+        return this.branchId;
+    }
     /**
      * @return (string) - A timestamp indicating when the branch was created
      * 
@@ -131,6 +143,7 @@ public final class GetPostgresBranchResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String branchId;
         private String createTime;
         private String id;
         private String name;
@@ -143,6 +156,7 @@ public final class GetPostgresBranchResult {
         public Builder() {}
         public Builder(GetPostgresBranchResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.branchId = defaults.branchId;
     	      this.createTime = defaults.createTime;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -154,6 +168,14 @@ public final class GetPostgresBranchResult {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
+        public Builder branchId(String branchId) {
+            if (branchId == null) {
+              throw new MissingRequiredPropertyException("GetPostgresBranchResult", "branchId");
+            }
+            this.branchId = branchId;
+            return this;
+        }
         @CustomType.Setter
         public Builder createTime(String createTime) {
             if (createTime == null) {
@@ -226,6 +248,7 @@ public final class GetPostgresBranchResult {
         }
         public GetPostgresBranchResult build() {
             final var _resultValue = new GetPostgresBranchResult();
+            _resultValue.branchId = branchId;
             _resultValue.createTime = createTime;
             _resultValue.id = id;
             _resultValue.name = name;

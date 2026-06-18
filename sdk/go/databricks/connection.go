@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/workspace/connections)
+//
 // > This resource can only be used with a workspace-level provider!
 //
 // Lakehouse Federation is the query federation platform for Databricks. Databricks uses Unity Catalog to manage query federation. To make a dataset available for read-only querying using Lakehouse Federation, you create the following:
@@ -248,40 +250,43 @@ import (
 type Connection struct {
 	pulumi.CustomResourceState
 
-	// Free-form text. Change forces creation of a new resource.
+	// User-provided free-form text description. Change forces creation of a new resource.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// Unique ID of the connection.
+	// Unique identifier of the Connection.
 	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
-	// Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+	// The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
 	ConnectionType pulumi.StringPtrOutput `pulumi:"connectionType"`
 	// Time at which this connection was created, in epoch milliseconds.
 	CreatedAt pulumi.IntOutput `pulumi:"createdAt"`
 	// Username of connection creator.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
-	// The type of credential for this connection.
+	// The type of credential.
 	CredentialType pulumi.StringOutput `pulumi:"credentialType"`
+	// Connection environment settings. This block consists of the following fields:
+	EnvironmentSettings ConnectionEnvironmentSettingsPtrOutput `pulumi:"environmentSettings"`
 	// Full name of connection.
 	FullName pulumi.StringOutput `pulumi:"fullName"`
-	// Unique ID of the UC metastore for this connection.
+	// Unique identifier of parent metastore.
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
-	// Name of the Connection.
+	// Name of the connection.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+	// A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
 	Options pulumi.StringMapOutput `pulumi:"options"`
-	// Name of the connection owner.
+	// Username of current owner of the connection.
 	Owner pulumi.StringOutput `pulumi:"owner"`
-	// Free-form connection properties. Change forces creation of a new resource.
+	// A map of key-value properties attached to the securable. Change forces creation of a new resource.
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig ConnectionProviderConfigOutput `pulumi:"providerConfig"`
-	// Object with the status of an asynchronously provisioned resource.
+	// Status of an asynchronously provisioned resource. This block consists of the following fields:
 	ProvisioningInfos ConnectionProvisioningInfoArrayOutput `pulumi:"provisioningInfos"`
-	// Indicates whether the connection is read-only. Change forces creation of a new resource.
-	ReadOnly      pulumi.BoolOutput   `pulumi:"readOnly"`
+	// If the connection is read only. Change forces creation of a new resource.
+	ReadOnly pulumi.BoolOutput `pulumi:"readOnly"`
+	// Securable type.
 	SecurableType pulumi.StringOutput `pulumi:"securableType"`
-	// Time at which connection this was last modified, in epoch milliseconds.
+	// Time at which this connection was updated, in epoch milliseconds.
 	UpdatedAt pulumi.IntOutput `pulumi:"updatedAt"`
-	// Username of user who last modified the connection.
+	// Username of user who last modified connection.
 	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
 	// URL of the remote data source, extracted from options.
 	Url pulumi.StringOutput `pulumi:"url"`
@@ -324,80 +329,86 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
-	// Free-form text. Change forces creation of a new resource.
+	// User-provided free-form text description. Change forces creation of a new resource.
 	Comment *string `pulumi:"comment"`
-	// Unique ID of the connection.
+	// Unique identifier of the Connection.
 	ConnectionId *string `pulumi:"connectionId"`
-	// Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+	// The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
 	ConnectionType *string `pulumi:"connectionType"`
 	// Time at which this connection was created, in epoch milliseconds.
 	CreatedAt *int `pulumi:"createdAt"`
 	// Username of connection creator.
 	CreatedBy *string `pulumi:"createdBy"`
-	// The type of credential for this connection.
+	// The type of credential.
 	CredentialType *string `pulumi:"credentialType"`
+	// Connection environment settings. This block consists of the following fields:
+	EnvironmentSettings *ConnectionEnvironmentSettings `pulumi:"environmentSettings"`
 	// Full name of connection.
 	FullName *string `pulumi:"fullName"`
-	// Unique ID of the UC metastore for this connection.
+	// Unique identifier of parent metastore.
 	MetastoreId *string `pulumi:"metastoreId"`
-	// Name of the Connection.
+	// Name of the connection.
 	Name *string `pulumi:"name"`
-	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+	// A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
 	Options map[string]string `pulumi:"options"`
-	// Name of the connection owner.
+	// Username of current owner of the connection.
 	Owner *string `pulumi:"owner"`
-	// Free-form connection properties. Change forces creation of a new resource.
+	// A map of key-value properties attached to the securable. Change forces creation of a new resource.
 	Properties map[string]string `pulumi:"properties"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *ConnectionProviderConfig `pulumi:"providerConfig"`
-	// Object with the status of an asynchronously provisioned resource.
+	// Status of an asynchronously provisioned resource. This block consists of the following fields:
 	ProvisioningInfos []ConnectionProvisioningInfo `pulumi:"provisioningInfos"`
-	// Indicates whether the connection is read-only. Change forces creation of a new resource.
-	ReadOnly      *bool   `pulumi:"readOnly"`
+	// If the connection is read only. Change forces creation of a new resource.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Securable type.
 	SecurableType *string `pulumi:"securableType"`
-	// Time at which connection this was last modified, in epoch milliseconds.
+	// Time at which this connection was updated, in epoch milliseconds.
 	UpdatedAt *int `pulumi:"updatedAt"`
-	// Username of user who last modified the connection.
+	// Username of user who last modified connection.
 	UpdatedBy *string `pulumi:"updatedBy"`
 	// URL of the remote data source, extracted from options.
 	Url *string `pulumi:"url"`
 }
 
 type ConnectionState struct {
-	// Free-form text. Change forces creation of a new resource.
+	// User-provided free-form text description. Change forces creation of a new resource.
 	Comment pulumi.StringPtrInput
-	// Unique ID of the connection.
+	// Unique identifier of the Connection.
 	ConnectionId pulumi.StringPtrInput
-	// Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+	// The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
 	ConnectionType pulumi.StringPtrInput
 	// Time at which this connection was created, in epoch milliseconds.
 	CreatedAt pulumi.IntPtrInput
 	// Username of connection creator.
 	CreatedBy pulumi.StringPtrInput
-	// The type of credential for this connection.
+	// The type of credential.
 	CredentialType pulumi.StringPtrInput
+	// Connection environment settings. This block consists of the following fields:
+	EnvironmentSettings ConnectionEnvironmentSettingsPtrInput
 	// Full name of connection.
 	FullName pulumi.StringPtrInput
-	// Unique ID of the UC metastore for this connection.
+	// Unique identifier of parent metastore.
 	MetastoreId pulumi.StringPtrInput
-	// Name of the Connection.
+	// Name of the connection.
 	Name pulumi.StringPtrInput
-	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+	// A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
 	Options pulumi.StringMapInput
-	// Name of the connection owner.
+	// Username of current owner of the connection.
 	Owner pulumi.StringPtrInput
-	// Free-form connection properties. Change forces creation of a new resource.
+	// A map of key-value properties attached to the securable. Change forces creation of a new resource.
 	Properties pulumi.StringMapInput
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig ConnectionProviderConfigPtrInput
-	// Object with the status of an asynchronously provisioned resource.
+	// Status of an asynchronously provisioned resource. This block consists of the following fields:
 	ProvisioningInfos ConnectionProvisioningInfoArrayInput
-	// Indicates whether the connection is read-only. Change forces creation of a new resource.
-	ReadOnly      pulumi.BoolPtrInput
+	// If the connection is read only. Change forces creation of a new resource.
+	ReadOnly pulumi.BoolPtrInput
+	// Securable type.
 	SecurableType pulumi.StringPtrInput
-	// Time at which connection this was last modified, in epoch milliseconds.
+	// Time at which this connection was updated, in epoch milliseconds.
 	UpdatedAt pulumi.IntPtrInput
-	// Username of user who last modified the connection.
+	// Username of user who last modified connection.
 	UpdatedBy pulumi.StringPtrInput
 	// URL of the remote data source, extracted from options.
 	Url pulumi.StringPtrInput
@@ -408,41 +419,45 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
-	// Free-form text. Change forces creation of a new resource.
+	// User-provided free-form text description. Change forces creation of a new resource.
 	Comment *string `pulumi:"comment"`
-	// Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+	// The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
 	ConnectionType *string `pulumi:"connectionType"`
-	// Name of the Connection.
+	// Connection environment settings. This block consists of the following fields:
+	EnvironmentSettings *ConnectionEnvironmentSettings `pulumi:"environmentSettings"`
+	// Name of the connection.
 	Name *string `pulumi:"name"`
-	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+	// A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
 	Options map[string]string `pulumi:"options"`
-	// Name of the connection owner.
+	// Username of current owner of the connection.
 	Owner *string `pulumi:"owner"`
-	// Free-form connection properties. Change forces creation of a new resource.
+	// A map of key-value properties attached to the securable. Change forces creation of a new resource.
 	Properties map[string]string `pulumi:"properties"`
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig *ConnectionProviderConfig `pulumi:"providerConfig"`
-	// Indicates whether the connection is read-only. Change forces creation of a new resource.
+	// If the connection is read only. Change forces creation of a new resource.
 	ReadOnly *bool `pulumi:"readOnly"`
 }
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
-	// Free-form text. Change forces creation of a new resource.
+	// User-provided free-form text description. Change forces creation of a new resource.
 	Comment pulumi.StringPtrInput
-	// Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+	// The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
 	ConnectionType pulumi.StringPtrInput
-	// Name of the Connection.
+	// Connection environment settings. This block consists of the following fields:
+	EnvironmentSettings ConnectionEnvironmentSettingsPtrInput
+	// Name of the connection.
 	Name pulumi.StringPtrInput
-	// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+	// A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
 	Options pulumi.StringMapInput
-	// Name of the connection owner.
+	// Username of current owner of the connection.
 	Owner pulumi.StringPtrInput
-	// Free-form connection properties. Change forces creation of a new resource.
+	// A map of key-value properties attached to the securable. Change forces creation of a new resource.
 	Properties pulumi.StringMapInput
 	// Configure the provider for management through account provider. This block consists of the following fields:
 	ProviderConfig ConnectionProviderConfigPtrInput
-	// Indicates whether the connection is read-only. Change forces creation of a new resource.
+	// If the connection is read only. Change forces creation of a new resource.
 	ReadOnly pulumi.BoolPtrInput
 }
 
@@ -533,17 +548,17 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
-// Free-form text. Change forces creation of a new resource.
+// User-provided free-form text description. Change forces creation of a new resource.
 func (o ConnectionOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// Unique ID of the connection.
+// Unique identifier of the Connection.
 func (o ConnectionOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectionId }).(pulumi.StringOutput)
 }
 
-// Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+// The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
 func (o ConnectionOutput) ConnectionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.ConnectionType }).(pulumi.StringPtrOutput)
 }
@@ -558,9 +573,14 @@ func (o ConnectionOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// The type of credential for this connection.
+// The type of credential.
 func (o ConnectionOutput) CredentialType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.CredentialType }).(pulumi.StringOutput)
+}
+
+// Connection environment settings. This block consists of the following fields:
+func (o ConnectionOutput) EnvironmentSettings() ConnectionEnvironmentSettingsPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionEnvironmentSettingsPtrOutput { return v.EnvironmentSettings }).(ConnectionEnvironmentSettingsPtrOutput)
 }
 
 // Full name of connection.
@@ -568,27 +588,27 @@ func (o ConnectionOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.FullName }).(pulumi.StringOutput)
 }
 
-// Unique ID of the UC metastore for this connection.
+// Unique identifier of parent metastore.
 func (o ConnectionOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
-// Name of the Connection.
+// Name of the connection.
 func (o ConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+// A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
 func (o ConnectionOutput) Options() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Options }).(pulumi.StringMapOutput)
 }
 
-// Name of the connection owner.
+// Username of current owner of the connection.
 func (o ConnectionOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Free-form connection properties. Change forces creation of a new resource.
+// A map of key-value properties attached to the securable. Change forces creation of a new resource.
 func (o ConnectionOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -598,26 +618,27 @@ func (o ConnectionOutput) ProviderConfig() ConnectionProviderConfigOutput {
 	return o.ApplyT(func(v *Connection) ConnectionProviderConfigOutput { return v.ProviderConfig }).(ConnectionProviderConfigOutput)
 }
 
-// Object with the status of an asynchronously provisioned resource.
+// Status of an asynchronously provisioned resource. This block consists of the following fields:
 func (o ConnectionOutput) ProvisioningInfos() ConnectionProvisioningInfoArrayOutput {
 	return o.ApplyT(func(v *Connection) ConnectionProvisioningInfoArrayOutput { return v.ProvisioningInfos }).(ConnectionProvisioningInfoArrayOutput)
 }
 
-// Indicates whether the connection is read-only. Change forces creation of a new resource.
+// If the connection is read only. Change forces creation of a new resource.
 func (o ConnectionOutput) ReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.ReadOnly }).(pulumi.BoolOutput)
 }
 
+// Securable type.
 func (o ConnectionOutput) SecurableType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.SecurableType }).(pulumi.StringOutput)
 }
 
-// Time at which connection this was last modified, in epoch milliseconds.
+// Time at which this connection was updated, in epoch milliseconds.
 func (o ConnectionOutput) UpdatedAt() pulumi.IntOutput {
 	return o.ApplyT(func(v *Connection) pulumi.IntOutput { return v.UpdatedAt }).(pulumi.IntOutput)
 }
 
-// Username of user who last modified the connection.
+// Username of user who last modified connection.
 func (o ConnectionOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
 }

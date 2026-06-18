@@ -28,7 +28,10 @@ class GetPostgresCatalogResult:
     """
     A collection of values returned by getPostgresCatalog.
     """
-    def __init__(__self__, create_time=None, id=None, name=None, provider_config=None, spec=None, status=None, uid=None, update_time=None):
+    def __init__(__self__, catalog_id=None, create_time=None, id=None, name=None, provider_config=None, spec=None, status=None, uid=None, update_time=None):
+        if catalog_id and not isinstance(catalog_id, str):
+            raise TypeError("Expected argument 'catalog_id' to be a str")
+        pulumi.set(__self__, "catalog_id", catalog_id)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -53,6 +56,14 @@ class GetPostgresCatalogResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="catalogId")
+    def catalog_id(self) -> _builtins.str:
+        """
+        (string) - The part of the name, chosen by the user when the resource was created
+        """
+        return pulumi.get(self, "catalog_id")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -122,6 +133,7 @@ class AwaitableGetPostgresCatalogResult(GetPostgresCatalogResult):
         if False:
             yield self
         return GetPostgresCatalogResult(
+            catalog_id=self.catalog_id,
             create_time=self.create_time,
             id=self.id,
             name=self.name,
@@ -167,6 +179,7 @@ def get_postgres_catalog(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('databricks:index/getPostgresCatalog:getPostgresCatalog', __args__, opts=opts, typ=GetPostgresCatalogResult).value
 
     return AwaitableGetPostgresCatalogResult(
+        catalog_id=pulumi.get(__ret__, 'catalog_id'),
         create_time=pulumi.get(__ret__, 'create_time'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
@@ -209,6 +222,7 @@ def get_postgres_catalog_output(name: pulumi.Input[Optional[_builtins.str]] = No
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('databricks:index/getPostgresCatalog:getPostgresCatalog', __args__, opts=opts, typ=GetPostgresCatalogResult)
     return __ret__.apply(lambda __response__: GetPostgresCatalogResult(
+        catalog_id=pulumi.get(__response__, 'catalog_id'),
         create_time=pulumi.get(__response__, 'create_time'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),

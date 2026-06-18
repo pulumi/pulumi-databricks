@@ -43,6 +43,7 @@ public final class GetCatalogCatalogInfo {
      * 
      */
     private @Nullable String createdBy;
+    private @Nullable Integer customMaxRetentionHours;
     /**
      * @return object describing applied predictive optimization flag.
      * 
@@ -164,6 +165,9 @@ public final class GetCatalogCatalogInfo {
      */
     public Optional<String> createdBy() {
         return Optional.ofNullable(this.createdBy);
+    }
+    public Optional<Integer> customMaxRetentionHours() {
+        return Optional.ofNullable(this.customMaxRetentionHours);
     }
     /**
      * @return object describing applied predictive optimization flag.
@@ -299,6 +303,7 @@ public final class GetCatalogCatalogInfo {
         private @Nullable String connectionName;
         private @Nullable Integer createdAt;
         private @Nullable String createdBy;
+        private @Nullable Integer customMaxRetentionHours;
         private @Nullable GetCatalogCatalogInfoEffectivePredictiveOptimizationFlag effectivePredictiveOptimizationFlag;
         private @Nullable String enablePredictiveOptimization;
         private @Nullable String fullName;
@@ -326,6 +331,7 @@ public final class GetCatalogCatalogInfo {
     	      this.connectionName = defaults.connectionName;
     	      this.createdAt = defaults.createdAt;
     	      this.createdBy = defaults.createdBy;
+    	      this.customMaxRetentionHours = defaults.customMaxRetentionHours;
     	      this.effectivePredictiveOptimizationFlag = defaults.effectivePredictiveOptimizationFlag;
     	      this.enablePredictiveOptimization = defaults.enablePredictiveOptimization;
     	      this.fullName = defaults.fullName;
@@ -380,6 +386,12 @@ public final class GetCatalogCatalogInfo {
         public Builder createdBy(@Nullable String createdBy) {
 
             this.createdBy = createdBy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customMaxRetentionHours(@Nullable Integer customMaxRetentionHours) {
+
+            this.customMaxRetentionHours = customMaxRetentionHours;
             return this;
         }
         @CustomType.Setter
@@ -498,6 +510,7 @@ public final class GetCatalogCatalogInfo {
             _resultValue.connectionName = connectionName;
             _resultValue.createdAt = createdAt;
             _resultValue.createdBy = createdBy;
+            _resultValue.customMaxRetentionHours = customMaxRetentionHours;
             _resultValue.effectivePredictiveOptimizationFlag = effectivePredictiveOptimizationFlag;
             _resultValue.enablePredictiveOptimization = enablePredictiveOptimization;
             _resultValue.fullName = fullName;

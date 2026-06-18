@@ -32,7 +32,8 @@ type LookupFeatureEngineeringMaterializedFeatureArgs struct {
 
 // A collection of values returned by getFeatureEngineeringMaterializedFeature.
 type LookupFeatureEngineeringMaterializedFeatureResult struct {
-	// (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+	// (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+	// Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
 	CronSchedule string `pulumi:"cronSchedule"`
 	// (CronSchedule) - A cron-based schedule trigger for the materialization pipeline
 	CronScheduleTrigger GetFeatureEngineeringMaterializedFeatureCronScheduleTrigger `pulumi:"cronScheduleTrigger"`
@@ -51,7 +52,8 @@ type LookupFeatureEngineeringMaterializedFeatureResult struct {
 	OfflineStoreConfig GetFeatureEngineeringMaterializedFeatureOfflineStoreConfig `pulumi:"offlineStoreConfig"`
 	// (OnlineStoreConfig) - Destination for writing feature values to an online Lakebase table
 	OnlineStoreConfig GetFeatureEngineeringMaterializedFeatureOnlineStoreConfig `pulumi:"onlineStoreConfig"`
-	// (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+	// (string) - The schedule state of the materialization pipeline.
+	// Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState string                                                  `pulumi:"pipelineScheduleState"`
 	ProviderConfig        *GetFeatureEngineeringMaterializedFeatureProviderConfig `pulumi:"providerConfig"`
 	// (StreamingMode) - The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
@@ -100,7 +102,8 @@ func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) ToLookupFeature
 	return o
 }
 
-// (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+// (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+// Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
 func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) CronSchedule() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) string { return v.CronSchedule }).(pulumi.StringOutput)
 }
@@ -152,7 +155,8 @@ func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) OnlineStoreConf
 	}).(GetFeatureEngineeringMaterializedFeatureOnlineStoreConfigOutput)
 }
 
-// (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+// (string) - The schedule state of the materialization pipeline.
+// Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 func (o LookupFeatureEngineeringMaterializedFeatureResultOutput) PipelineScheduleState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringMaterializedFeatureResult) string { return v.PipelineScheduleState }).(pulumi.StringOutput)
 }

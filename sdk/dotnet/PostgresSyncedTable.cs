@@ -188,16 +188,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.PostgresSyncedTableStatus> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
-        /// ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-        /// Elements of the tuple are the UC entity names.
-        /// 
-        /// Example: "{catalog}.{schema}.{table}"
-        /// 
-        /// SyncedTableId represents both of the following:
-        /// 
-        /// 1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-        /// 2. Postgres table named "{table}" in schema "{schema}" in the connected Postgres database
+        /// The part of the name, chosen by the user when the resource was created
         /// </summary>
         [Output("syncedTableId")]
         public Output<string> SyncedTableId { get; private set; } = null!;
@@ -268,16 +259,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresSyncedTableSpecArgs>? Spec { get; set; }
 
         /// <summary>
-        /// The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
-        /// ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-        /// Elements of the tuple are the UC entity names.
-        /// 
-        /// Example: "{catalog}.{schema}.{table}"
-        /// 
-        /// SyncedTableId represents both of the following:
-        /// 
-        /// 1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-        /// 2. Postgres table named "{table}" in schema "{schema}" in the connected Postgres database
+        /// The part of the name, chosen by the user when the resource was created
         /// </summary>
         [Input("syncedTableId", required: true)]
         public Input<string> SyncedTableId { get; set; } = null!;
@@ -323,16 +305,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresSyncedTableStatusGetArgs>? Status { get; set; }
 
         /// <summary>
-        /// The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
-        /// ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-        /// Elements of the tuple are the UC entity names.
-        /// 
-        /// Example: "{catalog}.{schema}.{table}"
-        /// 
-        /// SyncedTableId represents both of the following:
-        /// 
-        /// 1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-        /// 2. Postgres table named "{table}" in schema "{schema}" in the connected Postgres database
+        /// The part of the name, chosen by the user when the resource was created
         /// </summary>
         [Input("syncedTableId")]
         public Input<string>? SyncedTableId { get; set; }

@@ -26,6 +26,7 @@ class VectorSearchIndexArgs:
                  primary_key: pulumi.Input[_builtins.str],
                  delta_sync_index_spec: pulumi.Input[Optional['VectorSearchIndexDeltaSyncIndexSpecArgs']] = None,
                  direct_access_index_spec: pulumi.Input[Optional['VectorSearchIndexDirectAccessIndexSpecArgs']] = None,
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  index_subtype: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['VectorSearchIndexProviderConfigArgs']] = None):
@@ -48,6 +49,8 @@ class VectorSearchIndexArgs:
             pulumi.set(__self__, "delta_sync_index_spec", delta_sync_index_spec)
         if direct_access_index_spec is not None:
             pulumi.set(__self__, "direct_access_index_spec", direct_access_index_spec)
+        if endpoint_id is not None:
+            pulumi.set(__self__, "endpoint_id", endpoint_id)
         if index_subtype is not None:
             pulumi.set(__self__, "index_subtype", index_subtype)
         if name is not None:
@@ -118,6 +121,15 @@ class VectorSearchIndexArgs:
         pulumi.set(self, "direct_access_index_spec", value)
 
     @_builtins.property
+    @pulumi.getter(name="endpointId")
+    def endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "endpoint_id")
+
+    @endpoint_id.setter
+    def endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "endpoint_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="indexSubtype")
     def index_subtype(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "index_subtype")
@@ -154,6 +166,7 @@ class _VectorSearchIndexState:
                  creator: pulumi.Input[Optional[_builtins.str]] = None,
                  delta_sync_index_spec: pulumi.Input[Optional['VectorSearchIndexDeltaSyncIndexSpecArgs']] = None,
                  direct_access_index_spec: pulumi.Input[Optional['VectorSearchIndexDirectAccessIndexSpecArgs']] = None,
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
                  index_subtype: pulumi.Input[Optional[_builtins.str]] = None,
                  index_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -181,6 +194,8 @@ class _VectorSearchIndexState:
             pulumi.set(__self__, "delta_sync_index_spec", delta_sync_index_spec)
         if direct_access_index_spec is not None:
             pulumi.set(__self__, "direct_access_index_spec", direct_access_index_spec)
+        if endpoint_id is not None:
+            pulumi.set(__self__, "endpoint_id", endpoint_id)
         if endpoint_name is not None:
             pulumi.set(__self__, "endpoint_name", endpoint_name)
         if index_subtype is not None:
@@ -231,6 +246,15 @@ class _VectorSearchIndexState:
     @direct_access_index_spec.setter
     def direct_access_index_spec(self, value: pulumi.Input[Optional['VectorSearchIndexDirectAccessIndexSpecArgs']]):
         pulumi.set(self, "direct_access_index_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endpointId")
+    def endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "endpoint_id")
+
+    @endpoint_id.setter
+    def endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointName")
@@ -321,6 +345,7 @@ class VectorSearchIndex(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delta_sync_index_spec: pulumi.Input[Optional[Union['VectorSearchIndexDeltaSyncIndexSpecArgs', 'VectorSearchIndexDeltaSyncIndexSpecArgsDict']]] = None,
                  direct_access_index_spec: pulumi.Input[Optional[Union['VectorSearchIndexDirectAccessIndexSpecArgs', 'VectorSearchIndexDirectAccessIndexSpecArgsDict']]] = None,
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
                  index_subtype: pulumi.Input[Optional[_builtins.str]] = None,
                  index_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -329,6 +354,8 @@ class VectorSearchIndex(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['VectorSearchIndexProviderConfigArgs', 'VectorSearchIndexProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes)
+
         This resource allows you to create [Mosaic AI Vector Search Index](https://docs.databricks.com/en/generative-ai/create-query-vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Index provides the ability to search data in the linked Delta Table.
 
         > This resource can only be used with a workspace-level provider!
@@ -373,6 +400,8 @@ class VectorSearchIndex(pulumi.CustomResource):
                  args: VectorSearchIndexArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes)
+
         This resource allows you to create [Mosaic AI Vector Search Index](https://docs.databricks.com/en/generative-ai/create-query-vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Index provides the ability to search data in the linked Delta Table.
 
         > This resource can only be used with a workspace-level provider!
@@ -416,6 +445,7 @@ class VectorSearchIndex(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delta_sync_index_spec: pulumi.Input[Optional[Union['VectorSearchIndexDeltaSyncIndexSpecArgs', 'VectorSearchIndexDeltaSyncIndexSpecArgsDict']]] = None,
                  direct_access_index_spec: pulumi.Input[Optional[Union['VectorSearchIndexDirectAccessIndexSpecArgs', 'VectorSearchIndexDirectAccessIndexSpecArgsDict']]] = None,
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
                  index_subtype: pulumi.Input[Optional[_builtins.str]] = None,
                  index_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -433,6 +463,7 @@ class VectorSearchIndex(pulumi.CustomResource):
 
             __props__.__dict__["delta_sync_index_spec"] = delta_sync_index_spec
             __props__.__dict__["direct_access_index_spec"] = direct_access_index_spec
+            __props__.__dict__["endpoint_id"] = endpoint_id
             if endpoint_name is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_name'")
             __props__.__dict__["endpoint_name"] = endpoint_name
@@ -460,6 +491,7 @@ class VectorSearchIndex(pulumi.CustomResource):
             creator: pulumi.Input[Optional[_builtins.str]] = None,
             delta_sync_index_spec: pulumi.Input[Optional[Union['VectorSearchIndexDeltaSyncIndexSpecArgs', 'VectorSearchIndexDeltaSyncIndexSpecArgsDict']]] = None,
             direct_access_index_spec: pulumi.Input[Optional[Union['VectorSearchIndexDirectAccessIndexSpecArgs', 'VectorSearchIndexDirectAccessIndexSpecArgsDict']]] = None,
+            endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
             endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
             index_subtype: pulumi.Input[Optional[_builtins.str]] = None,
             index_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -492,6 +524,7 @@ class VectorSearchIndex(pulumi.CustomResource):
         __props__.__dict__["creator"] = creator
         __props__.__dict__["delta_sync_index_spec"] = delta_sync_index_spec
         __props__.__dict__["direct_access_index_spec"] = direct_access_index_spec
+        __props__.__dict__["endpoint_id"] = endpoint_id
         __props__.__dict__["endpoint_name"] = endpoint_name
         __props__.__dict__["index_subtype"] = index_subtype
         __props__.__dict__["index_type"] = index_type
@@ -524,6 +557,11 @@ class VectorSearchIndex(pulumi.CustomResource):
         Specification for Direct Vector Access Index. Required if `index_type` is `DIRECT_ACCESS`. This field is a block and is documented below.
         """
         return pulumi.get(self, "direct_access_index_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="endpointId")
+    def endpoint_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "endpoint_id")
 
     @_builtins.property
     @pulumi.getter(name="endpointName")

@@ -207,6 +207,8 @@ class MetastoreProvider(pulumi.CustomResource):
                  recipient_profile_str: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/providers)
+
         In Delta Sharing, a provider is an entity that shares data with a recipient. Within a metastore, Unity Catalog provides the ability to create a provider which contains a list of shares that have been shared with you.
 
         > This resource can only be used with a workspace-level provider!
@@ -258,6 +260,8 @@ class MetastoreProvider(pulumi.CustomResource):
                  args: MetastoreProviderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/providers)
+
         In Delta Sharing, a provider is an entity that shares data with a recipient. Within a metastore, Unity Catalog provides the ability to create a provider which contains a list of shares that have been shared with you.
 
         > This resource can only be used with a workspace-level provider!

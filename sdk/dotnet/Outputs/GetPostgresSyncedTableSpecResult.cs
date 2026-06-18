@@ -14,6 +14,12 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetPostgresSyncedTableSpecResult
     {
         /// <summary>
+        /// (boolean) - When true, enables accelerated sync mode for the initial data load.
+        /// This significantly improves performance for large tables.
+        /// Requires workspace-level enablement through Lakebase Accelerated Sync preview
+        /// </summary>
+        public readonly bool? AcceleratedSync;
+        /// <summary>
         /// (string) - The full resource name the branch associated with the table.
         /// </summary>
         public readonly string? Branch;
@@ -53,9 +59,16 @@ namespace Pulumi.Databricks.Outputs
         /// (string) - Time series key to deduplicate (tie-break) rows with the same primary key
         /// </summary>
         public readonly string? TimeseriesKey;
+        /// <summary>
+        /// (list of SyncedTableSyncedTableSpecTypeOverride) - Override the default Delta-&gt;PG type mapping for specific columns.
+        /// A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid PgType must be set
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetPostgresSyncedTableSpecTypeOverrideResult> TypeOverrides;
 
         [OutputConstructor]
         private GetPostgresSyncedTableSpecResult(
+            bool? acceleratedSync,
+
             string? branch,
 
             bool? createDatabaseObjectsIfMissing,
@@ -72,8 +85,11 @@ namespace Pulumi.Databricks.Outputs
 
             string? sourceTableFullName,
 
-            string? timeseriesKey)
+            string? timeseriesKey,
+
+            ImmutableArray<Outputs.GetPostgresSyncedTableSpecTypeOverrideResult> typeOverrides)
         {
+            AcceleratedSync = acceleratedSync;
             Branch = branch;
             CreateDatabaseObjectsIfMissing = createDatabaseObjectsIfMissing;
             ExistingPipelineId = existingPipelineId;
@@ -83,6 +99,7 @@ namespace Pulumi.Databricks.Outputs
             SchedulingPolicy = schedulingPolicy;
             SourceTableFullName = sourceTableFullName;
             TimeseriesKey = timeseriesKey;
+            TypeOverrides = typeOverrides;
         }
     }
 }

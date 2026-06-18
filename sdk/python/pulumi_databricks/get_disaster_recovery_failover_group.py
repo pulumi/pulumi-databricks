@@ -188,7 +188,24 @@ class AwaitableGetDisasterRecoveryFailoverGroupResult(GetDisasterRecoveryFailove
 def get_disaster_recovery_failover_group(name: Optional[_builtins.str] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDisasterRecoveryFailoverGroupResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+
+    This data source can be used to get a single failover group by its fully qualified resource name.
+
+    > **Note** This data source can only be used with an account-level provider!
+
+    ## Example Usage
+
+    Referring to a failover group by its resource name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_disaster_recovery_failover_group(name=f"accounts/{account_id}/failover-groups/accounting-failover-group")
+    ```
 
 
     :param _builtins.str name: Fully qualified resource name in the format
@@ -215,7 +232,24 @@ def get_disaster_recovery_failover_group(name: Optional[_builtins.str] = None,
 def get_disaster_recovery_failover_group_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDisasterRecoveryFailoverGroupResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+
+    This data source can be used to get a single failover group by its fully qualified resource name.
+
+    > **Note** This data source can only be used with an account-level provider!
+
+    ## Example Usage
+
+    Referring to a failover group by its resource name:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    this = databricks.get_disaster_recovery_failover_group(name=f"accounts/{account_id}/failover-groups/accounting-failover-group")
+    ```
 
 
     :param _builtins.str name: Fully qualified resource name in the format

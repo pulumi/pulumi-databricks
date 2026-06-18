@@ -22,6 +22,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/catalogs)
+ * 
  * Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
  * 
  * A `databricks.Catalog` is contained within databricks.Metastore and can contain databricks_schema. By default, Databricks creates `default` schema for every new catalog, but Pulumi plugin is removing this auto-created schema, so that resource destruction could be done in a clean way.
@@ -149,6 +151,12 @@ public class Catalog extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createdBy() {
         return this.createdBy;
+    }
+    @Export(name="customMaxRetentionHours", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> customMaxRetentionHours;
+
+    public Output<Optional<Integer>> customMaxRetentionHours() {
+        return Codegen.optional(this.customMaxRetentionHours);
     }
     @Export(name="effectivePredictiveOptimizationFlag", refs={CatalogEffectivePredictiveOptimizationFlag.class}, tree="[0]")
     private Output<CatalogEffectivePredictiveOptimizationFlag> effectivePredictiveOptimizationFlag;

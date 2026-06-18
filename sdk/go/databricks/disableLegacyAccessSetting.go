@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/workspace/disablelegacyaccess)
+//
 // The `DisableLegacyAccessSetting` resource allows you to disable legacy access. It has the following impact:
 //
 // 1. Disables direct access to Hive Metastores from the workspace. However, you can still access a Hive Metastore through Hive Metastore federation.

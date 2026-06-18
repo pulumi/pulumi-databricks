@@ -38,7 +38,8 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
     }
 
     /**
-     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
      */
     declare public readonly cronSchedule: pulumi.Output<string | undefined>;
     /**
@@ -71,7 +72,8 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
      */
     declare public readonly onlineStoreConfig: pulumi.Output<outputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig | undefined>;
     /**
-     * The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+     * The schedule state of the materialization pipeline.
+     * Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
      */
     declare public readonly pipelineScheduleState: pulumi.Output<string | undefined>;
     /**
@@ -148,7 +150,8 @@ export class FeatureEngineeringMaterializedFeature extends pulumi.CustomResource
  */
 export interface FeatureEngineeringMaterializedFeatureState {
     /**
-     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
      */
     cronSchedule?: pulumi.Input<string | undefined>;
     /**
@@ -181,7 +184,8 @@ export interface FeatureEngineeringMaterializedFeatureState {
      */
     onlineStoreConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig | undefined>;
     /**
-     * The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+     * The schedule state of the materialization pipeline.
+     * Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
      */
     pipelineScheduleState?: pulumi.Input<string | undefined>;
     /**
@@ -209,7 +213,8 @@ export interface FeatureEngineeringMaterializedFeatureState {
  */
 export interface FeatureEngineeringMaterializedFeatureArgs {
     /**
-     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     * The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
      */
     cronSchedule?: pulumi.Input<string | undefined>;
     /**
@@ -229,7 +234,8 @@ export interface FeatureEngineeringMaterializedFeatureArgs {
      */
     onlineStoreConfig?: pulumi.Input<inputs.FeatureEngineeringMaterializedFeatureOnlineStoreConfig | undefined>;
     /**
-     * The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+     * The schedule state of the materialization pipeline.
+     * Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
      */
     pipelineScheduleState?: pulumi.Input<string | undefined>;
     /**

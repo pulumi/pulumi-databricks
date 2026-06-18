@@ -166,6 +166,8 @@ class UserRole(pulumi.CustomResource):
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/users)
+
         This resource allows you to attach a role or InstanceProfile (AWS) to databricks_user.
 
         > This resource can be used with an account or workspace-level provider.
@@ -226,6 +228,8 @@ class UserRole(pulumi.CustomResource):
                  args: UserRoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/users)
+
         This resource allows you to attach a role or InstanceProfile (AWS) to databricks_user.
 
         > This resource can be used with an account or workspace-level provider.

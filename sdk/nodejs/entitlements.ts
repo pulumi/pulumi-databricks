@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/users)
+ *
  * This resource allows you to set entitlements to existing databricks_users, databricks.Group or databricks_service_principal.
  *
  * > This resource can only be used with a workspace-level provider!

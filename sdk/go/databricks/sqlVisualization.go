@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/workspace/dashboards)
+//
 // > This resource is deprecated and will be removed in future.
 //
 // > Please switch to Dashboard to author new AI/BI dashboards using the latest tooling

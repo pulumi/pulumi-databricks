@@ -28,7 +28,7 @@ class GetFeatureEngineeringKafkaConfigResult:
     """
     A collection of values returned by getFeatureEngineeringKafkaConfig.
     """
-    def __init__(__self__, auth_config=None, backfill_source=None, bootstrap_servers=None, extra_options=None, id=None, key_schema=None, name=None, provider_config=None, subscription_mode=None, value_schema=None):
+    def __init__(__self__, auth_config=None, backfill_source=None, bootstrap_servers=None, extra_options=None, id=None, ingestion_config=None, key_schema=None, name=None, provider_config=None, subscription_mode=None, value_schema=None):
         if auth_config and not isinstance(auth_config, dict):
             raise TypeError("Expected argument 'auth_config' to be a dict")
         pulumi.set(__self__, "auth_config", auth_config)
@@ -44,6 +44,9 @@ class GetFeatureEngineeringKafkaConfigResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ingestion_config and not isinstance(ingestion_config, dict):
+            raise TypeError("Expected argument 'ingestion_config' to be a dict")
+        pulumi.set(__self__, "ingestion_config", ingestion_config)
         if key_schema and not isinstance(key_schema, dict):
             raise TypeError("Expected argument 'key_schema' to be a dict")
         pulumi.set(__self__, "key_schema", key_schema)
@@ -72,9 +75,9 @@ class GetFeatureEngineeringKafkaConfigResult:
     @pulumi.getter(name="backfillSource")
     def backfill_source(self) -> 'outputs.GetFeatureEngineeringKafkaConfigBackfillSourceResult':
         """
-        (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
-        In the future, a separate table will be maintained by Databricks for forward filling data.
-        The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+        (BackfillSource) - A user-provided source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Stream.
+        The backfill data stored in this location will be copied into the ingestion table for offline querying and training.
+        The schema for this source must match exactly that of the key and payload schemas specified for this Stream
         """
         return pulumi.get(self, "backfill_source")
 
@@ -101,6 +104,15 @@ class GetFeatureEngineeringKafkaConfigResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ingestionConfig")
+    def ingestion_config(self) -> 'outputs.GetFeatureEngineeringKafkaConfigIngestionConfigResult':
+        """
+        (IngestionConfig) - Configuration for ingesting Kafka data into a Databricks-managed
+        Delta table
+        """
+        return pulumi.get(self, "ingestion_config")
 
     @_builtins.property
     @pulumi.getter(name="keySchema")
@@ -152,6 +164,7 @@ class AwaitableGetFeatureEngineeringKafkaConfigResult(GetFeatureEngineeringKafka
             bootstrap_servers=self.bootstrap_servers,
             extra_options=self.extra_options,
             id=self.id,
+            ingestion_config=self.ingestion_config,
             key_schema=self.key_schema,
             name=self.name,
             provider_config=self.provider_config,
@@ -182,6 +195,7 @@ def get_feature_engineering_kafka_config(name: Optional[_builtins.str] = None,
         bootstrap_servers=pulumi.get(__ret__, 'bootstrap_servers'),
         extra_options=pulumi.get(__ret__, 'extra_options'),
         id=pulumi.get(__ret__, 'id'),
+        ingestion_config=pulumi.get(__ret__, 'ingestion_config'),
         key_schema=pulumi.get(__ret__, 'key_schema'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
@@ -209,6 +223,7 @@ def get_feature_engineering_kafka_config_output(name: pulumi.Input[Optional[_bui
         bootstrap_servers=pulumi.get(__response__, 'bootstrap_servers'),
         extra_options=pulumi.get(__response__, 'extra_options'),
         id=pulumi.get(__response__, 'id'),
+        ingestion_config=pulumi.get(__response__, 'ingestion_config'),
         key_schema=pulumi.get(__response__, 'key_schema'),
         name=pulumi.get(__response__, 'name'),
         provider_config=pulumi.get(__response__, 'provider_config'),

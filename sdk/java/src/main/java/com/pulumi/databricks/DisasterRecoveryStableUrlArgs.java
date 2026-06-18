@@ -17,7 +17,7 @@ public final class DisasterRecoveryStableUrlArgs extends com.pulumi.resources.Re
     /**
      * The workspace this stable URL is initially bound to. Used only in Create
      * requests to associate the stable URL with a workspace. Not returned in
-     * responses. Mirrors FailoverGroup.initial_primary_region semantics
+     * responses
      * 
      */
     @Import(name="initialWorkspaceId", required=true)
@@ -26,7 +26,7 @@ public final class DisasterRecoveryStableUrlArgs extends com.pulumi.resources.Re
     /**
      * @return The workspace this stable URL is initially bound to. Used only in Create
      * requests to associate the stable URL with a workspace. Not returned in
-     * responses. Mirrors FailoverGroup.initial_primary_region semantics
+     * responses
      * 
      */
     public Output<String> initialWorkspaceId() {
@@ -94,7 +94,7 @@ public final class DisasterRecoveryStableUrlArgs extends com.pulumi.resources.Re
         /**
          * @param initialWorkspaceId The workspace this stable URL is initially bound to. Used only in Create
          * requests to associate the stable URL with a workspace. Not returned in
-         * responses. Mirrors FailoverGroup.initial_primary_region semantics
+         * responses
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class DisasterRecoveryStableUrlArgs extends com.pulumi.resources.Re
         /**
          * @param initialWorkspaceId The workspace this stable URL is initially bound to. Used only in Create
          * requests to associate the stable URL with a workspace. Not returned in
-         * responses. Mirrors FailoverGroup.initial_primary_region semantics
+         * responses
          * 
          * @return builder
          * 

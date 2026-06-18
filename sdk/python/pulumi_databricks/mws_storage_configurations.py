@@ -207,6 +207,8 @@ class MwsStorageConfigurations(pulumi.CustomResource):
                  storage_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/storage)
+
         This resource to configure root bucket new workspaces within AWS.
 
         > This resource can only be used with an account-level provider!
@@ -283,6 +285,8 @@ class MwsStorageConfigurations(pulumi.CustomResource):
                  args: MwsStorageConfigurationsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/storage)
+
         This resource to configure root bucket new workspaces within AWS.
 
         > This resource can only be used with an account-level provider!

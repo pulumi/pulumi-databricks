@@ -106,6 +106,8 @@ class MwsNccBinding(pulumi.CustomResource):
                  workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/workspaces)
+
         Allows you to attach a Network Connectivity Config object to a MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/serverless-firewall).
 
         > This resource can only be used with an account-level provider!
@@ -153,6 +155,8 @@ class MwsNccBinding(pulumi.CustomResource):
                  args: MwsNccBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/workspaces)
+
         Allows you to attach a Network Connectivity Config object to a MwsWorkspaces resource to create a [Databricks Workspace that leverages serverless network connectivity configs](https://learn.microsoft.com/en-us/azure/databricks/sql/admin/serverless-firewall).
 
         > This resource can only be used with an account-level provider!

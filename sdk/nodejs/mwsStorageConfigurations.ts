@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/account/storage)
+ *
  * This resource to configure root bucket new workspaces within AWS.
  *
  * > This resource can only be used with an account-level provider!

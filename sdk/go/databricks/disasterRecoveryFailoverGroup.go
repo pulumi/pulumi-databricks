@@ -12,7 +12,58 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+//
+// A failover group coordinates Databricks Managed Disaster Recovery across one or more workspace sets, replicating data and (optionally) workspace assets from a primary region to a secondary region so you can fail over with minimal disruption.
+//
+// Each workspace set groups the workspaces that replicate to each other across regions. Unity Catalog catalogs and their underlying storage can additionally be replicated by configuring `unityCatalogAssets`. After a successful failover, the group's effective primary region changes to the former secondary.
+//
+// > **Note** This resource can only be used with an account-level provider!
+//
+// ## Example Usage
+//
+// Creating a failover group for a single workspace set replicating between two regions, with control plane (workspace asset) replication enabled:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewDisasterRecoveryFailoverGroup(ctx, "this", &databricks.DisasterRecoveryFailoverGroupArgs{
+//				FailoverGroupId:      pulumi.String("accounting-failover-group"),
+//				InitialPrimaryRegion: pulumi.String("us-east-1"),
+//				Regions: pulumi.StringArray{
+//					pulumi.String("us-east-1"),
+//					pulumi.String("us-west-2"),
+//				},
+//				WorkspaceSets: databricks.DisasterRecoveryFailoverGroupWorkspaceSetArray{
+//					&databricks.DisasterRecoveryFailoverGroupWorkspaceSetArgs{
+//						Name: pulumi.String("accounting"),
+//						WorkspaceIds: pulumi.StringArray{
+//							pulumi.String("1234567890123456"),
+//							pulumi.String("6543210987654321"),
+//						},
+//						ReplicateWorkspaceAssets: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type DisasterRecoveryFailoverGroup struct {
 	pulumi.CustomResourceState
 

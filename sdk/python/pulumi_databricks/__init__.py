@@ -11,6 +11,8 @@ from .account_federation_policy import *
 from .account_network_policy import *
 from .account_setting_user_preference_v2 import *
 from .account_setting_v2 import *
+from .ai_search_endpoint import *
+from .ai_search_index import *
 from .aibi_dashboard_embedding_access_policy_setting import *
 from .aibi_dashboard_embedding_approved_domains_setting import *
 from .alert import *
@@ -63,6 +65,10 @@ from .get_account_network_policies import *
 from .get_account_network_policy import *
 from .get_account_setting_user_preference_v2 import *
 from .get_account_setting_v2 import *
+from .get_ai_search_endpoint import *
+from .get_ai_search_endpoints import *
+from .get_ai_search_index import *
+from .get_ai_search_indexes import *
 from .get_alert_v2 import *
 from .get_alerts_v2 import *
 from .get_app import *
@@ -359,6 +365,22 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/accountSettingV2:AccountSettingV2": "AccountSettingV2"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/aiSearchEndpoint",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/aiSearchEndpoint:AiSearchEndpoint": "AiSearchEndpoint"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/aiSearchIndex",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/aiSearchIndex:AiSearchIndex": "AiSearchIndex"
   }
  },
  {

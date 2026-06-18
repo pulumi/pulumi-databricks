@@ -172,6 +172,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// (string) - Part of the resource name
+        /// </summary>
+        public readonly string DatabaseId;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -203,6 +207,8 @@ namespace Pulumi.Databricks
         private GetPostgresDatabaseResult(
             string createTime,
 
+            string databaseId,
+
             string id,
 
             string name,
@@ -218,6 +224,7 @@ namespace Pulumi.Databricks
             string updateTime)
         {
             CreateTime = createTime;
+            DatabaseId = databaseId;
             Id = id;
             Name = name;
             Parent = parent;

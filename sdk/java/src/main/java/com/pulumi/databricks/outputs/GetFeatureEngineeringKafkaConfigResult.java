@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigAuthConfig;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigBackfillSource;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigIngestionConfig;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigKeySchema;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigProviderConfig;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringKafkaConfigSubscriptionMode;
@@ -25,9 +26,9 @@ public final class GetFeatureEngineeringKafkaConfigResult {
      */
     private GetFeatureEngineeringKafkaConfigAuthConfig authConfig;
     /**
-     * @return (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
-     * In the future, a separate table will be maintained by Databricks for forward filling data.
-     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     * @return (BackfillSource) - A user-provided source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Stream.
+     * The backfill data stored in this location will be copied into the ingestion table for offline querying and training.
+     * The schema for this source must match exactly that of the key and payload schemas specified for this Stream
      * 
      */
     private GetFeatureEngineeringKafkaConfigBackfillSource backfillSource;
@@ -46,6 +47,12 @@ public final class GetFeatureEngineeringKafkaConfigResult {
      * 
      */
     private String id;
+    /**
+     * @return (IngestionConfig) - Configuration for ingesting Kafka data into a Databricks-managed
+     * Delta table
+     * 
+     */
+    private GetFeatureEngineeringKafkaConfigIngestionConfig ingestionConfig;
     /**
      * @return (SchemaConfig) - Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
      * 
@@ -78,9 +85,9 @@ public final class GetFeatureEngineeringKafkaConfigResult {
         return this.authConfig;
     }
     /**
-     * @return (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
-     * In the future, a separate table will be maintained by Databricks for forward filling data.
-     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     * @return (BackfillSource) - A user-provided source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Stream.
+     * The backfill data stored in this location will be copied into the ingestion table for offline querying and training.
+     * The schema for this source must match exactly that of the key and payload schemas specified for this Stream
      * 
      */
     public GetFeatureEngineeringKafkaConfigBackfillSource backfillSource() {
@@ -106,6 +113,14 @@ public final class GetFeatureEngineeringKafkaConfigResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return (IngestionConfig) - Configuration for ingesting Kafka data into a Databricks-managed
+     * Delta table
+     * 
+     */
+    public GetFeatureEngineeringKafkaConfigIngestionConfig ingestionConfig() {
+        return this.ingestionConfig;
     }
     /**
      * @return (SchemaConfig) - Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
@@ -154,6 +169,7 @@ public final class GetFeatureEngineeringKafkaConfigResult {
         private String bootstrapServers;
         private Map<String,String> extraOptions;
         private String id;
+        private GetFeatureEngineeringKafkaConfigIngestionConfig ingestionConfig;
         private GetFeatureEngineeringKafkaConfigKeySchema keySchema;
         private String name;
         private @Nullable GetFeatureEngineeringKafkaConfigProviderConfig providerConfig;
@@ -167,6 +183,7 @@ public final class GetFeatureEngineeringKafkaConfigResult {
     	      this.bootstrapServers = defaults.bootstrapServers;
     	      this.extraOptions = defaults.extraOptions;
     	      this.id = defaults.id;
+    	      this.ingestionConfig = defaults.ingestionConfig;
     	      this.keySchema = defaults.keySchema;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
@@ -215,6 +232,14 @@ public final class GetFeatureEngineeringKafkaConfigResult {
             return this;
         }
         @CustomType.Setter
+        public Builder ingestionConfig(GetFeatureEngineeringKafkaConfigIngestionConfig ingestionConfig) {
+            if (ingestionConfig == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringKafkaConfigResult", "ingestionConfig");
+            }
+            this.ingestionConfig = ingestionConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder keySchema(GetFeatureEngineeringKafkaConfigKeySchema keySchema) {
             if (keySchema == null) {
               throw new MissingRequiredPropertyException("GetFeatureEngineeringKafkaConfigResult", "keySchema");
@@ -259,6 +284,7 @@ public final class GetFeatureEngineeringKafkaConfigResult {
             _resultValue.bootstrapServers = bootstrapServers;
             _resultValue.extraOptions = extraOptions;
             _resultValue.id = id;
+            _resultValue.ingestionConfig = ingestionConfig;
             _resultValue.keySchema = keySchema;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;

@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/clusters)
+ *
  * This resource allows you to manage [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
  *
  * > This resource can only be used with a workspace-level provider!

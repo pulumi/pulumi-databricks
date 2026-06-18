@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/account/vpcendpoints)
+ *
  * Enables you to register awsVpcEndpoint resources or gcp vpcEndpoint resources with Databricks such that they can be used as part of a databricks.MwsNetworks configuration.
  *
  * > This resource can only be used with an account-level provider!

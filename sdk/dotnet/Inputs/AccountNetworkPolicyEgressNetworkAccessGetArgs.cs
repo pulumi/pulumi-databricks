@@ -12,6 +12,19 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AccountNetworkPolicyEgressNetworkAccessGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowedDatabricksDestinations")]
+        private InputList<Inputs.AccountNetworkPolicyEgressNetworkAccessAllowedDatabricksDestinationGetArgs>? _allowedDatabricksDestinations;
+
+        /// <summary>
+        /// List of Databricks workspace destinations that serverless workloads are
+        /// allowed to access when in RESTRICTED_ACCESS mode
+        /// </summary>
+        public InputList<Inputs.AccountNetworkPolicyEgressNetworkAccessAllowedDatabricksDestinationGetArgs> AllowedDatabricksDestinations
+        {
+            get => _allowedDatabricksDestinations ?? (_allowedDatabricksDestinations = new InputList<Inputs.AccountNetworkPolicyEgressNetworkAccessAllowedDatabricksDestinationGetArgs>());
+            set => _allowedDatabricksDestinations = value;
+        }
+
         [Input("allowedInternetDestinations")]
         private InputList<Inputs.AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationGetArgs>? _allowedInternetDestinations;
 

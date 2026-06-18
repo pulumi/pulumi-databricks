@@ -71,6 +71,10 @@ public final class JobTask {
      * 
      */
     private @Nullable Boolean disableAutoOptimization;
+    /**
+     * @return (Bool) An optional flag to disable the task. If set to `true`, the task will not run even if it is part of a job.
+     * 
+     */
     private @Nullable Boolean disabled;
     /**
      * @return An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
@@ -213,6 +217,10 @@ public final class JobTask {
     public Optional<Boolean> disableAutoOptimization() {
         return Optional.ofNullable(this.disableAutoOptimization);
     }
+    /**
+     * @return (Bool) An optional flag to disable the task. If set to `true`, the task will not run even if it is part of a job.
+     * 
+     */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }

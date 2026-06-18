@@ -173,14 +173,7 @@ type PostgresDatabase struct {
 
 	// (string) - A timestamp indicating when the database was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The ID to use for the Database, which will become the final component of
-	// the database's resource name.
-	// This ID becomes the database name in postgres.
-	//
-	// This value should be 4-63 characters, and only use characters available in DNS names,
-	// as defined by RFC-1123
-	//
-	// If databaseId is not specified in the request, it is generated automatically
+	// (string) - Part of the resource name
 	DatabaseId pulumi.StringOutput `pulumi:"databaseId"`
 	// (string) - The resource name of the database.
 	// Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
@@ -233,14 +226,7 @@ func GetPostgresDatabase(ctx *pulumi.Context,
 type postgresDatabaseState struct {
 	// (string) - A timestamp indicating when the database was created
 	CreateTime *string `pulumi:"createTime"`
-	// The ID to use for the Database, which will become the final component of
-	// the database's resource name.
-	// This ID becomes the database name in postgres.
-	//
-	// This value should be 4-63 characters, and only use characters available in DNS names,
-	// as defined by RFC-1123
-	//
-	// If databaseId is not specified in the request, it is generated automatically
+	// (string) - Part of the resource name
 	DatabaseId *string `pulumi:"databaseId"`
 	// (string) - The resource name of the database.
 	// Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
@@ -261,14 +247,7 @@ type postgresDatabaseState struct {
 type PostgresDatabaseState struct {
 	// (string) - A timestamp indicating when the database was created
 	CreateTime pulumi.StringPtrInput
-	// The ID to use for the Database, which will become the final component of
-	// the database's resource name.
-	// This ID becomes the database name in postgres.
-	//
-	// This value should be 4-63 characters, and only use characters available in DNS names,
-	// as defined by RFC-1123
-	//
-	// If databaseId is not specified in the request, it is generated automatically
+	// (string) - Part of the resource name
 	DatabaseId pulumi.StringPtrInput
 	// (string) - The resource name of the database.
 	// Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
@@ -291,14 +270,7 @@ func (PostgresDatabaseState) ElementType() reflect.Type {
 }
 
 type postgresDatabaseArgs struct {
-	// The ID to use for the Database, which will become the final component of
-	// the database's resource name.
-	// This ID becomes the database name in postgres.
-	//
-	// This value should be 4-63 characters, and only use characters available in DNS names,
-	// as defined by RFC-1123
-	//
-	// If databaseId is not specified in the request, it is generated automatically
+	// (string) - Part of the resource name
 	DatabaseId *string `pulumi:"databaseId"`
 	// The branch containing this database.
 	// Format: projects/{project_id}/branches/{branch_id}
@@ -311,14 +283,7 @@ type postgresDatabaseArgs struct {
 
 // The set of arguments for constructing a PostgresDatabase resource.
 type PostgresDatabaseArgs struct {
-	// The ID to use for the Database, which will become the final component of
-	// the database's resource name.
-	// This ID becomes the database name in postgres.
-	//
-	// This value should be 4-63 characters, and only use characters available in DNS names,
-	// as defined by RFC-1123
-	//
-	// If databaseId is not specified in the request, it is generated automatically
+	// (string) - Part of the resource name
 	DatabaseId pulumi.StringPtrInput
 	// The branch containing this database.
 	// Format: projects/{project_id}/branches/{branch_id}
@@ -421,14 +386,7 @@ func (o PostgresDatabaseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresDatabase) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The ID to use for the Database, which will become the final component of
-// the database's resource name.
-// This ID becomes the database name in postgres.
-//
-// This value should be 4-63 characters, and only use characters available in DNS names,
-// as defined by RFC-1123
-//
-// If databaseId is not specified in the request, it is generated automatically
+// (string) - Part of the resource name
 func (o PostgresDatabaseOutput) DatabaseId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresDatabase) pulumi.StringOutput { return v.DatabaseId }).(pulumi.StringOutput)
 }

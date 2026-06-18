@@ -206,9 +206,7 @@ type PostgresProject struct {
 	// (string) - Output only. The full resource path of the project.
 	// Format: projects/{project_id}
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID to use for the Project. This becomes the final component of the project's resource name.
-	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-	// For example, `my-app` becomes `projects/my-app`
+	// The part of the name, chosen by the user when the resource was created
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresProjectProviderConfigOutput `pulumi:"providerConfig"`
@@ -274,9 +272,7 @@ type postgresProjectState struct {
 	// (string) - Output only. The full resource path of the project.
 	// Format: projects/{project_id}
 	Name *string `pulumi:"name"`
-	// The ID to use for the Project. This becomes the final component of the project's resource name.
-	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-	// For example, `my-app` becomes `projects/my-app`
+	// The part of the name, chosen by the user when the resource was created
 	ProjectId *string `pulumi:"projectId"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresProjectProviderConfig `pulumi:"providerConfig"`
@@ -310,9 +306,7 @@ type PostgresProjectState struct {
 	// (string) - Output only. The full resource path of the project.
 	// Format: projects/{project_id}
 	Name pulumi.StringPtrInput
-	// The ID to use for the Project. This becomes the final component of the project's resource name.
-	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-	// For example, `my-app` becomes `projects/my-app`
+	// The part of the name, chosen by the user when the resource was created
 	ProjectId pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresProjectProviderConfigPtrInput
@@ -342,9 +336,7 @@ type postgresProjectArgs struct {
 	// configured. This field does not apply to any endpoints created after project creation. Use
 	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
 	InitialEndpointSpec *PostgresProjectInitialEndpointSpec `pulumi:"initialEndpointSpec"`
-	// The ID to use for the Project. This becomes the final component of the project's resource name.
-	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-	// For example, `my-app` becomes `projects/my-app`
+	// The part of the name, chosen by the user when the resource was created
 	ProjectId string `pulumi:"projectId"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresProjectProviderConfig `pulumi:"providerConfig"`
@@ -362,9 +354,7 @@ type PostgresProjectArgs struct {
 	// configured. This field does not apply to any endpoints created after project creation. Use
 	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
 	InitialEndpointSpec PostgresProjectInitialEndpointSpecPtrInput
-	// The ID to use for the Project. This becomes the final component of the project's resource name.
-	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-	// For example, `my-app` becomes `projects/my-app`
+	// The part of the name, chosen by the user when the resource was created
 	ProjectId pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresProjectProviderConfigPtrInput
@@ -487,9 +477,7 @@ func (o PostgresProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresProject) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID to use for the Project. This becomes the final component of the project's resource name.
-// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-// For example, `my-app` becomes `projects/my-app`
+// The part of the name, chosen by the user when the resource was created
 func (o PostgresProjectOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresProject) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }

@@ -98,7 +98,7 @@ namespace Pulumi.Databricks
         public Output<string> DatabaseInstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the database (in a instance) associated with the catalog
+        /// The name of the database (in an instance) associated with the catalog
         /// </summary>
         [Output("databaseName")]
         public Output<string> DatabaseName { get; private set; } = null!;
@@ -177,7 +177,7 @@ namespace Pulumi.Databricks
         public Input<string> DatabaseInstanceName { get; set; } = null!;
 
         /// <summary>
-        /// The name of the database (in a instance) associated with the catalog
+        /// The name of the database (in an instance) associated with the catalog
         /// </summary>
         [Input("databaseName", required: true)]
         public Input<string> DatabaseName { get; set; } = null!;
@@ -212,7 +212,7 @@ namespace Pulumi.Databricks
         public Input<string>? DatabaseInstanceName { get; set; }
 
         /// <summary>
-        /// The name of the database (in a instance) associated with the catalog
+        /// The name of the database (in an instance) associated with the catalog
         /// </summary>
         [Input("databaseName")]
         public Input<string>? DatabaseName { get; set; }

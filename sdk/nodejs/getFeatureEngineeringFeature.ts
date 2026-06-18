@@ -62,7 +62,7 @@ export interface GetFeatureEngineeringFeatureResult {
      */
     readonly filterCondition: string;
     /**
-     * (string) - The full three-part (catalog, schema, table) name of the Delta table
+     * (string) - Three-part full name of the Stream (catalog.schema.stream)
      */
     readonly fullName: string;
     /**
@@ -91,7 +91,7 @@ export interface GetFeatureEngineeringFeatureResult {
      * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
      * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
      * is what will be present in materialized tables and expected to match at query time.
-     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
      * backwards compatibility but is deprecated; migrate to dot notation
      */
     readonly name: string;

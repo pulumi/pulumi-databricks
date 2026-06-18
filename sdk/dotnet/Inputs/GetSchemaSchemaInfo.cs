@@ -48,6 +48,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("createdBy")]
         public string? CreatedBy { get; set; }
 
+        [Input("customMaxRetentionHours")]
+        public int? CustomMaxRetentionHours { get; set; }
+
         /// <summary>
         /// information about actual state of predictive optimization.
         /// </summary>

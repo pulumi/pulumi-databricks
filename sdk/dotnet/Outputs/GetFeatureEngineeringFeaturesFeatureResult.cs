@@ -38,7 +38,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string FilterCondition;
         /// <summary>
-        /// (string) - The full three-part (catalog, schema, table) name of the Delta table
+        /// (string) - Three-part full name of the Stream (catalog.schema.stream)
         /// </summary>
         public readonly string FullName;
         /// <summary>
@@ -63,7 +63,7 @@ namespace Pulumi.Databricks.Outputs
         /// reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
         /// fields, the leaf node name (e.g., "EventTimestamp" from "value.event_details.event_timestamp")
         /// is what will be present in materialized tables and expected to match at query time.
-        /// TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+        /// Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
         /// backwards compatibility but is deprecated; migrate to dot notation
         /// </summary>
         public readonly string Name;

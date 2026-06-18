@@ -16,6 +16,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/groups)
+ * 
  * This resource allows you to attach users, service_principal, and groups as group members.
  * 
  * &gt; This resource can be used with an account or workspace-level provider.

@@ -34,6 +34,7 @@ namespace Pulumi.Databricks.Outputs
         /// Username of catalog creator.
         /// </summary>
         public readonly string? CreatedBy;
+        public readonly int? CustomMaxRetentionHours;
         /// <summary>
         /// object describing applied predictive optimization flag.
         /// </summary>
@@ -115,6 +116,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? createdBy,
 
+            int? customMaxRetentionHours,
+
             Outputs.GetCatalogCatalogInfoEffectivePredictiveOptimizationFlagResult? effectivePredictiveOptimizationFlag,
 
             string? enablePredictiveOptimization,
@@ -157,6 +160,7 @@ namespace Pulumi.Databricks.Outputs
             ConnectionName = connectionName;
             CreatedAt = createdAt;
             CreatedBy = createdBy;
+            CustomMaxRetentionHours = customMaxRetentionHours;
             EffectivePredictiveOptimizationFlag = effectivePredictiveOptimizationFlag;
             EnablePredictiveOptimization = enablePredictiveOptimization;
             FullName = fullName;

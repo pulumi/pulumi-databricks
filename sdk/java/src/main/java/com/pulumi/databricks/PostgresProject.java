@@ -306,18 +306,14 @@ public class PostgresProject extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `my-app` becomes `projects/my-app`
+     * The part of the name, chosen by the user when the resource was created
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
-     * @return The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `my-app` becomes `projects/my-app`
+     * @return The part of the name, chosen by the user when the resource was created
      * 
      */
     public Output<String> projectId() {

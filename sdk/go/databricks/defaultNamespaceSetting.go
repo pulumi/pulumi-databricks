@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/workspace/defaultnamespace)
+//
 // The `DefaultNamespaceSetting` resource allows you to operate the setting configuration for the default namespace in the Databricks workspace.
 //
 // > This resource can only be used with a workspace-level provider!

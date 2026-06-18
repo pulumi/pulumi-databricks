@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/workspace/dashboards)
+//
 // > This resource is deprecated! Please switch to Dashboard to author new AI/BI dashboards using the latest tooling.
 //
 // This resource is used to manage [Legacy dashboards](https://docs.databricks.com/sql/user/dashboards/index.html). To manage [SQL resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricksSqlAccess` on your Group or databricks_user.

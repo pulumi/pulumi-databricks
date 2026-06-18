@@ -166,6 +166,8 @@ class GroupRole(pulumi.CustomResource):
                  role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/groups)
+
         This resource allows you to attach a role to databricks_group. This role could be a pre-defined role such as account admin, or an instance profile ARN.
 
         > This resource can be used with an account or workspace-level provider.
@@ -229,6 +231,8 @@ class GroupRole(pulumi.CustomResource):
                  args: GroupRoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/groups)
+
         This resource allows you to attach a role to databricks_group. This role could be a pre-defined role such as account admin, or an instance profile ARN.
 
         > This resource can be used with an account or workspace-level provider.
