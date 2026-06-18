@@ -103,8 +103,7 @@ import (
 type PostgresCatalog struct {
 	pulumi.CustomResourceState
 
-	// The ID in the Unity Catalog.
-	// It becomes the full resource name, for example "myCatalog" becomes "catalogs/my_catalog"
+	// The part of the name, chosen by the user when the resource was created
 	CatalogId pulumi.StringOutput `pulumi:"catalogId"`
 	// (string) - A timestamp indicating when the catalog was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -155,8 +154,7 @@ func GetPostgresCatalog(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PostgresCatalog resources.
 type postgresCatalogState struct {
-	// The ID in the Unity Catalog.
-	// It becomes the full resource name, for example "myCatalog" becomes "catalogs/my_catalog"
+	// The part of the name, chosen by the user when the resource was created
 	CatalogId *string `pulumi:"catalogId"`
 	// (string) - A timestamp indicating when the catalog was created
 	CreateTime *string `pulumi:"createTime"`
@@ -175,8 +173,7 @@ type postgresCatalogState struct {
 }
 
 type PostgresCatalogState struct {
-	// The ID in the Unity Catalog.
-	// It becomes the full resource name, for example "myCatalog" becomes "catalogs/my_catalog"
+	// The part of the name, chosen by the user when the resource was created
 	CatalogId pulumi.StringPtrInput
 	// (string) - A timestamp indicating when the catalog was created
 	CreateTime pulumi.StringPtrInput
@@ -199,8 +196,7 @@ func (PostgresCatalogState) ElementType() reflect.Type {
 }
 
 type postgresCatalogArgs struct {
-	// The ID in the Unity Catalog.
-	// It becomes the full resource name, for example "myCatalog" becomes "catalogs/my_catalog"
+	// The part of the name, chosen by the user when the resource was created
 	CatalogId string `pulumi:"catalogId"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresCatalogProviderConfig `pulumi:"providerConfig"`
@@ -210,8 +206,7 @@ type postgresCatalogArgs struct {
 
 // The set of arguments for constructing a PostgresCatalog resource.
 type PostgresCatalogArgs struct {
-	// The ID in the Unity Catalog.
-	// It becomes the full resource name, for example "myCatalog" becomes "catalogs/my_catalog"
+	// The part of the name, chosen by the user when the resource was created
 	CatalogId pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresCatalogProviderConfigPtrInput
@@ -306,8 +301,7 @@ func (o PostgresCatalogOutput) ToPostgresCatalogOutputWithContext(ctx context.Co
 	return o
 }
 
-// The ID in the Unity Catalog.
-// It becomes the full resource name, for example "myCatalog" becomes "catalogs/my_catalog"
+// The part of the name, chosen by the user when the resource was created
 func (o PostgresCatalogOutput) CatalogId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresCatalog) pulumi.StringOutput { return v.CatalogId }).(pulumi.StringOutput)
 }

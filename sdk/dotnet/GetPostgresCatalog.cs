@@ -167,6 +167,10 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresCatalogResult
     {
         /// <summary>
+        /// (string) - The part of the name, chosen by the user when the resource was created
+        /// </summary>
+        public readonly string CatalogId;
+        /// <summary>
         /// (string) - A timestamp indicating when the catalog was created
         /// </summary>
         public readonly string CreateTime;
@@ -198,6 +202,8 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetPostgresCatalogResult(
+            string catalogId,
+
             string createTime,
 
             string id,
@@ -214,6 +220,7 @@ namespace Pulumi.Databricks
 
             string updateTime)
         {
+            CatalogId = catalogId;
             CreateTime = createTime;
             Id = id;
             Name = name;

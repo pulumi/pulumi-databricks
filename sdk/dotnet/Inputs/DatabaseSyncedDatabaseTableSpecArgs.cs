@@ -13,6 +13,14 @@ namespace Pulumi.Databricks.Inputs
     public sealed class DatabaseSyncedDatabaseTableSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// When true, enables accelerated sync mode for the initial data load.
+        /// This significantly improves performance for large tables.
+        /// Requires workspace-level enablement
+        /// </summary>
+        [Input("acceleratedSync")]
+        public Input<bool>? AcceleratedSync { get; set; }
+
+        /// <summary>
         /// If true, the synced table's logical database and schema resources in PG
         /// will be created if they do not already exist
         /// </summary>
@@ -69,6 +77,19 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("timeseriesKey")]
         public Input<string>? TimeseriesKey { get; set; }
+
+        [Input("typeOverrides")]
+        private InputList<Inputs.DatabaseSyncedDatabaseTableSpecTypeOverrideArgs>? _typeOverrides;
+
+        /// <summary>
+        /// Override the default Delta-&gt;PG type mapping for specific columns.
+        /// A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid PgType must be set
+        /// </summary>
+        public InputList<Inputs.DatabaseSyncedDatabaseTableSpecTypeOverrideArgs> TypeOverrides
+        {
+            get => _typeOverrides ?? (_typeOverrides = new InputList<Inputs.DatabaseSyncedDatabaseTableSpecTypeOverrideArgs>());
+            set => _typeOverrides = value;
+        }
 
         public DatabaseSyncedDatabaseTableSpecArgs()
         {

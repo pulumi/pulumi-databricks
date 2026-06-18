@@ -59,6 +59,10 @@ export interface GetPostgresEndpointResult {
      */
     readonly createTime: string;
     /**
+     * (string) - Part of the resource name
+     */
+    readonly endpointId: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

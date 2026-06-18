@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedDatabricksDestination;
 import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedInternetDestination;
 import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedStorageDestination;
 import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesItemEgressNetworkAccessBlockedInternetDestination;
@@ -17,6 +18,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountNetworkPoliciesItemEgressNetworkAccess {
+    /**
+     * @return (list of EgressNetworkPolicyNetworkAccessPolicyDatabricksDestination) - List of Databricks workspace destinations that serverless workloads are
+     * allowed to access when in RESTRICTED_ACCESS mode
+     * 
+     */
+    private @Nullable List<GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedDatabricksDestination> allowedDatabricksDestinations;
     /**
      * @return (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
      * 
@@ -46,6 +53,14 @@ public final class GetAccountNetworkPoliciesItemEgressNetworkAccess {
     private String restrictionMode;
 
     private GetAccountNetworkPoliciesItemEgressNetworkAccess() {}
+    /**
+     * @return (list of EgressNetworkPolicyNetworkAccessPolicyDatabricksDestination) - List of Databricks workspace destinations that serverless workloads are
+     * allowed to access when in RESTRICTED_ACCESS mode
+     * 
+     */
+    public List<GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedDatabricksDestination> allowedDatabricksDestinations() {
+        return this.allowedDatabricksDestinations == null ? List.of() : this.allowedDatabricksDestinations;
+    }
     /**
      * @return (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
      * 
@@ -93,6 +108,7 @@ public final class GetAccountNetworkPoliciesItemEgressNetworkAccess {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedDatabricksDestination> allowedDatabricksDestinations;
         private @Nullable List<GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedInternetDestination> allowedInternetDestinations;
         private @Nullable List<GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedStorageDestination> allowedStorageDestinations;
         private @Nullable List<GetAccountNetworkPoliciesItemEgressNetworkAccessBlockedInternetDestination> blockedInternetDestinations;
@@ -101,6 +117,7 @@ public final class GetAccountNetworkPoliciesItemEgressNetworkAccess {
         public Builder() {}
         public Builder(GetAccountNetworkPoliciesItemEgressNetworkAccess defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowedDatabricksDestinations = defaults.allowedDatabricksDestinations;
     	      this.allowedInternetDestinations = defaults.allowedInternetDestinations;
     	      this.allowedStorageDestinations = defaults.allowedStorageDestinations;
     	      this.blockedInternetDestinations = defaults.blockedInternetDestinations;
@@ -108,6 +125,15 @@ public final class GetAccountNetworkPoliciesItemEgressNetworkAccess {
     	      this.restrictionMode = defaults.restrictionMode;
         }
 
+        @CustomType.Setter
+        public Builder allowedDatabricksDestinations(@Nullable List<GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedDatabricksDestination> allowedDatabricksDestinations) {
+
+            this.allowedDatabricksDestinations = allowedDatabricksDestinations;
+            return this;
+        }
+        public Builder allowedDatabricksDestinations(GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedDatabricksDestination... allowedDatabricksDestinations) {
+            return allowedDatabricksDestinations(List.of(allowedDatabricksDestinations));
+        }
         @CustomType.Setter
         public Builder allowedInternetDestinations(@Nullable List<GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedInternetDestination> allowedInternetDestinations) {
 
@@ -151,6 +177,7 @@ public final class GetAccountNetworkPoliciesItemEgressNetworkAccess {
         }
         public GetAccountNetworkPoliciesItemEgressNetworkAccess build() {
             final var _resultValue = new GetAccountNetworkPoliciesItemEgressNetworkAccess();
+            _resultValue.allowedDatabricksDestinations = allowedDatabricksDestinations;
             _resultValue.allowedInternetDestinations = allowedInternetDestinations;
             _resultValue.allowedStorageDestinations = allowedStorageDestinations;
             _resultValue.blockedInternetDestinations = blockedInternetDestinations;

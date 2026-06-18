@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes)
+ *
  * This resource allows you to create [Mosaic AI Vector Search Index](https://docs.databricks.com/en/generative-ai/create-query-vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Index provides the ability to search data in the linked Delta Table.
  *
  * > This resource can only be used with a workspace-level provider!
@@ -73,6 +75,7 @@ export class VectorSearchIndex extends pulumi.CustomResource {
      * Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
      */
     declare public readonly directAccessIndexSpec: pulumi.Output<outputs.VectorSearchIndexDirectAccessIndexSpec | undefined>;
+    declare public readonly endpointId: pulumi.Output<string | undefined>;
     /**
      * The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
      */
@@ -114,6 +117,7 @@ export class VectorSearchIndex extends pulumi.CustomResource {
             resourceInputs["creator"] = state?.creator;
             resourceInputs["deltaSyncIndexSpec"] = state?.deltaSyncIndexSpec;
             resourceInputs["directAccessIndexSpec"] = state?.directAccessIndexSpec;
+            resourceInputs["endpointId"] = state?.endpointId;
             resourceInputs["endpointName"] = state?.endpointName;
             resourceInputs["indexSubtype"] = state?.indexSubtype;
             resourceInputs["indexType"] = state?.indexType;
@@ -134,6 +138,7 @@ export class VectorSearchIndex extends pulumi.CustomResource {
             }
             resourceInputs["deltaSyncIndexSpec"] = args?.deltaSyncIndexSpec;
             resourceInputs["directAccessIndexSpec"] = args?.directAccessIndexSpec;
+            resourceInputs["endpointId"] = args?.endpointId;
             resourceInputs["endpointName"] = args?.endpointName;
             resourceInputs["indexSubtype"] = args?.indexSubtype;
             resourceInputs["indexType"] = args?.indexType;
@@ -164,6 +169,7 @@ export interface VectorSearchIndexState {
      * Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
      */
     directAccessIndexSpec?: pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpec | undefined>;
+    endpointId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
      */
@@ -202,6 +208,7 @@ export interface VectorSearchIndexArgs {
      * Specification for Direct Vector Access Index. Required if `indexType` is `DIRECT_ACCESS`. This field is a block and is documented below.
      */
     directAccessIndexSpec?: pulumi.Input<inputs.VectorSearchIndexDirectAccessIndexSpec | undefined>;
+    endpointId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
      */

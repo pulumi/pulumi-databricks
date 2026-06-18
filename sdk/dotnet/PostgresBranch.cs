@@ -130,9 +130,7 @@ namespace Pulumi.Databricks
     public partial class PostgresBranch : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID to use for the Branch. This becomes the final component of the branch's resource name.
-        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-        /// For example, `Development` becomes `projects/my-app/branches/development`
+        /// The part of the name, chosen by the user when the resource was created
         /// </summary>
         [Output("branchId")]
         public Output<string> BranchId { get; private set; } = null!;
@@ -249,9 +247,7 @@ namespace Pulumi.Databricks
     public sealed class PostgresBranchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID to use for the Branch. This becomes the final component of the branch's resource name.
-        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-        /// For example, `Development` becomes `projects/my-app/branches/development`
+        /// The part of the name, chosen by the user when the resource was created
         /// </summary>
         [Input("branchId", required: true)]
         public Input<string> BranchId { get; set; } = null!;
@@ -299,9 +295,7 @@ namespace Pulumi.Databricks
     public sealed class PostgresBranchState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID to use for the Branch. This becomes the final component of the branch's resource name.
-        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-        /// For example, `Development` becomes `projects/my-app/branches/development`
+        /// The part of the name, chosen by the user when the resource was created
         /// </summary>
         [Input("branchId")]
         public Input<string>? BranchId { get; set; }

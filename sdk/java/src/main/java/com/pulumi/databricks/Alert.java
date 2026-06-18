@@ -19,6 +19,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/alerts)
+ * 
  * This resource allows you to manage [Databricks SQL Alerts](https://docs.databricks.com/en/sql/user/alerts/index.html).  It supersedes databricks.SqlAlert resource - see migration guide below for more details.
  * 
  * &gt; This resource can only be used with a workspace-level provider!

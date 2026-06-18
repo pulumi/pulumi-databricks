@@ -276,32 +276,14 @@ public class PostgresSyncedTable extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The ID to use for the Synced Table. This becomes the final component of the SyncedTable&#39;s resource name.
-     * ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-     * Elements of the tuple are the UC entity names.
-     * 
-     * Example: &#34;{catalog}.{schema}.{table}&#34;
-     * 
-     * syncedTableId represents both of the following:
-     * 
-     * 1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-     * 2. Postgres table named &#34;{table}&#34; in schema &#34;{schema}&#34; in the connected Postgres database
+     * The part of the name, chosen by the user when the resource was created
      * 
      */
     @Export(name="syncedTableId", refs={String.class}, tree="[0]")
     private Output<String> syncedTableId;
 
     /**
-     * @return The ID to use for the Synced Table. This becomes the final component of the SyncedTable&#39;s resource name.
-     * ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-     * Elements of the tuple are the UC entity names.
-     * 
-     * Example: &#34;{catalog}.{schema}.{table}&#34;
-     * 
-     * syncedTableId represents both of the following:
-     * 
-     * 1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-     * 2. Postgres table named &#34;{table}&#34; in schema &#34;{schema}&#34; in the connected Postgres database
+     * @return The part of the name, chosen by the user when the resource was created
      * 
      */
     public Output<String> syncedTableId() {

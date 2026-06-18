@@ -14,6 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAccountNetworkPolicyEgressNetworkAccessResult
     {
         /// <summary>
+        /// (list of EgressNetworkPolicyNetworkAccessPolicyDatabricksDestination) - List of Databricks workspace destinations that serverless workloads are
+        /// allowed to access when in RESTRICTED_ACCESS mode
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedDatabricksDestinationResult> AllowedDatabricksDestinations;
+        /// <summary>
         /// (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationResult> AllowedInternetDestinations;
@@ -38,6 +43,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private GetAccountNetworkPolicyEgressNetworkAccessResult(
+            ImmutableArray<Outputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedDatabricksDestinationResult> allowedDatabricksDestinations,
+
             ImmutableArray<Outputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestinationResult> allowedInternetDestinations,
 
             ImmutableArray<Outputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedStorageDestinationResult> allowedStorageDestinations,
@@ -48,6 +55,7 @@ namespace Pulumi.Databricks.Outputs
 
             string restrictionMode)
         {
+            AllowedDatabricksDestinations = allowedDatabricksDestinations;
             AllowedInternetDestinations = allowedInternetDestinations;
             AllowedStorageDestinations = allowedStorageDestinations;
             BlockedInternetDestinations = blockedInternetDestinations;

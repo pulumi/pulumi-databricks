@@ -16,6 +16,8 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/disablelegacydbfs)
+ * 
  * The `databricks.DisableLegacyDbfsSetting` resource allows you to disable legacy DBFS.
  * 
  * &gt; This resource can only be used with a workspace-level provider!

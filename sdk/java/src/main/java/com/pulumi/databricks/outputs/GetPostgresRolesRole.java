@@ -38,6 +38,11 @@ public final class GetPostgresRolesRole {
      */
     private @Nullable GetPostgresRolesRoleProviderConfig providerConfig;
     /**
+     * @return (string) - Part of the resource name
+     * 
+     */
+    private String roleId;
+    /**
      * @return (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
      * 
      */
@@ -85,6 +90,13 @@ public final class GetPostgresRolesRole {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
+     * @return (string) - Part of the resource name
+     * 
+     */
+    public String roleId() {
+        return this.roleId;
+    }
+    /**
      * @return (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
      * 
      */
@@ -119,6 +131,7 @@ public final class GetPostgresRolesRole {
         private String name;
         private String parent;
         private @Nullable GetPostgresRolesRoleProviderConfig providerConfig;
+        private String roleId;
         private GetPostgresRolesRoleSpec spec;
         private GetPostgresRolesRoleStatus status;
         private String updateTime;
@@ -129,6 +142,7 @@ public final class GetPostgresRolesRole {
     	      this.name = defaults.name;
     	      this.parent = defaults.parent;
     	      this.providerConfig = defaults.providerConfig;
+    	      this.roleId = defaults.roleId;
     	      this.spec = defaults.spec;
     	      this.status = defaults.status;
     	      this.updateTime = defaults.updateTime;
@@ -165,6 +179,14 @@ public final class GetPostgresRolesRole {
             return this;
         }
         @CustomType.Setter
+        public Builder roleId(String roleId) {
+            if (roleId == null) {
+              throw new MissingRequiredPropertyException("GetPostgresRolesRole", "roleId");
+            }
+            this.roleId = roleId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder spec(GetPostgresRolesRoleSpec spec) {
             if (spec == null) {
               throw new MissingRequiredPropertyException("GetPostgresRolesRole", "spec");
@@ -194,6 +216,7 @@ public final class GetPostgresRolesRole {
             _resultValue.name = name;
             _resultValue.parent = parent;
             _resultValue.providerConfig = providerConfig;
+            _resultValue.roleId = roleId;
             _resultValue.spec = spec;
             _resultValue.status = status;
             _resultValue.updateTime = updateTime;

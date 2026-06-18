@@ -81,7 +81,24 @@ def get_disaster_recovery_failover_groups(page_size: Optional[_builtins.int] = N
                                           parent: Optional[_builtins.str] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDisasterRecoveryFailoverGroupsResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+
+    This data source can be used to fetch the list of failover groups in the account.
+
+    > **Note** This data source can only be used with an account-level provider!
+
+    ## Example Usage
+
+    Getting a list of all failover groups in the account:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_disaster_recovery_failover_groups()
+    ```
 
 
     :param _builtins.int page_size: Maximum number of failover groups to return per page:
@@ -107,7 +124,24 @@ def get_disaster_recovery_failover_groups_output(page_size: pulumi.Input[Optiona
                                                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDisasterRecoveryFailoverGroupsResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+
+    This data source can be used to fetch the list of failover groups in the account.
+
+    > **Note** This data source can only be used with an account-level provider!
+
+    ## Example Usage
+
+    Getting a list of all failover groups in the account:
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_disaster_recovery_failover_groups()
+    ```
 
 
     :param _builtins.int page_size: Maximum number of failover groups to return per page:

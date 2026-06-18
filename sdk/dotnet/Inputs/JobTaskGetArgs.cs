@@ -65,6 +65,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("disableAutoOptimization")]
         public Input<bool>? DisableAutoOptimization { get; set; }
 
+        /// <summary>
+        /// (Bool) An optional flag to disable the task. If set to `True`, the task will not run even if it is part of a job.
+        /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 

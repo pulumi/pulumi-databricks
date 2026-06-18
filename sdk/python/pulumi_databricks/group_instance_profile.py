@@ -166,6 +166,8 @@ class GroupInstanceProfile(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['GroupInstanceProfileProviderConfigArgs', 'GroupInstanceProfileProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/groups)
+
         > **Deprecated** Please migrate to databricks_group_role.
 
         This resource allows you to attach InstanceProfile (AWS) to databricks_group.
@@ -215,6 +217,8 @@ class GroupInstanceProfile(pulumi.CustomResource):
                  args: GroupInstanceProfileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/groups)
+
         > **Deprecated** Please migrate to databricks_group_role.
 
         This resource allows you to attach InstanceProfile (AWS) to databricks_group.

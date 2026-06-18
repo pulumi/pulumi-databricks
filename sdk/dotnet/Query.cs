@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [API Documentation](https://docs.databricks.com/api/workspace/queries)
+    /// 
     /// This resource allows you to manage [Databricks SQL Queries](https://docs.databricks.com/en/sql/user/queries/index.html).  It supersedes databricks.SqlQuery resource - see migration guide below for more details.
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!

@@ -196,9 +196,7 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID to use for the Project. This becomes the final component of the project's resource name.
-        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-        /// For example, `my-app` becomes `projects/my-app`
+        /// The part of the name, chosen by the user when the resource was created
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
@@ -303,9 +301,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresProjectInitialEndpointSpecArgs>? InitialEndpointSpec { get; set; }
 
         /// <summary>
-        /// The ID to use for the Project. This becomes the final component of the project's resource name.
-        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-        /// For example, `my-app` becomes `projects/my-app`
+        /// The part of the name, chosen by the user when the resource was created
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -367,9 +363,7 @@ namespace Pulumi.Databricks
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID to use for the Project. This becomes the final component of the project's resource name.
-        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-        /// For example, `my-app` becomes `projects/my-app`
+        /// The part of the name, chosen by the user when the resource was created
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

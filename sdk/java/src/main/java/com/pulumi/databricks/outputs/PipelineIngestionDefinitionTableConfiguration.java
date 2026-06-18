@@ -10,6 +10,7 @@ import com.pulumi.databricks.outputs.PipelineIngestionDefinitionTableConfigurati
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +18,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PipelineIngestionDefinitionTableConfiguration {
     private @Nullable PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy autoFullRefreshPolicy;
+    private @Nullable List<String> clusteringColumns;
+    private @Nullable Boolean enableAutoClustering;
     private @Nullable List<String> excludeColumns;
     private @Nullable List<String> includeColumns;
     private @Nullable List<String> primaryKeys;
@@ -25,11 +28,18 @@ public final class PipelineIngestionDefinitionTableConfiguration {
     private @Nullable Boolean salesforceIncludeFormulaFields;
     private @Nullable String scdType;
     private @Nullable List<String> sequenceBies;
+    private @Nullable Map<String,String> tableProperties;
     private @Nullable PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters workdayReportParameters;
 
     private PipelineIngestionDefinitionTableConfiguration() {}
     public Optional<PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy> autoFullRefreshPolicy() {
         return Optional.ofNullable(this.autoFullRefreshPolicy);
+    }
+    public List<String> clusteringColumns() {
+        return this.clusteringColumns == null ? List.of() : this.clusteringColumns;
+    }
+    public Optional<Boolean> enableAutoClustering() {
+        return Optional.ofNullable(this.enableAutoClustering);
     }
     public List<String> excludeColumns() {
         return this.excludeColumns == null ? List.of() : this.excludeColumns;
@@ -55,6 +65,9 @@ public final class PipelineIngestionDefinitionTableConfiguration {
     public List<String> sequenceBies() {
         return this.sequenceBies == null ? List.of() : this.sequenceBies;
     }
+    public Map<String,String> tableProperties() {
+        return this.tableProperties == null ? Map.of() : this.tableProperties;
+    }
     public Optional<PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters> workdayReportParameters() {
         return Optional.ofNullable(this.workdayReportParameters);
     }
@@ -69,6 +82,8 @@ public final class PipelineIngestionDefinitionTableConfiguration {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy autoFullRefreshPolicy;
+        private @Nullable List<String> clusteringColumns;
+        private @Nullable Boolean enableAutoClustering;
         private @Nullable List<String> excludeColumns;
         private @Nullable List<String> includeColumns;
         private @Nullable List<String> primaryKeys;
@@ -77,11 +92,14 @@ public final class PipelineIngestionDefinitionTableConfiguration {
         private @Nullable Boolean salesforceIncludeFormulaFields;
         private @Nullable String scdType;
         private @Nullable List<String> sequenceBies;
+        private @Nullable Map<String,String> tableProperties;
         private @Nullable PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters workdayReportParameters;
         public Builder() {}
         public Builder(PipelineIngestionDefinitionTableConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoFullRefreshPolicy = defaults.autoFullRefreshPolicy;
+    	      this.clusteringColumns = defaults.clusteringColumns;
+    	      this.enableAutoClustering = defaults.enableAutoClustering;
     	      this.excludeColumns = defaults.excludeColumns;
     	      this.includeColumns = defaults.includeColumns;
     	      this.primaryKeys = defaults.primaryKeys;
@@ -90,6 +108,7 @@ public final class PipelineIngestionDefinitionTableConfiguration {
     	      this.salesforceIncludeFormulaFields = defaults.salesforceIncludeFormulaFields;
     	      this.scdType = defaults.scdType;
     	      this.sequenceBies = defaults.sequenceBies;
+    	      this.tableProperties = defaults.tableProperties;
     	      this.workdayReportParameters = defaults.workdayReportParameters;
         }
 
@@ -97,6 +116,21 @@ public final class PipelineIngestionDefinitionTableConfiguration {
         public Builder autoFullRefreshPolicy(@Nullable PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy autoFullRefreshPolicy) {
 
             this.autoFullRefreshPolicy = autoFullRefreshPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clusteringColumns(@Nullable List<String> clusteringColumns) {
+
+            this.clusteringColumns = clusteringColumns;
+            return this;
+        }
+        public Builder clusteringColumns(String... clusteringColumns) {
+            return clusteringColumns(List.of(clusteringColumns));
+        }
+        @CustomType.Setter
+        public Builder enableAutoClustering(@Nullable Boolean enableAutoClustering) {
+
+            this.enableAutoClustering = enableAutoClustering;
             return this;
         }
         @CustomType.Setter
@@ -160,6 +194,12 @@ public final class PipelineIngestionDefinitionTableConfiguration {
             return sequenceBies(List.of(sequenceBies));
         }
         @CustomType.Setter
+        public Builder tableProperties(@Nullable Map<String,String> tableProperties) {
+
+            this.tableProperties = tableProperties;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workdayReportParameters(@Nullable PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters workdayReportParameters) {
 
             this.workdayReportParameters = workdayReportParameters;
@@ -168,6 +208,8 @@ public final class PipelineIngestionDefinitionTableConfiguration {
         public PipelineIngestionDefinitionTableConfiguration build() {
             final var _resultValue = new PipelineIngestionDefinitionTableConfiguration();
             _resultValue.autoFullRefreshPolicy = autoFullRefreshPolicy;
+            _resultValue.clusteringColumns = clusteringColumns;
+            _resultValue.enableAutoClustering = enableAutoClustering;
             _resultValue.excludeColumns = excludeColumns;
             _resultValue.includeColumns = includeColumns;
             _resultValue.primaryKeys = primaryKeys;
@@ -176,6 +218,7 @@ public final class PipelineIngestionDefinitionTableConfiguration {
             _resultValue.salesforceIncludeFormulaFields = salesforceIncludeFormulaFields;
             _resultValue.scdType = scdType;
             _resultValue.sequenceBies = sequenceBies;
+            _resultValue.tableProperties = tableProperties;
             _resultValue.workdayReportParameters = workdayReportParameters;
             return _resultValue;
         }

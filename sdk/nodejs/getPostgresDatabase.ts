@@ -60,6 +60,10 @@ export interface GetPostgresDatabaseResult {
      */
     readonly createTime: string;
     /**
+     * (string) - Part of the resource name
+     */
+    readonly databaseId: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

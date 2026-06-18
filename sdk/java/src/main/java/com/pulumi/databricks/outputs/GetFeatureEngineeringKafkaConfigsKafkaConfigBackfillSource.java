@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSource {
     /**
-     * @return (string) - The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
+     * @return (string) - The full three-part name (catalog, schema, name) of the Delta table to be created for ingestion
      * 
      */
     private @Nullable String deltaTableName;
@@ -27,7 +27,7 @@ public final class GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSource {
 
     private GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSource() {}
     /**
-     * @return (string) - The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
+     * @return (string) - The full three-part name (catalog, schema, name) of the Delta table to be created for ingestion
      * 
      */
     public Optional<String> deltaTableName() {

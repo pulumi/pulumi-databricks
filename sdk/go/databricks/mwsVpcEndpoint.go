@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/account/vpcendpoints)
+//
 // Enables you to register awsVpcEndpoint resources or gcp vpcEndpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
 //
 // > This resource can only be used with an account-level provider!

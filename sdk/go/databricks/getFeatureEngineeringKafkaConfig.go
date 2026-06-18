@@ -35,9 +35,9 @@ type LookupFeatureEngineeringKafkaConfigArgs struct {
 type LookupFeatureEngineeringKafkaConfigResult struct {
 	// (AuthConfig) - Authentication configuration for connection to topics
 	AuthConfig GetFeatureEngineeringKafkaConfigAuthConfig `pulumi:"authConfig"`
-	// (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
-	// In the future, a separate table will be maintained by Databricks for forward filling data.
-	// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+	// (BackfillSource) - A user-provided source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Stream.
+	// The backfill data stored in this location will be copied into the ingestion table for offline querying and training.
+	// The schema for this source must match exactly that of the key and payload schemas specified for this Stream
 	BackfillSource GetFeatureEngineeringKafkaConfigBackfillSource `pulumi:"backfillSource"`
 	// (string) - A comma-separated list of host/port pairs pointing to Kafka cluster
 	BootstrapServers string `pulumi:"bootstrapServers"`
@@ -45,6 +45,9 @@ type LookupFeatureEngineeringKafkaConfigResult struct {
 	ExtraOptions map[string]string `pulumi:"extraOptions"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// (IngestionConfig) - Configuration for ingesting Kafka data into a Databricks-managed
+	// Delta table
+	IngestionConfig GetFeatureEngineeringKafkaConfigIngestionConfig `pulumi:"ingestionConfig"`
 	// (SchemaConfig) - Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
 	KeySchema GetFeatureEngineeringKafkaConfigKeySchema `pulumi:"keySchema"`
 	// (string) - Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
@@ -101,9 +104,9 @@ func (o LookupFeatureEngineeringKafkaConfigResultOutput) AuthConfig() GetFeature
 	}).(GetFeatureEngineeringKafkaConfigAuthConfigOutput)
 }
 
-// (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
-// In the future, a separate table will be maintained by Databricks for forward filling data.
-// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+// (BackfillSource) - A user-provided source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Stream.
+// The backfill data stored in this location will be copied into the ingestion table for offline querying and training.
+// The schema for this source must match exactly that of the key and payload schemas specified for this Stream
 func (o LookupFeatureEngineeringKafkaConfigResultOutput) BackfillSource() GetFeatureEngineeringKafkaConfigBackfillSourceOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringKafkaConfigResult) GetFeatureEngineeringKafkaConfigBackfillSource {
 		return v.BackfillSource
@@ -123,6 +126,14 @@ func (o LookupFeatureEngineeringKafkaConfigResultOutput) ExtraOptions() pulumi.S
 // The provider-assigned unique ID for this managed resource.
 func (o LookupFeatureEngineeringKafkaConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringKafkaConfigResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (IngestionConfig) - Configuration for ingesting Kafka data into a Databricks-managed
+// Delta table
+func (o LookupFeatureEngineeringKafkaConfigResultOutput) IngestionConfig() GetFeatureEngineeringKafkaConfigIngestionConfigOutput {
+	return o.ApplyT(func(v LookupFeatureEngineeringKafkaConfigResult) GetFeatureEngineeringKafkaConfigIngestionConfig {
+		return v.IngestionConfig
+	}).(GetFeatureEngineeringKafkaConfigIngestionConfigOutput)
 }
 
 // (SchemaConfig) - Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided

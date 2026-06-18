@@ -262,9 +262,7 @@ export class PostgresEndpoint extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+     * The part of the name, chosen by the user when the resource was created
      */
     declare public readonly endpointId: pulumi.Output<string>;
     /**
@@ -358,9 +356,7 @@ export interface PostgresEndpointState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+     * The part of the name, chosen by the user when the resource was created
      */
     endpointId?: pulumi.Input<string | undefined>;
     /**
@@ -404,9 +400,7 @@ export interface PostgresEndpointState {
  */
 export interface PostgresEndpointArgs {
     /**
-     * The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+     * The part of the name, chosen by the user when the resource was created
      */
     endpointId: pulumi.Input<string>;
     /**

@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [API Documentation](https://docs.databricks.com/api/workspace/connections)
+    /// 
     /// &gt; This resource can only be used with a workspace-level provider!
     /// 
     /// Lakehouse Federation is the query federation platform for Databricks. Databricks uses Unity Catalog to manage query federation. To make a dataset available for read-only querying using Lakehouse Federation, you create the following:
@@ -207,19 +209,19 @@ namespace Pulumi.Databricks
     public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Free-form text. Change forces creation of a new resource.
+        /// User-provided free-form text description. Change forces creation of a new resource.
         /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Unique ID of the connection.
+        /// Unique identifier of the Connection.
         /// </summary>
         [Output("connectionId")]
         public Output<string> ConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+        /// The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
         /// </summary>
         [Output("connectionType")]
         public Output<string?> ConnectionType { get; private set; } = null!;
@@ -237,10 +239,16 @@ namespace Pulumi.Databricks
         public Output<string> CreatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// The type of credential for this connection.
+        /// The type of credential.
         /// </summary>
         [Output("credentialType")]
         public Output<string> CredentialType { get; private set; } = null!;
+
+        /// <summary>
+        /// Connection environment settings. This block consists of the following fields:
+        /// </summary>
+        [Output("environmentSettings")]
+        public Output<Outputs.ConnectionEnvironmentSettings?> EnvironmentSettings { get; private set; } = null!;
 
         /// <summary>
         /// Full name of connection.
@@ -249,31 +257,31 @@ namespace Pulumi.Databricks
         public Output<string> FullName { get; private set; } = null!;
 
         /// <summary>
-        /// Unique ID of the UC metastore for this connection.
+        /// Unique identifier of parent metastore.
         /// </summary>
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Connection.
+        /// Name of the connection.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The key value of options required by the connection, e.g. `Host`, `Port`, `User`, `Password`, `AuthorizationEndpoint`, `ClientId`, `ClientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+        /// A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `Host`, `Port`, `User`, `Password`, `AuthorizationEndpoint`, `ClientId`, `ClientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
         /// </summary>
         [Output("options")]
         public Output<ImmutableDictionary<string, string>?> Options { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the connection owner.
+        /// Username of current owner of the connection.
         /// </summary>
         [Output("owner")]
         public Output<string> Owner { get; private set; } = null!;
 
         /// <summary>
-        /// Free-form connection properties. Change forces creation of a new resource.
+        /// A map of key-value properties attached to the securable. Change forces creation of a new resource.
         /// </summary>
         [Output("properties")]
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
@@ -285,28 +293,31 @@ namespace Pulumi.Databricks
         public Output<Outputs.ConnectionProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Object with the status of an asynchronously provisioned resource.
+        /// Status of an asynchronously provisioned resource. This block consists of the following fields:
         /// </summary>
         [Output("provisioningInfos")]
         public Output<ImmutableArray<Outputs.ConnectionProvisioningInfo>> ProvisioningInfos { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the connection is read-only. Change forces creation of a new resource.
+        /// If the connection is read only. Change forces creation of a new resource.
         /// </summary>
         [Output("readOnly")]
         public Output<bool> ReadOnly { get; private set; } = null!;
 
+        /// <summary>
+        /// Securable type.
+        /// </summary>
         [Output("securableType")]
         public Output<string> SecurableType { get; private set; } = null!;
 
         /// <summary>
-        /// Time at which connection this was last modified, in epoch milliseconds.
+        /// Time at which this connection was updated, in epoch milliseconds.
         /// </summary>
         [Output("updatedAt")]
         public Output<int> UpdatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Username of user who last modified the connection.
+        /// Username of user who last modified connection.
         /// </summary>
         [Output("updatedBy")]
         public Output<string> UpdatedBy { get; private set; } = null!;
@@ -368,19 +379,25 @@ namespace Pulumi.Databricks
     public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Free-form text. Change forces creation of a new resource.
+        /// User-provided free-form text description. Change forces creation of a new resource.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+        /// The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
         /// </summary>
         [Input("connectionType")]
         public Input<string>? ConnectionType { get; set; }
 
         /// <summary>
-        /// Name of the Connection.
+        /// Connection environment settings. This block consists of the following fields:
+        /// </summary>
+        [Input("environmentSettings")]
+        public Input<Inputs.ConnectionEnvironmentSettingsArgs>? EnvironmentSettings { get; set; }
+
+        /// <summary>
+        /// Name of the connection.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -389,7 +406,7 @@ namespace Pulumi.Databricks
         private InputMap<string>? _options;
 
         /// <summary>
-        /// The key value of options required by the connection, e.g. `Host`, `Port`, `User`, `Password`, `AuthorizationEndpoint`, `ClientId`, `ClientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+        /// A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `Host`, `Port`, `User`, `Password`, `AuthorizationEndpoint`, `ClientId`, `ClientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
         /// </summary>
         public InputMap<string> Options
         {
@@ -402,7 +419,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Name of the connection owner.
+        /// Username of current owner of the connection.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -411,7 +428,7 @@ namespace Pulumi.Databricks
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Free-form connection properties. Change forces creation of a new resource.
+        /// A map of key-value properties attached to the securable. Change forces creation of a new resource.
         /// </summary>
         public InputMap<string> Properties
         {
@@ -426,7 +443,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.ConnectionProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// Indicates whether the connection is read-only. Change forces creation of a new resource.
+        /// If the connection is read only. Change forces creation of a new resource.
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
@@ -440,19 +457,19 @@ namespace Pulumi.Databricks
     public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Free-form text. Change forces creation of a new resource.
+        /// User-provided free-form text description. Change forces creation of a new resource.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Unique ID of the connection.
+        /// Unique identifier of the Connection.
         /// </summary>
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
 
         /// <summary>
-        /// Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+        /// The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
         /// </summary>
         [Input("connectionType")]
         public Input<string>? ConnectionType { get; set; }
@@ -470,10 +487,16 @@ namespace Pulumi.Databricks
         public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
-        /// The type of credential for this connection.
+        /// The type of credential.
         /// </summary>
         [Input("credentialType")]
         public Input<string>? CredentialType { get; set; }
+
+        /// <summary>
+        /// Connection environment settings. This block consists of the following fields:
+        /// </summary>
+        [Input("environmentSettings")]
+        public Input<Inputs.ConnectionEnvironmentSettingsGetArgs>? EnvironmentSettings { get; set; }
 
         /// <summary>
         /// Full name of connection.
@@ -482,13 +505,13 @@ namespace Pulumi.Databricks
         public Input<string>? FullName { get; set; }
 
         /// <summary>
-        /// Unique ID of the UC metastore for this connection.
+        /// Unique identifier of parent metastore.
         /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
         /// <summary>
-        /// Name of the Connection.
+        /// Name of the connection.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -497,7 +520,7 @@ namespace Pulumi.Databricks
         private InputMap<string>? _options;
 
         /// <summary>
-        /// The key value of options required by the connection, e.g. `Host`, `Port`, `User`, `Password`, `AuthorizationEndpoint`, `ClientId`, `ClientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+        /// A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `Host`, `Port`, `User`, `Password`, `AuthorizationEndpoint`, `ClientId`, `ClientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
         /// </summary>
         public InputMap<string> Options
         {
@@ -510,7 +533,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Name of the connection owner.
+        /// Username of current owner of the connection.
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -519,7 +542,7 @@ namespace Pulumi.Databricks
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Free-form connection properties. Change forces creation of a new resource.
+        /// A map of key-value properties attached to the securable. Change forces creation of a new resource.
         /// </summary>
         public InputMap<string> Properties
         {
@@ -537,7 +560,7 @@ namespace Pulumi.Databricks
         private InputList<Inputs.ConnectionProvisioningInfoGetArgs>? _provisioningInfos;
 
         /// <summary>
-        /// Object with the status of an asynchronously provisioned resource.
+        /// Status of an asynchronously provisioned resource. This block consists of the following fields:
         /// </summary>
         public InputList<Inputs.ConnectionProvisioningInfoGetArgs> ProvisioningInfos
         {
@@ -546,22 +569,25 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Indicates whether the connection is read-only. Change forces creation of a new resource.
+        /// If the connection is read only. Change forces creation of a new resource.
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
+        /// <summary>
+        /// Securable type.
+        /// </summary>
         [Input("securableType")]
         public Input<string>? SecurableType { get; set; }
 
         /// <summary>
-        /// Time at which connection this was last modified, in epoch milliseconds.
+        /// Time at which this connection was updated, in epoch milliseconds.
         /// </summary>
         [Input("updatedAt")]
         public Input<int>? UpdatedAt { get; set; }
 
         /// <summary>
-        /// Username of user who last modified the connection.
+        /// Username of user who last modified connection.
         /// </summary>
         [Input("updatedBy")]
         public Input<string>? UpdatedBy { get; set; }

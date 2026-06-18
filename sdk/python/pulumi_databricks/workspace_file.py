@@ -265,6 +265,8 @@ class WorkspaceFile(pulumi.CustomResource):
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/workspace)
+
         This resource allows you to manage [Databricks Workspace Files](https://docs.databricks.com/files/workspace.html).
 
         > This resource can only be used with a workspace-level provider!
@@ -285,6 +287,8 @@ class WorkspaceFile(pulumi.CustomResource):
                  args: WorkspaceFileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/workspace)
+
         This resource allows you to manage [Databricks Workspace Files](https://docs.databricks.com/files/workspace.html).
 
         > This resource can only be used with a workspace-level provider!

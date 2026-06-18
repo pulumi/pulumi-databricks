@@ -5,6 +5,7 @@ package com.pulumi.databricks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.ConnectionEnvironmentSettingsArgs;
 import com.pulumi.databricks.inputs.ConnectionProviderConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -19,14 +20,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     public static final ConnectionArgs Empty = new ConnectionArgs();
 
     /**
-     * Free-form text. Change forces creation of a new resource.
+     * User-provided free-form text description. Change forces creation of a new resource.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return Free-form text. Change forces creation of a new resource.
+     * @return User-provided free-form text description. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -34,14 +35,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+     * The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
      * 
      */
     @Import(name="connectionType")
     private @Nullable Output<String> connectionType;
 
     /**
-     * @return Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+     * @return The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> connectionType() {
@@ -49,14 +50,29 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the Connection.
+     * Connection environment settings. This block consists of the following fields:
+     * 
+     */
+    @Import(name="environmentSettings")
+    private @Nullable Output<ConnectionEnvironmentSettingsArgs> environmentSettings;
+
+    /**
+     * @return Connection environment settings. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<ConnectionEnvironmentSettingsArgs>> environmentSettings() {
+        return Optional.ofNullable(this.environmentSettings);
+    }
+
+    /**
+     * Name of the connection.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the Connection.
+     * @return Name of the connection.
      * 
      */
     public Optional<Output<String>> name() {
@@ -64,14 +80,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+     * A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
      * 
      */
     @Import(name="options")
     private @Nullable Output<Map<String,String>> options;
 
     /**
-     * @return The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+     * @return A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
      * 
      */
     public Optional<Output<Map<String,String>>> options() {
@@ -79,14 +95,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the connection owner.
+     * Username of current owner of the connection.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return Name of the connection owner.
+     * @return Username of current owner of the connection.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -94,14 +110,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Free-form connection properties. Change forces creation of a new resource.
+     * A map of key-value properties attached to the securable. Change forces creation of a new resource.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return Free-form connection properties. Change forces creation of a new resource.
+     * @return A map of key-value properties attached to the securable. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -124,14 +140,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether the connection is read-only. Change forces creation of a new resource.
+     * If the connection is read only. Change forces creation of a new resource.
      * 
      */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
     /**
-     * @return Indicates whether the connection is read-only. Change forces creation of a new resource.
+     * @return If the connection is read only. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<Boolean>> readOnly() {
@@ -143,6 +159,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     private ConnectionArgs(ConnectionArgs $) {
         this.comment = $.comment;
         this.connectionType = $.connectionType;
+        this.environmentSettings = $.environmentSettings;
         this.name = $.name;
         this.options = $.options;
         this.owner = $.owner;
@@ -170,7 +187,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment Free-form text. Change forces creation of a new resource.
+         * @param comment User-provided free-form text description. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -181,7 +198,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment Free-form text. Change forces creation of a new resource.
+         * @param comment User-provided free-form text description. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -191,7 +208,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionType Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+         * @param connectionType The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -202,7 +219,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionType Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+         * @param connectionType The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -212,7 +229,28 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the Connection.
+         * @param environmentSettings Connection environment settings. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environmentSettings(@Nullable Output<ConnectionEnvironmentSettingsArgs> environmentSettings) {
+            $.environmentSettings = environmentSettings;
+            return this;
+        }
+
+        /**
+         * @param environmentSettings Connection environment settings. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environmentSettings(ConnectionEnvironmentSettingsArgs environmentSettings) {
+            return environmentSettings(Output.of(environmentSettings));
+        }
+
+        /**
+         * @param name Name of the connection.
          * 
          * @return builder
          * 
@@ -223,7 +261,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the Connection.
+         * @param name Name of the connection.
          * 
          * @return builder
          * 
@@ -233,7 +271,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param options The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+         * @param options A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
          * 
          * @return builder
          * 
@@ -244,7 +282,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param options The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+         * @param options A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
          * 
          * @return builder
          * 
@@ -254,7 +292,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Name of the connection owner.
+         * @param owner Username of current owner of the connection.
          * 
          * @return builder
          * 
@@ -265,7 +303,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Name of the connection owner.
+         * @param owner Username of current owner of the connection.
          * 
          * @return builder
          * 
@@ -275,7 +313,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param properties Free-form connection properties. Change forces creation of a new resource.
+         * @param properties A map of key-value properties attached to the securable. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -286,7 +324,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param properties Free-form connection properties. Change forces creation of a new resource.
+         * @param properties A map of key-value properties attached to the securable. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -317,7 +355,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readOnly Indicates whether the connection is read-only. Change forces creation of a new resource.
+         * @param readOnly If the connection is read only. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -328,7 +366,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readOnly Indicates whether the connection is read-only. Change forces creation of a new resource.
+         * @param readOnly If the connection is read only. Change forces creation of a new resource.
          * 
          * @return builder
          * 

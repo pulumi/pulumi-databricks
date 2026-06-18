@@ -82,6 +82,10 @@ export interface GetPostgresSyncedTableResult {
      */
     readonly status: outputs.GetPostgresSyncedTableStatus;
     /**
+     * (string) - The part of the name, chosen by the user when the resource was created
+     */
+    readonly syncedTableId: string;
+    /**
      * (string) - The Unity Catalog table ID for this synced table
      */
     readonly uid: string;

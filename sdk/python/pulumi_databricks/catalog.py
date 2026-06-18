@@ -24,6 +24,7 @@ class CatalogArgs:
                  browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_max_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
                  effective_predictive_optimization_flag: pulumi.Input[Optional['CatalogEffectivePredictiveOptimizationFlagArgs']] = None,
                  enable_predictive_optimization: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -63,6 +64,8 @@ class CatalogArgs:
             pulumi.set(__self__, "comment", comment)
         if connection_name is not None:
             pulumi.set(__self__, "connection_name", connection_name)
+        if custom_max_retention_hours is not None:
+            pulumi.set(__self__, "custom_max_retention_hours", custom_max_retention_hours)
         if effective_predictive_optimization_flag is not None:
             pulumi.set(__self__, "effective_predictive_optimization_flag", effective_predictive_optimization_flag)
         if enable_predictive_optimization is not None:
@@ -126,6 +129,15 @@ class CatalogArgs:
     @connection_name.setter
     def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customMaxRetentionHours")
+    def custom_max_retention_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "custom_max_retention_hours")
+
+    @custom_max_retention_hours.setter
+    def custom_max_retention_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "custom_max_retention_hours", value)
 
     @_builtins.property
     @pulumi.getter(name="effectivePredictiveOptimizationFlag")
@@ -308,6 +320,7 @@ class _CatalogState:
                  connection_name: pulumi.Input[Optional[_builtins.str]] = None,
                  created_at: pulumi.Input[Optional[_builtins.int]] = None,
                  created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_max_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
                  effective_predictive_optimization_flag: pulumi.Input[Optional['CatalogEffectivePredictiveOptimizationFlagArgs']] = None,
                  enable_predictive_optimization: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -365,6 +378,8 @@ class _CatalogState:
             pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
             pulumi.set(__self__, "created_by", created_by)
+        if custom_max_retention_hours is not None:
+            pulumi.set(__self__, "custom_max_retention_hours", custom_max_retention_hours)
         if effective_predictive_optimization_flag is not None:
             pulumi.set(__self__, "effective_predictive_optimization_flag", effective_predictive_optimization_flag)
         if enable_predictive_optimization is not None:
@@ -474,6 +489,15 @@ class _CatalogState:
     @created_by.setter
     def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customMaxRetentionHours")
+    def custom_max_retention_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
+        return pulumi.get(self, "custom_max_retention_hours")
+
+    @custom_max_retention_hours.setter
+    def custom_max_retention_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "custom_max_retention_hours", value)
 
     @_builtins.property
     @pulumi.getter(name="effectivePredictiveOptimizationFlag")
@@ -713,6 +737,7 @@ class Catalog(pulumi.CustomResource):
                  browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_max_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
                  effective_predictive_optimization_flag: pulumi.Input[Optional[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict']]] = None,
                  enable_predictive_optimization: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -730,6 +755,8 @@ class Catalog(pulumi.CustomResource):
                  storage_root: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/catalogs)
+
         Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
 
         A `Catalog` is contained within Metastore and can contain databricks_schema. By default, Databricks creates `default` schema for every new catalog, but Pulumi plugin is removing this auto-created schema, so that resource destruction could be done in a clean way.
@@ -783,6 +810,8 @@ class Catalog(pulumi.CustomResource):
                  args: Optional[CatalogArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/catalogs)
+
         Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
 
         A `Catalog` is contained within Metastore and can contain databricks_schema. By default, Databricks creates `default` schema for every new catalog, but Pulumi plugin is removing this auto-created schema, so that resource destruction could be done in a clean way.
@@ -830,6 +859,7 @@ class Catalog(pulumi.CustomResource):
                  browse_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_max_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
                  effective_predictive_optimization_flag: pulumi.Input[Optional[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict']]] = None,
                  enable_predictive_optimization: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -857,6 +887,7 @@ class Catalog(pulumi.CustomResource):
             __props__.__dict__["browse_only"] = browse_only
             __props__.__dict__["comment"] = comment
             __props__.__dict__["connection_name"] = connection_name
+            __props__.__dict__["custom_max_retention_hours"] = custom_max_retention_hours
             __props__.__dict__["effective_predictive_optimization_flag"] = effective_predictive_optimization_flag
             __props__.__dict__["enable_predictive_optimization"] = enable_predictive_optimization
             __props__.__dict__["force_destroy"] = force_destroy
@@ -896,6 +927,7 @@ class Catalog(pulumi.CustomResource):
             connection_name: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.int]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_max_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
             effective_predictive_optimization_flag: pulumi.Input[Optional[Union['CatalogEffectivePredictiveOptimizationFlagArgs', 'CatalogEffectivePredictiveOptimizationFlagArgsDict']]] = None,
             enable_predictive_optimization: pulumi.Input[Optional[_builtins.str]] = None,
             force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -955,6 +987,7 @@ class Catalog(pulumi.CustomResource):
         __props__.__dict__["connection_name"] = connection_name
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
+        __props__.__dict__["custom_max_retention_hours"] = custom_max_retention_hours
         __props__.__dict__["effective_predictive_optimization_flag"] = effective_predictive_optimization_flag
         __props__.__dict__["enable_predictive_optimization"] = enable_predictive_optimization
         __props__.__dict__["force_destroy"] = force_destroy
@@ -1021,6 +1054,11 @@ class Catalog(pulumi.CustomResource):
         username of catalog creator.
         """
         return pulumi.get(self, "created_by")
+
+    @_builtins.property
+    @pulumi.getter(name="customMaxRetentionHours")
+    def custom_max_retention_hours(self) -> pulumi.Output[Optional[_builtins.int]]:
+        return pulumi.get(self, "custom_max_retention_hours")
 
     @_builtins.property
     @pulumi.getter(name="effectivePredictiveOptimizationFlag")

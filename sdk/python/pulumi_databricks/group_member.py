@@ -166,6 +166,8 @@ class GroupMember(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['GroupMemberProviderConfigArgs', 'GroupMemberProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/groups)
+
         This resource allows you to attach users, service_principal, and groups as group members.
 
         > This resource can be used with an account or workspace-level provider.
@@ -219,6 +221,8 @@ class GroupMember(pulumi.CustomResource):
                  args: GroupMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/groups)
+
         This resource allows you to attach users, service_principal, and groups as group members.
 
         > This resource can be used with an account or workspace-level provider.

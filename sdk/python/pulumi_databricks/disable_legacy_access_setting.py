@@ -159,6 +159,8 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
                  setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/disablelegacyaccess)
+
         The `DisableLegacyAccessSetting` resource allows you to disable legacy access. It has the following impact:
 
         1. Disables direct access to Hive Metastores from the workspace. However, you can still access a Hive Metastore through Hive Metastore federation.
@@ -203,6 +205,8 @@ class DisableLegacyAccessSetting(pulumi.CustomResource):
                  args: DisableLegacyAccessSettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/disablelegacyaccess)
+
         The `DisableLegacyAccessSetting` resource allows you to disable legacy access. It has the following impact:
 
         1. Disables direct access to Hive Metastores from the workspace. However, you can still access a Hive Metastore through Hive Metastore federation.

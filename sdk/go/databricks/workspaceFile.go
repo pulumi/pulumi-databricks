@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/workspace/workspace)
+//
 // This resource allows you to manage [Databricks Workspace Files](https://docs.databricks.com/files/workspace.html).
 //
 // > This resource can only be used with a workspace-level provider!

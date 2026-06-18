@@ -195,6 +195,10 @@ namespace Pulumi.Databricks
         /// Format: projects/{project_id}
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// (string) - Part of the resource name
+        /// </summary>
+        public readonly string ProjectId;
         public readonly Outputs.GetPostgresProjectProviderConfigResult? ProviderConfig;
         /// <summary>
         /// (string) - A timestamp indicating when the project is scheduled for permanent deletion.
@@ -230,6 +234,8 @@ namespace Pulumi.Databricks
 
             string name,
 
+            string projectId,
+
             Outputs.GetPostgresProjectProviderConfigResult? providerConfig,
 
             string purgeTime,
@@ -247,6 +253,7 @@ namespace Pulumi.Databricks
             Id = id;
             InitialEndpointSpec = initialEndpointSpec;
             Name = name;
+            ProjectId = projectId;
             ProviderConfig = providerConfig;
             PurgeTime = purgeTime;
             Spec = spec;

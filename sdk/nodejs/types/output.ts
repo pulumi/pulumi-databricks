@@ -92,6 +92,11 @@ export interface AccountNetworkPolicyEgress {
 
 export interface AccountNetworkPolicyEgressNetworkAccess {
     /**
+     * List of Databricks workspace destinations that serverless workloads are
+     * allowed to access when in RESTRICTED_ACCESS mode
+     */
+    allowedDatabricksDestinations?: outputs.AccountNetworkPolicyEgressNetworkAccessAllowedDatabricksDestination[];
+    /**
      * List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
      */
     allowedInternetDestinations?: outputs.AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination[];
@@ -110,6 +115,10 @@ export interface AccountNetworkPolicyEgressNetworkAccess {
      */
     policyEnforcement?: outputs.AccountNetworkPolicyEgressNetworkAccessPolicyEnforcement;
     restrictionMode: string;
+}
+
+export interface AccountNetworkPolicyEgressNetworkAccessAllowedDatabricksDestination {
+    workspaceIds?: number[];
 }
 
 export interface AccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination {
@@ -1507,6 +1516,222 @@ export interface AccountSettingV2StringVal {
     value?: string;
 }
 
+export interface AiSearchEndpointCustomTag {
+    /**
+     * Key field for an AI Search endpoint tag
+     */
+    key: string;
+    /**
+     * [Optional] Value field for an AI Search endpoint tag
+     */
+    value?: string;
+}
+
+export interface AiSearchEndpointEndpointStatus {
+    /**
+     * (string) - Human-readable detail about the endpoint's current state or the reason for a state transition
+     */
+    message: string;
+    /**
+     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     */
+    state: string;
+}
+
+export interface AiSearchEndpointProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface AiSearchEndpointScalingInfo {
+    /**
+     * The requested QPS target for the endpoint. Best-effort; the system does not
+     * guarantee this QPS will be achieved
+     */
+    requestedTargetQps?: number;
+    /**
+     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     */
+    state: string;
+}
+
+export interface AiSearchEndpointThroughputInfo {
+    /**
+     * (string) - Additional information about the throughput change request
+     */
+    changeRequestMessage: string;
+    /**
+     * (string) - The state of the most recent throughput change request. Possible values are: `CHANGE_ADJUSTED`, `CHANGE_FAILED`, `CHANGE_IN_PROGRESS`, `CHANGE_REACHED_MAXIMUM`, `CHANGE_REACHED_MINIMUM`, `CHANGE_SUCCESS`
+     */
+    changeRequestState: string;
+    /**
+     * (number) - The current concurrency (total CPU) allocated to the endpoint
+     */
+    currentConcurrency: number;
+    /**
+     * (number) - The current utilization of concurrency as a percentage (0-100)
+     */
+    currentConcurrencyUtilizationPercentage: number;
+    /**
+     * (integer) - The current number of replicas allocated to the endpoint
+     */
+    currentNumReplicas: number;
+    /**
+     * The maximum concurrency allowed for this endpoint
+     */
+    maximumConcurrencyAllowed?: number;
+    /**
+     * The minimum concurrency allowed for this endpoint
+     */
+    minimalConcurrencyAllowed?: number;
+    /**
+     * The requested concurrency (total CPU) for the endpoint
+     */
+    requestedConcurrency?: number;
+    /**
+     * The requested number of replicas for the endpoint
+     */
+    requestedNumReplicas?: number;
+}
+
+export interface AiSearchIndexDeltaSyncIndexSpec {
+    /**
+     * [Optional] Select the columns to sync with the index. If left blank, all columns
+     * from the source table are synced. The primary key column and embedding source or
+     * vector column are always synced
+     */
+    columnsToSyncs?: string[];
+    embeddingSourceColumns?: outputs.AiSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn[];
+    embeddingVectorColumns?: outputs.AiSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn[];
+    /**
+     * [Optional] Name of the Delta table to sync the index contents and computed embeddings to
+     */
+    embeddingWritebackTable?: string;
+    /**
+     * (string) - The ID of the pipeline that is used to sync the index
+     */
+    pipelineId: string;
+    /**
+     * Pipeline execution mode. Required on create — the backend rejects an unset value.
+     * Storage Optimized endpoints accept only `TRIGGERED`; Standard endpoints accept both.
+     * No explicit `stage` — a REQUIRED field staged below its service would be dropped from
+     * combined specs while remaining in `required`, tripping the OpenAPI required-vs-properties
+     * consistency check. The field inherits the service's launch stage. Possible values are: `CONTINUOUS`, `TRIGGERED`
+     */
+    pipelineType: string;
+    /**
+     * The full name of the source Delta table
+     */
+    sourceTable?: string;
+}
+
+export interface AiSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
+    /**
+     * Name of the embedding model endpoint, used by default for both ingestion and querying
+     */
+    embeddingModelEndpoint?: string;
+    /**
+     * Name of the embedding model endpoint which, if specified, is used for querying (not ingestion)
+     */
+    modelEndpointNameForQuery?: string;
+    /**
+     * (string) - Name of the AI Search index. Server-assigned full resource path
+     * (`workspaces/{workspace}/endpoints/{endpoint}/indexes/{index}`) on output, where
+     * `{index}` is the index's Unity Catalog table name. On create, the user-supplied UC
+     * table name is conveyed via `CreateIndexRequest.index_id`; the server composes the
+     * full `name` and returns it on the response
+     */
+    name?: string;
+}
+
+export interface AiSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
+    /**
+     * Dimension of the embedding vector
+     */
+    embeddingDimension?: number;
+    /**
+     * (string) - Name of the AI Search index. Server-assigned full resource path
+     * (`workspaces/{workspace}/endpoints/{endpoint}/indexes/{index}`) on output, where
+     * `{index}` is the index's Unity Catalog table name. On create, the user-supplied UC
+     * table name is conveyed via `CreateIndexRequest.index_id`; the server composes the
+     * full `name` and returns it on the response
+     */
+    name?: string;
+}
+
+export interface AiSearchIndexDirectAccessIndexSpec {
+    embeddingSourceColumns?: outputs.AiSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn[];
+    embeddingVectorColumns?: outputs.AiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn[];
+    /**
+     * The schema of the index in JSON format. Supported types are `integer`, `long`,
+     * `float`, `double`, `boolean`, `string`, `date`, `timestamp`. Supported types for
+     * vector columns: `array<float>`, `array<double>`
+     */
+    schemaJson?: string;
+}
+
+export interface AiSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
+    /**
+     * Name of the embedding model endpoint, used by default for both ingestion and querying
+     */
+    embeddingModelEndpoint?: string;
+    /**
+     * Name of the embedding model endpoint which, if specified, is used for querying (not ingestion)
+     */
+    modelEndpointNameForQuery?: string;
+    /**
+     * (string) - Name of the AI Search index. Server-assigned full resource path
+     * (`workspaces/{workspace}/endpoints/{endpoint}/indexes/{index}`) on output, where
+     * `{index}` is the index's Unity Catalog table name. On create, the user-supplied UC
+     * table name is conveyed via `CreateIndexRequest.index_id`; the server composes the
+     * full `name` and returns it on the response
+     */
+    name?: string;
+}
+
+export interface AiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
+    /**
+     * Dimension of the embedding vector
+     */
+    embeddingDimension?: number;
+    /**
+     * (string) - Name of the AI Search index. Server-assigned full resource path
+     * (`workspaces/{workspace}/endpoints/{endpoint}/indexes/{index}`) on output, where
+     * `{index}` is the index's Unity Catalog table name. On create, the user-supplied UC
+     * table name is conveyed via `CreateIndexRequest.index_id`; the server composes the
+     * full `name` and returns it on the response
+     */
+    name?: string;
+}
+
+export interface AiSearchIndexProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface AiSearchIndexStatus {
+    /**
+     * (string) - Index API URL used to perform operations on the index
+     */
+    indexUrl: string;
+    /**
+     * (integer) - Number of rows indexed
+     */
+    indexedRowCount: number;
+    /**
+     * (string) - Human-readable detail about the index's current state
+     */
+    message: string;
+    /**
+     * (boolean) - Whether the index is ready for search
+     */
+    ready: boolean;
+}
+
 export interface AibiDashboardEmbeddingAccessPolicySettingAibiDashboardEmbeddingAccessPolicy {
     /**
      * Configured embedding policy. Possible values are `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`.
@@ -1824,6 +2049,7 @@ export interface AppAppStatus {
      * The status message of the deployment.
      */
     message: string;
+    runningInstances: number;
     /**
      * The state of the deployment.
      */
@@ -3046,6 +3272,17 @@ export interface ComplianceSecurityProfileWorkspaceSettingProviderConfig {
     workspaceId: string;
 }
 
+export interface ConnectionEnvironmentSettings {
+    /**
+     * Environment version.
+     */
+    environmentVersion?: string;
+    /**
+     * List of Java dependencies.
+     */
+    javaDependencies?: string[];
+}
+
 export interface ConnectionProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -3054,6 +3291,9 @@ export interface ConnectionProviderConfig {
 }
 
 export interface ConnectionProvisioningInfo {
+    /**
+     * The provisioning state of the resource. Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, or `UPDATING`.
+     */
     state?: string;
 }
 
@@ -3645,6 +3885,12 @@ export interface DatabaseSyncedDatabaseTableProviderConfig {
 
 export interface DatabaseSyncedDatabaseTableSpec {
     /**
+     * When true, enables accelerated sync mode for the initial data load.
+     * This significantly improves performance for large tables.
+     * Requires workspace-level enablement
+     */
+    acceleratedSync: boolean;
+    /**
      * If true, the synced table's logical database and schema resources in PG
      * will be created if they do not already exist
      */
@@ -3682,6 +3928,11 @@ export interface DatabaseSyncedDatabaseTableSpec {
      * Time series key to deduplicate (tie-break) rows with the same primary key
      */
     timeseriesKey?: string;
+    /**
+     * Override the default Delta->PG type mapping for specific columns.
+     * A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+     */
+    typeOverrides?: outputs.DatabaseSyncedDatabaseTableSpecTypeOverride[];
 }
 
 export interface DatabaseSyncedDatabaseTableSpecNewPipelineSpec {
@@ -3703,6 +3954,22 @@ export interface DatabaseSyncedDatabaseTableSpecNewPipelineSpec {
      * This needs to be in the standard catalog where the user has permissions to create Delta tables
      */
     storageSchema?: string;
+}
+
+export interface DatabaseSyncedDatabaseTableSpecTypeOverride {
+    /**
+     * Name of the source column whose target PostgreSQL type should be overridden
+     */
+    columnName: string;
+    /**
+     * PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     */
+    pgType: string;
+    /**
+     * Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
+     * (specifies the vector dimension, e.g., 1024)
+     */
+    size?: number;
 }
 
 export interface DbfsFileProviderConfig {
@@ -3829,8 +4096,7 @@ export interface DisasterRecoveryFailoverGroupWorkspaceSet {
      */
     name: string;
     /**
-     * Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-     * Requires all workspaces in the set to be Mission Critical tier
+     * Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
      */
     replicateWorkspaceAssets: boolean;
     /**
@@ -3841,7 +4107,7 @@ export interface DisasterRecoveryFailoverGroupWorkspaceSet {
     stableUrlNames?: string[];
     /**
      * Workspace IDs in this set. The system derives and validates regions.
-     * EA: exactly 2 workspaces (one per region)
+     * All workspaces must be in the Mission Critical tier
      */
     workspaceIds: string[];
 }
@@ -4316,6 +4582,10 @@ export interface FeatureEngineeringFeatureSource {
      * A request-time data source
      */
     requestSource?: outputs.FeatureEngineeringFeatureSourceRequestSource;
+    /**
+     * A Stream data source
+     */
+    streamSource?: outputs.FeatureEngineeringFeatureSourceStreamSource;
 }
 
 export interface FeatureEngineeringFeatureSourceDeltaTableSource {
@@ -4414,6 +4684,20 @@ export interface FeatureEngineeringFeatureSourceRequestSourceFlatSchemaField {
      * (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
      */
     name: string;
+}
+
+export interface FeatureEngineeringFeatureSourceStreamSource {
+    /**
+     * Deprecated: Use DeltaTableSource.filter_condition or KafkaSource.filter_condition instead. Kept for backwards compatibility.
+     * The filter condition applied to the source data before aggregation
+     */
+    filterCondition?: string;
+    /**
+     * The full three-part name (catalog, schema, name) of the feature. This is the
+     * feature's resource identifier; the catalog_name, schema_name, and name fields
+     * below are OUTPUT_ONLY decomposed views of this value
+     */
+    fullName: string;
 }
 
 export interface FeatureEngineeringFeatureTimeWindow {
@@ -4544,9 +4828,6 @@ export interface FeatureEngineeringKafkaConfigAuthConfigMtlsConfigTruststorePass
 }
 
 export interface FeatureEngineeringKafkaConfigBackfillSource {
-    /**
-     * The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
-     */
     deltaTableName?: string;
     /**
      * Deprecated: Use deltaTableName instead. Kept for backwards compatibility.
@@ -4587,6 +4868,87 @@ export interface FeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource {
      * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
      */
     transformationSql?: string;
+}
+
+export interface FeatureEngineeringKafkaConfigIngestionConfig {
+    /**
+     * (integer) - The ID of the Databricks Job that performs the historical backfill of the ingestion Delta table
+     */
+    backfillJobId: number;
+    /**
+     * A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
+     * In the future, a separate table will be maintained by Databricks for forward filling data.
+     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     */
+    backfillSource?: outputs.FeatureEngineeringKafkaConfigIngestionConfigBackfillSource;
+    /**
+     * Column paths used to identify duplicate rows during ingestion; only one row per
+     * distinct combination of these values is kept. Use dot notation for nested fields
+     * (e.g. `value.user_id`). Empty list means every column is compared
+     */
+    deduplicationColumns?: string[];
+    /**
+     * Destination for the Databricks-managed Delta table that holds an offline copy of the streaming data for querying and training.
+     * This table contains both 1) forward-filled data from the Stream and 2) backfilled data from the BackfillSource (if provided).
+     * This table is created and managed by Databricks and is deleted when the Stream is deleted
+     */
+    ingestionDestination: outputs.FeatureEngineeringKafkaConfigIngestionConfigIngestionDestination;
+    /**
+     * (integer) - The ID of the Databricks Job that performs the forward-fill ingestion
+     */
+    ingestionJobId: number;
+    /**
+     * (string) - The ID of the SDP pipeline that continuously copies new events from the streaming source
+     * into the ingestion Delta table
+     */
+    ingestionPipelineId: string;
+}
+
+export interface FeatureEngineeringKafkaConfigIngestionConfigBackfillSource {
+    deltaTableName?: string;
+    /**
+     * Deprecated: Use deltaTableName instead. Kept for backwards compatibility.
+     * The Delta table source containing the historical data to backfill.
+     * Only the delta table name is used for backfill, other fields are ignored
+     */
+    deltaTableSource?: outputs.FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource;
+}
+
+export interface FeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource {
+    /**
+     * Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
+     * Required if transformationSql is specified.
+     * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
+     */
+    dataframeSchema?: string;
+    /**
+     * Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity columns of the Delta table
+     */
+    entityColumns?: string[];
+    /**
+     * Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     */
+    filterCondition?: string;
+    /**
+     * The full three-part (catalog, schema, table) name of the Delta table
+     */
+    fullName: string;
+    /**
+     * Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column of the Delta table
+     */
+    timeseriesColumn?: string;
+    /**
+     * A single SQL SELECT expression applied after filter_condition.
+     * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
+     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     */
+    transformationSql?: string;
+}
+
+export interface FeatureEngineeringKafkaConfigIngestionConfigIngestionDestination {
+    deltaTableName?: string;
 }
 
 export interface FeatureEngineeringKafkaConfigKeySchema {
@@ -4833,6 +5195,11 @@ export interface GetAccountNetworkPoliciesItemEgress {
 
 export interface GetAccountNetworkPoliciesItemEgressNetworkAccess {
     /**
+     * (list of EgressNetworkPolicyNetworkAccessPolicyDatabricksDestination) - List of Databricks workspace destinations that serverless workloads are
+     * allowed to access when in RESTRICTED_ACCESS mode
+     */
+    allowedDatabricksDestinations?: outputs.GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedDatabricksDestination[];
+    /**
      * (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
      */
     allowedInternetDestinations?: outputs.GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedInternetDestination[];
@@ -4854,6 +5221,13 @@ export interface GetAccountNetworkPoliciesItemEgressNetworkAccess {
      * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
      */
     restrictionMode: string;
+}
+
+export interface GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedDatabricksDestination {
+    /**
+     * (list of integer) - The workspace IDs to allow egress traffic to
+     */
+    workspaceIds?: number[];
 }
 
 export interface GetAccountNetworkPoliciesItemEgressNetworkAccessAllowedInternetDestination {
@@ -5094,7 +5468,7 @@ export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRu
 
 export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces {
     /**
-     * (list of integer)
+     * (list of integer) - The workspace IDs to allow egress traffic to
      */
     workspaceIds?: number[];
 }
@@ -5246,7 +5620,7 @@ export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRul
 
 export interface GetAccountNetworkPoliciesItemIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces {
     /**
-     * (list of integer)
+     * (list of integer) - The workspace IDs to allow egress traffic to
      */
     workspaceIds?: number[];
 }
@@ -5430,7 +5804,7 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessA
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces {
     /**
-     * (list of integer)
+     * (list of integer) - The workspace IDs to allow egress traffic to
      */
     workspaceIds?: number[];
 }
@@ -5582,7 +5956,7 @@ export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessD
 
 export interface GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces {
     /**
-     * (list of integer)
+     * (list of integer) - The workspace IDs to allow egress traffic to
      */
     workspaceIds?: number[];
 }
@@ -6948,6 +7322,11 @@ export interface GetAccountNetworkPolicyEgress {
 
 export interface GetAccountNetworkPolicyEgressNetworkAccess {
     /**
+     * (list of EgressNetworkPolicyNetworkAccessPolicyDatabricksDestination) - List of Databricks workspace destinations that serverless workloads are
+     * allowed to access when in RESTRICTED_ACCESS mode
+     */
+    allowedDatabricksDestinations?: outputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedDatabricksDestination[];
+    /**
      * (list of EgressNetworkPolicyNetworkAccessPolicyInternetDestination) - List of internet destinations that serverless workloads are allowed to access when in RESTRICTED_ACCESS mode
      */
     allowedInternetDestinations?: outputs.GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination[];
@@ -6969,6 +7348,13 @@ export interface GetAccountNetworkPolicyEgressNetworkAccess {
      * (string) - The restriction mode that controls how serverless workloads can access the internet. Possible values are: `FULL_ACCESS`, `RESTRICTED_ACCESS`
      */
     restrictionMode: string;
+}
+
+export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedDatabricksDestination {
+    /**
+     * (list of integer) - The workspace IDs to allow egress traffic to
+     */
+    workspaceIds?: number[];
 }
 
 export interface GetAccountNetworkPolicyEgressNetworkAccessAllowedInternetDestination {
@@ -7209,7 +7595,7 @@ export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleOrig
 
 export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces {
     /**
-     * (list of integer)
+     * (list of integer) - The workspace IDs to allow egress traffic to
      */
     workspaceIds?: number[];
 }
@@ -7361,7 +7747,7 @@ export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleOrigi
 
 export interface GetAccountNetworkPolicyIngressCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces {
     /**
-     * (list of integer)
+     * (list of integer) - The workspace IDs to allow egress traffic to
      */
     workspaceIds?: number[];
 }
@@ -7545,7 +7931,7 @@ export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRu
 
 export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces {
     /**
-     * (list of integer)
+     * (list of integer) - The workspace IDs to allow egress traffic to
      */
     workspaceIds?: number[];
 }
@@ -7697,7 +8083,7 @@ export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRul
 
 export interface GetAccountNetworkPolicyIngressDryRunCrossWorkspaceAccessDenyRuleOriginSelectedWorkspaces {
     /**
-     * (list of integer)
+     * (list of integer) - The workspace IDs to allow egress traffic to
      */
     workspaceIds?: number[];
 }
@@ -9374,6 +9760,584 @@ export interface GetAccountSettingV2StringVal {
     value?: string;
 }
 
+export interface GetAiSearchEndpointCustomTag {
+    /**
+     * (string) - Key field for an AI Search endpoint tag
+     */
+    key: string;
+    /**
+     * (string) - [Optional] Value field for an AI Search endpoint tag
+     */
+    value?: string;
+}
+
+export interface GetAiSearchEndpointEndpointStatus {
+    /**
+     * (string) - Human-readable detail about the endpoint's current state or the reason for a state transition
+     */
+    message: string;
+    /**
+     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     */
+    state: string;
+}
+
+export interface GetAiSearchEndpointProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAiSearchEndpointScalingInfo {
+    /**
+     * (integer) - The requested QPS target for the endpoint. Best-effort; the system does not
+     * guarantee this QPS will be achieved
+     */
+    requestedTargetQps?: number;
+    /**
+     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     */
+    state: string;
+}
+
+export interface GetAiSearchEndpointThroughputInfo {
+    /**
+     * (string) - Additional information about the throughput change request
+     */
+    changeRequestMessage: string;
+    /**
+     * (string) - The state of the most recent throughput change request. Possible values are: `CHANGE_ADJUSTED`, `CHANGE_FAILED`, `CHANGE_IN_PROGRESS`, `CHANGE_REACHED_MAXIMUM`, `CHANGE_REACHED_MINIMUM`, `CHANGE_SUCCESS`
+     */
+    changeRequestState: string;
+    /**
+     * (number) - The current concurrency (total CPU) allocated to the endpoint
+     */
+    currentConcurrency: number;
+    /**
+     * (number) - The current utilization of concurrency as a percentage (0-100)
+     */
+    currentConcurrencyUtilizationPercentage: number;
+    /**
+     * (integer) - The current number of replicas allocated to the endpoint
+     */
+    currentNumReplicas: number;
+    /**
+     * (number) - The maximum concurrency allowed for this endpoint
+     */
+    maximumConcurrencyAllowed?: number;
+    /**
+     * (number) - The minimum concurrency allowed for this endpoint
+     */
+    minimalConcurrencyAllowed?: number;
+    /**
+     * (number) - The requested concurrency (total CPU) for the endpoint
+     */
+    requestedConcurrency?: number;
+    /**
+     * (integer) - The requested number of replicas for the endpoint
+     */
+    requestedNumReplicas?: number;
+}
+
+export interface GetAiSearchEndpointsEndpoint {
+    /**
+     * (string) - The user-selected budget policy id for the endpoint
+     */
+    budgetPolicyId: string;
+    /**
+     * (string) - Time the endpoint was created
+     */
+    createTime: string;
+    /**
+     * (string) - Creator of the endpoint
+     */
+    creator: string;
+    /**
+     * (list of CustomTag) - The custom tags assigned to the endpoint
+     */
+    customTags: outputs.GetAiSearchEndpointsEndpointCustomTag[];
+    /**
+     * (string) - The budget policy id applied to the endpoint
+     */
+    effectiveBudgetPolicyId: string;
+    /**
+     * (EndpointStatus) - Current status of the endpoint
+     */
+    endpointStatus: outputs.GetAiSearchEndpointsEndpointEndpointStatus;
+    /**
+     * (string) - Type of endpoint. Required on create and immutable thereafter. Possible values are: `STANDARD`, `STORAGE_OPTIMIZED`
+     */
+    endpointType: string;
+    /**
+     * (string) - Unique identifier of the endpoint
+     */
+    id: string;
+    /**
+     * (integer) - Number of indexes on the endpoint
+     */
+    indexCount: number;
+    /**
+     * (string) - User who last updated the endpoint
+     */
+    lastUpdatedUser: string;
+    /**
+     * (string) - Name of the AI Search endpoint. Server-assigned full resource path
+     * (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
+     * user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
+     * the server composes the full `name` and returns it on the response
+     */
+    name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetAiSearchEndpointsEndpointProviderConfig;
+    /**
+     * (integer) - The client-supplied desired number of replicas for the endpoint, applied at
+     * create/update time. Mutually exclusive with `targetQps`
+     */
+    replicaCount: number;
+    /**
+     * (EndpointScalingInfo) - Scaling information for the endpoint
+     */
+    scalingInfo: outputs.GetAiSearchEndpointsEndpointScalingInfo;
+    /**
+     * (integer) - Target QPS for the endpoint. Mutually exclusive with `replicaCount`. Best-effort;
+     * the system does not guarantee this QPS will be achieved
+     */
+    targetQps: number;
+    /**
+     * (EndpointThroughputInfo) - Throughput information for the endpoint
+     */
+    throughputInfo: outputs.GetAiSearchEndpointsEndpointThroughputInfo;
+    /**
+     * (string) - Time the endpoint was last updated
+     */
+    updateTime: string;
+    /**
+     * (string) - The usage policy id applied to the endpoint
+     */
+    usagePolicyId: string;
+}
+
+export interface GetAiSearchEndpointsEndpointCustomTag {
+    /**
+     * (string) - Key field for an AI Search endpoint tag
+     */
+    key: string;
+    /**
+     * (string) - [Optional] Value field for an AI Search endpoint tag
+     */
+    value?: string;
+}
+
+export interface GetAiSearchEndpointsEndpointEndpointStatus {
+    /**
+     * (string) - Human-readable detail about the endpoint's current state or the reason for a state transition
+     */
+    message: string;
+    /**
+     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     */
+    state: string;
+}
+
+export interface GetAiSearchEndpointsEndpointProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAiSearchEndpointsEndpointScalingInfo {
+    /**
+     * (integer) - The requested QPS target for the endpoint. Best-effort; the system does not
+     * guarantee this QPS will be achieved
+     */
+    requestedTargetQps?: number;
+    /**
+     * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `YELLOW_STATE`
+     */
+    state: string;
+}
+
+export interface GetAiSearchEndpointsEndpointThroughputInfo {
+    /**
+     * (string) - Additional information about the throughput change request
+     */
+    changeRequestMessage: string;
+    /**
+     * (string) - The state of the most recent throughput change request. Possible values are: `CHANGE_ADJUSTED`, `CHANGE_FAILED`, `CHANGE_IN_PROGRESS`, `CHANGE_REACHED_MAXIMUM`, `CHANGE_REACHED_MINIMUM`, `CHANGE_SUCCESS`
+     */
+    changeRequestState: string;
+    /**
+     * (number) - The current concurrency (total CPU) allocated to the endpoint
+     */
+    currentConcurrency: number;
+    /**
+     * (number) - The current utilization of concurrency as a percentage (0-100)
+     */
+    currentConcurrencyUtilizationPercentage: number;
+    /**
+     * (integer) - The current number of replicas allocated to the endpoint
+     */
+    currentNumReplicas: number;
+    /**
+     * (number) - The maximum concurrency allowed for this endpoint
+     */
+    maximumConcurrencyAllowed?: number;
+    /**
+     * (number) - The minimum concurrency allowed for this endpoint
+     */
+    minimalConcurrencyAllowed?: number;
+    /**
+     * (number) - The requested concurrency (total CPU) for the endpoint
+     */
+    requestedConcurrency?: number;
+    /**
+     * (integer) - The requested number of replicas for the endpoint
+     */
+    requestedNumReplicas?: number;
+}
+
+export interface GetAiSearchEndpointsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAiSearchIndexDeltaSyncIndexSpec {
+    /**
+     * (list of string) - [Optional] Select the columns to sync with the index. If left blank, all columns
+     * from the source table are synced. The primary key column and embedding source or
+     * vector column are always synced
+     */
+    columnsToSyncs?: string[];
+    /**
+     * (list of EmbeddingSourceColumn) - The columns that contain the embedding source
+     */
+    embeddingSourceColumns?: outputs.GetAiSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn[];
+    /**
+     * (list of EmbeddingVectorColumn) - The columns that contain the embedding vectors
+     */
+    embeddingVectorColumns?: outputs.GetAiSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn[];
+    /**
+     * (string) - [Optional] Name of the Delta table to sync the index contents and computed embeddings to
+     */
+    embeddingWritebackTable?: string;
+    /**
+     * (string) - The ID of the pipeline that is used to sync the index
+     */
+    pipelineId: string;
+    /**
+     * (string) - Pipeline execution mode. Required on create — the backend rejects an unset value.
+     * Storage Optimized endpoints accept only `TRIGGERED`; Standard endpoints accept both.
+     * No explicit `stage` — a REQUIRED field staged below its service would be dropped from
+     * combined specs while remaining in `required`, tripping the OpenAPI required-vs-properties
+     * consistency check. The field inherits the service's launch stage. Possible values are: `CONTINUOUS`, `TRIGGERED`
+     */
+    pipelineType: string;
+    /**
+     * (string) - The full name of the source Delta table
+     */
+    sourceTable?: string;
+}
+
+export interface GetAiSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
+    /**
+     * (string) - Name of the embedding model endpoint, used by default for both ingestion and querying
+     */
+    embeddingModelEndpoint?: string;
+    /**
+     * (string) - Name of the embedding model endpoint which, if specified, is used for querying (not ingestion)
+     */
+    modelEndpointNameForQuery?: string;
+    /**
+     * Name of the AI Search index. Server-assigned full resource path
+     * (`workspaces/{workspace}/endpoints/{endpoint}/indexes/{index}`) on output, where
+     * `{index}` is the index's Unity Catalog table name. On create, the user-supplied UC
+     * table name is conveyed via `CreateIndexRequest.index_id`; the server composes the
+     * full `name` and returns it on the response
+     */
+    name?: string;
+}
+
+export interface GetAiSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
+    /**
+     * (integer) - Dimension of the embedding vector
+     */
+    embeddingDimension?: number;
+    /**
+     * Name of the AI Search index. Server-assigned full resource path
+     * (`workspaces/{workspace}/endpoints/{endpoint}/indexes/{index}`) on output, where
+     * `{index}` is the index's Unity Catalog table name. On create, the user-supplied UC
+     * table name is conveyed via `CreateIndexRequest.index_id`; the server composes the
+     * full `name` and returns it on the response
+     */
+    name?: string;
+}
+
+export interface GetAiSearchIndexDirectAccessIndexSpec {
+    /**
+     * (list of EmbeddingSourceColumn) - The columns that contain the embedding source
+     */
+    embeddingSourceColumns?: outputs.GetAiSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn[];
+    /**
+     * (list of EmbeddingVectorColumn) - The columns that contain the embedding vectors
+     */
+    embeddingVectorColumns?: outputs.GetAiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn[];
+    /**
+     * (string) - The schema of the index in JSON format. Supported types are `integer`, `long`,
+     * `float`, `double`, `boolean`, `string`, `date`, `timestamp`. Supported types for
+     * vector columns: `array<float>`, `array<double>`
+     */
+    schemaJson?: string;
+}
+
+export interface GetAiSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
+    /**
+     * (string) - Name of the embedding model endpoint, used by default for both ingestion and querying
+     */
+    embeddingModelEndpoint?: string;
+    /**
+     * (string) - Name of the embedding model endpoint which, if specified, is used for querying (not ingestion)
+     */
+    modelEndpointNameForQuery?: string;
+    /**
+     * Name of the AI Search index. Server-assigned full resource path
+     * (`workspaces/{workspace}/endpoints/{endpoint}/indexes/{index}`) on output, where
+     * `{index}` is the index's Unity Catalog table name. On create, the user-supplied UC
+     * table name is conveyed via `CreateIndexRequest.index_id`; the server composes the
+     * full `name` and returns it on the response
+     */
+    name?: string;
+}
+
+export interface GetAiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
+    /**
+     * (integer) - Dimension of the embedding vector
+     */
+    embeddingDimension?: number;
+    /**
+     * Name of the AI Search index. Server-assigned full resource path
+     * (`workspaces/{workspace}/endpoints/{endpoint}/indexes/{index}`) on output, where
+     * `{index}` is the index's Unity Catalog table name. On create, the user-supplied UC
+     * table name is conveyed via `CreateIndexRequest.index_id`; the server composes the
+     * full `name` and returns it on the response
+     */
+    name?: string;
+}
+
+export interface GetAiSearchIndexProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAiSearchIndexStatus {
+    /**
+     * (string) - Index API URL used to perform operations on the index
+     */
+    indexUrl: string;
+    /**
+     * (integer) - Number of rows indexed
+     */
+    indexedRowCount: number;
+    /**
+     * (string) - Human-readable detail about the index's current state
+     */
+    message: string;
+    /**
+     * (boolean) - Whether the index is ready for search
+     */
+    ready: boolean;
+}
+
+export interface GetAiSearchIndexesIndex {
+    /**
+     * (string) - Creator of the index
+     */
+    creator: string;
+    /**
+     * (DeltaSyncIndexSpec) - Specification for a Delta Sync index. Set when `indexType` is `DELTA_SYNC`
+     */
+    deltaSyncIndexSpec: outputs.GetAiSearchIndexesIndexDeltaSyncIndexSpec;
+    /**
+     * (DirectAccessIndexSpec) - Specification for a Direct Access index. Set when `indexType` is `DIRECT_ACCESS`
+     */
+    directAccessIndexSpec: outputs.GetAiSearchIndexesIndexDirectAccessIndexSpec;
+    /**
+     * (string) - Name of the endpoint associated with the index. Ignored on create — the endpoint is
+     * taken from `CreateIndexRequest.parent`; populated only on output
+     */
+    endpoint: string;
+    /**
+     * (string) - The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+     */
+    indexSubtype: string;
+    /**
+     * (string) - Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+     */
+    indexType: string;
+    /**
+     * (string) - Name of the column
+     */
+    name: string;
+    /**
+     * (string) - Primary key of the index. Set on create and immutable thereafter
+     */
+    primaryKey: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetAiSearchIndexesIndexProviderConfig;
+    /**
+     * (IndexStatus) - Current status of the index
+     */
+    status: outputs.GetAiSearchIndexesIndexStatus;
+}
+
+export interface GetAiSearchIndexesIndexDeltaSyncIndexSpec {
+    /**
+     * (list of string) - [Optional] Select the columns to sync with the index. If left blank, all columns
+     * from the source table are synced. The primary key column and embedding source or
+     * vector column are always synced
+     */
+    columnsToSyncs?: string[];
+    /**
+     * (list of EmbeddingSourceColumn) - The columns that contain the embedding source
+     */
+    embeddingSourceColumns?: outputs.GetAiSearchIndexesIndexDeltaSyncIndexSpecEmbeddingSourceColumn[];
+    /**
+     * (list of EmbeddingVectorColumn) - The columns that contain the embedding vectors
+     */
+    embeddingVectorColumns?: outputs.GetAiSearchIndexesIndexDeltaSyncIndexSpecEmbeddingVectorColumn[];
+    /**
+     * (string) - [Optional] Name of the Delta table to sync the index contents and computed embeddings to
+     */
+    embeddingWritebackTable?: string;
+    /**
+     * (string) - The ID of the pipeline that is used to sync the index
+     */
+    pipelineId: string;
+    /**
+     * (string) - Pipeline execution mode. Required on create — the backend rejects an unset value.
+     * Storage Optimized endpoints accept only `TRIGGERED`; Standard endpoints accept both.
+     * No explicit `stage` — a REQUIRED field staged below its service would be dropped from
+     * combined specs while remaining in `required`, tripping the OpenAPI required-vs-properties
+     * consistency check. The field inherits the service's launch stage. Possible values are: `CONTINUOUS`, `TRIGGERED`
+     */
+    pipelineType: string;
+    /**
+     * (string) - The full name of the source Delta table
+     */
+    sourceTable?: string;
+}
+
+export interface GetAiSearchIndexesIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
+    /**
+     * (string) - Name of the embedding model endpoint, used by default for both ingestion and querying
+     */
+    embeddingModelEndpoint?: string;
+    /**
+     * (string) - Name of the embedding model endpoint which, if specified, is used for querying (not ingestion)
+     */
+    modelEndpointNameForQuery?: string;
+    /**
+     * (string) - Name of the column
+     */
+    name?: string;
+}
+
+export interface GetAiSearchIndexesIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
+    /**
+     * (integer) - Dimension of the embedding vector
+     */
+    embeddingDimension?: number;
+    /**
+     * (string) - Name of the column
+     */
+    name?: string;
+}
+
+export interface GetAiSearchIndexesIndexDirectAccessIndexSpec {
+    /**
+     * (list of EmbeddingSourceColumn) - The columns that contain the embedding source
+     */
+    embeddingSourceColumns?: outputs.GetAiSearchIndexesIndexDirectAccessIndexSpecEmbeddingSourceColumn[];
+    /**
+     * (list of EmbeddingVectorColumn) - The columns that contain the embedding vectors
+     */
+    embeddingVectorColumns?: outputs.GetAiSearchIndexesIndexDirectAccessIndexSpecEmbeddingVectorColumn[];
+    /**
+     * (string) - The schema of the index in JSON format. Supported types are `integer`, `long`,
+     * `float`, `double`, `boolean`, `string`, `date`, `timestamp`. Supported types for
+     * vector columns: `array<float>`, `array<double>`
+     */
+    schemaJson?: string;
+}
+
+export interface GetAiSearchIndexesIndexDirectAccessIndexSpecEmbeddingSourceColumn {
+    /**
+     * (string) - Name of the embedding model endpoint, used by default for both ingestion and querying
+     */
+    embeddingModelEndpoint?: string;
+    /**
+     * (string) - Name of the embedding model endpoint which, if specified, is used for querying (not ingestion)
+     */
+    modelEndpointNameForQuery?: string;
+    /**
+     * (string) - Name of the column
+     */
+    name?: string;
+}
+
+export interface GetAiSearchIndexesIndexDirectAccessIndexSpecEmbeddingVectorColumn {
+    /**
+     * (integer) - Dimension of the embedding vector
+     */
+    embeddingDimension?: number;
+    /**
+     * (string) - Name of the column
+     */
+    name?: string;
+}
+
+export interface GetAiSearchIndexesIndexProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAiSearchIndexesIndexStatus {
+    /**
+     * (string) - Index API URL used to perform operations on the index
+     */
+    indexUrl: string;
+    /**
+     * (integer) - Number of rows indexed
+     */
+    indexedRowCount: number;
+    /**
+     * (string) - Human-readable detail about the index's current state
+     */
+    message: string;
+    /**
+     * (boolean) - Whether the index is ready for search
+     */
+    ready: boolean;
+}
+
+export interface GetAiSearchIndexesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetAlertV2EffectiveRunAs {
     /**
      * (string) - Application ID of an active service principal. Setting this field requires the `servicePrincipal/user` role
@@ -10012,6 +10976,7 @@ export interface GetAppAppAppStatus {
      * The status message of the deployment.
      */
     message: string;
+    runningInstances: number;
     /**
      * The state of the deployment.
      */
@@ -11057,6 +12022,7 @@ export interface GetAppsAppAppStatus {
      * The status message of the deployment.
      */
     message: string;
+    runningInstances: number;
     /**
      * The state of the deployment.
      */
@@ -11750,6 +12716,7 @@ export interface GetCatalogCatalogInfo {
      * Username of catalog creator.
      */
     createdBy?: string;
+    customMaxRetentionHours?: number;
     /**
      * object describing applied predictive optimization flag.
      */
@@ -13145,7 +14112,7 @@ export interface GetDatabaseDatabaseCatalogsDatabaseCatalog {
      */
     databaseInstanceName: string;
     /**
-     * (string) - The name of the database (in a instance) associated with the catalog
+     * (string) - The name of the database (in an instance) associated with the catalog
      */
     databaseName: string;
     /**
@@ -13727,6 +14694,12 @@ export interface GetDatabaseSyncedDatabaseTableProviderConfig {
 
 export interface GetDatabaseSyncedDatabaseTableSpec {
     /**
+     * (boolean) - When true, enables accelerated sync mode for the initial data load.
+     * This significantly improves performance for large tables.
+     * Requires workspace-level enablement
+     */
+    acceleratedSync: boolean;
+    /**
      * (boolean) - If true, the synced table's logical database and schema resources in PG
      * will be created if they do not already exist
      */
@@ -13755,6 +14728,11 @@ export interface GetDatabaseSyncedDatabaseTableSpec {
      * (string) - Time series key to deduplicate (tie-break) rows with the same primary key
      */
     timeseriesKey?: string;
+    /**
+     * (list of SyncedTableSpecTypeOverride) - Override the default Delta->PG type mapping for specific columns.
+     * A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+     */
+    typeOverrides?: outputs.GetDatabaseSyncedDatabaseTableSpecTypeOverride[];
 }
 
 export interface GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec {
@@ -13770,6 +14748,22 @@ export interface GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec {
      * (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
      */
     storageSchema?: string;
+}
+
+export interface GetDatabaseSyncedDatabaseTableSpecTypeOverride {
+    /**
+     * (string) - Name of the source column whose target PostgreSQL type should be overridden
+     */
+    columnName: string;
+    /**
+     * (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     */
+    pgType: string;
+    /**
+     * (integer) - Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
+     * (specifies the vector dimension, e.g., 1024)
+     */
+    size?: number;
 }
 
 export interface GetDatabaseSyncedDatabaseTablesProviderConfig {
@@ -14041,6 +15035,12 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTableProviderConfig {
 
 export interface GetDatabaseSyncedDatabaseTablesSyncedTableSpec {
     /**
+     * (boolean) - When true, enables accelerated sync mode for the initial data load.
+     * This significantly improves performance for large tables.
+     * Requires workspace-level enablement
+     */
+    acceleratedSync: boolean;
+    /**
      * (boolean) - If true, the synced table's logical database and schema resources in PG
      * will be created if they do not already exist
      */
@@ -14069,6 +15069,11 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTableSpec {
      * (string) - Time series key to deduplicate (tie-break) rows with the same primary key
      */
     timeseriesKey?: string;
+    /**
+     * (list of SyncedTableSpecTypeOverride) - Override the default Delta->PG type mapping for specific columns.
+     * A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+     */
+    typeOverrides?: outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpecTypeOverride[];
 }
 
 export interface GetDatabaseSyncedDatabaseTablesSyncedTableSpecNewPipelineSpec {
@@ -14084,6 +15089,22 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTableSpecNewPipelineSpec {
      * (string) - This field needs to be specified if the destination catalog is a managed postgres catalog.
      */
     storageSchema?: string;
+}
+
+export interface GetDatabaseSyncedDatabaseTablesSyncedTableSpecTypeOverride {
+    /**
+     * (string) - Name of the source column whose target PostgreSQL type should be overridden
+     */
+    columnName: string;
+    /**
+     * (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     */
+    pgType: string;
+    /**
+     * (integer) - Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
+     * (specifies the vector dimension, e.g., 1024)
+     */
+    size?: number;
 }
 
 export interface GetDbfsFilePathsPathList {
@@ -14169,8 +15190,7 @@ export interface GetDisasterRecoveryFailoverGroupWorkspaceSet {
      */
     name: string;
     /**
-     * (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-     * Requires all workspaces in the set to be Mission Critical tier
+     * (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
      */
     replicateWorkspaceAssets: boolean;
     /**
@@ -14181,7 +15201,7 @@ export interface GetDisasterRecoveryFailoverGroupWorkspaceSet {
     stableUrlNames?: string[];
     /**
      * (list of string) - Workspace IDs in this set. The system derives and validates regions.
-     * EA: exactly 2 workspaces (one per region)
+     * All workspaces must be in the Mission Critical tier
      */
     workspaceIds: string[];
 }
@@ -14287,8 +15307,7 @@ export interface GetDisasterRecoveryFailoverGroupsFailoverGroupWorkspaceSet {
      */
     name: string;
     /**
-     * (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-     * Requires all workspaces in the set to be Mission Critical tier
+     * (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
      */
     replicateWorkspaceAssets: boolean;
     /**
@@ -14299,7 +15318,7 @@ export interface GetDisasterRecoveryFailoverGroupsFailoverGroupWorkspaceSet {
     stableUrlNames?: string[];
     /**
      * (list of string) - Workspace IDs in this set. The system derives and validates regions.
-     * EA: exactly 2 workspaces (one per region)
+     * All workspaces must be in the Mission Critical tier
      */
     workspaceIds: string[];
 }
@@ -14309,15 +15328,13 @@ export interface GetDisasterRecoveryStableUrlsStableUrl {
      * (string) - Fully qualified resource name of the FailoverGroup this stable URL is
      * currently linked to, in the format
      * `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
-     * the stable URL is not attached to any failover group. Server-controlled:
-     * written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
-     * DeleteFailoverGroup / UpdateFailoverGroup on unlink
+     * the stable URL is not attached to any failover group
      */
     failoverGroupName: string;
     /**
      * (string) - The workspace this stable URL is initially bound to. Used only in Create
      * requests to associate the stable URL with a workspace. Not returned in
-     * responses. Mirrors FailoverGroup.initial_primary_region semantics
+     * responses
      */
     initialWorkspaceId: string;
     /**
@@ -14326,7 +15343,7 @@ export interface GetDisasterRecoveryStableUrlsStableUrl {
      */
     name: string;
     /**
-     * (string) - The stable URL endpoint. Generated by the backend on creation and
+     * (string) - The stable URL endpoint. Generated on creation and
      * immutable thereafter. For non-Private-Link workspaces this is
      * `https://<spog_host>/?c=<connection_id>`. For Private-Link workspaces
      * this is the per-connection hostname
@@ -14823,7 +15840,7 @@ export interface GetFeatureEngineeringFeatureEntity {
      * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
      * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
      * is what will be present in materialized tables and expected to match at query time.
-     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
      * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
@@ -15132,6 +16149,10 @@ export interface GetFeatureEngineeringFeatureSource {
      * (RequestSource) - A request-time data source
      */
     requestSource?: outputs.GetFeatureEngineeringFeatureSourceRequestSource;
+    /**
+     * (StreamSource) - A Stream data source
+     */
+    streamSource?: outputs.GetFeatureEngineeringFeatureSourceStreamSource;
 }
 
 export interface GetFeatureEngineeringFeatureSourceDeltaTableSource {
@@ -15184,7 +16205,7 @@ export interface GetFeatureEngineeringFeatureSourceKafkaSource {
      * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
      * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
      * is what will be present in materialized tables and expected to match at query time.
-     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
      * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
@@ -15235,10 +16256,23 @@ export interface GetFeatureEngineeringFeatureSourceRequestSourceFlatSchemaField 
      * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
      * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
      * is what will be present in materialized tables and expected to match at query time.
-     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
      * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
+}
+
+export interface GetFeatureEngineeringFeatureSourceStreamSource {
+    /**
+     * (string) - The filter condition applied to the source data before aggregation
+     */
+    filterCondition?: string;
+    /**
+     * The full three-part name (catalog, schema, name) of the feature. This is the
+     * feature's resource identifier; the catalog_name, schema_name, and name fields
+     * below are OUTPUT_ONLY decomposed views of this value
+     */
+    fullName: string;
 }
 
 export interface GetFeatureEngineeringFeatureTimeWindow {
@@ -15307,7 +16341,7 @@ export interface GetFeatureEngineeringFeatureTimeseriesColumn {
      * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
      * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
      * is what will be present in materialized tables and expected to match at query time.
-     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
      * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
@@ -15339,7 +16373,7 @@ export interface GetFeatureEngineeringFeaturesFeature {
      */
     filterCondition: string;
     /**
-     * (string) - The full three-part (catalog, schema, table) name of the Delta table
+     * (string) - Three-part full name of the Stream (catalog.schema.stream)
      */
     fullName: string;
     /**
@@ -15364,7 +16398,7 @@ export interface GetFeatureEngineeringFeaturesFeature {
      * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
      * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
      * is what will be present in materialized tables and expected to match at query time.
-     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
      * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
@@ -15397,7 +16431,7 @@ export interface GetFeatureEngineeringFeaturesFeatureEntity {
      * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
      * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
      * is what will be present in materialized tables and expected to match at query time.
-     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
      * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
@@ -15706,6 +16740,10 @@ export interface GetFeatureEngineeringFeaturesFeatureSource {
      * (RequestSource) - A request-time data source
      */
     requestSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceRequestSource;
+    /**
+     * (StreamSource) - A Stream data source
+     */
+    streamSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceStreamSource;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
@@ -15725,7 +16763,7 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
      */
     filterCondition?: string;
     /**
-     * (string) - The full three-part (catalog, schema, table) name of the Delta table
+     * (string) - Three-part full name of the Stream (catalog.schema.stream)
      */
     fullName: string;
     /**
@@ -15756,7 +16794,7 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSource {
      * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
      * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
      * is what will be present in materialized tables and expected to match at query time.
-     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
      * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
@@ -15807,10 +16845,21 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceRequestSourceFlatSche
      * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
      * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
      * is what will be present in materialized tables and expected to match at query time.
-     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
      * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureSourceStreamSource {
+    /**
+     * (string) - The filter condition applied to the source data before aggregation
+     */
+    filterCondition?: string;
+    /**
+     * (string) - Three-part full name of the Stream (catalog.schema.stream)
+     */
+    fullName: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureTimeWindow {
@@ -15879,7 +16928,7 @@ export interface GetFeatureEngineeringFeaturesFeatureTimeseriesColumn {
      * reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
      * fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
      * is what will be present in materialized tables and expected to match at query time.
-     * TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+     * Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
      * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
@@ -15975,7 +17024,7 @@ export interface GetFeatureEngineeringKafkaConfigAuthConfigMtlsConfigTruststoreP
 
 export interface GetFeatureEngineeringKafkaConfigBackfillSource {
     /**
-     * (string) - The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
+     * (string) - The full three-part name (catalog, schema, name) of the Delta table to be created for ingestion
      */
     deltaTableName?: string;
     /**
@@ -16017,6 +17066,93 @@ export interface GetFeatureEngineeringKafkaConfigBackfillSourceDeltaTableSource 
      * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
      */
     transformationSql?: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigIngestionConfig {
+    /**
+     * (integer) - The ID of the Databricks Job that performs the historical backfill of the ingestion Delta table
+     */
+    backfillJobId: number;
+    /**
+     * (BackfillSource) - A user-provided source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Stream.
+     * The backfill data stored in this location will be copied into the ingestion table for offline querying and training.
+     * The schema for this source must match exactly that of the key and payload schemas specified for this Stream
+     */
+    backfillSource?: outputs.GetFeatureEngineeringKafkaConfigIngestionConfigBackfillSource;
+    /**
+     * (list of string) - Column paths used to identify duplicate rows during ingestion; only one row per
+     * distinct combination of these values is kept. Use dot notation for nested fields
+     * (e.g. `value.user_id`). Empty list means every column is compared
+     */
+    deduplicationColumns?: string[];
+    /**
+     * (IngestionDestination) - Destination for the Databricks-managed Delta table that holds an offline copy of the streaming data for querying and training.
+     * This table contains both 1) forward-filled data from the Stream and 2) backfilled data from the BackfillSource (if provided).
+     * This table is created and managed by Databricks and is deleted when the Stream is deleted
+     */
+    ingestionDestination: outputs.GetFeatureEngineeringKafkaConfigIngestionConfigIngestionDestination;
+    /**
+     * (integer) - The ID of the Databricks Job that performs the forward-fill ingestion
+     */
+    ingestionJobId: number;
+    /**
+     * (string) - The ID of the SDP pipeline that continuously copies new events from the streaming source
+     * into the ingestion Delta table
+     */
+    ingestionPipelineId: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigIngestionConfigBackfillSource {
+    /**
+     * (string) - The full three-part name (catalog, schema, name) of the Delta table to be created for ingestion
+     */
+    deltaTableName?: string;
+    /**
+     * (DeltaTableSource, deprecated) - Deprecated: Use deltaTableName instead. Kept for backwards compatibility.
+     * The Delta table source containing the historical data to backfill.
+     * Only the delta table name is used for backfill, other fields are ignored
+     */
+    deltaTableSource?: outputs.GetFeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource;
+}
+
+export interface GetFeatureEngineeringKafkaConfigIngestionConfigBackfillSourceDeltaTableSource {
+    /**
+     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
+     * Required if transformationSql is specified.
+     * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
+     */
+    dataframeSchema?: string;
+    /**
+     * (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity columns of the Delta table
+     */
+    entityColumns?: string[];
+    /**
+     * (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     */
+    filterCondition?: string;
+    /**
+     * (string) - The full three-part (catalog, schema, table) name of the Delta table
+     */
+    fullName: string;
+    /**
+     * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column of the Delta table
+     */
+    timeseriesColumn?: string;
+    /**
+     * (string) - A single SQL SELECT expression applied after filter_condition.
+     * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
+     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     */
+    transformationSql?: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigIngestionConfigIngestionDestination {
+    /**
+     * (string) - The full three-part name (catalog, schema, name) of the Delta table to be created for ingestion
+     */
+    deltaTableName?: string;
 }
 
 export interface GetFeatureEngineeringKafkaConfigKeySchema {
@@ -16062,9 +17198,9 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfig {
      */
     authConfig: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfig;
     /**
-     * (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
-     * In the future, a separate table will be maintained by Databricks for forward filling data.
-     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     * (BackfillSource) - A user-provided source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Stream.
+     * The backfill data stored in this location will be copied into the ingestion table for offline querying and training.
+     * The schema for this source must match exactly that of the key and payload schemas specified for this Stream
      */
     backfillSource: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSource;
     /**
@@ -16075,6 +17211,11 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfig {
      * (object) - Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
      */
     extraOptions: {[key: string]: string};
+    /**
+     * (IngestionConfig) - Configuration for ingesting Kafka data into a Databricks-managed
+     * Delta table
+     */
+    ingestionConfig: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigIngestionConfig;
     /**
      * (SchemaConfig) - Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
      */
@@ -16181,7 +17322,7 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfigMtlsConfi
 
 export interface GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSource {
     /**
-     * (string) - The full three-part name (catalog, schema, name) of the Delta table containing the historical data to backfill
+     * (string) - The full three-part name (catalog, schema, name) of the Delta table to be created for ingestion
      */
     deltaTableName?: string;
     /**
@@ -16223,6 +17364,93 @@ export interface GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceDelta
      * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
      */
     transformationSql?: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfigIngestionConfig {
+    /**
+     * (integer) - The ID of the Databricks Job that performs the historical backfill of the ingestion Delta table
+     */
+    backfillJobId: number;
+    /**
+     * (BackfillSource) - A user-provided source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Stream.
+     * The backfill data stored in this location will be copied into the ingestion table for offline querying and training.
+     * The schema for this source must match exactly that of the key and payload schemas specified for this Stream
+     */
+    backfillSource?: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigIngestionConfigBackfillSource;
+    /**
+     * (list of string) - Column paths used to identify duplicate rows during ingestion; only one row per
+     * distinct combination of these values is kept. Use dot notation for nested fields
+     * (e.g. `value.user_id`). Empty list means every column is compared
+     */
+    deduplicationColumns?: string[];
+    /**
+     * (IngestionDestination) - Destination for the Databricks-managed Delta table that holds an offline copy of the streaming data for querying and training.
+     * This table contains both 1) forward-filled data from the Stream and 2) backfilled data from the BackfillSource (if provided).
+     * This table is created and managed by Databricks and is deleted when the Stream is deleted
+     */
+    ingestionDestination: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigIngestionConfigIngestionDestination;
+    /**
+     * (integer) - The ID of the Databricks Job that performs the forward-fill ingestion
+     */
+    ingestionJobId: number;
+    /**
+     * (string) - The ID of the SDP pipeline that continuously copies new events from the streaming source
+     * into the ingestion Delta table
+     */
+    ingestionPipelineId: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfigIngestionConfigBackfillSource {
+    /**
+     * (string) - The full three-part name (catalog, schema, name) of the Delta table to be created for ingestion
+     */
+    deltaTableName?: string;
+    /**
+     * (DeltaTableSource, deprecated) - Deprecated: Use deltaTableName instead. Kept for backwards compatibility.
+     * The Delta table source containing the historical data to backfill.
+     * Only the delta table name is used for backfill, other fields are ignored
+     */
+    deltaTableSource?: outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigIngestionConfigBackfillSourceDeltaTableSource;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfigIngestionConfigBackfillSourceDeltaTableSource {
+    /**
+     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType JSON format (from df.schema.json()).
+     * Required if transformationSql is specified.
+     * Example: {"type":"struct","fields":[{"name":"colA","type":"integer","nullable":true,"metadata":{}},{"name":"colC","type":"integer","nullable":true,"metadata":{}}]}
+     */
+    dataframeSchema?: string;
+    /**
+     * (list of string, deprecated) - Deprecated: Use Feature.entity instead. Kept for backwards compatibility.
+     * The entity columns of the Delta table
+     */
+    entityColumns?: string[];
+    /**
+     * (string) - Single WHERE clause to filter delta table before applying transformations. Will be row-wise evaluated, so should only include conditionals and projections
+     */
+    filterCondition?: string;
+    /**
+     * (string) - The full three-part (catalog, schema, table) name of the Delta table
+     */
+    fullName: string;
+    /**
+     * (string, deprecated) - Deprecated: Use Feature.timeseries_column instead. Kept for backwards compatibility.
+     * The timeseries column of the Delta table
+     */
+    timeseriesColumn?: string;
+    /**
+     * (string) - A single SQL SELECT expression applied after filter_condition.
+     * Should contains all the columns needed (eg. "SELECT *, colA + colB AS colC FROM x.y.z WHERE colA > 0" would have `transformationSql` "*, colA + colB AS colC")
+     * If transformationSql is not provided, all columns of the delta table are present in the DataSource dataframe
+     */
+    transformationSql?: string;
+}
+
+export interface GetFeatureEngineeringKafkaConfigsKafkaConfigIngestionConfigIngestionDestination {
+    /**
+     * (string) - The full three-part name (catalog, schema, name) of the Delta table to be created for ingestion
+     */
+    deltaTableName?: string;
 }
 
 export interface GetFeatureEngineeringKafkaConfigsKafkaConfigKeySchema {
@@ -16335,7 +17563,8 @@ export interface GetFeatureEngineeringMaterializedFeatureTableTrigger {
 
 export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
     /**
-     * (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+     * (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+     * Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
      */
     cronSchedule: string;
     /**
@@ -16368,7 +17597,8 @@ export interface GetFeatureEngineeringMaterializedFeaturesMaterializedFeature {
      */
     onlineStoreConfig: outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfig;
     /**
-     * (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+     * (string) - The schedule state of the materialization pipeline.
+     * Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
      */
     pipelineScheduleState: string;
     /**
@@ -19404,6 +20634,10 @@ export interface GetPostgresBranchStatus {
 
 export interface GetPostgresBranchesBranch {
     /**
+     * (string) - Part of the resource name
+     */
+    branchId: string;
+    /**
      * (string) - A timestamp indicating when the branch was created
      */
     createTime: string;
@@ -19563,7 +20797,7 @@ export interface GetPostgresCatalogSpec {
      * if it does not already exist. In this case, the calling user has a role created for
      * them in Postgres if they do not already have one.
      */
-    createDatabaseIfMissing: boolean;
+    createDatabaseIfMissing?: boolean;
     /**
      * (string) - The name of the Postgres database associated with the catalog
      */
@@ -19625,6 +20859,10 @@ export interface GetPostgresDatabasesDatabase {
      * (string) - A timestamp indicating when the database was created
      */
     createTime: string;
+    /**
+     * (string) - Part of the resource name
+     */
+    databaseId: string;
     /**
      * (string) - The resource name of the database.
      * Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
@@ -19865,6 +21103,10 @@ export interface GetPostgresEndpointsEndpoint {
      * (string) - A timestamp indicating when the compute endpoint was created
      */
     createTime: string;
+    /**
+     * (string) - Part of the resource name
+     */
+    endpointId: string;
     /**
      * (string) - Output only. The full resource path of the endpoint.
      * Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
@@ -20287,6 +21529,10 @@ export interface GetPostgresProjectsProject {
      */
     name: string;
     /**
+     * (string) - Part of the resource name
+     */
+    projectId: string;
+    /**
      * Configure the provider for management through account provider.
      */
     providerConfig?: outputs.GetPostgresProjectsProjectProviderConfig;
@@ -20629,6 +21875,10 @@ export interface GetPostgresRolesRole {
      */
     providerConfig?: outputs.GetPostgresRolesRoleProviderConfig;
     /**
+     * (string) - Part of the resource name
+     */
+    roleId: string;
+    /**
      * (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
      */
     spec: outputs.GetPostgresRolesRoleSpec;
@@ -20738,6 +21988,12 @@ export interface GetPostgresSyncedTableProviderConfig {
 
 export interface GetPostgresSyncedTableSpec {
     /**
+     * (boolean) - When true, enables accelerated sync mode for the initial data load.
+     * This significantly improves performance for large tables.
+     * Requires workspace-level enablement through Lakebase Accelerated Sync preview
+     */
+    acceleratedSync?: boolean;
+    /**
      * (string) - The full resource name the branch associated with the table.
      */
     branch?: string;
@@ -20777,6 +22033,11 @@ export interface GetPostgresSyncedTableSpec {
      * (string) - Time series key to deduplicate (tie-break) rows with the same primary key
      */
     timeseriesKey?: string;
+    /**
+     * (list of SyncedTableSyncedTableSpecTypeOverride) - Override the default Delta->PG type mapping for specific columns.
+     * A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+     */
+    typeOverrides?: outputs.GetPostgresSyncedTableSpecTypeOverride[];
 }
 
 export interface GetPostgresSyncedTableSpecNewPipelineSpec {
@@ -20794,6 +22055,22 @@ export interface GetPostgresSyncedTableSpecNewPipelineSpec {
      * This needs to be in the standard catalog where the user has permissions to create Delta tables
      */
     storageSchema?: string;
+}
+
+export interface GetPostgresSyncedTableSpecTypeOverride {
+    /**
+     * (string) - Name of the source column whose target PostgreSQL type should be overridden
+     */
+    columnName: string;
+    /**
+     * (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     */
+    pgType: string;
+    /**
+     * (integer) - Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
+     * (specifies the vector dimension, e.g., 1024)
+     */
+    size?: number;
 }
 
 export interface GetPostgresSyncedTableStatus {
@@ -21388,6 +22665,7 @@ export interface GetSchemaSchemaInfo {
      * username of schema creator.
      */
     createdBy?: string;
+    customMaxRetentionHours?: number;
     /**
      * information about actual state of predictive optimization.
      */
@@ -24461,6 +25739,9 @@ export interface JobTask {
      * A flag to disable auto optimization in serverless tasks.
      */
     disableAutoOptimization?: boolean;
+    /**
+     * (Bool) An optional flag to disable the task. If set to `true`, the task will not run even if it is part of a job.
+     */
     disabled?: boolean;
     /**
      * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
@@ -24779,6 +26060,9 @@ export interface JobTaskForEachTaskTask {
      * A flag to disable auto optimization in serverless tasks.
      */
     disableAutoOptimization?: boolean;
+    /**
+     * (Bool) An optional flag to disable the task. If set to `true`, the task will not run even if it is part of a job.
+     */
     disabled?: boolean;
     /**
      * An optional block to specify a set of email addresses notified when this task begins, completes or fails. The default behavior is to not send any emails. This block is documented below.
@@ -28034,11 +29318,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -28105,11 +29389,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.117.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.118.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -28681,6 +29965,8 @@ export interface PipelineIngestionDefinitionObjectReport {
 
 export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
     autoFullRefreshPolicy?: outputs.PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicy;
+    clusteringColumns?: string[];
+    enableAutoClustering?: boolean;
     excludeColumns?: string[];
     includeColumns?: string[];
     primaryKeys?: string[];
@@ -28689,6 +29975,7 @@ export interface PipelineIngestionDefinitionObjectReportTableConfiguration {
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
     sequenceBies?: string[];
+    tableProperties?: {[key: string]: string};
     workdayReportParameters?: outputs.PipelineIngestionDefinitionObjectReportTableConfigurationWorkdayReportParameters;
 }
 
@@ -28895,6 +30182,8 @@ export interface PipelineIngestionDefinitionObjectSchemaConnectorOptionsZendeskS
 
 export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
     autoFullRefreshPolicy?: outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicy;
+    clusteringColumns?: string[];
+    enableAutoClustering?: boolean;
     excludeColumns?: string[];
     includeColumns?: string[];
     primaryKeys?: string[];
@@ -28903,6 +30192,7 @@ export interface PipelineIngestionDefinitionObjectSchemaTableConfiguration {
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
     sequenceBies?: string[];
+    tableProperties?: {[key: string]: string};
     workdayReportParameters?: outputs.PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParameters;
 }
 
@@ -29111,6 +30401,8 @@ export interface PipelineIngestionDefinitionObjectTableConnectorOptionsZendeskSu
 
 export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
     autoFullRefreshPolicy?: outputs.PipelineIngestionDefinitionObjectTableTableConfigurationAutoFullRefreshPolicy;
+    clusteringColumns?: string[];
+    enableAutoClustering?: boolean;
     excludeColumns?: string[];
     includeColumns?: string[];
     primaryKeys?: string[];
@@ -29119,6 +30411,7 @@ export interface PipelineIngestionDefinitionObjectTableTableConfiguration {
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
     sequenceBies?: string[];
+    tableProperties?: {[key: string]: string};
     workdayReportParameters?: outputs.PipelineIngestionDefinitionObjectTableTableConfigurationWorkdayReportParameters;
 }
 
@@ -29172,6 +30465,8 @@ export interface PipelineIngestionDefinitionSourceConfigurationGoogleAdsConfig {
 
 export interface PipelineIngestionDefinitionTableConfiguration {
     autoFullRefreshPolicy?: outputs.PipelineIngestionDefinitionTableConfigurationAutoFullRefreshPolicy;
+    clusteringColumns?: string[];
+    enableAutoClustering?: boolean;
     excludeColumns?: string[];
     includeColumns?: string[];
     primaryKeys?: string[];
@@ -29180,6 +30475,7 @@ export interface PipelineIngestionDefinitionTableConfiguration {
     salesforceIncludeFormulaFields?: boolean;
     scdType?: string;
     sequenceBies?: string[];
+    tableProperties?: {[key: string]: string};
     workdayReportParameters?: outputs.PipelineIngestionDefinitionTableConfigurationWorkdayReportParameters;
 }
 
@@ -29404,9 +30700,7 @@ export interface PostgresBranchSpec {
 
 export interface PostgresBranchStatus {
     /**
-     * The ID to use for the Branch. This becomes the final component of the branch's resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `development` becomes `projects/my-app/branches/development`
+     * The part of the name, chosen by the user when the resource was created
      */
     branchId: string;
     /**
@@ -29481,7 +30775,7 @@ export interface PostgresCatalogSpec {
      *
      * Defaults to false, meaning that the request fails if the specified postgresDatabase does not already exist
      */
-    createDatabaseIfMissing: boolean;
+    createDatabaseIfMissing?: boolean;
     /**
      * (string) - The name of the Postgres database associated with the catalog
      */
@@ -29517,14 +30811,7 @@ export interface PostgresDatabaseSpec {
 
 export interface PostgresDatabaseStatus {
     /**
-     * The ID to use for the Database, which will become the final component of
-     * the database's resource name.
-     * This ID becomes the database name in postgres.
-     *
-     * This value should be 4-63 characters, and only use characters available in DNS names,
-     * as defined by RFC-1123
-     *
-     * If databaseId is not specified in the request, it is generated automatically
+     * (string) - Part of the resource name
      */
     databaseId: string;
     postgresDatabase?: string;
@@ -29618,9 +30905,7 @@ export interface PostgresEndpointStatus {
      */
     disabled: boolean;
     /**
-     * The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `primary` becomes `projects/my-app/branches/development/endpoints/primary`
+     * The part of the name, chosen by the user when the resource was created
      */
     endpointId: string;
     /**
@@ -29828,9 +31113,7 @@ export interface PostgresProjectStatus {
      */
     pgVersion: number;
     /**
-     * The ID to use for the Project. This becomes the final component of the project's resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `my-app` becomes `projects/my-app`
+     * The part of the name, chosen by the user when the resource was created
      */
     projectId: string;
     /**
@@ -29905,14 +31188,7 @@ export interface PostgresRoleStatus {
     membershipRoles?: string[];
     postgresRole?: string;
     /**
-     * The ID to use for the Role, which will become the final component of
-     * the role's resource name.
-     * This ID becomes the role in Postgres.
-     *
-     * This value should be 4-63 characters, and valid characters
-     * are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-     *
-     * If roleId is not specified in the request, it is generated automatically
+     * (string) - Part of the resource name
      */
     roleId: string;
 }
@@ -29931,6 +31207,12 @@ export interface PostgresSyncedTableProviderConfig {
 }
 
 export interface PostgresSyncedTableSpec {
+    /**
+     * When true, enables accelerated sync mode for the initial data load.
+     * This significantly improves performance for large tables.
+     * Requires workspace-level enablement through Lakebase Accelerated Sync preview
+     */
+    acceleratedSync?: boolean;
     /**
      * The full resource name the branch associated with the table.
      *
@@ -29989,6 +31271,11 @@ export interface PostgresSyncedTableSpec {
      * Time series key to deduplicate (tie-break) rows with the same primary key
      */
     timeseriesKey?: string;
+    /**
+     * Override the default Delta->PG type mapping for specific columns.
+     * A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+     */
+    typeOverrides?: outputs.PostgresSyncedTableSpecTypeOverride[];
 }
 
 export interface PostgresSyncedTableSpecNewPipelineSpec {
@@ -30006,6 +31293,22 @@ export interface PostgresSyncedTableSpecNewPipelineSpec {
      * This needs to be in the standard catalog where the user has permissions to create Delta tables
      */
     storageSchema?: string;
+}
+
+export interface PostgresSyncedTableSpecTypeOverride {
+    /**
+     * Name of the source column whose target PostgreSQL type should be overridden
+     */
+    columnName: string;
+    /**
+     * PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+     */
+    pgType: string;
+    /**
+     * Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
+     * (specifies the vector dimension, e.g., 1024)
+     */
+    size?: number;
 }
 
 export interface PostgresSyncedTableStatus {

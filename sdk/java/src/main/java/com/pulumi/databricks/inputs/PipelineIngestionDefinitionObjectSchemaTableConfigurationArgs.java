@@ -11,6 +11,7 @@ import com.pulumi.databricks.inputs.PipelineIngestionDefinitionObjectSchemaTable
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -25,6 +26,20 @@ public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs
 
     public Optional<Output<PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicyArgs>> autoFullRefreshPolicy() {
         return Optional.ofNullable(this.autoFullRefreshPolicy);
+    }
+
+    @Import(name="clusteringColumns")
+    private @Nullable Output<List<String>> clusteringColumns;
+
+    public Optional<Output<List<String>>> clusteringColumns() {
+        return Optional.ofNullable(this.clusteringColumns);
+    }
+
+    @Import(name="enableAutoClustering")
+    private @Nullable Output<Boolean> enableAutoClustering;
+
+    public Optional<Output<Boolean>> enableAutoClustering() {
+        return Optional.ofNullable(this.enableAutoClustering);
     }
 
     @Import(name="excludeColumns")
@@ -83,6 +98,13 @@ public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs
         return Optional.ofNullable(this.sequenceBies);
     }
 
+    @Import(name="tableProperties")
+    private @Nullable Output<Map<String,String>> tableProperties;
+
+    public Optional<Output<Map<String,String>>> tableProperties() {
+        return Optional.ofNullable(this.tableProperties);
+    }
+
     @Import(name="workdayReportParameters")
     private @Nullable Output<PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersArgs> workdayReportParameters;
 
@@ -94,6 +116,8 @@ public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs
 
     private PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs(PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs $) {
         this.autoFullRefreshPolicy = $.autoFullRefreshPolicy;
+        this.clusteringColumns = $.clusteringColumns;
+        this.enableAutoClustering = $.enableAutoClustering;
         this.excludeColumns = $.excludeColumns;
         this.includeColumns = $.includeColumns;
         this.primaryKeys = $.primaryKeys;
@@ -102,6 +126,7 @@ public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs
         this.salesforceIncludeFormulaFields = $.salesforceIncludeFormulaFields;
         this.scdType = $.scdType;
         this.sequenceBies = $.sequenceBies;
+        this.tableProperties = $.tableProperties;
         this.workdayReportParameters = $.workdayReportParameters;
     }
 
@@ -130,6 +155,28 @@ public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs
 
         public Builder autoFullRefreshPolicy(PipelineIngestionDefinitionObjectSchemaTableConfigurationAutoFullRefreshPolicyArgs autoFullRefreshPolicy) {
             return autoFullRefreshPolicy(Output.of(autoFullRefreshPolicy));
+        }
+
+        public Builder clusteringColumns(@Nullable Output<List<String>> clusteringColumns) {
+            $.clusteringColumns = clusteringColumns;
+            return this;
+        }
+
+        public Builder clusteringColumns(List<String> clusteringColumns) {
+            return clusteringColumns(Output.of(clusteringColumns));
+        }
+
+        public Builder clusteringColumns(String... clusteringColumns) {
+            return clusteringColumns(List.of(clusteringColumns));
+        }
+
+        public Builder enableAutoClustering(@Nullable Output<Boolean> enableAutoClustering) {
+            $.enableAutoClustering = enableAutoClustering;
+            return this;
+        }
+
+        public Builder enableAutoClustering(Boolean enableAutoClustering) {
+            return enableAutoClustering(Output.of(enableAutoClustering));
         }
 
         public Builder excludeColumns(@Nullable Output<List<String>> excludeColumns) {
@@ -218,6 +265,15 @@ public final class PipelineIngestionDefinitionObjectSchemaTableConfigurationArgs
 
         public Builder sequenceBies(String... sequenceBies) {
             return sequenceBies(List.of(sequenceBies));
+        }
+
+        public Builder tableProperties(@Nullable Output<Map<String,String>> tableProperties) {
+            $.tableProperties = tableProperties;
+            return this;
+        }
+
+        public Builder tableProperties(Map<String,String> tableProperties) {
+            return tableProperties(Output.of(tableProperties));
         }
 
         public Builder workdayReportParameters(@Nullable Output<PipelineIngestionDefinitionObjectSchemaTableConfigurationWorkdayReportParametersArgs> workdayReportParameters) {

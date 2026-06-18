@@ -19,16 +19,14 @@ public final class PostgresCatalogArgs extends com.pulumi.resources.ResourceArgs
     public static final PostgresCatalogArgs Empty = new PostgresCatalogArgs();
 
     /**
-     * The ID in the Unity Catalog.
-     * It becomes the full resource name, for example &#34;myCatalog&#34; becomes &#34;catalogs/my_catalog&#34;
+     * The part of the name, chosen by the user when the resource was created
      * 
      */
     @Import(name="catalogId", required=true)
     private Output<String> catalogId;
 
     /**
-     * @return The ID in the Unity Catalog.
-     * It becomes the full resource name, for example &#34;myCatalog&#34; becomes &#34;catalogs/my_catalog&#34;
+     * @return The part of the name, chosen by the user when the resource was created
      * 
      */
     public Output<String> catalogId() {
@@ -92,8 +90,7 @@ public final class PostgresCatalogArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param catalogId The ID in the Unity Catalog.
-         * It becomes the full resource name, for example &#34;myCatalog&#34; becomes &#34;catalogs/my_catalog&#34;
+         * @param catalogId The part of the name, chosen by the user when the resource was created
          * 
          * @return builder
          * 
@@ -104,8 +101,7 @@ public final class PostgresCatalogArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param catalogId The ID in the Unity Catalog.
-         * It becomes the full resource name, for example &#34;myCatalog&#34; becomes &#34;catalogs/my_catalog&#34;
+         * @param catalogId The part of the name, chosen by the user when the resource was created
          * 
          * @return builder
          * 

@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/workspace/catalogs)
+//
 // Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
 //
 // A `Catalog` is contained within Metastore and can contain databricks_schema. By default, Databricks creates `default` schema for every new catalog, but Pulumi plugin is removing this auto-created schema, so that resource destruction could be done in a clean way.
@@ -68,6 +70,7 @@ type Catalog struct {
 	CreatedAt pulumi.IntOutput `pulumi:"createdAt"`
 	// username of catalog creator.
 	CreatedBy                           pulumi.StringOutput                              `pulumi:"createdBy"`
+	CustomMaxRetentionHours             pulumi.IntPtrOutput                              `pulumi:"customMaxRetentionHours"`
 	EffectivePredictiveOptimizationFlag CatalogEffectivePredictiveOptimizationFlagOutput `pulumi:"effectivePredictiveOptimizationFlag"`
 	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
 	EnablePredictiveOptimization pulumi.StringOutput `pulumi:"enablePredictiveOptimization"`
@@ -147,6 +150,7 @@ type catalogState struct {
 	CreatedAt *int `pulumi:"createdAt"`
 	// username of catalog creator.
 	CreatedBy                           *string                                     `pulumi:"createdBy"`
+	CustomMaxRetentionHours             *int                                        `pulumi:"customMaxRetentionHours"`
 	EffectivePredictiveOptimizationFlag *CatalogEffectivePredictiveOptimizationFlag `pulumi:"effectivePredictiveOptimizationFlag"`
 	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
 	EnablePredictiveOptimization *string `pulumi:"enablePredictiveOptimization"`
@@ -197,6 +201,7 @@ type CatalogState struct {
 	CreatedAt pulumi.IntPtrInput
 	// username of catalog creator.
 	CreatedBy                           pulumi.StringPtrInput
+	CustomMaxRetentionHours             pulumi.IntPtrInput
 	EffectivePredictiveOptimizationFlag CatalogEffectivePredictiveOptimizationFlagPtrInput
 	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
 	EnablePredictiveOptimization pulumi.StringPtrInput
@@ -245,6 +250,7 @@ type catalogArgs struct {
 	Comment *string `pulumi:"comment"`
 	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
 	ConnectionName                      *string                                     `pulumi:"connectionName"`
+	CustomMaxRetentionHours             *int                                        `pulumi:"customMaxRetentionHours"`
 	EffectivePredictiveOptimizationFlag *CatalogEffectivePredictiveOptimizationFlag `pulumi:"effectivePredictiveOptimizationFlag"`
 	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
 	EnablePredictiveOptimization *string `pulumi:"enablePredictiveOptimization"`
@@ -281,6 +287,7 @@ type CatalogArgs struct {
 	Comment pulumi.StringPtrInput
 	// For Foreign Catalogs: the name of the connection to an external data source. Changes forces creation of a new resource.
 	ConnectionName                      pulumi.StringPtrInput
+	CustomMaxRetentionHours             pulumi.IntPtrInput
 	EffectivePredictiveOptimizationFlag CatalogEffectivePredictiveOptimizationFlagPtrInput
 	// Whether predictive optimization should be enabled for this object and objects under it. Can be `ENABLE`, `DISABLE` or `INHERIT`
 	EnablePredictiveOptimization pulumi.StringPtrInput
@@ -424,6 +431,10 @@ func (o CatalogOutput) CreatedAt() pulumi.IntOutput {
 // username of catalog creator.
 func (o CatalogOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+func (o CatalogOutput) CustomMaxRetentionHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.IntPtrOutput { return v.CustomMaxRetentionHours }).(pulumi.IntPtrOutput)
 }
 
 func (o CatalogOutput) EffectivePredictiveOptimizationFlag() CatalogEffectivePredictiveOptimizationFlagOutput {

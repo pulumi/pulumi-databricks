@@ -30,7 +30,7 @@ class DatabaseDatabaseCatalogArgs:
         The set of arguments for constructing a DatabaseDatabaseCatalog resource.
 
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
-        :param pulumi.Input[_builtins.str] database_name: The name of the database (in a instance) associated with the catalog
+        :param pulumi.Input[_builtins.str] database_name: The name of the database (in an instance) associated with the catalog
         :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
         :param pulumi.Input['DatabaseDatabaseCatalogProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
@@ -59,7 +59,7 @@ class DatabaseDatabaseCatalogArgs:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the database (in a instance) associated with the catalog
+        The name of the database (in an instance) associated with the catalog
         """
         return pulumi.get(self, "database_name")
 
@@ -114,7 +114,7 @@ class _DatabaseDatabaseCatalogState:
         Input properties used for looking up and filtering DatabaseDatabaseCatalog resources.
 
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
-        :param pulumi.Input[_builtins.str] database_name: The name of the database (in a instance) associated with the catalog
+        :param pulumi.Input[_builtins.str] database_name: The name of the database (in an instance) associated with the catalog
         :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
         :param pulumi.Input['DatabaseDatabaseCatalogProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] uid: (string)
@@ -157,7 +157,7 @@ class _DatabaseDatabaseCatalogState:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the database (in a instance) associated with the catalog
+        The name of the database (in an instance) associated with the catalog
         """
         return pulumi.get(self, "database_name")
 
@@ -267,7 +267,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
-        :param pulumi.Input[_builtins.str] database_name: The name of the database (in a instance) associated with the catalog
+        :param pulumi.Input[_builtins.str] database_name: The name of the database (in an instance) associated with the catalog
         :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
         :param pulumi.Input[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         """
@@ -390,7 +390,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_instance_name: The name of the DatabaseInstance housing the database
-        :param pulumi.Input[_builtins.str] database_name: The name of the database (in a instance) associated with the catalog
+        :param pulumi.Input[_builtins.str] database_name: The name of the database (in an instance) associated with the catalog
         :param pulumi.Input[_builtins.str] name: The name of the catalog in UC
         :param pulumi.Input[Union['DatabaseDatabaseCatalogProviderConfigArgs', 'DatabaseDatabaseCatalogProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] uid: (string)
@@ -424,7 +424,7 @@ class DatabaseDatabaseCatalog(pulumi.CustomResource):
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the database (in a instance) associated with the catalog
+        The name of the database (in an instance) associated with the catalog
         """
         return pulumi.get(self, "database_name")
 

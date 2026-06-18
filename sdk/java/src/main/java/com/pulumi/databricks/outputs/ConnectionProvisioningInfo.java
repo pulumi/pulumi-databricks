@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionProvisioningInfo {
+    /**
+     * @return The provisioning state of the resource. Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, or `UPDATING`.
+     * 
+     */
     private @Nullable String state;
 
     private ConnectionProvisioningInfo() {}
+    /**
+     * @return The provisioning state of the resource. Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, or `UPDATING`.
+     * 
+     */
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }

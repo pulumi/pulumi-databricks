@@ -46,6 +46,11 @@ public final class GetPostgresProjectResult {
      * 
      */
     private String name;
+    /**
+     * @return (string) - Part of the resource name
+     * 
+     */
+    private String projectId;
     private @Nullable GetPostgresProjectProviderConfig providerConfig;
     /**
      * @return (string) - A timestamp indicating when the project is scheduled for permanent deletion.
@@ -115,6 +120,13 @@ public final class GetPostgresProjectResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return (string) - Part of the resource name
+     * 
+     */
+    public String projectId() {
+        return this.projectId;
+    }
     public Optional<GetPostgresProjectProviderConfig> providerConfig() {
         return Optional.ofNullable(this.providerConfig);
     }
@@ -169,6 +181,7 @@ public final class GetPostgresProjectResult {
         private String id;
         private GetPostgresProjectInitialEndpointSpec initialEndpointSpec;
         private String name;
+        private String projectId;
         private @Nullable GetPostgresProjectProviderConfig providerConfig;
         private String purgeTime;
         private GetPostgresProjectSpec spec;
@@ -183,6 +196,7 @@ public final class GetPostgresProjectResult {
     	      this.id = defaults.id;
     	      this.initialEndpointSpec = defaults.initialEndpointSpec;
     	      this.name = defaults.name;
+    	      this.projectId = defaults.projectId;
     	      this.providerConfig = defaults.providerConfig;
     	      this.purgeTime = defaults.purgeTime;
     	      this.spec = defaults.spec;
@@ -229,6 +243,14 @@ public final class GetPostgresProjectResult {
               throw new MissingRequiredPropertyException("GetPostgresProjectResult", "name");
             }
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder projectId(String projectId) {
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetPostgresProjectResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
@@ -284,6 +306,7 @@ public final class GetPostgresProjectResult {
             _resultValue.id = id;
             _resultValue.initialEndpointSpec = initialEndpointSpec;
             _resultValue.name = name;
+            _resultValue.projectId = projectId;
             _resultValue.providerConfig = providerConfig;
             _resultValue.purgeTime = purgeTime;
             _resultValue.spec = spec;

@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/account/networks)
+ *
  * ## Databricks on AWS usage
  *
  * Use this resource to configure VPC & subnets for new workspaces within AWS and GCP.

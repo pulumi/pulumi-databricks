@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceDeltaTableSourceArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceKafkaSourceArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceRequestSourceArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceStreamSourceArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -62,12 +63,28 @@ public final class FeatureEngineeringFeatureSourceArgs extends com.pulumi.resour
         return Optional.ofNullable(this.requestSource);
     }
 
+    /**
+     * A Stream data source
+     * 
+     */
+    @Import(name="streamSource")
+    private @Nullable Output<FeatureEngineeringFeatureSourceStreamSourceArgs> streamSource;
+
+    /**
+     * @return A Stream data source
+     * 
+     */
+    public Optional<Output<FeatureEngineeringFeatureSourceStreamSourceArgs>> streamSource() {
+        return Optional.ofNullable(this.streamSource);
+    }
+
     private FeatureEngineeringFeatureSourceArgs() {}
 
     private FeatureEngineeringFeatureSourceArgs(FeatureEngineeringFeatureSourceArgs $) {
         this.deltaTableSource = $.deltaTableSource;
         this.kafkaSource = $.kafkaSource;
         this.requestSource = $.requestSource;
+        this.streamSource = $.streamSource;
     }
 
     public static Builder builder() {
@@ -149,6 +166,27 @@ public final class FeatureEngineeringFeatureSourceArgs extends com.pulumi.resour
          */
         public Builder requestSource(FeatureEngineeringFeatureSourceRequestSourceArgs requestSource) {
             return requestSource(Output.of(requestSource));
+        }
+
+        /**
+         * @param streamSource A Stream data source
+         * 
+         * @return builder
+         * 
+         */
+        public Builder streamSource(@Nullable Output<FeatureEngineeringFeatureSourceStreamSourceArgs> streamSource) {
+            $.streamSource = streamSource;
+            return this;
+        }
+
+        /**
+         * @param streamSource A Stream data source
+         * 
+         * @return builder
+         * 
+         */
+        public Builder streamSource(FeatureEngineeringFeatureSourceStreamSourceArgs streamSource) {
+            return streamSource(Output.of(streamSource));
         }
 
         public FeatureEngineeringFeatureSourceArgs build() {

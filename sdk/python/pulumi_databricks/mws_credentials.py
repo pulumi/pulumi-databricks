@@ -238,6 +238,8 @@ class MwsCredentials(pulumi.CustomResource):
                  role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/credentials)
+
         This resource to configure the cross-account role for creation of new workspaces within AWS.
 
         > This resource can only be used with an account-level provider!
@@ -298,6 +300,8 @@ class MwsCredentials(pulumi.CustomResource):
                  args: MwsCredentialsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/credentials)
+
         This resource to configure the cross-account role for creation of new workspaces within AWS.
 
         > This resource can only be used with an account-level provider!

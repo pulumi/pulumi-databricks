@@ -165,6 +165,10 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresBranchResult
     {
         /// <summary>
+        /// (string) - Part of the resource name
+        /// </summary>
+        public readonly string BranchId;
+        /// <summary>
         /// (string) - A timestamp indicating when the branch was created
         /// </summary>
         public readonly string CreateTime;
@@ -202,6 +206,8 @@ namespace Pulumi.Databricks
 
         [OutputConstructor]
         private GetPostgresBranchResult(
+            string branchId,
+
             string createTime,
 
             string id,
@@ -220,6 +226,7 @@ namespace Pulumi.Databricks
 
             string updateTime)
         {
+            BranchId = branchId;
             CreateTime = createTime;
             Id = id;
             Name = name;

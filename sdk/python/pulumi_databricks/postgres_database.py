@@ -30,14 +30,7 @@ class PostgresDatabaseArgs:
 
         :param pulumi.Input[_builtins.str] parent: The branch containing this database.
                Format: projects/{project_id}/branches/{branch_id}
-        :param pulumi.Input[_builtins.str] database_id: The ID to use for the Database, which will become the final component of
-               the database's resource name.
-               This ID becomes the database name in postgres.
-               
-               This value should be 4-63 characters, and only use characters available in DNS names,
-               as defined by RFC-1123
-               
-               If database_id is not specified in the request, it is generated automatically
+        :param pulumi.Input[_builtins.str] database_id: (string) - Part of the resource name
         :param pulumi.Input['PostgresDatabaseProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['PostgresDatabaseSpecArgs'] spec: The desired state of the Database
         """
@@ -66,14 +59,7 @@ class PostgresDatabaseArgs:
     @pulumi.getter(name="databaseId")
     def database_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID to use for the Database, which will become the final component of
-        the database's resource name.
-        This ID becomes the database name in postgres.
-
-        This value should be 4-63 characters, and only use characters available in DNS names,
-        as defined by RFC-1123
-
-        If database_id is not specified in the request, it is generated automatically
+        (string) - Part of the resource name
         """
         return pulumi.get(self, "database_id")
 
@@ -121,14 +107,7 @@ class _PostgresDatabaseState:
         Input properties used for looking up and filtering PostgresDatabase resources.
 
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the database was created
-        :param pulumi.Input[_builtins.str] database_id: The ID to use for the Database, which will become the final component of
-               the database's resource name.
-               This ID becomes the database name in postgres.
-               
-               This value should be 4-63 characters, and only use characters available in DNS names,
-               as defined by RFC-1123
-               
-               If database_id is not specified in the request, it is generated automatically
+        :param pulumi.Input[_builtins.str] database_id: (string) - Part of the resource name
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of the database.
                Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
         :param pulumi.Input[_builtins.str] parent: The branch containing this database.
@@ -171,14 +150,7 @@ class _PostgresDatabaseState:
     @pulumi.getter(name="databaseId")
     def database_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID to use for the Database, which will become the final component of
-        the database's resource name.
-        This ID becomes the database name in postgres.
-
-        This value should be 4-63 characters, and only use characters available in DNS names,
-        as defined by RFC-1123
-
-        If database_id is not specified in the request, it is generated automatically
+        (string) - Part of the resource name
         """
         return pulumi.get(self, "database_id")
 
@@ -370,14 +342,7 @@ class PostgresDatabase(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] database_id: The ID to use for the Database, which will become the final component of
-               the database's resource name.
-               This ID becomes the database name in postgres.
-               
-               This value should be 4-63 characters, and only use characters available in DNS names,
-               as defined by RFC-1123
-               
-               If database_id is not specified in the request, it is generated automatically
+        :param pulumi.Input[_builtins.str] database_id: (string) - Part of the resource name
         :param pulumi.Input[_builtins.str] parent: The branch containing this database.
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
@@ -549,14 +514,7 @@ class PostgresDatabase(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the database was created
-        :param pulumi.Input[_builtins.str] database_id: The ID to use for the Database, which will become the final component of
-               the database's resource name.
-               This ID becomes the database name in postgres.
-               
-               This value should be 4-63 characters, and only use characters available in DNS names,
-               as defined by RFC-1123
-               
-               If database_id is not specified in the request, it is generated automatically
+        :param pulumi.Input[_builtins.str] database_id: (string) - Part of the resource name
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of the database.
                Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
         :param pulumi.Input[_builtins.str] parent: The branch containing this database.
@@ -592,14 +550,7 @@ class PostgresDatabase(pulumi.CustomResource):
     @pulumi.getter(name="databaseId")
     def database_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID to use for the Database, which will become the final component of
-        the database's resource name.
-        This ID becomes the database name in postgres.
-
-        This value should be 4-63 characters, and only use characters available in DNS names,
-        as defined by RFC-1123
-
-        If database_id is not specified in the request, it is generated automatically
+        (string) - Part of the resource name
         """
         return pulumi.get(self, "database_id")
 

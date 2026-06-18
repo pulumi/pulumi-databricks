@@ -117,7 +117,7 @@ type DatabaseDatabaseCatalog struct {
 	CreateDatabaseIfNotExists pulumi.BoolOutput `pulumi:"createDatabaseIfNotExists"`
 	// The name of the DatabaseInstance housing the database
 	DatabaseInstanceName pulumi.StringOutput `pulumi:"databaseInstanceName"`
-	// The name of the database (in a instance) associated with the catalog
+	// The name of the database (in an instance) associated with the catalog
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
 	// The name of the catalog in UC
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -166,7 +166,7 @@ type databaseDatabaseCatalogState struct {
 	CreateDatabaseIfNotExists *bool `pulumi:"createDatabaseIfNotExists"`
 	// The name of the DatabaseInstance housing the database
 	DatabaseInstanceName *string `pulumi:"databaseInstanceName"`
-	// The name of the database (in a instance) associated with the catalog
+	// The name of the database (in an instance) associated with the catalog
 	DatabaseName *string `pulumi:"databaseName"`
 	// The name of the catalog in UC
 	Name *string `pulumi:"name"`
@@ -180,7 +180,7 @@ type DatabaseDatabaseCatalogState struct {
 	CreateDatabaseIfNotExists pulumi.BoolPtrInput
 	// The name of the DatabaseInstance housing the database
 	DatabaseInstanceName pulumi.StringPtrInput
-	// The name of the database (in a instance) associated with the catalog
+	// The name of the database (in an instance) associated with the catalog
 	DatabaseName pulumi.StringPtrInput
 	// The name of the catalog in UC
 	Name pulumi.StringPtrInput
@@ -198,7 +198,7 @@ type databaseDatabaseCatalogArgs struct {
 	CreateDatabaseIfNotExists *bool `pulumi:"createDatabaseIfNotExists"`
 	// The name of the DatabaseInstance housing the database
 	DatabaseInstanceName string `pulumi:"databaseInstanceName"`
-	// The name of the database (in a instance) associated with the catalog
+	// The name of the database (in an instance) associated with the catalog
 	DatabaseName string `pulumi:"databaseName"`
 	// The name of the catalog in UC
 	Name *string `pulumi:"name"`
@@ -211,7 +211,7 @@ type DatabaseDatabaseCatalogArgs struct {
 	CreateDatabaseIfNotExists pulumi.BoolPtrInput
 	// The name of the DatabaseInstance housing the database
 	DatabaseInstanceName pulumi.StringInput
-	// The name of the database (in a instance) associated with the catalog
+	// The name of the database (in an instance) associated with the catalog
 	DatabaseName pulumi.StringInput
 	// The name of the catalog in UC
 	Name pulumi.StringPtrInput
@@ -315,7 +315,7 @@ func (o DatabaseDatabaseCatalogOutput) DatabaseInstanceName() pulumi.StringOutpu
 	return o.ApplyT(func(v *DatabaseDatabaseCatalog) pulumi.StringOutput { return v.DatabaseInstanceName }).(pulumi.StringOutput)
 }
 
-// The name of the database (in a instance) associated with the catalog
+// The name of the database (in an instance) associated with the catalog
 func (o DatabaseDatabaseCatalogOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseDatabaseCatalog) pulumi.StringOutput { return v.DatabaseName }).(pulumi.StringOutput)
 }

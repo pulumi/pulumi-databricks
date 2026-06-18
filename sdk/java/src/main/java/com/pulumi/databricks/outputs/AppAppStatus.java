@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +17,7 @@ public final class AppAppStatus {
      * 
      */
     private @Nullable String message;
+    private @Nullable Integer runningInstances;
     /**
      * @return The state of the deployment.
      * 
@@ -29,6 +31,9 @@ public final class AppAppStatus {
      */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
+    }
+    public Optional<Integer> runningInstances() {
+        return Optional.ofNullable(this.runningInstances);
     }
     /**
      * @return The state of the deployment.
@@ -48,11 +53,13 @@ public final class AppAppStatus {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String message;
+        private @Nullable Integer runningInstances;
         private @Nullable String state;
         public Builder() {}
         public Builder(AppAppStatus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.message = defaults.message;
+    	      this.runningInstances = defaults.runningInstances;
     	      this.state = defaults.state;
         }
 
@@ -60,6 +67,12 @@ public final class AppAppStatus {
         public Builder message(@Nullable String message) {
 
             this.message = message;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder runningInstances(@Nullable Integer runningInstances) {
+
+            this.runningInstances = runningInstances;
             return this;
         }
         @CustomType.Setter
@@ -71,6 +84,7 @@ public final class AppAppStatus {
         public AppAppStatus build() {
             final var _resultValue = new AppAppStatus();
             _resultValue.message = message;
+            _resultValue.runningInstances = runningInstances;
             _resultValue.state = state;
             return _resultValue;
         }

@@ -24,7 +24,7 @@ public final class GetPostgresCatalogSpec {
      * them in Postgres if they do not already have one.
      * 
      */
-    private Boolean createDatabaseIfMissing;
+    private @Nullable Boolean createDatabaseIfMissing;
     /**
      * @return (string) - The name of the Postgres database associated with the catalog
      * 
@@ -45,8 +45,8 @@ public final class GetPostgresCatalogSpec {
      * them in Postgres if they do not already have one.
      * 
      */
-    public Boolean createDatabaseIfMissing() {
-        return this.createDatabaseIfMissing;
+    public Optional<Boolean> createDatabaseIfMissing() {
+        return Optional.ofNullable(this.createDatabaseIfMissing);
     }
     /**
      * @return (string) - The name of the Postgres database associated with the catalog
@@ -66,7 +66,7 @@ public final class GetPostgresCatalogSpec {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String branch;
-        private Boolean createDatabaseIfMissing;
+        private @Nullable Boolean createDatabaseIfMissing;
         private String postgresDatabase;
         public Builder() {}
         public Builder(GetPostgresCatalogSpec defaults) {
@@ -83,10 +83,8 @@ public final class GetPostgresCatalogSpec {
             return this;
         }
         @CustomType.Setter
-        public Builder createDatabaseIfMissing(Boolean createDatabaseIfMissing) {
-            if (createDatabaseIfMissing == null) {
-              throw new MissingRequiredPropertyException("GetPostgresCatalogSpec", "createDatabaseIfMissing");
-            }
+        public Builder createDatabaseIfMissing(@Nullable Boolean createDatabaseIfMissing) {
+
             this.createDatabaseIfMissing = createDatabaseIfMissing;
             return this;
         }

@@ -232,6 +232,8 @@ class DbfsFile(pulumi.CustomResource):
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/dbfs)
+
         > Please switch to File or WorkspaceFile to manage files. Databricks recommends against storing any production data or sensitive information in the DBFS root.
 
         This is a resource that lets you manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html). The best use cases are libraries for Cluster or databricks_job. You can also use DbfsFile and get_dbfs_file_paths data sources.
@@ -253,6 +255,8 @@ class DbfsFile(pulumi.CustomResource):
                  args: DbfsFileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/dbfs)
+
         > Please switch to File or WorkspaceFile to manage files. Databricks recommends against storing any production data or sensitive information in the DBFS root.
 
         This is a resource that lets you manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html). The best use cases are libraries for Cluster or databricks_job. You can also use DbfsFile and get_dbfs_file_paths data sources.

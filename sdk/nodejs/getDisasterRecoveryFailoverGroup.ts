@@ -7,7 +7,26 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+ *
+ * This data source can be used to get a single failover group by its fully qualified resource name.
+ *
+ * > **Note** This data source can only be used with an account-level provider!
+ *
+ * ## Example Usage
+ *
+ * Referring to a failover group by its resource name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getDisasterRecoveryFailoverGroup({
+ *     name: `accounts/${accountId}/failover-groups/accounting-failover-group`,
+ * });
+ * ```
  */
 export function getDisasterRecoveryFailoverGroup(args: GetDisasterRecoveryFailoverGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetDisasterRecoveryFailoverGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -84,7 +103,26 @@ export interface GetDisasterRecoveryFailoverGroupResult {
     readonly workspaceSets: outputs.GetDisasterRecoveryFailoverGroupWorkspaceSet[];
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+ *
+ * This data source can be used to get a single failover group by its fully qualified resource name.
+ *
+ * > **Note** This data source can only be used with an account-level provider!
+ *
+ * ## Example Usage
+ *
+ * Referring to a failover group by its resource name:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const _this = databricks.getDisasterRecoveryFailoverGroup({
+ *     name: `accounts/${accountId}/failover-groups/accounting-failover-group`,
+ * });
+ * ```
  */
 export function getDisasterRecoveryFailoverGroupOutput(args: GetDisasterRecoveryFailoverGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDisasterRecoveryFailoverGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

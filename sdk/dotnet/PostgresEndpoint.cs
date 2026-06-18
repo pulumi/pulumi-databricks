@@ -325,9 +325,7 @@ namespace Pulumi.Databricks
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-        /// For example, `Primary` becomes `projects/my-app/branches/development/endpoints/primary`
+        /// The part of the name, chosen by the user when the resource was created
         /// </summary>
         [Output("endpointId")]
         public Output<string> EndpointId { get; private set; } = null!;
@@ -429,9 +427,7 @@ namespace Pulumi.Databricks
     public sealed class PostgresEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-        /// For example, `Primary` becomes `projects/my-app/branches/development/endpoints/primary`
+        /// The part of the name, chosen by the user when the resource was created
         /// </summary>
         [Input("endpointId", required: true)]
         public Input<string> EndpointId { get; set; } = null!;
@@ -476,9 +472,7 @@ namespace Pulumi.Databricks
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The ID to use for the Endpoint. This becomes the final component of the endpoint's resource name.
-        /// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-        /// For example, `Primary` becomes `projects/my-app/branches/development/endpoints/primary`
+        /// The part of the name, chosen by the user when the resource was created
         /// </summary>
         [Input("endpointId")]
         public Input<string>? EndpointId { get; set; }

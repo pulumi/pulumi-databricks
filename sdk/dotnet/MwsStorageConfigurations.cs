@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [API Documentation](https://docs.databricks.com/api/account/storage)
+    /// 
     /// This resource to configure root bucket new workspaces within AWS.
     /// 
     /// &gt; This resource can only be used with an account-level provider!

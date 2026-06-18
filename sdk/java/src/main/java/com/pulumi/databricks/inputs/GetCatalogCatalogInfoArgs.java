@@ -103,6 +103,13 @@ public final class GetCatalogCatalogInfoArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.createdBy);
     }
 
+    @Import(name="customMaxRetentionHours")
+    private @Nullable Output<Integer> customMaxRetentionHours;
+
+    public Optional<Output<Integer>> customMaxRetentionHours() {
+        return Optional.ofNullable(this.customMaxRetentionHours);
+    }
+
     /**
      * object describing applied predictive optimization flag.
      * 
@@ -366,6 +373,7 @@ public final class GetCatalogCatalogInfoArgs extends com.pulumi.resources.Resour
         this.connectionName = $.connectionName;
         this.createdAt = $.createdAt;
         this.createdBy = $.createdBy;
+        this.customMaxRetentionHours = $.customMaxRetentionHours;
         this.effectivePredictiveOptimizationFlag = $.effectivePredictiveOptimizationFlag;
         this.enablePredictiveOptimization = $.enablePredictiveOptimization;
         this.fullName = $.fullName;
@@ -516,6 +524,15 @@ public final class GetCatalogCatalogInfoArgs extends com.pulumi.resources.Resour
          */
         public Builder createdBy(String createdBy) {
             return createdBy(Output.of(createdBy));
+        }
+
+        public Builder customMaxRetentionHours(@Nullable Output<Integer> customMaxRetentionHours) {
+            $.customMaxRetentionHours = customMaxRetentionHours;
+            return this;
+        }
+
+        public Builder customMaxRetentionHours(Integer customMaxRetentionHours) {
+            return customMaxRetentionHours(Output.of(customMaxRetentionHours));
         }
 
         /**

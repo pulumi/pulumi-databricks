@@ -169,6 +169,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// (string) - Part of the resource name
+        /// </summary>
+        public readonly string EndpointId;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -204,6 +208,8 @@ namespace Pulumi.Databricks
         private GetPostgresEndpointResult(
             string createTime,
 
+            string endpointId,
+
             string id,
 
             string name,
@@ -221,6 +227,7 @@ namespace Pulumi.Databricks
             string updateTime)
         {
             CreateTime = createTime;
+            EndpointId = endpointId;
             Id = id;
             Name = name;
             Parent = parent;

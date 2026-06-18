@@ -13,14 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class PostgresDatabaseStatusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID to use for the Database, which will become the final component of
-        /// the database's resource name.
-        /// This ID becomes the database name in postgres.
-        /// 
-        /// This value should be 4-63 characters, and only use characters available in DNS names,
-        /// as defined by RFC-1123
-        /// 
-        /// If DatabaseId is not specified in the request, it is generated automatically
+        /// (string) - Part of the resource name
         /// </summary>
         [Input("databaseId")]
         public Input<string>? DatabaseId { get; set; }

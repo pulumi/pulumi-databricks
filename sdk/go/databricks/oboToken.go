@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/workspace/tokenmanagement)
+//
 // This resource creates [On-Behalf-Of tokens](https://docs.databricks.com/administration-guide/users-groups/service-principals.html#manage-personal-access-tokens-for-a-service-principal) for a ServicePrincipal in Databricks workspaces on AWS and GCP.  In general it's best to use OAuth authentication using client ID and secret, and use this resource mostly for integrations that doesn't support OAuth.
 //
 // > This resource can only be used with a workspace-level provider!

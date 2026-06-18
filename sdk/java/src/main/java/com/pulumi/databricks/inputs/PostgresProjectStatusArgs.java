@@ -171,18 +171,14 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `my-app` becomes `projects/my-app`
+     * The part of the name, chosen by the user when the resource was created
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `my-app` becomes `projects/my-app`
+     * @return The part of the name, chosen by the user when the resource was created
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -460,9 +456,7 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param projectId The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
-         * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-         * For example, `my-app` becomes `projects/my-app`
+         * @param projectId The part of the name, chosen by the user when the resource was created
          * 
          * @return builder
          * 
@@ -473,9 +467,7 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param projectId The ID to use for the Project. This becomes the final component of the project&#39;s resource name.
-         * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-         * For example, `my-app` becomes `projects/my-app`
+         * @param projectId The part of the name, chosen by the user when the resource was created
          * 
          * @return builder
          * 

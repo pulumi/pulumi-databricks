@@ -13,6 +13,14 @@ namespace Pulumi.Databricks.Inputs
     public sealed class PostgresSyncedTableSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// When true, enables accelerated sync mode for the initial data load.
+        /// This significantly improves performance for large tables.
+        /// Requires workspace-level enablement through Lakebase Accelerated Sync preview
+        /// </summary>
+        [Input("acceleratedSync")]
+        public Input<bool>? AcceleratedSync { get; set; }
+
+        /// <summary>
         /// The full resource name the branch associated with the table.
         /// 
         /// Format: "projects/{project_id}/branches/{branch_id}"
@@ -93,6 +101,19 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("timeseriesKey")]
         public Input<string>? TimeseriesKey { get; set; }
+
+        [Input("typeOverrides")]
+        private InputList<Inputs.PostgresSyncedTableSpecTypeOverrideGetArgs>? _typeOverrides;
+
+        /// <summary>
+        /// Override the default Delta-&gt;PG type mapping for specific columns.
+        /// A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid PgType must be set
+        /// </summary>
+        public InputList<Inputs.PostgresSyncedTableSpecTypeOverrideGetArgs> TypeOverrides
+        {
+            get => _typeOverrides ?? (_typeOverrides = new InputList<Inputs.PostgresSyncedTableSpecTypeOverrideGetArgs>());
+            set => _typeOverrides = value;
+        }
 
         public PostgresSyncedTableSpecGetArgs()
         {

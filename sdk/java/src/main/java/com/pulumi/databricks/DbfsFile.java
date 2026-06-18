@@ -17,6 +17,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/dbfs)
+ * 
  * &gt; Please switch to databricks.File or databricks.WorkspaceFile to manage files. Databricks recommends against storing any production data or sensitive information in the DBFS root.
  * 
  * This is a resource that lets you manage relatively small files on [Databricks File System (DBFS)](https://docs.databricks.com/data/databricks-file-system.html). The best use cases are libraries for databricks.Cluster or databricks_job. You can also use databricks.DbfsFile and databricks.getDbfsFilePaths data sources.

@@ -20,8 +20,7 @@ public final class GetDisasterRecoveryFailoverGroupWorkspaceSet {
      */
     private String name;
     /**
-     * @return (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-     * Requires all workspaces in the set to be Mission Critical tier
+     * @return (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
      * 
      */
     private Boolean replicateWorkspaceAssets;
@@ -34,7 +33,7 @@ public final class GetDisasterRecoveryFailoverGroupWorkspaceSet {
     private @Nullable List<String> stableUrlNames;
     /**
      * @return (list of string) - Workspace IDs in this set. The system derives and validates regions.
-     * EA: exactly 2 workspaces (one per region)
+     * All workspaces must be in the Mission Critical tier
      * 
      */
     private List<String> workspaceIds;
@@ -49,8 +48,7 @@ public final class GetDisasterRecoveryFailoverGroupWorkspaceSet {
         return this.name;
     }
     /**
-     * @return (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-     * Requires all workspaces in the set to be Mission Critical tier
+     * @return (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
      * 
      */
     public Boolean replicateWorkspaceAssets() {
@@ -67,7 +65,7 @@ public final class GetDisasterRecoveryFailoverGroupWorkspaceSet {
     }
     /**
      * @return (list of string) - Workspace IDs in this set. The system derives and validates regions.
-     * EA: exactly 2 workspaces (one per region)
+     * All workspaces must be in the Mission Critical tier
      * 
      */
     public List<String> workspaceIds() {

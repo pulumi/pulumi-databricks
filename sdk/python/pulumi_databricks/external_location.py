@@ -667,6 +667,8 @@ class ExternalLocation(pulumi.CustomResource):
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/externallocations)
+
         To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
 
         - StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.
@@ -791,6 +793,8 @@ class ExternalLocation(pulumi.CustomResource):
                  args: ExternalLocationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/externallocations)
+
         To work with external tables, Unity Catalog introduces two new objects to access and work with external cloud storage:
 
         - StorageCredential represent authentication methods to access cloud storage (e.g. an IAM role for Amazon S3 or a service principal for Azure Storage). Storage credentials are access-controlled to determine which users can use the credential.

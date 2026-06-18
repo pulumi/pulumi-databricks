@@ -159,6 +159,8 @@ class DisableLegacyDbfsSetting(pulumi.CustomResource):
                  setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/disablelegacydbfs)
+
         The `DisableLegacyDbfsSetting` resource allows you to disable legacy DBFS.
 
         > This resource can only be used with a workspace-level provider!
@@ -200,6 +202,8 @@ class DisableLegacyDbfsSetting(pulumi.CustomResource):
                  args: DisableLegacyDbfsSettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/disablelegacydbfs)
+
         The `DisableLegacyDbfsSetting` resource allows you to disable legacy DBFS.
 
         > This resource can only be used with a workspace-level provider!

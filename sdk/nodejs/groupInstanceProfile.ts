@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/groups)
+ *
  * > **Deprecated** Please migrate to databricks_group_role.
  *
  * This resource allows you to attach databricks.InstanceProfile (AWS) to databricks_group.

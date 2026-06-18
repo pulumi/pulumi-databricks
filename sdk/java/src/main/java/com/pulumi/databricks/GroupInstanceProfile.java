@@ -16,6 +16,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/groups)
+ * 
  * &gt; **Deprecated** Please migrate to databricks_group_role.
  * 
  * This resource allows you to attach databricks.InstanceProfile (AWS) to databricks_group.

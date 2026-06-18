@@ -518,6 +518,8 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  skip_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/storagecredentials)
+
         > This resource can be used with an account or workspace-level provider.
 
         Optionally, each Metastore can have a default StorageCredential defined as `MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.
@@ -585,6 +587,8 @@ class MetastoreDataAccess(pulumi.CustomResource):
                  args: Optional[MetastoreDataAccessArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/storagecredentials)
+
         > This resource can be used with an account or workspace-level provider.
 
         Optionally, each Metastore can have a default StorageCredential defined as `MetastoreDataAccess`. This will be used by Unity Catalog to access data in the root storage location if defined.

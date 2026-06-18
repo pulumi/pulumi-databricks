@@ -309,6 +309,8 @@ class MlflowExperiment(pulumi.CustomResource):
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MlflowExperimentTagArgs', 'MlflowExperimentTagArgsDict']]]]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/experiments)
+
         This resource allows you to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
 
         > This resource can only be used with a workspace-level provider!
@@ -366,6 +368,8 @@ class MlflowExperiment(pulumi.CustomResource):
                  args: Optional[MlflowExperimentArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/experiments)
+
         This resource allows you to manage [MLflow experiments](https://docs.databricks.com/data/data-sources/mlflow-experiment.html) in Databricks.
 
         > This resource can only be used with a workspace-level provider!

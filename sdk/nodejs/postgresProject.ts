@@ -167,9 +167,7 @@ export class PostgresProject extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * The ID to use for the Project. This becomes the final component of the project's resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `my-app` becomes `projects/my-app`
+     * The part of the name, chosen by the user when the resource was created
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
@@ -277,9 +275,7 @@ export interface PostgresProjectState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The ID to use for the Project. This becomes the final component of the project's resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `my-app` becomes `projects/my-app`
+     * The part of the name, chosen by the user when the resource was created
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
@@ -326,9 +322,7 @@ export interface PostgresProjectArgs {
      */
     initialEndpointSpec?: pulumi.Input<inputs.PostgresProjectInitialEndpointSpec | undefined>;
     /**
-     * The ID to use for the Project. This becomes the final component of the project's resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `my-app` becomes `projects/my-app`
+     * The part of the name, chosen by the user when the resource was created
      */
     projectId: pulumi.Input<string>;
     /**

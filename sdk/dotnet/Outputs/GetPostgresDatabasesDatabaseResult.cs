@@ -18,6 +18,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// (string) - Part of the resource name
+        /// </summary>
+        public readonly string DatabaseId;
+        /// <summary>
         /// (string) - The resource name of the database.
         /// Format: projects/{project_id}/branches/{branch_id}/databases/{database_id}
         /// </summary>
@@ -48,6 +52,8 @@ namespace Pulumi.Databricks.Outputs
         private GetPostgresDatabasesDatabaseResult(
             string createTime,
 
+            string databaseId,
+
             string name,
 
             string parent,
@@ -61,6 +67,7 @@ namespace Pulumi.Databricks.Outputs
             string updateTime)
         {
             CreateTime = createTime;
+            DatabaseId = databaseId;
             Name = name;
             Parent = parent;
             ProviderConfig = providerConfig;

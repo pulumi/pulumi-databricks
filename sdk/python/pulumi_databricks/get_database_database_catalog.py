@@ -71,7 +71,7 @@ class GetDatabaseDatabaseCatalogResult:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> _builtins.str:
         """
-        (string) - The name of the database (in a instance) associated with the catalog
+        (string) - The name of the database (in an instance) associated with the catalog
         """
         return pulumi.get(self, "database_name")
 

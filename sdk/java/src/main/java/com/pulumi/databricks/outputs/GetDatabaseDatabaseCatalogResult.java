@@ -25,7 +25,7 @@ public final class GetDatabaseDatabaseCatalogResult {
      */
     private String databaseInstanceName;
     /**
-     * @return (string) - The name of the database (in a instance) associated with the catalog
+     * @return (string) - The name of the database (in an instance) associated with the catalog
      * 
      */
     private String databaseName;
@@ -62,7 +62,7 @@ public final class GetDatabaseDatabaseCatalogResult {
         return this.databaseInstanceName;
     }
     /**
-     * @return (string) - The name of the database (in a instance) associated with the catalog
+     * @return (string) - The name of the database (in an instance) associated with the catalog
      * 
      */
     public String databaseName() {

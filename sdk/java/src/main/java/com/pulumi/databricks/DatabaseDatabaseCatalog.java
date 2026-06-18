@@ -161,14 +161,14 @@ public class DatabaseDatabaseCatalog extends com.pulumi.resources.CustomResource
         return this.databaseInstanceName;
     }
     /**
-     * The name of the database (in a instance) associated with the catalog
+     * The name of the database (in an instance) associated with the catalog
      * 
      */
     @Export(name="databaseName", refs={String.class}, tree="[0]")
     private Output<String> databaseName;
 
     /**
-     * @return The name of the database (in a instance) associated with the catalog
+     * @return The name of the database (in an instance) associated with the catalog
      * 
      */
     public Output<String> databaseName() {

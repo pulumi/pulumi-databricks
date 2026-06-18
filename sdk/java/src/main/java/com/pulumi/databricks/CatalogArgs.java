@@ -10,6 +10,7 @@ import com.pulumi.databricks.inputs.CatalogManagedEncryptionSettingsArgs;
 import com.pulumi.databricks.inputs.CatalogProviderConfigArgs;
 import com.pulumi.databricks.inputs.CatalogProvisioningInfoArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -56,6 +57,13 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> connectionName() {
         return Optional.ofNullable(this.connectionName);
+    }
+
+    @Import(name="customMaxRetentionHours")
+    private @Nullable Output<Integer> customMaxRetentionHours;
+
+    public Optional<Output<Integer>> customMaxRetentionHours() {
+        return Optional.ofNullable(this.customMaxRetentionHours);
     }
 
     @Import(name="effectivePredictiveOptimizationFlag")
@@ -265,6 +273,7 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
         this.browseOnly = $.browseOnly;
         this.comment = $.comment;
         this.connectionName = $.connectionName;
+        this.customMaxRetentionHours = $.customMaxRetentionHours;
         this.effectivePredictiveOptimizationFlag = $.effectivePredictiveOptimizationFlag;
         this.enablePredictiveOptimization = $.enablePredictiveOptimization;
         this.forceDestroy = $.forceDestroy;
@@ -349,6 +358,15 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder connectionName(String connectionName) {
             return connectionName(Output.of(connectionName));
+        }
+
+        public Builder customMaxRetentionHours(@Nullable Output<Integer> customMaxRetentionHours) {
+            $.customMaxRetentionHours = customMaxRetentionHours;
+            return this;
+        }
+
+        public Builder customMaxRetentionHours(Integer customMaxRetentionHours) {
+            return customMaxRetentionHours(Output.of(customMaxRetentionHours));
         }
 
         public Builder effectivePredictiveOptimizationFlag(@Nullable Output<CatalogEffectivePredictiveOptimizationFlagArgs> effectivePredictiveOptimizationFlag) {

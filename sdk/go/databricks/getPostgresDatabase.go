@@ -69,6 +69,8 @@ type LookupPostgresDatabaseArgs struct {
 type LookupPostgresDatabaseResult struct {
 	// (string) - A timestamp indicating when the database was created
 	CreateTime string `pulumi:"createTime"`
+	// (string) - Part of the resource name
+	DatabaseId string `pulumi:"databaseId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (string) - The resource name of the database.
@@ -126,6 +128,11 @@ func (o LookupPostgresDatabaseResultOutput) ToLookupPostgresDatabaseResultOutput
 // (string) - A timestamp indicating when the database was created
 func (o LookupPostgresDatabaseResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresDatabaseResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// (string) - Part of the resource name
+func (o LookupPostgresDatabaseResultOutput) DatabaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPostgresDatabaseResult) string { return v.DatabaseId }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

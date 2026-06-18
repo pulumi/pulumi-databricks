@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/workspace/groups)
+//
 // > **Deprecated** Please migrate to databricks_group_role.
 //
 // This resource allows you to attach InstanceProfile (AWS) to databricks_group.

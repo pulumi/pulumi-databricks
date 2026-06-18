@@ -197,14 +197,7 @@ type PostgresRole struct {
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresRoleProviderConfigOutput `pulumi:"providerConfig"`
-	// The ID to use for the Role, which will become the final component of
-	// the role's resource name.
-	// This ID becomes the role in Postgres.
-	//
-	// This value should be 4-63 characters, and valid characters
-	// are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-	//
-	// If roleId is not specified in the request, it is generated automatically
+	// (string) - Part of the resource name
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
 	// The spec contains the role configuration, including identity type, authentication method, and role attributes
 	Spec PostgresRoleSpecOutput `pulumi:"spec"`
@@ -257,14 +250,7 @@ type postgresRoleState struct {
 	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresRoleProviderConfig `pulumi:"providerConfig"`
-	// The ID to use for the Role, which will become the final component of
-	// the role's resource name.
-	// This ID becomes the role in Postgres.
-	//
-	// This value should be 4-63 characters, and valid characters
-	// are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-	//
-	// If roleId is not specified in the request, it is generated automatically
+	// (string) - Part of the resource name
 	RoleId *string `pulumi:"roleId"`
 	// The spec contains the role configuration, including identity type, authentication method, and role attributes
 	Spec *PostgresRoleSpec `pulumi:"spec"`
@@ -285,14 +271,7 @@ type PostgresRoleState struct {
 	Parent pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresRoleProviderConfigPtrInput
-	// The ID to use for the Role, which will become the final component of
-	// the role's resource name.
-	// This ID becomes the role in Postgres.
-	//
-	// This value should be 4-63 characters, and valid characters
-	// are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-	//
-	// If roleId is not specified in the request, it is generated automatically
+	// (string) - Part of the resource name
 	RoleId pulumi.StringPtrInput
 	// The spec contains the role configuration, including identity type, authentication method, and role attributes
 	Spec PostgresRoleSpecPtrInput
@@ -312,14 +291,7 @@ type postgresRoleArgs struct {
 	Parent string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresRoleProviderConfig `pulumi:"providerConfig"`
-	// The ID to use for the Role, which will become the final component of
-	// the role's resource name.
-	// This ID becomes the role in Postgres.
-	//
-	// This value should be 4-63 characters, and valid characters
-	// are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-	//
-	// If roleId is not specified in the request, it is generated automatically
+	// (string) - Part of the resource name
 	RoleId *string `pulumi:"roleId"`
 	// The spec contains the role configuration, including identity type, authentication method, and role attributes
 	Spec *PostgresRoleSpec `pulumi:"spec"`
@@ -332,14 +304,7 @@ type PostgresRoleArgs struct {
 	Parent pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresRoleProviderConfigPtrInput
-	// The ID to use for the Role, which will become the final component of
-	// the role's resource name.
-	// This ID becomes the role in Postgres.
-	//
-	// This value should be 4-63 characters, and valid characters
-	// are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-	//
-	// If roleId is not specified in the request, it is generated automatically
+	// (string) - Part of the resource name
 	RoleId pulumi.StringPtrInput
 	// The spec contains the role configuration, including identity type, authentication method, and role attributes
 	Spec PostgresRoleSpecPtrInput
@@ -454,14 +419,7 @@ func (o PostgresRoleOutput) ProviderConfig() PostgresRoleProviderConfigOutput {
 	return o.ApplyT(func(v *PostgresRole) PostgresRoleProviderConfigOutput { return v.ProviderConfig }).(PostgresRoleProviderConfigOutput)
 }
 
-// The ID to use for the Role, which will become the final component of
-// the role's resource name.
-// This ID becomes the role in Postgres.
-//
-// This value should be 4-63 characters, and valid characters
-// are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-//
-// If roleId is not specified in the request, it is generated automatically
+// (string) - Part of the resource name
 func (o PostgresRoleOutput) RoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresRole) pulumi.StringOutput { return v.RoleId }).(pulumi.StringOutput)
 }

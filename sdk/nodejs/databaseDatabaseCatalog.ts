@@ -93,7 +93,7 @@ export class DatabaseDatabaseCatalog extends pulumi.CustomResource {
      */
     declare public readonly databaseInstanceName: pulumi.Output<string>;
     /**
-     * The name of the database (in a instance) associated with the catalog
+     * The name of the database (in an instance) associated with the catalog
      */
     declare public readonly databaseName: pulumi.Output<string>;
     /**
@@ -158,7 +158,7 @@ export interface DatabaseDatabaseCatalogState {
      */
     databaseInstanceName?: pulumi.Input<string | undefined>;
     /**
-     * The name of the database (in a instance) associated with the catalog
+     * The name of the database (in an instance) associated with the catalog
      */
     databaseName?: pulumi.Input<string | undefined>;
     /**
@@ -185,7 +185,7 @@ export interface DatabaseDatabaseCatalogArgs {
      */
     databaseInstanceName: pulumi.Input<string>;
     /**
-     * The name of the database (in a instance) associated with the catalog
+     * The name of the database (in an instance) associated with the catalog
      */
     databaseName: pulumi.Input<string>;
     /**

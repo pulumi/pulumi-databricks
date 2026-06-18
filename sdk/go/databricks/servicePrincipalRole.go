@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/workspace/serviceprincipals)
+//
 // This resource allows you to attach a role or InstanceProfile (AWS) to a databricks_service_principal.
 //
 // > This resource can be used with an account or workspace-level provider.

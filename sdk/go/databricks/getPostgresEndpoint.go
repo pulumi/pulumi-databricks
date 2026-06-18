@@ -68,6 +68,8 @@ type LookupPostgresEndpointArgs struct {
 type LookupPostgresEndpointResult struct {
 	// (string) - A timestamp indicating when the compute endpoint was created
 	CreateTime string `pulumi:"createTime"`
+	// (string) - Part of the resource name
+	EndpointId string `pulumi:"endpointId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// (string) - Output only. The full resource path of the endpoint.
@@ -127,6 +129,11 @@ func (o LookupPostgresEndpointResultOutput) ToLookupPostgresEndpointResultOutput
 // (string) - A timestamp indicating when the compute endpoint was created
 func (o LookupPostgresEndpointResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresEndpointResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// (string) - Part of the resource name
+func (o LookupPostgresEndpointResultOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPostgresEndpointResult) string { return v.EndpointId }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

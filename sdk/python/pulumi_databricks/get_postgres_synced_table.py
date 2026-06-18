@@ -28,7 +28,7 @@ class GetPostgresSyncedTableResult:
     """
     A collection of values returned by getPostgresSyncedTable.
     """
-    def __init__(__self__, create_time=None, id=None, name=None, provider_config=None, spec=None, status=None, uid=None):
+    def __init__(__self__, create_time=None, id=None, name=None, provider_config=None, spec=None, status=None, synced_table_id=None, uid=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -47,6 +47,9 @@ class GetPostgresSyncedTableResult:
         if status and not isinstance(status, dict):
             raise TypeError("Expected argument 'status' to be a dict")
         pulumi.set(__self__, "status", status)
+        if synced_table_id and not isinstance(synced_table_id, str):
+            raise TypeError("Expected argument 'synced_table_id' to be a str")
+        pulumi.set(__self__, "synced_table_id", synced_table_id)
         if uid and not isinstance(uid, str):
             raise TypeError("Expected argument 'uid' to be a str")
         pulumi.set(__self__, "uid", uid)
@@ -99,6 +102,14 @@ class GetPostgresSyncedTableResult:
         return pulumi.get(self, "status")
 
     @_builtins.property
+    @pulumi.getter(name="syncedTableId")
+    def synced_table_id(self) -> _builtins.str:
+        """
+        (string) - The part of the name, chosen by the user when the resource was created
+        """
+        return pulumi.get(self, "synced_table_id")
+
+    @_builtins.property
     @pulumi.getter
     def uid(self) -> _builtins.str:
         """
@@ -119,6 +130,7 @@ class AwaitableGetPostgresSyncedTableResult(GetPostgresSyncedTableResult):
             provider_config=self.provider_config,
             spec=self.spec,
             status=self.status,
+            synced_table_id=self.synced_table_id,
             uid=self.uid)
 
 
@@ -166,6 +178,7 @@ def get_postgres_synced_table(name: Optional[_builtins.str] = None,
         provider_config=pulumi.get(__ret__, 'provider_config'),
         spec=pulumi.get(__ret__, 'spec'),
         status=pulumi.get(__ret__, 'status'),
+        synced_table_id=pulumi.get(__ret__, 'synced_table_id'),
         uid=pulumi.get(__ret__, 'uid'))
 def get_postgres_synced_table_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                      provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresSyncedTableProviderConfigArgs', 'GetPostgresSyncedTableProviderConfigArgsDict']]]] = None,
@@ -210,4 +223,5 @@ def get_postgres_synced_table_output(name: pulumi.Input[Optional[_builtins.str]]
         provider_config=pulumi.get(__response__, 'provider_config'),
         spec=pulumi.get(__response__, 'spec'),
         status=pulumi.get(__response__, 'status'),
+        synced_table_id=pulumi.get(__response__, 'synced_table_id'),
         uid=pulumi.get(__response__, 'uid')))

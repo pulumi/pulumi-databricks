@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces {
     /**
-     * @return (list of integer)
+     * @return (list of integer) - The workspace IDs to allow egress traffic to
      * 
      */
     private @Nullable List<Integer> workspaceIds;
 
     private GetAccountNetworkPoliciesItemIngressDryRunCrossWorkspaceAccessAllowRuleOriginSelectedWorkspaces() {}
     /**
-     * @return (list of integer)
+     * @return (list of integer) - The workspace IDs to allow egress traffic to
      * 
      */
     public List<Integer> workspaceIds() {

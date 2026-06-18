@@ -422,6 +422,8 @@ class MwsNetworks(pulumi.CustomResource):
                  workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/networks)
+
         ## Databricks on AWS usage
 
         Use this resource to configure VPC & subnets for new workspaces within AWS and GCP.
@@ -561,6 +563,8 @@ class MwsNetworks(pulumi.CustomResource):
                  args: MwsNetworksArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/networks)
+
         ## Databricks on AWS usage
 
         Use this resource to configure VPC & subnets for new workspaces within AWS and GCP.

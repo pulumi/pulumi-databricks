@@ -26,6 +26,9 @@ type FeatureEngineeringKafkaConfig struct {
 	BootstrapServers pulumi.StringOutput `pulumi:"bootstrapServers"`
 	// Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
 	ExtraOptions pulumi.StringMapOutput `pulumi:"extraOptions"`
+	// Configuration for ingesting Kafka data into a Databricks-managed
+	// Delta table
+	IngestionConfig FeatureEngineeringKafkaConfigIngestionConfigPtrOutput `pulumi:"ingestionConfig"`
 	// Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
 	KeySchema FeatureEngineeringKafkaConfigKeySchemaPtrOutput `pulumi:"keySchema"`
 	// (string) - Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
@@ -88,6 +91,9 @@ type featureEngineeringKafkaConfigState struct {
 	BootstrapServers *string `pulumi:"bootstrapServers"`
 	// Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
 	ExtraOptions map[string]string `pulumi:"extraOptions"`
+	// Configuration for ingesting Kafka data into a Databricks-managed
+	// Delta table
+	IngestionConfig *FeatureEngineeringKafkaConfigIngestionConfig `pulumi:"ingestionConfig"`
 	// Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
 	KeySchema *FeatureEngineeringKafkaConfigKeySchema `pulumi:"keySchema"`
 	// (string) - Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
@@ -112,6 +118,9 @@ type FeatureEngineeringKafkaConfigState struct {
 	BootstrapServers pulumi.StringPtrInput
 	// Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
 	ExtraOptions pulumi.StringMapInput
+	// Configuration for ingesting Kafka data into a Databricks-managed
+	// Delta table
+	IngestionConfig FeatureEngineeringKafkaConfigIngestionConfigPtrInput
 	// Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
 	KeySchema FeatureEngineeringKafkaConfigKeySchemaPtrInput
 	// (string) - Name that uniquely identifies this Kafka config within the metastore. This will be the identifier used from the Feature object to reference these configs for a feature.
@@ -140,6 +149,9 @@ type featureEngineeringKafkaConfigArgs struct {
 	BootstrapServers string `pulumi:"bootstrapServers"`
 	// Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
 	ExtraOptions map[string]string `pulumi:"extraOptions"`
+	// Configuration for ingesting Kafka data into a Databricks-managed
+	// Delta table
+	IngestionConfig *FeatureEngineeringKafkaConfigIngestionConfig `pulumi:"ingestionConfig"`
 	// Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
 	KeySchema *FeatureEngineeringKafkaConfigKeySchema `pulumi:"keySchema"`
 	// Configure the provider for management through account provider.
@@ -162,6 +174,9 @@ type FeatureEngineeringKafkaConfigArgs struct {
 	BootstrapServers pulumi.StringInput
 	// Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
 	ExtraOptions pulumi.StringMapInput
+	// Configuration for ingesting Kafka data into a Databricks-managed
+	// Delta table
+	IngestionConfig FeatureEngineeringKafkaConfigIngestionConfigPtrInput
 	// Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
 	KeySchema FeatureEngineeringKafkaConfigKeySchemaPtrInput
 	// Configure the provider for management through account provider.
@@ -283,6 +298,14 @@ func (o FeatureEngineeringKafkaConfigOutput) BootstrapServers() pulumi.StringOut
 // Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
 func (o FeatureEngineeringKafkaConfigOutput) ExtraOptions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FeatureEngineeringKafkaConfig) pulumi.StringMapOutput { return v.ExtraOptions }).(pulumi.StringMapOutput)
+}
+
+// Configuration for ingesting Kafka data into a Databricks-managed
+// Delta table
+func (o FeatureEngineeringKafkaConfigOutput) IngestionConfig() FeatureEngineeringKafkaConfigIngestionConfigPtrOutput {
+	return o.ApplyT(func(v *FeatureEngineeringKafkaConfig) FeatureEngineeringKafkaConfigIngestionConfigPtrOutput {
+		return v.IngestionConfig
+	}).(FeatureEngineeringKafkaConfigIngestionConfigPtrOutput)
 }
 
 // Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided

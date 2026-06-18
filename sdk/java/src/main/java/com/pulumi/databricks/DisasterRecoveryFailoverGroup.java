@@ -18,7 +18,62 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
+ * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+ * 
+ * A failover group coordinates Databricks Managed Disaster Recovery across one or more workspace sets, replicating data and (optionally) workspace assets from a primary region to a secondary region so you can fail over with minimal disruption.
+ * 
+ * Each workspace set groups the workspaces that replicate to each other across regions. Unity Catalog catalogs and their underlying storage can additionally be replicated by configuring `unityCatalogAssets`. After a successful failover, the group&#39;s effective primary region changes to the former secondary.
+ * 
+ * &gt; **Note** This resource can only be used with an account-level provider!
+ * 
+ * ## Example Usage
+ * 
+ * Creating a failover group for a single workspace set replicating between two regions, with control plane (workspace asset) replication enabled:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.DisasterRecoveryFailoverGroup;
+ * import com.pulumi.databricks.DisasterRecoveryFailoverGroupArgs;
+ * import com.pulumi.databricks.inputs.DisasterRecoveryFailoverGroupWorkspaceSetArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new DisasterRecoveryFailoverGroup("this", DisasterRecoveryFailoverGroupArgs.builder()
+ *             .failoverGroupId("accounting-failover-group")
+ *             .initialPrimaryRegion("us-east-1")
+ *             .regions(            
+ *                 "us-east-1",
+ *                 "us-west-2")
+ *             .workspaceSets(DisasterRecoveryFailoverGroupWorkspaceSetArgs.builder()
+ *                 .name("accounting")
+ *                 .workspaceIds(                
+ *                     "1234567890123456",
+ *                     "6543210987654321")
+ *                 .replicateWorkspaceAssets(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="databricks:index/disasterRecoveryFailoverGroup:DisasterRecoveryFailoverGroup")

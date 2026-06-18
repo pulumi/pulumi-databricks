@@ -398,6 +398,8 @@ class SqlQuery(pulumi.CustomResource):
                  updated_at: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/querieslegacy)
+
         > This resource is deprecated! Please switch to databricks_query.
 
         To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.
@@ -516,6 +518,8 @@ class SqlQuery(pulumi.CustomResource):
                  args: SqlQueryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/querieslegacy)
+
         > This resource is deprecated! Please switch to databricks_query.
 
         To manage [SQLA resources](https://docs.databricks.com/sql/get-started/concepts.html) you must have `databricks_sql_access` on your Group or databricks_user.

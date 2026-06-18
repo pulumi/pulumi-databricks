@@ -158,9 +158,7 @@ import (
 type PostgresBranch struct {
 	pulumi.CustomResourceState
 
-	// The ID to use for the Branch. This becomes the final component of the branch's resource name.
-	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-	// For example, `development` becomes `projects/my-app/branches/development`
+	// The part of the name, chosen by the user when the resource was created
 	BranchId pulumi.StringOutput `pulumi:"branchId"`
 	// (string) - A timestamp indicating when the branch was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -225,9 +223,7 @@ func GetPostgresBranch(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PostgresBranch resources.
 type postgresBranchState struct {
-	// The ID to use for the Branch. This becomes the final component of the branch's resource name.
-	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-	// For example, `development` becomes `projects/my-app/branches/development`
+	// The part of the name, chosen by the user when the resource was created
 	BranchId *string `pulumi:"branchId"`
 	// (string) - A timestamp indicating when the branch was created
 	CreateTime *string `pulumi:"createTime"`
@@ -257,9 +253,7 @@ type postgresBranchState struct {
 }
 
 type PostgresBranchState struct {
-	// The ID to use for the Branch. This becomes the final component of the branch's resource name.
-	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-	// For example, `development` becomes `projects/my-app/branches/development`
+	// The part of the name, chosen by the user when the resource was created
 	BranchId pulumi.StringPtrInput
 	// (string) - A timestamp indicating when the branch was created
 	CreateTime pulumi.StringPtrInput
@@ -293,9 +287,7 @@ func (PostgresBranchState) ElementType() reflect.Type {
 }
 
 type postgresBranchArgs struct {
-	// The ID to use for the Branch. This becomes the final component of the branch's resource name.
-	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-	// For example, `development` becomes `projects/my-app/branches/development`
+	// The part of the name, chosen by the user when the resource was created
 	BranchId string `pulumi:"branchId"`
 	// The project containing this branch (API resource hierarchy).
 	// Format: projects/{project_id}
@@ -315,9 +307,7 @@ type postgresBranchArgs struct {
 
 // The set of arguments for constructing a PostgresBranch resource.
 type PostgresBranchArgs struct {
-	// The ID to use for the Branch. This becomes the final component of the branch's resource name.
-	// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-	// For example, `development` becomes `projects/my-app/branches/development`
+	// The part of the name, chosen by the user when the resource was created
 	BranchId pulumi.StringInput
 	// The project containing this branch (API resource hierarchy).
 	// Format: projects/{project_id}
@@ -422,9 +412,7 @@ func (o PostgresBranchOutput) ToPostgresBranchOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The ID to use for the Branch. This becomes the final component of the branch's resource name.
-// The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-// For example, `development` becomes `projects/my-app/branches/development`
+// The part of the name, chosen by the user when the resource was created
 func (o PostgresBranchOutput) BranchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresBranch) pulumi.StringOutput { return v.BranchId }).(pulumi.StringOutput)
 }

@@ -165,6 +165,8 @@ class SystemSchema(pulumi.CustomResource):
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/systemschemas)
+
         Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account's operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
 
         > This resource can only be used with a workspace-level provider!
@@ -195,6 +197,8 @@ class SystemSchema(pulumi.CustomResource):
                  args: SystemSchemaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/systemschemas)
+
         Manages system tables enablement. System tables are a Databricks-hosted analytical store of your account's operational data. System tables can be used for historical observability across your account. System tables must be enabled by an account admin.
 
         > This resource can only be used with a workspace-level provider!

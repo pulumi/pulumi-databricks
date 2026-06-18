@@ -241,6 +241,8 @@ class WorkspaceBinding(pulumi.CustomResource):
                  workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/workspacebindings)
+
         If you use workspaces to isolate user data access, you may want to limit access to catalog, external locations or storage credentials from specific workspaces in your account, also known as workspace binding
 
         > This resource can only be used with a workspace-level provider!
@@ -285,6 +287,8 @@ class WorkspaceBinding(pulumi.CustomResource):
                  args: WorkspaceBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/workspacebindings)
+
         If you use workspaces to isolate user data access, you may want to limit access to catalog, external locations or storage credentials from specific workspaces in your account, also known as workspace binding
 
         > This resource can only be used with a workspace-level provider!

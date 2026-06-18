@@ -20,6 +20,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/vectorsearchindexes)
+ * 
  * This resource allows you to create [Mosaic AI Vector Search Index](https://docs.databricks.com/en/generative-ai/create-query-vector-search.html) in Databricks.  Mosaic AI Vector Search is a serverless similarity search engine that allows you to store a vector representation of your data, including metadata, in a vector database.  The Mosaic AI Vector Search Index provides the ability to search data in the linked Delta Table.
  * 
  * &gt; This resource can only be used with a workspace-level provider!
@@ -114,6 +116,12 @@ public class VectorSearchIndex extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<VectorSearchIndexDirectAccessIndexSpec>> directAccessIndexSpec() {
         return Codegen.optional(this.directAccessIndexSpec);
+    }
+    @Export(name="endpointId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> endpointId;
+
+    public Output<Optional<String>> endpointId() {
+        return Codegen.optional(this.endpointId);
     }
     /**
      * The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.

@@ -51,7 +51,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
      */
     private String filterCondition;
     /**
-     * @return (string) - The full three-part (catalog, schema, table) name of the Delta table
+     * @return (string) - Three-part full name of the Stream (catalog.schema.stream)
      * 
      */
     private String fullName;
@@ -80,7 +80,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
      * reference fields within the key or value schema (e.g., &#34;value.event_timestamp&#34;). For nested
      * fields, the leaf node name (e.g., &#34;eventTimestamp&#34; from &#34;value.event_details.event_timestamp&#34;)
      * is what will be present in materialized tables and expected to match at query time.
-     * TODO(FS-939): Colon-prefixed notation (e.g., &#34;value:event_timestamp&#34;) is supported for
+     * Colon-prefixed notation (e.g., &#34;value:event_timestamp&#34;) is supported for
      * backwards compatibility but is deprecated; migrate to dot notation
      * 
      */
@@ -156,7 +156,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
         return this.filterCondition;
     }
     /**
-     * @return (string) - The full three-part (catalog, schema, table) name of the Delta table
+     * @return (string) - Three-part full name of the Stream (catalog.schema.stream)
      * 
      */
     public String fullName() {
@@ -193,7 +193,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
      * reference fields within the key or value schema (e.g., &#34;value.event_timestamp&#34;). For nested
      * fields, the leaf node name (e.g., &#34;eventTimestamp&#34; from &#34;value.event_details.event_timestamp&#34;)
      * is what will be present in materialized tables and expected to match at query time.
-     * TODO(FS-939): Colon-prefixed notation (e.g., &#34;value:event_timestamp&#34;) is supported for
+     * Colon-prefixed notation (e.g., &#34;value:event_timestamp&#34;) is supported for
      * backwards compatibility but is deprecated; migrate to dot notation
      * 
      */

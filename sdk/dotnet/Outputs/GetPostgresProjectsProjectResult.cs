@@ -35,6 +35,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// (string) - Part of the resource name
+        /// </summary>
+        public readonly string ProjectId;
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         public readonly Outputs.GetPostgresProjectsProjectProviderConfigResult? ProviderConfig;
@@ -70,6 +74,8 @@ namespace Pulumi.Databricks.Outputs
 
             string name,
 
+            string projectId,
+
             Outputs.GetPostgresProjectsProjectProviderConfigResult? providerConfig,
 
             string purgeTime,
@@ -86,6 +92,7 @@ namespace Pulumi.Databricks.Outputs
             DeleteTime = deleteTime;
             InitialEndpointSpec = initialEndpointSpec;
             Name = name;
+            ProjectId = projectId;
             ProviderConfig = providerConfig;
             PurgeTime = purgeTime;
             Spec = spec;

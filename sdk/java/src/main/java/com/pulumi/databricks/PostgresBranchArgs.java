@@ -20,18 +20,14 @@ public final class PostgresBranchArgs extends com.pulumi.resources.ResourceArgs 
     public static final PostgresBranchArgs Empty = new PostgresBranchArgs();
 
     /**
-     * The ID to use for the Branch. This becomes the final component of the branch&#39;s resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `development` becomes `projects/my-app/branches/development`
+     * The part of the name, chosen by the user when the resource was created
      * 
      */
     @Import(name="branchId", required=true)
     private Output<String> branchId;
 
     /**
-     * @return The ID to use for the Branch. This becomes the final component of the branch&#39;s resource name.
-     * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-     * For example, `development` becomes `projects/my-app/branches/development`
+     * @return The part of the name, chosen by the user when the resource was created
      * 
      */
     public Output<String> branchId() {
@@ -151,9 +147,7 @@ public final class PostgresBranchArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param branchId The ID to use for the Branch. This becomes the final component of the branch&#39;s resource name.
-         * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-         * For example, `development` becomes `projects/my-app/branches/development`
+         * @param branchId The part of the name, chosen by the user when the resource was created
          * 
          * @return builder
          * 
@@ -164,9 +158,7 @@ public final class PostgresBranchArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param branchId The ID to use for the Branch. This becomes the final component of the branch&#39;s resource name.
-         * The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-         * For example, `development` becomes `projects/my-app/branches/development`
+         * @param branchId The part of the name, chosen by the user when the resource was created
          * 
          * @return builder
          * 

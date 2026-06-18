@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/workspace/aibidashboardembeddingaccesspolicy)
+//
 // The `AibiDashboardEmbeddingAccessPolicySetting` resource allows you to control [embedding of AI/BI Dashboards](https://learn.microsoft.com/en-us/azure/databricks/dashboards/admin/#manage-dashboard-embedding) into other sites.
 //
 // > This resource can only be used with a workspace-level provider!

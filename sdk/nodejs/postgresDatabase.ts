@@ -141,14 +141,7 @@ export class PostgresDatabase extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The ID to use for the Database, which will become the final component of
-     * the database's resource name.
-     * This ID becomes the database name in postgres.
-     *
-     * This value should be 4-63 characters, and only use characters available in DNS names,
-     * as defined by RFC-1123
-     *
-     * If databaseId is not specified in the request, it is generated automatically
+     * (string) - Part of the resource name
      */
     declare public readonly databaseId: pulumi.Output<string>;
     /**
@@ -227,14 +220,7 @@ export interface PostgresDatabaseState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * The ID to use for the Database, which will become the final component of
-     * the database's resource name.
-     * This ID becomes the database name in postgres.
-     *
-     * This value should be 4-63 characters, and only use characters available in DNS names,
-     * as defined by RFC-1123
-     *
-     * If databaseId is not specified in the request, it is generated automatically
+     * (string) - Part of the resource name
      */
     databaseId?: pulumi.Input<string | undefined>;
     /**
@@ -270,14 +256,7 @@ export interface PostgresDatabaseState {
  */
 export interface PostgresDatabaseArgs {
     /**
-     * The ID to use for the Database, which will become the final component of
-     * the database's resource name.
-     * This ID becomes the database name in postgres.
-     *
-     * This value should be 4-63 characters, and only use characters available in DNS names,
-     * as defined by RFC-1123
-     *
-     * If databaseId is not specified in the request, it is generated automatically
+     * (string) - Part of the resource name
      */
     databaseId?: pulumi.Input<string | undefined>;
     /**

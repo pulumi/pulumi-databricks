@@ -19,8 +19,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-        /// Requires all workspaces in the set to be Mission Critical tier
+        /// (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
         /// </summary>
         public readonly bool ReplicateWorkspaceAssets;
         /// <summary>
@@ -31,7 +30,7 @@ namespace Pulumi.Databricks.Outputs
         public readonly ImmutableArray<string> StableUrlNames;
         /// <summary>
         /// (list of string) - Workspace IDs in this set. The system derives and validates regions.
-        /// EA: exactly 2 workspaces (one per region)
+        /// All workspaces must be in the Mission Critical tier
         /// </summary>
         public readonly ImmutableArray<string> WorkspaceIds;
 

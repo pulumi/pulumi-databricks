@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpecNewPipelineSpec;
+import com.pulumi.databricks.outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpecTypeOverride;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseSyncedDatabaseTablesSyncedTableSpec {
+    /**
+     * @return (boolean) - When true, enables accelerated sync mode for the initial data load.
+     * This significantly improves performance for large tables.
+     * Requires workspace-level enablement
+     * 
+     */
+    private Boolean acceleratedSync;
     /**
      * @return (boolean) - If true, the synced table&#39;s logical database and schema resources in PG
      * will be created if they do not already exist
@@ -51,8 +59,23 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTableSpec {
      * 
      */
     private @Nullable String timeseriesKey;
+    /**
+     * @return (list of SyncedTableSpecTypeOverride) - Override the default Delta-&gt;PG type mapping for specific columns.
+     * A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+     * 
+     */
+    private @Nullable List<GetDatabaseSyncedDatabaseTablesSyncedTableSpecTypeOverride> typeOverrides;
 
     private GetDatabaseSyncedDatabaseTablesSyncedTableSpec() {}
+    /**
+     * @return (boolean) - When true, enables accelerated sync mode for the initial data load.
+     * This significantly improves performance for large tables.
+     * Requires workspace-level enablement
+     * 
+     */
+    public Boolean acceleratedSync() {
+        return this.acceleratedSync;
+    }
     /**
      * @return (boolean) - If true, the synced table&#39;s logical database and schema resources in PG
      * will be created if they do not already exist
@@ -103,6 +126,14 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTableSpec {
     public Optional<String> timeseriesKey() {
         return Optional.ofNullable(this.timeseriesKey);
     }
+    /**
+     * @return (list of SyncedTableSpecTypeOverride) - Override the default Delta-&gt;PG type mapping for specific columns.
+     * A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+     * 
+     */
+    public List<GetDatabaseSyncedDatabaseTablesSyncedTableSpecTypeOverride> typeOverrides() {
+        return this.typeOverrides == null ? List.of() : this.typeOverrides;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -113,6 +144,7 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTableSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean acceleratedSync;
         private Boolean createDatabaseObjectsIfMissing;
         private String existingPipelineId;
         private GetDatabaseSyncedDatabaseTablesSyncedTableSpecNewPipelineSpec newPipelineSpec;
@@ -120,9 +152,11 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTableSpec {
         private @Nullable String schedulingPolicy;
         private @Nullable String sourceTableFullName;
         private @Nullable String timeseriesKey;
+        private @Nullable List<GetDatabaseSyncedDatabaseTablesSyncedTableSpecTypeOverride> typeOverrides;
         public Builder() {}
         public Builder(GetDatabaseSyncedDatabaseTablesSyncedTableSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.acceleratedSync = defaults.acceleratedSync;
     	      this.createDatabaseObjectsIfMissing = defaults.createDatabaseObjectsIfMissing;
     	      this.existingPipelineId = defaults.existingPipelineId;
     	      this.newPipelineSpec = defaults.newPipelineSpec;
@@ -130,8 +164,17 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTableSpec {
     	      this.schedulingPolicy = defaults.schedulingPolicy;
     	      this.sourceTableFullName = defaults.sourceTableFullName;
     	      this.timeseriesKey = defaults.timeseriesKey;
+    	      this.typeOverrides = defaults.typeOverrides;
         }
 
+        @CustomType.Setter
+        public Builder acceleratedSync(Boolean acceleratedSync) {
+            if (acceleratedSync == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseSyncedDatabaseTablesSyncedTableSpec", "acceleratedSync");
+            }
+            this.acceleratedSync = acceleratedSync;
+            return this;
+        }
         @CustomType.Setter
         public Builder createDatabaseObjectsIfMissing(Boolean createDatabaseObjectsIfMissing) {
             if (createDatabaseObjectsIfMissing == null) {
@@ -183,8 +226,18 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTableSpec {
             this.timeseriesKey = timeseriesKey;
             return this;
         }
+        @CustomType.Setter
+        public Builder typeOverrides(@Nullable List<GetDatabaseSyncedDatabaseTablesSyncedTableSpecTypeOverride> typeOverrides) {
+
+            this.typeOverrides = typeOverrides;
+            return this;
+        }
+        public Builder typeOverrides(GetDatabaseSyncedDatabaseTablesSyncedTableSpecTypeOverride... typeOverrides) {
+            return typeOverrides(List.of(typeOverrides));
+        }
         public GetDatabaseSyncedDatabaseTablesSyncedTableSpec build() {
             final var _resultValue = new GetDatabaseSyncedDatabaseTablesSyncedTableSpec();
+            _resultValue.acceleratedSync = acceleratedSync;
             _resultValue.createDatabaseObjectsIfMissing = createDatabaseObjectsIfMissing;
             _resultValue.existingPipelineId = existingPipelineId;
             _resultValue.newPipelineSpec = newPipelineSpec;
@@ -192,6 +245,7 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTableSpec {
             _resultValue.schedulingPolicy = schedulingPolicy;
             _resultValue.sourceTableFullName = sourceTableFullName;
             _resultValue.timeseriesKey = timeseriesKey;
+            _resultValue.typeOverrides = typeOverrides;
             return _resultValue;
         }
     }

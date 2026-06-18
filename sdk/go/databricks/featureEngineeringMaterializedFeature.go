@@ -16,7 +16,8 @@ import (
 type FeatureEngineeringMaterializedFeature struct {
 	pulumi.CustomResourceState
 
-	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+	// Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
 	CronSchedule pulumi.StringPtrOutput `pulumi:"cronSchedule"`
 	// A cron-based schedule trigger for the materialization pipeline
 	CronScheduleTrigger FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrOutput `pulumi:"cronScheduleTrigger"`
@@ -33,7 +34,8 @@ type FeatureEngineeringMaterializedFeature struct {
 	OfflineStoreConfig FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrOutput `pulumi:"offlineStoreConfig"`
 	// Destination for writing feature values to an online Lakebase table
 	OnlineStoreConfig FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrOutput `pulumi:"onlineStoreConfig"`
-	// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+	// The schedule state of the materialization pipeline.
+	// Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState pulumi.StringPtrOutput `pulumi:"pipelineScheduleState"`
 	// Configure the provider for management through account provider.
 	ProviderConfig FeatureEngineeringMaterializedFeatureProviderConfigOutput `pulumi:"providerConfig"`
@@ -80,7 +82,8 @@ func GetFeatureEngineeringMaterializedFeature(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FeatureEngineeringMaterializedFeature resources.
 type featureEngineeringMaterializedFeatureState struct {
-	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+	// Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
 	CronSchedule *string `pulumi:"cronSchedule"`
 	// A cron-based schedule trigger for the materialization pipeline
 	CronScheduleTrigger *FeatureEngineeringMaterializedFeatureCronScheduleTrigger `pulumi:"cronScheduleTrigger"`
@@ -97,7 +100,8 @@ type featureEngineeringMaterializedFeatureState struct {
 	OfflineStoreConfig *FeatureEngineeringMaterializedFeatureOfflineStoreConfig `pulumi:"offlineStoreConfig"`
 	// Destination for writing feature values to an online Lakebase table
 	OnlineStoreConfig *FeatureEngineeringMaterializedFeatureOnlineStoreConfig `pulumi:"onlineStoreConfig"`
-	// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+	// The schedule state of the materialization pipeline.
+	// Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState *string `pulumi:"pipelineScheduleState"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *FeatureEngineeringMaterializedFeatureProviderConfig `pulumi:"providerConfig"`
@@ -112,7 +116,8 @@ type featureEngineeringMaterializedFeatureState struct {
 }
 
 type FeatureEngineeringMaterializedFeatureState struct {
-	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+	// Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
 	CronSchedule pulumi.StringPtrInput
 	// A cron-based schedule trigger for the materialization pipeline
 	CronScheduleTrigger FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrInput
@@ -129,7 +134,8 @@ type FeatureEngineeringMaterializedFeatureState struct {
 	OfflineStoreConfig FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrInput
 	// Destination for writing feature values to an online Lakebase table
 	OnlineStoreConfig FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrInput
-	// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+	// The schedule state of the materialization pipeline.
+	// Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig FeatureEngineeringMaterializedFeatureProviderConfigPtrInput
@@ -148,7 +154,8 @@ func (FeatureEngineeringMaterializedFeatureState) ElementType() reflect.Type {
 }
 
 type featureEngineeringMaterializedFeatureArgs struct {
-	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+	// Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
 	CronSchedule *string `pulumi:"cronSchedule"`
 	// A cron-based schedule trigger for the materialization pipeline
 	CronScheduleTrigger *FeatureEngineeringMaterializedFeatureCronScheduleTrigger `pulumi:"cronScheduleTrigger"`
@@ -158,7 +165,8 @@ type featureEngineeringMaterializedFeatureArgs struct {
 	OfflineStoreConfig *FeatureEngineeringMaterializedFeatureOfflineStoreConfig `pulumi:"offlineStoreConfig"`
 	// Destination for writing feature values to an online Lakebase table
 	OnlineStoreConfig *FeatureEngineeringMaterializedFeatureOnlineStoreConfig `pulumi:"onlineStoreConfig"`
-	// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+	// The schedule state of the materialization pipeline.
+	// Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState *string `pulumi:"pipelineScheduleState"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *FeatureEngineeringMaterializedFeatureProviderConfig `pulumi:"providerConfig"`
@@ -172,7 +180,8 @@ type featureEngineeringMaterializedFeatureArgs struct {
 
 // The set of arguments for constructing a FeatureEngineeringMaterializedFeature resource.
 type FeatureEngineeringMaterializedFeatureArgs struct {
-	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+	// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+	// Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
 	CronSchedule pulumi.StringPtrInput
 	// A cron-based schedule trigger for the materialization pipeline
 	CronScheduleTrigger FeatureEngineeringMaterializedFeatureCronScheduleTriggerPtrInput
@@ -182,7 +191,8 @@ type FeatureEngineeringMaterializedFeatureArgs struct {
 	OfflineStoreConfig FeatureEngineeringMaterializedFeatureOfflineStoreConfigPtrInput
 	// Destination for writing feature values to an online Lakebase table
 	OnlineStoreConfig FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrInput
-	// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+	// The schedule state of the materialization pipeline.
+	// Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 	PipelineScheduleState pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig FeatureEngineeringMaterializedFeatureProviderConfigPtrInput
@@ -281,7 +291,8 @@ func (o FeatureEngineeringMaterializedFeatureOutput) ToFeatureEngineeringMateria
 	return o
 }
 
-// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+// The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+// Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
 func (o FeatureEngineeringMaterializedFeatureOutput) CronSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringPtrOutput { return v.CronSchedule }).(pulumi.StringPtrOutput)
 }
@@ -328,7 +339,8 @@ func (o FeatureEngineeringMaterializedFeatureOutput) OnlineStoreConfig() Feature
 	}).(FeatureEngineeringMaterializedFeatureOnlineStoreConfigPtrOutput)
 }
 
-// The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+// The schedule state of the materialization pipeline.
+// Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
 func (o FeatureEngineeringMaterializedFeatureOutput) PipelineScheduleState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureEngineeringMaterializedFeature) pulumi.StringPtrOutput { return v.PipelineScheduleState }).(pulumi.StringPtrOutput)
 }

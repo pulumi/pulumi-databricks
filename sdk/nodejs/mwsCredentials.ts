@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/account/credentials)
+ *
  * This resource to configure the cross-account role for creation of new workspaces within AWS.
  *
  * > This resource can only be used with an account-level provider!

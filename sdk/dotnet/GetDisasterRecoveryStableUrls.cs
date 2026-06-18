@@ -12,19 +12,91 @@ namespace Pulumi.Databricks
     public static class GetDisasterRecoveryStableUrls
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+        /// 
+        /// This data source can be used to fetch the list of stable URLs in the account.
+        /// 
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all stable URLs in the account:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetDisasterRecoveryStableUrls.Invoke();
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetDisasterRecoveryStableUrlsResult> InvokeAsync(GetDisasterRecoveryStableUrlsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDisasterRecoveryStableUrlsResult>("databricks:index/getDisasterRecoveryStableUrls:getDisasterRecoveryStableUrls", args ?? new GetDisasterRecoveryStableUrlsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+        /// 
+        /// This data source can be used to fetch the list of stable URLs in the account.
+        /// 
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all stable URLs in the account:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetDisasterRecoveryStableUrls.Invoke();
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDisasterRecoveryStableUrlsResult> Invoke(GetDisasterRecoveryStableUrlsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDisasterRecoveryStableUrlsResult>("databricks:index/getDisasterRecoveryStableUrls:getDisasterRecoveryStableUrls", args ?? new GetDisasterRecoveryStableUrlsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+        /// 
+        /// This data source can be used to fetch the list of stable URLs in the account.
+        /// 
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Getting a list of all stable URLs in the account:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetDisasterRecoveryStableUrls.Invoke();
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDisasterRecoveryStableUrlsResult> Invoke(GetDisasterRecoveryStableUrlsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDisasterRecoveryStableUrlsResult>("databricks:index/getDisasterRecoveryStableUrls:getDisasterRecoveryStableUrls", args ?? new GetDisasterRecoveryStableUrlsInvokeArgs(), options.WithDefaults());

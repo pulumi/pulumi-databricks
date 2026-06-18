@@ -128,16 +128,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/postgresCatalog:PostgresCatalog")
 public class PostgresCatalog extends com.pulumi.resources.CustomResource {
     /**
-     * The ID in the Unity Catalog.
-     * It becomes the full resource name, for example &#34;myCatalog&#34; becomes &#34;catalogs/my_catalog&#34;
+     * The part of the name, chosen by the user when the resource was created
      * 
      */
     @Export(name="catalogId", refs={String.class}, tree="[0]")
     private Output<String> catalogId;
 
     /**
-     * @return The ID in the Unity Catalog.
-     * It becomes the full resource name, for example &#34;myCatalog&#34; becomes &#34;catalogs/my_catalog&#34;
+     * @return The part of the name, chosen by the user when the resource was created
      * 
      */
     public Output<String> catalogId() {

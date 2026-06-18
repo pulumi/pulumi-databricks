@@ -34,11 +34,13 @@ class FeatureEngineeringMaterializedFeatureArgs:
         The set of arguments for constructing a FeatureEngineeringMaterializedFeature resource.
 
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
-        :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+               Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs'] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs'] offline_store_config: Destination for writing feature values to an offline Delta table
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs'] online_store_config: Destination for writing feature values to an online Lakebase table
-        :param pulumi.Input[_builtins.str] pipeline_schedule_state: The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+        :param pulumi.Input[_builtins.str] pipeline_schedule_state: The schedule state of the materialization pipeline.
+               Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureStreamingModeArgs'] streaming_mode: The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
                sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
@@ -79,7 +81,8 @@ class FeatureEngineeringMaterializedFeatureArgs:
     @pulumi.getter(name="cronSchedule")
     def cron_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+        Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
         """
         return pulumi.get(self, "cron_schedule")
 
@@ -127,7 +130,8 @@ class FeatureEngineeringMaterializedFeatureArgs:
     @pulumi.getter(name="pipelineScheduleState")
     def pipeline_schedule_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+        The schedule state of the materialization pipeline.
+        Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         """
         return pulumi.get(self, "pipeline_schedule_state")
 
@@ -193,7 +197,8 @@ class _FeatureEngineeringMaterializedFeatureState:
         """
         Input properties used for looking up and filtering FeatureEngineeringMaterializedFeature resources.
 
-        :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+               Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs'] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
         :param pulumi.Input[_builtins.bool] is_online: (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
@@ -202,7 +207,8 @@ class _FeatureEngineeringMaterializedFeatureState:
         :param pulumi.Input[_builtins.str] materialized_feature_id: (string) - Server-assigned unique identifier for the materialized feature
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs'] offline_store_config: Destination for writing feature values to an offline Delta table
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs'] online_store_config: Destination for writing feature values to an online Lakebase table
-        :param pulumi.Input[_builtins.str] pipeline_schedule_state: The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+        :param pulumi.Input[_builtins.str] pipeline_schedule_state: The schedule state of the materialization pipeline.
+               Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['FeatureEngineeringMaterializedFeatureStreamingModeArgs'] streaming_mode: The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
                sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
@@ -241,7 +247,8 @@ class _FeatureEngineeringMaterializedFeatureState:
     @pulumi.getter(name="cronSchedule")
     def cron_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+        Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
         """
         return pulumi.get(self, "cron_schedule")
 
@@ -338,7 +345,8 @@ class _FeatureEngineeringMaterializedFeatureState:
     @pulumi.getter(name="pipelineScheduleState")
     def pipeline_schedule_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+        The schedule state of the materialization pipeline.
+        Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         """
         return pulumi.get(self, "pipeline_schedule_state")
 
@@ -419,12 +427,14 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+               Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict']] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']] offline_store_config: Destination for writing feature values to an offline Delta table
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict']] online_store_config: Destination for writing feature values to an online Lakebase table
-        :param pulumi.Input[_builtins.str] pipeline_schedule_state: The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+        :param pulumi.Input[_builtins.str] pipeline_schedule_state: The schedule state of the materialization pipeline.
+               Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureStreamingModeArgs', 'FeatureEngineeringMaterializedFeatureStreamingModeArgsDict']] streaming_mode: The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
                sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
@@ -519,7 +529,8 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        :param pulumi.Input[_builtins.str] cron_schedule: The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+               Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgs', 'FeatureEngineeringMaterializedFeatureCronScheduleTriggerArgsDict']] cron_schedule_trigger: A cron-based schedule trigger for the materialization pipeline
         :param pulumi.Input[_builtins.str] feature_name: The full name of the feature in Unity Catalog
         :param pulumi.Input[_builtins.bool] is_online: (boolean) - True if this is an online materialized feature. False if it is an offline materialized feature
@@ -528,7 +539,8 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] materialized_feature_id: (string) - Server-assigned unique identifier for the materialized feature
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOfflineStoreConfigArgsDict']] offline_store_config: Destination for writing feature values to an offline Delta table
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgs', 'FeatureEngineeringMaterializedFeatureOnlineStoreConfigArgsDict']] online_store_config: Destination for writing feature values to an online Lakebase table
-        :param pulumi.Input[_builtins.str] pipeline_schedule_state: The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+        :param pulumi.Input[_builtins.str] pipeline_schedule_state: The schedule state of the materialization pipeline.
+               Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureProviderConfigArgs', 'FeatureEngineeringMaterializedFeatureProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['FeatureEngineeringMaterializedFeatureStreamingModeArgs', 'FeatureEngineeringMaterializedFeatureStreamingModeArgsDict']] streaming_mode: The Structured Streaming trigger mode used for materialization. Real-time mode (RTM) targets
                sub-second latency for operational workloads; micro-batch mode (MBM) favors cost efficiency
@@ -559,7 +571,8 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
     @pulumi.getter(name="cronSchedule")
     def cron_schedule(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+        Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
         """
         return pulumi.get(self, "cron_schedule")
 
@@ -624,7 +637,8 @@ class FeatureEngineeringMaterializedFeature(pulumi.CustomResource):
     @pulumi.getter(name="pipelineScheduleState")
     def pipeline_schedule_state(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+        The schedule state of the materialization pipeline.
+        Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         """
         return pulumi.get(self, "pipeline_schedule_state")
 

@@ -19,6 +19,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/libraries)
+ * 
  * Installs a [library](https://docs.databricks.com/libraries/index.html) on databricks_cluster. Each different type of library has a slightly different syntax. It&#39;s possible to set only one type of library within one resource. Otherwise, the plan will fail with an error.
  * 
  * &gt; This resource can only be used with a workspace-level provider!

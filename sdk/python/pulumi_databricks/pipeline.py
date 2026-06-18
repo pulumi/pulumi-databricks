@@ -1269,6 +1269,8 @@ class Pipeline(pulumi.CustomResource):
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/pipelines)
+
         Use `Pipeline` to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
 
         > This resource can only be used with a workspace-level provider!
@@ -1383,6 +1385,8 @@ class Pipeline(pulumi.CustomResource):
                  args: Optional[PipelineArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/pipelines)
+
         Use `Pipeline` to deploy [Lakeflow Declarative Pipelines](https://docs.databricks.com/aws/en/dlt).
 
         > This resource can only be used with a workspace-level provider!

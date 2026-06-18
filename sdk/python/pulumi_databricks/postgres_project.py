@@ -29,9 +29,7 @@ class PostgresProjectArgs:
         """
         The set of arguments for constructing a PostgresProject resource.
 
-        :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project. This becomes the final component of the project's resource name.
-               The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-               For example, `my-app` becomes `projects/my-app`
+        :param pulumi.Input[_builtins.str] project_id: The part of the name, chosen by the user when the resource was created
         :param pulumi.Input['PostgresProjectInitialEndpointSpecArgs'] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
                created project. If omitted, the initial endpoint created will have default settings, without high availability
                configured. This field does not apply to any endpoints created after project creation. Use
@@ -55,9 +53,7 @@ class PostgresProjectArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID to use for the Project. This becomes the final component of the project's resource name.
-        The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-        For example, `my-app` becomes `projects/my-app`
+        The part of the name, chosen by the user when the resource was created
         """
         return pulumi.get(self, "project_id")
 
@@ -145,9 +141,7 @@ class _PostgresProjectState:
                spec.default_endpoint_settings to configure default settings for endpoints created after project creation
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the project.
                Format: projects/{project_id}
-        :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project. This becomes the final component of the project's resource name.
-               The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-               For example, `my-app` becomes `projects/my-app`
+        :param pulumi.Input[_builtins.str] project_id: The part of the name, chosen by the user when the resource was created
         :param pulumi.Input['PostgresProjectProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently deletes the project (hard delete).
                If false or unset, performs a soft delete
@@ -240,9 +234,7 @@ class _PostgresProjectState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID to use for the Project. This becomes the final component of the project's resource name.
-        The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-        For example, `my-app` becomes `projects/my-app`
+        The part of the name, chosen by the user when the resource was created
         """
         return pulumi.get(self, "project_id")
 
@@ -460,9 +452,7 @@ class PostgresProject(pulumi.CustomResource):
                created project. If omitted, the initial endpoint created will have default settings, without high availability
                configured. This field does not apply to any endpoints created after project creation. Use
                spec.default_endpoint_settings to configure default settings for endpoints created after project creation
-        :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project. This becomes the final component of the project's resource name.
-               The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-               For example, `my-app` becomes `projects/my-app`
+        :param pulumi.Input[_builtins.str] project_id: The part of the name, chosen by the user when the resource was created
         :param pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently deletes the project (hard delete).
                If false or unset, performs a soft delete
@@ -660,9 +650,7 @@ class PostgresProject(pulumi.CustomResource):
                spec.default_endpoint_settings to configure default settings for endpoints created after project creation
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the project.
                Format: projects/{project_id}
-        :param pulumi.Input[_builtins.str] project_id: The ID to use for the Project. This becomes the final component of the project's resource name.
-               The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-               For example, `my-app` becomes `projects/my-app`
+        :param pulumi.Input[_builtins.str] project_id: The part of the name, chosen by the user when the resource was created
         :param pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently deletes the project (hard delete).
                If false or unset, performs a soft delete
@@ -732,9 +720,7 @@ class PostgresProject(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID to use for the Project. This becomes the final component of the project's resource name.
-        The ID is required and must be 1-63 characters long, start with a lowercase letter, and contain only lowercase letters, numbers, and hyphens.
-        For example, `my-app` becomes `projects/my-app`
+        The part of the name, chosen by the user when the resource was created
         """
         return pulumi.get(self, "project_id")
 

@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAccountNetworkPolicyIngressCrossWorkspaceAccessAllowRuleOriginSelectedWorkspacesResult
     {
         /// <summary>
-        /// (list of integer)
+        /// (list of integer) - The workspace IDs to allow egress traffic to
         /// </summary>
         public readonly ImmutableArray<int> WorkspaceIds;
 

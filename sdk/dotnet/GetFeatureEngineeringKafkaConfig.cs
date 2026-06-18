@@ -82,9 +82,9 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringKafkaConfigAuthConfigResult AuthConfig;
         /// <summary>
-        /// (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
-        /// In the future, a separate table will be maintained by Databricks for forward filling data.
-        /// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+        /// (BackfillSource) - A user-provided source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Stream.
+        /// The backfill data stored in this location will be copied into the ingestion table for offline querying and training.
+        /// The schema for this source must match exactly that of the key and payload schemas specified for this Stream
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringKafkaConfigBackfillSourceResult BackfillSource;
         /// <summary>
@@ -99,6 +99,11 @@ namespace Pulumi.Databricks
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (IngestionConfig) - Configuration for ingesting Kafka data into a Databricks-managed
+        /// Delta table
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringKafkaConfigIngestionConfigResult IngestionConfig;
         /// <summary>
         /// (SchemaConfig) - Schema configuration for extracting message keys from topics. At least one of KeySchema and ValueSchema must be provided
         /// </summary>
@@ -130,6 +135,8 @@ namespace Pulumi.Databricks
 
             string id,
 
+            Outputs.GetFeatureEngineeringKafkaConfigIngestionConfigResult ingestionConfig,
+
             Outputs.GetFeatureEngineeringKafkaConfigKeySchemaResult keySchema,
 
             string name,
@@ -145,6 +152,7 @@ namespace Pulumi.Databricks
             BootstrapServers = bootstrapServers;
             ExtraOptions = extraOptions;
             Id = id;
+            IngestionConfig = ingestionConfig;
             KeySchema = keySchema;
             Name = name;
             ProviderConfig = providerConfig;

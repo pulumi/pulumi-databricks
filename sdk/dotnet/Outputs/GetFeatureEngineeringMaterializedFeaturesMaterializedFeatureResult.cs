@@ -14,7 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureResult
     {
         /// <summary>
-        /// (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        /// (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+        /// Hidden from GraphQL: superseded by the `Trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
         /// </summary>
         public readonly string CronSchedule;
         /// <summary>
@@ -47,7 +48,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringMaterializedFeaturesMaterializedFeatureOnlineStoreConfigResult OnlineStoreConfig;
         /// <summary>
-        /// (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+        /// (string) - The schedule state of the materialization pipeline.
+        /// Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         /// </summary>
         public readonly string PipelineScheduleState;
         /// <summary>

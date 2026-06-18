@@ -65,6 +65,13 @@ public final class VectorSearchIndexState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.directAccessIndexSpec);
     }
 
+    @Import(name="endpointId")
+    private @Nullable Output<String> endpointId;
+
+    public Optional<Output<String>> endpointId() {
+        return Optional.ofNullable(this.endpointId);
+    }
+
     /**
      * The name of the Mosaic AI Vector Search Endpoint that will be used for indexing the data.
      * 
@@ -164,6 +171,7 @@ public final class VectorSearchIndexState extends com.pulumi.resources.ResourceA
         this.creator = $.creator;
         this.deltaSyncIndexSpec = $.deltaSyncIndexSpec;
         this.directAccessIndexSpec = $.directAccessIndexSpec;
+        this.endpointId = $.endpointId;
         this.endpointName = $.endpointName;
         this.indexSubtype = $.indexSubtype;
         this.indexType = $.indexType;
@@ -252,6 +260,15 @@ public final class VectorSearchIndexState extends com.pulumi.resources.ResourceA
          */
         public Builder directAccessIndexSpec(VectorSearchIndexDirectAccessIndexSpecArgs directAccessIndexSpec) {
             return directAccessIndexSpec(Output.of(directAccessIndexSpec));
+        }
+
+        public Builder endpointId(@Nullable Output<String> endpointId) {
+            $.endpointId = endpointId;
+            return this;
+        }
+
+        public Builder endpointId(String endpointId) {
+            return endpointId(Output.of(endpointId));
         }
 
         /**

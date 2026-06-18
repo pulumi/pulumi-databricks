@@ -11,7 +11,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+//
+// This data source can be used to fetch the list of failover groups in the account.
+//
+// > **Note** This data source can only be used with an account-level provider!
+//
+// ## Example Usage
+//
+// Getting a list of all failover groups in the account:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetDisasterRecoveryFailoverGroups(ctx, &databricks.GetDisasterRecoveryFailoverGroupsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDisasterRecoveryFailoverGroups(ctx *pulumi.Context, args *GetDisasterRecoveryFailoverGroupsArgs, opts ...pulumi.InvokeOption) (*GetDisasterRecoveryFailoverGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDisasterRecoveryFailoverGroupsResult

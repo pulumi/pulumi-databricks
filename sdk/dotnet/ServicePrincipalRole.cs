@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [API Documentation](https://docs.databricks.com/api/workspace/serviceprincipals)
+    /// 
     /// This resource allows you to attach a role or databricks.InstanceProfile (AWS) to a databricks_service_principal.
     /// 
     /// &gt; This resource can be used with an account or workspace-level provider.

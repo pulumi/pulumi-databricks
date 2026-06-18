@@ -475,6 +475,8 @@ class RegisteredModel(pulumi.CustomResource):
                  updated_by: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/registeredmodels)
+
         This resource allows you to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
 
         > This resource can only be used with a workspace-level provider!
@@ -522,6 +524,8 @@ class RegisteredModel(pulumi.CustomResource):
                  args: Optional[RegisteredModelArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/registeredmodels)
+
         This resource allows you to create [Models in Unity Catalog](https://docs.databricks.com/en/mlflow/models-in-uc.html) in Databricks.
 
         > This resource can only be used with a workspace-level provider!

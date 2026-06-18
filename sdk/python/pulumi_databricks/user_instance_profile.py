@@ -166,6 +166,8 @@ class UserInstanceProfile(pulumi.CustomResource):
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/users)
+
         > **Deprecated** Please rewrite with databricks_user_role. This resource will be removed in v0.5.x
 
         This resource allows you to attach InstanceProfile (AWS) to databricks_user.
@@ -212,6 +214,8 @@ class UserInstanceProfile(pulumi.CustomResource):
                  args: UserInstanceProfileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/users)
+
         > **Deprecated** Please rewrite with databricks_user_role. This resource will be removed in v0.5.x
 
         This resource allows you to attach InstanceProfile (AWS) to databricks_user.

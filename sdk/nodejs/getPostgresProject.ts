@@ -81,6 +81,10 @@ export interface GetPostgresProjectResult {
      * Format: projects/{project_id}
      */
     readonly name: string;
+    /**
+     * (string) - Part of the resource name
+     */
+    readonly projectId: string;
     readonly providerConfig?: outputs.GetPostgresProjectProviderConfig;
     /**
      * (string) - A timestamp indicating when the project is scheduled for permanent deletion.

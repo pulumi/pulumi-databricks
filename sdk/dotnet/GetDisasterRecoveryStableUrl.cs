@@ -12,19 +12,100 @@ namespace Pulumi.Databricks
     public static class GetDisasterRecoveryStableUrl
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+        /// 
+        /// This data source can be used to get a single stable URL by its fully qualified resource name.
+        /// 
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a stable URL by its resource name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetDisasterRecoveryStableUrl.Invoke(new()
+        ///     {
+        ///         Name = $"accounts/{accountId}/stable-urls/accounting-stable-url",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetDisasterRecoveryStableUrlResult> InvokeAsync(GetDisasterRecoveryStableUrlArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDisasterRecoveryStableUrlResult>("databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl", args ?? new GetDisasterRecoveryStableUrlArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+        /// 
+        /// This data source can be used to get a single stable URL by its fully qualified resource name.
+        /// 
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a stable URL by its resource name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetDisasterRecoveryStableUrl.Invoke(new()
+        ///     {
+        ///         Name = $"accounts/{accountId}/stable-urls/accounting-stable-url",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDisasterRecoveryStableUrlResult> Invoke(GetDisasterRecoveryStableUrlInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDisasterRecoveryStableUrlResult>("databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl", args ?? new GetDisasterRecoveryStableUrlInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+        /// 
+        /// This data source can be used to get a single stable URL by its fully qualified resource name.
+        /// 
+        /// &gt; **Note** This data source can only be used with an account-level provider!
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Referring to a stable URL by its resource name:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = Databricks.GetDisasterRecoveryStableUrl.Invoke(new()
+        ///     {
+        ///         Name = $"accounts/{accountId}/stable-urls/accounting-stable-url",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDisasterRecoveryStableUrlResult> Invoke(GetDisasterRecoveryStableUrlInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetDisasterRecoveryStableUrlResult>("databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl", args ?? new GetDisasterRecoveryStableUrlInvokeArgs(), options.WithDefaults());
@@ -69,9 +150,7 @@ namespace Pulumi.Databricks
         /// (string) - Fully qualified resource name of the FailoverGroup this stable URL is
         /// currently linked to, in the format
         /// `accounts/{account_id}/failover-groups/{failover_group_id}`. Empty when
-        /// the stable URL is not attached to any failover group. Server-controlled:
-        /// written by CreateFailoverGroup / UpdateFailoverGroup on link, cleared by
-        /// DeleteFailoverGroup / UpdateFailoverGroup on unlink
+        /// the stable URL is not attached to any failover group
         /// </summary>
         public readonly string FailoverGroupName;
         /// <summary>
@@ -81,7 +160,7 @@ namespace Pulumi.Databricks
         /// <summary>
         /// (string) - The workspace this stable URL is initially bound to. Used only in Create
         /// requests to associate the stable URL with a workspace. Not returned in
-        /// responses. Mirrors FailoverGroup.initial_primary_region semantics
+        /// responses
         /// </summary>
         public readonly string InitialWorkspaceId;
         /// <summary>
@@ -90,7 +169,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (string) - The stable URL endpoint. Generated by the backend on creation and
+        /// (string) - The stable URL endpoint. Generated on creation and
         /// immutable thereafter. For non-Private-Link workspaces this is
         /// `https://&lt;spog_host&gt;/?c=&lt;connection_id&gt;`. For Private-Link workspaces
         /// this is the per-connection hostname

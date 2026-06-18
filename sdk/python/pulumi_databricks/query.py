@@ -534,6 +534,8 @@ class Query(pulumi.CustomResource):
                  warehouse_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/queries)
+
         This resource allows you to manage [Databricks SQL Queries](https://docs.databricks.com/en/sql/user/queries/index.html).  It supersedes SqlQuery resource - see migration guide below for more details.
 
         > This resource can only be used with a workspace-level provider!
@@ -651,6 +653,8 @@ class Query(pulumi.CustomResource):
                  args: QueryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/queries)
+
         This resource allows you to manage [Databricks SQL Queries](https://docs.databricks.com/en/sql/user/queries/index.html).  It supersedes SqlQuery resource - see migration guide below for more details.
 
         > This resource can only be used with a workspace-level provider!

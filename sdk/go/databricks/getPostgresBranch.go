@@ -66,6 +66,8 @@ type LookupPostgresBranchArgs struct {
 
 // A collection of values returned by getPostgresBranch.
 type LookupPostgresBranchResult struct {
+	// (string) - Part of the resource name
+	BranchId string `pulumi:"branchId"`
 	// (string) - A timestamp indicating when the branch was created
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
@@ -122,6 +124,11 @@ func (o LookupPostgresBranchResultOutput) ToLookupPostgresBranchResultOutput() L
 
 func (o LookupPostgresBranchResultOutput) ToLookupPostgresBranchResultOutputWithContext(ctx context.Context) LookupPostgresBranchResultOutput {
 	return o
+}
+
+// (string) - Part of the resource name
+func (o LookupPostgresBranchResultOutput) BranchId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPostgresBranchResult) string { return v.BranchId }).(pulumi.StringOutput)
 }
 
 // (string) - A timestamp indicating when the branch was created

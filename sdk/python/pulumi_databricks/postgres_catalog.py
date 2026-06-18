@@ -27,8 +27,7 @@ class PostgresCatalogArgs:
         """
         The set of arguments for constructing a PostgresCatalog resource.
 
-        :param pulumi.Input[_builtins.str] catalog_id: The ID in the Unity Catalog.
-               It becomes the full resource name, for example "my_catalog" becomes "catalogs/my_catalog"
+        :param pulumi.Input[_builtins.str] catalog_id: The part of the name, chosen by the user when the resource was created
         :param pulumi.Input['PostgresCatalogProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['PostgresCatalogSpecArgs'] spec: The desired state of the Catalog
         """
@@ -42,8 +41,7 @@ class PostgresCatalogArgs:
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID in the Unity Catalog.
-        It becomes the full resource name, for example "my_catalog" becomes "catalogs/my_catalog"
+        The part of the name, chosen by the user when the resource was created
         """
         return pulumi.get(self, "catalog_id")
 
@@ -90,8 +88,7 @@ class _PostgresCatalogState:
         """
         Input properties used for looking up and filtering PostgresCatalog resources.
 
-        :param pulumi.Input[_builtins.str] catalog_id: The ID in the Unity Catalog.
-               It becomes the full resource name, for example "my_catalog" becomes "catalogs/my_catalog"
+        :param pulumi.Input[_builtins.str] catalog_id: The part of the name, chosen by the user when the resource was created
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the catalog was created
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the catalog.
         :param pulumi.Input['PostgresCatalogProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
@@ -121,8 +118,7 @@ class _PostgresCatalogState:
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID in the Unity Catalog.
-        It becomes the full resource name, for example "my_catalog" becomes "catalogs/my_catalog"
+        The part of the name, chosen by the user when the resource was created
         """
         return pulumi.get(self, "catalog_id")
 
@@ -278,8 +274,7 @@ class PostgresCatalog(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] catalog_id: The ID in the Unity Catalog.
-               It becomes the full resource name, for example "my_catalog" becomes "catalogs/my_catalog"
+        :param pulumi.Input[_builtins.str] catalog_id: The part of the name, chosen by the user when the resource was created
         :param pulumi.Input[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict']] spec: The desired state of the Catalog
         """
@@ -402,8 +397,7 @@ class PostgresCatalog(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] catalog_id: The ID in the Unity Catalog.
-               It becomes the full resource name, for example "my_catalog" becomes "catalogs/my_catalog"
+        :param pulumi.Input[_builtins.str] catalog_id: The part of the name, chosen by the user when the resource was created
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the catalog was created
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the catalog.
         :param pulumi.Input[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
@@ -430,8 +424,7 @@ class PostgresCatalog(pulumi.CustomResource):
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID in the Unity Catalog.
-        It becomes the full resource name, for example "my_catalog" becomes "catalogs/my_catalog"
+        The part of the name, chosen by the user when the resource was created
         """
         return pulumi.get(self, "catalog_id")
 

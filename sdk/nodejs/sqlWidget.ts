@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/dashboards)
+ *
  * > This resource is deprecated and will be removed in future.
  *
  * > Please switch to databricks.Dashboard to author new AI/BI dashboards using the latest tooling

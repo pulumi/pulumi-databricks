@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [API Documentation](https://docs.databricks.com/api/workspace/dbfs)
+    /// 
     /// &gt; Please switch to databricks_volume. DBFS mounts are deprecated.
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!

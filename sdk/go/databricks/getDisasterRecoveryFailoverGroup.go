@@ -11,7 +11,43 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+//
+// This data source can be used to get a single failover group by its fully qualified resource name.
+//
+// > **Note** This data source can only be used with an account-level provider!
+//
+// ## Example Usage
+//
+// Referring to a failover group by its resource name:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.GetDisasterRecoveryFailoverGroup(ctx, &databricks.LookupDisasterRecoveryFailoverGroupArgs{
+//				Name: fmt.Sprintf("accounts/%v/failover-groups/accounting-failover-group", accountId),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupDisasterRecoveryFailoverGroup(ctx *pulumi.Context, args *LookupDisasterRecoveryFailoverGroupArgs, opts ...pulumi.InvokeOption) (*LookupDisasterRecoveryFailoverGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDisasterRecoveryFailoverGroupResult

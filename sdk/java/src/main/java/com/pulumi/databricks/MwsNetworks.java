@@ -20,6 +20,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/account/networks)
+ * 
  * ## Databricks on AWS usage
  * 
  * Use this resource to configure VPC &amp; subnets for new workspaces within AWS and GCP.

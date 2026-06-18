@@ -53,28 +53,14 @@ public final class PostgresRoleStatusArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The ID to use for the Role, which will become the final component of
-     * the role&#39;s resource name.
-     * This ID becomes the role in Postgres.
-     * 
-     * This value should be 4-63 characters, and valid characters
-     * are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-     * 
-     * If roleId is not specified in the request, it is generated automatically
+     * (string) - Part of the resource name
      * 
      */
     @Import(name="roleId")
     private @Nullable Output<String> roleId;
 
     /**
-     * @return The ID to use for the Role, which will become the final component of
-     * the role&#39;s resource name.
-     * This ID becomes the role in Postgres.
-     * 
-     * This value should be 4-63 characters, and valid characters
-     * are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-     * 
-     * If roleId is not specified in the request, it is generated automatically
+     * @return (string) - Part of the resource name
      * 
      */
     public Optional<Output<String>> roleId() {
@@ -160,14 +146,7 @@ public final class PostgresRoleStatusArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param roleId The ID to use for the Role, which will become the final component of
-         * the role&#39;s resource name.
-         * This ID becomes the role in Postgres.
-         * 
-         * This value should be 4-63 characters, and valid characters
-         * are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-         * 
-         * If roleId is not specified in the request, it is generated automatically
+         * @param roleId (string) - Part of the resource name
          * 
          * @return builder
          * 
@@ -178,14 +157,7 @@ public final class PostgresRoleStatusArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param roleId The ID to use for the Role, which will become the final component of
-         * the role&#39;s resource name.
-         * This ID becomes the role in Postgres.
-         * 
-         * This value should be 4-63 characters, and valid characters
-         * are lowercase letters, numbers, and hyphens, as defined by RFC 1123.
-         * 
-         * If roleId is not specified in the request, it is generated automatically
+         * @param roleId (string) - Part of the resource name
          * 
          * @return builder
          * 

@@ -89,8 +89,7 @@ export class PostgresCatalog extends pulumi.CustomResource {
     }
 
     /**
-     * The ID in the Unity Catalog.
-     * It becomes the full resource name, for example "myCatalog" becomes "catalogs/my_catalog"
+     * The part of the name, chosen by the user when the resource was created
      */
     declare public readonly catalogId: pulumi.Output<string>;
     /**
@@ -167,8 +166,7 @@ export class PostgresCatalog extends pulumi.CustomResource {
  */
 export interface PostgresCatalogState {
     /**
-     * The ID in the Unity Catalog.
-     * It becomes the full resource name, for example "myCatalog" becomes "catalogs/my_catalog"
+     * The part of the name, chosen by the user when the resource was created
      */
     catalogId?: pulumi.Input<string | undefined>;
     /**
@@ -206,8 +204,7 @@ export interface PostgresCatalogState {
  */
 export interface PostgresCatalogArgs {
     /**
-     * The ID in the Unity Catalog.
-     * It becomes the full resource name, for example "myCatalog" becomes "catalogs/my_catalog"
+     * The part of the name, chosen by the user when the resource was created
      */
     catalogId: pulumi.Input<string>;
     /**

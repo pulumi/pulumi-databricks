@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.ConnectionEnvironmentSettingsArgs;
 import com.pulumi.databricks.inputs.ConnectionProviderConfigArgs;
 import com.pulumi.databricks.inputs.ConnectionProvisioningInfoArgs;
 import java.lang.Boolean;
@@ -22,14 +23,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     public static final ConnectionState Empty = new ConnectionState();
 
     /**
-     * Free-form text. Change forces creation of a new resource.
+     * User-provided free-form text description. Change forces creation of a new resource.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return Free-form text. Change forces creation of a new resource.
+     * @return User-provided free-form text description. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -37,14 +38,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique ID of the connection.
+     * Unique identifier of the Connection.
      * 
      */
     @Import(name="connectionId")
     private @Nullable Output<String> connectionId;
 
     /**
-     * @return Unique ID of the connection.
+     * @return Unique identifier of the Connection.
      * 
      */
     public Optional<Output<String>> connectionId() {
@@ -52,14 +53,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+     * The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
      * 
      */
     @Import(name="connectionType")
     private @Nullable Output<String> connectionType;
 
     /**
-     * @return Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+     * @return The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
      * 
      */
     public Optional<Output<String>> connectionType() {
@@ -97,18 +98,33 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of credential for this connection.
+     * The type of credential.
      * 
      */
     @Import(name="credentialType")
     private @Nullable Output<String> credentialType;
 
     /**
-     * @return The type of credential for this connection.
+     * @return The type of credential.
      * 
      */
     public Optional<Output<String>> credentialType() {
         return Optional.ofNullable(this.credentialType);
+    }
+
+    /**
+     * Connection environment settings. This block consists of the following fields:
+     * 
+     */
+    @Import(name="environmentSettings")
+    private @Nullable Output<ConnectionEnvironmentSettingsArgs> environmentSettings;
+
+    /**
+     * @return Connection environment settings. This block consists of the following fields:
+     * 
+     */
+    public Optional<Output<ConnectionEnvironmentSettingsArgs>> environmentSettings() {
+        return Optional.ofNullable(this.environmentSettings);
     }
 
     /**
@@ -127,14 +143,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Unique ID of the UC metastore for this connection.
+     * Unique identifier of parent metastore.
      * 
      */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
     /**
-     * @return Unique ID of the UC metastore for this connection.
+     * @return Unique identifier of parent metastore.
      * 
      */
     public Optional<Output<String>> metastoreId() {
@@ -142,14 +158,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the Connection.
+     * Name of the connection.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the Connection.
+     * @return Name of the connection.
      * 
      */
     public Optional<Output<String>> name() {
@@ -157,14 +173,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+     * A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
      * 
      */
     @Import(name="options")
     private @Nullable Output<Map<String,String>> options;
 
     /**
-     * @return The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+     * @return A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
      * 
      */
     public Optional<Output<Map<String,String>>> options() {
@@ -172,14 +188,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the connection owner.
+     * Username of current owner of the connection.
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return Name of the connection owner.
+     * @return Username of current owner of the connection.
      * 
      */
     public Optional<Output<String>> owner() {
@@ -187,14 +203,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Free-form connection properties. Change forces creation of a new resource.
+     * A map of key-value properties attached to the securable. Change forces creation of a new resource.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return Free-form connection properties. Change forces creation of a new resource.
+     * @return A map of key-value properties attached to the securable. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -217,14 +233,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Object with the status of an asynchronously provisioned resource.
+     * Status of an asynchronously provisioned resource. This block consists of the following fields:
      * 
      */
     @Import(name="provisioningInfos")
     private @Nullable Output<List<ConnectionProvisioningInfoArgs>> provisioningInfos;
 
     /**
-     * @return Object with the status of an asynchronously provisioned resource.
+     * @return Status of an asynchronously provisioned resource. This block consists of the following fields:
      * 
      */
     public Optional<Output<List<ConnectionProvisioningInfoArgs>>> provisioningInfos() {
@@ -232,36 +248,44 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether the connection is read-only. Change forces creation of a new resource.
+     * If the connection is read only. Change forces creation of a new resource.
      * 
      */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
     /**
-     * @return Indicates whether the connection is read-only. Change forces creation of a new resource.
+     * @return If the connection is read only. Change forces creation of a new resource.
      * 
      */
     public Optional<Output<Boolean>> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }
 
+    /**
+     * Securable type.
+     * 
+     */
     @Import(name="securableType")
     private @Nullable Output<String> securableType;
 
+    /**
+     * @return Securable type.
+     * 
+     */
     public Optional<Output<String>> securableType() {
         return Optional.ofNullable(this.securableType);
     }
 
     /**
-     * Time at which connection this was last modified, in epoch milliseconds.
+     * Time at which this connection was updated, in epoch milliseconds.
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<Integer> updatedAt;
 
     /**
-     * @return Time at which connection this was last modified, in epoch milliseconds.
+     * @return Time at which this connection was updated, in epoch milliseconds.
      * 
      */
     public Optional<Output<Integer>> updatedAt() {
@@ -269,14 +293,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Username of user who last modified the connection.
+     * Username of user who last modified connection.
      * 
      */
     @Import(name="updatedBy")
     private @Nullable Output<String> updatedBy;
 
     /**
-     * @return Username of user who last modified the connection.
+     * @return Username of user who last modified connection.
      * 
      */
     public Optional<Output<String>> updatedBy() {
@@ -307,6 +331,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         this.createdAt = $.createdAt;
         this.createdBy = $.createdBy;
         this.credentialType = $.credentialType;
+        this.environmentSettings = $.environmentSettings;
         this.fullName = $.fullName;
         this.metastoreId = $.metastoreId;
         this.name = $.name;
@@ -341,7 +366,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment Free-form text. Change forces creation of a new resource.
+         * @param comment User-provided free-form text description. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -352,7 +377,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comment Free-form text. Change forces creation of a new resource.
+         * @param comment User-provided free-form text description. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -362,7 +387,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionId Unique ID of the connection.
+         * @param connectionId Unique identifier of the Connection.
          * 
          * @return builder
          * 
@@ -373,7 +398,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionId Unique ID of the connection.
+         * @param connectionId Unique identifier of the Connection.
          * 
          * @return builder
          * 
@@ -383,7 +408,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionType Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+         * @param connectionType The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -394,7 +419,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionType Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+         * @param connectionType The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -446,7 +471,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param credentialType The type of credential for this connection.
+         * @param credentialType The type of credential.
          * 
          * @return builder
          * 
@@ -457,13 +482,34 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param credentialType The type of credential for this connection.
+         * @param credentialType The type of credential.
          * 
          * @return builder
          * 
          */
         public Builder credentialType(String credentialType) {
             return credentialType(Output.of(credentialType));
+        }
+
+        /**
+         * @param environmentSettings Connection environment settings. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environmentSettings(@Nullable Output<ConnectionEnvironmentSettingsArgs> environmentSettings) {
+            $.environmentSettings = environmentSettings;
+            return this;
+        }
+
+        /**
+         * @param environmentSettings Connection environment settings. This block consists of the following fields:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environmentSettings(ConnectionEnvironmentSettingsArgs environmentSettings) {
+            return environmentSettings(Output.of(environmentSettings));
         }
 
         /**
@@ -488,7 +534,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metastoreId Unique ID of the UC metastore for this connection.
+         * @param metastoreId Unique identifier of parent metastore.
          * 
          * @return builder
          * 
@@ -499,7 +545,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metastoreId Unique ID of the UC metastore for this connection.
+         * @param metastoreId Unique identifier of parent metastore.
          * 
          * @return builder
          * 
@@ -509,7 +555,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the Connection.
+         * @param name Name of the connection.
          * 
          * @return builder
          * 
@@ -520,7 +566,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the Connection.
+         * @param name Name of the connection.
          * 
          * @return builder
          * 
@@ -530,7 +576,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param options The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+         * @param options A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
          * 
          * @return builder
          * 
@@ -541,7 +587,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param options The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+         * @param options A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
          * 
          * @return builder
          * 
@@ -551,7 +597,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Name of the connection owner.
+         * @param owner Username of current owner of the connection.
          * 
          * @return builder
          * 
@@ -562,7 +608,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param owner Name of the connection owner.
+         * @param owner Username of current owner of the connection.
          * 
          * @return builder
          * 
@@ -572,7 +618,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param properties Free-form connection properties. Change forces creation of a new resource.
+         * @param properties A map of key-value properties attached to the securable. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -583,7 +629,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param properties Free-form connection properties. Change forces creation of a new resource.
+         * @param properties A map of key-value properties attached to the securable. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -614,7 +660,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provisioningInfos Object with the status of an asynchronously provisioned resource.
+         * @param provisioningInfos Status of an asynchronously provisioned resource. This block consists of the following fields:
          * 
          * @return builder
          * 
@@ -625,7 +671,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provisioningInfos Object with the status of an asynchronously provisioned resource.
+         * @param provisioningInfos Status of an asynchronously provisioned resource. This block consists of the following fields:
          * 
          * @return builder
          * 
@@ -635,7 +681,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param provisioningInfos Object with the status of an asynchronously provisioned resource.
+         * @param provisioningInfos Status of an asynchronously provisioned resource. This block consists of the following fields:
          * 
          * @return builder
          * 
@@ -645,7 +691,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readOnly Indicates whether the connection is read-only. Change forces creation of a new resource.
+         * @param readOnly If the connection is read only. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -656,7 +702,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readOnly Indicates whether the connection is read-only. Change forces creation of a new resource.
+         * @param readOnly If the connection is read only. Change forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -665,17 +711,29 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
             return readOnly(Output.of(readOnly));
         }
 
+        /**
+         * @param securableType Securable type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securableType(@Nullable Output<String> securableType) {
             $.securableType = securableType;
             return this;
         }
 
+        /**
+         * @param securableType Securable type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securableType(String securableType) {
             return securableType(Output.of(securableType));
         }
 
         /**
-         * @param updatedAt Time at which connection this was last modified, in epoch milliseconds.
+         * @param updatedAt Time at which this connection was updated, in epoch milliseconds.
          * 
          * @return builder
          * 
@@ -686,7 +744,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updatedAt Time at which connection this was last modified, in epoch milliseconds.
+         * @param updatedAt Time at which this connection was updated, in epoch milliseconds.
          * 
          * @return builder
          * 
@@ -696,7 +754,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updatedBy Username of user who last modified the connection.
+         * @param updatedBy Username of user who last modified connection.
          * 
          * @return builder
          * 
@@ -707,7 +765,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updatedBy Username of user who last modified the connection.
+         * @param updatedBy Username of user who last modified connection.
          * 
          * @return builder
          * 

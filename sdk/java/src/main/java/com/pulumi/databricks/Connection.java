@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.ConnectionArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.ConnectionState;
+import com.pulumi.databricks.outputs.ConnectionEnvironmentSettings;
 import com.pulumi.databricks.outputs.ConnectionProviderConfig;
 import com.pulumi.databricks.outputs.ConnectionProvisioningInfo;
 import java.lang.Boolean;
@@ -21,6 +22,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/connections)
+ * 
  * &gt; This resource can only be used with a workspace-level provider!
  * 
  * Lakehouse Federation is the query federation platform for Databricks. Databricks uses Unity Catalog to manage query federation. To make a dataset available for read-only querying using Lakehouse Federation, you create the following:
@@ -293,42 +296,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/connection:Connection")
 public class Connection extends com.pulumi.resources.CustomResource {
     /**
-     * Free-form text. Change forces creation of a new resource.
+     * User-provided free-form text description. Change forces creation of a new resource.
      * 
      */
     @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
-     * @return Free-form text. Change forces creation of a new resource.
+     * @return User-provided free-form text description. Change forces creation of a new resource.
      * 
      */
     public Output<Optional<String>> comment() {
         return Codegen.optional(this.comment);
     }
     /**
-     * Unique ID of the connection.
+     * Unique identifier of the Connection.
      * 
      */
     @Export(name="connectionId", refs={String.class}, tree="[0]")
     private Output<String> connectionId;
 
     /**
-     * @return Unique ID of the connection.
+     * @return Unique identifier of the Connection.
      * 
      */
     public Output<String> connectionId() {
         return this.connectionId;
     }
     /**
-     * Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+     * The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
      * 
      */
     @Export(name="connectionType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> connectionType;
 
     /**
-     * @return Connection type. `MYSQL`, `POSTGRESQL`, `SNOWFLAKE`, `REDSHIFT` `SQLDW`, `SQLSERVER`, `DATABRICKS`, `SALESFORCE`, `BIGQUERY`, `WORKDAY_RAAS`, `HIVE_METASTORE`, `GA4_RAW_DATA`, `SERVICENOW`, `SALESFORCE_DATA_CLOUD`, `GLUE`, `ORACLE`, `TERADATA`, `HTTP` or `POWER_BI` are supported. Up-to-date list of connection type supported is in the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
+     * @return The type of connection. Possible values are: `BIGQUERY`, `CONFLUENCE`, `DATABRICKS`, `GA4_RAW_DATA`, `GITHUB`, `GLUE`, `HIVE_METASTORE`, `HTTP`, `HUBSPOT`, `META_MARKETING`, `MYSQL`, `ORACLE`, `OUTLOOK`, `POSTGRESQL`, `POWER_BI`, `REDSHIFT`, `SALESFORCE`, `SALESFORCE_DATA_CLOUD`, `SERVICENOW`, `SMARTSHEET`, `SNOWFLAKE`, `SQLDW`, `SQLSERVER`, `TERADATA`, `WORKDAY_RAAS`, or `ZENDESK`. For an up-to-date list of connection types and required options, see the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources). Change forces creation of a new resource.
      * 
      */
     public Output<Optional<String>> connectionType() {
@@ -363,18 +366,32 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.createdBy;
     }
     /**
-     * The type of credential for this connection.
+     * The type of credential.
      * 
      */
     @Export(name="credentialType", refs={String.class}, tree="[0]")
     private Output<String> credentialType;
 
     /**
-     * @return The type of credential for this connection.
+     * @return The type of credential.
      * 
      */
     public Output<String> credentialType() {
         return this.credentialType;
+    }
+    /**
+     * Connection environment settings. This block consists of the following fields:
+     * 
+     */
+    @Export(name="environmentSettings", refs={ConnectionEnvironmentSettings.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionEnvironmentSettings> environmentSettings;
+
+    /**
+     * @return Connection environment settings. This block consists of the following fields:
+     * 
+     */
+    public Output<Optional<ConnectionEnvironmentSettings>> environmentSettings() {
+        return Codegen.optional(this.environmentSettings);
     }
     /**
      * Full name of connection.
@@ -391,70 +408,70 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.fullName;
     }
     /**
-     * Unique ID of the UC metastore for this connection.
+     * Unique identifier of parent metastore.
      * 
      */
     @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
     /**
-     * @return Unique ID of the UC metastore for this connection.
+     * @return Unique identifier of parent metastore.
      * 
      */
     public Output<String> metastoreId() {
         return this.metastoreId;
     }
     /**
-     * Name of the Connection.
+     * Name of the connection.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the Connection.
+     * @return Name of the connection.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+     * A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
      * 
      */
     @Export(name="options", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> options;
 
     /**
-     * @return The key value of options required by the connection, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret` or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required option.
+     * @return A map of key-value properties attached to the securable. The required keys depend on the connection type, e.g. `host`, `port`, `user`, `password`, `authorizationEndpoint`, `clientId`, `clientSecret`, or `GoogleServiceAccountKeyJson`. Please consult the [documentation](https://docs.databricks.com/query-federation/index.html#supported-data-sources) for the required options. This field is sensitive.
      * 
      */
     public Output<Optional<Map<String,String>>> options() {
         return Codegen.optional(this.options);
     }
     /**
-     * Name of the connection owner.
+     * Username of current owner of the connection.
      * 
      */
     @Export(name="owner", refs={String.class}, tree="[0]")
     private Output<String> owner;
 
     /**
-     * @return Name of the connection owner.
+     * @return Username of current owner of the connection.
      * 
      */
     public Output<String> owner() {
         return this.owner;
     }
     /**
-     * Free-form connection properties. Change forces creation of a new resource.
+     * A map of key-value properties attached to the securable. Change forces creation of a new resource.
      * 
      */
     @Export(name="properties", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> properties;
 
     /**
-     * @return Free-form connection properties. Change forces creation of a new resource.
+     * @return A map of key-value properties attached to the securable. Change forces creation of a new resource.
      * 
      */
     public Output<Optional<Map<String,String>>> properties() {
@@ -475,62 +492,70 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.providerConfig;
     }
     /**
-     * Object with the status of an asynchronously provisioned resource.
+     * Status of an asynchronously provisioned resource. This block consists of the following fields:
      * 
      */
     @Export(name="provisioningInfos", refs={List.class,ConnectionProvisioningInfo.class}, tree="[0,1]")
     private Output<List<ConnectionProvisioningInfo>> provisioningInfos;
 
     /**
-     * @return Object with the status of an asynchronously provisioned resource.
+     * @return Status of an asynchronously provisioned resource. This block consists of the following fields:
      * 
      */
     public Output<List<ConnectionProvisioningInfo>> provisioningInfos() {
         return this.provisioningInfos;
     }
     /**
-     * Indicates whether the connection is read-only. Change forces creation of a new resource.
+     * If the connection is read only. Change forces creation of a new resource.
      * 
      */
     @Export(name="readOnly", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> readOnly;
 
     /**
-     * @return Indicates whether the connection is read-only. Change forces creation of a new resource.
+     * @return If the connection is read only. Change forces creation of a new resource.
      * 
      */
     public Output<Boolean> readOnly() {
         return this.readOnly;
     }
+    /**
+     * Securable type.
+     * 
+     */
     @Export(name="securableType", refs={String.class}, tree="[0]")
     private Output<String> securableType;
 
+    /**
+     * @return Securable type.
+     * 
+     */
     public Output<String> securableType() {
         return this.securableType;
     }
     /**
-     * Time at which connection this was last modified, in epoch milliseconds.
+     * Time at which this connection was updated, in epoch milliseconds.
      * 
      */
     @Export(name="updatedAt", refs={Integer.class}, tree="[0]")
     private Output<Integer> updatedAt;
 
     /**
-     * @return Time at which connection this was last modified, in epoch milliseconds.
+     * @return Time at which this connection was updated, in epoch milliseconds.
      * 
      */
     public Output<Integer> updatedAt() {
         return this.updatedAt;
     }
     /**
-     * Username of user who last modified the connection.
+     * Username of user who last modified connection.
      * 
      */
     @Export(name="updatedBy", refs={String.class}, tree="[0]")
     private Output<String> updatedBy;
 
     /**
-     * @return Username of user who last modified the connection.
+     * @return Username of user who last modified connection.
      * 
      */
     public Output<String> updatedBy() {

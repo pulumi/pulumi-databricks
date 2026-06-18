@@ -30,6 +30,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("requestSource")]
         public Input<Inputs.FeatureEngineeringFeatureSourceRequestSourceArgs>? RequestSource { get; set; }
 
+        /// <summary>
+        /// A Stream data source
+        /// </summary>
+        [Input("streamSource")]
+        public Input<Inputs.FeatureEngineeringFeatureSourceStreamSourceArgs>? StreamSource { get; set; }
+
         public FeatureEngineeringFeatureSourceArgs()
         {
         }

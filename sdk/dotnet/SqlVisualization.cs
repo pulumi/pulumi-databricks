@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [API Documentation](https://docs.databricks.com/api/workspace/dashboards)
+    /// 
     /// &gt; This resource is deprecated and will be removed in future.
     /// 
     /// &gt; Please switch to databricks.Dashboard to author new AI/BI dashboards using the latest tooling

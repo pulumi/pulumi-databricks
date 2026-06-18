@@ -31,6 +31,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccountSettingUserPreferenceV2{}
 	case "databricks:index/accountSettingV2:AccountSettingV2":
 		r = &AccountSettingV2{}
+	case "databricks:index/aiSearchEndpoint:AiSearchEndpoint":
+		r = &AiSearchEndpoint{}
+	case "databricks:index/aiSearchIndex:AiSearchIndex":
+		r = &AiSearchIndex{}
 	case "databricks:index/aibiDashboardEmbeddingAccessPolicySetting:AibiDashboardEmbeddingAccessPolicySetting":
 		r = &AibiDashboardEmbeddingAccessPolicySetting{}
 	case "databricks:index/aibiDashboardEmbeddingApprovedDomainsSetting:AibiDashboardEmbeddingApprovedDomainsSetting":
@@ -381,6 +385,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/accountSettingV2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/aiSearchEndpoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/aiSearchIndex",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

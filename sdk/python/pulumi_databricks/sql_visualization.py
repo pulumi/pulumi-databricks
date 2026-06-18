@@ -249,6 +249,8 @@ class SqlVisualization(pulumi.CustomResource):
                  visualization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/dashboards)
+
         > This resource is deprecated and will be removed in future.
 
         > Please switch to Dashboard to author new AI/BI dashboards using the latest tooling
@@ -313,6 +315,8 @@ class SqlVisualization(pulumi.CustomResource):
                  args: SqlVisualizationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/dashboards)
+
         > This resource is deprecated and will be removed in future.
 
         > Please switch to Dashboard to author new AI/BI dashboards using the latest tooling

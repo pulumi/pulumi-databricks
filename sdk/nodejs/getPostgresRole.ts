@@ -76,6 +76,10 @@ export interface GetPostgresRoleResult {
     readonly parent: string;
     readonly providerConfig?: outputs.GetPostgresRoleProviderConfig;
     /**
+     * (string) - Part of the resource name
+     */
+    readonly roleId: string;
+    /**
      * (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
      */
     readonly spec: outputs.GetPostgresRoleSpec;

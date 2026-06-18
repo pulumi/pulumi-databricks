@@ -104,6 +104,13 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.createdBy);
     }
 
+    @Import(name="customMaxRetentionHours")
+    private @Nullable Output<Integer> customMaxRetentionHours;
+
+    public Optional<Output<Integer>> customMaxRetentionHours() {
+        return Optional.ofNullable(this.customMaxRetentionHours);
+    }
+
     @Import(name="effectivePredictiveOptimizationFlag")
     private @Nullable Output<CatalogEffectivePredictiveOptimizationFlagArgs> effectivePredictiveOptimizationFlag;
 
@@ -381,6 +388,7 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
         this.connectionName = $.connectionName;
         this.createdAt = $.createdAt;
         this.createdBy = $.createdBy;
+        this.customMaxRetentionHours = $.customMaxRetentionHours;
         this.effectivePredictiveOptimizationFlag = $.effectivePredictiveOptimizationFlag;
         this.enablePredictiveOptimization = $.enablePredictiveOptimization;
         this.forceDestroy = $.forceDestroy;
@@ -533,6 +541,15 @@ public final class CatalogState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createdBy(String createdBy) {
             return createdBy(Output.of(createdBy));
+        }
+
+        public Builder customMaxRetentionHours(@Nullable Output<Integer> customMaxRetentionHours) {
+            $.customMaxRetentionHours = customMaxRetentionHours;
+            return this;
+        }
+
+        public Builder customMaxRetentionHours(Integer customMaxRetentionHours) {
+            return customMaxRetentionHours(Output.of(customMaxRetentionHours));
         }
 
         public Builder effectivePredictiveOptimizationFlag(@Nullable Output<CatalogEffectivePredictiveOptimizationFlagArgs> effectivePredictiveOptimizationFlag) {

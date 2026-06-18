@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [API Documentation](https://docs.databricks.com/api/workspace/workspacebindings)
+    /// 
     /// &gt; This resource has been deprecated and will be removed soon. Please use the databricks.WorkspaceBinding resource instead.
     /// 
     /// If you use workspaces to isolate user data access, you may want to limit catalog access to specific workspaces in your account, also known as workspace-catalog binding

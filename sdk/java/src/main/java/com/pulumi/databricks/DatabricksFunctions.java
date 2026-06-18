@@ -16,6 +16,14 @@ import com.pulumi.databricks.inputs.GetAccountSettingUserPreferenceV2Args;
 import com.pulumi.databricks.inputs.GetAccountSettingUserPreferenceV2PlainArgs;
 import com.pulumi.databricks.inputs.GetAccountSettingV2Args;
 import com.pulumi.databricks.inputs.GetAccountSettingV2PlainArgs;
+import com.pulumi.databricks.inputs.GetAiSearchEndpointArgs;
+import com.pulumi.databricks.inputs.GetAiSearchEndpointPlainArgs;
+import com.pulumi.databricks.inputs.GetAiSearchEndpointsArgs;
+import com.pulumi.databricks.inputs.GetAiSearchEndpointsPlainArgs;
+import com.pulumi.databricks.inputs.GetAiSearchIndexArgs;
+import com.pulumi.databricks.inputs.GetAiSearchIndexPlainArgs;
+import com.pulumi.databricks.inputs.GetAiSearchIndexesArgs;
+import com.pulumi.databricks.inputs.GetAiSearchIndexesPlainArgs;
 import com.pulumi.databricks.inputs.GetAlertV2Args;
 import com.pulumi.databricks.inputs.GetAlertV2PlainArgs;
 import com.pulumi.databricks.inputs.GetAlertsV2Args;
@@ -306,6 +314,10 @@ import com.pulumi.databricks.outputs.GetAccountNetworkPoliciesResult;
 import com.pulumi.databricks.outputs.GetAccountNetworkPolicyResult;
 import com.pulumi.databricks.outputs.GetAccountSettingUserPreferenceV2Result;
 import com.pulumi.databricks.outputs.GetAccountSettingV2Result;
+import com.pulumi.databricks.outputs.GetAiSearchEndpointResult;
+import com.pulumi.databricks.outputs.GetAiSearchEndpointsResult;
+import com.pulumi.databricks.outputs.GetAiSearchIndexResult;
+import com.pulumi.databricks.outputs.GetAiSearchIndexesResult;
 import com.pulumi.databricks.outputs.GetAlertV2Result;
 import com.pulumi.databricks.outputs.GetAlertsV2Result;
 import com.pulumi.databricks.outputs.GetAppResult;
@@ -1398,6 +1410,146 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetAccountSettingV2Result> getAccountSettingV2Plain(GetAccountSettingV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAiSearchEndpointResult> getAiSearchEndpoint(GetAiSearchEndpointArgs args) {
+        return getAiSearchEndpoint(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAiSearchEndpointResult> getAiSearchEndpointPlain(GetAiSearchEndpointPlainArgs args) {
+        return getAiSearchEndpointPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAiSearchEndpointResult> getAiSearchEndpoint(GetAiSearchEndpointArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiSearchEndpoint:getAiSearchEndpoint", TypeShape.of(GetAiSearchEndpointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAiSearchEndpointResult> getAiSearchEndpoint(GetAiSearchEndpointArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiSearchEndpoint:getAiSearchEndpoint", TypeShape.of(GetAiSearchEndpointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAiSearchEndpointResult> getAiSearchEndpointPlain(GetAiSearchEndpointPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAiSearchEndpoint:getAiSearchEndpoint", TypeShape.of(GetAiSearchEndpointResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAiSearchEndpointsResult> getAiSearchEndpoints(GetAiSearchEndpointsArgs args) {
+        return getAiSearchEndpoints(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAiSearchEndpointsResult> getAiSearchEndpointsPlain(GetAiSearchEndpointsPlainArgs args) {
+        return getAiSearchEndpointsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAiSearchEndpointsResult> getAiSearchEndpoints(GetAiSearchEndpointsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiSearchEndpoints:getAiSearchEndpoints", TypeShape.of(GetAiSearchEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAiSearchEndpointsResult> getAiSearchEndpoints(GetAiSearchEndpointsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiSearchEndpoints:getAiSearchEndpoints", TypeShape.of(GetAiSearchEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAiSearchEndpointsResult> getAiSearchEndpointsPlain(GetAiSearchEndpointsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAiSearchEndpoints:getAiSearchEndpoints", TypeShape.of(GetAiSearchEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAiSearchIndexResult> getAiSearchIndex(GetAiSearchIndexArgs args) {
+        return getAiSearchIndex(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAiSearchIndexResult> getAiSearchIndexPlain(GetAiSearchIndexPlainArgs args) {
+        return getAiSearchIndexPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAiSearchIndexResult> getAiSearchIndex(GetAiSearchIndexArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiSearchIndex:getAiSearchIndex", TypeShape.of(GetAiSearchIndexResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAiSearchIndexResult> getAiSearchIndex(GetAiSearchIndexArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiSearchIndex:getAiSearchIndex", TypeShape.of(GetAiSearchIndexResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAiSearchIndexResult> getAiSearchIndexPlain(GetAiSearchIndexPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAiSearchIndex:getAiSearchIndex", TypeShape.of(GetAiSearchIndexResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAiSearchIndexesResult> getAiSearchIndexes(GetAiSearchIndexesArgs args) {
+        return getAiSearchIndexes(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAiSearchIndexesResult> getAiSearchIndexesPlain(GetAiSearchIndexesPlainArgs args) {
+        return getAiSearchIndexesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAiSearchIndexesResult> getAiSearchIndexes(GetAiSearchIndexesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiSearchIndexes:getAiSearchIndexes", TypeShape.of(GetAiSearchIndexesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static Output<GetAiSearchIndexesResult> getAiSearchIndexes(GetAiSearchIndexesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAiSearchIndexes:getAiSearchIndexes", TypeShape.of(GetAiSearchIndexesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     */
+    public static CompletableFuture<GetAiSearchIndexesResult> getAiSearchIndexesPlain(GetAiSearchIndexesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAiSearchIndexes:getAiSearchIndexes", TypeShape.of(GetAiSearchIndexesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -12719,147 +12871,957 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDirectory:getDirectory", TypeShape.of(GetDirectoryResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to get a single failover group by its fully qualified resource name.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a failover group by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryFailoverGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getDisasterRecoveryFailoverGroup(GetDisasterRecoveryFailoverGroupArgs.builder()
+     *             .name(String.format("accounts/%s/failover-groups/accounting-failover-group", accountId))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDisasterRecoveryFailoverGroupResult> getDisasterRecoveryFailoverGroup(GetDisasterRecoveryFailoverGroupArgs args) {
         return getDisasterRecoveryFailoverGroup(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to get a single failover group by its fully qualified resource name.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a failover group by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryFailoverGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getDisasterRecoveryFailoverGroup(GetDisasterRecoveryFailoverGroupArgs.builder()
+     *             .name(String.format("accounts/%s/failover-groups/accounting-failover-group", accountId))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDisasterRecoveryFailoverGroupResult> getDisasterRecoveryFailoverGroupPlain(GetDisasterRecoveryFailoverGroupPlainArgs args) {
         return getDisasterRecoveryFailoverGroupPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to get a single failover group by its fully qualified resource name.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a failover group by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryFailoverGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getDisasterRecoveryFailoverGroup(GetDisasterRecoveryFailoverGroupArgs.builder()
+     *             .name(String.format("accounts/%s/failover-groups/accounting-failover-group", accountId))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDisasterRecoveryFailoverGroupResult> getDisasterRecoveryFailoverGroup(GetDisasterRecoveryFailoverGroupArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryFailoverGroup:getDisasterRecoveryFailoverGroup", TypeShape.of(GetDisasterRecoveryFailoverGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to get a single failover group by its fully qualified resource name.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a failover group by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryFailoverGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getDisasterRecoveryFailoverGroup(GetDisasterRecoveryFailoverGroupArgs.builder()
+     *             .name(String.format("accounts/%s/failover-groups/accounting-failover-group", accountId))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDisasterRecoveryFailoverGroupResult> getDisasterRecoveryFailoverGroup(GetDisasterRecoveryFailoverGroupArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryFailoverGroup:getDisasterRecoveryFailoverGroup", TypeShape.of(GetDisasterRecoveryFailoverGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to get a single failover group by its fully qualified resource name.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a failover group by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryFailoverGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getDisasterRecoveryFailoverGroup(GetDisasterRecoveryFailoverGroupArgs.builder()
+     *             .name(String.format("accounts/%s/failover-groups/accounting-failover-group", accountId))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDisasterRecoveryFailoverGroupResult> getDisasterRecoveryFailoverGroupPlain(GetDisasterRecoveryFailoverGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDisasterRecoveryFailoverGroup:getDisasterRecoveryFailoverGroup", TypeShape.of(GetDisasterRecoveryFailoverGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to fetch the list of failover groups in the account.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all failover groups in the account:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryFailoverGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDisasterRecoveryFailoverGroups(GetDisasterRecoveryFailoverGroupsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDisasterRecoveryFailoverGroupsResult> getDisasterRecoveryFailoverGroups(GetDisasterRecoveryFailoverGroupsArgs args) {
         return getDisasterRecoveryFailoverGroups(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to fetch the list of failover groups in the account.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all failover groups in the account:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryFailoverGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDisasterRecoveryFailoverGroups(GetDisasterRecoveryFailoverGroupsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDisasterRecoveryFailoverGroupsResult> getDisasterRecoveryFailoverGroupsPlain(GetDisasterRecoveryFailoverGroupsPlainArgs args) {
         return getDisasterRecoveryFailoverGroupsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to fetch the list of failover groups in the account.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all failover groups in the account:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryFailoverGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDisasterRecoveryFailoverGroups(GetDisasterRecoveryFailoverGroupsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDisasterRecoveryFailoverGroupsResult> getDisasterRecoveryFailoverGroups(GetDisasterRecoveryFailoverGroupsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryFailoverGroups:getDisasterRecoveryFailoverGroups", TypeShape.of(GetDisasterRecoveryFailoverGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to fetch the list of failover groups in the account.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all failover groups in the account:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryFailoverGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDisasterRecoveryFailoverGroups(GetDisasterRecoveryFailoverGroupsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDisasterRecoveryFailoverGroupsResult> getDisasterRecoveryFailoverGroups(GetDisasterRecoveryFailoverGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryFailoverGroups:getDisasterRecoveryFailoverGroups", TypeShape.of(GetDisasterRecoveryFailoverGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to fetch the list of failover groups in the account.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all failover groups in the account:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryFailoverGroupsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDisasterRecoveryFailoverGroups(GetDisasterRecoveryFailoverGroupsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDisasterRecoveryFailoverGroupsResult> getDisasterRecoveryFailoverGroupsPlain(GetDisasterRecoveryFailoverGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDisasterRecoveryFailoverGroups:getDisasterRecoveryFailoverGroups", TypeShape.of(GetDisasterRecoveryFailoverGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to get a single stable URL by its fully qualified resource name.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a stable URL by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getDisasterRecoveryStableUrl(GetDisasterRecoveryStableUrlArgs.builder()
+     *             .name(String.format("accounts/%s/stable-urls/accounting-stable-url", accountId))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDisasterRecoveryStableUrlResult> getDisasterRecoveryStableUrl(GetDisasterRecoveryStableUrlArgs args) {
         return getDisasterRecoveryStableUrl(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to get a single stable URL by its fully qualified resource name.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a stable URL by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getDisasterRecoveryStableUrl(GetDisasterRecoveryStableUrlArgs.builder()
+     *             .name(String.format("accounts/%s/stable-urls/accounting-stable-url", accountId))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDisasterRecoveryStableUrlResult> getDisasterRecoveryStableUrlPlain(GetDisasterRecoveryStableUrlPlainArgs args) {
         return getDisasterRecoveryStableUrlPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to get a single stable URL by its fully qualified resource name.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a stable URL by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getDisasterRecoveryStableUrl(GetDisasterRecoveryStableUrlArgs.builder()
+     *             .name(String.format("accounts/%s/stable-urls/accounting-stable-url", accountId))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDisasterRecoveryStableUrlResult> getDisasterRecoveryStableUrl(GetDisasterRecoveryStableUrlArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl", TypeShape.of(GetDisasterRecoveryStableUrlResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to get a single stable URL by its fully qualified resource name.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a stable URL by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getDisasterRecoveryStableUrl(GetDisasterRecoveryStableUrlArgs.builder()
+     *             .name(String.format("accounts/%s/stable-urls/accounting-stable-url", accountId))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDisasterRecoveryStableUrlResult> getDisasterRecoveryStableUrl(GetDisasterRecoveryStableUrlArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl", TypeShape.of(GetDisasterRecoveryStableUrlResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to get a single stable URL by its fully qualified resource name.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Referring to a stable URL by its resource name:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = DatabricksFunctions.getDisasterRecoveryStableUrl(GetDisasterRecoveryStableUrlArgs.builder()
+     *             .name(String.format("accounts/%s/stable-urls/accounting-stable-url", accountId))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDisasterRecoveryStableUrlResult> getDisasterRecoveryStableUrlPlain(GetDisasterRecoveryStableUrlPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDisasterRecoveryStableUrl:getDisasterRecoveryStableUrl", TypeShape.of(GetDisasterRecoveryStableUrlResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to fetch the list of stable URLs in the account.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all stable URLs in the account:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDisasterRecoveryStableUrls(GetDisasterRecoveryStableUrlsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDisasterRecoveryStableUrlsResult> getDisasterRecoveryStableUrls(GetDisasterRecoveryStableUrlsArgs args) {
         return getDisasterRecoveryStableUrls(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to fetch the list of stable URLs in the account.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all stable URLs in the account:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDisasterRecoveryStableUrls(GetDisasterRecoveryStableUrlsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDisasterRecoveryStableUrlsResult> getDisasterRecoveryStableUrlsPlain(GetDisasterRecoveryStableUrlsPlainArgs args) {
         return getDisasterRecoveryStableUrlsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to fetch the list of stable URLs in the account.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all stable URLs in the account:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDisasterRecoveryStableUrls(GetDisasterRecoveryStableUrlsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDisasterRecoveryStableUrlsResult> getDisasterRecoveryStableUrls(GetDisasterRecoveryStableUrlsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryStableUrls:getDisasterRecoveryStableUrls", TypeShape.of(GetDisasterRecoveryStableUrlsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to fetch the list of stable URLs in the account.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all stable URLs in the account:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDisasterRecoveryStableUrls(GetDisasterRecoveryStableUrlsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetDisasterRecoveryStableUrlsResult> getDisasterRecoveryStableUrls(GetDisasterRecoveryStableUrlsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getDisasterRecoveryStableUrls:getDisasterRecoveryStableUrls", TypeShape.of(GetDisasterRecoveryStableUrlsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+     * 
+     * This data source can be used to fetch the list of stable URLs in the account.
+     * 
+     * &gt; **Note** This data source can only be used with an account-level provider!
+     * 
+     * ## Example Usage
+     * 
+     * Getting a list of all stable URLs in the account:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetDisasterRecoveryStableUrlsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getDisasterRecoveryStableUrls(GetDisasterRecoveryStableUrlsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetDisasterRecoveryStableUrlsResult> getDisasterRecoveryStableUrlsPlain(GetDisasterRecoveryStableUrlsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getDisasterRecoveryStableUrls:getDisasterRecoveryStableUrls", TypeShape.of(GetDisasterRecoveryStableUrlsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/endpoints)
      * 
@@ -12877,7 +13839,7 @@ public final class DatabricksFunctions {
         return getEndpoint(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/endpoints)
      * 
@@ -12895,7 +13857,7 @@ public final class DatabricksFunctions {
         return getEndpointPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/endpoints)
      * 
@@ -12913,7 +13875,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEndpoint:getEndpoint", TypeShape.of(GetEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/endpoints)
      * 
@@ -12931,7 +13893,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEndpoint:getEndpoint", TypeShape.of(GetEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/endpoints)
      * 
@@ -12949,7 +13911,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getEndpoint:getEndpoint", TypeShape.of(GetEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/endpoints)
      * 
@@ -12997,7 +13959,7 @@ public final class DatabricksFunctions {
         return getEndpoints(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/endpoints)
      * 
@@ -13045,7 +14007,7 @@ public final class DatabricksFunctions {
         return getEndpointsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/endpoints)
      * 
@@ -13093,7 +14055,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEndpoints:getEndpoints", TypeShape.of(GetEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/endpoints)
      * 
@@ -13141,7 +14103,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getEndpoints:getEndpoints", TypeShape.of(GetEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/endpoints)
      * 

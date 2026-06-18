@@ -32,7 +32,7 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
      */
     private @Nullable String filterCondition;
     /**
-     * @return (string) - The full three-part (catalog, schema, table) name of the Delta table
+     * @return (string) - Three-part full name of the Stream (catalog.schema.stream)
      * 
      */
     private String fullName;
@@ -76,7 +76,7 @@ public final class GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource {
         return Optional.ofNullable(this.filterCondition);
     }
     /**
-     * @return (string) - The full three-part (catalog, schema, table) name of the Delta table
+     * @return (string) - Three-part full name of the Stream (catalog.schema.stream)
      * 
      */
     public String fullName() {

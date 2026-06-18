@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [API Documentation](https://docs.databricks.com/api/workspace/catalogs)
+    /// 
     /// Within a metastore, Unity Catalog provides a 3-level namespace for organizing data: Catalogs, Databases (also called Schemas), and Tables / Views.
     /// 
     /// A `databricks.Catalog` is contained within databricks.Metastore and can contain databricks_schema. By default, Databricks creates `Default` schema for every new catalog, but Pulumi plugin is removing this auto-created schema, so that resource destruction could be done in a clean way.
@@ -82,6 +84,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
+
+        [Output("customMaxRetentionHours")]
+        public Output<int?> CustomMaxRetentionHours { get; private set; } = null!;
 
         [Output("effectivePredictiveOptimizationFlag")]
         public Output<Outputs.CatalogEffectivePredictiveOptimizationFlag> EffectivePredictiveOptimizationFlag { get; private set; } = null!;
@@ -252,6 +257,9 @@ namespace Pulumi.Databricks
         [Input("connectionName")]
         public Input<string>? ConnectionName { get; set; }
 
+        [Input("customMaxRetentionHours")]
+        public Input<int>? CustomMaxRetentionHours { get; set; }
+
         [Input("effectivePredictiveOptimizationFlag")]
         public Input<Inputs.CatalogEffectivePredictiveOptimizationFlagArgs>? EffectivePredictiveOptimizationFlag { get; set; }
 
@@ -385,6 +393,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
+
+        [Input("customMaxRetentionHours")]
+        public Input<int>? CustomMaxRetentionHours { get; set; }
 
         [Input("effectivePredictiveOptimizationFlag")]
         public Input<Inputs.CatalogEffectivePredictiveOptimizationFlagGetArgs>? EffectivePredictiveOptimizationFlag { get; set; }

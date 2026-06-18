@@ -110,6 +110,8 @@ class WorkspaceConf(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['WorkspaceConfProviderConfigArgs', 'WorkspaceConfProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/workspaceconf)
+
         Manages workspace configuration for expert usage. Currently, more than one instance of resource can exist in Pulumi state, though there's no deterministic behavior, when they manage the same property. We strongly recommend to use a single `WorkspaceConf` per workspace.
 
         > This resource can only be used with a workspace-level provider!
@@ -154,6 +156,8 @@ class WorkspaceConf(pulumi.CustomResource):
                  args: Optional[WorkspaceConfArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/workspaceconf)
+
         Manages workspace configuration for expert usage. Currently, more than one instance of resource can exist in Pulumi state, though there's no deterministic behavior, when they manage the same property. We strongly recommend to use a single `WorkspaceConf` per workspace.
 
         > This resource can only be used with a workspace-level provider!

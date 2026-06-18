@@ -27,16 +27,7 @@ class PostgresSyncedTableArgs:
         """
         The set of arguments for constructing a PostgresSyncedTable resource.
 
-        :param pulumi.Input[_builtins.str] synced_table_id: The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
-               ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-               Elements of the tuple are the UC entity names.
-               
-               Example: "{catalog}.{schema}.{table}"
-               
-               synced_table_id represents both of the following:
-               
-               1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-               2. Postgres table named "{table}" in schema "{schema}" in the connected Postgres database
+        :param pulumi.Input[_builtins.str] synced_table_id: The part of the name, chosen by the user when the resource was created
         :param pulumi.Input['PostgresSyncedTableProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['PostgresSyncedTableSpecArgs'] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc.
                This attribute is specified at creation time and most fields are returned as is on subsequent queries
@@ -51,16 +42,7 @@ class PostgresSyncedTableArgs:
     @pulumi.getter(name="syncedTableId")
     def synced_table_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
-        ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-        Elements of the tuple are the UC entity names.
-
-        Example: "{catalog}.{schema}.{table}"
-
-        synced_table_id represents both of the following:
-
-        1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-        2. Postgres table named "{table}" in schema "{schema}" in the connected Postgres database
+        The part of the name, chosen by the user when the resource was created
         """
         return pulumi.get(self, "synced_table_id")
 
@@ -114,16 +96,7 @@ class _PostgresSyncedTableState:
         :param pulumi.Input['PostgresSyncedTableSpecArgs'] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc.
                This attribute is specified at creation time and most fields are returned as is on subsequent queries
         :param pulumi.Input['PostgresSyncedTableStatusArgs'] status: (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
-        :param pulumi.Input[_builtins.str] synced_table_id: The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
-               ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-               Elements of the tuple are the UC entity names.
-               
-               Example: "{catalog}.{schema}.{table}"
-               
-               synced_table_id represents both of the following:
-               
-               1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-               2. Postgres table named "{table}" in schema "{schema}" in the connected Postgres database
+        :param pulumi.Input[_builtins.str] synced_table_id: The part of the name, chosen by the user when the resource was created
         :param pulumi.Input[_builtins.str] uid: (string) - The Unity Catalog table ID for this synced table
         """
         if create_time is not None:
@@ -207,16 +180,7 @@ class _PostgresSyncedTableState:
     @pulumi.getter(name="syncedTableId")
     def synced_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
-        ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-        Elements of the tuple are the UC entity names.
-
-        Example: "{catalog}.{schema}.{table}"
-
-        synced_table_id represents both of the following:
-
-        1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-        2. Postgres table named "{table}" in schema "{schema}" in the connected Postgres database
+        The part of the name, chosen by the user when the resource was created
         """
         return pulumi.get(self, "synced_table_id")
 
@@ -346,16 +310,7 @@ class PostgresSyncedTable(pulumi.CustomResource):
         :param pulumi.Input[Union['PostgresSyncedTableProviderConfigArgs', 'PostgresSyncedTableProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict']] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc.
                This attribute is specified at creation time and most fields are returned as is on subsequent queries
-        :param pulumi.Input[_builtins.str] synced_table_id: The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
-               ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-               Elements of the tuple are the UC entity names.
-               
-               Example: "{catalog}.{schema}.{table}"
-               
-               synced_table_id represents both of the following:
-               
-               1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-               2. Postgres table named "{table}" in schema "{schema}" in the connected Postgres database
+        :param pulumi.Input[_builtins.str] synced_table_id: The part of the name, chosen by the user when the resource was created
         """
         ...
     @overload
@@ -524,16 +479,7 @@ class PostgresSyncedTable(pulumi.CustomResource):
         :param pulumi.Input[Union['PostgresSyncedTableSpecArgs', 'PostgresSyncedTableSpecArgsDict']] spec: Configuration details of the synced table, such as the source table, scheduling policy, etc.
                This attribute is specified at creation time and most fields are returned as is on subsequent queries
         :param pulumi.Input[Union['PostgresSyncedTableStatusArgs', 'PostgresSyncedTableStatusArgsDict']] status: (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
-        :param pulumi.Input[_builtins.str] synced_table_id: The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
-               ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-               Elements of the tuple are the UC entity names.
-               
-               Example: "{catalog}.{schema}.{table}"
-               
-               synced_table_id represents both of the following:
-               
-               1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-               2. Postgres table named "{table}" in schema "{schema}" in the connected Postgres database
+        :param pulumi.Input[_builtins.str] synced_table_id: The part of the name, chosen by the user when the resource was created
         :param pulumi.Input[_builtins.str] uid: (string) - The Unity Catalog table ID for this synced table
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -595,16 +541,7 @@ class PostgresSyncedTable(pulumi.CustomResource):
     @pulumi.getter(name="syncedTableId")
     def synced_table_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
-        ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-        Elements of the tuple are the UC entity names.
-
-        Example: "{catalog}.{schema}.{table}"
-
-        synced_table_id represents both of the following:
-
-        1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-        2. Postgres table named "{table}" in schema "{schema}" in the connected Postgres database
+        The part of the name, chosen by the user when the resource was created
         """
         return pulumi.get(self, "synced_table_id")
 

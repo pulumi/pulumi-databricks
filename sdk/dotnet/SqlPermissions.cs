@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [API Documentation](https://docs.databricks.com/api/workspace/dbsqlpermissions)
+    /// 
     /// &gt; Please switch to databricks.Grants with Unity Catalog to manage data access, which provides a better and faster way for managing data security. `databricks.Grants` resource *doesn't require a technical cluster to perform operations*. On workspaces with Unity Catalog enabled, you may run into errors such as `Error: cannot create sql permissions: cannot read current grants: For unity catalog, please specify the catalog name explicitly. E.g. SHOW GRANT ``your.address@email.com`` ON CATALOG main`. This happens if your `DefaultCatalogName` was set to a UC catalog instead of `HiveMetastore`. The workaround is to re-assign the metastore again with the default catalog set to `HiveMetastore`. See databricks_metastore_assignment.
     /// 
     /// This resource manages data object access control lists in Databricks workspaces for things like tables, views, databases, and [more](https://docs.databricks.com/security/access-control/table-acls/object-privileges.html). In order to enable Table Access control, you have to login to the workspace as administrator, go to `Admin Console`, pick the `Access Control` tab, click on the `Enable` button in the `Table Access Control` section, and click `Confirm`. The security guarantees of table access control **will only be effective if cluster access control is also turned on**. Please make sure that no users can create clusters in your workspace and all databricks.Cluster have approximately the following configuration:

@@ -349,6 +349,8 @@ class Entitlements(pulumi.CustomResource):
                  workspace_consume: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/users)
+
         This resource allows you to set entitlements to existing databricks_users, Group or databricks_service_principal.
 
         > This resource can only be used with a workspace-level provider!
@@ -430,6 +432,8 @@ class Entitlements(pulumi.CustomResource):
                  args: Optional[EntitlementsArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/users)
+
         This resource allows you to set entitlements to existing databricks_users, Group or databricks_service_principal.
 
         > This resource can only be used with a workspace-level provider!

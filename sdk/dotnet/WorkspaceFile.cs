@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
+    /// [API Documentation](https://docs.databricks.com/api/workspace/workspace)
+    /// 
     /// This resource allows you to manage [Databricks Workspace Files](https://docs.databricks.com/files/workspace.html).
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!

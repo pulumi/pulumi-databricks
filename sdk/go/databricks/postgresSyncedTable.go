@@ -184,16 +184,7 @@ type PostgresSyncedTable struct {
 	Spec PostgresSyncedTableSpecOutput `pulumi:"spec"`
 	// (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
 	Status PostgresSyncedTableStatusOutput `pulumi:"status"`
-	// The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
-	// ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-	// Elements of the tuple are the UC entity names.
-	//
-	// Example: "{catalog}.{schema}.{table}"
-	//
-	// syncedTableId represents both of the following:
-	//
-	// 1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-	// 2. Postgres table named "{table}" in schema "{schema}" in the connected Postgres database
+	// The part of the name, chosen by the user when the resource was created
 	SyncedTableId pulumi.StringOutput `pulumi:"syncedTableId"`
 	// (string) - The Unity Catalog table ID for this synced table
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -244,16 +235,7 @@ type postgresSyncedTableState struct {
 	Spec *PostgresSyncedTableSpec `pulumi:"spec"`
 	// (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
 	Status *PostgresSyncedTableStatus `pulumi:"status"`
-	// The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
-	// ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-	// Elements of the tuple are the UC entity names.
-	//
-	// Example: "{catalog}.{schema}.{table}"
-	//
-	// syncedTableId represents both of the following:
-	//
-	// 1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-	// 2. Postgres table named "{table}" in schema "{schema}" in the connected Postgres database
+	// The part of the name, chosen by the user when the resource was created
 	SyncedTableId *string `pulumi:"syncedTableId"`
 	// (string) - The Unity Catalog table ID for this synced table
 	Uid *string `pulumi:"uid"`
@@ -272,16 +254,7 @@ type PostgresSyncedTableState struct {
 	Spec PostgresSyncedTableSpecPtrInput
 	// (SyncedTableSyncedTableStatus) - Synced Table data synchronization status
 	Status PostgresSyncedTableStatusPtrInput
-	// The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
-	// ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-	// Elements of the tuple are the UC entity names.
-	//
-	// Example: "{catalog}.{schema}.{table}"
-	//
-	// syncedTableId represents both of the following:
-	//
-	// 1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-	// 2. Postgres table named "{table}" in schema "{schema}" in the connected Postgres database
+	// The part of the name, chosen by the user when the resource was created
 	SyncedTableId pulumi.StringPtrInput
 	// (string) - The Unity Catalog table ID for this synced table
 	Uid pulumi.StringPtrInput
@@ -297,16 +270,7 @@ type postgresSyncedTableArgs struct {
 	// Configuration details of the synced table, such as the source table, scheduling policy, etc.
 	// This attribute is specified at creation time and most fields are returned as is on subsequent queries
 	Spec *PostgresSyncedTableSpec `pulumi:"spec"`
-	// The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
-	// ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-	// Elements of the tuple are the UC entity names.
-	//
-	// Example: "{catalog}.{schema}.{table}"
-	//
-	// syncedTableId represents both of the following:
-	//
-	// 1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-	// 2. Postgres table named "{table}" in schema "{schema}" in the connected Postgres database
+	// The part of the name, chosen by the user when the resource was created
 	SyncedTableId string `pulumi:"syncedTableId"`
 }
 
@@ -317,16 +281,7 @@ type PostgresSyncedTableArgs struct {
 	// Configuration details of the synced table, such as the source table, scheduling policy, etc.
 	// This attribute is specified at creation time and most fields are returned as is on subsequent queries
 	Spec PostgresSyncedTableSpecPtrInput
-	// The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
-	// ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-	// Elements of the tuple are the UC entity names.
-	//
-	// Example: "{catalog}.{schema}.{table}"
-	//
-	// syncedTableId represents both of the following:
-	//
-	// 1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-	// 2. Postgres table named "{table}" in schema "{schema}" in the connected Postgres database
+	// The part of the name, chosen by the user when the resource was created
 	SyncedTableId pulumi.StringInput
 }
 
@@ -444,16 +399,7 @@ func (o PostgresSyncedTableOutput) Status() PostgresSyncedTableStatusOutput {
 	return o.ApplyT(func(v *PostgresSyncedTable) PostgresSyncedTableStatusOutput { return v.Status }).(PostgresSyncedTableStatusOutput)
 }
 
-// The ID to use for the Synced Table. This becomes the final component of the SyncedTable's resource name.
-// ID is required and is the synced table name, containing (catalog, schema, table) tuple.
-// Elements of the tuple are the UC entity names.
-//
-// Example: "{catalog}.{schema}.{table}"
-//
-// syncedTableId represents both of the following:
-//
-// 1. An online VIEW virtual table in the Unity Catalog accessible via the Lakehouse Federation.
-// 2. Postgres table named "{table}" in schema "{schema}" in the connected Postgres database
+// The part of the name, chosen by the user when the resource was created
 func (o PostgresSyncedTableOutput) SyncedTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresSyncedTable) pulumi.StringOutput { return v.SyncedTableId }).(pulumi.StringOutput)
 }

@@ -32,6 +32,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/clusters)
+ * 
  * This resource allows you to manage [Databricks Clusters](https://docs.databricks.com/clusters/index.html).
  * 
  * &gt; This resource can only be used with a workspace-level provider!

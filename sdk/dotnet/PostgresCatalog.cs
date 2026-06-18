@@ -89,8 +89,7 @@ namespace Pulumi.Databricks
     public partial class PostgresCatalog : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID in the Unity Catalog.
-        /// It becomes the full resource name, for example "MyCatalog" becomes "catalogs/my_catalog"
+        /// The part of the name, chosen by the user when the resource was created
         /// </summary>
         [Output("catalogId")]
         public Output<string> CatalogId { get; private set; } = null!;
@@ -184,8 +183,7 @@ namespace Pulumi.Databricks
     public sealed class PostgresCatalogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID in the Unity Catalog.
-        /// It becomes the full resource name, for example "MyCatalog" becomes "catalogs/my_catalog"
+        /// The part of the name, chosen by the user when the resource was created
         /// </summary>
         [Input("catalogId", required: true)]
         public Input<string> CatalogId { get; set; } = null!;
@@ -211,8 +209,7 @@ namespace Pulumi.Databricks
     public sealed class PostgresCatalogState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID in the Unity Catalog.
-        /// It becomes the full resource name, for example "MyCatalog" becomes "catalogs/my_catalog"
+        /// The part of the name, chosen by the user when the resource was created
         /// </summary>
         [Input("catalogId")]
         public Input<string>? CatalogId { get; set; }

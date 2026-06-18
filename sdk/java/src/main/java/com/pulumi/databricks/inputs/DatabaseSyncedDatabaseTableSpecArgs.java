@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.DatabaseSyncedDatabaseTableSpecNewPipelineSpecArgs;
+import com.pulumi.databricks.inputs.DatabaseSyncedDatabaseTableSpecTypeOverrideArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,25 @@ import javax.annotation.Nullable;
 public final class DatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DatabaseSyncedDatabaseTableSpecArgs Empty = new DatabaseSyncedDatabaseTableSpecArgs();
+
+    /**
+     * When true, enables accelerated sync mode for the initial data load.
+     * This significantly improves performance for large tables.
+     * Requires workspace-level enablement
+     * 
+     */
+    @Import(name="acceleratedSync")
+    private @Nullable Output<Boolean> acceleratedSync;
+
+    /**
+     * @return When true, enables accelerated sync mode for the initial data load.
+     * This significantly improves performance for large tables.
+     * Requires workspace-level enablement
+     * 
+     */
+    public Optional<Output<Boolean>> acceleratedSync() {
+        return Optional.ofNullable(this.acceleratedSync);
+    }
 
     /**
      * If true, the synced table&#39;s logical database and schema resources in PG
@@ -143,9 +163,27 @@ public final class DatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.resour
         return Optional.ofNullable(this.timeseriesKey);
     }
 
+    /**
+     * Override the default Delta-&gt;PG type mapping for specific columns.
+     * A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+     * 
+     */
+    @Import(name="typeOverrides")
+    private @Nullable Output<List<DatabaseSyncedDatabaseTableSpecTypeOverrideArgs>> typeOverrides;
+
+    /**
+     * @return Override the default Delta-&gt;PG type mapping for specific columns.
+     * A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+     * 
+     */
+    public Optional<Output<List<DatabaseSyncedDatabaseTableSpecTypeOverrideArgs>>> typeOverrides() {
+        return Optional.ofNullable(this.typeOverrides);
+    }
+
     private DatabaseSyncedDatabaseTableSpecArgs() {}
 
     private DatabaseSyncedDatabaseTableSpecArgs(DatabaseSyncedDatabaseTableSpecArgs $) {
+        this.acceleratedSync = $.acceleratedSync;
         this.createDatabaseObjectsIfMissing = $.createDatabaseObjectsIfMissing;
         this.existingPipelineId = $.existingPipelineId;
         this.newPipelineSpec = $.newPipelineSpec;
@@ -153,6 +191,7 @@ public final class DatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.resour
         this.schedulingPolicy = $.schedulingPolicy;
         this.sourceTableFullName = $.sourceTableFullName;
         this.timeseriesKey = $.timeseriesKey;
+        this.typeOverrides = $.typeOverrides;
     }
 
     public static Builder builder() {
@@ -171,6 +210,31 @@ public final class DatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.resour
 
         public Builder(DatabaseSyncedDatabaseTableSpecArgs defaults) {
             $ = new DatabaseSyncedDatabaseTableSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param acceleratedSync When true, enables accelerated sync mode for the initial data load.
+         * This significantly improves performance for large tables.
+         * Requires workspace-level enablement
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratedSync(@Nullable Output<Boolean> acceleratedSync) {
+            $.acceleratedSync = acceleratedSync;
+            return this;
+        }
+
+        /**
+         * @param acceleratedSync When true, enables accelerated sync mode for the initial data load.
+         * This significantly improves performance for large tables.
+         * Requires workspace-level enablement
+         * 
+         * @return builder
+         * 
+         */
+        public Builder acceleratedSync(Boolean acceleratedSync) {
+            return acceleratedSync(Output.of(acceleratedSync));
         }
 
         /**
@@ -348,6 +412,40 @@ public final class DatabaseSyncedDatabaseTableSpecArgs extends com.pulumi.resour
          */
         public Builder timeseriesKey(String timeseriesKey) {
             return timeseriesKey(Output.of(timeseriesKey));
+        }
+
+        /**
+         * @param typeOverrides Override the default Delta-&gt;PG type mapping for specific columns.
+         * A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+         * 
+         * @return builder
+         * 
+         */
+        public Builder typeOverrides(@Nullable Output<List<DatabaseSyncedDatabaseTableSpecTypeOverrideArgs>> typeOverrides) {
+            $.typeOverrides = typeOverrides;
+            return this;
+        }
+
+        /**
+         * @param typeOverrides Override the default Delta-&gt;PG type mapping for specific columns.
+         * A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+         * 
+         * @return builder
+         * 
+         */
+        public Builder typeOverrides(List<DatabaseSyncedDatabaseTableSpecTypeOverrideArgs> typeOverrides) {
+            return typeOverrides(Output.of(typeOverrides));
+        }
+
+        /**
+         * @param typeOverrides Override the default Delta-&gt;PG type mapping for specific columns.
+         * A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+         * 
+         * @return builder
+         * 
+         */
+        public Builder typeOverrides(DatabaseSyncedDatabaseTableSpecTypeOverrideArgs... typeOverrides) {
+            return typeOverrides(List.of(typeOverrides));
         }
 
         public DatabaseSyncedDatabaseTableSpecArgs build() {

@@ -56,6 +56,10 @@ export interface GetPostgresCatalogArgs {
  */
 export interface GetPostgresCatalogResult {
     /**
+     * (string) - The part of the name, chosen by the user when the resource was created
+     */
+    readonly catalogId: string;
+    /**
      * (string) - A timestamp indicating when the catalog was created
      */
     readonly createTime: string;

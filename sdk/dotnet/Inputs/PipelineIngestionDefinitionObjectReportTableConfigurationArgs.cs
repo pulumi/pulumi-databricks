@@ -15,6 +15,17 @@ namespace Pulumi.Databricks.Inputs
         [Input("autoFullRefreshPolicy")]
         public Input<Inputs.PipelineIngestionDefinitionObjectReportTableConfigurationAutoFullRefreshPolicyArgs>? AutoFullRefreshPolicy { get; set; }
 
+        [Input("clusteringColumns")]
+        private InputList<string>? _clusteringColumns;
+        public InputList<string> ClusteringColumns
+        {
+            get => _clusteringColumns ?? (_clusteringColumns = new InputList<string>());
+            set => _clusteringColumns = value;
+        }
+
+        [Input("enableAutoClustering")]
+        public Input<bool>? EnableAutoClustering { get; set; }
+
         [Input("excludeColumns")]
         private InputList<string>? _excludeColumns;
         public InputList<string> ExcludeColumns
@@ -57,6 +68,14 @@ namespace Pulumi.Databricks.Inputs
         {
             get => _sequenceBies ?? (_sequenceBies = new InputList<string>());
             set => _sequenceBies = value;
+        }
+
+        [Input("tableProperties")]
+        private InputMap<string>? _tableProperties;
+        public InputMap<string> TableProperties
+        {
+            get => _tableProperties ?? (_tableProperties = new InputMap<string>());
+            set => _tableProperties = value;
         }
 
         [Input("workdayReportParameters")]

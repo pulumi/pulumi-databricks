@@ -46,7 +46,7 @@ type LookupFeatureEngineeringFeatureResult struct {
 	Entities []GetFeatureEngineeringFeatureEntity `pulumi:"entities"`
 	// (string) - The filter condition applied to the source data before aggregation
 	FilterCondition string `pulumi:"filterCondition"`
-	// (string) - The full three-part (catalog, schema, table) name of the Delta table
+	// (string) - Three-part full name of the Stream (catalog.schema.stream)
 	FullName string `pulumi:"fullName"`
 	// (Function) - The function by which the feature is computed
 	Function GetFeatureEngineeringFeatureFunction `pulumi:"function"`
@@ -65,7 +65,7 @@ type LookupFeatureEngineeringFeatureResult struct {
 	// reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
 	// fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
 	// is what will be present in materialized tables and expected to match at query time.
-	// TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+	// Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
 	// backwards compatibility but is deprecated; migrate to dot notation
 	Name           string                                      `pulumi:"name"`
 	ProviderConfig *GetFeatureEngineeringFeatureProviderConfig `pulumi:"providerConfig"`
@@ -148,7 +148,7 @@ func (o LookupFeatureEngineeringFeatureResultOutput) FilterCondition() pulumi.St
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.FilterCondition }).(pulumi.StringOutput)
 }
 
-// (string) - The full three-part (catalog, schema, table) name of the Delta table
+// (string) - Three-part full name of the Stream (catalog.schema.stream)
 func (o LookupFeatureEngineeringFeatureResultOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.FullName }).(pulumi.StringOutput)
 }
@@ -184,7 +184,7 @@ func (o LookupFeatureEngineeringFeatureResultOutput) LineageContext() GetFeature
 // reference fields within the key or value schema (e.g., "value.event_timestamp"). For nested
 // fields, the leaf node name (e.g., "eventTimestamp" from "value.event_details.event_timestamp")
 // is what will be present in materialized tables and expected to match at query time.
-// TODO(FS-939): Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
+// Colon-prefixed notation (e.g., "value:event_timestamp") is supported for
 // backwards compatibility but is deprecated; migrate to dot notation
 func (o LookupFeatureEngineeringFeatureResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureEngineeringFeatureResult) string { return v.Name }).(pulumi.StringOutput)

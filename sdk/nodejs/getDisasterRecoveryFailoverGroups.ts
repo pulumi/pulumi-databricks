@@ -7,7 +7,24 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+ *
+ * This data source can be used to fetch the list of failover groups in the account.
+ *
+ * > **Note** This data source can only be used with an account-level provider!
+ *
+ * ## Example Usage
+ *
+ * Getting a list of all failover groups in the account:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getDisasterRecoveryFailoverGroups({});
+ * ```
  */
 export function getDisasterRecoveryFailoverGroups(args: GetDisasterRecoveryFailoverGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDisasterRecoveryFailoverGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -49,7 +66,24 @@ export interface GetDisasterRecoveryFailoverGroupsResult {
     readonly parent: string;
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/account/disasterrecovery)
+ *
+ * This data source can be used to fetch the list of failover groups in the account.
+ *
+ * > **Note** This data source can only be used with an account-level provider!
+ *
+ * ## Example Usage
+ *
+ * Getting a list of all failover groups in the account:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const all = databricks.getDisasterRecoveryFailoverGroups({});
+ * ```
  */
 export function getDisasterRecoveryFailoverGroupsOutput(args: GetDisasterRecoveryFailoverGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDisasterRecoveryFailoverGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

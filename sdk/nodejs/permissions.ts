@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/permissions)
+ *
  * This resource allows you to generically manage [access control](https://docs.databricks.com/security/access-control/index.html) in Databricks workspaces. It ensures that only _admins_, _authenticated principal_ and those declared within `accessControl` blocks would have specified access. It is not possible to remove management rights from _admins_ group.
  *
  * > This resource can only be used with a workspace-level provider!

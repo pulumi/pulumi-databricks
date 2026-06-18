@@ -166,6 +166,8 @@ class ServicePrincipalRole(pulumi.CustomResource):
                  service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/serviceprincipals)
+
         This resource allows you to attach a role or InstanceProfile (AWS) to a databricks_service_principal.
 
         > This resource can be used with an account or workspace-level provider.
@@ -228,6 +230,8 @@ class ServicePrincipalRole(pulumi.CustomResource):
                  args: ServicePrincipalRoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/serviceprincipals)
+
         This resource allows you to attach a role or InstanceProfile (AWS) to a databricks_service_principal.
 
         > This resource can be used with an account or workspace-level provider.

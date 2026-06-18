@@ -307,6 +307,8 @@ class Repo(pulumi.CustomResource):
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/repos)
+
         This resource allows you to manage [Databricks Git folders](https://docs.databricks.com/en/repos/index.html) (formerly known as Databricks Repos).
 
         > This resource can only be used with a workspace-level provider!
@@ -358,6 +360,8 @@ class Repo(pulumi.CustomResource):
                  args: RepoArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/repos)
+
         This resource allows you to manage [Databricks Git folders](https://docs.databricks.com/en/repos/index.html) (formerly known as Databricks Repos).
 
         > This resource can only be used with a workspace-level provider!

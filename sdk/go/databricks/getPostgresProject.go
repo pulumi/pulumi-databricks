@@ -82,7 +82,9 @@ type LookupPostgresProjectResult struct {
 	InitialEndpointSpec GetPostgresProjectInitialEndpointSpec `pulumi:"initialEndpointSpec"`
 	// (string) - Output only. The full resource path of the project.
 	// Format: projects/{project_id}
-	Name           string                            `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// (string) - Part of the resource name
+	ProjectId      string                            `pulumi:"projectId"`
 	ProviderConfig *GetPostgresProjectProviderConfig `pulumi:"providerConfig"`
 	// (string) - A timestamp indicating when the project is scheduled for permanent deletion.
 	// Empty if the project is not deleted, otherwise set to a timestamp in the future
@@ -164,6 +166,11 @@ func (o LookupPostgresProjectResultOutput) InitialEndpointSpec() GetPostgresProj
 // Format: projects/{project_id}
 func (o LookupPostgresProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (string) - Part of the resource name
+func (o LookupPostgresProjectResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 func (o LookupPostgresProjectResultOutput) ProviderConfig() GetPostgresProjectProviderConfigPtrOutput {

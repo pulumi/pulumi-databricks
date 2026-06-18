@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class ConnectionProvisioningInfoArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The provisioning state of the resource. Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, or `UPDATING`.
+        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 

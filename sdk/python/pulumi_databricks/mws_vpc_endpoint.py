@@ -357,6 +357,8 @@ class MwsVpcEndpoint(pulumi.CustomResource):
                  vpc_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/vpcendpoints)
+
         Enables you to register aws_vpc_endpoint resources or gcp vpc_endpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
 
         > This resource can only be used with an account-level provider!
@@ -554,6 +556,8 @@ class MwsVpcEndpoint(pulumi.CustomResource):
                  args: MwsVpcEndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/vpcendpoints)
+
         Enables you to register aws_vpc_endpoint resources or gcp vpc_endpoint resources with Databricks such that they can be used as part of a MwsNetworks configuration.
 
         > This resource can only be used with an account-level provider!

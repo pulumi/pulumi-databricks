@@ -76,7 +76,8 @@ class GetFeatureEngineeringMaterializedFeatureResult:
     @pulumi.getter(name="cronSchedule")
     def cron_schedule(self) -> _builtins.str:
         """
-        (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone
+        (string) - The quartz cron expression that defines the schedule of the materialization pipeline. The schedule is evaluated in the UTC timezone.
+        Hidden from GraphQL: superseded by the `trigger` oneof (cron_schedule_trigger), so not exposed to Catalog Explorer
         """
         return pulumi.get(self, "cron_schedule")
 
@@ -149,7 +150,8 @@ class GetFeatureEngineeringMaterializedFeatureResult:
     @pulumi.getter(name="pipelineScheduleState")
     def pipeline_schedule_state(self) -> _builtins.str:
         """
-        (string) - The schedule state of the materialization pipeline. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
+        (string) - The schedule state of the materialization pipeline.
+        Hidden from GraphQL: being deprecated, so not exposed to Catalog Explorer. Possible values are: `ACTIVE`, `PAUSED`, `SNAPSHOT`
         """
         return pulumi.get(self, "pipeline_schedule_state")
 

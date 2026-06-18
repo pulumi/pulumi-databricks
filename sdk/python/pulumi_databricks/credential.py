@@ -697,6 +697,8 @@ class Credential(pulumi.CustomResource):
                  used_for_managed_storage: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/credentials)
+
         A credential represents an authentication and authorization mechanism for accessing services on your cloud tenant. Each credential is subject to Unity Catalog access-control policies that control which users and groups can access the credential.
 
         > This resource can only be used with a workspace-level provider!
@@ -792,6 +794,8 @@ class Credential(pulumi.CustomResource):
                  args: CredentialArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/credentials)
+
         A credential represents an authentication and authorization mechanism for accessing services on your cloud tenant. Each credential is subject to Unity Catalog access-control policies that control which users and groups can access the credential.
 
         > This resource can only be used with a workspace-level provider!

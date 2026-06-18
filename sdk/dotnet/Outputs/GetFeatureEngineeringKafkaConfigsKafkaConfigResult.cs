@@ -18,9 +18,9 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigAuthConfigResult AuthConfig;
         /// <summary>
-        /// (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
-        /// In the future, a separate table will be maintained by Databricks for forward filling data.
-        /// The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+        /// (BackfillSource) - A user-provided source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Stream.
+        /// The backfill data stored in this location will be copied into the ingestion table for offline querying and training.
+        /// The schema for this source must match exactly that of the key and payload schemas specified for this Stream
         /// </summary>
         public readonly Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigBackfillSourceResult BackfillSource;
         /// <summary>
@@ -31,6 +31,11 @@ namespace Pulumi.Databricks.Outputs
         /// (object) - Catch-all for miscellaneous options. Keys should be source options or Kafka consumer options (kafka.*)
         /// </summary>
         public readonly ImmutableDictionary<string, string> ExtraOptions;
+        /// <summary>
+        /// (IngestionConfig) - Configuration for ingesting Kafka data into a Databricks-managed
+        /// Delta table
+        /// </summary>
+        public readonly Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigIngestionConfigResult IngestionConfig;
         /// <summary>
         /// (SchemaConfig) - Schema configuration for extracting message keys from topics. At least one of KeySchema and ValueSchema must be provided
         /// </summary>
@@ -63,6 +68,8 @@ namespace Pulumi.Databricks.Outputs
 
             ImmutableDictionary<string, string> extraOptions,
 
+            Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigIngestionConfigResult ingestionConfig,
+
             Outputs.GetFeatureEngineeringKafkaConfigsKafkaConfigKeySchemaResult keySchema,
 
             string name,
@@ -77,6 +84,7 @@ namespace Pulumi.Databricks.Outputs
             BackfillSource = backfillSource;
             BootstrapServers = bootstrapServers;
             ExtraOptions = extraOptions;
+            IngestionConfig = ingestionConfig;
             KeySchema = keySchema;
             Name = name;
             ProviderConfig = providerConfig;

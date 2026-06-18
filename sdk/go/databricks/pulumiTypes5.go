@@ -13,6 +13,9520 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetPostgresProjectsProjectStatusDefaultEndpointSettings struct {
+	// (number) - The maximum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMaxCu *float64 `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMinCu *float64 `pulumi:"autoscalingLimitMinCu"`
+	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+	// Should be set to true when provided.
+	// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	NoSuspension *bool `pulumi:"noSuspension"`
+	// (object) - A raw representation of Postgres settings
+	PgSettings map[string]string `pulumi:"pgSettings"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+	// If specified should be between 60s and 604800s (1 minute to 1 week).
+	// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	SuspendTimeoutDuration *string `pulumi:"suspendTimeoutDuration"`
+}
+
+// GetPostgresProjectsProjectStatusDefaultEndpointSettingsInput is an input type that accepts GetPostgresProjectsProjectStatusDefaultEndpointSettingsArgs and GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectStatusDefaultEndpointSettingsInput` via:
+//
+//	GetPostgresProjectsProjectStatusDefaultEndpointSettingsArgs{...}
+type GetPostgresProjectsProjectStatusDefaultEndpointSettingsInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput() GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput
+	ToGetPostgresProjectsProjectStatusDefaultEndpointSettingsOutputWithContext(context.Context) GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput
+}
+
+type GetPostgresProjectsProjectStatusDefaultEndpointSettingsArgs struct {
+	// (number) - The maximum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMaxCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMinCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMinCu"`
+	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+	// Should be set to true when provided.
+	// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	NoSuspension pulumi.BoolPtrInput `pulumi:"noSuspension"`
+	// (object) - A raw representation of Postgres settings
+	PgSettings pulumi.StringMapInput `pulumi:"pgSettings"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+	// If specified should be between 60s and 604800s (1 minute to 1 week).
+	// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	SuspendTimeoutDuration pulumi.StringPtrInput `pulumi:"suspendTimeoutDuration"`
+}
+
+func (GetPostgresProjectsProjectStatusDefaultEndpointSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectStatusDefaultEndpointSettings)(nil)).Elem()
+}
+
+func (i GetPostgresProjectsProjectStatusDefaultEndpointSettingsArgs) ToGetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput() GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput {
+	return i.ToGetPostgresProjectsProjectStatusDefaultEndpointSettingsOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectStatusDefaultEndpointSettingsArgs) ToGetPostgresProjectsProjectStatusDefaultEndpointSettingsOutputWithContext(ctx context.Context) GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput)
+}
+
+type GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectStatusDefaultEndpointSettings)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput) ToGetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput() GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput) ToGetPostgresProjectsProjectStatusDefaultEndpointSettingsOutputWithContext(ctx context.Context) GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput {
+	return o
+}
+
+// (number) - The maximum number of Compute Units. Minimum value is 0.5
+func (o GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput) AutoscalingLimitMaxCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatusDefaultEndpointSettings) *float64 {
+		return v.AutoscalingLimitMaxCu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// (number) - The minimum number of Compute Units. Minimum value is 0.5
+func (o GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput) AutoscalingLimitMinCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatusDefaultEndpointSettings) *float64 {
+		return v.AutoscalingLimitMinCu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+// Should be set to true when provided.
+// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+func (o GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput) NoSuspension() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatusDefaultEndpointSettings) *bool { return v.NoSuspension }).(pulumi.BoolPtrOutput)
+}
+
+// (object) - A raw representation of Postgres settings
+func (o GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput) PgSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatusDefaultEndpointSettings) map[string]string { return v.PgSettings }).(pulumi.StringMapOutput)
+}
+
+// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+// If specified should be between 60s and 604800s (1 minute to 1 week).
+// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+func (o GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput) SuspendTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatusDefaultEndpointSettings) *string {
+		return v.SuspendTimeoutDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresProjectsProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresProjectsProviderConfigInput is an input type that accepts GetPostgresProjectsProviderConfigArgs and GetPostgresProjectsProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProviderConfigInput` via:
+//
+//	GetPostgresProjectsProviderConfigArgs{...}
+type GetPostgresProjectsProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProviderConfigOutput() GetPostgresProjectsProviderConfigOutput
+	ToGetPostgresProjectsProviderConfigOutputWithContext(context.Context) GetPostgresProjectsProviderConfigOutput
+}
+
+type GetPostgresProjectsProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresProjectsProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresProjectsProviderConfigArgs) ToGetPostgresProjectsProviderConfigOutput() GetPostgresProjectsProviderConfigOutput {
+	return i.ToGetPostgresProjectsProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProviderConfigArgs) ToGetPostgresProjectsProviderConfigOutputWithContext(ctx context.Context) GetPostgresProjectsProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProviderConfigOutput)
+}
+
+func (i GetPostgresProjectsProviderConfigArgs) ToGetPostgresProjectsProviderConfigPtrOutput() GetPostgresProjectsProviderConfigPtrOutput {
+	return i.ToGetPostgresProjectsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProviderConfigArgs) ToGetPostgresProjectsProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProviderConfigOutput).ToGetPostgresProjectsProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresProjectsProviderConfigPtrInput is an input type that accepts GetPostgresProjectsProviderConfigArgs, GetPostgresProjectsProviderConfigPtr and GetPostgresProjectsProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProviderConfigPtrInput` via:
+//
+//	        GetPostgresProjectsProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresProjectsProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProviderConfigPtrOutput() GetPostgresProjectsProviderConfigPtrOutput
+	ToGetPostgresProjectsProviderConfigPtrOutputWithContext(context.Context) GetPostgresProjectsProviderConfigPtrOutput
+}
+
+type getPostgresProjectsProviderConfigPtrType GetPostgresProjectsProviderConfigArgs
+
+func GetPostgresProjectsProviderConfigPtr(v *GetPostgresProjectsProviderConfigArgs) GetPostgresProjectsProviderConfigPtrInput {
+	return (*getPostgresProjectsProviderConfigPtrType)(v)
+}
+
+func (*getPostgresProjectsProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectsProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresProjectsProviderConfigPtrType) ToGetPostgresProjectsProviderConfigPtrOutput() GetPostgresProjectsProviderConfigPtrOutput {
+	return i.ToGetPostgresProjectsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresProjectsProviderConfigPtrType) ToGetPostgresProjectsProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProviderConfigPtrOutput)
+}
+
+type GetPostgresProjectsProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProviderConfigOutput) ToGetPostgresProjectsProviderConfigOutput() GetPostgresProjectsProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProviderConfigOutput) ToGetPostgresProjectsProviderConfigOutputWithContext(ctx context.Context) GetPostgresProjectsProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProviderConfigOutput) ToGetPostgresProjectsProviderConfigPtrOutput() GetPostgresProjectsProviderConfigPtrOutput {
+	return o.ToGetPostgresProjectsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresProjectsProviderConfigOutput) ToGetPostgresProjectsProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresProjectsProviderConfig) *GetPostgresProjectsProviderConfig {
+		return &v
+	}).(GetPostgresProjectsProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresProjectsProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresProjectsProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectsProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProviderConfigPtrOutput) ToGetPostgresProjectsProviderConfigPtrOutput() GetPostgresProjectsProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProviderConfigPtrOutput) ToGetPostgresProjectsProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProviderConfigPtrOutput) Elem() GetPostgresProjectsProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProviderConfig) GetPostgresProjectsProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresProjectsProviderConfig
+		return ret
+	}).(GetPostgresProjectsProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresProjectsProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresRoleProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresRoleProviderConfigInput is an input type that accepts GetPostgresRoleProviderConfigArgs and GetPostgresRoleProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresRoleProviderConfigInput` via:
+//
+//	GetPostgresRoleProviderConfigArgs{...}
+type GetPostgresRoleProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresRoleProviderConfigOutput() GetPostgresRoleProviderConfigOutput
+	ToGetPostgresRoleProviderConfigOutputWithContext(context.Context) GetPostgresRoleProviderConfigOutput
+}
+
+type GetPostgresRoleProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresRoleProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRoleProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresRoleProviderConfigArgs) ToGetPostgresRoleProviderConfigOutput() GetPostgresRoleProviderConfigOutput {
+	return i.ToGetPostgresRoleProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRoleProviderConfigArgs) ToGetPostgresRoleProviderConfigOutputWithContext(ctx context.Context) GetPostgresRoleProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRoleProviderConfigOutput)
+}
+
+func (i GetPostgresRoleProviderConfigArgs) ToGetPostgresRoleProviderConfigPtrOutput() GetPostgresRoleProviderConfigPtrOutput {
+	return i.ToGetPostgresRoleProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRoleProviderConfigArgs) ToGetPostgresRoleProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresRoleProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRoleProviderConfigOutput).ToGetPostgresRoleProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresRoleProviderConfigPtrInput is an input type that accepts GetPostgresRoleProviderConfigArgs, GetPostgresRoleProviderConfigPtr and GetPostgresRoleProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresRoleProviderConfigPtrInput` via:
+//
+//	        GetPostgresRoleProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresRoleProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresRoleProviderConfigPtrOutput() GetPostgresRoleProviderConfigPtrOutput
+	ToGetPostgresRoleProviderConfigPtrOutputWithContext(context.Context) GetPostgresRoleProviderConfigPtrOutput
+}
+
+type getPostgresRoleProviderConfigPtrType GetPostgresRoleProviderConfigArgs
+
+func GetPostgresRoleProviderConfigPtr(v *GetPostgresRoleProviderConfigArgs) GetPostgresRoleProviderConfigPtrInput {
+	return (*getPostgresRoleProviderConfigPtrType)(v)
+}
+
+func (*getPostgresRoleProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresRoleProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresRoleProviderConfigPtrType) ToGetPostgresRoleProviderConfigPtrOutput() GetPostgresRoleProviderConfigPtrOutput {
+	return i.ToGetPostgresRoleProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresRoleProviderConfigPtrType) ToGetPostgresRoleProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresRoleProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRoleProviderConfigPtrOutput)
+}
+
+type GetPostgresRoleProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRoleProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRoleProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresRoleProviderConfigOutput) ToGetPostgresRoleProviderConfigOutput() GetPostgresRoleProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresRoleProviderConfigOutput) ToGetPostgresRoleProviderConfigOutputWithContext(ctx context.Context) GetPostgresRoleProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresRoleProviderConfigOutput) ToGetPostgresRoleProviderConfigPtrOutput() GetPostgresRoleProviderConfigPtrOutput {
+	return o.ToGetPostgresRoleProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresRoleProviderConfigOutput) ToGetPostgresRoleProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresRoleProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresRoleProviderConfig) *GetPostgresRoleProviderConfig {
+		return &v
+	}).(GetPostgresRoleProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresRoleProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresRoleProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresRoleProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRoleProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresRoleProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresRoleProviderConfigPtrOutput) ToGetPostgresRoleProviderConfigPtrOutput() GetPostgresRoleProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresRoleProviderConfigPtrOutput) ToGetPostgresRoleProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresRoleProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresRoleProviderConfigPtrOutput) Elem() GetPostgresRoleProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresRoleProviderConfig) GetPostgresRoleProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresRoleProviderConfig
+		return ret
+	}).(GetPostgresRoleProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresRoleProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresRoleProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresRoleSpec struct {
+	// (RoleAttributes) - The PG role attributes associated with the role
+	Attributes *GetPostgresRoleSpecAttributes `pulumi:"attributes"`
+	// (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+	AuthMethod *string `pulumi:"authMethod"`
+	// (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+	IdentityType *string `pulumi:"identityType"`
+	// (list of string) - An enum value for a standard role that this role is a member of
+	MembershipRoles []string `pulumi:"membershipRoles"`
+	// (string) - The name of the Postgres role
+	PostgresRole *string `pulumi:"postgresRole"`
+}
+
+// GetPostgresRoleSpecInput is an input type that accepts GetPostgresRoleSpecArgs and GetPostgresRoleSpecOutput values.
+// You can construct a concrete instance of `GetPostgresRoleSpecInput` via:
+//
+//	GetPostgresRoleSpecArgs{...}
+type GetPostgresRoleSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresRoleSpecOutput() GetPostgresRoleSpecOutput
+	ToGetPostgresRoleSpecOutputWithContext(context.Context) GetPostgresRoleSpecOutput
+}
+
+type GetPostgresRoleSpecArgs struct {
+	// (RoleAttributes) - The PG role attributes associated with the role
+	Attributes GetPostgresRoleSpecAttributesPtrInput `pulumi:"attributes"`
+	// (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
+	// (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+	// (list of string) - An enum value for a standard role that this role is a member of
+	MembershipRoles pulumi.StringArrayInput `pulumi:"membershipRoles"`
+	// (string) - The name of the Postgres role
+	PostgresRole pulumi.StringPtrInput `pulumi:"postgresRole"`
+}
+
+func (GetPostgresRoleSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRoleSpec)(nil)).Elem()
+}
+
+func (i GetPostgresRoleSpecArgs) ToGetPostgresRoleSpecOutput() GetPostgresRoleSpecOutput {
+	return i.ToGetPostgresRoleSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRoleSpecArgs) ToGetPostgresRoleSpecOutputWithContext(ctx context.Context) GetPostgresRoleSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRoleSpecOutput)
+}
+
+type GetPostgresRoleSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRoleSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRoleSpec)(nil)).Elem()
+}
+
+func (o GetPostgresRoleSpecOutput) ToGetPostgresRoleSpecOutput() GetPostgresRoleSpecOutput {
+	return o
+}
+
+func (o GetPostgresRoleSpecOutput) ToGetPostgresRoleSpecOutputWithContext(ctx context.Context) GetPostgresRoleSpecOutput {
+	return o
+}
+
+// (RoleAttributes) - The PG role attributes associated with the role
+func (o GetPostgresRoleSpecOutput) Attributes() GetPostgresRoleSpecAttributesPtrOutput {
+	return o.ApplyT(func(v GetPostgresRoleSpec) *GetPostgresRoleSpecAttributes { return v.Attributes }).(GetPostgresRoleSpecAttributesPtrOutput)
+}
+
+// (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+func (o GetPostgresRoleSpecOutput) AuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresRoleSpec) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+func (o GetPostgresRoleSpecOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresRoleSpec) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+// (list of string) - An enum value for a standard role that this role is a member of
+func (o GetPostgresRoleSpecOutput) MembershipRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPostgresRoleSpec) []string { return v.MembershipRoles }).(pulumi.StringArrayOutput)
+}
+
+// (string) - The name of the Postgres role
+func (o GetPostgresRoleSpecOutput) PostgresRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresRoleSpec) *string { return v.PostgresRole }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresRoleSpecAttributes struct {
+	// (boolean)
+	Bypassrls *bool `pulumi:"bypassrls"`
+	// (boolean)
+	Createdb *bool `pulumi:"createdb"`
+	// (boolean)
+	Createrole *bool `pulumi:"createrole"`
+}
+
+// GetPostgresRoleSpecAttributesInput is an input type that accepts GetPostgresRoleSpecAttributesArgs and GetPostgresRoleSpecAttributesOutput values.
+// You can construct a concrete instance of `GetPostgresRoleSpecAttributesInput` via:
+//
+//	GetPostgresRoleSpecAttributesArgs{...}
+type GetPostgresRoleSpecAttributesInput interface {
+	pulumi.Input
+
+	ToGetPostgresRoleSpecAttributesOutput() GetPostgresRoleSpecAttributesOutput
+	ToGetPostgresRoleSpecAttributesOutputWithContext(context.Context) GetPostgresRoleSpecAttributesOutput
+}
+
+type GetPostgresRoleSpecAttributesArgs struct {
+	// (boolean)
+	Bypassrls pulumi.BoolPtrInput `pulumi:"bypassrls"`
+	// (boolean)
+	Createdb pulumi.BoolPtrInput `pulumi:"createdb"`
+	// (boolean)
+	Createrole pulumi.BoolPtrInput `pulumi:"createrole"`
+}
+
+func (GetPostgresRoleSpecAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRoleSpecAttributes)(nil)).Elem()
+}
+
+func (i GetPostgresRoleSpecAttributesArgs) ToGetPostgresRoleSpecAttributesOutput() GetPostgresRoleSpecAttributesOutput {
+	return i.ToGetPostgresRoleSpecAttributesOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRoleSpecAttributesArgs) ToGetPostgresRoleSpecAttributesOutputWithContext(ctx context.Context) GetPostgresRoleSpecAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRoleSpecAttributesOutput)
+}
+
+func (i GetPostgresRoleSpecAttributesArgs) ToGetPostgresRoleSpecAttributesPtrOutput() GetPostgresRoleSpecAttributesPtrOutput {
+	return i.ToGetPostgresRoleSpecAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRoleSpecAttributesArgs) ToGetPostgresRoleSpecAttributesPtrOutputWithContext(ctx context.Context) GetPostgresRoleSpecAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRoleSpecAttributesOutput).ToGetPostgresRoleSpecAttributesPtrOutputWithContext(ctx)
+}
+
+// GetPostgresRoleSpecAttributesPtrInput is an input type that accepts GetPostgresRoleSpecAttributesArgs, GetPostgresRoleSpecAttributesPtr and GetPostgresRoleSpecAttributesPtrOutput values.
+// You can construct a concrete instance of `GetPostgresRoleSpecAttributesPtrInput` via:
+//
+//	        GetPostgresRoleSpecAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresRoleSpecAttributesPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresRoleSpecAttributesPtrOutput() GetPostgresRoleSpecAttributesPtrOutput
+	ToGetPostgresRoleSpecAttributesPtrOutputWithContext(context.Context) GetPostgresRoleSpecAttributesPtrOutput
+}
+
+type getPostgresRoleSpecAttributesPtrType GetPostgresRoleSpecAttributesArgs
+
+func GetPostgresRoleSpecAttributesPtr(v *GetPostgresRoleSpecAttributesArgs) GetPostgresRoleSpecAttributesPtrInput {
+	return (*getPostgresRoleSpecAttributesPtrType)(v)
+}
+
+func (*getPostgresRoleSpecAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresRoleSpecAttributes)(nil)).Elem()
+}
+
+func (i *getPostgresRoleSpecAttributesPtrType) ToGetPostgresRoleSpecAttributesPtrOutput() GetPostgresRoleSpecAttributesPtrOutput {
+	return i.ToGetPostgresRoleSpecAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresRoleSpecAttributesPtrType) ToGetPostgresRoleSpecAttributesPtrOutputWithContext(ctx context.Context) GetPostgresRoleSpecAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRoleSpecAttributesPtrOutput)
+}
+
+type GetPostgresRoleSpecAttributesOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRoleSpecAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRoleSpecAttributes)(nil)).Elem()
+}
+
+func (o GetPostgresRoleSpecAttributesOutput) ToGetPostgresRoleSpecAttributesOutput() GetPostgresRoleSpecAttributesOutput {
+	return o
+}
+
+func (o GetPostgresRoleSpecAttributesOutput) ToGetPostgresRoleSpecAttributesOutputWithContext(ctx context.Context) GetPostgresRoleSpecAttributesOutput {
+	return o
+}
+
+func (o GetPostgresRoleSpecAttributesOutput) ToGetPostgresRoleSpecAttributesPtrOutput() GetPostgresRoleSpecAttributesPtrOutput {
+	return o.ToGetPostgresRoleSpecAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresRoleSpecAttributesOutput) ToGetPostgresRoleSpecAttributesPtrOutputWithContext(ctx context.Context) GetPostgresRoleSpecAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresRoleSpecAttributes) *GetPostgresRoleSpecAttributes {
+		return &v
+	}).(GetPostgresRoleSpecAttributesPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRoleSpecAttributesOutput) Bypassrls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresRoleSpecAttributes) *bool { return v.Bypassrls }).(pulumi.BoolPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRoleSpecAttributesOutput) Createdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresRoleSpecAttributes) *bool { return v.Createdb }).(pulumi.BoolPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRoleSpecAttributesOutput) Createrole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresRoleSpecAttributes) *bool { return v.Createrole }).(pulumi.BoolPtrOutput)
+}
+
+type GetPostgresRoleSpecAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRoleSpecAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresRoleSpecAttributes)(nil)).Elem()
+}
+
+func (o GetPostgresRoleSpecAttributesPtrOutput) ToGetPostgresRoleSpecAttributesPtrOutput() GetPostgresRoleSpecAttributesPtrOutput {
+	return o
+}
+
+func (o GetPostgresRoleSpecAttributesPtrOutput) ToGetPostgresRoleSpecAttributesPtrOutputWithContext(ctx context.Context) GetPostgresRoleSpecAttributesPtrOutput {
+	return o
+}
+
+func (o GetPostgresRoleSpecAttributesPtrOutput) Elem() GetPostgresRoleSpecAttributesOutput {
+	return o.ApplyT(func(v *GetPostgresRoleSpecAttributes) GetPostgresRoleSpecAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresRoleSpecAttributes
+		return ret
+	}).(GetPostgresRoleSpecAttributesOutput)
+}
+
+// (boolean)
+func (o GetPostgresRoleSpecAttributesPtrOutput) Bypassrls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresRoleSpecAttributes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Bypassrls
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRoleSpecAttributesPtrOutput) Createdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresRoleSpecAttributes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Createdb
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRoleSpecAttributesPtrOutput) Createrole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresRoleSpecAttributes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Createrole
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetPostgresRoleStatus struct {
+	// (RoleAttributes) - The PG role attributes associated with the role
+	Attributes *GetPostgresRoleStatusAttributes `pulumi:"attributes"`
+	// (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+	AuthMethod *string `pulumi:"authMethod"`
+	// (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+	IdentityType *string `pulumi:"identityType"`
+	// (list of string) - An enum value for a standard role that this role is a member of
+	MembershipRoles []string `pulumi:"membershipRoles"`
+	// (string) - The name of the Postgres role
+	PostgresRole *string `pulumi:"postgresRole"`
+	// (string) - Part of the resource name
+	RoleId string `pulumi:"roleId"`
+}
+
+// GetPostgresRoleStatusInput is an input type that accepts GetPostgresRoleStatusArgs and GetPostgresRoleStatusOutput values.
+// You can construct a concrete instance of `GetPostgresRoleStatusInput` via:
+//
+//	GetPostgresRoleStatusArgs{...}
+type GetPostgresRoleStatusInput interface {
+	pulumi.Input
+
+	ToGetPostgresRoleStatusOutput() GetPostgresRoleStatusOutput
+	ToGetPostgresRoleStatusOutputWithContext(context.Context) GetPostgresRoleStatusOutput
+}
+
+type GetPostgresRoleStatusArgs struct {
+	// (RoleAttributes) - The PG role attributes associated with the role
+	Attributes GetPostgresRoleStatusAttributesPtrInput `pulumi:"attributes"`
+	// (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
+	// (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+	// (list of string) - An enum value for a standard role that this role is a member of
+	MembershipRoles pulumi.StringArrayInput `pulumi:"membershipRoles"`
+	// (string) - The name of the Postgres role
+	PostgresRole pulumi.StringPtrInput `pulumi:"postgresRole"`
+	// (string) - Part of the resource name
+	RoleId pulumi.StringInput `pulumi:"roleId"`
+}
+
+func (GetPostgresRoleStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRoleStatus)(nil)).Elem()
+}
+
+func (i GetPostgresRoleStatusArgs) ToGetPostgresRoleStatusOutput() GetPostgresRoleStatusOutput {
+	return i.ToGetPostgresRoleStatusOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRoleStatusArgs) ToGetPostgresRoleStatusOutputWithContext(ctx context.Context) GetPostgresRoleStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRoleStatusOutput)
+}
+
+type GetPostgresRoleStatusOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRoleStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRoleStatus)(nil)).Elem()
+}
+
+func (o GetPostgresRoleStatusOutput) ToGetPostgresRoleStatusOutput() GetPostgresRoleStatusOutput {
+	return o
+}
+
+func (o GetPostgresRoleStatusOutput) ToGetPostgresRoleStatusOutputWithContext(ctx context.Context) GetPostgresRoleStatusOutput {
+	return o
+}
+
+// (RoleAttributes) - The PG role attributes associated with the role
+func (o GetPostgresRoleStatusOutput) Attributes() GetPostgresRoleStatusAttributesPtrOutput {
+	return o.ApplyT(func(v GetPostgresRoleStatus) *GetPostgresRoleStatusAttributes { return v.Attributes }).(GetPostgresRoleStatusAttributesPtrOutput)
+}
+
+// (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+func (o GetPostgresRoleStatusOutput) AuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresRoleStatus) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+func (o GetPostgresRoleStatusOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresRoleStatus) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+// (list of string) - An enum value for a standard role that this role is a member of
+func (o GetPostgresRoleStatusOutput) MembershipRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPostgresRoleStatus) []string { return v.MembershipRoles }).(pulumi.StringArrayOutput)
+}
+
+// (string) - The name of the Postgres role
+func (o GetPostgresRoleStatusOutput) PostgresRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresRoleStatus) *string { return v.PostgresRole }).(pulumi.StringPtrOutput)
+}
+
+// (string) - Part of the resource name
+func (o GetPostgresRoleStatusOutput) RoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresRoleStatus) string { return v.RoleId }).(pulumi.StringOutput)
+}
+
+type GetPostgresRoleStatusAttributes struct {
+	// (boolean)
+	Bypassrls *bool `pulumi:"bypassrls"`
+	// (boolean)
+	Createdb *bool `pulumi:"createdb"`
+	// (boolean)
+	Createrole *bool `pulumi:"createrole"`
+}
+
+// GetPostgresRoleStatusAttributesInput is an input type that accepts GetPostgresRoleStatusAttributesArgs and GetPostgresRoleStatusAttributesOutput values.
+// You can construct a concrete instance of `GetPostgresRoleStatusAttributesInput` via:
+//
+//	GetPostgresRoleStatusAttributesArgs{...}
+type GetPostgresRoleStatusAttributesInput interface {
+	pulumi.Input
+
+	ToGetPostgresRoleStatusAttributesOutput() GetPostgresRoleStatusAttributesOutput
+	ToGetPostgresRoleStatusAttributesOutputWithContext(context.Context) GetPostgresRoleStatusAttributesOutput
+}
+
+type GetPostgresRoleStatusAttributesArgs struct {
+	// (boolean)
+	Bypassrls pulumi.BoolPtrInput `pulumi:"bypassrls"`
+	// (boolean)
+	Createdb pulumi.BoolPtrInput `pulumi:"createdb"`
+	// (boolean)
+	Createrole pulumi.BoolPtrInput `pulumi:"createrole"`
+}
+
+func (GetPostgresRoleStatusAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRoleStatusAttributes)(nil)).Elem()
+}
+
+func (i GetPostgresRoleStatusAttributesArgs) ToGetPostgresRoleStatusAttributesOutput() GetPostgresRoleStatusAttributesOutput {
+	return i.ToGetPostgresRoleStatusAttributesOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRoleStatusAttributesArgs) ToGetPostgresRoleStatusAttributesOutputWithContext(ctx context.Context) GetPostgresRoleStatusAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRoleStatusAttributesOutput)
+}
+
+func (i GetPostgresRoleStatusAttributesArgs) ToGetPostgresRoleStatusAttributesPtrOutput() GetPostgresRoleStatusAttributesPtrOutput {
+	return i.ToGetPostgresRoleStatusAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRoleStatusAttributesArgs) ToGetPostgresRoleStatusAttributesPtrOutputWithContext(ctx context.Context) GetPostgresRoleStatusAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRoleStatusAttributesOutput).ToGetPostgresRoleStatusAttributesPtrOutputWithContext(ctx)
+}
+
+// GetPostgresRoleStatusAttributesPtrInput is an input type that accepts GetPostgresRoleStatusAttributesArgs, GetPostgresRoleStatusAttributesPtr and GetPostgresRoleStatusAttributesPtrOutput values.
+// You can construct a concrete instance of `GetPostgresRoleStatusAttributesPtrInput` via:
+//
+//	        GetPostgresRoleStatusAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresRoleStatusAttributesPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresRoleStatusAttributesPtrOutput() GetPostgresRoleStatusAttributesPtrOutput
+	ToGetPostgresRoleStatusAttributesPtrOutputWithContext(context.Context) GetPostgresRoleStatusAttributesPtrOutput
+}
+
+type getPostgresRoleStatusAttributesPtrType GetPostgresRoleStatusAttributesArgs
+
+func GetPostgresRoleStatusAttributesPtr(v *GetPostgresRoleStatusAttributesArgs) GetPostgresRoleStatusAttributesPtrInput {
+	return (*getPostgresRoleStatusAttributesPtrType)(v)
+}
+
+func (*getPostgresRoleStatusAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresRoleStatusAttributes)(nil)).Elem()
+}
+
+func (i *getPostgresRoleStatusAttributesPtrType) ToGetPostgresRoleStatusAttributesPtrOutput() GetPostgresRoleStatusAttributesPtrOutput {
+	return i.ToGetPostgresRoleStatusAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresRoleStatusAttributesPtrType) ToGetPostgresRoleStatusAttributesPtrOutputWithContext(ctx context.Context) GetPostgresRoleStatusAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRoleStatusAttributesPtrOutput)
+}
+
+type GetPostgresRoleStatusAttributesOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRoleStatusAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRoleStatusAttributes)(nil)).Elem()
+}
+
+func (o GetPostgresRoleStatusAttributesOutput) ToGetPostgresRoleStatusAttributesOutput() GetPostgresRoleStatusAttributesOutput {
+	return o
+}
+
+func (o GetPostgresRoleStatusAttributesOutput) ToGetPostgresRoleStatusAttributesOutputWithContext(ctx context.Context) GetPostgresRoleStatusAttributesOutput {
+	return o
+}
+
+func (o GetPostgresRoleStatusAttributesOutput) ToGetPostgresRoleStatusAttributesPtrOutput() GetPostgresRoleStatusAttributesPtrOutput {
+	return o.ToGetPostgresRoleStatusAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresRoleStatusAttributesOutput) ToGetPostgresRoleStatusAttributesPtrOutputWithContext(ctx context.Context) GetPostgresRoleStatusAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresRoleStatusAttributes) *GetPostgresRoleStatusAttributes {
+		return &v
+	}).(GetPostgresRoleStatusAttributesPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRoleStatusAttributesOutput) Bypassrls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresRoleStatusAttributes) *bool { return v.Bypassrls }).(pulumi.BoolPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRoleStatusAttributesOutput) Createdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresRoleStatusAttributes) *bool { return v.Createdb }).(pulumi.BoolPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRoleStatusAttributesOutput) Createrole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresRoleStatusAttributes) *bool { return v.Createrole }).(pulumi.BoolPtrOutput)
+}
+
+type GetPostgresRoleStatusAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRoleStatusAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresRoleStatusAttributes)(nil)).Elem()
+}
+
+func (o GetPostgresRoleStatusAttributesPtrOutput) ToGetPostgresRoleStatusAttributesPtrOutput() GetPostgresRoleStatusAttributesPtrOutput {
+	return o
+}
+
+func (o GetPostgresRoleStatusAttributesPtrOutput) ToGetPostgresRoleStatusAttributesPtrOutputWithContext(ctx context.Context) GetPostgresRoleStatusAttributesPtrOutput {
+	return o
+}
+
+func (o GetPostgresRoleStatusAttributesPtrOutput) Elem() GetPostgresRoleStatusAttributesOutput {
+	return o.ApplyT(func(v *GetPostgresRoleStatusAttributes) GetPostgresRoleStatusAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresRoleStatusAttributes
+		return ret
+	}).(GetPostgresRoleStatusAttributesOutput)
+}
+
+// (boolean)
+func (o GetPostgresRoleStatusAttributesPtrOutput) Bypassrls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresRoleStatusAttributes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Bypassrls
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRoleStatusAttributesPtrOutput) Createdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresRoleStatusAttributes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Createdb
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRoleStatusAttributesPtrOutput) Createrole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresRoleStatusAttributes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Createrole
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetPostgresRolesProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresRolesProviderConfigInput is an input type that accepts GetPostgresRolesProviderConfigArgs and GetPostgresRolesProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresRolesProviderConfigInput` via:
+//
+//	GetPostgresRolesProviderConfigArgs{...}
+type GetPostgresRolesProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresRolesProviderConfigOutput() GetPostgresRolesProviderConfigOutput
+	ToGetPostgresRolesProviderConfigOutputWithContext(context.Context) GetPostgresRolesProviderConfigOutput
+}
+
+type GetPostgresRolesProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresRolesProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRolesProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresRolesProviderConfigArgs) ToGetPostgresRolesProviderConfigOutput() GetPostgresRolesProviderConfigOutput {
+	return i.ToGetPostgresRolesProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRolesProviderConfigArgs) ToGetPostgresRolesProviderConfigOutputWithContext(ctx context.Context) GetPostgresRolesProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRolesProviderConfigOutput)
+}
+
+func (i GetPostgresRolesProviderConfigArgs) ToGetPostgresRolesProviderConfigPtrOutput() GetPostgresRolesProviderConfigPtrOutput {
+	return i.ToGetPostgresRolesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRolesProviderConfigArgs) ToGetPostgresRolesProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresRolesProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRolesProviderConfigOutput).ToGetPostgresRolesProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresRolesProviderConfigPtrInput is an input type that accepts GetPostgresRolesProviderConfigArgs, GetPostgresRolesProviderConfigPtr and GetPostgresRolesProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresRolesProviderConfigPtrInput` via:
+//
+//	        GetPostgresRolesProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresRolesProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresRolesProviderConfigPtrOutput() GetPostgresRolesProviderConfigPtrOutput
+	ToGetPostgresRolesProviderConfigPtrOutputWithContext(context.Context) GetPostgresRolesProviderConfigPtrOutput
+}
+
+type getPostgresRolesProviderConfigPtrType GetPostgresRolesProviderConfigArgs
+
+func GetPostgresRolesProviderConfigPtr(v *GetPostgresRolesProviderConfigArgs) GetPostgresRolesProviderConfigPtrInput {
+	return (*getPostgresRolesProviderConfigPtrType)(v)
+}
+
+func (*getPostgresRolesProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresRolesProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresRolesProviderConfigPtrType) ToGetPostgresRolesProviderConfigPtrOutput() GetPostgresRolesProviderConfigPtrOutput {
+	return i.ToGetPostgresRolesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresRolesProviderConfigPtrType) ToGetPostgresRolesProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresRolesProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRolesProviderConfigPtrOutput)
+}
+
+type GetPostgresRolesProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRolesProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRolesProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresRolesProviderConfigOutput) ToGetPostgresRolesProviderConfigOutput() GetPostgresRolesProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresRolesProviderConfigOutput) ToGetPostgresRolesProviderConfigOutputWithContext(ctx context.Context) GetPostgresRolesProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresRolesProviderConfigOutput) ToGetPostgresRolesProviderConfigPtrOutput() GetPostgresRolesProviderConfigPtrOutput {
+	return o.ToGetPostgresRolesProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresRolesProviderConfigOutput) ToGetPostgresRolesProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresRolesProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresRolesProviderConfig) *GetPostgresRolesProviderConfig {
+		return &v
+	}).(GetPostgresRolesProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresRolesProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresRolesProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresRolesProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRolesProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresRolesProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresRolesProviderConfigPtrOutput) ToGetPostgresRolesProviderConfigPtrOutput() GetPostgresRolesProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresRolesProviderConfigPtrOutput) ToGetPostgresRolesProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresRolesProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresRolesProviderConfigPtrOutput) Elem() GetPostgresRolesProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresRolesProviderConfig) GetPostgresRolesProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresRolesProviderConfig
+		return ret
+	}).(GetPostgresRolesProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresRolesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresRolesProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresRolesRole struct {
+	// (string)
+	CreateTime string `pulumi:"createTime"`
+	// (string) - Output only. The full resource path of the role.
+	// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+	Name string `pulumi:"name"`
+	// The Branch that owns this collection of roles.
+	// Format: projects/{project_id}/branches/{branch_id}
+	Parent string `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetPostgresRolesRoleProviderConfig `pulumi:"providerConfig"`
+	// (string) - Part of the resource name
+	RoleId string `pulumi:"roleId"`
+	// (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
+	Spec GetPostgresRolesRoleSpec `pulumi:"spec"`
+	// (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
+	Status GetPostgresRolesRoleStatus `pulumi:"status"`
+	// (string)
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetPostgresRolesRoleInput is an input type that accepts GetPostgresRolesRoleArgs and GetPostgresRolesRoleOutput values.
+// You can construct a concrete instance of `GetPostgresRolesRoleInput` via:
+//
+//	GetPostgresRolesRoleArgs{...}
+type GetPostgresRolesRoleInput interface {
+	pulumi.Input
+
+	ToGetPostgresRolesRoleOutput() GetPostgresRolesRoleOutput
+	ToGetPostgresRolesRoleOutputWithContext(context.Context) GetPostgresRolesRoleOutput
+}
+
+type GetPostgresRolesRoleArgs struct {
+	// (string)
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// (string) - Output only. The full resource path of the role.
+	// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Branch that owns this collection of roles.
+	// Format: projects/{project_id}/branches/{branch_id}
+	Parent pulumi.StringInput `pulumi:"parent"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetPostgresRolesRoleProviderConfigPtrInput `pulumi:"providerConfig"`
+	// (string) - Part of the resource name
+	RoleId pulumi.StringInput `pulumi:"roleId"`
+	// (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
+	Spec GetPostgresRolesRoleSpecInput `pulumi:"spec"`
+	// (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
+	Status GetPostgresRolesRoleStatusInput `pulumi:"status"`
+	// (string)
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetPostgresRolesRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRolesRole)(nil)).Elem()
+}
+
+func (i GetPostgresRolesRoleArgs) ToGetPostgresRolesRoleOutput() GetPostgresRolesRoleOutput {
+	return i.ToGetPostgresRolesRoleOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRolesRoleArgs) ToGetPostgresRolesRoleOutputWithContext(ctx context.Context) GetPostgresRolesRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRolesRoleOutput)
+}
+
+// GetPostgresRolesRoleArrayInput is an input type that accepts GetPostgresRolesRoleArray and GetPostgresRolesRoleArrayOutput values.
+// You can construct a concrete instance of `GetPostgresRolesRoleArrayInput` via:
+//
+//	GetPostgresRolesRoleArray{ GetPostgresRolesRoleArgs{...} }
+type GetPostgresRolesRoleArrayInput interface {
+	pulumi.Input
+
+	ToGetPostgresRolesRoleArrayOutput() GetPostgresRolesRoleArrayOutput
+	ToGetPostgresRolesRoleArrayOutputWithContext(context.Context) GetPostgresRolesRoleArrayOutput
+}
+
+type GetPostgresRolesRoleArray []GetPostgresRolesRoleInput
+
+func (GetPostgresRolesRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresRolesRole)(nil)).Elem()
+}
+
+func (i GetPostgresRolesRoleArray) ToGetPostgresRolesRoleArrayOutput() GetPostgresRolesRoleArrayOutput {
+	return i.ToGetPostgresRolesRoleArrayOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRolesRoleArray) ToGetPostgresRolesRoleArrayOutputWithContext(ctx context.Context) GetPostgresRolesRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRolesRoleArrayOutput)
+}
+
+type GetPostgresRolesRoleOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRolesRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRolesRole)(nil)).Elem()
+}
+
+func (o GetPostgresRolesRoleOutput) ToGetPostgresRolesRoleOutput() GetPostgresRolesRoleOutput {
+	return o
+}
+
+func (o GetPostgresRolesRoleOutput) ToGetPostgresRolesRoleOutputWithContext(ctx context.Context) GetPostgresRolesRoleOutput {
+	return o
+}
+
+// (string)
+func (o GetPostgresRolesRoleOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresRolesRole) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// (string) - Output only. The full resource path of the role.
+// Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
+func (o GetPostgresRolesRoleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresRolesRole) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Branch that owns this collection of roles.
+// Format: projects/{project_id}/branches/{branch_id}
+func (o GetPostgresRolesRoleOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresRolesRole) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o GetPostgresRolesRoleOutput) ProviderConfig() GetPostgresRolesRoleProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetPostgresRolesRole) *GetPostgresRolesRoleProviderConfig { return v.ProviderConfig }).(GetPostgresRolesRoleProviderConfigPtrOutput)
+}
+
+// (string) - Part of the resource name
+func (o GetPostgresRolesRoleOutput) RoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresRolesRole) string { return v.RoleId }).(pulumi.StringOutput)
+}
+
+// (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
+func (o GetPostgresRolesRoleOutput) Spec() GetPostgresRolesRoleSpecOutput {
+	return o.ApplyT(func(v GetPostgresRolesRole) GetPostgresRolesRoleSpec { return v.Spec }).(GetPostgresRolesRoleSpecOutput)
+}
+
+// (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
+func (o GetPostgresRolesRoleOutput) Status() GetPostgresRolesRoleStatusOutput {
+	return o.ApplyT(func(v GetPostgresRolesRole) GetPostgresRolesRoleStatus { return v.Status }).(GetPostgresRolesRoleStatusOutput)
+}
+
+// (string)
+func (o GetPostgresRolesRoleOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresRolesRole) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetPostgresRolesRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRolesRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresRolesRole)(nil)).Elem()
+}
+
+func (o GetPostgresRolesRoleArrayOutput) ToGetPostgresRolesRoleArrayOutput() GetPostgresRolesRoleArrayOutput {
+	return o
+}
+
+func (o GetPostgresRolesRoleArrayOutput) ToGetPostgresRolesRoleArrayOutputWithContext(ctx context.Context) GetPostgresRolesRoleArrayOutput {
+	return o
+}
+
+func (o GetPostgresRolesRoleArrayOutput) Index(i pulumi.IntInput) GetPostgresRolesRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPostgresRolesRole {
+		return vs[0].([]GetPostgresRolesRole)[vs[1].(int)]
+	}).(GetPostgresRolesRoleOutput)
+}
+
+type GetPostgresRolesRoleProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresRolesRoleProviderConfigInput is an input type that accepts GetPostgresRolesRoleProviderConfigArgs and GetPostgresRolesRoleProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresRolesRoleProviderConfigInput` via:
+//
+//	GetPostgresRolesRoleProviderConfigArgs{...}
+type GetPostgresRolesRoleProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresRolesRoleProviderConfigOutput() GetPostgresRolesRoleProviderConfigOutput
+	ToGetPostgresRolesRoleProviderConfigOutputWithContext(context.Context) GetPostgresRolesRoleProviderConfigOutput
+}
+
+type GetPostgresRolesRoleProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresRolesRoleProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRolesRoleProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresRolesRoleProviderConfigArgs) ToGetPostgresRolesRoleProviderConfigOutput() GetPostgresRolesRoleProviderConfigOutput {
+	return i.ToGetPostgresRolesRoleProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRolesRoleProviderConfigArgs) ToGetPostgresRolesRoleProviderConfigOutputWithContext(ctx context.Context) GetPostgresRolesRoleProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRolesRoleProviderConfigOutput)
+}
+
+func (i GetPostgresRolesRoleProviderConfigArgs) ToGetPostgresRolesRoleProviderConfigPtrOutput() GetPostgresRolesRoleProviderConfigPtrOutput {
+	return i.ToGetPostgresRolesRoleProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRolesRoleProviderConfigArgs) ToGetPostgresRolesRoleProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresRolesRoleProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRolesRoleProviderConfigOutput).ToGetPostgresRolesRoleProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresRolesRoleProviderConfigPtrInput is an input type that accepts GetPostgresRolesRoleProviderConfigArgs, GetPostgresRolesRoleProviderConfigPtr and GetPostgresRolesRoleProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresRolesRoleProviderConfigPtrInput` via:
+//
+//	        GetPostgresRolesRoleProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresRolesRoleProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresRolesRoleProviderConfigPtrOutput() GetPostgresRolesRoleProviderConfigPtrOutput
+	ToGetPostgresRolesRoleProviderConfigPtrOutputWithContext(context.Context) GetPostgresRolesRoleProviderConfigPtrOutput
+}
+
+type getPostgresRolesRoleProviderConfigPtrType GetPostgresRolesRoleProviderConfigArgs
+
+func GetPostgresRolesRoleProviderConfigPtr(v *GetPostgresRolesRoleProviderConfigArgs) GetPostgresRolesRoleProviderConfigPtrInput {
+	return (*getPostgresRolesRoleProviderConfigPtrType)(v)
+}
+
+func (*getPostgresRolesRoleProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresRolesRoleProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresRolesRoleProviderConfigPtrType) ToGetPostgresRolesRoleProviderConfigPtrOutput() GetPostgresRolesRoleProviderConfigPtrOutput {
+	return i.ToGetPostgresRolesRoleProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresRolesRoleProviderConfigPtrType) ToGetPostgresRolesRoleProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresRolesRoleProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRolesRoleProviderConfigPtrOutput)
+}
+
+type GetPostgresRolesRoleProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRolesRoleProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRolesRoleProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresRolesRoleProviderConfigOutput) ToGetPostgresRolesRoleProviderConfigOutput() GetPostgresRolesRoleProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresRolesRoleProviderConfigOutput) ToGetPostgresRolesRoleProviderConfigOutputWithContext(ctx context.Context) GetPostgresRolesRoleProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresRolesRoleProviderConfigOutput) ToGetPostgresRolesRoleProviderConfigPtrOutput() GetPostgresRolesRoleProviderConfigPtrOutput {
+	return o.ToGetPostgresRolesRoleProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresRolesRoleProviderConfigOutput) ToGetPostgresRolesRoleProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresRolesRoleProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresRolesRoleProviderConfig) *GetPostgresRolesRoleProviderConfig {
+		return &v
+	}).(GetPostgresRolesRoleProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresRolesRoleProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresRolesRoleProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRolesRoleProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresRolesRoleProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresRolesRoleProviderConfigPtrOutput) ToGetPostgresRolesRoleProviderConfigPtrOutput() GetPostgresRolesRoleProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresRolesRoleProviderConfigPtrOutput) ToGetPostgresRolesRoleProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresRolesRoleProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresRolesRoleProviderConfigPtrOutput) Elem() GetPostgresRolesRoleProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresRolesRoleProviderConfig) GetPostgresRolesRoleProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresRolesRoleProviderConfig
+		return ret
+	}).(GetPostgresRolesRoleProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresRolesRoleProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresRolesRoleProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresRolesRoleSpec struct {
+	// (RoleAttributes) - The PG role attributes associated with the role
+	Attributes *GetPostgresRolesRoleSpecAttributes `pulumi:"attributes"`
+	// (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+	AuthMethod *string `pulumi:"authMethod"`
+	// (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+	IdentityType *string `pulumi:"identityType"`
+	// (list of string) - An enum value for a standard role that this role is a member of
+	MembershipRoles []string `pulumi:"membershipRoles"`
+	// (string) - The name of the Postgres role
+	PostgresRole *string `pulumi:"postgresRole"`
+}
+
+// GetPostgresRolesRoleSpecInput is an input type that accepts GetPostgresRolesRoleSpecArgs and GetPostgresRolesRoleSpecOutput values.
+// You can construct a concrete instance of `GetPostgresRolesRoleSpecInput` via:
+//
+//	GetPostgresRolesRoleSpecArgs{...}
+type GetPostgresRolesRoleSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresRolesRoleSpecOutput() GetPostgresRolesRoleSpecOutput
+	ToGetPostgresRolesRoleSpecOutputWithContext(context.Context) GetPostgresRolesRoleSpecOutput
+}
+
+type GetPostgresRolesRoleSpecArgs struct {
+	// (RoleAttributes) - The PG role attributes associated with the role
+	Attributes GetPostgresRolesRoleSpecAttributesPtrInput `pulumi:"attributes"`
+	// (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
+	// (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+	// (list of string) - An enum value for a standard role that this role is a member of
+	MembershipRoles pulumi.StringArrayInput `pulumi:"membershipRoles"`
+	// (string) - The name of the Postgres role
+	PostgresRole pulumi.StringPtrInput `pulumi:"postgresRole"`
+}
+
+func (GetPostgresRolesRoleSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRolesRoleSpec)(nil)).Elem()
+}
+
+func (i GetPostgresRolesRoleSpecArgs) ToGetPostgresRolesRoleSpecOutput() GetPostgresRolesRoleSpecOutput {
+	return i.ToGetPostgresRolesRoleSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRolesRoleSpecArgs) ToGetPostgresRolesRoleSpecOutputWithContext(ctx context.Context) GetPostgresRolesRoleSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRolesRoleSpecOutput)
+}
+
+type GetPostgresRolesRoleSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRolesRoleSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRolesRoleSpec)(nil)).Elem()
+}
+
+func (o GetPostgresRolesRoleSpecOutput) ToGetPostgresRolesRoleSpecOutput() GetPostgresRolesRoleSpecOutput {
+	return o
+}
+
+func (o GetPostgresRolesRoleSpecOutput) ToGetPostgresRolesRoleSpecOutputWithContext(ctx context.Context) GetPostgresRolesRoleSpecOutput {
+	return o
+}
+
+// (RoleAttributes) - The PG role attributes associated with the role
+func (o GetPostgresRolesRoleSpecOutput) Attributes() GetPostgresRolesRoleSpecAttributesPtrOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleSpec) *GetPostgresRolesRoleSpecAttributes { return v.Attributes }).(GetPostgresRolesRoleSpecAttributesPtrOutput)
+}
+
+// (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+func (o GetPostgresRolesRoleSpecOutput) AuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleSpec) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+func (o GetPostgresRolesRoleSpecOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleSpec) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+// (list of string) - An enum value for a standard role that this role is a member of
+func (o GetPostgresRolesRoleSpecOutput) MembershipRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleSpec) []string { return v.MembershipRoles }).(pulumi.StringArrayOutput)
+}
+
+// (string) - The name of the Postgres role
+func (o GetPostgresRolesRoleSpecOutput) PostgresRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleSpec) *string { return v.PostgresRole }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresRolesRoleSpecAttributes struct {
+	// (boolean)
+	Bypassrls *bool `pulumi:"bypassrls"`
+	// (boolean)
+	Createdb *bool `pulumi:"createdb"`
+	// (boolean)
+	Createrole *bool `pulumi:"createrole"`
+}
+
+// GetPostgresRolesRoleSpecAttributesInput is an input type that accepts GetPostgresRolesRoleSpecAttributesArgs and GetPostgresRolesRoleSpecAttributesOutput values.
+// You can construct a concrete instance of `GetPostgresRolesRoleSpecAttributesInput` via:
+//
+//	GetPostgresRolesRoleSpecAttributesArgs{...}
+type GetPostgresRolesRoleSpecAttributesInput interface {
+	pulumi.Input
+
+	ToGetPostgresRolesRoleSpecAttributesOutput() GetPostgresRolesRoleSpecAttributesOutput
+	ToGetPostgresRolesRoleSpecAttributesOutputWithContext(context.Context) GetPostgresRolesRoleSpecAttributesOutput
+}
+
+type GetPostgresRolesRoleSpecAttributesArgs struct {
+	// (boolean)
+	Bypassrls pulumi.BoolPtrInput `pulumi:"bypassrls"`
+	// (boolean)
+	Createdb pulumi.BoolPtrInput `pulumi:"createdb"`
+	// (boolean)
+	Createrole pulumi.BoolPtrInput `pulumi:"createrole"`
+}
+
+func (GetPostgresRolesRoleSpecAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRolesRoleSpecAttributes)(nil)).Elem()
+}
+
+func (i GetPostgresRolesRoleSpecAttributesArgs) ToGetPostgresRolesRoleSpecAttributesOutput() GetPostgresRolesRoleSpecAttributesOutput {
+	return i.ToGetPostgresRolesRoleSpecAttributesOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRolesRoleSpecAttributesArgs) ToGetPostgresRolesRoleSpecAttributesOutputWithContext(ctx context.Context) GetPostgresRolesRoleSpecAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRolesRoleSpecAttributesOutput)
+}
+
+func (i GetPostgresRolesRoleSpecAttributesArgs) ToGetPostgresRolesRoleSpecAttributesPtrOutput() GetPostgresRolesRoleSpecAttributesPtrOutput {
+	return i.ToGetPostgresRolesRoleSpecAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRolesRoleSpecAttributesArgs) ToGetPostgresRolesRoleSpecAttributesPtrOutputWithContext(ctx context.Context) GetPostgresRolesRoleSpecAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRolesRoleSpecAttributesOutput).ToGetPostgresRolesRoleSpecAttributesPtrOutputWithContext(ctx)
+}
+
+// GetPostgresRolesRoleSpecAttributesPtrInput is an input type that accepts GetPostgresRolesRoleSpecAttributesArgs, GetPostgresRolesRoleSpecAttributesPtr and GetPostgresRolesRoleSpecAttributesPtrOutput values.
+// You can construct a concrete instance of `GetPostgresRolesRoleSpecAttributesPtrInput` via:
+//
+//	        GetPostgresRolesRoleSpecAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresRolesRoleSpecAttributesPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresRolesRoleSpecAttributesPtrOutput() GetPostgresRolesRoleSpecAttributesPtrOutput
+	ToGetPostgresRolesRoleSpecAttributesPtrOutputWithContext(context.Context) GetPostgresRolesRoleSpecAttributesPtrOutput
+}
+
+type getPostgresRolesRoleSpecAttributesPtrType GetPostgresRolesRoleSpecAttributesArgs
+
+func GetPostgresRolesRoleSpecAttributesPtr(v *GetPostgresRolesRoleSpecAttributesArgs) GetPostgresRolesRoleSpecAttributesPtrInput {
+	return (*getPostgresRolesRoleSpecAttributesPtrType)(v)
+}
+
+func (*getPostgresRolesRoleSpecAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresRolesRoleSpecAttributes)(nil)).Elem()
+}
+
+func (i *getPostgresRolesRoleSpecAttributesPtrType) ToGetPostgresRolesRoleSpecAttributesPtrOutput() GetPostgresRolesRoleSpecAttributesPtrOutput {
+	return i.ToGetPostgresRolesRoleSpecAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresRolesRoleSpecAttributesPtrType) ToGetPostgresRolesRoleSpecAttributesPtrOutputWithContext(ctx context.Context) GetPostgresRolesRoleSpecAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRolesRoleSpecAttributesPtrOutput)
+}
+
+type GetPostgresRolesRoleSpecAttributesOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRolesRoleSpecAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRolesRoleSpecAttributes)(nil)).Elem()
+}
+
+func (o GetPostgresRolesRoleSpecAttributesOutput) ToGetPostgresRolesRoleSpecAttributesOutput() GetPostgresRolesRoleSpecAttributesOutput {
+	return o
+}
+
+func (o GetPostgresRolesRoleSpecAttributesOutput) ToGetPostgresRolesRoleSpecAttributesOutputWithContext(ctx context.Context) GetPostgresRolesRoleSpecAttributesOutput {
+	return o
+}
+
+func (o GetPostgresRolesRoleSpecAttributesOutput) ToGetPostgresRolesRoleSpecAttributesPtrOutput() GetPostgresRolesRoleSpecAttributesPtrOutput {
+	return o.ToGetPostgresRolesRoleSpecAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresRolesRoleSpecAttributesOutput) ToGetPostgresRolesRoleSpecAttributesPtrOutputWithContext(ctx context.Context) GetPostgresRolesRoleSpecAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresRolesRoleSpecAttributes) *GetPostgresRolesRoleSpecAttributes {
+		return &v
+	}).(GetPostgresRolesRoleSpecAttributesPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRolesRoleSpecAttributesOutput) Bypassrls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleSpecAttributes) *bool { return v.Bypassrls }).(pulumi.BoolPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRolesRoleSpecAttributesOutput) Createdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleSpecAttributes) *bool { return v.Createdb }).(pulumi.BoolPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRolesRoleSpecAttributesOutput) Createrole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleSpecAttributes) *bool { return v.Createrole }).(pulumi.BoolPtrOutput)
+}
+
+type GetPostgresRolesRoleSpecAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRolesRoleSpecAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresRolesRoleSpecAttributes)(nil)).Elem()
+}
+
+func (o GetPostgresRolesRoleSpecAttributesPtrOutput) ToGetPostgresRolesRoleSpecAttributesPtrOutput() GetPostgresRolesRoleSpecAttributesPtrOutput {
+	return o
+}
+
+func (o GetPostgresRolesRoleSpecAttributesPtrOutput) ToGetPostgresRolesRoleSpecAttributesPtrOutputWithContext(ctx context.Context) GetPostgresRolesRoleSpecAttributesPtrOutput {
+	return o
+}
+
+func (o GetPostgresRolesRoleSpecAttributesPtrOutput) Elem() GetPostgresRolesRoleSpecAttributesOutput {
+	return o.ApplyT(func(v *GetPostgresRolesRoleSpecAttributes) GetPostgresRolesRoleSpecAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresRolesRoleSpecAttributes
+		return ret
+	}).(GetPostgresRolesRoleSpecAttributesOutput)
+}
+
+// (boolean)
+func (o GetPostgresRolesRoleSpecAttributesPtrOutput) Bypassrls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresRolesRoleSpecAttributes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Bypassrls
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRolesRoleSpecAttributesPtrOutput) Createdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresRolesRoleSpecAttributes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Createdb
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRolesRoleSpecAttributesPtrOutput) Createrole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresRolesRoleSpecAttributes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Createrole
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetPostgresRolesRoleStatus struct {
+	// (RoleAttributes) - The PG role attributes associated with the role
+	Attributes *GetPostgresRolesRoleStatusAttributes `pulumi:"attributes"`
+	// (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+	AuthMethod *string `pulumi:"authMethod"`
+	// (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+	IdentityType *string `pulumi:"identityType"`
+	// (list of string) - An enum value for a standard role that this role is a member of
+	MembershipRoles []string `pulumi:"membershipRoles"`
+	// (string) - The name of the Postgres role
+	PostgresRole *string `pulumi:"postgresRole"`
+	// (string) - Part of the resource name
+	RoleId string `pulumi:"roleId"`
+}
+
+// GetPostgresRolesRoleStatusInput is an input type that accepts GetPostgresRolesRoleStatusArgs and GetPostgresRolesRoleStatusOutput values.
+// You can construct a concrete instance of `GetPostgresRolesRoleStatusInput` via:
+//
+//	GetPostgresRolesRoleStatusArgs{...}
+type GetPostgresRolesRoleStatusInput interface {
+	pulumi.Input
+
+	ToGetPostgresRolesRoleStatusOutput() GetPostgresRolesRoleStatusOutput
+	ToGetPostgresRolesRoleStatusOutputWithContext(context.Context) GetPostgresRolesRoleStatusOutput
+}
+
+type GetPostgresRolesRoleStatusArgs struct {
+	// (RoleAttributes) - The PG role attributes associated with the role
+	Attributes GetPostgresRolesRoleStatusAttributesPtrInput `pulumi:"attributes"`
+	// (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+	AuthMethod pulumi.StringPtrInput `pulumi:"authMethod"`
+	// (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+	// (list of string) - An enum value for a standard role that this role is a member of
+	MembershipRoles pulumi.StringArrayInput `pulumi:"membershipRoles"`
+	// (string) - The name of the Postgres role
+	PostgresRole pulumi.StringPtrInput `pulumi:"postgresRole"`
+	// (string) - Part of the resource name
+	RoleId pulumi.StringInput `pulumi:"roleId"`
+}
+
+func (GetPostgresRolesRoleStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRolesRoleStatus)(nil)).Elem()
+}
+
+func (i GetPostgresRolesRoleStatusArgs) ToGetPostgresRolesRoleStatusOutput() GetPostgresRolesRoleStatusOutput {
+	return i.ToGetPostgresRolesRoleStatusOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRolesRoleStatusArgs) ToGetPostgresRolesRoleStatusOutputWithContext(ctx context.Context) GetPostgresRolesRoleStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRolesRoleStatusOutput)
+}
+
+type GetPostgresRolesRoleStatusOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRolesRoleStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRolesRoleStatus)(nil)).Elem()
+}
+
+func (o GetPostgresRolesRoleStatusOutput) ToGetPostgresRolesRoleStatusOutput() GetPostgresRolesRoleStatusOutput {
+	return o
+}
+
+func (o GetPostgresRolesRoleStatusOutput) ToGetPostgresRolesRoleStatusOutputWithContext(ctx context.Context) GetPostgresRolesRoleStatusOutput {
+	return o
+}
+
+// (RoleAttributes) - The PG role attributes associated with the role
+func (o GetPostgresRolesRoleStatusOutput) Attributes() GetPostgresRolesRoleStatusAttributesPtrOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleStatus) *GetPostgresRolesRoleStatusAttributes { return v.Attributes }).(GetPostgresRolesRoleStatusAttributesPtrOutput)
+}
+
+// (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+func (o GetPostgresRolesRoleStatusOutput) AuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleStatus) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+func (o GetPostgresRolesRoleStatusOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleStatus) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+// (list of string) - An enum value for a standard role that this role is a member of
+func (o GetPostgresRolesRoleStatusOutput) MembershipRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleStatus) []string { return v.MembershipRoles }).(pulumi.StringArrayOutput)
+}
+
+// (string) - The name of the Postgres role
+func (o GetPostgresRolesRoleStatusOutput) PostgresRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleStatus) *string { return v.PostgresRole }).(pulumi.StringPtrOutput)
+}
+
+// (string) - Part of the resource name
+func (o GetPostgresRolesRoleStatusOutput) RoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleStatus) string { return v.RoleId }).(pulumi.StringOutput)
+}
+
+type GetPostgresRolesRoleStatusAttributes struct {
+	// (boolean)
+	Bypassrls *bool `pulumi:"bypassrls"`
+	// (boolean)
+	Createdb *bool `pulumi:"createdb"`
+	// (boolean)
+	Createrole *bool `pulumi:"createrole"`
+}
+
+// GetPostgresRolesRoleStatusAttributesInput is an input type that accepts GetPostgresRolesRoleStatusAttributesArgs and GetPostgresRolesRoleStatusAttributesOutput values.
+// You can construct a concrete instance of `GetPostgresRolesRoleStatusAttributesInput` via:
+//
+//	GetPostgresRolesRoleStatusAttributesArgs{...}
+type GetPostgresRolesRoleStatusAttributesInput interface {
+	pulumi.Input
+
+	ToGetPostgresRolesRoleStatusAttributesOutput() GetPostgresRolesRoleStatusAttributesOutput
+	ToGetPostgresRolesRoleStatusAttributesOutputWithContext(context.Context) GetPostgresRolesRoleStatusAttributesOutput
+}
+
+type GetPostgresRolesRoleStatusAttributesArgs struct {
+	// (boolean)
+	Bypassrls pulumi.BoolPtrInput `pulumi:"bypassrls"`
+	// (boolean)
+	Createdb pulumi.BoolPtrInput `pulumi:"createdb"`
+	// (boolean)
+	Createrole pulumi.BoolPtrInput `pulumi:"createrole"`
+}
+
+func (GetPostgresRolesRoleStatusAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRolesRoleStatusAttributes)(nil)).Elem()
+}
+
+func (i GetPostgresRolesRoleStatusAttributesArgs) ToGetPostgresRolesRoleStatusAttributesOutput() GetPostgresRolesRoleStatusAttributesOutput {
+	return i.ToGetPostgresRolesRoleStatusAttributesOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRolesRoleStatusAttributesArgs) ToGetPostgresRolesRoleStatusAttributesOutputWithContext(ctx context.Context) GetPostgresRolesRoleStatusAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRolesRoleStatusAttributesOutput)
+}
+
+func (i GetPostgresRolesRoleStatusAttributesArgs) ToGetPostgresRolesRoleStatusAttributesPtrOutput() GetPostgresRolesRoleStatusAttributesPtrOutput {
+	return i.ToGetPostgresRolesRoleStatusAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresRolesRoleStatusAttributesArgs) ToGetPostgresRolesRoleStatusAttributesPtrOutputWithContext(ctx context.Context) GetPostgresRolesRoleStatusAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRolesRoleStatusAttributesOutput).ToGetPostgresRolesRoleStatusAttributesPtrOutputWithContext(ctx)
+}
+
+// GetPostgresRolesRoleStatusAttributesPtrInput is an input type that accepts GetPostgresRolesRoleStatusAttributesArgs, GetPostgresRolesRoleStatusAttributesPtr and GetPostgresRolesRoleStatusAttributesPtrOutput values.
+// You can construct a concrete instance of `GetPostgresRolesRoleStatusAttributesPtrInput` via:
+//
+//	        GetPostgresRolesRoleStatusAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresRolesRoleStatusAttributesPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresRolesRoleStatusAttributesPtrOutput() GetPostgresRolesRoleStatusAttributesPtrOutput
+	ToGetPostgresRolesRoleStatusAttributesPtrOutputWithContext(context.Context) GetPostgresRolesRoleStatusAttributesPtrOutput
+}
+
+type getPostgresRolesRoleStatusAttributesPtrType GetPostgresRolesRoleStatusAttributesArgs
+
+func GetPostgresRolesRoleStatusAttributesPtr(v *GetPostgresRolesRoleStatusAttributesArgs) GetPostgresRolesRoleStatusAttributesPtrInput {
+	return (*getPostgresRolesRoleStatusAttributesPtrType)(v)
+}
+
+func (*getPostgresRolesRoleStatusAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresRolesRoleStatusAttributes)(nil)).Elem()
+}
+
+func (i *getPostgresRolesRoleStatusAttributesPtrType) ToGetPostgresRolesRoleStatusAttributesPtrOutput() GetPostgresRolesRoleStatusAttributesPtrOutput {
+	return i.ToGetPostgresRolesRoleStatusAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresRolesRoleStatusAttributesPtrType) ToGetPostgresRolesRoleStatusAttributesPtrOutputWithContext(ctx context.Context) GetPostgresRolesRoleStatusAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresRolesRoleStatusAttributesPtrOutput)
+}
+
+type GetPostgresRolesRoleStatusAttributesOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRolesRoleStatusAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresRolesRoleStatusAttributes)(nil)).Elem()
+}
+
+func (o GetPostgresRolesRoleStatusAttributesOutput) ToGetPostgresRolesRoleStatusAttributesOutput() GetPostgresRolesRoleStatusAttributesOutput {
+	return o
+}
+
+func (o GetPostgresRolesRoleStatusAttributesOutput) ToGetPostgresRolesRoleStatusAttributesOutputWithContext(ctx context.Context) GetPostgresRolesRoleStatusAttributesOutput {
+	return o
+}
+
+func (o GetPostgresRolesRoleStatusAttributesOutput) ToGetPostgresRolesRoleStatusAttributesPtrOutput() GetPostgresRolesRoleStatusAttributesPtrOutput {
+	return o.ToGetPostgresRolesRoleStatusAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresRolesRoleStatusAttributesOutput) ToGetPostgresRolesRoleStatusAttributesPtrOutputWithContext(ctx context.Context) GetPostgresRolesRoleStatusAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresRolesRoleStatusAttributes) *GetPostgresRolesRoleStatusAttributes {
+		return &v
+	}).(GetPostgresRolesRoleStatusAttributesPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRolesRoleStatusAttributesOutput) Bypassrls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleStatusAttributes) *bool { return v.Bypassrls }).(pulumi.BoolPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRolesRoleStatusAttributesOutput) Createdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleStatusAttributes) *bool { return v.Createdb }).(pulumi.BoolPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRolesRoleStatusAttributesOutput) Createrole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresRolesRoleStatusAttributes) *bool { return v.Createrole }).(pulumi.BoolPtrOutput)
+}
+
+type GetPostgresRolesRoleStatusAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresRolesRoleStatusAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresRolesRoleStatusAttributes)(nil)).Elem()
+}
+
+func (o GetPostgresRolesRoleStatusAttributesPtrOutput) ToGetPostgresRolesRoleStatusAttributesPtrOutput() GetPostgresRolesRoleStatusAttributesPtrOutput {
+	return o
+}
+
+func (o GetPostgresRolesRoleStatusAttributesPtrOutput) ToGetPostgresRolesRoleStatusAttributesPtrOutputWithContext(ctx context.Context) GetPostgresRolesRoleStatusAttributesPtrOutput {
+	return o
+}
+
+func (o GetPostgresRolesRoleStatusAttributesPtrOutput) Elem() GetPostgresRolesRoleStatusAttributesOutput {
+	return o.ApplyT(func(v *GetPostgresRolesRoleStatusAttributes) GetPostgresRolesRoleStatusAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresRolesRoleStatusAttributes
+		return ret
+	}).(GetPostgresRolesRoleStatusAttributesOutput)
+}
+
+// (boolean)
+func (o GetPostgresRolesRoleStatusAttributesPtrOutput) Bypassrls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresRolesRoleStatusAttributes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Bypassrls
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRolesRoleStatusAttributesPtrOutput) Createdb() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresRolesRoleStatusAttributes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Createdb
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (boolean)
+func (o GetPostgresRolesRoleStatusAttributesPtrOutput) Createrole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresRolesRoleStatusAttributes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Createrole
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetPostgresSyncedTableProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresSyncedTableProviderConfigInput is an input type that accepts GetPostgresSyncedTableProviderConfigArgs and GetPostgresSyncedTableProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresSyncedTableProviderConfigInput` via:
+//
+//	GetPostgresSyncedTableProviderConfigArgs{...}
+type GetPostgresSyncedTableProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresSyncedTableProviderConfigOutput() GetPostgresSyncedTableProviderConfigOutput
+	ToGetPostgresSyncedTableProviderConfigOutputWithContext(context.Context) GetPostgresSyncedTableProviderConfigOutput
+}
+
+type GetPostgresSyncedTableProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresSyncedTableProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSyncedTableProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresSyncedTableProviderConfigArgs) ToGetPostgresSyncedTableProviderConfigOutput() GetPostgresSyncedTableProviderConfigOutput {
+	return i.ToGetPostgresSyncedTableProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSyncedTableProviderConfigArgs) ToGetPostgresSyncedTableProviderConfigOutputWithContext(ctx context.Context) GetPostgresSyncedTableProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSyncedTableProviderConfigOutput)
+}
+
+func (i GetPostgresSyncedTableProviderConfigArgs) ToGetPostgresSyncedTableProviderConfigPtrOutput() GetPostgresSyncedTableProviderConfigPtrOutput {
+	return i.ToGetPostgresSyncedTableProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSyncedTableProviderConfigArgs) ToGetPostgresSyncedTableProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresSyncedTableProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSyncedTableProviderConfigOutput).ToGetPostgresSyncedTableProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresSyncedTableProviderConfigPtrInput is an input type that accepts GetPostgresSyncedTableProviderConfigArgs, GetPostgresSyncedTableProviderConfigPtr and GetPostgresSyncedTableProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresSyncedTableProviderConfigPtrInput` via:
+//
+//	        GetPostgresSyncedTableProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresSyncedTableProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresSyncedTableProviderConfigPtrOutput() GetPostgresSyncedTableProviderConfigPtrOutput
+	ToGetPostgresSyncedTableProviderConfigPtrOutputWithContext(context.Context) GetPostgresSyncedTableProviderConfigPtrOutput
+}
+
+type getPostgresSyncedTableProviderConfigPtrType GetPostgresSyncedTableProviderConfigArgs
+
+func GetPostgresSyncedTableProviderConfigPtr(v *GetPostgresSyncedTableProviderConfigArgs) GetPostgresSyncedTableProviderConfigPtrInput {
+	return (*getPostgresSyncedTableProviderConfigPtrType)(v)
+}
+
+func (*getPostgresSyncedTableProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresSyncedTableProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresSyncedTableProviderConfigPtrType) ToGetPostgresSyncedTableProviderConfigPtrOutput() GetPostgresSyncedTableProviderConfigPtrOutput {
+	return i.ToGetPostgresSyncedTableProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresSyncedTableProviderConfigPtrType) ToGetPostgresSyncedTableProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresSyncedTableProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSyncedTableProviderConfigPtrOutput)
+}
+
+type GetPostgresSyncedTableProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSyncedTableProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSyncedTableProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresSyncedTableProviderConfigOutput) ToGetPostgresSyncedTableProviderConfigOutput() GetPostgresSyncedTableProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresSyncedTableProviderConfigOutput) ToGetPostgresSyncedTableProviderConfigOutputWithContext(ctx context.Context) GetPostgresSyncedTableProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresSyncedTableProviderConfigOutput) ToGetPostgresSyncedTableProviderConfigPtrOutput() GetPostgresSyncedTableProviderConfigPtrOutput {
+	return o.ToGetPostgresSyncedTableProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresSyncedTableProviderConfigOutput) ToGetPostgresSyncedTableProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresSyncedTableProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresSyncedTableProviderConfig) *GetPostgresSyncedTableProviderConfig {
+		return &v
+	}).(GetPostgresSyncedTableProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresSyncedTableProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresSyncedTableProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSyncedTableProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresSyncedTableProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresSyncedTableProviderConfigPtrOutput) ToGetPostgresSyncedTableProviderConfigPtrOutput() GetPostgresSyncedTableProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresSyncedTableProviderConfigPtrOutput) ToGetPostgresSyncedTableProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresSyncedTableProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresSyncedTableProviderConfigPtrOutput) Elem() GetPostgresSyncedTableProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresSyncedTableProviderConfig) GetPostgresSyncedTableProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresSyncedTableProviderConfig
+		return ret
+	}).(GetPostgresSyncedTableProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresSyncedTableProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresSyncedTableProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresSyncedTableSpec struct {
+	// (boolean) - When true, enables accelerated sync mode for the initial data load.
+	// This significantly improves performance for large tables.
+	// Requires workspace-level enablement through Lakebase Accelerated Sync preview
+	AcceleratedSync *bool `pulumi:"acceleratedSync"`
+	// (string) - The full resource name the branch associated with the table.
+	Branch *string `pulumi:"branch"`
+	// (boolean) - If true, the synced table's logical database and schema resources in PG
+	// will be created if they do not already exist.
+	// The request will fail if this is false and the database/schema do not exist.
+	CreateDatabaseObjectsIfMissing *bool `pulumi:"createDatabaseObjectsIfMissing"`
+	// (string) - ID of an existing pipeline to bin-pack this synced table into.
+	// At most one of existingPipelineId and newPipelineSpec should be defined.
+	ExistingPipelineId *string `pulumi:"existingPipelineId"`
+	// (NewPipelineSpec) - Specification for creating a new pipeline.
+	// At most one of existingPipelineId and newPipelineSpec should be defined.
+	NewPipelineSpec *GetPostgresSyncedTableSpecNewPipelineSpec `pulumi:"newPipelineSpec"`
+	// (string) - The Postgres database name where the synced table will be created in.
+	PostgresDatabase *string `pulumi:"postgresDatabase"`
+	// (list of string) - Primary Key columns to be used for data insert/update in the destination
+	PrimaryKeyColumns []string `pulumi:"primaryKeyColumns"`
+	// (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+	SchedulingPolicy *string `pulumi:"schedulingPolicy"`
+	// (string) - Three-part (catalog, schema, table) name of the source Delta table.
+	SourceTableFullName *string `pulumi:"sourceTableFullName"`
+	// (string) - Time series key to deduplicate (tie-break) rows with the same primary key
+	TimeseriesKey *string `pulumi:"timeseriesKey"`
+	// (list of SyncedTableSyncedTableSpecTypeOverride) - Override the default Delta->PG type mapping for specific columns.
+	// A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+	TypeOverrides []GetPostgresSyncedTableSpecTypeOverride `pulumi:"typeOverrides"`
+}
+
+// GetPostgresSyncedTableSpecInput is an input type that accepts GetPostgresSyncedTableSpecArgs and GetPostgresSyncedTableSpecOutput values.
+// You can construct a concrete instance of `GetPostgresSyncedTableSpecInput` via:
+//
+//	GetPostgresSyncedTableSpecArgs{...}
+type GetPostgresSyncedTableSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresSyncedTableSpecOutput() GetPostgresSyncedTableSpecOutput
+	ToGetPostgresSyncedTableSpecOutputWithContext(context.Context) GetPostgresSyncedTableSpecOutput
+}
+
+type GetPostgresSyncedTableSpecArgs struct {
+	// (boolean) - When true, enables accelerated sync mode for the initial data load.
+	// This significantly improves performance for large tables.
+	// Requires workspace-level enablement through Lakebase Accelerated Sync preview
+	AcceleratedSync pulumi.BoolPtrInput `pulumi:"acceleratedSync"`
+	// (string) - The full resource name the branch associated with the table.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// (boolean) - If true, the synced table's logical database and schema resources in PG
+	// will be created if they do not already exist.
+	// The request will fail if this is false and the database/schema do not exist.
+	CreateDatabaseObjectsIfMissing pulumi.BoolPtrInput `pulumi:"createDatabaseObjectsIfMissing"`
+	// (string) - ID of an existing pipeline to bin-pack this synced table into.
+	// At most one of existingPipelineId and newPipelineSpec should be defined.
+	ExistingPipelineId pulumi.StringPtrInput `pulumi:"existingPipelineId"`
+	// (NewPipelineSpec) - Specification for creating a new pipeline.
+	// At most one of existingPipelineId and newPipelineSpec should be defined.
+	NewPipelineSpec GetPostgresSyncedTableSpecNewPipelineSpecPtrInput `pulumi:"newPipelineSpec"`
+	// (string) - The Postgres database name where the synced table will be created in.
+	PostgresDatabase pulumi.StringPtrInput `pulumi:"postgresDatabase"`
+	// (list of string) - Primary Key columns to be used for data insert/update in the destination
+	PrimaryKeyColumns pulumi.StringArrayInput `pulumi:"primaryKeyColumns"`
+	// (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+	SchedulingPolicy pulumi.StringPtrInput `pulumi:"schedulingPolicy"`
+	// (string) - Three-part (catalog, schema, table) name of the source Delta table.
+	SourceTableFullName pulumi.StringPtrInput `pulumi:"sourceTableFullName"`
+	// (string) - Time series key to deduplicate (tie-break) rows with the same primary key
+	TimeseriesKey pulumi.StringPtrInput `pulumi:"timeseriesKey"`
+	// (list of SyncedTableSyncedTableSpecTypeOverride) - Override the default Delta->PG type mapping for specific columns.
+	// A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+	TypeOverrides GetPostgresSyncedTableSpecTypeOverrideArrayInput `pulumi:"typeOverrides"`
+}
+
+func (GetPostgresSyncedTableSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSyncedTableSpec)(nil)).Elem()
+}
+
+func (i GetPostgresSyncedTableSpecArgs) ToGetPostgresSyncedTableSpecOutput() GetPostgresSyncedTableSpecOutput {
+	return i.ToGetPostgresSyncedTableSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSyncedTableSpecArgs) ToGetPostgresSyncedTableSpecOutputWithContext(ctx context.Context) GetPostgresSyncedTableSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSyncedTableSpecOutput)
+}
+
+type GetPostgresSyncedTableSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSyncedTableSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSyncedTableSpec)(nil)).Elem()
+}
+
+func (o GetPostgresSyncedTableSpecOutput) ToGetPostgresSyncedTableSpecOutput() GetPostgresSyncedTableSpecOutput {
+	return o
+}
+
+func (o GetPostgresSyncedTableSpecOutput) ToGetPostgresSyncedTableSpecOutputWithContext(ctx context.Context) GetPostgresSyncedTableSpecOutput {
+	return o
+}
+
+// (boolean) - When true, enables accelerated sync mode for the initial data load.
+// This significantly improves performance for large tables.
+// Requires workspace-level enablement through Lakebase Accelerated Sync preview
+func (o GetPostgresSyncedTableSpecOutput) AcceleratedSync() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableSpec) *bool { return v.AcceleratedSync }).(pulumi.BoolPtrOutput)
+}
+
+// (string) - The full resource name the branch associated with the table.
+func (o GetPostgresSyncedTableSpecOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableSpec) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// (boolean) - If true, the synced table's logical database and schema resources in PG
+// will be created if they do not already exist.
+// The request will fail if this is false and the database/schema do not exist.
+func (o GetPostgresSyncedTableSpecOutput) CreateDatabaseObjectsIfMissing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableSpec) *bool { return v.CreateDatabaseObjectsIfMissing }).(pulumi.BoolPtrOutput)
+}
+
+// (string) - ID of an existing pipeline to bin-pack this synced table into.
+// At most one of existingPipelineId and newPipelineSpec should be defined.
+func (o GetPostgresSyncedTableSpecOutput) ExistingPipelineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableSpec) *string { return v.ExistingPipelineId }).(pulumi.StringPtrOutput)
+}
+
+// (NewPipelineSpec) - Specification for creating a new pipeline.
+// At most one of existingPipelineId and newPipelineSpec should be defined.
+func (o GetPostgresSyncedTableSpecOutput) NewPipelineSpec() GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableSpec) *GetPostgresSyncedTableSpecNewPipelineSpec {
+		return v.NewPipelineSpec
+	}).(GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput)
+}
+
+// (string) - The Postgres database name where the synced table will be created in.
+func (o GetPostgresSyncedTableSpecOutput) PostgresDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableSpec) *string { return v.PostgresDatabase }).(pulumi.StringPtrOutput)
+}
+
+// (list of string) - Primary Key columns to be used for data insert/update in the destination
+func (o GetPostgresSyncedTableSpecOutput) PrimaryKeyColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableSpec) []string { return v.PrimaryKeyColumns }).(pulumi.StringArrayOutput)
+}
+
+// (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+func (o GetPostgresSyncedTableSpecOutput) SchedulingPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableSpec) *string { return v.SchedulingPolicy }).(pulumi.StringPtrOutput)
+}
+
+// (string) - Three-part (catalog, schema, table) name of the source Delta table.
+func (o GetPostgresSyncedTableSpecOutput) SourceTableFullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableSpec) *string { return v.SourceTableFullName }).(pulumi.StringPtrOutput)
+}
+
+// (string) - Time series key to deduplicate (tie-break) rows with the same primary key
+func (o GetPostgresSyncedTableSpecOutput) TimeseriesKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableSpec) *string { return v.TimeseriesKey }).(pulumi.StringPtrOutput)
+}
+
+// (list of SyncedTableSyncedTableSpecTypeOverride) - Override the default Delta->PG type mapping for specific columns.
+// A TypeOverride with PG_SPECIFIC_TYPE_UNSPECIFIED is rejected; a valid pgType must be set
+func (o GetPostgresSyncedTableSpecOutput) TypeOverrides() GetPostgresSyncedTableSpecTypeOverrideArrayOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableSpec) []GetPostgresSyncedTableSpecTypeOverride { return v.TypeOverrides }).(GetPostgresSyncedTableSpecTypeOverrideArrayOutput)
+}
+
+type GetPostgresSyncedTableSpecNewPipelineSpec struct {
+	// (string) - Budget policy to set on the newly created pipeline
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
+	// (string) - UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
+	// This needs to be a standard catalog where the user has permissions to create Delta tables
+	StorageCatalog *string `pulumi:"storageCatalog"`
+	// (string) - UC schema for the pipeline to store intermediate files (checkpoints, event logs etc).
+	// This needs to be in the standard catalog where the user has permissions to create Delta tables
+	StorageSchema *string `pulumi:"storageSchema"`
+}
+
+// GetPostgresSyncedTableSpecNewPipelineSpecInput is an input type that accepts GetPostgresSyncedTableSpecNewPipelineSpecArgs and GetPostgresSyncedTableSpecNewPipelineSpecOutput values.
+// You can construct a concrete instance of `GetPostgresSyncedTableSpecNewPipelineSpecInput` via:
+//
+//	GetPostgresSyncedTableSpecNewPipelineSpecArgs{...}
+type GetPostgresSyncedTableSpecNewPipelineSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresSyncedTableSpecNewPipelineSpecOutput() GetPostgresSyncedTableSpecNewPipelineSpecOutput
+	ToGetPostgresSyncedTableSpecNewPipelineSpecOutputWithContext(context.Context) GetPostgresSyncedTableSpecNewPipelineSpecOutput
+}
+
+type GetPostgresSyncedTableSpecNewPipelineSpecArgs struct {
+	// (string) - Budget policy to set on the newly created pipeline
+	BudgetPolicyId pulumi.StringPtrInput `pulumi:"budgetPolicyId"`
+	// (string) - UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
+	// This needs to be a standard catalog where the user has permissions to create Delta tables
+	StorageCatalog pulumi.StringPtrInput `pulumi:"storageCatalog"`
+	// (string) - UC schema for the pipeline to store intermediate files (checkpoints, event logs etc).
+	// This needs to be in the standard catalog where the user has permissions to create Delta tables
+	StorageSchema pulumi.StringPtrInput `pulumi:"storageSchema"`
+}
+
+func (GetPostgresSyncedTableSpecNewPipelineSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSyncedTableSpecNewPipelineSpec)(nil)).Elem()
+}
+
+func (i GetPostgresSyncedTableSpecNewPipelineSpecArgs) ToGetPostgresSyncedTableSpecNewPipelineSpecOutput() GetPostgresSyncedTableSpecNewPipelineSpecOutput {
+	return i.ToGetPostgresSyncedTableSpecNewPipelineSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSyncedTableSpecNewPipelineSpecArgs) ToGetPostgresSyncedTableSpecNewPipelineSpecOutputWithContext(ctx context.Context) GetPostgresSyncedTableSpecNewPipelineSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSyncedTableSpecNewPipelineSpecOutput)
+}
+
+func (i GetPostgresSyncedTableSpecNewPipelineSpecArgs) ToGetPostgresSyncedTableSpecNewPipelineSpecPtrOutput() GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput {
+	return i.ToGetPostgresSyncedTableSpecNewPipelineSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSyncedTableSpecNewPipelineSpecArgs) ToGetPostgresSyncedTableSpecNewPipelineSpecPtrOutputWithContext(ctx context.Context) GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSyncedTableSpecNewPipelineSpecOutput).ToGetPostgresSyncedTableSpecNewPipelineSpecPtrOutputWithContext(ctx)
+}
+
+// GetPostgresSyncedTableSpecNewPipelineSpecPtrInput is an input type that accepts GetPostgresSyncedTableSpecNewPipelineSpecArgs, GetPostgresSyncedTableSpecNewPipelineSpecPtr and GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput values.
+// You can construct a concrete instance of `GetPostgresSyncedTableSpecNewPipelineSpecPtrInput` via:
+//
+//	        GetPostgresSyncedTableSpecNewPipelineSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresSyncedTableSpecNewPipelineSpecPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresSyncedTableSpecNewPipelineSpecPtrOutput() GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput
+	ToGetPostgresSyncedTableSpecNewPipelineSpecPtrOutputWithContext(context.Context) GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput
+}
+
+type getPostgresSyncedTableSpecNewPipelineSpecPtrType GetPostgresSyncedTableSpecNewPipelineSpecArgs
+
+func GetPostgresSyncedTableSpecNewPipelineSpecPtr(v *GetPostgresSyncedTableSpecNewPipelineSpecArgs) GetPostgresSyncedTableSpecNewPipelineSpecPtrInput {
+	return (*getPostgresSyncedTableSpecNewPipelineSpecPtrType)(v)
+}
+
+func (*getPostgresSyncedTableSpecNewPipelineSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresSyncedTableSpecNewPipelineSpec)(nil)).Elem()
+}
+
+func (i *getPostgresSyncedTableSpecNewPipelineSpecPtrType) ToGetPostgresSyncedTableSpecNewPipelineSpecPtrOutput() GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput {
+	return i.ToGetPostgresSyncedTableSpecNewPipelineSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresSyncedTableSpecNewPipelineSpecPtrType) ToGetPostgresSyncedTableSpecNewPipelineSpecPtrOutputWithContext(ctx context.Context) GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput)
+}
+
+type GetPostgresSyncedTableSpecNewPipelineSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSyncedTableSpecNewPipelineSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSyncedTableSpecNewPipelineSpec)(nil)).Elem()
+}
+
+func (o GetPostgresSyncedTableSpecNewPipelineSpecOutput) ToGetPostgresSyncedTableSpecNewPipelineSpecOutput() GetPostgresSyncedTableSpecNewPipelineSpecOutput {
+	return o
+}
+
+func (o GetPostgresSyncedTableSpecNewPipelineSpecOutput) ToGetPostgresSyncedTableSpecNewPipelineSpecOutputWithContext(ctx context.Context) GetPostgresSyncedTableSpecNewPipelineSpecOutput {
+	return o
+}
+
+func (o GetPostgresSyncedTableSpecNewPipelineSpecOutput) ToGetPostgresSyncedTableSpecNewPipelineSpecPtrOutput() GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput {
+	return o.ToGetPostgresSyncedTableSpecNewPipelineSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresSyncedTableSpecNewPipelineSpecOutput) ToGetPostgresSyncedTableSpecNewPipelineSpecPtrOutputWithContext(ctx context.Context) GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresSyncedTableSpecNewPipelineSpec) *GetPostgresSyncedTableSpecNewPipelineSpec {
+		return &v
+	}).(GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput)
+}
+
+// (string) - Budget policy to set on the newly created pipeline
+func (o GetPostgresSyncedTableSpecNewPipelineSpecOutput) BudgetPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableSpecNewPipelineSpec) *string { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
+}
+
+// (string) - UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
+// This needs to be a standard catalog where the user has permissions to create Delta tables
+func (o GetPostgresSyncedTableSpecNewPipelineSpecOutput) StorageCatalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableSpecNewPipelineSpec) *string { return v.StorageCatalog }).(pulumi.StringPtrOutput)
+}
+
+// (string) - UC schema for the pipeline to store intermediate files (checkpoints, event logs etc).
+// This needs to be in the standard catalog where the user has permissions to create Delta tables
+func (o GetPostgresSyncedTableSpecNewPipelineSpecOutput) StorageSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableSpecNewPipelineSpec) *string { return v.StorageSchema }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresSyncedTableSpecNewPipelineSpec)(nil)).Elem()
+}
+
+func (o GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput) ToGetPostgresSyncedTableSpecNewPipelineSpecPtrOutput() GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput {
+	return o
+}
+
+func (o GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput) ToGetPostgresSyncedTableSpecNewPipelineSpecPtrOutputWithContext(ctx context.Context) GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput {
+	return o
+}
+
+func (o GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput) Elem() GetPostgresSyncedTableSpecNewPipelineSpecOutput {
+	return o.ApplyT(func(v *GetPostgresSyncedTableSpecNewPipelineSpec) GetPostgresSyncedTableSpecNewPipelineSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresSyncedTableSpecNewPipelineSpec
+		return ret
+	}).(GetPostgresSyncedTableSpecNewPipelineSpecOutput)
+}
+
+// (string) - Budget policy to set on the newly created pipeline
+func (o GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput) BudgetPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresSyncedTableSpecNewPipelineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BudgetPolicyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - UC catalog for the pipeline to store intermediate files (checkpoints, event logs etc).
+// This needs to be a standard catalog where the user has permissions to create Delta tables
+func (o GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput) StorageCatalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresSyncedTableSpecNewPipelineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageCatalog
+	}).(pulumi.StringPtrOutput)
+}
+
+// (string) - UC schema for the pipeline to store intermediate files (checkpoints, event logs etc).
+// This needs to be in the standard catalog where the user has permissions to create Delta tables
+func (o GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput) StorageSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresSyncedTableSpecNewPipelineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresSyncedTableSpecTypeOverride struct {
+	// (string) - Name of the source column whose target PostgreSQL type should be overridden
+	ColumnName string `pulumi:"columnName"`
+	// (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+	PgType string `pulumi:"pgType"`
+	// (integer) - Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
+	// (specifies the vector dimension, e.g., 1024)
+	Size *int `pulumi:"size"`
+}
+
+// GetPostgresSyncedTableSpecTypeOverrideInput is an input type that accepts GetPostgresSyncedTableSpecTypeOverrideArgs and GetPostgresSyncedTableSpecTypeOverrideOutput values.
+// You can construct a concrete instance of `GetPostgresSyncedTableSpecTypeOverrideInput` via:
+//
+//	GetPostgresSyncedTableSpecTypeOverrideArgs{...}
+type GetPostgresSyncedTableSpecTypeOverrideInput interface {
+	pulumi.Input
+
+	ToGetPostgresSyncedTableSpecTypeOverrideOutput() GetPostgresSyncedTableSpecTypeOverrideOutput
+	ToGetPostgresSyncedTableSpecTypeOverrideOutputWithContext(context.Context) GetPostgresSyncedTableSpecTypeOverrideOutput
+}
+
+type GetPostgresSyncedTableSpecTypeOverrideArgs struct {
+	// (string) - Name of the source column whose target PostgreSQL type should be overridden
+	ColumnName pulumi.StringInput `pulumi:"columnName"`
+	// (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+	PgType pulumi.StringInput `pulumi:"pgType"`
+	// (integer) - Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
+	// (specifies the vector dimension, e.g., 1024)
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (GetPostgresSyncedTableSpecTypeOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSyncedTableSpecTypeOverride)(nil)).Elem()
+}
+
+func (i GetPostgresSyncedTableSpecTypeOverrideArgs) ToGetPostgresSyncedTableSpecTypeOverrideOutput() GetPostgresSyncedTableSpecTypeOverrideOutput {
+	return i.ToGetPostgresSyncedTableSpecTypeOverrideOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSyncedTableSpecTypeOverrideArgs) ToGetPostgresSyncedTableSpecTypeOverrideOutputWithContext(ctx context.Context) GetPostgresSyncedTableSpecTypeOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSyncedTableSpecTypeOverrideOutput)
+}
+
+// GetPostgresSyncedTableSpecTypeOverrideArrayInput is an input type that accepts GetPostgresSyncedTableSpecTypeOverrideArray and GetPostgresSyncedTableSpecTypeOverrideArrayOutput values.
+// You can construct a concrete instance of `GetPostgresSyncedTableSpecTypeOverrideArrayInput` via:
+//
+//	GetPostgresSyncedTableSpecTypeOverrideArray{ GetPostgresSyncedTableSpecTypeOverrideArgs{...} }
+type GetPostgresSyncedTableSpecTypeOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetPostgresSyncedTableSpecTypeOverrideArrayOutput() GetPostgresSyncedTableSpecTypeOverrideArrayOutput
+	ToGetPostgresSyncedTableSpecTypeOverrideArrayOutputWithContext(context.Context) GetPostgresSyncedTableSpecTypeOverrideArrayOutput
+}
+
+type GetPostgresSyncedTableSpecTypeOverrideArray []GetPostgresSyncedTableSpecTypeOverrideInput
+
+func (GetPostgresSyncedTableSpecTypeOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresSyncedTableSpecTypeOverride)(nil)).Elem()
+}
+
+func (i GetPostgresSyncedTableSpecTypeOverrideArray) ToGetPostgresSyncedTableSpecTypeOverrideArrayOutput() GetPostgresSyncedTableSpecTypeOverrideArrayOutput {
+	return i.ToGetPostgresSyncedTableSpecTypeOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSyncedTableSpecTypeOverrideArray) ToGetPostgresSyncedTableSpecTypeOverrideArrayOutputWithContext(ctx context.Context) GetPostgresSyncedTableSpecTypeOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSyncedTableSpecTypeOverrideArrayOutput)
+}
+
+type GetPostgresSyncedTableSpecTypeOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSyncedTableSpecTypeOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSyncedTableSpecTypeOverride)(nil)).Elem()
+}
+
+func (o GetPostgresSyncedTableSpecTypeOverrideOutput) ToGetPostgresSyncedTableSpecTypeOverrideOutput() GetPostgresSyncedTableSpecTypeOverrideOutput {
+	return o
+}
+
+func (o GetPostgresSyncedTableSpecTypeOverrideOutput) ToGetPostgresSyncedTableSpecTypeOverrideOutputWithContext(ctx context.Context) GetPostgresSyncedTableSpecTypeOverrideOutput {
+	return o
+}
+
+// (string) - Name of the source column whose target PostgreSQL type should be overridden
+func (o GetPostgresSyncedTableSpecTypeOverrideOutput) ColumnName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableSpecTypeOverride) string { return v.ColumnName }).(pulumi.StringOutput)
+}
+
+// (string) - PostgreSQL-specific target type to use for the column. Possible values are: `PG_SPECIFIC_TYPE_VECTOR`
+func (o GetPostgresSyncedTableSpecTypeOverrideOutput) PgType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableSpecTypeOverride) string { return v.PgType }).(pulumi.StringOutput)
+}
+
+// (integer) - Size parameter for the target type. Required when pgType is PG_SPECIFIC_TYPE_VECTOR
+// (specifies the vector dimension, e.g., 1024)
+func (o GetPostgresSyncedTableSpecTypeOverrideOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableSpecTypeOverride) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type GetPostgresSyncedTableSpecTypeOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSyncedTableSpecTypeOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresSyncedTableSpecTypeOverride)(nil)).Elem()
+}
+
+func (o GetPostgresSyncedTableSpecTypeOverrideArrayOutput) ToGetPostgresSyncedTableSpecTypeOverrideArrayOutput() GetPostgresSyncedTableSpecTypeOverrideArrayOutput {
+	return o
+}
+
+func (o GetPostgresSyncedTableSpecTypeOverrideArrayOutput) ToGetPostgresSyncedTableSpecTypeOverrideArrayOutputWithContext(ctx context.Context) GetPostgresSyncedTableSpecTypeOverrideArrayOutput {
+	return o
+}
+
+func (o GetPostgresSyncedTableSpecTypeOverrideArrayOutput) Index(i pulumi.IntInput) GetPostgresSyncedTableSpecTypeOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPostgresSyncedTableSpecTypeOverride {
+		return vs[0].([]GetPostgresSyncedTableSpecTypeOverride)[vs[1].(int)]
+	}).(GetPostgresSyncedTableSpecTypeOverrideOutput)
+}
+
+type GetPostgresSyncedTableStatus struct {
+	// (string) - The state of the synced table. Possible values are: `SYNCED_TABLE_OFFLINE`, `SYNCED_TABLE_OFFLINE_FAILED`, `SYNCED_TABLE_ONLINE`, `SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE`, `SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE`, `SYNCED_TABLE_ONLINE_PIPELINE_FAILED`, `SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE`, `SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES`, `SYNCED_TABLE_PROVISIONING`, `SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT`, `SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES`
+	DetailedState string `pulumi:"detailedState"`
+	// (integer) - The last source table Delta version that was successfully synced to the synced table
+	LastProcessedCommitVersion int `pulumi:"lastProcessedCommitVersion"`
+	// (SyncedTablePosition) - Summary of the last successful synchronization from source to destination
+	LastSync GetPostgresSyncedTableStatusLastSync `pulumi:"lastSync"`
+	// (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+	// table. This is when the data is available in the synced table
+	LastSyncTime string `pulumi:"lastSyncTime"`
+	// (string) - A text description of the current state of the synced table
+	Message string `pulumi:"message"`
+	// (SyncedTablePipelineProgress)
+	OngoingSyncProgress GetPostgresSyncedTableStatusOngoingSyncProgress `pulumi:"ongoingSyncProgress"`
+	// (string) - ID of the associated pipeline
+	PipelineId string `pulumi:"pipelineId"`
+	// (string) - The full resource name of the project associated with the table.
+	Project string `pulumi:"project"`
+	// (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+	ProvisioningPhase string `pulumi:"provisioningPhase"`
+	// (string) - The provisioning state of the synced table entity in Unity Catalog. Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
+	UnityCatalogProvisioningState string `pulumi:"unityCatalogProvisioningState"`
+}
+
+// GetPostgresSyncedTableStatusInput is an input type that accepts GetPostgresSyncedTableStatusArgs and GetPostgresSyncedTableStatusOutput values.
+// You can construct a concrete instance of `GetPostgresSyncedTableStatusInput` via:
+//
+//	GetPostgresSyncedTableStatusArgs{...}
+type GetPostgresSyncedTableStatusInput interface {
+	pulumi.Input
+
+	ToGetPostgresSyncedTableStatusOutput() GetPostgresSyncedTableStatusOutput
+	ToGetPostgresSyncedTableStatusOutputWithContext(context.Context) GetPostgresSyncedTableStatusOutput
+}
+
+type GetPostgresSyncedTableStatusArgs struct {
+	// (string) - The state of the synced table. Possible values are: `SYNCED_TABLE_OFFLINE`, `SYNCED_TABLE_OFFLINE_FAILED`, `SYNCED_TABLE_ONLINE`, `SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE`, `SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE`, `SYNCED_TABLE_ONLINE_PIPELINE_FAILED`, `SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE`, `SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES`, `SYNCED_TABLE_PROVISIONING`, `SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT`, `SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES`
+	DetailedState pulumi.StringInput `pulumi:"detailedState"`
+	// (integer) - The last source table Delta version that was successfully synced to the synced table
+	LastProcessedCommitVersion pulumi.IntInput `pulumi:"lastProcessedCommitVersion"`
+	// (SyncedTablePosition) - Summary of the last successful synchronization from source to destination
+	LastSync GetPostgresSyncedTableStatusLastSyncInput `pulumi:"lastSync"`
+	// (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+	// table. This is when the data is available in the synced table
+	LastSyncTime pulumi.StringInput `pulumi:"lastSyncTime"`
+	// (string) - A text description of the current state of the synced table
+	Message pulumi.StringInput `pulumi:"message"`
+	// (SyncedTablePipelineProgress)
+	OngoingSyncProgress GetPostgresSyncedTableStatusOngoingSyncProgressInput `pulumi:"ongoingSyncProgress"`
+	// (string) - ID of the associated pipeline
+	PipelineId pulumi.StringInput `pulumi:"pipelineId"`
+	// (string) - The full resource name of the project associated with the table.
+	Project pulumi.StringInput `pulumi:"project"`
+	// (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+	ProvisioningPhase pulumi.StringInput `pulumi:"provisioningPhase"`
+	// (string) - The provisioning state of the synced table entity in Unity Catalog. Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
+	UnityCatalogProvisioningState pulumi.StringInput `pulumi:"unityCatalogProvisioningState"`
+}
+
+func (GetPostgresSyncedTableStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSyncedTableStatus)(nil)).Elem()
+}
+
+func (i GetPostgresSyncedTableStatusArgs) ToGetPostgresSyncedTableStatusOutput() GetPostgresSyncedTableStatusOutput {
+	return i.ToGetPostgresSyncedTableStatusOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSyncedTableStatusArgs) ToGetPostgresSyncedTableStatusOutputWithContext(ctx context.Context) GetPostgresSyncedTableStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSyncedTableStatusOutput)
+}
+
+type GetPostgresSyncedTableStatusOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSyncedTableStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSyncedTableStatus)(nil)).Elem()
+}
+
+func (o GetPostgresSyncedTableStatusOutput) ToGetPostgresSyncedTableStatusOutput() GetPostgresSyncedTableStatusOutput {
+	return o
+}
+
+func (o GetPostgresSyncedTableStatusOutput) ToGetPostgresSyncedTableStatusOutputWithContext(ctx context.Context) GetPostgresSyncedTableStatusOutput {
+	return o
+}
+
+// (string) - The state of the synced table. Possible values are: `SYNCED_TABLE_OFFLINE`, `SYNCED_TABLE_OFFLINE_FAILED`, `SYNCED_TABLE_ONLINE`, `SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE`, `SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE`, `SYNCED_TABLE_ONLINE_PIPELINE_FAILED`, `SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE`, `SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES`, `SYNCED_TABLE_PROVISIONING`, `SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT`, `SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES`
+func (o GetPostgresSyncedTableStatusOutput) DetailedState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatus) string { return v.DetailedState }).(pulumi.StringOutput)
+}
+
+// (integer) - The last source table Delta version that was successfully synced to the synced table
+func (o GetPostgresSyncedTableStatusOutput) LastProcessedCommitVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatus) int { return v.LastProcessedCommitVersion }).(pulumi.IntOutput)
+}
+
+// (SyncedTablePosition) - Summary of the last successful synchronization from source to destination
+func (o GetPostgresSyncedTableStatusOutput) LastSync() GetPostgresSyncedTableStatusLastSyncOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatus) GetPostgresSyncedTableStatusLastSync { return v.LastSync }).(GetPostgresSyncedTableStatusLastSyncOutput)
+}
+
+// (string) - The end timestamp of the last time any data was synchronized from the source table to the synced
+// table. This is when the data is available in the synced table
+func (o GetPostgresSyncedTableStatusOutput) LastSyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatus) string { return v.LastSyncTime }).(pulumi.StringOutput)
+}
+
+// (string) - A text description of the current state of the synced table
+func (o GetPostgresSyncedTableStatusOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatus) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// (SyncedTablePipelineProgress)
+func (o GetPostgresSyncedTableStatusOutput) OngoingSyncProgress() GetPostgresSyncedTableStatusOngoingSyncProgressOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatus) GetPostgresSyncedTableStatusOngoingSyncProgress {
+		return v.OngoingSyncProgress
+	}).(GetPostgresSyncedTableStatusOngoingSyncProgressOutput)
+}
+
+// (string) - ID of the associated pipeline
+func (o GetPostgresSyncedTableStatusOutput) PipelineId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatus) string { return v.PipelineId }).(pulumi.StringOutput)
+}
+
+// (string) - The full resource name of the project associated with the table.
+func (o GetPostgresSyncedTableStatusOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatus) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// (string) - The current phase of the data synchronization pipeline. Possible values are: `PROVISIONING_PHASE_INDEX_SCAN`, `PROVISIONING_PHASE_INDEX_SORT`, `PROVISIONING_PHASE_MAIN`
+func (o GetPostgresSyncedTableStatusOutput) ProvisioningPhase() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatus) string { return v.ProvisioningPhase }).(pulumi.StringOutput)
+}
+
+// (string) - The provisioning state of the synced table entity in Unity Catalog. Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
+func (o GetPostgresSyncedTableStatusOutput) UnityCatalogProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatus) string { return v.UnityCatalogProvisioningState }).(pulumi.StringOutput)
+}
+
+type GetPostgresSyncedTableStatusLastSync struct {
+	// (DeltaTableSyncInfo)
+	DeltaTableSyncInfo GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfo `pulumi:"deltaTableSyncInfo"`
+	// (string) - The end timestamp of the most recent successful synchronization.
+	// This is the time when the data is available in the synced table
+	SyncEndTime string `pulumi:"syncEndTime"`
+	// (string) - The starting timestamp of the most recent successful synchronization from the source table
+	// to the destination (synced) table.
+	// Note this is the starting timestamp of the sync operation, not the end time.
+	// E.g., for a batch, this is the time when the sync operation started
+	SyncStartTime string `pulumi:"syncStartTime"`
+}
+
+// GetPostgresSyncedTableStatusLastSyncInput is an input type that accepts GetPostgresSyncedTableStatusLastSyncArgs and GetPostgresSyncedTableStatusLastSyncOutput values.
+// You can construct a concrete instance of `GetPostgresSyncedTableStatusLastSyncInput` via:
+//
+//	GetPostgresSyncedTableStatusLastSyncArgs{...}
+type GetPostgresSyncedTableStatusLastSyncInput interface {
+	pulumi.Input
+
+	ToGetPostgresSyncedTableStatusLastSyncOutput() GetPostgresSyncedTableStatusLastSyncOutput
+	ToGetPostgresSyncedTableStatusLastSyncOutputWithContext(context.Context) GetPostgresSyncedTableStatusLastSyncOutput
+}
+
+type GetPostgresSyncedTableStatusLastSyncArgs struct {
+	// (DeltaTableSyncInfo)
+	DeltaTableSyncInfo GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoInput `pulumi:"deltaTableSyncInfo"`
+	// (string) - The end timestamp of the most recent successful synchronization.
+	// This is the time when the data is available in the synced table
+	SyncEndTime pulumi.StringInput `pulumi:"syncEndTime"`
+	// (string) - The starting timestamp of the most recent successful synchronization from the source table
+	// to the destination (synced) table.
+	// Note this is the starting timestamp of the sync operation, not the end time.
+	// E.g., for a batch, this is the time when the sync operation started
+	SyncStartTime pulumi.StringInput `pulumi:"syncStartTime"`
+}
+
+func (GetPostgresSyncedTableStatusLastSyncArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSyncedTableStatusLastSync)(nil)).Elem()
+}
+
+func (i GetPostgresSyncedTableStatusLastSyncArgs) ToGetPostgresSyncedTableStatusLastSyncOutput() GetPostgresSyncedTableStatusLastSyncOutput {
+	return i.ToGetPostgresSyncedTableStatusLastSyncOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSyncedTableStatusLastSyncArgs) ToGetPostgresSyncedTableStatusLastSyncOutputWithContext(ctx context.Context) GetPostgresSyncedTableStatusLastSyncOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSyncedTableStatusLastSyncOutput)
+}
+
+type GetPostgresSyncedTableStatusLastSyncOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSyncedTableStatusLastSyncOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSyncedTableStatusLastSync)(nil)).Elem()
+}
+
+func (o GetPostgresSyncedTableStatusLastSyncOutput) ToGetPostgresSyncedTableStatusLastSyncOutput() GetPostgresSyncedTableStatusLastSyncOutput {
+	return o
+}
+
+func (o GetPostgresSyncedTableStatusLastSyncOutput) ToGetPostgresSyncedTableStatusLastSyncOutputWithContext(ctx context.Context) GetPostgresSyncedTableStatusLastSyncOutput {
+	return o
+}
+
+// (DeltaTableSyncInfo)
+func (o GetPostgresSyncedTableStatusLastSyncOutput) DeltaTableSyncInfo() GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatusLastSync) GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfo {
+		return v.DeltaTableSyncInfo
+	}).(GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput)
+}
+
+// (string) - The end timestamp of the most recent successful synchronization.
+// This is the time when the data is available in the synced table
+func (o GetPostgresSyncedTableStatusLastSyncOutput) SyncEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatusLastSync) string { return v.SyncEndTime }).(pulumi.StringOutput)
+}
+
+// (string) - The starting timestamp of the most recent successful synchronization from the source table
+// to the destination (synced) table.
+// Note this is the starting timestamp of the sync operation, not the end time.
+// E.g., for a batch, this is the time when the sync operation started
+func (o GetPostgresSyncedTableStatusLastSyncOutput) SyncStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatusLastSync) string { return v.SyncStartTime }).(pulumi.StringOutput)
+}
+
+type GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfo struct {
+	// (string) - The timestamp when the above Delta version was committed in the source Delta table.
+	// Note: This is the Delta commit time, not the time the data was written to the synced table
+	DeltaCommitTime string `pulumi:"deltaCommitTime"`
+	// (integer) - The Delta Lake commit version that was last successfully synced
+	DeltaCommitVersion int `pulumi:"deltaCommitVersion"`
+}
+
+// GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoInput is an input type that accepts GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoArgs and GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput values.
+// You can construct a concrete instance of `GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoInput` via:
+//
+//	GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoArgs{...}
+type GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoInput interface {
+	pulumi.Input
+
+	ToGetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput() GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput
+	ToGetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutputWithContext(context.Context) GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput
+}
+
+type GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoArgs struct {
+	// (string) - The timestamp when the above Delta version was committed in the source Delta table.
+	// Note: This is the Delta commit time, not the time the data was written to the synced table
+	DeltaCommitTime pulumi.StringInput `pulumi:"deltaCommitTime"`
+	// (integer) - The Delta Lake commit version that was last successfully synced
+	DeltaCommitVersion pulumi.IntInput `pulumi:"deltaCommitVersion"`
+}
+
+func (GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfo)(nil)).Elem()
+}
+
+func (i GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoArgs) ToGetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput() GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput {
+	return i.ToGetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoArgs) ToGetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutputWithContext(ctx context.Context) GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput)
+}
+
+type GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfo)(nil)).Elem()
+}
+
+func (o GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput) ToGetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput() GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput {
+	return o
+}
+
+func (o GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput) ToGetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutputWithContext(ctx context.Context) GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput {
+	return o
+}
+
+// (string) - The timestamp when the above Delta version was committed in the source Delta table.
+// Note: This is the Delta commit time, not the time the data was written to the synced table
+func (o GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput) DeltaCommitTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfo) string { return v.DeltaCommitTime }).(pulumi.StringOutput)
+}
+
+// (integer) - The Delta Lake commit version that was last successfully synced
+func (o GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput) DeltaCommitVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfo) int { return v.DeltaCommitVersion }).(pulumi.IntOutput)
+}
+
+type GetPostgresSyncedTableStatusOngoingSyncProgress struct {
+	// (number) - The estimated time remaining to complete this update in seconds
+	EstimatedCompletionTimeSeconds float64 `pulumi:"estimatedCompletionTimeSeconds"`
+	// (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+	// have completely processed this version yet
+	LatestVersionCurrentlyProcessing int `pulumi:"latestVersionCurrentlyProcessing"`
+	// (number) - The completion ratio of this update. This is a number between 0 and 1
+	SyncProgressCompletion float64 `pulumi:"syncProgressCompletion"`
+	// (integer) - The number of rows that have been synced in this update
+	SyncedRowCount int `pulumi:"syncedRowCount"`
+	// (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+	TotalRowCount int `pulumi:"totalRowCount"`
+}
+
+// GetPostgresSyncedTableStatusOngoingSyncProgressInput is an input type that accepts GetPostgresSyncedTableStatusOngoingSyncProgressArgs and GetPostgresSyncedTableStatusOngoingSyncProgressOutput values.
+// You can construct a concrete instance of `GetPostgresSyncedTableStatusOngoingSyncProgressInput` via:
+//
+//	GetPostgresSyncedTableStatusOngoingSyncProgressArgs{...}
+type GetPostgresSyncedTableStatusOngoingSyncProgressInput interface {
+	pulumi.Input
+
+	ToGetPostgresSyncedTableStatusOngoingSyncProgressOutput() GetPostgresSyncedTableStatusOngoingSyncProgressOutput
+	ToGetPostgresSyncedTableStatusOngoingSyncProgressOutputWithContext(context.Context) GetPostgresSyncedTableStatusOngoingSyncProgressOutput
+}
+
+type GetPostgresSyncedTableStatusOngoingSyncProgressArgs struct {
+	// (number) - The estimated time remaining to complete this update in seconds
+	EstimatedCompletionTimeSeconds pulumi.Float64Input `pulumi:"estimatedCompletionTimeSeconds"`
+	// (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+	// have completely processed this version yet
+	LatestVersionCurrentlyProcessing pulumi.IntInput `pulumi:"latestVersionCurrentlyProcessing"`
+	// (number) - The completion ratio of this update. This is a number between 0 and 1
+	SyncProgressCompletion pulumi.Float64Input `pulumi:"syncProgressCompletion"`
+	// (integer) - The number of rows that have been synced in this update
+	SyncedRowCount pulumi.IntInput `pulumi:"syncedRowCount"`
+	// (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+	TotalRowCount pulumi.IntInput `pulumi:"totalRowCount"`
+}
+
+func (GetPostgresSyncedTableStatusOngoingSyncProgressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSyncedTableStatusOngoingSyncProgress)(nil)).Elem()
+}
+
+func (i GetPostgresSyncedTableStatusOngoingSyncProgressArgs) ToGetPostgresSyncedTableStatusOngoingSyncProgressOutput() GetPostgresSyncedTableStatusOngoingSyncProgressOutput {
+	return i.ToGetPostgresSyncedTableStatusOngoingSyncProgressOutputWithContext(context.Background())
+}
+
+func (i GetPostgresSyncedTableStatusOngoingSyncProgressArgs) ToGetPostgresSyncedTableStatusOngoingSyncProgressOutputWithContext(ctx context.Context) GetPostgresSyncedTableStatusOngoingSyncProgressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresSyncedTableStatusOngoingSyncProgressOutput)
+}
+
+type GetPostgresSyncedTableStatusOngoingSyncProgressOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresSyncedTableStatusOngoingSyncProgressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresSyncedTableStatusOngoingSyncProgress)(nil)).Elem()
+}
+
+func (o GetPostgresSyncedTableStatusOngoingSyncProgressOutput) ToGetPostgresSyncedTableStatusOngoingSyncProgressOutput() GetPostgresSyncedTableStatusOngoingSyncProgressOutput {
+	return o
+}
+
+func (o GetPostgresSyncedTableStatusOngoingSyncProgressOutput) ToGetPostgresSyncedTableStatusOngoingSyncProgressOutputWithContext(ctx context.Context) GetPostgresSyncedTableStatusOngoingSyncProgressOutput {
+	return o
+}
+
+// (number) - The estimated time remaining to complete this update in seconds
+func (o GetPostgresSyncedTableStatusOngoingSyncProgressOutput) EstimatedCompletionTimeSeconds() pulumi.Float64Output {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatusOngoingSyncProgress) float64 {
+		return v.EstimatedCompletionTimeSeconds
+	}).(pulumi.Float64Output)
+}
+
+// (integer) - The source table Delta version that was last processed by the pipeline. The pipeline may not
+// have completely processed this version yet
+func (o GetPostgresSyncedTableStatusOngoingSyncProgressOutput) LatestVersionCurrentlyProcessing() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatusOngoingSyncProgress) int { return v.LatestVersionCurrentlyProcessing }).(pulumi.IntOutput)
+}
+
+// (number) - The completion ratio of this update. This is a number between 0 and 1
+func (o GetPostgresSyncedTableStatusOngoingSyncProgressOutput) SyncProgressCompletion() pulumi.Float64Output {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatusOngoingSyncProgress) float64 { return v.SyncProgressCompletion }).(pulumi.Float64Output)
+}
+
+// (integer) - The number of rows that have been synced in this update
+func (o GetPostgresSyncedTableStatusOngoingSyncProgressOutput) SyncedRowCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatusOngoingSyncProgress) int { return v.SyncedRowCount }).(pulumi.IntOutput)
+}
+
+// (integer) - The total number of rows that need to be synced in this update. This number may be an estimate
+func (o GetPostgresSyncedTableStatusOngoingSyncProgressOutput) TotalRowCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresSyncedTableStatusOngoingSyncProgress) int { return v.TotalRowCount }).(pulumi.IntOutput)
+}
+
+type GetQualityMonitorV2AnomalyDetectionConfig struct {
+	// (list of string) - List of fully qualified table names to exclude from anomaly detection
+	ExcludedTableFullNames []string `pulumi:"excludedTableFullNames"`
+	// (string) - Run id of the last run of the workflow
+	LastRunId string `pulumi:"lastRunId"`
+	// (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
+	LatestRunStatus string `pulumi:"latestRunStatus"`
+}
+
+// GetQualityMonitorV2AnomalyDetectionConfigInput is an input type that accepts GetQualityMonitorV2AnomalyDetectionConfigArgs and GetQualityMonitorV2AnomalyDetectionConfigOutput values.
+// You can construct a concrete instance of `GetQualityMonitorV2AnomalyDetectionConfigInput` via:
+//
+//	GetQualityMonitorV2AnomalyDetectionConfigArgs{...}
+type GetQualityMonitorV2AnomalyDetectionConfigInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorV2AnomalyDetectionConfigOutput() GetQualityMonitorV2AnomalyDetectionConfigOutput
+	ToGetQualityMonitorV2AnomalyDetectionConfigOutputWithContext(context.Context) GetQualityMonitorV2AnomalyDetectionConfigOutput
+}
+
+type GetQualityMonitorV2AnomalyDetectionConfigArgs struct {
+	// (list of string) - List of fully qualified table names to exclude from anomaly detection
+	ExcludedTableFullNames pulumi.StringArrayInput `pulumi:"excludedTableFullNames"`
+	// (string) - Run id of the last run of the workflow
+	LastRunId pulumi.StringInput `pulumi:"lastRunId"`
+	// (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
+	LatestRunStatus pulumi.StringInput `pulumi:"latestRunStatus"`
+}
+
+func (GetQualityMonitorV2AnomalyDetectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorV2AnomalyDetectionConfig)(nil)).Elem()
+}
+
+func (i GetQualityMonitorV2AnomalyDetectionConfigArgs) ToGetQualityMonitorV2AnomalyDetectionConfigOutput() GetQualityMonitorV2AnomalyDetectionConfigOutput {
+	return i.ToGetQualityMonitorV2AnomalyDetectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorV2AnomalyDetectionConfigArgs) ToGetQualityMonitorV2AnomalyDetectionConfigOutputWithContext(ctx context.Context) GetQualityMonitorV2AnomalyDetectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorV2AnomalyDetectionConfigOutput)
+}
+
+type GetQualityMonitorV2AnomalyDetectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorV2AnomalyDetectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorV2AnomalyDetectionConfig)(nil)).Elem()
+}
+
+func (o GetQualityMonitorV2AnomalyDetectionConfigOutput) ToGetQualityMonitorV2AnomalyDetectionConfigOutput() GetQualityMonitorV2AnomalyDetectionConfigOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2AnomalyDetectionConfigOutput) ToGetQualityMonitorV2AnomalyDetectionConfigOutputWithContext(ctx context.Context) GetQualityMonitorV2AnomalyDetectionConfigOutput {
+	return o
+}
+
+// (list of string) - List of fully qualified table names to exclude from anomaly detection
+func (o GetQualityMonitorV2AnomalyDetectionConfigOutput) ExcludedTableFullNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetQualityMonitorV2AnomalyDetectionConfig) []string { return v.ExcludedTableFullNames }).(pulumi.StringArrayOutput)
+}
+
+// (string) - Run id of the last run of the workflow
+func (o GetQualityMonitorV2AnomalyDetectionConfigOutput) LastRunId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQualityMonitorV2AnomalyDetectionConfig) string { return v.LastRunId }).(pulumi.StringOutput)
+}
+
+// (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
+func (o GetQualityMonitorV2AnomalyDetectionConfigOutput) LatestRunStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQualityMonitorV2AnomalyDetectionConfig) string { return v.LatestRunStatus }).(pulumi.StringOutput)
+}
+
+type GetQualityMonitorV2ProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetQualityMonitorV2ProviderConfigInput is an input type that accepts GetQualityMonitorV2ProviderConfigArgs and GetQualityMonitorV2ProviderConfigOutput values.
+// You can construct a concrete instance of `GetQualityMonitorV2ProviderConfigInput` via:
+//
+//	GetQualityMonitorV2ProviderConfigArgs{...}
+type GetQualityMonitorV2ProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorV2ProviderConfigOutput() GetQualityMonitorV2ProviderConfigOutput
+	ToGetQualityMonitorV2ProviderConfigOutputWithContext(context.Context) GetQualityMonitorV2ProviderConfigOutput
+}
+
+type GetQualityMonitorV2ProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetQualityMonitorV2ProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorV2ProviderConfig)(nil)).Elem()
+}
+
+func (i GetQualityMonitorV2ProviderConfigArgs) ToGetQualityMonitorV2ProviderConfigOutput() GetQualityMonitorV2ProviderConfigOutput {
+	return i.ToGetQualityMonitorV2ProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorV2ProviderConfigArgs) ToGetQualityMonitorV2ProviderConfigOutputWithContext(ctx context.Context) GetQualityMonitorV2ProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorV2ProviderConfigOutput)
+}
+
+func (i GetQualityMonitorV2ProviderConfigArgs) ToGetQualityMonitorV2ProviderConfigPtrOutput() GetQualityMonitorV2ProviderConfigPtrOutput {
+	return i.ToGetQualityMonitorV2ProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorV2ProviderConfigArgs) ToGetQualityMonitorV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetQualityMonitorV2ProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorV2ProviderConfigOutput).ToGetQualityMonitorV2ProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetQualityMonitorV2ProviderConfigPtrInput is an input type that accepts GetQualityMonitorV2ProviderConfigArgs, GetQualityMonitorV2ProviderConfigPtr and GetQualityMonitorV2ProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetQualityMonitorV2ProviderConfigPtrInput` via:
+//
+//	        GetQualityMonitorV2ProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetQualityMonitorV2ProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorV2ProviderConfigPtrOutput() GetQualityMonitorV2ProviderConfigPtrOutput
+	ToGetQualityMonitorV2ProviderConfigPtrOutputWithContext(context.Context) GetQualityMonitorV2ProviderConfigPtrOutput
+}
+
+type getQualityMonitorV2ProviderConfigPtrType GetQualityMonitorV2ProviderConfigArgs
+
+func GetQualityMonitorV2ProviderConfigPtr(v *GetQualityMonitorV2ProviderConfigArgs) GetQualityMonitorV2ProviderConfigPtrInput {
+	return (*getQualityMonitorV2ProviderConfigPtrType)(v)
+}
+
+func (*getQualityMonitorV2ProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorV2ProviderConfig)(nil)).Elem()
+}
+
+func (i *getQualityMonitorV2ProviderConfigPtrType) ToGetQualityMonitorV2ProviderConfigPtrOutput() GetQualityMonitorV2ProviderConfigPtrOutput {
+	return i.ToGetQualityMonitorV2ProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getQualityMonitorV2ProviderConfigPtrType) ToGetQualityMonitorV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetQualityMonitorV2ProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorV2ProviderConfigPtrOutput)
+}
+
+type GetQualityMonitorV2ProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorV2ProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorV2ProviderConfig)(nil)).Elem()
+}
+
+func (o GetQualityMonitorV2ProviderConfigOutput) ToGetQualityMonitorV2ProviderConfigOutput() GetQualityMonitorV2ProviderConfigOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ProviderConfigOutput) ToGetQualityMonitorV2ProviderConfigOutputWithContext(ctx context.Context) GetQualityMonitorV2ProviderConfigOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ProviderConfigOutput) ToGetQualityMonitorV2ProviderConfigPtrOutput() GetQualityMonitorV2ProviderConfigPtrOutput {
+	return o.ToGetQualityMonitorV2ProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetQualityMonitorV2ProviderConfigOutput) ToGetQualityMonitorV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetQualityMonitorV2ProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetQualityMonitorV2ProviderConfig) *GetQualityMonitorV2ProviderConfig {
+		return &v
+	}).(GetQualityMonitorV2ProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetQualityMonitorV2ProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQualityMonitorV2ProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetQualityMonitorV2ProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorV2ProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorV2ProviderConfig)(nil)).Elem()
+}
+
+func (o GetQualityMonitorV2ProviderConfigPtrOutput) ToGetQualityMonitorV2ProviderConfigPtrOutput() GetQualityMonitorV2ProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ProviderConfigPtrOutput) ToGetQualityMonitorV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetQualityMonitorV2ProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ProviderConfigPtrOutput) Elem() GetQualityMonitorV2ProviderConfigOutput {
+	return o.ApplyT(func(v *GetQualityMonitorV2ProviderConfig) GetQualityMonitorV2ProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetQualityMonitorV2ProviderConfig
+		return ret
+	}).(GetQualityMonitorV2ProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetQualityMonitorV2ProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetQualityMonitorV2ProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetQualityMonitorV2ValidityCheckConfiguration struct {
+	// (string) - Can be set by system. Does not need to be user facing
+	Name *string `pulumi:"name"`
+	// (PercentNullValidityCheck)
+	PercentNullValidityCheck *GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck `pulumi:"percentNullValidityCheck"`
+	// (RangeValidityCheck)
+	RangeValidityCheck *GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck `pulumi:"rangeValidityCheck"`
+	// (UniquenessValidityCheck)
+	UniquenessValidityCheck *GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck `pulumi:"uniquenessValidityCheck"`
+}
+
+// GetQualityMonitorV2ValidityCheckConfigurationInput is an input type that accepts GetQualityMonitorV2ValidityCheckConfigurationArgs and GetQualityMonitorV2ValidityCheckConfigurationOutput values.
+// You can construct a concrete instance of `GetQualityMonitorV2ValidityCheckConfigurationInput` via:
+//
+//	GetQualityMonitorV2ValidityCheckConfigurationArgs{...}
+type GetQualityMonitorV2ValidityCheckConfigurationInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorV2ValidityCheckConfigurationOutput() GetQualityMonitorV2ValidityCheckConfigurationOutput
+	ToGetQualityMonitorV2ValidityCheckConfigurationOutputWithContext(context.Context) GetQualityMonitorV2ValidityCheckConfigurationOutput
+}
+
+type GetQualityMonitorV2ValidityCheckConfigurationArgs struct {
+	// (string) - Can be set by system. Does not need to be user facing
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (PercentNullValidityCheck)
+	PercentNullValidityCheck GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrInput `pulumi:"percentNullValidityCheck"`
+	// (RangeValidityCheck)
+	RangeValidityCheck GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrInput `pulumi:"rangeValidityCheck"`
+	// (UniquenessValidityCheck)
+	UniquenessValidityCheck GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrInput `pulumi:"uniquenessValidityCheck"`
+}
+
+func (GetQualityMonitorV2ValidityCheckConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorV2ValidityCheckConfiguration)(nil)).Elem()
+}
+
+func (i GetQualityMonitorV2ValidityCheckConfigurationArgs) ToGetQualityMonitorV2ValidityCheckConfigurationOutput() GetQualityMonitorV2ValidityCheckConfigurationOutput {
+	return i.ToGetQualityMonitorV2ValidityCheckConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorV2ValidityCheckConfigurationArgs) ToGetQualityMonitorV2ValidityCheckConfigurationOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorV2ValidityCheckConfigurationOutput)
+}
+
+// GetQualityMonitorV2ValidityCheckConfigurationArrayInput is an input type that accepts GetQualityMonitorV2ValidityCheckConfigurationArray and GetQualityMonitorV2ValidityCheckConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetQualityMonitorV2ValidityCheckConfigurationArrayInput` via:
+//
+//	GetQualityMonitorV2ValidityCheckConfigurationArray{ GetQualityMonitorV2ValidityCheckConfigurationArgs{...} }
+type GetQualityMonitorV2ValidityCheckConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorV2ValidityCheckConfigurationArrayOutput() GetQualityMonitorV2ValidityCheckConfigurationArrayOutput
+	ToGetQualityMonitorV2ValidityCheckConfigurationArrayOutputWithContext(context.Context) GetQualityMonitorV2ValidityCheckConfigurationArrayOutput
+}
+
+type GetQualityMonitorV2ValidityCheckConfigurationArray []GetQualityMonitorV2ValidityCheckConfigurationInput
+
+func (GetQualityMonitorV2ValidityCheckConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQualityMonitorV2ValidityCheckConfiguration)(nil)).Elem()
+}
+
+func (i GetQualityMonitorV2ValidityCheckConfigurationArray) ToGetQualityMonitorV2ValidityCheckConfigurationArrayOutput() GetQualityMonitorV2ValidityCheckConfigurationArrayOutput {
+	return i.ToGetQualityMonitorV2ValidityCheckConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorV2ValidityCheckConfigurationArray) ToGetQualityMonitorV2ValidityCheckConfigurationArrayOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorV2ValidityCheckConfigurationArrayOutput)
+}
+
+type GetQualityMonitorV2ValidityCheckConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorV2ValidityCheckConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorV2ValidityCheckConfiguration)(nil)).Elem()
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationOutput) ToGetQualityMonitorV2ValidityCheckConfigurationOutput() GetQualityMonitorV2ValidityCheckConfigurationOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationOutput) ToGetQualityMonitorV2ValidityCheckConfigurationOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationOutput {
+	return o
+}
+
+// (string) - Can be set by system. Does not need to be user facing
+func (o GetQualityMonitorV2ValidityCheckConfigurationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorV2ValidityCheckConfiguration) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (PercentNullValidityCheck)
+func (o GetQualityMonitorV2ValidityCheckConfigurationOutput) PercentNullValidityCheck() GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorV2ValidityCheckConfiguration) *GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck {
+		return v.PercentNullValidityCheck
+	}).(GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput)
+}
+
+// (RangeValidityCheck)
+func (o GetQualityMonitorV2ValidityCheckConfigurationOutput) RangeValidityCheck() GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorV2ValidityCheckConfiguration) *GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck {
+		return v.RangeValidityCheck
+	}).(GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput)
+}
+
+// (UniquenessValidityCheck)
+func (o GetQualityMonitorV2ValidityCheckConfigurationOutput) UniquenessValidityCheck() GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorV2ValidityCheckConfiguration) *GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck {
+		return v.UniquenessValidityCheck
+	}).(GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput)
+}
+
+type GetQualityMonitorV2ValidityCheckConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorV2ValidityCheckConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQualityMonitorV2ValidityCheckConfiguration)(nil)).Elem()
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationArrayOutput) ToGetQualityMonitorV2ValidityCheckConfigurationArrayOutput() GetQualityMonitorV2ValidityCheckConfigurationArrayOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationArrayOutput) ToGetQualityMonitorV2ValidityCheckConfigurationArrayOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationArrayOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationArrayOutput) Index(i pulumi.IntInput) GetQualityMonitorV2ValidityCheckConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQualityMonitorV2ValidityCheckConfiguration {
+		return vs[0].([]GetQualityMonitorV2ValidityCheckConfiguration)[vs[1].(int)]
+	}).(GetQualityMonitorV2ValidityCheckConfigurationOutput)
+}
+
+type GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck struct {
+	// (list of string) - List of column names to check for uniqueness
+	ColumnNames []string `pulumi:"columnNames"`
+	// (number) - Upper bound for the range
+	UpperBound *float64 `pulumi:"upperBound"`
+}
+
+// GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckInput is an input type that accepts GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs and GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput values.
+// You can construct a concrete instance of `GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckInput` via:
+//
+//	GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs{...}
+type GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput() GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput
+	ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutputWithContext(context.Context) GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput
+}
+
+type GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs struct {
+	// (list of string) - List of column names to check for uniqueness
+	ColumnNames pulumi.StringArrayInput `pulumi:"columnNames"`
+	// (number) - Upper bound for the range
+	UpperBound pulumi.Float64PtrInput `pulumi:"upperBound"`
+}
+
+func (GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck)(nil)).Elem()
+}
+
+func (i GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs) ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput() GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput {
+	return i.ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs) ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput)
+}
+
+func (i GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs) ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput() GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return i.ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs) ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput).ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(ctx)
+}
+
+// GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrInput is an input type that accepts GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs, GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtr and GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput values.
+// You can construct a concrete instance of `GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrInput` via:
+//
+//	        GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput() GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput
+	ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(context.Context) GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput
+}
+
+type getQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrType GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs
+
+func GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtr(v *GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs) GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrInput {
+	return (*getQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrType)(v)
+}
+
+func (*getQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck)(nil)).Elem()
+}
+
+func (i *getQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrType) ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput() GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return i.ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *getQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrType) ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput)
+}
+
+type GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck)(nil)).Elem()
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput) ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput() GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput) ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput) ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput() GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return o.ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput) ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck) *GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck {
+		return &v
+	}).(GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput)
+}
+
+// (list of string) - List of column names to check for uniqueness
+func (o GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput) ColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck) []string {
+		return v.ColumnNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// (number) - Upper bound for the range
+func (o GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput) UpperBound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck) *float64 {
+		return v.UpperBound
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck)(nil)).Elem()
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput) ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput() GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput) ToGetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput) Elem() GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput {
+	return o.ApplyT(func(v *GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck) GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck {
+		if v != nil {
+			return *v
+		}
+		var ret GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck
+		return ret
+	}).(GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput)
+}
+
+// (list of string) - List of column names to check for uniqueness
+func (o GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput) ColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// (number) - Upper bound for the range
+func (o GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput) UpperBound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheck) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.UpperBound
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck struct {
+	// (list of string) - List of column names to check for uniqueness
+	ColumnNames []string `pulumi:"columnNames"`
+	// (number) - Lower bound for the range
+	LowerBound *float64 `pulumi:"lowerBound"`
+	// (number) - Upper bound for the range
+	UpperBound *float64 `pulumi:"upperBound"`
+}
+
+// GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckInput is an input type that accepts GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs and GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput values.
+// You can construct a concrete instance of `GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckInput` via:
+//
+//	GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs{...}
+type GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput() GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput
+	ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutputWithContext(context.Context) GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput
+}
+
+type GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs struct {
+	// (list of string) - List of column names to check for uniqueness
+	ColumnNames pulumi.StringArrayInput `pulumi:"columnNames"`
+	// (number) - Lower bound for the range
+	LowerBound pulumi.Float64PtrInput `pulumi:"lowerBound"`
+	// (number) - Upper bound for the range
+	UpperBound pulumi.Float64PtrInput `pulumi:"upperBound"`
+}
+
+func (GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck)(nil)).Elem()
+}
+
+func (i GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs) ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput() GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput {
+	return i.ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs) ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput)
+}
+
+func (i GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs) ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput() GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return i.ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs) ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput).ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(ctx)
+}
+
+// GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrInput is an input type that accepts GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs, GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtr and GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput values.
+// You can construct a concrete instance of `GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrInput` via:
+//
+//	        GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput() GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput
+	ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(context.Context) GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput
+}
+
+type getQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrType GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs
+
+func GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtr(v *GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs) GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrInput {
+	return (*getQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrType)(v)
+}
+
+func (*getQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck)(nil)).Elem()
+}
+
+func (i *getQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrType) ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput() GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return i.ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *getQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrType) ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput)
+}
+
+type GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck)(nil)).Elem()
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput) ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput() GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput) ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput) ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput() GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return o.ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput) ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck) *GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck {
+		return &v
+	}).(GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput)
+}
+
+// (list of string) - List of column names to check for uniqueness
+func (o GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput) ColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck) []string { return v.ColumnNames }).(pulumi.StringArrayOutput)
+}
+
+// (number) - Lower bound for the range
+func (o GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput) LowerBound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck) *float64 { return v.LowerBound }).(pulumi.Float64PtrOutput)
+}
+
+// (number) - Upper bound for the range
+func (o GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput) UpperBound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck) *float64 { return v.UpperBound }).(pulumi.Float64PtrOutput)
+}
+
+type GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck)(nil)).Elem()
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput) ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput() GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput) ToGetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput) Elem() GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput {
+	return o.ApplyT(func(v *GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck) GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck {
+		if v != nil {
+			return *v
+		}
+		var ret GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck
+		return ret
+	}).(GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput)
+}
+
+// (list of string) - List of column names to check for uniqueness
+func (o GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput) ColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// (number) - Lower bound for the range
+func (o GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput) LowerBound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LowerBound
+	}).(pulumi.Float64PtrOutput)
+}
+
+// (number) - Upper bound for the range
+func (o GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput) UpperBound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheck) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.UpperBound
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck struct {
+	// (list of string) - List of column names to check for uniqueness
+	ColumnNames []string `pulumi:"columnNames"`
+}
+
+// GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckInput is an input type that accepts GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs and GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput values.
+// You can construct a concrete instance of `GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckInput` via:
+//
+//	GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs{...}
+type GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput() GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput
+	ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutputWithContext(context.Context) GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput
+}
+
+type GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs struct {
+	// (list of string) - List of column names to check for uniqueness
+	ColumnNames pulumi.StringArrayInput `pulumi:"columnNames"`
+}
+
+func (GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck)(nil)).Elem()
+}
+
+func (i GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs) ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput() GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput {
+	return i.ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs) ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput)
+}
+
+func (i GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs) ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput() GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return i.ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs) ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput).ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(ctx)
+}
+
+// GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrInput is an input type that accepts GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs, GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtr and GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput values.
+// You can construct a concrete instance of `GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrInput` via:
+//
+//	        GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput() GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput
+	ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(context.Context) GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput
+}
+
+type getQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrType GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs
+
+func GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtr(v *GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs) GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrInput {
+	return (*getQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrType)(v)
+}
+
+func (*getQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck)(nil)).Elem()
+}
+
+func (i *getQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrType) ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput() GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return i.ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *getQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrType) ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput)
+}
+
+type GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck)(nil)).Elem()
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput) ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput() GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput) ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput) ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput() GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return o.ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput) ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck) *GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck {
+		return &v
+	}).(GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput)
+}
+
+// (list of string) - List of column names to check for uniqueness
+func (o GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput) ColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck) []string {
+		return v.ColumnNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck)(nil)).Elem()
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput) ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput() GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput) ToGetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput) Elem() GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput {
+	return o.ApplyT(func(v *GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck) GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck {
+		if v != nil {
+			return *v
+		}
+		var ret GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck
+		return ret
+	}).(GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput)
+}
+
+// (list of string) - List of column names to check for uniqueness
+func (o GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput) ColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheck) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetQualityMonitorsV2ProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetQualityMonitorsV2ProviderConfigInput is an input type that accepts GetQualityMonitorsV2ProviderConfigArgs and GetQualityMonitorsV2ProviderConfigOutput values.
+// You can construct a concrete instance of `GetQualityMonitorsV2ProviderConfigInput` via:
+//
+//	GetQualityMonitorsV2ProviderConfigArgs{...}
+type GetQualityMonitorsV2ProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorsV2ProviderConfigOutput() GetQualityMonitorsV2ProviderConfigOutput
+	ToGetQualityMonitorsV2ProviderConfigOutputWithContext(context.Context) GetQualityMonitorsV2ProviderConfigOutput
+}
+
+type GetQualityMonitorsV2ProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetQualityMonitorsV2ProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorsV2ProviderConfig)(nil)).Elem()
+}
+
+func (i GetQualityMonitorsV2ProviderConfigArgs) ToGetQualityMonitorsV2ProviderConfigOutput() GetQualityMonitorsV2ProviderConfigOutput {
+	return i.ToGetQualityMonitorsV2ProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorsV2ProviderConfigArgs) ToGetQualityMonitorsV2ProviderConfigOutputWithContext(ctx context.Context) GetQualityMonitorsV2ProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2ProviderConfigOutput)
+}
+
+func (i GetQualityMonitorsV2ProviderConfigArgs) ToGetQualityMonitorsV2ProviderConfigPtrOutput() GetQualityMonitorsV2ProviderConfigPtrOutput {
+	return i.ToGetQualityMonitorsV2ProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorsV2ProviderConfigArgs) ToGetQualityMonitorsV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2ProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2ProviderConfigOutput).ToGetQualityMonitorsV2ProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetQualityMonitorsV2ProviderConfigPtrInput is an input type that accepts GetQualityMonitorsV2ProviderConfigArgs, GetQualityMonitorsV2ProviderConfigPtr and GetQualityMonitorsV2ProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetQualityMonitorsV2ProviderConfigPtrInput` via:
+//
+//	        GetQualityMonitorsV2ProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetQualityMonitorsV2ProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorsV2ProviderConfigPtrOutput() GetQualityMonitorsV2ProviderConfigPtrOutput
+	ToGetQualityMonitorsV2ProviderConfigPtrOutputWithContext(context.Context) GetQualityMonitorsV2ProviderConfigPtrOutput
+}
+
+type getQualityMonitorsV2ProviderConfigPtrType GetQualityMonitorsV2ProviderConfigArgs
+
+func GetQualityMonitorsV2ProviderConfigPtr(v *GetQualityMonitorsV2ProviderConfigArgs) GetQualityMonitorsV2ProviderConfigPtrInput {
+	return (*getQualityMonitorsV2ProviderConfigPtrType)(v)
+}
+
+func (*getQualityMonitorsV2ProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorsV2ProviderConfig)(nil)).Elem()
+}
+
+func (i *getQualityMonitorsV2ProviderConfigPtrType) ToGetQualityMonitorsV2ProviderConfigPtrOutput() GetQualityMonitorsV2ProviderConfigPtrOutput {
+	return i.ToGetQualityMonitorsV2ProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getQualityMonitorsV2ProviderConfigPtrType) ToGetQualityMonitorsV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2ProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2ProviderConfigPtrOutput)
+}
+
+type GetQualityMonitorsV2ProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorsV2ProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorsV2ProviderConfig)(nil)).Elem()
+}
+
+func (o GetQualityMonitorsV2ProviderConfigOutput) ToGetQualityMonitorsV2ProviderConfigOutput() GetQualityMonitorsV2ProviderConfigOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2ProviderConfigOutput) ToGetQualityMonitorsV2ProviderConfigOutputWithContext(ctx context.Context) GetQualityMonitorsV2ProviderConfigOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2ProviderConfigOutput) ToGetQualityMonitorsV2ProviderConfigPtrOutput() GetQualityMonitorsV2ProviderConfigPtrOutput {
+	return o.ToGetQualityMonitorsV2ProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetQualityMonitorsV2ProviderConfigOutput) ToGetQualityMonitorsV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2ProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetQualityMonitorsV2ProviderConfig) *GetQualityMonitorsV2ProviderConfig {
+		return &v
+	}).(GetQualityMonitorsV2ProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetQualityMonitorsV2ProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2ProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetQualityMonitorsV2ProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorsV2ProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorsV2ProviderConfig)(nil)).Elem()
+}
+
+func (o GetQualityMonitorsV2ProviderConfigPtrOutput) ToGetQualityMonitorsV2ProviderConfigPtrOutput() GetQualityMonitorsV2ProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2ProviderConfigPtrOutput) ToGetQualityMonitorsV2ProviderConfigPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2ProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2ProviderConfigPtrOutput) Elem() GetQualityMonitorsV2ProviderConfigOutput {
+	return o.ApplyT(func(v *GetQualityMonitorsV2ProviderConfig) GetQualityMonitorsV2ProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetQualityMonitorsV2ProviderConfig
+		return ret
+	}).(GetQualityMonitorsV2ProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetQualityMonitorsV2ProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetQualityMonitorsV2ProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitor struct {
+	// (AnomalyDetectionConfig)
+	AnomalyDetectionConfig GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfig `pulumi:"anomalyDetectionConfig"`
+	// (string) - The uuid of the request object. For example, schema id
+	ObjectId string `pulumi:"objectId"`
+	// (string) - The type of the monitored object. Can be one of the following: schema
+	ObjectType string `pulumi:"objectType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetQualityMonitorsV2QualityMonitorProviderConfig `pulumi:"providerConfig"`
+	// (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
+	ValidityCheckConfigurations []GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration `pulumi:"validityCheckConfigurations"`
+}
+
+// GetQualityMonitorsV2QualityMonitorInput is an input type that accepts GetQualityMonitorsV2QualityMonitorArgs and GetQualityMonitorsV2QualityMonitorOutput values.
+// You can construct a concrete instance of `GetQualityMonitorsV2QualityMonitorInput` via:
+//
+//	GetQualityMonitorsV2QualityMonitorArgs{...}
+type GetQualityMonitorsV2QualityMonitorInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorsV2QualityMonitorOutput() GetQualityMonitorsV2QualityMonitorOutput
+	ToGetQualityMonitorsV2QualityMonitorOutputWithContext(context.Context) GetQualityMonitorsV2QualityMonitorOutput
+}
+
+type GetQualityMonitorsV2QualityMonitorArgs struct {
+	// (AnomalyDetectionConfig)
+	AnomalyDetectionConfig GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigInput `pulumi:"anomalyDetectionConfig"`
+	// (string) - The uuid of the request object. For example, schema id
+	ObjectId pulumi.StringInput `pulumi:"objectId"`
+	// (string) - The type of the monitored object. Can be one of the following: schema
+	ObjectType pulumi.StringInput `pulumi:"objectType"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetQualityMonitorsV2QualityMonitorProviderConfigPtrInput `pulumi:"providerConfig"`
+	// (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
+	ValidityCheckConfigurations GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayInput `pulumi:"validityCheckConfigurations"`
+}
+
+func (GetQualityMonitorsV2QualityMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorsV2QualityMonitor)(nil)).Elem()
+}
+
+func (i GetQualityMonitorsV2QualityMonitorArgs) ToGetQualityMonitorsV2QualityMonitorOutput() GetQualityMonitorsV2QualityMonitorOutput {
+	return i.ToGetQualityMonitorsV2QualityMonitorOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorsV2QualityMonitorArgs) ToGetQualityMonitorsV2QualityMonitorOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2QualityMonitorOutput)
+}
+
+// GetQualityMonitorsV2QualityMonitorArrayInput is an input type that accepts GetQualityMonitorsV2QualityMonitorArray and GetQualityMonitorsV2QualityMonitorArrayOutput values.
+// You can construct a concrete instance of `GetQualityMonitorsV2QualityMonitorArrayInput` via:
+//
+//	GetQualityMonitorsV2QualityMonitorArray{ GetQualityMonitorsV2QualityMonitorArgs{...} }
+type GetQualityMonitorsV2QualityMonitorArrayInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorsV2QualityMonitorArrayOutput() GetQualityMonitorsV2QualityMonitorArrayOutput
+	ToGetQualityMonitorsV2QualityMonitorArrayOutputWithContext(context.Context) GetQualityMonitorsV2QualityMonitorArrayOutput
+}
+
+type GetQualityMonitorsV2QualityMonitorArray []GetQualityMonitorsV2QualityMonitorInput
+
+func (GetQualityMonitorsV2QualityMonitorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQualityMonitorsV2QualityMonitor)(nil)).Elem()
+}
+
+func (i GetQualityMonitorsV2QualityMonitorArray) ToGetQualityMonitorsV2QualityMonitorArrayOutput() GetQualityMonitorsV2QualityMonitorArrayOutput {
+	return i.ToGetQualityMonitorsV2QualityMonitorArrayOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorsV2QualityMonitorArray) ToGetQualityMonitorsV2QualityMonitorArrayOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2QualityMonitorArrayOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorsV2QualityMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorsV2QualityMonitor)(nil)).Elem()
+}
+
+func (o GetQualityMonitorsV2QualityMonitorOutput) ToGetQualityMonitorsV2QualityMonitorOutput() GetQualityMonitorsV2QualityMonitorOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorOutput) ToGetQualityMonitorsV2QualityMonitorOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorOutput {
+	return o
+}
+
+// (AnomalyDetectionConfig)
+func (o GetQualityMonitorsV2QualityMonitorOutput) AnomalyDetectionConfig() GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitor) GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfig {
+		return v.AnomalyDetectionConfig
+	}).(GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput)
+}
+
+// (string) - The uuid of the request object. For example, schema id
+func (o GetQualityMonitorsV2QualityMonitorOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitor) string { return v.ObjectId }).(pulumi.StringOutput)
+}
+
+// (string) - The type of the monitored object. Can be one of the following: schema
+func (o GetQualityMonitorsV2QualityMonitorOutput) ObjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitor) string { return v.ObjectType }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o GetQualityMonitorsV2QualityMonitorOutput) ProviderConfig() GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitor) *GetQualityMonitorsV2QualityMonitorProviderConfig {
+		return v.ProviderConfig
+	}).(GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput)
+}
+
+// (list of ValidityCheckConfiguration) - Validity check configurations for anomaly detection
+func (o GetQualityMonitorsV2QualityMonitorOutput) ValidityCheckConfigurations() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitor) []GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration {
+		return v.ValidityCheckConfigurations
+	}).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorsV2QualityMonitorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQualityMonitorsV2QualityMonitor)(nil)).Elem()
+}
+
+func (o GetQualityMonitorsV2QualityMonitorArrayOutput) ToGetQualityMonitorsV2QualityMonitorArrayOutput() GetQualityMonitorsV2QualityMonitorArrayOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorArrayOutput) ToGetQualityMonitorsV2QualityMonitorArrayOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorArrayOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorArrayOutput) Index(i pulumi.IntInput) GetQualityMonitorsV2QualityMonitorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQualityMonitorsV2QualityMonitor {
+		return vs[0].([]GetQualityMonitorsV2QualityMonitor)[vs[1].(int)]
+	}).(GetQualityMonitorsV2QualityMonitorOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfig struct {
+	// (list of string) - List of fully qualified table names to exclude from anomaly detection
+	ExcludedTableFullNames []string `pulumi:"excludedTableFullNames"`
+	// (string) - Run id of the last run of the workflow
+	LastRunId string `pulumi:"lastRunId"`
+	// (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
+	LatestRunStatus string `pulumi:"latestRunStatus"`
+}
+
+// GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigInput is an input type that accepts GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigArgs and GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput values.
+// You can construct a concrete instance of `GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigInput` via:
+//
+//	GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigArgs{...}
+type GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput() GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput
+	ToGetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutputWithContext(context.Context) GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput
+}
+
+type GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigArgs struct {
+	// (list of string) - List of fully qualified table names to exclude from anomaly detection
+	ExcludedTableFullNames pulumi.StringArrayInput `pulumi:"excludedTableFullNames"`
+	// (string) - Run id of the last run of the workflow
+	LastRunId pulumi.StringInput `pulumi:"lastRunId"`
+	// (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
+	LatestRunStatus pulumi.StringInput `pulumi:"latestRunStatus"`
+}
+
+func (GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfig)(nil)).Elem()
+}
+
+func (i GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigArgs) ToGetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput() GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput {
+	return i.ToGetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigArgs) ToGetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfig)(nil)).Elem()
+}
+
+func (o GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput) ToGetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput() GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput) ToGetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput {
+	return o
+}
+
+// (list of string) - List of fully qualified table names to exclude from anomaly detection
+func (o GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput) ExcludedTableFullNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfig) []string {
+		return v.ExcludedTableFullNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// (string) - Run id of the last run of the workflow
+func (o GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput) LastRunId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfig) string { return v.LastRunId }).(pulumi.StringOutput)
+}
+
+// (string) - The status of the last run of the workflow. Possible values are: `ANOMALY_DETECTION_RUN_STATUS_CANCELED`, `ANOMALY_DETECTION_RUN_STATUS_FAILED`, `ANOMALY_DETECTION_RUN_STATUS_JOB_DELETED`, `ANOMALY_DETECTION_RUN_STATUS_PENDING`, `ANOMALY_DETECTION_RUN_STATUS_RUNNING`, `ANOMALY_DETECTION_RUN_STATUS_SUCCESS`, `ANOMALY_DETECTION_RUN_STATUS_UNKNOWN`, `ANOMALY_DETECTION_RUN_STATUS_WORKSPACE_MISMATCH_ERROR`
+func (o GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput) LatestRunStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfig) string { return v.LatestRunStatus }).(pulumi.StringOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetQualityMonitorsV2QualityMonitorProviderConfigInput is an input type that accepts GetQualityMonitorsV2QualityMonitorProviderConfigArgs and GetQualityMonitorsV2QualityMonitorProviderConfigOutput values.
+// You can construct a concrete instance of `GetQualityMonitorsV2QualityMonitorProviderConfigInput` via:
+//
+//	GetQualityMonitorsV2QualityMonitorProviderConfigArgs{...}
+type GetQualityMonitorsV2QualityMonitorProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorsV2QualityMonitorProviderConfigOutput() GetQualityMonitorsV2QualityMonitorProviderConfigOutput
+	ToGetQualityMonitorsV2QualityMonitorProviderConfigOutputWithContext(context.Context) GetQualityMonitorsV2QualityMonitorProviderConfigOutput
+}
+
+type GetQualityMonitorsV2QualityMonitorProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetQualityMonitorsV2QualityMonitorProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorProviderConfig)(nil)).Elem()
+}
+
+func (i GetQualityMonitorsV2QualityMonitorProviderConfigArgs) ToGetQualityMonitorsV2QualityMonitorProviderConfigOutput() GetQualityMonitorsV2QualityMonitorProviderConfigOutput {
+	return i.ToGetQualityMonitorsV2QualityMonitorProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorsV2QualityMonitorProviderConfigArgs) ToGetQualityMonitorsV2QualityMonitorProviderConfigOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2QualityMonitorProviderConfigOutput)
+}
+
+func (i GetQualityMonitorsV2QualityMonitorProviderConfigArgs) ToGetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput() GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput {
+	return i.ToGetQualityMonitorsV2QualityMonitorProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorsV2QualityMonitorProviderConfigArgs) ToGetQualityMonitorsV2QualityMonitorProviderConfigPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2QualityMonitorProviderConfigOutput).ToGetQualityMonitorsV2QualityMonitorProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetQualityMonitorsV2QualityMonitorProviderConfigPtrInput is an input type that accepts GetQualityMonitorsV2QualityMonitorProviderConfigArgs, GetQualityMonitorsV2QualityMonitorProviderConfigPtr and GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetQualityMonitorsV2QualityMonitorProviderConfigPtrInput` via:
+//
+//	        GetQualityMonitorsV2QualityMonitorProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetQualityMonitorsV2QualityMonitorProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput() GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput
+	ToGetQualityMonitorsV2QualityMonitorProviderConfigPtrOutputWithContext(context.Context) GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput
+}
+
+type getQualityMonitorsV2QualityMonitorProviderConfigPtrType GetQualityMonitorsV2QualityMonitorProviderConfigArgs
+
+func GetQualityMonitorsV2QualityMonitorProviderConfigPtr(v *GetQualityMonitorsV2QualityMonitorProviderConfigArgs) GetQualityMonitorsV2QualityMonitorProviderConfigPtrInput {
+	return (*getQualityMonitorsV2QualityMonitorProviderConfigPtrType)(v)
+}
+
+func (*getQualityMonitorsV2QualityMonitorProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorsV2QualityMonitorProviderConfig)(nil)).Elem()
+}
+
+func (i *getQualityMonitorsV2QualityMonitorProviderConfigPtrType) ToGetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput() GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput {
+	return i.ToGetQualityMonitorsV2QualityMonitorProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getQualityMonitorsV2QualityMonitorProviderConfigPtrType) ToGetQualityMonitorsV2QualityMonitorProviderConfigPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorsV2QualityMonitorProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorProviderConfig)(nil)).Elem()
+}
+
+func (o GetQualityMonitorsV2QualityMonitorProviderConfigOutput) ToGetQualityMonitorsV2QualityMonitorProviderConfigOutput() GetQualityMonitorsV2QualityMonitorProviderConfigOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorProviderConfigOutput) ToGetQualityMonitorsV2QualityMonitorProviderConfigOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorProviderConfigOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorProviderConfigOutput) ToGetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput() GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput {
+	return o.ToGetQualityMonitorsV2QualityMonitorProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetQualityMonitorsV2QualityMonitorProviderConfigOutput) ToGetQualityMonitorsV2QualityMonitorProviderConfigPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetQualityMonitorsV2QualityMonitorProviderConfig) *GetQualityMonitorsV2QualityMonitorProviderConfig {
+		return &v
+	}).(GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetQualityMonitorsV2QualityMonitorProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitorProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorsV2QualityMonitorProviderConfig)(nil)).Elem()
+}
+
+func (o GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput) ToGetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput() GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput) ToGetQualityMonitorsV2QualityMonitorProviderConfigPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput) Elem() GetQualityMonitorsV2QualityMonitorProviderConfigOutput {
+	return o.ApplyT(func(v *GetQualityMonitorsV2QualityMonitorProviderConfig) GetQualityMonitorsV2QualityMonitorProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetQualityMonitorsV2QualityMonitorProviderConfig
+		return ret
+	}).(GetQualityMonitorsV2QualityMonitorProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetQualityMonitorsV2QualityMonitorProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration struct {
+	// (string) - Can be set by system. Does not need to be user facing
+	Name *string `pulumi:"name"`
+	// (PercentNullValidityCheck)
+	PercentNullValidityCheck *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck `pulumi:"percentNullValidityCheck"`
+	// (RangeValidityCheck)
+	RangeValidityCheck *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck `pulumi:"rangeValidityCheck"`
+	// (UniquenessValidityCheck)
+	UniquenessValidityCheck *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheck `pulumi:"uniquenessValidityCheck"`
+}
+
+// GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationInput is an input type that accepts GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArgs and GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput values.
+// You can construct a concrete instance of `GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationInput` via:
+//
+//	GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArgs{...}
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput
+	ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutputWithContext(context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput
+}
+
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArgs struct {
+	// (string) - Can be set by system. Does not need to be user facing
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (PercentNullValidityCheck)
+	PercentNullValidityCheck GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrInput `pulumi:"percentNullValidityCheck"`
+	// (RangeValidityCheck)
+	RangeValidityCheck GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrInput `pulumi:"rangeValidityCheck"`
+	// (UniquenessValidityCheck)
+	UniquenessValidityCheck GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrInput `pulumi:"uniquenessValidityCheck"`
+}
+
+func (GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration)(nil)).Elem()
+}
+
+func (i GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArgs) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput {
+	return i.ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArgs) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput)
+}
+
+// GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayInput is an input type that accepts GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArray and GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayInput` via:
+//
+//	GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArray{ GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArgs{...} }
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput
+	ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutputWithContext(context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput
+}
+
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArray []GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationInput
+
+func (GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration)(nil)).Elem()
+}
+
+func (i GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArray) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput {
+	return i.ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArray) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration)(nil)).Elem()
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput {
+	return o
+}
+
+// (string) - Can be set by system. Does not need to be user facing
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (PercentNullValidityCheck)
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput) PercentNullValidityCheck() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration) *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck {
+		return v.PercentNullValidityCheck
+	}).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput)
+}
+
+// (RangeValidityCheck)
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput) RangeValidityCheck() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration) *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck {
+		return v.RangeValidityCheck
+	}).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput)
+}
+
+// (UniquenessValidityCheck)
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput) UniquenessValidityCheck() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration) *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheck {
+		return v.UniquenessValidityCheck
+	}).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration)(nil)).Elem()
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput) Index(i pulumi.IntInput) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration {
+		return vs[0].([]GetQualityMonitorsV2QualityMonitorValidityCheckConfiguration)[vs[1].(int)]
+	}).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck struct {
+	// (list of string) - List of column names to check for uniqueness
+	ColumnNames []string `pulumi:"columnNames"`
+	// (number) - Upper bound for the range
+	UpperBound *float64 `pulumi:"upperBound"`
+}
+
+// GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckInput is an input type that accepts GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckArgs and GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput values.
+// You can construct a concrete instance of `GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckInput` via:
+//
+//	GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckArgs{...}
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput
+	ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutputWithContext(context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput
+}
+
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckArgs struct {
+	// (list of string) - List of column names to check for uniqueness
+	ColumnNames pulumi.StringArrayInput `pulumi:"columnNames"`
+	// (number) - Upper bound for the range
+	UpperBound pulumi.Float64PtrInput `pulumi:"upperBound"`
+}
+
+func (GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck)(nil)).Elem()
+}
+
+func (i GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckArgs) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput {
+	return i.ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckArgs) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput)
+}
+
+func (i GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckArgs) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return i.ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckArgs) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput).ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(ctx)
+}
+
+// GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrInput is an input type that accepts GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckArgs, GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtr and GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput values.
+// You can construct a concrete instance of `GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrInput` via:
+//
+//	        GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput
+	ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput
+}
+
+type getQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrType GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckArgs
+
+func GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtr(v *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckArgs) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrInput {
+	return (*getQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrType)(v)
+}
+
+func (*getQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck)(nil)).Elem()
+}
+
+func (i *getQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrType) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return i.ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *getQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrType) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck)(nil)).Elem()
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return o.ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck) *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck {
+		return &v
+	}).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput)
+}
+
+// (list of string) - List of column names to check for uniqueness
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput) ColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck) []string {
+		return v.ColumnNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// (number) - Upper bound for the range
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput) UpperBound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck) *float64 {
+		return v.UpperBound
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck)(nil)).Elem()
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput) Elem() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput {
+	return o.ApplyT(func(v *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck {
+		if v != nil {
+			return *v
+		}
+		var ret GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck
+		return ret
+	}).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput)
+}
+
+// (list of string) - List of column names to check for uniqueness
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput) ColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// (number) - Upper bound for the range
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput) UpperBound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheck) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.UpperBound
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck struct {
+	// (list of string) - List of column names to check for uniqueness
+	ColumnNames []string `pulumi:"columnNames"`
+	// (number) - Lower bound for the range
+	LowerBound *float64 `pulumi:"lowerBound"`
+	// (number) - Upper bound for the range
+	UpperBound *float64 `pulumi:"upperBound"`
+}
+
+// GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckInput is an input type that accepts GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckArgs and GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput values.
+// You can construct a concrete instance of `GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckInput` via:
+//
+//	GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckArgs{...}
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput
+	ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutputWithContext(context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput
+}
+
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckArgs struct {
+	// (list of string) - List of column names to check for uniqueness
+	ColumnNames pulumi.StringArrayInput `pulumi:"columnNames"`
+	// (number) - Lower bound for the range
+	LowerBound pulumi.Float64PtrInput `pulumi:"lowerBound"`
+	// (number) - Upper bound for the range
+	UpperBound pulumi.Float64PtrInput `pulumi:"upperBound"`
+}
+
+func (GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck)(nil)).Elem()
+}
+
+func (i GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckArgs) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput {
+	return i.ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckArgs) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput)
+}
+
+func (i GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckArgs) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return i.ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckArgs) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput).ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(ctx)
+}
+
+// GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrInput is an input type that accepts GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckArgs, GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtr and GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput values.
+// You can construct a concrete instance of `GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrInput` via:
+//
+//	        GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput
+	ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput
+}
+
+type getQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrType GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckArgs
+
+func GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtr(v *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckArgs) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrInput {
+	return (*getQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrType)(v)
+}
+
+func (*getQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck)(nil)).Elem()
+}
+
+func (i *getQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrType) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return i.ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *getQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrType) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck)(nil)).Elem()
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return o.ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck) *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck {
+		return &v
+	}).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput)
+}
+
+// (list of string) - List of column names to check for uniqueness
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput) ColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck) []string {
+		return v.ColumnNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// (number) - Lower bound for the range
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput) LowerBound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck) *float64 {
+		return v.LowerBound
+	}).(pulumi.Float64PtrOutput)
+}
+
+// (number) - Upper bound for the range
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput) UpperBound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck) *float64 {
+		return v.UpperBound
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck)(nil)).Elem()
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput) Elem() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput {
+	return o.ApplyT(func(v *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck {
+		if v != nil {
+			return *v
+		}
+		var ret GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck
+		return ret
+	}).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput)
+}
+
+// (list of string) - List of column names to check for uniqueness
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput) ColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// (number) - Lower bound for the range
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput) LowerBound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LowerBound
+	}).(pulumi.Float64PtrOutput)
+}
+
+// (number) - Upper bound for the range
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput) UpperBound() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheck) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.UpperBound
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheck struct {
+	// (list of string) - List of column names to check for uniqueness
+	ColumnNames []string `pulumi:"columnNames"`
+}
+
+// GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckInput is an input type that accepts GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckArgs and GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput values.
+// You can construct a concrete instance of `GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckInput` via:
+//
+//	GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckArgs{...}
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput
+	ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutputWithContext(context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput
+}
+
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckArgs struct {
+	// (list of string) - List of column names to check for uniqueness
+	ColumnNames pulumi.StringArrayInput `pulumi:"columnNames"`
+}
+
+func (GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheck)(nil)).Elem()
+}
+
+func (i GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckArgs) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput {
+	return i.ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckArgs) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput)
+}
+
+func (i GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckArgs) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return i.ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (i GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckArgs) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput).ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(ctx)
+}
+
+// GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrInput is an input type that accepts GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckArgs, GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtr and GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput values.
+// You can construct a concrete instance of `GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrInput` via:
+//
+//	        GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrInput interface {
+	pulumi.Input
+
+	ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput
+	ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput
+}
+
+type getQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrType GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckArgs
+
+func GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtr(v *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckArgs) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrInput {
+	return (*getQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrType)(v)
+}
+
+func (*getQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheck)(nil)).Elem()
+}
+
+func (i *getQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrType) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return i.ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *getQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrType) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheck)(nil)).Elem()
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return o.ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(context.Background())
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheck) *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheck {
+		return &v
+	}).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput)
+}
+
+// (list of string) - List of column names to check for uniqueness
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput) ColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheck) []string {
+		return v.ColumnNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheck)(nil)).Elem()
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput) ToGetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutputWithContext(ctx context.Context) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput {
+	return o
+}
+
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput) Elem() GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput {
+	return o.ApplyT(func(v *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheck) GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheck {
+		if v != nil {
+			return *v
+		}
+		var ret GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheck
+		return ret
+	}).(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput)
+}
+
+// (list of string) - List of column names to check for uniqueness
+func (o GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput) ColumnNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheck) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetRegisteredModelModelInfo struct {
+	// the list of aliases associated with this model. Each item is object consisting of following attributes:
+	Aliases    []GetRegisteredModelModelInfoAlias `pulumi:"aliases"`
+	BrowseOnly *bool                              `pulumi:"browseOnly"`
+	// The name of the catalog where the schema and the registered model reside.
+	CatalogName *string `pulumi:"catalogName"`
+	// The comment attached to the registered model.
+	Comment *string `pulumi:"comment"`
+	// the Unix timestamp at the model's creation
+	CreatedAt *int `pulumi:"createdAt"`
+	// the identifier of the user who created the model
+	CreatedBy *string `pulumi:"createdBy"`
+	// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+	FullName *string `pulumi:"fullName"`
+	// the unique identifier of the metastore
+	MetastoreId *string `pulumi:"metastoreId"`
+	// The name of the registered model.
+	Name *string `pulumi:"name"`
+	// Name of the registered model owner.
+	Owner *string `pulumi:"owner"`
+	// The name of the schema where the registered model resides.
+	SchemaName *string `pulumi:"schemaName"`
+	// The storage location under which model version data files are stored.
+	StorageLocation *string `pulumi:"storageLocation"`
+	// the timestamp of the last time changes were made to the model
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// the identifier of the user who updated the model last time
+	UpdatedBy *string `pulumi:"updatedBy"`
+}
+
+// GetRegisteredModelModelInfoInput is an input type that accepts GetRegisteredModelModelInfoArgs and GetRegisteredModelModelInfoOutput values.
+// You can construct a concrete instance of `GetRegisteredModelModelInfoInput` via:
+//
+//	GetRegisteredModelModelInfoArgs{...}
+type GetRegisteredModelModelInfoInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelModelInfoOutput() GetRegisteredModelModelInfoOutput
+	ToGetRegisteredModelModelInfoOutputWithContext(context.Context) GetRegisteredModelModelInfoOutput
+}
+
+type GetRegisteredModelModelInfoArgs struct {
+	// the list of aliases associated with this model. Each item is object consisting of following attributes:
+	Aliases    GetRegisteredModelModelInfoAliasArrayInput `pulumi:"aliases"`
+	BrowseOnly pulumi.BoolPtrInput                        `pulumi:"browseOnly"`
+	// The name of the catalog where the schema and the registered model reside.
+	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
+	// The comment attached to the registered model.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// the Unix timestamp at the model's creation
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// the identifier of the user who created the model
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+	FullName pulumi.StringPtrInput `pulumi:"fullName"`
+	// the unique identifier of the metastore
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// The name of the registered model.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the registered model owner.
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// The name of the schema where the registered model resides.
+	SchemaName pulumi.StringPtrInput `pulumi:"schemaName"`
+	// The storage location under which model version data files are stored.
+	StorageLocation pulumi.StringPtrInput `pulumi:"storageLocation"`
+	// the timestamp of the last time changes were made to the model
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// the identifier of the user who updated the model last time
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+}
+
+func (GetRegisteredModelModelInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelModelInfo)(nil)).Elem()
+}
+
+func (i GetRegisteredModelModelInfoArgs) ToGetRegisteredModelModelInfoOutput() GetRegisteredModelModelInfoOutput {
+	return i.ToGetRegisteredModelModelInfoOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelModelInfoArgs) ToGetRegisteredModelModelInfoOutputWithContext(ctx context.Context) GetRegisteredModelModelInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelModelInfoOutput)
+}
+
+// GetRegisteredModelModelInfoArrayInput is an input type that accepts GetRegisteredModelModelInfoArray and GetRegisteredModelModelInfoArrayOutput values.
+// You can construct a concrete instance of `GetRegisteredModelModelInfoArrayInput` via:
+//
+//	GetRegisteredModelModelInfoArray{ GetRegisteredModelModelInfoArgs{...} }
+type GetRegisteredModelModelInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelModelInfoArrayOutput() GetRegisteredModelModelInfoArrayOutput
+	ToGetRegisteredModelModelInfoArrayOutputWithContext(context.Context) GetRegisteredModelModelInfoArrayOutput
+}
+
+type GetRegisteredModelModelInfoArray []GetRegisteredModelModelInfoInput
+
+func (GetRegisteredModelModelInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelModelInfo)(nil)).Elem()
+}
+
+func (i GetRegisteredModelModelInfoArray) ToGetRegisteredModelModelInfoArrayOutput() GetRegisteredModelModelInfoArrayOutput {
+	return i.ToGetRegisteredModelModelInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelModelInfoArray) ToGetRegisteredModelModelInfoArrayOutputWithContext(ctx context.Context) GetRegisteredModelModelInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelModelInfoArrayOutput)
+}
+
+type GetRegisteredModelModelInfoOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelModelInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelModelInfo)(nil)).Elem()
+}
+
+func (o GetRegisteredModelModelInfoOutput) ToGetRegisteredModelModelInfoOutput() GetRegisteredModelModelInfoOutput {
+	return o
+}
+
+func (o GetRegisteredModelModelInfoOutput) ToGetRegisteredModelModelInfoOutputWithContext(ctx context.Context) GetRegisteredModelModelInfoOutput {
+	return o
+}
+
+// the list of aliases associated with this model. Each item is object consisting of following attributes:
+func (o GetRegisteredModelModelInfoOutput) Aliases() GetRegisteredModelModelInfoAliasArrayOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) []GetRegisteredModelModelInfoAlias { return v.Aliases }).(GetRegisteredModelModelInfoAliasArrayOutput)
+}
+
+func (o GetRegisteredModelModelInfoOutput) BrowseOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *bool { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the catalog where the schema and the registered model reside.
+func (o GetRegisteredModelModelInfoOutput) CatalogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
+}
+
+// The comment attached to the registered model.
+func (o GetRegisteredModelModelInfoOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// the Unix timestamp at the model's creation
+func (o GetRegisteredModelModelInfoOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
+}
+
+// the identifier of the user who created the model
+func (o GetRegisteredModelModelInfoOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The fully-qualified name of the registered model (`catalog_name.schema_name.name`).
+func (o GetRegisteredModelModelInfoOutput) FullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.FullName }).(pulumi.StringPtrOutput)
+}
+
+// the unique identifier of the metastore
+func (o GetRegisteredModelModelInfoOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the registered model.
+func (o GetRegisteredModelModelInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Name of the registered model owner.
+func (o GetRegisteredModelModelInfoOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
+}
+
+// The name of the schema where the registered model resides.
+func (o GetRegisteredModelModelInfoOutput) SchemaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
+}
+
+// The storage location under which model version data files are stored.
+func (o GetRegisteredModelModelInfoOutput) StorageLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.StorageLocation }).(pulumi.StringPtrOutput)
+}
+
+// the timestamp of the last time changes were made to the model
+func (o GetRegisteredModelModelInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
+}
+
+// the identifier of the user who updated the model last time
+func (o GetRegisteredModelModelInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+type GetRegisteredModelModelInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelModelInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelModelInfo)(nil)).Elem()
+}
+
+func (o GetRegisteredModelModelInfoArrayOutput) ToGetRegisteredModelModelInfoArrayOutput() GetRegisteredModelModelInfoArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelModelInfoArrayOutput) ToGetRegisteredModelModelInfoArrayOutputWithContext(ctx context.Context) GetRegisteredModelModelInfoArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelModelInfoArrayOutput) Index(i pulumi.IntInput) GetRegisteredModelModelInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegisteredModelModelInfo {
+		return vs[0].([]GetRegisteredModelModelInfo)[vs[1].(int)]
+	}).(GetRegisteredModelModelInfoOutput)
+}
+
+type GetRegisteredModelModelInfoAlias struct {
+	// string with the name of alias
+	AliasName *string `pulumi:"aliasName"`
+	// The name of the catalog where the schema and the registered model reside.
+	CatalogName *string `pulumi:"catalogName"`
+	Id          *string `pulumi:"id"`
+	ModelName   *string `pulumi:"modelName"`
+	// The name of the schema where the registered model resides.
+	SchemaName *string `pulumi:"schemaName"`
+	// associated model version
+	VersionNum *int `pulumi:"versionNum"`
+}
+
+// GetRegisteredModelModelInfoAliasInput is an input type that accepts GetRegisteredModelModelInfoAliasArgs and GetRegisteredModelModelInfoAliasOutput values.
+// You can construct a concrete instance of `GetRegisteredModelModelInfoAliasInput` via:
+//
+//	GetRegisteredModelModelInfoAliasArgs{...}
+type GetRegisteredModelModelInfoAliasInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelModelInfoAliasOutput() GetRegisteredModelModelInfoAliasOutput
+	ToGetRegisteredModelModelInfoAliasOutputWithContext(context.Context) GetRegisteredModelModelInfoAliasOutput
+}
+
+type GetRegisteredModelModelInfoAliasArgs struct {
+	// string with the name of alias
+	AliasName pulumi.StringPtrInput `pulumi:"aliasName"`
+	// The name of the catalog where the schema and the registered model reside.
+	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
+	Id          pulumi.StringPtrInput `pulumi:"id"`
+	ModelName   pulumi.StringPtrInput `pulumi:"modelName"`
+	// The name of the schema where the registered model resides.
+	SchemaName pulumi.StringPtrInput `pulumi:"schemaName"`
+	// associated model version
+	VersionNum pulumi.IntPtrInput `pulumi:"versionNum"`
+}
+
+func (GetRegisteredModelModelInfoAliasArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelModelInfoAlias)(nil)).Elem()
+}
+
+func (i GetRegisteredModelModelInfoAliasArgs) ToGetRegisteredModelModelInfoAliasOutput() GetRegisteredModelModelInfoAliasOutput {
+	return i.ToGetRegisteredModelModelInfoAliasOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelModelInfoAliasArgs) ToGetRegisteredModelModelInfoAliasOutputWithContext(ctx context.Context) GetRegisteredModelModelInfoAliasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelModelInfoAliasOutput)
+}
+
+// GetRegisteredModelModelInfoAliasArrayInput is an input type that accepts GetRegisteredModelModelInfoAliasArray and GetRegisteredModelModelInfoAliasArrayOutput values.
+// You can construct a concrete instance of `GetRegisteredModelModelInfoAliasArrayInput` via:
+//
+//	GetRegisteredModelModelInfoAliasArray{ GetRegisteredModelModelInfoAliasArgs{...} }
+type GetRegisteredModelModelInfoAliasArrayInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelModelInfoAliasArrayOutput() GetRegisteredModelModelInfoAliasArrayOutput
+	ToGetRegisteredModelModelInfoAliasArrayOutputWithContext(context.Context) GetRegisteredModelModelInfoAliasArrayOutput
+}
+
+type GetRegisteredModelModelInfoAliasArray []GetRegisteredModelModelInfoAliasInput
+
+func (GetRegisteredModelModelInfoAliasArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelModelInfoAlias)(nil)).Elem()
+}
+
+func (i GetRegisteredModelModelInfoAliasArray) ToGetRegisteredModelModelInfoAliasArrayOutput() GetRegisteredModelModelInfoAliasArrayOutput {
+	return i.ToGetRegisteredModelModelInfoAliasArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelModelInfoAliasArray) ToGetRegisteredModelModelInfoAliasArrayOutputWithContext(ctx context.Context) GetRegisteredModelModelInfoAliasArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelModelInfoAliasArrayOutput)
+}
+
+type GetRegisteredModelModelInfoAliasOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelModelInfoAliasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelModelInfoAlias)(nil)).Elem()
+}
+
+func (o GetRegisteredModelModelInfoAliasOutput) ToGetRegisteredModelModelInfoAliasOutput() GetRegisteredModelModelInfoAliasOutput {
+	return o
+}
+
+func (o GetRegisteredModelModelInfoAliasOutput) ToGetRegisteredModelModelInfoAliasOutputWithContext(ctx context.Context) GetRegisteredModelModelInfoAliasOutput {
+	return o
+}
+
+// string with the name of alias
+func (o GetRegisteredModelModelInfoAliasOutput) AliasName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfoAlias) *string { return v.AliasName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the catalog where the schema and the registered model reside.
+func (o GetRegisteredModelModelInfoAliasOutput) CatalogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfoAlias) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRegisteredModelModelInfoAliasOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfoAlias) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRegisteredModelModelInfoAliasOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfoAlias) *string { return v.ModelName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the schema where the registered model resides.
+func (o GetRegisteredModelModelInfoAliasOutput) SchemaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfoAlias) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
+}
+
+// associated model version
+func (o GetRegisteredModelModelInfoAliasOutput) VersionNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelModelInfoAlias) *int { return v.VersionNum }).(pulumi.IntPtrOutput)
+}
+
+type GetRegisteredModelModelInfoAliasArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelModelInfoAliasArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelModelInfoAlias)(nil)).Elem()
+}
+
+func (o GetRegisteredModelModelInfoAliasArrayOutput) ToGetRegisteredModelModelInfoAliasArrayOutput() GetRegisteredModelModelInfoAliasArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelModelInfoAliasArrayOutput) ToGetRegisteredModelModelInfoAliasArrayOutputWithContext(ctx context.Context) GetRegisteredModelModelInfoAliasArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelModelInfoAliasArrayOutput) Index(i pulumi.IntInput) GetRegisteredModelModelInfoAliasOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegisteredModelModelInfoAlias {
+		return vs[0].([]GetRegisteredModelModelInfoAlias)[vs[1].(int)]
+	}).(GetRegisteredModelModelInfoAliasOutput)
+}
+
+type GetRegisteredModelProviderConfig struct {
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetRegisteredModelProviderConfigInput is an input type that accepts GetRegisteredModelProviderConfigArgs and GetRegisteredModelProviderConfigOutput values.
+// You can construct a concrete instance of `GetRegisteredModelProviderConfigInput` via:
+//
+//	GetRegisteredModelProviderConfigArgs{...}
+type GetRegisteredModelProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelProviderConfigOutput() GetRegisteredModelProviderConfigOutput
+	ToGetRegisteredModelProviderConfigOutputWithContext(context.Context) GetRegisteredModelProviderConfigOutput
+}
+
+type GetRegisteredModelProviderConfigArgs struct {
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetRegisteredModelProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelProviderConfig)(nil)).Elem()
+}
+
+func (i GetRegisteredModelProviderConfigArgs) ToGetRegisteredModelProviderConfigOutput() GetRegisteredModelProviderConfigOutput {
+	return i.ToGetRegisteredModelProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelProviderConfigArgs) ToGetRegisteredModelProviderConfigOutputWithContext(ctx context.Context) GetRegisteredModelProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelProviderConfigOutput)
+}
+
+func (i GetRegisteredModelProviderConfigArgs) ToGetRegisteredModelProviderConfigPtrOutput() GetRegisteredModelProviderConfigPtrOutput {
+	return i.ToGetRegisteredModelProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelProviderConfigArgs) ToGetRegisteredModelProviderConfigPtrOutputWithContext(ctx context.Context) GetRegisteredModelProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelProviderConfigOutput).ToGetRegisteredModelProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetRegisteredModelProviderConfigPtrInput is an input type that accepts GetRegisteredModelProviderConfigArgs, GetRegisteredModelProviderConfigPtr and GetRegisteredModelProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetRegisteredModelProviderConfigPtrInput` via:
+//
+//	        GetRegisteredModelProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetRegisteredModelProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelProviderConfigPtrOutput() GetRegisteredModelProviderConfigPtrOutput
+	ToGetRegisteredModelProviderConfigPtrOutputWithContext(context.Context) GetRegisteredModelProviderConfigPtrOutput
+}
+
+type getRegisteredModelProviderConfigPtrType GetRegisteredModelProviderConfigArgs
+
+func GetRegisteredModelProviderConfigPtr(v *GetRegisteredModelProviderConfigArgs) GetRegisteredModelProviderConfigPtrInput {
+	return (*getRegisteredModelProviderConfigPtrType)(v)
+}
+
+func (*getRegisteredModelProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRegisteredModelProviderConfig)(nil)).Elem()
+}
+
+func (i *getRegisteredModelProviderConfigPtrType) ToGetRegisteredModelProviderConfigPtrOutput() GetRegisteredModelProviderConfigPtrOutput {
+	return i.ToGetRegisteredModelProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getRegisteredModelProviderConfigPtrType) ToGetRegisteredModelProviderConfigPtrOutputWithContext(ctx context.Context) GetRegisteredModelProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelProviderConfigPtrOutput)
+}
+
+type GetRegisteredModelProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelProviderConfig)(nil)).Elem()
+}
+
+func (o GetRegisteredModelProviderConfigOutput) ToGetRegisteredModelProviderConfigOutput() GetRegisteredModelProviderConfigOutput {
+	return o
+}
+
+func (o GetRegisteredModelProviderConfigOutput) ToGetRegisteredModelProviderConfigOutputWithContext(ctx context.Context) GetRegisteredModelProviderConfigOutput {
+	return o
+}
+
+func (o GetRegisteredModelProviderConfigOutput) ToGetRegisteredModelProviderConfigPtrOutput() GetRegisteredModelProviderConfigPtrOutput {
+	return o.ToGetRegisteredModelProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetRegisteredModelProviderConfigOutput) ToGetRegisteredModelProviderConfigPtrOutputWithContext(ctx context.Context) GetRegisteredModelProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetRegisteredModelProviderConfig) *GetRegisteredModelProviderConfig {
+		return &v
+	}).(GetRegisteredModelProviderConfigPtrOutput)
+}
+
+func (o GetRegisteredModelProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegisteredModelProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetRegisteredModelProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRegisteredModelProviderConfig)(nil)).Elem()
+}
+
+func (o GetRegisteredModelProviderConfigPtrOutput) ToGetRegisteredModelProviderConfigPtrOutput() GetRegisteredModelProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetRegisteredModelProviderConfigPtrOutput) ToGetRegisteredModelProviderConfigPtrOutputWithContext(ctx context.Context) GetRegisteredModelProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetRegisteredModelProviderConfigPtrOutput) Elem() GetRegisteredModelProviderConfigOutput {
+	return o.ApplyT(func(v *GetRegisteredModelProviderConfig) GetRegisteredModelProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetRegisteredModelProviderConfig
+		return ret
+	}).(GetRegisteredModelProviderConfigOutput)
+}
+
+func (o GetRegisteredModelProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRegisteredModelProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetRegisteredModelVersionsModelVersion struct {
+	// the list of aliases associated with this model. Each item is object consisting of following attributes:
+	Aliases []GetRegisteredModelVersionsModelVersionAlias `pulumi:"aliases"`
+	// The name of the catalog where the schema and the registered model reside.
+	CatalogName *string `pulumi:"catalogName"`
+	// The comment attached to the registered model.
+	Comment *string `pulumi:"comment"`
+	// the Unix timestamp at the model's creation
+	CreatedAt *int `pulumi:"createdAt"`
+	// the identifier of the user who created the model
+	CreatedBy *string `pulumi:"createdBy"`
+	// The unique identifier of the model version
+	Id *string `pulumi:"id"`
+	// the unique identifier of the metastore
+	MetastoreId *string `pulumi:"metastoreId"`
+	ModelName   *string `pulumi:"modelName"`
+	// block describing model version dependencies, for feature-store packaged models. Consists of following attributes:
+	ModelVersionDependencies []GetRegisteredModelVersionsModelVersionModelVersionDependency `pulumi:"modelVersionDependencies"`
+	// MLflow run ID used when creating the model version, if `source` was generated by an experiment run stored in an MLflow tracking server
+	RunId *string `pulumi:"runId"`
+	// ID of the Databricks workspace containing the MLflow run that generated this model version, if applicable
+	RunWorkspaceId *int `pulumi:"runWorkspaceId"`
+	// The name of the schema where the registered model resides.
+	SchemaName *string `pulumi:"schemaName"`
+	// URI indicating the location of the source artifacts (files) for the model version.
+	Source *string `pulumi:"source"`
+	// Current status of the model version.
+	Status *string `pulumi:"status"`
+	// The storage location under which model version data files are stored.
+	StorageLocation *string `pulumi:"storageLocation"`
+	// the timestamp of the last time changes were made to the model
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// the identifier of the user who updated the model last time
+	UpdatedBy *string `pulumi:"updatedBy"`
+	// Integer model version number, used to reference the model version in API requests.
+	Version *int `pulumi:"version"`
+}
+
+// GetRegisteredModelVersionsModelVersionInput is an input type that accepts GetRegisteredModelVersionsModelVersionArgs and GetRegisteredModelVersionsModelVersionOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsModelVersionInput` via:
+//
+//	GetRegisteredModelVersionsModelVersionArgs{...}
+type GetRegisteredModelVersionsModelVersionInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsModelVersionOutput() GetRegisteredModelVersionsModelVersionOutput
+	ToGetRegisteredModelVersionsModelVersionOutputWithContext(context.Context) GetRegisteredModelVersionsModelVersionOutput
+}
+
+type GetRegisteredModelVersionsModelVersionArgs struct {
+	// the list of aliases associated with this model. Each item is object consisting of following attributes:
+	Aliases GetRegisteredModelVersionsModelVersionAliasArrayInput `pulumi:"aliases"`
+	// The name of the catalog where the schema and the registered model reside.
+	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
+	// The comment attached to the registered model.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// the Unix timestamp at the model's creation
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// the identifier of the user who created the model
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// The unique identifier of the model version
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// the unique identifier of the metastore
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	ModelName   pulumi.StringPtrInput `pulumi:"modelName"`
+	// block describing model version dependencies, for feature-store packaged models. Consists of following attributes:
+	ModelVersionDependencies GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayInput `pulumi:"modelVersionDependencies"`
+	// MLflow run ID used when creating the model version, if `source` was generated by an experiment run stored in an MLflow tracking server
+	RunId pulumi.StringPtrInput `pulumi:"runId"`
+	// ID of the Databricks workspace containing the MLflow run that generated this model version, if applicable
+	RunWorkspaceId pulumi.IntPtrInput `pulumi:"runWorkspaceId"`
+	// The name of the schema where the registered model resides.
+	SchemaName pulumi.StringPtrInput `pulumi:"schemaName"`
+	// URI indicating the location of the source artifacts (files) for the model version.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+	// Current status of the model version.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The storage location under which model version data files are stored.
+	StorageLocation pulumi.StringPtrInput `pulumi:"storageLocation"`
+	// the timestamp of the last time changes were made to the model
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// the identifier of the user who updated the model last time
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+	// Integer model version number, used to reference the model version in API requests.
+	Version pulumi.IntPtrInput `pulumi:"version"`
+}
+
+func (GetRegisteredModelVersionsModelVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsModelVersion)(nil)).Elem()
+}
+
+func (i GetRegisteredModelVersionsModelVersionArgs) ToGetRegisteredModelVersionsModelVersionOutput() GetRegisteredModelVersionsModelVersionOutput {
+	return i.ToGetRegisteredModelVersionsModelVersionOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsModelVersionArgs) ToGetRegisteredModelVersionsModelVersionOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsModelVersionOutput)
+}
+
+// GetRegisteredModelVersionsModelVersionArrayInput is an input type that accepts GetRegisteredModelVersionsModelVersionArray and GetRegisteredModelVersionsModelVersionArrayOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsModelVersionArrayInput` via:
+//
+//	GetRegisteredModelVersionsModelVersionArray{ GetRegisteredModelVersionsModelVersionArgs{...} }
+type GetRegisteredModelVersionsModelVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsModelVersionArrayOutput() GetRegisteredModelVersionsModelVersionArrayOutput
+	ToGetRegisteredModelVersionsModelVersionArrayOutputWithContext(context.Context) GetRegisteredModelVersionsModelVersionArrayOutput
+}
+
+type GetRegisteredModelVersionsModelVersionArray []GetRegisteredModelVersionsModelVersionInput
+
+func (GetRegisteredModelVersionsModelVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelVersionsModelVersion)(nil)).Elem()
+}
+
+func (i GetRegisteredModelVersionsModelVersionArray) ToGetRegisteredModelVersionsModelVersionArrayOutput() GetRegisteredModelVersionsModelVersionArrayOutput {
+	return i.ToGetRegisteredModelVersionsModelVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsModelVersionArray) ToGetRegisteredModelVersionsModelVersionArrayOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsModelVersionArrayOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsModelVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsModelVersion)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsModelVersionOutput) ToGetRegisteredModelVersionsModelVersionOutput() GetRegisteredModelVersionsModelVersionOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionOutput) ToGetRegisteredModelVersionsModelVersionOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionOutput {
+	return o
+}
+
+// the list of aliases associated with this model. Each item is object consisting of following attributes:
+func (o GetRegisteredModelVersionsModelVersionOutput) Aliases() GetRegisteredModelVersionsModelVersionAliasArrayOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) []GetRegisteredModelVersionsModelVersionAlias {
+		return v.Aliases
+	}).(GetRegisteredModelVersionsModelVersionAliasArrayOutput)
+}
+
+// The name of the catalog where the schema and the registered model reside.
+func (o GetRegisteredModelVersionsModelVersionOutput) CatalogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
+}
+
+// The comment attached to the registered model.
+func (o GetRegisteredModelVersionsModelVersionOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// the Unix timestamp at the model's creation
+func (o GetRegisteredModelVersionsModelVersionOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
+}
+
+// the identifier of the user who created the model
+func (o GetRegisteredModelVersionsModelVersionOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the model version
+func (o GetRegisteredModelVersionsModelVersionOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// the unique identifier of the metastore
+func (o GetRegisteredModelVersionsModelVersionOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRegisteredModelVersionsModelVersionOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.ModelName }).(pulumi.StringPtrOutput)
+}
+
+// block describing model version dependencies, for feature-store packaged models. Consists of following attributes:
+func (o GetRegisteredModelVersionsModelVersionOutput) ModelVersionDependencies() GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) []GetRegisteredModelVersionsModelVersionModelVersionDependency {
+		return v.ModelVersionDependencies
+	}).(GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput)
+}
+
+// MLflow run ID used when creating the model version, if `source` was generated by an experiment run stored in an MLflow tracking server
+func (o GetRegisteredModelVersionsModelVersionOutput) RunId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.RunId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the Databricks workspace containing the MLflow run that generated this model version, if applicable
+func (o GetRegisteredModelVersionsModelVersionOutput) RunWorkspaceId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *int { return v.RunWorkspaceId }).(pulumi.IntPtrOutput)
+}
+
+// The name of the schema where the registered model resides.
+func (o GetRegisteredModelVersionsModelVersionOutput) SchemaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
+}
+
+// URI indicating the location of the source artifacts (files) for the model version.
+func (o GetRegisteredModelVersionsModelVersionOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+// Current status of the model version.
+func (o GetRegisteredModelVersionsModelVersionOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The storage location under which model version data files are stored.
+func (o GetRegisteredModelVersionsModelVersionOutput) StorageLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.StorageLocation }).(pulumi.StringPtrOutput)
+}
+
+// the timestamp of the last time changes were made to the model
+func (o GetRegisteredModelVersionsModelVersionOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
+}
+
+// the identifier of the user who updated the model last time
+func (o GetRegisteredModelVersionsModelVersionOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Integer model version number, used to reference the model version in API requests.
+func (o GetRegisteredModelVersionsModelVersionOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersion) *int { return v.Version }).(pulumi.IntPtrOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsModelVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelVersionsModelVersion)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsModelVersionArrayOutput) ToGetRegisteredModelVersionsModelVersionArrayOutput() GetRegisteredModelVersionsModelVersionArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionArrayOutput) ToGetRegisteredModelVersionsModelVersionArrayOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionArrayOutput) Index(i pulumi.IntInput) GetRegisteredModelVersionsModelVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegisteredModelVersionsModelVersion {
+		return vs[0].([]GetRegisteredModelVersionsModelVersion)[vs[1].(int)]
+	}).(GetRegisteredModelVersionsModelVersionOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionAlias struct {
+	// string with the name of alias
+	AliasName *string `pulumi:"aliasName"`
+	// The name of the catalog where the schema and the registered model reside.
+	CatalogName *string `pulumi:"catalogName"`
+	// The unique identifier of the model version
+	Id        *string `pulumi:"id"`
+	ModelName *string `pulumi:"modelName"`
+	// The name of the schema where the registered model resides.
+	SchemaName *string `pulumi:"schemaName"`
+	// associated model version
+	VersionNum *int `pulumi:"versionNum"`
+}
+
+// GetRegisteredModelVersionsModelVersionAliasInput is an input type that accepts GetRegisteredModelVersionsModelVersionAliasArgs and GetRegisteredModelVersionsModelVersionAliasOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsModelVersionAliasInput` via:
+//
+//	GetRegisteredModelVersionsModelVersionAliasArgs{...}
+type GetRegisteredModelVersionsModelVersionAliasInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsModelVersionAliasOutput() GetRegisteredModelVersionsModelVersionAliasOutput
+	ToGetRegisteredModelVersionsModelVersionAliasOutputWithContext(context.Context) GetRegisteredModelVersionsModelVersionAliasOutput
+}
+
+type GetRegisteredModelVersionsModelVersionAliasArgs struct {
+	// string with the name of alias
+	AliasName pulumi.StringPtrInput `pulumi:"aliasName"`
+	// The name of the catalog where the schema and the registered model reside.
+	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
+	// The unique identifier of the model version
+	Id        pulumi.StringPtrInput `pulumi:"id"`
+	ModelName pulumi.StringPtrInput `pulumi:"modelName"`
+	// The name of the schema where the registered model resides.
+	SchemaName pulumi.StringPtrInput `pulumi:"schemaName"`
+	// associated model version
+	VersionNum pulumi.IntPtrInput `pulumi:"versionNum"`
+}
+
+func (GetRegisteredModelVersionsModelVersionAliasArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsModelVersionAlias)(nil)).Elem()
+}
+
+func (i GetRegisteredModelVersionsModelVersionAliasArgs) ToGetRegisteredModelVersionsModelVersionAliasOutput() GetRegisteredModelVersionsModelVersionAliasOutput {
+	return i.ToGetRegisteredModelVersionsModelVersionAliasOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsModelVersionAliasArgs) ToGetRegisteredModelVersionsModelVersionAliasOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionAliasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsModelVersionAliasOutput)
+}
+
+// GetRegisteredModelVersionsModelVersionAliasArrayInput is an input type that accepts GetRegisteredModelVersionsModelVersionAliasArray and GetRegisteredModelVersionsModelVersionAliasArrayOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsModelVersionAliasArrayInput` via:
+//
+//	GetRegisteredModelVersionsModelVersionAliasArray{ GetRegisteredModelVersionsModelVersionAliasArgs{...} }
+type GetRegisteredModelVersionsModelVersionAliasArrayInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsModelVersionAliasArrayOutput() GetRegisteredModelVersionsModelVersionAliasArrayOutput
+	ToGetRegisteredModelVersionsModelVersionAliasArrayOutputWithContext(context.Context) GetRegisteredModelVersionsModelVersionAliasArrayOutput
+}
+
+type GetRegisteredModelVersionsModelVersionAliasArray []GetRegisteredModelVersionsModelVersionAliasInput
+
+func (GetRegisteredModelVersionsModelVersionAliasArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelVersionsModelVersionAlias)(nil)).Elem()
+}
+
+func (i GetRegisteredModelVersionsModelVersionAliasArray) ToGetRegisteredModelVersionsModelVersionAliasArrayOutput() GetRegisteredModelVersionsModelVersionAliasArrayOutput {
+	return i.ToGetRegisteredModelVersionsModelVersionAliasArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsModelVersionAliasArray) ToGetRegisteredModelVersionsModelVersionAliasArrayOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionAliasArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsModelVersionAliasArrayOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionAliasOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsModelVersionAliasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsModelVersionAlias)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsModelVersionAliasOutput) ToGetRegisteredModelVersionsModelVersionAliasOutput() GetRegisteredModelVersionsModelVersionAliasOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionAliasOutput) ToGetRegisteredModelVersionsModelVersionAliasOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionAliasOutput {
+	return o
+}
+
+// string with the name of alias
+func (o GetRegisteredModelVersionsModelVersionAliasOutput) AliasName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionAlias) *string { return v.AliasName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the catalog where the schema and the registered model reside.
+func (o GetRegisteredModelVersionsModelVersionAliasOutput) CatalogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionAlias) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the model version
+func (o GetRegisteredModelVersionsModelVersionAliasOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionAlias) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o GetRegisteredModelVersionsModelVersionAliasOutput) ModelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionAlias) *string { return v.ModelName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the schema where the registered model resides.
+func (o GetRegisteredModelVersionsModelVersionAliasOutput) SchemaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionAlias) *string { return v.SchemaName }).(pulumi.StringPtrOutput)
+}
+
+// associated model version
+func (o GetRegisteredModelVersionsModelVersionAliasOutput) VersionNum() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionAlias) *int { return v.VersionNum }).(pulumi.IntPtrOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionAliasArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsModelVersionAliasArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelVersionsModelVersionAlias)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsModelVersionAliasArrayOutput) ToGetRegisteredModelVersionsModelVersionAliasArrayOutput() GetRegisteredModelVersionsModelVersionAliasArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionAliasArrayOutput) ToGetRegisteredModelVersionsModelVersionAliasArrayOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionAliasArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionAliasArrayOutput) Index(i pulumi.IntInput) GetRegisteredModelVersionsModelVersionAliasOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegisteredModelVersionsModelVersionAlias {
+		return vs[0].([]GetRegisteredModelVersionsModelVersionAlias)[vs[1].(int)]
+	}).(GetRegisteredModelVersionsModelVersionAliasOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependency struct {
+	// list of dependencies consisting of following attributes:
+	Dependencies []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency `pulumi:"dependencies"`
+}
+
+// GetRegisteredModelVersionsModelVersionModelVersionDependencyInput is an input type that accepts GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs and GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsModelVersionModelVersionDependencyInput` via:
+//
+//	GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs{...}
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyOutputWithContext(context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs struct {
+	// list of dependencies consisting of following attributes:
+	Dependencies GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayInput `pulumi:"dependencies"`
+}
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependency)(nil)).Elem()
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput {
+	return i.ToGetRegisteredModelVersionsModelVersionModelVersionDependencyOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput)
+}
+
+// GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayInput is an input type that accepts GetRegisteredModelVersionsModelVersionModelVersionDependencyArray and GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayInput` via:
+//
+//	GetRegisteredModelVersionsModelVersionModelVersionDependencyArray{ GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs{...} }
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutputWithContext(context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyArray []GetRegisteredModelVersionsModelVersionModelVersionDependencyInput
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelVersionsModelVersionModelVersionDependency)(nil)).Elem()
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyArray) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput {
+	return i.ToGetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyArray) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependency)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput {
+	return o
+}
+
+// list of dependencies consisting of following attributes:
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput) Dependencies() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionModelVersionDependency) []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency {
+		return v.Dependencies
+	}).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelVersionsModelVersionModelVersionDependency)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput) Index(i pulumi.IntInput) GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegisteredModelVersionsModelVersionModelVersionDependency {
+		return vs[0].([]GetRegisteredModelVersionsModelVersionModelVersionDependency)[vs[1].(int)]
+	}).(GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency struct {
+	Connections []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection `pulumi:"connections"`
+	Credentials []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential `pulumi:"credentials"`
+	// A function that is dependent on a SQL object:
+	Functions []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction `pulumi:"functions"`
+	// A table that is dependent on a SQL object
+	Tables []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable `pulumi:"tables"`
+}
+
+// GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyInput is an input type that accepts GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs and GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyInput` via:
+//
+//	GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs{...}
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutputWithContext(context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs struct {
+	Connections GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayInput `pulumi:"connections"`
+	Credentials GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayInput `pulumi:"credentials"`
+	// A function that is dependent on a SQL object:
+	Functions GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayInput `pulumi:"functions"`
+	// A table that is dependent on a SQL object
+	Tables GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayInput `pulumi:"tables"`
+}
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency)(nil)).Elem()
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput {
+	return i.ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput)
+}
+
+// GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayInput is an input type that accepts GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArray and GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayInput` via:
+//
+//	GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArray{ GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs{...} }
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutputWithContext(context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArray []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyInput
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency)(nil)).Elem()
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArray) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput {
+	return i.ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArray) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput) Connections() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency) []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection {
+		return v.Connections
+	}).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput)
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput) Credentials() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency) []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential {
+		return v.Credentials
+	}).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput)
+}
+
+// A function that is dependent on a SQL object:
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput) Functions() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency) []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction {
+		return v.Functions
+	}).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput)
+}
+
+// A table that is dependent on a SQL object
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput) Tables() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency) []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable {
+		return v.Tables
+	}).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput) Index(i pulumi.IntInput) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency {
+		return vs[0].([]GetRegisteredModelVersionsModelVersionModelVersionDependencyDependency)[vs[1].(int)]
+	}).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection struct {
+	ConnectionName *string `pulumi:"connectionName"`
+}
+
+// GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionInput is an input type that accepts GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs and GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionInput` via:
+//
+//	GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs{...}
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutputWithContext(context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs struct {
+	ConnectionName pulumi.StringPtrInput `pulumi:"connectionName"`
+}
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection)(nil)).Elem()
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput {
+	return i.ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput)
+}
+
+// GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayInput is an input type that accepts GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArray and GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayInput` via:
+//
+//	GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArray{ GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs{...} }
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutputWithContext(context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArray []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionInput
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection)(nil)).Elem()
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArray) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput {
+	return i.ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArray) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput) ConnectionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection) *string {
+		return v.ConnectionName
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput) Index(i pulumi.IntInput) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection {
+		return vs[0].([]GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnection)[vs[1].(int)]
+	}).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential struct {
+	CredentialName *string `pulumi:"credentialName"`
+}
+
+// GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialInput is an input type that accepts GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs and GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialInput` via:
+//
+//	GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs{...}
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutputWithContext(context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs struct {
+	CredentialName pulumi.StringPtrInput `pulumi:"credentialName"`
+}
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential)(nil)).Elem()
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput {
+	return i.ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput)
+}
+
+// GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayInput is an input type that accepts GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArray and GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayInput` via:
+//
+//	GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArray{ GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs{...} }
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutputWithContext(context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArray []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialInput
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential)(nil)).Elem()
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArray) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput {
+	return i.ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArray) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput) CredentialName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential) *string {
+		return v.CredentialName
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput) Index(i pulumi.IntInput) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential {
+		return vs[0].([]GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredential)[vs[1].(int)]
+	}).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction struct {
+	// Full name of the dependent function
+	FunctionFullName string `pulumi:"functionFullName"`
+}
+
+// GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionInput is an input type that accepts GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs and GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionInput` via:
+//
+//	GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs{...}
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutputWithContext(context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs struct {
+	// Full name of the dependent function
+	FunctionFullName pulumi.StringInput `pulumi:"functionFullName"`
+}
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction)(nil)).Elem()
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput {
+	return i.ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput)
+}
+
+// GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayInput is an input type that accepts GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArray and GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayInput` via:
+//
+//	GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArray{ GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs{...} }
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutputWithContext(context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArray []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionInput
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction)(nil)).Elem()
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArray) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput {
+	return i.ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArray) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput {
+	return o
+}
+
+// Full name of the dependent function
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput) FunctionFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction) string {
+		return v.FunctionFullName
+	}).(pulumi.StringOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput) Index(i pulumi.IntInput) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction {
+		return vs[0].([]GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunction)[vs[1].(int)]
+	}).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable struct {
+	// Full name of the dependent table
+	TableFullName string `pulumi:"tableFullName"`
+}
+
+// GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableInput is an input type that accepts GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs and GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableInput` via:
+//
+//	GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs{...}
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutputWithContext(context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs struct {
+	// Full name of the dependent table
+	TableFullName pulumi.StringInput `pulumi:"tableFullName"`
+}
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable)(nil)).Elem()
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput {
+	return i.ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput)
+}
+
+// GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayInput is an input type that accepts GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArray and GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayInput` via:
+//
+//	GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArray{ GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs{...} }
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput
+	ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutputWithContext(context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArray []GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableInput
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable)(nil)).Elem()
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArray) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput {
+	return i.ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArray) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput {
+	return o
+}
+
+// Full name of the dependent table
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput) TableFullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable) string {
+		return v.TableFullName
+	}).(pulumi.StringOutput)
+}
+
+type GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput() GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput) ToGetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutputWithContext(ctx context.Context) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput) Index(i pulumi.IntInput) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable {
+		return vs[0].([]GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTable)[vs[1].(int)]
+	}).(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput)
+}
+
+type GetRegisteredModelVersionsProviderConfig struct {
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetRegisteredModelVersionsProviderConfigInput is an input type that accepts GetRegisteredModelVersionsProviderConfigArgs and GetRegisteredModelVersionsProviderConfigOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsProviderConfigInput` via:
+//
+//	GetRegisteredModelVersionsProviderConfigArgs{...}
+type GetRegisteredModelVersionsProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsProviderConfigOutput() GetRegisteredModelVersionsProviderConfigOutput
+	ToGetRegisteredModelVersionsProviderConfigOutputWithContext(context.Context) GetRegisteredModelVersionsProviderConfigOutput
+}
+
+type GetRegisteredModelVersionsProviderConfigArgs struct {
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetRegisteredModelVersionsProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsProviderConfig)(nil)).Elem()
+}
+
+func (i GetRegisteredModelVersionsProviderConfigArgs) ToGetRegisteredModelVersionsProviderConfigOutput() GetRegisteredModelVersionsProviderConfigOutput {
+	return i.ToGetRegisteredModelVersionsProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsProviderConfigArgs) ToGetRegisteredModelVersionsProviderConfigOutputWithContext(ctx context.Context) GetRegisteredModelVersionsProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsProviderConfigOutput)
+}
+
+func (i GetRegisteredModelVersionsProviderConfigArgs) ToGetRegisteredModelVersionsProviderConfigPtrOutput() GetRegisteredModelVersionsProviderConfigPtrOutput {
+	return i.ToGetRegisteredModelVersionsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetRegisteredModelVersionsProviderConfigArgs) ToGetRegisteredModelVersionsProviderConfigPtrOutputWithContext(ctx context.Context) GetRegisteredModelVersionsProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsProviderConfigOutput).ToGetRegisteredModelVersionsProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetRegisteredModelVersionsProviderConfigPtrInput is an input type that accepts GetRegisteredModelVersionsProviderConfigArgs, GetRegisteredModelVersionsProviderConfigPtr and GetRegisteredModelVersionsProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetRegisteredModelVersionsProviderConfigPtrInput` via:
+//
+//	        GetRegisteredModelVersionsProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetRegisteredModelVersionsProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetRegisteredModelVersionsProviderConfigPtrOutput() GetRegisteredModelVersionsProviderConfigPtrOutput
+	ToGetRegisteredModelVersionsProviderConfigPtrOutputWithContext(context.Context) GetRegisteredModelVersionsProviderConfigPtrOutput
+}
+
+type getRegisteredModelVersionsProviderConfigPtrType GetRegisteredModelVersionsProviderConfigArgs
+
+func GetRegisteredModelVersionsProviderConfigPtr(v *GetRegisteredModelVersionsProviderConfigArgs) GetRegisteredModelVersionsProviderConfigPtrInput {
+	return (*getRegisteredModelVersionsProviderConfigPtrType)(v)
+}
+
+func (*getRegisteredModelVersionsProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRegisteredModelVersionsProviderConfig)(nil)).Elem()
+}
+
+func (i *getRegisteredModelVersionsProviderConfigPtrType) ToGetRegisteredModelVersionsProviderConfigPtrOutput() GetRegisteredModelVersionsProviderConfigPtrOutput {
+	return i.ToGetRegisteredModelVersionsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getRegisteredModelVersionsProviderConfigPtrType) ToGetRegisteredModelVersionsProviderConfigPtrOutputWithContext(ctx context.Context) GetRegisteredModelVersionsProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegisteredModelVersionsProviderConfigPtrOutput)
+}
+
+type GetRegisteredModelVersionsProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegisteredModelVersionsProviderConfig)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsProviderConfigOutput) ToGetRegisteredModelVersionsProviderConfigOutput() GetRegisteredModelVersionsProviderConfigOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsProviderConfigOutput) ToGetRegisteredModelVersionsProviderConfigOutputWithContext(ctx context.Context) GetRegisteredModelVersionsProviderConfigOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsProviderConfigOutput) ToGetRegisteredModelVersionsProviderConfigPtrOutput() GetRegisteredModelVersionsProviderConfigPtrOutput {
+	return o.ToGetRegisteredModelVersionsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetRegisteredModelVersionsProviderConfigOutput) ToGetRegisteredModelVersionsProviderConfigPtrOutputWithContext(ctx context.Context) GetRegisteredModelVersionsProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetRegisteredModelVersionsProviderConfig) *GetRegisteredModelVersionsProviderConfig {
+		return &v
+	}).(GetRegisteredModelVersionsProviderConfigPtrOutput)
+}
+
+func (o GetRegisteredModelVersionsProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegisteredModelVersionsProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetRegisteredModelVersionsProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetRegisteredModelVersionsProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRegisteredModelVersionsProviderConfig)(nil)).Elem()
+}
+
+func (o GetRegisteredModelVersionsProviderConfigPtrOutput) ToGetRegisteredModelVersionsProviderConfigPtrOutput() GetRegisteredModelVersionsProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsProviderConfigPtrOutput) ToGetRegisteredModelVersionsProviderConfigPtrOutputWithContext(ctx context.Context) GetRegisteredModelVersionsProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetRegisteredModelVersionsProviderConfigPtrOutput) Elem() GetRegisteredModelVersionsProviderConfigOutput {
+	return o.ApplyT(func(v *GetRegisteredModelVersionsProviderConfig) GetRegisteredModelVersionsProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetRegisteredModelVersionsProviderConfig
+		return ret
+	}).(GetRegisteredModelVersionsProviderConfigOutput)
+}
+
+func (o GetRegisteredModelVersionsProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRegisteredModelVersionsProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetRfaAccessRequestDestinationsDestination struct {
+	// (string) - The identifier for the destination. This is the email address for EMAIL destinations, the URL for URL destinations,
+	// or the unique Databricks notification destination ID for all other external destinations
+	DestinationId *string `pulumi:"destinationId"`
+	// (string) - The type of the destination. Possible values are: `EMAIL`, `GENERIC_WEBHOOK`, `MICROSOFT_TEAMS`, `SLACK`, `URL`
+	DestinationType *string `pulumi:"destinationType"`
+	// (string) - This field is used to denote whether the destination is the email of the owner of the securable object.
+	// The special destination cannot be assigned to a securable and only represents the default destination of the securable.
+	// The securable types that support default special destinations are: "catalog", "externalLocation", "connection", "credential", and "metastore".
+	// The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`
+	SpecialDestination *string `pulumi:"specialDestination"`
+}
+
+// GetRfaAccessRequestDestinationsDestinationInput is an input type that accepts GetRfaAccessRequestDestinationsDestinationArgs and GetRfaAccessRequestDestinationsDestinationOutput values.
+// You can construct a concrete instance of `GetRfaAccessRequestDestinationsDestinationInput` via:
+//
+//	GetRfaAccessRequestDestinationsDestinationArgs{...}
+type GetRfaAccessRequestDestinationsDestinationInput interface {
+	pulumi.Input
+
+	ToGetRfaAccessRequestDestinationsDestinationOutput() GetRfaAccessRequestDestinationsDestinationOutput
+	ToGetRfaAccessRequestDestinationsDestinationOutputWithContext(context.Context) GetRfaAccessRequestDestinationsDestinationOutput
+}
+
+type GetRfaAccessRequestDestinationsDestinationArgs struct {
+	// (string) - The identifier for the destination. This is the email address for EMAIL destinations, the URL for URL destinations,
+	// or the unique Databricks notification destination ID for all other external destinations
+	DestinationId pulumi.StringPtrInput `pulumi:"destinationId"`
+	// (string) - The type of the destination. Possible values are: `EMAIL`, `GENERIC_WEBHOOK`, `MICROSOFT_TEAMS`, `SLACK`, `URL`
+	DestinationType pulumi.StringPtrInput `pulumi:"destinationType"`
+	// (string) - This field is used to denote whether the destination is the email of the owner of the securable object.
+	// The special destination cannot be assigned to a securable and only represents the default destination of the securable.
+	// The securable types that support default special destinations are: "catalog", "externalLocation", "connection", "credential", and "metastore".
+	// The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`
+	SpecialDestination pulumi.StringPtrInput `pulumi:"specialDestination"`
+}
+
+func (GetRfaAccessRequestDestinationsDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRfaAccessRequestDestinationsDestination)(nil)).Elem()
+}
+
+func (i GetRfaAccessRequestDestinationsDestinationArgs) ToGetRfaAccessRequestDestinationsDestinationOutput() GetRfaAccessRequestDestinationsDestinationOutput {
+	return i.ToGetRfaAccessRequestDestinationsDestinationOutputWithContext(context.Background())
+}
+
+func (i GetRfaAccessRequestDestinationsDestinationArgs) ToGetRfaAccessRequestDestinationsDestinationOutputWithContext(ctx context.Context) GetRfaAccessRequestDestinationsDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRfaAccessRequestDestinationsDestinationOutput)
+}
+
+// GetRfaAccessRequestDestinationsDestinationArrayInput is an input type that accepts GetRfaAccessRequestDestinationsDestinationArray and GetRfaAccessRequestDestinationsDestinationArrayOutput values.
+// You can construct a concrete instance of `GetRfaAccessRequestDestinationsDestinationArrayInput` via:
+//
+//	GetRfaAccessRequestDestinationsDestinationArray{ GetRfaAccessRequestDestinationsDestinationArgs{...} }
+type GetRfaAccessRequestDestinationsDestinationArrayInput interface {
+	pulumi.Input
+
+	ToGetRfaAccessRequestDestinationsDestinationArrayOutput() GetRfaAccessRequestDestinationsDestinationArrayOutput
+	ToGetRfaAccessRequestDestinationsDestinationArrayOutputWithContext(context.Context) GetRfaAccessRequestDestinationsDestinationArrayOutput
+}
+
+type GetRfaAccessRequestDestinationsDestinationArray []GetRfaAccessRequestDestinationsDestinationInput
+
+func (GetRfaAccessRequestDestinationsDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRfaAccessRequestDestinationsDestination)(nil)).Elem()
+}
+
+func (i GetRfaAccessRequestDestinationsDestinationArray) ToGetRfaAccessRequestDestinationsDestinationArrayOutput() GetRfaAccessRequestDestinationsDestinationArrayOutput {
+	return i.ToGetRfaAccessRequestDestinationsDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i GetRfaAccessRequestDestinationsDestinationArray) ToGetRfaAccessRequestDestinationsDestinationArrayOutputWithContext(ctx context.Context) GetRfaAccessRequestDestinationsDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRfaAccessRequestDestinationsDestinationArrayOutput)
+}
+
+type GetRfaAccessRequestDestinationsDestinationOutput struct{ *pulumi.OutputState }
+
+func (GetRfaAccessRequestDestinationsDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRfaAccessRequestDestinationsDestination)(nil)).Elem()
+}
+
+func (o GetRfaAccessRequestDestinationsDestinationOutput) ToGetRfaAccessRequestDestinationsDestinationOutput() GetRfaAccessRequestDestinationsDestinationOutput {
+	return o
+}
+
+func (o GetRfaAccessRequestDestinationsDestinationOutput) ToGetRfaAccessRequestDestinationsDestinationOutputWithContext(ctx context.Context) GetRfaAccessRequestDestinationsDestinationOutput {
+	return o
+}
+
+// (string) - The identifier for the destination. This is the email address for EMAIL destinations, the URL for URL destinations,
+// or the unique Databricks notification destination ID for all other external destinations
+func (o GetRfaAccessRequestDestinationsDestinationOutput) DestinationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRfaAccessRequestDestinationsDestination) *string { return v.DestinationId }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The type of the destination. Possible values are: `EMAIL`, `GENERIC_WEBHOOK`, `MICROSOFT_TEAMS`, `SLACK`, `URL`
+func (o GetRfaAccessRequestDestinationsDestinationOutput) DestinationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRfaAccessRequestDestinationsDestination) *string { return v.DestinationType }).(pulumi.StringPtrOutput)
+}
+
+// (string) - This field is used to denote whether the destination is the email of the owner of the securable object.
+// The special destination cannot be assigned to a securable and only represents the default destination of the securable.
+// The securable types that support default special destinations are: "catalog", "externalLocation", "connection", "credential", and "metastore".
+// The **destination_type** of a **special_destination** is always EMAIL. Possible values are: `SPECIAL_DESTINATION_CATALOG_OWNER`, `SPECIAL_DESTINATION_CONNECTION_OWNER`, `SPECIAL_DESTINATION_CREDENTIAL_OWNER`, `SPECIAL_DESTINATION_EXTERNAL_LOCATION_OWNER`, `SPECIAL_DESTINATION_METASTORE_OWNER`
+func (o GetRfaAccessRequestDestinationsDestinationOutput) SpecialDestination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRfaAccessRequestDestinationsDestination) *string { return v.SpecialDestination }).(pulumi.StringPtrOutput)
+}
+
+type GetRfaAccessRequestDestinationsDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRfaAccessRequestDestinationsDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRfaAccessRequestDestinationsDestination)(nil)).Elem()
+}
+
+func (o GetRfaAccessRequestDestinationsDestinationArrayOutput) ToGetRfaAccessRequestDestinationsDestinationArrayOutput() GetRfaAccessRequestDestinationsDestinationArrayOutput {
+	return o
+}
+
+func (o GetRfaAccessRequestDestinationsDestinationArrayOutput) ToGetRfaAccessRequestDestinationsDestinationArrayOutputWithContext(ctx context.Context) GetRfaAccessRequestDestinationsDestinationArrayOutput {
+	return o
+}
+
+func (o GetRfaAccessRequestDestinationsDestinationArrayOutput) Index(i pulumi.IntInput) GetRfaAccessRequestDestinationsDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRfaAccessRequestDestinationsDestination {
+		return vs[0].([]GetRfaAccessRequestDestinationsDestination)[vs[1].(int)]
+	}).(GetRfaAccessRequestDestinationsDestinationOutput)
+}
+
+type GetRfaAccessRequestDestinationsDestinationSourceSecurable struct {
+	// The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+	FullName *string `pulumi:"fullName"`
+	// (string) - Optional. The name of the Share object that contains the securable when the securable is
+	// getting shared in D2D Delta Sharing
+	ProviderShare *string `pulumi:"providerShare"`
+	// (string) - Required. The type of securable (catalog/schema/table).
+	// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+	Type *string `pulumi:"type"`
+}
+
+// GetRfaAccessRequestDestinationsDestinationSourceSecurableInput is an input type that accepts GetRfaAccessRequestDestinationsDestinationSourceSecurableArgs and GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput values.
+// You can construct a concrete instance of `GetRfaAccessRequestDestinationsDestinationSourceSecurableInput` via:
+//
+//	GetRfaAccessRequestDestinationsDestinationSourceSecurableArgs{...}
+type GetRfaAccessRequestDestinationsDestinationSourceSecurableInput interface {
+	pulumi.Input
+
+	ToGetRfaAccessRequestDestinationsDestinationSourceSecurableOutput() GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput
+	ToGetRfaAccessRequestDestinationsDestinationSourceSecurableOutputWithContext(context.Context) GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput
+}
+
+type GetRfaAccessRequestDestinationsDestinationSourceSecurableArgs struct {
+	// The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+	FullName pulumi.StringPtrInput `pulumi:"fullName"`
+	// (string) - Optional. The name of the Share object that contains the securable when the securable is
+	// getting shared in D2D Delta Sharing
+	ProviderShare pulumi.StringPtrInput `pulumi:"providerShare"`
+	// (string) - Required. The type of securable (catalog/schema/table).
+	// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetRfaAccessRequestDestinationsDestinationSourceSecurableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRfaAccessRequestDestinationsDestinationSourceSecurable)(nil)).Elem()
+}
+
+func (i GetRfaAccessRequestDestinationsDestinationSourceSecurableArgs) ToGetRfaAccessRequestDestinationsDestinationSourceSecurableOutput() GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput {
+	return i.ToGetRfaAccessRequestDestinationsDestinationSourceSecurableOutputWithContext(context.Background())
+}
+
+func (i GetRfaAccessRequestDestinationsDestinationSourceSecurableArgs) ToGetRfaAccessRequestDestinationsDestinationSourceSecurableOutputWithContext(ctx context.Context) GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput)
+}
+
+type GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput struct{ *pulumi.OutputState }
+
+func (GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRfaAccessRequestDestinationsDestinationSourceSecurable)(nil)).Elem()
+}
+
+func (o GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput) ToGetRfaAccessRequestDestinationsDestinationSourceSecurableOutput() GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput {
+	return o
+}
+
+func (o GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput) ToGetRfaAccessRequestDestinationsDestinationSourceSecurableOutputWithContext(ctx context.Context) GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput {
+	return o
+}
+
+// The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+func (o GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput) FullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRfaAccessRequestDestinationsDestinationSourceSecurable) *string { return v.FullName }).(pulumi.StringPtrOutput)
+}
+
+// (string) - Optional. The name of the Share object that contains the securable when the securable is
+// getting shared in D2D Delta Sharing
+func (o GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput) ProviderShare() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRfaAccessRequestDestinationsDestinationSourceSecurable) *string { return v.ProviderShare }).(pulumi.StringPtrOutput)
+}
+
+// (string) - Required. The type of securable (catalog/schema/table).
+// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+func (o GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRfaAccessRequestDestinationsDestinationSourceSecurable) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetRfaAccessRequestDestinationsProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetRfaAccessRequestDestinationsProviderConfigInput is an input type that accepts GetRfaAccessRequestDestinationsProviderConfigArgs and GetRfaAccessRequestDestinationsProviderConfigOutput values.
+// You can construct a concrete instance of `GetRfaAccessRequestDestinationsProviderConfigInput` via:
+//
+//	GetRfaAccessRequestDestinationsProviderConfigArgs{...}
+type GetRfaAccessRequestDestinationsProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetRfaAccessRequestDestinationsProviderConfigOutput() GetRfaAccessRequestDestinationsProviderConfigOutput
+	ToGetRfaAccessRequestDestinationsProviderConfigOutputWithContext(context.Context) GetRfaAccessRequestDestinationsProviderConfigOutput
+}
+
+type GetRfaAccessRequestDestinationsProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetRfaAccessRequestDestinationsProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRfaAccessRequestDestinationsProviderConfig)(nil)).Elem()
+}
+
+func (i GetRfaAccessRequestDestinationsProviderConfigArgs) ToGetRfaAccessRequestDestinationsProviderConfigOutput() GetRfaAccessRequestDestinationsProviderConfigOutput {
+	return i.ToGetRfaAccessRequestDestinationsProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetRfaAccessRequestDestinationsProviderConfigArgs) ToGetRfaAccessRequestDestinationsProviderConfigOutputWithContext(ctx context.Context) GetRfaAccessRequestDestinationsProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRfaAccessRequestDestinationsProviderConfigOutput)
+}
+
+func (i GetRfaAccessRequestDestinationsProviderConfigArgs) ToGetRfaAccessRequestDestinationsProviderConfigPtrOutput() GetRfaAccessRequestDestinationsProviderConfigPtrOutput {
+	return i.ToGetRfaAccessRequestDestinationsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetRfaAccessRequestDestinationsProviderConfigArgs) ToGetRfaAccessRequestDestinationsProviderConfigPtrOutputWithContext(ctx context.Context) GetRfaAccessRequestDestinationsProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRfaAccessRequestDestinationsProviderConfigOutput).ToGetRfaAccessRequestDestinationsProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetRfaAccessRequestDestinationsProviderConfigPtrInput is an input type that accepts GetRfaAccessRequestDestinationsProviderConfigArgs, GetRfaAccessRequestDestinationsProviderConfigPtr and GetRfaAccessRequestDestinationsProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetRfaAccessRequestDestinationsProviderConfigPtrInput` via:
+//
+//	        GetRfaAccessRequestDestinationsProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetRfaAccessRequestDestinationsProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetRfaAccessRequestDestinationsProviderConfigPtrOutput() GetRfaAccessRequestDestinationsProviderConfigPtrOutput
+	ToGetRfaAccessRequestDestinationsProviderConfigPtrOutputWithContext(context.Context) GetRfaAccessRequestDestinationsProviderConfigPtrOutput
+}
+
+type getRfaAccessRequestDestinationsProviderConfigPtrType GetRfaAccessRequestDestinationsProviderConfigArgs
+
+func GetRfaAccessRequestDestinationsProviderConfigPtr(v *GetRfaAccessRequestDestinationsProviderConfigArgs) GetRfaAccessRequestDestinationsProviderConfigPtrInput {
+	return (*getRfaAccessRequestDestinationsProviderConfigPtrType)(v)
+}
+
+func (*getRfaAccessRequestDestinationsProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRfaAccessRequestDestinationsProviderConfig)(nil)).Elem()
+}
+
+func (i *getRfaAccessRequestDestinationsProviderConfigPtrType) ToGetRfaAccessRequestDestinationsProviderConfigPtrOutput() GetRfaAccessRequestDestinationsProviderConfigPtrOutput {
+	return i.ToGetRfaAccessRequestDestinationsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getRfaAccessRequestDestinationsProviderConfigPtrType) ToGetRfaAccessRequestDestinationsProviderConfigPtrOutputWithContext(ctx context.Context) GetRfaAccessRequestDestinationsProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRfaAccessRequestDestinationsProviderConfigPtrOutput)
+}
+
+type GetRfaAccessRequestDestinationsProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRfaAccessRequestDestinationsProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRfaAccessRequestDestinationsProviderConfig)(nil)).Elem()
+}
+
+func (o GetRfaAccessRequestDestinationsProviderConfigOutput) ToGetRfaAccessRequestDestinationsProviderConfigOutput() GetRfaAccessRequestDestinationsProviderConfigOutput {
+	return o
+}
+
+func (o GetRfaAccessRequestDestinationsProviderConfigOutput) ToGetRfaAccessRequestDestinationsProviderConfigOutputWithContext(ctx context.Context) GetRfaAccessRequestDestinationsProviderConfigOutput {
+	return o
+}
+
+func (o GetRfaAccessRequestDestinationsProviderConfigOutput) ToGetRfaAccessRequestDestinationsProviderConfigPtrOutput() GetRfaAccessRequestDestinationsProviderConfigPtrOutput {
+	return o.ToGetRfaAccessRequestDestinationsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetRfaAccessRequestDestinationsProviderConfigOutput) ToGetRfaAccessRequestDestinationsProviderConfigPtrOutputWithContext(ctx context.Context) GetRfaAccessRequestDestinationsProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetRfaAccessRequestDestinationsProviderConfig) *GetRfaAccessRequestDestinationsProviderConfig {
+		return &v
+	}).(GetRfaAccessRequestDestinationsProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetRfaAccessRequestDestinationsProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRfaAccessRequestDestinationsProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetRfaAccessRequestDestinationsProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetRfaAccessRequestDestinationsProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetRfaAccessRequestDestinationsProviderConfig)(nil)).Elem()
+}
+
+func (o GetRfaAccessRequestDestinationsProviderConfigPtrOutput) ToGetRfaAccessRequestDestinationsProviderConfigPtrOutput() GetRfaAccessRequestDestinationsProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetRfaAccessRequestDestinationsProviderConfigPtrOutput) ToGetRfaAccessRequestDestinationsProviderConfigPtrOutputWithContext(ctx context.Context) GetRfaAccessRequestDestinationsProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetRfaAccessRequestDestinationsProviderConfigPtrOutput) Elem() GetRfaAccessRequestDestinationsProviderConfigOutput {
+	return o.ApplyT(func(v *GetRfaAccessRequestDestinationsProviderConfig) GetRfaAccessRequestDestinationsProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetRfaAccessRequestDestinationsProviderConfig
+		return ret
+	}).(GetRfaAccessRequestDestinationsProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetRfaAccessRequestDestinationsProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetRfaAccessRequestDestinationsProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetRfaAccessRequestDestinationsSecurable struct {
+	// The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+	FullName *string `pulumi:"fullName"`
+	// (string) - Optional. The name of the Share object that contains the securable when the securable is
+	// getting shared in D2D Delta Sharing
+	ProviderShare *string `pulumi:"providerShare"`
+	// (string) - Required. The type of securable (catalog/schema/table).
+	// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+	Type *string `pulumi:"type"`
+}
+
+// GetRfaAccessRequestDestinationsSecurableInput is an input type that accepts GetRfaAccessRequestDestinationsSecurableArgs and GetRfaAccessRequestDestinationsSecurableOutput values.
+// You can construct a concrete instance of `GetRfaAccessRequestDestinationsSecurableInput` via:
+//
+//	GetRfaAccessRequestDestinationsSecurableArgs{...}
+type GetRfaAccessRequestDestinationsSecurableInput interface {
+	pulumi.Input
+
+	ToGetRfaAccessRequestDestinationsSecurableOutput() GetRfaAccessRequestDestinationsSecurableOutput
+	ToGetRfaAccessRequestDestinationsSecurableOutputWithContext(context.Context) GetRfaAccessRequestDestinationsSecurableOutput
+}
+
+type GetRfaAccessRequestDestinationsSecurableArgs struct {
+	// The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+	FullName pulumi.StringPtrInput `pulumi:"fullName"`
+	// (string) - Optional. The name of the Share object that contains the securable when the securable is
+	// getting shared in D2D Delta Sharing
+	ProviderShare pulumi.StringPtrInput `pulumi:"providerShare"`
+	// (string) - Required. The type of securable (catalog/schema/table).
+	// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetRfaAccessRequestDestinationsSecurableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRfaAccessRequestDestinationsSecurable)(nil)).Elem()
+}
+
+func (i GetRfaAccessRequestDestinationsSecurableArgs) ToGetRfaAccessRequestDestinationsSecurableOutput() GetRfaAccessRequestDestinationsSecurableOutput {
+	return i.ToGetRfaAccessRequestDestinationsSecurableOutputWithContext(context.Background())
+}
+
+func (i GetRfaAccessRequestDestinationsSecurableArgs) ToGetRfaAccessRequestDestinationsSecurableOutputWithContext(ctx context.Context) GetRfaAccessRequestDestinationsSecurableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRfaAccessRequestDestinationsSecurableOutput)
+}
+
+type GetRfaAccessRequestDestinationsSecurableOutput struct{ *pulumi.OutputState }
+
+func (GetRfaAccessRequestDestinationsSecurableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRfaAccessRequestDestinationsSecurable)(nil)).Elem()
+}
+
+func (o GetRfaAccessRequestDestinationsSecurableOutput) ToGetRfaAccessRequestDestinationsSecurableOutput() GetRfaAccessRequestDestinationsSecurableOutput {
+	return o
+}
+
+func (o GetRfaAccessRequestDestinationsSecurableOutput) ToGetRfaAccessRequestDestinationsSecurableOutputWithContext(ctx context.Context) GetRfaAccessRequestDestinationsSecurableOutput {
+	return o
+}
+
+// The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+func (o GetRfaAccessRequestDestinationsSecurableOutput) FullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRfaAccessRequestDestinationsSecurable) *string { return v.FullName }).(pulumi.StringPtrOutput)
+}
+
+// (string) - Optional. The name of the Share object that contains the securable when the securable is
+// getting shared in D2D Delta Sharing
+func (o GetRfaAccessRequestDestinationsSecurableOutput) ProviderShare() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRfaAccessRequestDestinationsSecurable) *string { return v.ProviderShare }).(pulumi.StringPtrOutput)
+}
+
+// (string) - Required. The type of securable (catalog/schema/table).
+// Optional if resourceName is present. Possible values are: `CATALOG`, `CLEAN_ROOM`, `CONNECTION`, `CREDENTIAL`, `EXTERNAL_LOCATION`, `EXTERNAL_METADATA`, `FUNCTION`, `METASTORE`, `PIPELINE`, `PROVIDER`, `RECIPIENT`, `SCHEMA`, `SHARE`, `STAGING_TABLE`, `STORAGE_CREDENTIAL`, `TABLE`, `VOLUME`
+func (o GetRfaAccessRequestDestinationsSecurableOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRfaAccessRequestDestinationsSecurable) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetSchemaProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetSchemaProviderConfigInput is an input type that accepts GetSchemaProviderConfigArgs and GetSchemaProviderConfigOutput values.
+// You can construct a concrete instance of `GetSchemaProviderConfigInput` via:
+//
+//	GetSchemaProviderConfigArgs{...}
+type GetSchemaProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetSchemaProviderConfigOutput() GetSchemaProviderConfigOutput
+	ToGetSchemaProviderConfigOutputWithContext(context.Context) GetSchemaProviderConfigOutput
+}
+
+type GetSchemaProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetSchemaProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSchemaProviderConfig)(nil)).Elem()
+}
+
+func (i GetSchemaProviderConfigArgs) ToGetSchemaProviderConfigOutput() GetSchemaProviderConfigOutput {
+	return i.ToGetSchemaProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetSchemaProviderConfigArgs) ToGetSchemaProviderConfigOutputWithContext(ctx context.Context) GetSchemaProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSchemaProviderConfigOutput)
+}
+
+func (i GetSchemaProviderConfigArgs) ToGetSchemaProviderConfigPtrOutput() GetSchemaProviderConfigPtrOutput {
+	return i.ToGetSchemaProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetSchemaProviderConfigArgs) ToGetSchemaProviderConfigPtrOutputWithContext(ctx context.Context) GetSchemaProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSchemaProviderConfigOutput).ToGetSchemaProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetSchemaProviderConfigPtrInput is an input type that accepts GetSchemaProviderConfigArgs, GetSchemaProviderConfigPtr and GetSchemaProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetSchemaProviderConfigPtrInput` via:
+//
+//	        GetSchemaProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSchemaProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetSchemaProviderConfigPtrOutput() GetSchemaProviderConfigPtrOutput
+	ToGetSchemaProviderConfigPtrOutputWithContext(context.Context) GetSchemaProviderConfigPtrOutput
+}
+
+type getSchemaProviderConfigPtrType GetSchemaProviderConfigArgs
+
+func GetSchemaProviderConfigPtr(v *GetSchemaProviderConfigArgs) GetSchemaProviderConfigPtrInput {
+	return (*getSchemaProviderConfigPtrType)(v)
+}
+
+func (*getSchemaProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSchemaProviderConfig)(nil)).Elem()
+}
+
+func (i *getSchemaProviderConfigPtrType) ToGetSchemaProviderConfigPtrOutput() GetSchemaProviderConfigPtrOutput {
+	return i.ToGetSchemaProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getSchemaProviderConfigPtrType) ToGetSchemaProviderConfigPtrOutputWithContext(ctx context.Context) GetSchemaProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSchemaProviderConfigPtrOutput)
+}
+
+type GetSchemaProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSchemaProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSchemaProviderConfig)(nil)).Elem()
+}
+
+func (o GetSchemaProviderConfigOutput) ToGetSchemaProviderConfigOutput() GetSchemaProviderConfigOutput {
+	return o
+}
+
+func (o GetSchemaProviderConfigOutput) ToGetSchemaProviderConfigOutputWithContext(ctx context.Context) GetSchemaProviderConfigOutput {
+	return o
+}
+
+func (o GetSchemaProviderConfigOutput) ToGetSchemaProviderConfigPtrOutput() GetSchemaProviderConfigPtrOutput {
+	return o.ToGetSchemaProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetSchemaProviderConfigOutput) ToGetSchemaProviderConfigPtrOutputWithContext(ctx context.Context) GetSchemaProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSchemaProviderConfig) *GetSchemaProviderConfig {
+		return &v
+	}).(GetSchemaProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetSchemaProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSchemaProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetSchemaProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSchemaProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSchemaProviderConfig)(nil)).Elem()
+}
+
+func (o GetSchemaProviderConfigPtrOutput) ToGetSchemaProviderConfigPtrOutput() GetSchemaProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetSchemaProviderConfigPtrOutput) ToGetSchemaProviderConfigPtrOutputWithContext(ctx context.Context) GetSchemaProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetSchemaProviderConfigPtrOutput) Elem() GetSchemaProviderConfigOutput {
+	return o.ApplyT(func(v *GetSchemaProviderConfig) GetSchemaProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetSchemaProviderConfig
+		return ret
+	}).(GetSchemaProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetSchemaProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemaProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetSchemaSchemaInfo struct {
+	// indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
+	BrowseOnly *bool `pulumi:"browseOnly"`
+	// the name of the catalog where the schema is.
+	CatalogName *string `pulumi:"catalogName"`
+	// the type of the parent catalog.
+	CatalogType *string `pulumi:"catalogType"`
+	// the comment attached to the volume
+	Comment *string `pulumi:"comment"`
+	// time at which this schema was created, in epoch milliseconds.
+	CreatedAt *int `pulumi:"createdAt"`
+	// username of schema creator.
+	CreatedBy               *string `pulumi:"createdBy"`
+	CustomMaxRetentionHours *int    `pulumi:"customMaxRetentionHours"`
+	// information about actual state of predictive optimization.
+	EffectivePredictiveOptimizationFlag *GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag `pulumi:"effectivePredictiveOptimizationFlag"`
+	// whether predictive optimization should be enabled for this object and objects under it.
+	EnablePredictiveOptimization *string `pulumi:"enablePredictiveOptimization"`
+	// the two-level (fully qualified) name of the schema
+	FullName *string `pulumi:"fullName"`
+	// the unique identifier of the metastore
+	MetastoreId *string `pulumi:"metastoreId"`
+	// a fully qualified name of databricks_schema: *`catalog`.`schema`*
+	Name *string `pulumi:"name"`
+	// the identifier of the user who owns the schema
+	Owner *string `pulumi:"owner"`
+	// map of properties set on the schema
+	Properties map[string]string `pulumi:"properties"`
+	// the unique identifier of the schema
+	SchemaId *string `pulumi:"schemaId"`
+	// the storage location on the cloud.
+	StorageLocation *string `pulumi:"storageLocation"`
+	// storage root URL for managed tables within schema.
+	StorageRoot *string `pulumi:"storageRoot"`
+	// the timestamp of the last time changes were made to the schema
+	UpdatedAt *int `pulumi:"updatedAt"`
+	// the identifier of the user who updated the schema last time
+	UpdatedBy *string `pulumi:"updatedBy"`
+}
+
+// GetSchemaSchemaInfoInput is an input type that accepts GetSchemaSchemaInfoArgs and GetSchemaSchemaInfoOutput values.
+// You can construct a concrete instance of `GetSchemaSchemaInfoInput` via:
+//
+//	GetSchemaSchemaInfoArgs{...}
+type GetSchemaSchemaInfoInput interface {
+	pulumi.Input
+
+	ToGetSchemaSchemaInfoOutput() GetSchemaSchemaInfoOutput
+	ToGetSchemaSchemaInfoOutputWithContext(context.Context) GetSchemaSchemaInfoOutput
+}
+
+type GetSchemaSchemaInfoArgs struct {
+	// indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
+	BrowseOnly pulumi.BoolPtrInput `pulumi:"browseOnly"`
+	// the name of the catalog where the schema is.
+	CatalogName pulumi.StringPtrInput `pulumi:"catalogName"`
+	// the type of the parent catalog.
+	CatalogType pulumi.StringPtrInput `pulumi:"catalogType"`
+	// the comment attached to the volume
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// time at which this schema was created, in epoch milliseconds.
+	CreatedAt pulumi.IntPtrInput `pulumi:"createdAt"`
+	// username of schema creator.
+	CreatedBy               pulumi.StringPtrInput `pulumi:"createdBy"`
+	CustomMaxRetentionHours pulumi.IntPtrInput    `pulumi:"customMaxRetentionHours"`
+	// information about actual state of predictive optimization.
+	EffectivePredictiveOptimizationFlag GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrInput `pulumi:"effectivePredictiveOptimizationFlag"`
+	// whether predictive optimization should be enabled for this object and objects under it.
+	EnablePredictiveOptimization pulumi.StringPtrInput `pulumi:"enablePredictiveOptimization"`
+	// the two-level (fully qualified) name of the schema
+	FullName pulumi.StringPtrInput `pulumi:"fullName"`
+	// the unique identifier of the metastore
+	MetastoreId pulumi.StringPtrInput `pulumi:"metastoreId"`
+	// a fully qualified name of databricks_schema: *`catalog`.`schema`*
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// the identifier of the user who owns the schema
+	Owner pulumi.StringPtrInput `pulumi:"owner"`
+	// map of properties set on the schema
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// the unique identifier of the schema
+	SchemaId pulumi.StringPtrInput `pulumi:"schemaId"`
+	// the storage location on the cloud.
+	StorageLocation pulumi.StringPtrInput `pulumi:"storageLocation"`
+	// storage root URL for managed tables within schema.
+	StorageRoot pulumi.StringPtrInput `pulumi:"storageRoot"`
+	// the timestamp of the last time changes were made to the schema
+	UpdatedAt pulumi.IntPtrInput `pulumi:"updatedAt"`
+	// the identifier of the user who updated the schema last time
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+}
+
+func (GetSchemaSchemaInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSchemaSchemaInfo)(nil)).Elem()
+}
+
+func (i GetSchemaSchemaInfoArgs) ToGetSchemaSchemaInfoOutput() GetSchemaSchemaInfoOutput {
+	return i.ToGetSchemaSchemaInfoOutputWithContext(context.Background())
+}
+
+func (i GetSchemaSchemaInfoArgs) ToGetSchemaSchemaInfoOutputWithContext(ctx context.Context) GetSchemaSchemaInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSchemaSchemaInfoOutput)
+}
+
+func (i GetSchemaSchemaInfoArgs) ToGetSchemaSchemaInfoPtrOutput() GetSchemaSchemaInfoPtrOutput {
+	return i.ToGetSchemaSchemaInfoPtrOutputWithContext(context.Background())
+}
+
+func (i GetSchemaSchemaInfoArgs) ToGetSchemaSchemaInfoPtrOutputWithContext(ctx context.Context) GetSchemaSchemaInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSchemaSchemaInfoOutput).ToGetSchemaSchemaInfoPtrOutputWithContext(ctx)
+}
+
+// GetSchemaSchemaInfoPtrInput is an input type that accepts GetSchemaSchemaInfoArgs, GetSchemaSchemaInfoPtr and GetSchemaSchemaInfoPtrOutput values.
+// You can construct a concrete instance of `GetSchemaSchemaInfoPtrInput` via:
+//
+//	        GetSchemaSchemaInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSchemaSchemaInfoPtrInput interface {
+	pulumi.Input
+
+	ToGetSchemaSchemaInfoPtrOutput() GetSchemaSchemaInfoPtrOutput
+	ToGetSchemaSchemaInfoPtrOutputWithContext(context.Context) GetSchemaSchemaInfoPtrOutput
+}
+
+type getSchemaSchemaInfoPtrType GetSchemaSchemaInfoArgs
+
+func GetSchemaSchemaInfoPtr(v *GetSchemaSchemaInfoArgs) GetSchemaSchemaInfoPtrInput {
+	return (*getSchemaSchemaInfoPtrType)(v)
+}
+
+func (*getSchemaSchemaInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSchemaSchemaInfo)(nil)).Elem()
+}
+
+func (i *getSchemaSchemaInfoPtrType) ToGetSchemaSchemaInfoPtrOutput() GetSchemaSchemaInfoPtrOutput {
+	return i.ToGetSchemaSchemaInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *getSchemaSchemaInfoPtrType) ToGetSchemaSchemaInfoPtrOutputWithContext(ctx context.Context) GetSchemaSchemaInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSchemaSchemaInfoPtrOutput)
+}
+
+type GetSchemaSchemaInfoOutput struct{ *pulumi.OutputState }
+
+func (GetSchemaSchemaInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSchemaSchemaInfo)(nil)).Elem()
+}
+
+func (o GetSchemaSchemaInfoOutput) ToGetSchemaSchemaInfoOutput() GetSchemaSchemaInfoOutput {
+	return o
+}
+
+func (o GetSchemaSchemaInfoOutput) ToGetSchemaSchemaInfoOutputWithContext(ctx context.Context) GetSchemaSchemaInfoOutput {
+	return o
+}
+
+func (o GetSchemaSchemaInfoOutput) ToGetSchemaSchemaInfoPtrOutput() GetSchemaSchemaInfoPtrOutput {
+	return o.ToGetSchemaSchemaInfoPtrOutputWithContext(context.Background())
+}
+
+func (o GetSchemaSchemaInfoOutput) ToGetSchemaSchemaInfoPtrOutputWithContext(ctx context.Context) GetSchemaSchemaInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSchemaSchemaInfo) *GetSchemaSchemaInfo {
+		return &v
+	}).(GetSchemaSchemaInfoPtrOutput)
+}
+
+// indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
+func (o GetSchemaSchemaInfoOutput) BrowseOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *bool { return v.BrowseOnly }).(pulumi.BoolPtrOutput)
+}
+
+// the name of the catalog where the schema is.
+func (o GetSchemaSchemaInfoOutput) CatalogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.CatalogName }).(pulumi.StringPtrOutput)
+}
+
+// the type of the parent catalog.
+func (o GetSchemaSchemaInfoOutput) CatalogType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.CatalogType }).(pulumi.StringPtrOutput)
+}
+
+// the comment attached to the volume
+func (o GetSchemaSchemaInfoOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// time at which this schema was created, in epoch milliseconds.
+func (o GetSchemaSchemaInfoOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *int { return v.CreatedAt }).(pulumi.IntPtrOutput)
+}
+
+// username of schema creator.
+func (o GetSchemaSchemaInfoOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSchemaSchemaInfoOutput) CustomMaxRetentionHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *int { return v.CustomMaxRetentionHours }).(pulumi.IntPtrOutput)
+}
+
+// information about actual state of predictive optimization.
+func (o GetSchemaSchemaInfoOutput) EffectivePredictiveOptimizationFlag() GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag {
+		return v.EffectivePredictiveOptimizationFlag
+	}).(GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput)
+}
+
+// whether predictive optimization should be enabled for this object and objects under it.
+func (o GetSchemaSchemaInfoOutput) EnablePredictiveOptimization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.EnablePredictiveOptimization }).(pulumi.StringPtrOutput)
+}
+
+// the two-level (fully qualified) name of the schema
+func (o GetSchemaSchemaInfoOutput) FullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.FullName }).(pulumi.StringPtrOutput)
+}
+
+// the unique identifier of the metastore
+func (o GetSchemaSchemaInfoOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.MetastoreId }).(pulumi.StringPtrOutput)
+}
+
+// a fully qualified name of databricks_schema: *`catalog`.`schema`*
+func (o GetSchemaSchemaInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// the identifier of the user who owns the schema
+func (o GetSchemaSchemaInfoOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.Owner }).(pulumi.StringPtrOutput)
+}
+
+// map of properties set on the schema
+func (o GetSchemaSchemaInfoOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// the unique identifier of the schema
+func (o GetSchemaSchemaInfoOutput) SchemaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.SchemaId }).(pulumi.StringPtrOutput)
+}
+
+// the storage location on the cloud.
+func (o GetSchemaSchemaInfoOutput) StorageLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.StorageLocation }).(pulumi.StringPtrOutput)
+}
+
+// storage root URL for managed tables within schema.
+func (o GetSchemaSchemaInfoOutput) StorageRoot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.StorageRoot }).(pulumi.StringPtrOutput)
+}
+
+// the timestamp of the last time changes were made to the schema
+func (o GetSchemaSchemaInfoOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *int { return v.UpdatedAt }).(pulumi.IntPtrOutput)
+}
+
+// the identifier of the user who updated the schema last time
+func (o GetSchemaSchemaInfoOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfo) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+type GetSchemaSchemaInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSchemaSchemaInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSchemaSchemaInfo)(nil)).Elem()
+}
+
+func (o GetSchemaSchemaInfoPtrOutput) ToGetSchemaSchemaInfoPtrOutput() GetSchemaSchemaInfoPtrOutput {
+	return o
+}
+
+func (o GetSchemaSchemaInfoPtrOutput) ToGetSchemaSchemaInfoPtrOutputWithContext(ctx context.Context) GetSchemaSchemaInfoPtrOutput {
+	return o
+}
+
+func (o GetSchemaSchemaInfoPtrOutput) Elem() GetSchemaSchemaInfoOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) GetSchemaSchemaInfo {
+		if v != nil {
+			return *v
+		}
+		var ret GetSchemaSchemaInfo
+		return ret
+	}).(GetSchemaSchemaInfoOutput)
+}
+
+// indicates whether the principal is limited to retrieving metadata for the schema through the BROWSE privilege.
+func (o GetSchemaSchemaInfoPtrOutput) BrowseOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BrowseOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// the name of the catalog where the schema is.
+func (o GetSchemaSchemaInfoPtrOutput) CatalogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the type of the parent catalog.
+func (o GetSchemaSchemaInfoPtrOutput) CatalogType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogType
+	}).(pulumi.StringPtrOutput)
+}
+
+// the comment attached to the volume
+func (o GetSchemaSchemaInfoPtrOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Comment
+	}).(pulumi.StringPtrOutput)
+}
+
+// time at which this schema was created, in epoch milliseconds.
+func (o GetSchemaSchemaInfoPtrOutput) CreatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.IntPtrOutput)
+}
+
+// username of schema creator.
+func (o GetSchemaSchemaInfoPtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetSchemaSchemaInfoPtrOutput) CustomMaxRetentionHours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CustomMaxRetentionHours
+	}).(pulumi.IntPtrOutput)
+}
+
+// information about actual state of predictive optimization.
+func (o GetSchemaSchemaInfoPtrOutput) EffectivePredictiveOptimizationFlag() GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag {
+		if v == nil {
+			return nil
+		}
+		return v.EffectivePredictiveOptimizationFlag
+	}).(GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput)
+}
+
+// whether predictive optimization should be enabled for this object and objects under it.
+func (o GetSchemaSchemaInfoPtrOutput) EnablePredictiveOptimization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePredictiveOptimization
+	}).(pulumi.StringPtrOutput)
+}
+
+// the two-level (fully qualified) name of the schema
+func (o GetSchemaSchemaInfoPtrOutput) FullName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FullName
+	}).(pulumi.StringPtrOutput)
+}
+
+// the unique identifier of the metastore
+func (o GetSchemaSchemaInfoPtrOutput) MetastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// a fully qualified name of databricks_schema: *`catalog`.`schema`*
+func (o GetSchemaSchemaInfoPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// the identifier of the user who owns the schema
+func (o GetSchemaSchemaInfoPtrOutput) Owner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Owner
+	}).(pulumi.StringPtrOutput)
+}
+
+// map of properties set on the schema
+func (o GetSchemaSchemaInfoPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// the unique identifier of the schema
+func (o GetSchemaSchemaInfoPtrOutput) SchemaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaId
+	}).(pulumi.StringPtrOutput)
+}
+
+// the storage location on the cloud.
+func (o GetSchemaSchemaInfoPtrOutput) StorageLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// storage root URL for managed tables within schema.
+func (o GetSchemaSchemaInfoPtrOutput) StorageRoot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageRoot
+	}).(pulumi.StringPtrOutput)
+}
+
+// the timestamp of the last time changes were made to the schema
+func (o GetSchemaSchemaInfoPtrOutput) UpdatedAt() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedAt
+	}).(pulumi.IntPtrOutput)
+}
+
+// the identifier of the user who updated the schema last time
+func (o GetSchemaSchemaInfoPtrOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag struct {
+	InheritedFromName *string `pulumi:"inheritedFromName"`
+	InheritedFromType *string `pulumi:"inheritedFromType"`
+	Value             string  `pulumi:"value"`
+}
+
+// GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagInput is an input type that accepts GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs and GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput values.
+// You can construct a concrete instance of `GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagInput` via:
+//
+//	GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs{...}
+type GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagInput interface {
+	pulumi.Input
+
+	ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput() GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput
+	ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutputWithContext(context.Context) GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput
+}
+
+type GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs struct {
+	InheritedFromName pulumi.StringPtrInput `pulumi:"inheritedFromName"`
+	InheritedFromType pulumi.StringPtrInput `pulumi:"inheritedFromType"`
+	Value             pulumi.StringInput    `pulumi:"value"`
+}
+
+func (GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag)(nil)).Elem()
+}
+
+func (i GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs) ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput() GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput {
+	return i.ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutputWithContext(context.Background())
+}
+
+func (i GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs) ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutputWithContext(ctx context.Context) GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput)
+}
+
+func (i GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs) ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput() GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return i.ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(context.Background())
+}
+
+func (i GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs) ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(ctx context.Context) GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput).ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(ctx)
+}
+
+// GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrInput is an input type that accepts GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs, GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtr and GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput values.
+// You can construct a concrete instance of `GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrInput` via:
+//
+//	        GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrInput interface {
+	pulumi.Input
+
+	ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput() GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput
+	ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(context.Context) GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput
+}
+
+type getSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrType GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs
+
+func GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtr(v *GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs) GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrInput {
+	return (*getSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrType)(v)
+}
+
+func (*getSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag)(nil)).Elem()
+}
+
+func (i *getSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrType) ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput() GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return i.ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(context.Background())
+}
+
+func (i *getSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrType) ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(ctx context.Context) GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput)
+}
+
+type GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput struct{ *pulumi.OutputState }
+
+func (GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag)(nil)).Elem()
+}
+
+func (o GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput) ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput() GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput {
+	return o
+}
+
+func (o GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput) ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutputWithContext(ctx context.Context) GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput {
+	return o
+}
+
+func (o GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput) ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput() GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return o.ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(context.Background())
+}
+
+func (o GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput) ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(ctx context.Context) GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag) *GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag {
+		return &v
+	}).(GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput)
+}
+
+func (o GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput) InheritedFromName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag) *string { return v.InheritedFromName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput) InheritedFromType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag) *string { return v.InheritedFromType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag)(nil)).Elem()
+}
+
+func (o GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput) ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput() GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return o
+}
+
+func (o GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput) ToGetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutputWithContext(ctx context.Context) GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput {
+	return o
+}
+
+func (o GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput) Elem() GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag) GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag {
+		if v != nil {
+			return *v
+		}
+		var ret GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag
+		return ret
+	}).(GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput)
+}
+
+func (o GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput) InheritedFromName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InheritedFromName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput) InheritedFromType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InheritedFromType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemaSchemaInfoEffectivePredictiveOptimizationFlag) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetSchemasProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetSchemasProviderConfigInput is an input type that accepts GetSchemasProviderConfigArgs and GetSchemasProviderConfigOutput values.
+// You can construct a concrete instance of `GetSchemasProviderConfigInput` via:
+//
+//	GetSchemasProviderConfigArgs{...}
+type GetSchemasProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetSchemasProviderConfigOutput() GetSchemasProviderConfigOutput
+	ToGetSchemasProviderConfigOutputWithContext(context.Context) GetSchemasProviderConfigOutput
+}
+
+type GetSchemasProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetSchemasProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSchemasProviderConfig)(nil)).Elem()
+}
+
+func (i GetSchemasProviderConfigArgs) ToGetSchemasProviderConfigOutput() GetSchemasProviderConfigOutput {
+	return i.ToGetSchemasProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetSchemasProviderConfigArgs) ToGetSchemasProviderConfigOutputWithContext(ctx context.Context) GetSchemasProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSchemasProviderConfigOutput)
+}
+
+func (i GetSchemasProviderConfigArgs) ToGetSchemasProviderConfigPtrOutput() GetSchemasProviderConfigPtrOutput {
+	return i.ToGetSchemasProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetSchemasProviderConfigArgs) ToGetSchemasProviderConfigPtrOutputWithContext(ctx context.Context) GetSchemasProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSchemasProviderConfigOutput).ToGetSchemasProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetSchemasProviderConfigPtrInput is an input type that accepts GetSchemasProviderConfigArgs, GetSchemasProviderConfigPtr and GetSchemasProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetSchemasProviderConfigPtrInput` via:
+//
+//	        GetSchemasProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSchemasProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetSchemasProviderConfigPtrOutput() GetSchemasProviderConfigPtrOutput
+	ToGetSchemasProviderConfigPtrOutputWithContext(context.Context) GetSchemasProviderConfigPtrOutput
+}
+
+type getSchemasProviderConfigPtrType GetSchemasProviderConfigArgs
+
+func GetSchemasProviderConfigPtr(v *GetSchemasProviderConfigArgs) GetSchemasProviderConfigPtrInput {
+	return (*getSchemasProviderConfigPtrType)(v)
+}
+
+func (*getSchemasProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSchemasProviderConfig)(nil)).Elem()
+}
+
+func (i *getSchemasProviderConfigPtrType) ToGetSchemasProviderConfigPtrOutput() GetSchemasProviderConfigPtrOutput {
+	return i.ToGetSchemasProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getSchemasProviderConfigPtrType) ToGetSchemasProviderConfigPtrOutputWithContext(ctx context.Context) GetSchemasProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSchemasProviderConfigPtrOutput)
+}
+
+type GetSchemasProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSchemasProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSchemasProviderConfig)(nil)).Elem()
+}
+
+func (o GetSchemasProviderConfigOutput) ToGetSchemasProviderConfigOutput() GetSchemasProviderConfigOutput {
+	return o
+}
+
+func (o GetSchemasProviderConfigOutput) ToGetSchemasProviderConfigOutputWithContext(ctx context.Context) GetSchemasProviderConfigOutput {
+	return o
+}
+
+func (o GetSchemasProviderConfigOutput) ToGetSchemasProviderConfigPtrOutput() GetSchemasProviderConfigPtrOutput {
+	return o.ToGetSchemasProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetSchemasProviderConfigOutput) ToGetSchemasProviderConfigPtrOutputWithContext(ctx context.Context) GetSchemasProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSchemasProviderConfig) *GetSchemasProviderConfig {
+		return &v
+	}).(GetSchemasProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetSchemasProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSchemasProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetSchemasProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSchemasProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSchemasProviderConfig)(nil)).Elem()
+}
+
+func (o GetSchemasProviderConfigPtrOutput) ToGetSchemasProviderConfigPtrOutput() GetSchemasProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetSchemasProviderConfigPtrOutput) ToGetSchemasProviderConfigPtrOutputWithContext(ctx context.Context) GetSchemasProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetSchemasProviderConfigPtrOutput) Elem() GetSchemasProviderConfigOutput {
+	return o.ApplyT(func(v *GetSchemasProviderConfig) GetSchemasProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetSchemasProviderConfig
+		return ret
+	}).(GetSchemasProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetSchemasProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSchemasProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetSecretUcProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetSecretUcProviderConfigInput is an input type that accepts GetSecretUcProviderConfigArgs and GetSecretUcProviderConfigOutput values.
+// You can construct a concrete instance of `GetSecretUcProviderConfigInput` via:
+//
+//	GetSecretUcProviderConfigArgs{...}
+type GetSecretUcProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetSecretUcProviderConfigOutput() GetSecretUcProviderConfigOutput
+	ToGetSecretUcProviderConfigOutputWithContext(context.Context) GetSecretUcProviderConfigOutput
+}
+
+type GetSecretUcProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetSecretUcProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretUcProviderConfig)(nil)).Elem()
+}
+
+func (i GetSecretUcProviderConfigArgs) ToGetSecretUcProviderConfigOutput() GetSecretUcProviderConfigOutput {
+	return i.ToGetSecretUcProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecretUcProviderConfigArgs) ToGetSecretUcProviderConfigOutputWithContext(ctx context.Context) GetSecretUcProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretUcProviderConfigOutput)
+}
+
+func (i GetSecretUcProviderConfigArgs) ToGetSecretUcProviderConfigPtrOutput() GetSecretUcProviderConfigPtrOutput {
+	return i.ToGetSecretUcProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetSecretUcProviderConfigArgs) ToGetSecretUcProviderConfigPtrOutputWithContext(ctx context.Context) GetSecretUcProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretUcProviderConfigOutput).ToGetSecretUcProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetSecretUcProviderConfigPtrInput is an input type that accepts GetSecretUcProviderConfigArgs, GetSecretUcProviderConfigPtr and GetSecretUcProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetSecretUcProviderConfigPtrInput` via:
+//
+//	        GetSecretUcProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSecretUcProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetSecretUcProviderConfigPtrOutput() GetSecretUcProviderConfigPtrOutput
+	ToGetSecretUcProviderConfigPtrOutputWithContext(context.Context) GetSecretUcProviderConfigPtrOutput
+}
+
+type getSecretUcProviderConfigPtrType GetSecretUcProviderConfigArgs
+
+func GetSecretUcProviderConfigPtr(v *GetSecretUcProviderConfigArgs) GetSecretUcProviderConfigPtrInput {
+	return (*getSecretUcProviderConfigPtrType)(v)
+}
+
+func (*getSecretUcProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSecretUcProviderConfig)(nil)).Elem()
+}
+
+func (i *getSecretUcProviderConfigPtrType) ToGetSecretUcProviderConfigPtrOutput() GetSecretUcProviderConfigPtrOutput {
+	return i.ToGetSecretUcProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getSecretUcProviderConfigPtrType) ToGetSecretUcProviderConfigPtrOutputWithContext(ctx context.Context) GetSecretUcProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretUcProviderConfigPtrOutput)
+}
+
+type GetSecretUcProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecretUcProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretUcProviderConfig)(nil)).Elem()
+}
+
+func (o GetSecretUcProviderConfigOutput) ToGetSecretUcProviderConfigOutput() GetSecretUcProviderConfigOutput {
+	return o
+}
+
+func (o GetSecretUcProviderConfigOutput) ToGetSecretUcProviderConfigOutputWithContext(ctx context.Context) GetSecretUcProviderConfigOutput {
+	return o
+}
+
+func (o GetSecretUcProviderConfigOutput) ToGetSecretUcProviderConfigPtrOutput() GetSecretUcProviderConfigPtrOutput {
+	return o.ToGetSecretUcProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetSecretUcProviderConfigOutput) ToGetSecretUcProviderConfigPtrOutputWithContext(ctx context.Context) GetSecretUcProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSecretUcProviderConfig) *GetSecretUcProviderConfig {
+		return &v
+	}).(GetSecretUcProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetSecretUcProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetSecretUcProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSecretUcProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSecretUcProviderConfig)(nil)).Elem()
+}
+
+func (o GetSecretUcProviderConfigPtrOutput) ToGetSecretUcProviderConfigPtrOutput() GetSecretUcProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetSecretUcProviderConfigPtrOutput) ToGetSecretUcProviderConfigPtrOutputWithContext(ctx context.Context) GetSecretUcProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetSecretUcProviderConfigPtrOutput) Elem() GetSecretUcProviderConfigOutput {
+	return o.ApplyT(func(v *GetSecretUcProviderConfig) GetSecretUcProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetSecretUcProviderConfig
+		return ret
+	}).(GetSecretUcProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetSecretUcProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSecretUcProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetSecretUcsProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetSecretUcsProviderConfigInput is an input type that accepts GetSecretUcsProviderConfigArgs and GetSecretUcsProviderConfigOutput values.
+// You can construct a concrete instance of `GetSecretUcsProviderConfigInput` via:
+//
+//	GetSecretUcsProviderConfigArgs{...}
+type GetSecretUcsProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetSecretUcsProviderConfigOutput() GetSecretUcsProviderConfigOutput
+	ToGetSecretUcsProviderConfigOutputWithContext(context.Context) GetSecretUcsProviderConfigOutput
+}
+
+type GetSecretUcsProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetSecretUcsProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretUcsProviderConfig)(nil)).Elem()
+}
+
+func (i GetSecretUcsProviderConfigArgs) ToGetSecretUcsProviderConfigOutput() GetSecretUcsProviderConfigOutput {
+	return i.ToGetSecretUcsProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecretUcsProviderConfigArgs) ToGetSecretUcsProviderConfigOutputWithContext(ctx context.Context) GetSecretUcsProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretUcsProviderConfigOutput)
+}
+
+func (i GetSecretUcsProviderConfigArgs) ToGetSecretUcsProviderConfigPtrOutput() GetSecretUcsProviderConfigPtrOutput {
+	return i.ToGetSecretUcsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetSecretUcsProviderConfigArgs) ToGetSecretUcsProviderConfigPtrOutputWithContext(ctx context.Context) GetSecretUcsProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretUcsProviderConfigOutput).ToGetSecretUcsProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetSecretUcsProviderConfigPtrInput is an input type that accepts GetSecretUcsProviderConfigArgs, GetSecretUcsProviderConfigPtr and GetSecretUcsProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetSecretUcsProviderConfigPtrInput` via:
+//
+//	        GetSecretUcsProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSecretUcsProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetSecretUcsProviderConfigPtrOutput() GetSecretUcsProviderConfigPtrOutput
+	ToGetSecretUcsProviderConfigPtrOutputWithContext(context.Context) GetSecretUcsProviderConfigPtrOutput
+}
+
+type getSecretUcsProviderConfigPtrType GetSecretUcsProviderConfigArgs
+
+func GetSecretUcsProviderConfigPtr(v *GetSecretUcsProviderConfigArgs) GetSecretUcsProviderConfigPtrInput {
+	return (*getSecretUcsProviderConfigPtrType)(v)
+}
+
+func (*getSecretUcsProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSecretUcsProviderConfig)(nil)).Elem()
+}
+
+func (i *getSecretUcsProviderConfigPtrType) ToGetSecretUcsProviderConfigPtrOutput() GetSecretUcsProviderConfigPtrOutput {
+	return i.ToGetSecretUcsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getSecretUcsProviderConfigPtrType) ToGetSecretUcsProviderConfigPtrOutputWithContext(ctx context.Context) GetSecretUcsProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretUcsProviderConfigPtrOutput)
+}
+
+type GetSecretUcsProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecretUcsProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretUcsProviderConfig)(nil)).Elem()
+}
+
+func (o GetSecretUcsProviderConfigOutput) ToGetSecretUcsProviderConfigOutput() GetSecretUcsProviderConfigOutput {
+	return o
+}
+
+func (o GetSecretUcsProviderConfigOutput) ToGetSecretUcsProviderConfigOutputWithContext(ctx context.Context) GetSecretUcsProviderConfigOutput {
+	return o
+}
+
+func (o GetSecretUcsProviderConfigOutput) ToGetSecretUcsProviderConfigPtrOutput() GetSecretUcsProviderConfigPtrOutput {
+	return o.ToGetSecretUcsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetSecretUcsProviderConfigOutput) ToGetSecretUcsProviderConfigPtrOutputWithContext(ctx context.Context) GetSecretUcsProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSecretUcsProviderConfig) *GetSecretUcsProviderConfig {
+		return &v
+	}).(GetSecretUcsProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetSecretUcsProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetSecretUcsProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSecretUcsProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSecretUcsProviderConfig)(nil)).Elem()
+}
+
+func (o GetSecretUcsProviderConfigPtrOutput) ToGetSecretUcsProviderConfigPtrOutput() GetSecretUcsProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetSecretUcsProviderConfigPtrOutput) ToGetSecretUcsProviderConfigPtrOutputWithContext(ctx context.Context) GetSecretUcsProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetSecretUcsProviderConfigPtrOutput) Elem() GetSecretUcsProviderConfigOutput {
+	return o.ApplyT(func(v *GetSecretUcsProviderConfig) GetSecretUcsProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetSecretUcsProviderConfig
+		return ret
+	}).(GetSecretUcsProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetSecretUcsProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSecretUcsProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetSecretUcsSecret struct {
+	// (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
+	// through the **BROWSE** privilege when **include_browse** is enabled in the request
+	BrowseOnly bool `pulumi:"browseOnly"`
+	// The name of the catalog under which to list secrets. Both **catalog_name** and
+	// **schema_name** must be specified together
+	CatalogName string `pulumi:"catalogName"`
+	// (string) - User-provided free-form text description of the secret
+	Comment string `pulumi:"comment"`
+	// (string) - The time at which this secret was created
+	CreateTime string `pulumi:"createTime"`
+	// (string) - The principal that created the secret
+	CreatedBy string `pulumi:"createdBy"`
+	// (string) - The effective owner of the secret, which may differ from the directly-set **owner** due to
+	// inheritance
+	EffectiveOwner string `pulumi:"effectiveOwner"`
+	// (string) - The secret value. Only populated in responses when you have the **READ_SECRET**
+	// privilege and **include_value** is set to true in the request. The maximum size is 60 KiB
+	EffectiveValue string `pulumi:"effectiveValue"`
+	// (string) - User-provided expiration time of the secret. This field indicates when the secret should no
+	// longer be used and may be displayed as a warning in the UI. It is purely informational and
+	// does not trigger any automatic actions or affect the secret's lifecycle
+	ExpireTime string `pulumi:"expireTime"`
+	// (string)
+	ExternalSecretId string `pulumi:"externalSecretId"`
+	// (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
+	FullName string `pulumi:"fullName"`
+	// (string) - Unique identifier of the metastore hosting the secret
+	MetastoreId string `pulumi:"metastoreId"`
+	// (string) - The name of the secret, relative to its parent schema
+	Name string `pulumi:"name"`
+	// (string) - The owner of the secret. Defaults to the creating principal on creation. Can be updated to
+	// transfer ownership of the secret to another principal
+	Owner string `pulumi:"owner"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetSecretUcsSecretProviderConfig `pulumi:"providerConfig"`
+	// The name of the schema under which to list secrets. Both **catalog_name** and
+	// **schema_name** must be specified together
+	SchemaName string `pulumi:"schemaName"`
+	// (string) - The time at which this secret was last updated
+	UpdateTime string `pulumi:"updateTime"`
+	// (string) - The principal that last updated the secret
+	UpdatedBy string `pulumi:"updatedBy"`
+	// (string) - The secret value to store. This field is input-only and is not returned in responses — use
+	// the **effective_value** field (via GetSecret with **include_value** set to true) to read the
+	// secret value. The maximum size is 60 KiB (pre-encryption). Accepted content includes
+	// passwords, tokens, keys, and other sensitive credential data
+	Value string `pulumi:"value"`
+}
+
+// GetSecretUcsSecretInput is an input type that accepts GetSecretUcsSecretArgs and GetSecretUcsSecretOutput values.
+// You can construct a concrete instance of `GetSecretUcsSecretInput` via:
+//
+//	GetSecretUcsSecretArgs{...}
+type GetSecretUcsSecretInput interface {
+	pulumi.Input
+
+	ToGetSecretUcsSecretOutput() GetSecretUcsSecretOutput
+	ToGetSecretUcsSecretOutputWithContext(context.Context) GetSecretUcsSecretOutput
+}
+
+type GetSecretUcsSecretArgs struct {
+	// (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
+	// through the **BROWSE** privilege when **include_browse** is enabled in the request
+	BrowseOnly pulumi.BoolInput `pulumi:"browseOnly"`
+	// The name of the catalog under which to list secrets. Both **catalog_name** and
+	// **schema_name** must be specified together
+	CatalogName pulumi.StringInput `pulumi:"catalogName"`
+	// (string) - User-provided free-form text description of the secret
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// (string) - The time at which this secret was created
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// (string) - The principal that created the secret
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// (string) - The effective owner of the secret, which may differ from the directly-set **owner** due to
+	// inheritance
+	EffectiveOwner pulumi.StringInput `pulumi:"effectiveOwner"`
+	// (string) - The secret value. Only populated in responses when you have the **READ_SECRET**
+	// privilege and **include_value** is set to true in the request. The maximum size is 60 KiB
+	EffectiveValue pulumi.StringInput `pulumi:"effectiveValue"`
+	// (string) - User-provided expiration time of the secret. This field indicates when the secret should no
+	// longer be used and may be displayed as a warning in the UI. It is purely informational and
+	// does not trigger any automatic actions or affect the secret's lifecycle
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// (string)
+	ExternalSecretId pulumi.StringInput `pulumi:"externalSecretId"`
+	// (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
+	FullName pulumi.StringInput `pulumi:"fullName"`
+	// (string) - Unique identifier of the metastore hosting the secret
+	MetastoreId pulumi.StringInput `pulumi:"metastoreId"`
+	// (string) - The name of the secret, relative to its parent schema
+	Name pulumi.StringInput `pulumi:"name"`
+	// (string) - The owner of the secret. Defaults to the creating principal on creation. Can be updated to
+	// transfer ownership of the secret to another principal
+	Owner pulumi.StringInput `pulumi:"owner"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetSecretUcsSecretProviderConfigPtrInput `pulumi:"providerConfig"`
+	// The name of the schema under which to list secrets. Both **catalog_name** and
+	// **schema_name** must be specified together
+	SchemaName pulumi.StringInput `pulumi:"schemaName"`
+	// (string) - The time at which this secret was last updated
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	// (string) - The principal that last updated the secret
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// (string) - The secret value to store. This field is input-only and is not returned in responses — use
+	// the **effective_value** field (via GetSecret with **include_value** set to true) to read the
+	// secret value. The maximum size is 60 KiB (pre-encryption). Accepted content includes
+	// passwords, tokens, keys, and other sensitive credential data
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetSecretUcsSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretUcsSecret)(nil)).Elem()
+}
+
+func (i GetSecretUcsSecretArgs) ToGetSecretUcsSecretOutput() GetSecretUcsSecretOutput {
+	return i.ToGetSecretUcsSecretOutputWithContext(context.Background())
+}
+
+func (i GetSecretUcsSecretArgs) ToGetSecretUcsSecretOutputWithContext(ctx context.Context) GetSecretUcsSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretUcsSecretOutput)
+}
+
+// GetSecretUcsSecretArrayInput is an input type that accepts GetSecretUcsSecretArray and GetSecretUcsSecretArrayOutput values.
+// You can construct a concrete instance of `GetSecretUcsSecretArrayInput` via:
+//
+//	GetSecretUcsSecretArray{ GetSecretUcsSecretArgs{...} }
+type GetSecretUcsSecretArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretUcsSecretArrayOutput() GetSecretUcsSecretArrayOutput
+	ToGetSecretUcsSecretArrayOutputWithContext(context.Context) GetSecretUcsSecretArrayOutput
+}
+
+type GetSecretUcsSecretArray []GetSecretUcsSecretInput
+
+func (GetSecretUcsSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretUcsSecret)(nil)).Elem()
+}
+
+func (i GetSecretUcsSecretArray) ToGetSecretUcsSecretArrayOutput() GetSecretUcsSecretArrayOutput {
+	return i.ToGetSecretUcsSecretArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretUcsSecretArray) ToGetSecretUcsSecretArrayOutputWithContext(ctx context.Context) GetSecretUcsSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretUcsSecretArrayOutput)
+}
+
+type GetSecretUcsSecretOutput struct{ *pulumi.OutputState }
+
+func (GetSecretUcsSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretUcsSecret)(nil)).Elem()
+}
+
+func (o GetSecretUcsSecretOutput) ToGetSecretUcsSecretOutput() GetSecretUcsSecretOutput {
+	return o
+}
+
+func (o GetSecretUcsSecretOutput) ToGetSecretUcsSecretOutputWithContext(ctx context.Context) GetSecretUcsSecretOutput {
+	return o
+}
+
+// (boolean) - Indicates whether the principal is limited to retrieving metadata for the associated object
+// through the **BROWSE** privilege when **include_browse** is enabled in the request
+func (o GetSecretUcsSecretOutput) BrowseOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) bool { return v.BrowseOnly }).(pulumi.BoolOutput)
+}
+
+// The name of the catalog under which to list secrets. Both **catalog_name** and
+// **schema_name** must be specified together
+func (o GetSecretUcsSecretOutput) CatalogName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.CatalogName }).(pulumi.StringOutput)
+}
+
+// (string) - User-provided free-form text description of the secret
+func (o GetSecretUcsSecretOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// (string) - The time at which this secret was created
+func (o GetSecretUcsSecretOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// (string) - The principal that created the secret
+func (o GetSecretUcsSecretOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// (string) - The effective owner of the secret, which may differ from the directly-set **owner** due to
+// inheritance
+func (o GetSecretUcsSecretOutput) EffectiveOwner() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.EffectiveOwner }).(pulumi.StringOutput)
+}
+
+// (string) - The secret value. Only populated in responses when you have the **READ_SECRET**
+// privilege and **include_value** is set to true in the request. The maximum size is 60 KiB
+func (o GetSecretUcsSecretOutput) EffectiveValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.EffectiveValue }).(pulumi.StringOutput)
+}
+
+// (string) - User-provided expiration time of the secret. This field indicates when the secret should no
+// longer be used and may be displayed as a warning in the UI. It is purely informational and
+// does not trigger any automatic actions or affect the secret's lifecycle
+func (o GetSecretUcsSecretOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// (string)
+func (o GetSecretUcsSecretOutput) ExternalSecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.ExternalSecretId }).(pulumi.StringOutput)
+}
+
+// (string) - The three-level (fully qualified) name of the secret, in the form of **catalog_name.schema_name.secret_name**
+func (o GetSecretUcsSecretOutput) FullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.FullName }).(pulumi.StringOutput)
+}
+
+// (string) - Unique identifier of the metastore hosting the secret
+func (o GetSecretUcsSecretOutput) MetastoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.MetastoreId }).(pulumi.StringOutput)
+}
+
+// (string) - The name of the secret, relative to its parent schema
+func (o GetSecretUcsSecretOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (string) - The owner of the secret. Defaults to the creating principal on creation. Can be updated to
+// transfer ownership of the secret to another principal
+func (o GetSecretUcsSecretOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.Owner }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o GetSecretUcsSecretOutput) ProviderConfig() GetSecretUcsSecretProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) *GetSecretUcsSecretProviderConfig { return v.ProviderConfig }).(GetSecretUcsSecretProviderConfigPtrOutput)
+}
+
+// The name of the schema under which to list secrets. Both **catalog_name** and
+// **schema_name** must be specified together
+func (o GetSecretUcsSecretOutput) SchemaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.SchemaName }).(pulumi.StringOutput)
+}
+
+// (string) - The time at which this secret was last updated
+func (o GetSecretUcsSecretOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// (string) - The principal that last updated the secret
+func (o GetSecretUcsSecretOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// (string) - The secret value to store. This field is input-only and is not returned in responses — use
+// the **effective_value** field (via GetSecret with **include_value** set to true) to read the
+// secret value. The maximum size is 60 KiB (pre-encryption). Accepted content includes
+// passwords, tokens, keys, and other sensitive credential data
+func (o GetSecretUcsSecretOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsSecret) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetSecretUcsSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretUcsSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretUcsSecret)(nil)).Elem()
+}
+
+func (o GetSecretUcsSecretArrayOutput) ToGetSecretUcsSecretArrayOutput() GetSecretUcsSecretArrayOutput {
+	return o
+}
+
+func (o GetSecretUcsSecretArrayOutput) ToGetSecretUcsSecretArrayOutputWithContext(ctx context.Context) GetSecretUcsSecretArrayOutput {
+	return o
+}
+
+func (o GetSecretUcsSecretArrayOutput) Index(i pulumi.IntInput) GetSecretUcsSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretUcsSecret {
+		return vs[0].([]GetSecretUcsSecret)[vs[1].(int)]
+	}).(GetSecretUcsSecretOutput)
+}
+
+type GetSecretUcsSecretProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetSecretUcsSecretProviderConfigInput is an input type that accepts GetSecretUcsSecretProviderConfigArgs and GetSecretUcsSecretProviderConfigOutput values.
+// You can construct a concrete instance of `GetSecretUcsSecretProviderConfigInput` via:
+//
+//	GetSecretUcsSecretProviderConfigArgs{...}
+type GetSecretUcsSecretProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetSecretUcsSecretProviderConfigOutput() GetSecretUcsSecretProviderConfigOutput
+	ToGetSecretUcsSecretProviderConfigOutputWithContext(context.Context) GetSecretUcsSecretProviderConfigOutput
+}
+
+type GetSecretUcsSecretProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetSecretUcsSecretProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretUcsSecretProviderConfig)(nil)).Elem()
+}
+
+func (i GetSecretUcsSecretProviderConfigArgs) ToGetSecretUcsSecretProviderConfigOutput() GetSecretUcsSecretProviderConfigOutput {
+	return i.ToGetSecretUcsSecretProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecretUcsSecretProviderConfigArgs) ToGetSecretUcsSecretProviderConfigOutputWithContext(ctx context.Context) GetSecretUcsSecretProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretUcsSecretProviderConfigOutput)
+}
+
+func (i GetSecretUcsSecretProviderConfigArgs) ToGetSecretUcsSecretProviderConfigPtrOutput() GetSecretUcsSecretProviderConfigPtrOutput {
+	return i.ToGetSecretUcsSecretProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetSecretUcsSecretProviderConfigArgs) ToGetSecretUcsSecretProviderConfigPtrOutputWithContext(ctx context.Context) GetSecretUcsSecretProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretUcsSecretProviderConfigOutput).ToGetSecretUcsSecretProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetSecretUcsSecretProviderConfigPtrInput is an input type that accepts GetSecretUcsSecretProviderConfigArgs, GetSecretUcsSecretProviderConfigPtr and GetSecretUcsSecretProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetSecretUcsSecretProviderConfigPtrInput` via:
+//
+//	        GetSecretUcsSecretProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSecretUcsSecretProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetSecretUcsSecretProviderConfigPtrOutput() GetSecretUcsSecretProviderConfigPtrOutput
+	ToGetSecretUcsSecretProviderConfigPtrOutputWithContext(context.Context) GetSecretUcsSecretProviderConfigPtrOutput
+}
+
+type getSecretUcsSecretProviderConfigPtrType GetSecretUcsSecretProviderConfigArgs
+
+func GetSecretUcsSecretProviderConfigPtr(v *GetSecretUcsSecretProviderConfigArgs) GetSecretUcsSecretProviderConfigPtrInput {
+	return (*getSecretUcsSecretProviderConfigPtrType)(v)
+}
+
+func (*getSecretUcsSecretProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSecretUcsSecretProviderConfig)(nil)).Elem()
+}
+
+func (i *getSecretUcsSecretProviderConfigPtrType) ToGetSecretUcsSecretProviderConfigPtrOutput() GetSecretUcsSecretProviderConfigPtrOutput {
+	return i.ToGetSecretUcsSecretProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getSecretUcsSecretProviderConfigPtrType) ToGetSecretUcsSecretProviderConfigPtrOutputWithContext(ctx context.Context) GetSecretUcsSecretProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretUcsSecretProviderConfigPtrOutput)
+}
+
+type GetSecretUcsSecretProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecretUcsSecretProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretUcsSecretProviderConfig)(nil)).Elem()
+}
+
+func (o GetSecretUcsSecretProviderConfigOutput) ToGetSecretUcsSecretProviderConfigOutput() GetSecretUcsSecretProviderConfigOutput {
+	return o
+}
+
+func (o GetSecretUcsSecretProviderConfigOutput) ToGetSecretUcsSecretProviderConfigOutputWithContext(ctx context.Context) GetSecretUcsSecretProviderConfigOutput {
+	return o
+}
+
+func (o GetSecretUcsSecretProviderConfigOutput) ToGetSecretUcsSecretProviderConfigPtrOutput() GetSecretUcsSecretProviderConfigPtrOutput {
+	return o.ToGetSecretUcsSecretProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetSecretUcsSecretProviderConfigOutput) ToGetSecretUcsSecretProviderConfigPtrOutputWithContext(ctx context.Context) GetSecretUcsSecretProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSecretUcsSecretProviderConfig) *GetSecretUcsSecretProviderConfig {
+		return &v
+	}).(GetSecretUcsSecretProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetSecretUcsSecretProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretUcsSecretProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetSecretUcsSecretProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSecretUcsSecretProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSecretUcsSecretProviderConfig)(nil)).Elem()
+}
+
+func (o GetSecretUcsSecretProviderConfigPtrOutput) ToGetSecretUcsSecretProviderConfigPtrOutput() GetSecretUcsSecretProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetSecretUcsSecretProviderConfigPtrOutput) ToGetSecretUcsSecretProviderConfigPtrOutputWithContext(ctx context.Context) GetSecretUcsSecretProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetSecretUcsSecretProviderConfigPtrOutput) Elem() GetSecretUcsSecretProviderConfigOutput {
+	return o.ApplyT(func(v *GetSecretUcsSecretProviderConfig) GetSecretUcsSecretProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetSecretUcsSecretProviderConfig
+		return ret
+	}).(GetSecretUcsSecretProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetSecretUcsSecretProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSecretUcsSecretProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServicePrincipalFederationPoliciesPolicy struct {
+	// (string) - Creation time of the federation policy
+	CreateTime string `pulumi:"createTime"`
+	// (string) - Description of the federation policy
+	Description string `pulumi:"description"`
+	// (string) - Resource name for the federation policy. Example values include
+	// `accounts/<account-id>/federationPolicies/my-federation-policy` for Account Federation Policies, and
+	// `accounts/<account-id>/servicePrincipals/<service-principal-id>/federationPolicies/my-federation-policy`
+	// for Service Principal Federation Policies. Typically an output parameter, which does not need to be
+	// specified in create or update requests. If specified in a request, must match the value in the
+	// request URL
+	Name string `pulumi:"name"`
+	// (OidcFederationPolicy)
+	OidcPolicy GetServicePrincipalFederationPoliciesPolicyOidcPolicy `pulumi:"oidcPolicy"`
+	// (string) - The ID of the federation policy. Output only
+	PolicyId string `pulumi:"policyId"`
+	// The service principal id for the federation policy
+	ServicePrincipalId int `pulumi:"servicePrincipalId"`
+	// (string) - Unique, immutable id of the federation policy
+	Uid string `pulumi:"uid"`
+	// (string) - Last update time of the federation policy
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetServicePrincipalFederationPoliciesPolicyInput is an input type that accepts GetServicePrincipalFederationPoliciesPolicyArgs and GetServicePrincipalFederationPoliciesPolicyOutput values.
+// You can construct a concrete instance of `GetServicePrincipalFederationPoliciesPolicyInput` via:
+//
+//	GetServicePrincipalFederationPoliciesPolicyArgs{...}
+type GetServicePrincipalFederationPoliciesPolicyInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalFederationPoliciesPolicyOutput() GetServicePrincipalFederationPoliciesPolicyOutput
+	ToGetServicePrincipalFederationPoliciesPolicyOutputWithContext(context.Context) GetServicePrincipalFederationPoliciesPolicyOutput
+}
+
+type GetServicePrincipalFederationPoliciesPolicyArgs struct {
+	// (string) - Creation time of the federation policy
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// (string) - Description of the federation policy
+	Description pulumi.StringInput `pulumi:"description"`
+	// (string) - Resource name for the federation policy. Example values include
+	// `accounts/<account-id>/federationPolicies/my-federation-policy` for Account Federation Policies, and
+	// `accounts/<account-id>/servicePrincipals/<service-principal-id>/federationPolicies/my-federation-policy`
+	// for Service Principal Federation Policies. Typically an output parameter, which does not need to be
+	// specified in create or update requests. If specified in a request, must match the value in the
+	// request URL
+	Name pulumi.StringInput `pulumi:"name"`
+	// (OidcFederationPolicy)
+	OidcPolicy GetServicePrincipalFederationPoliciesPolicyOidcPolicyInput `pulumi:"oidcPolicy"`
+	// (string) - The ID of the federation policy. Output only
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
+	// The service principal id for the federation policy
+	ServicePrincipalId pulumi.IntInput `pulumi:"servicePrincipalId"`
+	// (string) - Unique, immutable id of the federation policy
+	Uid pulumi.StringInput `pulumi:"uid"`
+	// (string) - Last update time of the federation policy
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetServicePrincipalFederationPoliciesPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalFederationPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetServicePrincipalFederationPoliciesPolicyArgs) ToGetServicePrincipalFederationPoliciesPolicyOutput() GetServicePrincipalFederationPoliciesPolicyOutput {
+	return i.ToGetServicePrincipalFederationPoliciesPolicyOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalFederationPoliciesPolicyArgs) ToGetServicePrincipalFederationPoliciesPolicyOutputWithContext(ctx context.Context) GetServicePrincipalFederationPoliciesPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalFederationPoliciesPolicyOutput)
+}
+
+// GetServicePrincipalFederationPoliciesPolicyArrayInput is an input type that accepts GetServicePrincipalFederationPoliciesPolicyArray and GetServicePrincipalFederationPoliciesPolicyArrayOutput values.
+// You can construct a concrete instance of `GetServicePrincipalFederationPoliciesPolicyArrayInput` via:
+//
+//	GetServicePrincipalFederationPoliciesPolicyArray{ GetServicePrincipalFederationPoliciesPolicyArgs{...} }
+type GetServicePrincipalFederationPoliciesPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalFederationPoliciesPolicyArrayOutput() GetServicePrincipalFederationPoliciesPolicyArrayOutput
+	ToGetServicePrincipalFederationPoliciesPolicyArrayOutputWithContext(context.Context) GetServicePrincipalFederationPoliciesPolicyArrayOutput
+}
+
+type GetServicePrincipalFederationPoliciesPolicyArray []GetServicePrincipalFederationPoliciesPolicyInput
+
+func (GetServicePrincipalFederationPoliciesPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicePrincipalFederationPoliciesPolicy)(nil)).Elem()
+}
+
+func (i GetServicePrincipalFederationPoliciesPolicyArray) ToGetServicePrincipalFederationPoliciesPolicyArrayOutput() GetServicePrincipalFederationPoliciesPolicyArrayOutput {
+	return i.ToGetServicePrincipalFederationPoliciesPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalFederationPoliciesPolicyArray) ToGetServicePrincipalFederationPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetServicePrincipalFederationPoliciesPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalFederationPoliciesPolicyArrayOutput)
+}
+
+type GetServicePrincipalFederationPoliciesPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalFederationPoliciesPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalFederationPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetServicePrincipalFederationPoliciesPolicyOutput) ToGetServicePrincipalFederationPoliciesPolicyOutput() GetServicePrincipalFederationPoliciesPolicyOutput {
+	return o
+}
+
+func (o GetServicePrincipalFederationPoliciesPolicyOutput) ToGetServicePrincipalFederationPoliciesPolicyOutputWithContext(ctx context.Context) GetServicePrincipalFederationPoliciesPolicyOutput {
+	return o
+}
+
+// (string) - Creation time of the federation policy
+func (o GetServicePrincipalFederationPoliciesPolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesPolicy) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// (string) - Description of the federation policy
+func (o GetServicePrincipalFederationPoliciesPolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesPolicy) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// (string) - Resource name for the federation policy. Example values include
+// `accounts/<account-id>/federationPolicies/my-federation-policy` for Account Federation Policies, and
+// `accounts/<account-id>/servicePrincipals/<service-principal-id>/federationPolicies/my-federation-policy`
+// for Service Principal Federation Policies. Typically an output parameter, which does not need to be
+// specified in create or update requests. If specified in a request, must match the value in the
+// request URL
+func (o GetServicePrincipalFederationPoliciesPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesPolicy) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (OidcFederationPolicy)
+func (o GetServicePrincipalFederationPoliciesPolicyOutput) OidcPolicy() GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesPolicy) GetServicePrincipalFederationPoliciesPolicyOidcPolicy {
+		return v.OidcPolicy
+	}).(GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput)
+}
+
+// (string) - The ID of the federation policy. Output only
+func (o GetServicePrincipalFederationPoliciesPolicyOutput) PolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesPolicy) string { return v.PolicyId }).(pulumi.StringOutput)
+}
+
+// The service principal id for the federation policy
+func (o GetServicePrincipalFederationPoliciesPolicyOutput) ServicePrincipalId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesPolicy) int { return v.ServicePrincipalId }).(pulumi.IntOutput)
+}
+
+// (string) - Unique, immutable id of the federation policy
+func (o GetServicePrincipalFederationPoliciesPolicyOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesPolicy) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+// (string) - Last update time of the federation policy
+func (o GetServicePrincipalFederationPoliciesPolicyOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesPolicy) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetServicePrincipalFederationPoliciesPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalFederationPoliciesPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicePrincipalFederationPoliciesPolicy)(nil)).Elem()
+}
+
+func (o GetServicePrincipalFederationPoliciesPolicyArrayOutput) ToGetServicePrincipalFederationPoliciesPolicyArrayOutput() GetServicePrincipalFederationPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetServicePrincipalFederationPoliciesPolicyArrayOutput) ToGetServicePrincipalFederationPoliciesPolicyArrayOutputWithContext(ctx context.Context) GetServicePrincipalFederationPoliciesPolicyArrayOutput {
+	return o
+}
+
+func (o GetServicePrincipalFederationPoliciesPolicyArrayOutput) Index(i pulumi.IntInput) GetServicePrincipalFederationPoliciesPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicePrincipalFederationPoliciesPolicy {
+		return vs[0].([]GetServicePrincipalFederationPoliciesPolicy)[vs[1].(int)]
+	}).(GetServicePrincipalFederationPoliciesPolicyOutput)
+}
+
+type GetServicePrincipalFederationPoliciesPolicyOidcPolicy struct {
+	// (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+	// The audience identifier is intended to represent the recipient of the token.
+	// Can be any non-empty string value. As long as the audience in the token matches
+	// at least one audience in the policy, the token is considered a match. If audiences
+	// is unspecified, defaults to your Databricks account id
+	Audiences []string `pulumi:"audiences"`
+	// (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+	Issuer *string `pulumi:"issuer"`
+	// (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
+	// Most use cases should not need to specify this field. If jwksUri and jwksJson
+	// are both unspecified (recommended), Databricks automatically fetches the public
+	// keys from your issuer’s well known endpoint. Databricks strongly recommends
+	// relying on your issuer’s well known endpoint for discovering public keys
+	JwksJson *string `pulumi:"jwksJson"`
+	// (string) - URL of the public keys used to validate the signature of federated tokens, in
+	// JWKS format. Most use cases should not need to specify this field. If jwksUri
+	// and jwksJson are both unspecified (recommended), Databricks automatically
+	// fetches the public keys from your issuer’s well known endpoint. Databricks
+	// strongly recommends relying on your issuer’s well known endpoint for discovering
+	// public keys
+	JwksUri *string `pulumi:"jwksUri"`
+	// (string) - The required token subject, as specified in the subject claim of federated tokens.
+	// Must be specified for service principal federation policies. Must not be specified
+	// for account federation policies
+	Subject *string `pulumi:"subject"`
+	// (string) - The claim that contains the subject of the token. If unspecified, the default value
+	// is 'sub'
+	SubjectClaim *string `pulumi:"subjectClaim"`
+}
+
+// GetServicePrincipalFederationPoliciesPolicyOidcPolicyInput is an input type that accepts GetServicePrincipalFederationPoliciesPolicyOidcPolicyArgs and GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput values.
+// You can construct a concrete instance of `GetServicePrincipalFederationPoliciesPolicyOidcPolicyInput` via:
+//
+//	GetServicePrincipalFederationPoliciesPolicyOidcPolicyArgs{...}
+type GetServicePrincipalFederationPoliciesPolicyOidcPolicyInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput() GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput
+	ToGetServicePrincipalFederationPoliciesPolicyOidcPolicyOutputWithContext(context.Context) GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput
+}
+
+type GetServicePrincipalFederationPoliciesPolicyOidcPolicyArgs struct {
+	// (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+	// The audience identifier is intended to represent the recipient of the token.
+	// Can be any non-empty string value. As long as the audience in the token matches
+	// at least one audience in the policy, the token is considered a match. If audiences
+	// is unspecified, defaults to your Databricks account id
+	Audiences pulumi.StringArrayInput `pulumi:"audiences"`
+	// (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
+	// (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
+	// Most use cases should not need to specify this field. If jwksUri and jwksJson
+	// are both unspecified (recommended), Databricks automatically fetches the public
+	// keys from your issuer’s well known endpoint. Databricks strongly recommends
+	// relying on your issuer’s well known endpoint for discovering public keys
+	JwksJson pulumi.StringPtrInput `pulumi:"jwksJson"`
+	// (string) - URL of the public keys used to validate the signature of federated tokens, in
+	// JWKS format. Most use cases should not need to specify this field. If jwksUri
+	// and jwksJson are both unspecified (recommended), Databricks automatically
+	// fetches the public keys from your issuer’s well known endpoint. Databricks
+	// strongly recommends relying on your issuer’s well known endpoint for discovering
+	// public keys
+	JwksUri pulumi.StringPtrInput `pulumi:"jwksUri"`
+	// (string) - The required token subject, as specified in the subject claim of federated tokens.
+	// Must be specified for service principal federation policies. Must not be specified
+	// for account federation policies
+	Subject pulumi.StringPtrInput `pulumi:"subject"`
+	// (string) - The claim that contains the subject of the token. If unspecified, the default value
+	// is 'sub'
+	SubjectClaim pulumi.StringPtrInput `pulumi:"subjectClaim"`
+}
+
+func (GetServicePrincipalFederationPoliciesPolicyOidcPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalFederationPoliciesPolicyOidcPolicy)(nil)).Elem()
+}
+
+func (i GetServicePrincipalFederationPoliciesPolicyOidcPolicyArgs) ToGetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput() GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput {
+	return i.ToGetServicePrincipalFederationPoliciesPolicyOidcPolicyOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalFederationPoliciesPolicyOidcPolicyArgs) ToGetServicePrincipalFederationPoliciesPolicyOidcPolicyOutputWithContext(ctx context.Context) GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput)
+}
+
+type GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalFederationPoliciesPolicyOidcPolicy)(nil)).Elem()
+}
+
+func (o GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput) ToGetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput() GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput {
+	return o
+}
+
+func (o GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput) ToGetServicePrincipalFederationPoliciesPolicyOidcPolicyOutputWithContext(ctx context.Context) GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput {
+	return o
+}
+
+// (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+// The audience identifier is intended to represent the recipient of the token.
+// Can be any non-empty string value. As long as the audience in the token matches
+// at least one audience in the policy, the token is considered a match. If audiences
+// is unspecified, defaults to your Databricks account id
+func (o GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput) Audiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesPolicyOidcPolicy) []string { return v.Audiences }).(pulumi.StringArrayOutput)
+}
+
+// (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+func (o GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput) Issuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesPolicyOidcPolicy) *string { return v.Issuer }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
+// Most use cases should not need to specify this field. If jwksUri and jwksJson
+// are both unspecified (recommended), Databricks automatically fetches the public
+// keys from your issuer’s well known endpoint. Databricks strongly recommends
+// relying on your issuer’s well known endpoint for discovering public keys
+func (o GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput) JwksJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesPolicyOidcPolicy) *string { return v.JwksJson }).(pulumi.StringPtrOutput)
+}
+
+// (string) - URL of the public keys used to validate the signature of federated tokens, in
+// JWKS format. Most use cases should not need to specify this field. If jwksUri
+// and jwksJson are both unspecified (recommended), Databricks automatically
+// fetches the public keys from your issuer’s well known endpoint. Databricks
+// strongly recommends relying on your issuer’s well known endpoint for discovering
+// public keys
+func (o GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput) JwksUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesPolicyOidcPolicy) *string { return v.JwksUri }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The required token subject, as specified in the subject claim of federated tokens.
+// Must be specified for service principal federation policies. Must not be specified
+// for account federation policies
+func (o GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesPolicyOidcPolicy) *string { return v.Subject }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The claim that contains the subject of the token. If unspecified, the default value
+// is 'sub'
+func (o GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput) SubjectClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPoliciesPolicyOidcPolicy) *string { return v.SubjectClaim }).(pulumi.StringPtrOutput)
+}
+
+type GetServicePrincipalFederationPolicyOidcPolicy struct {
+	// (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+	// The audience identifier is intended to represent the recipient of the token.
+	// Can be any non-empty string value. As long as the audience in the token matches
+	// at least one audience in the policy, the token is considered a match. If audiences
+	// is unspecified, defaults to your Databricks account id
+	Audiences []string `pulumi:"audiences"`
+	// (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+	Issuer *string `pulumi:"issuer"`
+	// (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
+	// Most use cases should not need to specify this field. If jwksUri and jwksJson
+	// are both unspecified (recommended), Databricks automatically fetches the public
+	// keys from your issuer’s well known endpoint. Databricks strongly recommends
+	// relying on your issuer’s well known endpoint for discovering public keys
+	JwksJson *string `pulumi:"jwksJson"`
+	// (string) - URL of the public keys used to validate the signature of federated tokens, in
+	// JWKS format. Most use cases should not need to specify this field. If jwksUri
+	// and jwksJson are both unspecified (recommended), Databricks automatically
+	// fetches the public keys from your issuer’s well known endpoint. Databricks
+	// strongly recommends relying on your issuer’s well known endpoint for discovering
+	// public keys
+	JwksUri *string `pulumi:"jwksUri"`
+	// (string) - The required token subject, as specified in the subject claim of federated tokens.
+	// Must be specified for service principal federation policies. Must not be specified
+	// for account federation policies
+	Subject *string `pulumi:"subject"`
+	// (string) - The claim that contains the subject of the token. If unspecified, the default value
+	// is 'sub'
+	SubjectClaim *string `pulumi:"subjectClaim"`
+}
+
+// GetServicePrincipalFederationPolicyOidcPolicyInput is an input type that accepts GetServicePrincipalFederationPolicyOidcPolicyArgs and GetServicePrincipalFederationPolicyOidcPolicyOutput values.
+// You can construct a concrete instance of `GetServicePrincipalFederationPolicyOidcPolicyInput` via:
+//
+//	GetServicePrincipalFederationPolicyOidcPolicyArgs{...}
+type GetServicePrincipalFederationPolicyOidcPolicyInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalFederationPolicyOidcPolicyOutput() GetServicePrincipalFederationPolicyOidcPolicyOutput
+	ToGetServicePrincipalFederationPolicyOidcPolicyOutputWithContext(context.Context) GetServicePrincipalFederationPolicyOidcPolicyOutput
+}
+
+type GetServicePrincipalFederationPolicyOidcPolicyArgs struct {
+	// (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+	// The audience identifier is intended to represent the recipient of the token.
+	// Can be any non-empty string value. As long as the audience in the token matches
+	// at least one audience in the policy, the token is considered a match. If audiences
+	// is unspecified, defaults to your Databricks account id
+	Audiences pulumi.StringArrayInput `pulumi:"audiences"`
+	// (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
+	// (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
+	// Most use cases should not need to specify this field. If jwksUri and jwksJson
+	// are both unspecified (recommended), Databricks automatically fetches the public
+	// keys from your issuer’s well known endpoint. Databricks strongly recommends
+	// relying on your issuer’s well known endpoint for discovering public keys
+	JwksJson pulumi.StringPtrInput `pulumi:"jwksJson"`
+	// (string) - URL of the public keys used to validate the signature of federated tokens, in
+	// JWKS format. Most use cases should not need to specify this field. If jwksUri
+	// and jwksJson are both unspecified (recommended), Databricks automatically
+	// fetches the public keys from your issuer’s well known endpoint. Databricks
+	// strongly recommends relying on your issuer’s well known endpoint for discovering
+	// public keys
+	JwksUri pulumi.StringPtrInput `pulumi:"jwksUri"`
+	// (string) - The required token subject, as specified in the subject claim of federated tokens.
+	// Must be specified for service principal federation policies. Must not be specified
+	// for account federation policies
+	Subject pulumi.StringPtrInput `pulumi:"subject"`
+	// (string) - The claim that contains the subject of the token. If unspecified, the default value
+	// is 'sub'
+	SubjectClaim pulumi.StringPtrInput `pulumi:"subjectClaim"`
+}
+
+func (GetServicePrincipalFederationPolicyOidcPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalFederationPolicyOidcPolicy)(nil)).Elem()
+}
+
+func (i GetServicePrincipalFederationPolicyOidcPolicyArgs) ToGetServicePrincipalFederationPolicyOidcPolicyOutput() GetServicePrincipalFederationPolicyOidcPolicyOutput {
+	return i.ToGetServicePrincipalFederationPolicyOidcPolicyOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalFederationPolicyOidcPolicyArgs) ToGetServicePrincipalFederationPolicyOidcPolicyOutputWithContext(ctx context.Context) GetServicePrincipalFederationPolicyOidcPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalFederationPolicyOidcPolicyOutput)
+}
+
+type GetServicePrincipalFederationPolicyOidcPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalFederationPolicyOidcPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalFederationPolicyOidcPolicy)(nil)).Elem()
+}
+
+func (o GetServicePrincipalFederationPolicyOidcPolicyOutput) ToGetServicePrincipalFederationPolicyOidcPolicyOutput() GetServicePrincipalFederationPolicyOidcPolicyOutput {
+	return o
+}
+
+func (o GetServicePrincipalFederationPolicyOidcPolicyOutput) ToGetServicePrincipalFederationPolicyOidcPolicyOutputWithContext(ctx context.Context) GetServicePrincipalFederationPolicyOidcPolicyOutput {
+	return o
+}
+
+// (list of string) - The allowed token audiences, as specified in the 'aud' claim of federated tokens.
+// The audience identifier is intended to represent the recipient of the token.
+// Can be any non-empty string value. As long as the audience in the token matches
+// at least one audience in the policy, the token is considered a match. If audiences
+// is unspecified, defaults to your Databricks account id
+func (o GetServicePrincipalFederationPolicyOidcPolicyOutput) Audiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPolicyOidcPolicy) []string { return v.Audiences }).(pulumi.StringArrayOutput)
+}
+
+// (string) - The required token issuer, as specified in the 'iss' claim of federated tokens
+func (o GetServicePrincipalFederationPolicyOidcPolicyOutput) Issuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPolicyOidcPolicy) *string { return v.Issuer }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The public keys used to validate the signature of federated tokens, in JWKS format.
+// Most use cases should not need to specify this field. If jwksUri and jwksJson
+// are both unspecified (recommended), Databricks automatically fetches the public
+// keys from your issuer’s well known endpoint. Databricks strongly recommends
+// relying on your issuer’s well known endpoint for discovering public keys
+func (o GetServicePrincipalFederationPolicyOidcPolicyOutput) JwksJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPolicyOidcPolicy) *string { return v.JwksJson }).(pulumi.StringPtrOutput)
+}
+
+// (string) - URL of the public keys used to validate the signature of federated tokens, in
+// JWKS format. Most use cases should not need to specify this field. If jwksUri
+// and jwksJson are both unspecified (recommended), Databricks automatically
+// fetches the public keys from your issuer’s well known endpoint. Databricks
+// strongly recommends relying on your issuer’s well known endpoint for discovering
+// public keys
+func (o GetServicePrincipalFederationPolicyOidcPolicyOutput) JwksUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPolicyOidcPolicy) *string { return v.JwksUri }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The required token subject, as specified in the subject claim of federated tokens.
+// Must be specified for service principal federation policies. Must not be specified
+// for account federation policies
+func (o GetServicePrincipalFederationPolicyOidcPolicyOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPolicyOidcPolicy) *string { return v.Subject }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The claim that contains the subject of the token. If unspecified, the default value
+// is 'sub'
+func (o GetServicePrincipalFederationPolicyOidcPolicyOutput) SubjectClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServicePrincipalFederationPolicyOidcPolicy) *string { return v.SubjectClaim }).(pulumi.StringPtrOutput)
+}
+
+type GetServicePrincipalProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetServicePrincipalProviderConfigInput is an input type that accepts GetServicePrincipalProviderConfigArgs and GetServicePrincipalProviderConfigOutput values.
+// You can construct a concrete instance of `GetServicePrincipalProviderConfigInput` via:
+//
+//	GetServicePrincipalProviderConfigArgs{...}
+type GetServicePrincipalProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalProviderConfigOutput() GetServicePrincipalProviderConfigOutput
+	ToGetServicePrincipalProviderConfigOutputWithContext(context.Context) GetServicePrincipalProviderConfigOutput
+}
+
+type GetServicePrincipalProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetServicePrincipalProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalProviderConfig)(nil)).Elem()
+}
+
+func (i GetServicePrincipalProviderConfigArgs) ToGetServicePrincipalProviderConfigOutput() GetServicePrincipalProviderConfigOutput {
+	return i.ToGetServicePrincipalProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalProviderConfigArgs) ToGetServicePrincipalProviderConfigOutputWithContext(ctx context.Context) GetServicePrincipalProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalProviderConfigOutput)
+}
+
+func (i GetServicePrincipalProviderConfigArgs) ToGetServicePrincipalProviderConfigPtrOutput() GetServicePrincipalProviderConfigPtrOutput {
+	return i.ToGetServicePrincipalProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalProviderConfigArgs) ToGetServicePrincipalProviderConfigPtrOutputWithContext(ctx context.Context) GetServicePrincipalProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalProviderConfigOutput).ToGetServicePrincipalProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetServicePrincipalProviderConfigPtrInput is an input type that accepts GetServicePrincipalProviderConfigArgs, GetServicePrincipalProviderConfigPtr and GetServicePrincipalProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetServicePrincipalProviderConfigPtrInput` via:
+//
+//	        GetServicePrincipalProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServicePrincipalProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalProviderConfigPtrOutput() GetServicePrincipalProviderConfigPtrOutput
+	ToGetServicePrincipalProviderConfigPtrOutputWithContext(context.Context) GetServicePrincipalProviderConfigPtrOutput
+}
+
+type getServicePrincipalProviderConfigPtrType GetServicePrincipalProviderConfigArgs
+
+func GetServicePrincipalProviderConfigPtr(v *GetServicePrincipalProviderConfigArgs) GetServicePrincipalProviderConfigPtrInput {
+	return (*getServicePrincipalProviderConfigPtrType)(v)
+}
+
+func (*getServicePrincipalProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServicePrincipalProviderConfig)(nil)).Elem()
+}
+
+func (i *getServicePrincipalProviderConfigPtrType) ToGetServicePrincipalProviderConfigPtrOutput() GetServicePrincipalProviderConfigPtrOutput {
+	return i.ToGetServicePrincipalProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getServicePrincipalProviderConfigPtrType) ToGetServicePrincipalProviderConfigPtrOutputWithContext(ctx context.Context) GetServicePrincipalProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalProviderConfigPtrOutput)
+}
+
+type GetServicePrincipalProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalProviderConfig)(nil)).Elem()
+}
+
+func (o GetServicePrincipalProviderConfigOutput) ToGetServicePrincipalProviderConfigOutput() GetServicePrincipalProviderConfigOutput {
+	return o
+}
+
+func (o GetServicePrincipalProviderConfigOutput) ToGetServicePrincipalProviderConfigOutputWithContext(ctx context.Context) GetServicePrincipalProviderConfigOutput {
+	return o
+}
+
+func (o GetServicePrincipalProviderConfigOutput) ToGetServicePrincipalProviderConfigPtrOutput() GetServicePrincipalProviderConfigPtrOutput {
+	return o.ToGetServicePrincipalProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetServicePrincipalProviderConfigOutput) ToGetServicePrincipalProviderConfigPtrOutputWithContext(ctx context.Context) GetServicePrincipalProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServicePrincipalProviderConfig) *GetServicePrincipalProviderConfig {
+		return &v
+	}).(GetServicePrincipalProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetServicePrincipalProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetServicePrincipalProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServicePrincipalProviderConfig)(nil)).Elem()
+}
+
+func (o GetServicePrincipalProviderConfigPtrOutput) ToGetServicePrincipalProviderConfigPtrOutput() GetServicePrincipalProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetServicePrincipalProviderConfigPtrOutput) ToGetServicePrincipalProviderConfigPtrOutputWithContext(ctx context.Context) GetServicePrincipalProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetServicePrincipalProviderConfigPtrOutput) Elem() GetServicePrincipalProviderConfigOutput {
+	return o.ApplyT(func(v *GetServicePrincipalProviderConfig) GetServicePrincipalProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetServicePrincipalProviderConfig
+		return ret
+	}).(GetServicePrincipalProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetServicePrincipalProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePrincipalProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServicePrincipalsProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetServicePrincipalsProviderConfigInput is an input type that accepts GetServicePrincipalsProviderConfigArgs and GetServicePrincipalsProviderConfigOutput values.
+// You can construct a concrete instance of `GetServicePrincipalsProviderConfigInput` via:
+//
+//	GetServicePrincipalsProviderConfigArgs{...}
+type GetServicePrincipalsProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalsProviderConfigOutput() GetServicePrincipalsProviderConfigOutput
+	ToGetServicePrincipalsProviderConfigOutputWithContext(context.Context) GetServicePrincipalsProviderConfigOutput
+}
+
+type GetServicePrincipalsProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetServicePrincipalsProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalsProviderConfig)(nil)).Elem()
+}
+
+func (i GetServicePrincipalsProviderConfigArgs) ToGetServicePrincipalsProviderConfigOutput() GetServicePrincipalsProviderConfigOutput {
+	return i.ToGetServicePrincipalsProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalsProviderConfigArgs) ToGetServicePrincipalsProviderConfigOutputWithContext(ctx context.Context) GetServicePrincipalsProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalsProviderConfigOutput)
+}
+
+func (i GetServicePrincipalsProviderConfigArgs) ToGetServicePrincipalsProviderConfigPtrOutput() GetServicePrincipalsProviderConfigPtrOutput {
+	return i.ToGetServicePrincipalsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalsProviderConfigArgs) ToGetServicePrincipalsProviderConfigPtrOutputWithContext(ctx context.Context) GetServicePrincipalsProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalsProviderConfigOutput).ToGetServicePrincipalsProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetServicePrincipalsProviderConfigPtrInput is an input type that accepts GetServicePrincipalsProviderConfigArgs, GetServicePrincipalsProviderConfigPtr and GetServicePrincipalsProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetServicePrincipalsProviderConfigPtrInput` via:
+//
+//	        GetServicePrincipalsProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetServicePrincipalsProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalsProviderConfigPtrOutput() GetServicePrincipalsProviderConfigPtrOutput
+	ToGetServicePrincipalsProviderConfigPtrOutputWithContext(context.Context) GetServicePrincipalsProviderConfigPtrOutput
+}
+
+type getServicePrincipalsProviderConfigPtrType GetServicePrincipalsProviderConfigArgs
+
+func GetServicePrincipalsProviderConfigPtr(v *GetServicePrincipalsProviderConfigArgs) GetServicePrincipalsProviderConfigPtrInput {
+	return (*getServicePrincipalsProviderConfigPtrType)(v)
+}
+
+func (*getServicePrincipalsProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServicePrincipalsProviderConfig)(nil)).Elem()
+}
+
+func (i *getServicePrincipalsProviderConfigPtrType) ToGetServicePrincipalsProviderConfigPtrOutput() GetServicePrincipalsProviderConfigPtrOutput {
+	return i.ToGetServicePrincipalsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getServicePrincipalsProviderConfigPtrType) ToGetServicePrincipalsProviderConfigPtrOutputWithContext(ctx context.Context) GetServicePrincipalsProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalsProviderConfigPtrOutput)
+}
+
+type GetServicePrincipalsProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalsProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalsProviderConfig)(nil)).Elem()
+}
+
+func (o GetServicePrincipalsProviderConfigOutput) ToGetServicePrincipalsProviderConfigOutput() GetServicePrincipalsProviderConfigOutput {
+	return o
+}
+
+func (o GetServicePrincipalsProviderConfigOutput) ToGetServicePrincipalsProviderConfigOutputWithContext(ctx context.Context) GetServicePrincipalsProviderConfigOutput {
+	return o
+}
+
+func (o GetServicePrincipalsProviderConfigOutput) ToGetServicePrincipalsProviderConfigPtrOutput() GetServicePrincipalsProviderConfigPtrOutput {
+	return o.ToGetServicePrincipalsProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetServicePrincipalsProviderConfigOutput) ToGetServicePrincipalsProviderConfigPtrOutputWithContext(ctx context.Context) GetServicePrincipalsProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetServicePrincipalsProviderConfig) *GetServicePrincipalsProviderConfig {
+		return &v
+	}).(GetServicePrincipalsProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetServicePrincipalsProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetServicePrincipalsProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalsProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetServicePrincipalsProviderConfig)(nil)).Elem()
+}
+
+func (o GetServicePrincipalsProviderConfigPtrOutput) ToGetServicePrincipalsProviderConfigPtrOutput() GetServicePrincipalsProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetServicePrincipalsProviderConfigPtrOutput) ToGetServicePrincipalsProviderConfigPtrOutputWithContext(ctx context.Context) GetServicePrincipalsProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetServicePrincipalsProviderConfigPtrOutput) Elem() GetServicePrincipalsProviderConfigOutput {
+	return o.ApplyT(func(v *GetServicePrincipalsProviderConfig) GetServicePrincipalsProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetServicePrincipalsProviderConfig
+		return ret
+	}).(GetServicePrincipalsProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetServicePrincipalsProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetServicePrincipalsProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetServicePrincipalsServicePrincipal struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+	AclPrincipalId string `pulumi:"aclPrincipalId"`
+	// Whether service principal is active or not.
+	Active bool `pulumi:"active"`
+	// Application ID of the service principal.
+	ApplicationId string `pulumi:"applicationId"`
+	// Display name of the service principal, e.g. `Foo SPN`.
+	DisplayName string `pulumi:"displayName"`
+	// ID of the service principal in an external identity provider.
+	ExternalId string `pulumi:"externalId"`
+	// Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+	Home string `pulumi:"home"`
+	// The id of the service principal (SCIM ID).
+	Id string `pulumi:"id"`
+	// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+	Repos string `pulumi:"repos"`
+	// same as `id`.
+	ScimId string `pulumi:"scimId"`
+	SpId   string `pulumi:"spId"`
+}
+
+// GetServicePrincipalsServicePrincipalInput is an input type that accepts GetServicePrincipalsServicePrincipalArgs and GetServicePrincipalsServicePrincipalOutput values.
+// You can construct a concrete instance of `GetServicePrincipalsServicePrincipalInput` via:
+//
+//	GetServicePrincipalsServicePrincipalArgs{...}
+type GetServicePrincipalsServicePrincipalInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalsServicePrincipalOutput() GetServicePrincipalsServicePrincipalOutput
+	ToGetServicePrincipalsServicePrincipalOutputWithContext(context.Context) GetServicePrincipalsServicePrincipalOutput
+}
+
+type GetServicePrincipalsServicePrincipalArgs struct {
+	// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+	AclPrincipalId pulumi.StringInput `pulumi:"aclPrincipalId"`
+	// Whether service principal is active or not.
+	Active pulumi.BoolInput `pulumi:"active"`
+	// Application ID of the service principal.
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// Display name of the service principal, e.g. `Foo SPN`.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// ID of the service principal in an external identity provider.
+	ExternalId pulumi.StringInput `pulumi:"externalId"`
+	// Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+	Home pulumi.StringInput `pulumi:"home"`
+	// The id of the service principal (SCIM ID).
+	Id pulumi.StringInput `pulumi:"id"`
+	// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+	Repos pulumi.StringInput `pulumi:"repos"`
+	// same as `id`.
+	ScimId pulumi.StringInput `pulumi:"scimId"`
+	SpId   pulumi.StringInput `pulumi:"spId"`
+}
+
+func (GetServicePrincipalsServicePrincipalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalsServicePrincipal)(nil)).Elem()
+}
+
+func (i GetServicePrincipalsServicePrincipalArgs) ToGetServicePrincipalsServicePrincipalOutput() GetServicePrincipalsServicePrincipalOutput {
+	return i.ToGetServicePrincipalsServicePrincipalOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalsServicePrincipalArgs) ToGetServicePrincipalsServicePrincipalOutputWithContext(ctx context.Context) GetServicePrincipalsServicePrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalsServicePrincipalOutput)
+}
+
+// GetServicePrincipalsServicePrincipalArrayInput is an input type that accepts GetServicePrincipalsServicePrincipalArray and GetServicePrincipalsServicePrincipalArrayOutput values.
+// You can construct a concrete instance of `GetServicePrincipalsServicePrincipalArrayInput` via:
+//
+//	GetServicePrincipalsServicePrincipalArray{ GetServicePrincipalsServicePrincipalArgs{...} }
+type GetServicePrincipalsServicePrincipalArrayInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalsServicePrincipalArrayOutput() GetServicePrincipalsServicePrincipalArrayOutput
+	ToGetServicePrincipalsServicePrincipalArrayOutputWithContext(context.Context) GetServicePrincipalsServicePrincipalArrayOutput
+}
+
+type GetServicePrincipalsServicePrincipalArray []GetServicePrincipalsServicePrincipalInput
+
+func (GetServicePrincipalsServicePrincipalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicePrincipalsServicePrincipal)(nil)).Elem()
+}
+
+func (i GetServicePrincipalsServicePrincipalArray) ToGetServicePrincipalsServicePrincipalArrayOutput() GetServicePrincipalsServicePrincipalArrayOutput {
+	return i.ToGetServicePrincipalsServicePrincipalArrayOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalsServicePrincipalArray) ToGetServicePrincipalsServicePrincipalArrayOutputWithContext(ctx context.Context) GetServicePrincipalsServicePrincipalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalsServicePrincipalArrayOutput)
+}
+
+type GetServicePrincipalsServicePrincipalOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalsServicePrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalsServicePrincipal)(nil)).Elem()
+}
+
+func (o GetServicePrincipalsServicePrincipalOutput) ToGetServicePrincipalsServicePrincipalOutput() GetServicePrincipalsServicePrincipalOutput {
+	return o
+}
+
+func (o GetServicePrincipalsServicePrincipalOutput) ToGetServicePrincipalsServicePrincipalOutputWithContext(ctx context.Context) GetServicePrincipalsServicePrincipalOutput {
+	return o
+}
+
+// identifier for use in databricks_access_control_rule_set, e.g. `servicePrincipals/00000000-0000-0000-0000-000000000000`.
+func (o GetServicePrincipalsServicePrincipalOutput) AclPrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.AclPrincipalId }).(pulumi.StringOutput)
+}
+
+// Whether service principal is active or not.
+func (o GetServicePrincipalsServicePrincipalOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+// Application ID of the service principal.
+func (o GetServicePrincipalsServicePrincipalOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// Display name of the service principal, e.g. `Foo SPN`.
+func (o GetServicePrincipalsServicePrincipalOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// ID of the service principal in an external identity provider.
+func (o GetServicePrincipalsServicePrincipalOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// Home folder of the service principal, e.g. `/Users/11111111-2222-3333-4444-555666777888`.
+func (o GetServicePrincipalsServicePrincipalOutput) Home() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.Home }).(pulumi.StringOutput)
+}
+
+// The id of the service principal (SCIM ID).
+func (o GetServicePrincipalsServicePrincipalOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Repos location of the service principal, e.g. `/Repos/11111111-2222-3333-4444-555666777888`.
+func (o GetServicePrincipalsServicePrincipalOutput) Repos() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.Repos }).(pulumi.StringOutput)
+}
+
+// same as `id`.
+func (o GetServicePrincipalsServicePrincipalOutput) ScimId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.ScimId }).(pulumi.StringOutput)
+}
+
+func (o GetServicePrincipalsServicePrincipalOutput) SpId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.SpId }).(pulumi.StringOutput)
+}
+
+type GetServicePrincipalsServicePrincipalArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalsServicePrincipalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicePrincipalsServicePrincipal)(nil)).Elem()
+}
+
+func (o GetServicePrincipalsServicePrincipalArrayOutput) ToGetServicePrincipalsServicePrincipalArrayOutput() GetServicePrincipalsServicePrincipalArrayOutput {
+	return o
+}
+
+func (o GetServicePrincipalsServicePrincipalArrayOutput) ToGetServicePrincipalsServicePrincipalArrayOutputWithContext(ctx context.Context) GetServicePrincipalsServicePrincipalArrayOutput {
+	return o
+}
+
+func (o GetServicePrincipalsServicePrincipalArrayOutput) Index(i pulumi.IntInput) GetServicePrincipalsServicePrincipalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicePrincipalsServicePrincipal {
+		return vs[0].([]GetServicePrincipalsServicePrincipal)[vs[1].(int)]
+	}).(GetServicePrincipalsServicePrincipalOutput)
+}
+
+type GetServingEndpointsEndpoint struct {
+	// A block with AI Gateway configuration for the serving endpoint.
+	AiGateways     []GetServingEndpointsEndpointAiGateway `pulumi:"aiGateways"`
+	BudgetPolicyId *string                                `pulumi:"budgetPolicyId"`
+	// The model serving endpoint configuration.
+	Configs              []GetServingEndpointsEndpointConfig `pulumi:"configs"`
+	CreationTimestamp    *int                                `pulumi:"creationTimestamp"`
+	Creator              *string                             `pulumi:"creator"`
+	Description          *string                             `pulumi:"description"`
+	Id                   *string                             `pulumi:"id"`
+	LastUpdatedTimestamp *int                                `pulumi:"lastUpdatedTimestamp"`
+	// The name of the model serving endpoint.
+	Name   *string                            `pulumi:"name"`
+	States []GetServingEndpointsEndpointState `pulumi:"states"`
+	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+	Tags          []GetServingEndpointsEndpointTag `pulumi:"tags"`
+	Task          *string                          `pulumi:"task"`
+	UsagePolicyId *string                          `pulumi:"usagePolicyId"`
+}
+
+// GetServingEndpointsEndpointInput is an input type that accepts GetServingEndpointsEndpointArgs and GetServingEndpointsEndpointOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointInput` via:
+//
+//	GetServingEndpointsEndpointArgs{...}
+type GetServingEndpointsEndpointInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointOutput() GetServingEndpointsEndpointOutput
+	ToGetServingEndpointsEndpointOutputWithContext(context.Context) GetServingEndpointsEndpointOutput
+}
+
+type GetServingEndpointsEndpointArgs struct {
+	// A block with AI Gateway configuration for the serving endpoint.
+	AiGateways     GetServingEndpointsEndpointAiGatewayArrayInput `pulumi:"aiGateways"`
+	BudgetPolicyId pulumi.StringPtrInput                          `pulumi:"budgetPolicyId"`
+	// The model serving endpoint configuration.
+	Configs              GetServingEndpointsEndpointConfigArrayInput `pulumi:"configs"`
+	CreationTimestamp    pulumi.IntPtrInput                          `pulumi:"creationTimestamp"`
+	Creator              pulumi.StringPtrInput                       `pulumi:"creator"`
+	Description          pulumi.StringPtrInput                       `pulumi:"description"`
+	Id                   pulumi.StringPtrInput                       `pulumi:"id"`
+	LastUpdatedTimestamp pulumi.IntPtrInput                          `pulumi:"lastUpdatedTimestamp"`
+	// The name of the model serving endpoint.
+	Name   pulumi.StringPtrInput                      `pulumi:"name"`
+	States GetServingEndpointsEndpointStateArrayInput `pulumi:"states"`
+	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+	Tags          GetServingEndpointsEndpointTagArrayInput `pulumi:"tags"`
+	Task          pulumi.StringPtrInput                    `pulumi:"task"`
+	UsagePolicyId pulumi.StringPtrInput                    `pulumi:"usagePolicyId"`
+}
+
+func (GetServingEndpointsEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpoint)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointArgs) ToGetServingEndpointsEndpointOutput() GetServingEndpointsEndpointOutput {
+	return i.ToGetServingEndpointsEndpointOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointArgs) ToGetServingEndpointsEndpointOutputWithContext(ctx context.Context) GetServingEndpointsEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointOutput)
+}
+
+// GetServingEndpointsEndpointArrayInput is an input type that accepts GetServingEndpointsEndpointArray and GetServingEndpointsEndpointArrayOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointArrayInput` via:
+//
+//	GetServingEndpointsEndpointArray{ GetServingEndpointsEndpointArgs{...} }
+type GetServingEndpointsEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointArrayOutput() GetServingEndpointsEndpointArrayOutput
+	ToGetServingEndpointsEndpointArrayOutputWithContext(context.Context) GetServingEndpointsEndpointArrayOutput
+}
+
+type GetServingEndpointsEndpointArray []GetServingEndpointsEndpointInput
+
+func (GetServingEndpointsEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpoint)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointArray) ToGetServingEndpointsEndpointArrayOutput() GetServingEndpointsEndpointArrayOutput {
+	return i.ToGetServingEndpointsEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointArray) ToGetServingEndpointsEndpointArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointArrayOutput)
+}
+
+type GetServingEndpointsEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpoint)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointOutput) ToGetServingEndpointsEndpointOutput() GetServingEndpointsEndpointOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointOutput) ToGetServingEndpointsEndpointOutputWithContext(ctx context.Context) GetServingEndpointsEndpointOutput {
+	return o
+}
+
+// A block with AI Gateway configuration for the serving endpoint.
+func (o GetServingEndpointsEndpointOutput) AiGateways() GetServingEndpointsEndpointAiGatewayArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpoint) []GetServingEndpointsEndpointAiGateway { return v.AiGateways }).(GetServingEndpointsEndpointAiGatewayArrayOutput)
+}
+
+func (o GetServingEndpointsEndpointOutput) BudgetPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpoint) *string { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
+}
+
+// The model serving endpoint configuration.
+func (o GetServingEndpointsEndpointOutput) Configs() GetServingEndpointsEndpointConfigArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpoint) []GetServingEndpointsEndpointConfig { return v.Configs }).(GetServingEndpointsEndpointConfigArrayOutput)
+}
+
+func (o GetServingEndpointsEndpointOutput) CreationTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpoint) *int { return v.CreationTimestamp }).(pulumi.IntPtrOutput)
+}
+
+func (o GetServingEndpointsEndpointOutput) Creator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpoint) *string { return v.Creator }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServingEndpointsEndpointOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpoint) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServingEndpointsEndpointOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpoint) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServingEndpointsEndpointOutput) LastUpdatedTimestamp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpoint) *int { return v.LastUpdatedTimestamp }).(pulumi.IntPtrOutput)
+}
+
+// The name of the model serving endpoint.
+func (o GetServingEndpointsEndpointOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpoint) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServingEndpointsEndpointOutput) States() GetServingEndpointsEndpointStateArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpoint) []GetServingEndpointsEndpointState { return v.States }).(GetServingEndpointsEndpointStateArrayOutput)
+}
+
+// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
+func (o GetServingEndpointsEndpointOutput) Tags() GetServingEndpointsEndpointTagArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpoint) []GetServingEndpointsEndpointTag { return v.Tags }).(GetServingEndpointsEndpointTagArrayOutput)
+}
+
+func (o GetServingEndpointsEndpointOutput) Task() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpoint) *string { return v.Task }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServingEndpointsEndpointOutput) UsagePolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpoint) *string { return v.UsagePolicyId }).(pulumi.StringPtrOutput)
+}
+
+type GetServingEndpointsEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpoint)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointArrayOutput) ToGetServingEndpointsEndpointArrayOutput() GetServingEndpointsEndpointArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointArrayOutput) ToGetServingEndpointsEndpointArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointArrayOutput) Index(i pulumi.IntInput) GetServingEndpointsEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServingEndpointsEndpoint {
+		return vs[0].([]GetServingEndpointsEndpoint)[vs[1].(int)]
+	}).(GetServingEndpointsEndpointOutput)
+}
+
 type GetServingEndpointsEndpointAiGateway struct {
 	FallbackConfigs       []GetServingEndpointsEndpointAiGatewayFallbackConfig       `pulumi:"fallbackConfigs"`
 	Guardrails            []GetServingEndpointsEndpointAiGatewayGuardrail            `pulumi:"guardrails"`
@@ -19731,6 +29245,124 @@ func (o GetZonesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectStatusDefaultEndpointSettingsInput)(nil)).Elem(), GetPostgresProjectsProjectStatusDefaultEndpointSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProviderConfigInput)(nil)).Elem(), GetPostgresProjectsProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProviderConfigPtrInput)(nil)).Elem(), GetPostgresProjectsProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRoleProviderConfigInput)(nil)).Elem(), GetPostgresRoleProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRoleProviderConfigPtrInput)(nil)).Elem(), GetPostgresRoleProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRoleSpecInput)(nil)).Elem(), GetPostgresRoleSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRoleSpecAttributesInput)(nil)).Elem(), GetPostgresRoleSpecAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRoleSpecAttributesPtrInput)(nil)).Elem(), GetPostgresRoleSpecAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRoleStatusInput)(nil)).Elem(), GetPostgresRoleStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRoleStatusAttributesInput)(nil)).Elem(), GetPostgresRoleStatusAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRoleStatusAttributesPtrInput)(nil)).Elem(), GetPostgresRoleStatusAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRolesProviderConfigInput)(nil)).Elem(), GetPostgresRolesProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRolesProviderConfigPtrInput)(nil)).Elem(), GetPostgresRolesProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRolesRoleInput)(nil)).Elem(), GetPostgresRolesRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRolesRoleArrayInput)(nil)).Elem(), GetPostgresRolesRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRolesRoleProviderConfigInput)(nil)).Elem(), GetPostgresRolesRoleProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRolesRoleProviderConfigPtrInput)(nil)).Elem(), GetPostgresRolesRoleProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRolesRoleSpecInput)(nil)).Elem(), GetPostgresRolesRoleSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRolesRoleSpecAttributesInput)(nil)).Elem(), GetPostgresRolesRoleSpecAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRolesRoleSpecAttributesPtrInput)(nil)).Elem(), GetPostgresRolesRoleSpecAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRolesRoleStatusInput)(nil)).Elem(), GetPostgresRolesRoleStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRolesRoleStatusAttributesInput)(nil)).Elem(), GetPostgresRolesRoleStatusAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresRolesRoleStatusAttributesPtrInput)(nil)).Elem(), GetPostgresRolesRoleStatusAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSyncedTableProviderConfigInput)(nil)).Elem(), GetPostgresSyncedTableProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSyncedTableProviderConfigPtrInput)(nil)).Elem(), GetPostgresSyncedTableProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSyncedTableSpecInput)(nil)).Elem(), GetPostgresSyncedTableSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSyncedTableSpecNewPipelineSpecInput)(nil)).Elem(), GetPostgresSyncedTableSpecNewPipelineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSyncedTableSpecNewPipelineSpecPtrInput)(nil)).Elem(), GetPostgresSyncedTableSpecNewPipelineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSyncedTableSpecTypeOverrideInput)(nil)).Elem(), GetPostgresSyncedTableSpecTypeOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSyncedTableSpecTypeOverrideArrayInput)(nil)).Elem(), GetPostgresSyncedTableSpecTypeOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSyncedTableStatusInput)(nil)).Elem(), GetPostgresSyncedTableStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSyncedTableStatusLastSyncInput)(nil)).Elem(), GetPostgresSyncedTableStatusLastSyncArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoInput)(nil)).Elem(), GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresSyncedTableStatusOngoingSyncProgressInput)(nil)).Elem(), GetPostgresSyncedTableStatusOngoingSyncProgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorV2AnomalyDetectionConfigInput)(nil)).Elem(), GetQualityMonitorV2AnomalyDetectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorV2ProviderConfigInput)(nil)).Elem(), GetQualityMonitorV2ProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorV2ProviderConfigPtrInput)(nil)).Elem(), GetQualityMonitorV2ProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorV2ValidityCheckConfigurationInput)(nil)).Elem(), GetQualityMonitorV2ValidityCheckConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorV2ValidityCheckConfigurationArrayInput)(nil)).Elem(), GetQualityMonitorV2ValidityCheckConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckInput)(nil)).Elem(), GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrInput)(nil)).Elem(), GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckInput)(nil)).Elem(), GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrInput)(nil)).Elem(), GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckInput)(nil)).Elem(), GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrInput)(nil)).Elem(), GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorsV2ProviderConfigInput)(nil)).Elem(), GetQualityMonitorsV2ProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorsV2ProviderConfigPtrInput)(nil)).Elem(), GetQualityMonitorsV2ProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorInput)(nil)).Elem(), GetQualityMonitorsV2QualityMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorArrayInput)(nil)).Elem(), GetQualityMonitorsV2QualityMonitorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigInput)(nil)).Elem(), GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorProviderConfigInput)(nil)).Elem(), GetQualityMonitorsV2QualityMonitorProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorProviderConfigPtrInput)(nil)).Elem(), GetQualityMonitorsV2QualityMonitorProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationInput)(nil)).Elem(), GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayInput)(nil)).Elem(), GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckInput)(nil)).Elem(), GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrInput)(nil)).Elem(), GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckInput)(nil)).Elem(), GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrInput)(nil)).Elem(), GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckInput)(nil)).Elem(), GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrInput)(nil)).Elem(), GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelModelInfoInput)(nil)).Elem(), GetRegisteredModelModelInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelModelInfoArrayInput)(nil)).Elem(), GetRegisteredModelModelInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelModelInfoAliasInput)(nil)).Elem(), GetRegisteredModelModelInfoAliasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelModelInfoAliasArrayInput)(nil)).Elem(), GetRegisteredModelModelInfoAliasArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelProviderConfigInput)(nil)).Elem(), GetRegisteredModelProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelProviderConfigPtrInput)(nil)).Elem(), GetRegisteredModelProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsModelVersionInput)(nil)).Elem(), GetRegisteredModelVersionsModelVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsModelVersionArrayInput)(nil)).Elem(), GetRegisteredModelVersionsModelVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsModelVersionAliasInput)(nil)).Elem(), GetRegisteredModelVersionsModelVersionAliasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsModelVersionAliasArrayInput)(nil)).Elem(), GetRegisteredModelVersionsModelVersionAliasArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyInput)(nil)).Elem(), GetRegisteredModelVersionsModelVersionModelVersionDependencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayInput)(nil)).Elem(), GetRegisteredModelVersionsModelVersionModelVersionDependencyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyInput)(nil)).Elem(), GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayInput)(nil)).Elem(), GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionInput)(nil)).Elem(), GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayInput)(nil)).Elem(), GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialInput)(nil)).Elem(), GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayInput)(nil)).Elem(), GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionInput)(nil)).Elem(), GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayInput)(nil)).Elem(), GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableInput)(nil)).Elem(), GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayInput)(nil)).Elem(), GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsProviderConfigInput)(nil)).Elem(), GetRegisteredModelVersionsProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegisteredModelVersionsProviderConfigPtrInput)(nil)).Elem(), GetRegisteredModelVersionsProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRfaAccessRequestDestinationsDestinationInput)(nil)).Elem(), GetRfaAccessRequestDestinationsDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRfaAccessRequestDestinationsDestinationArrayInput)(nil)).Elem(), GetRfaAccessRequestDestinationsDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRfaAccessRequestDestinationsDestinationSourceSecurableInput)(nil)).Elem(), GetRfaAccessRequestDestinationsDestinationSourceSecurableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRfaAccessRequestDestinationsProviderConfigInput)(nil)).Elem(), GetRfaAccessRequestDestinationsProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRfaAccessRequestDestinationsProviderConfigPtrInput)(nil)).Elem(), GetRfaAccessRequestDestinationsProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRfaAccessRequestDestinationsSecurableInput)(nil)).Elem(), GetRfaAccessRequestDestinationsSecurableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSchemaProviderConfigInput)(nil)).Elem(), GetSchemaProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSchemaProviderConfigPtrInput)(nil)).Elem(), GetSchemaProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSchemaSchemaInfoInput)(nil)).Elem(), GetSchemaSchemaInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSchemaSchemaInfoPtrInput)(nil)).Elem(), GetSchemaSchemaInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagInput)(nil)).Elem(), GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrInput)(nil)).Elem(), GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSchemasProviderConfigInput)(nil)).Elem(), GetSchemasProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSchemasProviderConfigPtrInput)(nil)).Elem(), GetSchemasProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretUcProviderConfigInput)(nil)).Elem(), GetSecretUcProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretUcProviderConfigPtrInput)(nil)).Elem(), GetSecretUcProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretUcsProviderConfigInput)(nil)).Elem(), GetSecretUcsProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretUcsProviderConfigPtrInput)(nil)).Elem(), GetSecretUcsProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretUcsSecretInput)(nil)).Elem(), GetSecretUcsSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretUcsSecretArrayInput)(nil)).Elem(), GetSecretUcsSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretUcsSecretProviderConfigInput)(nil)).Elem(), GetSecretUcsSecretProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretUcsSecretProviderConfigPtrInput)(nil)).Elem(), GetSecretUcsSecretProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePrincipalFederationPoliciesPolicyInput)(nil)).Elem(), GetServicePrincipalFederationPoliciesPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePrincipalFederationPoliciesPolicyArrayInput)(nil)).Elem(), GetServicePrincipalFederationPoliciesPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePrincipalFederationPoliciesPolicyOidcPolicyInput)(nil)).Elem(), GetServicePrincipalFederationPoliciesPolicyOidcPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePrincipalFederationPolicyOidcPolicyInput)(nil)).Elem(), GetServicePrincipalFederationPolicyOidcPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePrincipalProviderConfigInput)(nil)).Elem(), GetServicePrincipalProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePrincipalProviderConfigPtrInput)(nil)).Elem(), GetServicePrincipalProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePrincipalsProviderConfigInput)(nil)).Elem(), GetServicePrincipalsProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePrincipalsProviderConfigPtrInput)(nil)).Elem(), GetServicePrincipalsProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePrincipalsServicePrincipalInput)(nil)).Elem(), GetServicePrincipalsServicePrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePrincipalsServicePrincipalArrayInput)(nil)).Elem(), GetServicePrincipalsServicePrincipalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointInput)(nil)).Elem(), GetServingEndpointsEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointArrayInput)(nil)).Elem(), GetServingEndpointsEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayArrayInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointAiGatewayFallbackConfigInput)(nil)).Elem(), GetServingEndpointsEndpointAiGatewayFallbackConfigArgs{})
@@ -20007,6 +29639,124 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2StringValInput)(nil)).Elem(), GetWorkspaceSettingV2StringValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigPtrInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresRoleProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresRoleProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresRoleSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresRoleSpecAttributesOutput{})
+	pulumi.RegisterOutputType(GetPostgresRoleSpecAttributesPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresRoleStatusOutput{})
+	pulumi.RegisterOutputType(GetPostgresRoleStatusAttributesOutput{})
+	pulumi.RegisterOutputType(GetPostgresRoleStatusAttributesPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresRolesProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresRolesProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresRolesRoleOutput{})
+	pulumi.RegisterOutputType(GetPostgresRolesRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetPostgresRolesRoleProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresRolesRoleProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresRolesRoleSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresRolesRoleSpecAttributesOutput{})
+	pulumi.RegisterOutputType(GetPostgresRolesRoleSpecAttributesPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresRolesRoleStatusOutput{})
+	pulumi.RegisterOutputType(GetPostgresRolesRoleStatusAttributesOutput{})
+	pulumi.RegisterOutputType(GetPostgresRolesRoleStatusAttributesPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresSyncedTableProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresSyncedTableProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresSyncedTableSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresSyncedTableSpecNewPipelineSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresSyncedTableSpecNewPipelineSpecPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresSyncedTableSpecTypeOverrideOutput{})
+	pulumi.RegisterOutputType(GetPostgresSyncedTableSpecTypeOverrideArrayOutput{})
+	pulumi.RegisterOutputType(GetPostgresSyncedTableStatusOutput{})
+	pulumi.RegisterOutputType(GetPostgresSyncedTableStatusLastSyncOutput{})
+	pulumi.RegisterOutputType(GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfoOutput{})
+	pulumi.RegisterOutputType(GetPostgresSyncedTableStatusOngoingSyncProgressOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorV2AnomalyDetectionConfigOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorV2ProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorV2ProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorV2ValidityCheckConfigurationOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorV2ValidityCheckConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorV2ValidityCheckConfigurationPercentNullValidityCheckPtrOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorV2ValidityCheckConfigurationRangeValidityCheckPtrOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorV2ValidityCheckConfigurationUniquenessValidityCheckPtrOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorsV2ProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorsV2ProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorsV2QualityMonitorOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorsV2QualityMonitorArrayOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorsV2QualityMonitorAnomalyDetectionConfigOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorsV2QualityMonitorProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorsV2QualityMonitorProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationPercentNullValidityCheckPtrOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationRangeValidityCheckPtrOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckOutput{})
+	pulumi.RegisterOutputType(GetQualityMonitorsV2QualityMonitorValidityCheckConfigurationUniquenessValidityCheckPtrOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelModelInfoOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelModelInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelModelInfoAliasOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelModelInfoAliasArrayOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsModelVersionOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsModelVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsModelVersionAliasOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsModelVersionAliasArrayOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsModelVersionModelVersionDependencyOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsModelVersionModelVersionDependencyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyFunctionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsModelVersionModelVersionDependencyDependencyTableArrayOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetRegisteredModelVersionsProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetRfaAccessRequestDestinationsDestinationOutput{})
+	pulumi.RegisterOutputType(GetRfaAccessRequestDestinationsDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetRfaAccessRequestDestinationsDestinationSourceSecurableOutput{})
+	pulumi.RegisterOutputType(GetRfaAccessRequestDestinationsProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetRfaAccessRequestDestinationsProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetRfaAccessRequestDestinationsSecurableOutput{})
+	pulumi.RegisterOutputType(GetSchemaProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetSchemaProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetSchemaSchemaInfoOutput{})
+	pulumi.RegisterOutputType(GetSchemaSchemaInfoPtrOutput{})
+	pulumi.RegisterOutputType(GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagOutput{})
+	pulumi.RegisterOutputType(GetSchemaSchemaInfoEffectivePredictiveOptimizationFlagPtrOutput{})
+	pulumi.RegisterOutputType(GetSchemasProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetSchemasProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetSecretUcProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetSecretUcProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetSecretUcsProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetSecretUcsProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetSecretUcsSecretOutput{})
+	pulumi.RegisterOutputType(GetSecretUcsSecretArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretUcsSecretProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetSecretUcsSecretProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalFederationPoliciesPolicyOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalFederationPoliciesPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalFederationPoliciesPolicyOidcPolicyOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalFederationPolicyOidcPolicyOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalsProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalsProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalsServicePrincipalOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalsServicePrincipalArrayOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointArrayOutput{})
 	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayOutput{})
 	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayArrayOutput{})
 	pulumi.RegisterOutputType(GetServingEndpointsEndpointAiGatewayFallbackConfigOutput{})

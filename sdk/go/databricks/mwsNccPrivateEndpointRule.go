@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// [API Documentation](https://docs.databricks.com/api/account/networkconnectivity)
+//
 // Allows you to create a private endpoint in a Network Connectivity Config that can be used to [configure private connectivity from serverless compute](https://learn.microsoft.com/en-us/azure/databricks/security/network/serverless-network-security/serverless-private-link).
 //
 // > This resource can only be used with an account-level provider!
@@ -133,7 +135,7 @@ import (
 type MwsNccPrivateEndpointRule struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.
 	// The possible values are:
 	// * `PENDING`: The endpoint has been created and pending approval.
@@ -471,8 +473,8 @@ func (o MwsNccPrivateEndpointRuleOutput) ToMwsNccPrivateEndpointRuleOutputWithCo
 	return o
 }
 
-func (o MwsNccPrivateEndpointRuleOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o MwsNccPrivateEndpointRuleOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MwsNccPrivateEndpointRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // The current status of this private endpoint. The private endpoint rules are effective only if the connection state is `ESTABLISHED`. Remember that you must approve new endpoints on your resources in the Azure portal before they take effect.

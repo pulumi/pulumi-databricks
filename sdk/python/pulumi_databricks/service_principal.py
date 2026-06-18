@@ -630,6 +630,8 @@ class ServicePrincipal(pulumi.CustomResource):
                  workspace_consume: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/serviceprincipals)
+
         Directly manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to Group in Databricks account or workspace.
 
         > This resource can be used with an account or workspace-level provider.
@@ -739,6 +741,8 @@ class ServicePrincipal(pulumi.CustomResource):
                  args: Optional[ServicePrincipalArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/workspace/serviceprincipals)
+
         Directly manage [Service Principals](https://docs.databricks.com/administration-guide/users-groups/service-principals.html) that could be added to Group in Databricks account or workspace.
 
         > This resource can be used with an account or workspace-level provider.

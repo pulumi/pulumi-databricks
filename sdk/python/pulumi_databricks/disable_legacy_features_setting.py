@@ -159,6 +159,8 @@ class DisableLegacyFeaturesSetting(pulumi.CustomResource):
                  setting_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/disablelegacyfeatures)
+
         > This resource can only be used with an account-level provider!
 
         The `DisableLegacyFeaturesSetting` resource allows you to disable legacy features on newly created workspaces.
@@ -207,6 +209,8 @@ class DisableLegacyFeaturesSetting(pulumi.CustomResource):
                  args: DisableLegacyFeaturesSettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        [API Documentation](https://docs.databricks.com/api/account/disablelegacyfeatures)
+
         > This resource can only be used with an account-level provider!
 
         The `DisableLegacyFeaturesSetting` resource allows you to disable legacy features on newly created workspaces.

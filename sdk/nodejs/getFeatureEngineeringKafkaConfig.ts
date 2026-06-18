@@ -41,9 +41,9 @@ export interface GetFeatureEngineeringKafkaConfigResult {
      */
     readonly authConfig: outputs.GetFeatureEngineeringKafkaConfigAuthConfig;
     /**
-     * (BackfillSource) - A user-provided and managed source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Kafka config.
-     * In the future, a separate table will be maintained by Databricks for forward filling data.
-     * The schema for this source must match exactly that of the key and value schemas specified for this Kafka config
+     * (BackfillSource) - A user-provided source for backfilling data. Historical data is used when creating a training set from streaming features linked to this Stream.
+     * The backfill data stored in this location will be copied into the ingestion table for offline querying and training.
+     * The schema for this source must match exactly that of the key and payload schemas specified for this Stream
      */
     readonly backfillSource: outputs.GetFeatureEngineeringKafkaConfigBackfillSource;
     /**
@@ -58,6 +58,11 @@ export interface GetFeatureEngineeringKafkaConfigResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * (IngestionConfig) - Configuration for ingesting Kafka data into a Databricks-managed
+     * Delta table
+     */
+    readonly ingestionConfig: outputs.GetFeatureEngineeringKafkaConfigIngestionConfig;
     /**
      * (SchemaConfig) - Schema configuration for extracting message keys from topics. At least one of keySchema and valueSchema must be provided
      */

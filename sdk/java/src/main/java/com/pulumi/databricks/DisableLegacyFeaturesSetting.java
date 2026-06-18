@@ -16,6 +16,8 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/account/disablelegacyfeatures)
+ * 
  * &gt; This resource can only be used with an account-level provider!
  * 
  * The `databricks.DisableLegacyFeaturesSetting` resource allows you to disable legacy features on newly created workspaces.

@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * [API Documentation](https://docs.databricks.com/api/workspace/disablelegacyaccess)
+ *
  * The `databricks.DisableLegacyAccessSetting` resource allows you to disable legacy access. It has the following impact:
  *
  * 1. Disables direct access to Hive Metastores from the workspace. However, you can still access a Hive Metastore through Hive Metastore federation.
