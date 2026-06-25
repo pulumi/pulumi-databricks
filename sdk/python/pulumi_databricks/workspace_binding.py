@@ -31,7 +31,7 @@ class WorkspaceBindingArgs:
         The set of arguments for constructing a WorkspaceBinding resource.
 
         :param pulumi.Input[_builtins.str] workspace_id: ID of the workspace. Change forces creation of a new resource.
-        :param pulumi.Input[_builtins.str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+        :param pulumi.Input[_builtins.str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securable_type` is `catalog`. For `storage_credential`, `external_location`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
         :param pulumi.Input['WorkspaceBindingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] securable_name: Name of securable. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] securable_type: Type of securable. Can be `catalog`, `external_location`, `storage_credential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
@@ -67,7 +67,7 @@ class WorkspaceBindingArgs:
     @pulumi.getter(name="bindingType")
     def binding_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+        Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securable_type` is `catalog`. For `storage_credential`, `external_location`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
         """
         return pulumi.get(self, "binding_type")
 
@@ -134,7 +134,7 @@ class _WorkspaceBindingState:
         """
         Input properties used for looking up and filtering WorkspaceBinding resources.
 
-        :param pulumi.Input[_builtins.str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+        :param pulumi.Input[_builtins.str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securable_type` is `catalog`. For `storage_credential`, `external_location`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
         :param pulumi.Input['WorkspaceBindingProviderConfigArgs'] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] securable_name: Name of securable. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] securable_type: Type of securable. Can be `catalog`, `external_location`, `storage_credential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
@@ -160,7 +160,7 @@ class _WorkspaceBindingState:
     @pulumi.getter(name="bindingType")
     def binding_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+        Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securable_type` is `catalog`. For `storage_credential`, `external_location`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
         """
         return pulumi.get(self, "binding_type")
 
@@ -274,7 +274,7 @@ class WorkspaceBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+        :param pulumi.Input[_builtins.str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securable_type` is `catalog`. For `storage_credential`, `external_location`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
         :param pulumi.Input[Union['WorkspaceBindingProviderConfigArgs', 'WorkspaceBindingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] securable_name: Name of securable. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] securable_type: Type of securable. Can be `catalog`, `external_location`, `storage_credential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
@@ -379,7 +379,7 @@ class WorkspaceBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+        :param pulumi.Input[_builtins.str] binding_type: Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securable_type` is `catalog`. For `storage_credential`, `external_location`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
         :param pulumi.Input[Union['WorkspaceBindingProviderConfigArgs', 'WorkspaceBindingProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider. This block consists of the following fields:
         :param pulumi.Input[_builtins.str] securable_name: Name of securable. Change forces creation of a new resource.
         :param pulumi.Input[_builtins.str] securable_type: Type of securable. Can be `catalog`, `external_location`, `storage_credential` or `credential`. Default to `catalog`. Change forces creation of a new resource.
@@ -401,7 +401,7 @@ class WorkspaceBinding(pulumi.CustomResource):
     @pulumi.getter(name="bindingType")
     def binding_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+        Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securable_type` is `catalog`. For `storage_credential`, `external_location`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
         """
         return pulumi.get(self, "binding_type")
 

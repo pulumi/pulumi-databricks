@@ -55,7 +55,7 @@ namespace Pulumi.Databricks
     public partial class WorkspaceBinding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+        /// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `SecurableType` is `Catalog`. For `StorageCredential`, `ExternalLocation`, and `Credential`, only `BINDING_TYPE_READ_WRITE` is supported.
         /// </summary>
         [Output("bindingType")]
         public Output<string?> BindingType { get; private set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.Databricks
     public sealed class WorkspaceBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+        /// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `SecurableType` is `Catalog`. For `StorageCredential`, `ExternalLocation`, and `Credential`, only `BINDING_TYPE_READ_WRITE` is supported.
         /// </summary>
         [Input("bindingType")]
         public Input<string>? BindingType { get; set; }
@@ -175,7 +175,7 @@ namespace Pulumi.Databricks
     public sealed class WorkspaceBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+        /// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `SecurableType` is `Catalog`. For `StorageCredential`, `ExternalLocation`, and `Credential`, only `BINDING_TYPE_READ_WRITE` is supported.
         /// </summary>
         [Input("bindingType")]
         public Input<string>? BindingType { get; set; }

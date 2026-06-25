@@ -17,14 +17,14 @@ public final class WorkspaceBindingState extends com.pulumi.resources.ResourceAr
     public static final WorkspaceBindingState Empty = new WorkspaceBindingState();
 
     /**
-     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securableType` is `catalog`. For `storageCredential`, `externalLocation`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
      * 
      */
     @Import(name="bindingType")
     private @Nullable Output<String> bindingType;
 
     /**
-     * @return Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+     * @return Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securableType` is `catalog`. For `storageCredential`, `externalLocation`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
      * 
      */
     public Optional<Output<String>> bindingType() {
@@ -140,7 +140,7 @@ public final class WorkspaceBindingState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bindingType Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+         * @param bindingType Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securableType` is `catalog`. For `storageCredential`, `externalLocation`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class WorkspaceBindingState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bindingType Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+         * @param bindingType Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securableType` is `catalog`. For `storageCredential`, `externalLocation`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
          * 
          * @return builder
          * 

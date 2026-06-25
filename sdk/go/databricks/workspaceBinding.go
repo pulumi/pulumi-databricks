@@ -64,7 +64,7 @@ import (
 type WorkspaceBinding struct {
 	pulumi.CustomResourceState
 
-	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securableType` is `catalog`. For `storageCredential`, `externalLocation`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
 	BindingType pulumi.StringPtrOutput `pulumi:"bindingType"`
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
 	CatalogName pulumi.StringPtrOutput `pulumi:"catalogName"`
@@ -111,7 +111,7 @@ func GetWorkspaceBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkspaceBinding resources.
 type workspaceBindingState struct {
-	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securableType` is `catalog`. For `storageCredential`, `externalLocation`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
 	BindingType *string `pulumi:"bindingType"`
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
 	CatalogName *string `pulumi:"catalogName"`
@@ -126,7 +126,7 @@ type workspaceBindingState struct {
 }
 
 type WorkspaceBindingState struct {
-	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securableType` is `catalog`. For `storageCredential`, `externalLocation`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
 	BindingType pulumi.StringPtrInput
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
 	CatalogName pulumi.StringPtrInput
@@ -145,7 +145,7 @@ func (WorkspaceBindingState) ElementType() reflect.Type {
 }
 
 type workspaceBindingArgs struct {
-	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securableType` is `catalog`. For `storageCredential`, `externalLocation`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
 	BindingType *string `pulumi:"bindingType"`
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
 	CatalogName *string `pulumi:"catalogName"`
@@ -161,7 +161,7 @@ type workspaceBindingArgs struct {
 
 // The set of arguments for constructing a WorkspaceBinding resource.
 type WorkspaceBindingArgs struct {
-	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+	// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securableType` is `catalog`. For `storageCredential`, `externalLocation`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
 	BindingType pulumi.StringPtrInput
 	// Deprecated: Please use 'securable_name' and 'securable_type instead.
 	CatalogName pulumi.StringPtrInput
@@ -262,7 +262,7 @@ func (o WorkspaceBindingOutput) ToWorkspaceBindingOutputWithContext(ctx context.
 	return o
 }
 
-// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+// Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securableType` is `catalog`. For `storageCredential`, `externalLocation`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
 func (o WorkspaceBindingOutput) BindingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceBinding) pulumi.StringPtrOutput { return v.BindingType }).(pulumi.StringPtrOutput)
 }
