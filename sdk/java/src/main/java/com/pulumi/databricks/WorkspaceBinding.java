@@ -77,14 +77,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/workspaceBinding:WorkspaceBinding")
 public class WorkspaceBinding extends com.pulumi.resources.CustomResource {
     /**
-     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securableType` is `catalog`. For `storageCredential`, `externalLocation`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
      * 
      */
     @Export(name="bindingType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bindingType;
 
     /**
-     * @return Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+     * @return Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securableType` is `catalog`. For `storageCredential`, `externalLocation`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
      * 
      */
     public Output<Optional<String>> bindingType() {

@@ -68,7 +68,7 @@ export class WorkspaceBinding extends pulumi.CustomResource {
     }
 
     /**
-     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securableType` is `catalog`. For `storageCredential`, `externalLocation`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
      */
     declare public readonly bindingType: pulumi.Output<string | undefined>;
     /**
@@ -133,7 +133,7 @@ export class WorkspaceBinding extends pulumi.CustomResource {
  */
 export interface WorkspaceBindingState {
     /**
-     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securableType` is `catalog`. For `storageCredential`, `externalLocation`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
      */
     bindingType?: pulumi.Input<string | undefined>;
     /**
@@ -163,7 +163,7 @@ export interface WorkspaceBindingState {
  */
 export interface WorkspaceBindingArgs {
     /**
-     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`.
+     * Binding mode. Default to `BINDING_TYPE_READ_WRITE`. Possible values are `BINDING_TYPE_READ_ONLY`, `BINDING_TYPE_READ_WRITE`. Note: `BINDING_TYPE_READ_ONLY` is only supported when `securableType` is `catalog`. For `storageCredential`, `externalLocation`, and `credential`, only `BINDING_TYPE_READ_WRITE` is supported.
      */
     bindingType?: pulumi.Input<string | undefined>;
     /**
