@@ -9,6 +9,9 @@ env:
   DATABRICKS_HOST: https://accounts.cloud.databricks.com
 providerDefaultBranch: main
 makeTemplate: bridged
+# TestNoDebugLogsOnStartup loads the built provider plugin from ./bin, so the
+# fanout test_provider job must build the provider first. See pulumi/ci-mgmt#2336.
+testProviderNeedsProviderBinary: true
 allowMissingDocs: true
 pulumiConvert: 1
 registryDocs: true
