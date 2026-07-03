@@ -1545,7 +1545,16 @@
             },
             "databricks_environments_workspace_base_environment": {
                 "current": "databricks:index/environmentsWorkspaceBaseEnvironment:EnvironmentsWorkspaceBaseEnvironment",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "spec": {
+                        "fields": {
+                            "dependencies": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
             },
             "databricks_external_location": {
                 "current": "databricks:index/externalLocation:ExternalLocation",
@@ -2400,6 +2409,23 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "ai_runtime_task": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "deployments": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "compute": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "alert_task": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -2485,6 +2511,23 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "ai_runtime_task": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "deployments": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "compute": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "alert_task": {
                                                             "maxItemsOne": true,
                                                             "elem": {
@@ -3748,6 +3791,16 @@
                     },
                     "tags": {
                         "maxItemsOne": false
+                    },
+                    "telemetry_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "inference_table_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -5031,6 +5084,41 @@
             "databricks_postgres_catalog": {
                 "current": "databricks:index/postgresCatalog:PostgresCatalog",
                 "majorVersion": 1
+            },
+            "databricks_postgres_data_api": {
+                "current": "databricks:index/postgresDataApi:PostgresDataApi",
+                "majorVersion": 1,
+                "fields": {
+                    "spec": {
+                        "fields": {
+                            "db_extra_search_path": {
+                                "maxItemsOne": false
+                            },
+                            "db_schemas": {
+                                "maxItemsOne": false
+                            },
+                            "server_cors_allowed_origins": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "status": {
+                        "fields": {
+                            "available_schemas": {
+                                "maxItemsOne": false
+                            },
+                            "db_extra_search_path": {
+                                "maxItemsOne": false
+                            },
+                            "db_schemas": {
+                                "maxItemsOne": false
+                            },
+                            "server_cors_allowed_origins": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
             },
             "databricks_postgres_database": {
                 "current": "databricks:index/postgresDatabase:PostgresDatabase",
@@ -8429,14 +8517,34 @@
             },
             "databricks_environments_workspace_base_environment": {
                 "current": "databricks:index/getEnvironmentsWorkspaceBaseEnvironment:getEnvironmentsWorkspaceBaseEnvironment",
-                "majorVersion": 1
+                "majorVersion": 1,
+                "fields": {
+                    "spec": {
+                        "fields": {
+                            "dependencies": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
             },
             "databricks_environments_workspace_base_environments": {
                 "current": "databricks:index/getEnvironmentsWorkspaceBaseEnvironments:getEnvironmentsWorkspaceBaseEnvironments",
                 "majorVersion": 1,
                 "fields": {
                     "workspace_base_environments": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "spec": {
+                                    "fields": {
+                                        "dependencies": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -10307,6 +10415,41 @@
                 "current": "databricks:index/getPostgresCatalog:getPostgresCatalog",
                 "majorVersion": 1
             },
+            "databricks_postgres_data_api": {
+                "current": "databricks:index/getPostgresDataApi:getPostgresDataApi",
+                "majorVersion": 1,
+                "fields": {
+                    "spec": {
+                        "fields": {
+                            "db_extra_search_path": {
+                                "maxItemsOne": false
+                            },
+                            "db_schemas": {
+                                "maxItemsOne": false
+                            },
+                            "server_cors_allowed_origins": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "status": {
+                        "fields": {
+                            "available_schemas": {
+                                "maxItemsOne": false
+                            },
+                            "db_extra_search_path": {
+                                "maxItemsOne": false
+                            },
+                            "db_schemas": {
+                                "maxItemsOne": false
+                            },
+                            "server_cors_allowed_origins": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
             "databricks_postgres_database": {
                 "current": "databricks:index/getPostgresDatabase:getPostgresDatabase",
                 "majorVersion": 1
@@ -10835,6 +10978,16 @@
                                 },
                                 "tags": {
                                     "maxItemsOne": false
+                                },
+                                "telemetry_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "inference_table_config": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -11464,6 +11617,11 @@
                     "kind": "missing"
                 }
             },
+            "databricks_postgres_data_api": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
             "databricks_postgres_database": {
                 "computeID": {
                     "kind": "missing"
@@ -11688,6 +11846,7 @@
             "databricks:index/policyInfo:PolicyInfo": 1,
             "databricks:index/postgresBranch:PostgresBranch": 1,
             "databricks:index/postgresCatalog:PostgresCatalog": 1,
+            "databricks:index/postgresDataApi:PostgresDataApi": 1,
             "databricks:index/postgresDatabase:PostgresDatabase": 1,
             "databricks:index/postgresEndpoint:PostgresEndpoint": 1,
             "databricks:index/postgresProject:PostgresProject": 1,
@@ -11844,6 +12003,7 @@
             "databricks:index/getPostgresBranch:getPostgresBranch": 1,
             "databricks:index/getPostgresBranches:getPostgresBranches": 1,
             "databricks:index/getPostgresCatalog:getPostgresCatalog": 1,
+            "databricks:index/getPostgresDataApi:getPostgresDataApi": 1,
             "databricks:index/getPostgresDatabase:getPostgresDatabase": 1,
             "databricks:index/getPostgresDatabases:getPostgresDatabases": 1,
             "databricks:index/getPostgresEndpoint:getPostgresEndpoint": 1,
@@ -15088,6 +15248,9 @@
             "databricks_postgres_catalog": [
                 "provider_config.workspace_id"
             ],
+            "databricks_postgres_data_api": [
+                "provider_config.workspace_id"
+            ],
             "databricks_postgres_database": [
                 "provider_config.workspace_id"
             ],
@@ -15509,6 +15672,9 @@
                 "provider_config.workspace_id"
             ],
             "databricks_postgres_catalog": [
+                "provider_config.workspace_id"
+            ],
+            "databricks_postgres_data_api": [
                 "provider_config.workspace_id"
             ],
             "databricks_postgres_database": [
