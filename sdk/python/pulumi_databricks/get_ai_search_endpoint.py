@@ -261,7 +261,22 @@ def get_ai_search_endpoint(name: Optional[_builtins.str] = None,
                            provider_config: Optional[Union['GetAiSearchEndpointProviderConfigArgs', 'GetAiSearchEndpointProviderConfigArgsDict']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiSearchEndpointResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+
+    This data source can be used to get a single AI Search endpoint by name.
+
+    ## Example Usage
+
+    # Example: AI Search Endpoint Datasource (Singular)
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    example = databricks.get_ai_search_endpoint(name="example-ai-search-endpoint")
+    ```
 
 
     :param _builtins.str name: Name of the AI Search endpoint. Server-assigned full resource path
@@ -299,7 +314,22 @@ def get_ai_search_endpoint_output(name: pulumi.Input[Optional[_builtins.str]] = 
                                   provider_config: pulumi.Input[Optional[Optional[Union['GetAiSearchEndpointProviderConfigArgs', 'GetAiSearchEndpointProviderConfigArgsDict']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchEndpointResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+
+    This data source can be used to get a single AI Search endpoint by name.
+
+    ## Example Usage
+
+    # Example: AI Search Endpoint Datasource (Singular)
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    example = databricks.get_ai_search_endpoint(name="example-ai-search-endpoint")
+    ```
 
 
     :param _builtins.str name: Name of the AI Search endpoint. Server-assigned full resource path

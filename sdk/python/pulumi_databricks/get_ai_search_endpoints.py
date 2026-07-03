@@ -92,7 +92,22 @@ def get_ai_search_endpoints(page_size: Optional[_builtins.int] = None,
                             provider_config: Optional[Union['GetAiSearchEndpointsProviderConfigArgs', 'GetAiSearchEndpointsProviderConfigArgsDict']] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiSearchEndpointsResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+
+    This data source can be used to fetch the list of AI Search endpoints in a workspace.
+
+    ## Example Usage
+
+    # Example: AI Search Endpoint Datasource (Plural)
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_ai_search_endpoints()
+    ```
 
 
     :param _builtins.int page_size: Best-effort upper bound on the number of results to return. Honored as an upper
@@ -120,7 +135,22 @@ def get_ai_search_endpoints_output(page_size: pulumi.Input[Optional[Optional[_bu
                                    provider_config: pulumi.Input[Optional[Optional[Union['GetAiSearchEndpointsProviderConfigArgs', 'GetAiSearchEndpointsProviderConfigArgsDict']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchEndpointsResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+
+    This data source can be used to fetch the list of AI Search endpoints in a workspace.
+
+    ## Example Usage
+
+    # Example: AI Search Endpoint Datasource (Plural)
+
+    ```python
+    import pulumi
+    import pulumi_databricks as databricks
+
+    all = databricks.get_ai_search_endpoints()
+    ```
 
 
     :param _builtins.int page_size: Best-effort upper bound on the number of results to return. Honored as an upper

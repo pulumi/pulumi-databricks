@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class DataClassificationCatalogConfigIncludedSchemas {
+    /**
+     * @return Schema names, each relative to the parent catalog. Must not be empty
+     * 
+     */
     private List<String> names;
 
     private DataClassificationCatalogConfigIncludedSchemas() {}
+    /**
+     * @return Schema names, each relative to the parent catalog. Must not be empty
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

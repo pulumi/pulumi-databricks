@@ -16,6 +16,7 @@ import com.pulumi.databricks.outputs.ModelServingEmailNotifications;
 import com.pulumi.databricks.outputs.ModelServingProviderConfig;
 import com.pulumi.databricks.outputs.ModelServingRateLimit;
 import com.pulumi.databricks.outputs.ModelServingTag;
+import com.pulumi.databricks.outputs.ModelServingTelemetryConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -428,6 +429,12 @@ public class ModelServing extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<ModelServingTag>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    @Export(name="telemetryConfig", refs={ModelServingTelemetryConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ModelServingTelemetryConfig> telemetryConfig;
+
+    public Output<Optional<ModelServingTelemetryConfig>> telemetryConfig() {
+        return Codegen.optional(this.telemetryConfig);
     }
 
     /**

@@ -183,6 +183,9 @@ type PostgresDatabase struct {
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresDatabaseProviderConfigOutput `pulumi:"providerConfig"`
+	// If true, update the database if it already exists instead of returning an
+	// error
+	ReplaceExisting pulumi.BoolPtrOutput `pulumi:"replaceExisting"`
 	// The desired state of the Database
 	Spec PostgresDatabaseSpecOutput `pulumi:"spec"`
 	// (DatabaseDatabaseStatus) - The observed state of the Database
@@ -236,6 +239,9 @@ type postgresDatabaseState struct {
 	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresDatabaseProviderConfig `pulumi:"providerConfig"`
+	// If true, update the database if it already exists instead of returning an
+	// error
+	ReplaceExisting *bool `pulumi:"replaceExisting"`
 	// The desired state of the Database
 	Spec *PostgresDatabaseSpec `pulumi:"spec"`
 	// (DatabaseDatabaseStatus) - The observed state of the Database
@@ -257,6 +263,9 @@ type PostgresDatabaseState struct {
 	Parent pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresDatabaseProviderConfigPtrInput
+	// If true, update the database if it already exists instead of returning an
+	// error
+	ReplaceExisting pulumi.BoolPtrInput
 	// The desired state of the Database
 	Spec PostgresDatabaseSpecPtrInput
 	// (DatabaseDatabaseStatus) - The observed state of the Database
@@ -277,6 +286,9 @@ type postgresDatabaseArgs struct {
 	Parent string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresDatabaseProviderConfig `pulumi:"providerConfig"`
+	// If true, update the database if it already exists instead of returning an
+	// error
+	ReplaceExisting *bool `pulumi:"replaceExisting"`
 	// The desired state of the Database
 	Spec *PostgresDatabaseSpec `pulumi:"spec"`
 }
@@ -290,6 +302,9 @@ type PostgresDatabaseArgs struct {
 	Parent pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresDatabaseProviderConfigPtrInput
+	// If true, update the database if it already exists instead of returning an
+	// error
+	ReplaceExisting pulumi.BoolPtrInput
 	// The desired state of the Database
 	Spec PostgresDatabaseSpecPtrInput
 }
@@ -406,6 +421,12 @@ func (o PostgresDatabaseOutput) Parent() pulumi.StringOutput {
 // Configure the provider for management through account provider.
 func (o PostgresDatabaseOutput) ProviderConfig() PostgresDatabaseProviderConfigOutput {
 	return o.ApplyT(func(v *PostgresDatabase) PostgresDatabaseProviderConfigOutput { return v.ProviderConfig }).(PostgresDatabaseProviderConfigOutput)
+}
+
+// If true, update the database if it already exists instead of returning an
+// error
+func (o PostgresDatabaseOutput) ReplaceExisting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PostgresDatabase) pulumi.BoolPtrOutput { return v.ReplaceExisting }).(pulumi.BoolPtrOutput)
 }
 
 // The desired state of the Database

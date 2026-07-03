@@ -289,6 +289,9 @@ namespace Pulumi.Databricks
         [Output("tags")]
         public Output<ImmutableArray<Outputs.ModelServingTag>> Tags { get; private set; } = null!;
 
+        [Output("telemetryConfig")]
+        public Output<Outputs.ModelServingTelemetryConfig?> TelemetryConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ModelServing resource with the given unique name, arguments, and options.
@@ -408,6 +411,9 @@ namespace Pulumi.Databricks
             set => _tags = value;
         }
 
+        [Input("telemetryConfig")]
+        public Input<Inputs.ModelServingTelemetryConfigArgs>? TelemetryConfig { get; set; }
+
         public ModelServingArgs()
         {
         }
@@ -500,6 +506,9 @@ namespace Pulumi.Databricks
             get => _tags ?? (_tags = new InputList<Inputs.ModelServingTagGetArgs>());
             set => _tags = value;
         }
+
+        [Input("telemetryConfig")]
+        public Input<Inputs.ModelServingTelemetryConfigGetArgs>? TelemetryConfig { get; set; }
 
         public ModelServingState()
         {

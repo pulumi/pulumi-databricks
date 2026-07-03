@@ -168,7 +168,7 @@ namespace Pulumi.Databricks
         public string ObjectId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the monitored object. Can be one of the following: `Schema`or `Table`
+        /// The type of the monitored object. Can be one of the following: `Schema` or `Table`
         /// </summary>
         [Input("objectType", required: true)]
         public string ObjectType { get; set; } = null!;
@@ -208,7 +208,7 @@ namespace Pulumi.Databricks
         public Input<string> ObjectId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the monitored object. Can be one of the following: `Schema`or `Table`
+        /// The type of the monitored object. Can be one of the following: `Schema` or `Table`
         /// </summary>
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
@@ -252,7 +252,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string ObjectId;
         /// <summary>
-        /// (string) - The type of the monitored object. Can be one of the following: `Schema`or `Table`
+        /// (string) - The type of the monitored object. Can be one of the following: `Schema` or `Table`
         /// </summary>
         public readonly string ObjectType;
         public readonly Outputs.GetDataQualityRefreshProviderConfigResult? ProviderConfig;

@@ -11,6 +11,7 @@ import com.pulumi.databricks.EnvironmentsWorkspaceBaseEnvironmentArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.EnvironmentsWorkspaceBaseEnvironmentState;
 import com.pulumi.databricks.outputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig;
+import com.pulumi.databricks.outputs.EnvironmentsWorkspaceBaseEnvironmentSpec;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -252,6 +253,20 @@ public class EnvironmentsWorkspaceBaseEnvironment extends com.pulumi.resources.C
      */
     public Output<EnvironmentsWorkspaceBaseEnvironmentProviderConfig> providerConfig() {
         return this.providerConfig;
+    }
+    /**
+     * (EnvironmentSpec) - The environment specification containing version and dependencies
+     * 
+     */
+    @Export(name="spec", refs={EnvironmentsWorkspaceBaseEnvironmentSpec.class}, tree="[0]")
+    private Output<EnvironmentsWorkspaceBaseEnvironmentSpec> spec;
+
+    /**
+     * @return (EnvironmentSpec) - The environment specification containing version and dependencies
+     * 
+     */
+    public Output<EnvironmentsWorkspaceBaseEnvironmentSpec> spec() {
+        return this.spec;
     }
     /**
      * (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`

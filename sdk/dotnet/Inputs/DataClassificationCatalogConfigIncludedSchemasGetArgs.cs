@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("names", required: true)]
         private InputList<string>? _names;
+
+        /// <summary>
+        /// Schema names, each relative to the parent catalog. Must not be empty
+        /// </summary>
         public InputList<string> Names
         {
             get => _names ?? (_names = new InputList<string>());

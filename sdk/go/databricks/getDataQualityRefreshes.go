@@ -96,7 +96,7 @@ type GetDataQualityRefreshesResult struct {
 	Id string `pulumi:"id"`
 	// (string) - The UUID of the request object. It is `schemaId` for `schema`, and `tableId` for `table`.
 	ObjectId string `pulumi:"objectId"`
-	// (string) - The type of the monitored object. Can be one of the following: `schema`or `table`
+	// (string) - The type of the monitored object. Can be one of the following: `schema` or `table`
 	ObjectType     string                                 `pulumi:"objectType"`
 	PageSize       *int                                   `pulumi:"pageSize"`
 	ProviderConfig *GetDataQualityRefreshesProviderConfig `pulumi:"providerConfig"`
@@ -160,7 +160,7 @@ func (o GetDataQualityRefreshesResultOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataQualityRefreshesResult) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// (string) - The type of the monitored object. Can be one of the following: `schema`or `table`
+// (string) - The type of the monitored object. Can be one of the following: `schema` or `table`
 func (o GetDataQualityRefreshesResultOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataQualityRefreshesResult) string { return v.ObjectType }).(pulumi.StringOutput)
 }

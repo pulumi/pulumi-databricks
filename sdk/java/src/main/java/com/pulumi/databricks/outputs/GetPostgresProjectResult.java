@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetPostgresProjectInitialBranchSpec;
 import com.pulumi.databricks.outputs.GetPostgresProjectInitialEndpointSpec;
 import com.pulumi.databricks.outputs.GetPostgresProjectProviderConfig;
 import com.pulumi.databricks.outputs.GetPostgresProjectSpec;
@@ -32,6 +33,13 @@ public final class GetPostgresProjectResult {
      * 
      */
     private String id;
+    /**
+     * @return (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
+     * Allows overriding branch protection. These settings only apply at creation time
+     * and do not affect resources created after project creation
+     * 
+     */
+    private GetPostgresProjectInitialBranchSpec initialBranchSpec;
     /**
      * @return (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
@@ -101,6 +109,15 @@ public final class GetPostgresProjectResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
+     * Allows overriding branch protection. These settings only apply at creation time
+     * and do not affect resources created after project creation
+     * 
+     */
+    public GetPostgresProjectInitialBranchSpec initialBranchSpec() {
+        return this.initialBranchSpec;
     }
     /**
      * @return (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
@@ -179,6 +196,7 @@ public final class GetPostgresProjectResult {
         private String createTime;
         private String deleteTime;
         private String id;
+        private GetPostgresProjectInitialBranchSpec initialBranchSpec;
         private GetPostgresProjectInitialEndpointSpec initialEndpointSpec;
         private String name;
         private String projectId;
@@ -194,6 +212,7 @@ public final class GetPostgresProjectResult {
     	      this.createTime = defaults.createTime;
     	      this.deleteTime = defaults.deleteTime;
     	      this.id = defaults.id;
+    	      this.initialBranchSpec = defaults.initialBranchSpec;
     	      this.initialEndpointSpec = defaults.initialEndpointSpec;
     	      this.name = defaults.name;
     	      this.projectId = defaults.projectId;
@@ -227,6 +246,14 @@ public final class GetPostgresProjectResult {
               throw new MissingRequiredPropertyException("GetPostgresProjectResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder initialBranchSpec(GetPostgresProjectInitialBranchSpec initialBranchSpec) {
+            if (initialBranchSpec == null) {
+              throw new MissingRequiredPropertyException("GetPostgresProjectResult", "initialBranchSpec");
+            }
+            this.initialBranchSpec = initialBranchSpec;
             return this;
         }
         @CustomType.Setter
@@ -304,6 +331,7 @@ public final class GetPostgresProjectResult {
             _resultValue.createTime = createTime;
             _resultValue.deleteTime = deleteTime;
             _resultValue.id = id;
+            _resultValue.initialBranchSpec = initialBranchSpec;
             _resultValue.initialEndpointSpec = initialEndpointSpec;
             _resultValue.name = name;
             _resultValue.projectId = projectId;

@@ -11,6 +11,7 @@ import com.pulumi.databricks.inputs.ModelServingEmailNotificationsArgs;
 import com.pulumi.databricks.inputs.ModelServingProviderConfigArgs;
 import com.pulumi.databricks.inputs.ModelServingRateLimitArgs;
 import com.pulumi.databricks.inputs.ModelServingTagArgs;
+import com.pulumi.databricks.inputs.ModelServingTelemetryConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -181,6 +182,13 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    @Import(name="telemetryConfig")
+    private @Nullable Output<ModelServingTelemetryConfigArgs> telemetryConfig;
+
+    public Optional<Output<ModelServingTelemetryConfigArgs>> telemetryConfig() {
+        return Optional.ofNullable(this.telemetryConfig);
+    }
+
     private ModelServingArgs() {}
 
     private ModelServingArgs(ModelServingArgs $) {
@@ -194,6 +202,7 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
         this.rateLimits = $.rateLimits;
         this.routeOptimized = $.routeOptimized;
         this.tags = $.tags;
+        this.telemetryConfig = $.telemetryConfig;
     }
 
     public static Builder builder() {
@@ -454,6 +463,15 @@ public final class ModelServingArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(ModelServingTagArgs... tags) {
             return tags(List.of(tags));
+        }
+
+        public Builder telemetryConfig(@Nullable Output<ModelServingTelemetryConfigArgs> telemetryConfig) {
+            $.telemetryConfig = telemetryConfig;
+            return this;
+        }
+
+        public Builder telemetryConfig(ModelServingTelemetryConfigArgs telemetryConfig) {
+            return telemetryConfig(Output.of(telemetryConfig));
         }
 
         public ModelServingArgs build() {

@@ -166,6 +166,17 @@ export class PostgresRole extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.PostgresRoleProviderConfig>;
     /**
+     * If true, update the role if it already exists instead of returning an
+     * error.
+     *
+     * When the role already exists, the provided `role` spec fully replaces the
+     * existing one: `membershipRoles` is overwritten, not merged. Leaving
+     * `membershipRoles` empty clears all of the role's existing memberships,
+     * including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+     * memberships when using this field
+     */
+    declare public readonly replaceExisting: pulumi.Output<boolean | undefined>;
+    /**
      * (string) - Part of the resource name
      */
     declare public readonly roleId: pulumi.Output<string>;
@@ -199,6 +210,7 @@ export class PostgresRole extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
             resourceInputs["providerConfig"] = state?.providerConfig;
+            resourceInputs["replaceExisting"] = state?.replaceExisting;
             resourceInputs["roleId"] = state?.roleId;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["status"] = state?.status;
@@ -210,6 +222,7 @@ export class PostgresRole extends pulumi.CustomResource {
             }
             resourceInputs["parent"] = args?.parent;
             resourceInputs["providerConfig"] = args?.providerConfig;
+            resourceInputs["replaceExisting"] = args?.replaceExisting;
             resourceInputs["roleId"] = args?.roleId;
             resourceInputs["spec"] = args?.spec;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -245,6 +258,17 @@ export interface PostgresRoleState {
      */
     providerConfig?: pulumi.Input<inputs.PostgresRoleProviderConfig | undefined>;
     /**
+     * If true, update the role if it already exists instead of returning an
+     * error.
+     *
+     * When the role already exists, the provided `role` spec fully replaces the
+     * existing one: `membershipRoles` is overwritten, not merged. Leaving
+     * `membershipRoles` empty clears all of the role's existing memberships,
+     * including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+     * memberships when using this field
+     */
+    replaceExisting?: pulumi.Input<boolean | undefined>;
+    /**
      * (string) - Part of the resource name
      */
     roleId?: pulumi.Input<string | undefined>;
@@ -275,6 +299,17 @@ export interface PostgresRoleArgs {
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.PostgresRoleProviderConfig | undefined>;
+    /**
+     * If true, update the role if it already exists instead of returning an
+     * error.
+     *
+     * When the role already exists, the provided `role` spec fully replaces the
+     * existing one: `membershipRoles` is overwritten, not merged. Leaving
+     * `membershipRoles` empty clears all of the role's existing memberships,
+     * including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+     * memberships when using this field
+     */
+    replaceExisting?: pulumi.Input<boolean | undefined>;
     /**
      * (string) - Part of the resource name
      */

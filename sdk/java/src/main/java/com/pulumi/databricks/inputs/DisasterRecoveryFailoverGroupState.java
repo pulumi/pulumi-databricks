@@ -51,16 +51,14 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
     }
 
     /**
-     * Opaque version string for optimistic locking. Server-generated, returned in responses.
-     * Must be provided on Update requests to prevent concurrent modifications
+     * (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return Opaque version string for optimistic locking. Server-generated, returned in responses.
-     * Must be provided on Update requests to prevent concurrent modifications
+     * @return (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
      * 
      */
     public Optional<Output<String>> etag() {
@@ -304,8 +302,7 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         }
 
         /**
-         * @param etag Opaque version string for optimistic locking. Server-generated, returned in responses.
-         * Must be provided on Update requests to prevent concurrent modifications
+         * @param etag (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
          * 
          * @return builder
          * 
@@ -316,8 +313,7 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         }
 
         /**
-         * @param etag Opaque version string for optimistic locking. Server-generated, returned in responses.
-         * Must be provided on Update requests to prevent concurrent modifications
+         * @param etag (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
          * 
          * @return builder
          * 

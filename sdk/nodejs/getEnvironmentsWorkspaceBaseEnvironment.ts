@@ -95,6 +95,10 @@ export interface GetEnvironmentsWorkspaceBaseEnvironmentResult {
     readonly name: string;
     readonly providerConfig?: outputs.GetEnvironmentsWorkspaceBaseEnvironmentProviderConfig;
     /**
+     * (EnvironmentSpec) - The environment specification containing version and dependencies
+     */
+    readonly spec: outputs.GetEnvironmentsWorkspaceBaseEnvironmentSpec;
+    /**
      * (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
      */
     readonly status: string;

@@ -81,10 +81,9 @@ export class DisasterRecoveryFailoverGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly effectivePrimaryRegion: pulumi.Output<string>;
     /**
-     * Opaque version string for optimistic locking. Server-generated, returned in responses.
-     * Must be provided on Update requests to prevent concurrent modifications
+     * (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
      */
-    declare public readonly etag: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * Client-provided identifier for the failover group. Used to construct the
      * resource name as {parent}/failover-groups/{failover_group_id}
@@ -172,7 +171,6 @@ export class DisasterRecoveryFailoverGroup extends pulumi.CustomResource {
             if (args?.workspaceSets === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workspaceSets'");
             }
-            resourceInputs["etag"] = args?.etag;
             resourceInputs["failoverGroupId"] = args?.failoverGroupId;
             resourceInputs["initialPrimaryRegion"] = args?.initialPrimaryRegion;
             resourceInputs["parent"] = args?.parent;
@@ -181,6 +179,7 @@ export class DisasterRecoveryFailoverGroup extends pulumi.CustomResource {
             resourceInputs["workspaceSets"] = args?.workspaceSets;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectivePrimaryRegion"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["replicationPoint"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -205,8 +204,7 @@ export interface DisasterRecoveryFailoverGroupState {
      */
     effectivePrimaryRegion?: pulumi.Input<string | undefined>;
     /**
-     * Opaque version string for optimistic locking. Server-generated, returned in responses.
-     * Must be provided on Update requests to prevent concurrent modifications
+     * (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
      */
     etag?: pulumi.Input<string | undefined>;
     /**
@@ -258,11 +256,6 @@ export interface DisasterRecoveryFailoverGroupState {
  * The set of arguments for constructing a DisasterRecoveryFailoverGroup resource.
  */
 export interface DisasterRecoveryFailoverGroupArgs {
-    /**
-     * Opaque version string for optimistic locking. Server-generated, returned in responses.
-     * Must be provided on Update requests to prevent concurrent modifications
-     */
-    etag?: pulumi.Input<string | undefined>;
     /**
      * Client-provided identifier for the failover group. Used to construct the
      * resource name as {parent}/failover-groups/{failover_group_id}

@@ -82,8 +82,10 @@ type LookupDataClassificationCatalogConfigResult struct {
 	AutoTagConfigs []GetDataClassificationCatalogConfigAutoTagConfig `pulumi:"autoTagConfigs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// (CatalogConfigSchemaNames) - Schemas to include in the scan. Empty list is not supported as it results in a no-op
-	// scan. If `includedSchemas` is not set, all schemas are scanned
+	// (CatalogConfigSchemaNames) - Schemas to include in the scan, each named relative to the parent catalog.
+	// If specified, only listed schemas will be scanned.
+	// Mutually exclusive with `excludedSchemas`: only one may be set per request.
+	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 	IncludedSchemas GetDataClassificationCatalogConfigIncludedSchemas `pulumi:"includedSchemas"`
 	// (string) - Resource name in the format: catalogs/{catalog_name}/config
 	Name           string                                            `pulumi:"name"`
@@ -139,8 +141,10 @@ func (o LookupDataClassificationCatalogConfigResultOutput) Id() pulumi.StringOut
 	return o.ApplyT(func(v LookupDataClassificationCatalogConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (CatalogConfigSchemaNames) - Schemas to include in the scan. Empty list is not supported as it results in a no-op
-// scan. If `includedSchemas` is not set, all schemas are scanned
+// (CatalogConfigSchemaNames) - Schemas to include in the scan, each named relative to the parent catalog.
+// If specified, only listed schemas will be scanned.
+// Mutually exclusive with `excludedSchemas`: only one may be set per request.
+// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 func (o LookupDataClassificationCatalogConfigResultOutput) IncludedSchemas() GetDataClassificationCatalogConfigIncludedSchemasOutput {
 	return o.ApplyT(func(v LookupDataClassificationCatalogConfigResult) GetDataClassificationCatalogConfigIncludedSchemas {
 		return v.IncludedSchemas

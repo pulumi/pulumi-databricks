@@ -14,6 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class PipelineClusterAzureAttributes
     {
         public readonly string? Availability;
+        public readonly string? CapacityReservationGroup;
         public readonly int? FirstOnDemand;
         public readonly Outputs.PipelineClusterAzureAttributesLogAnalyticsInfo? LogAnalyticsInfo;
         public readonly double? SpotBidMaxPrice;
@@ -22,6 +23,8 @@ namespace Pulumi.Databricks.Outputs
         private PipelineClusterAzureAttributes(
             string? availability,
 
+            string? capacityReservationGroup,
+
             int? firstOnDemand,
 
             Outputs.PipelineClusterAzureAttributesLogAnalyticsInfo? logAnalyticsInfo,
@@ -29,6 +32,7 @@ namespace Pulumi.Databricks.Outputs
             double? spotBidMaxPrice)
         {
             Availability = availability;
+            CapacityReservationGroup = capacityReservationGroup;
             FirstOnDemand = firstOnDemand;
             LogAnalyticsInfo = logAnalyticsInfo;
             SpotBidMaxPrice = spotBidMaxPrice;

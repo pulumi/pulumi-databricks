@@ -133,6 +133,12 @@ namespace Pulumi.Databricks
         public Output<Outputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
+        /// (EnvironmentSpec) - The environment specification containing version and dependencies
+        /// </summary>
+        [Output("spec")]
+        public Output<Outputs.EnvironmentsWorkspaceBaseEnvironmentSpec> Spec { get; private set; } = null!;
+
+        /// <summary>
         /// (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
         /// </summary>
         [Output("status")]
@@ -301,6 +307,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("providerConfig")]
         public Input<Inputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfigGetArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
+        /// (EnvironmentSpec) - The environment specification containing version and dependencies
+        /// </summary>
+        [Input("spec")]
+        public Input<Inputs.EnvironmentsWorkspaceBaseEnvironmentSpecGetArgs>? Spec { get; set; }
 
         /// <summary>
         /// (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`

@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.GetPostgresProjectsProjectInitialBranchSpec;
 import com.pulumi.databricks.outputs.GetPostgresProjectsProjectInitialEndpointSpec;
 import com.pulumi.databricks.outputs.GetPostgresProjectsProjectProviderConfig;
 import com.pulumi.databricks.outputs.GetPostgresProjectsProjectSpec;
@@ -27,6 +28,13 @@ public final class GetPostgresProjectsProject {
      * 
      */
     private String deleteTime;
+    /**
+     * @return (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
+     * Allows overriding branch protection. These settings only apply at creation time
+     * and do not affect resources created after project creation
+     * 
+     */
+    private GetPostgresProjectsProjectInitialBranchSpec initialBranchSpec;
     /**
      * @return (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
@@ -93,6 +101,15 @@ public final class GetPostgresProjectsProject {
      */
     public String deleteTime() {
         return this.deleteTime;
+    }
+    /**
+     * @return (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
+     * Allows overriding branch protection. These settings only apply at creation time
+     * and do not affect resources created after project creation
+     * 
+     */
+    public GetPostgresProjectsProjectInitialBranchSpec initialBranchSpec() {
+        return this.initialBranchSpec;
     }
     /**
      * @return (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
@@ -174,6 +191,7 @@ public final class GetPostgresProjectsProject {
     public static final class Builder {
         private String createTime;
         private String deleteTime;
+        private GetPostgresProjectsProjectInitialBranchSpec initialBranchSpec;
         private GetPostgresProjectsProjectInitialEndpointSpec initialEndpointSpec;
         private String name;
         private String projectId;
@@ -188,6 +206,7 @@ public final class GetPostgresProjectsProject {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
     	      this.deleteTime = defaults.deleteTime;
+    	      this.initialBranchSpec = defaults.initialBranchSpec;
     	      this.initialEndpointSpec = defaults.initialEndpointSpec;
     	      this.name = defaults.name;
     	      this.projectId = defaults.projectId;
@@ -213,6 +232,14 @@ public final class GetPostgresProjectsProject {
               throw new MissingRequiredPropertyException("GetPostgresProjectsProject", "deleteTime");
             }
             this.deleteTime = deleteTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder initialBranchSpec(GetPostgresProjectsProjectInitialBranchSpec initialBranchSpec) {
+            if (initialBranchSpec == null) {
+              throw new MissingRequiredPropertyException("GetPostgresProjectsProject", "initialBranchSpec");
+            }
+            this.initialBranchSpec = initialBranchSpec;
             return this;
         }
         @CustomType.Setter
@@ -289,6 +316,7 @@ public final class GetPostgresProjectsProject {
             final var _resultValue = new GetPostgresProjectsProject();
             _resultValue.createTime = createTime;
             _resultValue.deleteTime = deleteTime;
+            _resultValue.initialBranchSpec = initialBranchSpec;
             _resultValue.initialEndpointSpec = initialEndpointSpec;
             _resultValue.name = name;
             _resultValue.projectId = projectId;

@@ -15,6 +15,8 @@ import * as utilities from "./utilities";
  *
  * The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES="databricks.getVolumes"`.
  *
+ * > **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES="databricks.getVolumes"`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
+ *
  * ## Example Usage
  *
  * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
@@ -94,6 +96,8 @@ export interface GetVolumesResult {
  * ## Plugin Framework Migration
  *
  * The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES="databricks.getVolumes"`.
+ *
+ * > **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES="databricks.getVolumes"`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
  *
  * ## Example Usage
  *

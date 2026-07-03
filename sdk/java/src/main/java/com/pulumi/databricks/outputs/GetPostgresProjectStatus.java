@@ -26,6 +26,11 @@ public final class GetPostgresProjectStatus {
      */
     private String budgetPolicyId;
     /**
+     * @return (string) - The most recent time when any endpoint of this project was active
+     * 
+     */
+    private String computeLastActiveTime;
+    /**
      * @return (list of ProjectCustomTag) - The effective custom tags associated with the project
      * 
      */
@@ -90,6 +95,13 @@ public final class GetPostgresProjectStatus {
      */
     public String budgetPolicyId() {
         return this.budgetPolicyId;
+    }
+    /**
+     * @return (string) - The most recent time when any endpoint of this project was active
+     * 
+     */
+    public String computeLastActiveTime() {
+        return this.computeLastActiveTime;
     }
     /**
      * @return (list of ProjectCustomTag) - The effective custom tags associated with the project
@@ -173,6 +185,7 @@ public final class GetPostgresProjectStatus {
     public static final class Builder {
         private Integer branchLogicalSizeLimitBytes;
         private String budgetPolicyId;
+        private String computeLastActiveTime;
         private List<GetPostgresProjectStatusCustomTag> customTags;
         private String defaultBranch;
         private GetPostgresProjectStatusDefaultEndpointSettings defaultEndpointSettings;
@@ -188,6 +201,7 @@ public final class GetPostgresProjectStatus {
     	      Objects.requireNonNull(defaults);
     	      this.branchLogicalSizeLimitBytes = defaults.branchLogicalSizeLimitBytes;
     	      this.budgetPolicyId = defaults.budgetPolicyId;
+    	      this.computeLastActiveTime = defaults.computeLastActiveTime;
     	      this.customTags = defaults.customTags;
     	      this.defaultBranch = defaults.defaultBranch;
     	      this.defaultEndpointSettings = defaults.defaultEndpointSettings;
@@ -214,6 +228,14 @@ public final class GetPostgresProjectStatus {
               throw new MissingRequiredPropertyException("GetPostgresProjectStatus", "budgetPolicyId");
             }
             this.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder computeLastActiveTime(String computeLastActiveTime) {
+            if (computeLastActiveTime == null) {
+              throw new MissingRequiredPropertyException("GetPostgresProjectStatus", "computeLastActiveTime");
+            }
+            this.computeLastActiveTime = computeLastActiveTime;
             return this;
         }
         @CustomType.Setter
@@ -303,6 +325,7 @@ public final class GetPostgresProjectStatus {
             final var _resultValue = new GetPostgresProjectStatus();
             _resultValue.branchLogicalSizeLimitBytes = branchLogicalSizeLimitBytes;
             _resultValue.budgetPolicyId = budgetPolicyId;
+            _resultValue.computeLastActiveTime = computeLastActiveTime;
             _resultValue.customTags = customTags;
             _resultValue.defaultBranch = defaultBranch;
             _resultValue.defaultEndpointSettings = defaultEndpointSettings;

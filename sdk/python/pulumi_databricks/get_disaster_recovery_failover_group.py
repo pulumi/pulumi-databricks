@@ -86,8 +86,7 @@ class GetDisasterRecoveryFailoverGroupResult:
     @pulumi.getter
     def etag(self) -> _builtins.str:
         """
-        (string) - Opaque version string for optimistic locking. Server-generated, returned in responses.
-        Must be provided on Update requests to prevent concurrent modifications
+        (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
         """
         return pulumi.get(self, "etag")
 

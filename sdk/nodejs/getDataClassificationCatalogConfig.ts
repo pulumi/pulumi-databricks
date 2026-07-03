@@ -70,8 +70,10 @@ export interface GetDataClassificationCatalogConfigResult {
      */
     readonly id: string;
     /**
-     * (CatalogConfigSchemaNames) - Schemas to include in the scan. Empty list is not supported as it results in a no-op
-     * scan. If `includedSchemas` is not set, all schemas are scanned
+     * (CatalogConfigSchemaNames) - Schemas to include in the scan, each named relative to the parent catalog.
+     * If specified, only listed schemas will be scanned.
+     * Mutually exclusive with `excludedSchemas`: only one may be set per request.
+     * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      */
     readonly includedSchemas: outputs.GetDataClassificationCatalogConfigIncludedSchemas;
     /**

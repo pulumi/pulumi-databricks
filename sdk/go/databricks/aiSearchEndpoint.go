@@ -12,7 +12,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+//
+// An AI Search Endpoint represents the compute resources that host AI Search indexes. Endpoints come in different types (for example, `STANDARD` and `STORAGE_OPTIMIZED`) that trade off latency and per-query cost. Indexes are created on an endpoint and served from its compute. This resource is the AIP-conformant replacement for the legacy `VectorSearchEndpoint` resource and is functionally equivalent.
+//
+// ## Example Usage
+//
+// # Example: AI Search Endpoint Resource
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewAiSearchEndpoint(ctx, "this", &databricks.AiSearchEndpointArgs{
+//				EndpointId:   pulumi.String("example-ai-search-endpoint"),
+//				EndpointType: pulumi.String("STANDARD"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type AiSearchEndpoint struct {
 	pulumi.CustomResourceState
 

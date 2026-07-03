@@ -107,6 +107,8 @@ type EnvironmentsWorkspaceBaseEnvironment struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig EnvironmentsWorkspaceBaseEnvironmentProviderConfigOutput `pulumi:"providerConfig"`
+	// (EnvironmentSpec) - The environment specification containing version and dependencies
+	Spec EnvironmentsWorkspaceBaseEnvironmentSpecOutput `pulumi:"spec"`
 	// (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
 	Status pulumi.StringOutput `pulumi:"status"`
 	// (string) - Timestamp when the environment was last updated
@@ -172,6 +174,8 @@ type environmentsWorkspaceBaseEnvironmentState struct {
 	Name *string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *EnvironmentsWorkspaceBaseEnvironmentProviderConfig `pulumi:"providerConfig"`
+	// (EnvironmentSpec) - The environment specification containing version and dependencies
+	Spec *EnvironmentsWorkspaceBaseEnvironmentSpec `pulumi:"spec"`
 	// (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
 	Status *string `pulumi:"status"`
 	// (string) - Timestamp when the environment was last updated
@@ -205,6 +209,8 @@ type EnvironmentsWorkspaceBaseEnvironmentState struct {
 	Name pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig EnvironmentsWorkspaceBaseEnvironmentProviderConfigPtrInput
+	// (EnvironmentSpec) - The environment specification containing version and dependencies
+	Spec EnvironmentsWorkspaceBaseEnvironmentSpecPtrInput
 	// (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
 	Status pulumi.StringPtrInput
 	// (string) - Timestamp when the environment was last updated
@@ -394,6 +400,13 @@ func (o EnvironmentsWorkspaceBaseEnvironmentOutput) ProviderConfig() Environment
 	return o.ApplyT(func(v *EnvironmentsWorkspaceBaseEnvironment) EnvironmentsWorkspaceBaseEnvironmentProviderConfigOutput {
 		return v.ProviderConfig
 	}).(EnvironmentsWorkspaceBaseEnvironmentProviderConfigOutput)
+}
+
+// (EnvironmentSpec) - The environment specification containing version and dependencies
+func (o EnvironmentsWorkspaceBaseEnvironmentOutput) Spec() EnvironmentsWorkspaceBaseEnvironmentSpecOutput {
+	return o.ApplyT(func(v *EnvironmentsWorkspaceBaseEnvironment) EnvironmentsWorkspaceBaseEnvironmentSpecOutput {
+		return v.Spec
+	}).(EnvironmentsWorkspaceBaseEnvironmentSpecOutput)
 }
 
 // (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`

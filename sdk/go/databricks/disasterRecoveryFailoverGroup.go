@@ -72,9 +72,8 @@ type DisasterRecoveryFailoverGroup struct {
 	// (string) - Current effective primary region. Replication flows FROM workspaces in this region.
 	// Changes after a successful failover
 	EffectivePrimaryRegion pulumi.StringOutput `pulumi:"effectivePrimaryRegion"`
-	// Opaque version string for optimistic locking. Server-generated, returned in responses.
-	// Must be provided on Update requests to prevent concurrent modifications
-	Etag pulumi.StringPtrOutput `pulumi:"etag"`
+	// (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Client-provided identifier for the failover group. Used to construct the
 	// resource name as {parent}/failover-groups/{failover_group_id}
 	FailoverGroupId pulumi.StringOutput `pulumi:"failoverGroupId"`
@@ -150,8 +149,7 @@ type disasterRecoveryFailoverGroupState struct {
 	// (string) - Current effective primary region. Replication flows FROM workspaces in this region.
 	// Changes after a successful failover
 	EffectivePrimaryRegion *string `pulumi:"effectivePrimaryRegion"`
-	// Opaque version string for optimistic locking. Server-generated, returned in responses.
-	// Must be provided on Update requests to prevent concurrent modifications
+	// (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
 	Etag *string `pulumi:"etag"`
 	// Client-provided identifier for the failover group. Used to construct the
 	// resource name as {parent}/failover-groups/{failover_group_id}
@@ -184,8 +182,7 @@ type DisasterRecoveryFailoverGroupState struct {
 	// (string) - Current effective primary region. Replication flows FROM workspaces in this region.
 	// Changes after a successful failover
 	EffectivePrimaryRegion pulumi.StringPtrInput
-	// Opaque version string for optimistic locking. Server-generated, returned in responses.
-	// Must be provided on Update requests to prevent concurrent modifications
+	// (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
 	Etag pulumi.StringPtrInput
 	// Client-provided identifier for the failover group. Used to construct the
 	// resource name as {parent}/failover-groups/{failover_group_id}
@@ -217,9 +214,6 @@ func (DisasterRecoveryFailoverGroupState) ElementType() reflect.Type {
 }
 
 type disasterRecoveryFailoverGroupArgs struct {
-	// Opaque version string for optimistic locking. Server-generated, returned in responses.
-	// Must be provided on Update requests to prevent concurrent modifications
-	Etag *string `pulumi:"etag"`
 	// Client-provided identifier for the failover group. Used to construct the
 	// resource name as {parent}/failover-groups/{failover_group_id}
 	FailoverGroupId string `pulumi:"failoverGroupId"`
@@ -238,9 +232,6 @@ type disasterRecoveryFailoverGroupArgs struct {
 
 // The set of arguments for constructing a DisasterRecoveryFailoverGroup resource.
 type DisasterRecoveryFailoverGroupArgs struct {
-	// Opaque version string for optimistic locking. Server-generated, returned in responses.
-	// Must be provided on Update requests to prevent concurrent modifications
-	Etag pulumi.StringPtrInput
 	// Client-provided identifier for the failover group. Used to construct the
 	// resource name as {parent}/failover-groups/{failover_group_id}
 	FailoverGroupId pulumi.StringInput
@@ -355,10 +346,9 @@ func (o DisasterRecoveryFailoverGroupOutput) EffectivePrimaryRegion() pulumi.Str
 	return o.ApplyT(func(v *DisasterRecoveryFailoverGroup) pulumi.StringOutput { return v.EffectivePrimaryRegion }).(pulumi.StringOutput)
 }
 
-// Opaque version string for optimistic locking. Server-generated, returned in responses.
-// Must be provided on Update requests to prevent concurrent modifications
-func (o DisasterRecoveryFailoverGroupOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DisasterRecoveryFailoverGroup) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
+// (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
+func (o DisasterRecoveryFailoverGroupOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *DisasterRecoveryFailoverGroup) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Client-provided identifier for the failover group. Used to construct the

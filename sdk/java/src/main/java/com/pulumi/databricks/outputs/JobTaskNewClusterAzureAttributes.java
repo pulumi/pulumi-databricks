@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class JobTaskNewClusterAzureAttributes {
     private @Nullable String availability;
+    private @Nullable String capacityReservationGroup;
     private @Nullable Integer firstOnDemand;
     private @Nullable JobTaskNewClusterAzureAttributesLogAnalyticsInfo logAnalyticsInfo;
     private @Nullable Double spotBidMaxPrice;
@@ -22,6 +23,9 @@ public final class JobTaskNewClusterAzureAttributes {
     private JobTaskNewClusterAzureAttributes() {}
     public Optional<String> availability() {
         return Optional.ofNullable(this.availability);
+    }
+    public Optional<String> capacityReservationGroup() {
+        return Optional.ofNullable(this.capacityReservationGroup);
     }
     public Optional<Integer> firstOnDemand() {
         return Optional.ofNullable(this.firstOnDemand);
@@ -43,6 +47,7 @@ public final class JobTaskNewClusterAzureAttributes {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String availability;
+        private @Nullable String capacityReservationGroup;
         private @Nullable Integer firstOnDemand;
         private @Nullable JobTaskNewClusterAzureAttributesLogAnalyticsInfo logAnalyticsInfo;
         private @Nullable Double spotBidMaxPrice;
@@ -50,6 +55,7 @@ public final class JobTaskNewClusterAzureAttributes {
         public Builder(JobTaskNewClusterAzureAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
+    	      this.capacityReservationGroup = defaults.capacityReservationGroup;
     	      this.firstOnDemand = defaults.firstOnDemand;
     	      this.logAnalyticsInfo = defaults.logAnalyticsInfo;
     	      this.spotBidMaxPrice = defaults.spotBidMaxPrice;
@@ -59,6 +65,12 @@ public final class JobTaskNewClusterAzureAttributes {
         public Builder availability(@Nullable String availability) {
 
             this.availability = availability;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder capacityReservationGroup(@Nullable String capacityReservationGroup) {
+
+            this.capacityReservationGroup = capacityReservationGroup;
             return this;
         }
         @CustomType.Setter
@@ -82,6 +94,7 @@ public final class JobTaskNewClusterAzureAttributes {
         public JobTaskNewClusterAzureAttributes build() {
             final var _resultValue = new JobTaskNewClusterAzureAttributes();
             _resultValue.availability = availability;
+            _resultValue.capacityReservationGroup = capacityReservationGroup;
             _resultValue.firstOnDemand = firstOnDemand;
             _resultValue.logAnalyticsInfo = logAnalyticsInfo;
             _resultValue.spotBidMaxPrice = spotBidMaxPrice;

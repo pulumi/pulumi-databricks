@@ -26,7 +26,6 @@ class DisasterRecoveryFailoverGroupArgs:
                  parent: pulumi.Input[_builtins.str],
                  regions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  workspace_sets: pulumi.Input[Sequence[pulumi.Input['DisasterRecoveryFailoverGroupWorkspaceSetArgs']]],
-                 etag: pulumi.Input[Optional[_builtins.str]] = None,
                  unity_catalog_assets: pulumi.Input[Optional['DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs']] = None):
         """
         The set of arguments for constructing a DisasterRecoveryFailoverGroup resource.
@@ -38,8 +37,6 @@ class DisasterRecoveryFailoverGroupArgs:
         :param pulumi.Input[_builtins.str] parent: The parent resource. Format: accounts/{account_id}
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: List of all regions participating in this failover group
         :param pulumi.Input[Sequence[pulumi.Input['DisasterRecoveryFailoverGroupWorkspaceSetArgs']]] workspace_sets: Workspace sets, each containing workspaces that replicate to each other
-        :param pulumi.Input[_builtins.str] etag: Opaque version string for optimistic locking. Server-generated, returned in responses.
-               Must be provided on Update requests to prevent concurrent modifications
         :param pulumi.Input['DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs'] unity_catalog_assets: Unity Catalog replication configuration
         """
         pulumi.set(__self__, "failover_group_id", failover_group_id)
@@ -47,8 +44,6 @@ class DisasterRecoveryFailoverGroupArgs:
         pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "regions", regions)
         pulumi.set(__self__, "workspace_sets", workspace_sets)
-        if etag is not None:
-            pulumi.set(__self__, "etag", etag)
         if unity_catalog_assets is not None:
             pulumi.set(__self__, "unity_catalog_assets", unity_catalog_assets)
 
@@ -115,19 +110,6 @@ class DisasterRecoveryFailoverGroupArgs:
         pulumi.set(self, "workspace_sets", value)
 
     @_builtins.property
-    @pulumi.getter
-    def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Opaque version string for optimistic locking. Server-generated, returned in responses.
-        Must be provided on Update requests to prevent concurrent modifications
-        """
-        return pulumi.get(self, "etag")
-
-    @etag.setter
-    def etag(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "etag", value)
-
-    @_builtins.property
     @pulumi.getter(name="unityCatalogAssets")
     def unity_catalog_assets(self) -> pulumi.Input[Optional['DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs']]:
         """
@@ -162,8 +144,7 @@ class _DisasterRecoveryFailoverGroupState:
         :param pulumi.Input[_builtins.str] create_time: (string) - Time at which this failover group was created
         :param pulumi.Input[_builtins.str] effective_primary_region: (string) - Current effective primary region. Replication flows FROM workspaces in this region.
                Changes after a successful failover
-        :param pulumi.Input[_builtins.str] etag: Opaque version string for optimistic locking. Server-generated, returned in responses.
-               Must be provided on Update requests to prevent concurrent modifications
+        :param pulumi.Input[_builtins.str] etag: (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
         :param pulumi.Input[_builtins.str] failover_group_id: Client-provided identifier for the failover group. Used to construct the
                resource name as {parent}/failover-groups/{failover_group_id}
         :param pulumi.Input[_builtins.str] initial_primary_region: Initial primary region. Used only in Create requests to set the starting
@@ -234,8 +215,7 @@ class _DisasterRecoveryFailoverGroupState:
     @pulumi.getter
     def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Opaque version string for optimistic locking. Server-generated, returned in responses.
-        Must be provided on Update requests to prevent concurrent modifications
+        (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
         """
         return pulumi.get(self, "etag")
 
@@ -373,7 +353,6 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 etag: pulumi.Input[Optional[_builtins.str]] = None,
                  failover_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_primary_region: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -420,8 +399,6 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] etag: Opaque version string for optimistic locking. Server-generated, returned in responses.
-               Must be provided on Update requests to prevent concurrent modifications
         :param pulumi.Input[_builtins.str] failover_group_id: Client-provided identifier for the failover group. Used to construct the
                resource name as {parent}/failover-groups/{failover_group_id}
         :param pulumi.Input[_builtins.str] initial_primary_region: Initial primary region. Used only in Create requests to set the starting
@@ -489,7 +466,6 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 etag: pulumi.Input[Optional[_builtins.str]] = None,
                  failover_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_primary_region: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -505,7 +481,6 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DisasterRecoveryFailoverGroupArgs.__new__(DisasterRecoveryFailoverGroupArgs)
 
-            __props__.__dict__["etag"] = etag
             if failover_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'failover_group_id'")
             __props__.__dict__["failover_group_id"] = failover_group_id
@@ -524,6 +499,7 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
             __props__.__dict__["workspace_sets"] = workspace_sets
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_primary_region"] = None
+            __props__.__dict__["etag"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["replication_point"] = None
             __props__.__dict__["state"] = None
@@ -561,8 +537,7 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: (string) - Time at which this failover group was created
         :param pulumi.Input[_builtins.str] effective_primary_region: (string) - Current effective primary region. Replication flows FROM workspaces in this region.
                Changes after a successful failover
-        :param pulumi.Input[_builtins.str] etag: Opaque version string for optimistic locking. Server-generated, returned in responses.
-               Must be provided on Update requests to prevent concurrent modifications
+        :param pulumi.Input[_builtins.str] etag: (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
         :param pulumi.Input[_builtins.str] failover_group_id: Client-provided identifier for the failover group. Used to construct the
                resource name as {parent}/failover-groups/{failover_group_id}
         :param pulumi.Input[_builtins.str] initial_primary_region: Initial primary region. Used only in Create requests to set the starting
@@ -615,10 +590,9 @@ class DisasterRecoveryFailoverGroup(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def etag(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def etag(self) -> pulumi.Output[_builtins.str]:
         """
-        Opaque version string for optimistic locking. Server-generated, returned in responses.
-        Must be provided on Update requests to prevent concurrent modifications
+        (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
         """
         return pulumi.get(self, "etag")
 

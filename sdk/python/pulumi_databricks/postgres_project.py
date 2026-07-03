@@ -22,6 +22,7 @@ __all__ = ['PostgresProjectArgs', 'PostgresProject']
 class PostgresProjectArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
+                 initial_branch_spec: pulumi.Input[Optional['PostgresProjectInitialBranchSpecArgs']] = None,
                  initial_endpoint_spec: pulumi.Input[Optional['PostgresProjectInitialEndpointSpecArgs']] = None,
                  provider_config: pulumi.Input[Optional['PostgresProjectProviderConfigArgs']] = None,
                  purge_on_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -30,6 +31,9 @@ class PostgresProjectArgs:
         The set of arguments for constructing a PostgresProject resource.
 
         :param pulumi.Input[_builtins.str] project_id: The part of the name, chosen by the user when the resource was created
+        :param pulumi.Input['PostgresProjectInitialBranchSpecArgs'] initial_branch_spec: Configuration for the initial default branch created as part of project creation.
+               Allows overriding branch protection. These settings only apply at creation time
+               and do not affect resources created after project creation
         :param pulumi.Input['PostgresProjectInitialEndpointSpecArgs'] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
                created project. If omitted, the initial endpoint created will have default settings, without high availability
                configured. This field does not apply to any endpoints created after project creation. Use
@@ -40,6 +44,8 @@ class PostgresProjectArgs:
         :param pulumi.Input['PostgresProjectSpecArgs'] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
         """
         pulumi.set(__self__, "project_id", project_id)
+        if initial_branch_spec is not None:
+            pulumi.set(__self__, "initial_branch_spec", initial_branch_spec)
         if initial_endpoint_spec is not None:
             pulumi.set(__self__, "initial_endpoint_spec", initial_endpoint_spec)
         if provider_config is not None:
@@ -60,6 +66,20 @@ class PostgresProjectArgs:
     @project_id.setter
     def project_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="initialBranchSpec")
+    def initial_branch_spec(self) -> pulumi.Input[Optional['PostgresProjectInitialBranchSpecArgs']]:
+        """
+        Configuration for the initial default branch created as part of project creation.
+        Allows overriding branch protection. These settings only apply at creation time
+        and do not affect resources created after project creation
+        """
+        return pulumi.get(self, "initial_branch_spec")
+
+    @initial_branch_spec.setter
+    def initial_branch_spec(self, value: pulumi.Input[Optional['PostgresProjectInitialBranchSpecArgs']]):
+        pulumi.set(self, "initial_branch_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="initialEndpointSpec")
@@ -119,6 +139,7 @@ class _PostgresProjectState:
     def __init__(__self__, *,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_branch_spec: pulumi.Input[Optional['PostgresProjectInitialBranchSpecArgs']] = None,
                  initial_endpoint_spec: pulumi.Input[Optional['PostgresProjectInitialEndpointSpecArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -135,6 +156,9 @@ class _PostgresProjectState:
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the project was created
         :param pulumi.Input[_builtins.str] delete_time: (string) - A timestamp indicating when the project was soft-deleted.
                Empty if the project is not deleted, otherwise set to a timestamp in the past
+        :param pulumi.Input['PostgresProjectInitialBranchSpecArgs'] initial_branch_spec: Configuration for the initial default branch created as part of project creation.
+               Allows overriding branch protection. These settings only apply at creation time
+               and do not affect resources created after project creation
         :param pulumi.Input['PostgresProjectInitialEndpointSpecArgs'] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
                created project. If omitted, the initial endpoint created will have default settings, without high availability
                configured. This field does not apply to any endpoints created after project creation. Use
@@ -156,6 +180,8 @@ class _PostgresProjectState:
             pulumi.set(__self__, "create_time", create_time)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
+        if initial_branch_spec is not None:
+            pulumi.set(__self__, "initial_branch_spec", initial_branch_spec)
         if initial_endpoint_spec is not None:
             pulumi.set(__self__, "initial_endpoint_spec", initial_endpoint_spec)
         if name is not None:
@@ -201,6 +227,20 @@ class _PostgresProjectState:
     @delete_time.setter
     def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="initialBranchSpec")
+    def initial_branch_spec(self) -> pulumi.Input[Optional['PostgresProjectInitialBranchSpecArgs']]:
+        """
+        Configuration for the initial default branch created as part of project creation.
+        Allows overriding branch protection. These settings only apply at creation time
+        and do not affect resources created after project creation
+        """
+        return pulumi.get(self, "initial_branch_spec")
+
+    @initial_branch_spec.setter
+    def initial_branch_spec(self, value: pulumi.Input[Optional['PostgresProjectInitialBranchSpecArgs']]):
+        pulumi.set(self, "initial_branch_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="initialEndpointSpec")
@@ -335,6 +375,7 @@ class PostgresProject(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 initial_branch_spec: pulumi.Input[Optional[Union['PostgresProjectInitialBranchSpecArgs', 'PostgresProjectInitialBranchSpecArgsDict']]] = None,
                  initial_endpoint_spec: pulumi.Input[Optional[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
@@ -448,6 +489,9 @@ class PostgresProject(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['PostgresProjectInitialBranchSpecArgs', 'PostgresProjectInitialBranchSpecArgsDict']] initial_branch_spec: Configuration for the initial default branch created as part of project creation.
+               Allows overriding branch protection. These settings only apply at creation time
+               and do not affect resources created after project creation
         :param pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
                created project. If omitted, the initial endpoint created will have default settings, without high availability
                configured. This field does not apply to any endpoints created after project creation. Use
@@ -584,6 +628,7 @@ class PostgresProject(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 initial_branch_spec: pulumi.Input[Optional[Union['PostgresProjectInitialBranchSpecArgs', 'PostgresProjectInitialBranchSpecArgsDict']]] = None,
                  initial_endpoint_spec: pulumi.Input[Optional[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict']]] = None,
@@ -598,6 +643,7 @@ class PostgresProject(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PostgresProjectArgs.__new__(PostgresProjectArgs)
 
+            __props__.__dict__["initial_branch_spec"] = initial_branch_spec
             __props__.__dict__["initial_endpoint_spec"] = initial_endpoint_spec
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
@@ -624,6 +670,7 @@ class PostgresProject(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_branch_spec: pulumi.Input[Optional[Union['PostgresProjectInitialBranchSpecArgs', 'PostgresProjectInitialBranchSpecArgsDict']]] = None,
             initial_endpoint_spec: pulumi.Input[Optional[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -644,6 +691,9 @@ class PostgresProject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the project was created
         :param pulumi.Input[_builtins.str] delete_time: (string) - A timestamp indicating when the project was soft-deleted.
                Empty if the project is not deleted, otherwise set to a timestamp in the past
+        :param pulumi.Input[Union['PostgresProjectInitialBranchSpecArgs', 'PostgresProjectInitialBranchSpecArgsDict']] initial_branch_spec: Configuration for the initial default branch created as part of project creation.
+               Allows overriding branch protection. These settings only apply at creation time
+               and do not affect resources created after project creation
         :param pulumi.Input[Union['PostgresProjectInitialEndpointSpecArgs', 'PostgresProjectInitialEndpointSpecArgsDict']] initial_endpoint_spec: Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
                created project. If omitted, the initial endpoint created will have default settings, without high availability
                configured. This field does not apply to any endpoints created after project creation. Use
@@ -667,6 +717,7 @@ class PostgresProject(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["initial_branch_spec"] = initial_branch_spec
         __props__.__dict__["initial_endpoint_spec"] = initial_endpoint_spec
         __props__.__dict__["name"] = name
         __props__.__dict__["project_id"] = project_id
@@ -695,6 +746,16 @@ class PostgresProject(pulumi.CustomResource):
         Empty if the project is not deleted, otherwise set to a timestamp in the past
         """
         return pulumi.get(self, "delete_time")
+
+    @_builtins.property
+    @pulumi.getter(name="initialBranchSpec")
+    def initial_branch_spec(self) -> pulumi.Output['outputs.PostgresProjectInitialBranchSpec']:
+        """
+        Configuration for the initial default branch created as part of project creation.
+        Allows overriding branch protection. These settings only apply at creation time
+        and do not affect resources created after project creation
+        """
+        return pulumi.get(self, "initial_branch_spec")
 
     @_builtins.property
     @pulumi.getter(name="initialEndpointSpec")

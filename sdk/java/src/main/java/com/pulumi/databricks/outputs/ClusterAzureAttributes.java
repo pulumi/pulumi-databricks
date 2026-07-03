@@ -19,6 +19,7 @@ public final class ClusterAzureAttributes {
      * 
      */
     private @Nullable String availability;
+    private @Nullable String capacityReservationGroup;
     /**
      * @return The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
      * 
@@ -38,6 +39,9 @@ public final class ClusterAzureAttributes {
      */
     public Optional<String> availability() {
         return Optional.ofNullable(this.availability);
+    }
+    public Optional<String> capacityReservationGroup() {
+        return Optional.ofNullable(this.capacityReservationGroup);
     }
     /**
      * @return The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
@@ -67,6 +71,7 @@ public final class ClusterAzureAttributes {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String availability;
+        private @Nullable String capacityReservationGroup;
         private @Nullable Integer firstOnDemand;
         private @Nullable ClusterAzureAttributesLogAnalyticsInfo logAnalyticsInfo;
         private @Nullable Double spotBidMaxPrice;
@@ -74,6 +79,7 @@ public final class ClusterAzureAttributes {
         public Builder(ClusterAzureAttributes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.availability = defaults.availability;
+    	      this.capacityReservationGroup = defaults.capacityReservationGroup;
     	      this.firstOnDemand = defaults.firstOnDemand;
     	      this.logAnalyticsInfo = defaults.logAnalyticsInfo;
     	      this.spotBidMaxPrice = defaults.spotBidMaxPrice;
@@ -83,6 +89,12 @@ public final class ClusterAzureAttributes {
         public Builder availability(@Nullable String availability) {
 
             this.availability = availability;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder capacityReservationGroup(@Nullable String capacityReservationGroup) {
+
+            this.capacityReservationGroup = capacityReservationGroup;
             return this;
         }
         @CustomType.Setter
@@ -106,6 +118,7 @@ public final class ClusterAzureAttributes {
         public ClusterAzureAttributes build() {
             final var _resultValue = new ClusterAzureAttributes();
             _resultValue.availability = availability;
+            _resultValue.capacityReservationGroup = capacityReservationGroup;
             _resultValue.firstOnDemand = firstOnDemand;
             _resultValue.logAnalyticsInfo = logAnalyticsInfo;
             _resultValue.spotBidMaxPrice = spotBidMaxPrice;

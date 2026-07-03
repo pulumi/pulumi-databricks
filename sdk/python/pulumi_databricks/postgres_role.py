@@ -23,6 +23,7 @@ class PostgresRoleArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[_builtins.str],
                  provider_config: pulumi.Input[Optional['PostgresRoleProviderConfigArgs']] = None,
+                 replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
                  role_id: pulumi.Input[Optional[_builtins.str]] = None,
                  spec: pulumi.Input[Optional['PostgresRoleSpecArgs']] = None):
         """
@@ -31,12 +32,22 @@ class PostgresRoleArgs:
         :param pulumi.Input[_builtins.str] parent: The Branch where this Role exists.
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input['PostgresRoleProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the role if it already exists instead of returning an
+               error.
+               
+               When the role already exists, the provided `role` spec fully replaces the
+               existing one: `membership_roles` is overwritten, not merged. Leaving
+               `membership_roles` empty clears all of the role's existing memberships,
+               including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+               memberships when using this field
         :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
         :param pulumi.Input['PostgresRoleSpecArgs'] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
         """
         pulumi.set(__self__, "parent", parent)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if replace_existing is not None:
+            pulumi.set(__self__, "replace_existing", replace_existing)
         if role_id is not None:
             pulumi.set(__self__, "role_id", role_id)
         if spec is not None:
@@ -66,6 +77,25 @@ class PostgresRoleArgs:
     @provider_config.setter
     def provider_config(self, value: pulumi.Input[Optional['PostgresRoleProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="replaceExisting")
+    def replace_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, update the role if it already exists instead of returning an
+        error.
+
+        When the role already exists, the provided `role` spec fully replaces the
+        existing one: `membership_roles` is overwritten, not merged. Leaving
+        `membership_roles` empty clears all of the role's existing memberships,
+        including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+        memberships when using this field
+        """
+        return pulumi.get(self, "replace_existing")
+
+    @replace_existing.setter
+    def replace_existing(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "replace_existing", value)
 
     @_builtins.property
     @pulumi.getter(name="roleId")
@@ -99,6 +129,7 @@ class _PostgresRoleState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['PostgresRoleProviderConfigArgs']] = None,
+                 replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
                  role_id: pulumi.Input[Optional[_builtins.str]] = None,
                  spec: pulumi.Input[Optional['PostgresRoleSpecArgs']] = None,
                  status: pulumi.Input[Optional['PostgresRoleStatusArgs']] = None,
@@ -112,6 +143,14 @@ class _PostgresRoleState:
         :param pulumi.Input[_builtins.str] parent: The Branch where this Role exists.
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input['PostgresRoleProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the role if it already exists instead of returning an
+               error.
+               
+               When the role already exists, the provided `role` spec fully replaces the
+               existing one: `membership_roles` is overwritten, not merged. Leaving
+               `membership_roles` empty clears all of the role's existing memberships,
+               including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+               memberships when using this field
         :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
         :param pulumi.Input['PostgresRoleSpecArgs'] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
         :param pulumi.Input['PostgresRoleStatusArgs'] status: (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
@@ -125,6 +164,8 @@ class _PostgresRoleState:
             pulumi.set(__self__, "parent", parent)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if replace_existing is not None:
+            pulumi.set(__self__, "replace_existing", replace_existing)
         if role_id is not None:
             pulumi.set(__self__, "role_id", role_id)
         if spec is not None:
@@ -185,6 +226,25 @@ class _PostgresRoleState:
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="replaceExisting")
+    def replace_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, update the role if it already exists instead of returning an
+        error.
+
+        When the role already exists, the provided `role` spec fully replaces the
+        existing one: `membership_roles` is overwritten, not merged. Leaving
+        `membership_roles` empty clears all of the role's existing memberships,
+        including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+        memberships when using this field
+        """
+        return pulumi.get(self, "replace_existing")
+
+    @replace_existing.setter
+    def replace_existing(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "replace_existing", value)
+
+    @_builtins.property
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -241,6 +301,7 @@ class PostgresRole(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']]] = None,
+                 replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
                  role_id: pulumi.Input[Optional[_builtins.str]] = None,
                  spec: pulumi.Input[Optional[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']]] = None,
                  __props__=None):
@@ -355,6 +416,14 @@ class PostgresRole(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The Branch where this Role exists.
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the role if it already exists instead of returning an
+               error.
+               
+               When the role already exists, the provided `role` spec fully replaces the
+               existing one: `membership_roles` is overwritten, not merged. Leaving
+               `membership_roles` empty clears all of the role's existing memberships,
+               including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+               memberships when using this field
         :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
         :param pulumi.Input[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
         """
@@ -487,6 +556,7 @@ class PostgresRole(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']]] = None,
+                 replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
                  role_id: pulumi.Input[Optional[_builtins.str]] = None,
                  spec: pulumi.Input[Optional[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']]] = None,
                  __props__=None):
@@ -502,6 +572,7 @@ class PostgresRole(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
             __props__.__dict__["provider_config"] = provider_config
+            __props__.__dict__["replace_existing"] = replace_existing
             __props__.__dict__["role_id"] = role_id
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None
@@ -522,6 +593,7 @@ class PostgresRole(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']]] = None,
+            replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
             role_id: pulumi.Input[Optional[_builtins.str]] = None,
             spec: pulumi.Input[Optional[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']]] = None,
             status: pulumi.Input[Optional[Union['PostgresRoleStatusArgs', 'PostgresRoleStatusArgsDict']]] = None,
@@ -539,6 +611,14 @@ class PostgresRole(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The Branch where this Role exists.
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[Union['PostgresRoleProviderConfigArgs', 'PostgresRoleProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the role if it already exists instead of returning an
+               error.
+               
+               When the role already exists, the provided `role` spec fully replaces the
+               existing one: `membership_roles` is overwritten, not merged. Leaving
+               `membership_roles` empty clears all of the role's existing memberships,
+               including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+               memberships when using this field
         :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
         :param pulumi.Input[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict']] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
         :param pulumi.Input[Union['PostgresRoleStatusArgs', 'PostgresRoleStatusArgsDict']] status: (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
@@ -552,6 +632,7 @@ class PostgresRole(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
         __props__.__dict__["provider_config"] = provider_config
+        __props__.__dict__["replace_existing"] = replace_existing
         __props__.__dict__["role_id"] = role_id
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
@@ -591,6 +672,21 @@ class PostgresRole(pulumi.CustomResource):
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
+
+    @_builtins.property
+    @pulumi.getter(name="replaceExisting")
+    def replace_existing(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true, update the role if it already exists instead of returning an
+        error.
+
+        When the role already exists, the provided `role` spec fully replaces the
+        existing one: `membership_roles` is overwritten, not merged. Leaving
+        `membership_roles` empty clears all of the role's existing memberships,
+        including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+        memberships when using this field
+        """
+        return pulumi.get(self, "replace_existing")
 
     @_builtins.property
     @pulumi.getter(name="roleId")

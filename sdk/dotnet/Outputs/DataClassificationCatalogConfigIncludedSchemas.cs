@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class DataClassificationCatalogConfigIncludedSchemas
     {
+        /// <summary>
+        /// Schema names, each relative to the parent catalog. Must not be empty
+        /// </summary>
         public readonly ImmutableArray<string> Names;
 
         [OutputConstructor]

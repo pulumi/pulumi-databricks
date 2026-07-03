@@ -199,8 +199,10 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (CatalogConfigSchemaNames) - Schemas to include in the scan. Empty list is not supported as it results in a no-op
-        /// scan. If `IncludedSchemas` is not set, all schemas are scanned
+        /// (CatalogConfigSchemaNames) - Schemas to include in the scan, each named relative to the parent catalog.
+        /// If specified, only listed schemas will be scanned.
+        /// Mutually exclusive with `ExcludedSchemas`: only one may be set per request.
+        /// If neither `IncludedSchemas` nor `ExcludedSchemas` is set, all schemas are scanned
         /// </summary>
         public readonly Outputs.GetDataClassificationCatalogConfigIncludedSchemasResult IncludedSchemas;
         /// <summary>

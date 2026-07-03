@@ -72,7 +72,7 @@ type DisasterRecoveryStableUrl struct {
 	StableUrlId pulumi.StringOutput `pulumi:"stableUrlId"`
 	// (string) - The stable URL endpoint. Generated on creation and
 	// immutable thereafter. For non-Private-Link workspaces this is
-	// `https://<spog_host>/?c=<connection_id>`. For Private-Link workspaces
+	// `https://<spog_host>/?w=<connection_id>`. For Private-Link workspaces
 	// this is the per-connection hostname
 	Url pulumi.StringOutput `pulumi:"url"`
 }
@@ -135,7 +135,7 @@ type disasterRecoveryStableUrlState struct {
 	StableUrlId *string `pulumi:"stableUrlId"`
 	// (string) - The stable URL endpoint. Generated on creation and
 	// immutable thereafter. For non-Private-Link workspaces this is
-	// `https://<spog_host>/?c=<connection_id>`. For Private-Link workspaces
+	// `https://<spog_host>/?w=<connection_id>`. For Private-Link workspaces
 	// this is the per-connection hostname
 	Url *string `pulumi:"url"`
 }
@@ -160,7 +160,7 @@ type DisasterRecoveryStableUrlState struct {
 	StableUrlId pulumi.StringPtrInput
 	// (string) - The stable URL endpoint. Generated on creation and
 	// immutable thereafter. For non-Private-Link workspaces this is
-	// `https://<spog_host>/?c=<connection_id>`. For Private-Link workspaces
+	// `https://<spog_host>/?w=<connection_id>`. For Private-Link workspaces
 	// this is the per-connection hostname
 	Url pulumi.StringPtrInput
 }
@@ -315,7 +315,7 @@ func (o DisasterRecoveryStableUrlOutput) StableUrlId() pulumi.StringOutput {
 
 // (string) - The stable URL endpoint. Generated on creation and
 // immutable thereafter. For non-Private-Link workspaces this is
-// `https://<spog_host>/?c=<connection_id>`. For Private-Link workspaces
+// `https://<spog_host>/?w=<connection_id>`. For Private-Link workspaces
 // this is the per-connection hostname
 func (o DisasterRecoveryStableUrlOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *DisasterRecoveryStableUrl) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)

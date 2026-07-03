@@ -36,7 +36,7 @@ class DataQualityRefreshArgs:
                Find the `table_id` from either:
                1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
                2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
-        :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema`or `table`
+        :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
         :param pulumi.Input['DataQualityRefreshProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         pulumi.set(__self__, "object_id", object_id)
@@ -68,7 +68,7 @@ class DataQualityRefreshArgs:
     @pulumi.getter(name="objectType")
     def object_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of the monitored object. Can be one of the following: `schema`or `table`
+        The type of the monitored object. Can be one of the following: `schema` or `table`
         """
         return pulumi.get(self, "object_type")
 
@@ -115,7 +115,7 @@ class _DataQualityRefreshState:
                Find the `table_id` from either:
                1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
                2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
-        :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema`or `table`
+        :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
         :param pulumi.Input['DataQualityRefreshProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.int] refresh_id: (integer) - Unique id of the refresh operation
         :param pulumi.Input[_builtins.int] start_time_ms: (integer) - Time when the refresh started (milliseconds since 1/1/1970 UTC)
@@ -189,7 +189,7 @@ class _DataQualityRefreshState:
     @pulumi.getter(name="objectType")
     def object_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of the monitored object. Can be one of the following: `schema`or `table`
+        The type of the monitored object. Can be one of the following: `schema` or `table`
         """
         return pulumi.get(self, "object_type")
 
@@ -337,7 +337,7 @@ class DataQualityRefresh(pulumi.CustomResource):
                Find the `table_id` from either:
                1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
                2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
-        :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema`or `table`
+        :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
         :param pulumi.Input[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         """
         ...
@@ -481,7 +481,7 @@ class DataQualityRefresh(pulumi.CustomResource):
                Find the `table_id` from either:
                1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
                2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
-        :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema`or `table`
+        :param pulumi.Input[_builtins.str] object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
         :param pulumi.Input[Union['DataQualityRefreshProviderConfigArgs', 'DataQualityRefreshProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.int] refresh_id: (integer) - Unique id of the refresh operation
         :param pulumi.Input[_builtins.int] start_time_ms: (integer) - Time when the refresh started (milliseconds since 1/1/1970 UTC)
@@ -539,7 +539,7 @@ class DataQualityRefresh(pulumi.CustomResource):
     @pulumi.getter(name="objectType")
     def object_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of the monitored object. Can be one of the following: `schema`or `table`
+        The type of the monitored object. Can be one of the following: `schema` or `table`
         """
         return pulumi.get(self, "object_type")
 

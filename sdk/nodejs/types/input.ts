@@ -2842,6 +2842,7 @@ export interface ClusterAzureAttributes {
      * Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster.
      */
     availability?: pulumi.Input<string | undefined>;
+    capacityReservationGroup?: pulumi.Input<string | undefined>;
     /**
      * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
      */
@@ -3394,6 +3395,9 @@ export interface DataClassificationCatalogConfigAutoTagConfig {
 }
 
 export interface DataClassificationCatalogConfigIncludedSchemas {
+    /**
+     * Schema names, each relative to the parent catalog. Must not be empty
+     */
     names: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -4096,9 +4100,10 @@ export interface DisasterRecoveryFailoverGroupWorkspaceSet {
      */
     name: pulumi.Input<string>;
     /**
-     * Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
+     * Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
+     * Defaults to false
      */
-    replicateWorkspaceAssets: pulumi.Input<boolean>;
+    replicateWorkspaceAssets?: pulumi.Input<boolean | undefined>;
     /**
      * Resource names of stable URLs associated with this workspace set.
      * Format: accounts/{account_id}/stable-urls/{stable_url_id}.
@@ -4166,6 +4171,21 @@ export interface EnvironmentsWorkspaceBaseEnvironmentProviderConfig {
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface EnvironmentsWorkspaceBaseEnvironmentSpec {
+    /**
+     * List of pip dependencies, as supported by the version of pip in this environment.
+     * Each dependency is a valid pip requirements file line per https://pip.pypa.io/en/stable/reference/requirements-file-format/.
+     * Allowed dependencies include a requirement specifier, an archive URL, a local project path (such as WSFS or UC Volumes in Databricks), or a VCS project URL
+     */
+    dependencies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Environment version used by the environment.
+     * Each version comes with a specific Python version and a set of Python packages.
+     * The version is a string, consisting of an integer
+     */
+    environmentVersion?: pulumi.Input<string | undefined>;
 }
 
 export interface ExternalLocationEffectiveFileEventQueue {
@@ -5763,6 +5783,7 @@ export interface GetClusterClusterInfoAwsAttributesArgs {
 
 export interface GetClusterClusterInfoAzureAttributes {
     availability?: string;
+    capacityReservationGroup?: string;
     firstOnDemand?: number;
     logAnalyticsInfo?: inputs.GetClusterClusterInfoAzureAttributesLogAnalyticsInfo;
     spotBidMaxPrice?: number;
@@ -5770,6 +5791,7 @@ export interface GetClusterClusterInfoAzureAttributes {
 
 export interface GetClusterClusterInfoAzureAttributesArgs {
     availability?: pulumi.Input<string | undefined>;
+    capacityReservationGroup?: pulumi.Input<string | undefined>;
     firstOnDemand?: pulumi.Input<number | undefined>;
     logAnalyticsInfo?: pulumi.Input<inputs.GetClusterClusterInfoAzureAttributesLogAnalyticsInfoArgs | undefined>;
     spotBidMaxPrice?: pulumi.Input<number | undefined>;
@@ -6271,6 +6293,7 @@ export interface GetClusterClusterInfoSpecAwsAttributesArgs {
 
 export interface GetClusterClusterInfoSpecAzureAttributes {
     availability?: string;
+    capacityReservationGroup?: string;
     firstOnDemand?: number;
     logAnalyticsInfo?: inputs.GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo;
     spotBidMaxPrice?: number;
@@ -6278,6 +6301,7 @@ export interface GetClusterClusterInfoSpecAzureAttributes {
 
 export interface GetClusterClusterInfoSpecAzureAttributesArgs {
     availability?: pulumi.Input<string | undefined>;
+    capacityReservationGroup?: pulumi.Input<string | undefined>;
     firstOnDemand?: pulumi.Input<number | undefined>;
     logAnalyticsInfo?: pulumi.Input<inputs.GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfoArgs | undefined>;
     spotBidMaxPrice?: pulumi.Input<number | undefined>;
@@ -12369,6 +12393,20 @@ export interface GetPostgresCatalogProviderConfigArgs {
     workspaceId?: pulumi.Input<string | undefined>;
 }
 
+export interface GetPostgresDataApiProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetPostgresDataApiProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
 export interface GetPostgresDatabaseProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -13336,6 +13374,7 @@ export interface GetServingEndpointsEndpoint {
      */
     tags?: inputs.GetServingEndpointsEndpointTag[];
     task?: string;
+    telemetryConfigs?: inputs.GetServingEndpointsEndpointTelemetryConfig[];
     usagePolicyId?: string;
 }
 
@@ -13364,6 +13403,7 @@ export interface GetServingEndpointsEndpointArgs {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointTagArgs>[] | undefined>;
     task?: pulumi.Input<string | undefined>;
+    telemetryConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointTelemetryConfigArgs>[] | undefined>;
     usagePolicyId?: pulumi.Input<string | undefined>;
 }
 
@@ -13763,6 +13803,30 @@ export interface GetServingEndpointsEndpointTag {
 export interface GetServingEndpointsEndpointTagArgs {
     key: pulumi.Input<string>;
     value?: pulumi.Input<string | undefined>;
+}
+
+export interface GetServingEndpointsEndpointTelemetryConfig {
+    inferenceTableConfigs?: inputs.GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig[];
+}
+
+export interface GetServingEndpointsEndpointTelemetryConfigArgs {
+    inferenceTableConfigs?: pulumi.Input<pulumi.Input<inputs.GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArgs>[] | undefined>;
+}
+
+export interface GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig {
+    /**
+     * The name of the model serving endpoint.
+     */
+    name?: string;
+    samplingFraction?: number;
+}
+
+export interface GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArgs {
+    /**
+     * The name of the model serving endpoint.
+     */
+    name?: pulumi.Input<string | undefined>;
+    samplingFraction?: pulumi.Input<number | undefined>;
 }
 
 export interface GetServingEndpointsProviderConfig {
@@ -15722,6 +15786,7 @@ export interface JobJobClusterNewClusterAwsAttributes {
 
 export interface JobJobClusterNewClusterAzureAttributes {
     availability?: pulumi.Input<string | undefined>;
+    capacityReservationGroup?: pulumi.Input<string | undefined>;
     firstOnDemand?: pulumi.Input<number | undefined>;
     logAnalyticsInfo?: pulumi.Input<inputs.JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo | undefined>;
     spotBidMaxPrice?: pulumi.Input<number | undefined>;
@@ -16015,6 +16080,7 @@ export interface JobNewClusterAwsAttributes {
 
 export interface JobNewClusterAzureAttributes {
     availability?: pulumi.Input<string | undefined>;
+    capacityReservationGroup?: pulumi.Input<string | undefined>;
     firstOnDemand?: pulumi.Input<number | undefined>;
     logAnalyticsInfo?: pulumi.Input<inputs.JobNewClusterAzureAttributesLogAnalyticsInfo | undefined>;
     spotBidMaxPrice?: pulumi.Input<number | undefined>;
@@ -16375,6 +16441,7 @@ export interface JobSparkSubmitTask {
 }
 
 export interface JobTask {
+    aiRuntimeTask?: pulumi.Input<inputs.JobTaskAiRuntimeTask | undefined>;
     alertTask?: pulumi.Input<inputs.JobTaskAlertTask | undefined>;
     cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskCleanRoomsNotebookTask | undefined>;
     /**
@@ -16477,6 +16544,33 @@ export interface JobTask {
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
     webhookNotifications?: pulumi.Input<inputs.JobTaskWebhookNotifications | undefined>;
+}
+
+export interface JobTaskAiRuntimeTask {
+    codeSourcePath?: pulumi.Input<string | undefined>;
+    deployments: pulumi.Input<pulumi.Input<inputs.JobTaskAiRuntimeTaskDeployment>[]>;
+    experiment: pulumi.Input<string>;
+    mlflowExperimentDirectory?: pulumi.Input<string | undefined>;
+    mlflowRun?: pulumi.Input<string | undefined>;
+}
+
+export interface JobTaskAiRuntimeTaskDeployment {
+    commandPath: pulumi.Input<string>;
+    /**
+     * Task level compute configuration. This block is documented below.
+     *
+     * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     */
+    compute: pulumi.Input<inputs.JobTaskAiRuntimeTaskDeploymentCompute>;
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
+    name?: pulumi.Input<string | undefined>;
+}
+
+export interface JobTaskAiRuntimeTaskDeploymentCompute {
+    acceleratorCount: pulumi.Input<number>;
+    acceleratorType: pulumi.Input<string>;
 }
 
 export interface JobTaskAlertTask {
@@ -16696,6 +16790,7 @@ export interface JobTaskForEachTask {
 }
 
 export interface JobTaskForEachTaskTask {
+    aiRuntimeTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskAiRuntimeTask | undefined>;
     alertTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskAlertTask | undefined>;
     cleanRoomsNotebookTask?: pulumi.Input<inputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask | undefined>;
     /**
@@ -16797,6 +16892,33 @@ export interface JobTaskForEachTaskTask {
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
     webhookNotifications?: pulumi.Input<inputs.JobTaskForEachTaskTaskWebhookNotifications | undefined>;
+}
+
+export interface JobTaskForEachTaskTaskAiRuntimeTask {
+    codeSourcePath?: pulumi.Input<string | undefined>;
+    deployments: pulumi.Input<pulumi.Input<inputs.JobTaskForEachTaskTaskAiRuntimeTaskDeployment>[]>;
+    experiment: pulumi.Input<string>;
+    mlflowExperimentDirectory?: pulumi.Input<string | undefined>;
+    mlflowRun?: pulumi.Input<string | undefined>;
+}
+
+export interface JobTaskForEachTaskTaskAiRuntimeTaskDeployment {
+    commandPath: pulumi.Input<string>;
+    /**
+     * Task level compute configuration. This block is documented below.
+     *
+     * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     */
+    compute: pulumi.Input<inputs.JobTaskForEachTaskTaskAiRuntimeTaskDeploymentCompute>;
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
+    name?: pulumi.Input<string | undefined>;
+}
+
+export interface JobTaskForEachTaskTaskAiRuntimeTaskDeploymentCompute {
+    acceleratorCount: pulumi.Input<number>;
+    acceleratorType: pulumi.Input<string>;
 }
 
 export interface JobTaskForEachTaskTaskAlertTask {
@@ -17154,6 +17276,7 @@ export interface JobTaskForEachTaskTaskNewClusterAwsAttributes {
 
 export interface JobTaskForEachTaskTaskNewClusterAzureAttributes {
     availability?: pulumi.Input<string | undefined>;
+    capacityReservationGroup?: pulumi.Input<string | undefined>;
     firstOnDemand?: pulumi.Input<number | undefined>;
     logAnalyticsInfo?: pulumi.Input<inputs.JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo | undefined>;
     spotBidMaxPrice?: pulumi.Input<number | undefined>;
@@ -17915,6 +18038,7 @@ export interface JobTaskNewClusterAwsAttributes {
 
 export interface JobTaskNewClusterAzureAttributes {
     availability?: pulumi.Input<string | undefined>;
+    capacityReservationGroup?: pulumi.Input<string | undefined>;
     firstOnDemand?: pulumi.Input<number | undefined>;
     logAnalyticsInfo?: pulumi.Input<inputs.JobTaskNewClusterAzureAttributesLogAnalyticsInfo | undefined>;
     spotBidMaxPrice?: pulumi.Input<number | undefined>;
@@ -19792,6 +19916,21 @@ export interface ModelServingTag {
     value?: pulumi.Input<string | undefined>;
 }
 
+export interface ModelServingTelemetryConfig {
+    /**
+     * Block describing the configuration of usage tracking. Consists of the following attributes:
+     */
+    inferenceTableConfig?: pulumi.Input<inputs.ModelServingTelemetryConfigInferenceTableConfig | undefined>;
+}
+
+export interface ModelServingTelemetryConfigInferenceTableConfig {
+    /**
+     * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
+     */
+    name?: pulumi.Input<string | undefined>;
+    samplingFraction?: pulumi.Input<number | undefined>;
+}
+
 export interface MountAbfs {
     clientId: pulumi.Input<string>;
     clientSecretKey: pulumi.Input<string>;
@@ -19979,11 +20118,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.119.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.120.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.119.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.120.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string | undefined>;
     /**
@@ -20050,11 +20189,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.119.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.120.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.119.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.120.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string | undefined>;
     subnetCidr: pulumi.Input<string>;
@@ -20392,6 +20531,7 @@ export interface PipelineClusterAwsAttributes {
 
 export interface PipelineClusterAzureAttributes {
     availability?: pulumi.Input<string | undefined>;
+    capacityReservationGroup?: pulumi.Input<string | undefined>;
     firstOnDemand?: pulumi.Input<number | undefined>;
     logAnalyticsInfo?: pulumi.Input<inputs.PipelineClusterAzureAttributesLogAnalyticsInfo | undefined>;
     spotBidMaxPrice?: pulumi.Input<number | undefined>;
@@ -21458,6 +21598,99 @@ export interface PostgresCatalogStatus {
     project?: pulumi.Input<string | undefined>;
 }
 
+export interface PostgresDataApiProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface PostgresDataApiSpec {
+    /**
+     * (boolean) - Actual aggregate function setting read from the database
+     */
+    dbAggregatesEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * (list of string) - Actual extra search path schemas read from the database
+     */
+    dbExtraSearchPaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * (integer) - Actual max rows setting read from the database
+     */
+    dbMaxRows?: pulumi.Input<number | undefined>;
+    /**
+     * (list of string) - Actual exposed schemas read from the database
+     */
+    dbSchemas?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * (string) - Actual JWT cache max lifetime read from the database
+     */
+    jwtCacheMaxLifetime?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Actual JWT role claim key read from the database
+     */
+    jwtRoleClaimKey?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Actual OpenAPI mode read from the database. Possible values are: `OPEN_API_MODE_DISABLED`, `OPEN_API_MODE_IGNORE_PRIVILEGES`
+     */
+    openapiMode?: pulumi.Input<string | undefined>;
+    /**
+     * (list of string) - Actual CORS allowed origins read from the database
+     */
+    serverCorsAllowedOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * (boolean) - Actual Server-Timing header setting read from the database
+     */
+    serverTimingEnabled?: pulumi.Input<boolean | undefined>;
+}
+
+export interface PostgresDataApiStatus {
+    /**
+     * (list of string) - Schemas available in the database (for reference when configuring db_schemas)
+     */
+    availableSchemas?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * (boolean) - Actual aggregate function setting read from the database
+     */
+    dbAggregatesEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * (list of string) - Actual extra search path schemas read from the database
+     */
+    dbExtraSearchPaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * (integer) - Actual max rows setting read from the database
+     */
+    dbMaxRows?: pulumi.Input<number | undefined>;
+    /**
+     * (list of string) - Actual exposed schemas read from the database
+     */
+    dbSchemas?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * (string) - Actual JWT cache max lifetime read from the database
+     */
+    jwtCacheMaxLifetime?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Actual JWT role claim key read from the database
+     */
+    jwtRoleClaimKey?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Actual OpenAPI mode read from the database. Possible values are: `OPEN_API_MODE_DISABLED`, `OPEN_API_MODE_IGNORE_PRIVILEGES`
+     */
+    openapiMode?: pulumi.Input<string | undefined>;
+    /**
+     * (list of string) - Actual CORS allowed origins read from the database
+     */
+    serverCorsAllowedOrigins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * (boolean) - Actual Server-Timing header setting read from the database
+     */
+    serverTimingEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * (string) - Data API endpoint URL
+     */
+    url?: pulumi.Input<string | undefined>;
+}
+
 export interface PostgresDatabaseProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -21626,11 +21859,22 @@ export interface PostgresEndpointStatusSettings {
     pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
+export interface PostgresProjectInitialBranchSpec {
+    /**
+     * Whether the initial default branch should be protected from deletion
+     */
+    isProtected?: pulumi.Input<boolean | undefined>;
+}
+
 export interface PostgresProjectInitialEndpointSpec {
+    autoscalingLimitMaxCu?: pulumi.Input<number | undefined>;
+    autoscalingLimitMinCu?: pulumi.Input<number | undefined>;
     /**
      * Settings for HA configuration of the endpoint
      */
     group?: pulumi.Input<inputs.PostgresProjectInitialEndpointSpecGroup | undefined>;
+    noSuspension?: pulumi.Input<boolean | undefined>;
+    suspendTimeoutDuration?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresProjectInitialEndpointSpecGroup {
@@ -21706,29 +21950,13 @@ export interface PostgresProjectSpecCustomTag {
 }
 
 export interface PostgresProjectSpecDefaultEndpointSettings {
-    /**
-     * The maximum number of Compute Units. Minimum value is 0.5
-     */
     autoscalingLimitMaxCu?: pulumi.Input<number | undefined>;
-    /**
-     * The minimum number of Compute Units. Minimum value is 0.5
-     */
     autoscalingLimitMinCu?: pulumi.Input<number | undefined>;
-    /**
-     * When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided.
-     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-     */
     noSuspension?: pulumi.Input<boolean | undefined>;
     /**
      * A raw representation of Postgres settings
      */
     pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    /**
-     * Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week).
-     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-     */
     suspendTimeoutDuration?: pulumi.Input<string | undefined>;
 }
 
@@ -21741,6 +21969,10 @@ export interface PostgresProjectStatus {
      * (string) - The budget policy that is applied to the project
      */
     budgetPolicyId?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - The most recent time when any endpoint of this project was active
+     */
+    computeLastActiveTime?: pulumi.Input<string | undefined>;
     /**
      * (list of ProjectCustomTag) - The effective custom tags associated with the project
      */
@@ -21795,29 +22027,13 @@ export interface PostgresProjectStatusCustomTag {
 }
 
 export interface PostgresProjectStatusDefaultEndpointSettings {
-    /**
-     * The maximum number of Compute Units. Minimum value is 0.5
-     */
     autoscalingLimitMaxCu?: pulumi.Input<number | undefined>;
-    /**
-     * The minimum number of Compute Units. Minimum value is 0.5
-     */
     autoscalingLimitMinCu?: pulumi.Input<number | undefined>;
-    /**
-     * When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided.
-     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-     */
     noSuspension?: pulumi.Input<boolean | undefined>;
     /**
      * A raw representation of Postgres settings
      */
     pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
-    /**
-     * Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week).
-     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-     */
     suspendTimeoutDuration?: pulumi.Input<string | undefined>;
 }
 

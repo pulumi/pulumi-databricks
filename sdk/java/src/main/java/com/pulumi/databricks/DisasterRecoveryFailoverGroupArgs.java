@@ -20,23 +20,6 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
     public static final DisasterRecoveryFailoverGroupArgs Empty = new DisasterRecoveryFailoverGroupArgs();
 
     /**
-     * Opaque version string for optimistic locking. Server-generated, returned in responses.
-     * Must be provided on Update requests to prevent concurrent modifications
-     * 
-     */
-    @Import(name="etag")
-    private @Nullable Output<String> etag;
-
-    /**
-     * @return Opaque version string for optimistic locking. Server-generated, returned in responses.
-     * Must be provided on Update requests to prevent concurrent modifications
-     * 
-     */
-    public Optional<Output<String>> etag() {
-        return Optional.ofNullable(this.etag);
-    }
-
-    /**
      * Client-provided identifier for the failover group. Used to construct the
      * resource name as {parent}/failover-groups/{failover_group_id}
      * 
@@ -133,7 +116,6 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
     private DisasterRecoveryFailoverGroupArgs() {}
 
     private DisasterRecoveryFailoverGroupArgs(DisasterRecoveryFailoverGroupArgs $) {
-        this.etag = $.etag;
         this.failoverGroupId = $.failoverGroupId;
         this.initialPrimaryRegion = $.initialPrimaryRegion;
         this.parent = $.parent;
@@ -158,29 +140,6 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
 
         public Builder(DisasterRecoveryFailoverGroupArgs defaults) {
             $ = new DisasterRecoveryFailoverGroupArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param etag Opaque version string for optimistic locking. Server-generated, returned in responses.
-         * Must be provided on Update requests to prevent concurrent modifications
-         * 
-         * @return builder
-         * 
-         */
-        public Builder etag(@Nullable Output<String> etag) {
-            $.etag = etag;
-            return this;
-        }
-
-        /**
-         * @param etag Opaque version string for optimistic locking. Server-generated, returned in responses.
-         * Must be provided on Update requests to prevent concurrent modifications
-         * 
-         * @return builder
-         * 
-         */
-        public Builder etag(String etag) {
-            return etag(Output.of(etag));
         }
 
         /**

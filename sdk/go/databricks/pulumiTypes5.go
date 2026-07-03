@@ -13,6 +13,2736 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetPostgresProjectInitialBranchSpec struct {
+	// (boolean) - Whether the initial default branch should be protected from deletion
+	IsProtected *bool `pulumi:"isProtected"`
+}
+
+// GetPostgresProjectInitialBranchSpecInput is an input type that accepts GetPostgresProjectInitialBranchSpecArgs and GetPostgresProjectInitialBranchSpecOutput values.
+// You can construct a concrete instance of `GetPostgresProjectInitialBranchSpecInput` via:
+//
+//	GetPostgresProjectInitialBranchSpecArgs{...}
+type GetPostgresProjectInitialBranchSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectInitialBranchSpecOutput() GetPostgresProjectInitialBranchSpecOutput
+	ToGetPostgresProjectInitialBranchSpecOutputWithContext(context.Context) GetPostgresProjectInitialBranchSpecOutput
+}
+
+type GetPostgresProjectInitialBranchSpecArgs struct {
+	// (boolean) - Whether the initial default branch should be protected from deletion
+	IsProtected pulumi.BoolPtrInput `pulumi:"isProtected"`
+}
+
+func (GetPostgresProjectInitialBranchSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectInitialBranchSpec)(nil)).Elem()
+}
+
+func (i GetPostgresProjectInitialBranchSpecArgs) ToGetPostgresProjectInitialBranchSpecOutput() GetPostgresProjectInitialBranchSpecOutput {
+	return i.ToGetPostgresProjectInitialBranchSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectInitialBranchSpecArgs) ToGetPostgresProjectInitialBranchSpecOutputWithContext(ctx context.Context) GetPostgresProjectInitialBranchSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectInitialBranchSpecOutput)
+}
+
+type GetPostgresProjectInitialBranchSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectInitialBranchSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectInitialBranchSpec)(nil)).Elem()
+}
+
+func (o GetPostgresProjectInitialBranchSpecOutput) ToGetPostgresProjectInitialBranchSpecOutput() GetPostgresProjectInitialBranchSpecOutput {
+	return o
+}
+
+func (o GetPostgresProjectInitialBranchSpecOutput) ToGetPostgresProjectInitialBranchSpecOutputWithContext(ctx context.Context) GetPostgresProjectInitialBranchSpecOutput {
+	return o
+}
+
+// (boolean) - Whether the initial default branch should be protected from deletion
+func (o GetPostgresProjectInitialBranchSpecOutput) IsProtected() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectInitialBranchSpec) *bool { return v.IsProtected }).(pulumi.BoolPtrOutput)
+}
+
+type GetPostgresProjectInitialEndpointSpec struct {
+	// (number) - The maximum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMaxCu *float64 `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMinCu *float64 `pulumi:"autoscalingLimitMinCu"`
+	// (EndpointGroupSpec) - Settings for HA configuration of the endpoint
+	Group *GetPostgresProjectInitialEndpointSpecGroup `pulumi:"group"`
+	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+	// Should be set to true when provided.
+	// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	NoSuspension *bool `pulumi:"noSuspension"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+	// If specified should be between 60s and 604800s (1 minute to 1 week).
+	// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	SuspendTimeoutDuration *string `pulumi:"suspendTimeoutDuration"`
+}
+
+// GetPostgresProjectInitialEndpointSpecInput is an input type that accepts GetPostgresProjectInitialEndpointSpecArgs and GetPostgresProjectInitialEndpointSpecOutput values.
+// You can construct a concrete instance of `GetPostgresProjectInitialEndpointSpecInput` via:
+//
+//	GetPostgresProjectInitialEndpointSpecArgs{...}
+type GetPostgresProjectInitialEndpointSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectInitialEndpointSpecOutput() GetPostgresProjectInitialEndpointSpecOutput
+	ToGetPostgresProjectInitialEndpointSpecOutputWithContext(context.Context) GetPostgresProjectInitialEndpointSpecOutput
+}
+
+type GetPostgresProjectInitialEndpointSpecArgs struct {
+	// (number) - The maximum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMaxCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMinCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMinCu"`
+	// (EndpointGroupSpec) - Settings for HA configuration of the endpoint
+	Group GetPostgresProjectInitialEndpointSpecGroupPtrInput `pulumi:"group"`
+	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+	// Should be set to true when provided.
+	// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	NoSuspension pulumi.BoolPtrInput `pulumi:"noSuspension"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+	// If specified should be between 60s and 604800s (1 minute to 1 week).
+	// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	SuspendTimeoutDuration pulumi.StringPtrInput `pulumi:"suspendTimeoutDuration"`
+}
+
+func (GetPostgresProjectInitialEndpointSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectInitialEndpointSpec)(nil)).Elem()
+}
+
+func (i GetPostgresProjectInitialEndpointSpecArgs) ToGetPostgresProjectInitialEndpointSpecOutput() GetPostgresProjectInitialEndpointSpecOutput {
+	return i.ToGetPostgresProjectInitialEndpointSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectInitialEndpointSpecArgs) ToGetPostgresProjectInitialEndpointSpecOutputWithContext(ctx context.Context) GetPostgresProjectInitialEndpointSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectInitialEndpointSpecOutput)
+}
+
+type GetPostgresProjectInitialEndpointSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectInitialEndpointSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectInitialEndpointSpec)(nil)).Elem()
+}
+
+func (o GetPostgresProjectInitialEndpointSpecOutput) ToGetPostgresProjectInitialEndpointSpecOutput() GetPostgresProjectInitialEndpointSpecOutput {
+	return o
+}
+
+func (o GetPostgresProjectInitialEndpointSpecOutput) ToGetPostgresProjectInitialEndpointSpecOutputWithContext(ctx context.Context) GetPostgresProjectInitialEndpointSpecOutput {
+	return o
+}
+
+// (number) - The maximum number of Compute Units. Minimum value is 0.5
+func (o GetPostgresProjectInitialEndpointSpecOutput) AutoscalingLimitMaxCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectInitialEndpointSpec) *float64 { return v.AutoscalingLimitMaxCu }).(pulumi.Float64PtrOutput)
+}
+
+// (number) - The minimum number of Compute Units. Minimum value is 0.5
+func (o GetPostgresProjectInitialEndpointSpecOutput) AutoscalingLimitMinCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectInitialEndpointSpec) *float64 { return v.AutoscalingLimitMinCu }).(pulumi.Float64PtrOutput)
+}
+
+// (EndpointGroupSpec) - Settings for HA configuration of the endpoint
+func (o GetPostgresProjectInitialEndpointSpecOutput) Group() GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectInitialEndpointSpec) *GetPostgresProjectInitialEndpointSpecGroup {
+		return v.Group
+	}).(GetPostgresProjectInitialEndpointSpecGroupPtrOutput)
+}
+
+// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+// Should be set to true when provided.
+// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+func (o GetPostgresProjectInitialEndpointSpecOutput) NoSuspension() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectInitialEndpointSpec) *bool { return v.NoSuspension }).(pulumi.BoolPtrOutput)
+}
+
+// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+// If specified should be between 60s and 604800s (1 minute to 1 week).
+// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+func (o GetPostgresProjectInitialEndpointSpecOutput) SuspendTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectInitialEndpointSpec) *string { return v.SuspendTimeoutDuration }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresProjectInitialEndpointSpecGroup struct {
+	// (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+	// size.max > 1
+	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max int `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min int `pulumi:"min"`
+}
+
+// GetPostgresProjectInitialEndpointSpecGroupInput is an input type that accepts GetPostgresProjectInitialEndpointSpecGroupArgs and GetPostgresProjectInitialEndpointSpecGroupOutput values.
+// You can construct a concrete instance of `GetPostgresProjectInitialEndpointSpecGroupInput` via:
+//
+//	GetPostgresProjectInitialEndpointSpecGroupArgs{...}
+type GetPostgresProjectInitialEndpointSpecGroupInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectInitialEndpointSpecGroupOutput() GetPostgresProjectInitialEndpointSpecGroupOutput
+	ToGetPostgresProjectInitialEndpointSpecGroupOutputWithContext(context.Context) GetPostgresProjectInitialEndpointSpecGroupOutput
+}
+
+type GetPostgresProjectInitialEndpointSpecGroupArgs struct {
+	// (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+	// size.max > 1
+	EnableReadableSecondaries pulumi.BoolPtrInput `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max pulumi.IntInput `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPostgresProjectInitialEndpointSpecGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i GetPostgresProjectInitialEndpointSpecGroupArgs) ToGetPostgresProjectInitialEndpointSpecGroupOutput() GetPostgresProjectInitialEndpointSpecGroupOutput {
+	return i.ToGetPostgresProjectInitialEndpointSpecGroupOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectInitialEndpointSpecGroupArgs) ToGetPostgresProjectInitialEndpointSpecGroupOutputWithContext(ctx context.Context) GetPostgresProjectInitialEndpointSpecGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectInitialEndpointSpecGroupOutput)
+}
+
+func (i GetPostgresProjectInitialEndpointSpecGroupArgs) ToGetPostgresProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return i.ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectInitialEndpointSpecGroupArgs) ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectInitialEndpointSpecGroupOutput).ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx)
+}
+
+// GetPostgresProjectInitialEndpointSpecGroupPtrInput is an input type that accepts GetPostgresProjectInitialEndpointSpecGroupArgs, GetPostgresProjectInitialEndpointSpecGroupPtr and GetPostgresProjectInitialEndpointSpecGroupPtrOutput values.
+// You can construct a concrete instance of `GetPostgresProjectInitialEndpointSpecGroupPtrInput` via:
+//
+//	        GetPostgresProjectInitialEndpointSpecGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresProjectInitialEndpointSpecGroupPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectInitialEndpointSpecGroupPtrOutput
+	ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Context) GetPostgresProjectInitialEndpointSpecGroupPtrOutput
+}
+
+type getPostgresProjectInitialEndpointSpecGroupPtrType GetPostgresProjectInitialEndpointSpecGroupArgs
+
+func GetPostgresProjectInitialEndpointSpecGroupPtr(v *GetPostgresProjectInitialEndpointSpecGroupArgs) GetPostgresProjectInitialEndpointSpecGroupPtrInput {
+	return (*getPostgresProjectInitialEndpointSpecGroupPtrType)(v)
+}
+
+func (*getPostgresProjectInitialEndpointSpecGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i *getPostgresProjectInitialEndpointSpecGroupPtrType) ToGetPostgresProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return i.ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresProjectInitialEndpointSpecGroupPtrType) ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectInitialEndpointSpecGroupPtrOutput)
+}
+
+type GetPostgresProjectInitialEndpointSpecGroupOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectInitialEndpointSpecGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o GetPostgresProjectInitialEndpointSpecGroupOutput) ToGetPostgresProjectInitialEndpointSpecGroupOutput() GetPostgresProjectInitialEndpointSpecGroupOutput {
+	return o
+}
+
+func (o GetPostgresProjectInitialEndpointSpecGroupOutput) ToGetPostgresProjectInitialEndpointSpecGroupOutputWithContext(ctx context.Context) GetPostgresProjectInitialEndpointSpecGroupOutput {
+	return o
+}
+
+func (o GetPostgresProjectInitialEndpointSpecGroupOutput) ToGetPostgresProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return o.ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresProjectInitialEndpointSpecGroupOutput) ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresProjectInitialEndpointSpecGroup) *GetPostgresProjectInitialEndpointSpecGroup {
+		return &v
+	}).(GetPostgresProjectInitialEndpointSpecGroupPtrOutput)
+}
+
+// (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+// size.max > 1
+func (o GetPostgresProjectInitialEndpointSpecGroupOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectInitialEndpointSpecGroup) *bool { return v.EnableReadableSecondaries }).(pulumi.BoolPtrOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresProjectInitialEndpointSpecGroupOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresProjectInitialEndpointSpecGroup) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresProjectInitialEndpointSpecGroupOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresProjectInitialEndpointSpecGroup) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPostgresProjectInitialEndpointSpecGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectInitialEndpointSpecGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o GetPostgresProjectInitialEndpointSpecGroupPtrOutput) ToGetPostgresProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectInitialEndpointSpecGroupPtrOutput) ToGetPostgresProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresProjectInitialEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectInitialEndpointSpecGroupPtrOutput) Elem() GetPostgresProjectInitialEndpointSpecGroupOutput {
+	return o.ApplyT(func(v *GetPostgresProjectInitialEndpointSpecGroup) GetPostgresProjectInitialEndpointSpecGroup {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresProjectInitialEndpointSpecGroup
+		return ret
+	}).(GetPostgresProjectInitialEndpointSpecGroupOutput)
+}
+
+// (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+// size.max > 1
+func (o GetPostgresProjectInitialEndpointSpecGroupPtrOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectInitialEndpointSpecGroup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableReadableSecondaries
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresProjectInitialEndpointSpecGroupPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectInitialEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresProjectInitialEndpointSpecGroupPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectInitialEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetPostgresProjectProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresProjectProviderConfigInput is an input type that accepts GetPostgresProjectProviderConfigArgs and GetPostgresProjectProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresProjectProviderConfigInput` via:
+//
+//	GetPostgresProjectProviderConfigArgs{...}
+type GetPostgresProjectProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectProviderConfigOutput() GetPostgresProjectProviderConfigOutput
+	ToGetPostgresProjectProviderConfigOutputWithContext(context.Context) GetPostgresProjectProviderConfigOutput
+}
+
+type GetPostgresProjectProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresProjectProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresProjectProviderConfigArgs) ToGetPostgresProjectProviderConfigOutput() GetPostgresProjectProviderConfigOutput {
+	return i.ToGetPostgresProjectProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectProviderConfigArgs) ToGetPostgresProjectProviderConfigOutputWithContext(ctx context.Context) GetPostgresProjectProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectProviderConfigOutput)
+}
+
+func (i GetPostgresProjectProviderConfigArgs) ToGetPostgresProjectProviderConfigPtrOutput() GetPostgresProjectProviderConfigPtrOutput {
+	return i.ToGetPostgresProjectProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectProviderConfigArgs) ToGetPostgresProjectProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresProjectProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectProviderConfigOutput).ToGetPostgresProjectProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresProjectProviderConfigPtrInput is an input type that accepts GetPostgresProjectProviderConfigArgs, GetPostgresProjectProviderConfigPtr and GetPostgresProjectProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresProjectProviderConfigPtrInput` via:
+//
+//	        GetPostgresProjectProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresProjectProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectProviderConfigPtrOutput() GetPostgresProjectProviderConfigPtrOutput
+	ToGetPostgresProjectProviderConfigPtrOutputWithContext(context.Context) GetPostgresProjectProviderConfigPtrOutput
+}
+
+type getPostgresProjectProviderConfigPtrType GetPostgresProjectProviderConfigArgs
+
+func GetPostgresProjectProviderConfigPtr(v *GetPostgresProjectProviderConfigArgs) GetPostgresProjectProviderConfigPtrInput {
+	return (*getPostgresProjectProviderConfigPtrType)(v)
+}
+
+func (*getPostgresProjectProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresProjectProviderConfigPtrType) ToGetPostgresProjectProviderConfigPtrOutput() GetPostgresProjectProviderConfigPtrOutput {
+	return i.ToGetPostgresProjectProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresProjectProviderConfigPtrType) ToGetPostgresProjectProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresProjectProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectProviderConfigPtrOutput)
+}
+
+type GetPostgresProjectProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresProjectProviderConfigOutput) ToGetPostgresProjectProviderConfigOutput() GetPostgresProjectProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresProjectProviderConfigOutput) ToGetPostgresProjectProviderConfigOutputWithContext(ctx context.Context) GetPostgresProjectProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresProjectProviderConfigOutput) ToGetPostgresProjectProviderConfigPtrOutput() GetPostgresProjectProviderConfigPtrOutput {
+	return o.ToGetPostgresProjectProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresProjectProviderConfigOutput) ToGetPostgresProjectProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresProjectProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresProjectProviderConfig) *GetPostgresProjectProviderConfig {
+		return &v
+	}).(GetPostgresProjectProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresProjectProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresProjectProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresProjectProviderConfigPtrOutput) ToGetPostgresProjectProviderConfigPtrOutput() GetPostgresProjectProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectProviderConfigPtrOutput) ToGetPostgresProjectProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresProjectProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectProviderConfigPtrOutput) Elem() GetPostgresProjectProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresProjectProviderConfig) GetPostgresProjectProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresProjectProviderConfig
+		return ret
+	}).(GetPostgresProjectProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresProjectProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresProjectSpec struct {
+	// (string) - The budget policy that is applied to the project
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
+	// (list of ProjectCustomTag) - The effective custom tags associated with the project
+	CustomTags []GetPostgresProjectSpecCustomTag `pulumi:"customTags"`
+	// (string) - The full resource path of the default branch of the project
+	DefaultBranch *string `pulumi:"defaultBranch"`
+	// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+	DefaultEndpointSettings *GetPostgresProjectSpecDefaultEndpointSettings `pulumi:"defaultEndpointSettings"`
+	// (string) - The effective human-readable project name
+	DisplayName *string `pulumi:"displayName"`
+	// (boolean) - Whether to enable PG native password login on all endpoints in this project
+	EnablePgNativeLogin *bool `pulumi:"enablePgNativeLogin"`
+	// (string) - The effective number of seconds to retain the shared history for point in time recovery
+	HistoryRetentionDuration *string `pulumi:"historyRetentionDuration"`
+	// (integer) - The effective major Postgres version number
+	PgVersion *int `pulumi:"pgVersion"`
+}
+
+// GetPostgresProjectSpecInput is an input type that accepts GetPostgresProjectSpecArgs and GetPostgresProjectSpecOutput values.
+// You can construct a concrete instance of `GetPostgresProjectSpecInput` via:
+//
+//	GetPostgresProjectSpecArgs{...}
+type GetPostgresProjectSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectSpecOutput() GetPostgresProjectSpecOutput
+	ToGetPostgresProjectSpecOutputWithContext(context.Context) GetPostgresProjectSpecOutput
+}
+
+type GetPostgresProjectSpecArgs struct {
+	// (string) - The budget policy that is applied to the project
+	BudgetPolicyId pulumi.StringPtrInput `pulumi:"budgetPolicyId"`
+	// (list of ProjectCustomTag) - The effective custom tags associated with the project
+	CustomTags GetPostgresProjectSpecCustomTagArrayInput `pulumi:"customTags"`
+	// (string) - The full resource path of the default branch of the project
+	DefaultBranch pulumi.StringPtrInput `pulumi:"defaultBranch"`
+	// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+	DefaultEndpointSettings GetPostgresProjectSpecDefaultEndpointSettingsPtrInput `pulumi:"defaultEndpointSettings"`
+	// (string) - The effective human-readable project name
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// (boolean) - Whether to enable PG native password login on all endpoints in this project
+	EnablePgNativeLogin pulumi.BoolPtrInput `pulumi:"enablePgNativeLogin"`
+	// (string) - The effective number of seconds to retain the shared history for point in time recovery
+	HistoryRetentionDuration pulumi.StringPtrInput `pulumi:"historyRetentionDuration"`
+	// (integer) - The effective major Postgres version number
+	PgVersion pulumi.IntPtrInput `pulumi:"pgVersion"`
+}
+
+func (GetPostgresProjectSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectSpec)(nil)).Elem()
+}
+
+func (i GetPostgresProjectSpecArgs) ToGetPostgresProjectSpecOutput() GetPostgresProjectSpecOutput {
+	return i.ToGetPostgresProjectSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectSpecArgs) ToGetPostgresProjectSpecOutputWithContext(ctx context.Context) GetPostgresProjectSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectSpecOutput)
+}
+
+type GetPostgresProjectSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectSpec)(nil)).Elem()
+}
+
+func (o GetPostgresProjectSpecOutput) ToGetPostgresProjectSpecOutput() GetPostgresProjectSpecOutput {
+	return o
+}
+
+func (o GetPostgresProjectSpecOutput) ToGetPostgresProjectSpecOutputWithContext(ctx context.Context) GetPostgresProjectSpecOutput {
+	return o
+}
+
+// (string) - The budget policy that is applied to the project
+func (o GetPostgresProjectSpecOutput) BudgetPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectSpec) *string { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
+}
+
+// (list of ProjectCustomTag) - The effective custom tags associated with the project
+func (o GetPostgresProjectSpecOutput) CustomTags() GetPostgresProjectSpecCustomTagArrayOutput {
+	return o.ApplyT(func(v GetPostgresProjectSpec) []GetPostgresProjectSpecCustomTag { return v.CustomTags }).(GetPostgresProjectSpecCustomTagArrayOutput)
+}
+
+// (string) - The full resource path of the default branch of the project
+func (o GetPostgresProjectSpecOutput) DefaultBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectSpec) *string { return v.DefaultBranch }).(pulumi.StringPtrOutput)
+}
+
+// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+func (o GetPostgresProjectSpecOutput) DefaultEndpointSettings() GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectSpec) *GetPostgresProjectSpecDefaultEndpointSettings {
+		return v.DefaultEndpointSettings
+	}).(GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput)
+}
+
+// (string) - The effective human-readable project name
+func (o GetPostgresProjectSpecOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectSpec) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// (boolean) - Whether to enable PG native password login on all endpoints in this project
+func (o GetPostgresProjectSpecOutput) EnablePgNativeLogin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectSpec) *bool { return v.EnablePgNativeLogin }).(pulumi.BoolPtrOutput)
+}
+
+// (string) - The effective number of seconds to retain the shared history for point in time recovery
+func (o GetPostgresProjectSpecOutput) HistoryRetentionDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectSpec) *string { return v.HistoryRetentionDuration }).(pulumi.StringPtrOutput)
+}
+
+// (integer) - The effective major Postgres version number
+func (o GetPostgresProjectSpecOutput) PgVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectSpec) *int { return v.PgVersion }).(pulumi.IntPtrOutput)
+}
+
+type GetPostgresProjectSpecCustomTag struct {
+	// (string) - The key of the custom tag
+	Key *string `pulumi:"key"`
+	// (string) - The value of the custom tag
+	Value *string `pulumi:"value"`
+}
+
+// GetPostgresProjectSpecCustomTagInput is an input type that accepts GetPostgresProjectSpecCustomTagArgs and GetPostgresProjectSpecCustomTagOutput values.
+// You can construct a concrete instance of `GetPostgresProjectSpecCustomTagInput` via:
+//
+//	GetPostgresProjectSpecCustomTagArgs{...}
+type GetPostgresProjectSpecCustomTagInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectSpecCustomTagOutput() GetPostgresProjectSpecCustomTagOutput
+	ToGetPostgresProjectSpecCustomTagOutputWithContext(context.Context) GetPostgresProjectSpecCustomTagOutput
+}
+
+type GetPostgresProjectSpecCustomTagArgs struct {
+	// (string) - The key of the custom tag
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// (string) - The value of the custom tag
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetPostgresProjectSpecCustomTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectSpecCustomTag)(nil)).Elem()
+}
+
+func (i GetPostgresProjectSpecCustomTagArgs) ToGetPostgresProjectSpecCustomTagOutput() GetPostgresProjectSpecCustomTagOutput {
+	return i.ToGetPostgresProjectSpecCustomTagOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectSpecCustomTagArgs) ToGetPostgresProjectSpecCustomTagOutputWithContext(ctx context.Context) GetPostgresProjectSpecCustomTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectSpecCustomTagOutput)
+}
+
+// GetPostgresProjectSpecCustomTagArrayInput is an input type that accepts GetPostgresProjectSpecCustomTagArray and GetPostgresProjectSpecCustomTagArrayOutput values.
+// You can construct a concrete instance of `GetPostgresProjectSpecCustomTagArrayInput` via:
+//
+//	GetPostgresProjectSpecCustomTagArray{ GetPostgresProjectSpecCustomTagArgs{...} }
+type GetPostgresProjectSpecCustomTagArrayInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectSpecCustomTagArrayOutput() GetPostgresProjectSpecCustomTagArrayOutput
+	ToGetPostgresProjectSpecCustomTagArrayOutputWithContext(context.Context) GetPostgresProjectSpecCustomTagArrayOutput
+}
+
+type GetPostgresProjectSpecCustomTagArray []GetPostgresProjectSpecCustomTagInput
+
+func (GetPostgresProjectSpecCustomTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresProjectSpecCustomTag)(nil)).Elem()
+}
+
+func (i GetPostgresProjectSpecCustomTagArray) ToGetPostgresProjectSpecCustomTagArrayOutput() GetPostgresProjectSpecCustomTagArrayOutput {
+	return i.ToGetPostgresProjectSpecCustomTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectSpecCustomTagArray) ToGetPostgresProjectSpecCustomTagArrayOutputWithContext(ctx context.Context) GetPostgresProjectSpecCustomTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectSpecCustomTagArrayOutput)
+}
+
+type GetPostgresProjectSpecCustomTagOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectSpecCustomTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectSpecCustomTag)(nil)).Elem()
+}
+
+func (o GetPostgresProjectSpecCustomTagOutput) ToGetPostgresProjectSpecCustomTagOutput() GetPostgresProjectSpecCustomTagOutput {
+	return o
+}
+
+func (o GetPostgresProjectSpecCustomTagOutput) ToGetPostgresProjectSpecCustomTagOutputWithContext(ctx context.Context) GetPostgresProjectSpecCustomTagOutput {
+	return o
+}
+
+// (string) - The key of the custom tag
+func (o GetPostgresProjectSpecCustomTagOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectSpecCustomTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The value of the custom tag
+func (o GetPostgresProjectSpecCustomTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectSpecCustomTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresProjectSpecCustomTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectSpecCustomTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresProjectSpecCustomTag)(nil)).Elem()
+}
+
+func (o GetPostgresProjectSpecCustomTagArrayOutput) ToGetPostgresProjectSpecCustomTagArrayOutput() GetPostgresProjectSpecCustomTagArrayOutput {
+	return o
+}
+
+func (o GetPostgresProjectSpecCustomTagArrayOutput) ToGetPostgresProjectSpecCustomTagArrayOutputWithContext(ctx context.Context) GetPostgresProjectSpecCustomTagArrayOutput {
+	return o
+}
+
+func (o GetPostgresProjectSpecCustomTagArrayOutput) Index(i pulumi.IntInput) GetPostgresProjectSpecCustomTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPostgresProjectSpecCustomTag {
+		return vs[0].([]GetPostgresProjectSpecCustomTag)[vs[1].(int)]
+	}).(GetPostgresProjectSpecCustomTagOutput)
+}
+
+type GetPostgresProjectSpecDefaultEndpointSettings struct {
+	// (number) - The maximum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMaxCu *float64 `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMinCu *float64 `pulumi:"autoscalingLimitMinCu"`
+	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+	// Should be set to true when provided.
+	// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	NoSuspension *bool `pulumi:"noSuspension"`
+	// (object) - A raw representation of Postgres settings
+	PgSettings map[string]string `pulumi:"pgSettings"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+	// If specified should be between 60s and 604800s (1 minute to 1 week).
+	// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	SuspendTimeoutDuration *string `pulumi:"suspendTimeoutDuration"`
+}
+
+// GetPostgresProjectSpecDefaultEndpointSettingsInput is an input type that accepts GetPostgresProjectSpecDefaultEndpointSettingsArgs and GetPostgresProjectSpecDefaultEndpointSettingsOutput values.
+// You can construct a concrete instance of `GetPostgresProjectSpecDefaultEndpointSettingsInput` via:
+//
+//	GetPostgresProjectSpecDefaultEndpointSettingsArgs{...}
+type GetPostgresProjectSpecDefaultEndpointSettingsInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectSpecDefaultEndpointSettingsOutput() GetPostgresProjectSpecDefaultEndpointSettingsOutput
+	ToGetPostgresProjectSpecDefaultEndpointSettingsOutputWithContext(context.Context) GetPostgresProjectSpecDefaultEndpointSettingsOutput
+}
+
+type GetPostgresProjectSpecDefaultEndpointSettingsArgs struct {
+	// (number) - The maximum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMaxCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMinCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMinCu"`
+	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+	// Should be set to true when provided.
+	// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	NoSuspension pulumi.BoolPtrInput `pulumi:"noSuspension"`
+	// (object) - A raw representation of Postgres settings
+	PgSettings pulumi.StringMapInput `pulumi:"pgSettings"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+	// If specified should be between 60s and 604800s (1 minute to 1 week).
+	// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	SuspendTimeoutDuration pulumi.StringPtrInput `pulumi:"suspendTimeoutDuration"`
+}
+
+func (GetPostgresProjectSpecDefaultEndpointSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectSpecDefaultEndpointSettings)(nil)).Elem()
+}
+
+func (i GetPostgresProjectSpecDefaultEndpointSettingsArgs) ToGetPostgresProjectSpecDefaultEndpointSettingsOutput() GetPostgresProjectSpecDefaultEndpointSettingsOutput {
+	return i.ToGetPostgresProjectSpecDefaultEndpointSettingsOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectSpecDefaultEndpointSettingsArgs) ToGetPostgresProjectSpecDefaultEndpointSettingsOutputWithContext(ctx context.Context) GetPostgresProjectSpecDefaultEndpointSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectSpecDefaultEndpointSettingsOutput)
+}
+
+func (i GetPostgresProjectSpecDefaultEndpointSettingsArgs) ToGetPostgresProjectSpecDefaultEndpointSettingsPtrOutput() GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput {
+	return i.ToGetPostgresProjectSpecDefaultEndpointSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectSpecDefaultEndpointSettingsArgs) ToGetPostgresProjectSpecDefaultEndpointSettingsPtrOutputWithContext(ctx context.Context) GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectSpecDefaultEndpointSettingsOutput).ToGetPostgresProjectSpecDefaultEndpointSettingsPtrOutputWithContext(ctx)
+}
+
+// GetPostgresProjectSpecDefaultEndpointSettingsPtrInput is an input type that accepts GetPostgresProjectSpecDefaultEndpointSettingsArgs, GetPostgresProjectSpecDefaultEndpointSettingsPtr and GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput values.
+// You can construct a concrete instance of `GetPostgresProjectSpecDefaultEndpointSettingsPtrInput` via:
+//
+//	        GetPostgresProjectSpecDefaultEndpointSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresProjectSpecDefaultEndpointSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectSpecDefaultEndpointSettingsPtrOutput() GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput
+	ToGetPostgresProjectSpecDefaultEndpointSettingsPtrOutputWithContext(context.Context) GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput
+}
+
+type getPostgresProjectSpecDefaultEndpointSettingsPtrType GetPostgresProjectSpecDefaultEndpointSettingsArgs
+
+func GetPostgresProjectSpecDefaultEndpointSettingsPtr(v *GetPostgresProjectSpecDefaultEndpointSettingsArgs) GetPostgresProjectSpecDefaultEndpointSettingsPtrInput {
+	return (*getPostgresProjectSpecDefaultEndpointSettingsPtrType)(v)
+}
+
+func (*getPostgresProjectSpecDefaultEndpointSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectSpecDefaultEndpointSettings)(nil)).Elem()
+}
+
+func (i *getPostgresProjectSpecDefaultEndpointSettingsPtrType) ToGetPostgresProjectSpecDefaultEndpointSettingsPtrOutput() GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput {
+	return i.ToGetPostgresProjectSpecDefaultEndpointSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresProjectSpecDefaultEndpointSettingsPtrType) ToGetPostgresProjectSpecDefaultEndpointSettingsPtrOutputWithContext(ctx context.Context) GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput)
+}
+
+type GetPostgresProjectSpecDefaultEndpointSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectSpecDefaultEndpointSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectSpecDefaultEndpointSettings)(nil)).Elem()
+}
+
+func (o GetPostgresProjectSpecDefaultEndpointSettingsOutput) ToGetPostgresProjectSpecDefaultEndpointSettingsOutput() GetPostgresProjectSpecDefaultEndpointSettingsOutput {
+	return o
+}
+
+func (o GetPostgresProjectSpecDefaultEndpointSettingsOutput) ToGetPostgresProjectSpecDefaultEndpointSettingsOutputWithContext(ctx context.Context) GetPostgresProjectSpecDefaultEndpointSettingsOutput {
+	return o
+}
+
+func (o GetPostgresProjectSpecDefaultEndpointSettingsOutput) ToGetPostgresProjectSpecDefaultEndpointSettingsPtrOutput() GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput {
+	return o.ToGetPostgresProjectSpecDefaultEndpointSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresProjectSpecDefaultEndpointSettingsOutput) ToGetPostgresProjectSpecDefaultEndpointSettingsPtrOutputWithContext(ctx context.Context) GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresProjectSpecDefaultEndpointSettings) *GetPostgresProjectSpecDefaultEndpointSettings {
+		return &v
+	}).(GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput)
+}
+
+// (number) - The maximum number of Compute Units. Minimum value is 0.5
+func (o GetPostgresProjectSpecDefaultEndpointSettingsOutput) AutoscalingLimitMaxCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectSpecDefaultEndpointSettings) *float64 { return v.AutoscalingLimitMaxCu }).(pulumi.Float64PtrOutput)
+}
+
+// (number) - The minimum number of Compute Units. Minimum value is 0.5
+func (o GetPostgresProjectSpecDefaultEndpointSettingsOutput) AutoscalingLimitMinCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectSpecDefaultEndpointSettings) *float64 { return v.AutoscalingLimitMinCu }).(pulumi.Float64PtrOutput)
+}
+
+// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+// Should be set to true when provided.
+// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+func (o GetPostgresProjectSpecDefaultEndpointSettingsOutput) NoSuspension() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectSpecDefaultEndpointSettings) *bool { return v.NoSuspension }).(pulumi.BoolPtrOutput)
+}
+
+// (object) - A raw representation of Postgres settings
+func (o GetPostgresProjectSpecDefaultEndpointSettingsOutput) PgSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPostgresProjectSpecDefaultEndpointSettings) map[string]string { return v.PgSettings }).(pulumi.StringMapOutput)
+}
+
+// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+// If specified should be between 60s and 604800s (1 minute to 1 week).
+// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+func (o GetPostgresProjectSpecDefaultEndpointSettingsOutput) SuspendTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectSpecDefaultEndpointSettings) *string { return v.SuspendTimeoutDuration }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectSpecDefaultEndpointSettings)(nil)).Elem()
+}
+
+func (o GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput) ToGetPostgresProjectSpecDefaultEndpointSettingsPtrOutput() GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput) ToGetPostgresProjectSpecDefaultEndpointSettingsPtrOutputWithContext(ctx context.Context) GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput) Elem() GetPostgresProjectSpecDefaultEndpointSettingsOutput {
+	return o.ApplyT(func(v *GetPostgresProjectSpecDefaultEndpointSettings) GetPostgresProjectSpecDefaultEndpointSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresProjectSpecDefaultEndpointSettings
+		return ret
+	}).(GetPostgresProjectSpecDefaultEndpointSettingsOutput)
+}
+
+// (number) - The maximum number of Compute Units. Minimum value is 0.5
+func (o GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput) AutoscalingLimitMaxCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectSpecDefaultEndpointSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingLimitMaxCu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// (number) - The minimum number of Compute Units. Minimum value is 0.5
+func (o GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput) AutoscalingLimitMinCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectSpecDefaultEndpointSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingLimitMinCu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+// Should be set to true when provided.
+// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+func (o GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput) NoSuspension() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectSpecDefaultEndpointSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoSuspension
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (object) - A raw representation of Postgres settings
+func (o GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput) PgSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetPostgresProjectSpecDefaultEndpointSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.PgSettings
+	}).(pulumi.StringMapOutput)
+}
+
+// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+// If specified should be between 60s and 604800s (1 minute to 1 week).
+// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+func (o GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput) SuspendTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectSpecDefaultEndpointSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SuspendTimeoutDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresProjectStatus struct {
+	// (integer) - The logical size limit for a branch
+	BranchLogicalSizeLimitBytes int `pulumi:"branchLogicalSizeLimitBytes"`
+	// (string) - The budget policy that is applied to the project
+	BudgetPolicyId string `pulumi:"budgetPolicyId"`
+	// (string) - The most recent time when any endpoint of this project was active
+	ComputeLastActiveTime string `pulumi:"computeLastActiveTime"`
+	// (list of ProjectCustomTag) - The effective custom tags associated with the project
+	CustomTags []GetPostgresProjectStatusCustomTag `pulumi:"customTags"`
+	// (string) - The full resource path of the default branch of the project
+	DefaultBranch string `pulumi:"defaultBranch"`
+	// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+	DefaultEndpointSettings GetPostgresProjectStatusDefaultEndpointSettings `pulumi:"defaultEndpointSettings"`
+	// (string) - The effective human-readable project name
+	DisplayName string `pulumi:"displayName"`
+	// (boolean) - Whether to enable PG native password login on all endpoints in this project
+	EnablePgNativeLogin bool `pulumi:"enablePgNativeLogin"`
+	// (string) - The effective number of seconds to retain the shared history for point in time recovery
+	HistoryRetentionDuration string `pulumi:"historyRetentionDuration"`
+	// (string) - The email of the project owner
+	Owner string `pulumi:"owner"`
+	// (integer) - The effective major Postgres version number
+	PgVersion int `pulumi:"pgVersion"`
+	// (string) - Part of the resource name
+	ProjectId string `pulumi:"projectId"`
+	// (integer) - The current space occupied by the project in storage
+	SyntheticStorageSizeBytes int `pulumi:"syntheticStorageSizeBytes"`
+}
+
+// GetPostgresProjectStatusInput is an input type that accepts GetPostgresProjectStatusArgs and GetPostgresProjectStatusOutput values.
+// You can construct a concrete instance of `GetPostgresProjectStatusInput` via:
+//
+//	GetPostgresProjectStatusArgs{...}
+type GetPostgresProjectStatusInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectStatusOutput() GetPostgresProjectStatusOutput
+	ToGetPostgresProjectStatusOutputWithContext(context.Context) GetPostgresProjectStatusOutput
+}
+
+type GetPostgresProjectStatusArgs struct {
+	// (integer) - The logical size limit for a branch
+	BranchLogicalSizeLimitBytes pulumi.IntInput `pulumi:"branchLogicalSizeLimitBytes"`
+	// (string) - The budget policy that is applied to the project
+	BudgetPolicyId pulumi.StringInput `pulumi:"budgetPolicyId"`
+	// (string) - The most recent time when any endpoint of this project was active
+	ComputeLastActiveTime pulumi.StringInput `pulumi:"computeLastActiveTime"`
+	// (list of ProjectCustomTag) - The effective custom tags associated with the project
+	CustomTags GetPostgresProjectStatusCustomTagArrayInput `pulumi:"customTags"`
+	// (string) - The full resource path of the default branch of the project
+	DefaultBranch pulumi.StringInput `pulumi:"defaultBranch"`
+	// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+	DefaultEndpointSettings GetPostgresProjectStatusDefaultEndpointSettingsInput `pulumi:"defaultEndpointSettings"`
+	// (string) - The effective human-readable project name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// (boolean) - Whether to enable PG native password login on all endpoints in this project
+	EnablePgNativeLogin pulumi.BoolInput `pulumi:"enablePgNativeLogin"`
+	// (string) - The effective number of seconds to retain the shared history for point in time recovery
+	HistoryRetentionDuration pulumi.StringInput `pulumi:"historyRetentionDuration"`
+	// (string) - The email of the project owner
+	Owner pulumi.StringInput `pulumi:"owner"`
+	// (integer) - The effective major Postgres version number
+	PgVersion pulumi.IntInput `pulumi:"pgVersion"`
+	// (string) - Part of the resource name
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// (integer) - The current space occupied by the project in storage
+	SyntheticStorageSizeBytes pulumi.IntInput `pulumi:"syntheticStorageSizeBytes"`
+}
+
+func (GetPostgresProjectStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectStatus)(nil)).Elem()
+}
+
+func (i GetPostgresProjectStatusArgs) ToGetPostgresProjectStatusOutput() GetPostgresProjectStatusOutput {
+	return i.ToGetPostgresProjectStatusOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectStatusArgs) ToGetPostgresProjectStatusOutputWithContext(ctx context.Context) GetPostgresProjectStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectStatusOutput)
+}
+
+type GetPostgresProjectStatusOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectStatus)(nil)).Elem()
+}
+
+func (o GetPostgresProjectStatusOutput) ToGetPostgresProjectStatusOutput() GetPostgresProjectStatusOutput {
+	return o
+}
+
+func (o GetPostgresProjectStatusOutput) ToGetPostgresProjectStatusOutputWithContext(ctx context.Context) GetPostgresProjectStatusOutput {
+	return o
+}
+
+// (integer) - The logical size limit for a branch
+func (o GetPostgresProjectStatusOutput) BranchLogicalSizeLimitBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatus) int { return v.BranchLogicalSizeLimitBytes }).(pulumi.IntOutput)
+}
+
+// (string) - The budget policy that is applied to the project
+func (o GetPostgresProjectStatusOutput) BudgetPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatus) string { return v.BudgetPolicyId }).(pulumi.StringOutput)
+}
+
+// (string) - The most recent time when any endpoint of this project was active
+func (o GetPostgresProjectStatusOutput) ComputeLastActiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatus) string { return v.ComputeLastActiveTime }).(pulumi.StringOutput)
+}
+
+// (list of ProjectCustomTag) - The effective custom tags associated with the project
+func (o GetPostgresProjectStatusOutput) CustomTags() GetPostgresProjectStatusCustomTagArrayOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatus) []GetPostgresProjectStatusCustomTag { return v.CustomTags }).(GetPostgresProjectStatusCustomTagArrayOutput)
+}
+
+// (string) - The full resource path of the default branch of the project
+func (o GetPostgresProjectStatusOutput) DefaultBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatus) string { return v.DefaultBranch }).(pulumi.StringOutput)
+}
+
+// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+func (o GetPostgresProjectStatusOutput) DefaultEndpointSettings() GetPostgresProjectStatusDefaultEndpointSettingsOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatus) GetPostgresProjectStatusDefaultEndpointSettings {
+		return v.DefaultEndpointSettings
+	}).(GetPostgresProjectStatusDefaultEndpointSettingsOutput)
+}
+
+// (string) - The effective human-readable project name
+func (o GetPostgresProjectStatusOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatus) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// (boolean) - Whether to enable PG native password login on all endpoints in this project
+func (o GetPostgresProjectStatusOutput) EnablePgNativeLogin() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatus) bool { return v.EnablePgNativeLogin }).(pulumi.BoolOutput)
+}
+
+// (string) - The effective number of seconds to retain the shared history for point in time recovery
+func (o GetPostgresProjectStatusOutput) HistoryRetentionDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatus) string { return v.HistoryRetentionDuration }).(pulumi.StringOutput)
+}
+
+// (string) - The email of the project owner
+func (o GetPostgresProjectStatusOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatus) string { return v.Owner }).(pulumi.StringOutput)
+}
+
+// (integer) - The effective major Postgres version number
+func (o GetPostgresProjectStatusOutput) PgVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatus) int { return v.PgVersion }).(pulumi.IntOutput)
+}
+
+// (string) - Part of the resource name
+func (o GetPostgresProjectStatusOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatus) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// (integer) - The current space occupied by the project in storage
+func (o GetPostgresProjectStatusOutput) SyntheticStorageSizeBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatus) int { return v.SyntheticStorageSizeBytes }).(pulumi.IntOutput)
+}
+
+type GetPostgresProjectStatusCustomTag struct {
+	// (string) - The key of the custom tag
+	Key *string `pulumi:"key"`
+	// (string) - The value of the custom tag
+	Value *string `pulumi:"value"`
+}
+
+// GetPostgresProjectStatusCustomTagInput is an input type that accepts GetPostgresProjectStatusCustomTagArgs and GetPostgresProjectStatusCustomTagOutput values.
+// You can construct a concrete instance of `GetPostgresProjectStatusCustomTagInput` via:
+//
+//	GetPostgresProjectStatusCustomTagArgs{...}
+type GetPostgresProjectStatusCustomTagInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectStatusCustomTagOutput() GetPostgresProjectStatusCustomTagOutput
+	ToGetPostgresProjectStatusCustomTagOutputWithContext(context.Context) GetPostgresProjectStatusCustomTagOutput
+}
+
+type GetPostgresProjectStatusCustomTagArgs struct {
+	// (string) - The key of the custom tag
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// (string) - The value of the custom tag
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetPostgresProjectStatusCustomTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectStatusCustomTag)(nil)).Elem()
+}
+
+func (i GetPostgresProjectStatusCustomTagArgs) ToGetPostgresProjectStatusCustomTagOutput() GetPostgresProjectStatusCustomTagOutput {
+	return i.ToGetPostgresProjectStatusCustomTagOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectStatusCustomTagArgs) ToGetPostgresProjectStatusCustomTagOutputWithContext(ctx context.Context) GetPostgresProjectStatusCustomTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectStatusCustomTagOutput)
+}
+
+// GetPostgresProjectStatusCustomTagArrayInput is an input type that accepts GetPostgresProjectStatusCustomTagArray and GetPostgresProjectStatusCustomTagArrayOutput values.
+// You can construct a concrete instance of `GetPostgresProjectStatusCustomTagArrayInput` via:
+//
+//	GetPostgresProjectStatusCustomTagArray{ GetPostgresProjectStatusCustomTagArgs{...} }
+type GetPostgresProjectStatusCustomTagArrayInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectStatusCustomTagArrayOutput() GetPostgresProjectStatusCustomTagArrayOutput
+	ToGetPostgresProjectStatusCustomTagArrayOutputWithContext(context.Context) GetPostgresProjectStatusCustomTagArrayOutput
+}
+
+type GetPostgresProjectStatusCustomTagArray []GetPostgresProjectStatusCustomTagInput
+
+func (GetPostgresProjectStatusCustomTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresProjectStatusCustomTag)(nil)).Elem()
+}
+
+func (i GetPostgresProjectStatusCustomTagArray) ToGetPostgresProjectStatusCustomTagArrayOutput() GetPostgresProjectStatusCustomTagArrayOutput {
+	return i.ToGetPostgresProjectStatusCustomTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectStatusCustomTagArray) ToGetPostgresProjectStatusCustomTagArrayOutputWithContext(ctx context.Context) GetPostgresProjectStatusCustomTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectStatusCustomTagArrayOutput)
+}
+
+type GetPostgresProjectStatusCustomTagOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectStatusCustomTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectStatusCustomTag)(nil)).Elem()
+}
+
+func (o GetPostgresProjectStatusCustomTagOutput) ToGetPostgresProjectStatusCustomTagOutput() GetPostgresProjectStatusCustomTagOutput {
+	return o
+}
+
+func (o GetPostgresProjectStatusCustomTagOutput) ToGetPostgresProjectStatusCustomTagOutputWithContext(ctx context.Context) GetPostgresProjectStatusCustomTagOutput {
+	return o
+}
+
+// (string) - The key of the custom tag
+func (o GetPostgresProjectStatusCustomTagOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatusCustomTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The value of the custom tag
+func (o GetPostgresProjectStatusCustomTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatusCustomTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresProjectStatusCustomTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectStatusCustomTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresProjectStatusCustomTag)(nil)).Elem()
+}
+
+func (o GetPostgresProjectStatusCustomTagArrayOutput) ToGetPostgresProjectStatusCustomTagArrayOutput() GetPostgresProjectStatusCustomTagArrayOutput {
+	return o
+}
+
+func (o GetPostgresProjectStatusCustomTagArrayOutput) ToGetPostgresProjectStatusCustomTagArrayOutputWithContext(ctx context.Context) GetPostgresProjectStatusCustomTagArrayOutput {
+	return o
+}
+
+func (o GetPostgresProjectStatusCustomTagArrayOutput) Index(i pulumi.IntInput) GetPostgresProjectStatusCustomTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPostgresProjectStatusCustomTag {
+		return vs[0].([]GetPostgresProjectStatusCustomTag)[vs[1].(int)]
+	}).(GetPostgresProjectStatusCustomTagOutput)
+}
+
+type GetPostgresProjectStatusDefaultEndpointSettings struct {
+	// (number) - The maximum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMaxCu *float64 `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMinCu *float64 `pulumi:"autoscalingLimitMinCu"`
+	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+	// Should be set to true when provided.
+	// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	NoSuspension *bool `pulumi:"noSuspension"`
+	// (object) - A raw representation of Postgres settings
+	PgSettings map[string]string `pulumi:"pgSettings"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+	// If specified should be between 60s and 604800s (1 minute to 1 week).
+	// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	SuspendTimeoutDuration *string `pulumi:"suspendTimeoutDuration"`
+}
+
+// GetPostgresProjectStatusDefaultEndpointSettingsInput is an input type that accepts GetPostgresProjectStatusDefaultEndpointSettingsArgs and GetPostgresProjectStatusDefaultEndpointSettingsOutput values.
+// You can construct a concrete instance of `GetPostgresProjectStatusDefaultEndpointSettingsInput` via:
+//
+//	GetPostgresProjectStatusDefaultEndpointSettingsArgs{...}
+type GetPostgresProjectStatusDefaultEndpointSettingsInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectStatusDefaultEndpointSettingsOutput() GetPostgresProjectStatusDefaultEndpointSettingsOutput
+	ToGetPostgresProjectStatusDefaultEndpointSettingsOutputWithContext(context.Context) GetPostgresProjectStatusDefaultEndpointSettingsOutput
+}
+
+type GetPostgresProjectStatusDefaultEndpointSettingsArgs struct {
+	// (number) - The maximum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMaxCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMinCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMinCu"`
+	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+	// Should be set to true when provided.
+	// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	NoSuspension pulumi.BoolPtrInput `pulumi:"noSuspension"`
+	// (object) - A raw representation of Postgres settings
+	PgSettings pulumi.StringMapInput `pulumi:"pgSettings"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+	// If specified should be between 60s and 604800s (1 minute to 1 week).
+	// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	SuspendTimeoutDuration pulumi.StringPtrInput `pulumi:"suspendTimeoutDuration"`
+}
+
+func (GetPostgresProjectStatusDefaultEndpointSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectStatusDefaultEndpointSettings)(nil)).Elem()
+}
+
+func (i GetPostgresProjectStatusDefaultEndpointSettingsArgs) ToGetPostgresProjectStatusDefaultEndpointSettingsOutput() GetPostgresProjectStatusDefaultEndpointSettingsOutput {
+	return i.ToGetPostgresProjectStatusDefaultEndpointSettingsOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectStatusDefaultEndpointSettingsArgs) ToGetPostgresProjectStatusDefaultEndpointSettingsOutputWithContext(ctx context.Context) GetPostgresProjectStatusDefaultEndpointSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectStatusDefaultEndpointSettingsOutput)
+}
+
+type GetPostgresProjectStatusDefaultEndpointSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectStatusDefaultEndpointSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectStatusDefaultEndpointSettings)(nil)).Elem()
+}
+
+func (o GetPostgresProjectStatusDefaultEndpointSettingsOutput) ToGetPostgresProjectStatusDefaultEndpointSettingsOutput() GetPostgresProjectStatusDefaultEndpointSettingsOutput {
+	return o
+}
+
+func (o GetPostgresProjectStatusDefaultEndpointSettingsOutput) ToGetPostgresProjectStatusDefaultEndpointSettingsOutputWithContext(ctx context.Context) GetPostgresProjectStatusDefaultEndpointSettingsOutput {
+	return o
+}
+
+// (number) - The maximum number of Compute Units. Minimum value is 0.5
+func (o GetPostgresProjectStatusDefaultEndpointSettingsOutput) AutoscalingLimitMaxCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatusDefaultEndpointSettings) *float64 { return v.AutoscalingLimitMaxCu }).(pulumi.Float64PtrOutput)
+}
+
+// (number) - The minimum number of Compute Units. Minimum value is 0.5
+func (o GetPostgresProjectStatusDefaultEndpointSettingsOutput) AutoscalingLimitMinCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatusDefaultEndpointSettings) *float64 { return v.AutoscalingLimitMinCu }).(pulumi.Float64PtrOutput)
+}
+
+// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+// Should be set to true when provided.
+// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+func (o GetPostgresProjectStatusDefaultEndpointSettingsOutput) NoSuspension() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatusDefaultEndpointSettings) *bool { return v.NoSuspension }).(pulumi.BoolPtrOutput)
+}
+
+// (object) - A raw representation of Postgres settings
+func (o GetPostgresProjectStatusDefaultEndpointSettingsOutput) PgSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatusDefaultEndpointSettings) map[string]string { return v.PgSettings }).(pulumi.StringMapOutput)
+}
+
+// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+// If specified should be between 60s and 604800s (1 minute to 1 week).
+// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+func (o GetPostgresProjectStatusDefaultEndpointSettingsOutput) SuspendTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectStatusDefaultEndpointSettings) *string { return v.SuspendTimeoutDuration }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresProjectsProject struct {
+	// (string) - A timestamp indicating when the project was created
+	CreateTime string `pulumi:"createTime"`
+	// (string) - A timestamp indicating when the project was soft-deleted.
+	// Empty if the project is not deleted, otherwise set to a timestamp in the past
+	DeleteTime string `pulumi:"deleteTime"`
+	// (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
+	// Allows overriding branch protection. These settings only apply at creation time
+	// and do not affect resources created after project creation
+	InitialBranchSpec GetPostgresProjectsProjectInitialBranchSpec `pulumi:"initialBranchSpec"`
+	// (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
+	// created project. If omitted, the initial endpoint created will have default settings, without high availability
+	// configured. This field does not apply to any endpoints created after project creation. Use
+	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+	InitialEndpointSpec GetPostgresProjectsProjectInitialEndpointSpec `pulumi:"initialEndpointSpec"`
+	// (string) - Output only. The full resource path of the project.
+	// Format: projects/{project_id}
+	Name string `pulumi:"name"`
+	// (string) - Part of the resource name
+	ProjectId string `pulumi:"projectId"`
+	// Configure the provider for management through account provider.
+	ProviderConfig *GetPostgresProjectsProjectProviderConfig `pulumi:"providerConfig"`
+	// (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+	// Empty if the project is not deleted, otherwise set to a timestamp in the future
+	PurgeTime string `pulumi:"purgeTime"`
+	// (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+	Spec GetPostgresProjectsProjectSpec `pulumi:"spec"`
+	// (ProjectStatus) - The current status of a Project
+	Status GetPostgresProjectsProjectStatus `pulumi:"status"`
+	// (string) - System-generated unique ID for the project
+	Uid string `pulumi:"uid"`
+	// (string) - A timestamp indicating when the project was last updated
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetPostgresProjectsProjectInput is an input type that accepts GetPostgresProjectsProjectArgs and GetPostgresProjectsProjectOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectInput` via:
+//
+//	GetPostgresProjectsProjectArgs{...}
+type GetPostgresProjectsProjectInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectOutput() GetPostgresProjectsProjectOutput
+	ToGetPostgresProjectsProjectOutputWithContext(context.Context) GetPostgresProjectsProjectOutput
+}
+
+type GetPostgresProjectsProjectArgs struct {
+	// (string) - A timestamp indicating when the project was created
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// (string) - A timestamp indicating when the project was soft-deleted.
+	// Empty if the project is not deleted, otherwise set to a timestamp in the past
+	DeleteTime pulumi.StringInput `pulumi:"deleteTime"`
+	// (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
+	// Allows overriding branch protection. These settings only apply at creation time
+	// and do not affect resources created after project creation
+	InitialBranchSpec GetPostgresProjectsProjectInitialBranchSpecInput `pulumi:"initialBranchSpec"`
+	// (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
+	// created project. If omitted, the initial endpoint created will have default settings, without high availability
+	// configured. This field does not apply to any endpoints created after project creation. Use
+	// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+	InitialEndpointSpec GetPostgresProjectsProjectInitialEndpointSpecInput `pulumi:"initialEndpointSpec"`
+	// (string) - Output only. The full resource path of the project.
+	// Format: projects/{project_id}
+	Name pulumi.StringInput `pulumi:"name"`
+	// (string) - Part of the resource name
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Configure the provider for management through account provider.
+	ProviderConfig GetPostgresProjectsProjectProviderConfigPtrInput `pulumi:"providerConfig"`
+	// (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+	// Empty if the project is not deleted, otherwise set to a timestamp in the future
+	PurgeTime pulumi.StringInput `pulumi:"purgeTime"`
+	// (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+	Spec GetPostgresProjectsProjectSpecInput `pulumi:"spec"`
+	// (ProjectStatus) - The current status of a Project
+	Status GetPostgresProjectsProjectStatusInput `pulumi:"status"`
+	// (string) - System-generated unique ID for the project
+	Uid pulumi.StringInput `pulumi:"uid"`
+	// (string) - A timestamp indicating when the project was last updated
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetPostgresProjectsProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProject)(nil)).Elem()
+}
+
+func (i GetPostgresProjectsProjectArgs) ToGetPostgresProjectsProjectOutput() GetPostgresProjectsProjectOutput {
+	return i.ToGetPostgresProjectsProjectOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectArgs) ToGetPostgresProjectsProjectOutputWithContext(ctx context.Context) GetPostgresProjectsProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectOutput)
+}
+
+// GetPostgresProjectsProjectArrayInput is an input type that accepts GetPostgresProjectsProjectArray and GetPostgresProjectsProjectArrayOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectArrayInput` via:
+//
+//	GetPostgresProjectsProjectArray{ GetPostgresProjectsProjectArgs{...} }
+type GetPostgresProjectsProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectArrayOutput() GetPostgresProjectsProjectArrayOutput
+	ToGetPostgresProjectsProjectArrayOutputWithContext(context.Context) GetPostgresProjectsProjectArrayOutput
+}
+
+type GetPostgresProjectsProjectArray []GetPostgresProjectsProjectInput
+
+func (GetPostgresProjectsProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresProjectsProject)(nil)).Elem()
+}
+
+func (i GetPostgresProjectsProjectArray) ToGetPostgresProjectsProjectArrayOutput() GetPostgresProjectsProjectArrayOutput {
+	return i.ToGetPostgresProjectsProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectArray) ToGetPostgresProjectsProjectArrayOutputWithContext(ctx context.Context) GetPostgresProjectsProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectArrayOutput)
+}
+
+type GetPostgresProjectsProjectOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProject)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectOutput) ToGetPostgresProjectsProjectOutput() GetPostgresProjectsProjectOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectOutput) ToGetPostgresProjectsProjectOutputWithContext(ctx context.Context) GetPostgresProjectsProjectOutput {
+	return o
+}
+
+// (string) - A timestamp indicating when the project was created
+func (o GetPostgresProjectsProjectOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProject) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// (string) - A timestamp indicating when the project was soft-deleted.
+// Empty if the project is not deleted, otherwise set to a timestamp in the past
+func (o GetPostgresProjectsProjectOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProject) string { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
+// Allows overriding branch protection. These settings only apply at creation time
+// and do not affect resources created after project creation
+func (o GetPostgresProjectsProjectOutput) InitialBranchSpec() GetPostgresProjectsProjectInitialBranchSpecOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProject) GetPostgresProjectsProjectInitialBranchSpec {
+		return v.InitialBranchSpec
+	}).(GetPostgresProjectsProjectInitialBranchSpecOutput)
+}
+
+// (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
+// created project. If omitted, the initial endpoint created will have default settings, without high availability
+// configured. This field does not apply to any endpoints created after project creation. Use
+// spec.default_endpoint_settings to configure default settings for endpoints created after project creation
+func (o GetPostgresProjectsProjectOutput) InitialEndpointSpec() GetPostgresProjectsProjectInitialEndpointSpecOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProject) GetPostgresProjectsProjectInitialEndpointSpec {
+		return v.InitialEndpointSpec
+	}).(GetPostgresProjectsProjectInitialEndpointSpecOutput)
+}
+
+// (string) - Output only. The full resource path of the project.
+// Format: projects/{project_id}
+func (o GetPostgresProjectsProjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProject) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (string) - Part of the resource name
+func (o GetPostgresProjectsProjectOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProject) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Configure the provider for management through account provider.
+func (o GetPostgresProjectsProjectOutput) ProviderConfig() GetPostgresProjectsProjectProviderConfigPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProject) *GetPostgresProjectsProjectProviderConfig { return v.ProviderConfig }).(GetPostgresProjectsProjectProviderConfigPtrOutput)
+}
+
+// (string) - A timestamp indicating when the project is scheduled for permanent deletion.
+// Empty if the project is not deleted, otherwise set to a timestamp in the future
+func (o GetPostgresProjectsProjectOutput) PurgeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProject) string { return v.PurgeTime }).(pulumi.StringOutput)
+}
+
+// (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+func (o GetPostgresProjectsProjectOutput) Spec() GetPostgresProjectsProjectSpecOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProject) GetPostgresProjectsProjectSpec { return v.Spec }).(GetPostgresProjectsProjectSpecOutput)
+}
+
+// (ProjectStatus) - The current status of a Project
+func (o GetPostgresProjectsProjectOutput) Status() GetPostgresProjectsProjectStatusOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProject) GetPostgresProjectsProjectStatus { return v.Status }).(GetPostgresProjectsProjectStatusOutput)
+}
+
+// (string) - System-generated unique ID for the project
+func (o GetPostgresProjectsProjectOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProject) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+// (string) - A timestamp indicating when the project was last updated
+func (o GetPostgresProjectsProjectOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProject) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetPostgresProjectsProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresProjectsProject)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectArrayOutput) ToGetPostgresProjectsProjectArrayOutput() GetPostgresProjectsProjectArrayOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectArrayOutput) ToGetPostgresProjectsProjectArrayOutputWithContext(ctx context.Context) GetPostgresProjectsProjectArrayOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetPostgresProjectsProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPostgresProjectsProject {
+		return vs[0].([]GetPostgresProjectsProject)[vs[1].(int)]
+	}).(GetPostgresProjectsProjectOutput)
+}
+
+type GetPostgresProjectsProjectInitialBranchSpec struct {
+	// (boolean) - Whether the initial default branch should be protected from deletion
+	IsProtected *bool `pulumi:"isProtected"`
+}
+
+// GetPostgresProjectsProjectInitialBranchSpecInput is an input type that accepts GetPostgresProjectsProjectInitialBranchSpecArgs and GetPostgresProjectsProjectInitialBranchSpecOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectInitialBranchSpecInput` via:
+//
+//	GetPostgresProjectsProjectInitialBranchSpecArgs{...}
+type GetPostgresProjectsProjectInitialBranchSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectInitialBranchSpecOutput() GetPostgresProjectsProjectInitialBranchSpecOutput
+	ToGetPostgresProjectsProjectInitialBranchSpecOutputWithContext(context.Context) GetPostgresProjectsProjectInitialBranchSpecOutput
+}
+
+type GetPostgresProjectsProjectInitialBranchSpecArgs struct {
+	// (boolean) - Whether the initial default branch should be protected from deletion
+	IsProtected pulumi.BoolPtrInput `pulumi:"isProtected"`
+}
+
+func (GetPostgresProjectsProjectInitialBranchSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectInitialBranchSpec)(nil)).Elem()
+}
+
+func (i GetPostgresProjectsProjectInitialBranchSpecArgs) ToGetPostgresProjectsProjectInitialBranchSpecOutput() GetPostgresProjectsProjectInitialBranchSpecOutput {
+	return i.ToGetPostgresProjectsProjectInitialBranchSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectInitialBranchSpecArgs) ToGetPostgresProjectsProjectInitialBranchSpecOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialBranchSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectInitialBranchSpecOutput)
+}
+
+type GetPostgresProjectsProjectInitialBranchSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectInitialBranchSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectInitialBranchSpec)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectInitialBranchSpecOutput) ToGetPostgresProjectsProjectInitialBranchSpecOutput() GetPostgresProjectsProjectInitialBranchSpecOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectInitialBranchSpecOutput) ToGetPostgresProjectsProjectInitialBranchSpecOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialBranchSpecOutput {
+	return o
+}
+
+// (boolean) - Whether the initial default branch should be protected from deletion
+func (o GetPostgresProjectsProjectInitialBranchSpecOutput) IsProtected() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectInitialBranchSpec) *bool { return v.IsProtected }).(pulumi.BoolPtrOutput)
+}
+
+type GetPostgresProjectsProjectInitialEndpointSpec struct {
+	// (number) - The maximum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMaxCu *float64 `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMinCu *float64 `pulumi:"autoscalingLimitMinCu"`
+	// (EndpointGroupSpec) - Settings for HA configuration of the endpoint
+	Group *GetPostgresProjectsProjectInitialEndpointSpecGroup `pulumi:"group"`
+	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+	// Should be set to true when provided.
+	// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	NoSuspension *bool `pulumi:"noSuspension"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+	// If specified should be between 60s and 604800s (1 minute to 1 week).
+	// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	SuspendTimeoutDuration *string `pulumi:"suspendTimeoutDuration"`
+}
+
+// GetPostgresProjectsProjectInitialEndpointSpecInput is an input type that accepts GetPostgresProjectsProjectInitialEndpointSpecArgs and GetPostgresProjectsProjectInitialEndpointSpecOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectInitialEndpointSpecInput` via:
+//
+//	GetPostgresProjectsProjectInitialEndpointSpecArgs{...}
+type GetPostgresProjectsProjectInitialEndpointSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectInitialEndpointSpecOutput() GetPostgresProjectsProjectInitialEndpointSpecOutput
+	ToGetPostgresProjectsProjectInitialEndpointSpecOutputWithContext(context.Context) GetPostgresProjectsProjectInitialEndpointSpecOutput
+}
+
+type GetPostgresProjectsProjectInitialEndpointSpecArgs struct {
+	// (number) - The maximum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMaxCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMinCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMinCu"`
+	// (EndpointGroupSpec) - Settings for HA configuration of the endpoint
+	Group GetPostgresProjectsProjectInitialEndpointSpecGroupPtrInput `pulumi:"group"`
+	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+	// Should be set to true when provided.
+	// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	NoSuspension pulumi.BoolPtrInput `pulumi:"noSuspension"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+	// If specified should be between 60s and 604800s (1 minute to 1 week).
+	// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	SuspendTimeoutDuration pulumi.StringPtrInput `pulumi:"suspendTimeoutDuration"`
+}
+
+func (GetPostgresProjectsProjectInitialEndpointSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectInitialEndpointSpec)(nil)).Elem()
+}
+
+func (i GetPostgresProjectsProjectInitialEndpointSpecArgs) ToGetPostgresProjectsProjectInitialEndpointSpecOutput() GetPostgresProjectsProjectInitialEndpointSpecOutput {
+	return i.ToGetPostgresProjectsProjectInitialEndpointSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectInitialEndpointSpecArgs) ToGetPostgresProjectsProjectInitialEndpointSpecOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialEndpointSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectInitialEndpointSpecOutput)
+}
+
+type GetPostgresProjectsProjectInitialEndpointSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectInitialEndpointSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectInitialEndpointSpec)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecOutput) ToGetPostgresProjectsProjectInitialEndpointSpecOutput() GetPostgresProjectsProjectInitialEndpointSpecOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecOutput) ToGetPostgresProjectsProjectInitialEndpointSpecOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialEndpointSpecOutput {
+	return o
+}
+
+// (number) - The maximum number of Compute Units. Minimum value is 0.5
+func (o GetPostgresProjectsProjectInitialEndpointSpecOutput) AutoscalingLimitMaxCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectInitialEndpointSpec) *float64 { return v.AutoscalingLimitMaxCu }).(pulumi.Float64PtrOutput)
+}
+
+// (number) - The minimum number of Compute Units. Minimum value is 0.5
+func (o GetPostgresProjectsProjectInitialEndpointSpecOutput) AutoscalingLimitMinCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectInitialEndpointSpec) *float64 { return v.AutoscalingLimitMinCu }).(pulumi.Float64PtrOutput)
+}
+
+// (EndpointGroupSpec) - Settings for HA configuration of the endpoint
+func (o GetPostgresProjectsProjectInitialEndpointSpecOutput) Group() GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectInitialEndpointSpec) *GetPostgresProjectsProjectInitialEndpointSpecGroup {
+		return v.Group
+	}).(GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput)
+}
+
+// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+// Should be set to true when provided.
+// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+func (o GetPostgresProjectsProjectInitialEndpointSpecOutput) NoSuspension() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectInitialEndpointSpec) *bool { return v.NoSuspension }).(pulumi.BoolPtrOutput)
+}
+
+// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+// If specified should be between 60s and 604800s (1 minute to 1 week).
+// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+func (o GetPostgresProjectsProjectInitialEndpointSpecOutput) SuspendTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectInitialEndpointSpec) *string { return v.SuspendTimeoutDuration }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresProjectsProjectInitialEndpointSpecGroup struct {
+	// (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+	// size.max > 1
+	EnableReadableSecondaries *bool `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max int `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min int `pulumi:"min"`
+}
+
+// GetPostgresProjectsProjectInitialEndpointSpecGroupInput is an input type that accepts GetPostgresProjectsProjectInitialEndpointSpecGroupArgs and GetPostgresProjectsProjectInitialEndpointSpecGroupOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectInitialEndpointSpecGroupInput` via:
+//
+//	GetPostgresProjectsProjectInitialEndpointSpecGroupArgs{...}
+type GetPostgresProjectsProjectInitialEndpointSpecGroupInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectInitialEndpointSpecGroupOutput() GetPostgresProjectsProjectInitialEndpointSpecGroupOutput
+	ToGetPostgresProjectsProjectInitialEndpointSpecGroupOutputWithContext(context.Context) GetPostgresProjectsProjectInitialEndpointSpecGroupOutput
+}
+
+type GetPostgresProjectsProjectInitialEndpointSpecGroupArgs struct {
+	// (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+	// size.max > 1
+	EnableReadableSecondaries pulumi.BoolPtrInput `pulumi:"enableReadableSecondaries"`
+	// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+	// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+	// true on the EndpointSpec
+	Max pulumi.IntInput `pulumi:"max"`
+	// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+	// than or equal to 1
+	Min pulumi.IntInput `pulumi:"min"`
+}
+
+func (GetPostgresProjectsProjectInitialEndpointSpecGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i GetPostgresProjectsProjectInitialEndpointSpecGroupArgs) ToGetPostgresProjectsProjectInitialEndpointSpecGroupOutput() GetPostgresProjectsProjectInitialEndpointSpecGroupOutput {
+	return i.ToGetPostgresProjectsProjectInitialEndpointSpecGroupOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectInitialEndpointSpecGroupArgs) ToGetPostgresProjectsProjectInitialEndpointSpecGroupOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialEndpointSpecGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectInitialEndpointSpecGroupOutput)
+}
+
+func (i GetPostgresProjectsProjectInitialEndpointSpecGroupArgs) ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return i.ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectInitialEndpointSpecGroupArgs) ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectInitialEndpointSpecGroupOutput).ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx)
+}
+
+// GetPostgresProjectsProjectInitialEndpointSpecGroupPtrInput is an input type that accepts GetPostgresProjectsProjectInitialEndpointSpecGroupArgs, GetPostgresProjectsProjectInitialEndpointSpecGroupPtr and GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectInitialEndpointSpecGroupPtrInput` via:
+//
+//	        GetPostgresProjectsProjectInitialEndpointSpecGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresProjectsProjectInitialEndpointSpecGroupPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput
+	ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Context) GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput
+}
+
+type getPostgresProjectsProjectInitialEndpointSpecGroupPtrType GetPostgresProjectsProjectInitialEndpointSpecGroupArgs
+
+func GetPostgresProjectsProjectInitialEndpointSpecGroupPtr(v *GetPostgresProjectsProjectInitialEndpointSpecGroupArgs) GetPostgresProjectsProjectInitialEndpointSpecGroupPtrInput {
+	return (*getPostgresProjectsProjectInitialEndpointSpecGroupPtrType)(v)
+}
+
+func (*getPostgresProjectsProjectInitialEndpointSpecGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectsProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (i *getPostgresProjectsProjectInitialEndpointSpecGroupPtrType) ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return i.ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresProjectsProjectInitialEndpointSpecGroupPtrType) ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput)
+}
+
+type GetPostgresProjectsProjectInitialEndpointSpecGroupOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectInitialEndpointSpecGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupOutput) ToGetPostgresProjectsProjectInitialEndpointSpecGroupOutput() GetPostgresProjectsProjectInitialEndpointSpecGroupOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupOutput) ToGetPostgresProjectsProjectInitialEndpointSpecGroupOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialEndpointSpecGroupOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupOutput) ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return o.ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupOutput) ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresProjectsProjectInitialEndpointSpecGroup) *GetPostgresProjectsProjectInitialEndpointSpecGroup {
+		return &v
+	}).(GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput)
+}
+
+// (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+// size.max > 1
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectInitialEndpointSpecGroup) *bool { return v.EnableReadableSecondaries }).(pulumi.BoolPtrOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupOutput) Max() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectInitialEndpointSpecGroup) int { return v.Max }).(pulumi.IntOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupOutput) Min() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectInitialEndpointSpecGroup) int { return v.Min }).(pulumi.IntOutput)
+}
+
+type GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectsProjectInitialEndpointSpecGroup)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput) ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput() GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput) ToGetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput) Elem() GetPostgresProjectsProjectInitialEndpointSpecGroupOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProjectInitialEndpointSpecGroup) GetPostgresProjectsProjectInitialEndpointSpecGroup {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresProjectsProjectInitialEndpointSpecGroup
+		return ret
+	}).(GetPostgresProjectsProjectInitialEndpointSpecGroupOutput)
+}
+
+// (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
+// size.max > 1
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput) EnableReadableSecondaries() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProjectInitialEndpointSpecGroup) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableReadableSecondaries
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (integer) - The maximum number of computes in the endpoint group. Currently, this must be equal to min. Set to 1 for single
+// compute endpoints, to disable HA. To manually suspend all computes in an endpoint group, set disabled to
+// true on the EndpointSpec
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProjectInitialEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// (integer) - The minimum number of computes in the endpoint group. Currently, this must be equal to max. This must be greater
+// than or equal to 1
+func (o GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProjectInitialEndpointSpecGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetPostgresProjectsProjectProviderConfig struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId string `pulumi:"workspaceId"`
+}
+
+// GetPostgresProjectsProjectProviderConfigInput is an input type that accepts GetPostgresProjectsProjectProviderConfigArgs and GetPostgresProjectsProjectProviderConfigOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectProviderConfigInput` via:
+//
+//	GetPostgresProjectsProjectProviderConfigArgs{...}
+type GetPostgresProjectsProjectProviderConfigInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectProviderConfigOutput() GetPostgresProjectsProjectProviderConfigOutput
+	ToGetPostgresProjectsProjectProviderConfigOutputWithContext(context.Context) GetPostgresProjectsProjectProviderConfigOutput
+}
+
+type GetPostgresProjectsProjectProviderConfigArgs struct {
+	// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+	WorkspaceId pulumi.StringInput `pulumi:"workspaceId"`
+}
+
+func (GetPostgresProjectsProjectProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectProviderConfig)(nil)).Elem()
+}
+
+func (i GetPostgresProjectsProjectProviderConfigArgs) ToGetPostgresProjectsProjectProviderConfigOutput() GetPostgresProjectsProjectProviderConfigOutput {
+	return i.ToGetPostgresProjectsProjectProviderConfigOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectProviderConfigArgs) ToGetPostgresProjectsProjectProviderConfigOutputWithContext(ctx context.Context) GetPostgresProjectsProjectProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectProviderConfigOutput)
+}
+
+func (i GetPostgresProjectsProjectProviderConfigArgs) ToGetPostgresProjectsProjectProviderConfigPtrOutput() GetPostgresProjectsProjectProviderConfigPtrOutput {
+	return i.ToGetPostgresProjectsProjectProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectProviderConfigArgs) ToGetPostgresProjectsProjectProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProjectProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectProviderConfigOutput).ToGetPostgresProjectsProjectProviderConfigPtrOutputWithContext(ctx)
+}
+
+// GetPostgresProjectsProjectProviderConfigPtrInput is an input type that accepts GetPostgresProjectsProjectProviderConfigArgs, GetPostgresProjectsProjectProviderConfigPtr and GetPostgresProjectsProjectProviderConfigPtrOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectProviderConfigPtrInput` via:
+//
+//	        GetPostgresProjectsProjectProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresProjectsProjectProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectProviderConfigPtrOutput() GetPostgresProjectsProjectProviderConfigPtrOutput
+	ToGetPostgresProjectsProjectProviderConfigPtrOutputWithContext(context.Context) GetPostgresProjectsProjectProviderConfigPtrOutput
+}
+
+type getPostgresProjectsProjectProviderConfigPtrType GetPostgresProjectsProjectProviderConfigArgs
+
+func GetPostgresProjectsProjectProviderConfigPtr(v *GetPostgresProjectsProjectProviderConfigArgs) GetPostgresProjectsProjectProviderConfigPtrInput {
+	return (*getPostgresProjectsProjectProviderConfigPtrType)(v)
+}
+
+func (*getPostgresProjectsProjectProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectsProjectProviderConfig)(nil)).Elem()
+}
+
+func (i *getPostgresProjectsProjectProviderConfigPtrType) ToGetPostgresProjectsProjectProviderConfigPtrOutput() GetPostgresProjectsProjectProviderConfigPtrOutput {
+	return i.ToGetPostgresProjectsProjectProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresProjectsProjectProviderConfigPtrType) ToGetPostgresProjectsProjectProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProjectProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectProviderConfigPtrOutput)
+}
+
+type GetPostgresProjectsProjectProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectProviderConfigOutput) ToGetPostgresProjectsProjectProviderConfigOutput() GetPostgresProjectsProjectProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectProviderConfigOutput) ToGetPostgresProjectsProjectProviderConfigOutputWithContext(ctx context.Context) GetPostgresProjectsProjectProviderConfigOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectProviderConfigOutput) ToGetPostgresProjectsProjectProviderConfigPtrOutput() GetPostgresProjectsProjectProviderConfigPtrOutput {
+	return o.ToGetPostgresProjectsProjectProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresProjectsProjectProviderConfigOutput) ToGetPostgresProjectsProjectProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProjectProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresProjectsProjectProviderConfig) *GetPostgresProjectsProjectProviderConfig {
+		return &v
+	}).(GetPostgresProjectsProjectProviderConfigPtrOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresProjectsProjectProviderConfigOutput) WorkspaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectProviderConfig) string { return v.WorkspaceId }).(pulumi.StringOutput)
+}
+
+type GetPostgresProjectsProjectProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectsProjectProviderConfig)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectProviderConfigPtrOutput) ToGetPostgresProjectsProjectProviderConfigPtrOutput() GetPostgresProjectsProjectProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectProviderConfigPtrOutput) ToGetPostgresProjectsProjectProviderConfigPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProjectProviderConfigPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectProviderConfigPtrOutput) Elem() GetPostgresProjectsProjectProviderConfigOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProjectProviderConfig) GetPostgresProjectsProjectProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresProjectsProjectProviderConfig
+		return ret
+	}).(GetPostgresProjectsProjectProviderConfigOutput)
+}
+
+// Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+func (o GetPostgresProjectsProjectProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProjectProviderConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkspaceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresProjectsProjectSpec struct {
+	// (string) - The budget policy that is applied to the project
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
+	// (list of ProjectCustomTag) - The effective custom tags associated with the project
+	CustomTags []GetPostgresProjectsProjectSpecCustomTag `pulumi:"customTags"`
+	// (string) - The full resource path of the default branch of the project
+	DefaultBranch *string `pulumi:"defaultBranch"`
+	// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+	DefaultEndpointSettings *GetPostgresProjectsProjectSpecDefaultEndpointSettings `pulumi:"defaultEndpointSettings"`
+	// (string) - The effective human-readable project name
+	DisplayName *string `pulumi:"displayName"`
+	// (boolean) - Whether to enable PG native password login on all endpoints in this project
+	EnablePgNativeLogin *bool `pulumi:"enablePgNativeLogin"`
+	// (string) - The effective number of seconds to retain the shared history for point in time recovery
+	HistoryRetentionDuration *string `pulumi:"historyRetentionDuration"`
+	// (integer) - The effective major Postgres version number
+	PgVersion *int `pulumi:"pgVersion"`
+}
+
+// GetPostgresProjectsProjectSpecInput is an input type that accepts GetPostgresProjectsProjectSpecArgs and GetPostgresProjectsProjectSpecOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectSpecInput` via:
+//
+//	GetPostgresProjectsProjectSpecArgs{...}
+type GetPostgresProjectsProjectSpecInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectSpecOutput() GetPostgresProjectsProjectSpecOutput
+	ToGetPostgresProjectsProjectSpecOutputWithContext(context.Context) GetPostgresProjectsProjectSpecOutput
+}
+
+type GetPostgresProjectsProjectSpecArgs struct {
+	// (string) - The budget policy that is applied to the project
+	BudgetPolicyId pulumi.StringPtrInput `pulumi:"budgetPolicyId"`
+	// (list of ProjectCustomTag) - The effective custom tags associated with the project
+	CustomTags GetPostgresProjectsProjectSpecCustomTagArrayInput `pulumi:"customTags"`
+	// (string) - The full resource path of the default branch of the project
+	DefaultBranch pulumi.StringPtrInput `pulumi:"defaultBranch"`
+	// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+	DefaultEndpointSettings GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrInput `pulumi:"defaultEndpointSettings"`
+	// (string) - The effective human-readable project name
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// (boolean) - Whether to enable PG native password login on all endpoints in this project
+	EnablePgNativeLogin pulumi.BoolPtrInput `pulumi:"enablePgNativeLogin"`
+	// (string) - The effective number of seconds to retain the shared history for point in time recovery
+	HistoryRetentionDuration pulumi.StringPtrInput `pulumi:"historyRetentionDuration"`
+	// (integer) - The effective major Postgres version number
+	PgVersion pulumi.IntPtrInput `pulumi:"pgVersion"`
+}
+
+func (GetPostgresProjectsProjectSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectSpec)(nil)).Elem()
+}
+
+func (i GetPostgresProjectsProjectSpecArgs) ToGetPostgresProjectsProjectSpecOutput() GetPostgresProjectsProjectSpecOutput {
+	return i.ToGetPostgresProjectsProjectSpecOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectSpecArgs) ToGetPostgresProjectsProjectSpecOutputWithContext(ctx context.Context) GetPostgresProjectsProjectSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectSpecOutput)
+}
+
+type GetPostgresProjectsProjectSpecOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectSpec)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectSpecOutput) ToGetPostgresProjectsProjectSpecOutput() GetPostgresProjectsProjectSpecOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectSpecOutput) ToGetPostgresProjectsProjectSpecOutputWithContext(ctx context.Context) GetPostgresProjectsProjectSpecOutput {
+	return o
+}
+
+// (string) - The budget policy that is applied to the project
+func (o GetPostgresProjectsProjectSpecOutput) BudgetPolicyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectSpec) *string { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
+}
+
+// (list of ProjectCustomTag) - The effective custom tags associated with the project
+func (o GetPostgresProjectsProjectSpecOutput) CustomTags() GetPostgresProjectsProjectSpecCustomTagArrayOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectSpec) []GetPostgresProjectsProjectSpecCustomTag { return v.CustomTags }).(GetPostgresProjectsProjectSpecCustomTagArrayOutput)
+}
+
+// (string) - The full resource path of the default branch of the project
+func (o GetPostgresProjectsProjectSpecOutput) DefaultBranch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectSpec) *string { return v.DefaultBranch }).(pulumi.StringPtrOutput)
+}
+
+// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+func (o GetPostgresProjectsProjectSpecOutput) DefaultEndpointSettings() GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectSpec) *GetPostgresProjectsProjectSpecDefaultEndpointSettings {
+		return v.DefaultEndpointSettings
+	}).(GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput)
+}
+
+// (string) - The effective human-readable project name
+func (o GetPostgresProjectsProjectSpecOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectSpec) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// (boolean) - Whether to enable PG native password login on all endpoints in this project
+func (o GetPostgresProjectsProjectSpecOutput) EnablePgNativeLogin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectSpec) *bool { return v.EnablePgNativeLogin }).(pulumi.BoolPtrOutput)
+}
+
+// (string) - The effective number of seconds to retain the shared history for point in time recovery
+func (o GetPostgresProjectsProjectSpecOutput) HistoryRetentionDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectSpec) *string { return v.HistoryRetentionDuration }).(pulumi.StringPtrOutput)
+}
+
+// (integer) - The effective major Postgres version number
+func (o GetPostgresProjectsProjectSpecOutput) PgVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectSpec) *int { return v.PgVersion }).(pulumi.IntPtrOutput)
+}
+
+type GetPostgresProjectsProjectSpecCustomTag struct {
+	// (string) - The key of the custom tag
+	Key *string `pulumi:"key"`
+	// (string) - The value of the custom tag
+	Value *string `pulumi:"value"`
+}
+
+// GetPostgresProjectsProjectSpecCustomTagInput is an input type that accepts GetPostgresProjectsProjectSpecCustomTagArgs and GetPostgresProjectsProjectSpecCustomTagOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectSpecCustomTagInput` via:
+//
+//	GetPostgresProjectsProjectSpecCustomTagArgs{...}
+type GetPostgresProjectsProjectSpecCustomTagInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectSpecCustomTagOutput() GetPostgresProjectsProjectSpecCustomTagOutput
+	ToGetPostgresProjectsProjectSpecCustomTagOutputWithContext(context.Context) GetPostgresProjectsProjectSpecCustomTagOutput
+}
+
+type GetPostgresProjectsProjectSpecCustomTagArgs struct {
+	// (string) - The key of the custom tag
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// (string) - The value of the custom tag
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetPostgresProjectsProjectSpecCustomTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectSpecCustomTag)(nil)).Elem()
+}
+
+func (i GetPostgresProjectsProjectSpecCustomTagArgs) ToGetPostgresProjectsProjectSpecCustomTagOutput() GetPostgresProjectsProjectSpecCustomTagOutput {
+	return i.ToGetPostgresProjectsProjectSpecCustomTagOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectSpecCustomTagArgs) ToGetPostgresProjectsProjectSpecCustomTagOutputWithContext(ctx context.Context) GetPostgresProjectsProjectSpecCustomTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectSpecCustomTagOutput)
+}
+
+// GetPostgresProjectsProjectSpecCustomTagArrayInput is an input type that accepts GetPostgresProjectsProjectSpecCustomTagArray and GetPostgresProjectsProjectSpecCustomTagArrayOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectSpecCustomTagArrayInput` via:
+//
+//	GetPostgresProjectsProjectSpecCustomTagArray{ GetPostgresProjectsProjectSpecCustomTagArgs{...} }
+type GetPostgresProjectsProjectSpecCustomTagArrayInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectSpecCustomTagArrayOutput() GetPostgresProjectsProjectSpecCustomTagArrayOutput
+	ToGetPostgresProjectsProjectSpecCustomTagArrayOutputWithContext(context.Context) GetPostgresProjectsProjectSpecCustomTagArrayOutput
+}
+
+type GetPostgresProjectsProjectSpecCustomTagArray []GetPostgresProjectsProjectSpecCustomTagInput
+
+func (GetPostgresProjectsProjectSpecCustomTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresProjectsProjectSpecCustomTag)(nil)).Elem()
+}
+
+func (i GetPostgresProjectsProjectSpecCustomTagArray) ToGetPostgresProjectsProjectSpecCustomTagArrayOutput() GetPostgresProjectsProjectSpecCustomTagArrayOutput {
+	return i.ToGetPostgresProjectsProjectSpecCustomTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectSpecCustomTagArray) ToGetPostgresProjectsProjectSpecCustomTagArrayOutputWithContext(ctx context.Context) GetPostgresProjectsProjectSpecCustomTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectSpecCustomTagArrayOutput)
+}
+
+type GetPostgresProjectsProjectSpecCustomTagOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectSpecCustomTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectSpecCustomTag)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectSpecCustomTagOutput) ToGetPostgresProjectsProjectSpecCustomTagOutput() GetPostgresProjectsProjectSpecCustomTagOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectSpecCustomTagOutput) ToGetPostgresProjectsProjectSpecCustomTagOutputWithContext(ctx context.Context) GetPostgresProjectsProjectSpecCustomTagOutput {
+	return o
+}
+
+// (string) - The key of the custom tag
+func (o GetPostgresProjectsProjectSpecCustomTagOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectSpecCustomTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The value of the custom tag
+func (o GetPostgresProjectsProjectSpecCustomTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectSpecCustomTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresProjectsProjectSpecCustomTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectSpecCustomTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresProjectsProjectSpecCustomTag)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectSpecCustomTagArrayOutput) ToGetPostgresProjectsProjectSpecCustomTagArrayOutput() GetPostgresProjectsProjectSpecCustomTagArrayOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectSpecCustomTagArrayOutput) ToGetPostgresProjectsProjectSpecCustomTagArrayOutputWithContext(ctx context.Context) GetPostgresProjectsProjectSpecCustomTagArrayOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectSpecCustomTagArrayOutput) Index(i pulumi.IntInput) GetPostgresProjectsProjectSpecCustomTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPostgresProjectsProjectSpecCustomTag {
+		return vs[0].([]GetPostgresProjectsProjectSpecCustomTag)[vs[1].(int)]
+	}).(GetPostgresProjectsProjectSpecCustomTagOutput)
+}
+
+type GetPostgresProjectsProjectSpecDefaultEndpointSettings struct {
+	// (number) - The maximum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMaxCu *float64 `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMinCu *float64 `pulumi:"autoscalingLimitMinCu"`
+	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+	// Should be set to true when provided.
+	// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	NoSuspension *bool `pulumi:"noSuspension"`
+	// (object) - A raw representation of Postgres settings
+	PgSettings map[string]string `pulumi:"pgSettings"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+	// If specified should be between 60s and 604800s (1 minute to 1 week).
+	// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	SuspendTimeoutDuration *string `pulumi:"suspendTimeoutDuration"`
+}
+
+// GetPostgresProjectsProjectSpecDefaultEndpointSettingsInput is an input type that accepts GetPostgresProjectsProjectSpecDefaultEndpointSettingsArgs and GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectSpecDefaultEndpointSettingsInput` via:
+//
+//	GetPostgresProjectsProjectSpecDefaultEndpointSettingsArgs{...}
+type GetPostgresProjectsProjectSpecDefaultEndpointSettingsInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput() GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput
+	ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsOutputWithContext(context.Context) GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput
+}
+
+type GetPostgresProjectsProjectSpecDefaultEndpointSettingsArgs struct {
+	// (number) - The maximum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMaxCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMaxCu"`
+	// (number) - The minimum number of Compute Units. Minimum value is 0.5
+	AutoscalingLimitMinCu pulumi.Float64PtrInput `pulumi:"autoscalingLimitMinCu"`
+	// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+	// Should be set to true when provided.
+	// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	NoSuspension pulumi.BoolPtrInput `pulumi:"noSuspension"`
+	// (object) - A raw representation of Postgres settings
+	PgSettings pulumi.StringMapInput `pulumi:"pgSettings"`
+	// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+	// If specified should be between 60s and 604800s (1 minute to 1 week).
+	// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+	SuspendTimeoutDuration pulumi.StringPtrInput `pulumi:"suspendTimeoutDuration"`
+}
+
+func (GetPostgresProjectsProjectSpecDefaultEndpointSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectSpecDefaultEndpointSettings)(nil)).Elem()
+}
+
+func (i GetPostgresProjectsProjectSpecDefaultEndpointSettingsArgs) ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput() GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput {
+	return i.ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectSpecDefaultEndpointSettingsArgs) ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsOutputWithContext(ctx context.Context) GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput)
+}
+
+func (i GetPostgresProjectsProjectSpecDefaultEndpointSettingsArgs) ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput() GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput {
+	return i.ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectSpecDefaultEndpointSettingsArgs) ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput).ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutputWithContext(ctx)
+}
+
+// GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrInput is an input type that accepts GetPostgresProjectsProjectSpecDefaultEndpointSettingsArgs, GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtr and GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrInput` via:
+//
+//	        GetPostgresProjectsProjectSpecDefaultEndpointSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput() GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput
+	ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutputWithContext(context.Context) GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput
+}
+
+type getPostgresProjectsProjectSpecDefaultEndpointSettingsPtrType GetPostgresProjectsProjectSpecDefaultEndpointSettingsArgs
+
+func GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtr(v *GetPostgresProjectsProjectSpecDefaultEndpointSettingsArgs) GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrInput {
+	return (*getPostgresProjectsProjectSpecDefaultEndpointSettingsPtrType)(v)
+}
+
+func (*getPostgresProjectsProjectSpecDefaultEndpointSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectsProjectSpecDefaultEndpointSettings)(nil)).Elem()
+}
+
+func (i *getPostgresProjectsProjectSpecDefaultEndpointSettingsPtrType) ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput() GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput {
+	return i.ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresProjectsProjectSpecDefaultEndpointSettingsPtrType) ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput)
+}
+
+type GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectSpecDefaultEndpointSettings)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput) ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput() GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput) ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsOutputWithContext(ctx context.Context) GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput) ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput() GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput {
+	return o.ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput) ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresProjectsProjectSpecDefaultEndpointSettings) *GetPostgresProjectsProjectSpecDefaultEndpointSettings {
+		return &v
+	}).(GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput)
+}
+
+// (number) - The maximum number of Compute Units. Minimum value is 0.5
+func (o GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput) AutoscalingLimitMaxCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectSpecDefaultEndpointSettings) *float64 { return v.AutoscalingLimitMaxCu }).(pulumi.Float64PtrOutput)
+}
+
+// (number) - The minimum number of Compute Units. Minimum value is 0.5
+func (o GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput) AutoscalingLimitMinCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectSpecDefaultEndpointSettings) *float64 { return v.AutoscalingLimitMinCu }).(pulumi.Float64PtrOutput)
+}
+
+// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+// Should be set to true when provided.
+// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+func (o GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput) NoSuspension() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectSpecDefaultEndpointSettings) *bool { return v.NoSuspension }).(pulumi.BoolPtrOutput)
+}
+
+// (object) - A raw representation of Postgres settings
+func (o GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput) PgSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectSpecDefaultEndpointSettings) map[string]string { return v.PgSettings }).(pulumi.StringMapOutput)
+}
+
+// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+// If specified should be between 60s and 604800s (1 minute to 1 week).
+// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+func (o GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput) SuspendTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectSpecDefaultEndpointSettings) *string { return v.SuspendTimeoutDuration }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresProjectsProjectSpecDefaultEndpointSettings)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput) ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput() GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput) ToGetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutputWithContext(ctx context.Context) GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput) Elem() GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProjectSpecDefaultEndpointSettings) GetPostgresProjectsProjectSpecDefaultEndpointSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresProjectsProjectSpecDefaultEndpointSettings
+		return ret
+	}).(GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput)
+}
+
+// (number) - The maximum number of Compute Units. Minimum value is 0.5
+func (o GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput) AutoscalingLimitMaxCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProjectSpecDefaultEndpointSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingLimitMaxCu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// (number) - The minimum number of Compute Units. Minimum value is 0.5
+func (o GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput) AutoscalingLimitMinCu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProjectSpecDefaultEndpointSettings) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingLimitMinCu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+// Should be set to true when provided.
+// Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+func (o GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput) NoSuspension() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProjectSpecDefaultEndpointSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoSuspension
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (object) - A raw representation of Postgres settings
+func (o GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput) PgSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProjectSpecDefaultEndpointSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.PgSettings
+	}).(pulumi.StringMapOutput)
+}
+
+// (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+// If specified should be between 60s and 604800s (1 minute to 1 week).
+// Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+func (o GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput) SuspendTimeoutDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresProjectsProjectSpecDefaultEndpointSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SuspendTimeoutDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresProjectsProjectStatus struct {
+	// (integer) - The logical size limit for a branch
+	BranchLogicalSizeLimitBytes int `pulumi:"branchLogicalSizeLimitBytes"`
+	// (string) - The budget policy that is applied to the project
+	BudgetPolicyId string `pulumi:"budgetPolicyId"`
+	// (string) - The most recent time when any endpoint of this project was active
+	ComputeLastActiveTime string `pulumi:"computeLastActiveTime"`
+	// (list of ProjectCustomTag) - The effective custom tags associated with the project
+	CustomTags []GetPostgresProjectsProjectStatusCustomTag `pulumi:"customTags"`
+	// (string) - The full resource path of the default branch of the project
+	DefaultBranch string `pulumi:"defaultBranch"`
+	// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+	DefaultEndpointSettings GetPostgresProjectsProjectStatusDefaultEndpointSettings `pulumi:"defaultEndpointSettings"`
+	// (string) - The effective human-readable project name
+	DisplayName string `pulumi:"displayName"`
+	// (boolean) - Whether to enable PG native password login on all endpoints in this project
+	EnablePgNativeLogin bool `pulumi:"enablePgNativeLogin"`
+	// (string) - The effective number of seconds to retain the shared history for point in time recovery
+	HistoryRetentionDuration string `pulumi:"historyRetentionDuration"`
+	// (string) - The email of the project owner
+	Owner string `pulumi:"owner"`
+	// (integer) - The effective major Postgres version number
+	PgVersion int `pulumi:"pgVersion"`
+	// (string) - Part of the resource name
+	ProjectId string `pulumi:"projectId"`
+	// (integer) - The current space occupied by the project in storage
+	SyntheticStorageSizeBytes int `pulumi:"syntheticStorageSizeBytes"`
+}
+
+// GetPostgresProjectsProjectStatusInput is an input type that accepts GetPostgresProjectsProjectStatusArgs and GetPostgresProjectsProjectStatusOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectStatusInput` via:
+//
+//	GetPostgresProjectsProjectStatusArgs{...}
+type GetPostgresProjectsProjectStatusInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectStatusOutput() GetPostgresProjectsProjectStatusOutput
+	ToGetPostgresProjectsProjectStatusOutputWithContext(context.Context) GetPostgresProjectsProjectStatusOutput
+}
+
+type GetPostgresProjectsProjectStatusArgs struct {
+	// (integer) - The logical size limit for a branch
+	BranchLogicalSizeLimitBytes pulumi.IntInput `pulumi:"branchLogicalSizeLimitBytes"`
+	// (string) - The budget policy that is applied to the project
+	BudgetPolicyId pulumi.StringInput `pulumi:"budgetPolicyId"`
+	// (string) - The most recent time when any endpoint of this project was active
+	ComputeLastActiveTime pulumi.StringInput `pulumi:"computeLastActiveTime"`
+	// (list of ProjectCustomTag) - The effective custom tags associated with the project
+	CustomTags GetPostgresProjectsProjectStatusCustomTagArrayInput `pulumi:"customTags"`
+	// (string) - The full resource path of the default branch of the project
+	DefaultBranch pulumi.StringInput `pulumi:"defaultBranch"`
+	// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+	DefaultEndpointSettings GetPostgresProjectsProjectStatusDefaultEndpointSettingsInput `pulumi:"defaultEndpointSettings"`
+	// (string) - The effective human-readable project name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// (boolean) - Whether to enable PG native password login on all endpoints in this project
+	EnablePgNativeLogin pulumi.BoolInput `pulumi:"enablePgNativeLogin"`
+	// (string) - The effective number of seconds to retain the shared history for point in time recovery
+	HistoryRetentionDuration pulumi.StringInput `pulumi:"historyRetentionDuration"`
+	// (string) - The email of the project owner
+	Owner pulumi.StringInput `pulumi:"owner"`
+	// (integer) - The effective major Postgres version number
+	PgVersion pulumi.IntInput `pulumi:"pgVersion"`
+	// (string) - Part of the resource name
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// (integer) - The current space occupied by the project in storage
+	SyntheticStorageSizeBytes pulumi.IntInput `pulumi:"syntheticStorageSizeBytes"`
+}
+
+func (GetPostgresProjectsProjectStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectStatus)(nil)).Elem()
+}
+
+func (i GetPostgresProjectsProjectStatusArgs) ToGetPostgresProjectsProjectStatusOutput() GetPostgresProjectsProjectStatusOutput {
+	return i.ToGetPostgresProjectsProjectStatusOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectStatusArgs) ToGetPostgresProjectsProjectStatusOutputWithContext(ctx context.Context) GetPostgresProjectsProjectStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectStatusOutput)
+}
+
+type GetPostgresProjectsProjectStatusOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectStatus)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectStatusOutput) ToGetPostgresProjectsProjectStatusOutput() GetPostgresProjectsProjectStatusOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectStatusOutput) ToGetPostgresProjectsProjectStatusOutputWithContext(ctx context.Context) GetPostgresProjectsProjectStatusOutput {
+	return o
+}
+
+// (integer) - The logical size limit for a branch
+func (o GetPostgresProjectsProjectStatusOutput) BranchLogicalSizeLimitBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatus) int { return v.BranchLogicalSizeLimitBytes }).(pulumi.IntOutput)
+}
+
+// (string) - The budget policy that is applied to the project
+func (o GetPostgresProjectsProjectStatusOutput) BudgetPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatus) string { return v.BudgetPolicyId }).(pulumi.StringOutput)
+}
+
+// (string) - The most recent time when any endpoint of this project was active
+func (o GetPostgresProjectsProjectStatusOutput) ComputeLastActiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatus) string { return v.ComputeLastActiveTime }).(pulumi.StringOutput)
+}
+
+// (list of ProjectCustomTag) - The effective custom tags associated with the project
+func (o GetPostgresProjectsProjectStatusOutput) CustomTags() GetPostgresProjectsProjectStatusCustomTagArrayOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatus) []GetPostgresProjectsProjectStatusCustomTag {
+		return v.CustomTags
+	}).(GetPostgresProjectsProjectStatusCustomTagArrayOutput)
+}
+
+// (string) - The full resource path of the default branch of the project
+func (o GetPostgresProjectsProjectStatusOutput) DefaultBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatus) string { return v.DefaultBranch }).(pulumi.StringOutput)
+}
+
+// (ProjectDefaultEndpointSettings) - The effective default endpoint settings
+func (o GetPostgresProjectsProjectStatusOutput) DefaultEndpointSettings() GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatus) GetPostgresProjectsProjectStatusDefaultEndpointSettings {
+		return v.DefaultEndpointSettings
+	}).(GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput)
+}
+
+// (string) - The effective human-readable project name
+func (o GetPostgresProjectsProjectStatusOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatus) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// (boolean) - Whether to enable PG native password login on all endpoints in this project
+func (o GetPostgresProjectsProjectStatusOutput) EnablePgNativeLogin() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatus) bool { return v.EnablePgNativeLogin }).(pulumi.BoolOutput)
+}
+
+// (string) - The effective number of seconds to retain the shared history for point in time recovery
+func (o GetPostgresProjectsProjectStatusOutput) HistoryRetentionDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatus) string { return v.HistoryRetentionDuration }).(pulumi.StringOutput)
+}
+
+// (string) - The email of the project owner
+func (o GetPostgresProjectsProjectStatusOutput) Owner() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatus) string { return v.Owner }).(pulumi.StringOutput)
+}
+
+// (integer) - The effective major Postgres version number
+func (o GetPostgresProjectsProjectStatusOutput) PgVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatus) int { return v.PgVersion }).(pulumi.IntOutput)
+}
+
+// (string) - Part of the resource name
+func (o GetPostgresProjectsProjectStatusOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatus) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// (integer) - The current space occupied by the project in storage
+func (o GetPostgresProjectsProjectStatusOutput) SyntheticStorageSizeBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatus) int { return v.SyntheticStorageSizeBytes }).(pulumi.IntOutput)
+}
+
+type GetPostgresProjectsProjectStatusCustomTag struct {
+	// (string) - The key of the custom tag
+	Key *string `pulumi:"key"`
+	// (string) - The value of the custom tag
+	Value *string `pulumi:"value"`
+}
+
+// GetPostgresProjectsProjectStatusCustomTagInput is an input type that accepts GetPostgresProjectsProjectStatusCustomTagArgs and GetPostgresProjectsProjectStatusCustomTagOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectStatusCustomTagInput` via:
+//
+//	GetPostgresProjectsProjectStatusCustomTagArgs{...}
+type GetPostgresProjectsProjectStatusCustomTagInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectStatusCustomTagOutput() GetPostgresProjectsProjectStatusCustomTagOutput
+	ToGetPostgresProjectsProjectStatusCustomTagOutputWithContext(context.Context) GetPostgresProjectsProjectStatusCustomTagOutput
+}
+
+type GetPostgresProjectsProjectStatusCustomTagArgs struct {
+	// (string) - The key of the custom tag
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// (string) - The value of the custom tag
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GetPostgresProjectsProjectStatusCustomTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectStatusCustomTag)(nil)).Elem()
+}
+
+func (i GetPostgresProjectsProjectStatusCustomTagArgs) ToGetPostgresProjectsProjectStatusCustomTagOutput() GetPostgresProjectsProjectStatusCustomTagOutput {
+	return i.ToGetPostgresProjectsProjectStatusCustomTagOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectStatusCustomTagArgs) ToGetPostgresProjectsProjectStatusCustomTagOutputWithContext(ctx context.Context) GetPostgresProjectsProjectStatusCustomTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectStatusCustomTagOutput)
+}
+
+// GetPostgresProjectsProjectStatusCustomTagArrayInput is an input type that accepts GetPostgresProjectsProjectStatusCustomTagArray and GetPostgresProjectsProjectStatusCustomTagArrayOutput values.
+// You can construct a concrete instance of `GetPostgresProjectsProjectStatusCustomTagArrayInput` via:
+//
+//	GetPostgresProjectsProjectStatusCustomTagArray{ GetPostgresProjectsProjectStatusCustomTagArgs{...} }
+type GetPostgresProjectsProjectStatusCustomTagArrayInput interface {
+	pulumi.Input
+
+	ToGetPostgresProjectsProjectStatusCustomTagArrayOutput() GetPostgresProjectsProjectStatusCustomTagArrayOutput
+	ToGetPostgresProjectsProjectStatusCustomTagArrayOutputWithContext(context.Context) GetPostgresProjectsProjectStatusCustomTagArrayOutput
+}
+
+type GetPostgresProjectsProjectStatusCustomTagArray []GetPostgresProjectsProjectStatusCustomTagInput
+
+func (GetPostgresProjectsProjectStatusCustomTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresProjectsProjectStatusCustomTag)(nil)).Elem()
+}
+
+func (i GetPostgresProjectsProjectStatusCustomTagArray) ToGetPostgresProjectsProjectStatusCustomTagArrayOutput() GetPostgresProjectsProjectStatusCustomTagArrayOutput {
+	return i.ToGetPostgresProjectsProjectStatusCustomTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetPostgresProjectsProjectStatusCustomTagArray) ToGetPostgresProjectsProjectStatusCustomTagArrayOutputWithContext(ctx context.Context) GetPostgresProjectsProjectStatusCustomTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresProjectsProjectStatusCustomTagArrayOutput)
+}
+
+type GetPostgresProjectsProjectStatusCustomTagOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectStatusCustomTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresProjectsProjectStatusCustomTag)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectStatusCustomTagOutput) ToGetPostgresProjectsProjectStatusCustomTagOutput() GetPostgresProjectsProjectStatusCustomTagOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectStatusCustomTagOutput) ToGetPostgresProjectsProjectStatusCustomTagOutputWithContext(ctx context.Context) GetPostgresProjectsProjectStatusCustomTagOutput {
+	return o
+}
+
+// (string) - The key of the custom tag
+func (o GetPostgresProjectsProjectStatusCustomTagOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatusCustomTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// (string) - The value of the custom tag
+func (o GetPostgresProjectsProjectStatusCustomTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresProjectsProjectStatusCustomTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresProjectsProjectStatusCustomTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresProjectsProjectStatusCustomTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresProjectsProjectStatusCustomTag)(nil)).Elem()
+}
+
+func (o GetPostgresProjectsProjectStatusCustomTagArrayOutput) ToGetPostgresProjectsProjectStatusCustomTagArrayOutput() GetPostgresProjectsProjectStatusCustomTagArrayOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectStatusCustomTagArrayOutput) ToGetPostgresProjectsProjectStatusCustomTagArrayOutputWithContext(ctx context.Context) GetPostgresProjectsProjectStatusCustomTagArrayOutput {
+	return o
+}
+
+func (o GetPostgresProjectsProjectStatusCustomTagArrayOutput) Index(i pulumi.IntInput) GetPostgresProjectsProjectStatusCustomTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPostgresProjectsProjectStatusCustomTag {
+		return vs[0].([]GetPostgresProjectsProjectStatusCustomTag)[vs[1].(int)]
+	}).(GetPostgresProjectsProjectStatusCustomTagOutput)
+}
+
 type GetPostgresProjectsProjectStatusDefaultEndpointSettings struct {
 	// (number) - The maximum number of Compute Units. Minimum value is 0.5
 	AutoscalingLimitMaxCu *float64 `pulumi:"autoscalingLimitMaxCu"`
@@ -9364,9 +12094,10 @@ type GetServingEndpointsEndpoint struct {
 	Name   *string                            `pulumi:"name"`
 	States []GetServingEndpointsEndpointState `pulumi:"states"`
 	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
-	Tags          []GetServingEndpointsEndpointTag `pulumi:"tags"`
-	Task          *string                          `pulumi:"task"`
-	UsagePolicyId *string                          `pulumi:"usagePolicyId"`
+	Tags             []GetServingEndpointsEndpointTag             `pulumi:"tags"`
+	Task             *string                                      `pulumi:"task"`
+	TelemetryConfigs []GetServingEndpointsEndpointTelemetryConfig `pulumi:"telemetryConfigs"`
+	UsagePolicyId    *string                                      `pulumi:"usagePolicyId"`
 }
 
 // GetServingEndpointsEndpointInput is an input type that accepts GetServingEndpointsEndpointArgs and GetServingEndpointsEndpointOutput values.
@@ -9395,9 +12126,10 @@ type GetServingEndpointsEndpointArgs struct {
 	Name   pulumi.StringPtrInput                      `pulumi:"name"`
 	States GetServingEndpointsEndpointStateArrayInput `pulumi:"states"`
 	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
-	Tags          GetServingEndpointsEndpointTagArrayInput `pulumi:"tags"`
-	Task          pulumi.StringPtrInput                    `pulumi:"task"`
-	UsagePolicyId pulumi.StringPtrInput                    `pulumi:"usagePolicyId"`
+	Tags             GetServingEndpointsEndpointTagArrayInput             `pulumi:"tags"`
+	Task             pulumi.StringPtrInput                                `pulumi:"task"`
+	TelemetryConfigs GetServingEndpointsEndpointTelemetryConfigArrayInput `pulumi:"telemetryConfigs"`
+	UsagePolicyId    pulumi.StringPtrInput                                `pulumi:"usagePolicyId"`
 }
 
 func (GetServingEndpointsEndpointArgs) ElementType() reflect.Type {
@@ -9501,6 +12233,12 @@ func (o GetServingEndpointsEndpointOutput) Tags() GetServingEndpointsEndpointTag
 
 func (o GetServingEndpointsEndpointOutput) Task() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServingEndpointsEndpoint) *string { return v.Task }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServingEndpointsEndpointOutput) TelemetryConfigs() GetServingEndpointsEndpointTelemetryConfigArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpoint) []GetServingEndpointsEndpointTelemetryConfig {
+		return v.TelemetryConfigs
+	}).(GetServingEndpointsEndpointTelemetryConfigArrayOutput)
 }
 
 func (o GetServingEndpointsEndpointOutput) UsagePolicyId() pulumi.StringPtrOutput {
@@ -12732,6 +15470,207 @@ func (o GetServingEndpointsEndpointTagArrayOutput) Index(i pulumi.IntInput) GetS
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServingEndpointsEndpointTag {
 		return vs[0].([]GetServingEndpointsEndpointTag)[vs[1].(int)]
 	}).(GetServingEndpointsEndpointTagOutput)
+}
+
+type GetServingEndpointsEndpointTelemetryConfig struct {
+	InferenceTableConfigs []GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig `pulumi:"inferenceTableConfigs"`
+}
+
+// GetServingEndpointsEndpointTelemetryConfigInput is an input type that accepts GetServingEndpointsEndpointTelemetryConfigArgs and GetServingEndpointsEndpointTelemetryConfigOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointTelemetryConfigInput` via:
+//
+//	GetServingEndpointsEndpointTelemetryConfigArgs{...}
+type GetServingEndpointsEndpointTelemetryConfigInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointTelemetryConfigOutput() GetServingEndpointsEndpointTelemetryConfigOutput
+	ToGetServingEndpointsEndpointTelemetryConfigOutputWithContext(context.Context) GetServingEndpointsEndpointTelemetryConfigOutput
+}
+
+type GetServingEndpointsEndpointTelemetryConfigArgs struct {
+	InferenceTableConfigs GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayInput `pulumi:"inferenceTableConfigs"`
+}
+
+func (GetServingEndpointsEndpointTelemetryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointTelemetryConfig)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointTelemetryConfigArgs) ToGetServingEndpointsEndpointTelemetryConfigOutput() GetServingEndpointsEndpointTelemetryConfigOutput {
+	return i.ToGetServingEndpointsEndpointTelemetryConfigOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointTelemetryConfigArgs) ToGetServingEndpointsEndpointTelemetryConfigOutputWithContext(ctx context.Context) GetServingEndpointsEndpointTelemetryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointTelemetryConfigOutput)
+}
+
+// GetServingEndpointsEndpointTelemetryConfigArrayInput is an input type that accepts GetServingEndpointsEndpointTelemetryConfigArray and GetServingEndpointsEndpointTelemetryConfigArrayOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointTelemetryConfigArrayInput` via:
+//
+//	GetServingEndpointsEndpointTelemetryConfigArray{ GetServingEndpointsEndpointTelemetryConfigArgs{...} }
+type GetServingEndpointsEndpointTelemetryConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointTelemetryConfigArrayOutput() GetServingEndpointsEndpointTelemetryConfigArrayOutput
+	ToGetServingEndpointsEndpointTelemetryConfigArrayOutputWithContext(context.Context) GetServingEndpointsEndpointTelemetryConfigArrayOutput
+}
+
+type GetServingEndpointsEndpointTelemetryConfigArray []GetServingEndpointsEndpointTelemetryConfigInput
+
+func (GetServingEndpointsEndpointTelemetryConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointTelemetryConfig)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointTelemetryConfigArray) ToGetServingEndpointsEndpointTelemetryConfigArrayOutput() GetServingEndpointsEndpointTelemetryConfigArrayOutput {
+	return i.ToGetServingEndpointsEndpointTelemetryConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointTelemetryConfigArray) ToGetServingEndpointsEndpointTelemetryConfigArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointTelemetryConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointTelemetryConfigArrayOutput)
+}
+
+type GetServingEndpointsEndpointTelemetryConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointTelemetryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointTelemetryConfig)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointTelemetryConfigOutput) ToGetServingEndpointsEndpointTelemetryConfigOutput() GetServingEndpointsEndpointTelemetryConfigOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointTelemetryConfigOutput) ToGetServingEndpointsEndpointTelemetryConfigOutputWithContext(ctx context.Context) GetServingEndpointsEndpointTelemetryConfigOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointTelemetryConfigOutput) InferenceTableConfigs() GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointTelemetryConfig) []GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig {
+		return v.InferenceTableConfigs
+	}).(GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput)
+}
+
+type GetServingEndpointsEndpointTelemetryConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointTelemetryConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointTelemetryConfig)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointTelemetryConfigArrayOutput) ToGetServingEndpointsEndpointTelemetryConfigArrayOutput() GetServingEndpointsEndpointTelemetryConfigArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointTelemetryConfigArrayOutput) ToGetServingEndpointsEndpointTelemetryConfigArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointTelemetryConfigArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointTelemetryConfigArrayOutput) Index(i pulumi.IntInput) GetServingEndpointsEndpointTelemetryConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServingEndpointsEndpointTelemetryConfig {
+		return vs[0].([]GetServingEndpointsEndpointTelemetryConfig)[vs[1].(int)]
+	}).(GetServingEndpointsEndpointTelemetryConfigOutput)
+}
+
+type GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig struct {
+	// The name of the model serving endpoint.
+	Name             string   `pulumi:"name"`
+	SamplingFraction *float64 `pulumi:"samplingFraction"`
+}
+
+// GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigInput is an input type that accepts GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArgs and GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigInput` via:
+//
+//	GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArgs{...}
+type GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput() GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput
+	ToGetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutputWithContext(context.Context) GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput
+}
+
+type GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArgs struct {
+	// The name of the model serving endpoint.
+	Name             pulumi.StringInput     `pulumi:"name"`
+	SamplingFraction pulumi.Float64PtrInput `pulumi:"samplingFraction"`
+}
+
+func (GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArgs) ToGetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput() GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput {
+	return i.ToGetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArgs) ToGetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutputWithContext(ctx context.Context) GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput)
+}
+
+// GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayInput is an input type that accepts GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArray and GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput values.
+// You can construct a concrete instance of `GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayInput` via:
+//
+//	GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArray{ GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArgs{...} }
+type GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput() GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput
+	ToGetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutputWithContext(context.Context) GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput
+}
+
+type GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArray []GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigInput
+
+func (GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig)(nil)).Elem()
+}
+
+func (i GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArray) ToGetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput() GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput {
+	return i.ToGetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArray) ToGetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput)
+}
+
+type GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput) ToGetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput() GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput) ToGetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutputWithContext(ctx context.Context) GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput {
+	return o
+}
+
+// The name of the model serving endpoint.
+func (o GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput) SamplingFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig) *float64 {
+		return v.SamplingFraction
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig)(nil)).Elem()
+}
+
+func (o GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput) ToGetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput() GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput) ToGetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutputWithContext(ctx context.Context) GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput {
+	return o
+}
+
+func (o GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput) Index(i pulumi.IntInput) GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig {
+		return vs[0].([]GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig)[vs[1].(int)]
+	}).(GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput)
 }
 
 type GetServingEndpointsProviderConfig struct {
@@ -29245,6 +32184,37 @@ func (o GetZonesProviderConfigPtrOutput) WorkspaceId() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectInitialBranchSpecInput)(nil)).Elem(), GetPostgresProjectInitialBranchSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectInitialEndpointSpecInput)(nil)).Elem(), GetPostgresProjectInitialEndpointSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectInitialEndpointSpecGroupInput)(nil)).Elem(), GetPostgresProjectInitialEndpointSpecGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectInitialEndpointSpecGroupPtrInput)(nil)).Elem(), GetPostgresProjectInitialEndpointSpecGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectProviderConfigInput)(nil)).Elem(), GetPostgresProjectProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectProviderConfigPtrInput)(nil)).Elem(), GetPostgresProjectProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectSpecInput)(nil)).Elem(), GetPostgresProjectSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectSpecCustomTagInput)(nil)).Elem(), GetPostgresProjectSpecCustomTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectSpecCustomTagArrayInput)(nil)).Elem(), GetPostgresProjectSpecCustomTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectSpecDefaultEndpointSettingsInput)(nil)).Elem(), GetPostgresProjectSpecDefaultEndpointSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectSpecDefaultEndpointSettingsPtrInput)(nil)).Elem(), GetPostgresProjectSpecDefaultEndpointSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectStatusInput)(nil)).Elem(), GetPostgresProjectStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectStatusCustomTagInput)(nil)).Elem(), GetPostgresProjectStatusCustomTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectStatusCustomTagArrayInput)(nil)).Elem(), GetPostgresProjectStatusCustomTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectStatusDefaultEndpointSettingsInput)(nil)).Elem(), GetPostgresProjectStatusDefaultEndpointSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectInput)(nil)).Elem(), GetPostgresProjectsProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectArrayInput)(nil)).Elem(), GetPostgresProjectsProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectInitialBranchSpecInput)(nil)).Elem(), GetPostgresProjectsProjectInitialBranchSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectInitialEndpointSpecInput)(nil)).Elem(), GetPostgresProjectsProjectInitialEndpointSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectInitialEndpointSpecGroupInput)(nil)).Elem(), GetPostgresProjectsProjectInitialEndpointSpecGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectInitialEndpointSpecGroupPtrInput)(nil)).Elem(), GetPostgresProjectsProjectInitialEndpointSpecGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectProviderConfigInput)(nil)).Elem(), GetPostgresProjectsProjectProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectProviderConfigPtrInput)(nil)).Elem(), GetPostgresProjectsProjectProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectSpecInput)(nil)).Elem(), GetPostgresProjectsProjectSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectSpecCustomTagInput)(nil)).Elem(), GetPostgresProjectsProjectSpecCustomTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectSpecCustomTagArrayInput)(nil)).Elem(), GetPostgresProjectsProjectSpecCustomTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectSpecDefaultEndpointSettingsInput)(nil)).Elem(), GetPostgresProjectsProjectSpecDefaultEndpointSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrInput)(nil)).Elem(), GetPostgresProjectsProjectSpecDefaultEndpointSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectStatusInput)(nil)).Elem(), GetPostgresProjectsProjectStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectStatusCustomTagInput)(nil)).Elem(), GetPostgresProjectsProjectStatusCustomTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectStatusCustomTagArrayInput)(nil)).Elem(), GetPostgresProjectsProjectStatusCustomTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProjectStatusDefaultEndpointSettingsInput)(nil)).Elem(), GetPostgresProjectsProjectStatusDefaultEndpointSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProviderConfigInput)(nil)).Elem(), GetPostgresProjectsProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresProjectsProviderConfigPtrInput)(nil)).Elem(), GetPostgresProjectsProviderConfigArgs{})
@@ -29419,6 +32389,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointStateArrayInput)(nil)).Elem(), GetServingEndpointsEndpointStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointTagInput)(nil)).Elem(), GetServingEndpointsEndpointTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointTagArrayInput)(nil)).Elem(), GetServingEndpointsEndpointTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointTelemetryConfigInput)(nil)).Elem(), GetServingEndpointsEndpointTelemetryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointTelemetryConfigArrayInput)(nil)).Elem(), GetServingEndpointsEndpointTelemetryConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigInput)(nil)).Elem(), GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayInput)(nil)).Elem(), GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsProviderConfigInput)(nil)).Elem(), GetServingEndpointsProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServingEndpointsProviderConfigPtrInput)(nil)).Elem(), GetServingEndpointsProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetShareObjectInput)(nil)).Elem(), GetShareObjectArgs{})
@@ -29639,6 +32613,37 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkspaceSettingV2StringValInput)(nil)).Elem(), GetWorkspaceSettingV2StringValArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesProviderConfigPtrInput)(nil)).Elem(), GetZonesProviderConfigArgs{})
+	pulumi.RegisterOutputType(GetPostgresProjectInitialBranchSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectInitialEndpointSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectInitialEndpointSpecGroupOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectInitialEndpointSpecGroupPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectSpecCustomTagOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectSpecCustomTagArrayOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectSpecDefaultEndpointSettingsOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectSpecDefaultEndpointSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectStatusOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectStatusCustomTagOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectStatusCustomTagArrayOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectStatusDefaultEndpointSettingsOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectInitialBranchSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectInitialEndpointSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectInitialEndpointSpecGroupOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectInitialEndpointSpecGroupPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectProviderConfigOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectSpecOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectSpecCustomTagOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectSpecCustomTagArrayOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectSpecDefaultEndpointSettingsOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectSpecDefaultEndpointSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectStatusOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectStatusCustomTagOutput{})
+	pulumi.RegisterOutputType(GetPostgresProjectsProjectStatusCustomTagArrayOutput{})
 	pulumi.RegisterOutputType(GetPostgresProjectsProjectStatusDefaultEndpointSettingsOutput{})
 	pulumi.RegisterOutputType(GetPostgresProjectsProviderConfigOutput{})
 	pulumi.RegisterOutputType(GetPostgresProjectsProviderConfigPtrOutput{})
@@ -29813,6 +32818,10 @@ func init() {
 	pulumi.RegisterOutputType(GetServingEndpointsEndpointStateArrayOutput{})
 	pulumi.RegisterOutputType(GetServingEndpointsEndpointTagOutput{})
 	pulumi.RegisterOutputType(GetServingEndpointsEndpointTagArrayOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointTelemetryConfigOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointTelemetryConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigOutput{})
+	pulumi.RegisterOutputType(GetServingEndpointsEndpointTelemetryConfigInferenceTableConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServingEndpointsProviderConfigOutput{})
 	pulumi.RegisterOutputType(GetServingEndpointsProviderConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetShareObjectOutput{})

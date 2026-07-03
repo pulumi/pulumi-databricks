@@ -118,7 +118,7 @@ type DataQualityRefresh struct {
 	// 1. The [tableId](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
 	// 2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
-	// The type of the monitored object. Can be one of the following: `schema`or `table`
+	// The type of the monitored object. Can be one of the following: `schema` or `table`
 	ObjectType pulumi.StringOutput `pulumi:"objectType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig DataQualityRefreshProviderConfigOutput `pulumi:"providerConfig"`
@@ -182,7 +182,7 @@ type dataQualityRefreshState struct {
 	// 1. The [tableId](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
 	// 2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
 	ObjectId *string `pulumi:"objectId"`
-	// The type of the monitored object. Can be one of the following: `schema`or `table`
+	// The type of the monitored object. Can be one of the following: `schema` or `table`
 	ObjectType *string `pulumi:"objectType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *DataQualityRefreshProviderConfig `pulumi:"providerConfig"`
@@ -211,7 +211,7 @@ type DataQualityRefreshState struct {
 	// 1. The [tableId](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
 	// 2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
 	ObjectId pulumi.StringPtrInput
-	// The type of the monitored object. Can be one of the following: `schema`or `table`
+	// The type of the monitored object. Can be one of the following: `schema` or `table`
 	ObjectType pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig DataQualityRefreshProviderConfigPtrInput
@@ -240,7 +240,7 @@ type dataQualityRefreshArgs struct {
 	// 1. The [tableId](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
 	// 2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
 	ObjectId string `pulumi:"objectId"`
-	// The type of the monitored object. Can be one of the following: `schema`or `table`
+	// The type of the monitored object. Can be one of the following: `schema` or `table`
 	ObjectType string `pulumi:"objectType"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *DataQualityRefreshProviderConfig `pulumi:"providerConfig"`
@@ -258,7 +258,7 @@ type DataQualityRefreshArgs struct {
 	// 1. The [tableId](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
 	// 2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
 	ObjectId pulumi.StringInput
-	// The type of the monitored object. Can be one of the following: `schema`or `table`
+	// The type of the monitored object. Can be one of the following: `schema` or `table`
 	ObjectType pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig DataQualityRefreshProviderConfigPtrInput
@@ -374,7 +374,7 @@ func (o DataQualityRefreshOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataQualityRefresh) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// The type of the monitored object. Can be one of the following: `schema`or `table`
+// The type of the monitored object. Can be one of the following: `schema` or `table`
 func (o DataQualityRefreshOutput) ObjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataQualityRefresh) pulumi.StringOutput { return v.ObjectType }).(pulumi.StringOutput)
 }

@@ -25,6 +25,13 @@ public final class GetClusterClusterInfoAzureAttributesArgs extends com.pulumi.r
         return Optional.ofNullable(this.availability);
     }
 
+    @Import(name="capacityReservationGroup")
+    private @Nullable Output<String> capacityReservationGroup;
+
+    public Optional<Output<String>> capacityReservationGroup() {
+        return Optional.ofNullable(this.capacityReservationGroup);
+    }
+
     @Import(name="firstOnDemand")
     private @Nullable Output<Integer> firstOnDemand;
 
@@ -50,6 +57,7 @@ public final class GetClusterClusterInfoAzureAttributesArgs extends com.pulumi.r
 
     private GetClusterClusterInfoAzureAttributesArgs(GetClusterClusterInfoAzureAttributesArgs $) {
         this.availability = $.availability;
+        this.capacityReservationGroup = $.capacityReservationGroup;
         this.firstOnDemand = $.firstOnDemand;
         this.logAnalyticsInfo = $.logAnalyticsInfo;
         this.spotBidMaxPrice = $.spotBidMaxPrice;
@@ -80,6 +88,15 @@ public final class GetClusterClusterInfoAzureAttributesArgs extends com.pulumi.r
 
         public Builder availability(String availability) {
             return availability(Output.of(availability));
+        }
+
+        public Builder capacityReservationGroup(@Nullable Output<String> capacityReservationGroup) {
+            $.capacityReservationGroup = capacityReservationGroup;
+            return this;
+        }
+
+        public Builder capacityReservationGroup(String capacityReservationGroup) {
+            return capacityReservationGroup(Output.of(capacityReservationGroup));
         }
 
         public Builder firstOnDemand(@Nullable Output<Integer> firstOnDemand) {

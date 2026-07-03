@@ -119,6 +119,10 @@ export class EnvironmentsWorkspaceBaseEnvironment extends pulumi.CustomResource 
      */
     declare public readonly providerConfig: pulumi.Output<outputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig>;
     /**
+     * (EnvironmentSpec) - The environment specification containing version and dependencies
+     */
+    declare public /*out*/ readonly spec: pulumi.Output<outputs.EnvironmentsWorkspaceBaseEnvironmentSpec>;
+    /**
      * (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
@@ -157,6 +161,7 @@ export class EnvironmentsWorkspaceBaseEnvironment extends pulumi.CustomResource 
             resourceInputs["message"] = state?.message;
             resourceInputs["name"] = state?.name;
             resourceInputs["providerConfig"] = state?.providerConfig;
+            resourceInputs["spec"] = state?.spec;
             resourceInputs["status"] = state?.status;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["workspaceBaseEnvironmentId"] = state?.workspaceBaseEnvironmentId;
@@ -177,6 +182,7 @@ export class EnvironmentsWorkspaceBaseEnvironment extends pulumi.CustomResource 
             resourceInputs["lastUpdatedUserId"] = undefined /*out*/;
             resourceInputs["message"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["spec"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -231,6 +237,10 @@ export interface EnvironmentsWorkspaceBaseEnvironmentState {
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig | undefined>;
+    /**
+     * (EnvironmentSpec) - The environment specification containing version and dependencies
+     */
+    spec?: pulumi.Input<inputs.EnvironmentsWorkspaceBaseEnvironmentSpec | undefined>;
     /**
      * (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
      */

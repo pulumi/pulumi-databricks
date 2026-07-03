@@ -187,6 +187,13 @@ namespace Pulumi.Databricks
         public Output<Outputs.PostgresDatabaseProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
+        /// If true, update the database if it already exists instead of returning an
+        /// error
+        /// </summary>
+        [Output("replaceExisting")]
+        public Output<bool?> ReplaceExisting { get; private set; } = null!;
+
+        /// <summary>
         /// The desired state of the Database
         /// </summary>
         [Output("spec")]
@@ -270,6 +277,13 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresDatabaseProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
+        /// If true, update the database if it already exists instead of returning an
+        /// error
+        /// </summary>
+        [Input("replaceExisting")]
+        public Input<bool>? ReplaceExisting { get; set; }
+
+        /// <summary>
         /// The desired state of the Database
         /// </summary>
         [Input("spec")]
@@ -314,6 +328,13 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("providerConfig")]
         public Input<Inputs.PostgresDatabaseProviderConfigGetArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
+        /// If true, update the database if it already exists instead of returning an
+        /// error
+        /// </summary>
+        [Input("replaceExisting")]
+        public Input<bool>? ReplaceExisting { get; set; }
 
         /// <summary>
         /// The desired state of the Database

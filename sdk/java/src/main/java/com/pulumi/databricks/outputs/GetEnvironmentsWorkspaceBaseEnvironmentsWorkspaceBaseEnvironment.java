@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentProviderConfig;
+import com.pulumi.databricks.outputs.GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentSpec;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -66,6 +67,11 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironm
      * 
      */
     private @Nullable GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentProviderConfig providerConfig;
+    /**
+     * @return (EnvironmentSpec) - The environment specification containing version and dependencies
+     * 
+     */
+    private GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentSpec spec;
     /**
      * @return (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
      * 
@@ -153,6 +159,13 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironm
         return Optional.ofNullable(this.providerConfig);
     }
     /**
+     * @return (EnvironmentSpec) - The environment specification containing version and dependencies
+     * 
+     */
+    public GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentSpec spec() {
+        return this.spec;
+    }
+    /**
      * @return (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
      * 
      */
@@ -187,6 +200,7 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironm
         private String message;
         private String name;
         private @Nullable GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentProviderConfig providerConfig;
+        private GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentSpec spec;
         private String status;
         private String updateTime;
         public Builder() {}
@@ -203,6 +217,7 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironm
     	      this.message = defaults.message;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
+    	      this.spec = defaults.spec;
     	      this.status = defaults.status;
     	      this.updateTime = defaults.updateTime;
         }
@@ -294,6 +309,14 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironm
             return this;
         }
         @CustomType.Setter
+        public Builder spec(GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentSpec spec) {
+            if (spec == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironment", "spec");
+            }
+            this.spec = spec;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironment", "status");
@@ -322,6 +345,7 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironm
             _resultValue.message = message;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;
+            _resultValue.spec = spec;
             _resultValue.status = status;
             _resultValue.updateTime = updateTime;
             return _resultValue;

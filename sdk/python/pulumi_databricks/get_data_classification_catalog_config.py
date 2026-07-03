@@ -66,8 +66,10 @@ class GetDataClassificationCatalogConfigResult:
     @pulumi.getter(name="includedSchemas")
     def included_schemas(self) -> 'outputs.GetDataClassificationCatalogConfigIncludedSchemasResult':
         """
-        (CatalogConfigSchemaNames) - Schemas to include in the scan. Empty list is not supported as it results in a no-op
-        scan. If `included_schemas` is not set, all schemas are scanned
+        (CatalogConfigSchemaNames) - Schemas to include in the scan, each named relative to the parent catalog.
+        If specified, only listed schemas will be scanned.
+        Mutually exclusive with `excluded_schemas`: only one may be set per request.
+        If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         """
         return pulumi.get(self, "included_schemas")
 

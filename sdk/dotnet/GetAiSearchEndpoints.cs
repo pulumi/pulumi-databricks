@@ -12,19 +12,85 @@ namespace Pulumi.Databricks
     public static class GetAiSearchEndpoints
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+        /// 
+        /// This data source can be used to fetch the list of AI Search endpoints in a workspace.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// # Example: AI Search Endpoint Datasource (Plural)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetAiSearchEndpoints.Invoke();
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAiSearchEndpointsResult> InvokeAsync(GetAiSearchEndpointsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiSearchEndpointsResult>("databricks:index/getAiSearchEndpoints:getAiSearchEndpoints", args ?? new GetAiSearchEndpointsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+        /// 
+        /// This data source can be used to fetch the list of AI Search endpoints in a workspace.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// # Example: AI Search Endpoint Datasource (Plural)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetAiSearchEndpoints.Invoke();
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAiSearchEndpointsResult> Invoke(GetAiSearchEndpointsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiSearchEndpointsResult>("databricks:index/getAiSearchEndpoints:getAiSearchEndpoints", args ?? new GetAiSearchEndpointsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+        /// 
+        /// This data source can be used to fetch the list of AI Search endpoints in a workspace.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// # Example: AI Search Endpoint Datasource (Plural)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Databricks = Pulumi.Databricks;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Databricks.GetAiSearchEndpoints.Invoke();
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAiSearchEndpointsResult> Invoke(GetAiSearchEndpointsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiSearchEndpointsResult>("databricks:index/getAiSearchEndpoints:getAiSearchEndpoints", args ?? new GetAiSearchEndpointsInvokeArgs(), options.WithDefaults());

@@ -19,9 +19,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
+        /// (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
+        /// Defaults to false
         /// </summary>
-        public readonly bool ReplicateWorkspaceAssets;
+        public readonly bool? ReplicateWorkspaceAssets;
         /// <summary>
         /// (list of string) - Resource names of stable URLs associated with this workspace set.
         /// Format: accounts/{account_id}/stable-urls/{stable_url_id}.
@@ -38,7 +39,7 @@ namespace Pulumi.Databricks.Outputs
         private GetDisasterRecoveryFailoverGroupWorkspaceSetResult(
             string name,
 
-            bool replicateWorkspaceAssets,
+            bool? replicateWorkspaceAssets,
 
             ImmutableArray<string> stableUrlNames,
 

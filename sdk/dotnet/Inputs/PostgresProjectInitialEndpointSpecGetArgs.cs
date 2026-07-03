@@ -12,11 +12,23 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PostgresProjectInitialEndpointSpecGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("autoscalingLimitMaxCu")]
+        public Input<double>? AutoscalingLimitMaxCu { get; set; }
+
+        [Input("autoscalingLimitMinCu")]
+        public Input<double>? AutoscalingLimitMinCu { get; set; }
+
         /// <summary>
         /// Settings for HA configuration of the endpoint
         /// </summary>
         [Input("group")]
         public Input<Inputs.PostgresProjectInitialEndpointSpecGroupGetArgs>? Group { get; set; }
+
+        [Input("noSuspension")]
+        public Input<bool>? NoSuspension { get; set; }
+
+        [Input("suspendTimeoutDuration")]
+        public Input<string>? SuspendTimeoutDuration { get; set; }
 
         public PostgresProjectInitialEndpointSpecGetArgs()
         {

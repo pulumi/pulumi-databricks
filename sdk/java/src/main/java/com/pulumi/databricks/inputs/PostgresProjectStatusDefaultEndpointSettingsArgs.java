@@ -18,51 +18,23 @@ public final class PostgresProjectStatusDefaultEndpointSettingsArgs extends com.
 
     public static final PostgresProjectStatusDefaultEndpointSettingsArgs Empty = new PostgresProjectStatusDefaultEndpointSettingsArgs();
 
-    /**
-     * The maximum number of Compute Units. Minimum value is 0.5
-     * 
-     */
     @Import(name="autoscalingLimitMaxCu")
     private @Nullable Output<Double> autoscalingLimitMaxCu;
 
-    /**
-     * @return The maximum number of Compute Units. Minimum value is 0.5
-     * 
-     */
     public Optional<Output<Double>> autoscalingLimitMaxCu() {
         return Optional.ofNullable(this.autoscalingLimitMaxCu);
     }
 
-    /**
-     * The minimum number of Compute Units. Minimum value is 0.5
-     * 
-     */
     @Import(name="autoscalingLimitMinCu")
     private @Nullable Output<Double> autoscalingLimitMinCu;
 
-    /**
-     * @return The minimum number of Compute Units. Minimum value is 0.5
-     * 
-     */
     public Optional<Output<Double>> autoscalingLimitMinCu() {
         return Optional.ofNullable(this.autoscalingLimitMinCu);
     }
 
-    /**
-     * When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided.
-     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-     * 
-     */
     @Import(name="noSuspension")
     private @Nullable Output<Boolean> noSuspension;
 
-    /**
-     * @return When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided.
-     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-     * 
-     */
     public Optional<Output<Boolean>> noSuspension() {
         return Optional.ofNullable(this.noSuspension);
     }
@@ -82,21 +54,9 @@ public final class PostgresProjectStatusDefaultEndpointSettingsArgs extends com.
         return Optional.ofNullable(this.pgSettings);
     }
 
-    /**
-     * Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week).
-     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-     * 
-     */
     @Import(name="suspendTimeoutDuration")
     private @Nullable Output<String> suspendTimeoutDuration;
 
-    /**
-     * @return Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week).
-     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-     * 
-     */
     public Optional<Output<String>> suspendTimeoutDuration() {
         return Optional.ofNullable(this.suspendTimeoutDuration);
     }
@@ -129,69 +89,29 @@ public final class PostgresProjectStatusDefaultEndpointSettingsArgs extends com.
             $ = new PostgresProjectStatusDefaultEndpointSettingsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param autoscalingLimitMaxCu The maximum number of Compute Units. Minimum value is 0.5
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscalingLimitMaxCu(@Nullable Output<Double> autoscalingLimitMaxCu) {
             $.autoscalingLimitMaxCu = autoscalingLimitMaxCu;
             return this;
         }
 
-        /**
-         * @param autoscalingLimitMaxCu The maximum number of Compute Units. Minimum value is 0.5
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscalingLimitMaxCu(Double autoscalingLimitMaxCu) {
             return autoscalingLimitMaxCu(Output.of(autoscalingLimitMaxCu));
         }
 
-        /**
-         * @param autoscalingLimitMinCu The minimum number of Compute Units. Minimum value is 0.5
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscalingLimitMinCu(@Nullable Output<Double> autoscalingLimitMinCu) {
             $.autoscalingLimitMinCu = autoscalingLimitMinCu;
             return this;
         }
 
-        /**
-         * @param autoscalingLimitMinCu The minimum number of Compute Units. Minimum value is 0.5
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoscalingLimitMinCu(Double autoscalingLimitMinCu) {
             return autoscalingLimitMinCu(Output.of(autoscalingLimitMinCu));
         }
 
-        /**
-         * @param noSuspension When set to true, explicitly disables automatic suspension (never suspend).
-         * Should be set to true when provided.
-         * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-         * 
-         * @return builder
-         * 
-         */
         public Builder noSuspension(@Nullable Output<Boolean> noSuspension) {
             $.noSuspension = noSuspension;
             return this;
         }
 
-        /**
-         * @param noSuspension When set to true, explicitly disables automatic suspension (never suspend).
-         * Should be set to true when provided.
-         * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-         * 
-         * @return builder
-         * 
-         */
         public Builder noSuspension(Boolean noSuspension) {
             return noSuspension(Output.of(noSuspension));
         }
@@ -217,27 +137,11 @@ public final class PostgresProjectStatusDefaultEndpointSettingsArgs extends com.
             return pgSettings(Output.of(pgSettings));
         }
 
-        /**
-         * @param suspendTimeoutDuration Duration of inactivity after which the compute endpoint is automatically suspended.
-         * If specified should be between 60s and 604800s (1 minute to 1 week).
-         * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-         * 
-         * @return builder
-         * 
-         */
         public Builder suspendTimeoutDuration(@Nullable Output<String> suspendTimeoutDuration) {
             $.suspendTimeoutDuration = suspendTimeoutDuration;
             return this;
         }
 
-        /**
-         * @param suspendTimeoutDuration Duration of inactivity after which the compute endpoint is automatically suspended.
-         * If specified should be between 60s and 604800s (1 minute to 1 week).
-         * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-         * 
-         * @return builder
-         * 
-         */
         public Builder suspendTimeoutDuration(String suspendTimeoutDuration) {
             return suspendTimeoutDuration(Output.of(suspendTimeoutDuration));
         }

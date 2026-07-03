@@ -72,8 +72,7 @@ type LookupDisasterRecoveryFailoverGroupResult struct {
 	// (string) - Current effective primary region. Replication flows FROM workspaces in this region.
 	// Changes after a successful failover
 	EffectivePrimaryRegion string `pulumi:"effectivePrimaryRegion"`
-	// (string) - Opaque version string for optimistic locking. Server-generated, returned in responses.
-	// Must be provided on Update requests to prevent concurrent modifications
+	// (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
 	Etag string `pulumi:"etag"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -142,8 +141,7 @@ func (o LookupDisasterRecoveryFailoverGroupResultOutput) EffectivePrimaryRegion(
 	return o.ApplyT(func(v LookupDisasterRecoveryFailoverGroupResult) string { return v.EffectivePrimaryRegion }).(pulumi.StringOutput)
 }
 
-// (string) - Opaque version string for optimistic locking. Server-generated, returned in responses.
-// Must be provided on Update requests to prevent concurrent modifications
+// (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
 func (o LookupDisasterRecoveryFailoverGroupResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryFailoverGroupResult) string { return v.Etag }).(pulumi.StringOutput)
 }

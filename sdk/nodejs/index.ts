@@ -780,6 +780,11 @@ export const getPostgresCatalog: typeof import("./getPostgresCatalog").getPostgr
 export const getPostgresCatalogOutput: typeof import("./getPostgresCatalog").getPostgresCatalogOutput = null as any;
 utilities.lazyLoad(exports, ["getPostgresCatalog","getPostgresCatalogOutput"], () => require("./getPostgresCatalog"));
 
+export { GetPostgresDataApiArgs, GetPostgresDataApiResult, GetPostgresDataApiOutputArgs } from "./getPostgresDataApi";
+export const getPostgresDataApi: typeof import("./getPostgresDataApi").getPostgresDataApi = null as any;
+export const getPostgresDataApiOutput: typeof import("./getPostgresDataApi").getPostgresDataApiOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresDataApi","getPostgresDataApiOutput"], () => require("./getPostgresDataApi"));
+
 export { GetPostgresDatabaseArgs, GetPostgresDatabaseResult, GetPostgresDatabaseOutputArgs } from "./getPostgresDatabase";
 export const getPostgresDatabase: typeof import("./getPostgresDatabase").getPostgresDatabase = null as any;
 export const getPostgresDatabaseOutput: typeof import("./getPostgresDatabase").getPostgresDatabaseOutput = null as any;
@@ -1280,6 +1285,11 @@ export type PostgresCatalog = import("./postgresCatalog").PostgresCatalog;
 export const PostgresCatalog: typeof import("./postgresCatalog").PostgresCatalog = null as any;
 utilities.lazyLoad(exports, ["PostgresCatalog"], () => require("./postgresCatalog"));
 
+export { PostgresDataApiArgs, PostgresDataApiState } from "./postgresDataApi";
+export type PostgresDataApi = import("./postgresDataApi").PostgresDataApi;
+export const PostgresDataApi: typeof import("./postgresDataApi").PostgresDataApi = null as any;
+utilities.lazyLoad(exports, ["PostgresDataApi"], () => require("./postgresDataApi"));
+
 export { PostgresDatabaseArgs, PostgresDatabaseState } from "./postgresDatabase";
 export type PostgresDatabase = import("./postgresDatabase").PostgresDatabase;
 export const PostgresDatabase: typeof import("./postgresDatabase").PostgresDatabase = null as any;
@@ -1763,6 +1773,8 @@ const _module = {
                 return new PostgresBranch(name, <any>undefined, { urn })
             case "databricks:index/postgresCatalog:PostgresCatalog":
                 return new PostgresCatalog(name, <any>undefined, { urn })
+            case "databricks:index/postgresDataApi:PostgresDataApi":
+                return new PostgresDataApi(name, <any>undefined, { urn })
             case "databricks:index/postgresDatabase:PostgresDatabase":
                 return new PostgresDatabase(name, <any>undefined, { urn })
             case "databricks:index/postgresEndpoint:PostgresEndpoint":
@@ -1975,6 +1987,7 @@ pulumi.runtime.registerResourceModule("databricks", "index/pipeline", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/policyInfo", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresBranch", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresCatalog", _module)
+pulumi.runtime.registerResourceModule("databricks", "index/postgresDataApi", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresDatabase", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresEndpoint", _module)
 pulumi.runtime.registerResourceModule("databricks", "index/postgresProject", _module)

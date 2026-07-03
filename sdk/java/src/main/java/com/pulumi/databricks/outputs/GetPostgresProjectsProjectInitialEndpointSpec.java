@@ -5,6 +5,9 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetPostgresProjectsProjectInitialEndpointSpecGroup;
+import java.lang.Boolean;
+import java.lang.Double;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,18 +15,74 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPostgresProjectsProjectInitialEndpointSpec {
     /**
+     * @return (number) - The maximum number of Compute Units. Minimum value is 0.5
+     * 
+     */
+    private @Nullable Double autoscalingLimitMaxCu;
+    /**
+     * @return (number) - The minimum number of Compute Units. Minimum value is 0.5
+     * 
+     */
+    private @Nullable Double autoscalingLimitMinCu;
+    /**
      * @return (EndpointGroupSpec) - Settings for HA configuration of the endpoint
      * 
      */
     private @Nullable GetPostgresProjectsProjectInitialEndpointSpecGroup group;
+    /**
+     * @return (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+     * 
+     */
+    private @Nullable Boolean noSuspension;
+    /**
+     * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+     * If specified should be between 60s and 604800s (1 minute to 1 week).
+     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+     * 
+     */
+    private @Nullable String suspendTimeoutDuration;
 
     private GetPostgresProjectsProjectInitialEndpointSpec() {}
+    /**
+     * @return (number) - The maximum number of Compute Units. Minimum value is 0.5
+     * 
+     */
+    public Optional<Double> autoscalingLimitMaxCu() {
+        return Optional.ofNullable(this.autoscalingLimitMaxCu);
+    }
+    /**
+     * @return (number) - The minimum number of Compute Units. Minimum value is 0.5
+     * 
+     */
+    public Optional<Double> autoscalingLimitMinCu() {
+        return Optional.ofNullable(this.autoscalingLimitMinCu);
+    }
     /**
      * @return (EndpointGroupSpec) - Settings for HA configuration of the endpoint
      * 
      */
     public Optional<GetPostgresProjectsProjectInitialEndpointSpecGroup> group() {
         return Optional.ofNullable(this.group);
+    }
+    /**
+     * @return (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+     * 
+     */
+    public Optional<Boolean> noSuspension() {
+        return Optional.ofNullable(this.noSuspension);
+    }
+    /**
+     * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+     * If specified should be between 60s and 604800s (1 minute to 1 week).
+     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+     * 
+     */
+    public Optional<String> suspendTimeoutDuration() {
+        return Optional.ofNullable(this.suspendTimeoutDuration);
     }
 
     public static Builder builder() {
@@ -35,22 +94,58 @@ public final class GetPostgresProjectsProjectInitialEndpointSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Double autoscalingLimitMaxCu;
+        private @Nullable Double autoscalingLimitMinCu;
         private @Nullable GetPostgresProjectsProjectInitialEndpointSpecGroup group;
+        private @Nullable Boolean noSuspension;
+        private @Nullable String suspendTimeoutDuration;
         public Builder() {}
         public Builder(GetPostgresProjectsProjectInitialEndpointSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoscalingLimitMaxCu = defaults.autoscalingLimitMaxCu;
+    	      this.autoscalingLimitMinCu = defaults.autoscalingLimitMinCu;
     	      this.group = defaults.group;
+    	      this.noSuspension = defaults.noSuspension;
+    	      this.suspendTimeoutDuration = defaults.suspendTimeoutDuration;
         }
 
+        @CustomType.Setter
+        public Builder autoscalingLimitMaxCu(@Nullable Double autoscalingLimitMaxCu) {
+
+            this.autoscalingLimitMaxCu = autoscalingLimitMaxCu;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder autoscalingLimitMinCu(@Nullable Double autoscalingLimitMinCu) {
+
+            this.autoscalingLimitMinCu = autoscalingLimitMinCu;
+            return this;
+        }
         @CustomType.Setter
         public Builder group(@Nullable GetPostgresProjectsProjectInitialEndpointSpecGroup group) {
 
             this.group = group;
             return this;
         }
+        @CustomType.Setter
+        public Builder noSuspension(@Nullable Boolean noSuspension) {
+
+            this.noSuspension = noSuspension;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder suspendTimeoutDuration(@Nullable String suspendTimeoutDuration) {
+
+            this.suspendTimeoutDuration = suspendTimeoutDuration;
+            return this;
+        }
         public GetPostgresProjectsProjectInitialEndpointSpec build() {
             final var _resultValue = new GetPostgresProjectsProjectInitialEndpointSpec();
+            _resultValue.autoscalingLimitMaxCu = autoscalingLimitMaxCu;
+            _resultValue.autoscalingLimitMinCu = autoscalingLimitMinCu;
             _resultValue.group = group;
+            _resultValue.noSuspension = noSuspension;
+            _resultValue.suspendTimeoutDuration = suspendTimeoutDuration;
             return _resultValue;
         }
     }

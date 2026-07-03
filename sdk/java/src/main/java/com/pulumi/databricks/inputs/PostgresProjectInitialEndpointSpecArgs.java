@@ -6,6 +6,9 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PostgresProjectInitialEndpointSpecGroupArgs;
+import java.lang.Boolean;
+import java.lang.Double;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +17,20 @@ import javax.annotation.Nullable;
 public final class PostgresProjectInitialEndpointSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PostgresProjectInitialEndpointSpecArgs Empty = new PostgresProjectInitialEndpointSpecArgs();
+
+    @Import(name="autoscalingLimitMaxCu")
+    private @Nullable Output<Double> autoscalingLimitMaxCu;
+
+    public Optional<Output<Double>> autoscalingLimitMaxCu() {
+        return Optional.ofNullable(this.autoscalingLimitMaxCu);
+    }
+
+    @Import(name="autoscalingLimitMinCu")
+    private @Nullable Output<Double> autoscalingLimitMinCu;
+
+    public Optional<Output<Double>> autoscalingLimitMinCu() {
+        return Optional.ofNullable(this.autoscalingLimitMinCu);
+    }
 
     /**
      * Settings for HA configuration of the endpoint
@@ -30,10 +47,28 @@ public final class PostgresProjectInitialEndpointSpecArgs extends com.pulumi.res
         return Optional.ofNullable(this.group);
     }
 
+    @Import(name="noSuspension")
+    private @Nullable Output<Boolean> noSuspension;
+
+    public Optional<Output<Boolean>> noSuspension() {
+        return Optional.ofNullable(this.noSuspension);
+    }
+
+    @Import(name="suspendTimeoutDuration")
+    private @Nullable Output<String> suspendTimeoutDuration;
+
+    public Optional<Output<String>> suspendTimeoutDuration() {
+        return Optional.ofNullable(this.suspendTimeoutDuration);
+    }
+
     private PostgresProjectInitialEndpointSpecArgs() {}
 
     private PostgresProjectInitialEndpointSpecArgs(PostgresProjectInitialEndpointSpecArgs $) {
+        this.autoscalingLimitMaxCu = $.autoscalingLimitMaxCu;
+        this.autoscalingLimitMinCu = $.autoscalingLimitMinCu;
         this.group = $.group;
+        this.noSuspension = $.noSuspension;
+        this.suspendTimeoutDuration = $.suspendTimeoutDuration;
     }
 
     public static Builder builder() {
@@ -52,6 +87,24 @@ public final class PostgresProjectInitialEndpointSpecArgs extends com.pulumi.res
 
         public Builder(PostgresProjectInitialEndpointSpecArgs defaults) {
             $ = new PostgresProjectInitialEndpointSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder autoscalingLimitMaxCu(@Nullable Output<Double> autoscalingLimitMaxCu) {
+            $.autoscalingLimitMaxCu = autoscalingLimitMaxCu;
+            return this;
+        }
+
+        public Builder autoscalingLimitMaxCu(Double autoscalingLimitMaxCu) {
+            return autoscalingLimitMaxCu(Output.of(autoscalingLimitMaxCu));
+        }
+
+        public Builder autoscalingLimitMinCu(@Nullable Output<Double> autoscalingLimitMinCu) {
+            $.autoscalingLimitMinCu = autoscalingLimitMinCu;
+            return this;
+        }
+
+        public Builder autoscalingLimitMinCu(Double autoscalingLimitMinCu) {
+            return autoscalingLimitMinCu(Output.of(autoscalingLimitMinCu));
         }
 
         /**
@@ -73,6 +126,24 @@ public final class PostgresProjectInitialEndpointSpecArgs extends com.pulumi.res
          */
         public Builder group(PostgresProjectInitialEndpointSpecGroupArgs group) {
             return group(Output.of(group));
+        }
+
+        public Builder noSuspension(@Nullable Output<Boolean> noSuspension) {
+            $.noSuspension = noSuspension;
+            return this;
+        }
+
+        public Builder noSuspension(Boolean noSuspension) {
+            return noSuspension(Output.of(noSuspension));
+        }
+
+        public Builder suspendTimeoutDuration(@Nullable Output<String> suspendTimeoutDuration) {
+            $.suspendTimeoutDuration = suspendTimeoutDuration;
+            return this;
+        }
+
+        public Builder suspendTimeoutDuration(String suspendTimeoutDuration) {
+            return suspendTimeoutDuration(Output.of(suspendTimeoutDuration));
         }
 
         public PostgresProjectInitialEndpointSpecArgs build() {

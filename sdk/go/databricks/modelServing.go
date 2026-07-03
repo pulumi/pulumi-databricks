@@ -237,7 +237,8 @@ type ModelServing struct {
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
 	ServingEndpointId pulumi.StringOutput `pulumi:"servingEndpointId"`
 	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
-	Tags ModelServingTagArrayOutput `pulumi:"tags"`
+	Tags            ModelServingTagArrayOutput           `pulumi:"tags"`
+	TelemetryConfig ModelServingTelemetryConfigPtrOutput `pulumi:"telemetryConfig"`
 }
 
 // NewModelServing registers a new resource with the given unique name, arguments, and options.
@@ -295,7 +296,8 @@ type modelServingState struct {
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
 	ServingEndpointId *string `pulumi:"servingEndpointId"`
 	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
-	Tags []ModelServingTag `pulumi:"tags"`
+	Tags            []ModelServingTag            `pulumi:"tags"`
+	TelemetryConfig *ModelServingTelemetryConfig `pulumi:"telemetryConfig"`
 }
 
 type ModelServingState struct {
@@ -324,7 +326,8 @@ type ModelServingState struct {
 	// Unique identifier of the serving endpoint primarily used to set permissions and refer to this instance for other operations.
 	ServingEndpointId pulumi.StringPtrInput
 	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
-	Tags ModelServingTagArrayInput
+	Tags            ModelServingTagArrayInput
+	TelemetryConfig ModelServingTelemetryConfigPtrInput
 }
 
 func (ModelServingState) ElementType() reflect.Type {
@@ -353,7 +356,8 @@ type modelServingArgs struct {
 	// A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
 	RouteOptimized *bool `pulumi:"routeOptimized"`
 	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
-	Tags []ModelServingTag `pulumi:"tags"`
+	Tags            []ModelServingTag            `pulumi:"tags"`
+	TelemetryConfig *ModelServingTelemetryConfig `pulumi:"telemetryConfig"`
 }
 
 // The set of arguments for constructing a ModelServing resource.
@@ -379,7 +383,8 @@ type ModelServingArgs struct {
 	// A boolean enabling route optimization for the endpoint. *Note: only available for custom models.*
 	RouteOptimized pulumi.BoolPtrInput
 	// Tags to be attached to the serving endpoint and automatically propagated to billing logs.
-	Tags ModelServingTagArrayInput
+	Tags            ModelServingTagArrayInput
+	TelemetryConfig ModelServingTelemetryConfigPtrInput
 }
 
 func (ModelServingArgs) ElementType() reflect.Type {
@@ -529,6 +534,10 @@ func (o ModelServingOutput) ServingEndpointId() pulumi.StringOutput {
 // Tags to be attached to the serving endpoint and automatically propagated to billing logs.
 func (o ModelServingOutput) Tags() ModelServingTagArrayOutput {
 	return o.ApplyT(func(v *ModelServing) ModelServingTagArrayOutput { return v.Tags }).(ModelServingTagArrayOutput)
+}
+
+func (o ModelServingOutput) TelemetryConfig() ModelServingTelemetryConfigPtrOutput {
+	return o.ApplyT(func(v *ModelServing) ModelServingTelemetryConfigPtrOutput { return v.TelemetryConfig }).(ModelServingTelemetryConfigPtrOutput)
 }
 
 type ModelServingArrayOutput struct{ *pulumi.OutputState }

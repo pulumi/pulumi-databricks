@@ -109,20 +109,18 @@ public class DisasterRecoveryFailoverGroup extends com.pulumi.resources.CustomRe
         return this.effectivePrimaryRegion;
     }
     /**
-     * Opaque version string for optimistic locking. Server-generated, returned in responses.
-     * Must be provided on Update requests to prevent concurrent modifications
+     * (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
      * 
      */
     @Export(name="etag", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> etag;
+    private Output<String> etag;
 
     /**
-     * @return Opaque version string for optimistic locking. Server-generated, returned in responses.
-     * Must be provided on Update requests to prevent concurrent modifications
+     * @return (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
      * 
      */
-    public Output<Optional<String>> etag() {
-        return Codegen.optional(this.etag);
+    public Output<String> etag() {
+        return this.etag;
     }
     /**
      * Client-provided identifier for the failover group. Used to construct the

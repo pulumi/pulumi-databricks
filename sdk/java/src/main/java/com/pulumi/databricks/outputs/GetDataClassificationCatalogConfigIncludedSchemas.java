@@ -12,14 +12,14 @@ import java.util.Objects;
 @CustomType
 public final class GetDataClassificationCatalogConfigIncludedSchemas {
     /**
-     * @return (list of string)
+     * @return (list of string) - Schema names, each relative to the parent catalog. Must not be empty
      * 
      */
     private List<String> names;
 
     private GetDataClassificationCatalogConfigIncludedSchemas() {}
     /**
-     * @return (list of string)
+     * @return (list of string) - Schema names, each relative to the parent catalog. Must not be empty
      * 
      */
     public List<String> names() {

@@ -37,6 +37,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointTagResult> Tags;
         public readonly string? Task;
+        public readonly ImmutableArray<Outputs.GetServingEndpointsEndpointTelemetryConfigResult> TelemetryConfigs;
         public readonly string? UsagePolicyId;
 
         [OutputConstructor]
@@ -65,6 +66,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? task,
 
+            ImmutableArray<Outputs.GetServingEndpointsEndpointTelemetryConfigResult> telemetryConfigs,
+
             string? usagePolicyId)
         {
             AiGateways = aiGateways;
@@ -79,6 +82,7 @@ namespace Pulumi.Databricks.Outputs
             States = states;
             Tags = tags;
             Task = task;
+            TelemetryConfigs = telemetryConfigs;
             UsagePolicyId = usagePolicyId;
         }
     }

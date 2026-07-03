@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.GetServingEndpointsEndpointAiGatewayArgs;
 import com.pulumi.databricks.inputs.GetServingEndpointsEndpointConfigArgs;
 import com.pulumi.databricks.inputs.GetServingEndpointsEndpointStateArgs;
 import com.pulumi.databricks.inputs.GetServingEndpointsEndpointTagArgs;
+import com.pulumi.databricks.inputs.GetServingEndpointsEndpointTelemetryConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -137,6 +138,13 @@ public final class GetServingEndpointsEndpointArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.task);
     }
 
+    @Import(name="telemetryConfigs")
+    private @Nullable Output<List<GetServingEndpointsEndpointTelemetryConfigArgs>> telemetryConfigs;
+
+    public Optional<Output<List<GetServingEndpointsEndpointTelemetryConfigArgs>>> telemetryConfigs() {
+        return Optional.ofNullable(this.telemetryConfigs);
+    }
+
     @Import(name="usagePolicyId")
     private @Nullable Output<String> usagePolicyId;
 
@@ -159,6 +167,7 @@ public final class GetServingEndpointsEndpointArgs extends com.pulumi.resources.
         this.states = $.states;
         this.tags = $.tags;
         this.task = $.task;
+        this.telemetryConfigs = $.telemetryConfigs;
         this.usagePolicyId = $.usagePolicyId;
     }
 
@@ -368,6 +377,19 @@ public final class GetServingEndpointsEndpointArgs extends com.pulumi.resources.
 
         public Builder task(String task) {
             return task(Output.of(task));
+        }
+
+        public Builder telemetryConfigs(@Nullable Output<List<GetServingEndpointsEndpointTelemetryConfigArgs>> telemetryConfigs) {
+            $.telemetryConfigs = telemetryConfigs;
+            return this;
+        }
+
+        public Builder telemetryConfigs(List<GetServingEndpointsEndpointTelemetryConfigArgs> telemetryConfigs) {
+            return telemetryConfigs(Output.of(telemetryConfigs));
+        }
+
+        public Builder telemetryConfigs(GetServingEndpointsEndpointTelemetryConfigArgs... telemetryConfigs) {
+            return telemetryConfigs(List.of(telemetryConfigs));
         }
 
         public Builder usagePolicyId(@Nullable Output<String> usagePolicyId) {

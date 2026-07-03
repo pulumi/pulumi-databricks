@@ -12,19 +12,46 @@ namespace Pulumi.Databricks
     public static class GetAiSearchIndex
     {
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+        /// 
+        /// This data source can be used to get a single AI Search index by name.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// # Example: AI Search Index Datasource (Singular)
         /// </summary>
         public static Task<GetAiSearchIndexResult> InvokeAsync(GetAiSearchIndexArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiSearchIndexResult>("databricks:index/getAiSearchIndex:getAiSearchIndex", args ?? new GetAiSearchIndexArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+        /// 
+        /// This data source can be used to get a single AI Search index by name.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// # Example: AI Search Index Datasource (Singular)
         /// </summary>
         public static Output<GetAiSearchIndexResult> Invoke(GetAiSearchIndexInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiSearchIndexResult>("databricks:index/getAiSearchIndex:getAiSearchIndex", args ?? new GetAiSearchIndexInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// 
+        /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+        /// 
+        /// This data source can be used to get a single AI Search index by name.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// # Example: AI Search Index Datasource (Singular)
         /// </summary>
         public static Output<GetAiSearchIndexResult> Invoke(GetAiSearchIndexInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiSearchIndexResult>("databricks:index/getAiSearchIndex:getAiSearchIndex", args ?? new GetAiSearchIndexInvokeArgs(), options.WithDefaults());

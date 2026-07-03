@@ -86,8 +86,10 @@ export class DataClassificationCatalogConfig extends pulumi.CustomResource {
      */
     declare public readonly autoTagConfigs: pulumi.Output<outputs.DataClassificationCatalogConfigAutoTagConfig[] | undefined>;
     /**
-     * Schemas to include in the scan. Empty list is not supported as it results in a no-op
-     * scan. If `includedSchemas` is not set, all schemas are scanned
+     * Schemas to include in the scan, each named relative to the parent catalog.
+     * If specified, only listed schemas will be scanned.
+     * Mutually exclusive with `excludedSchemas`: only one may be set per request.
+     * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      */
     declare public readonly includedSchemas: pulumi.Output<outputs.DataClassificationCatalogConfigIncludedSchemas | undefined>;
     /**
@@ -147,8 +149,10 @@ export interface DataClassificationCatalogConfigState {
      */
     autoTagConfigs?: pulumi.Input<pulumi.Input<inputs.DataClassificationCatalogConfigAutoTagConfig>[] | undefined>;
     /**
-     * Schemas to include in the scan. Empty list is not supported as it results in a no-op
-     * scan. If `includedSchemas` is not set, all schemas are scanned
+     * Schemas to include in the scan, each named relative to the parent catalog.
+     * If specified, only listed schemas will be scanned.
+     * Mutually exclusive with `excludedSchemas`: only one may be set per request.
+     * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      */
     includedSchemas?: pulumi.Input<inputs.DataClassificationCatalogConfigIncludedSchemas | undefined>;
     /**
@@ -175,8 +179,10 @@ export interface DataClassificationCatalogConfigArgs {
      */
     autoTagConfigs?: pulumi.Input<pulumi.Input<inputs.DataClassificationCatalogConfigAutoTagConfig>[] | undefined>;
     /**
-     * Schemas to include in the scan. Empty list is not supported as it results in a no-op
-     * scan. If `includedSchemas` is not set, all schemas are scanned
+     * Schemas to include in the scan, each named relative to the parent catalog.
+     * If specified, only listed schemas will be scanned.
+     * Mutually exclusive with `excludedSchemas`: only one may be set per request.
+     * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      */
     includedSchemas?: pulumi.Input<inputs.DataClassificationCatalogConfigIncludedSchemas | undefined>;
     /**

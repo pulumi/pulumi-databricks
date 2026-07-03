@@ -513,6 +513,12 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> serverless() {
         return Codegen.optional(this.serverless);
     }
+    @Export(name="serverlessComputeId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> serverlessComputeId;
+
+    public Output<Optional<String>> serverlessComputeId() {
+        return Codegen.optional(this.serverlessComputeId);
+    }
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 

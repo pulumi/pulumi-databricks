@@ -198,6 +198,10 @@ type PostgresProject struct {
 	// (string) - A timestamp indicating when the project was soft-deleted.
 	// Empty if the project is not deleted, otherwise set to a timestamp in the past
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Configuration for the initial default branch created as part of project creation.
+	// Allows overriding branch protection. These settings only apply at creation time
+	// and do not affect resources created after project creation
+	InitialBranchSpec PostgresProjectInitialBranchSpecOutput `pulumi:"initialBranchSpec"`
 	// Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
 	// created project. If omitted, the initial endpoint created will have default settings, without high availability
 	// configured. This field does not apply to any endpoints created after project creation. Use
@@ -264,6 +268,10 @@ type postgresProjectState struct {
 	// (string) - A timestamp indicating when the project was soft-deleted.
 	// Empty if the project is not deleted, otherwise set to a timestamp in the past
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Configuration for the initial default branch created as part of project creation.
+	// Allows overriding branch protection. These settings only apply at creation time
+	// and do not affect resources created after project creation
+	InitialBranchSpec *PostgresProjectInitialBranchSpec `pulumi:"initialBranchSpec"`
 	// Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
 	// created project. If omitted, the initial endpoint created will have default settings, without high availability
 	// configured. This field does not apply to any endpoints created after project creation. Use
@@ -298,6 +306,10 @@ type PostgresProjectState struct {
 	// (string) - A timestamp indicating when the project was soft-deleted.
 	// Empty if the project is not deleted, otherwise set to a timestamp in the past
 	DeleteTime pulumi.StringPtrInput
+	// Configuration for the initial default branch created as part of project creation.
+	// Allows overriding branch protection. These settings only apply at creation time
+	// and do not affect resources created after project creation
+	InitialBranchSpec PostgresProjectInitialBranchSpecPtrInput
 	// Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
 	// created project. If omitted, the initial endpoint created will have default settings, without high availability
 	// configured. This field does not apply to any endpoints created after project creation. Use
@@ -331,6 +343,10 @@ func (PostgresProjectState) ElementType() reflect.Type {
 }
 
 type postgresProjectArgs struct {
+	// Configuration for the initial default branch created as part of project creation.
+	// Allows overriding branch protection. These settings only apply at creation time
+	// and do not affect resources created after project creation
+	InitialBranchSpec *PostgresProjectInitialBranchSpec `pulumi:"initialBranchSpec"`
 	// Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
 	// created project. If omitted, the initial endpoint created will have default settings, without high availability
 	// configured. This field does not apply to any endpoints created after project creation. Use
@@ -349,6 +365,10 @@ type postgresProjectArgs struct {
 
 // The set of arguments for constructing a PostgresProject resource.
 type PostgresProjectArgs struct {
+	// Configuration for the initial default branch created as part of project creation.
+	// Allows overriding branch protection. These settings only apply at creation time
+	// and do not affect resources created after project creation
+	InitialBranchSpec PostgresProjectInitialBranchSpecPtrInput
 	// Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
 	// created project. If omitted, the initial endpoint created will have default settings, without high availability
 	// configured. This field does not apply to any endpoints created after project creation. Use
@@ -461,6 +481,13 @@ func (o PostgresProjectOutput) CreateTime() pulumi.StringOutput {
 // Empty if the project is not deleted, otherwise set to a timestamp in the past
 func (o PostgresProjectOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresProject) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Configuration for the initial default branch created as part of project creation.
+// Allows overriding branch protection. These settings only apply at creation time
+// and do not affect resources created after project creation
+func (o PostgresProjectOutput) InitialBranchSpec() PostgresProjectInitialBranchSpecOutput {
+	return o.ApplyT(func(v *PostgresProject) PostgresProjectInitialBranchSpecOutput { return v.InitialBranchSpec }).(PostgresProjectInitialBranchSpecOutput)
 }
 
 // Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly

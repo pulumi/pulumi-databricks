@@ -14,57 +14,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PostgresProjectStatusDefaultEndpointSettings {
-    /**
-     * @return The maximum number of Compute Units. Minimum value is 0.5
-     * 
-     */
     private @Nullable Double autoscalingLimitMaxCu;
-    /**
-     * @return The minimum number of Compute Units. Minimum value is 0.5
-     * 
-     */
     private @Nullable Double autoscalingLimitMinCu;
-    /**
-     * @return When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided.
-     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-     * 
-     */
     private @Nullable Boolean noSuspension;
     /**
      * @return A raw representation of Postgres settings
      * 
      */
     private @Nullable Map<String,String> pgSettings;
-    /**
-     * @return Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week).
-     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-     * 
-     */
     private @Nullable String suspendTimeoutDuration;
 
     private PostgresProjectStatusDefaultEndpointSettings() {}
-    /**
-     * @return The maximum number of Compute Units. Minimum value is 0.5
-     * 
-     */
     public Optional<Double> autoscalingLimitMaxCu() {
         return Optional.ofNullable(this.autoscalingLimitMaxCu);
     }
-    /**
-     * @return The minimum number of Compute Units. Minimum value is 0.5
-     * 
-     */
     public Optional<Double> autoscalingLimitMinCu() {
         return Optional.ofNullable(this.autoscalingLimitMinCu);
     }
-    /**
-     * @return When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided.
-     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-     * 
-     */
     public Optional<Boolean> noSuspension() {
         return Optional.ofNullable(this.noSuspension);
     }
@@ -75,12 +41,6 @@ public final class PostgresProjectStatusDefaultEndpointSettings {
     public Map<String,String> pgSettings() {
         return this.pgSettings == null ? Map.of() : this.pgSettings;
     }
-    /**
-     * @return Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week).
-     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-     * 
-     */
     public Optional<String> suspendTimeoutDuration() {
         return Optional.ofNullable(this.suspendTimeoutDuration);
     }

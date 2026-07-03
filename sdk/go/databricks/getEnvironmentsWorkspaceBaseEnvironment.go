@@ -86,6 +86,8 @@ type LookupEnvironmentsWorkspaceBaseEnvironmentResult struct {
 	// Format: workspace-base-environments/{workspace-base-environment}
 	Name           string                                                 `pulumi:"name"`
 	ProviderConfig *GetEnvironmentsWorkspaceBaseEnvironmentProviderConfig `pulumi:"providerConfig"`
+	// (EnvironmentSpec) - The environment specification containing version and dependencies
+	Spec GetEnvironmentsWorkspaceBaseEnvironmentSpec `pulumi:"spec"`
 	// (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
 	Status string `pulumi:"status"`
 	// (string) - Timestamp when the environment was last updated
@@ -188,6 +190,13 @@ func (o LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput) ProviderConfig()
 	return o.ApplyT(func(v LookupEnvironmentsWorkspaceBaseEnvironmentResult) *GetEnvironmentsWorkspaceBaseEnvironmentProviderConfig {
 		return v.ProviderConfig
 	}).(GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigPtrOutput)
+}
+
+// (EnvironmentSpec) - The environment specification containing version and dependencies
+func (o LookupEnvironmentsWorkspaceBaseEnvironmentResultOutput) Spec() GetEnvironmentsWorkspaceBaseEnvironmentSpecOutput {
+	return o.ApplyT(func(v LookupEnvironmentsWorkspaceBaseEnvironmentResult) GetEnvironmentsWorkspaceBaseEnvironmentSpec {
+		return v.Spec
+	}).(GetEnvironmentsWorkspaceBaseEnvironmentSpecOutput)
 }
 
 // (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`

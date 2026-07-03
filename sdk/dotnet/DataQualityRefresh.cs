@@ -123,7 +123,7 @@ namespace Pulumi.Databricks
         public Output<string> ObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the monitored object. Can be one of the following: `Schema`or `Table`
+        /// The type of the monitored object. Can be one of the following: `Schema` or `Table`
         /// </summary>
         [Output("objectType")]
         public Output<string> ObjectType { get; private set; } = null!;
@@ -219,7 +219,7 @@ namespace Pulumi.Databricks
         public Input<string> ObjectId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the monitored object. Can be one of the following: `Schema`or `Table`
+        /// The type of the monitored object. Can be one of the following: `Schema` or `Table`
         /// </summary>
         [Input("objectType", required: true)]
         public Input<string> ObjectType { get; set; } = null!;
@@ -265,7 +265,7 @@ namespace Pulumi.Databricks
         public Input<string>? ObjectId { get; set; }
 
         /// <summary>
-        /// The type of the monitored object. Can be one of the following: `Schema`or `Table`
+        /// The type of the monitored object. Can be one of the following: `Schema` or `Table`
         /// </summary>
         [Input("objectType")]
         public Input<string>? ObjectType { get; set; }

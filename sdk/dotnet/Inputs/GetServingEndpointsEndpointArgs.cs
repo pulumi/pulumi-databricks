@@ -83,6 +83,14 @@ namespace Pulumi.Databricks.Inputs
         [Input("task")]
         public Input<string>? Task { get; set; }
 
+        [Input("telemetryConfigs")]
+        private InputList<Inputs.GetServingEndpointsEndpointTelemetryConfigInputArgs>? _telemetryConfigs;
+        public InputList<Inputs.GetServingEndpointsEndpointTelemetryConfigInputArgs> TelemetryConfigs
+        {
+            get => _telemetryConfigs ?? (_telemetryConfigs = new InputList<Inputs.GetServingEndpointsEndpointTelemetryConfigInputArgs>());
+            set => _telemetryConfigs = value;
+        }
+
         [Input("usagePolicyId")]
         public Input<string>? UsagePolicyId { get; set; }
 

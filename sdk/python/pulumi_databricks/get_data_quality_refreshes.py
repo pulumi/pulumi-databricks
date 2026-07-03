@@ -68,7 +68,7 @@ class GetDataQualityRefreshesResult:
     @pulumi.getter(name="objectType")
     def object_type(self) -> _builtins.str:
         """
-        (string) - The type of the monitored object. Can be one of the following: `schema`or `table`
+        (string) - The type of the monitored object. Can be one of the following: `schema` or `table`
         """
         return pulumi.get(self, "object_type")
 

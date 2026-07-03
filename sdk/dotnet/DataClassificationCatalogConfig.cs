@@ -82,8 +82,10 @@ namespace Pulumi.Databricks
         public Output<ImmutableArray<Outputs.DataClassificationCatalogConfigAutoTagConfig>> AutoTagConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// Schemas to include in the scan. Empty list is not supported as it results in a no-op
-        /// scan. If `IncludedSchemas` is not set, all schemas are scanned
+        /// Schemas to include in the scan, each named relative to the parent catalog.
+        /// If specified, only listed schemas will be scanned.
+        /// Mutually exclusive with `ExcludedSchemas`: only one may be set per request.
+        /// If neither `IncludedSchemas` nor `ExcludedSchemas` is set, all schemas are scanned
         /// </summary>
         [Output("includedSchemas")]
         public Output<Outputs.DataClassificationCatalogConfigIncludedSchemas?> IncludedSchemas { get; private set; } = null!;
@@ -166,8 +168,10 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Schemas to include in the scan. Empty list is not supported as it results in a no-op
-        /// scan. If `IncludedSchemas` is not set, all schemas are scanned
+        /// Schemas to include in the scan, each named relative to the parent catalog.
+        /// If specified, only listed schemas will be scanned.
+        /// Mutually exclusive with `ExcludedSchemas`: only one may be set per request.
+        /// If neither `IncludedSchemas` nor `ExcludedSchemas` is set, all schemas are scanned
         /// </summary>
         [Input("includedSchemas")]
         public Input<Inputs.DataClassificationCatalogConfigIncludedSchemasArgs>? IncludedSchemas { get; set; }
@@ -206,8 +210,10 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// Schemas to include in the scan. Empty list is not supported as it results in a no-op
-        /// scan. If `IncludedSchemas` is not set, all schemas are scanned
+        /// Schemas to include in the scan, each named relative to the parent catalog.
+        /// If specified, only listed schemas will be scanned.
+        /// Mutually exclusive with `ExcludedSchemas`: only one may be set per request.
+        /// If neither `IncludedSchemas` nor `ExcludedSchemas` is set, all schemas are scanned
         /// </summary>
         [Input("includedSchemas")]
         public Input<Inputs.DataClassificationCatalogConfigIncludedSchemasGetArgs>? IncludedSchemas { get; set; }

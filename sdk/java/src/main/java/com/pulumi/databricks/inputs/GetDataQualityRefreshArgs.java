@@ -50,14 +50,14 @@ public final class GetDataQualityRefreshArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The type of the monitored object. Can be one of the following: `schema`or `table`
+     * The type of the monitored object. Can be one of the following: `schema` or `table`
      * 
      */
     @Import(name="objectType", required=true)
     private Output<String> objectType;
 
     /**
-     * @return The type of the monitored object. Can be one of the following: `schema`or `table`
+     * @return The type of the monitored object. Can be one of the following: `schema` or `table`
      * 
      */
     public Output<String> objectType() {
@@ -159,7 +159,7 @@ public final class GetDataQualityRefreshArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param objectType The type of the monitored object. Can be one of the following: `schema`or `table`
+         * @param objectType The type of the monitored object. Can be one of the following: `schema` or `table`
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class GetDataQualityRefreshArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param objectType The type of the monitored object. Can be one of the following: `schema`or `table`
+         * @param objectType The type of the monitored object. Can be one of the following: `schema` or `table`
          * 
          * @return builder
          * 

@@ -8,6 +8,7 @@ import com.pulumi.databricks.inputs.GetServingEndpointsEndpointAiGateway;
 import com.pulumi.databricks.inputs.GetServingEndpointsEndpointConfig;
 import com.pulumi.databricks.inputs.GetServingEndpointsEndpointState;
 import com.pulumi.databricks.inputs.GetServingEndpointsEndpointTag;
+import com.pulumi.databricks.inputs.GetServingEndpointsEndpointTelemetryConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -136,6 +137,13 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.task);
     }
 
+    @Import(name="telemetryConfigs")
+    private @Nullable List<GetServingEndpointsEndpointTelemetryConfig> telemetryConfigs;
+
+    public Optional<List<GetServingEndpointsEndpointTelemetryConfig>> telemetryConfigs() {
+        return Optional.ofNullable(this.telemetryConfigs);
+    }
+
     @Import(name="usagePolicyId")
     private @Nullable String usagePolicyId;
 
@@ -158,6 +166,7 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
         this.states = $.states;
         this.tags = $.tags;
         this.task = $.task;
+        this.telemetryConfigs = $.telemetryConfigs;
         this.usagePolicyId = $.usagePolicyId;
     }
 
@@ -295,6 +304,15 @@ public final class GetServingEndpointsEndpoint extends com.pulumi.resources.Invo
         public Builder task(@Nullable String task) {
             $.task = task;
             return this;
+        }
+
+        public Builder telemetryConfigs(@Nullable List<GetServingEndpointsEndpointTelemetryConfig> telemetryConfigs) {
+            $.telemetryConfigs = telemetryConfigs;
+            return this;
+        }
+
+        public Builder telemetryConfigs(GetServingEndpointsEndpointTelemetryConfig... telemetryConfigs) {
+            return telemetryConfigs(List.of(telemetryConfigs));
         }
 
         public Builder usagePolicyId(@Nullable String usagePolicyId) {

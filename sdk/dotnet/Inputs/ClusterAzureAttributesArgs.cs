@@ -18,6 +18,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("availability")]
         public Input<string>? Availability { get; set; }
 
+        [Input("capacityReservationGroup")]
+        public Input<string>? CapacityReservationGroup { get; set; }
+
         /// <summary>
         /// The first `FirstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `FirstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
         /// </summary>
