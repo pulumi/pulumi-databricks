@@ -208,6 +208,8 @@ import com.pulumi.databricks.inputs.GetPostgresBranchesArgs;
 import com.pulumi.databricks.inputs.GetPostgresBranchesPlainArgs;
 import com.pulumi.databricks.inputs.GetPostgresCatalogArgs;
 import com.pulumi.databricks.inputs.GetPostgresCatalogPlainArgs;
+import com.pulumi.databricks.inputs.GetPostgresDataApiArgs;
+import com.pulumi.databricks.inputs.GetPostgresDataApiPlainArgs;
 import com.pulumi.databricks.inputs.GetPostgresDatabaseArgs;
 import com.pulumi.databricks.inputs.GetPostgresDatabasePlainArgs;
 import com.pulumi.databricks.inputs.GetPostgresDatabasesArgs;
@@ -410,6 +412,7 @@ import com.pulumi.databricks.outputs.GetPolicyInfosResult;
 import com.pulumi.databricks.outputs.GetPostgresBranchResult;
 import com.pulumi.databricks.outputs.GetPostgresBranchesResult;
 import com.pulumi.databricks.outputs.GetPostgresCatalogResult;
+import com.pulumi.databricks.outputs.GetPostgresDataApiResult;
 import com.pulumi.databricks.outputs.GetPostgresDatabaseResult;
 import com.pulumi.databricks.outputs.GetPostgresDatabasesResult;
 import com.pulumi.databricks.outputs.GetPostgresEndpointResult;
@@ -1412,140 +1415,605 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountSettingV2:getAccountSettingV2", TypeShape.of(GetAccountSettingV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to get a single AI Search endpoint by name.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Endpoint Datasource (Singular)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiSearchEndpoint(GetAiSearchEndpointArgs.builder()
+     *             .name("example-ai-search-endpoint")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiSearchEndpointResult> getAiSearchEndpoint(GetAiSearchEndpointArgs args) {
         return getAiSearchEndpoint(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to get a single AI Search endpoint by name.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Endpoint Datasource (Singular)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiSearchEndpoint(GetAiSearchEndpointArgs.builder()
+     *             .name("example-ai-search-endpoint")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiSearchEndpointResult> getAiSearchEndpointPlain(GetAiSearchEndpointPlainArgs args) {
         return getAiSearchEndpointPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to get a single AI Search endpoint by name.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Endpoint Datasource (Singular)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiSearchEndpoint(GetAiSearchEndpointArgs.builder()
+     *             .name("example-ai-search-endpoint")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiSearchEndpointResult> getAiSearchEndpoint(GetAiSearchEndpointArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchEndpoint:getAiSearchEndpoint", TypeShape.of(GetAiSearchEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to get a single AI Search endpoint by name.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Endpoint Datasource (Singular)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiSearchEndpoint(GetAiSearchEndpointArgs.builder()
+     *             .name("example-ai-search-endpoint")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiSearchEndpointResult> getAiSearchEndpoint(GetAiSearchEndpointArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchEndpoint:getAiSearchEndpoint", TypeShape.of(GetAiSearchEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to get a single AI Search endpoint by name.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Endpoint Datasource (Singular)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchEndpointArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatabricksFunctions.getAiSearchEndpoint(GetAiSearchEndpointArgs.builder()
+     *             .name("example-ai-search-endpoint")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiSearchEndpointResult> getAiSearchEndpointPlain(GetAiSearchEndpointPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAiSearchEndpoint:getAiSearchEndpoint", TypeShape.of(GetAiSearchEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to fetch the list of AI Search endpoints in a workspace.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Endpoint Datasource (Plural)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchEndpointsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiSearchEndpoints(GetAiSearchEndpointsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiSearchEndpointsResult> getAiSearchEndpoints(GetAiSearchEndpointsArgs args) {
         return getAiSearchEndpoints(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to fetch the list of AI Search endpoints in a workspace.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Endpoint Datasource (Plural)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchEndpointsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiSearchEndpoints(GetAiSearchEndpointsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiSearchEndpointsResult> getAiSearchEndpointsPlain(GetAiSearchEndpointsPlainArgs args) {
         return getAiSearchEndpointsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to fetch the list of AI Search endpoints in a workspace.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Endpoint Datasource (Plural)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchEndpointsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiSearchEndpoints(GetAiSearchEndpointsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiSearchEndpointsResult> getAiSearchEndpoints(GetAiSearchEndpointsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchEndpoints:getAiSearchEndpoints", TypeShape.of(GetAiSearchEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to fetch the list of AI Search endpoints in a workspace.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Endpoint Datasource (Plural)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchEndpointsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiSearchEndpoints(GetAiSearchEndpointsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAiSearchEndpointsResult> getAiSearchEndpoints(GetAiSearchEndpointsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchEndpoints:getAiSearchEndpoints", TypeShape.of(GetAiSearchEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to fetch the list of AI Search endpoints in a workspace.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Endpoint Datasource (Plural)
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetAiSearchEndpointsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DatabricksFunctions.getAiSearchEndpoints(GetAiSearchEndpointsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAiSearchEndpointsResult> getAiSearchEndpointsPlain(GetAiSearchEndpointsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAiSearchEndpoints:getAiSearchEndpoints", TypeShape.of(GetAiSearchEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to get a single AI Search index by name.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Index Datasource (Singular)
      * 
      */
     public static Output<GetAiSearchIndexResult> getAiSearchIndex(GetAiSearchIndexArgs args) {
         return getAiSearchIndex(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to get a single AI Search index by name.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Index Datasource (Singular)
      * 
      */
     public static CompletableFuture<GetAiSearchIndexResult> getAiSearchIndexPlain(GetAiSearchIndexPlainArgs args) {
         return getAiSearchIndexPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to get a single AI Search index by name.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Index Datasource (Singular)
      * 
      */
     public static Output<GetAiSearchIndexResult> getAiSearchIndex(GetAiSearchIndexArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchIndex:getAiSearchIndex", TypeShape.of(GetAiSearchIndexResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to get a single AI Search index by name.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Index Datasource (Singular)
      * 
      */
     public static Output<GetAiSearchIndexResult> getAiSearchIndex(GetAiSearchIndexArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchIndex:getAiSearchIndex", TypeShape.of(GetAiSearchIndexResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to get a single AI Search index by name.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Index Datasource (Singular)
      * 
      */
     public static CompletableFuture<GetAiSearchIndexResult> getAiSearchIndexPlain(GetAiSearchIndexPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAiSearchIndex:getAiSearchIndex", TypeShape.of(GetAiSearchIndexResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to fetch the list of AI Search indexes on an endpoint.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Index Datasource (Plural)
      * 
      */
     public static Output<GetAiSearchIndexesResult> getAiSearchIndexes(GetAiSearchIndexesArgs args) {
         return getAiSearchIndexes(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to fetch the list of AI Search indexes on an endpoint.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Index Datasource (Plural)
      * 
      */
     public static CompletableFuture<GetAiSearchIndexesResult> getAiSearchIndexesPlain(GetAiSearchIndexesPlainArgs args) {
         return getAiSearchIndexesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to fetch the list of AI Search indexes on an endpoint.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Index Datasource (Plural)
      * 
      */
     public static Output<GetAiSearchIndexesResult> getAiSearchIndexes(GetAiSearchIndexesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchIndexes:getAiSearchIndexes", TypeShape.of(GetAiSearchIndexesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to fetch the list of AI Search indexes on an endpoint.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Index Datasource (Plural)
      * 
      */
     public static Output<GetAiSearchIndexesResult> getAiSearchIndexes(GetAiSearchIndexesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchIndexes:getAiSearchIndexes", TypeShape.of(GetAiSearchIndexesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+     * 
+     * This data source can be used to fetch the list of AI Search indexes on an endpoint.
+     * 
+     * ## Example Usage
+     * 
+     * # Example: AI Search Index Datasource (Plural)
      * 
      */
     public static CompletableFuture<GetAiSearchIndexesResult> getAiSearchIndexesPlain(GetAiSearchIndexesPlainArgs args, InvokeOptions options) {
@@ -26739,6 +27207,246 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresCatalog:getPostgresCatalog", TypeShape.of(GetPostgresCatalogResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source retrieves the Data API configuration for a single Lakebase database, including the public Data API URL.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve the Data API for a Database
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresDataApiArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var app = DatabricksFunctions.getPostgresDataApi(GetPostgresDataApiArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app/data-api")
+     *             .build());
+     * 
+     *         ctx.export("dataApiUrl", app.status().url());
+     *         ctx.export("availableSchemas", app.status().availableSchemas());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPostgresDataApiResult> getPostgresDataApi(GetPostgresDataApiArgs args) {
+        return getPostgresDataApi(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source retrieves the Data API configuration for a single Lakebase database, including the public Data API URL.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve the Data API for a Database
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresDataApiArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var app = DatabricksFunctions.getPostgresDataApi(GetPostgresDataApiArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app/data-api")
+     *             .build());
+     * 
+     *         ctx.export("dataApiUrl", app.status().url());
+     *         ctx.export("availableSchemas", app.status().availableSchemas());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPostgresDataApiResult> getPostgresDataApiPlain(GetPostgresDataApiPlainArgs args) {
+        return getPostgresDataApiPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source retrieves the Data API configuration for a single Lakebase database, including the public Data API URL.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve the Data API for a Database
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresDataApiArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var app = DatabricksFunctions.getPostgresDataApi(GetPostgresDataApiArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app/data-api")
+     *             .build());
+     * 
+     *         ctx.export("dataApiUrl", app.status().url());
+     *         ctx.export("availableSchemas", app.status().availableSchemas());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPostgresDataApiResult> getPostgresDataApi(GetPostgresDataApiArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresDataApi:getPostgresDataApi", TypeShape.of(GetPostgresDataApiResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source retrieves the Data API configuration for a single Lakebase database, including the public Data API URL.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve the Data API for a Database
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresDataApiArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var app = DatabricksFunctions.getPostgresDataApi(GetPostgresDataApiArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app/data-api")
+     *             .build());
+     * 
+     *         ctx.export("dataApiUrl", app.status().url());
+     *         ctx.export("availableSchemas", app.status().availableSchemas());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetPostgresDataApiResult> getPostgresDataApi(GetPostgresDataApiArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getPostgresDataApi:getPostgresDataApi", TypeShape.of(GetPostgresDataApiResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
+     * 
+     * This data source retrieves the Data API configuration for a single Lakebase database, including the public Data API URL.
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve the Data API for a Database
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.databricks.DatabricksFunctions;
+     * import com.pulumi.databricks.inputs.GetPostgresDataApiArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var app = DatabricksFunctions.getPostgresDataApi(GetPostgresDataApiArgs.builder()
+     *             .name("projects/my-project/branches/main/databases/app/data-api")
+     *             .build());
+     * 
+     *         ctx.export("dataApiUrl", app.status().url());
+     *         ctx.export("availableSchemas", app.status().availableSchemas());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetPostgresDataApiResult> getPostgresDataApiPlain(GetPostgresDataApiPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getPostgresDataApi:getPostgresDataApi", TypeShape.of(GetPostgresDataApiResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
@@ -31761,6 +32469,12 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Plugin Framework Migration
+     * 
+     * The share data source has been migrated from sdkv2 to plugin framework. If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.Share&#34;`.
+     * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.Share&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing share in the metastore
@@ -31813,6 +32527,12 @@ public final class DatabricksFunctions {
      * Retrieves details about a databricks.Share that were created by Pulumi or manually.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Plugin Framework Migration
+     * 
+     * The share data source has been migrated from sdkv2 to plugin framework. If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.Share&#34;`.
+     * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.Share&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
      * 
      * ## Example Usage
      * 
@@ -31867,6 +32587,12 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Plugin Framework Migration
+     * 
+     * The share data source has been migrated from sdkv2 to plugin framework. If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.Share&#34;`.
+     * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.Share&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing share in the metastore
@@ -31919,6 +32645,12 @@ public final class DatabricksFunctions {
      * Retrieves details about a databricks.Share that were created by Pulumi or manually.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Plugin Framework Migration
+     * 
+     * The share data source has been migrated from sdkv2 to plugin framework. If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.Share&#34;`.
+     * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.Share&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
      * 
      * ## Example Usage
      * 
@@ -31973,6 +32705,12 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Plugin Framework Migration
+     * 
+     * The share data source has been migrated from sdkv2 to plugin framework. If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.Share&#34;`.
+     * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.Share&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing share in the metastore
@@ -32025,6 +32763,12 @@ public final class DatabricksFunctions {
      * Retrieves details about a databricks.Share that were created by Pulumi or manually.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Plugin Framework Migration
+     * 
+     * The share data source has been migrated from sdkv2 to plugin framework. If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.Share&#34;`.
+     * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.Share&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
      * 
      * ## Example Usage
      * 
@@ -32079,6 +32823,12 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Plugin Framework Migration
+     * 
+     * The share data source has been migrated from sdkv2 to plugin framework. If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.Share&#34;`.
+     * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.Share&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
+     * 
      * ## Example Usage
      * 
      * Getting details of an existing share in the metastore
@@ -32132,6 +32882,12 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Plugin Framework Migration
+     * 
+     * The shares data source has been migrated from sdkv2 to plugin framework. If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.getShares&#34;`.
+     * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.getShares&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
+     * 
      * ## Example Usage
      * 
      * Getting all existing shares in the metastore
@@ -32183,6 +32939,12 @@ public final class DatabricksFunctions {
      * Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Plugin Framework Migration
+     * 
+     * The shares data source has been migrated from sdkv2 to plugin framework. If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.getShares&#34;`.
+     * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.getShares&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
      * 
      * ## Example Usage
      * 
@@ -32236,6 +32998,12 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Plugin Framework Migration
+     * 
+     * The shares data source has been migrated from sdkv2 to plugin framework. If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.getShares&#34;`.
+     * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.getShares&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
+     * 
      * ## Example Usage
      * 
      * Getting all existing shares in the metastore
@@ -32287,6 +33055,12 @@ public final class DatabricksFunctions {
      * Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Plugin Framework Migration
+     * 
+     * The shares data source has been migrated from sdkv2 to plugin framework. If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.getShares&#34;`.
+     * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.getShares&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
      * 
      * ## Example Usage
      * 
@@ -32340,6 +33114,12 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Plugin Framework Migration
+     * 
+     * The shares data source has been migrated from sdkv2 to plugin framework. If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.getShares&#34;`.
+     * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.getShares&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
+     * 
      * ## Example Usage
      * 
      * Getting all existing shares in the metastore
@@ -32392,6 +33172,12 @@ public final class DatabricksFunctions {
      * 
      * &gt; This data source can only be used with a workspace-level provider!
      * 
+     * ## Plugin Framework Migration
+     * 
+     * The shares data source has been migrated from sdkv2 to plugin framework. If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.getShares&#34;`.
+     * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.getShares&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
+     * 
      * ## Example Usage
      * 
      * Getting all existing shares in the metastore
@@ -32443,6 +33229,12 @@ public final class DatabricksFunctions {
      * Retrieves a list of databricks.Share name, that were created by Pulumi or manually.
      * 
      * &gt; This data source can only be used with a workspace-level provider!
+     * 
+     * ## Plugin Framework Migration
+     * 
+     * The shares data source has been migrated from sdkv2 to plugin framework. If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.getShares&#34;`.
+     * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.getShares&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
      * 
      * ## Example Usage
      * 
@@ -37504,6 +38296,8 @@ public final class DatabricksFunctions {
      * 
      * The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.getVolumes&#34;`.
      * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.getVolumes&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
+     * 
      * ## Example Usage
      * 
      * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
@@ -37561,6 +38355,8 @@ public final class DatabricksFunctions {
      * ## Plugin Framework Migration
      * 
      * The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.getVolumes&#34;`.
+     * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.getVolumes&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
      * 
      * ## Example Usage
      * 
@@ -37620,6 +38416,8 @@ public final class DatabricksFunctions {
      * 
      * The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.getVolumes&#34;`.
      * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.getVolumes&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
+     * 
      * ## Example Usage
      * 
      * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
@@ -37678,6 +38476,8 @@ public final class DatabricksFunctions {
      * 
      * The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.getVolumes&#34;`.
      * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.getVolumes&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
+     * 
      * ## Example Usage
      * 
      * Listing all volumes in a _things_ databricks.Schema of a  _sandbox_ databricks_catalog:
@@ -37735,6 +38535,8 @@ public final class DatabricksFunctions {
      * ## Plugin Framework Migration
      * 
      * The volumes data source has been migrated from sdkv2 to plugin framework in version 1.57。 If you encounter any problem with this data source and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_DATA_SOURCES=&#34;databricks.getVolumes&#34;`.
+     * 
+     * &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_DATA_SOURCES=&#34;databricks.getVolumes&#34;`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
      * 
      * ## Example Usage
      * 

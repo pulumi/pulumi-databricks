@@ -159,6 +159,11 @@ export class PostgresDatabase extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.PostgresDatabaseProviderConfig>;
     /**
+     * If true, update the database if it already exists instead of returning an
+     * error
+     */
+    declare public readonly replaceExisting: pulumi.Output<boolean | undefined>;
+    /**
      * The desired state of the Database
      */
     declare public readonly spec: pulumi.Output<outputs.PostgresDatabaseSpec>;
@@ -189,6 +194,7 @@ export class PostgresDatabase extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
             resourceInputs["providerConfig"] = state?.providerConfig;
+            resourceInputs["replaceExisting"] = state?.replaceExisting;
             resourceInputs["spec"] = state?.spec;
             resourceInputs["status"] = state?.status;
             resourceInputs["updateTime"] = state?.updateTime;
@@ -200,6 +206,7 @@ export class PostgresDatabase extends pulumi.CustomResource {
             resourceInputs["databaseId"] = args?.databaseId;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["providerConfig"] = args?.providerConfig;
+            resourceInputs["replaceExisting"] = args?.replaceExisting;
             resourceInputs["spec"] = args?.spec;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -238,6 +245,11 @@ export interface PostgresDatabaseState {
      */
     providerConfig?: pulumi.Input<inputs.PostgresDatabaseProviderConfig | undefined>;
     /**
+     * If true, update the database if it already exists instead of returning an
+     * error
+     */
+    replaceExisting?: pulumi.Input<boolean | undefined>;
+    /**
      * The desired state of the Database
      */
     spec?: pulumi.Input<inputs.PostgresDatabaseSpec | undefined>;
@@ -268,6 +280,11 @@ export interface PostgresDatabaseArgs {
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.PostgresDatabaseProviderConfig | undefined>;
+    /**
+     * If true, update the database if it already exists instead of returning an
+     * error
+     */
+    replaceExisting?: pulumi.Input<boolean | undefined>;
     /**
      * The desired state of the Database
      */

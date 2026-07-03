@@ -70,6 +70,12 @@ export interface GetPostgresProjectResult {
      */
     readonly id: string;
     /**
+     * (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
+     * Allows overriding branch protection. These settings only apply at creation time
+     * and do not affect resources created after project creation
+     */
+    readonly initialBranchSpec: outputs.GetPostgresProjectInitialBranchSpec;
+    /**
      * (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
      * configured. This field does not apply to any endpoints created after project creation. Use

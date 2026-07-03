@@ -171,14 +171,14 @@ public class DataQualityRefresh extends com.pulumi.resources.CustomResource {
         return this.objectId;
     }
     /**
-     * The type of the monitored object. Can be one of the following: `schema`or `table`
+     * The type of the monitored object. Can be one of the following: `schema` or `table`
      * 
      */
     @Export(name="objectType", refs={String.class}, tree="[0]")
     private Output<String> objectType;
 
     /**
-     * @return The type of the monitored object. Can be one of the following: `schema`or `table`
+     * @return The type of the monitored object. Can be one of the following: `schema` or `table`
      * 
      */
     public Output<String> objectType() {

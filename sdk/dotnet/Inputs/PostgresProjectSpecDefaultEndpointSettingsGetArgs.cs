@@ -12,23 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class PostgresProjectSpecDefaultEndpointSettingsGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The maximum number of Compute Units. Minimum value is 0.5
-        /// </summary>
         [Input("autoscalingLimitMaxCu")]
         public Input<double>? AutoscalingLimitMaxCu { get; set; }
 
-        /// <summary>
-        /// The minimum number of Compute Units. Minimum value is 0.5
-        /// </summary>
         [Input("autoscalingLimitMinCu")]
         public Input<double>? AutoscalingLimitMinCu { get; set; }
 
-        /// <summary>
-        /// When set to true, explicitly disables automatic suspension (never suspend).
-        /// Should be set to true when provided.
-        /// Mutually exclusive with `SuspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-        /// </summary>
         [Input("noSuspension")]
         public Input<bool>? NoSuspension { get; set; }
 
@@ -44,11 +33,6 @@ namespace Pulumi.Databricks.Inputs
             set => _pgSettings = value;
         }
 
-        /// <summary>
-        /// Duration of inactivity after which the compute endpoint is automatically suspended.
-        /// If specified should be between 60s and 604800s (1 minute to 1 week).
-        /// Mutually exclusive with `NoSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-        /// </summary>
         [Input("suspendTimeoutDuration")]
         public Input<string>? SuspendTimeoutDuration { get; set; }
 

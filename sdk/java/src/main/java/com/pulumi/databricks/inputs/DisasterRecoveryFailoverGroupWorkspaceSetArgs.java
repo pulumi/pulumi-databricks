@@ -36,18 +36,20 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
     }
 
     /**
-     * Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
+     * Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
+     * Defaults to false
      * 
      */
-    @Import(name="replicateWorkspaceAssets", required=true)
-    private Output<Boolean> replicateWorkspaceAssets;
+    @Import(name="replicateWorkspaceAssets")
+    private @Nullable Output<Boolean> replicateWorkspaceAssets;
 
     /**
-     * @return Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
+     * @return Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
+     * Defaults to false
      * 
      */
-    public Output<Boolean> replicateWorkspaceAssets() {
-        return this.replicateWorkspaceAssets;
+    public Optional<Output<Boolean>> replicateWorkspaceAssets() {
+        return Optional.ofNullable(this.replicateWorkspaceAssets);
     }
 
     /**
@@ -137,18 +139,20 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
         }
 
         /**
-         * @param replicateWorkspaceAssets Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
+         * @param replicateWorkspaceAssets Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
+         * Defaults to false
          * 
          * @return builder
          * 
          */
-        public Builder replicateWorkspaceAssets(Output<Boolean> replicateWorkspaceAssets) {
+        public Builder replicateWorkspaceAssets(@Nullable Output<Boolean> replicateWorkspaceAssets) {
             $.replicateWorkspaceAssets = replicateWorkspaceAssets;
             return this;
         }
 
         /**
-         * @param replicateWorkspaceAssets Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
+         * @param replicateWorkspaceAssets Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
+         * Defaults to false
          * 
          * @return builder
          * 
@@ -231,9 +235,6 @@ public final class DisasterRecoveryFailoverGroupWorkspaceSetArgs extends com.pul
         public DisasterRecoveryFailoverGroupWorkspaceSetArgs build() {
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("DisasterRecoveryFailoverGroupWorkspaceSetArgs", "name");
-            }
-            if ($.replicateWorkspaceAssets == null) {
-                throw new MissingRequiredPropertyException("DisasterRecoveryFailoverGroupWorkspaceSetArgs", "replicateWorkspaceAssets");
             }
             if ($.workspaceIds == null) {
                 throw new MissingRequiredPropertyException("DisasterRecoveryFailoverGroupWorkspaceSetArgs", "workspaceIds");

@@ -287,6 +287,9 @@ namespace Pulumi.Databricks
         [Output("serverless")]
         public Output<bool?> Serverless { get; private set; } = null!;
 
+        [Output("serverlessComputeId")]
+        public Output<string?> ServerlessComputeId { get; private set; } = null!;
+
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
@@ -559,6 +562,9 @@ namespace Pulumi.Databricks
         [Input("serverless")]
         public Input<bool>? Serverless { get; set; }
 
+        [Input("serverlessComputeId")]
+        public Input<string>? ServerlessComputeId { get; set; }
+
         [Input("state")]
         public Input<string>? State { get; set; }
 
@@ -798,6 +804,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("serverless")]
         public Input<bool>? Serverless { get; set; }
+
+        [Input("serverlessComputeId")]
+        public Input<string>? ServerlessComputeId { get; set; }
 
         [Input("state")]
         public Input<string>? State { get; set; }

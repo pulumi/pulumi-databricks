@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetDataClassificationCatalogConfigIncludedSchemasResult
     {
         /// <summary>
-        /// (list of string)
+        /// (list of string) - Schema names, each relative to the parent catalog. Must not be empty
         /// </summary>
         public readonly ImmutableArray<string> Names;
 

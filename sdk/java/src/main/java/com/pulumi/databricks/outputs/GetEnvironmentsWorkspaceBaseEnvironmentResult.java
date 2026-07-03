@@ -5,6 +5,7 @@ package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetEnvironmentsWorkspaceBaseEnvironmentProviderConfig;
+import com.pulumi.databricks.outputs.GetEnvironmentsWorkspaceBaseEnvironmentSpec;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -67,6 +68,11 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
      */
     private String name;
     private @Nullable GetEnvironmentsWorkspaceBaseEnvironmentProviderConfig providerConfig;
+    /**
+     * @return (EnvironmentSpec) - The environment specification containing version and dependencies
+     * 
+     */
+    private GetEnvironmentsWorkspaceBaseEnvironmentSpec spec;
     /**
      * @return (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
      * 
@@ -157,6 +163,13 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
+     * @return (EnvironmentSpec) - The environment specification containing version and dependencies
+     * 
+     */
+    public GetEnvironmentsWorkspaceBaseEnvironmentSpec spec() {
+        return this.spec;
+    }
+    /**
      * @return (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
      * 
      */
@@ -192,6 +205,7 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
         private String message;
         private String name;
         private @Nullable GetEnvironmentsWorkspaceBaseEnvironmentProviderConfig providerConfig;
+        private GetEnvironmentsWorkspaceBaseEnvironmentSpec spec;
         private String status;
         private String updateTime;
         public Builder() {}
@@ -209,6 +223,7 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
     	      this.message = defaults.message;
     	      this.name = defaults.name;
     	      this.providerConfig = defaults.providerConfig;
+    	      this.spec = defaults.spec;
     	      this.status = defaults.status;
     	      this.updateTime = defaults.updateTime;
         }
@@ -308,6 +323,14 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
             return this;
         }
         @CustomType.Setter
+        public Builder spec(GetEnvironmentsWorkspaceBaseEnvironmentSpec spec) {
+            if (spec == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentsWorkspaceBaseEnvironmentResult", "spec");
+            }
+            this.spec = spec;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetEnvironmentsWorkspaceBaseEnvironmentResult", "status");
@@ -337,6 +360,7 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
             _resultValue.message = message;
             _resultValue.name = name;
             _resultValue.providerConfig = providerConfig;
+            _resultValue.spec = spec;
             _resultValue.status = status;
             _resultValue.updateTime = updateTime;
             return _resultValue;

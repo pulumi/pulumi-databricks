@@ -28,7 +28,7 @@ class GetPostgresProjectResult:
     """
     A collection of values returned by getPostgresProject.
     """
-    def __init__(__self__, create_time=None, delete_time=None, id=None, initial_endpoint_spec=None, name=None, project_id=None, provider_config=None, purge_time=None, spec=None, status=None, uid=None, update_time=None):
+    def __init__(__self__, create_time=None, delete_time=None, id=None, initial_branch_spec=None, initial_endpoint_spec=None, name=None, project_id=None, provider_config=None, purge_time=None, spec=None, status=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -38,6 +38,9 @@ class GetPostgresProjectResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if initial_branch_spec and not isinstance(initial_branch_spec, dict):
+            raise TypeError("Expected argument 'initial_branch_spec' to be a dict")
+        pulumi.set(__self__, "initial_branch_spec", initial_branch_spec)
         if initial_endpoint_spec and not isinstance(initial_endpoint_spec, dict):
             raise TypeError("Expected argument 'initial_endpoint_spec' to be a dict")
         pulumi.set(__self__, "initial_endpoint_spec", initial_endpoint_spec)
@@ -90,6 +93,16 @@ class GetPostgresProjectResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="initialBranchSpec")
+    def initial_branch_spec(self) -> 'outputs.GetPostgresProjectInitialBranchSpecResult':
+        """
+        (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
+        Allows overriding branch protection. These settings only apply at creation time
+        and do not affect resources created after project creation
+        """
+        return pulumi.get(self, "initial_branch_spec")
 
     @_builtins.property
     @pulumi.getter(name="initialEndpointSpec")
@@ -175,6 +188,7 @@ class AwaitableGetPostgresProjectResult(GetPostgresProjectResult):
             create_time=self.create_time,
             delete_time=self.delete_time,
             id=self.id,
+            initial_branch_spec=self.initial_branch_spec,
             initial_endpoint_spec=self.initial_endpoint_spec,
             name=self.name,
             project_id=self.project_id,
@@ -225,6 +239,7 @@ def get_postgres_project(name: Optional[_builtins.str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         delete_time=pulumi.get(__ret__, 'delete_time'),
         id=pulumi.get(__ret__, 'id'),
+        initial_branch_spec=pulumi.get(__ret__, 'initial_branch_spec'),
         initial_endpoint_spec=pulumi.get(__ret__, 'initial_endpoint_spec'),
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'),
@@ -272,6 +287,7 @@ def get_postgres_project_output(name: pulumi.Input[Optional[_builtins.str]] = No
         create_time=pulumi.get(__response__, 'create_time'),
         delete_time=pulumi.get(__response__, 'delete_time'),
         id=pulumi.get(__response__, 'id'),
+        initial_branch_spec=pulumi.get(__response__, 'initial_branch_spec'),
         initial_endpoint_spec=pulumi.get(__response__, 'initial_endpoint_spec'),
         name=pulumi.get(__response__, 'name'),
         project_id=pulumi.get(__response__, 'project_id'),

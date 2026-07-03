@@ -177,8 +177,9 @@ type Pipeline struct {
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema pulumi.StringPtrOutput `pulumi:"schema"`
 	// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
-	Serverless pulumi.BoolPtrOutput `pulumi:"serverless"`
-	State      pulumi.StringOutput  `pulumi:"state"`
+	Serverless          pulumi.BoolPtrOutput   `pulumi:"serverless"`
+	ServerlessComputeId pulumi.StringPtrOutput `pulumi:"serverlessComputeId"`
+	State               pulumi.StringOutput    `pulumi:"state"`
 	// A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage pulumi.StringPtrOutput `pulumi:"storage"`
 	// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
@@ -275,8 +276,9 @@ type pipelineState struct {
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema *string `pulumi:"schema"`
 	// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
-	Serverless *bool   `pulumi:"serverless"`
-	State      *string `pulumi:"state"`
+	Serverless          *bool   `pulumi:"serverless"`
+	ServerlessComputeId *string `pulumi:"serverlessComputeId"`
+	State               *string `pulumi:"state"`
 	// A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage *string `pulumi:"storage"`
 	// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
@@ -344,8 +346,9 @@ type PipelineState struct {
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema pulumi.StringPtrInput
 	// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
-	Serverless pulumi.BoolPtrInput
-	State      pulumi.StringPtrInput
+	Serverless          pulumi.BoolPtrInput
+	ServerlessComputeId pulumi.StringPtrInput
+	State               pulumi.StringPtrInput
 	// A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage pulumi.StringPtrInput
 	// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
@@ -417,8 +420,9 @@ type pipelineArgs struct {
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema *string `pulumi:"schema"`
 	// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
-	Serverless *bool   `pulumi:"serverless"`
-	State      *string `pulumi:"state"`
+	Serverless          *bool   `pulumi:"serverless"`
+	ServerlessComputeId *string `pulumi:"serverlessComputeId"`
+	State               *string `pulumi:"state"`
 	// A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage *string `pulumi:"storage"`
 	// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
@@ -487,8 +491,9 @@ type PipelineArgs struct {
 	// The default schema (database) where tables are read from or published to. The presence of this attribute implies that the pipeline is in direct publishing mode.
 	Schema pulumi.StringPtrInput
 	// An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
-	Serverless pulumi.BoolPtrInput
-	State      pulumi.StringPtrInput
+	Serverless          pulumi.BoolPtrInput
+	ServerlessComputeId pulumi.StringPtrInput
+	State               pulumi.StringPtrInput
 	// A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
 	Storage pulumi.StringPtrInput
 	// A map of tags associated with the pipeline. These are forwarded to the cluster as cluster tags, and are therefore subject to the same limitations. A maximum of 25 tags can be added to the pipeline.
@@ -743,6 +748,10 @@ func (o PipelineOutput) Schema() pulumi.StringPtrOutput {
 // An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
 func (o PipelineOutput) Serverless() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pipeline) pulumi.BoolPtrOutput { return v.Serverless }).(pulumi.BoolPtrOutput)
+}
+
+func (o PipelineOutput) ServerlessComputeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.ServerlessComputeId }).(pulumi.StringPtrOutput)
 }
 
 func (o PipelineOutput) State() pulumi.StringOutput {

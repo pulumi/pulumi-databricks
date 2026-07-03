@@ -51,6 +51,21 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * (string) - The most recent time when any endpoint of this project was active
+     * 
+     */
+    @Import(name="computeLastActiveTime")
+    private @Nullable Output<String> computeLastActiveTime;
+
+    /**
+     * @return (string) - The most recent time when any endpoint of this project was active
+     * 
+     */
+    public Optional<Output<String>> computeLastActiveTime() {
+        return Optional.ofNullable(this.computeLastActiveTime);
+    }
+
+    /**
      * (list of ProjectCustomTag) - The effective custom tags associated with the project
      * 
      */
@@ -205,6 +220,7 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
     private PostgresProjectStatusArgs(PostgresProjectStatusArgs $) {
         this.branchLogicalSizeLimitBytes = $.branchLogicalSizeLimitBytes;
         this.budgetPolicyId = $.budgetPolicyId;
+        this.computeLastActiveTime = $.computeLastActiveTime;
         this.customTags = $.customTags;
         this.defaultBranch = $.defaultBranch;
         this.defaultEndpointSettings = $.defaultEndpointSettings;
@@ -275,6 +291,27 @@ public final class PostgresProjectStatusArgs extends com.pulumi.resources.Resour
          */
         public Builder budgetPolicyId(String budgetPolicyId) {
             return budgetPolicyId(Output.of(budgetPolicyId));
+        }
+
+        /**
+         * @param computeLastActiveTime (string) - The most recent time when any endpoint of this project was active
+         * 
+         * @return builder
+         * 
+         */
+        public Builder computeLastActiveTime(@Nullable Output<String> computeLastActiveTime) {
+            $.computeLastActiveTime = computeLastActiveTime;
+            return this;
+        }
+
+        /**
+         * @param computeLastActiveTime (string) - The most recent time when any endpoint of this project was active
+         * 
+         * @return builder
+         * 
+         */
+        public Builder computeLastActiveTime(String computeLastActiveTime) {
+            return computeLastActiveTime(Output.of(computeLastActiveTime));
         }
 
         /**

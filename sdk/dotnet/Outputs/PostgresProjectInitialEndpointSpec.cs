@@ -13,15 +13,32 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class PostgresProjectInitialEndpointSpec
     {
+        public readonly double? AutoscalingLimitMaxCu;
+        public readonly double? AutoscalingLimitMinCu;
         /// <summary>
         /// Settings for HA configuration of the endpoint
         /// </summary>
         public readonly Outputs.PostgresProjectInitialEndpointSpecGroup? Group;
+        public readonly bool? NoSuspension;
+        public readonly string? SuspendTimeoutDuration;
 
         [OutputConstructor]
-        private PostgresProjectInitialEndpointSpec(Outputs.PostgresProjectInitialEndpointSpecGroup? group)
+        private PostgresProjectInitialEndpointSpec(
+            double? autoscalingLimitMaxCu,
+
+            double? autoscalingLimitMinCu,
+
+            Outputs.PostgresProjectInitialEndpointSpecGroup? group,
+
+            bool? noSuspension,
+
+            string? suspendTimeoutDuration)
         {
+            AutoscalingLimitMaxCu = autoscalingLimitMaxCu;
+            AutoscalingLimitMinCu = autoscalingLimitMinCu;
             Group = group;
+            NoSuspension = noSuspension;
+            SuspendTimeoutDuration = suspendTimeoutDuration;
         }
     }
 }

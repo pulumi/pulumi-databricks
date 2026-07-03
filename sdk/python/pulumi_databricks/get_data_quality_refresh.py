@@ -96,7 +96,7 @@ class GetDataQualityRefreshResult:
     @pulumi.getter(name="objectType")
     def object_type(self) -> _builtins.str:
         """
-        (string) - The type of the monitored object. Can be one of the following: `schema`or `table`
+        (string) - The type of the monitored object. Can be one of the following: `schema` or `table`
         """
         return pulumi.get(self, "object_type")
 
@@ -201,7 +201,7 @@ def get_data_quality_refresh(object_id: Optional[_builtins.str] = None,
            Find the `table_id` from either:
            1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
            2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
-    :param _builtins.str object_type: The type of the monitored object. Can be one of the following: `schema`or `table`
+    :param _builtins.str object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
     :param Union['GetDataQualityRefreshProviderConfigArgs', 'GetDataQualityRefreshProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     :param _builtins.int refresh_id: Unique id of the refresh operation
     """
@@ -269,7 +269,7 @@ def get_data_quality_refresh_output(object_id: pulumi.Input[Optional[_builtins.s
            Find the `table_id` from either:
            1. The [table_id](https://docs.databricks.com/api/workspace/tables/get#table_id) of the `Tables` resource.
            2. In [Catalog Explorer](https://docs.databricks.com/aws/en/catalog-explorer/) > select the `table` > go to the `Details` tab > the `Table ID` field
-    :param _builtins.str object_type: The type of the monitored object. Can be one of the following: `schema`or `table`
+    :param _builtins.str object_type: The type of the monitored object. Can be one of the following: `schema` or `table`
     :param Union['GetDataQualityRefreshProviderConfigArgs', 'GetDataQualityRefreshProviderConfigArgsDict'] provider_config: Configure the provider for management through account provider.
     :param _builtins.int refresh_id: Unique id of the refresh operation
     """

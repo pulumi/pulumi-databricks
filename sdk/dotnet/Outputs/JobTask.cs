@@ -13,6 +13,7 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTask
     {
+        public readonly Outputs.JobTaskAiRuntimeTask? AiRuntimeTask;
         public readonly Outputs.JobTaskAlertTask? AlertTask;
         public readonly Outputs.JobTaskCleanRoomsNotebookTask? CleanRoomsNotebookTask;
         /// <summary>
@@ -118,6 +119,8 @@ namespace Pulumi.Databricks.Outputs
 
         [OutputConstructor]
         private JobTask(
+            Outputs.JobTaskAiRuntimeTask? aiRuntimeTask,
+
             Outputs.JobTaskAlertTask? alertTask,
 
             Outputs.JobTaskCleanRoomsNotebookTask? cleanRoomsNotebookTask,
@@ -196,6 +199,7 @@ namespace Pulumi.Databricks.Outputs
 
             Outputs.JobTaskWebhookNotifications? webhookNotifications)
         {
+            AiRuntimeTask = aiRuntimeTask;
             AlertTask = alertTask;
             CleanRoomsNotebookTask = cleanRoomsNotebookTask;
             Compute = compute;

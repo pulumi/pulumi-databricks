@@ -102,7 +102,7 @@ class _DisasterRecoveryStableUrlState:
                resource name as {parent}/stable-urls/{stable_url_id}
         :param pulumi.Input[_builtins.str] url: (string) - The stable URL endpoint. Generated on creation and
                immutable thereafter. For non-Private-Link workspaces this is
-               `https://<spog_host>/?c=<connection_id>`. For Private-Link workspaces
+               `https://<spog_host>/?w=<connection_id>`. For Private-Link workspaces
                this is the per-connection hostname
         """
         if failover_group_name is not None:
@@ -191,7 +191,7 @@ class _DisasterRecoveryStableUrlState:
         """
         (string) - The stable URL endpoint. Generated on creation and
         immutable thereafter. For non-Private-Link workspaces this is
-        `https://<spog_host>/?c=<connection_id>`. For Private-Link workspaces
+        `https://<spog_host>/?w=<connection_id>`. For Private-Link workspaces
         this is the per-connection hostname
         """
         return pulumi.get(self, "url")
@@ -352,7 +352,7 @@ class DisasterRecoveryStableUrl(pulumi.CustomResource):
                resource name as {parent}/stable-urls/{stable_url_id}
         :param pulumi.Input[_builtins.str] url: (string) - The stable URL endpoint. Generated on creation and
                immutable thereafter. For non-Private-Link workspaces this is
-               `https://<spog_host>/?c=<connection_id>`. For Private-Link workspaces
+               `https://<spog_host>/?w=<connection_id>`. For Private-Link workspaces
                this is the per-connection hostname
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -420,7 +420,7 @@ class DisasterRecoveryStableUrl(pulumi.CustomResource):
         """
         (string) - The stable URL endpoint. Generated on creation and
         immutable thereafter. For non-Private-Link workspaces this is
-        `https://<spog_host>/?c=<connection_id>`. For Private-Link workspaces
+        `https://<spog_host>/?w=<connection_id>`. For Private-Link workspaces
         this is the per-connection hostname
         """
         return pulumi.get(self, "url")

@@ -49,14 +49,14 @@ public final class GetDataQualityRefreshPlainArgs extends com.pulumi.resources.I
     }
 
     /**
-     * The type of the monitored object. Can be one of the following: `schema`or `table`
+     * The type of the monitored object. Can be one of the following: `schema` or `table`
      * 
      */
     @Import(name="objectType", required=true)
     private String objectType;
 
     /**
-     * @return The type of the monitored object. Can be one of the following: `schema`or `table`
+     * @return The type of the monitored object. Can be one of the following: `schema` or `table`
      * 
      */
     public String objectType() {
@@ -140,7 +140,7 @@ public final class GetDataQualityRefreshPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param objectType The type of the monitored object. Can be one of the following: `schema`or `table`
+         * @param objectType The type of the monitored object. Can be one of the following: `schema` or `table`
          * 
          * @return builder
          * 

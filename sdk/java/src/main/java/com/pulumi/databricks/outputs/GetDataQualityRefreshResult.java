@@ -35,7 +35,7 @@ public final class GetDataQualityRefreshResult {
      */
     private String objectId;
     /**
-     * @return (string) - The type of the monitored object. Can be one of the following: `schema`or `table`
+     * @return (string) - The type of the monitored object. Can be one of the following: `schema` or `table`
      * 
      */
     private String objectType;
@@ -91,7 +91,7 @@ public final class GetDataQualityRefreshResult {
         return this.objectId;
     }
     /**
-     * @return (string) - The type of the monitored object. Can be one of the following: `schema`or `table`
+     * @return (string) - The type of the monitored object. Can be one of the following: `schema` or `table`
      * 
      */
     public String objectType() {

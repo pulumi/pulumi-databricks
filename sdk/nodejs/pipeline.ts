@@ -213,6 +213,7 @@ export class Pipeline extends pulumi.CustomResource {
      * An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
      */
     declare public readonly serverless: pulumi.Output<boolean | undefined>;
+    declare public readonly serverlessComputeId: pulumi.Output<string | undefined>;
     declare public readonly state: pulumi.Output<string>;
     /**
      * A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
@@ -280,6 +281,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["runAsUserName"] = state?.runAsUserName;
             resourceInputs["schema"] = state?.schema;
             resourceInputs["serverless"] = state?.serverless;
+            resourceInputs["serverlessComputeId"] = state?.serverlessComputeId;
             resourceInputs["state"] = state?.state;
             resourceInputs["storage"] = state?.storage;
             resourceInputs["tags"] = state?.tags;
@@ -323,6 +325,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["runAsUserName"] = args?.runAsUserName;
             resourceInputs["schema"] = args?.schema;
             resourceInputs["serverless"] = args?.serverless;
+            resourceInputs["serverlessComputeId"] = args?.serverlessComputeId;
             resourceInputs["state"] = args?.state;
             resourceInputs["storage"] = args?.storage;
             resourceInputs["tags"] = args?.tags;
@@ -437,6 +440,7 @@ export interface PipelineState {
      * An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
      */
     serverless?: pulumi.Input<boolean | undefined>;
+    serverlessComputeId?: pulumi.Input<string | undefined>;
     state?: pulumi.Input<string | undefined>;
     /**
      * A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).
@@ -559,6 +563,7 @@ export interface PipelineArgs {
      * An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
      */
     serverless?: pulumi.Input<boolean | undefined>;
+    serverlessComputeId?: pulumi.Input<string | undefined>;
     state?: pulumi.Input<string | undefined>;
     /**
      * A location on cloud storage where output data and metadata required for pipeline execution are stored. By default, tables are stored in a subdirectory of this location. *Change of this parameter forces recreation of the pipeline.* (Conflicts with `catalog`).

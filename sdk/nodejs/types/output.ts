@@ -2842,6 +2842,7 @@ export interface ClusterAzureAttributes {
      * Availability type used for all subsequent nodes past the `firstOnDemand` ones. Valid values are `SPOT_AZURE`, `SPOT_WITH_FALLBACK_AZURE`, and `ON_DEMAND_AZURE`. Note: If `firstOnDemand` is zero, this availability type will be used for the entire cluster.
      */
     availability?: string;
+    capacityReservationGroup?: string;
     /**
      * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
      */
@@ -3394,6 +3395,9 @@ export interface DataClassificationCatalogConfigAutoTagConfig {
 }
 
 export interface DataClassificationCatalogConfigIncludedSchemas {
+    /**
+     * Schema names, each relative to the parent catalog. Must not be empty
+     */
     names: string[];
 }
 
@@ -4096,9 +4100,10 @@ export interface DisasterRecoveryFailoverGroupWorkspaceSet {
      */
     name: string;
     /**
-     * Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
+     * Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
+     * Defaults to false
      */
-    replicateWorkspaceAssets: boolean;
+    replicateWorkspaceAssets?: boolean;
     /**
      * Resource names of stable URLs associated with this workspace set.
      * Format: accounts/{account_id}/stable-urls/{stable_url_id}.
@@ -4166,6 +4171,21 @@ export interface EnvironmentsWorkspaceBaseEnvironmentProviderConfig {
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: string;
+}
+
+export interface EnvironmentsWorkspaceBaseEnvironmentSpec {
+    /**
+     * List of pip dependencies, as supported by the version of pip in this environment.
+     * Each dependency is a valid pip requirements file line per https://pip.pypa.io/en/stable/reference/requirements-file-format/.
+     * Allowed dependencies include a requirement specifier, an archive URL, a local project path (such as WSFS or UC Volumes in Databricks), or a VCS project URL
+     */
+    dependencies?: string[];
+    /**
+     * Environment version used by the environment.
+     * Each version comes with a specific Python version and a set of Python packages.
+     * The version is a string, consisting of an integer
+     */
+    environmentVersion?: string;
 }
 
 export interface ExternalLocationEffectiveFileEventQueue {
@@ -12950,6 +12970,7 @@ export interface GetClusterClusterInfoAwsAttributes {
 
 export interface GetClusterClusterInfoAzureAttributes {
     availability?: string;
+    capacityReservationGroup?: string;
     firstOnDemand?: number;
     logAnalyticsInfo?: outputs.GetClusterClusterInfoAzureAttributesLogAnalyticsInfo;
     spotBidMaxPrice?: number;
@@ -13204,6 +13225,7 @@ export interface GetClusterClusterInfoSpecAwsAttributes {
 
 export interface GetClusterClusterInfoSpecAzureAttributes {
     availability?: string;
+    capacityReservationGroup?: string;
     firstOnDemand?: number;
     logAnalyticsInfo?: outputs.GetClusterClusterInfoSpecAzureAttributesLogAnalyticsInfo;
     spotBidMaxPrice?: number;
@@ -13574,7 +13596,7 @@ export interface GetDataClassificationCatalogConfigAutoTagConfig {
 
 export interface GetDataClassificationCatalogConfigIncludedSchemas {
     /**
-     * (list of string)
+     * (list of string) - Schema names, each relative to the parent catalog. Must not be empty
      */
     names: string[];
 }
@@ -15190,9 +15212,10 @@ export interface GetDisasterRecoveryFailoverGroupWorkspaceSet {
      */
     name: string;
     /**
-     * (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
+     * (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
+     * Defaults to false
      */
-    replicateWorkspaceAssets: boolean;
+    replicateWorkspaceAssets?: boolean;
     /**
      * (list of string) - Resource names of stable URLs associated with this workspace set.
      * Format: accounts/{account_id}/stable-urls/{stable_url_id}.
@@ -15217,8 +15240,7 @@ export interface GetDisasterRecoveryFailoverGroupsFailoverGroup {
      */
     effectivePrimaryRegion: string;
     /**
-     * (string) - Opaque version string for optimistic locking. Server-generated, returned in responses.
-     * Must be provided on Update requests to prevent concurrent modifications
+     * (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
      */
     etag: string;
     /**
@@ -15307,9 +15329,10 @@ export interface GetDisasterRecoveryFailoverGroupsFailoverGroupWorkspaceSet {
      */
     name: string;
     /**
-     * (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
+     * (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
+     * Defaults to false
      */
-    replicateWorkspaceAssets: boolean;
+    replicateWorkspaceAssets?: boolean;
     /**
      * (list of string) - Resource names of stable URLs associated with this workspace set.
      * Format: accounts/{account_id}/stable-urls/{stable_url_id}.
@@ -15345,7 +15368,7 @@ export interface GetDisasterRecoveryStableUrlsStableUrl {
     /**
      * (string) - The stable URL endpoint. Generated on creation and
      * immutable thereafter. For non-Private-Link workspaces this is
-     * `https://<spog_host>/?c=<connection_id>`. For Private-Link workspaces
+     * `https://<spog_host>/?w=<connection_id>`. For Private-Link workspaces
      * this is the per-connection hostname
      */
     url: string;
@@ -15503,6 +15526,21 @@ export interface GetEnvironmentsWorkspaceBaseEnvironmentProviderConfig {
     workspaceId: string;
 }
 
+export interface GetEnvironmentsWorkspaceBaseEnvironmentSpec {
+    /**
+     * (list of string) - List of pip dependencies, as supported by the version of pip in this environment.
+     * Each dependency is a valid pip requirements file line per https://pip.pypa.io/en/stable/reference/requirements-file-format/.
+     * Allowed dependencies include a requirement specifier, an archive URL, a local project path (such as WSFS or UC Volumes in Databricks), or a VCS project URL
+     */
+    dependencies?: string[];
+    /**
+     * (string) - Environment version used by the environment.
+     * Each version comes with a specific Python version and a set of Python packages.
+     * The version is a string, consisting of an integer
+     */
+    environmentVersion?: string;
+}
+
 export interface GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -15554,6 +15592,10 @@ export interface GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmen
      */
     providerConfig?: outputs.GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentProviderConfig;
     /**
+     * (EnvironmentSpec) - The environment specification containing version and dependencies
+     */
+    spec: outputs.GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentSpec;
+    /**
      * (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
      */
     status: string;
@@ -15568,6 +15610,21 @@ export interface GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmen
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
     workspaceId: string;
+}
+
+export interface GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentSpec {
+    /**
+     * (list of string) - List of pip dependencies, as supported by the version of pip in this environment.
+     * Each dependency is a valid pip requirements file line per https://pip.pypa.io/en/stable/reference/requirements-file-format/.
+     * Allowed dependencies include a requirement specifier, an archive URL, a local project path (such as WSFS or UC Volumes in Databricks), or a VCS project URL
+     */
+    dependencies?: string[];
+    /**
+     * (string) - Environment version used by the environment.
+     * Each version comes with a specific Python version and a set of Python packages.
+     * The version is a string, consisting of an integer
+     */
+    environmentVersion?: string;
 }
 
 export interface GetExternalLocationExternalLocationInfo {
@@ -20819,6 +20876,99 @@ export interface GetPostgresCatalogStatus {
     project: string;
 }
 
+export interface GetPostgresDataApiProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetPostgresDataApiSpec {
+    /**
+     * (boolean) - Actual aggregate function setting read from the database
+     */
+    dbAggregatesEnabled?: boolean;
+    /**
+     * (list of string) - Actual extra search path schemas read from the database
+     */
+    dbExtraSearchPaths?: string[];
+    /**
+     * (integer) - Actual max rows setting read from the database
+     */
+    dbMaxRows?: number;
+    /**
+     * (list of string) - Actual exposed schemas read from the database
+     */
+    dbSchemas?: string[];
+    /**
+     * (string) - Actual JWT cache max lifetime read from the database
+     */
+    jwtCacheMaxLifetime?: string;
+    /**
+     * (string) - Actual JWT role claim key read from the database
+     */
+    jwtRoleClaimKey?: string;
+    /**
+     * (string) - Actual OpenAPI mode read from the database. Possible values are: `OPEN_API_MODE_DISABLED`, `OPEN_API_MODE_IGNORE_PRIVILEGES`
+     */
+    openapiMode?: string;
+    /**
+     * (list of string) - Actual CORS allowed origins read from the database
+     */
+    serverCorsAllowedOrigins?: string[];
+    /**
+     * (boolean) - Actual Server-Timing header setting read from the database
+     */
+    serverTimingEnabled?: boolean;
+}
+
+export interface GetPostgresDataApiStatus {
+    /**
+     * (list of string) - Schemas available in the database (for reference when configuring db_schemas)
+     */
+    availableSchemas: string[];
+    /**
+     * (boolean) - Actual aggregate function setting read from the database
+     */
+    dbAggregatesEnabled: boolean;
+    /**
+     * (list of string) - Actual extra search path schemas read from the database
+     */
+    dbExtraSearchPaths: string[];
+    /**
+     * (integer) - Actual max rows setting read from the database
+     */
+    dbMaxRows: number;
+    /**
+     * (list of string) - Actual exposed schemas read from the database
+     */
+    dbSchemas: string[];
+    /**
+     * (string) - Actual JWT cache max lifetime read from the database
+     */
+    jwtCacheMaxLifetime: string;
+    /**
+     * (string) - Actual JWT role claim key read from the database
+     */
+    jwtRoleClaimKey: string;
+    /**
+     * (string) - Actual OpenAPI mode read from the database. Possible values are: `OPEN_API_MODE_DISABLED`, `OPEN_API_MODE_IGNORE_PRIVILEGES`
+     */
+    openapiMode: string;
+    /**
+     * (list of string) - Actual CORS allowed origins read from the database
+     */
+    serverCorsAllowedOrigins: string[];
+    /**
+     * (boolean) - Actual Server-Timing header setting read from the database
+     */
+    serverTimingEnabled: boolean;
+    /**
+     * (string) - Data API endpoint URL
+     */
+    url: string;
+}
+
 export interface GetPostgresDatabaseProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -21311,11 +21461,38 @@ export interface GetPostgresEndpointsProviderConfig {
     workspaceId: string;
 }
 
+export interface GetPostgresProjectInitialBranchSpec {
+    /**
+     * (boolean) - Whether the initial default branch should be protected from deletion
+     */
+    isProtected?: boolean;
+}
+
 export interface GetPostgresProjectInitialEndpointSpec {
+    /**
+     * (number) - The maximum number of Compute Units. Minimum value is 0.5
+     */
+    autoscalingLimitMaxCu?: number;
+    /**
+     * (number) - The minimum number of Compute Units. Minimum value is 0.5
+     */
+    autoscalingLimitMinCu?: number;
     /**
      * (EndpointGroupSpec) - Settings for HA configuration of the endpoint
      */
     group?: outputs.GetPostgresProjectInitialEndpointSpecGroup;
+    /**
+     * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+     */
+    noSuspension?: boolean;
+    /**
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+     * If specified should be between 60s and 604800s (1 minute to 1 week).
+     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+     */
+    suspendTimeoutDuration?: string;
 }
 
 export interface GetPostgresProjectInitialEndpointSpecGroup {
@@ -21427,6 +21604,10 @@ export interface GetPostgresProjectStatus {
      */
     budgetPolicyId: string;
     /**
+     * (string) - The most recent time when any endpoint of this project was active
+     */
+    computeLastActiveTime: string;
+    /**
      * (list of ProjectCustomTag) - The effective custom tags associated with the project
      */
     customTags: outputs.GetPostgresProjectStatusCustomTag[];
@@ -21517,6 +21698,12 @@ export interface GetPostgresProjectsProject {
      */
     deleteTime: string;
     /**
+     * (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
+     * Allows overriding branch protection. These settings only apply at creation time
+     * and do not affect resources created after project creation
+     */
+    initialBranchSpec: outputs.GetPostgresProjectsProjectInitialBranchSpec;
+    /**
      * (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
      * configured. This field does not apply to any endpoints created after project creation. Use
@@ -21559,11 +21746,38 @@ export interface GetPostgresProjectsProject {
     updateTime: string;
 }
 
+export interface GetPostgresProjectsProjectInitialBranchSpec {
+    /**
+     * (boolean) - Whether the initial default branch should be protected from deletion
+     */
+    isProtected?: boolean;
+}
+
 export interface GetPostgresProjectsProjectInitialEndpointSpec {
+    /**
+     * (number) - The maximum number of Compute Units. Minimum value is 0.5
+     */
+    autoscalingLimitMaxCu?: number;
+    /**
+     * (number) - The minimum number of Compute Units. Minimum value is 0.5
+     */
+    autoscalingLimitMinCu?: number;
     /**
      * (EndpointGroupSpec) - Settings for HA configuration of the endpoint
      */
     group?: outputs.GetPostgresProjectsProjectInitialEndpointSpecGroup;
+    /**
+     * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
+     * Should be set to true when provided.
+     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+     */
+    noSuspension?: boolean;
+    /**
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended.
+     * If specified should be between 60s and 604800s (1 minute to 1 week).
+     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
+     */
+    suspendTimeoutDuration?: string;
 }
 
 export interface GetPostgresProjectsProjectInitialEndpointSpecGroup {
@@ -21674,6 +21888,10 @@ export interface GetPostgresProjectsProjectStatus {
      * (string) - The budget policy that is applied to the project
      */
     budgetPolicyId: string;
+    /**
+     * (string) - The most recent time when any endpoint of this project was active
+     */
+    computeLastActiveTime: string;
     /**
      * (list of ProjectCustomTag) - The effective custom tags associated with the project
      */
@@ -23041,6 +23259,7 @@ export interface GetServingEndpointsEndpoint {
      */
     tags?: outputs.GetServingEndpointsEndpointTag[];
     task?: string;
+    telemetryConfigs?: outputs.GetServingEndpointsEndpointTelemetryConfig[];
     usagePolicyId?: string;
 }
 
@@ -23241,6 +23460,18 @@ export interface GetServingEndpointsEndpointState {
 export interface GetServingEndpointsEndpointTag {
     key: string;
     value?: string;
+}
+
+export interface GetServingEndpointsEndpointTelemetryConfig {
+    inferenceTableConfigs?: outputs.GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig[];
+}
+
+export interface GetServingEndpointsEndpointTelemetryConfigInferenceTableConfig {
+    /**
+     * The name of the model serving endpoint.
+     */
+    name: string;
+    samplingFraction?: number;
 }
 
 export interface GetServingEndpointsProviderConfig {
@@ -25061,6 +25292,7 @@ export interface JobJobClusterNewClusterAwsAttributes {
 
 export interface JobJobClusterNewClusterAzureAttributes {
     availability?: string;
+    capacityReservationGroup?: string;
     firstOnDemand?: number;
     logAnalyticsInfo?: outputs.JobJobClusterNewClusterAzureAttributesLogAnalyticsInfo;
     spotBidMaxPrice?: number;
@@ -25354,6 +25586,7 @@ export interface JobNewClusterAwsAttributes {
 
 export interface JobNewClusterAzureAttributes {
     availability?: string;
+    capacityReservationGroup?: string;
     firstOnDemand?: number;
     logAnalyticsInfo?: outputs.JobNewClusterAzureAttributesLogAnalyticsInfo;
     spotBidMaxPrice?: number;
@@ -25714,6 +25947,7 @@ export interface JobSparkSubmitTask {
 }
 
 export interface JobTask {
+    aiRuntimeTask?: outputs.JobTaskAiRuntimeTask;
     alertTask?: outputs.JobTaskAlertTask;
     cleanRoomsNotebookTask?: outputs.JobTaskCleanRoomsNotebookTask;
     /**
@@ -25816,6 +26050,33 @@ export interface JobTask {
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
     webhookNotifications?: outputs.JobTaskWebhookNotifications;
+}
+
+export interface JobTaskAiRuntimeTask {
+    codeSourcePath?: string;
+    deployments: outputs.JobTaskAiRuntimeTaskDeployment[];
+    experiment: string;
+    mlflowExperimentDirectory?: string;
+    mlflowRun?: string;
+}
+
+export interface JobTaskAiRuntimeTaskDeployment {
+    commandPath: string;
+    /**
+     * Task level compute configuration. This block is documented below.
+     *
+     * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     */
+    compute: outputs.JobTaskAiRuntimeTaskDeploymentCompute;
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
+    name?: string;
+}
+
+export interface JobTaskAiRuntimeTaskDeploymentCompute {
+    acceleratorCount: number;
+    acceleratorType: string;
 }
 
 export interface JobTaskAlertTask {
@@ -26035,6 +26296,7 @@ export interface JobTaskForEachTask {
 }
 
 export interface JobTaskForEachTaskTask {
+    aiRuntimeTask?: outputs.JobTaskForEachTaskTaskAiRuntimeTask;
     alertTask?: outputs.JobTaskForEachTaskTaskAlertTask;
     cleanRoomsNotebookTask?: outputs.JobTaskForEachTaskTaskCleanRoomsNotebookTask;
     /**
@@ -26136,6 +26398,33 @@ export interface JobTaskForEachTaskTask {
      * (List) An optional set of system destinations (for example, webhook destinations or Slack) to be notified when runs of this task begins, completes or fails. The default behavior is to not send any notifications. This field is a block and is documented below.
      */
     webhookNotifications?: outputs.JobTaskForEachTaskTaskWebhookNotifications;
+}
+
+export interface JobTaskForEachTaskTaskAiRuntimeTask {
+    codeSourcePath?: string;
+    deployments: outputs.JobTaskForEachTaskTaskAiRuntimeTaskDeployment[];
+    experiment: string;
+    mlflowExperimentDirectory?: string;
+    mlflowRun?: string;
+}
+
+export interface JobTaskForEachTaskTaskAiRuntimeTaskDeployment {
+    commandPath: string;
+    /**
+     * Task level compute configuration. This block is documented below.
+     *
+     * > If no `jobClusterKey`, `existingClusterId`, or `newCluster` were specified in task definition, then task will executed using serverless compute.
+     */
+    compute: outputs.JobTaskForEachTaskTaskAiRuntimeTaskDeploymentCompute;
+    /**
+     * An optional name for the job. The default value is Untitled.
+     */
+    name?: string;
+}
+
+export interface JobTaskForEachTaskTaskAiRuntimeTaskDeploymentCompute {
+    acceleratorCount: number;
+    acceleratorType: string;
 }
 
 export interface JobTaskForEachTaskTaskAlertTask {
@@ -26493,6 +26782,7 @@ export interface JobTaskForEachTaskTaskNewClusterAwsAttributes {
 
 export interface JobTaskForEachTaskTaskNewClusterAzureAttributes {
     availability?: string;
+    capacityReservationGroup?: string;
     firstOnDemand?: number;
     logAnalyticsInfo?: outputs.JobTaskForEachTaskTaskNewClusterAzureAttributesLogAnalyticsInfo;
     spotBidMaxPrice?: number;
@@ -27254,6 +27544,7 @@ export interface JobTaskNewClusterAwsAttributes {
 
 export interface JobTaskNewClusterAzureAttributes {
     availability?: string;
+    capacityReservationGroup?: string;
     firstOnDemand?: number;
     logAnalyticsInfo?: outputs.JobTaskNewClusterAzureAttributesLogAnalyticsInfo;
     spotBidMaxPrice?: number;
@@ -29131,6 +29422,21 @@ export interface ModelServingTag {
     value?: string;
 }
 
+export interface ModelServingTelemetryConfig {
+    /**
+     * Block describing the configuration of usage tracking. Consists of the following attributes:
+     */
+    inferenceTableConfig?: outputs.ModelServingTelemetryConfigInferenceTableConfig;
+}
+
+export interface ModelServingTelemetryConfigInferenceTableConfig {
+    /**
+     * The name of the model serving endpoint. This field is required and must be unique across a workspace. An endpoint name can consist of alphanumeric characters, dashes, and underscores. NOTE: Changing this name will delete the existing endpoint and create a new endpoint with the updated name.
+     */
+    name?: string;
+    samplingFraction?: number;
+}
+
 export interface MountAbfs {
     clientId: string;
     clientSecretKey: string;
@@ -29318,11 +29624,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.119.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.120.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.119.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.120.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -29389,11 +29695,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.119.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.120.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.119.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.120.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -29731,6 +30037,7 @@ export interface PipelineClusterAwsAttributes {
 
 export interface PipelineClusterAzureAttributes {
     availability?: string;
+    capacityReservationGroup?: string;
     firstOnDemand?: number;
     logAnalyticsInfo?: outputs.PipelineClusterAzureAttributesLogAnalyticsInfo;
     spotBidMaxPrice?: number;
@@ -30797,6 +31104,99 @@ export interface PostgresCatalogStatus {
     project: string;
 }
 
+export interface PostgresDataApiProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface PostgresDataApiSpec {
+    /**
+     * (boolean) - Actual aggregate function setting read from the database
+     */
+    dbAggregatesEnabled?: boolean;
+    /**
+     * (list of string) - Actual extra search path schemas read from the database
+     */
+    dbExtraSearchPaths?: string[];
+    /**
+     * (integer) - Actual max rows setting read from the database
+     */
+    dbMaxRows?: number;
+    /**
+     * (list of string) - Actual exposed schemas read from the database
+     */
+    dbSchemas?: string[];
+    /**
+     * (string) - Actual JWT cache max lifetime read from the database
+     */
+    jwtCacheMaxLifetime?: string;
+    /**
+     * (string) - Actual JWT role claim key read from the database
+     */
+    jwtRoleClaimKey?: string;
+    /**
+     * (string) - Actual OpenAPI mode read from the database. Possible values are: `OPEN_API_MODE_DISABLED`, `OPEN_API_MODE_IGNORE_PRIVILEGES`
+     */
+    openapiMode?: string;
+    /**
+     * (list of string) - Actual CORS allowed origins read from the database
+     */
+    serverCorsAllowedOrigins?: string[];
+    /**
+     * (boolean) - Actual Server-Timing header setting read from the database
+     */
+    serverTimingEnabled?: boolean;
+}
+
+export interface PostgresDataApiStatus {
+    /**
+     * (list of string) - Schemas available in the database (for reference when configuring db_schemas)
+     */
+    availableSchemas: string[];
+    /**
+     * (boolean) - Actual aggregate function setting read from the database
+     */
+    dbAggregatesEnabled: boolean;
+    /**
+     * (list of string) - Actual extra search path schemas read from the database
+     */
+    dbExtraSearchPaths: string[];
+    /**
+     * (integer) - Actual max rows setting read from the database
+     */
+    dbMaxRows: number;
+    /**
+     * (list of string) - Actual exposed schemas read from the database
+     */
+    dbSchemas: string[];
+    /**
+     * (string) - Actual JWT cache max lifetime read from the database
+     */
+    jwtCacheMaxLifetime: string;
+    /**
+     * (string) - Actual JWT role claim key read from the database
+     */
+    jwtRoleClaimKey: string;
+    /**
+     * (string) - Actual OpenAPI mode read from the database. Possible values are: `OPEN_API_MODE_DISABLED`, `OPEN_API_MODE_IGNORE_PRIVILEGES`
+     */
+    openapiMode: string;
+    /**
+     * (list of string) - Actual CORS allowed origins read from the database
+     */
+    serverCorsAllowedOrigins: string[];
+    /**
+     * (boolean) - Actual Server-Timing header setting read from the database
+     */
+    serverTimingEnabled: boolean;
+    /**
+     * (string) - Data API endpoint URL
+     */
+    url: string;
+}
+
 export interface PostgresDatabaseProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -30965,11 +31365,22 @@ export interface PostgresEndpointStatusSettings {
     pgSettings?: {[key: string]: string};
 }
 
+export interface PostgresProjectInitialBranchSpec {
+    /**
+     * Whether the initial default branch should be protected from deletion
+     */
+    isProtected?: boolean;
+}
+
 export interface PostgresProjectInitialEndpointSpec {
+    autoscalingLimitMaxCu?: number;
+    autoscalingLimitMinCu?: number;
     /**
      * Settings for HA configuration of the endpoint
      */
     group?: outputs.PostgresProjectInitialEndpointSpecGroup;
+    noSuspension?: boolean;
+    suspendTimeoutDuration?: string;
 }
 
 export interface PostgresProjectInitialEndpointSpecGroup {
@@ -31045,29 +31456,13 @@ export interface PostgresProjectSpecCustomTag {
 }
 
 export interface PostgresProjectSpecDefaultEndpointSettings {
-    /**
-     * The maximum number of Compute Units. Minimum value is 0.5
-     */
     autoscalingLimitMaxCu?: number;
-    /**
-     * The minimum number of Compute Units. Minimum value is 0.5
-     */
     autoscalingLimitMinCu?: number;
-    /**
-     * When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided.
-     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-     */
     noSuspension?: boolean;
     /**
      * A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
-    /**
-     * Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week).
-     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-     */
     suspendTimeoutDuration?: string;
 }
 
@@ -31080,6 +31475,10 @@ export interface PostgresProjectStatus {
      * (string) - The budget policy that is applied to the project
      */
     budgetPolicyId: string;
+    /**
+     * (string) - The most recent time when any endpoint of this project was active
+     */
+    computeLastActiveTime: string;
     /**
      * (list of ProjectCustomTag) - The effective custom tags associated with the project
      */
@@ -31134,29 +31533,13 @@ export interface PostgresProjectStatusCustomTag {
 }
 
 export interface PostgresProjectStatusDefaultEndpointSettings {
-    /**
-     * The maximum number of Compute Units. Minimum value is 0.5
-     */
     autoscalingLimitMaxCu?: number;
-    /**
-     * The minimum number of Compute Units. Minimum value is 0.5
-     */
     autoscalingLimitMinCu?: number;
-    /**
-     * When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided.
-     * Mutually exclusive with `suspendTimeoutDuration`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-     */
     noSuspension?: boolean;
     /**
      * A raw representation of Postgres settings
      */
     pgSettings?: {[key: string]: string};
-    /**
-     * Duration of inactivity after which the compute endpoint is automatically suspended.
-     * If specified should be between 60s and 604800s (1 minute to 1 week).
-     * Mutually exclusive with `noSuspension`. When updating, use `spec.project_default_settings.suspension` in the update_mask
-     */
     suspendTimeoutDuration?: string;
 }
 

@@ -13,7 +13,9 @@ import com.pulumi.databricks.inputs.PostgresDatabaseState;
 import com.pulumi.databricks.outputs.PostgresDatabaseProviderConfig;
 import com.pulumi.databricks.outputs.PostgresDatabaseSpec;
 import com.pulumi.databricks.outputs.PostgresDatabaseStatus;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -273,6 +275,22 @@ public class PostgresDatabase extends com.pulumi.resources.CustomResource {
      */
     public Output<PostgresDatabaseProviderConfig> providerConfig() {
         return this.providerConfig;
+    }
+    /**
+     * If true, update the database if it already exists instead of returning an
+     * error
+     * 
+     */
+    @Export(name="replaceExisting", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> replaceExisting;
+
+    /**
+     * @return If true, update the database if it already exists instead of returning an
+     * error
+     * 
+     */
+    public Output<Optional<Boolean>> replaceExisting() {
+        return Codegen.optional(this.replaceExisting);
     }
     /**
      * The desired state of the Database

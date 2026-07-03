@@ -7,7 +7,15 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+ *
+ * This data source can be used to get a single AI Search index by name.
+ *
+ * ## Example Usage
+ *
+ * # Example: AI Search Index Datasource (Singular)
  */
 export function getAiSearchIndex(args: GetAiSearchIndexArgs, opts?: pulumi.InvokeOptions): Promise<GetAiSearchIndexResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -83,7 +91,15 @@ export interface GetAiSearchIndexResult {
     readonly status: outputs.GetAiSearchIndexStatus;
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+ *
+ * This data source can be used to get a single AI Search index by name.
+ *
+ * ## Example Usage
+ *
+ * # Example: AI Search Index Datasource (Singular)
  */
 export function getAiSearchIndexOutput(args: GetAiSearchIndexOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiSearchIndexResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

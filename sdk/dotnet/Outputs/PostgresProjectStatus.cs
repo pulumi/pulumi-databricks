@@ -22,6 +22,10 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? BudgetPolicyId;
         /// <summary>
+        /// (string) - The most recent time when any endpoint of this project was active
+        /// </summary>
+        public readonly string? ComputeLastActiveTime;
+        /// <summary>
         /// (list of ProjectCustomTag) - The effective custom tags associated with the project
         /// </summary>
         public readonly ImmutableArray<Outputs.PostgresProjectStatusCustomTag> CustomTags;
@@ -68,6 +72,8 @@ namespace Pulumi.Databricks.Outputs
 
             string? budgetPolicyId,
 
+            string? computeLastActiveTime,
+
             ImmutableArray<Outputs.PostgresProjectStatusCustomTag> customTags,
 
             string? defaultBranch,
@@ -90,6 +96,7 @@ namespace Pulumi.Databricks.Outputs
         {
             BranchLogicalSizeLimitBytes = branchLogicalSizeLimitBytes;
             BudgetPolicyId = budgetPolicyId;
+            ComputeLastActiveTime = computeLastActiveTime;
             CustomTags = customTags;
             DefaultBranch = defaultBranch;
             DefaultEndpointSettings = defaultEndpointSettings;

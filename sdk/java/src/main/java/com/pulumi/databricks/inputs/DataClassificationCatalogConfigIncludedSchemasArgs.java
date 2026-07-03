@@ -15,9 +15,17 @@ public final class DataClassificationCatalogConfigIncludedSchemasArgs extends co
 
     public static final DataClassificationCatalogConfigIncludedSchemasArgs Empty = new DataClassificationCatalogConfigIncludedSchemasArgs();
 
+    /**
+     * Schema names, each relative to the parent catalog. Must not be empty
+     * 
+     */
     @Import(name="names", required=true)
     private Output<List<String>> names;
 
+    /**
+     * @return Schema names, each relative to the parent catalog. Must not be empty
+     * 
+     */
     public Output<List<String>> names() {
         return this.names;
     }
@@ -46,15 +54,33 @@ public final class DataClassificationCatalogConfigIncludedSchemasArgs extends co
             $ = new DataClassificationCatalogConfigIncludedSchemasArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param names Schema names, each relative to the parent catalog. Must not be empty
+         * 
+         * @return builder
+         * 
+         */
         public Builder names(Output<List<String>> names) {
             $.names = names;
             return this;
         }
 
+        /**
+         * @param names Schema names, each relative to the parent catalog. Must not be empty
+         * 
+         * @return builder
+         * 
+         */
         public Builder names(List<String> names) {
             return names(Output.of(names));
         }
 
+        /**
+         * @param names Schema names, each relative to the parent catalog. Must not be empty
+         * 
+         * @return builder
+         * 
+         */
         public Builder names(String... names) {
             return names(List.of(names));
         }

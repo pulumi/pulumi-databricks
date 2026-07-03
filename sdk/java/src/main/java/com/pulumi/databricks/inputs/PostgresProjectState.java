@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.PostgresProjectInitialBranchSpecArgs;
 import com.pulumi.databricks.inputs.PostgresProjectInitialEndpointSpecArgs;
 import com.pulumi.databricks.inputs.PostgresProjectProviderConfigArgs;
 import com.pulumi.databricks.inputs.PostgresProjectSpecArgs;
@@ -50,6 +51,25 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> deleteTime() {
         return Optional.ofNullable(this.deleteTime);
+    }
+
+    /**
+     * Configuration for the initial default branch created as part of project creation.
+     * Allows overriding branch protection. These settings only apply at creation time
+     * and do not affect resources created after project creation
+     * 
+     */
+    @Import(name="initialBranchSpec")
+    private @Nullable Output<PostgresProjectInitialBranchSpecArgs> initialBranchSpec;
+
+    /**
+     * @return Configuration for the initial default branch created as part of project creation.
+     * Allows overriding branch protection. These settings only apply at creation time
+     * and do not affect resources created after project creation
+     * 
+     */
+    public Optional<Output<PostgresProjectInitialBranchSpecArgs>> initialBranchSpec() {
+        return Optional.ofNullable(this.initialBranchSpec);
     }
 
     /**
@@ -219,6 +239,7 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
     private PostgresProjectState(PostgresProjectState $) {
         this.createTime = $.createTime;
         this.deleteTime = $.deleteTime;
+        this.initialBranchSpec = $.initialBranchSpec;
         this.initialEndpointSpec = $.initialEndpointSpec;
         this.name = $.name;
         this.projectId = $.projectId;
@@ -291,6 +312,31 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
          */
         public Builder deleteTime(String deleteTime) {
             return deleteTime(Output.of(deleteTime));
+        }
+
+        /**
+         * @param initialBranchSpec Configuration for the initial default branch created as part of project creation.
+         * Allows overriding branch protection. These settings only apply at creation time
+         * and do not affect resources created after project creation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder initialBranchSpec(@Nullable Output<PostgresProjectInitialBranchSpecArgs> initialBranchSpec) {
+            $.initialBranchSpec = initialBranchSpec;
+            return this;
+        }
+
+        /**
+         * @param initialBranchSpec Configuration for the initial default branch created as part of project creation.
+         * Allows overriding branch protection. These settings only apply at creation time
+         * and do not affect resources created after project creation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder initialBranchSpec(PostgresProjectInitialBranchSpecArgs initialBranchSpec) {
+            return initialBranchSpec(Output.of(initialBranchSpec));
         }
 
         /**

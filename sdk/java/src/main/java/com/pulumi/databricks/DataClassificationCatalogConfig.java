@@ -109,16 +109,20 @@ public class DataClassificationCatalogConfig extends com.pulumi.resources.Custom
         return Codegen.optional(this.autoTagConfigs);
     }
     /**
-     * Schemas to include in the scan. Empty list is not supported as it results in a no-op
-     * scan. If `includedSchemas` is not set, all schemas are scanned
+     * Schemas to include in the scan, each named relative to the parent catalog.
+     * If specified, only listed schemas will be scanned.
+     * Mutually exclusive with `excludedSchemas`: only one may be set per request.
+     * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      * 
      */
     @Export(name="includedSchemas", refs={DataClassificationCatalogConfigIncludedSchemas.class}, tree="[0]")
     private Output</* @Nullable */ DataClassificationCatalogConfigIncludedSchemas> includedSchemas;
 
     /**
-     * @return Schemas to include in the scan. Empty list is not supported as it results in a no-op
-     * scan. If `includedSchemas` is not set, all schemas are scanned
+     * @return Schemas to include in the scan, each named relative to the parent catalog.
+     * If specified, only listed schemas will be scanned.
+     * Mutually exclusive with `excludedSchemas`: only one may be set per request.
+     * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      * 
      */
     public Output<Optional<DataClassificationCatalogConfigIncludedSchemas>> includedSchemas() {

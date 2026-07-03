@@ -33,6 +33,13 @@ public final class ClusterAzureAttributesArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.availability);
     }
 
+    @Import(name="capacityReservationGroup")
+    private @Nullable Output<String> capacityReservationGroup;
+
+    public Optional<Output<String>> capacityReservationGroup() {
+        return Optional.ofNullable(this.capacityReservationGroup);
+    }
+
     /**
      * The first `firstOnDemand` nodes of the cluster will be placed on on-demand instances. If this value is greater than 0, the cluster driver node will be placed on an on-demand instance. If this value is greater than or equal to the current cluster size, all nodes will be placed on on-demand instances. If this value is less than the current cluster size, `firstOnDemand` nodes will be placed on on-demand instances, and the remainder will be placed on availability instances. This value does not affect cluster size and cannot be mutated over the lifetime of a cluster.
      * 
@@ -74,6 +81,7 @@ public final class ClusterAzureAttributesArgs extends com.pulumi.resources.Resou
 
     private ClusterAzureAttributesArgs(ClusterAzureAttributesArgs $) {
         this.availability = $.availability;
+        this.capacityReservationGroup = $.capacityReservationGroup;
         this.firstOnDemand = $.firstOnDemand;
         this.logAnalyticsInfo = $.logAnalyticsInfo;
         this.spotBidMaxPrice = $.spotBidMaxPrice;
@@ -116,6 +124,15 @@ public final class ClusterAzureAttributesArgs extends com.pulumi.resources.Resou
          */
         public Builder availability(String availability) {
             return availability(Output.of(availability));
+        }
+
+        public Builder capacityReservationGroup(@Nullable Output<String> capacityReservationGroup) {
+            $.capacityReservationGroup = capacityReservationGroup;
+            return this;
+        }
+
+        public Builder capacityReservationGroup(String capacityReservationGroup) {
+            return capacityReservationGroup(Output.of(capacityReservationGroup));
         }
 
         /**

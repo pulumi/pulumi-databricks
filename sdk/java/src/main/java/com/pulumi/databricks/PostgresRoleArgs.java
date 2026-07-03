@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.PostgresRoleProviderConfigArgs;
 import com.pulumi.databricks.inputs.PostgresRoleSpecArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -51,6 +52,35 @@ public final class PostgresRoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If true, update the role if it already exists instead of returning an
+     * error.
+     * 
+     * When the role already exists, the provided `role` spec fully replaces the
+     * existing one: `membershipRoles` is overwritten, not merged. Leaving
+     * `membershipRoles` empty clears all of the role&#39;s existing memberships,
+     * including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+     * memberships when using this field
+     * 
+     */
+    @Import(name="replaceExisting")
+    private @Nullable Output<Boolean> replaceExisting;
+
+    /**
+     * @return If true, update the role if it already exists instead of returning an
+     * error.
+     * 
+     * When the role already exists, the provided `role` spec fully replaces the
+     * existing one: `membershipRoles` is overwritten, not merged. Leaving
+     * `membershipRoles` empty clears all of the role&#39;s existing memberships,
+     * including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+     * memberships when using this field
+     * 
+     */
+    public Optional<Output<Boolean>> replaceExisting() {
+        return Optional.ofNullable(this.replaceExisting);
+    }
+
+    /**
      * (string) - Part of the resource name
      * 
      */
@@ -85,6 +115,7 @@ public final class PostgresRoleArgs extends com.pulumi.resources.ResourceArgs {
     private PostgresRoleArgs(PostgresRoleArgs $) {
         this.parent = $.parent;
         this.providerConfig = $.providerConfig;
+        this.replaceExisting = $.replaceExisting;
         this.roleId = $.roleId;
         this.spec = $.spec;
     }
@@ -149,6 +180,41 @@ public final class PostgresRoleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder providerConfig(PostgresRoleProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
+        }
+
+        /**
+         * @param replaceExisting If true, update the role if it already exists instead of returning an
+         * error.
+         * 
+         * When the role already exists, the provided `role` spec fully replaces the
+         * existing one: `membershipRoles` is overwritten, not merged. Leaving
+         * `membershipRoles` empty clears all of the role&#39;s existing memberships,
+         * including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+         * memberships when using this field
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replaceExisting(@Nullable Output<Boolean> replaceExisting) {
+            $.replaceExisting = replaceExisting;
+            return this;
+        }
+
+        /**
+         * @param replaceExisting If true, update the role if it already exists instead of returning an
+         * error.
+         * 
+         * When the role already exists, the provided `role` spec fully replaces the
+         * existing one: `membershipRoles` is overwritten, not merged. Leaving
+         * `membershipRoles` empty clears all of the role&#39;s existing memberships,
+         * including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+         * memberships when using this field
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replaceExisting(Boolean replaceExisting) {
+            return replaceExisting(Output.of(replaceExisting));
         }
 
         /**

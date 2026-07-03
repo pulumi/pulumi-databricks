@@ -11,7 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+//
+// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+//
+// This data source can be used to fetch the list of AI Search indexes on an endpoint.
+//
+// ## Example Usage
+//
+// # Example: AI Search Index Datasource (Plural)
 func GetAiSearchIndexes(ctx *pulumi.Context, args *GetAiSearchIndexesArgs, opts ...pulumi.InvokeOption) (*GetAiSearchIndexesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAiSearchIndexesResult

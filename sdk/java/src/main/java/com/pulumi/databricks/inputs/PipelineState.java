@@ -439,6 +439,13 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.serverless);
     }
 
+    @Import(name="serverlessComputeId")
+    private @Nullable Output<String> serverlessComputeId;
+
+    public Optional<Output<String>> serverlessComputeId() {
+        return Optional.ofNullable(this.serverlessComputeId);
+    }
+
     @Import(name="state")
     private @Nullable Output<String> state;
 
@@ -557,6 +564,7 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
         this.runAsUserName = $.runAsUserName;
         this.schema = $.schema;
         this.serverless = $.serverless;
+        this.serverlessComputeId = $.serverlessComputeId;
         this.state = $.state;
         this.storage = $.storage;
         this.tags = $.tags;
@@ -1168,6 +1176,15 @@ public final class PipelineState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder serverless(Boolean serverless) {
             return serverless(Output.of(serverless));
+        }
+
+        public Builder serverlessComputeId(@Nullable Output<String> serverlessComputeId) {
+            $.serverlessComputeId = serverlessComputeId;
+            return this;
+        }
+
+        public Builder serverlessComputeId(String serverlessComputeId) {
+            return serverlessComputeId(Output.of(serverlessComputeId));
         }
 
         public Builder state(@Nullable Output<String> state) {

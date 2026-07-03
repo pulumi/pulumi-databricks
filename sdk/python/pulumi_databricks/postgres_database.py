@@ -24,6 +24,7 @@ class PostgresDatabaseArgs:
                  parent: pulumi.Input[_builtins.str],
                  database_id: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['PostgresDatabaseProviderConfigArgs']] = None,
+                 replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
                  spec: pulumi.Input[Optional['PostgresDatabaseSpecArgs']] = None):
         """
         The set of arguments for constructing a PostgresDatabase resource.
@@ -32,6 +33,8 @@ class PostgresDatabaseArgs:
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[_builtins.str] database_id: (string) - Part of the resource name
         :param pulumi.Input['PostgresDatabaseProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the database if it already exists instead of returning an
+               error
         :param pulumi.Input['PostgresDatabaseSpecArgs'] spec: The desired state of the Database
         """
         pulumi.set(__self__, "parent", parent)
@@ -39,6 +42,8 @@ class PostgresDatabaseArgs:
             pulumi.set(__self__, "database_id", database_id)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if replace_existing is not None:
+            pulumi.set(__self__, "replace_existing", replace_existing)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
 
@@ -80,6 +85,19 @@ class PostgresDatabaseArgs:
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="replaceExisting")
+    def replace_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, update the database if it already exists instead of returning an
+        error
+        """
+        return pulumi.get(self, "replace_existing")
+
+    @replace_existing.setter
+    def replace_existing(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "replace_existing", value)
+
+    @_builtins.property
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['PostgresDatabaseSpecArgs']]:
         """
@@ -100,6 +118,7 @@ class _PostgresDatabaseState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['PostgresDatabaseProviderConfigArgs']] = None,
+                 replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
                  spec: pulumi.Input[Optional['PostgresDatabaseSpecArgs']] = None,
                  status: pulumi.Input[Optional['PostgresDatabaseStatusArgs']] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
@@ -113,6 +132,8 @@ class _PostgresDatabaseState:
         :param pulumi.Input[_builtins.str] parent: The branch containing this database.
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input['PostgresDatabaseProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the database if it already exists instead of returning an
+               error
         :param pulumi.Input['PostgresDatabaseSpecArgs'] spec: The desired state of the Database
         :param pulumi.Input['PostgresDatabaseStatusArgs'] status: (DatabaseDatabaseStatus) - The observed state of the Database
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the database was last updated
@@ -127,6 +148,8 @@ class _PostgresDatabaseState:
             pulumi.set(__self__, "parent", parent)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if replace_existing is not None:
+            pulumi.set(__self__, "replace_existing", replace_existing)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
@@ -197,6 +220,19 @@ class _PostgresDatabaseState:
         pulumi.set(self, "provider_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="replaceExisting")
+    def replace_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, update the database if it already exists instead of returning an
+        error
+        """
+        return pulumi.get(self, "replace_existing")
+
+    @replace_existing.setter
+    def replace_existing(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "replace_existing", value)
+
+    @_builtins.property
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['PostgresDatabaseSpecArgs']]:
         """
@@ -242,6 +278,7 @@ class PostgresDatabase(pulumi.CustomResource):
                  database_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict']]] = None,
+                 replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
                  spec: pulumi.Input[Optional[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict']]] = None,
                  __props__=None):
         """
@@ -346,6 +383,8 @@ class PostgresDatabase(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The branch containing this database.
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the database if it already exists instead of returning an
+               error
         :param pulumi.Input[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict']] spec: The desired state of the Database
         """
         ...
@@ -468,6 +507,7 @@ class PostgresDatabase(pulumi.CustomResource):
                  database_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict']]] = None,
+                 replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
                  spec: pulumi.Input[Optional[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -483,6 +523,7 @@ class PostgresDatabase(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
             __props__.__dict__["provider_config"] = provider_config
+            __props__.__dict__["replace_existing"] = replace_existing
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
@@ -503,6 +544,7 @@ class PostgresDatabase(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict']]] = None,
+            replace_existing: pulumi.Input[Optional[_builtins.bool]] = None,
             spec: pulumi.Input[Optional[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict']]] = None,
             status: pulumi.Input[Optional[Union['PostgresDatabaseStatusArgs', 'PostgresDatabaseStatusArgsDict']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresDatabase':
@@ -520,6 +562,8 @@ class PostgresDatabase(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] parent: The branch containing this database.
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the database if it already exists instead of returning an
+               error
         :param pulumi.Input[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict']] spec: The desired state of the Database
         :param pulumi.Input[Union['PostgresDatabaseStatusArgs', 'PostgresDatabaseStatusArgsDict']] status: (DatabaseDatabaseStatus) - The observed state of the Database
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the database was last updated
@@ -533,6 +577,7 @@ class PostgresDatabase(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
         __props__.__dict__["provider_config"] = provider_config
+        __props__.__dict__["replace_existing"] = replace_existing
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
         __props__.__dict__["update_time"] = update_time
@@ -579,6 +624,15 @@ class PostgresDatabase(pulumi.CustomResource):
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
+
+    @_builtins.property
+    @pulumi.getter(name="replaceExisting")
+    def replace_existing(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true, update the database if it already exists instead of returning an
+        error
+        """
+        return pulumi.get(self, "replace_existing")
 
     @_builtins.property
     @pulumi.getter

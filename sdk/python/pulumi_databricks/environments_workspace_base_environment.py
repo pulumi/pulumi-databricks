@@ -124,6 +124,7 @@ class _EnvironmentsWorkspaceBaseEnvironmentState:
                  message: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs']] = None,
+                 spec: pulumi.Input[Optional['EnvironmentsWorkspaceBaseEnvironmentSpecArgs']] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None,
                  workspace_base_environment_id: pulumi.Input[Optional[_builtins.str]] = None):
@@ -141,6 +142,7 @@ class _EnvironmentsWorkspaceBaseEnvironmentState:
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of the workspace base environment.
                Format: workspace-base-environments/{workspace-base-environment}
         :param pulumi.Input['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input['EnvironmentsWorkspaceBaseEnvironmentSpecArgs'] spec: (EnvironmentSpec) - The environment specification containing version and dependencies
         :param pulumi.Input[_builtins.str] status: (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
         :param pulumi.Input[_builtins.str] update_time: (string) - Timestamp when the environment was last updated
         :param pulumi.Input[_builtins.str] workspace_base_environment_id: The ID to use for the workspace base environment, which will become the final component of
@@ -169,6 +171,8 @@ class _EnvironmentsWorkspaceBaseEnvironmentState:
             pulumi.set(__self__, "name", name)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if update_time is not None:
@@ -305,6 +309,18 @@ class _EnvironmentsWorkspaceBaseEnvironmentState:
     @provider_config.setter
     def provider_config(self, value: pulumi.Input[Optional['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def spec(self) -> pulumi.Input[Optional['EnvironmentsWorkspaceBaseEnvironmentSpecArgs']]:
+        """
+        (EnvironmentSpec) - The environment specification containing version and dependencies
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: pulumi.Input[Optional['EnvironmentsWorkspaceBaseEnvironmentSpecArgs']]):
+        pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
@@ -498,6 +514,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
             __props__.__dict__["last_updated_user_id"] = None
             __props__.__dict__["message"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["spec"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["update_time"] = None
         super(EnvironmentsWorkspaceBaseEnvironment, __self__).__init__(
@@ -521,6 +538,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
             message: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict']]] = None,
+            spec: pulumi.Input[Optional[Union['EnvironmentsWorkspaceBaseEnvironmentSpecArgs', 'EnvironmentsWorkspaceBaseEnvironmentSpecArgsDict']]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             workspace_base_environment_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnvironmentsWorkspaceBaseEnvironment':
@@ -542,6 +560,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of the workspace base environment.
                Format: workspace-base-environments/{workspace-base-environment}
         :param pulumi.Input[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['EnvironmentsWorkspaceBaseEnvironmentSpecArgs', 'EnvironmentsWorkspaceBaseEnvironmentSpecArgsDict']] spec: (EnvironmentSpec) - The environment specification containing version and dependencies
         :param pulumi.Input[_builtins.str] status: (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
         :param pulumi.Input[_builtins.str] update_time: (string) - Timestamp when the environment was last updated
         :param pulumi.Input[_builtins.str] workspace_base_environment_id: The ID to use for the workspace base environment, which will become the final component of
@@ -563,6 +582,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
         __props__.__dict__["message"] = message
         __props__.__dict__["name"] = name
         __props__.__dict__["provider_config"] = provider_config
+        __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["workspace_base_environment_id"] = workspace_base_environment_id
@@ -653,6 +673,14 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
         Configure the provider for management through account provider.
         """
         return pulumi.get(self, "provider_config")
+
+    @_builtins.property
+    @pulumi.getter
+    def spec(self) -> pulumi.Output['outputs.EnvironmentsWorkspaceBaseEnvironmentSpec']:
+        """
+        (EnvironmentSpec) - The environment specification containing version and dependencies
+        """
+        return pulumi.get(self, "spec")
 
     @_builtins.property
     @pulumi.getter

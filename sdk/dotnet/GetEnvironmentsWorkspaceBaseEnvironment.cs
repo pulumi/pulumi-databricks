@@ -190,6 +190,10 @@ namespace Pulumi.Databricks
         public readonly string Name;
         public readonly Outputs.GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigResult? ProviderConfig;
         /// <summary>
+        /// (EnvironmentSpec) - The environment specification containing version and dependencies
+        /// </summary>
+        public readonly Outputs.GetEnvironmentsWorkspaceBaseEnvironmentSpecResult Spec;
+        /// <summary>
         /// (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
         /// </summary>
         public readonly string Status;
@@ -224,6 +228,8 @@ namespace Pulumi.Databricks
 
             Outputs.GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigResult? providerConfig,
 
+            Outputs.GetEnvironmentsWorkspaceBaseEnvironmentSpecResult spec,
+
             string status,
 
             string updateTime)
@@ -240,6 +246,7 @@ namespace Pulumi.Databricks
             Message = message;
             Name = name;
             ProviderConfig = providerConfig;
+            Spec = spec;
             Status = status;
             UpdateTime = updateTime;
         }

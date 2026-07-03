@@ -180,6 +180,14 @@ namespace Pulumi.Databricks
         public Output<string> DeleteTime { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for the initial default branch created as part of project creation.
+        /// Allows overriding branch protection. These settings only apply at creation time
+        /// and do not affect resources created after project creation
+        /// </summary>
+        [Output("initialBranchSpec")]
+        public Output<Outputs.PostgresProjectInitialBranchSpec> InitialBranchSpec { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
         /// created project. If omitted, the initial endpoint created will have default settings, without high availability
         /// configured. This field does not apply to any endpoints created after project creation. Use
@@ -292,6 +300,14 @@ namespace Pulumi.Databricks
     public sealed class PostgresProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration for the initial default branch created as part of project creation.
+        /// Allows overriding branch protection. These settings only apply at creation time
+        /// and do not affect resources created after project creation
+        /// </summary>
+        [Input("initialBranchSpec")]
+        public Input<Inputs.PostgresProjectInitialBranchSpecArgs>? InitialBranchSpec { get; set; }
+
+        /// <summary>
         /// Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
         /// created project. If omitted, the initial endpoint created will have default settings, without high availability
         /// configured. This field does not apply to any endpoints created after project creation. Use
@@ -345,6 +361,14 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
+
+        /// <summary>
+        /// Configuration for the initial default branch created as part of project creation.
+        /// Allows overriding branch protection. These settings only apply at creation time
+        /// and do not affect resources created after project creation
+        /// </summary>
+        [Input("initialBranchSpec")]
+        public Input<Inputs.PostgresProjectInitialBranchSpecGetArgs>? InitialBranchSpec { get; set; }
 
         /// <summary>
         /// Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly

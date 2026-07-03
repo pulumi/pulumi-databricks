@@ -155,6 +155,12 @@ export class PostgresProject extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
+     * Configuration for the initial default branch created as part of project creation.
+     * Allows overriding branch protection. These settings only apply at creation time
+     * and do not affect resources created after project creation
+     */
+    declare public readonly initialBranchSpec: pulumi.Output<outputs.PostgresProjectInitialBranchSpec>;
+    /**
      * Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
      * configured. This field does not apply to any endpoints created after project creation. Use
@@ -216,6 +222,7 @@ export class PostgresProject extends pulumi.CustomResource {
             const state = argsOrState as PostgresProjectState | undefined;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["initialBranchSpec"] = state?.initialBranchSpec;
             resourceInputs["initialEndpointSpec"] = state?.initialEndpointSpec;
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
@@ -231,6 +238,7 @@ export class PostgresProject extends pulumi.CustomResource {
             if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
+            resourceInputs["initialBranchSpec"] = args?.initialBranchSpec;
             resourceInputs["initialEndpointSpec"] = args?.initialEndpointSpec;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["providerConfig"] = args?.providerConfig;
@@ -262,6 +270,12 @@ export interface PostgresProjectState {
      * Empty if the project is not deleted, otherwise set to a timestamp in the past
      */
     deleteTime?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration for the initial default branch created as part of project creation.
+     * Allows overriding branch protection. These settings only apply at creation time
+     * and do not affect resources created after project creation
+     */
+    initialBranchSpec?: pulumi.Input<inputs.PostgresProjectInitialBranchSpec | undefined>;
     /**
      * Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability
@@ -314,6 +328,12 @@ export interface PostgresProjectState {
  * The set of arguments for constructing a PostgresProject resource.
  */
 export interface PostgresProjectArgs {
+    /**
+     * Configuration for the initial default branch created as part of project creation.
+     * Allows overriding branch protection. These settings only apply at creation time
+     * and do not affect resources created after project creation
+     */
+    initialBranchSpec?: pulumi.Input<inputs.PostgresProjectInitialBranchSpec | undefined>;
     /**
      * Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
      * created project. If omitted, the initial endpoint created will have default settings, without high availability

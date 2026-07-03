@@ -107,7 +107,7 @@ public final class DisasterRecoveryStableUrlState extends com.pulumi.resources.R
     /**
      * (string) - The stable URL endpoint. Generated on creation and
      * immutable thereafter. For non-Private-Link workspaces this is
-     * `https://&lt;spog_host&gt;/?c=&lt;connection_id&gt;`. For Private-Link workspaces
+     * `https://&lt;spog_host&gt;/?w=&lt;connection_id&gt;`. For Private-Link workspaces
      * this is the per-connection hostname
      * 
      */
@@ -117,7 +117,7 @@ public final class DisasterRecoveryStableUrlState extends com.pulumi.resources.R
     /**
      * @return (string) - The stable URL endpoint. Generated on creation and
      * immutable thereafter. For non-Private-Link workspaces this is
-     * `https://&lt;spog_host&gt;/?c=&lt;connection_id&gt;`. For Private-Link workspaces
+     * `https://&lt;spog_host&gt;/?w=&lt;connection_id&gt;`. For Private-Link workspaces
      * this is the per-connection hostname
      * 
      */
@@ -276,7 +276,7 @@ public final class DisasterRecoveryStableUrlState extends com.pulumi.resources.R
         /**
          * @param url (string) - The stable URL endpoint. Generated on creation and
          * immutable thereafter. For non-Private-Link workspaces this is
-         * `https://&lt;spog_host&gt;/?c=&lt;connection_id&gt;`. For Private-Link workspaces
+         * `https://&lt;spog_host&gt;/?w=&lt;connection_id&gt;`. For Private-Link workspaces
          * this is the per-connection hostname
          * 
          * @return builder
@@ -290,7 +290,7 @@ public final class DisasterRecoveryStableUrlState extends com.pulumi.resources.R
         /**
          * @param url (string) - The stable URL endpoint. Generated on creation and
          * immutable thereafter. For non-Private-Link workspaces this is
-         * `https://&lt;spog_host&gt;/?c=&lt;connection_id&gt;`. For Private-Link workspaces
+         * `https://&lt;spog_host&gt;/?w=&lt;connection_id&gt;`. For Private-Link workspaces
          * this is the per-connection hostname
          * 
          * @return builder

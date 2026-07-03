@@ -27,6 +27,11 @@ public final class PostgresProjectStatus {
      */
     private @Nullable String budgetPolicyId;
     /**
+     * @return (string) - The most recent time when any endpoint of this project was active
+     * 
+     */
+    private @Nullable String computeLastActiveTime;
+    /**
      * @return (list of ProjectCustomTag) - The effective custom tags associated with the project
      * 
      */
@@ -91,6 +96,13 @@ public final class PostgresProjectStatus {
      */
     public Optional<String> budgetPolicyId() {
         return Optional.ofNullable(this.budgetPolicyId);
+    }
+    /**
+     * @return (string) - The most recent time when any endpoint of this project was active
+     * 
+     */
+    public Optional<String> computeLastActiveTime() {
+        return Optional.ofNullable(this.computeLastActiveTime);
     }
     /**
      * @return (list of ProjectCustomTag) - The effective custom tags associated with the project
@@ -174,6 +186,7 @@ public final class PostgresProjectStatus {
     public static final class Builder {
         private @Nullable Integer branchLogicalSizeLimitBytes;
         private @Nullable String budgetPolicyId;
+        private @Nullable String computeLastActiveTime;
         private @Nullable List<PostgresProjectStatusCustomTag> customTags;
         private @Nullable String defaultBranch;
         private @Nullable PostgresProjectStatusDefaultEndpointSettings defaultEndpointSettings;
@@ -189,6 +202,7 @@ public final class PostgresProjectStatus {
     	      Objects.requireNonNull(defaults);
     	      this.branchLogicalSizeLimitBytes = defaults.branchLogicalSizeLimitBytes;
     	      this.budgetPolicyId = defaults.budgetPolicyId;
+    	      this.computeLastActiveTime = defaults.computeLastActiveTime;
     	      this.customTags = defaults.customTags;
     	      this.defaultBranch = defaults.defaultBranch;
     	      this.defaultEndpointSettings = defaults.defaultEndpointSettings;
@@ -211,6 +225,12 @@ public final class PostgresProjectStatus {
         public Builder budgetPolicyId(@Nullable String budgetPolicyId) {
 
             this.budgetPolicyId = budgetPolicyId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder computeLastActiveTime(@Nullable String computeLastActiveTime) {
+
+            this.computeLastActiveTime = computeLastActiveTime;
             return this;
         }
         @CustomType.Setter
@@ -280,6 +300,7 @@ public final class PostgresProjectStatus {
             final var _resultValue = new PostgresProjectStatus();
             _resultValue.branchLogicalSizeLimitBytes = branchLogicalSizeLimitBytes;
             _resultValue.budgetPolicyId = budgetPolicyId;
+            _resultValue.computeLastActiveTime = computeLastActiveTime;
             _resultValue.customTags = customTags;
             _resultValue.defaultBranch = defaultBranch;
             _resultValue.defaultEndpointSettings = defaultEndpointSettings;

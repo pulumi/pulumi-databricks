@@ -24,6 +24,12 @@ namespace Pulumi.Databricks.Inputs
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
 
+        /// <summary>
+        /// (string) - The most recent time when any endpoint of this project was active
+        /// </summary>
+        [Input("computeLastActiveTime")]
+        public Input<string>? ComputeLastActiveTime { get; set; }
+
         [Input("customTags")]
         private InputList<Inputs.PostgresProjectStatusCustomTagGetArgs>? _customTags;
 

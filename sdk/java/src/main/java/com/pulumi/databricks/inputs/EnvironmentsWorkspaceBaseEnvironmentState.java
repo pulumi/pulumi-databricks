@@ -6,6 +6,7 @@ package com.pulumi.databricks.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs;
+import com.pulumi.databricks.inputs.EnvironmentsWorkspaceBaseEnvironmentSpecArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -177,6 +178,21 @@ public final class EnvironmentsWorkspaceBaseEnvironmentState extends com.pulumi.
     }
 
     /**
+     * (EnvironmentSpec) - The environment specification containing version and dependencies
+     * 
+     */
+    @Import(name="spec")
+    private @Nullable Output<EnvironmentsWorkspaceBaseEnvironmentSpecArgs> spec;
+
+    /**
+     * @return (EnvironmentSpec) - The environment specification containing version and dependencies
+     * 
+     */
+    public Optional<Output<EnvironmentsWorkspaceBaseEnvironmentSpecArgs>> spec() {
+        return Optional.ofNullable(this.spec);
+    }
+
+    /**
      * (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
      * 
      */
@@ -239,6 +255,7 @@ public final class EnvironmentsWorkspaceBaseEnvironmentState extends com.pulumi.
         this.message = $.message;
         this.name = $.name;
         this.providerConfig = $.providerConfig;
+        this.spec = $.spec;
         this.status = $.status;
         this.updateTime = $.updateTime;
         this.workspaceBaseEnvironmentId = $.workspaceBaseEnvironmentId;
@@ -481,6 +498,27 @@ public final class EnvironmentsWorkspaceBaseEnvironmentState extends com.pulumi.
          */
         public Builder providerConfig(EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs providerConfig) {
             return providerConfig(Output.of(providerConfig));
+        }
+
+        /**
+         * @param spec (EnvironmentSpec) - The environment specification containing version and dependencies
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spec(@Nullable Output<EnvironmentsWorkspaceBaseEnvironmentSpecArgs> spec) {
+            $.spec = spec;
+            return this;
+        }
+
+        /**
+         * @param spec (EnvironmentSpec) - The environment specification containing version and dependencies
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spec(EnvironmentsWorkspaceBaseEnvironmentSpecArgs spec) {
+            return spec(Output.of(spec));
         }
 
         /**

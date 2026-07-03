@@ -30,7 +30,8 @@ class ModelServingArgs:
                  provider_config: pulumi.Input[Optional['ModelServingProviderConfigArgs']] = None,
                  rate_limits: pulumi.Input[Optional[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]] = None,
                  route_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None):
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None,
+                 telemetry_config: pulumi.Input[Optional['ModelServingTelemetryConfigArgs']] = None):
         """
         The set of arguments for constructing a ModelServing resource.
 
@@ -68,6 +69,8 @@ class ModelServingArgs:
             pulumi.set(__self__, "route_optimized", route_optimized)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if telemetry_config is not None:
+            pulumi.set(__self__, "telemetry_config", telemetry_config)
 
     @_builtins.property
     @pulumi.getter(name="aiGateway")
@@ -190,6 +193,15 @@ class ModelServingArgs:
     def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ModelServingTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="telemetryConfig")
+    def telemetry_config(self) -> pulumi.Input[Optional['ModelServingTelemetryConfigArgs']]:
+        return pulumi.get(self, "telemetry_config")
+
+    @telemetry_config.setter
+    def telemetry_config(self, value: pulumi.Input[Optional['ModelServingTelemetryConfigArgs']]):
+        pulumi.set(self, "telemetry_config", value)
+
 
 @pulumi.input_type
 class _ModelServingState:
@@ -205,7 +217,8 @@ class _ModelServingState:
                  rate_limits: pulumi.Input[Optional[Sequence[pulumi.Input['ModelServingRateLimitArgs']]]] = None,
                  route_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
                  serving_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None):
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['ModelServingTagArgs']]]] = None,
+                 telemetry_config: pulumi.Input[Optional['ModelServingTelemetryConfigArgs']] = None):
         """
         Input properties used for looking up and filtering ModelServing resources.
 
@@ -249,6 +262,8 @@ class _ModelServingState:
             pulumi.set(__self__, "serving_endpoint_id", serving_endpoint_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if telemetry_config is not None:
+            pulumi.set(__self__, "telemetry_config", telemetry_config)
 
     @_builtins.property
     @pulumi.getter(name="aiGateway")
@@ -395,6 +410,15 @@ class _ModelServingState:
     def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ModelServingTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="telemetryConfig")
+    def telemetry_config(self) -> pulumi.Input[Optional['ModelServingTelemetryConfigArgs']]:
+        return pulumi.get(self, "telemetry_config")
+
+    @telemetry_config.setter
+    def telemetry_config(self, value: pulumi.Input[Optional['ModelServingTelemetryConfigArgs']]):
+        pulumi.set(self, "telemetry_config", value)
+
 
 @pulumi.type_token("databricks:index/modelServing:ModelServing")
 class ModelServing(pulumi.CustomResource):
@@ -412,6 +436,7 @@ class ModelServing(pulumi.CustomResource):
                  rate_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
                  route_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]]] = None,
+                 telemetry_config: pulumi.Input[Optional[Union['ModelServingTelemetryConfigArgs', 'ModelServingTelemetryConfigArgsDict']]] = None,
                  __props__=None):
         """
         [API Documentation](https://docs.databricks.com/api/workspace/servingendpoints)
@@ -747,6 +772,7 @@ class ModelServing(pulumi.CustomResource):
                  rate_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
                  route_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]]] = None,
+                 telemetry_config: pulumi.Input[Optional[Union['ModelServingTelemetryConfigArgs', 'ModelServingTelemetryConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -766,6 +792,7 @@ class ModelServing(pulumi.CustomResource):
             __props__.__dict__["rate_limits"] = rate_limits
             __props__.__dict__["route_optimized"] = route_optimized
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["telemetry_config"] = telemetry_config
             __props__.__dict__["endpoint_url"] = None
             __props__.__dict__["serving_endpoint_id"] = None
         super(ModelServing, __self__).__init__(
@@ -789,7 +816,8 @@ class ModelServing(pulumi.CustomResource):
             rate_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingRateLimitArgs', 'ModelServingRateLimitArgsDict']]]]] = None,
             route_optimized: pulumi.Input[Optional[_builtins.bool]] = None,
             serving_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
-            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]]] = None) -> 'ModelServing':
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ModelServingTagArgs', 'ModelServingTagArgsDict']]]]] = None,
+            telemetry_config: pulumi.Input[Optional[Union['ModelServingTelemetryConfigArgs', 'ModelServingTelemetryConfigArgsDict']]] = None) -> 'ModelServing':
         """
         Get an existing ModelServing resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -826,6 +854,7 @@ class ModelServing(pulumi.CustomResource):
         __props__.__dict__["route_optimized"] = route_optimized
         __props__.__dict__["serving_endpoint_id"] = serving_endpoint_id
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["telemetry_config"] = telemetry_config
         return ModelServing(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -924,4 +953,9 @@ class ModelServing(pulumi.CustomResource):
         Tags to be attached to the serving endpoint and automatically propagated to billing logs.
         """
         return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="telemetryConfig")
+    def telemetry_config(self) -> pulumi.Output[Optional['outputs.ModelServingTelemetryConfig']]:
+        return pulumi.get(self, "telemetry_config")
 

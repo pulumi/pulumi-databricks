@@ -38,16 +38,20 @@ public final class DataClassificationCatalogConfigArgs extends com.pulumi.resour
     }
 
     /**
-     * Schemas to include in the scan. Empty list is not supported as it results in a no-op
-     * scan. If `includedSchemas` is not set, all schemas are scanned
+     * Schemas to include in the scan, each named relative to the parent catalog.
+     * If specified, only listed schemas will be scanned.
+     * Mutually exclusive with `excludedSchemas`: only one may be set per request.
+     * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      * 
      */
     @Import(name="includedSchemas")
     private @Nullable Output<DataClassificationCatalogConfigIncludedSchemasArgs> includedSchemas;
 
     /**
-     * @return Schemas to include in the scan. Empty list is not supported as it results in a no-op
-     * scan. If `includedSchemas` is not set, all schemas are scanned
+     * @return Schemas to include in the scan, each named relative to the parent catalog.
+     * If specified, only listed schemas will be scanned.
+     * Mutually exclusive with `excludedSchemas`: only one may be set per request.
+     * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      * 
      */
     public Optional<Output<DataClassificationCatalogConfigIncludedSchemasArgs>> includedSchemas() {
@@ -146,8 +150,10 @@ public final class DataClassificationCatalogConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param includedSchemas Schemas to include in the scan. Empty list is not supported as it results in a no-op
-         * scan. If `includedSchemas` is not set, all schemas are scanned
+         * @param includedSchemas Schemas to include in the scan, each named relative to the parent catalog.
+         * If specified, only listed schemas will be scanned.
+         * Mutually exclusive with `excludedSchemas`: only one may be set per request.
+         * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
          * 
          * @return builder
          * 
@@ -158,8 +164,10 @@ public final class DataClassificationCatalogConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param includedSchemas Schemas to include in the scan. Empty list is not supported as it results in a no-op
-         * scan. If `includedSchemas` is not set, all schemas are scanned
+         * @param includedSchemas Schemas to include in the scan, each named relative to the parent catalog.
+         * If specified, only listed schemas will be scanned.
+         * Mutually exclusive with `excludedSchemas`: only one may be set per request.
+         * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
          * 
          * @return builder
          * 

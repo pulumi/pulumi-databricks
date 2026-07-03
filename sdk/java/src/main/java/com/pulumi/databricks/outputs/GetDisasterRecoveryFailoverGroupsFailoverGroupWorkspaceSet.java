@@ -9,6 +9,7 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -19,10 +20,11 @@ public final class GetDisasterRecoveryFailoverGroupsFailoverGroupWorkspaceSet {
      */
     private String name;
     /**
-     * @return (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
+     * @return (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
+     * Defaults to false
      * 
      */
-    private Boolean replicateWorkspaceAssets;
+    private @Nullable Boolean replicateWorkspaceAssets;
     /**
      * @return (list of string) - Resource names of stable URLs associated with this workspace set.
      * Format: accounts/{account_id}/stable-urls/{stable_url_id}.
@@ -46,11 +48,12 @@ public final class GetDisasterRecoveryFailoverGroupsFailoverGroupWorkspaceSet {
         return this.name;
     }
     /**
-     * @return (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
+     * @return (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
+     * Defaults to false
      * 
      */
-    public Boolean replicateWorkspaceAssets() {
-        return this.replicateWorkspaceAssets;
+    public Optional<Boolean> replicateWorkspaceAssets() {
+        return Optional.ofNullable(this.replicateWorkspaceAssets);
     }
     /**
      * @return (list of string) - Resource names of stable URLs associated with this workspace set.
@@ -80,7 +83,7 @@ public final class GetDisasterRecoveryFailoverGroupsFailoverGroupWorkspaceSet {
     @CustomType.Builder
     public static final class Builder {
         private String name;
-        private Boolean replicateWorkspaceAssets;
+        private @Nullable Boolean replicateWorkspaceAssets;
         private @Nullable List<String> stableUrlNames;
         private List<String> workspaceIds;
         public Builder() {}
@@ -101,10 +104,8 @@ public final class GetDisasterRecoveryFailoverGroupsFailoverGroupWorkspaceSet {
             return this;
         }
         @CustomType.Setter
-        public Builder replicateWorkspaceAssets(Boolean replicateWorkspaceAssets) {
-            if (replicateWorkspaceAssets == null) {
-              throw new MissingRequiredPropertyException("GetDisasterRecoveryFailoverGroupsFailoverGroupWorkspaceSet", "replicateWorkspaceAssets");
-            }
+        public Builder replicateWorkspaceAssets(@Nullable Boolean replicateWorkspaceAssets) {
+
             this.replicateWorkspaceAssets = replicateWorkspaceAssets;
             return this;
         }

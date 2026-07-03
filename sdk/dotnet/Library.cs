@@ -22,6 +22,8 @@ namespace Pulumi.Databricks
     /// 
     /// The library resource has been migrated from sdkv2 to plugin framework. If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES="databricks.Library"`.
     /// 
+    /// &gt; **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_RESOURCES="databricks.Library"`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
+    /// 
     /// &gt; **Upgrading from v1.114.0**: state written by v1.114.0 encodes `ProviderConfig` as a single object instead of a list. After upgrading the provider, edit each `databricks.Library` instance in your state file to convert `"ProviderConfig": {"WorkspaceId": "X"}` to `"ProviderConfig": null` (recommended if you didn't set `ProviderConfig` in HCL) or to `"ProviderConfig": [{"WorkspaceId": "X"}]` (if you did). Without this edit, `pulumi preview` fails with ` Error decoding ... missing expected  `. Users on v1.113.0 are unaffected.
     /// 
     /// ## Installing library on all clusters

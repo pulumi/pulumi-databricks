@@ -8,6 +8,7 @@ import com.pulumi.databricks.outputs.GetServingEndpointsEndpointAiGateway;
 import com.pulumi.databricks.outputs.GetServingEndpointsEndpointConfig;
 import com.pulumi.databricks.outputs.GetServingEndpointsEndpointState;
 import com.pulumi.databricks.outputs.GetServingEndpointsEndpointTag;
+import com.pulumi.databricks.outputs.GetServingEndpointsEndpointTelemetryConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -45,6 +46,7 @@ public final class GetServingEndpointsEndpoint {
      */
     private @Nullable List<GetServingEndpointsEndpointTag> tags;
     private @Nullable String task;
+    private @Nullable List<GetServingEndpointsEndpointTelemetryConfig> telemetryConfigs;
     private @Nullable String usagePolicyId;
 
     private GetServingEndpointsEndpoint() {}
@@ -100,6 +102,9 @@ public final class GetServingEndpointsEndpoint {
     public Optional<String> task() {
         return Optional.ofNullable(this.task);
     }
+    public List<GetServingEndpointsEndpointTelemetryConfig> telemetryConfigs() {
+        return this.telemetryConfigs == null ? List.of() : this.telemetryConfigs;
+    }
     public Optional<String> usagePolicyId() {
         return Optional.ofNullable(this.usagePolicyId);
     }
@@ -125,6 +130,7 @@ public final class GetServingEndpointsEndpoint {
         private @Nullable List<GetServingEndpointsEndpointState> states;
         private @Nullable List<GetServingEndpointsEndpointTag> tags;
         private @Nullable String task;
+        private @Nullable List<GetServingEndpointsEndpointTelemetryConfig> telemetryConfigs;
         private @Nullable String usagePolicyId;
         public Builder() {}
         public Builder(GetServingEndpointsEndpoint defaults) {
@@ -141,6 +147,7 @@ public final class GetServingEndpointsEndpoint {
     	      this.states = defaults.states;
     	      this.tags = defaults.tags;
     	      this.task = defaults.task;
+    	      this.telemetryConfigs = defaults.telemetryConfigs;
     	      this.usagePolicyId = defaults.usagePolicyId;
         }
 
@@ -229,6 +236,15 @@ public final class GetServingEndpointsEndpoint {
             return this;
         }
         @CustomType.Setter
+        public Builder telemetryConfigs(@Nullable List<GetServingEndpointsEndpointTelemetryConfig> telemetryConfigs) {
+
+            this.telemetryConfigs = telemetryConfigs;
+            return this;
+        }
+        public Builder telemetryConfigs(GetServingEndpointsEndpointTelemetryConfig... telemetryConfigs) {
+            return telemetryConfigs(List.of(telemetryConfigs));
+        }
+        @CustomType.Setter
         public Builder usagePolicyId(@Nullable String usagePolicyId) {
 
             this.usagePolicyId = usagePolicyId;
@@ -248,6 +264,7 @@ public final class GetServingEndpointsEndpoint {
             _resultValue.states = states;
             _resultValue.tags = tags;
             _resultValue.task = task;
+            _resultValue.telemetryConfigs = telemetryConfigs;
             _resultValue.usagePolicyId = usagePolicyId;
             return _resultValue;
         }

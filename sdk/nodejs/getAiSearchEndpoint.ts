@@ -7,7 +7,24 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+ *
+ * This data source can be used to get a single AI Search endpoint by name.
+ *
+ * ## Example Usage
+ *
+ * # Example: AI Search Endpoint Datasource (Singular)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const example = databricks.getAiSearchEndpoint({
+ *     name: "example-ai-search-endpoint",
+ * });
+ * ```
  */
 export function getAiSearchEndpoint(args: GetAiSearchEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetAiSearchEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -114,7 +131,24 @@ export interface GetAiSearchEndpointResult {
     readonly usagePolicyId: string;
 }
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ *
+ * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+ *
+ * This data source can be used to get a single AI Search endpoint by name.
+ *
+ * ## Example Usage
+ *
+ * # Example: AI Search Endpoint Datasource (Singular)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const example = databricks.getAiSearchEndpoint({
+ *     name: "example-ai-search-endpoint",
+ * });
+ * ```
  */
 export function getAiSearchEndpointOutput(args: GetAiSearchEndpointOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiSearchEndpointResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

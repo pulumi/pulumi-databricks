@@ -117,7 +117,7 @@ export class DataQualityRefresh extends pulumi.CustomResource {
      */
     declare public readonly objectId: pulumi.Output<string>;
     /**
-     * The type of the monitored object. Can be one of the following: `schema`or `table`
+     * The type of the monitored object. Can be one of the following: `schema` or `table`
      */
     declare public readonly objectType: pulumi.Output<string>;
     /**
@@ -211,7 +211,7 @@ export interface DataQualityRefreshState {
      */
     objectId?: pulumi.Input<string | undefined>;
     /**
-     * The type of the monitored object. Can be one of the following: `schema`or `table`
+     * The type of the monitored object. Can be one of the following: `schema` or `table`
      */
     objectType?: pulumi.Input<string | undefined>;
     /**
@@ -253,7 +253,7 @@ export interface DataQualityRefreshArgs {
      */
     objectId: pulumi.Input<string>;
     /**
-     * The type of the monitored object. Can be one of the following: `schema`or `table`
+     * The type of the monitored object. Can be one of the following: `schema` or `table`
      */
     objectType: pulumi.Input<string>;
     /**

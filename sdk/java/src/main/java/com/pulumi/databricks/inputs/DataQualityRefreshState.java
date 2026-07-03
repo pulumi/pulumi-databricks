@@ -79,14 +79,14 @@ public final class DataQualityRefreshState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The type of the monitored object. Can be one of the following: `schema`or `table`
+     * The type of the monitored object. Can be one of the following: `schema` or `table`
      * 
      */
     @Import(name="objectType")
     private @Nullable Output<String> objectType;
 
     /**
-     * @return The type of the monitored object. Can be one of the following: `schema`or `table`
+     * @return The type of the monitored object. Can be one of the following: `schema` or `table`
      * 
      */
     public Optional<Output<String>> objectType() {
@@ -280,7 +280,7 @@ public final class DataQualityRefreshState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param objectType The type of the monitored object. Can be one of the following: `schema`or `table`
+         * @param objectType The type of the monitored object. Can be one of the following: `schema` or `table`
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class DataQualityRefreshState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param objectType The type of the monitored object. Can be one of the following: `schema`or `table`
+         * @param objectType The type of the monitored object. Can be one of the following: `schema` or `table`
          * 
          * @return builder
          * 

@@ -238,7 +238,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string ObjectId;
         /// <summary>
-        /// (string) - The type of the monitored object. Can be one of the following: `Schema`or `Table`
+        /// (string) - The type of the monitored object. Can be one of the following: `Schema` or `Table`
         /// </summary>
         public readonly string ObjectType;
         public readonly int? PageSize;

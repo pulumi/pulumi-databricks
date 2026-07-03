@@ -25,8 +25,7 @@ public final class GetDisasterRecoveryFailoverGroupResult {
      */
     private String effectivePrimaryRegion;
     /**
-     * @return (string) - Opaque version string for optimistic locking. Server-generated, returned in responses.
-     * Must be provided on Update requests to prevent concurrent modifications
+     * @return (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
      * 
      */
     private String etag;
@@ -94,8 +93,7 @@ public final class GetDisasterRecoveryFailoverGroupResult {
         return this.effectivePrimaryRegion;
     }
     /**
-     * @return (string) - Opaque version string for optimistic locking. Server-generated, returned in responses.
-     * Must be provided on Update requests to prevent concurrent modifications
+     * @return (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
      * 
      */
     public String etag() {

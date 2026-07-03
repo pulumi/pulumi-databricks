@@ -76,11 +76,10 @@ namespace Pulumi.Databricks
         public Output<string> EffectivePrimaryRegion { get; private set; } = null!;
 
         /// <summary>
-        /// Opaque version string for optimistic locking. Server-generated, returned in responses.
-        /// Must be provided on Update requests to prevent concurrent modifications
+        /// (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
         /// </summary>
         [Output("etag")]
-        public Output<string?> Etag { get; private set; } = null!;
+        public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
         /// Client-provided identifier for the failover group. Used to construct the
@@ -192,13 +191,6 @@ namespace Pulumi.Databricks
     public sealed class DisasterRecoveryFailoverGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Opaque version string for optimistic locking. Server-generated, returned in responses.
-        /// Must be provided on Update requests to prevent concurrent modifications
-        /// </summary>
-        [Input("etag")]
-        public Input<string>? Etag { get; set; }
-
-        /// <summary>
         /// Client-provided identifier for the failover group. Used to construct the
         /// resource name as {parent}/failover-groups/{failover_group_id}
         /// </summary>
@@ -270,8 +262,7 @@ namespace Pulumi.Databricks
         public Input<string>? EffectivePrimaryRegion { get; set; }
 
         /// <summary>
-        /// Opaque version string for optimistic locking. Server-generated, returned in responses.
-        /// Must be provided on Update requests to prevent concurrent modifications
+        /// (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }

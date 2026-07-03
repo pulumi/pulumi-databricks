@@ -22,7 +22,47 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
+ * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+ * 
+ * An AI Search Endpoint represents the compute resources that host AI Search indexes. Endpoints come in different types (for example, `STANDARD` and `STORAGE_OPTIMIZED`) that trade off latency and per-query cost. Indexes are created on an endpoint and served from its compute. This resource is the AIP-conformant replacement for the legacy `databricks.VectorSearchEndpoint` resource and is functionally equivalent.
+ * 
+ * ## Example Usage
+ * 
+ * # Example: AI Search Endpoint Resource
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.AiSearchEndpoint;
+ * import com.pulumi.databricks.AiSearchEndpointArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new AiSearchEndpoint("this", AiSearchEndpointArgs.builder()
+ *             .endpointId("example-ai-search-endpoint")
+ *             .endpointType("STANDARD")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="databricks:index/aiSearchEndpoint:AiSearchEndpoint")

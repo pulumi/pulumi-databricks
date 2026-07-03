@@ -529,7 +529,24 @@ class AiSearchEndpoint(pulumi.CustomResource):
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+
+        An AI Search Endpoint represents the compute resources that host AI Search indexes. Endpoints come in different types (for example, `STANDARD` and `STORAGE_OPTIMIZED`) that trade off latency and per-query cost. Indexes are created on an endpoint and served from its compute. This resource is the AIP-conformant replacement for the legacy `VectorSearchEndpoint` resource and is functionally equivalent.
+
+        ## Example Usage
+
+        # Example: AI Search Endpoint Resource
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.AiSearchEndpoint("this",
+            endpoint_id="example-ai-search-endpoint",
+            endpoint_type="STANDARD")
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -557,7 +574,24 @@ class AiSearchEndpoint(pulumi.CustomResource):
                  args: AiSearchEndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+
+        An AI Search Endpoint represents the compute resources that host AI Search indexes. Endpoints come in different types (for example, `STANDARD` and `STORAGE_OPTIMIZED`) that trade off latency and per-query cost. Indexes are created on an endpoint and served from its compute. This resource is the AIP-conformant replacement for the legacy `VectorSearchEndpoint` resource and is functionally equivalent.
+
+        ## Example Usage
+
+        # Example: AI Search Endpoint Resource
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.AiSearchEndpoint("this",
+            endpoint_id="example-ai-search-endpoint",
+            endpoint_type="STANDARD")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -13,7 +13,9 @@ import com.pulumi.databricks.inputs.PostgresRoleState;
 import com.pulumi.databricks.outputs.PostgresRoleProviderConfig;
 import com.pulumi.databricks.outputs.PostgresRoleSpec;
 import com.pulumi.databricks.outputs.PostgresRoleStatus;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -274,6 +276,34 @@ public class PostgresRole extends com.pulumi.resources.CustomResource {
      */
     public Output<PostgresRoleProviderConfig> providerConfig() {
         return this.providerConfig;
+    }
+    /**
+     * If true, update the role if it already exists instead of returning an
+     * error.
+     * 
+     * When the role already exists, the provided `role` spec fully replaces the
+     * existing one: `membershipRoles` is overwritten, not merged. Leaving
+     * `membershipRoles` empty clears all of the role&#39;s existing memberships,
+     * including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+     * memberships when using this field
+     * 
+     */
+    @Export(name="replaceExisting", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> replaceExisting;
+
+    /**
+     * @return If true, update the role if it already exists instead of returning an
+     * error.
+     * 
+     * When the role already exists, the provided `role` spec fully replaces the
+     * existing one: `membershipRoles` is overwritten, not merged. Leaving
+     * `membershipRoles` empty clears all of the role&#39;s existing memberships,
+     * including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+     * memberships when using this field
+     * 
+     */
+    public Output<Optional<Boolean>> replaceExisting() {
+        return Codegen.optional(this.replaceExisting);
     }
     /**
      * (string) - Part of the resource name

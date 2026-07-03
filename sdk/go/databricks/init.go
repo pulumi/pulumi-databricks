@@ -227,6 +227,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PostgresBranch{}
 	case "databricks:index/postgresCatalog:PostgresCatalog":
 		r = &PostgresCatalog{}
+	case "databricks:index/postgresDataApi:PostgresDataApi":
+		r = &PostgresDataApi{}
 	case "databricks:index/postgresDatabase:PostgresDatabase":
 		r = &PostgresDatabase{}
 	case "databricks:index/postgresEndpoint:PostgresEndpoint":
@@ -875,6 +877,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"databricks",
 		"index/postgresCatalog",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"databricks",
+		"index/postgresDataApi",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

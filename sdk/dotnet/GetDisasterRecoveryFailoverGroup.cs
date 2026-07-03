@@ -156,8 +156,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string EffectivePrimaryRegion;
         /// <summary>
-        /// (string) - Opaque version string for optimistic locking. Server-generated, returned in responses.
-        /// Must be provided on Update requests to prevent concurrent modifications
+        /// (string) - Opaque version string for optimistic locking. Server-generated and returned in responses
         /// </summary>
         public readonly string Etag;
         /// <summary>

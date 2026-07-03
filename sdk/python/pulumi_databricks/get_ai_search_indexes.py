@@ -92,7 +92,15 @@ def get_ai_search_indexes(page_size: Optional[_builtins.int] = None,
                           provider_config: Optional[Union['GetAiSearchIndexesProviderConfigArgs', 'GetAiSearchIndexesProviderConfigArgsDict']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiSearchIndexesResult:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+
+    This data source can be used to fetch the list of AI Search indexes on an endpoint.
+
+    ## Example Usage
+
+    # Example: AI Search Index Datasource (Plural)
 
 
     :param _builtins.int page_size: Best-effort upper bound on the number of results to return. Honored as an upper
@@ -120,7 +128,15 @@ def get_ai_search_indexes_output(page_size: pulumi.Input[Optional[Optional[_buil
                                  provider_config: pulumi.Input[Optional[Optional[Union['GetAiSearchIndexesProviderConfigArgs', 'GetAiSearchIndexesProviderConfigArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchIndexesResult]:
     """
-    [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+    [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+
+    This data source can be used to fetch the list of AI Search indexes on an endpoint.
+
+    ## Example Usage
+
+    # Example: AI Search Index Datasource (Plural)
 
 
     :param _builtins.int page_size: Best-effort upper bound on the number of results to return. Honored as an upper

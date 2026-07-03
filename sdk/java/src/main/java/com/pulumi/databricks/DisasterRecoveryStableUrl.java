@@ -150,7 +150,7 @@ public class DisasterRecoveryStableUrl extends com.pulumi.resources.CustomResour
     /**
      * (string) - The stable URL endpoint. Generated on creation and
      * immutable thereafter. For non-Private-Link workspaces this is
-     * `https://&lt;spog_host&gt;/?c=&lt;connection_id&gt;`. For Private-Link workspaces
+     * `https://&lt;spog_host&gt;/?w=&lt;connection_id&gt;`. For Private-Link workspaces
      * this is the per-connection hostname
      * 
      */
@@ -160,7 +160,7 @@ public class DisasterRecoveryStableUrl extends com.pulumi.resources.CustomResour
     /**
      * @return (string) - The stable URL endpoint. Generated on creation and
      * immutable thereafter. For non-Private-Link workspaces this is
-     * `https://&lt;spog_host&gt;/?c=&lt;connection_id&gt;`. For Private-Link workspaces
+     * `https://&lt;spog_host&gt;/?w=&lt;connection_id&gt;`. For Private-Link workspaces
      * this is the per-connection hostname
      * 
      */

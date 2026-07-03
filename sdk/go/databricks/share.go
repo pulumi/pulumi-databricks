@@ -19,6 +19,12 @@ import (
 //
 // In a Unity Catalog-enabled Databricks workspace, a share is a securable object registered in Unity Catalog. A `Share` is contained within a databricks_metastore. If you remove a share from your Unity Catalog metastore, all recipients of that share lose the ability to access it.
 //
+// ## Plugin Framework Migration
+//
+// The share resource has been migrated from sdkv2 to plugin framework. If you encounter any problem with this resource and suspect it is due to the migration, you can fallback to sdkv2 by setting the environment variable in the following way `export USE_SDK_V2_RESOURCES="Share"`.
+//
+// > **Deprecation**: The SDKv2 fallback implementation, selectable via `USE_SDK_V2_RESOURCES="Share"`, is **deprecated** and will be removed in the next major release of the provider. Setting the environment variable now emits a runtime warning; remove the override to use the default Plugin Framework implementation.
+//
 // > **Upgrading from v1.114.0**: state written by v1.114.0 encodes `providerConfig` as a single object instead of a list. After upgrading the provider, edit each `Share` instance in your state file to convert `"providerConfig": {"workspaceId": "X"}` to `"providerConfig": null` (recommended if you didn't set `providerConfig` in HCL) or to `"providerConfig": [{"workspaceId": "X"}]` (if you did). Without this edit, `pulumi preview` fails with `Error decoding ... missing expected [`. Users on v1.113.0 are unaffected.
 //
 // ## Example Usage

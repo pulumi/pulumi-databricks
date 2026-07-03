@@ -231,6 +231,7 @@ export class ModelServing extends pulumi.CustomResource {
      * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
      */
     declare public readonly tags: pulumi.Output<outputs.ModelServingTag[] | undefined>;
+    declare public readonly telemetryConfig: pulumi.Output<outputs.ModelServingTelemetryConfig | undefined>;
 
     /**
      * Create a ModelServing resource with the given unique name, arguments, and options.
@@ -257,6 +258,7 @@ export class ModelServing extends pulumi.CustomResource {
             resourceInputs["routeOptimized"] = state?.routeOptimized;
             resourceInputs["servingEndpointId"] = state?.servingEndpointId;
             resourceInputs["tags"] = state?.tags;
+            resourceInputs["telemetryConfig"] = state?.telemetryConfig;
         } else {
             const args = argsOrState as ModelServingArgs | undefined;
             resourceInputs["aiGateway"] = args?.aiGateway;
@@ -269,6 +271,7 @@ export class ModelServing extends pulumi.CustomResource {
             resourceInputs["rateLimits"] = args?.rateLimits;
             resourceInputs["routeOptimized"] = args?.routeOptimized;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["telemetryConfig"] = args?.telemetryConfig;
             resourceInputs["endpointUrl"] = undefined /*out*/;
             resourceInputs["servingEndpointId"] = undefined /*out*/;
         }
@@ -331,6 +334,7 @@ export interface ModelServingState {
      * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ModelServingTag>[] | undefined>;
+    telemetryConfig?: pulumi.Input<inputs.ModelServingTelemetryConfig | undefined>;
 }
 
 /**
@@ -379,4 +383,5 @@ export interface ModelServingArgs {
      * Tags to be attached to the serving endpoint and automatically propagated to billing logs.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ModelServingTag>[] | undefined>;
+    telemetryConfig?: pulumi.Input<inputs.ModelServingTelemetryConfig | undefined>;
 }

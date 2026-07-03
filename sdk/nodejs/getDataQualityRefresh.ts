@@ -67,7 +67,7 @@ export interface GetDataQualityRefreshArgs {
      */
     objectId: string;
     /**
-     * The type of the monitored object. Can be one of the following: `schema`or `table`
+     * The type of the monitored object. Can be one of the following: `schema` or `table`
      */
     objectType: string;
     /**
@@ -101,7 +101,7 @@ export interface GetDataQualityRefreshResult {
      */
     readonly objectId: string;
     /**
-     * (string) - The type of the monitored object. Can be one of the following: `schema`or `table`
+     * (string) - The type of the monitored object. Can be one of the following: `schema` or `table`
      */
     readonly objectType: string;
     readonly providerConfig?: outputs.GetDataQualityRefreshProviderConfig;
@@ -183,7 +183,7 @@ export interface GetDataQualityRefreshOutputArgs {
      */
     objectId: pulumi.Input<string>;
     /**
-     * The type of the monitored object. Can be one of the following: `schema`or `table`
+     * The type of the monitored object. Can be one of the following: `schema` or `table`
      */
     objectType: pulumi.Input<string>;
     /**

@@ -19,7 +19,52 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * 
+ * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+ * 
+ * An AI Search Index is a searchable collection of records hosted on an AI Search endpoint. An index has a primary key and an index type (`DELTA_SYNC`, which keeps the index in sync with a source Delta table, or `DIRECT_ACCESS`, which is written to directly through the API). Indexes are immutable once created. This resource is the AIP-conformant replacement for the legacy `databricks.VectorSearchIndex` resource and is functionally equivalent.
+ * 
+ * ## Example Usage
+ * 
+ * # Example: AI Search Index Resource
+ * 
+ * An index is nested under an endpoint: the parent endpoint must be supplied, and
+ * `indexId` is the index&#39;s Unity Catalog table name.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.AiSearchIndex;
+ * import com.pulumi.databricks.AiSearchIndexArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var this_ = new AiSearchIndex("this", AiSearchIndexArgs.builder()
+ *             .endpointName("example-ai-search-endpoint")
+ *             .indexId("main.default.example_index")
+ *             .primaryKey("id")
+ *             .indexType("DELTA_SYNC")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="databricks:index/aiSearchIndex:AiSearchIndex")

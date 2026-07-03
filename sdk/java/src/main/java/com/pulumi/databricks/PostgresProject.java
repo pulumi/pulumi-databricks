@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.databricks.PostgresProjectArgs;
 import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.PostgresProjectState;
+import com.pulumi.databricks.outputs.PostgresProjectInitialBranchSpec;
 import com.pulumi.databricks.outputs.PostgresProjectInitialEndpointSpec;
 import com.pulumi.databricks.outputs.PostgresProjectProviderConfig;
 import com.pulumi.databricks.outputs.PostgresProjectSpec;
@@ -268,6 +269,24 @@ public class PostgresProject extends com.pulumi.resources.CustomResource {
      */
     public Output<String> deleteTime() {
         return this.deleteTime;
+    }
+    /**
+     * Configuration for the initial default branch created as part of project creation.
+     * Allows overriding branch protection. These settings only apply at creation time
+     * and do not affect resources created after project creation
+     * 
+     */
+    @Export(name="initialBranchSpec", refs={PostgresProjectInitialBranchSpec.class}, tree="[0]")
+    private Output<PostgresProjectInitialBranchSpec> initialBranchSpec;
+
+    /**
+     * @return Configuration for the initial default branch created as part of project creation.
+     * Allows overriding branch protection. These settings only apply at creation time
+     * and do not affect resources created after project creation
+     * 
+     */
+    public Output<PostgresProjectInitialBranchSpec> initialBranchSpec() {
+        return this.initialBranchSpec;
     }
     /**
      * Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly

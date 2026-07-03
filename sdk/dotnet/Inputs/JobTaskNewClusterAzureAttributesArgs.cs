@@ -15,6 +15,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("availability")]
         public Input<string>? Availability { get; set; }
 
+        [Input("capacityReservationGroup")]
+        public Input<string>? CapacityReservationGroup { get; set; }
+
         [Input("firstOnDemand")]
         public Input<int>? FirstOnDemand { get; set; }
 

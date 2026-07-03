@@ -198,6 +198,19 @@ namespace Pulumi.Databricks
         public Output<Outputs.PostgresRoleProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
+        /// If true, update the role if it already exists instead of returning an
+        /// error.
+        /// 
+        /// When the role already exists, the provided `Role` spec fully replaces the
+        /// existing one: `MembershipRoles` is overwritten, not merged. Leaving
+        /// `MembershipRoles` empty clears all of the role's existing memberships,
+        /// including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+        /// memberships when using this field
+        /// </summary>
+        [Output("replaceExisting")]
+        public Output<bool?> ReplaceExisting { get; private set; } = null!;
+
+        /// <summary>
         /// (string) - Part of the resource name
         /// </summary>
         [Output("roleId")]
@@ -281,6 +294,19 @@ namespace Pulumi.Databricks
         public Input<Inputs.PostgresRoleProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
+        /// If true, update the role if it already exists instead of returning an
+        /// error.
+        /// 
+        /// When the role already exists, the provided `Role` spec fully replaces the
+        /// existing one: `MembershipRoles` is overwritten, not merged. Leaving
+        /// `MembershipRoles` empty clears all of the role's existing memberships,
+        /// including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+        /// memberships when using this field
+        /// </summary>
+        [Input("replaceExisting")]
+        public Input<bool>? ReplaceExisting { get; set; }
+
+        /// <summary>
         /// (string) - Part of the resource name
         /// </summary>
         [Input("roleId")]
@@ -325,6 +351,19 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("providerConfig")]
         public Input<Inputs.PostgresRoleProviderConfigGetArgs>? ProviderConfig { get; set; }
+
+        /// <summary>
+        /// If true, update the role if it already exists instead of returning an
+        /// error.
+        /// 
+        /// When the role already exists, the provided `Role` spec fully replaces the
+        /// existing one: `MembershipRoles` is overwritten, not merged. Leaving
+        /// `MembershipRoles` empty clears all of the role's existing memberships,
+        /// including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+        /// memberships when using this field
+        /// </summary>
+        [Input("replaceExisting")]
+        public Input<bool>? ReplaceExisting { get; set; }
 
         /// <summary>
         /// (string) - Part of the resource name

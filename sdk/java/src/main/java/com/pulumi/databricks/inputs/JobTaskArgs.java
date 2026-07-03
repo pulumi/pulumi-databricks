@@ -5,6 +5,7 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.databricks.inputs.JobTaskAiRuntimeTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskAlertTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskCleanRoomsNotebookTaskArgs;
 import com.pulumi.databricks.inputs.JobTaskComputeArgs;
@@ -45,6 +46,13 @@ import javax.annotation.Nullable;
 public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobTaskArgs Empty = new JobTaskArgs();
+
+    @Import(name="aiRuntimeTask")
+    private @Nullable Output<JobTaskAiRuntimeTaskArgs> aiRuntimeTask;
+
+    public Optional<Output<JobTaskAiRuntimeTaskArgs>> aiRuntimeTask() {
+        return Optional.ofNullable(this.aiRuntimeTask);
+    }
 
     @Import(name="alertTask")
     private @Nullable Output<JobTaskAlertTaskArgs> alertTask;
@@ -488,6 +496,7 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
     private JobTaskArgs() {}
 
     private JobTaskArgs(JobTaskArgs $) {
+        this.aiRuntimeTask = $.aiRuntimeTask;
         this.alertTask = $.alertTask;
         this.cleanRoomsNotebookTask = $.cleanRoomsNotebookTask;
         this.compute = $.compute;
@@ -545,6 +554,15 @@ public final class JobTaskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(JobTaskArgs defaults) {
             $ = new JobTaskArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder aiRuntimeTask(@Nullable Output<JobTaskAiRuntimeTaskArgs> aiRuntimeTask) {
+            $.aiRuntimeTask = aiRuntimeTask;
+            return this;
+        }
+
+        public Builder aiRuntimeTask(JobTaskAiRuntimeTaskArgs aiRuntimeTask) {
+            return aiRuntimeTask(Output.of(aiRuntimeTask));
         }
 
         public Builder alertTask(@Nullable Output<JobTaskAlertTaskArgs> alertTask) {

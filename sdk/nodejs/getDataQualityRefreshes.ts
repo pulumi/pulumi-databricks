@@ -90,7 +90,7 @@ export interface GetDataQualityRefreshesResult {
      */
     readonly objectId: string;
     /**
-     * (string) - The type of the monitored object. Can be one of the following: `schema`or `table`
+     * (string) - The type of the monitored object. Can be one of the following: `schema` or `table`
      */
     readonly objectType: string;
     readonly pageSize?: number;

@@ -55,6 +55,7 @@ class PipelineArgs:
                  run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless: pulumi.Input[Optional[_builtins.bool]] = None,
+                 serverless_compute_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  storage: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -159,6 +160,8 @@ class PipelineArgs:
             pulumi.set(__self__, "schema", schema)
         if serverless is not None:
             pulumi.set(__self__, "serverless", serverless)
+        if serverless_compute_id is not None:
+            pulumi.set(__self__, "serverless_compute_id", serverless_compute_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if storage is not None:
@@ -542,6 +545,15 @@ class PipelineArgs:
     @serverless.setter
     def serverless(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "serverless", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverlessComputeId")
+    def serverless_compute_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "serverless_compute_id")
+
+    @serverless_compute_id.setter
+    def serverless_compute_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "serverless_compute_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -656,6 +668,7 @@ class _PipelineState:
                  run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless: pulumi.Input[Optional[_builtins.bool]] = None,
+                 serverless_compute_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  storage: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -760,6 +773,8 @@ class _PipelineState:
             pulumi.set(__self__, "schema", schema)
         if serverless is not None:
             pulumi.set(__self__, "serverless", serverless)
+        if serverless_compute_id is not None:
+            pulumi.set(__self__, "serverless_compute_id", serverless_compute_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if storage is not None:
@@ -1143,6 +1158,15 @@ class _PipelineState:
     @serverless.setter
     def serverless(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "serverless", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serverlessComputeId")
+    def serverless_compute_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "serverless_compute_id")
+
+    @serverless_compute_id.setter
+    def serverless_compute_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "serverless_compute_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1260,6 +1284,7 @@ class Pipeline(pulumi.CustomResource):
                  run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless: pulumi.Input[Optional[_builtins.bool]] = None,
+                 serverless_compute_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  storage: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1515,6 +1540,7 @@ class Pipeline(pulumi.CustomResource):
                  run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
                  serverless: pulumi.Input[Optional[_builtins.bool]] = None,
+                 serverless_compute_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  storage: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1565,6 +1591,7 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["run_as_user_name"] = run_as_user_name
             __props__.__dict__["schema"] = schema
             __props__.__dict__["serverless"] = serverless
+            __props__.__dict__["serverless_compute_id"] = serverless_compute_id
             __props__.__dict__["state"] = state
             __props__.__dict__["storage"] = storage
             __props__.__dict__["tags"] = tags
@@ -1616,6 +1643,7 @@ class Pipeline(pulumi.CustomResource):
             run_as_user_name: pulumi.Input[Optional[_builtins.str]] = None,
             schema: pulumi.Input[Optional[_builtins.str]] = None,
             serverless: pulumi.Input[Optional[_builtins.bool]] = None,
+            serverless_compute_id: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             storage: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1694,6 +1722,7 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["run_as_user_name"] = run_as_user_name
         __props__.__dict__["schema"] = schema
         __props__.__dict__["serverless"] = serverless
+        __props__.__dict__["serverless_compute_id"] = serverless_compute_id
         __props__.__dict__["state"] = state
         __props__.__dict__["storage"] = storage
         __props__.__dict__["tags"] = tags
@@ -1935,6 +1964,11 @@ class Pipeline(pulumi.CustomResource):
         An optional flag indicating if serverless compute should be used for this Lakeflow Declarative Pipeline.  Requires `catalog` to be set, as it could be used only with Unity Catalog.
         """
         return pulumi.get(self, "serverless")
+
+    @_builtins.property
+    @pulumi.getter(name="serverlessComputeId")
+    def serverless_compute_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "serverless_compute_id")
 
     @_builtins.property
     @pulumi.getter

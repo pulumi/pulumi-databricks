@@ -75,6 +75,10 @@ type LookupPostgresProjectResult struct {
 	DeleteTime string `pulumi:"deleteTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
+	// Allows overriding branch protection. These settings only apply at creation time
+	// and do not affect resources created after project creation
+	InitialBranchSpec GetPostgresProjectInitialBranchSpec `pulumi:"initialBranchSpec"`
 	// (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
 	// created project. If omitted, the initial endpoint created will have default settings, without high availability
 	// configured. This field does not apply to any endpoints created after project creation. Use
@@ -150,6 +154,13 @@ func (o LookupPostgresProjectResultOutput) DeleteTime() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupPostgresProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
+// Allows overriding branch protection. These settings only apply at creation time
+// and do not affect resources created after project creation
+func (o LookupPostgresProjectResultOutput) InitialBranchSpec() GetPostgresProjectInitialBranchSpecOutput {
+	return o.ApplyT(func(v LookupPostgresProjectResult) GetPostgresProjectInitialBranchSpec { return v.InitialBranchSpec }).(GetPostgresProjectInitialBranchSpecOutput)
 }
 
 // (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly

@@ -28,7 +28,7 @@ class GetEnvironmentsWorkspaceBaseEnvironmentResult:
     """
     A collection of values returned by getEnvironmentsWorkspaceBaseEnvironment.
     """
-    def __init__(__self__, base_environment_type=None, create_time=None, creator_user_id=None, display_name=None, effective_base_environment_type=None, filepath=None, id=None, is_default=None, last_updated_user_id=None, message=None, name=None, provider_config=None, status=None, update_time=None):
+    def __init__(__self__, base_environment_type=None, create_time=None, creator_user_id=None, display_name=None, effective_base_environment_type=None, filepath=None, id=None, is_default=None, last_updated_user_id=None, message=None, name=None, provider_config=None, spec=None, status=None, update_time=None):
         if base_environment_type and not isinstance(base_environment_type, str):
             raise TypeError("Expected argument 'base_environment_type' to be a str")
         pulumi.set(__self__, "base_environment_type", base_environment_type)
@@ -65,6 +65,9 @@ class GetEnvironmentsWorkspaceBaseEnvironmentResult:
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
+        if spec and not isinstance(spec, dict):
+            raise TypeError("Expected argument 'spec' to be a dict")
+        pulumi.set(__self__, "spec", spec)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -165,6 +168,14 @@ class GetEnvironmentsWorkspaceBaseEnvironmentResult:
 
     @_builtins.property
     @pulumi.getter
+    def spec(self) -> 'outputs.GetEnvironmentsWorkspaceBaseEnvironmentSpecResult':
+        """
+        (EnvironmentSpec) - The environment specification containing version and dependencies
+        """
+        return pulumi.get(self, "spec")
+
+    @_builtins.property
+    @pulumi.getter
     def status(self) -> _builtins.str:
         """
         (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
@@ -198,6 +209,7 @@ class AwaitableGetEnvironmentsWorkspaceBaseEnvironmentResult(GetEnvironmentsWork
             message=self.message,
             name=self.name,
             provider_config=self.provider_config,
+            spec=self.spec,
             status=self.status,
             update_time=self.update_time)
 
@@ -245,6 +257,7 @@ def get_environments_workspace_base_environment(name: Optional[_builtins.str] = 
         message=pulumi.get(__ret__, 'message'),
         name=pulumi.get(__ret__, 'name'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
+        spec=pulumi.get(__ret__, 'spec'),
         status=pulumi.get(__ret__, 'status'),
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_environments_workspace_base_environment_output(name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -289,5 +302,6 @@ def get_environments_workspace_base_environment_output(name: pulumi.Input[Option
         message=pulumi.get(__response__, 'message'),
         name=pulumi.get(__response__, 'name'),
         provider_config=pulumi.get(__response__, 'provider_config'),
+        spec=pulumi.get(__response__, 'spec'),
         status=pulumi.get(__response__, 'status'),
         update_time=pulumi.get(__response__, 'update_time')))

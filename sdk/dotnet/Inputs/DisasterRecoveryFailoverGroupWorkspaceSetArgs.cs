@@ -20,10 +20,11 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set
+        /// Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
+        /// Defaults to false
         /// </summary>
-        [Input("replicateWorkspaceAssets", required: true)]
-        public Input<bool> ReplicateWorkspaceAssets { get; set; } = null!;
+        [Input("replicateWorkspaceAssets")]
+        public Input<bool>? ReplicateWorkspaceAssets { get; set; }
 
         [Input("stableUrlNames")]
         private InputList<string>? _stableUrlNames;

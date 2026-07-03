@@ -395,7 +395,29 @@ class AiSearchIndex(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['AiSearchIndexProviderConfigArgs', 'AiSearchIndexProviderConfigArgsDict']]] = None,
                  __props__=None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+
+        An AI Search Index is a searchable collection of records hosted on an AI Search endpoint. An index has a primary key and an index type (`DELTA_SYNC`, which keeps the index in sync with a source Delta table, or `DIRECT_ACCESS`, which is written to directly through the API). Indexes are immutable once created. This resource is the AIP-conformant replacement for the legacy `VectorSearchIndex` resource and is functionally equivalent.
+
+        ## Example Usage
+
+        # Example: AI Search Index Resource
+
+        An index is nested under an endpoint: the parent endpoint must be supplied, and
+        `index_id` is the index's Unity Catalog table name.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.AiSearchIndex("this",
+            endpoint_name="example-ai-search-endpoint",
+            index_id="main.default.example_index",
+            primary_key="id",
+            index_type="DELTA_SYNC")
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -420,7 +442,29 @@ class AiSearchIndex(pulumi.CustomResource):
                  args: AiSearchIndexArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+
+        [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
+
+        An AI Search Index is a searchable collection of records hosted on an AI Search endpoint. An index has a primary key and an index type (`DELTA_SYNC`, which keeps the index in sync with a source Delta table, or `DIRECT_ACCESS`, which is written to directly through the API). Indexes are immutable once created. This resource is the AIP-conformant replacement for the legacy `VectorSearchIndex` resource and is functionally equivalent.
+
+        ## Example Usage
+
+        # Example: AI Search Index Resource
+
+        An index is nested under an endpoint: the parent endpoint must be supplied, and
+        `index_id` is the index's Unity Catalog table name.
+
+        ```python
+        import pulumi
+        import pulumi_databricks as databricks
+
+        this = databricks.AiSearchIndex("this",
+            endpoint_name="example-ai-search-endpoint",
+            index_id="main.default.example_index",
+            primary_key="id",
+            index_type="DELTA_SYNC")
+        ```
 
 
         :param str resource_name: The name of the resource.

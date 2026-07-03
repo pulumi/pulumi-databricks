@@ -197,6 +197,15 @@ type PostgresRole struct {
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresRoleProviderConfigOutput `pulumi:"providerConfig"`
+	// If true, update the role if it already exists instead of returning an
+	// error.
+	//
+	// When the role already exists, the provided `role` spec fully replaces the
+	// existing one: `membershipRoles` is overwritten, not merged. Leaving
+	// `membershipRoles` empty clears all of the role's existing memberships,
+	// including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+	// memberships when using this field
+	ReplaceExisting pulumi.BoolPtrOutput `pulumi:"replaceExisting"`
 	// (string) - Part of the resource name
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
 	// The spec contains the role configuration, including identity type, authentication method, and role attributes
@@ -250,6 +259,15 @@ type postgresRoleState struct {
 	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresRoleProviderConfig `pulumi:"providerConfig"`
+	// If true, update the role if it already exists instead of returning an
+	// error.
+	//
+	// When the role already exists, the provided `role` spec fully replaces the
+	// existing one: `membershipRoles` is overwritten, not merged. Leaving
+	// `membershipRoles` empty clears all of the role's existing memberships,
+	// including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+	// memberships when using this field
+	ReplaceExisting *bool `pulumi:"replaceExisting"`
 	// (string) - Part of the resource name
 	RoleId *string `pulumi:"roleId"`
 	// The spec contains the role configuration, including identity type, authentication method, and role attributes
@@ -271,6 +289,15 @@ type PostgresRoleState struct {
 	Parent pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresRoleProviderConfigPtrInput
+	// If true, update the role if it already exists instead of returning an
+	// error.
+	//
+	// When the role already exists, the provided `role` spec fully replaces the
+	// existing one: `membershipRoles` is overwritten, not merged. Leaving
+	// `membershipRoles` empty clears all of the role's existing memberships,
+	// including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+	// memberships when using this field
+	ReplaceExisting pulumi.BoolPtrInput
 	// (string) - Part of the resource name
 	RoleId pulumi.StringPtrInput
 	// The spec contains the role configuration, including identity type, authentication method, and role attributes
@@ -291,6 +318,15 @@ type postgresRoleArgs struct {
 	Parent string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresRoleProviderConfig `pulumi:"providerConfig"`
+	// If true, update the role if it already exists instead of returning an
+	// error.
+	//
+	// When the role already exists, the provided `role` spec fully replaces the
+	// existing one: `membershipRoles` is overwritten, not merged. Leaving
+	// `membershipRoles` empty clears all of the role's existing memberships,
+	// including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+	// memberships when using this field
+	ReplaceExisting *bool `pulumi:"replaceExisting"`
 	// (string) - Part of the resource name
 	RoleId *string `pulumi:"roleId"`
 	// The spec contains the role configuration, including identity type, authentication method, and role attributes
@@ -304,6 +340,15 @@ type PostgresRoleArgs struct {
 	Parent pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresRoleProviderConfigPtrInput
+	// If true, update the role if it already exists instead of returning an
+	// error.
+	//
+	// When the role already exists, the provided `role` spec fully replaces the
+	// existing one: `membershipRoles` is overwritten, not merged. Leaving
+	// `membershipRoles` empty clears all of the role's existing memberships,
+	// including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+	// memberships when using this field
+	ReplaceExisting pulumi.BoolPtrInput
 	// (string) - Part of the resource name
 	RoleId pulumi.StringPtrInput
 	// The spec contains the role configuration, including identity type, authentication method, and role attributes
@@ -417,6 +462,18 @@ func (o PostgresRoleOutput) Parent() pulumi.StringOutput {
 // Configure the provider for management through account provider.
 func (o PostgresRoleOutput) ProviderConfig() PostgresRoleProviderConfigOutput {
 	return o.ApplyT(func(v *PostgresRole) PostgresRoleProviderConfigOutput { return v.ProviderConfig }).(PostgresRoleProviderConfigOutput)
+}
+
+// If true, update the role if it already exists instead of returning an
+// error.
+//
+// When the role already exists, the provided `role` spec fully replaces the
+// existing one: `membershipRoles` is overwritten, not merged. Leaving
+// `membershipRoles` empty clears all of the role's existing memberships,
+// including `DATABRICKS_SUPERUSER`. Always send the complete desired list of
+// memberships when using this field
+func (o PostgresRoleOutput) ReplaceExisting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PostgresRole) pulumi.BoolPtrOutput { return v.ReplaceExisting }).(pulumi.BoolPtrOutput)
 }
 
 // (string) - Part of the resource name

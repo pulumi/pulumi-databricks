@@ -184,6 +184,12 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// (InitialBranchSpec) - Configuration for the initial default branch created as part of project creation.
+        /// Allows overriding branch protection. These settings only apply at creation time
+        /// and do not affect resources created after project creation
+        /// </summary>
+        public readonly Outputs.GetPostgresProjectInitialBranchSpecResult InitialBranchSpec;
+        /// <summary>
         /// (InitialEndpointSpec) - Configuration settings for the initial Read/Write endpoint created inside the initial branch for a newly
         /// created project. If omitted, the initial endpoint created will have default settings, without high availability
         /// configured. This field does not apply to any endpoints created after project creation. Use
@@ -230,6 +236,8 @@ namespace Pulumi.Databricks
 
             string id,
 
+            Outputs.GetPostgresProjectInitialBranchSpecResult initialBranchSpec,
+
             Outputs.GetPostgresProjectInitialEndpointSpecResult initialEndpointSpec,
 
             string name,
@@ -251,6 +259,7 @@ namespace Pulumi.Databricks
             CreateTime = createTime;
             DeleteTime = deleteTime;
             Id = id;
+            InitialBranchSpec = initialBranchSpec;
             InitialEndpointSpec = initialEndpointSpec;
             Name = name;
             ProjectId = projectId;
