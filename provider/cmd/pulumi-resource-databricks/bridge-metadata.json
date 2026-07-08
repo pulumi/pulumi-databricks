@@ -1298,6 +1298,13 @@
                     "auto_tag_configs": {
                         "maxItemsOne": false
                     },
+                    "excluded_schemas": {
+                        "fields": {
+                            "names": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "included_schemas": {
                         "fields": {
                             "names": {
@@ -2373,7 +2380,14 @@
                         "maxItemsOne": true
                     },
                     "schedule": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "sql_condition": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "spark_jar_task": {
                         "maxItemsOne": true,
@@ -3393,6 +3407,9 @@
                                     }
                                 },
                                 "periodic": {
+                                    "maxItemsOne": true
+                                },
+                                "sql_condition": {
                                     "maxItemsOne": true
                                 },
                                 "table_update": {
@@ -8129,6 +8146,13 @@
                     "auto_tag_configs": {
                         "maxItemsOne": false
                     },
+                    "excluded_schemas": {
+                        "fields": {
+                            "names": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "included_schemas": {
                         "fields": {
                             "names": {
@@ -8906,6 +8930,9 @@
                     },
                     "provider_config": {
                         "maxItemsOne": true
+                    },
+                    "roles": {
+                        "maxItemsOne": false
                     },
                     "service_principals": {
                         "maxItemsOne": false
